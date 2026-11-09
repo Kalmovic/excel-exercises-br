@@ -1,0 +1,138 @@
+{
+  "id": "47597391-8327-5317-b63c-3076062fa3a1",
+  "slug": "variacao-percentual",
+  "trilha": "excel-ptbr",
+  "modulo": "fundamentos",
+  "ordem": 4,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Variação percentual entre dois anos",
+  "enunciado": [
+    "A tabela mostra o faturamento de cada loja em 2025 e 2026.",
+    "Em **D2:D5**, calcule a variação percentual de 2025 para 2026. Uma loja que foi de 100 para 110 cresceu 10%."
+  ],
+  "grade": {
+    "linhas": 7,
+    "colunas": 5,
+    "larguras": {
+      "A": 110,
+      "B": 130,
+      "C": 130,
+      "D": 110
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Loja",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "2025",
+        "negrito": true
+      },
+      "C1": {
+        "entrada": "2026",
+        "negrito": true
+      },
+      "D1": {
+        "entrada": "Variação",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Centro"
+      },
+      "B2": {
+        "entrada": "180000",
+        "formato": "moeda"
+      },
+      "C2": {
+        "entrada": "207000",
+        "formato": "moeda"
+      },
+      "A3": {
+        "entrada": "Shopping"
+      },
+      "B3": {
+        "entrada": "240000",
+        "formato": "moeda"
+      },
+      "C3": {
+        "entrada": "228000",
+        "formato": "moeda"
+      },
+      "A4": {
+        "entrada": "Bairro"
+      },
+      "B4": {
+        "entrada": "95000",
+        "formato": "moeda"
+      },
+      "C4": {
+        "entrada": "114000",
+        "formato": "moeda"
+      },
+      "A5": {
+        "entrada": "Online"
+      },
+      "B5": {
+        "entrada": "60000",
+        "formato": "moeda"
+      },
+      "C5": {
+        "entrada": "87000",
+        "formato": "moeda"
+      }
+    },
+    "variaveis": [
+      "B2",
+      "C2",
+      "B3",
+      "C3",
+      "B4",
+      "C4",
+      "B5",
+      "C5"
+    ]
+  },
+  "alvos": [
+    {
+      "celula": "D2",
+      "esperado": 0.15,
+      "exigeFormula": true,
+      "solucaoReferencia": "=(C2-B2)/B2",
+      "formato": "percentual"
+    },
+    {
+      "celula": "D3",
+      "esperado": -0.05,
+      "exigeFormula": true,
+      "solucaoReferencia": "=(C3-B3)/B3",
+      "formato": "percentual"
+    },
+    {
+      "celula": "D4",
+      "esperado": 0.2,
+      "exigeFormula": true,
+      "solucaoReferencia": "=(C4-B4)/B4",
+      "formato": "percentual"
+    },
+    {
+      "celula": "D5",
+      "esperado": 0.45,
+      "exigeFormula": true,
+      "solucaoReferencia": "=(C5-B5)/B5",
+      "formato": "percentual"
+    }
+  ],
+  "dicas": [
+    "Variação = (valor novo − valor antigo) ÷ valor antigo.",
+    "Use parênteses: sem eles, o Excel faz a divisão antes da subtração.",
+    "Em D2: `=(C2-B2)/B2`. Depois copie para D3:D5."
+  ],
+  "explicacao": [
+    "`=(C2-B2)/B2` calcula quanto o valor mudou em relação ao ano anterior. A célula já está formatada como porcentagem, então 0,15 aparece como 15%.",
+    "Também vale `=C2/B2-1`, que dá o mesmo resultado.",
+    "Os parênteses são essenciais: `=C2-B2/B2` faria a divisão primeiro e daria um número sem sentido."
+  ],
+  "tentativasAteExplicacao": 3
+}

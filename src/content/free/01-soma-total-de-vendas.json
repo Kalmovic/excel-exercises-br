@@ -1,0 +1,109 @@
+{
+  "id": "0fc1f6b8-c1d2-5194-b231-4dae0efc5990",
+  "slug": "soma-total-de-vendas",
+  "trilha": "excel-ptbr",
+  "modulo": "fundamentos",
+  "ordem": 1,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "SOMA: total de vendas do semestre",
+  "enunciado": [
+    "Uma loja registrou as vendas de cada mês do primeiro semestre na coluna B.",
+    "Na célula **B8**, calcule o total vendido no semestre usando a função `SOMA`."
+  ],
+  "grade": {
+    "linhas": 10,
+    "colunas": 4,
+    "larguras": {
+      "A": 130,
+      "B": 130
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Mês",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Vendas",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Janeiro"
+      },
+      "B2": {
+        "entrada": "12500",
+        "formato": "moeda"
+      },
+      "A3": {
+        "entrada": "Fevereiro"
+      },
+      "B3": {
+        "entrada": "9800",
+        "formato": "moeda"
+      },
+      "A4": {
+        "entrada": "Março"
+      },
+      "B4": {
+        "entrada": "14300",
+        "formato": "moeda"
+      },
+      "A5": {
+        "entrada": "Abril"
+      },
+      "B5": {
+        "entrada": "11250",
+        "formato": "moeda"
+      },
+      "A6": {
+        "entrada": "Maio"
+      },
+      "B6": {
+        "entrada": "15900",
+        "formato": "moeda"
+      },
+      "A7": {
+        "entrada": "Junho"
+      },
+      "B7": {
+        "entrada": "13750",
+        "formato": "moeda"
+      },
+      "A8": {
+        "entrada": "Total",
+        "negrito": true
+      }
+    },
+    "variaveis": [
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7"
+    ]
+  },
+  "alvos": [
+    {
+      "celula": "B8",
+      "esperado": 77500,
+      "exigeFormula": true,
+      "solucaoReferencia": "=SOMA(B2:B7)",
+      "formato": "moeda"
+    }
+  ],
+  "funcoesExigidas": [
+    "SUM"
+  ],
+  "dicas": [
+    "Toda fórmula começa com o sinal de igual: `=`.",
+    "A função SOMA recebe um intervalo: o início e o fim separados por dois-pontos, como `B2:B7`.",
+    "Digite `=SOMA(B2:B7)` em B8 e pressione Enter."
+  ],
+  "explicacao": [
+    "`=SOMA(B2:B7)` soma todas as células de B2 até B7.",
+    "O intervalo usa dois-pontos (`:`) para ligar a primeira e a última célula. Se um valor mudar, o total é recalculado sozinho, e é por isso que usamos a fórmula em vez de digitar o resultado."
+  ],
+  "tentativasAteExplicacao": 3
+}

@@ -1,0 +1,172 @@
+{
+  "id": "84d5555b-2725-5a8d-894d-53c7a08e2944",
+  "slug": "media-minimo-maximo",
+  "trilha": "excel-ptbr",
+  "modulo": "fundamentos",
+  "ordem": 2,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "MÉDIA, MÍNIMO e MÁXIMO: resumo da turma",
+  "enunciado": [
+    "A coluna B tem as notas de uma turma.",
+    "Preencha o resumo: em **E2** a média das notas (`MÉDIA`), em **E3** a menor nota (`MÍNIMO`) e em **E4** a maior nota (`MÁXIMO`)."
+  ],
+  "grade": {
+    "linhas": 11,
+    "colunas": 6,
+    "larguras": {
+      "A": 110,
+      "D": 120
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Aluno",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Nota",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Ana"
+      },
+      "B2": {
+        "entrada": "7,5",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A3": {
+        "entrada": "Bruno"
+      },
+      "B3": {
+        "entrada": "8",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A4": {
+        "entrada": "Carla"
+      },
+      "B4": {
+        "entrada": "6",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A5": {
+        "entrada": "Diego"
+      },
+      "B5": {
+        "entrada": "9,5",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A6": {
+        "entrada": "Elisa"
+      },
+      "B6": {
+        "entrada": "5,5",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A7": {
+        "entrada": "Fábio"
+      },
+      "B7": {
+        "entrada": "8,5",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A8": {
+        "entrada": "Gabi"
+      },
+      "B8": {
+        "entrada": "7",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "A9": {
+        "entrada": "Heitor"
+      },
+      "B9": {
+        "entrada": "9",
+        "formato": {
+          "casas": 1
+        }
+      },
+      "D1": {
+        "entrada": "Resumo",
+        "negrito": true
+      },
+      "D2": {
+        "entrada": "Média"
+      },
+      "D3": {
+        "entrada": "Menor nota"
+      },
+      "D4": {
+        "entrada": "Maior nota"
+      }
+    },
+    "variaveis": [
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B9"
+    ]
+  },
+  "alvos": [
+    {
+      "celula": "E2",
+      "esperado": 7.625,
+      "exigeFormula": true,
+      "solucaoReferencia": "=MÉDIA(B2:B9)",
+      "formato": {
+        "casas": 2
+      }
+    },
+    {
+      "celula": "E3",
+      "esperado": 5.5,
+      "exigeFormula": true,
+      "solucaoReferencia": "=MÍNIMO(B2:B9)",
+      "formato": {
+        "casas": 1
+      }
+    },
+    {
+      "celula": "E4",
+      "esperado": 9.5,
+      "exigeFormula": true,
+      "solucaoReferencia": "=MÁXIMO(B2:B9)",
+      "formato": {
+        "casas": 1
+      }
+    }
+  ],
+  "funcoesExigidas": [
+    "AVERAGE",
+    "MIN",
+    "MAX"
+  ],
+  "dicas": [
+    "As três funções recebem o mesmo intervalo: as notas de B2 até B9.",
+    "Os nomes levam acento: `MÉDIA`, `MÍNIMO`, `MÁXIMO`.",
+    "Em E2: `=MÉDIA(B2:B9)`. Faça o mesmo com `MÍNIMO` e `MÁXIMO`."
+  ],
+  "explicacao": [
+    "`MÉDIA` soma os valores e divide pela quantidade; `MÍNIMO` e `MÁXIMO` devolvem o menor e o maior valor do intervalo.",
+    "Células vazias e textos dentro do intervalo são ignorados pelas três funções."
+  ],
+  "tentativasAteExplicacao": 3
+}
