@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Ref } from "react";
 import type { Exercicio } from "@/content/schema";
 import type { Resultado } from "@/grader/corrigir";
 import { TextoRico } from "./TextoRico";
@@ -15,6 +16,7 @@ type Props = {
   onVerificar: () => void;
   onDica: () => void;
   onReiniciar: () => void;
+  botaoVerificarRef?: Ref<HTMLButtonElement>;
 };
 
 export function PainelExercicio({
@@ -27,6 +29,7 @@ export function PainelExercicio({
   onVerificar,
   onDica,
   onReiniciar,
+  botaoVerificarRef,
 }: Props) {
   const mostrarExplicacao = concluido || tentativas >= ex.tentativasAteExplicacao;
   const alvos = ex.alvos.map((a) => a.celula);
@@ -51,6 +54,7 @@ export function PainelExercicio({
         <button
           type="button"
           onClick={onVerificar}
+          ref={botaoVerificarRef}
           data-testid="verificar"
           className="rounded-md bg-emerald-700 px-4 py-2 font-medium text-white shadow-sm hover:bg-emerald-800"
         >
@@ -75,15 +79,22 @@ export function PainelExercicio({
 
       {resultado && (
         <div
+          key={tentativas}
           data-testid="resultado"
-          className={`rounded-md border p-3 text-sm ${
+          className={`rounded-md border p-3 text-sm motion-safe:animate-pop ${
             resultado.ok
               ? "border-emerald-300 bg-emerald-50 text-emerald-900"
               : "border-red-200 bg-red-50 text-red-900"
           }`}
         >
           {resultado.ok ? (
-            <p className="font-semibold">Correto! 🎉</p>
+            <div className="flex items-center gap-3">
+              <IconeCheck />
+              <div>
+                <p className="text-base font-semibold">Correto!</p>
+                <p className="text-emerald-800">{elogio(tentativas)}</p>
+              </div>
+            </div>
           ) : (
             <>
               <p className="mb-1 font-semibold">Ainda não. Tentativa {tentativas}.</p>
@@ -137,5 +148,32 @@ export function PainelExercicio({
         </Link>
       )}
     </aside>
+  );
+}
+
+const ELOGIOS = ["Mandou bem!", "Fórmula certinha.", "Exatamente isso.", "É assim que se faz.", "Planilha resolvida."];
+
+function elogio(tentativas: number) {
+  if (tentativas === 1) return "Acertou de primeira!";
+  return ELOGIOS[tentativas % ELOGIOS.length];
+}
+
+/** Círculo verde com o check sendo "desenhado". */
+function IconeCheck() {
+  return (
+    <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0" aria-hidden>
+      <circle cx="20" cy="20" r="18" className="fill-emerald-600 motion-safe:animate-pop" />
+      <path
+        d="M12 20.5l5.5 5.5L28.5 15"
+        fill="none"
+        stroke="white"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="30"
+        strokeDashoffset="0"
+        className="motion-safe:[animation:desenhar_450ms_200ms_ease-out_both]"
+      />
+    </svg>
   );
 }

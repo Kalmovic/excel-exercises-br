@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
-import { exercicioPorSlug, exercicios, proximoExercicio } from "@/content";
+import { MODULOS, exercicioPorSlug, exercicios, proximoExercicio } from "@/content";
 
 export function generateStaticParams() {
   return exercicios.filter((e) => e.plano === "free").map((e) => ({ slug: e.slug }));
@@ -20,6 +20,14 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
   const ex = exercicioPorSlug(slug);
   if (!ex || ex.plano !== "free") notFound();
   const prox = proximoExercicio(slug);
+  const modulo = MODULOS.find((m) => m.slug === ex.modulo);
+  const trilha = {
+    modulo: ex.modulo,
+    titulo: modulo?.titulo ?? ex.modulo,
+    itens: exercicios
+      .filter((e) => e.modulo === ex.modulo && e.plano === "free")
+      .map((e) => ({ slug: e.slug, versao: e.versao })),
+  };
 
   return (
     <div className="space-y-4">
@@ -33,6 +41,7 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
       <SimuladorCarregavel
         exercicio={ex}
         proximo={prox ? { slug: prox.slug, titulo: prox.titulo } : undefined}
+        trilha={trilha}
       />
     </div>
   );

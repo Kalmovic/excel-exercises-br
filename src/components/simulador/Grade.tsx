@@ -29,6 +29,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const copiado = useEstado((e) => e.copiado);
   const alca = useEstado((e) => e.alca);
   const arrasto = useEstado((e) => e.arrasto);
+  const celebrando = useEstado((e) => e.celebrando);
 
   const selecao = normalizar(ancora, foco);
   const colunas = useMemo(
@@ -258,6 +259,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                 largura={w}
                 naSelecao={contem(selecao, p) && !(l === ancora.linha && c === ancora.coluna)}
                 alvo={alvos.has(end)}
+                celebrando={celebrando && alvos.has(end)}
                 versao={versao}
                 onPressionar={aoPressionarCelula}
                 onEntrar={aoEntrarCelula}
@@ -356,6 +358,7 @@ type PropsCelula = {
   largura: number;
   naSelecao: boolean;
   alvo: boolean;
+  celebrando: boolean;
   /** Muda a cada recálculo; força a célula a ler o valor novo do motor. */
   versao: number;
   onPressionar: (e: MouseEvent, p: Pos) => void;
@@ -363,7 +366,7 @@ type PropsCelula = {
   onDuploClique: () => void;
 };
 
-function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, onPressionar, onEntrar, onDuploClique }: PropsCelula) {
+function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, celebrando, onPressionar, onEntrar, onDuploClique }: PropsCelula) {
   const { planilha } = useSimulador();
   const valor = planilha.valor(pos);
   const circular = planilha.circular(pos);
@@ -376,7 +379,13 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, onPression
       onMouseEnter={() => onEntrar(pos)}
       onDoubleClick={onDuploClique}
       className={`absolute overflow-hidden whitespace-nowrap border-r border-b border-zinc-200 px-1 leading-[25px] ${
-        naSelecao ? "bg-emerald-50" : alvo ? "bg-amber-50" : "bg-white"
+        celebrando
+          ? "bg-emerald-50 motion-safe:animate-acerto"
+          : naSelecao
+            ? "bg-emerald-50"
+            : alvo
+              ? "bg-amber-50"
+              : "bg-white"
       } ${planilha.negrito(endereco) ? "font-bold" : ""} ${erro ? "text-red-700" : circular ? "text-amber-700" : "text-zinc-900"}`}
       style={{
         left,

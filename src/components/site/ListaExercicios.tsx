@@ -3,22 +3,43 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import * as progresso from "@/lib/progresso";
+import { IconeTrofeu } from "@/components/simulador/Trofeu";
 
 type Item = { slug: string; titulo: string; ordem: number; nivel: number; versao: number };
 
 const servidor = () => "{}";
 
-export function ListaExercicios({ itens }: { itens: Item[] }) {
+export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: { slug: string; titulo: string } }) {
   const bruto = useSyncExternalStore(
     progresso.assinar,
     () => JSON.stringify(progresso.lerTudo()),
     servidor,
   );
   const tudo = JSON.parse(bruto) as ReturnType<typeof progresso.lerTudo>;
+  const brutoTrofeus = useSyncExternalStore(
+    progresso.assinar,
+    () => JSON.stringify(progresso.lerTrofeus()),
+    servidor,
+  );
+  const conquistadoEm = (JSON.parse(brutoTrofeus) as progresso.Trofeus)[modulo.slug];
   const feitos = itens.filter((i) => tudo[i.slug]?.versao === i.versao && tudo[i.slug]?.status === "concluido");
 
   return (
     <div>
+      {conquistadoEm && (
+        <div
+          data-testid="trofeu-home"
+          className="mb-4 flex items-center gap-4 rounded-lg border border-amber-200 bg-gradient-to-r from-amber-50 to-white p-4"
+        >
+          <IconeTrofeu className="h-14 w-14 shrink-0" />
+          <div>
+            <p className="font-semibold text-amber-900">Troféu: {modulo.titulo}</p>
+            <p className="text-sm text-amber-800">
+              Trilha concluída em {new Date(conquistadoEm).toLocaleDateString("pt-BR")}.
+            </p>
+          </div>
+        </div>
+      )}
       <p className="mb-3 text-sm text-zinc-500">
         {feitos.length} de {itens.length} concluídos
       </p>

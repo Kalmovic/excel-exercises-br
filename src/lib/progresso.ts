@@ -57,3 +57,37 @@ export function assinar(fn: () => void) {
     window.removeEventListener("storage", fn);
   };
 }
+
+// --- troféus ---------------------------------------------------------------
+
+const CHAVE_TROFEUS = "excel-br:trofeus:v1";
+
+export type Trofeus = Record<string, string>; // modulo -> data ISO da conquista
+
+export function lerTrofeus(): Trofeus {
+  try {
+    return JSON.parse(localStorage.getItem(CHAVE_TROFEUS) ?? "{}") as Trofeus;
+  } catch {
+    return {};
+  }
+}
+
+/** Registra o troféu uma vez só. Devolve true se é a primeira vez. */
+export function registrarTrofeu(modulo: string): boolean {
+  try {
+    const t = lerTrofeus();
+    if (t[modulo]) return false;
+    t[modulo] = new Date().toISOString();
+    localStorage.setItem(CHAVE_TROFEUS, JSON.stringify(t));
+    window.dispatchEvent(new Event(EVENTO));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Todos os exercícios da lista concluídos (na versão atual)? */
+export function trilhaConcluida(itens: { slug: string; versao: number }[]): boolean {
+  const tudo = lerTudo();
+  return itens.every((i) => tudo[i.slug]?.versao === i.versao && tudo[i.slug]?.status === "concluido");
+}

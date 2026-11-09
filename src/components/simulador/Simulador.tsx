@@ -10,6 +10,8 @@ import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
 import { PainelExercicio } from "./PainelExercicio";
 import { criarStore } from "./store";
+import { TrofeuModal } from "./Trofeu";
+import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 
 function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
@@ -22,10 +24,22 @@ function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
   return { planilha, store: criarStore(planilha), alvos: new Set(ex.alvos.map((a) => a.celula)) };
 }
 
-type Props = { exercicio: Exercicio; proximo?: { slug: string; titulo: string } };
+export type Trilha = {
+  modulo: string;
+  titulo: string;
+  itens: { slug: string; versao: number }[];
+};
 
-export default function Simulador({ exercicio: ex, proximo }: Props) {
+type Props = {
+  exercicio: Exercicio;
+  proximo?: { slug: string; titulo: string };
+  trilha: Trilha;
+};
+
+export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
   const entradaRef = useRef<HTMLInputElement | null>(null);
+  const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
+  const [trofeu, setTrofeu] = useState<{ tentativas: number } | null>(null);
   const [nucleo, setNucleo] = useState(() => montar(ex));
   const [resultado, setResultado] = useState<Resultado | null>(null);
   const [tentativas, setTentativas] = useState(() => progresso.ler(ex.slug, ex.versao)?.tentativas ?? 0);
@@ -69,7 +83,23 @@ export default function Simulador({ exercicio: ex, proximo }: Props) {
         Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
       ),
     });
-    entradaRef.current?.focus();
+    if (r.ok) comemorar();
+    else entradaRef.current?.focus();
+  };
+
+  const comemorar = () => {
+    nucleo.store.setState({ celebrando: true });
+    setTimeout(() => nucleo.store.setState({ celebrando: false }), 1300);
+    void celebrarAcerto(botaoVerificarRef.current);
+    // Fim da trilha: troféu, só na primeira vez.
+    if (progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
+      const tudo = progresso.lerTudo();
+      const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
+      setTimeout(() => {
+        setTrofeu({ tentativas: total });
+        void celebrarTrofeu();
+      }, 700);
+    }
   };
 
   const reiniciar = () => {
@@ -102,8 +132,17 @@ export default function Simulador({ exercicio: ex, proximo }: Props) {
           onVerificar={verificar}
           onDica={() => setDicasVistas((d) => Math.min(d + 1, ex.dicas.length))}
           onReiniciar={reiniciar}
+          botaoVerificarRef={botaoVerificarRef}
         />
       </div>
+      {trofeu && (
+        <TrofeuModal
+          modulo={trilha.titulo}
+          exercicios={trilha.itens.length}
+          tentativas={trofeu.tentativas}
+          onFechar={() => setTrofeu(null)}
+        />
+      )}
     </Contexto.Provider>
   );
 }

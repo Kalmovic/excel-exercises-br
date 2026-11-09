@@ -13,6 +13,8 @@ export type EstadoSimulador = {
   arrasto: null | "selecao" | "alca";
   alca: Intervalo | null; // área de destino da alça de preenchimento
   copiado: Intervalo | null;
+  /** Células-alvo piscam em verde logo após um acerto. */
+  celebrando: boolean;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -44,6 +46,7 @@ export function criarStore(planilha: Planilha) {
     arrasto: null,
     alca: null,
     copiado: null,
+    celebrando: false,
 
     selecao: () => normalizar(get().ancora, get().foco),
 

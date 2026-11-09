@@ -26,7 +26,7 @@ export default function Home() {
       <section>
         <h2 className="text-xl font-semibold">Módulo 1: {modulo.titulo}</h2>
         <p className="mb-4 text-zinc-600">{modulo.descricao}</p>
-        <ListaExercicios itens={itens} />
+        <ListaExercicios itens={itens} modulo={{ slug: modulo.slug, titulo: modulo.titulo }} />
       </section>
     </div>
   );
