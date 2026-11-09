@@ -3,9 +3,11 @@ import { Planilha } from "@/engine/engine";
 import { deEndereco } from "@/engine/address";
 import { dataIsoParaSerial, type ValorCelula } from "@/engine/format";
 import { ptBR } from "@/engine/ptBR";
+import { explicarErro } from "@/engine/erros";
 
 export type MotivoFalha =
   | "vazia"
+  | "circular"
   | "sem-formula"
   | "erro"
   | "valor"
@@ -111,6 +113,14 @@ export function corrigir(ex: Exercicio, p: Planilha): Resultado {
 
   for (const alvo of ex.alvos) {
     const c = alvo.celula;
+    if (p.circular(c)) {
+      falhas.push({
+        celula: c,
+        motivo: "circular",
+        mensagem: `A fórmula em ${c} cria uma referência circular: ela usa a própria célula ${c} no cálculo. Tire ${c} da fórmula ou do intervalo.`,
+      });
+      continue;
+    }
     const valor = p.valor(c);
     if (valor === null || valor === "") {
       falhas.push({ celula: c, motivo: "vazia", mensagem: `A célula ${c} ainda está vazia.` });
@@ -120,7 +130,9 @@ export function corrigir(ex: Exercicio, p: Planilha): Resultado {
       falhas.push({
         celula: c,
         motivo: "erro",
-        mensagem: `A fórmula em ${c} retornou o erro ${valor.erro}.`,
+        mensagem: explicarErro(valor.erro)
+          ? `A fórmula em ${c} retornou ${valor.erro}: ${explicarErro(valor.erro)}.`
+          : `A fórmula em ${c} retornou o erro ${valor.erro}.`,
       });
       continue;
     }

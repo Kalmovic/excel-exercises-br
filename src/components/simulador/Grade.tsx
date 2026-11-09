@@ -366,8 +366,9 @@ type PropsCelula = {
 function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, onPressionar, onEntrar, onDuploClique }: PropsCelula) {
   const { planilha } = useSimulador();
   const valor = planilha.valor(pos);
-  const alinh = alinhamento(valor);
-  const erro = typeof valor === "object" && valor !== null;
+  const circular = planilha.circular(pos);
+  const alinh = circular ? "direita" : alinhamento(valor);
+  const erro = typeof valor === "object" && valor !== null && !circular;
   return (
     <div
       data-celula={endereco}
@@ -376,7 +377,7 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, onPression
       onDoubleClick={onDuploClique}
       className={`absolute overflow-hidden whitespace-nowrap border-r border-b border-zinc-200 px-1 leading-[25px] ${
         naSelecao ? "bg-emerald-50" : alvo ? "bg-amber-50" : "bg-white"
-      } ${planilha.negrito(endereco) ? "font-bold" : ""} ${erro ? "text-red-700" : "text-zinc-900"}`}
+      } ${planilha.negrito(endereco) ? "font-bold" : ""} ${erro ? "text-red-700" : circular ? "text-amber-700" : "text-zinc-900"}`}
       style={{
         left,
         top,
@@ -384,7 +385,13 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, onPression
         height: ALTURA,
         textAlign: alinh === "direita" ? "right" : alinh === "centro" ? "center" : "left",
       }}
-      title={alvo ? `${endereco}: célula do exercício` : undefined}
+      title={
+        circular
+          ? `${endereco}: referência circular`
+          : alvo
+            ? `${endereco}: célula do exercício`
+            : undefined
+      }
     >
       {planilha.exibicao(endereco)}
     </div>

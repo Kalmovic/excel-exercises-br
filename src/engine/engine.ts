@@ -1,4 +1,4 @@
-import { DetailedCellError, HyperFormula } from "hyperformula";
+import { DetailedCellError, ErrorType, HyperFormula } from "hyperformula";
 import type { Exercicio } from "@/content/schema";
 import {
   deEndereco,
@@ -121,8 +121,30 @@ export class Planilha {
     return String(s);
   }
 
+  /**
+   * A fórmula depende do próprio resultado (ex.: `=SOMA(B2:B8)` dentro de B8).
+   * O HyperFormula devolve #CYCLE!; o Excel mostra 0 e um aviso, e é isso que
+   * reproduzimos na exibição.
+   */
+  circular(end: string | Pos): boolean {
+    const v = this.hf.getCellValue(this.addr(end));
+    return v instanceof DetailedCellError && v.type === ErrorType.CYCLE;
+  }
+
+  /** Células com fórmula envolvidas em referência circular, em ordem de leitura. */
+  celulasCirculares(): string[] {
+    const out: string[] = [];
+    for (let linha = 0; linha < this.linhas; linha++)
+      for (let coluna = 0; coluna < this.colunas; coluna++) {
+        const p = { linha, coluna };
+        if (this.temFormula(p) && this.circular(p)) out.push(paraEndereco(p));
+      }
+    return out;
+  }
+
   exibicao(end: string | Pos): string {
     const e = typeof end === "string" ? end : paraEndereco(end);
+    if (this.circular(e)) return formatarValor(0, "NUMBER_RAW", this.formatos.get(e));
     return formatarValor(this.valor(e), this.tipo(e), this.formatos.get(e));
   }
 

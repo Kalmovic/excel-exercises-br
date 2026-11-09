@@ -81,3 +81,25 @@ describe("casos específicos", () => {
     expect(corrigir(ex, p).ok).toBe(true);
   });
 });
+
+describe("referência circular", () => {
+  const ex = exercicios.find((e) => e.slug === "soma-total-de-vendas")!;
+
+  it("mostra 0 como o Excel e explica na correção", () => {
+    const p = Planilha.deExercicio(ex);
+    p.definir("B8", "=SOMA(B2:B8)");
+    expect(p.circular("B8")).toBe(true);
+    expect(p.exibicao("B8").replace(/\s/g, " ")).toBe("R$ 0,00");
+    expect(p.celulasCirculares()).toEqual(["B8"]);
+    const r = corrigir(ex, p);
+    expect(r.falhas[0].motivo).toBe("circular");
+    expect(r.falhas[0].mensagem).toContain("referência circular");
+  });
+
+  it("erros comuns vêm com explicação", () => {
+    const ex4 = exercicios.find((e) => e.slug === "variacao-percentual")!;
+    const p = Planilha.deExercicio(ex4);
+    p.definir("D2", "=(C2-B2)/A10");
+    expect(corrigir(ex4, p).falhas[0].mensagem).toContain("divisão por zero");
+  });
+});

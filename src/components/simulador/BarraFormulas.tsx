@@ -1,6 +1,7 @@
 "use client";
 
 import { intervaloParaTexto, normalizar, paraEndereco } from "@/engine/address";
+import { explicarErro, mensagemCircular } from "@/engine/erros";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 export function BarraFormulas() {
@@ -13,6 +14,21 @@ export function BarraFormulas() {
   const mensagem = useEstado((e) => e.mensagem);
 
   const editando = modo !== "pronto";
+
+  // Prioridade: recusa da fórmula > referência circular > explicação do erro da célula ativa.
+  const circulares = planilha.celulasCirculares();
+  const valorAtivo = planilha.valor(ancora);
+  const erroAtivo =
+    !editando && valorAtivo !== null && typeof valorAtivo === "object" && !planilha.circular(ancora)
+      ? explicarErro(valorAtivo.erro)
+      : undefined;
+  const aviso = mensagem
+    ? { texto: mensagem, cor: "text-red-700" }
+    : circulares.length > 0
+      ? { texto: `⚠ ${mensagemCircular(circulares)}`, cor: "text-amber-800" }
+      : erroAtivo && typeof valorAtivo === "object" && valorAtivo !== null
+        ? { texto: `${valorAtivo.erro}: ${erroAtivo}.`, cor: "text-zinc-600" }
+        : null;
   const nome = editando ? paraEndereco(ancora) : intervaloParaTexto(normalizar(ancora, foco));
   const voltarParaGrade = () => entradaRef.current?.focus();
 
@@ -86,9 +102,9 @@ export function BarraFormulas() {
       <p
         role="alert"
         data-testid="mensagem-formula"
-        className={`min-h-5 text-sm ${mensagem ? "text-red-700" : "text-transparent"}`}
+        className={`min-h-5 text-sm ${aviso ? aviso.cor : "text-transparent"}`}
       >
-        {mensagem ?? "."}
+        {aviso?.texto ?? "."}
       </p>
     </div>
   );
