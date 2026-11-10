@@ -26,7 +26,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </span>
               Pratique Excel
             </Link>
-            <span className="text-sm text-zinc-500">Versão de teste</span>
+            <nav className="flex items-center gap-5 text-sm">
+              <Link href="/desafio" className="font-medium text-emerald-800 hover:text-emerald-950">
+                Desafio diário
+              </Link>
+              <span className="text-zinc-400">Versão de teste</span>
+            </nav>
           </div>
         </header>
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>

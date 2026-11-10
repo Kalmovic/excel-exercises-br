@@ -19,7 +19,9 @@ export default defineConfig({
   webServer: {
     command: "npx next start -p 3100",
     url: "http://localhost:3100",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
+    // Data fixa do desafio diário nos testes (ignorada em produção na Vercel).
+    env: { DESAFIO_HOJE: "2026-11-12" },
     timeout: 60_000,
   },
 });

@@ -1,0 +1,1726 @@
+[
+  {
+    "data": "2026-11-10",
+    "exercicio": {
+      "id": "c2f71a78-bd24-51e0-94d5-995c2b5c592b",
+      "slug": "desafio-2026-11-10",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Quanto saiu do bolso este mês?",
+      "enunciado": [
+        "A planilha lista os gastos fixos de uma família em novembro.",
+        "Em **B8**, calcule o total gasto no mês."
+      ],
+      "grade": {
+        "linhas": 10,
+        "colunas": 4,
+        "larguras": {
+          "A": 120,
+          "B": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Gasto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Valor",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Aluguel"
+          },
+          "B2": {
+            "entrada": "1800",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Mercado"
+          },
+          "B3": {
+            "entrada": "1150,4",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Luz"
+          },
+          "B4": {
+            "entrada": "213,9",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Internet"
+          },
+          "B5": {
+            "entrada": "119,9",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Transporte"
+          },
+          "B6": {
+            "entrada": "386,5",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Lazer"
+          },
+          "B7": {
+            "entrada": "420",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "Total",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "B8",
+          "esperado": 4090.7,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMA(B2:B7)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SOMA(B2:B7)` soma todos os gastos de B2 até B7: R$ 4.090,70.",
+        "Por que não somar à mão? Se a conta de luz mudar, o total se atualiza sozinho. Uma variação que também funciona: `=B2+B3+B4+B5+B6+B7`, mas ela fica longa e é fácil esquecer uma célula."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "SUM"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-11",
+    "exercicio": {
+      "id": "3468ad72-3f4d-5230-9c89-0200aec1700c",
+      "slug": "desafio-2026-11-11",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Quem passou?",
+      "enunciado": [
+        "A média para aprovação é 7.",
+        "Em **C2:C6**, mostre \"Aprovado\" para quem tirou 7 ou mais e \"Reprovado\" para o resto."
+      ],
+      "grade": {
+        "linhas": 8,
+        "colunas": 4,
+        "larguras": {
+          "C": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Aluno",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Nota",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Situação",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Bia"
+          },
+          "B2": {
+            "entrada": "8,5",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A3": {
+            "entrada": "Caio"
+          },
+          "B3": {
+            "entrada": "6,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A4": {
+            "entrada": "Duda"
+          },
+          "B4": {
+            "entrada": "7,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A5": {
+            "entrada": "Enzo"
+          },
+          "B5": {
+            "entrada": "5,5",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A6": {
+            "entrada": "Flor"
+          },
+          "B6": {
+            "entrada": "9,0",
+            "formato": {
+              "casas": 1
+            }
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": "Aprovado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B2>=7;\"Aprovado\";\"Reprovado\")"
+        },
+        {
+          "celula": "C3",
+          "esperado": "Reprovado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B3>=7;\"Aprovado\";\"Reprovado\")"
+        },
+        {
+          "celula": "C4",
+          "esperado": "Aprovado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B4>=7;\"Aprovado\";\"Reprovado\")"
+        },
+        {
+          "celula": "C5",
+          "esperado": "Reprovado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B5>=7;\"Aprovado\";\"Reprovado\")"
+        },
+        {
+          "celula": "C6",
+          "esperado": "Aprovado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B6>=7;\"Aprovado\";\"Reprovado\")"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")` testa a nota e devolve um dos dois textos. Escrita em C2 e copiada até C6, a referência B2 anda junto.",
+        "O detalhe que pega: é `>=`, não `>`. A Duda tirou exatamente 7 e está aprovada."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "IF"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-12",
+    "exercicio": {
+      "id": "f4bef01e-ad1e-5c5c-9d6a-5c982288ad83",
+      "slug": "desafio-2026-11-12",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Quantos pedidos já chegaram?",
+      "enunciado": [
+        "Uma loja acompanha o status dos pedidos da semana.",
+        "Em **E1**, conte quantos pedidos estão com o status \"Entregue\"."
+      ],
+      "grade": {
+        "linhas": 10,
+        "colunas": 6,
+        "larguras": {
+          "B": 120,
+          "D": 100
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Pedido",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Status",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Entregues",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "#1001"
+          },
+          "B2": {
+            "entrada": "Entregue"
+          },
+          "A3": {
+            "entrada": "#1002"
+          },
+          "B3": {
+            "entrada": "Em trânsito"
+          },
+          "A4": {
+            "entrada": "#1003"
+          },
+          "B4": {
+            "entrada": "Entregue"
+          },
+          "A5": {
+            "entrada": "#1004"
+          },
+          "B5": {
+            "entrada": "Atrasado"
+          },
+          "A6": {
+            "entrada": "#1005"
+          },
+          "B6": {
+            "entrada": "Entregue"
+          },
+          "A7": {
+            "entrada": "#1006"
+          },
+          "B7": {
+            "entrada": "Em trânsito"
+          },
+          "A8": {
+            "entrada": "#1007"
+          },
+          "B8": {
+            "entrada": "Entregue"
+          },
+          "A9": {
+            "entrada": "#1008"
+          },
+          "B9": {
+            "entrada": "Atrasado"
+          }
+        }
+      },
+      "alvos": [
+        {
+          "celula": "E1",
+          "esperado": 4,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE(B2:B9;\"Entregue\")"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=CONT.SE(B2:B9;\"Entregue\")` conta as células do intervalo iguais a \"Entregue\": 4 pedidos.",
+        "O critério vai entre aspas. A comparação ignora maiúsculas, então \"entregue\" também funcionaria."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "COUNTIF"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-13",
+    "exercicio": {
+      "id": "18a8f6b1-0a43-5b5b-bc8b-f6ebc4855dd2",
+      "slug": "desafio-2026-11-13",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Black Friday: preço com desconto",
+      "enunciado": [
+        "Todos os produtos terão o desconto que está em **F1**.",
+        "Em **C2:C6**, calcule o preço com desconto. A fórmula precisa continuar certa se o desconto em F1 mudar."
+      ],
+      "grade": {
+        "linhas": 8,
+        "colunas": 7,
+        "larguras": {
+          "C": 130,
+          "E": 100
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Preço",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Com desconto",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Desconto",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "15%"
+          },
+          "A2": {
+            "entrada": "Fone"
+          },
+          "B2": {
+            "entrada": "249,9",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Mouse"
+          },
+          "B3": {
+            "entrada": "89,9",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Teclado"
+          },
+          "B4": {
+            "entrada": "199",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Monitor"
+          },
+          "B5": {
+            "entrada": "1299",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Webcam"
+          },
+          "B6": {
+            "entrada": "179,5",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "F1"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": 212.415,
+          "exigeFormula": true,
+          "solucaoReferencia": "=B2*(1-$F$1)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C3",
+          "esperado": 76.415,
+          "exigeFormula": true,
+          "solucaoReferencia": "=B3*(1-$F$1)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C4",
+          "esperado": 169.15,
+          "exigeFormula": true,
+          "solucaoReferencia": "=B4*(1-$F$1)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C5",
+          "esperado": 1104.15,
+          "exigeFormula": true,
+          "solucaoReferencia": "=B5*(1-$F$1)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C6",
+          "esperado": 152.575,
+          "exigeFormula": true,
+          "solucaoReferencia": "=B6*(1-$F$1)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=B2*(1-$F$1)`: se o desconto é 15%, o cliente paga 85% do preço, ou seja, o preço vezes (1 − 15%).",
+        "O `$F$1` trava a referência ao desconto: ao copiar a fórmula para baixo, B2 vira B3, B4…, mas o desconto continua vindo de F1.",
+        "Outra forma certa: `=B2-B2*$F$1`."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-14",
+    "exercicio": {
+      "id": "7f98447c-ec73-5304-b56f-dcf8d6016e72",
+      "slug": "desafio-2026-11-14",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Quanto a Ana vendeu?",
+      "enunciado": [
+        "Cada linha é uma venda da semana.",
+        "Em **E1**, calcule o total vendido pela Ana."
+      ],
+      "grade": {
+        "linhas": 11,
+        "colunas": 6,
+        "larguras": {
+          "D": 120,
+          "E": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Vendedor",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Venda",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Total da Ana",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Ana"
+          },
+          "B2": {
+            "entrada": "1200",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Bruno"
+          },
+          "B3": {
+            "entrada": "800",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Ana"
+          },
+          "B4": {
+            "entrada": "450",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Carla"
+          },
+          "B5": {
+            "entrada": "1300",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Bruno"
+          },
+          "B6": {
+            "entrada": "600",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Ana"
+          },
+          "B7": {
+            "entrada": "980",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "Carla"
+          },
+          "B8": {
+            "entrada": "210",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "Ana"
+          },
+          "B9": {
+            "entrada": "330",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E1",
+          "esperado": 2960,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE(A2:A9;\"Ana\";B2:B9)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SOMASE(A2:A9;\"Ana\";B2:B9)`: procura \"Ana\" em A2:A9 e soma os valores correspondentes de B2:B9. Total: R$ 2.960,00.",
+        "Ordem dos argumentos: onde procurar, o que procurar, o que somar."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "SUMIF"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-15",
+    "exercicio": {
+      "id": "b114eef7-b2ec-5673-8b01-0383ff9c0423",
+      "slug": "desafio-2026-11-15",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Qual é o produto mais caro?",
+      "enunciado": [
+        "Em **E1**, mostre o **nome** do produto mais caro da lista (não o preço).",
+        "Bônus de verdade: a fórmula deve continuar certa se os preços mudarem."
+      ],
+      "grade": {
+        "linhas": 8,
+        "colunas": 6,
+        "larguras": {
+          "A": 110,
+          "D": 100,
+          "E": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Preço",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Mais caro",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Notebook"
+          },
+          "B2": {
+            "entrada": "3899",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Celular"
+          },
+          "B3": {
+            "entrada": "2499",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "TV 50\""
+          },
+          "B4": {
+            "entrada": "4199",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Fone"
+          },
+          "B5": {
+            "entrada": "399",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Tablet"
+          },
+          "B6": {
+            "entrada": "1899",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Console"
+          },
+          "B7": {
+            "entrada": "3799",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E1",
+          "esperado": "TV 50\"",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ÍNDICE(A2:A7;CORRESP(MÁXIMO(B2:B7);B2:B7;0))"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=ÍNDICE(A2:A7;CORRESP(MÁXIMO(B2:B7);B2:B7;0))` resolve em três passos: `MÁXIMO` acha o maior preço, `CORRESP` descobre em que posição ele está, e `ÍNDICE` pega o nome nessa mesma posição.",
+        "Com o PROCX também dá: `=PROCX(MÁXIMO(B2:B7);B2:B7;A2:A7)`."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "MAX"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-16",
+    "exercicio": {
+      "id": "85d76647-174b-59b0-bad8-84cc3c153d2f",
+      "slug": "desafio-2026-11-16",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Busque o preço pelo código",
+      "enunciado": [
+        "O caixa digitou o código **P-104** em E2.",
+        "Em **F2**, busque o preço desse produto na tabela, usando o código de E2."
+      ],
+      "grade": {
+        "linhas": 9,
+        "colunas": 7,
+        "larguras": {
+          "B": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Código",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Preço",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Código",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Preço",
+            "negrito": true
+          },
+          "E2": {
+            "entrada": "P-104"
+          },
+          "A2": {
+            "entrada": "P-101"
+          },
+          "B2": {
+            "entrada": "Caneta azul"
+          },
+          "C2": {
+            "entrada": "3,5",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "P-102"
+          },
+          "B3": {
+            "entrada": "Caderno"
+          },
+          "C3": {
+            "entrada": "24,9",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "P-103"
+          },
+          "B4": {
+            "entrada": "Mochila"
+          },
+          "C4": {
+            "entrada": "189",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "P-104"
+          },
+          "B5": {
+            "entrada": "Estojo"
+          },
+          "C5": {
+            "entrada": "32,5",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "P-105"
+          },
+          "B6": {
+            "entrada": "Régua"
+          },
+          "C6": {
+            "entrada": "6,9",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "P-106"
+          },
+          "B7": {
+            "entrada": "Agenda"
+          },
+          "C7": {
+            "entrada": "45",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "F2",
+          "esperado": 32.5,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCV(E2;A2:C7;3;FALSO)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=PROCV(E2;A2:C7;3;FALSO)`: procura o valor de E2 na primeira coluna de A2:C7 e devolve a 3ª coluna (o preço).",
+        "O `FALSO` no fim pede correspondência exata. Sem ele, o PROCV faz uma busca aproximada e pode devolver o preço errado.",
+        "Com PROCX: `=PROCX(E2;A2:A7;C2:C7)`."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "VLOOKUP"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-17",
+    "exercicio": {
+      "id": "ea6ca5f8-8b7f-5ee3-8b4c-c63faf83f213",
+      "slug": "desafio-2026-11-17",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Crescimento mês a mês",
+      "enunciado": [
+        "Em **C3:C7**, calcule a variação percentual de assinantes em relação ao mês anterior."
+      ],
+      "grade": {
+        "linhas": 9,
+        "colunas": 4,
+        "larguras": {
+          "B": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Mês",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Assinantes",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Variação",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Jun"
+          },
+          "B2": {
+            "entrada": "1200"
+          },
+          "A3": {
+            "entrada": "Jul"
+          },
+          "B3": {
+            "entrada": "1320"
+          },
+          "A4": {
+            "entrada": "Ago"
+          },
+          "B4": {
+            "entrada": "1254"
+          },
+          "A5": {
+            "entrada": "Set"
+          },
+          "B5": {
+            "entrada": "1505"
+          },
+          "A6": {
+            "entrada": "Out"
+          },
+          "B6": {
+            "entrada": "1806"
+          },
+          "A7": {
+            "entrada": "Nov"
+          },
+          "B7": {
+            "entrada": "2022"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C3",
+          "esperado": 0.1,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(B3-B2)/B2",
+          "formato": "percentual"
+        },
+        {
+          "celula": "C4",
+          "esperado": -0.05,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(B4-B3)/B3",
+          "formato": "percentual"
+        },
+        {
+          "celula": "C5",
+          "esperado": 0.2001594896,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(B5-B4)/B4",
+          "formato": "percentual"
+        },
+        {
+          "celula": "C6",
+          "esperado": 0.2,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(B6-B5)/B5",
+          "formato": "percentual"
+        },
+        {
+          "celula": "C7",
+          "esperado": 0.1196013289,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(B7-B6)/B6",
+          "formato": "percentual"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=(B3-B2)/B2` compara cada mês com o anterior. Copiada para baixo, a referência ao mês anterior anda junto, e por isso aqui **não** se usa $.",
+        "Agosto teve queda de 5%: a variação pode ser negativa."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-18",
+    "exercicio": {
+      "id": "6b80f23e-b0b0-5a36-b94a-352d743c01b3",
+      "slug": "desafio-2026-11-18",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Classifique o frete pelo peso",
+      "enunciado": [
+        "Regra: até 1 kg é **Leve**, até 5 kg é **Médio** e acima disso é **Pesado**.",
+        "Em **C2:C7**, escreva a categoria de cada item."
+      ],
+      "grade": {
+        "linhas": 9,
+        "colunas": 4,
+        "larguras": {
+          "A": 110,
+          "B": 90
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Item",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Peso (kg)",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Frete",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Livro"
+          },
+          "B2": {
+            "entrada": "0,6"
+          },
+          "A3": {
+            "entrada": "Panela"
+          },
+          "B3": {
+            "entrada": "2,4"
+          },
+          "A4": {
+            "entrada": "Cadeira"
+          },
+          "B4": {
+            "entrada": "7,5"
+          },
+          "A5": {
+            "entrada": "Chinelo"
+          },
+          "B5": {
+            "entrada": "0,4"
+          },
+          "A6": {
+            "entrada": "Micro-ondas"
+          },
+          "B6": {
+            "entrada": "12"
+          },
+          "A7": {
+            "entrada": "Luminária"
+          },
+          "B7": {
+            "entrada": "1,8"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": "Leve",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B2<=1;\"Leve\";B2<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        },
+        {
+          "celula": "C3",
+          "esperado": "Médio",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B3<=1;\"Leve\";B3<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        },
+        {
+          "celula": "C4",
+          "esperado": "Pesado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B4<=1;\"Leve\";B4<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        },
+        {
+          "celula": "C5",
+          "esperado": "Leve",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B5<=1;\"Leve\";B5<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        },
+        {
+          "celula": "C6",
+          "esperado": "Pesado",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B6<=1;\"Leve\";B6<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        },
+        {
+          "celula": "C7",
+          "esperado": "Médio",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SES(B7<=1;\"Leve\";B7<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SES(B2<=1;\"Leve\";B2<=5;\"Médio\";VERDADEIRO;\"Pesado\")` testa as condições em ordem e para na primeira verdadeira.",
+        "O `VERDADEIRO` no fim funciona como \"senão\". Com SE aninhado: `=SE(B2<=1;\"Leve\";SE(B2<=5;\"Médio\";\"Pesado\"))`."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-19",
+    "exercicio": {
+      "id": "f5c53280-c883-52ed-8fcd-0aa6fe6243d0",
+      "slug": "desafio-2026-11-19",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Pedidos grandes de SP",
+      "enunciado": [
+        "Em **F1**, conte quantos pedidos são de **SP** e têm valor **acima de R$ 100**."
+      ],
+      "grade": {
+        "linhas": 10,
+        "colunas": 7,
+        "larguras": {
+          "E": 150
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Pedido",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Estado",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Valor",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "SP acima de R$ 100",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "#2001"
+          },
+          "B2": {
+            "entrada": "SP"
+          },
+          "C2": {
+            "entrada": "150",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "#2002"
+          },
+          "B3": {
+            "entrada": "RJ"
+          },
+          "C3": {
+            "entrada": "80",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "#2003"
+          },
+          "B4": {
+            "entrada": "SP"
+          },
+          "C4": {
+            "entrada": "95",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "#2004"
+          },
+          "B5": {
+            "entrada": "MG"
+          },
+          "C5": {
+            "entrada": "210",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "#2005"
+          },
+          "B6": {
+            "entrada": "SP"
+          },
+          "C6": {
+            "entrada": "320",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "#2006"
+          },
+          "B7": {
+            "entrada": "SP"
+          },
+          "C7": {
+            "entrada": "60",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "#2007"
+          },
+          "B8": {
+            "entrada": "RJ"
+          },
+          "C8": {
+            "entrada": "130",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "#2008"
+          },
+          "B9": {
+            "entrada": "SP"
+          },
+          "C9": {
+            "entrada": "101",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "F1",
+          "esperado": 3,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SES(B2:B9;\"SP\";C2:C9;\">100\")"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=CONT.SES(B2:B9;\"SP\";C2:C9;\">100\")` conta as linhas que atendem às duas condições ao mesmo tempo: 3 pedidos.",
+        "Repare no critério `\">100\"`: o operador vai dentro das aspas. O pedido de R$ 101 entra; o de R$ 95, não."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "COUNTIFS"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-20",
+    "exercicio": {
+      "id": "4ffa1f19-4d38-5ade-85f1-f159cfb7cd3e",
+      "slug": "desafio-2026-11-20",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Média só da turma A",
+      "enunciado": [
+        "Em **E1**, calcule a média das notas **só da turma A**."
+      ],
+      "grade": {
+        "linhas": 10,
+        "colunas": 6,
+        "larguras": {
+          "D": 140
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Turma",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Nota",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Média da turma A",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "A"
+          },
+          "B2": {
+            "entrada": "7,5",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A3": {
+            "entrada": "B"
+          },
+          "B3": {
+            "entrada": "6,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A4": {
+            "entrada": "A"
+          },
+          "B4": {
+            "entrada": "8,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A5": {
+            "entrada": "B"
+          },
+          "B5": {
+            "entrada": "9,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A6": {
+            "entrada": "A"
+          },
+          "B6": {
+            "entrada": "6,5",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A7": {
+            "entrada": "B"
+          },
+          "B7": {
+            "entrada": "7,0",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A8": {
+            "entrada": "A"
+          },
+          "B8": {
+            "entrada": "9,5",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A9": {
+            "entrada": "B"
+          },
+          "B9": {
+            "entrada": "5,5",
+            "formato": {
+              "casas": 1
+            }
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E1",
+          "esperado": 7.875,
+          "exigeFormula": true,
+          "solucaoReferencia": "=MÉDIASE(A2:A9;\"A\";B2:B9)",
+          "formato": {
+            "casas": 2
+          }
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=MÉDIASE(A2:A9;\"A\";B2:B9)` faz a média só das linhas da turma A: 7,88.",
+        "Mesma lógica do SOMASE: onde procurar, o que procurar, de onde tirar os números."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "AVERAGEIF"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-21",
+    "exercicio": {
+      "id": "06652b1e-b67a-5c8b-9d87-91a62940f751",
+      "slug": "desafio-2026-11-21",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Junte nome e sobrenome",
+      "enunciado": [
+        "Em **C2:C5**, junte o nome e o sobrenome com um espaço no meio, como em \"Maria Silva\"."
+      ],
+      "grade": {
+        "linhas": 7,
+        "colunas": 4,
+        "larguras": {
+          "B": 110,
+          "C": 150
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Nome",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Sobrenome",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Nome completo",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Maria"
+          },
+          "B2": {
+            "entrada": "Silva"
+          },
+          "A3": {
+            "entrada": "João"
+          },
+          "B3": {
+            "entrada": "Souza"
+          },
+          "A4": {
+            "entrada": "Ana"
+          },
+          "B4": {
+            "entrada": "Oliveira"
+          },
+          "A5": {
+            "entrada": "Pedro"
+          },
+          "B5": {
+            "entrada": "Santos"
+          }
+        }
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": "Maria Silva",
+          "exigeFormula": true,
+          "solucaoReferencia": "=A2&\" \"&B2"
+        },
+        {
+          "celula": "C3",
+          "esperado": "João Souza",
+          "exigeFormula": true,
+          "solucaoReferencia": "=A3&\" \"&B3"
+        },
+        {
+          "celula": "C4",
+          "esperado": "Ana Oliveira",
+          "exigeFormula": true,
+          "solucaoReferencia": "=A4&\" \"&B4"
+        },
+        {
+          "celula": "C5",
+          "esperado": "Pedro Santos",
+          "exigeFormula": true,
+          "solucaoReferencia": "=A5&\" \"&B5"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=A2&\" \"&B2`: o `&` gruda textos, e o `\" \"` é o espaço entre eles.",
+        "Também funciona `=CONCAT(A2;\" \";B2)`. Sem o espaço, o resultado vira \"MariaSilva\"."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-22",
+    "exercicio": {
+      "id": "4040b232-c406-5593-aa78-0373ca1798ea",
+      "slug": "desafio-2026-11-22",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Preço por unidade sem #DIV/0!",
+      "enunciado": [
+        "Em **D2:D6**, calcule o preço por unidade (total ÷ unidades).",
+        "Alguns produtos não foram comprados (0 unidades). Nesses, mostre **0** em vez de erro."
+      ],
+      "grade": {
+        "linhas": 8,
+        "colunas": 5,
+        "larguras": {
+          "A": 110,
+          "B": 110,
+          "D": 130
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Total pago",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Unidades",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Preço unitário",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Arroz 5kg"
+          },
+          "B2": {
+            "entrada": "27,9",
+            "formato": "moeda"
+          },
+          "C2": {
+            "entrada": "1"
+          },
+          "A3": {
+            "entrada": "Café 500g"
+          },
+          "B3": {
+            "entrada": "19,8",
+            "formato": "moeda"
+          },
+          "C3": {
+            "entrada": "2"
+          },
+          "A4": {
+            "entrada": "Leite cx"
+          },
+          "B4": {
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "C4": {
+            "entrada": "0"
+          },
+          "A5": {
+            "entrada": "Óleo"
+          },
+          "B5": {
+            "entrada": "35,7",
+            "formato": "moeda"
+          },
+          "C5": {
+            "entrada": "3"
+          },
+          "A6": {
+            "entrada": "Açúcar"
+          },
+          "B6": {
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "C6": {
+            "entrada": "0"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "D2",
+          "esperado": 27.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SEERRO(B2/C2;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "D3",
+          "esperado": 9.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SEERRO(B3/C3;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "D4",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SEERRO(B4/C4;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "D5",
+          "esperado": 11.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SEERRO(B5/C5;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "D6",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SEERRO(B6/C6;0)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SEERRO(B2/C2;0)` tenta a divisão e, se der erro (como `#DIV/0!`), devolve 0.",
+        "Outra forma: `=SE(C2=0;0;B2/C2)`, que testa antes de dividir."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "IFERROR"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-23",
+    "exercicio": {
+      "id": "d6007f34-d0fd-5aae-98a9-9d242ab8be48",
+      "slug": "desafio-2026-11-23",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Quanto fica a parcela?",
+      "enunciado": [
+        "Um celular de R$ 2.400 vai ser parcelado em 12 vezes, com juros de 1,99% ao mês.",
+        "Em **B5**, calcule o valor de cada parcela."
+      ],
+      "grade": {
+        "linhas": 7,
+        "colunas": 4,
+        "larguras": {
+          "A": 140,
+          "B": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Valor da compra",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "2400",
+            "formato": "moeda"
+          },
+          "A2": {
+            "entrada": "Juros ao mês",
+            "negrito": true
+          },
+          "B2": {
+            "entrada": "1,99%"
+          },
+          "A3": {
+            "entrada": "Parcelas",
+            "negrito": true
+          },
+          "B3": {
+            "entrada": "12"
+          },
+          "A5": {
+            "entrada": "Valor da parcela",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "B1",
+          "B2"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "B5",
+          "esperado": 226.8036797968,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PGTO(B2;B3;-B1)",
+          "formato": "moeda",
+          "tolerancia": 1e-06
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=PGTO(B2;B3;-B1)`: taxa por período, número de parcelas e valor presente. O valor fica negativo (`-B1`) porque, para o Excel, é dinheiro que entra e depois sai: assim a parcela aparece positiva.",
+        "Cada parcela fica em R$ 226,80. No total, você paga R$ 2.721,64, ou R$ 321,64 de juros."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "PMT"
+      ]
+    }
+  }
+]

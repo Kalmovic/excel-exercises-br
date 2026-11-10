@@ -53,3 +53,11 @@ Enter / Shift+Enter, Tab / Shift+Tab, setas (Shift estende a seleção), F2 edit
 ## Licença
 
 Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKey: "gpl-v3"`). Ver a discussão de licença em docs/FASE-0.md.
+
+## Desafio diário
+
+- Página `/desafio`: o "hoje" é calculado no servidor, no fuso de São Paulo, a cada request.
+- Os desafios ficam em `src/content/desafios/AAAA-MM.json`, lidos só pelo servidor (`import "server-only"` em `src/content/desafios/index.ts`). O navegador recebe apenas o desafio do dia; um teste e2e confere que nenhum desafio aparece em `.next/static`.
+- Soluções comentadas em `/desafio/AAAA-MM-DD`, publicadas só depois que o dia passa; lista em `/desafio/anteriores`.
+- **Adicionar um mês:** crie o JSON do mês (um item por dia, sem pular datas, `dicas: []`), inclua o import em `src/content/desafios/index.ts` e rode `npm test`, que confere o calendário e se cada solução passa.
+- Nos testes e2e, `DESAFIO_HOJE` fixa a data (ignorada em produção na Vercel).

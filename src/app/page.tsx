@@ -25,6 +25,16 @@ export default function Home() {
           <li>✓ Seu progresso fica salvo neste navegador</li>
         </ul>
         <ComecarCta trilha={trilha} />
+        <Link
+          href="/desafio"
+          className="mt-4 block rounded-lg border border-emerald-200 bg-white p-4 shadow-sm hover:border-emerald-400"
+          data-testid="card-desafio"
+        >
+          <p className="font-semibold text-emerald-900">Desafio diário →</p>
+          <p className="text-sm text-zinc-600">
+            Um desafio novo todo dia, o mesmo para todo mundo. Sem dicas. Compartilhe seu resultado.
+          </p>
+        </Link>
       </section>
       <div className="space-y-10">
         {MODULOS.map((m) => {

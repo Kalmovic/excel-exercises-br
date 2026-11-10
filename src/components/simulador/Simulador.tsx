@@ -18,6 +18,7 @@ import { Grade } from "./Grade";
 import { PainelExercicio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
+import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
 
 function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
@@ -44,10 +45,13 @@ function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
 type Props = {
   exercicio: Exercicio;
   proximo?: { slug: string; titulo: string };
-  trilha: Trilha;
+  /** Exercício da trilha: troféu, pular, próximo módulo. */
+  trilha?: Trilha;
+  /** Desafio diário: card de compartilhamento depois de acertar. */
+  desafio?: { numero: number; data: string };
 };
 
-export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
+export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: Props) {
   const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
   const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
@@ -63,7 +67,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
   const { planilha, store } = nucleo;
 
   /** Grava o estado atual do exercício (conteúdo, formatos e resposta). */
-  const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number) => {
+  const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number, historico?: boolean[]) => {
     const atual = progresso.ler(ex.slug, ex.versao);
     progresso.salvar(ex.slug, {
       versao: ex.versao,
@@ -74,6 +78,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
       ),
       formatos: planilha.formatosDoAluno(),
       resposta: store.getState().resposta,
+      historico: historico ?? atual?.historico,
     });
   };
   const persistirRef = useRef(persistir);
@@ -109,7 +114,11 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
     setTentativas(n);
     if (r.ok) setConcluido(true);
     const anterior = progresso.ler(ex.slug, ex.versao)?.status;
-    persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n);
+    // Histórico de acertos/erros por verificação (card de compartilhamento do desafio).
+    const historico = concluido
+      ? progresso.ler(ex.slug, ex.versao)?.historico
+      : [...(progresso.ler(ex.slug, ex.versao)?.historico ?? []), r.ok];
+    persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
     if (r.ok) comemorar();
     else if (ex.type !== "text_answer") entradaRef.current?.focus();
   };
@@ -119,7 +128,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
     setTimeout(() => store.setState({ celebrando: false }), 1300);
     void celebrarAcerto(botaoVerificarRef.current);
     // Fim do módulo: troféu, só na primeira vez.
-    if (progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
+    if (trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
       const tudo = progresso.lerTudo();
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
       setTimeout(() => {
@@ -131,7 +140,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
 
   const pular = () => {
     progresso.pular(ex.slug, ex.versao);
-    router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha.proximoModulo?.href ?? "/"));
+    router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha?.proximoModulo?.href ?? "/"));
   };
 
   const reiniciar = () => {
@@ -163,15 +172,20 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
           dicasVistas={dicasVistas}
           concluido={concluido}
           proximo={proximo}
-          proximoModulo={trilha.proximoModulo}
+          proximoModulo={trilha?.proximoModulo}
           onVerificar={verificar}
           onDica={() => setDicasVistas((d) => Math.min(d + 1, ex.dicas.length))}
           onReiniciar={reiniciar}
-          onPular={trilha.permitePular && !concluido ? pular : undefined}
+          onPular={trilha?.permitePular && !concluido ? pular : undefined}
+          extra={
+            desafio && concluido ? (
+              <CompartilharDesafio numero={desafio.numero} data={desafio.data} slug={ex.slug} versao={ex.versao} />
+            ) : undefined
+          }
           botaoVerificarRef={botaoVerificarRef}
         />
       </div>
-      {trofeu && (
+      {trofeu && trilha && (
         <TrofeuModal
           titulo={trilha.titulo}
           icone={trilha.trofeu.icone}

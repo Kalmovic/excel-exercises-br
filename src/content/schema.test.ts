@@ -38,6 +38,10 @@ describe("conteúdo", () => {
     expect(exercicios.every((e) => MODULOS.some((m) => m.slug === e.modulo))).toBe(true);
   });
 
+  it("todo exercício da trilha tem pelo menos uma dica (só o desafio diário é sem dica)", () => {
+    expect(exercicios.every((e) => e.dicas.length > 0)).toBe(true);
+  });
+
   it("Intro vem antes de Fundamentos e tem 10 exercícios grátis", () => {
     expect(exercicios[0].modulo).toBe("intro");
     const intro = exercicios.filter((e) => e.modulo === "intro");

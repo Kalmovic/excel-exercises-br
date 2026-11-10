@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import type { Exercicio } from "@/content/schema";
 import type { Resultado } from "@/grader/corrigir";
 import { TextoRico } from "./TextoRico";
@@ -20,6 +20,8 @@ type Props = {
   /** Presente só em módulos que permitem pular. */
   onPular?: () => void;
   proximoModulo?: { titulo: string; href: string };
+  /** Conteúdo extra depois do resultado (ex.: compartilhar o desafio). */
+  extra?: ReactNode;
   botaoVerificarRef?: Ref<HTMLButtonElement>;
 };
 
@@ -35,6 +37,7 @@ export function PainelExercicio({
   onReiniciar,
   onPular,
   proximoModulo,
+  extra,
   botaoVerificarRef,
 }: Props) {
   const mostrarExplicacao = concluido || tentativas >= ex.tentativasAteExplicacao;
@@ -66,14 +69,16 @@ export function PainelExercicio({
         >
           Verificar
         </button>
-        <button
-          type="button"
-          onClick={onDica}
-          disabled={dicasVistas >= ex.dicas.length}
-          className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-700 hover:bg-zinc-50 disabled:opacity-40"
-        >
-          {dicasVistas === 0 ? "Ver dica" : `Próxima dica (${dicasVistas}/${ex.dicas.length})`}
-        </button>
+        {ex.dicas.length > 0 && (
+          <button
+            type="button"
+            onClick={onDica}
+            disabled={dicasVistas >= ex.dicas.length}
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-700 hover:bg-zinc-50 disabled:opacity-40"
+          >
+            {dicasVistas === 0 ? "Ver dica" : `Próxima dica (${dicasVistas}/${ex.dicas.length})`}
+          </button>
+        )}
         <button
           type="button"
           onClick={onReiniciar}
@@ -123,6 +128,8 @@ export function PainelExercicio({
           )}
         </div>
       )}
+
+      {extra}
 
       {dicasVistas > 0 && (
         <section className="rounded-md border border-sky-200 bg-sky-50 p-3 text-sm text-sky-950">

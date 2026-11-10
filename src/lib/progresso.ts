@@ -13,6 +13,8 @@ export type ProgressoExercicio = {
   /** Campos novos são opcionais: progresso salvo antes deles continua válido. */
   formatos?: Record<string, Formato>;
   resposta?: string;
+  /** Resultado de cada verificação até acertar (true = acertou). */
+  historico?: boolean[];
   atualizadoEm: string;
 };
 

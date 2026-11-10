@@ -79,7 +79,8 @@ const baseSchema = z.object({
       selecaoFixa: z.boolean().optional(),
     })
     .optional(),
-  dicas: z.array(z.string()).min(1),
+  /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
+  dicas: z.array(z.string()),
   explicacao: z.array(z.string()).min(1),
   tentativasAteExplicacao: z.number().int().min(1),
 });
