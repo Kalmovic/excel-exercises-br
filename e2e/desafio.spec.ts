@@ -39,6 +39,12 @@ test("desafio de hoje: nível, sem dica, erro e acerto com FILTRO, card de compa
   await expect(page.getByTestId("resultado")).toContainText("Correto!");
   await expect(page.getByTestId("explicacao")).toBeVisible();
 
+  // upsell ligado às funções do desafio
+  const upsell = page.getByTestId("upsell-desafio");
+  await expect(upsell).toContainText("CONT.SE e FILTRO");
+  await expect(upsell).toContainText("Arrays dinâmicos");
+  await expect(upsell.getByRole("link", { name: /Conhecer o Pro/ })).toHaveAttribute("href", "/pro");
+
   const texto = page.getByTestId("texto-compartilhar");
   await expect(texto).toContainText("Desafio de Excel #3 · 12/11 · Nível 3");
   await expect(texto).toContainText("🟥🟩 em 2 tentativas");
@@ -104,4 +110,11 @@ test("nenhum desafio vai no JavaScript enviado ao navegador", () => {
   andar(path.join(__dirname, "..", ".next", "static"));
   const vazou = arquivos.filter((f) => /Tabela de frete|desafio-2026-|Liste os pedidos|Ficha do funcionário/.test(readFileSync(f, "utf8")));
   expect(vazou).toEqual([]);
+});
+
+test("página do Pro (em breve)", async ({ page }) => {
+  await page.goto("/pro");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Pro");
+  await expect(page.getByTestId("beneficios-pro")).toContainText("Arquivo de desafios");
+  await expect(page.getByText("ainda não está à venda")).toBeVisible();
 });

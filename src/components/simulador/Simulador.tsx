@@ -19,6 +19,8 @@ import { PainelExercicio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
 import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
+import { UpsellDesafio } from "@/components/desafio/UpsellDesafio";
+import type { Upsell } from "@/content/modulos-pro";
 import { PainelAdmin } from "@/components/admin/PainelAdmin";
 import { preencherSolucao } from "@/components/admin/solucao";
 
@@ -50,7 +52,7 @@ type Props = {
   /** Exercício da trilha: troféu, pular, próximo módulo. */
   trilha?: Trilha;
   /** Desafio diário: card de compartilhamento depois de acertar. */
-  desafio?: { numero: number; data: string; rotulo: string };
+  desafio?: { numero: number; data: string; rotulo: string; upsell?: Upsell | null };
   /** Visão admin: não lê nem grava progresso e mostra o gabarito. */
   admin?: boolean;
 };
@@ -186,13 +188,16 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
             admin ? (
               <PainelAdmin ex={ex} onPreencher={() => preencherSolucao(ex, nucleo.planilha, nucleo.store)} />
             ) : desafio && concluido ? (
-              <CompartilharDesafio
-                numero={desafio.numero}
-                data={desafio.data}
-                rotulo={desafio.rotulo}
-                slug={ex.slug}
-                versao={ex.versao}
-              />
+              <>
+                <CompartilharDesafio
+                  numero={desafio.numero}
+                  data={desafio.data}
+                  rotulo={desafio.rotulo}
+                  slug={ex.slug}
+                  versao={ex.versao}
+                />
+                {desafio.upsell && <UpsellDesafio upsell={desafio.upsell} />}
+              </>
             ) : undefined
           }
           botaoVerificarRef={botaoVerificarRef}

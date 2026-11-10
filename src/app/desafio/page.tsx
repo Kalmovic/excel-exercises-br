@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { dataBR, somarDias } from "@/lib/data-sp";
+import { upsellDoExercicio } from "@/content/modulos-pro";
 
 export const metadata: Metadata = {
   title: "Desafio diário de Excel",
@@ -69,7 +70,7 @@ async function DesafioDeHoje() {
       <SimuladorCarregavel
         key={hoje}
         exercicio={desafio.exercicio}
-        desafio={{ numero, data: hoje, rotulo: rotuloNivel(desafio) }}
+        desafio={{ numero, data: hoje, rotulo: rotuloNivel(desafio), upsell: upsellDoExercicio(desafio.exercicio) }}
       />
     </>
   );
