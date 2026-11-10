@@ -1,0 +1,31 @@
+{
+  "id": "f206aa8b-de49-5eb4-8eb9-6b6b1a0bec38",
+  "slug": "clicar-em-uma-celula",
+  "type": "click_cell",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 2,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Selecionar uma célula com o mouse",
+  "enunciado": [
+    "Clique na célula **C7**.",
+    "Lembre: **C** é a coluna e **7** é a linha. Depois de clicar, aperte Verificar."
+  ],
+  "grade": {
+    "linhas": 10,
+    "colunas": 6,
+    "celulas": {}
+  },
+  "celula": "C7",
+  "inputMethod": "any",
+  "dicas": [
+    "Encontre a coluna C no topo da planilha.",
+    "Desça pela coluna C até a linha 7."
+  ],
+  "explicacao": [
+    "Clicar numa célula a torna a célula ativa. Repare que a Caixa de Nome, à esquerda da barra de fórmulas, passou a mostrar C7."
+  ],
+  "tentativasAteExplicacao": 3
+}

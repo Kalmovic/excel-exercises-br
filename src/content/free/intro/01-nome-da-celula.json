@@ -1,0 +1,42 @@
+{
+  "id": "42f8720e-2839-522f-94a2-ab3dbfeb734d",
+  "slug": "nome-da-celula",
+  "type": "text_answer",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 1,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Qual é o nome desta célula?",
+  "enunciado": [
+    "A célula com a borda verde é a **célula ativa**: é nela que o que você digitar vai entrar.",
+    "Toda célula tem um nome, formado pela **letra da coluna** e pelo **número da linha**. Qual é o nome da célula ativa? Escreva no campo acima da planilha."
+  ],
+  "grade": {
+    "linhas": 8,
+    "colunas": 6,
+    "celulas": {}
+  },
+  "inicio": {
+    "celulaAtiva": "E4"
+  },
+  "ferramentas": {
+    "caixaDeNome": false
+  },
+  "rotulo": "Nome da célula ativa",
+  "aceitas": [
+    "E4"
+  ],
+  "normalizar": "endereco",
+  "dicas": [
+    "As colunas têm letras (A, B, C…), no topo. As linhas têm números (1, 2, 3…), à esquerda.",
+    "Repare nos cabeçalhos destacados em verde: um no topo, outro à esquerda.",
+    "O nome é a letra seguida do número, sem espaço, como em B3."
+  ],
+  "explicacao": [
+    "A célula ativa é **E4**: coluna E, linha 4. Os cabeçalhos da coluna e da linha da célula ativa ficam destacados.",
+    "No Excel, o nome da célula ativa também aparece na **Caixa de Nome**, à esquerda da barra de fórmulas. Ela estava escondida neste exercício para não entregar a resposta."
+  ],
+  "tentativasAteExplicacao": 3
+}

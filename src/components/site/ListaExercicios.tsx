@@ -3,13 +3,15 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import * as progresso from "@/lib/progresso";
-import { IconeTrofeu } from "@/components/simulador/Trofeu";
+import { IconeConquista } from "@/components/simulador/Trofeu";
 
 type Item = { slug: string; titulo: string; ordem: number; nivel: number; versao: number };
 
 const servidor = () => "{}";
 
-export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: { slug: string; titulo: string } }) {
+type ModuloLista = { slug: string; titulo: string; icone: "medalha" | "taca" };
+
+export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: ModuloLista }) {
   const bruto = useSyncExternalStore(
     progresso.assinar,
     () => JSON.stringify(progresso.lerTudo()),
@@ -28,14 +30,14 @@ export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: { sl
     <div>
       {conquistadoEm && (
         <div
-          data-testid="trofeu-home"
+          data-testid={`trofeu-home-${modulo.slug}`}
           className="mb-4 flex items-center gap-4 rounded-lg border border-amber-200 bg-gradient-to-r from-amber-50 to-white p-4"
         >
-          <IconeTrofeu className="h-14 w-14 shrink-0" />
+          <IconeConquista icone={modulo.icone} className="h-14 w-14 shrink-0" />
           <div>
             <p className="font-semibold text-amber-900">Troféu: {modulo.titulo}</p>
             <p className="text-sm text-amber-800">
-              Trilha concluída em {new Date(conquistadoEm).toLocaleDateString("pt-BR")}.
+              Módulo concluído em {new Date(conquistadoEm).toLocaleDateString("pt-BR")}.
             </p>
           </div>
         </div>
@@ -47,7 +49,8 @@ export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: { sl
         {itens.map((i) => {
           const p = tudo[i.slug];
           const feito = p?.versao === i.versao && p?.status === "concluido";
-          const comecado = p?.versao === i.versao && !feito;
+          const pulado = p?.versao === i.versao && p?.status === "pulado";
+          const comecado = p?.versao === i.versao && !feito && !pulado;
           return (
             <li key={i.slug}>
               <Link
@@ -63,6 +66,7 @@ export function ListaExercicios({ itens, modulo }: { itens: Item[]; modulo: { sl
                 </span>
                 <span className="flex-1">{i.titulo}</span>
                 {comecado && <span className="text-xs text-amber-700">em andamento</span>}
+                {pulado && <span className="text-xs text-zinc-500">pulada</span>}
                 <span className="text-xs text-zinc-400">{"●".repeat(i.nivel)}</span>
               </Link>
             </li>

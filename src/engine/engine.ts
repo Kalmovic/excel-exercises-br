@@ -1,5 +1,5 @@
 import { DetailedCellError, ErrorType, HyperFormula } from "hyperformula";
-import type { Exercicio } from "@/content/schema";
+import type { Exercicio, Formato } from "@/content/schema";
 import {
   deEndereco,
   normalizar,
@@ -40,7 +40,9 @@ export class Planilha {
   private ouvintes = new Set<() => void>();
   private bloqueadas = new Set<string>();
   private negritos = new Set<string>();
-  private formatos = new Map<string, NonNullable<Grade["celulas"][string]["formato"]>>();
+  private formatos = new Map<string, Formato>();
+  /** Formatos aplicados pelo aluno (barra R$ / %), para salvar no progresso. */
+  private formatosAluno = new Map<string, Formato>();
   private area: Intervalo | null = null; // última área copiada
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
@@ -68,7 +70,8 @@ export class Planilha {
   /** Monta a planilha de um exercício, aplicando também os formatos das células-alvo. */
   static deExercicio(ex: Exercicio) {
     return new Planilha(ex.grade, {
-      formatos: Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])),
+      formatos:
+        ex.type === "formula" ? Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])) : {},
     });
   }
 
@@ -163,6 +166,28 @@ export class Planilha {
 
   bloqueada(end: string | Pos): boolean {
     return this.bloqueadas.has(typeof end === "string" ? end : paraEndereco(end));
+  }
+
+  formatoDe(end: string | Pos): Formato | undefined {
+    return this.formatos.get(typeof end === "string" ? end : paraEndereco(end));
+  }
+
+  /**
+   * Aplica um formato (barra R$ / %). Vale também para células bloqueadas:
+   * a trava é do conteúdo, não da aparência. Fica fora do HyperFormula,
+   * então Ctrl+Z não desfaz formatação.
+   */
+  formatar(intervalo: Intervalo, formato: Formato) {
+    for (const p of posicoes(intervalo)) {
+      const end = paraEndereco(p);
+      this.formatos.set(end, formato);
+      this.formatosAluno.set(end, formato);
+    }
+    this.notificar();
+  }
+
+  formatosDoAluno(): Record<string, Formato> {
+    return Object.fromEntries(this.formatosAluno);
   }
 
   negrito(end: string): boolean {

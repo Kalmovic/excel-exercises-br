@@ -5,7 +5,7 @@ import { explicarErro, mensagemCircular } from "@/engine/erros";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 export function BarraFormulas() {
-  const { planilha, store, entradaRef } = useSimulador();
+  const { planilha, store, entradaRef, caixaDeNome } = useSimulador();
   useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
   const foco = useEstado((e) => e.foco);
@@ -39,7 +39,7 @@ export function BarraFormulas() {
           className="flex w-20 shrink-0 items-center justify-center border-r border-zinc-300 bg-zinc-50 font-mono text-zinc-700"
           data-testid="caixa-nome"
         >
-          {nome}
+          {caixaDeNome ? nome : <span title="Escondida neste exercício">?</span>}
         </div>
         <button
           type="button"
@@ -70,7 +70,7 @@ export function BarraFormulas() {
           fx
         </span>
         <input
-          data-barra-formulas="true"
+          data-foco-proprio
           data-testid="barra-formulas"
           aria-label="Barra de fórmulas"
           autoComplete="off"

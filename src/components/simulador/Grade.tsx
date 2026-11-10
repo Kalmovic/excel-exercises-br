@@ -20,7 +20,7 @@ const LARGURA_CABECALHO = 44;
 const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
 export function Grade({ larguras }: { larguras?: Record<string, number> }) {
-  const { planilha, store, entradaRef, alvos } = useSimulador();
+  const { planilha, store, entradaRef, alvos, formatacao } = useSimulador();
   const versao = useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
   const foco = useEstado((e) => e.foco);
@@ -53,7 +53,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
 
   // Mantém o foco no input da grade (ele captura a digitação, inclusive acentos).
   useEffect(() => {
-    if (document.activeElement?.getAttribute("data-barra-formulas") === "true") return;
+    // Não rouba o foco de campos que têm o próprio foco (barra de fórmulas, campo de resposta).
+    if (document.activeElement?.closest("[data-foco-proprio]")) return;
     entradaRef.current?.focus({ preventScroll: true });
   }, [ancora, modo, entradaRef]);
 
@@ -85,13 +86,13 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       return;
     }
     if (s.modo !== "pronto" && !s.confirmar()) return;
-    s.selecionar(p, e.shiftKey);
+    s.selecionarPeloMouse(p, e.shiftKey);
     store.setState({ arrasto: "selecao" });
   };
 
   const aoEntrarCelula = (p: Pos) => {
     const s = store.getState();
-    if (s.arrasto === "selecao") s.selecionar(p, true);
+    if (s.arrasto === "selecao") s.selecionarPeloMouse(p, true);
     if (s.arrasto === "alca") s.moverAlca(p);
   };
 
@@ -137,6 +138,12 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         return;
       }
       if (ctrl) {
+        // Ctrl+Shift+4 (R$) e Ctrl+Shift+5 (%), como no Excel. e.code ignora o layout do teclado.
+        if (formatacao && e.shiftKey && (e.code === "Digit4" || e.code === "Digit5")) {
+          e.preventDefault();
+          s.formatarSelecao(e.code === "Digit4" ? "moeda" : "percentual");
+          return;
+        }
         const k = tecla.toLowerCase();
         if (k === "c") return (e.preventDefault(), s.copiar());
         if (k === "v") return (e.preventDefault(), s.colar());

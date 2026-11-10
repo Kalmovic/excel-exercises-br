@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import { NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(URL_SITE),
+  openGraph: { siteName: NOME_SITE, locale: "pt_BR", type: "website" },
   title: {
     default: "Pratique Excel: exercícios interativos em português",
     template: "%s | Pratique Excel",
@@ -23,11 +26,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </span>
               Pratique Excel
             </Link>
-            <span className="text-sm text-zinc-500">Versão de teste · Módulo 1</span>
+            <span className="text-sm text-zinc-500">Versão de teste</span>
           </div>
         </header>
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>
         <footer className="border-t border-zinc-200 py-4 text-center text-xs text-zinc-500">
+          <Link href="/excel-basico-para-iniciantes" className="hover:text-zinc-800">
+            Excel básico para iniciantes
+          </Link>
+          <span className="mx-2">·</span>
           Microsoft Excel é marca registrada da Microsoft. Este site não tem relação com a Microsoft.
         </footer>
       </body>

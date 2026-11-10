@@ -1,0 +1,66 @@
+{
+  "id": "d034fb5f-321f-59b1-aba5-c851553347e9",
+  "slug": "formato-porcentagem",
+  "type": "format_cell",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 10,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Formatar como porcentagem",
+  "enunciado": [
+    "Em **C2**, a fórmula `=B2/A2` calcula quanto da meta foi atingido, mas o resultado aparece como 0,75.",
+    "Formate **C2** como **porcentagem**."
+  ],
+  "grade": {
+    "linhas": 5,
+    "colunas": 4,
+    "larguras": {
+      "A": 100,
+      "B": 110,
+      "C": 110
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Meta",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Realizado",
+        "negrito": true
+      },
+      "C1": {
+        "entrada": "Atingido",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "2000"
+      },
+      "B2": {
+        "entrada": "1500"
+      },
+      "C2": {
+        "entrada": "=B2/A2"
+      }
+    }
+  },
+  "ferramentas": {
+    "formatacao": true
+  },
+  "alvos": [
+    {
+      "intervalo": "C2",
+      "formato": "percentual"
+    }
+  ],
+  "dicas": [
+    "Selecione C2.",
+    "Clique no botão % na barra acima da planilha."
+  ],
+  "explicacao": [
+    "0,75 e 75% são o mesmo número. O formato de porcentagem multiplica por 100 só na exibição e acrescenta o símbolo %.",
+    "Atalho no Excel: **Ctrl+Shift+5**."
+  ],
+  "tentativasAteExplicacao": 3
+}

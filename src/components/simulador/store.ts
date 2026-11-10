@@ -1,6 +1,7 @@
 import { createStore } from "zustand/vanilla";
 import { normalizar, type Intervalo, type Pos } from "@/engine/address";
 import type { Planilha } from "@/engine/engine";
+import type { Formato } from "@/content/schema";
 
 export type Modo = "pronto" | "inserir" | "editar";
 
@@ -15,9 +16,15 @@ export type EstadoSimulador = {
   copiado: Intervalo | null;
   /** Células-alvo piscam em verde logo após um acerto. */
   celebrando: boolean;
+  /** Mudanças de célula ativa/seleção feitas por clique ou arrasto (exercício "só teclado"). */
+  mudancasPeloMouse: number;
+  /** Resposta dos exercícios text_answer. */
+  resposta: string;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
+  /** Igual a `selecionar`, mas conta como mudança feita pelo mouse se algo mudou. */
+  selecionarPeloMouse: (p: Pos, estender?: boolean) => void;
   mover: (dl: number, dc: number, estender?: boolean) => void;
   iniciarEdicao: (modo: "inserir" | "editar", texto?: string) => boolean;
   setRascunho: (t: string) => void;
@@ -32,14 +39,19 @@ export type EstadoSimulador = {
   iniciarAlca: () => void;
   moverAlca: (p: Pos) => void;
   terminarArrasto: () => void;
+  setResposta: (t: string) => void;
+  formatarSelecao: (formato: Formato) => void;
 };
 
 const clamp = (v: number, max: number) => Math.max(0, Math.min(max - 1, v));
 
-export function criarStore(planilha: Planilha) {
+/** `inicio`: seleção ao abrir o exercício. A célula ativa é `inicio.inicio`. */
+export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = "") {
+  const ancora = inicio?.inicio ?? { linha: 0, coluna: 0 };
+  const foco = inicio?.fim ?? ancora;
   return createStore<EstadoSimulador>((set, get) => ({
-    ancora: { linha: 0, coluna: 0 },
-    foco: { linha: 0, coluna: 0 },
+    ancora,
+    foco,
     modo: "pronto",
     rascunho: "",
     mensagem: null,
@@ -47,11 +59,23 @@ export function criarStore(planilha: Planilha) {
     alca: null,
     copiado: null,
     celebrando: false,
+    mudancasPeloMouse: 0,
+    resposta,
 
     selecao: () => normalizar(get().ancora, get().foco),
 
     selecionar: (p, estender = false) =>
       set(estender ? { foco: p, mensagem: null } : { ancora: p, foco: p, mensagem: null }),
+
+    selecionarPeloMouse: (p, estender = false) => {
+      const { ancora, foco, mudancasPeloMouse } = get();
+      const ref = estender ? foco : ancora;
+      const difere = (a: Pos, b: Pos) => a.linha !== b.linha || a.coluna !== b.coluna;
+      // Clicar na própria célula ativa não conta; clicar nela desfazendo uma seleção maior, conta.
+      const mudou = difere(p, ref) || (!estender && difere(foco, ancora));
+      get().selecionar(p, estender);
+      if (mudou) set({ mudancasPeloMouse: mudancasPeloMouse + 1 });
+    },
 
     mover: (dl, dc, estender = false) => {
       const { ancora, foco } = get();
@@ -157,6 +181,10 @@ export function criarStore(planilha: Planilha) {
       }
       set({ arrasto: null, alca: null });
     },
+
+    setResposta: (t) => set({ resposta: t }),
+
+    formatarSelecao: (formato) => planilha.formatar(get().selecao(), formato),
   }));
 }
 

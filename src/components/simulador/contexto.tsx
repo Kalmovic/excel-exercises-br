@@ -10,6 +10,10 @@ export type ContextoSimulador = {
   store: StoreSimulador;
   entradaRef: RefObject<HTMLInputElement | null>;
   alvos: Set<string>;
+  /** Barra de formatação (R$, %) e seus atalhos. */
+  formatacao: boolean;
+  /** Mostrar o endereço da célula ativa na Caixa de Nome. */
+  caixaDeNome: boolean;
 };
 
 export const Contexto = createContext<ContextoSimulador | null>(null);

@@ -1,17 +1,23 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { celulasDestacadas } from "@/content/destaque";
 import type { Exercicio } from "@/content/schema";
+import type { Trilha } from "@/content/trilha";
+import { deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 import { corrigir, type Resultado } from "@/grader/corrigir";
+import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 import * as progresso from "@/lib/progresso";
+import { BarraFormatacao } from "./BarraFormatacao";
 import { BarraFormulas } from "./BarraFormulas";
+import { CampoResposta } from "./CampoResposta";
 import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
 import { PainelExercicio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
-import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 
 function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
@@ -20,15 +26,17 @@ function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
     planilha.definirVarias(
       Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
     );
+    for (const [end, f] of Object.entries(salvo.formatos ?? {})) planilha.formatar(deIntervalo(end), f);
   }
-  return { planilha, store: criarStore(planilha), alvos: new Set(ex.alvos.map((a) => a.celula)) };
+  const inicio = ex.inicio?.selecao ?? ex.inicio?.celulaAtiva;
+  return {
+    planilha,
+    store: criarStore(planilha, inicio ? deIntervalo(inicio) : undefined, salvo?.resposta ?? ""),
+    alvos: new Set(celulasDestacadas(ex)),
+    formatacao: ex.ferramentas?.formatacao ?? false,
+    caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
+  };
 }
-
-export type Trilha = {
-  modulo: string;
-  titulo: string;
-  itens: { slug: string; versao: number }[];
-};
 
 type Props = {
   exercicio: Exercicio;
@@ -37,6 +45,7 @@ type Props = {
 };
 
 export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
+  const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
   const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
   const [trofeu, setTrofeu] = useState<{ tentativas: number } | null>(null);
@@ -48,50 +57,65 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
   );
   const [dicasVistas, setDicasVistas] = useState(0);
 
-  const { planilha } = nucleo;
+  const { planilha, store } = nucleo;
 
-  // Salva as edições do aluno a cada recálculo.
-  useEffect(() => {
-    return planilha.subscribe(() => {
-      const atual = progresso.ler(ex.slug, ex.versao);
-      progresso.salvar(ex.slug, {
-        versao: ex.versao,
-        status: atual?.status ?? "em-andamento",
-        tentativas: atual?.tentativas ?? 0,
-        conteudos: Object.fromEntries(
-          Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
-        ),
-      });
+  /** Grava o estado atual do exercício (conteúdo, formatos e resposta). */
+  const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number) => {
+    const atual = progresso.ler(ex.slug, ex.versao);
+    progresso.salvar(ex.slug, {
+      versao: ex.versao,
+      status: status ?? atual?.status ?? "em-andamento",
+      tentativas: n ?? atual?.tentativas ?? 0,
+      conteudos: Object.fromEntries(
+        Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
+      ),
+      formatos: planilha.formatosDoAluno(),
+      resposta: store.getState().resposta,
     });
-  }, [planilha, ex.slug, ex.versao]);
+  };
+  const persistirRef = useRef(persistir);
+  useEffect(() => {
+    persistirRef.current = persistir;
+  });
+
+  // Salva a cada recálculo da planilha e a cada mudança na resposta em texto.
+  useEffect(() => {
+    const sairPlanilha = planilha.subscribe(() => persistirRef.current());
+    const sairStore = store.subscribe((s, antes) => {
+      if (s.resposta !== antes.resposta) persistirRef.current();
+    });
+    return () => {
+      sairPlanilha();
+      sairStore();
+    };
+  }, [planilha, store]);
 
   useEffect(() => () => planilha.destruir(), [planilha]);
 
   const verificar = () => {
-    if (nucleo.store.getState().modo !== "pronto" && !nucleo.store.getState().confirmar()) return;
-    const r = corrigir(ex, planilha);
+    const s = store.getState();
+    if (s.modo !== "pronto" && !s.confirmar()) return;
+    const r = corrigir(ex, planilha, {
+      ativa: paraEndereco(s.ancora),
+      selecao: intervaloParaTexto(s.selecao()),
+      resposta: s.resposta,
+      mudancasPeloMouse: s.mudancasPeloMouse,
+    });
     const n = tentativas + 1;
     setResultado(r);
     setTentativas(n);
-    const ok = r.ok || concluido;
     if (r.ok) setConcluido(true);
-    progresso.salvar(ex.slug, {
-      versao: ex.versao,
-      status: ok ? "concluido" : "em-andamento",
-      tentativas: n,
-      conteudos: Object.fromEntries(
-        Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
-      ),
-    });
+    const anterior = progresso.ler(ex.slug, ex.versao)?.status;
+    persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n);
     if (r.ok) comemorar();
-    else entradaRef.current?.focus();
+    else if (ex.type !== "text_answer") entradaRef.current?.focus();
   };
 
   const comemorar = () => {
-    nucleo.store.setState({ celebrando: true });
-    setTimeout(() => nucleo.store.setState({ celebrando: false }), 1300);
+    store.setState({ celebrando: true });
+    setTimeout(() => store.setState({ celebrando: false }), 1300);
     void celebrarAcerto(botaoVerificarRef.current);
-    // Fim da trilha: troféu, só na primeira vez.
+    // Fim do módulo: troféu, só na primeira vez.
     if (progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
       const tudo = progresso.lerTudo();
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
@@ -100,6 +124,11 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
         void celebrarTrofeu();
       }, 700);
     }
+  };
+
+  const pular = () => {
+    progresso.pular(ex.slug, ex.versao);
+    router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha.proximoModulo?.href ?? "/"));
   };
 
   const reiniciar = () => {
@@ -115,6 +144,8 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0 space-y-2">
+          {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
+          {nucleo.formatacao && <BarraFormatacao />}
           <BarraFormulas />
           <Grade larguras={ex.grade.larguras} />
           <p className="text-xs text-zinc-500">
@@ -129,17 +160,22 @@ export default function Simulador({ exercicio: ex, proximo, trilha }: Props) {
           dicasVistas={dicasVistas}
           concluido={concluido}
           proximo={proximo}
+          proximoModulo={trilha.proximoModulo}
           onVerificar={verificar}
           onDica={() => setDicasVistas((d) => Math.min(d + 1, ex.dicas.length))}
           onReiniciar={reiniciar}
+          onPular={trilha.permitePular && !concluido ? pular : undefined}
           botaoVerificarRef={botaoVerificarRef}
         />
       </div>
       {trofeu && (
         <TrofeuModal
-          modulo={trilha.titulo}
+          titulo={trilha.titulo}
+          icone={trilha.trofeu.icone}
+          descricao={trilha.trofeu.descricao}
           exercicios={trilha.itens.length}
           tentativas={trofeu.tentativas}
+          acao={trilha.proximoModulo ? { rotulo: `Ir para ${trilha.proximoModulo.titulo}`, href: trilha.proximoModulo.href } : { rotulo: "Ver meu troféu", href: "/" }}
           onFechar={() => setTrofeu(null)}
         />
       )}

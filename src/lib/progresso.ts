@@ -2,11 +2,17 @@
  * Progresso local (Fase 1). Na Fase 3 isto migra para a tabela `progresso`
  * no Supabase no primeiro login.
  */
+import type { Formato } from "@/content/schema";
+
 export type ProgressoExercicio = {
   versao: number;
-  status: "em-andamento" | "concluido";
+  /** "pulado" não conta como feito (nem para o troféu). */
+  status: "em-andamento" | "concluido" | "pulado";
   tentativas: number;
   conteudos: Record<string, string>;
+  /** Campos novos são opcionais: progresso salvo antes deles continua válido. */
+  formatos?: Record<string, Formato>;
+  resposta?: string;
   atualizadoEm: string;
 };
 
@@ -90,4 +96,39 @@ export function registrarTrofeu(modulo: string): boolean {
 export function trilhaConcluida(itens: { slug: string; versao: number }[]): boolean {
   const tudo = lerTudo();
   return itens.every((i) => tudo[i.slug]?.versao === i.versao && tudo[i.slug]?.status === "concluido");
+}
+
+/** Marca como pulado, sem apagar o que o aluno já fez. Concluído continua concluído. */
+export function pular(slug: string, versao: number) {
+  const atual = ler(slug, versao);
+  if (atual?.status === "concluido") return;
+  salvar(slug, {
+    versao,
+    status: "pulado",
+    tentativas: atual?.tentativas ?? 0,
+    conteudos: atual?.conteudos ?? {},
+    formatos: atual?.formatos,
+    resposta: atual?.resposta,
+  });
+}
+
+// --- preferências ------------------------------------------------------------
+
+const CHAVE_PREFS = "excel-br:preferencias:v1";
+
+export type Preferencias = { pularIntro?: boolean };
+
+export function lerPreferencias(): Preferencias {
+  try {
+    return JSON.parse(localStorage.getItem(CHAVE_PREFS) ?? "{}") as Preferencias;
+  } catch {
+    return {};
+  }
+}
+
+export function salvarPreferencias(p: Preferencias) {
+  try {
+    localStorage.setItem(CHAVE_PREFS, JSON.stringify({ ...lerPreferencias(), ...p }));
+    window.dispatchEvent(new Event(EVENTO));
+  } catch {}
 }

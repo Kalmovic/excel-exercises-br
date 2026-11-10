@@ -1,0 +1,76 @@
+{
+  "id": "10228e96-92a9-5635-b9c4-66bb2d4e5343",
+  "slug": "formato-moeda",
+  "type": "format_cell",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 9,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Formatar como moeda (R$)",
+  "enunciado": [
+    "Os preços na coluna B estão como números simples.",
+    "Formate **B2:B5** como **moeda**: selecione o intervalo e clique no botão **R$**, na barra acima da planilha."
+  ],
+  "grade": {
+    "linhas": 7,
+    "colunas": 4,
+    "larguras": {
+      "A": 110,
+      "B": 120
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Produto",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Preço",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Caneta"
+      },
+      "B2": {
+        "entrada": "2,5"
+      },
+      "A3": {
+        "entrada": "Caderno"
+      },
+      "B3": {
+        "entrada": "29,9"
+      },
+      "A4": {
+        "entrada": "Mochila"
+      },
+      "B4": {
+        "entrada": "149"
+      },
+      "A5": {
+        "entrada": "Notebook"
+      },
+      "B5": {
+        "entrada": "3200"
+      }
+    }
+  },
+  "ferramentas": {
+    "formatacao": true
+  },
+  "alvos": [
+    {
+      "intervalo": "B2:B5",
+      "formato": "moeda"
+    }
+  ],
+  "dicas": [
+    "Primeiro selecione B2:B5 (clique em B2 e arraste até B5).",
+    "Com o intervalo selecionado, clique em R$."
+  ],
+  "explicacao": [
+    "O formato muda só a **aparência**: o valor guardado continua 29,9, mas aparece como R$ 29,90.",
+    "No Excel, esse botão fica na guia Página Inicial, grupo Número. Atalho: **Ctrl+Shift+4**."
+  ],
+  "tentativasAteExplicacao": 3
+}

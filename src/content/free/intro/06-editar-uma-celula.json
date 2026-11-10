@@ -1,0 +1,70 @@
+{
+  "id": "382223cb-361b-538e-8a50-9e2cb20056eb",
+  "slug": "editar-uma-celula",
+  "type": "type_value",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 6,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Corrigir o valor de uma célula",
+  "enunciado": [
+    "O preço da mochila em **C2** está errado: deveria ser **120**, não 100.",
+    "Corrija o valor. Você pode digitar por cima ou entrar no modo de edição com **F2** ou com **duplo clique**."
+  ],
+  "grade": {
+    "linhas": 6,
+    "colunas": 5,
+    "larguras": {
+      "A": 110
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Produto",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Qtd",
+        "negrito": true
+      },
+      "C1": {
+        "entrada": "Preço",
+        "negrito": true
+      },
+      "D1": {
+        "entrada": "Total",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Mochila"
+      },
+      "B2": {
+        "entrada": "3"
+      },
+      "C2": {
+        "entrada": "100",
+        "bloqueada": false
+      },
+      "D2": {
+        "entrada": "=B2*C2"
+      }
+    }
+  },
+  "alvos": [
+    {
+      "celula": "C2",
+      "esperado": 120
+    }
+  ],
+  "dicas": [
+    "Selecione C2.",
+    "Digitar 120 e apertar Enter substitui o valor inteiro.",
+    "Com F2 ou duplo clique, o cursor vai para o fim do conteúdo: apague o 100 com Backspace e digite 120."
+  ],
+  "explicacao": [
+    "Digitar por cima substitui todo o conteúdo. **F2** e o **duplo clique** abrem a célula para edição, o que é útil para corrigir só um pedaço de um texto ou de uma fórmula.",
+    "Repare que o Total em D2 mudou sozinho, de 300 para 360: ele é uma fórmula que usa C2."
+  ],
+  "tentativasAteExplicacao": 3
+}

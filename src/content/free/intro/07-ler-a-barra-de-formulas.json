@@ -1,0 +1,88 @@
+{
+  "id": "a9b4333f-dec9-53f2-b43f-06190bb05dda",
+  "slug": "ler-a-barra-de-formulas",
+  "type": "text_answer",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 7,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "O que tem dentro de uma célula?",
+  "enunciado": [
+    "A célula **D4** mostra **300**, mas o que está guardado nela não é o número 300.",
+    "Clique em D4 e olhe a **barra de fórmulas** (a faixa com fx, acima da planilha). Escreva no campo o que aparece lá."
+  ],
+  "grade": {
+    "linhas": 6,
+    "colunas": 5,
+    "celulas": {
+      "A1": {
+        "entrada": "Mês",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Loja",
+        "negrito": true
+      },
+      "C1": {
+        "entrada": "Site",
+        "negrito": true
+      },
+      "D1": {
+        "entrada": "Total",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Jan"
+      },
+      "B2": {
+        "entrada": "100"
+      },
+      "C2": {
+        "entrada": "50"
+      },
+      "D2": {
+        "entrada": "=B2+C2"
+      },
+      "A3": {
+        "entrada": "Fev"
+      },
+      "B3": {
+        "entrada": "140"
+      },
+      "C3": {
+        "entrada": "90"
+      },
+      "D3": {
+        "entrada": "=B3+C3"
+      },
+      "A4": {
+        "entrada": "Mar"
+      },
+      "B4": {
+        "entrada": "180"
+      },
+      "C4": {
+        "entrada": "120"
+      },
+      "D4": {
+        "entrada": "=B4+C4"
+      }
+    }
+  },
+  "rotulo": "Conteúdo de D4 na barra de fórmulas",
+  "aceitas": [
+    "=B4+C4"
+  ],
+  "normalizar": "formula",
+  "dicas": [
+    "Clique em D4 primeiro; a barra de fórmulas sempre mostra o conteúdo da célula ativa.",
+    "O conteúdo começa com o sinal de igual (=)."
+  ],
+  "explicacao": [
+    "D4 guarda a fórmula `=B4+C4`. A célula mostra o **resultado**; a barra de fórmulas mostra a **conta**.",
+    "Toda fórmula começa com `=`. Se B4 ou C4 mudarem, D4 recalcula sozinha."
+  ],
+  "tentativasAteExplicacao": 3
+}

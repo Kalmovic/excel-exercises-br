@@ -5,11 +5,15 @@
  */
 import { describe, expect, it } from "vitest";
 import { exercicios } from "./index";
+import type { ExercicioDoTipo } from "./schema";
 import { Planilha } from "@/engine/engine";
 import { corrigir } from "@/grader/corrigir";
 import { deEndereco } from "@/engine/address";
 
-describe.each(exercicios.map((e) => [e.slug, e] as const))("%s", (_, ex) => {
+// Todos os exercícios de fórmula (Fundamentos e a "primeira fórmula" do Intro).
+const formulas = exercicios.filter((e): e is ExercicioDoTipo<"formula"> => e.type === "formula");
+
+describe.each(formulas.map((e) => [e.slug, e] as const))("%s", (_, ex) => {
   it("a solução de referência passa na correção", () => {
     const p = Planilha.deExercicio(ex);
     for (const a of ex.alvos) expect(p.definir(a.celula, a.solucaoReferencia)).toEqual({ ok: true });

@@ -2,15 +2,16 @@
 
 Exercícios de Excel no navegador, com fórmulas em português (SOMA, PROCV, SE), separador `;` e decimal com vírgula. Correção instantânea, no cliente.
 
-Status: **Fase 1** (simulador + 5 exercícios do Módulo 1, progresso em `localStorage`, sem backend). O spike do motor está documentado em [docs/FASE-0.md](docs/FASE-0.md).
+Status: **Fase 1.5**: Módulo 0 (Intro, 10 exercícios) e Módulo 1 (Fundamentos, 5 exercícios), progresso em `localStorage`, sem backend. O spike do motor está documentado em [docs/FASE-0.md](docs/FASE-0.md).
 
 ## Rodar
 
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm test        # matriz pt-BR do motor + validação dos exercícios
+npm test        # matriz pt-BR do motor, validadores e validação dos exercícios
 npm run build
+npm run e2e     # Playwright contra o build (precisa do build antes)
 ```
 
 ## Estrutura
@@ -18,8 +19,8 @@ npm run build
 ```text
 src/
 ├─ engine/        adapter do HyperFormula: idioma pt-BR, plugins, formatação, análise de fórmulas
-├─ grader/        correção: valor, funções exigidas, anti-valor-digitado (perturbação)
-├─ content/       schema Zod + exercícios grátis (free/*.json)
+├─ grader/        correção: `corrigir` despacha por tipo; validadores/ tem um validador puro por tipo
+├─ content/       schema Zod (union por `type`), módulos (index.ts) e exercícios grátis (free/, free/intro/)
 ├─ components/
 │  └─ simulador/  Grade, BarraFormulas, PainelExercicio, store (Zustand)
 ├─ lib/           progresso (localStorage)
@@ -28,9 +29,20 @@ src/
 
 ## Escrever um exercício
 
-1. Crie `src/content/free/NN-slug.json` seguindo `src/content/schema.ts`.
-2. Registre em `src/content/index.ts`.
-3. `npm test`: a `solucaoReferencia` de cada alvo precisa produzir o `esperado` e passar na correção.
+1. Crie o JSON em `src/content/free/` seguindo `src/content/schema.ts`.
+2. Registre em `src/content/index.ts` (o módulo vem do campo `modulo`; a ordem, de `ordem`).
+3. `npm test`. Exercícios de fórmula: a `solucaoReferencia` precisa produzir o `esperado`. Outros tipos: adicione a solução e um erro típico em `src/content/intro.test.ts` (ou num teste equivalente do módulo).
+
+Tipos (`type`):
+
+| Tipo | Corrige |
+| --- | --- |
+| `formula` (padrão quando `type` não existe) | valor, fórmula obrigatória, funções exigidas, perturbação |
+| `text_answer` | resposta digitada no campo acima da grade (`aceitas` + `normalizar`) |
+| `click_cell` | célula ativa; `inputMethod: "keyboard"` exige que nenhuma mudança de célula tenha sido feita pelo mouse |
+| `select_range` | seleção exata (em qualquer direção) |
+| `type_value` | valores digitados |
+| `format_cell` | formato aplicado pela barra R$ / % (`ferramentas.formatacao: true`) |
 
 Só conteúdo grátis entra neste repositório. O conteúdo pago (Fase 3) virá do banco, protegido por RLS.
 

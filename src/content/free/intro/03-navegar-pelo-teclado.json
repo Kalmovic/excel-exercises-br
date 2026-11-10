@@ -1,0 +1,36 @@
+{
+  "id": "028121f6-7378-5fdd-b5e2-cdf2bcf8f93f",
+  "slug": "navegar-pelo-teclado",
+  "type": "click_cell",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 3,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Andar pela planilha com o teclado",
+  "enunciado": [
+    "Sem usar o mouse, leve a seleção de **A1** até **C3** usando as **setas do teclado**.",
+    "Se as setas não responderem, clique em A1 uma vez (clicar na própria A1 não conta). Se mudar de célula com o mouse, use Recomeçar."
+  ],
+  "grade": {
+    "linhas": 8,
+    "colunas": 6,
+    "celulas": {}
+  },
+  "inicio": {
+    "celulaAtiva": "A1"
+  },
+  "celula": "C3",
+  "inputMethod": "keyboard",
+  "dicas": [
+    "A seta → anda uma coluna para a direita; a seta ↓ desce uma linha.",
+    "De A1 até C3: duas vezes → e duas vezes ↓.",
+    "Enter também desce uma linha, e Tab anda para a direita."
+  ],
+  "explicacao": [
+    "Usar o teclado é muito mais rápido do que ir e voltar com o mouse, principalmente quando você está digitando dados.",
+    "Resumo: setas andam uma célula; **Enter** desce e **Tab** vai para a direita; **Shift+Enter** e **Shift+Tab** voltam."
+  ],
+  "tentativasAteExplicacao": 3
+}

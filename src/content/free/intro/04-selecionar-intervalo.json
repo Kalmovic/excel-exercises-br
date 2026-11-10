@@ -1,0 +1,100 @@
+{
+  "id": "2ea28673-113b-59bd-8335-2f0371043c7c",
+  "slug": "selecionar-intervalo",
+  "type": "select_range",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 4,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Selecionar um intervalo",
+  "enunciado": [
+    "Um **intervalo** é um bloco de células. Ele é escrito com dois-pontos: `B2:D5` quer dizer \"de B2 até D5\".",
+    "Selecione o intervalo **B2:D5**: clique em B2 e arraste até D5. Outra forma: clique em B2 e use **Shift + setas**."
+  ],
+  "grade": {
+    "linhas": 8,
+    "colunas": 6,
+    "larguras": {
+      "A": 100
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Produto",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Jan",
+        "negrito": true
+      },
+      "C1": {
+        "entrada": "Fev",
+        "negrito": true
+      },
+      "D1": {
+        "entrada": "Mar",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Café"
+      },
+      "B2": {
+        "entrada": "120"
+      },
+      "C2": {
+        "entrada": "135"
+      },
+      "D2": {
+        "entrada": "128"
+      },
+      "A3": {
+        "entrada": "Chá"
+      },
+      "B3": {
+        "entrada": "45"
+      },
+      "C3": {
+        "entrada": "52"
+      },
+      "D3": {
+        "entrada": "60"
+      },
+      "A4": {
+        "entrada": "Suco"
+      },
+      "B4": {
+        "entrada": "80"
+      },
+      "C4": {
+        "entrada": "74"
+      },
+      "D4": {
+        "entrada": "91"
+      },
+      "A5": {
+        "entrada": "Água"
+      },
+      "B5": {
+        "entrada": "200"
+      },
+      "C5": {
+        "entrada": "210"
+      },
+      "D5": {
+        "entrada": "195"
+      }
+    }
+  },
+  "intervalo": "B2:D5",
+  "dicas": [
+    "B2 é o canto superior esquerdo do bloco; D5 é o canto inferior direito.",
+    "Segure o botão do mouse em B2 e só solte em D5.",
+    "Pelo teclado: com B2 ativa, segure Shift e aperte → duas vezes e ↓ três vezes."
+  ],
+  "explicacao": [
+    "B2:D5 tem 3 colunas × 4 linhas = 12 células: as vendas de todos os produtos nos três meses.",
+    "Você vai usar intervalos o tempo todo em fórmulas, como `=SOMA(B2:D5)`."
+  ],
+  "tentativasAteExplicacao": 3
+}

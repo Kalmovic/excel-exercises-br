@@ -5,6 +5,7 @@ import type { Ref } from "react";
 import type { Exercicio } from "@/content/schema";
 import type { Resultado } from "@/grader/corrigir";
 import { TextoRico } from "./TextoRico";
+import { descricaoAlvos } from "@/content/destaque";
 
 type Props = {
   exercicio: Exercicio;
@@ -16,6 +17,9 @@ type Props = {
   onVerificar: () => void;
   onDica: () => void;
   onReiniciar: () => void;
+  /** Presente só em módulos que permitem pular. */
+  onPular?: () => void;
+  proximoModulo?: { titulo: string; href: string };
   botaoVerificarRef?: Ref<HTMLButtonElement>;
 };
 
@@ -29,10 +33,12 @@ export function PainelExercicio({
   onVerificar,
   onDica,
   onReiniciar,
+  onPular,
+  proximoModulo,
   botaoVerificarRef,
 }: Props) {
   const mostrarExplicacao = concluido || tentativas >= ex.tentativasAteExplicacao;
-  const alvos = ex.alvos.map((a) => a.celula);
+  const alvos = descricaoAlvos(ex);
 
   return (
     <aside className="flex flex-col gap-4">
@@ -42,12 +48,12 @@ export function PainelExercicio({
             <TextoRico texto={p} />
           </p>
         ))}
-        <p className="text-sm text-zinc-500">
-          Células do exercício:{" "}
-          <span className="rounded bg-amber-50 px-1 font-mono text-amber-900 ring-1 ring-amber-200">
-            {alvos.length > 3 ? `${alvos[0]}:${alvos[alvos.length - 1]}` : alvos.join(", ")}
-          </span>
-        </p>
+        {alvos && (
+          <p className="text-sm text-zinc-500">
+            Células do exercício:{" "}
+            <span className="rounded bg-amber-50 px-1 font-mono text-amber-900 ring-1 ring-amber-200">{alvos}</span>
+          </p>
+        )}
       </section>
 
       <div className="flex flex-wrap gap-2">
@@ -75,6 +81,16 @@ export function PainelExercicio({
         >
           Recomeçar
         </button>
+        {onPular && (
+          <button
+            type="button"
+            onClick={onPular}
+            data-testid="pular"
+            className="ml-auto rounded-md px-3 py-2 text-sm text-zinc-500 hover:text-zinc-800"
+          >
+            Pular questão →
+          </button>
+        )}
       </div>
 
       {resultado && (
@@ -142,7 +158,15 @@ export function PainelExercicio({
           Próximo: {proximo.titulo} →
         </Link>
       )}
-      {concluido && !proximo && (
+      {concluido && !proximo && proximoModulo && (
+        <Link
+          href={proximoModulo.href}
+          className="self-start rounded-md bg-zinc-900 px-4 py-2 font-medium text-white hover:bg-zinc-700"
+        >
+          Próximo módulo: {proximoModulo.titulo} →
+        </Link>
+      )}
+      {concluido && !proximo && !proximoModulo && (
         <Link href="/" className="self-start text-emerald-800 underline">
           Este foi o último exercício do módulo. Voltar para a lista
         </Link>

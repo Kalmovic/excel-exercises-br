@@ -1,42 +1,21 @@
-import type { Alvo, Exercicio, Valor } from "@/content/schema";
+import type { Alvo, Exercicio, ExercicioDoTipo, Valor } from "@/content/schema";
 import { Planilha } from "@/engine/engine";
 import { deEndereco } from "@/engine/address";
-import { dataIsoParaSerial, type ValorCelula } from "@/engine/format";
 import { ptBR } from "@/engine/ptBR";
 import { explicarErro } from "@/engine/erros";
+import { iguais, TOLERANCIA_PADRAO, type EstadoCorrecao, type Falha, type Resultado } from "./tipos";
+import { validarClickCell } from "./validadores/click-cell";
+import { validarFormatCell } from "./validadores/format-cell";
+import { validarSelectRange } from "./validadores/select-range";
+import { validarTextAnswer } from "./validadores/text-answer";
+import { validarTypeValue } from "./validadores/type-value";
 
-export type MotivoFalha =
-  | "vazia"
-  | "circular"
-  | "sem-formula"
-  | "erro"
-  | "valor"
-  | "funcao-faltando"
-  | "funcao-proibida"
-  | "valor-fixo";
+export type { EstadoCorrecao, Falha, MotivoFalha, Resultado } from "./tipos";
 
-export type Falha = { celula: string; motivo: MotivoFalha; mensagem: string };
-export type Resultado = { ok: boolean; falhas: Falha[] };
-
-const TOLERANCIA_PADRAO = 1e-9;
+type ExercicioFormula = ExercicioDoTipo<"formula">;
 
 const nomePt = (canonico: string) =>
   (ptBR.functions as Record<string, string>)[canonico] ?? canonico;
-
-function normalizarEsperado(v: Valor): ValorCelula {
-  if (v !== null && typeof v === "object") return dataIsoParaSerial(v.data);
-  return v;
-}
-
-function iguais(obtido: ValorCelula, esperado: Valor, tol: number): boolean {
-  const e = normalizarEsperado(esperado);
-  if (typeof e === "number") {
-    return typeof obtido === "number" && Math.abs(obtido - e) <= Math.max(tol, Math.abs(e) * 1e-12);
-  }
-  if (typeof e === "string" && typeof obtido === "string") return obtido.trim() === e.trim();
-  if (e === null) return obtido === null || obtido === "";
-  return obtido === e;
-}
 
 /** Esperado de um alvo como matriz (resultados que derramam: FILTRO, ÚNICO…). */
 function comoMatriz(alvo: Alvo): Valor[][] {
@@ -58,7 +37,7 @@ function conferirValores(p: Planilha, alvo: Alvo): boolean {
  * a solução de referência. Pega quem digitou o resultado à mão ou usou uma
  * referência que só "funciona por acaso" (ex.: esqueceu o $).
  */
-function conferirComPerturbacao(ex: Exercicio, conteudos: Record<string, string>): string[] {
+function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, string>): string[] {
   const variaveis = ex.grade.variaveis ?? [];
   if (variaveis.length === 0) return [];
   const falhas = new Set<string>();
@@ -108,7 +87,8 @@ function conferirComPerturbacao(ex: Exercicio, conteudos: Record<string, string>
   return [...falhas];
 }
 
-export function corrigir(ex: Exercicio, p: Planilha): Resultado {
+/** Correção dos exercícios de fórmula (o tipo original). */
+export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
   const falhas: Falha[] = [];
 
   for (const alvo of ex.alvos) {
@@ -181,4 +161,41 @@ export function corrigir(ex: Exercicio, p: Planilha): Resultado {
   }
 
   return { ok: falhas.length === 0, falhas };
+}
+
+/** O que a tela sabe e a planilha não: seleção, resposta digitada, uso do mouse. */
+export type EstadoTela = Pick<EstadoCorrecao, "ativa" | "selecao" | "resposta" | "mudancasPeloMouse">;
+
+const TELA_PADRAO: EstadoTela = { ativa: "A1", selecao: "A1", resposta: "", mudancasPeloMouse: 0 };
+
+export function estadoCorrecao(p: Planilha, tela: EstadoTela = TELA_PADRAO): EstadoCorrecao {
+  return {
+    valor: (e) => p.valor(e),
+    formato: (e) => p.formatoDe(e),
+    temFormula: (e) => p.temFormula(e),
+    exibicao: (e) => p.exibicao(e),
+    ...tela,
+  };
+}
+
+/**
+ * Ponto único de correção. `tela` é opcional: os exercícios de fórmula só
+ * olham a planilha, então as chamadas antigas `corrigir(ex, p)` continuam iguais.
+ */
+export function corrigir(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resultado {
+  const estado = () => estadoCorrecao(p, tela);
+  switch (ex.type) {
+    case "formula":
+      return corrigirFormula(ex, p);
+    case "text_answer":
+      return validarTextAnswer(ex, estado());
+    case "click_cell":
+      return validarClickCell(ex, estado());
+    case "select_range":
+      return validarSelectRange(ex, estado());
+    case "type_value":
+      return validarTypeValue(ex, estado());
+    case "format_cell":
+      return validarFormatCell(ex, estado());
+  }
 }

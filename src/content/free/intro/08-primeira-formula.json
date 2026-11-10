@@ -1,0 +1,50 @@
+{
+  "id": "faef7f17-4da2-5558-af51-ec27a57aa03a",
+  "slug": "primeira-formula",
+  "type": "formula",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 8,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Sua primeira fórmula",
+  "enunciado": [
+    "Agora é a sua vez de escrever uma fórmula.",
+    "Em **C1**, some os valores de **A1** e **B1** usando uma fórmula. Lembre: fórmulas começam com `=`."
+  ],
+  "grade": {
+    "linhas": 5,
+    "colunas": 5,
+    "celulas": {
+      "A1": {
+        "entrada": "40"
+      },
+      "B1": {
+        "entrada": "25"
+      }
+    },
+    "variaveis": [
+      "A1",
+      "B1"
+    ]
+  },
+  "alvos": [
+    {
+      "celula": "C1",
+      "esperado": 65,
+      "exigeFormula": true,
+      "solucaoReferencia": "=A1+B1"
+    }
+  ],
+  "dicas": [
+    "Selecione C1 e comece digitando =.",
+    "Depois do =, escreva o nome das células com o sinal de + entre elas.",
+    "Digite `=A1+B1` e aperte Enter."
+  ],
+  "explicacao": [
+    "`=A1+B1` soma o conteúdo das duas células. Se você digitasse 65 direto, o resultado estaria certo agora, mas não mudaria quando A1 ou B1 mudassem.",
+    "Dica: enquanto escreve a fórmula, você pode clicar em A1 e em B1 em vez de digitar os nomes."
+  ],
+  "tentativasAteExplicacao": 3
+}

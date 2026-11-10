@@ -55,3 +55,14 @@ export function* posicoes(i: Intervalo): Generator<Pos> {
   for (let linha = i.inicio.linha; linha <= i.fim.linha; linha++)
     for (let coluna = i.inicio.coluna; coluna <= i.fim.coluna; coluna++) yield { linha, coluna };
 }
+
+/** Texto de intervalo -> Intervalo. Aceita "B2", "B2:D5", "D5:B2" e "$B$2". */
+export function deIntervalo(texto: string): Intervalo {
+  const [a, b = a] = texto.trim().toUpperCase().replace(/\$/g, "").split(":");
+  return normalizar(deEndereco(a), deEndereco(b));
+}
+
+/** Normaliza "d5:b2" para "B2:D5" e "C3:C3" para "C3". */
+export function normalizarIntervalo(texto: string): string {
+  return intervaloParaTexto(deIntervalo(texto));
+}

@@ -1,0 +1,64 @@
+{
+  "id": "05146c31-8c41-5aa8-a66d-e704a1f0241d",
+  "slug": "digitar-um-valor",
+  "type": "type_value",
+  "trilha": "excel-ptbr",
+  "modulo": "intro",
+  "ordem": 5,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Digitar um valor",
+  "enunciado": [
+    "Faltou a quantidade de cadernos. Digite **150** na célula **B3** e pressione **Enter**.",
+    "Para digitar, basta selecionar a célula e começar a escrever."
+  ],
+  "grade": {
+    "linhas": 7,
+    "colunas": 5,
+    "larguras": {
+      "A": 110,
+      "B": 110
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Item",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Quantidade",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Canetas"
+      },
+      "B2": {
+        "entrada": "80"
+      },
+      "A3": {
+        "entrada": "Cadernos"
+      },
+      "A4": {
+        "entrada": "Lápis"
+      },
+      "B4": {
+        "entrada": "200"
+      }
+    }
+  },
+  "alvos": [
+    {
+      "celula": "B3",
+      "esperado": 150
+    }
+  ],
+  "dicas": [
+    "Clique em B3 (ou chegue nela com as setas).",
+    "Digite 150 e aperte Enter para gravar."
+  ],
+  "explicacao": [
+    "Ao apertar **Enter**, o valor é gravado e a seleção desce para a célula de baixo. **Esc** cancela o que você estava digitando.",
+    "Números ficam alinhados à direita e textos à esquerda: um jeito rápido de perceber se o Excel entendeu o que você digitou como número."
+  ],
+  "tentativasAteExplicacao": 3
+}
