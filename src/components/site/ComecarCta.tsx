@@ -8,7 +8,7 @@ import * as progresso from "@/lib/progresso";
 const lerTudo = () => JSON.stringify([progresso.lerTudo(), progresso.lerPreferencias()]);
 const noServidor = () => "";
 
-const botao = "inline-block rounded-md bg-emerald-700 px-5 py-3 font-medium text-white shadow-sm hover:bg-emerald-800";
+const botao = "inline-block rounded-md bg-ink px-5 py-3 font-medium text-white shadow-sm hover:bg-ink-soft";
 
 /** Botão principal da página inicial. Depende do localStorage, então só aparece no navegador. */
 export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
@@ -27,7 +27,7 @@ export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
           <Link
             href={`/exercicios/${inicio.fundamentos.slug}`}
             onClick={() => progresso.salvarPreferencias({ pularIntro: true })}
-            className="text-emerald-800 underline-offset-4 hover:underline"
+            className="text-success underline-offset-4 hover:underline"
           >
             Já sei o básico, ir para Fundamentos →
           </Link>
@@ -54,7 +54,7 @@ export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
       );
     case "concluido":
       return (
-        <p className="font-medium text-emerald-800" data-testid="cta">
+        <p className="font-medium text-success" data-testid="cta">
           Você concluiu todos os exercícios grátis disponíveis. Novos módulos em breve!
         </p>
       );

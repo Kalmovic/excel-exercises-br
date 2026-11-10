@@ -8,6 +8,7 @@ import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/co
 import { colunaParaLetras, deEndereco, paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 import { dataBR, ehDataISO } from "@/lib/data-sp";
+import { NOME_DESAFIO } from "@/lib/site";
 
 /** O título não usa o conteúdo do desafio: assim nem o <title> de um desafio futuro vaza. */
 export async function generateMetadata({ params }: PageProps<"/desafio/[data]">): Promise<Metadata> {
@@ -64,12 +65,12 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
     <article className="mx-auto max-w-3xl space-y-6">
       <nav className="text-sm text-zinc-500">
         <Link href="/desafio" className="hover:text-zinc-800">
-          Desafio diário
+          {NOME_DESAFIO}
         </Link>{" "}
         / #{numero} · {dataBR(data)}
       </nav>
       <header className="space-y-2">
-        <p className="text-sm font-medium text-emerald-800">
+        <p className="text-sm font-medium text-success">
           Solução comentada · desafio #{numero} · {rotuloNivel(desafio)}
         </p>
         <h1 className="text-3xl font-bold tracking-tight">{ex.titulo}</h1>
@@ -88,9 +89,9 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
         <table className="border-collapse text-sm" data-testid="tabela-solucao">
           <thead>
             <tr>
-              <th className="border border-zinc-200 bg-zinc-100 px-2" />
+              <th className="border border-line bg-header px-2" />
               {tabela[0].map((_, c) => (
-                <th key={c} className="border border-zinc-200 bg-zinc-100 px-3 py-1 font-normal text-zinc-600">
+                <th key={c} className="border border-line bg-header px-3 py-1 font-normal text-zinc-600">
                   {colunaParaLetras(c)}
                 </th>
               ))}
@@ -99,11 +100,11 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
           <tbody>
             {tabela.map((linha, l) => (
               <tr key={l}>
-                <th className="border border-zinc-200 bg-zinc-100 px-2 font-normal text-zinc-600">{l + 1}</th>
+                <th className="border border-line bg-header px-2 font-normal text-zinc-600">{l + 1}</th>
                 {linha.map((cel) => (
                   <td
                     key={cel.end}
-                    className={`border border-zinc-200 px-3 py-1 whitespace-nowrap ${cel.alvo ? "bg-emerald-50 font-medium text-emerald-900" : "bg-white"} ${cel.negrito ? "font-bold" : ""}`}
+                    className={`border border-line px-3 py-1 whitespace-nowrap ${cel.alvo ? "bg-success-bg font-medium text-success" : "bg-white"} ${cel.negrito ? "font-bold" : ""}`}
                   >
                     {cel.texto}
                   </td>
@@ -118,7 +119,7 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
         <h2 className="text-xl font-semibold text-zinc-900">A solução</h2>
         <p>
           Em <strong>{primeiro.celula}</strong>:{" "}
-          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-emerald-800">{primeiro.solucaoReferencia}</code>
+          <code className="rounded bg-header px-1.5 py-0.5 font-mono text-success">{primeiro.solucaoReferencia}</code>
           {ex.alvos.length > 1 && (
             <>
               , copiada até <strong>{ultimo.celula}</strong>
@@ -133,12 +134,12 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
         ))}
       </section>
 
-      <div className="flex flex-wrap items-center gap-4 border-t border-zinc-200 pt-4">
-        <Link href="/desafio" className="rounded-md bg-emerald-700 px-4 py-2 font-medium text-white hover:bg-emerald-800">
+      <div className="flex flex-wrap items-center gap-4 border-t border-line pt-4">
+        <Link href="/desafio" className="rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft">
           Fazer o desafio de hoje
         </Link>
         <Link href="/desafio/anteriores" className="text-sm text-zinc-600 hover:text-zinc-900">
-          Todos os desafios anteriores <span className="rounded bg-amber-100 px-1 text-xs text-amber-900">Pro</span>
+          Todos os desafios anteriores <span className="rounded bg-accent px-1 text-xs text-ink">Pro</span>
         </Link>
       </div>
     </article>

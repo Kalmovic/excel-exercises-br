@@ -1,4 +1,4 @@
-# Pratique Excel
+# Planilhês
 
 Exercícios de Excel no navegador, com fórmulas em português (SOMA, PROCV, SE), separador `;` e decimal com vírgula. Correção instantânea, no cliente.
 
@@ -76,3 +76,10 @@ Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKe
 - A checagem é no servidor (`src/lib/admin.ts`). O cookie é `httpOnly` e guarda um hash da senha, não a senha. Trocar a `ADMIN_TOKEN` derruba todas as sessões.
 - Em cada exercício, "Preencher solução" deixa a tela no estado que acerta, para testar a correção. O modo admin não lê nem grava o progresso do navegador.
 - Na Fase 3, isto vira um papel de admin na conta do Supabase.
+
+## Marca e visual
+
+- Nome em um lugar só: `NOME_SITE` (e `NOME_DESAFIO`) em `src/lib/site.ts`. Se o registro no INPI mudar o nome, troca-se ali.
+- Cores e fontes são tokens em `src/app/globals.css` (`@theme`): `ink`, `accent` (amarelo marca-texto), `success`, `bg`, `line`… Use as classes `bg-ink`, `text-success`, `bg-accent-soft` etc., nunca cores soltas do Tailwind.
+- Fontes instaladas pelo npm (Fontsource): Bricolage Grotesque nos títulos, Inter no texto, JetBrains Mono em fórmulas.
+- `/` é a landing; a lista de módulos com progresso fica em `/trilha`. Páginas do app ficam no grupo de rotas `src/app/(app)` (com margem); a landing ocupa a largura toda.

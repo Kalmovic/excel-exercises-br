@@ -85,8 +85,8 @@ test("Intro completo, do primeiro exercício à medalha", async ({ page }) => {
     "/exercicios/soma-total-de-vendas",
   );
 
-  // página inicial: medalha do Intro, sem troféu de Fundamentos
-  await page.goto("/");
+  // trilha: medalha do Intro, sem troféu de Fundamentos
+  await page.goto("/trilha");
   await expect(page.getByTestId("trofeu-home-intro")).toBeVisible();
   await expect(page.getByTestId("trofeu-home-fundamentos")).toHaveCount(0);
   await expect(page.getByTestId("cta")).toContainText("Continuar: SOMA");
@@ -112,7 +112,7 @@ test("pular questão: avança, não conta como feita e aparece na lista", async 
   await expect(page).toHaveURL(/clicar-em-uma-celula/);
   // A página anterior fica montada (escondida) para preservar estado: olhar só a visível.
   await expect(page.getByTestId("progresso-modulo").filter({ visible: true })).toContainText("0 de 10");
-  await page.goto("/");
+  await page.goto("/trilha");
   await expect(page.locator("#modulo-intro")).toContainText("pulada");
   await expect(page.getByTestId("cta")).toContainText("Continuar: Selecionar uma célula com o mouse");
 });

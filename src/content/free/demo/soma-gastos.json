@@ -1,0 +1,93 @@
+{
+  "id": "ce15d94e-9b61-5046-a668-e51c89767244",
+  "slug": "demo-soma-gastos",
+  "type": "formula",
+  "trilha": "excel-ptbr",
+  "modulo": "demo",
+  "ordem": 1,
+  "nivel": 1,
+  "plano": "free",
+  "versao": 1,
+  "titulo": "Some os gastos do mês",
+  "enunciado": [
+    "Em **B6**, some os gastos do mês (B2 até B5)."
+  ],
+  "grade": {
+    "linhas": 6,
+    "colunas": 2,
+    "larguras": {
+      "A": 215,
+      "B": 220
+    },
+    "celulas": {
+      "A1": {
+        "entrada": "Gasto",
+        "negrito": true
+      },
+      "B1": {
+        "entrada": "Valor",
+        "negrito": true
+      },
+      "A2": {
+        "entrada": "Mercado"
+      },
+      "B2": {
+        "entrada": "450",
+        "formato": "moeda"
+      },
+      "A3": {
+        "entrada": "Luz"
+      },
+      "B3": {
+        "entrada": "180",
+        "formato": "moeda"
+      },
+      "A4": {
+        "entrada": "Internet"
+      },
+      "B4": {
+        "entrada": "120",
+        "formato": "moeda"
+      },
+      "A5": {
+        "entrada": "Transporte"
+      },
+      "B5": {
+        "entrada": "300",
+        "formato": "moeda"
+      },
+      "A6": {
+        "entrada": "Total",
+        "negrito": true
+      }
+    },
+    "variaveis": [
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ]
+  },
+  "alvos": [
+    {
+      "celula": "B6",
+      "esperado": 1050,
+      "exigeFormula": true,
+      "solucaoReferencia": "=SOMA(B2:B5)",
+      "formato": "moeda"
+    }
+  ],
+  "funcoesExigidas": [
+    "SUM"
+  ],
+  "dicas": [
+    "Comece com = e use a função SOMA com o intervalo B2:B5."
+  ],
+  "explicacao": [
+    "`=SOMA(B2:B5)` soma todas as células de B2 até B5."
+  ],
+  "tentativasAteExplicacao": 3,
+  "inicio": {
+    "celulaAtiva": "B6"
+  }
+}

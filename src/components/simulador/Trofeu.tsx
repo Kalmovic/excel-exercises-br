@@ -37,7 +37,7 @@ export function TrofeuModal({ titulo, icone, descricao, exercicios, tentativas, 
         className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl motion-safe:animate-subir"
       >
         <IconeConquista icone={icone} className="mx-auto h-28 w-28 motion-safe:animate-brilho" />
-        <p className="mt-4 text-sm font-semibold tracking-wide text-amber-700 uppercase">Módulo concluído</p>
+        <p className="mt-4 text-sm font-semibold tracking-wide text-ink uppercase">Módulo concluído</p>
         <h2 id="titulo-trofeu" className="mt-1 text-2xl font-bold">
           {titulo}
         </h2>
@@ -49,7 +49,7 @@ export function TrofeuModal({ titulo, icone, descricao, exercicios, tentativas, 
           <Link
             ref={botao}
             href={acao.href}
-            className="rounded-md bg-emerald-700 px-4 py-2.5 font-medium text-white hover:bg-emerald-800"
+            className="rounded-md bg-ink px-4 py-2.5 font-medium text-white hover:bg-ink-soft"
           >
             {acao.rotulo}
           </Link>

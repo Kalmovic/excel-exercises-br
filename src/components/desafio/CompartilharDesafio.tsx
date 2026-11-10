@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from "react";
 import { dataBR } from "@/lib/data-sp";
+import { NOME_DESAFIO } from "@/lib/site";
 import * as progresso from "@/lib/progresso";
 import { ContagemRegressiva } from "./ContagemRegressiva";
 
@@ -14,9 +15,9 @@ export function textoCompartilhamento(
   url: string,
 ) {
   const tentativas = historico.length;
-  const quadrados = historico.map((ok) => (ok ? "🟩" : "🟥")).join("");
-  const resumo = tentativas <= 1 ? "de primeira!" : `em ${tentativas} tentativas`;
-  return `Desafio de Excel #${numero} · ${dataBR(data).slice(0, 5)} · ${rotulo}\n${quadrados} ${resumo}\n${url}`;
+  const quadrados = historico.map((ok) => (ok ? "🟩" : "🟨")).join("");
+  const resumo = tentativas <= 1 ? "Resolvido de primeira!" : `Resolvido na ${tentativas}ª tentativa`;
+  return `${NOME_DESAFIO} #${numero} · ${dataBR(data).slice(0, 5)} · ${rotulo}\n${quadrados}\n${resumo}\n${url}`;
 }
 
 const nada = () => () => {};
@@ -58,14 +59,14 @@ export function CompartilharDesafio({
   };
 
   return (
-    <section className="space-y-3 rounded-md border border-emerald-200 bg-white p-3" data-testid="compartilhar">
-      <pre className="rounded bg-zinc-50 p-2 font-sans text-sm whitespace-pre-wrap text-zinc-800" data-testid="texto-compartilhar">
+    <section className="space-y-3 rounded-md border border-success/30 bg-white p-3" data-testid="compartilhar">
+      <pre className="rounded bg-bg p-2 font-sans text-sm whitespace-pre-wrap text-zinc-800" data-testid="texto-compartilhar">
         {texto}
       </pre>
       <button
         type="button"
         onClick={compartilhar}
-        className="w-full rounded-md bg-emerald-700 px-4 py-2 font-medium text-white hover:bg-emerald-800"
+        className="w-full rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft"
       >
         {copiado ? "Copiado! Cole onde quiser" : "Compartilhar resultado"}
       </button>

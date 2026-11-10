@@ -22,7 +22,7 @@ export default function Pro() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <header className="space-y-3">
-        <span className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-medium text-amber-900">Em breve</span>
+        <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>
         <h1 className="text-3xl font-bold tracking-tight">Pro: pratique Excel até ficar fluente</h1>
         <p className="text-lg text-zinc-600">
           O Intro e o desafio diário continuam grátis. O Pro é para quem quer ir além: todos os módulos, conteúdo novo
@@ -32,7 +32,7 @@ export default function Pro() {
 
       <ul className="grid gap-3 sm:grid-cols-2" data-testid="beneficios-pro">
         {BENEFICIOS.map(([titulo, texto]) => (
-          <li key={titulo} className="rounded-lg border border-zinc-200 bg-white p-4">
+          <li key={titulo} className="rounded-lg border border-line bg-white p-4">
             <p className="font-semibold">{titulo}</p>
             <p className="text-sm text-zinc-600">{texto}</p>
           </li>
@@ -48,9 +48,9 @@ export default function Pro() {
         </ol>
       </section>
 
-      <div className="flex flex-wrap items-center gap-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
-        <p className="flex-1 text-amber-950">O Pro ainda não está à venda. Enquanto isso, o desafio de hoje te espera.</p>
-        <Link href="/desafio" className="rounded-md bg-emerald-700 px-4 py-2 font-medium text-white hover:bg-emerald-800">
+      <div className="flex flex-wrap items-center gap-4 rounded-lg border border-accent bg-accent-soft p-4">
+        <p className="flex-1 text-ink">O Pro ainda não está à venda. Enquanto isso, o desafio de hoje te espera.</p>
+        <Link href="/desafio" className="rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft">
           Fazer o desafio de hoje
         </Link>
       </div>

@@ -5,10 +5,11 @@ import { Suspense } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { dataBR, somarDias } from "@/lib/data-sp";
+import { NOME_DESAFIO } from "@/lib/site";
 import { upsellDoExercicio } from "@/content/modulos-pro";
 
 export const metadata: Metadata = {
-  title: "Desafio diário de Excel",
+  title: `${NOME_DESAFIO}: desafio diário de Excel`,
   description:
     "Um desafio de Excel novo todo dia, o mesmo para todo mundo, numa planilha no navegador com fórmulas em português. Sem dicas: a solução comentada sai no dia seguinte.",
   alternates: { canonical: "/desafio" },
@@ -34,9 +35,9 @@ async function DesafioDeHoje() {
   if (!desafio) {
     return (
       <div className="space-y-3">
-        <h1 className="text-2xl font-bold tracking-tight">Desafio diário</h1>
+        <h1 className="text-2xl font-bold tracking-tight">{NOME_DESAFIO}</h1>
         <p className="text-zinc-600">Ainda não há desafio para hoje. Volte amanhã!</p>
-        <Link href="/desafio/anteriores" className="text-emerald-800 underline">
+        <Link href="/desafio/anteriores" className="text-success underline">
           Ver desafios anteriores
         </Link>
       </div>
@@ -48,7 +49,7 @@ async function DesafioDeHoje() {
     <>
       <nav className="flex flex-wrap items-center justify-between gap-2 text-sm text-zinc-500">
         <span>
-          Desafio diário <strong className="text-zinc-800">#{numero}</strong> · {dataBR(hoje)}
+          {NOME_DESAFIO} <strong className="text-zinc-800">#{numero}</strong> · {dataBR(hoje)}
           <SeloNivel nivel={desafio.nivel} caso={desafio.caso} />
         </span>
         <span className="flex gap-4">
@@ -58,7 +59,7 @@ async function DesafioDeHoje() {
             </Link>
           )}
           <Link href="/desafio/anteriores" className="hover:text-zinc-800">
-            Anteriores <span className="rounded bg-amber-100 px-1 text-xs text-amber-900">Pro</span>
+            Anteriores <span className="rounded bg-accent px-1 text-xs text-ink">Pro</span>
           </Link>
         </span>
       </nav>
@@ -81,7 +82,7 @@ function SeloNivel({ nivel, caso }: { nivel: number; caso: boolean }) {
     <span
       data-testid="selo-nivel"
       className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium ${
-        caso ? "bg-violet-100 text-violet-900" : ["", "bg-sky-100 text-sky-900", "bg-amber-100 text-amber-900", "bg-rose-100 text-rose-900"][nivel]
+        caso ? "bg-violet-100 text-violet-900" : ["", "bg-warning-bg text-ink", "bg-accent text-ink", "bg-rose-100 text-rose-900"][nivel]
       }`}
     >
       {rotuloNivel({ nivel, caso })}

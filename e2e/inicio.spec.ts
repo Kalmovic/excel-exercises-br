@@ -3,12 +3,12 @@ import { limparArmazenamento } from "./ajuda";
 
 test("usuário novo começa pelo Intro, com opção de ir para Fundamentos", async ({ page }) => {
   await limparArmazenamento(page);
-  await page.reload();
+  await page.goto("/trilha");
   const cta = page.getByTestId("cta");
   await expect(cta.getByRole("link", { name: "Começar pelo básico" })).toHaveAttribute("href", "/exercicios/nome-da-celula");
   await cta.getByRole("link", { name: /Já sei o básico/ }).click();
   await expect(page).toHaveURL(/soma-total-de-vendas/);
-  await page.goto("/");
+  await page.goto("/trilha");
   await expect(page.getByTestId("cta")).toContainText("Começar Fundamentos");
 });
 
@@ -29,7 +29,7 @@ test("quem já tinha progresso em Fundamentos não é mandado para o Intro", asy
       }),
     ),
   );
-  await page.reload();
+  await page.goto("/trilha");
   await expect(page.getByTestId("cta")).toContainText("Continuar: MÉDIA, MÍNIMO e MÁXIMO");
   await expect(page.locator("#modulo-fundamentos")).toContainText("1 de 5 concluídos");
 });

@@ -46,15 +46,16 @@ test("desafio de hoje: nível, sem dica, erro e acerto com FILTRO, card de compa
   await expect(upsell.getByRole("link", { name: /Conhecer o Pro/ })).toHaveAttribute("href", "/pro");
 
   const texto = page.getByTestId("texto-compartilhar");
-  await expect(texto).toContainText("Desafio de Excel #3 · 12/11 · Nível 3");
-  await expect(texto).toContainText("🟥🟩 em 2 tentativas");
+  await expect(texto).toContainText("Planilhês do Dia #3 · 12/11 · Nível 3");
+  await expect(texto).toContainText("🟨🟩");
+  await expect(texto).toContainText("Resolvido na 2ª tentativa");
   await page.getByRole("button", { name: "Compartilhar resultado" }).click();
   await expect(page.getByRole("button", { name: /Copiado/ })).toBeVisible();
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain("Nível 3");
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain("Planilhês do Dia #3");
 
   // depois de recarregar: resultado e FILTRO continuam (células derramadas não são salvas como valor)
   await page.reload();
-  await expect(page.getByTestId("texto-compartilhar")).toContainText("🟥🟩");
+  await expect(page.getByTestId("texto-compartilhar")).toContainText("🟨🟩");
   await expect(celula(page, "E6")).not.toHaveText("");
   await expect(celula(page, "E5")).not.toHaveText("#DESPEJAR!");
 });

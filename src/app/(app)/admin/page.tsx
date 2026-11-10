@@ -33,19 +33,19 @@ async function Painel() {
       {grupos.map((g) => (
         <section key={g} className="space-y-2">
           <h2 className="font-semibold">{g}</h2>
-          <ol className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-zinc-200 bg-white" data-testid={`grupo-${g}`}>
+          <ol className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-line bg-white" data-testid={`grupo-${g}`}>
             {itens
               .filter((i) => i.grupo === g)
               .map((i) => {
                 const quando = i.data ? (i.data < hoje ? "passado" : i.data === hoje ? "hoje" : "futuro") : null;
                 return (
                   <li key={i.slug}>
-                    <Link href={`/admin/exercicios/${i.slug}`} className="flex items-center gap-3 px-4 py-2.5 hover:bg-zinc-50">
+                    <Link href={`/admin/exercicios/${i.slug}`} className="flex items-center gap-3 px-4 py-2.5 hover:bg-bg">
                       <span className="flex-1">{i.titulo}</span>
                       {quando && (
                         <span
                           className={`rounded px-1.5 text-xs ${
-                            quando === "hoje" ? "bg-emerald-100 text-emerald-900" : quando === "futuro" ? "bg-violet-100 text-violet-900" : "bg-zinc-100 text-zinc-600"
+                            quando === "hoje" ? "bg-success-bg text-success" : quando === "futuro" ? "bg-violet-100 text-violet-900" : "bg-header text-zinc-600"
                           }`}
                         >
                           {quando}

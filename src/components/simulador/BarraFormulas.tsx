@@ -27,7 +27,7 @@ export function BarraFormulas() {
   const aviso = mensagem
     ? { texto: mensagem, cor: "text-red-700" }
     : circulares.length > 0
-      ? { texto: `⚠ ${mensagemCircular(circulares)}`, cor: "text-amber-800" }
+      ? { texto: `⚠ ${mensagemCircular(circulares)}`, cor: "text-ink" }
       : erroAtivo && typeof valorAtivo === "object" && valorAtivo !== null
         ? { texto: `${valorAtivo.erro}: ${erroAtivo}.`, cor: "text-zinc-600" }
         : null;
@@ -38,7 +38,7 @@ export function BarraFormulas() {
     <div className="space-y-1">
       <div className="flex items-stretch overflow-hidden rounded-md border border-zinc-300 bg-white text-sm shadow-sm">
         <div
-          className="flex w-20 shrink-0 items-center justify-center border-r border-zinc-300 bg-zinc-50 font-mono text-zinc-700"
+          className="flex w-20 shrink-0 items-center justify-center border-r border-zinc-300 bg-bg font-mono text-zinc-700"
           data-testid="caixa-nome"
         >
           {caixaDeNome ? nome : <span title="Escondida neste exercício">?</span>}
@@ -52,7 +52,7 @@ export function BarraFormulas() {
             store.getState().cancelar();
             voltarParaGrade();
           }}
-          className="w-8 border-r border-zinc-200 text-zinc-500 enabled:hover:text-red-600 disabled:opacity-30"
+          className="w-8 border-r border-line text-zinc-500 enabled:hover:text-red-600 disabled:opacity-30"
         >
           ✕
         </button>
@@ -64,11 +64,11 @@ export function BarraFormulas() {
           onClick={() => {
             if (store.getState().confirmar()) voltarParaGrade();
           }}
-          className="w-8 border-r border-zinc-200 text-zinc-500 enabled:hover:text-emerald-700 disabled:opacity-30"
+          className="w-8 border-r border-line text-zinc-500 enabled:hover:text-success disabled:opacity-30"
         >
           ✓
         </button>
-        <span className="flex w-8 items-center justify-center border-r border-zinc-200 font-serif italic text-zinc-500">
+        <span className="flex w-8 items-center justify-center border-r border-line font-serif italic text-zinc-500">
           fx
         </span>
         <input

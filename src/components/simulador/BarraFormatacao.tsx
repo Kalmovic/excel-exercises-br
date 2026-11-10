@@ -34,7 +34,7 @@ export function BarraFormatacao() {
               store.getState().formatarSelecao(b.formato);
             }}
             className={`min-w-9 rounded px-2 py-1 font-medium ${
-              ativo ? "bg-emerald-100 text-emerald-900 ring-1 ring-emerald-300" : "text-zinc-700 hover:bg-zinc-100"
+              ativo ? "bg-accent text-ink ring-1 ring-ink/10" : "text-zinc-700 hover:bg-header"
             }`}
           >
             {b.rotulo}

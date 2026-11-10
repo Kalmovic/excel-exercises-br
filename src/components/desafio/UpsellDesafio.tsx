@@ -7,7 +7,7 @@ const lista = (itens: string[]) =>
 /** Gancho para o Pro, ligado às funções que o desafio do dia usou. */
 export function UpsellDesafio({ upsell }: { upsell: Upsell }) {
   return (
-    <section className="space-y-2 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950" data-testid="upsell-desafio">
+    <section className="space-y-2 rounded-md border border-accent bg-accent-soft p-3 text-sm text-ink" data-testid="upsell-desafio">
       <p>
         Este desafio usou <strong>{lista(upsell.usadas)}</strong>.
       </p>
@@ -17,7 +17,7 @@ export function UpsellDesafio({ upsell }: { upsell: Upsell }) {
       </p>
       <Link
         href="/pro"
-        className="inline-block rounded-md bg-amber-500 px-3 py-1.5 font-medium text-amber-950 hover:bg-amber-400"
+        className="inline-block rounded-md bg-accent px-3 py-1.5 font-medium text-ink hover:bg-accent"
       >
         Conhecer o Pro →
       </Link>

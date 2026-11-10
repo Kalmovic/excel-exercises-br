@@ -218,7 +218,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       >
         {/* canto */}
         <div
-          className="absolute border-r border-b border-zinc-300 bg-zinc-100"
+          className="absolute border-r border-b border-zinc-300 bg-header"
           style={{ left: 0, top: 0, width: LARGURA_CABECALHO, height: ALTURA }}
         />
         {/* cabeçalhos de coluna */}
@@ -228,7 +228,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             <div
               key={`c${c}`}
               className={`absolute flex items-center justify-center border-r border-b border-zinc-300 ${
-                ativa ? "bg-emerald-100 font-semibold text-emerald-900" : "bg-zinc-100 text-zinc-600"
+                ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-500"
               }`}
               style={{ left: esquerda(c), top: 0, width: w, height: ALTURA }}
             >
@@ -243,7 +243,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             <div
               key={`l${l}`}
               className={`absolute flex items-center justify-center border-r border-b border-zinc-300 ${
-                ativa ? "bg-emerald-100 font-semibold text-emerald-900" : "bg-zinc-100 text-zinc-600"
+                ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-500"
               }`}
               style={{ left: 0, top: ALTURA * (l + 1), width: LARGURA_CABECALHO, height: ALTURA }}
             >
@@ -278,7 +278,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         {/* área copiada (tracejado) */}
         {copiado && (
           <div
-            className="pointer-events-none absolute border-2 border-dashed border-emerald-600"
+            className="pointer-events-none absolute border-2 border-dashed border-success"
             style={{
               left: esquerda(copiado.inicio.coluna) - 1,
               top: ALTURA * (copiado.inicio.linha + 1) - 1,
@@ -289,7 +289,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         )}
         {/* contorno da seleção */}
         <div
-          className="pointer-events-none absolute border-2 border-emerald-700"
+          className="pointer-events-none absolute border-2 border-success"
           style={{
             left: esquerda(selecao.inicio.coluna) - 1,
             top: ALTURA * (selecao.inicio.linha + 1) - 1,
@@ -319,7 +319,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               e.stopPropagation();
               store.getState().iniciarAlca();
             }}
-            className="absolute z-10 h-[7px] w-[7px] cursor-crosshair border border-white bg-emerald-700"
+            className="absolute z-10 h-[7px] w-[7px] cursor-crosshair border border-white bg-success"
             style={{
               left: esquerda(selecao.fim.coluna + 1) - 4,
               top: ALTURA * (selecao.fim.linha + 2) - 4,
@@ -336,7 +336,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           value={editando ? rascunho : ""}
           onChange={(e) => aoDigitar(e.target.value)}
           onKeyDown={aoTeclar}
-          className={`absolute z-20 border-2 border-emerald-700 px-1 font-[inherit] text-[13px] outline-none ${
+          className={`absolute z-20 border-2 border-success px-1 font-[inherit] text-[13px] outline-none ${
             editando ? "bg-white text-zinc-900 opacity-100 shadow-md" : "opacity-0"
           }`}
           style={{
@@ -385,15 +385,15 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, celebrando
       onMouseDown={(e) => onPressionar(e, pos)}
       onMouseEnter={() => onEntrar(pos)}
       onDoubleClick={onDuploClique}
-      className={`absolute overflow-hidden whitespace-nowrap border-r border-b border-zinc-200 px-1 leading-[25px] ${
+      className={`absolute overflow-hidden whitespace-nowrap border-r border-b border-line px-1 leading-[25px] ${
         celebrando
-          ? "bg-emerald-50 motion-safe:animate-acerto"
+          ? "bg-success-bg motion-safe:animate-acerto"
           : naSelecao
-            ? "bg-emerald-50"
+            ? "bg-success-bg"
             : alvo
-              ? "bg-amber-50"
+              ? "bg-accent-soft"
               : "bg-white"
-      } ${planilha.negrito(endereco) ? "font-bold" : ""} ${erro ? "text-red-700" : circular ? "text-amber-700" : "text-zinc-900"}`}
+      } ${planilha.negrito(endereco) ? "font-bold" : ""} ${erro ? "text-red-700" : circular ? "text-ink" : "text-zinc-900"}`}
       style={{
         left,
         top,

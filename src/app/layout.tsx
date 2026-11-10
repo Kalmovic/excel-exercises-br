@@ -1,46 +1,82 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { NOME_SITE, URL_SITE } from "@/lib/site";
+import { Logo } from "@/components/marca/Logo";
+import { NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(URL_SITE),
   openGraph: { siteName: NOME_SITE, locale: "pt_BR", type: "website" },
   title: {
-    default: "Pratique Excel: exercícios interativos em português",
-    template: "%s | Pratique Excel",
+    default: `${NOME_SITE}: exercícios de Excel na prática, em português`,
+    template: `%s | ${NOME_SITE}`,
   },
   description:
     "Aprenda Excel fazendo: exercícios numa planilha no navegador, com fórmulas em português (SOMA, PROCV, SE) e correção na hora.",
 };
 
+const NAV = [
+  { href: "/desafio", rotulo: "Desafio do dia" },
+  { href: "/trilha", rotulo: "Trilha" },
+  { href: "/#precos", rotulo: "Preços" },
+  { href: "/empresas", rotulo: "Para empresas" },
+];
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-zinc-50 text-zinc-900">
-        <header className="border-b border-zinc-200 bg-white">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <span className="grid h-7 w-7 place-items-center rounded bg-emerald-700 text-sm font-bold text-white">
-                fx
-              </span>
-              Pratique Excel
-            </Link>
-            <nav className="flex items-center gap-5 text-sm">
-              <Link href="/desafio" className="font-medium text-emerald-800 hover:text-emerald-950">
-                Desafio diário
-              </Link>
-              <span className="text-zinc-400">Versão de teste</span>
+      <body className="flex min-h-full flex-col bg-bg text-ink">
+        <header className="border-b border-line bg-bg">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+            <Logo />
+            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+              {NAV.map((n) => (
+                <Link key={n.href} href={n.href} className="text-ink hover:text-muted">
+                  {n.rotulo}
+                </Link>
+              ))}
             </nav>
+            <div className="flex items-center gap-4 text-sm font-medium">
+              <Link href="/entrar" className="hidden text-ink hover:text-muted sm:inline">
+                Entrar
+              </Link>
+              <Link href="/trilha" className="rounded-lg bg-ink px-4 py-2 text-white hover:bg-ink-soft">
+                Começar grátis
+              </Link>
+            </div>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>
-        <footer className="border-t border-zinc-200 py-4 text-center text-xs text-zinc-500">
-          <Link href="/excel-basico-para-iniciantes" className="hover:text-zinc-800">
-            Excel básico para iniciantes
-          </Link>
-          <span className="mx-2">·</span>
-          Microsoft Excel é marca registrada da Microsoft. Este site não tem relação com a Microsoft.
+        <main className="flex w-full flex-1 flex-col">{children}</main>
+        <footer className="bg-ink text-white">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="font-display text-lg font-bold">{NOME_SITE}</span>
+              <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/80">
+                <Link href="/funcoes" className="underline-offset-4 hover:underline">
+                  Funções de A a Z
+                </Link>
+                <Link href="/excel-basico-para-iniciantes" className="underline-offset-4 hover:underline">
+                  Excel básico para iniciantes
+                </Link>
+                <Link href="/desafio" className="underline-offset-4 hover:underline">
+                  {NOME_DESAFIO}
+                </Link>
+                <Link href="/#precos" className="underline-offset-4 hover:underline">
+                  Preços
+                </Link>
+                <Link href="/termos" className="underline-offset-4 hover:underline">
+                  Termos
+                </Link>
+                <Link href="/privacidade" className="underline-offset-4 hover:underline">
+                  Privacidade
+                </Link>
+              </nav>
+            </div>
+            <p className="text-xs text-white/50">
+              Excel é uma marca registrada da Microsoft Corporation. O {NOME_SITE} não é afiliado nem endossado pela
+              Microsoft.
+            </p>
+          </div>
         </footer>
       </body>
     </html>

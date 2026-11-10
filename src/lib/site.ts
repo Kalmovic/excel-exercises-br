@@ -9,4 +9,7 @@ export const URL_SITE =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000");
 
-export const NOME_SITE = "Pratique Excel";
+/** Nome da marca. Fica só aqui: se o registro no INPI mudar o nome, troca-se em um lugar. */
+export const NOME_SITE = "Planilhês";
+/** Nome do desafio diário ("Planilhês do Dia"). */
+export const NOME_DESAFIO = `${NOME_SITE} do Dia`;

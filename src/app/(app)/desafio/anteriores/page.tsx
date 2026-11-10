@@ -33,22 +33,22 @@ async function Conteudo() {
   if (!(await usuarioEhPro())) {
     const ontem = desafioDoDia(somarDias(hoje, -1));
     return (
-      <section className="space-y-4 rounded-xl border border-amber-200 bg-amber-50 p-6" data-testid="arquivo-bloqueado">
-        <p className="text-lg font-semibold text-amber-950">O arquivo completo é do plano Pro</p>
-        <p className="text-amber-900">
+      <section className="space-y-4 rounded-xl border border-accent bg-accent-soft p-6" data-testid="arquivo-bloqueado">
+        <p className="text-lg font-semibold text-ink">O arquivo completo é do plano Pro</p>
+        <p className="text-ink">
           {lista.length > 0
             ? `${lista.length} ${lista.length === 1 ? "desafio anterior" : "desafios anteriores"}, cada um com a solução comentada.`
             : "Todos os desafios que já passaram, cada um com a solução comentada."}{" "}
           Com o Pro, você também refaz qualquer um deles na planilha.
         </p>
         <div className="flex flex-wrap items-center gap-4">
-          <span className="rounded-md bg-amber-200 px-4 py-2 font-medium text-amber-950">Pro: em breve</span>
+          <span className="rounded-md bg-accent px-4 py-2 font-medium text-ink">Pro: em breve</span>
           {ontem && (
-            <Link href={`/desafio/${ontem.data}`} className="text-amber-950 underline">
+            <Link href={`/desafio/${ontem.data}`} className="text-ink underline">
               Ver a solução de ontem (grátis)
             </Link>
           )}
-          <Link href="/desafio" className="text-amber-950 underline">
+          <Link href="/desafio" className="text-ink underline">
             Fazer o desafio de hoje
           </Link>
         </div>
@@ -58,10 +58,10 @@ async function Conteudo() {
 
   if (lista.length === 0) return <p className="text-zinc-500">Ainda não há desafios anteriores.</p>;
   return (
-    <ol className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-zinc-200 bg-white" data-testid="lista-anteriores">
+    <ol className="divide-y divide-zinc-200 overflow-hidden rounded-lg border border-line bg-white" data-testid="lista-anteriores">
       {lista.map((d) => (
         <li key={d.data}>
-          <Link href={`/desafio/${d.data}`} className="flex items-center gap-3 px-4 py-3 hover:bg-zinc-50">
+          <Link href={`/desafio/${d.data}`} className="flex items-center gap-3 px-4 py-3 hover:bg-bg">
             <span className="w-12 shrink-0 font-mono text-sm text-zinc-500">#{numeroDoDesafio(d.data)}</span>
             <span className="flex-1">{d.exercicio.titulo}</span>
             <span className="text-xs text-zinc-500">{rotuloNivel(d)}</span>

@@ -22,14 +22,14 @@ export function BarraProgressoModulo({ itens, atual }: { itens: Item[]; atual: s
           const s = status(i);
           const eAtual = i.slug === atual;
           const cor =
-            s === "concluido" ? "bg-emerald-500" : s === "pulado" ? "bg-amber-300" : "bg-zinc-200";
+            s === "concluido" ? "bg-success" : s === "pulado" ? "bg-accent" : "bg-zinc-200";
           return (
             <li key={i.slug} className="flex-1">
               <Link
                 href={`/exercicios/${i.slug}`}
                 title={`${n + 1}. ${i.titulo}${s === "concluido" ? " (feito)" : s === "pulado" ? " (pulado)" : ""}`}
                 aria-current={eAtual ? "step" : undefined}
-                className={`block h-2 rounded-full ${cor} ${eAtual ? "ring-2 ring-emerald-700 ring-offset-1" : ""}`}
+                className={`block h-2 rounded-full ${cor} ${eAtual ? "ring-2 ring-ink ring-offset-1" : ""}`}
               />
             </li>
           );

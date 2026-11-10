@@ -54,7 +54,7 @@ export function PainelExercicio({
         {alvos && (
           <p className="text-sm text-zinc-500">
             Células do exercício:{" "}
-            <span className="rounded bg-amber-50 px-1 font-mono text-amber-900 ring-1 ring-amber-200">{alvos}</span>
+            <span className="rounded bg-accent-soft px-1 font-mono text-ink ring-1 ring-accent">{alvos}</span>
           </p>
         )}
       </section>
@@ -65,7 +65,7 @@ export function PainelExercicio({
           onClick={onVerificar}
           ref={botaoVerificarRef}
           data-testid="verificar"
-          className="rounded-md bg-emerald-700 px-4 py-2 font-medium text-white shadow-sm hover:bg-emerald-800"
+          className="rounded-md bg-ink px-4 py-2 font-medium text-white shadow-sm hover:bg-ink-soft"
         >
           Verificar
         </button>
@@ -74,7 +74,7 @@ export function PainelExercicio({
             type="button"
             onClick={onDica}
             disabled={dicasVistas >= ex.dicas.length}
-            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-700 hover:bg-zinc-50 disabled:opacity-40"
+            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-700 hover:bg-bg disabled:opacity-40"
           >
             {dicasVistas === 0 ? "Ver dica" : `Próxima dica (${dicasVistas}/${ex.dicas.length})`}
           </button>
@@ -104,7 +104,7 @@ export function PainelExercicio({
           data-testid="resultado"
           className={`rounded-md border p-3 text-sm motion-safe:animate-pop ${
             resultado.ok
-              ? "border-emerald-300 bg-emerald-50 text-emerald-900"
+              ? "border-success/30 bg-success-bg text-success"
               : "border-red-200 bg-red-50 text-red-900"
           }`}
         >
@@ -113,7 +113,7 @@ export function PainelExercicio({
               <IconeCheck />
               <div>
                 <p className="text-base font-semibold">Correto!</p>
-                <p className="text-emerald-800">{elogio(tentativas)}</p>
+                <p className="text-success">{elogio(tentativas)}</p>
               </div>
             </div>
           ) : (
@@ -132,7 +132,7 @@ export function PainelExercicio({
       {extra}
 
       {dicasVistas > 0 && (
-        <section className="rounded-md border border-sky-200 bg-sky-50 p-3 text-sm text-sky-950">
+        <section className="rounded-md border border-line bg-warning-bg p-3 text-sm text-ink">
           <p className="mb-1 font-semibold">Dicas</p>
           <ol className="list-decimal space-y-1 pl-5">
             {ex.dicas.slice(0, dicasVistas).map((d, i) => (
@@ -145,7 +145,7 @@ export function PainelExercicio({
       )}
 
       {mostrarExplicacao && (
-        <section className="rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-800" data-testid="explicacao">
+        <section className="rounded-md border border-line bg-bg p-3 text-sm text-zinc-800" data-testid="explicacao">
           <p className="mb-1 font-semibold">Explicação</p>
           <div className="space-y-1.5">
             {ex.explicacao.map((p, i) => (
@@ -160,7 +160,7 @@ export function PainelExercicio({
       {concluido && proximo && (
         <Link
           href={`/exercicios/${proximo.slug}`}
-          className="self-start rounded-md bg-zinc-900 px-4 py-2 font-medium text-white hover:bg-zinc-700"
+          className="self-start rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft"
         >
           Próximo exercício →
         </Link>
@@ -168,13 +168,13 @@ export function PainelExercicio({
       {concluido && !proximo && proximoModulo && (
         <Link
           href={proximoModulo.href}
-          className="self-start rounded-md bg-zinc-900 px-4 py-2 font-medium text-white hover:bg-zinc-700"
+          className="self-start rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft"
         >
           Próximo módulo →
         </Link>
       )}
       {concluido && !proximo && !proximoModulo && (
-        <Link href="/" className="self-start text-emerald-800 underline">
+        <Link href="/" className="self-start text-success underline">
           Este foi o último exercício do módulo. Voltar para a lista
         </Link>
       )}
@@ -193,7 +193,7 @@ function elogio(tentativas: number) {
 function IconeCheck() {
   return (
     <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0" aria-hidden>
-      <circle cx="20" cy="20" r="18" className="fill-emerald-600 motion-safe:animate-pop" />
+      <circle cx="20" cy="20" r="18" className="fill-success motion-safe:animate-pop" />
       <path
         d="M12 20.5l5.5 5.5L28.5 15"
         fill="none"

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { celulasDestacadas } from "@/content/destaque";
@@ -55,9 +56,11 @@ type Props = {
   desafio?: { numero: number; data: string; rotulo: string; upsell?: Upsell | null };
   /** Visão admin: não lê nem grava progresso e mostra o gabarito. */
   admin?: boolean;
+  /** Versão enxuta (card da landing): só barra de fórmulas, grade e Conferir. */
+  compacto?: boolean;
 };
 
-export default function Simulador({ exercicio: ex, proximo, trilha, desafio, admin = false }: Props) {
+export default function Simulador({ exercicio: ex, proximo, trilha, desafio, admin = false, compacto = false }: Props) {
   const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
   const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
@@ -158,6 +161,56 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
     setConcluido(false);
     setDicasVistas(0);
   };
+
+  if (compacto) {
+    const falha = resultado && !resultado.ok ? resultado.falhas[0] : null;
+    return (
+      <Contexto.Provider value={{ ...nucleo, entradaRef }}>
+        <div className="space-y-2">
+          <BarraFormulas />
+          <Grade larguras={ex.grade.larguras} />
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            <button
+              type="button"
+              ref={botaoVerificarRef}
+              onClick={verificar}
+              data-testid="verificar"
+              className="rounded-lg bg-ink px-4 py-2 text-sm font-medium text-white hover:bg-ink-soft"
+            >
+              Conferir
+            </button>
+            <button
+              type="button"
+              onClick={reiniciar}
+              className="rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium text-ink hover:bg-bg"
+            >
+              Recomeçar
+            </button>
+          </div>
+          {resultado && (
+            <p
+              key={tentativas}
+              data-testid="resultado"
+              className={`rounded-lg px-3 py-2 text-sm motion-safe:animate-pop ${
+                resultado.ok ? "bg-success-bg text-success" : "bg-warning-bg text-ink"
+              }`}
+            >
+              {resultado.ok ? (
+                <>
+                  <strong>Correto!</strong> Você já fala um pouco de Planilhês.{" "}
+                  <Link href="/trilha" className="font-medium underline underline-offset-2">
+                    Continuar na trilha →
+                  </Link>
+                </>
+              ) : (
+                (falha?.mensagem ?? "Ainda não.")
+              )}
+            </p>
+          )}
+        </div>
+      </Contexto.Provider>
+    );
+  }
 
   return (
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>

@@ -42,7 +42,7 @@ function Secao({ id, titulo, children }: { id: string; titulo: string; children:
 }
 
 const C = ({ children }: { children: ReactNode }) => (
-  <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[0.9em] text-emerald-800">{children}</code>
+  <code className="rounded bg-header px-1 py-0.5 font-mono text-[0.9em] text-success">{children}</code>
 );
 
 export default function ExcelBasico() {
@@ -77,7 +77,7 @@ export default function ExcelBasico() {
       />
 
       <header className="space-y-4">
-        <p className="text-sm font-medium text-emerald-800">Módulo 0 · grátis</p>
+        <p className="text-sm font-medium text-success">Módulo 0 · grátis</p>
         <h1 className="text-3xl font-bold tracking-tight">{TITULO}</h1>
         <p className="text-lg text-zinc-600">
           Se você nunca abriu uma planilha, comece aqui. São {lista.length} exercícios curtos, feitos numa planilha
@@ -86,13 +86,13 @@ export default function ExcelBasico() {
         </p>
         <Link
           href={`/exercicios/${lista[0].slug}`}
-          className="inline-block rounded-md bg-emerald-700 px-5 py-3 font-medium text-white hover:bg-emerald-800"
+          className="inline-block rounded-md bg-ink px-5 py-3 font-medium text-white hover:bg-ink-soft"
         >
           Começar o Módulo 0
         </Link>
       </header>
 
-      <section className="space-y-3 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
+      <section className="space-y-3 rounded-xl border border-line bg-white p-4 shadow-sm">
         <h2 className="text-lg font-semibold">Experimente agora: {demo.titulo}</h2>
         <SimuladorCarregavel
           exercicio={demo}
@@ -168,16 +168,16 @@ export default function ExcelBasico() {
       <Secao id="atalhos" titulo="Atalhos que valem a pena decorar">
         <table className="w-full border-collapse overflow-hidden rounded-lg text-sm">
           <thead>
-            <tr className="bg-zinc-100 text-left">
-              <th className="border border-zinc-200 px-3 py-2">Tecla</th>
-              <th className="border border-zinc-200 px-3 py-2">O que faz</th>
+            <tr className="bg-header text-left">
+              <th className="border border-line px-3 py-2">Tecla</th>
+              <th className="border border-line px-3 py-2">O que faz</th>
             </tr>
           </thead>
           <tbody>
             {ATALHOS.map(([tecla, faz]) => (
               <tr key={tecla}>
-                <td className="border border-zinc-200 px-3 py-2 font-mono">{tecla}</td>
-                <td className="border border-zinc-200 px-3 py-2">{faz}</td>
+                <td className="border border-line px-3 py-2 font-mono">{tecla}</td>
+                <td className="border border-line px-3 py-2">{faz}</td>
               </tr>
             ))}
           </tbody>
@@ -188,14 +188,14 @@ export default function ExcelBasico() {
         <ol className="list-decimal space-y-1 pl-6">
           {lista.map((e) => (
             <li key={e.slug}>
-              <Link href={`/exercicios/${e.slug}`} className="text-emerald-800 hover:underline">
+              <Link href={`/exercicios/${e.slug}`} className="text-success hover:underline">
                 {e.titulo}
               </Link>
             </li>
           ))}
         </ol>
         <p>
-          Terminou? O próximo passo é o <Link href="/#modulo-fundamentos" className="text-emerald-800 underline">Módulo 1: Fundamentos</Link>,
+          Terminou? O próximo passo é o <Link href="/#modulo-fundamentos" className="text-success underline">Módulo 1: Fundamentos</Link>,
           com SOMA, MÉDIA, MÍNIMO, MÁXIMO e referência absoluta.
         </p>
       </Secao>

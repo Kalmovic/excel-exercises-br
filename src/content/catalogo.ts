@@ -29,7 +29,7 @@ export function catalogo(): ItemCatalogo[] {
   const diarios = desafios.map((d) => ({
     slug: d.exercicio.slug,
     titulo: d.exercicio.titulo,
-    grupo: "Desafio diário",
+    grupo: "Desafio do dia",
     detalhe: `${d.data} · ${rotuloNivel(d)}`,
     exercicio: d.exercicio,
     data: d.data,

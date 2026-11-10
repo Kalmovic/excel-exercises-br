@@ -37,8 +37,8 @@ test("admin navega por tudo, inclusive desafios futuros, e testa sem salvar prog
   expect(cookie?.value).not.toContain("senha");
 
   await expect(page.getByTestId("grupo-Módulo 0: Intro")).toContainText("Qual é o nome desta célula?");
-  await expect(page.getByTestId("grupo-Desafio diário")).toContainText(TITULO_FUTURO);
-  await expect(page.getByTestId("grupo-Desafio diário")).toContainText("futuro");
+  await expect(page.getByTestId("grupo-Desafio do dia")).toContainText(TITULO_FUTURO);
+  await expect(page.getByTestId("grupo-Desafio do dia")).toContainText("futuro");
 
   // desafio futuro: preencher a solução e verificar
   await page.getByRole("link", { name: new RegExp(TITULO_FUTURO) }).click();

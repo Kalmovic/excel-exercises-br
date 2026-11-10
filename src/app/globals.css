@@ -1,7 +1,35 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/jetbrains-mono";
+
+/*
+ * Identidade Planilhês: amarelo marca-texto + tinta. Todas as cores do app
+ * saem destes tokens (classes bg-ink, text-success, bg-accent…), então mudar a
+ * paleta é mexer só aqui.
+ */
+@theme {
+  --color-ink: #16181d; /* botões principais, texto forte */
+  --color-ink-soft: #2a2d35;
+  --color-accent: #ffd23f; /* marca-texto: destaque, selos */
+  --color-accent-soft: #fff6cc; /* células do exercício */
+  --color-bg: #f7f7f2; /* fundo da página */
+  --color-surface: #ffffff;
+  --color-line: #e4e4dc; /* bordas */
+  --color-header: #f0efe8; /* cabeçalhos da grade */
+  --color-header-ativo: #e3e1d6;
+  --color-success: #0f766e; /* acerto, célula ativa */
+  --color-success-bg: #e3f4f1;
+  --color-warning-bg: #fff4e0; /* dicas */
+  --color-muted: #4a4e57;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Inter Variable", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
 
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-sans);
 }
 
 @theme {
@@ -18,8 +46,8 @@ body {
 
 /* Células-alvo piscam em verde quando o aluno acerta */
 @keyframes acerto {
-  0% { background-color: #6ee7b7; }
-  100% { background-color: #ecfdf5; }
+  0% { background-color: #ffd23f; }
+  100% { background-color: #e3f4f1; }
 }
 
 @keyframes subir {
@@ -35,4 +63,11 @@ body {
 @keyframes desenhar {
   0% { stroke-dashoffset: 30; }
   100% { stroke-dashoffset: 0; }
+}
+
+/* Títulos na fonte display da marca */
+h1,
+h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }

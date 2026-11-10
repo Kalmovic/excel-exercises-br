@@ -3,7 +3,7 @@ async function confete() {
   return (await import("canvas-confetti")).default;
 }
 
-const CORES = ["#047857", "#10b981", "#fbbf24", "#f59e0b", "#ffffff"];
+const CORES = ["#ffd23f", "#16181d", "#0f766e", "#fff6cc", "#ffffff"];
 
 /** Estouro curto saindo de um elemento (ex.: o botão Verificar). */
 export async function celebrarAcerto(origem?: HTMLElement | null) {

@@ -14,6 +14,7 @@ import i7 from "./free/intro/07-ler-a-barra-de-formulas.json";
 import i8 from "./free/intro/08-primeira-formula.json";
 import i9 from "./free/intro/09-formato-moeda.json";
 import i10 from "./free/intro/10-formato-porcentagem.json";
+import demo from "./free/demo/soma-gastos.json";
 
 /**
  * Só conteúdo GRÁTIS entra no bundle. O conteúdo pro (Fase 3) vem do
@@ -67,6 +68,9 @@ const posicaoModulo = (slug: string) => {
 export const exercicios: Exercicio[] = brutos
   .map((b) => exercicioSchema.parse(b))
   .sort((a, b) => posicaoModulo(a.modulo) - posicaoModulo(b.modulo) || a.ordem - b.ordem);
+
+/** Exercício da landing ("Experimente agora"). Fora da trilha e do sitemap. */
+export const exercicioDemo: Exercicio = exercicioSchema.parse(demo);
 
 export function exercicioPorSlug(slug: string) {
   return exercicios.find((e) => e.slug === slug);
