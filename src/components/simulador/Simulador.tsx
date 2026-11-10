@@ -31,10 +31,13 @@ function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
   const inicio = ex.inicio?.selecao ?? ex.inicio?.celulaAtiva;
   return {
     planilha,
-    store: criarStore(planilha, inicio ? deIntervalo(inicio) : undefined, salvo?.resposta ?? ""),
+    store: criarStore(planilha, inicio ? deIntervalo(inicio) : undefined, salvo?.resposta ?? "", {
+      selecaoFixa: ex.ferramentas?.selecaoFixa,
+    }),
     alvos: new Set(celulasDestacadas(ex)),
     formatacao: ex.ferramentas?.formatacao ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
+    selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
 }
 

@@ -12,7 +12,10 @@ test("regressão: SOMA, recusa de inglês e 'Próximo' dentro do módulo", async
   await page.keyboard.press("Escape");
   await digitar(page, "B8", "=SOMA(B2:B7)");
   await verificarCorreto(page);
-  await expect(page.getByRole("link", { name: /Próximo: MÉDIA/ })).toHaveAttribute("href", "/exercicios/media-minimo-maximo");
+  await expect(page.getByRole("link", { name: "Próximo exercício →" })).toHaveAttribute(
+    "href",
+    "/exercicios/media-minimo-maximo",
+  );
 });
 
 test("regressão: referência absoluta com alça de preenchimento", async ({ page }) => {

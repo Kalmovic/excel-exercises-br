@@ -20,7 +20,7 @@ const LARGURA_CABECALHO = 44;
 const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
 export function Grade({ larguras }: { larguras?: Record<string, number> }) {
-  const { planilha, store, entradaRef, alvos, formatacao } = useSimulador();
+  const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa } = useSimulador();
   const versao = useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
   const foco = useEstado((e) => e.foco);
@@ -310,7 +310,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           />
         )}
         {/* alça de preenchimento */}
-        {!editando && (
+        {!editando && !selecaoFixa && (
           <div
             data-testid="alca"
             title="Arraste para copiar a fórmula"

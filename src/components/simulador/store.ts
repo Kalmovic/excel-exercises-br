@@ -46,7 +46,16 @@ export type EstadoSimulador = {
 const clamp = (v: number, max: number) => Math.max(0, Math.min(max - 1, v));
 
 /** `inicio`: seleção ao abrir o exercício. A célula ativa é `inicio.inicio`. */
-export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = "") {
+export const AVISO_SELECAO_FIXA =
+  "Neste exercício a seleção fica parada. Observe a célula com a borda verde e responda no campo acima.";
+
+export function criarStore(
+  planilha: Planilha,
+  inicio?: Intervalo,
+  resposta = "",
+  opcoes: { selecaoFixa?: boolean } = {},
+) {
+  const fixa = opcoes.selecaoFixa ?? false;
   const ancora = inicio?.inicio ?? { linha: 0, coluna: 0 };
   const foco = inicio?.fim ?? ancora;
   return createStore<EstadoSimulador>((set, get) => ({
@@ -64,10 +73,13 @@ export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = ""
 
     selecao: () => normalizar(get().ancora, get().foco),
 
-    selecionar: (p, estender = false) =>
-      set(estender ? { foco: p, mensagem: null } : { ancora: p, foco: p, mensagem: null }),
+    selecionar: (p, estender = false) => {
+      if (fixa) return set({ mensagem: AVISO_SELECAO_FIXA });
+      set(estender ? { foco: p, mensagem: null } : { ancora: p, foco: p, mensagem: null });
+    },
 
     selecionarPeloMouse: (p, estender = false) => {
+      if (fixa) return set({ mensagem: AVISO_SELECAO_FIXA });
       const { ancora, foco, mudancasPeloMouse } = get();
       const ref = estender ? foco : ancora;
       const difere = (a: Pos, b: Pos) => a.linha !== b.linha || a.coluna !== b.coluna;
@@ -78,6 +90,7 @@ export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = ""
     },
 
     mover: (dl, dc, estender = false) => {
+      if (fixa) return set({ mensagem: AVISO_SELECAO_FIXA });
       const { ancora, foco } = get();
       const base = estender ? foco : ancora;
       const p = {
@@ -89,6 +102,10 @@ export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = ""
 
     iniciarEdicao: (modo, texto) => {
       const { ancora } = get();
+      if (fixa) {
+        set({ mensagem: AVISO_SELECAO_FIXA });
+        return false;
+      }
       if (planilha.bloqueada(ancora)) {
         set({ mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." });
         return false;
@@ -127,12 +144,16 @@ export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = ""
     },
 
     colar: () => {
+      if (fixa) return;
       if (planilha.colar(get().selecao())) set({ copiado: null });
     },
 
-    apagarSelecao: () => planilha.limpar(get().selecao()),
+    apagarSelecao: () => {
+      if (!fixa) planilha.limpar(get().selecao());
+    },
 
     preencherSelecao: (direcao) => {
+      if (fixa) return;
       const s = get().selecao();
       if (direcao === "baixo" && s.fim.linha > s.inicio.linha) {
         planilha.preencher(
@@ -148,7 +169,9 @@ export function criarStore(planilha: Planilha, inicio?: Intervalo, resposta = ""
       }
     },
 
-    iniciarAlca: () => set({ arrasto: "alca", alca: null }),
+    iniciarAlca: () => {
+      if (!fixa) set({ arrasto: "alca", alca: null });
+    },
 
     moverAlca: (p) => {
       const s = get().selecao();

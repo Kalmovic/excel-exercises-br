@@ -14,6 +14,8 @@ export type ContextoSimulador = {
   formatacao: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
+  /** Seleção travada: a grade só pode ser observada. */
+  selecaoFixa: boolean;
 };
 
 export const Contexto = createContext<ContextoSimulador | null>(null);

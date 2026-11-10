@@ -131,3 +131,28 @@ test("barra de formatação só aparece onde o exercício pede", async ({ page }
   await abrir(page, "formato-moeda");
   await expect(page.getByTestId("formatar-moeda")).toBeVisible();
 });
+
+test("exercício 1: a célula ativa não muda", async ({ page }) => {
+  await abrir(page, "nome-da-celula");
+  await celula(page, "C2").click();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.getByTestId("editor-celula")).toHaveAttribute("aria-label", "Célula E4");
+  await expect(page.getByTestId("mensagem-formula")).toContainText("seleção fica parada");
+  await expect(page.getByTestId("alca")).toHaveCount(0);
+});
+
+test("exercício 7: não dá para colar a fórmula no campo de resposta", async ({ page }) => {
+  await abrir(page, "ler-a-barra-de-formulas");
+  await celula(page, "D4").click();
+  // clicar na barra de fórmulas de uma célula de dados não mostra erro
+  await page.getByTestId("barra-formulas").click();
+  await expect(page.getByTestId("mensagem-formula")).not.toContainText("não pode ser alterada");
+  const campo = page.getByTestId("campo-resposta");
+  await campo.dispatchEvent("paste");
+  await expect(page.getByTestId("aviso-colar")).toBeVisible();
+  await expect(campo).toHaveValue("");
+  await campo.click();
+  await page.keyboard.type("=B4+C4");
+  await expect(page.getByTestId("aviso-colar")).toHaveCount(0);
+  await verificarCorreto(page);
+});

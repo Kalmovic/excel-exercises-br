@@ -68,10 +68,16 @@ const baseSchema = z.object({
   /**
    * Ferramentas da tela. `formatacao`: barra com R$ e % (padrão: não).
    * `caixaDeNome`: mostrar o endereço da célula ativa (padrão: sim; esconder
-   * quando o exercício pergunta justamente esse endereço).
+   * quando o exercício pergunta justamente esse endereço). `selecaoFixa`: a
+   * grade só pode ser observada (padrão: não).
    */
   ferramentas: z
-    .object({ formatacao: z.boolean().optional(), caixaDeNome: z.boolean().optional() })
+    .object({
+      formatacao: z.boolean().optional(),
+      caixaDeNome: z.boolean().optional(),
+      /** A célula ativa não pode mudar (ex.: "qual é o nome desta célula?"). */
+      selecaoFixa: z.boolean().optional(),
+    })
     .optional(),
   dicas: z.array(z.string()).min(1),
   explicacao: z.array(z.string()).min(1),

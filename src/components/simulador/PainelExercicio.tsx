@@ -155,7 +155,7 @@ export function PainelExercicio({
           href={`/exercicios/${proximo.slug}`}
           className="self-start rounded-md bg-zinc-900 px-4 py-2 font-medium text-white hover:bg-zinc-700"
         >
-          Próximo: {proximo.titulo} →
+          Próximo exercício →
         </Link>
       )}
       {concluido && !proximo && proximoModulo && (
@@ -163,7 +163,7 @@ export function PainelExercicio({
           href={proximoModulo.href}
           className="self-start rounded-md bg-zinc-900 px-4 py-2 font-medium text-white hover:bg-zinc-700"
         >
-          Próximo módulo: {proximoModulo.titulo} →
+          Próximo módulo →
         </Link>
       )}
       {concluido && !proximo && !proximoModulo && (

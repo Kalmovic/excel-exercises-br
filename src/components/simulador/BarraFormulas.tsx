@@ -5,7 +5,7 @@ import { explicarErro, mensagemCircular } from "@/engine/erros";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 export function BarraFormulas() {
-  const { planilha, store, entradaRef, caixaDeNome } = useSimulador();
+  const { planilha, store, entradaRef, caixaDeNome, selecaoFixa } = useSimulador();
   useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
   const foco = useEstado((e) => e.foco);
@@ -14,6 +14,8 @@ export function BarraFormulas() {
   const mensagem = useEstado((e) => e.mensagem);
 
   const editando = modo !== "pronto";
+  // Célula de dados ou seleção travada: a barra serve só para ler, sem aviso de erro ao clicar.
+  const somenteLeitura = !editando && (selecaoFixa || planilha.bloqueada(ancora));
 
   // Prioridade: recusa da fórmula > referência circular > explicação do erro da célula ativa.
   const circulares = planilha.celulasCirculares();
@@ -77,8 +79,9 @@ export function BarraFormulas() {
           spellCheck={false}
           className="min-w-0 flex-1 px-2 py-1.5 font-mono text-[13px] outline-none"
           value={editando ? rascunho : planilha.bruto(ancora)}
+          readOnly={somenteLeitura}
           onFocus={() => {
-            if (store.getState().modo === "pronto") store.getState().iniciarEdicao("editar");
+            if (!somenteLeitura && store.getState().modo === "pronto") store.getState().iniciarEdicao("editar");
           }}
           onChange={(e) => store.getState().setRascunho(e.target.value)}
           onKeyDown={(e) => {

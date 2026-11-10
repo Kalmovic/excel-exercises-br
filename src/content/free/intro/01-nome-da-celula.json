@@ -22,7 +22,8 @@
     "celulaAtiva": "E4"
   },
   "ferramentas": {
-    "caixaDeNome": false
+    "caixaDeNome": false,
+    "selecaoFixa": true
   },
   "rotulo": "Nome da célula ativa",
   "aceitas": [
