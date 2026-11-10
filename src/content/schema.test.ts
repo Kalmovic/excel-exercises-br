@@ -65,3 +65,11 @@ describe("navegação", () => {
     expect(proximoModulo("fundamentos")).toBeUndefined();
   });
 });
+
+describe("descrição das células do exercício", () => {
+  it("agrupa trechos contínuos por coluna", async () => {
+    const { agruparEmIntervalos } = await import("./destaque");
+    expect(agruparEmIntervalos(["E2", "E3", "E4", "E5", "E6", "F2", "F3", "F4", "F5", "F6", "F8"])).toBe("E2:E6, F2:F6, F8");
+    expect(agruparEmIntervalos(["D2", "D3", "D4", "D5", "D6"])).toBe("D2:D6");
+  });
+});

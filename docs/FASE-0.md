@@ -24,6 +24,8 @@ A matriz executável está em `src/engine/matriz.test.ts` (`npm test`).
 | 7 Arrays dinâmicos | FILTRO, CLASSIFICAR, ÚNICO (derramam para baixo; bloqueio = `#DESPEJAR!`) | ✅ |
 | 8 Casos reais | PGTO | ✅ |
 
+- Aritmética de matrizes ligada (`useArrayArithmetic: true`), como no Excel 365: `C2:C9=G1` vira uma lista de VERDADEIRO/FALSO dentro de FILTRO e SOMARPRODUTO.
+
 ## Ajustes feitos no adapter
 
 1. **`FALSO`/`VERDADEIRO` sem parênteses:** o HyperFormula só entende `FALSO()`. O adapter converte na entrada e desconverte na barra de fórmulas. Sem isso, `PROCV(...;FALSO)` dava `#NOME?`.
@@ -38,10 +40,12 @@ A matriz executável está em `src/engine/matriz.test.ts` (`npm test`).
 | --- | --- | --- | --- |
 | `DATADIF(...;"m")` (unidade minúscula) | aceita | `#NÚM!` | Normalizar a unidade no adapter antes do Módulo 6 |
 | `TEXTO(1,5;"0,00")` | `1,50` | `2,00` | Fora do MVP; plugin próprio se entrar no conteúdo |
+| `FILTRO(A2:B6;B2:B6>20)` (origem com várias colunas) | filtra as linhas | `#N/D` (exige condição da mesma largura) | Exercícios usam FILTRO de uma coluna; plugin próprio se precisar |
 
 ## Pendências
 
 - **HOJE congelado:** exercícios com HOJE precisam de data fixa (`hojeFixo`). Fazer via plugin antes do Módulo 6.
+- **Funções que não existem no motor:** LET, LAMBDA, CORRESPX, CLASSIFICARPOR, PEGAR, ESCOLHERCOLS, AGREGAR.
 - **Constantes de array** (`{1;2|3;4}`): deram `#VALOR!` com os separadores pt-BR. Fora do MVP.
 - **Conferir a matriz num Excel pt-BR real.** Os valores esperados foram calculados a partir do comportamento documentado do Excel.
 

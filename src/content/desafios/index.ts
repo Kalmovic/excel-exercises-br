@@ -14,8 +14,28 @@ import novembro2026 from "./2026-11.json";
  */
 const desafioSchema = z.object({
   data: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  /**
+   * Curva da semana: segunda nível 1, terça e quarta nível 2, quinta e
+   * sexta nível 3, fim de semana "caso real" (várias etapas, nível 3).
+   */
+  nivel: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  caso: z.boolean().default(false),
   exercicio: exercicioSchema,
 });
+
+/** Nível esperado para a data, pela curva da semana. */
+export function nivelDoDia(data: string): { nivel: 1 | 2 | 3; caso: boolean } {
+  const [a, m, d] = data.split("-").map(Number);
+  const semana = new Date(Date.UTC(a, m - 1, d)).getUTCDay(); // 0 = domingo
+  if (semana === 0 || semana === 6) return { nivel: 3, caso: true };
+  if (semana === 1) return { nivel: 1, caso: false };
+  if (semana === 2 || semana === 3) return { nivel: 2, caso: false };
+  return { nivel: 3, caso: false };
+}
+
+export function rotuloNivel(d: { nivel: number; caso: boolean }) {
+  return d.caso ? "Caso real" : `Nível ${d.nivel}`;
+}
 
 export type Desafio = z.infer<typeof desafioSchema>;
 

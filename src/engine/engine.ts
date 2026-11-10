@@ -199,6 +199,9 @@ export class Planilha {
     const out: Record<string, string> = {};
     for (let linha = 0; linha < this.linhas; linha++)
       for (let coluna = 0; coluna < this.colunas; coluna++) {
+        // Células preenchidas por derramamento (FILTRO, ÚNICO…) não são conteúdo:
+        // regravá-las como valor bloquearia o próprio derramamento (#DESPEJAR!).
+        if (this.derramada({ linha, coluna })) continue;
         const b = this.bruto({ linha, coluna });
         if (b !== "") out[paraEndereco({ linha, coluna })] = b;
       }

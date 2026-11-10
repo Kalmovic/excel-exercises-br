@@ -37,6 +37,9 @@ export const CONFIG_PT_BR: Partial<ConfigParams> = {
   timeFormats: ["hh:mm", "hh:mm:ss"],
   currencySymbol: ["R$"],
   localeLang: "pt-BR",
+  // Aritmética de matrizes como no Excel 365: `C2:C9=G1` vira uma lista de
+  // VERDADEIRO/FALSO dentro de FILTRO, SOMARPRODUTO etc.
+  useArrayArithmetic: true,
   // Compatível com o Excel: 1900 tratado como bissexto (bug histórico) e
   // serial 1 = 01/01/1900. Assim DATA(2026;1;15) = 46037, como no Excel.
   leapYear1900: true,

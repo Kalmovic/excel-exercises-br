@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { TextoRico } from "@/components/simulador/TextoRico";
-import { desafioDoDia, hojeNoServidor, numeroDoDesafio } from "@/content/desafios";
+import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { colunaParaLetras, deEndereco, paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
-import { dataBR, ehDataISO, somarDias } from "@/lib/data-sp";
+import { dataBR, ehDataISO } from "@/lib/data-sp";
 
 /** O título não usa o conteúdo do desafio: assim nem o <title> de um desafio futuro vaza. */
 export async function generateMetadata({ params }: PageProps<"/desafio/[data]">): Promise<Metadata> {
@@ -59,19 +59,19 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
 
   const primeiro = ex.alvos[0];
   const ultimo = ex.alvos[ex.alvos.length - 1];
-  const anterior = desafioDoDia(somarDias(data, -1));
-  const seguinte = somarDias(data, 1) < hoje ? desafioDoDia(somarDias(data, 1)) : undefined;
 
   return (
     <article className="mx-auto max-w-3xl space-y-6">
       <nav className="text-sm text-zinc-500">
-        <Link href="/desafio/anteriores" className="hover:text-zinc-800">
-          Desafios anteriores
+        <Link href="/desafio" className="hover:text-zinc-800">
+          Desafio diário
         </Link>{" "}
         / #{numero} · {dataBR(data)}
       </nav>
       <header className="space-y-2">
-        <p className="text-sm font-medium text-emerald-800">Solução comentada · desafio #{numero}</p>
+        <p className="text-sm font-medium text-emerald-800">
+          Solução comentada · desafio #{numero} · {rotuloNivel(desafio)}
+        </p>
         <h1 className="text-3xl font-bold tracking-tight">{ex.titulo}</h1>
       </header>
 
@@ -137,16 +137,9 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
         <Link href="/desafio" className="rounded-md bg-emerald-700 px-4 py-2 font-medium text-white hover:bg-emerald-800">
           Fazer o desafio de hoje
         </Link>
-        {anterior && (
-          <Link href={`/desafio/${anterior.data}`} className="text-sm text-zinc-600 hover:text-zinc-900">
-            ← Desafio #{numero - 1}
-          </Link>
-        )}
-        {seguinte && (
-          <Link href={`/desafio/${seguinte.data}`} className="text-sm text-zinc-600 hover:text-zinc-900">
-            Desafio #{numero + 1} →
-          </Link>
-        )}
+        <Link href="/desafio/anteriores" className="text-sm text-zinc-600 hover:text-zinc-900">
+          Todos os desafios anteriores <span className="rounded bg-amber-100 px-1 text-xs text-amber-900">Pro</span>
+        </Link>
       </div>
     </article>
   );

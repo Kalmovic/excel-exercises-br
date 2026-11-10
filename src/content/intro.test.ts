@@ -79,3 +79,20 @@ describe("detalhes", () => {
     expect(p.bruto("D4")).toBe("=B4+C4");
   });
 });
+
+describe("derramamento", () => {
+  it("conteudos() não inclui as células derramadas (senão o FILTRO travaria ao restaurar)", () => {
+    const p = new Planilha({
+      linhas: 6,
+      colunas: 4,
+      celulas: { A1: { entrada: "b" }, A2: { entrada: "a" }, A3: { entrada: "b" } },
+    });
+    p.definir("C1", "=ÚNICO(A1:A3)");
+    expect(p.valor("C2")).toBe("a");
+    expect(p.conteudos()).toEqual({ A1: "b", A2: "a", A3: "b", C1: "=ÚNICO(A1:A3)" });
+    // restaurar a partir de conteudos() mantém o derramamento
+    const q = new Planilha({ linhas: 6, colunas: 4, celulas: { A1: { entrada: "b" }, A2: { entrada: "a" }, A3: { entrada: "b" } } });
+    q.definirVarias(Object.entries(p.conteudos()).filter(([e]) => e.startsWith("C")).map(([endereco, bruto]) => ({ endereco, bruto })));
+    expect(q.valor("C2")).toBe("a");
+  });
+});

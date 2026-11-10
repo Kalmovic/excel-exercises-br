@@ -6,11 +6,17 @@ import * as progresso from "@/lib/progresso";
 import { ContagemRegressiva } from "./ContagemRegressiva";
 
 /** Texto do card, estilo Wordle: um quadrado por verificação. */
-export function textoCompartilhamento(numero: number, data: string, historico: boolean[], url: string) {
+export function textoCompartilhamento(
+  numero: number,
+  data: string,
+  rotulo: string,
+  historico: boolean[],
+  url: string,
+) {
   const tentativas = historico.length;
   const quadrados = historico.map((ok) => (ok ? "🟩" : "🟥")).join("");
   const resumo = tentativas <= 1 ? "de primeira!" : `em ${tentativas} tentativas`;
-  return `Desafio de Excel #${numero} · ${dataBR(data).slice(0, 5)}\n${quadrados} ${resumo}\n${url}`;
+  return `Desafio de Excel #${numero} · ${dataBR(data).slice(0, 5)} · ${rotulo}\n${quadrados} ${resumo}\n${url}`;
 }
 
 const nada = () => () => {};
@@ -18,11 +24,13 @@ const nada = () => () => {};
 export function CompartilharDesafio({
   numero,
   data,
+  rotulo,
   slug,
   versao,
 }: {
   numero: number;
   data: string;
+  rotulo: string;
   slug: string;
   versao: number;
 }) {
@@ -33,7 +41,7 @@ export function CompartilharDesafio({
   );
   const origem = useSyncExternalStore(nada, () => window.location.origin, () => "");
   const [copiado, setCopiado] = useState(false);
-  const texto = textoCompartilhamento(numero, data, JSON.parse(historico), `${origem}/desafio`);
+  const texto = textoCompartilhamento(numero, data, rotulo, JSON.parse(historico), `${origem}/desafio`);
 
   const compartilhar = async () => {
     try {

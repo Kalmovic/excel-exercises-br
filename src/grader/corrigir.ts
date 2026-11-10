@@ -39,10 +39,19 @@ function conferirValores(p: Planilha, alvo: Alvo): boolean {
  */
 function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, string>): string[] {
   const variaveis = ex.grade.variaveis ?? [];
-  if (variaveis.length === 0) return [];
+  const alternativas = ex.grade.alternativas ?? {};
+  const comAlternativas = Object.keys(alternativas);
+  if (variaveis.length === 0 && comAlternativas.length === 0) return [];
   const falhas = new Set<string>();
 
-  for (const fator of [1.37, 0.61]) {
+  // Rodadas: números multiplicados por um fator e, em cada rodada, as células
+  // de texto (critérios como "SP") trocadas por uma das alternativas. Quem
+  // escreveu "SP" direto na fórmula não acompanha a troca e é pego aqui.
+  const FATORES = [1.37, 0.61];
+  const rodadas = Math.max(FATORES.length, ...comAlternativas.map((e) => alternativas[e].length));
+
+  for (let r = 0; r < rodadas; r++) {
+    const fator = FATORES[r % FATORES.length];
     const grade = structuredClone(ex.grade);
     for (const end of variaveis) {
       const cel = grade.celulas[end];
@@ -52,6 +61,10 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
       const pct = cel.entrada.trim().endsWith("%");
       const novo = Math.round(n * fator * 100) / 100;
       cel.entrada = String(novo).replace(".", ",") + (pct ? "%" : "");
+    }
+    for (const end of comAlternativas) {
+      const lista = alternativas[end];
+      grade.celulas[end] = { ...(grade.celulas[end] ?? {}), entrada: lista[r % lista.length] };
     }
 
     const aluno = new Planilha(grade);
@@ -66,9 +79,15 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
       for (const alvo of ex.alvos) {
         const base = deEndereco(alvo.celula);
         const tol = alvo.tolerancia ?? TOLERANCIA_PADRAO;
-        comoMatriz(alvo).forEach((linha, dl) =>
+        // Resultados que derramam (FILTRO…) podem mudar de tamanho com os dados
+        // trocados: compara também as linhas logo abaixo do esperado.
+        const matriz = comoMatriz(alvo);
+        const extra = Array.isArray(alvo.esperado) ? 20 : 0;
+        const janela = Array.from({ length: matriz.length + extra }, (_, i) => matriz[i] ?? matriz[0]);
+        janela.forEach((linha, dl) =>
           linha.forEach((_, dc) => {
             const pos = { linha: base.linha + dl, coluna: base.coluna + dc };
+            if (pos.linha >= grade.linhas) return;
             const ref = referencia.valor(pos);
             const obt = aluno.valor(pos);
             const ok =

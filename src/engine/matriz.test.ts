@@ -102,7 +102,16 @@ export const CASOS: Caso[] = [
   { modulo: "7", funcao: "FILTRO", formula: "=FILTRO(A2:A6;B2:B6>20)", esperado: ["Bia", "Ana", "Duda"] },
   { modulo: "7", funcao: "CLASSIFICAR", formula: "=CLASSIFICAR(B2:B6)", esperado: [10, 15, 25.5, 30, 40] },
   { modulo: "7", funcao: "ÚNICO", formula: "=ÚNICO(A2:A6)", esperado: ["Ana", "Bia", "Caio", "Duda"] },
+  {
+    modulo: "7",
+    funcao: "FILTRO com várias colunas",
+    formula: "=FILTRO(A2:B6;B2:B6>20)",
+    esperado: ["Bia", "Ana", "Duda"],
+    divergente: "O Excel aceita condição de 1 coluna para uma origem de várias colunas; o HyperFormula exige a mesma largura (#N/D).",
+  },
   // Módulo 8
+  { modulo: "8", funcao: "SOMARPRODUTO condicional", formula: '=SOMARPRODUTO((A2:A6="Ana")*B2:B6)', esperado: 40 },
+  { modulo: "8", funcao: "MÁXIMOSES", formula: '=MÁXIMOSES(B2:B6;A2:A6;"Ana")', esperado: 30 },
   { modulo: "8", funcao: "PGTO", formula: "=PGTO(1%;12;-1000)", esperado: 88.848788678, tolerancia: 1e-6 },
   {
     modulo: "8",

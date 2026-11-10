@@ -62,6 +62,11 @@ const baseSchema = z.object({
     celulas: z.record(endereco, celulaInicialSchema),
     /** Células perturbadas na checagem anti-valor-digitado. */
     variaveis: z.array(endereco).optional(),
+    /**
+     * Células de texto usadas como critério (ex.: F1 = "SP") e outros valores
+     * que a checagem testa no lugar delas (ex.: ["RJ", "MG"]).
+     */
+    alternativas: z.record(endereco, z.array(z.string()).min(1)).optional(),
   }),
   /** Seleção ao abrir o exercício (padrão: A1). */
   inicio: z.object({ celulaAtiva: endereco.optional(), selecao: intervalo.optional() }).optional(),

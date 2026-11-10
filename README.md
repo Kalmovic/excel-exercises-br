@@ -58,6 +58,9 @@ Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKe
 
 - Página `/desafio`: o "hoje" é calculado no servidor, no fuso de São Paulo, a cada request.
 - Os desafios ficam em `src/content/desafios/AAAA-MM.json`, lidos só pelo servidor (`import "server-only"` em `src/content/desafios/index.ts`). O navegador recebe apenas o desafio do dia; um teste e2e confere que nenhum desafio aparece em `.next/static`.
-- Soluções comentadas em `/desafio/AAAA-MM-DD`, publicadas só depois que o dia passa; lista em `/desafio/anteriores`.
-- **Adicionar um mês:** crie o JSON do mês (um item por dia, sem pular datas, `dicas: []`), inclua o import em `src/content/desafios/index.ts` e rode `npm test`, que confere o calendário e se cada solução passa.
+- Soluções comentadas em `/desafio/AAAA-MM-DD`, publicadas só depois que o dia passa (grátis, indexáveis).
+- Arquivo `/desafio/anteriores`: **Pro**. A checagem é no servidor (`src/lib/acesso.ts`); sem Pro, a lista nem vai no HTML. Até a Fase 3, ninguém é Pro.
+- **Curva da semana:** segunda nível 1, terça e quarta nível 2, quinta e sexta nível 3, fim de semana "caso real" (várias etapas). Cada item tem `nivel` e `caso`; o teste confere a curva pela data.
+- **Critério numa célula:** use `grade.alternativas` (ex.: `{"G1": ["Sul", "Nordeste"]}`). A correção troca a célula por essas opções e recusa quem escreveu o critério direto na fórmula.
+- **Adicionar um mês:** crie o JSON do mês (um item por dia, sem pular datas, `dicas: []`), inclua o import em `src/content/desafios/index.ts` e rode `npm test`, que confere o calendário, a curva e se cada solução passa.
 - Nos testes e2e, `DESAFIO_HOJE` fixa a data (ignorada em produção na Vercel).

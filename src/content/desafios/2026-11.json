@@ -1,6 +1,8 @@
 [
   {
     "data": "2026-11-10",
+    "nivel": 2,
+    "caso": false,
     "exercicio": {
       "id": "c2f71a78-bd24-51e0-94d5-995c2b5c592b",
       "slug": "desafio-2026-11-10",
@@ -11,105 +13,428 @@
       "nivel": 2,
       "plano": "free",
       "versao": 1,
-      "titulo": "Quanto saiu do bolso este mês?",
+      "titulo": "Vendas grandes da região escolhida",
       "enunciado": [
-        "A planilha lista os gastos fixos de uma família em novembro.",
-        "Em **B8**, calcule o total gasto no mês."
+        "O gerente escolhe uma **região** em G1 e um **valor mínimo** em G2.",
+        "Em **G4**, calcule o total vendido naquela região, somando só as vendas de pelo menos o valor mínimo. A fórmula precisa usar G1 e G2: se o gerente trocar a região ou o valor, o total muda junto."
       ],
       "grade": {
-        "linhas": 10,
-        "colunas": 4,
+        "linhas": 27,
+        "colunas": 8,
         "larguras": {
-          "A": 120,
-          "B": 120
+          "C": 110,
+          "D": 110,
+          "F": 110,
+          "G": 110
         },
         "celulas": {
           "A1": {
-            "entrada": "Gasto",
+            "entrada": "Pedido",
             "negrito": true
           },
           "B1": {
+            "entrada": "Vendedor",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Região",
+            "negrito": true
+          },
+          "D1": {
             "entrada": "Valor",
             "negrito": true
           },
+          "F1": {
+            "entrada": "Região",
+            "negrito": true
+          },
+          "G1": {
+            "entrada": "Sudeste"
+          },
+          "F2": {
+            "entrada": "Valor mínimo",
+            "negrito": true
+          },
+          "G2": {
+            "entrada": "1000",
+            "formato": "moeda"
+          },
+          "F4": {
+            "entrada": "Total",
+            "negrito": true
+          },
           "A2": {
-            "entrada": "Aluguel"
+            "entrada": "#3001"
           },
           "B2": {
-            "entrada": "1800",
+            "entrada": "Elisa"
+          },
+          "C2": {
+            "entrada": "Sul"
+          },
+          "D2": {
+            "entrada": "850",
             "formato": "moeda"
           },
           "A3": {
-            "entrada": "Mercado"
+            "entrada": "#3002"
           },
           "B3": {
-            "entrada": "1150,4",
+            "entrada": "Bruno"
+          },
+          "C3": {
+            "entrada": "Norte"
+          },
+          "D3": {
+            "entrada": "950",
             "formato": "moeda"
           },
           "A4": {
-            "entrada": "Luz"
+            "entrada": "#3003"
           },
           "B4": {
-            "entrada": "213,9",
+            "entrada": "Ana"
+          },
+          "C4": {
+            "entrada": "Centro-Oeste"
+          },
+          "D4": {
+            "entrada": "950",
             "formato": "moeda"
           },
           "A5": {
-            "entrada": "Internet"
+            "entrada": "#3004"
           },
           "B5": {
-            "entrada": "119,9",
+            "entrada": "Bruno"
+          },
+          "C5": {
+            "entrada": "Nordeste"
+          },
+          "D5": {
+            "entrada": "250",
             "formato": "moeda"
           },
           "A6": {
-            "entrada": "Transporte"
+            "entrada": "#3005"
           },
           "B6": {
-            "entrada": "386,5",
+            "entrada": "Elisa"
+          },
+          "C6": {
+            "entrada": "Nordeste"
+          },
+          "D6": {
+            "entrada": "3600",
             "formato": "moeda"
           },
           "A7": {
-            "entrada": "Lazer"
+            "entrada": "#3006"
           },
           "B7": {
-            "entrada": "420",
+            "entrada": "Carla"
+          },
+          "C7": {
+            "entrada": "Norte"
+          },
+          "D7": {
+            "entrada": "2900",
             "formato": "moeda"
           },
           "A8": {
-            "entrada": "Total",
-            "negrito": true
+            "entrada": "#3007"
+          },
+          "B8": {
+            "entrada": "Bruno"
+          },
+          "C8": {
+            "entrada": "Norte"
+          },
+          "D8": {
+            "entrada": "3800",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "#3008"
+          },
+          "B9": {
+            "entrada": "Ana"
+          },
+          "C9": {
+            "entrada": "Centro-Oeste"
+          },
+          "D9": {
+            "entrada": "250",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "#3009"
+          },
+          "B10": {
+            "entrada": "Bruno"
+          },
+          "C10": {
+            "entrada": "Nordeste"
+          },
+          "D10": {
+            "entrada": "2500",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "#3010"
+          },
+          "B11": {
+            "entrada": "Elisa"
+          },
+          "C11": {
+            "entrada": "Norte"
+          },
+          "D11": {
+            "entrada": "850",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "#3011"
+          },
+          "B12": {
+            "entrada": "Elisa"
+          },
+          "C12": {
+            "entrada": "Nordeste"
+          },
+          "D12": {
+            "entrada": "2400",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "#3012"
+          },
+          "B13": {
+            "entrada": "Bruno"
+          },
+          "C13": {
+            "entrada": "Sul"
+          },
+          "D13": {
+            "entrada": "4100",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "#3013"
+          },
+          "B14": {
+            "entrada": "Elisa"
+          },
+          "C14": {
+            "entrada": "Sul"
+          },
+          "D14": {
+            "entrada": "1900",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "#3014"
+          },
+          "B15": {
+            "entrada": "Elisa"
+          },
+          "C15": {
+            "entrada": "Nordeste"
+          },
+          "D15": {
+            "entrada": "450",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "#3015"
+          },
+          "B16": {
+            "entrada": "Diego"
+          },
+          "C16": {
+            "entrada": "Sudeste"
+          },
+          "D16": {
+            "entrada": "3200",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "#3016"
+          },
+          "B17": {
+            "entrada": "Diego"
+          },
+          "C17": {
+            "entrada": "Norte"
+          },
+          "D17": {
+            "entrada": "550",
+            "formato": "moeda"
+          },
+          "A18": {
+            "entrada": "#3017"
+          },
+          "B18": {
+            "entrada": "Elisa"
+          },
+          "C18": {
+            "entrada": "Centro-Oeste"
+          },
+          "D18": {
+            "entrada": "1700",
+            "formato": "moeda"
+          },
+          "A19": {
+            "entrada": "#3018"
+          },
+          "B19": {
+            "entrada": "Diego"
+          },
+          "C19": {
+            "entrada": "Nordeste"
+          },
+          "D19": {
+            "entrada": "450",
+            "formato": "moeda"
+          },
+          "A20": {
+            "entrada": "#3019"
+          },
+          "B20": {
+            "entrada": "Diego"
+          },
+          "C20": {
+            "entrada": "Nordeste"
+          },
+          "D20": {
+            "entrada": "750",
+            "formato": "moeda"
+          },
+          "A21": {
+            "entrada": "#3020"
+          },
+          "B21": {
+            "entrada": "Ana"
+          },
+          "C21": {
+            "entrada": "Centro-Oeste"
+          },
+          "D21": {
+            "entrada": "3100",
+            "formato": "moeda"
+          },
+          "A22": {
+            "entrada": "#3021"
+          },
+          "B22": {
+            "entrada": "Bruno"
+          },
+          "C22": {
+            "entrada": "Sul"
+          },
+          "D22": {
+            "entrada": "3800",
+            "formato": "moeda"
+          },
+          "A23": {
+            "entrada": "#3022"
+          },
+          "B23": {
+            "entrada": "Elisa"
+          },
+          "C23": {
+            "entrada": "Sudeste"
+          },
+          "D23": {
+            "entrada": "850",
+            "formato": "moeda"
+          },
+          "A24": {
+            "entrada": "#3023"
+          },
+          "B24": {
+            "entrada": "Elisa"
+          },
+          "C24": {
+            "entrada": "Nordeste"
+          },
+          "D24": {
+            "entrada": "4800",
+            "formato": "moeda"
+          },
+          "A25": {
+            "entrada": "#3024"
+          },
+          "B25": {
+            "entrada": "Ana"
+          },
+          "C25": {
+            "entrada": "Sudeste"
+          },
+          "D25": {
+            "entrada": "3900",
+            "formato": "moeda"
           }
         },
         "variaveis": [
-          "B2",
-          "B3",
-          "B4",
-          "B5",
-          "B6",
-          "B7"
-        ]
+          "D2",
+          "D3",
+          "D4",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+          "D14",
+          "D15",
+          "D16",
+          "D17",
+          "D18",
+          "D19",
+          "D20",
+          "D21",
+          "D22",
+          "D23",
+          "D24",
+          "D25",
+          "G2"
+        ],
+        "alternativas": {
+          "G1": [
+            "Sul",
+            "Nordeste"
+          ]
+        }
       },
       "alvos": [
         {
-          "celula": "B8",
-          "esperado": 4090.7,
+          "celula": "G4",
+          "esperado": 7100,
           "exigeFormula": true,
-          "solucaoReferencia": "=SOMA(B2:B7)",
+          "solucaoReferencia": "=SOMASES(D2:D25;C2:C25;G1;D2:D25;\">=\"&G2)",
           "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=SOMA(B2:B7)` soma todos os gastos de B2 até B7: R$ 4.090,70.",
-        "Por que não somar à mão? Se a conta de luz mudar, o total se atualiza sozinho. Uma variação que também funciona: `=B2+B3+B4+B5+B6+B7`, mas ela fica longa e é fácil esquecer uma célula."
+        "`=SOMASES(D2:D25;C2:C25;G1;D2:D25;\">=\"&G2)`: soma a coluna D quando a região é igual a G1 **e** o valor é maior ou igual a G2.",
+        "O truque está no segundo critério: `\">=\"&G2` junta o operador com o valor da célula, formando \">=1000\". Escrever `\">=1000\"` direto funcionaria hoje, mas quebraria quando o gerente mudasse G2.",
+        "Usar `\"Sudeste\"` na fórmula em vez de G1 tem o mesmo problema: a planilha deixa de responder à escolha do gerente."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
-        "SUM"
+        "SUMIFS"
       ]
     }
   },
   {
     "data": "2026-11-11",
+    "nivel": 2,
+    "caso": false,
     "exercicio": {
       "id": "3468ad72-3f4d-5230-9c89-0200aec1700c",
       "slug": "desafio-2026-11-11",
@@ -120,129 +445,381 @@
       "nivel": 2,
       "plano": "free",
       "versao": 1,
-      "titulo": "Quem passou?",
+      "titulo": "Ficha do funcionário pela matrícula",
       "enunciado": [
-        "A média para aprovação é 7.",
-        "Em **C2:C6**, mostre \"Aprovado\" para quem tirou 7 ou mais e \"Reprovado\" para o resto."
+        "O RH digita uma matrícula em **G1** e quer ver a ficha da pessoa.",
+        "Preencha **G3** (nome), **G4** (departamento) e **G5** (salário) buscando pela matrícula de G1. Se a matrícula não existir, as três células devem mostrar **Não encontrado**, e não um erro."
       ],
       "grade": {
-        "linhas": 8,
-        "colunas": 4,
+        "linhas": 22,
+        "colunas": 8,
         "larguras": {
-          "C": 120
+          "B": 120,
+          "C": 110,
+          "D": 110,
+          "F": 110,
+          "G": 130
         },
         "celulas": {
           "A1": {
-            "entrada": "Aluno",
+            "entrada": "Matrícula",
             "negrito": true
           },
           "B1": {
-            "entrada": "Nota",
+            "entrada": "Nome",
             "negrito": true
           },
           "C1": {
-            "entrada": "Situação",
+            "entrada": "Departamento",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Salário",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Matrícula",
+            "negrito": true
+          },
+          "G1": {
+            "entrada": "M-1007"
+          },
+          "F3": {
+            "entrada": "Nome",
+            "negrito": true
+          },
+          "F4": {
+            "entrada": "Departamento",
+            "negrito": true
+          },
+          "F5": {
+            "entrada": "Salário",
             "negrito": true
           },
           "A2": {
-            "entrada": "Bia"
+            "entrada": "M-1001"
           },
           "B2": {
-            "entrada": "8,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Ana Lima"
+          },
+          "C2": {
+            "entrada": "TI"
+          },
+          "D2": {
+            "entrada": "8700",
+            "formato": "moeda"
           },
           "A3": {
-            "entrada": "Caio"
+            "entrada": "M-1002"
           },
           "B3": {
-            "entrada": "6,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Bruno Reis"
+          },
+          "C3": {
+            "entrada": "TI"
+          },
+          "D3": {
+            "entrada": "9300",
+            "formato": "moeda"
           },
           "A4": {
-            "entrada": "Duda"
+            "entrada": "M-1003"
           },
           "B4": {
-            "entrada": "7,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Carla Dias"
+          },
+          "C4": {
+            "entrada": "Logística"
+          },
+          "D4": {
+            "entrada": "5200",
+            "formato": "moeda"
           },
           "A5": {
-            "entrada": "Enzo"
+            "entrada": "M-1004"
           },
           "B5": {
-            "entrada": "5,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Diego Rocha"
+          },
+          "C5": {
+            "entrada": "Vendas"
+          },
+          "D5": {
+            "entrada": "9300",
+            "formato": "moeda"
           },
           "A6": {
-            "entrada": "Flor"
+            "entrada": "M-1005"
           },
           "B6": {
-            "entrada": "9,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Elisa Prado"
+          },
+          "C6": {
+            "entrada": "TI"
+          },
+          "D6": {
+            "entrada": "5100",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "M-1006"
+          },
+          "B7": {
+            "entrada": "Fábio Nunes"
+          },
+          "C7": {
+            "entrada": "Financeiro"
+          },
+          "D7": {
+            "entrada": "8500",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "M-1007"
+          },
+          "B8": {
+            "entrada": "Gabi Torres"
+          },
+          "C8": {
+            "entrada": "RH"
+          },
+          "D8": {
+            "entrada": "4600",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "M-1008"
+          },
+          "B9": {
+            "entrada": "Heitor Melo"
+          },
+          "C9": {
+            "entrada": "Financeiro"
+          },
+          "D9": {
+            "entrada": "3300",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "M-1009"
+          },
+          "B10": {
+            "entrada": "Íris Costa"
+          },
+          "C10": {
+            "entrada": "Logística"
+          },
+          "D10": {
+            "entrada": "7800",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "M-1010"
+          },
+          "B11": {
+            "entrada": "João Pires"
+          },
+          "C11": {
+            "entrada": "TI"
+          },
+          "D11": {
+            "entrada": "4800",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "M-1011"
+          },
+          "B12": {
+            "entrada": "Karen Souza"
+          },
+          "C12": {
+            "entrada": "Logística"
+          },
+          "D12": {
+            "entrada": "2900",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "M-1012"
+          },
+          "B13": {
+            "entrada": "Lucas Brito"
+          },
+          "C13": {
+            "entrada": "Logística"
+          },
+          "D13": {
+            "entrada": "3600",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "M-1013"
+          },
+          "B14": {
+            "entrada": "Marina Alves"
+          },
+          "C14": {
+            "entrada": "Financeiro"
+          },
+          "D14": {
+            "entrada": "3200",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "M-1014"
+          },
+          "B15": {
+            "entrada": "Nina Castro"
+          },
+          "C15": {
+            "entrada": "Vendas"
+          },
+          "D15": {
+            "entrada": "5800",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "M-1015"
+          },
+          "B16": {
+            "entrada": "Otávio Leal"
+          },
+          "C16": {
+            "entrada": "Logística"
+          },
+          "D16": {
+            "entrada": "3100",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "M-1016"
+          },
+          "B17": {
+            "entrada": "Paula Ramos"
+          },
+          "C17": {
+            "entrada": "TI"
+          },
+          "D17": {
+            "entrada": "6900",
+            "formato": "moeda"
+          },
+          "A18": {
+            "entrada": "M-1017"
+          },
+          "B18": {
+            "entrada": "Rafael Sá"
+          },
+          "C18": {
+            "entrada": "TI"
+          },
+          "D18": {
+            "entrada": "5300",
+            "formato": "moeda"
+          },
+          "A19": {
+            "entrada": "M-1018"
+          },
+          "B19": {
+            "entrada": "Sílvia Mota"
+          },
+          "C19": {
+            "entrada": "Logística"
+          },
+          "D19": {
+            "entrada": "5700",
+            "formato": "moeda"
+          },
+          "A20": {
+            "entrada": "M-1019"
+          },
+          "B20": {
+            "entrada": "Tiago Faria"
+          },
+          "C20": {
+            "entrada": "RH"
+          },
+          "D20": {
+            "entrada": "9100",
+            "formato": "moeda"
+          },
+          "A21": {
+            "entrada": "M-1020"
+          },
+          "B21": {
+            "entrada": "Vera Lopes"
+          },
+          "C21": {
+            "entrada": "Financeiro"
+          },
+          "D21": {
+            "entrada": "3800",
+            "formato": "moeda"
           }
         },
         "variaveis": [
-          "B2",
-          "B3",
-          "B4",
-          "B5",
-          "B6"
-        ]
+          "D2",
+          "D3",
+          "D4",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+          "D14",
+          "D15",
+          "D16",
+          "D17",
+          "D18",
+          "D19",
+          "D20",
+          "D21"
+        ],
+        "alternativas": {
+          "G1": [
+            "M-1015",
+            "M-9999"
+          ]
+        }
       },
       "alvos": [
         {
-          "celula": "C2",
-          "esperado": "Aprovado",
+          "celula": "G3",
+          "esperado": "Gabi Torres",
           "exigeFormula": true,
-          "solucaoReferencia": "=SE(B2>=7;\"Aprovado\";\"Reprovado\")"
+          "solucaoReferencia": "=PROCX(G1;A2:A21;B2:B21;\"Não encontrado\")"
         },
         {
-          "celula": "C3",
-          "esperado": "Reprovado",
+          "celula": "G4",
+          "esperado": "RH",
           "exigeFormula": true,
-          "solucaoReferencia": "=SE(B3>=7;\"Aprovado\";\"Reprovado\")"
+          "solucaoReferencia": "=PROCX(G1;A2:A21;C2:C21;\"Não encontrado\")"
         },
         {
-          "celula": "C4",
-          "esperado": "Aprovado",
+          "celula": "G5",
+          "esperado": 4600,
           "exigeFormula": true,
-          "solucaoReferencia": "=SE(B4>=7;\"Aprovado\";\"Reprovado\")"
-        },
-        {
-          "celula": "C5",
-          "esperado": "Reprovado",
-          "exigeFormula": true,
-          "solucaoReferencia": "=SE(B5>=7;\"Aprovado\";\"Reprovado\")"
-        },
-        {
-          "celula": "C6",
-          "esperado": "Aprovado",
-          "exigeFormula": true,
-          "solucaoReferencia": "=SE(B6>=7;\"Aprovado\";\"Reprovado\")"
+          "solucaoReferencia": "=PROCX(G1;A2:A21;D2:D21;\"Não encontrado\")",
+          "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")` testa a nota e devolve um dos dois textos. Escrita em C2 e copiada até C6, a referência B2 anda junto.",
-        "O detalhe que pega: é `>=`, não `>`. A Duda tirou exatamente 7 e está aprovada."
+        "`=PROCX(G1;A2:A21;B2:B21;\"Não encontrado\")`: procura G1 na coluna das matrículas e devolve o nome da mesma linha. O quarto argumento é o que aparece quando não acha.",
+        "Com PROCV também dá, envolvendo em SEERRO: `=SEERRO(PROCV(G1;A2:D21;2;FALSO);\"Não encontrado\")`.",
+        "Testamos sua fórmula com uma matrícula que não existe (M-9999): sem o tratamento, apareceria `#N/D`."
       ],
-      "tentativasAteExplicacao": 99,
-      "funcoesExigidas": [
-        "IF"
-      ]
+      "tentativasAteExplicacao": 99
     }
   },
   {
     "data": "2026-11-12",
+    "nivel": 3,
+    "caso": false,
     "exercicio": {
       "id": "f4bef01e-ad1e-5c5c-9d6a-5c982288ad83",
       "slug": "desafio-2026-11-12",
@@ -250,20 +827,21 @@
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Quantos pedidos já chegaram?",
+      "titulo": "Liste os pedidos de um status",
       "enunciado": [
-        "Uma loja acompanha o status dos pedidos da semana.",
-        "Em **E1**, conte quantos pedidos estão com o status \"Entregue\"."
+        "Em **F1** fica o status que o time de logística quer acompanhar.",
+        "Em **F2**, conte quantos pedidos têm esse status. Em **E5**, liste os números desses pedidos, um embaixo do outro, com **uma única fórmula**. As duas respostas precisam mudar quando F1 mudar."
       ],
       "grade": {
-        "linhas": 10,
-        "colunas": 6,
+        "linhas": 26,
+        "colunas": 7,
         "larguras": {
           "B": 120,
-          "D": 100
+          "C": 110,
+          "E": 110
         },
         "celulas": {
           "A1": {
@@ -271,84 +849,265 @@
             "negrito": true
           },
           "B1": {
+            "entrada": "Cliente",
+            "negrito": true
+          },
+          "C1": {
             "entrada": "Status",
             "negrito": true
           },
-          "D1": {
-            "entrada": "Entregues",
+          "E1": {
+            "entrada": "Status",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Atrasado"
+          },
+          "E2": {
+            "entrada": "Quantidade",
+            "negrito": true
+          },
+          "E4": {
+            "entrada": "Pedidos",
             "negrito": true
           },
           "A2": {
-            "entrada": "#1001"
+            "entrada": "#4001"
           },
           "B2": {
-            "entrada": "Entregue"
+            "entrada": "Super Mais"
           },
-          "A3": {
-            "entrada": "#1002"
-          },
-          "B3": {
+          "C2": {
             "entrada": "Em trânsito"
           },
+          "A3": {
+            "entrada": "#4002"
+          },
+          "B3": {
+            "entrada": "Vila Verde"
+          },
+          "C3": {
+            "entrada": "Entregue"
+          },
           "A4": {
-            "entrada": "#1003"
+            "entrada": "#4003"
           },
           "B4": {
+            "entrada": "Lar Feliz"
+          },
+          "C4": {
             "entrada": "Entregue"
           },
           "A5": {
-            "entrada": "#1004"
+            "entrada": "#4004"
           },
           "B5": {
+            "entrada": "Vila Verde"
+          },
+          "C5": {
             "entrada": "Atrasado"
           },
           "A6": {
-            "entrada": "#1005"
+            "entrada": "#4005"
           },
           "B6": {
-            "entrada": "Entregue"
+            "entrada": "Bom Preço"
+          },
+          "C6": {
+            "entrada": "Atrasado"
           },
           "A7": {
-            "entrada": "#1006"
+            "entrada": "#4006"
           },
           "B7": {
-            "entrada": "Em trânsito"
+            "entrada": "Ponto Certo"
           },
-          "A8": {
-            "entrada": "#1007"
-          },
-          "B8": {
+          "C7": {
             "entrada": "Entregue"
           },
+          "A8": {
+            "entrada": "#4007"
+          },
+          "B8": {
+            "entrada": "Casa Bela"
+          },
+          "C8": {
+            "entrada": "Atrasado"
+          },
           "A9": {
-            "entrada": "#1008"
+            "entrada": "#4008"
           },
           "B9": {
+            "entrada": "Vila Verde"
+          },
+          "C9": {
+            "entrada": "Entregue"
+          },
+          "A10": {
+            "entrada": "#4009"
+          },
+          "B10": {
+            "entrada": "Vila Verde"
+          },
+          "C10": {
+            "entrada": "Entregue"
+          },
+          "A11": {
+            "entrada": "#4010"
+          },
+          "B11": {
+            "entrada": "Loja Sol"
+          },
+          "C11": {
+            "entrada": "Entregue"
+          },
+          "A12": {
+            "entrada": "#4011"
+          },
+          "B12": {
+            "entrada": "Mercado Azul"
+          },
+          "C12": {
+            "entrada": "Em trânsito"
+          },
+          "A13": {
+            "entrada": "#4012"
+          },
+          "B13": {
+            "entrada": "Lar Feliz"
+          },
+          "C13": {
+            "entrada": "Entregue"
+          },
+          "A14": {
+            "entrada": "#4013"
+          },
+          "B14": {
+            "entrada": "Loja Sol"
+          },
+          "C14": {
+            "entrada": "Entregue"
+          },
+          "A15": {
+            "entrada": "#4014"
+          },
+          "B15": {
+            "entrada": "Ponto Certo"
+          },
+          "C15": {
+            "entrada": "Entregue"
+          },
+          "A16": {
+            "entrada": "#4015"
+          },
+          "B16": {
+            "entrada": "Lar Feliz"
+          },
+          "C16": {
+            "entrada": "Atrasado"
+          },
+          "A17": {
+            "entrada": "#4016"
+          },
+          "B17": {
+            "entrada": "Mercado Azul"
+          },
+          "C17": {
+            "entrada": "Atrasado"
+          },
+          "A18": {
+            "entrada": "#4017"
+          },
+          "B18": {
+            "entrada": "Casa Bela"
+          },
+          "C18": {
+            "entrada": "Em trânsito"
+          },
+          "A19": {
+            "entrada": "#4018"
+          },
+          "B19": {
+            "entrada": "Casa Bela"
+          },
+          "C19": {
+            "entrada": "Entregue"
+          },
+          "A20": {
+            "entrada": "#4019"
+          },
+          "B20": {
+            "entrada": "Casa Bela"
+          },
+          "C20": {
+            "entrada": "Entregue"
+          },
+          "A21": {
+            "entrada": "#4020"
+          },
+          "B21": {
+            "entrada": "Lar Feliz"
+          },
+          "C21": {
             "entrada": "Atrasado"
           }
+        },
+        "alternativas": {
+          "F1": [
+            "Em trânsito",
+            "Entregue"
+          ]
         }
       },
       "alvos": [
         {
-          "celula": "E1",
-          "esperado": 4,
+          "celula": "F2",
+          "esperado": 6,
           "exigeFormula": true,
-          "solucaoReferencia": "=CONT.SE(B2:B9;\"Entregue\")"
+          "solucaoReferencia": "=CONT.SE(C2:C21;F1)"
+        },
+        {
+          "celula": "E5",
+          "esperado": [
+            [
+              "#4004"
+            ],
+            [
+              "#4005"
+            ],
+            [
+              "#4007"
+            ],
+            [
+              "#4015"
+            ],
+            [
+              "#4016"
+            ],
+            [
+              "#4020"
+            ]
+          ],
+          "exigeFormula": true,
+          "solucaoReferencia": "=FILTRO(A2:A21;C2:C21=F1)"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=CONT.SE(B2:B9;\"Entregue\")` conta as células do intervalo iguais a \"Entregue\": 4 pedidos.",
-        "O critério vai entre aspas. A comparação ignora maiúsculas, então \"entregue\" também funcionaria."
+        "`=FILTRO(A2:A21;C2:C21=F1)` devolve todos os pedidos cujo status é igual a F1. O resultado **derrama** para as células de baixo: uma fórmula só, quantas linhas forem necessárias.",
+        "`C2:C21=F1` compara cada status com F1 e gera uma lista de VERDADEIRO/FALSO; o FILTRO mantém as linhas VERDADEIRO.",
+        "Se houver algo escrito no caminho do resultado, aparece `#DESPEJAR!`. E para contar: `=CONT.SE(C2:C21;F1)`."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
-        "COUNTIF"
+        "FILTER"
       ]
     }
   },
   {
     "data": "2026-11-13",
+    "nivel": 3,
+    "caso": false,
     "exercicio": {
       "id": "18a8f6b1-0a43-5b5b-bc8b-f6ebc4855dd2",
       "slug": "desafio-2026-11-13",
@@ -356,134 +1115,248 @@
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Black Friday: preço com desconto",
+      "titulo": "Tabela de frete: cruze origem e destino",
       "enunciado": [
-        "Todos os produtos terão o desconto que está em **F1**.",
-        "Em **C2:C6**, calcule o preço com desconto. A fórmula precisa continuar certa se o desconto em F1 mudar."
+        "A tabela mostra o frete por kg entre estados: a origem nas linhas, o destino nas colunas.",
+        "Em **I4**, mostre o frete para a origem de **I1** e o destino de **I2**. A fórmula precisa funcionar para qualquer par de estados escolhido."
       ],
       "grade": {
         "linhas": 8,
-        "colunas": 7,
+        "colunas": 10,
         "larguras": {
-          "C": 130,
-          "E": 100
+          "A": 130,
+          "H": 100
         },
         "celulas": {
           "A1": {
-            "entrada": "Produto",
+            "entrada": "Origem \\ Destino",
+            "negrito": true
+          },
+          "H1": {
+            "entrada": "Origem",
+            "negrito": true
+          },
+          "I1": {
+            "entrada": "PR"
+          },
+          "H2": {
+            "entrada": "Destino",
+            "negrito": true
+          },
+          "I2": {
+            "entrada": "BA"
+          },
+          "H4": {
+            "entrada": "Frete (kg)",
             "negrito": true
           },
           "B1": {
-            "entrada": "Preço",
+            "entrada": "SP",
             "negrito": true
           },
           "C1": {
-            "entrada": "Com desconto",
+            "entrada": "RJ",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "MG",
             "negrito": true
           },
           "E1": {
-            "entrada": "Desconto",
+            "entrada": "PR",
             "negrito": true
           },
           "F1": {
-            "entrada": "15%"
+            "entrada": "BA",
+            "negrito": true
           },
           "A2": {
-            "entrada": "Fone"
+            "entrada": "SP",
+            "negrito": true
           },
           "B2": {
-            "entrada": "249,9",
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "C2": {
+            "entrada": "51,5",
+            "formato": "moeda"
+          },
+          "D2": {
+            "entrada": "41,9",
+            "formato": "moeda"
+          },
+          "E2": {
+            "entrada": "47,9",
+            "formato": "moeda"
+          },
+          "F2": {
+            "entrada": "36",
             "formato": "moeda"
           },
           "A3": {
-            "entrada": "Mouse"
+            "entrada": "RJ",
+            "negrito": true
           },
           "B3": {
-            "entrada": "89,9",
+            "entrada": "41",
+            "formato": "moeda"
+          },
+          "C3": {
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "D3": {
+            "entrada": "27,9",
+            "formato": "moeda"
+          },
+          "E3": {
+            "entrada": "45,9",
+            "formato": "moeda"
+          },
+          "F3": {
+            "entrada": "55",
             "formato": "moeda"
           },
           "A4": {
-            "entrada": "Teclado"
+            "entrada": "MG",
+            "negrito": true
           },
           "B4": {
-            "entrada": "199",
+            "entrada": "73",
+            "formato": "moeda"
+          },
+          "C4": {
+            "entrada": "95",
+            "formato": "moeda"
+          },
+          "D4": {
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "E4": {
+            "entrada": "53",
+            "formato": "moeda"
+          },
+          "F4": {
+            "entrada": "28,5",
             "formato": "moeda"
           },
           "A5": {
-            "entrada": "Monitor"
+            "entrada": "PR",
+            "negrito": true
           },
           "B5": {
-            "entrada": "1299",
+            "entrada": "75,9",
+            "formato": "moeda"
+          },
+          "C5": {
+            "entrada": "73",
+            "formato": "moeda"
+          },
+          "D5": {
+            "entrada": "50,5",
+            "formato": "moeda"
+          },
+          "E5": {
+            "entrada": "0",
+            "formato": "moeda"
+          },
+          "F5": {
+            "entrada": "47,5",
             "formato": "moeda"
           },
           "A6": {
-            "entrada": "Webcam"
+            "entrada": "BA",
+            "negrito": true
           },
           "B6": {
-            "entrada": "179,5",
+            "entrada": "88,9",
+            "formato": "moeda"
+          },
+          "C6": {
+            "entrada": "72,9",
+            "formato": "moeda"
+          },
+          "D6": {
+            "entrada": "64,5",
+            "formato": "moeda"
+          },
+          "E6": {
+            "entrada": "58,9",
+            "formato": "moeda"
+          },
+          "F6": {
+            "entrada": "0",
             "formato": "moeda"
           }
         },
         "variaveis": [
           "B2",
+          "C2",
+          "D2",
+          "E2",
+          "F2",
           "B3",
+          "C3",
+          "D3",
+          "E3",
+          "F3",
           "B4",
+          "C4",
+          "D4",
+          "E4",
+          "F4",
           "B5",
+          "C5",
+          "D5",
+          "E5",
+          "F5",
           "B6",
-          "F1"
-        ]
+          "C6",
+          "D6",
+          "E6",
+          "F6"
+        ],
+        "alternativas": {
+          "I1": [
+            "SP",
+            "MG"
+          ],
+          "I2": [
+            "RJ",
+            "SP"
+          ]
+        }
       },
       "alvos": [
         {
-          "celula": "C2",
-          "esperado": 212.415,
+          "celula": "I4",
+          "esperado": 47.5,
           "exigeFormula": true,
-          "solucaoReferencia": "=B2*(1-$F$1)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "C3",
-          "esperado": 76.415,
-          "exigeFormula": true,
-          "solucaoReferencia": "=B3*(1-$F$1)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "C4",
-          "esperado": 169.15,
-          "exigeFormula": true,
-          "solucaoReferencia": "=B4*(1-$F$1)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "C5",
-          "esperado": 1104.15,
-          "exigeFormula": true,
-          "solucaoReferencia": "=B5*(1-$F$1)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "C6",
-          "esperado": 152.575,
-          "exigeFormula": true,
-          "solucaoReferencia": "=B6*(1-$F$1)",
+          "solucaoReferencia": "=ÍNDICE(B2:F6;CORRESP(I1;A2:A6;0);CORRESP(I2;B1:F1;0))",
           "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=B2*(1-$F$1)`: se o desconto é 15%, o cliente paga 85% do preço, ou seja, o preço vezes (1 − 15%).",
-        "O `$F$1` trava a referência ao desconto: ao copiar a fórmula para baixo, B2 vira B3, B4…, mas o desconto continua vindo de F1.",
-        "Outra forma certa: `=B2-B2*$F$1`."
+        "`=ÍNDICE(B2:F6;CORRESP(I1;A2:A6;0);CORRESP(I2;B1:F1;0))`: o primeiro CORRESP acha a **linha** da origem, o segundo acha a **coluna** do destino, e o ÍNDICE pega o valor no cruzamento.",
+        "É a busca em duas direções que o PROCV sozinho não faz. Com PROCX aninhado também dá: `=PROCX(I2;B1:F1;PROCX(I1;A2:A6;B2:F6))`."
       ],
-      "tentativasAteExplicacao": 99
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "INDEX",
+        "MATCH"
+      ]
     }
   },
   {
     "data": "2026-11-14",
+    "nivel": 3,
+    "caso": true,
     "exercicio": {
       "id": "7f98447c-ec73-5304-b56f-dcf8d6016e72",
       "slug": "desafio-2026-11-14",
@@ -491,20 +1364,24 @@
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Quanto a Ana vendeu?",
+      "titulo": "Caso real: fechamento de comissões",
       "enunciado": [
-        "Cada linha é uma venda da semana.",
-        "Em **E1**, calcule o total vendido pela Ana."
+        "É dia de pagar comissão. A coluna A tem as 40 vendas do mês de cada vendedor.",
+        "1) Em **E2:E6**, calcule o total vendido por vendedor.",
+        "2) Em **F2:F6**, calcule a comissão: **3%** para quem vendeu até R$ 20.000, **5%** até R$ 40.000 e **7%** acima disso (a taxa vale sobre o total).",
+        "3) Em **F8**, some todas as comissões."
       ],
       "grade": {
-        "linhas": 11,
-        "colunas": 6,
+        "linhas": 43,
+        "colunas": 7,
         "larguras": {
+          "B": 110,
           "D": 120,
-          "E": 120
+          "E": 120,
+          "F": 120
         },
         "celulas": {
           "A1": {
@@ -516,64 +1393,315 @@
             "negrito": true
           },
           "D1": {
-            "entrada": "Total da Ana",
+            "entrada": "Vendedor",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Total",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Comissão",
+            "negrito": true
+          },
+          "D8": {
+            "entrada": "Total de comissões",
             "negrito": true
           },
           "A2": {
-            "entrada": "Ana"
+            "entrada": "Bruno"
           },
           "B2": {
-            "entrada": "1200",
+            "entrada": "3890",
             "formato": "moeda"
           },
           "A3": {
-            "entrada": "Bruno"
+            "entrada": "Carla"
           },
           "B3": {
-            "entrada": "800",
+            "entrada": "6030",
             "formato": "moeda"
           },
           "A4": {
             "entrada": "Ana"
           },
           "B4": {
-            "entrada": "450",
+            "entrada": "1850",
             "formato": "moeda"
           },
           "A5": {
             "entrada": "Carla"
           },
           "B5": {
-            "entrada": "1300",
+            "entrada": "4640",
             "formato": "moeda"
           },
           "A6": {
-            "entrada": "Bruno"
+            "entrada": "Carla"
           },
           "B6": {
-            "entrada": "600",
+            "entrada": "4640",
             "formato": "moeda"
           },
           "A7": {
-            "entrada": "Ana"
+            "entrada": "Diego"
           },
           "B7": {
-            "entrada": "980",
+            "entrada": "7610",
             "formato": "moeda"
           },
           "A8": {
-            "entrada": "Carla"
+            "entrada": "Bruno"
           },
           "B8": {
-            "entrada": "210",
+            "entrada": "1830",
             "formato": "moeda"
           },
           "A9": {
-            "entrada": "Ana"
+            "entrada": "Bruno"
           },
           "B9": {
-            "entrada": "330",
+            "entrada": "3440",
             "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "Elisa"
+          },
+          "B10": {
+            "entrada": "6750",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "Bruno"
+          },
+          "B11": {
+            "entrada": "3890",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "Bruno"
+          },
+          "B12": {
+            "entrada": "2980",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "Ana"
+          },
+          "B13": {
+            "entrada": "2160",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "Elisa"
+          },
+          "B14": {
+            "entrada": "6130",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "Elisa"
+          },
+          "B15": {
+            "entrada": "4900",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "Diego"
+          },
+          "B16": {
+            "entrada": "3550",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "Diego"
+          },
+          "B17": {
+            "entrada": "4060",
+            "formato": "moeda"
+          },
+          "A18": {
+            "entrada": "Bruno"
+          },
+          "B18": {
+            "entrada": "3670",
+            "formato": "moeda"
+          },
+          "A19": {
+            "entrada": "Carla"
+          },
+          "B19": {
+            "entrada": "2320",
+            "formato": "moeda"
+          },
+          "A20": {
+            "entrada": "Diego"
+          },
+          "B20": {
+            "entrada": "5580",
+            "formato": "moeda"
+          },
+          "A21": {
+            "entrada": "Elisa"
+          },
+          "B21": {
+            "entrada": "9810",
+            "formato": "moeda"
+          },
+          "A22": {
+            "entrada": "Elisa"
+          },
+          "B22": {
+            "entrada": "4900",
+            "formato": "moeda"
+          },
+          "A23": {
+            "entrada": "Diego"
+          },
+          "B23": {
+            "entrada": "8630",
+            "formato": "moeda"
+          },
+          "A24": {
+            "entrada": "Elisa"
+          },
+          "B24": {
+            "entrada": "4900",
+            "formato": "moeda"
+          },
+          "A25": {
+            "entrada": "Carla"
+          },
+          "B25": {
+            "entrada": "3250",
+            "formato": "moeda"
+          },
+          "A26": {
+            "entrada": "Ana"
+          },
+          "B26": {
+            "entrada": "1080",
+            "formato": "moeda"
+          },
+          "A27": {
+            "entrada": "Ana"
+          },
+          "B27": {
+            "entrada": "1230",
+            "formato": "moeda"
+          },
+          "A28": {
+            "entrada": "Ana"
+          },
+          "B28": {
+            "entrada": "2000",
+            "formato": "moeda"
+          },
+          "A29": {
+            "entrada": "Elisa"
+          },
+          "B29": {
+            "entrada": "12260",
+            "formato": "moeda"
+          },
+          "A30": {
+            "entrada": "Bruno"
+          },
+          "B30": {
+            "entrada": "4350",
+            "formato": "moeda"
+          },
+          "A31": {
+            "entrada": "Ana"
+          },
+          "B31": {
+            "entrada": "2000",
+            "formato": "moeda"
+          },
+          "A32": {
+            "entrada": "Diego"
+          },
+          "B32": {
+            "entrada": "2540",
+            "formato": "moeda"
+          },
+          "A33": {
+            "entrada": "Ana"
+          },
+          "B33": {
+            "entrada": "2150",
+            "formato": "moeda"
+          },
+          "A34": {
+            "entrada": "Ana"
+          },
+          "B34": {
+            "entrada": "2930",
+            "formato": "moeda"
+          },
+          "A35": {
+            "entrada": "Carla"
+          },
+          "B35": {
+            "entrada": "6030",
+            "formato": "moeda"
+          },
+          "A36": {
+            "entrada": "Elisa"
+          },
+          "B36": {
+            "entrada": "11650",
+            "formato": "moeda"
+          },
+          "A37": {
+            "entrada": "Carla"
+          },
+          "B37": {
+            "entrada": "4170",
+            "formato": "moeda"
+          },
+          "A38": {
+            "entrada": "Diego"
+          },
+          "B38": {
+            "entrada": "8630",
+            "formato": "moeda"
+          },
+          "A39": {
+            "entrada": "Bruno"
+          },
+          "B39": {
+            "entrada": "2750",
+            "formato": "moeda"
+          },
+          "A40": {
+            "entrada": "Diego"
+          },
+          "B40": {
+            "entrada": "6600",
+            "formato": "moeda"
+          },
+          "A41": {
+            "entrada": "Carla"
+          },
+          "B41": {
+            "entrada": "7420",
+            "formato": "moeda"
+          },
+          "D2": {
+            "entrada": "Ana"
+          },
+          "D3": {
+            "entrada": "Bruno"
+          },
+          "D4": {
+            "entrada": "Carla"
+          },
+          "D5": {
+            "entrada": "Diego"
+          },
+          "D6": {
+            "entrada": "Elisa"
           }
         },
         "variaveis": [
@@ -584,31 +1712,134 @@
           "B6",
           "B7",
           "B8",
-          "B9"
+          "B9",
+          "B10",
+          "B11",
+          "B12",
+          "B13",
+          "B14",
+          "B15",
+          "B16",
+          "B17",
+          "B18",
+          "B19",
+          "B20",
+          "B21",
+          "B22",
+          "B23",
+          "B24",
+          "B25",
+          "B26",
+          "B27",
+          "B28",
+          "B29",
+          "B30",
+          "B31",
+          "B32",
+          "B33",
+          "B34",
+          "B35",
+          "B36",
+          "B37",
+          "B38",
+          "B39",
+          "B40",
+          "B41"
         ]
       },
       "alvos": [
         {
-          "celula": "E1",
-          "esperado": 2960,
+          "celula": "E2",
+          "esperado": 15400,
           "exigeFormula": true,
-          "solucaoReferencia": "=SOMASE(A2:A9;\"Ana\";B2:B9)",
+          "solucaoReferencia": "=SOMASE($A$2:$A$41;D2;$B$2:$B$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E3",
+          "esperado": 26800,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($A$2:$A$41;D3;$B$2:$B$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E4",
+          "esperado": 38500,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($A$2:$A$41;D4;$B$2:$B$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E5",
+          "esperado": 47200,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($A$2:$A$41;D5;$B$2:$B$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E6",
+          "esperado": 61300,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($A$2:$A$41;D6;$B$2:$B$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F2",
+          "esperado": 462.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E2*SES(E2<=20000;3%;E2<=40000;5%;VERDADEIRO;7%)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F3",
+          "esperado": 1340.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E3*SES(E3<=20000;3%;E3<=40000;5%;VERDADEIRO;7%)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F4",
+          "esperado": 1925.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E4*SES(E4<=20000;3%;E4<=40000;5%;VERDADEIRO;7%)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F5",
+          "esperado": 3304.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E5*SES(E5<=20000;3%;E5<=40000;5%;VERDADEIRO;7%)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F6",
+          "esperado": 4291.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E6*SES(E6<=20000;3%;E6<=40000;5%;VERDADEIRO;7%)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F8",
+          "esperado": 11322.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMA(F2:F6)",
           "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=SOMASE(A2:A9;\"Ana\";B2:B9)`: procura \"Ana\" em A2:A9 e soma os valores correspondentes de B2:B9. Total: R$ 2.960,00.",
-        "Ordem dos argumentos: onde procurar, o que procurar, o que somar."
+        "**Etapa 1:** `=SOMASE($A$2:$A$41;D2;$B$2:$B$41)`. Os `$` travam a base de vendas para a fórmula poder ser copiada até E6; D2 fica livre para virar D3, D4…",
+        "**Etapa 2:** `=E2*SES(E2<=20000;3%;E2<=40000;5%;VERDADEIRO;7%)`. O SES escolhe a taxa pela faixa; a ordem das condições importa (da menor faixa para a maior).",
+        "**Etapa 3:** `=SOMA(F2:F6)`.",
+        "Num caso real, as faixas ficariam numa tabelinha separada e a taxa viria de um `PROCV(E2;Faixas;2;VERDADEIRO)`: mudar a política não exigiria mexer na fórmula."
       ],
-      "tentativasAteExplicacao": 99,
-      "funcoesExigidas": [
-        "SUMIF"
-      ]
+      "tentativasAteExplicacao": 99
     }
   },
   {
     "data": "2026-11-15",
+    "nivel": 3,
+    "caso": true,
     "exercicio": {
       "id": "b114eef7-b2ec-5673-8b01-0383ff9c0423",
       "slug": "desafio-2026-11-15",
@@ -616,21 +1847,23 @@
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Qual é o produto mais caro?",
+      "titulo": "Caso real: o que precisa de reposição?",
       "enunciado": [
-        "Em **E1**, mostre o **nome** do produto mais caro da lista (não o preço).",
-        "Bônus de verdade: a fórmula deve continuar certa se os preços mudarem."
+        "Um mercadinho controla 30 produtos. Quando o estoque fica **abaixo do mínimo**, é hora de repor.",
+        "1) Em **D2:D31**, escreva \"Repor\" ou \"OK\".",
+        "2) Em **G1**, conte quantos itens precisam de reposição.",
+        "3) Em **F4**, monte a lista de compras: os nomes dos produtos a repor, com uma única fórmula."
       ],
       "grade": {
-        "linhas": 8,
-        "colunas": 6,
+        "linhas": 34,
+        "colunas": 8,
         "larguras": {
-          "A": 110,
+          "A": 120,
           "D": 100,
-          "E": 110
+          "F": 140
         },
         "celulas": {
           "A1": {
@@ -638,54 +1871,294 @@
             "negrito": true
           },
           "B1": {
-            "entrada": "Preço",
+            "entrada": "Estoque",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Mínimo",
             "negrito": true
           },
           "D1": {
-            "entrada": "Mais caro",
+            "entrada": "Situação",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Itens a repor",
+            "negrito": true
+          },
+          "F3": {
+            "entrada": "Lista de compras",
             "negrito": true
           },
           "A2": {
-            "entrada": "Notebook"
+            "entrada": "Arroz"
           },
           "B2": {
-            "entrada": "3899",
-            "formato": "moeda"
+            "entrada": "0"
+          },
+          "C2": {
+            "entrada": "30"
           },
           "A3": {
-            "entrada": "Celular"
+            "entrada": "Feijão"
           },
           "B3": {
-            "entrada": "2499",
-            "formato": "moeda"
+            "entrada": "29"
+          },
+          "C3": {
+            "entrada": "30"
           },
           "A4": {
-            "entrada": "TV 50\""
+            "entrada": "Açúcar"
           },
           "B4": {
-            "entrada": "4199",
-            "formato": "moeda"
+            "entrada": "4"
+          },
+          "C4": {
+            "entrada": "20"
           },
           "A5": {
-            "entrada": "Fone"
+            "entrada": "Café"
           },
           "B5": {
-            "entrada": "399",
-            "formato": "moeda"
+            "entrada": "50"
+          },
+          "C5": {
+            "entrada": "20"
           },
           "A6": {
-            "entrada": "Tablet"
+            "entrada": "Leite"
           },
           "B6": {
-            "entrada": "1899",
-            "formato": "moeda"
+            "entrada": "74"
+          },
+          "C6": {
+            "entrada": "40"
           },
           "A7": {
-            "entrada": "Console"
+            "entrada": "Óleo"
           },
           "B7": {
-            "entrada": "3799",
-            "formato": "moeda"
+            "entrada": "29"
+          },
+          "C7": {
+            "entrada": "30"
+          },
+          "A8": {
+            "entrada": "Farinha"
+          },
+          "B8": {
+            "entrada": "45"
+          },
+          "C8": {
+            "entrada": "80"
+          },
+          "A9": {
+            "entrada": "Macarrão"
+          },
+          "B9": {
+            "entrada": "32"
+          },
+          "C9": {
+            "entrada": "40"
+          },
+          "A10": {
+            "entrada": "Sal"
+          },
+          "B10": {
+            "entrada": "168"
+          },
+          "C10": {
+            "entrada": "60"
+          },
+          "A11": {
+            "entrada": "Molho"
+          },
+          "B11": {
+            "entrada": "110"
+          },
+          "C11": {
+            "entrada": "50"
+          },
+          "A12": {
+            "entrada": "Biscoito"
+          },
+          "B12": {
+            "entrada": "91"
+          },
+          "C12": {
+            "entrada": "50"
+          },
+          "A13": {
+            "entrada": "Sabão"
+          },
+          "B13": {
+            "entrada": "59"
+          },
+          "C13": {
+            "entrada": "50"
+          },
+          "A14": {
+            "entrada": "Detergente"
+          },
+          "B14": {
+            "entrada": "2"
+          },
+          "C14": {
+            "entrada": "80"
+          },
+          "A15": {
+            "entrada": "Papel"
+          },
+          "B15": {
+            "entrada": "11"
+          },
+          "C15": {
+            "entrada": "60"
+          },
+          "A16": {
+            "entrada": "Shampoo"
+          },
+          "B16": {
+            "entrada": "33"
+          },
+          "C16": {
+            "entrada": "40"
+          },
+          "A17": {
+            "entrada": "Sabonete"
+          },
+          "B17": {
+            "entrada": "110"
+          },
+          "C17": {
+            "entrada": "80"
+          },
+          "A18": {
+            "entrada": "Creme dental"
+          },
+          "B18": {
+            "entrada": "50"
+          },
+          "C18": {
+            "entrada": "20"
+          },
+          "A19": {
+            "entrada": "Esponja"
+          },
+          "B19": {
+            "entrada": "32"
+          },
+          "C19": {
+            "entrada": "50"
+          },
+          "A20": {
+            "entrada": "Vinagre"
+          },
+          "B20": {
+            "entrada": "32"
+          },
+          "C20": {
+            "entrada": "60"
+          },
+          "A21": {
+            "entrada": "Azeite"
+          },
+          "B21": {
+            "entrada": "9"
+          },
+          "C21": {
+            "entrada": "30"
+          },
+          "A22": {
+            "entrada": "Fubá"
+          },
+          "B22": {
+            "entrada": "180"
+          },
+          "C22": {
+            "entrada": "80"
+          },
+          "A23": {
+            "entrada": "Aveia"
+          },
+          "B23": {
+            "entrada": "50"
+          },
+          "C23": {
+            "entrada": "40"
+          },
+          "A24": {
+            "entrada": "Granola"
+          },
+          "B24": {
+            "entrada": "65"
+          },
+          "C24": {
+            "entrada": "50"
+          },
+          "A25": {
+            "entrada": "Chá"
+          },
+          "B25": {
+            "entrada": "52"
+          },
+          "C25": {
+            "entrada": "50"
+          },
+          "A26": {
+            "entrada": "Achocolatado"
+          },
+          "B26": {
+            "entrada": "11"
+          },
+          "C26": {
+            "entrada": "70"
+          },
+          "A27": {
+            "entrada": "Manteiga"
+          },
+          "B27": {
+            "entrada": "24"
+          },
+          "C27": {
+            "entrada": "20"
+          },
+          "A28": {
+            "entrada": "Queijo"
+          },
+          "B28": {
+            "entrada": "62"
+          },
+          "C28": {
+            "entrada": "30"
+          },
+          "A29": {
+            "entrada": "Iogurte"
+          },
+          "B29": {
+            "entrada": "63"
+          },
+          "C29": {
+            "entrada": "80"
+          },
+          "A30": {
+            "entrada": "Pão"
+          },
+          "B30": {
+            "entrada": "123"
+          },
+          "C30": {
+            "entrada": "50"
+          },
+          "A31": {
+            "entrada": "Ovos"
+          },
+          "B31": {
+            "entrada": "79"
+          },
+          "C31": {
+            "entrada": "30"
           }
         },
         "variaveis": [
@@ -694,30 +2167,286 @@
           "B4",
           "B5",
           "B6",
-          "B7"
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B11",
+          "B12",
+          "B13",
+          "B14",
+          "B15",
+          "B16",
+          "B17",
+          "B18",
+          "B19",
+          "B20",
+          "B21",
+          "B22",
+          "B23",
+          "B24",
+          "B25",
+          "B26",
+          "B27",
+          "B28",
+          "B29",
+          "B30",
+          "B31"
         ]
       },
       "alvos": [
         {
-          "celula": "E1",
-          "esperado": "TV 50\"",
+          "celula": "D2",
+          "esperado": "Repor",
           "exigeFormula": true,
-          "solucaoReferencia": "=ÍNDICE(A2:A7;CORRESP(MÁXIMO(B2:B7);B2:B7;0))"
+          "solucaoReferencia": "=SE(B2<C2;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D3",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B3<C3;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D4",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B4<C4;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D5",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B5<C5;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D6",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B6<C6;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D7",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B7<C7;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D8",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B8<C8;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D9",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B9<C9;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D10",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B10<C10;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D11",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B11<C11;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D12",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B12<C12;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D13",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B13<C13;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D14",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B14<C14;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D15",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B15<C15;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D16",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B16<C16;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D17",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B17<C17;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D18",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B18<C18;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D19",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B19<C19;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D20",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B20<C20;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D21",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B21<C21;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D22",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B22<C22;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D23",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B23<C23;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D24",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B24<C24;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D25",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B25<C25;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D26",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B26<C26;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D27",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B27<C27;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D28",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B28<C28;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D29",
+          "esperado": "Repor",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B29<C29;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D30",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B30<C30;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "D31",
+          "esperado": "OK",
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B31<C31;\"Repor\";\"OK\")"
+        },
+        {
+          "celula": "G1",
+          "esperado": 14,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE(D2:D31;\"Repor\")"
+        },
+        {
+          "celula": "F4",
+          "esperado": [
+            [
+              "Arroz"
+            ],
+            [
+              "Feijão"
+            ],
+            [
+              "Açúcar"
+            ],
+            [
+              "Óleo"
+            ],
+            [
+              "Farinha"
+            ],
+            [
+              "Macarrão"
+            ],
+            [
+              "Detergente"
+            ],
+            [
+              "Papel"
+            ],
+            [
+              "Shampoo"
+            ],
+            [
+              "Esponja"
+            ],
+            [
+              "Vinagre"
+            ],
+            [
+              "Azeite"
+            ],
+            [
+              "Achocolatado"
+            ],
+            [
+              "Iogurte"
+            ]
+          ],
+          "exigeFormula": true,
+          "solucaoReferencia": "=FILTRO(A2:A31;D2:D31=\"Repor\")"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=ÍNDICE(A2:A7;CORRESP(MÁXIMO(B2:B7);B2:B7;0))` resolve em três passos: `MÁXIMO` acha o maior preço, `CORRESP` descobre em que posição ele está, e `ÍNDICE` pega o nome nessa mesma posição.",
-        "Com o PROCX também dá: `=PROCX(MÁXIMO(B2:B7);B2:B7;A2:A7)`."
+        "**Etapa 1:** `=SE(B2<C2;\"Repor\";\"OK\")`, copiada até D31. Uma coluna auxiliar como essa deixa as próximas etapas simples.",
+        "**Etapa 2:** `=CONT.SE(D2:D31;\"Repor\")`.",
+        "**Etapa 3:** `=FILTRO(A2:A31;D2:D31=\"Repor\")` lista os produtos e derrama para baixo. Também daria para pular a coluna auxiliar: `=FILTRO(A2:A31;B2:B31<C2:C31)`."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
-        "MAX"
+        "FILTER"
       ]
     }
   },
   {
     "data": "2026-11-16",
+    "nivel": 1,
+    "caso": false,
     "exercicio": {
       "id": "85d76647-174b-59b0-bad8-84cc3c153d2f",
       "slug": "desafio-2026-11-16",
@@ -725,137 +2454,282 @@
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 1,
       "plano": "free",
       "versao": 1,
-      "titulo": "Busque o preço pelo código",
+      "titulo": "Quem ganha o bônus?",
       "enunciado": [
-        "O caixa digitou o código **P-104** em E2.",
-        "Em **F2**, busque o preço desse produto na tabela, usando o código de E2."
+        "O bônus de **R$ 500** vai para quem **bateu a meta** e teve **nota do cliente de 4,5 ou mais**. Quem não cumpre as duas condições recebe 0.",
+        "Calcule o bônus de cada vendedor em **E2:E9**."
       ],
       "grade": {
-        "linhas": 9,
-        "colunas": 7,
+        "linhas": 11,
+        "colunas": 6,
         "larguras": {
-          "B": 110
+          "B": 110,
+          "C": 110,
+          "D": 120
         },
         "celulas": {
           "A1": {
-            "entrada": "Código",
+            "entrada": "Vendedor",
             "negrito": true
           },
           "B1": {
-            "entrada": "Produto",
+            "entrada": "Vendas",
             "negrito": true
           },
           "C1": {
-            "entrada": "Preço",
+            "entrada": "Meta",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Nota do cliente",
             "negrito": true
           },
           "E1": {
-            "entrada": "Código",
+            "entrada": "Bônus",
             "negrito": true
-          },
-          "F1": {
-            "entrada": "Preço",
-            "negrito": true
-          },
-          "E2": {
-            "entrada": "P-104"
           },
           "A2": {
-            "entrada": "P-101"
+            "entrada": "Ana"
           },
           "B2": {
-            "entrada": "Caneta azul"
+            "entrada": "39000",
+            "formato": "moeda"
           },
           "C2": {
-            "entrada": "3,5",
+            "entrada": "31000",
             "formato": "moeda"
+          },
+          "D2": {
+            "entrada": "4,5",
+            "formato": {
+              "casas": 1
+            }
           },
           "A3": {
-            "entrada": "P-102"
+            "entrada": "Bruno"
           },
           "B3": {
-            "entrada": "Caderno"
+            "entrada": "25000",
+            "formato": "moeda"
           },
           "C3": {
-            "entrada": "24,9",
+            "entrada": "33000",
             "formato": "moeda"
+          },
+          "D3": {
+            "entrada": "4,1",
+            "formato": {
+              "casas": 1
+            }
           },
           "A4": {
-            "entrada": "P-103"
+            "entrada": "Carla"
           },
           "B4": {
-            "entrada": "Mochila"
+            "entrada": "37000",
+            "formato": "moeda"
           },
           "C4": {
-            "entrada": "189",
+            "entrada": "33000",
             "formato": "moeda"
+          },
+          "D4": {
+            "entrada": "3,8",
+            "formato": {
+              "casas": 1
+            }
           },
           "A5": {
-            "entrada": "P-104"
+            "entrada": "Diego"
           },
           "B5": {
-            "entrada": "Estojo"
+            "entrada": "22000",
+            "formato": "moeda"
           },
           "C5": {
-            "entrada": "32,5",
+            "entrada": "27000",
             "formato": "moeda"
+          },
+          "D5": {
+            "entrada": "4,5",
+            "formato": {
+              "casas": 1
+            }
           },
           "A6": {
-            "entrada": "P-105"
+            "entrada": "Elisa"
           },
           "B6": {
-            "entrada": "Régua"
+            "entrada": "25000",
+            "formato": "moeda"
           },
           "C6": {
-            "entrada": "6,9",
+            "entrada": "30000",
             "formato": "moeda"
+          },
+          "D6": {
+            "entrada": "4,1",
+            "formato": {
+              "casas": 1
+            }
           },
           "A7": {
-            "entrada": "P-106"
+            "entrada": "Fábio"
           },
           "B7": {
-            "entrada": "Agenda"
+            "entrada": "28000",
+            "formato": "moeda"
           },
           "C7": {
-            "entrada": "45",
+            "entrada": "27000",
             "formato": "moeda"
+          },
+          "D7": {
+            "entrada": "4,4",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A8": {
+            "entrada": "Gabi"
+          },
+          "B8": {
+            "entrada": "31000",
+            "formato": "moeda"
+          },
+          "C8": {
+            "entrada": "39000",
+            "formato": "moeda"
+          },
+          "D8": {
+            "entrada": "4,7",
+            "formato": {
+              "casas": 1
+            }
+          },
+          "A9": {
+            "entrada": "Heitor"
+          },
+          "B9": {
+            "entrada": "43000",
+            "formato": "moeda"
+          },
+          "C9": {
+            "entrada": "39000",
+            "formato": "moeda"
+          },
+          "D9": {
+            "entrada": "4,5",
+            "formato": {
+              "casas": 1
+            }
           }
         },
         "variaveis": [
+          "B2",
           "C2",
+          "D2",
+          "B3",
           "C3",
+          "D3",
+          "B4",
           "C4",
+          "D4",
+          "B5",
           "C5",
+          "D5",
+          "B6",
           "C6",
-          "C7"
+          "D6",
+          "B7",
+          "C7",
+          "D7",
+          "B8",
+          "C8",
+          "D8",
+          "B9",
+          "C9",
+          "D9"
         ]
       },
       "alvos": [
         {
-          "celula": "F2",
-          "esperado": 32.5,
+          "celula": "E2",
+          "esperado": 500,
           "exigeFormula": true,
-          "solucaoReferencia": "=PROCV(E2;A2:C7;3;FALSO)",
+          "solucaoReferencia": "=SE(E(B2>=C2;D2>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E3",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B3>=C3;D3>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E4",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B4>=C4;D4>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E5",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B5>=C5;D5>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E6",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B6>=C6;D6>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E7",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B7>=C7;D7>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E8",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B8>=C8;D8>=4,5);500;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E9",
+          "esperado": 500,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(E(B9>=C9;D9>=4,5);500;0)",
           "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=PROCV(E2;A2:C7;3;FALSO)`: procura o valor de E2 na primeira coluna de A2:C7 e devolve a 3ª coluna (o preço).",
-        "O `FALSO` no fim pede correspondência exata. Sem ele, o PROCV faz uma busca aproximada e pode devolver o preço errado.",
-        "Com PROCX: `=PROCX(E2;A2:A7;C2:C7)`."
+        "`=SE(E(B2>=C2;D2>=4,5);500;0)`: a função E só devolve VERDADEIRO quando **todas** as condições são verdadeiras.",
+        "Se a regra fosse \"meta **ou** nota alta\", bastaria trocar E por OU.",
+        "Repare no 4,5 com vírgula: no Excel em português, a vírgula é o separador decimal e o ponto e vírgula separa os argumentos."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
-        "VLOOKUP"
+        "IF",
+        "AND"
       ]
     }
   },
   {
     "data": "2026-11-17",
+    "nivel": 2,
+    "caso": false,
     "exercicio": {
       "id": "ea6ca5f8-8b7f-5ee3-8b4c-c63faf83f213",
       "slug": "desafio-2026-11-17",
@@ -866,122 +2740,218 @@
       "nivel": 2,
       "plano": "free",
       "versao": 1,
-      "titulo": "Crescimento mês a mês",
+      "titulo": "Entregas no prazo? Conte só os dias úteis",
       "enunciado": [
-        "Em **C3:C7**, calcule a variação percentual de assinantes em relação ao mês anterior."
+        "A transportadora promete entregar em até **5 dias úteis**, contando o dia do pedido e o da entrega (sem considerar feriados).",
+        "Em **D2:D11**, calcule os dias úteis de cada entrega. Em **G1**, conte quantas passaram de 5 dias úteis."
       ],
       "grade": {
-        "linhas": 9,
-        "colunas": 4,
+        "linhas": 13,
+        "colunas": 8,
         "larguras": {
-          "B": 110
+          "B": 120,
+          "C": 110,
+          "D": 100,
+          "F": 160
         },
         "celulas": {
           "A1": {
-            "entrada": "Mês",
+            "entrada": "Pedido",
             "negrito": true
           },
           "B1": {
-            "entrada": "Assinantes",
+            "entrada": "Data do pedido",
             "negrito": true
           },
           "C1": {
-            "entrada": "Variação",
+            "entrada": "Entrega",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Dias úteis",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Acima de 5 dias úteis",
             "negrito": true
           },
           "A2": {
-            "entrada": "Jun"
+            "entrada": "#5001"
           },
           "B2": {
-            "entrada": "1200"
+            "entrada": "21/10/2026"
+          },
+          "C2": {
+            "entrada": "29/10/2026"
           },
           "A3": {
-            "entrada": "Jul"
+            "entrada": "#5002"
           },
           "B3": {
-            "entrada": "1320"
+            "entrada": "30/10/2026"
+          },
+          "C3": {
+            "entrada": "05/11/2026"
           },
           "A4": {
-            "entrada": "Ago"
+            "entrada": "#5003"
           },
           "B4": {
-            "entrada": "1254"
+            "entrada": "16/10/2026"
+          },
+          "C4": {
+            "entrada": "22/10/2026"
           },
           "A5": {
-            "entrada": "Set"
+            "entrada": "#5004"
           },
           "B5": {
-            "entrada": "1505"
+            "entrada": "10/10/2026"
+          },
+          "C5": {
+            "entrada": "20/10/2026"
           },
           "A6": {
-            "entrada": "Out"
+            "entrada": "#5005"
           },
           "B6": {
-            "entrada": "1806"
+            "entrada": "26/10/2026"
+          },
+          "C6": {
+            "entrada": "01/11/2026"
           },
           "A7": {
-            "entrada": "Nov"
+            "entrada": "#5006"
           },
           "B7": {
-            "entrada": "2022"
+            "entrada": "08/10/2026"
+          },
+          "C7": {
+            "entrada": "10/10/2026"
+          },
+          "A8": {
+            "entrada": "#5007"
+          },
+          "B8": {
+            "entrada": "12/10/2026"
+          },
+          "C8": {
+            "entrada": "20/10/2026"
+          },
+          "A9": {
+            "entrada": "#5008"
+          },
+          "B9": {
+            "entrada": "28/10/2026"
+          },
+          "C9": {
+            "entrada": "05/11/2026"
+          },
+          "A10": {
+            "entrada": "#5009"
+          },
+          "B10": {
+            "entrada": "13/10/2026"
+          },
+          "C10": {
+            "entrada": "23/10/2026"
+          },
+          "A11": {
+            "entrada": "#5010"
+          },
+          "B11": {
+            "entrada": "30/10/2026"
+          },
+          "C11": {
+            "entrada": "06/11/2026"
           }
-        },
-        "variaveis": [
-          "B2",
-          "B3",
-          "B4",
-          "B5",
-          "B6",
-          "B7"
-        ]
+        }
       },
       "alvos": [
         {
-          "celula": "C3",
-          "esperado": 0.1,
+          "celula": "D2",
+          "esperado": 7,
           "exigeFormula": true,
-          "solucaoReferencia": "=(B3-B2)/B2",
-          "formato": "percentual"
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B2;C2)"
         },
         {
-          "celula": "C4",
-          "esperado": -0.05,
+          "celula": "D3",
+          "esperado": 5,
           "exigeFormula": true,
-          "solucaoReferencia": "=(B4-B3)/B3",
-          "formato": "percentual"
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B3;C3)"
         },
         {
-          "celula": "C5",
-          "esperado": 0.2001594896,
+          "celula": "D4",
+          "esperado": 5,
           "exigeFormula": true,
-          "solucaoReferencia": "=(B5-B4)/B4",
-          "formato": "percentual"
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B4;C4)"
         },
         {
-          "celula": "C6",
-          "esperado": 0.2,
+          "celula": "D5",
+          "esperado": 7,
           "exigeFormula": true,
-          "solucaoReferencia": "=(B6-B5)/B5",
-          "formato": "percentual"
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B5;C5)"
         },
         {
-          "celula": "C7",
-          "esperado": 0.1196013289,
+          "celula": "D6",
+          "esperado": 5,
           "exigeFormula": true,
-          "solucaoReferencia": "=(B7-B6)/B6",
-          "formato": "percentual"
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B6;C6)"
+        },
+        {
+          "celula": "D7",
+          "esperado": 2,
+          "exigeFormula": true,
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B7;C7)"
+        },
+        {
+          "celula": "D8",
+          "esperado": 7,
+          "exigeFormula": true,
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B8;C8)"
+        },
+        {
+          "celula": "D9",
+          "esperado": 7,
+          "exigeFormula": true,
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B9;C9)"
+        },
+        {
+          "celula": "D10",
+          "esperado": 9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B10;C10)"
+        },
+        {
+          "celula": "D11",
+          "esperado": 6,
+          "exigeFormula": true,
+          "solucaoReferencia": "=DIATRABALHOTOTAL(B11;C11)"
+        },
+        {
+          "celula": "G1",
+          "esperado": 6,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE(D2:D11;\">5\")"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=(B3-B2)/B2` compara cada mês com o anterior. Copiada para baixo, a referência ao mês anterior anda junto, e por isso aqui **não** se usa $.",
-        "Agosto teve queda de 5%: a variação pode ser negativa."
+        "`=DIATRABALHOTOTAL(B2;C2)` conta os dias de segunda a sexta entre as duas datas, incluindo as duas pontas.",
+        "Para descontar feriados, existe um terceiro argumento com a lista das datas: `=DIATRABALHOTOTAL(B2;C2;Feriados)`.",
+        "Depois, `=CONT.SE(D2:D11;\">5\")` conta as entregas atrasadas."
       ],
-      "tentativasAteExplicacao": 99
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "NETWORKDAYS",
+        "COUNTIF"
+      ]
     }
   },
   {
     "data": "2026-11-18",
+    "nivel": 2,
+    "caso": false,
     "exercicio": {
       "id": "6b80f23e-b0b0-5a36-b94a-352d743c01b3",
       "slug": "desafio-2026-11-18",
@@ -992,66 +2962,344 @@
       "nivel": 2,
       "plano": "free",
       "versao": 1,
-      "titulo": "Classifique o frete pelo peso",
+      "titulo": "Arrume a lista de clientes",
       "enunciado": [
-        "Regra: até 1 kg é **Leve**, até 5 kg é **Médio** e acima disso é **Pesado**.",
-        "Em **C2:C7**, escreva a categoria de cada item."
+        "Os nomes vieram de um formulário com espaços sobrando e maiúsculas misturadas.",
+        "Em **B2:B9**, deixe cada nome sem espaços extras e com a primeira letra de cada palavra maiúscula. Em **C2:C9**, extraia só o primeiro nome."
       ],
       "grade": {
-        "linhas": 9,
+        "linhas": 11,
         "colunas": 4,
         "larguras": {
-          "A": 110,
-          "B": 90
+          "A": 230,
+          "B": 200,
+          "C": 120
         },
         "celulas": {
           "A1": {
-            "entrada": "Item",
+            "entrada": "Nome (como veio do formulário)",
             "negrito": true
           },
           "B1": {
-            "entrada": "Peso (kg)",
+            "entrada": "Nome arrumado",
             "negrito": true
           },
           "C1": {
-            "entrada": "Frete",
+            "entrada": "Primeiro nome",
             "negrito": true
           },
           "A2": {
-            "entrada": "Livro"
-          },
-          "B2": {
-            "entrada": "0,6"
+            "entrada": "  maria   da SILVA"
           },
           "A3": {
-            "entrada": "Panela"
-          },
-          "B3": {
-            "entrada": "2,4"
+            "entrada": "JOÃO pedro souza "
           },
           "A4": {
-            "entrada": "Cadeira"
-          },
-          "B4": {
-            "entrada": "7,5"
+            "entrada": "ana  BEATRIZ lima"
           },
           "A5": {
-            "entrada": "Chinelo"
-          },
-          "B5": {
-            "entrada": "0,4"
+            "entrada": "  carlos eduardo   ROCHA"
           },
           "A6": {
-            "entrada": "Micro-ondas"
-          },
-          "B6": {
-            "entrada": "12"
+            "entrada": "PATRÍCIA gomes"
           },
           "A7": {
-            "entrada": "Luminária"
+            "entrada": "  luiz  fernando dias  "
+          },
+          "A8": {
+            "entrada": "renata ALVES"
+          },
+          "A9": {
+            "entrada": "bruno   costa  "
+          }
+        }
+      },
+      "alvos": [
+        {
+          "celula": "B2",
+          "esperado": "Maria Da Silva",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A2))"
+        },
+        {
+          "celula": "B3",
+          "esperado": "João Pedro Souza",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A3))"
+        },
+        {
+          "celula": "B4",
+          "esperado": "Ana Beatriz Lima",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A4))"
+        },
+        {
+          "celula": "B5",
+          "esperado": "Carlos Eduardo Rocha",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A5))"
+        },
+        {
+          "celula": "B6",
+          "esperado": "Patrícia Gomes",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A6))"
+        },
+        {
+          "celula": "B7",
+          "esperado": "Luiz Fernando Dias",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A7))"
+        },
+        {
+          "celula": "B8",
+          "esperado": "Renata Alves",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A8))"
+        },
+        {
+          "celula": "B9",
+          "esperado": "Bruno Costa",
+          "exigeFormula": true,
+          "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A9))"
+        },
+        {
+          "celula": "C2",
+          "esperado": "Maria",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B2;LOCALIZAR(\" \";B2)-1)"
+        },
+        {
+          "celula": "C3",
+          "esperado": "João",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B3;LOCALIZAR(\" \";B3)-1)"
+        },
+        {
+          "celula": "C4",
+          "esperado": "Ana",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B4;LOCALIZAR(\" \";B4)-1)"
+        },
+        {
+          "celula": "C5",
+          "esperado": "Carlos",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B5;LOCALIZAR(\" \";B5)-1)"
+        },
+        {
+          "celula": "C6",
+          "esperado": "Patrícia",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B6;LOCALIZAR(\" \";B6)-1)"
+        },
+        {
+          "celula": "C7",
+          "esperado": "Luiz",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B7;LOCALIZAR(\" \";B7)-1)"
+        },
+        {
+          "celula": "C8",
+          "esperado": "Renata",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B8;LOCALIZAR(\" \";B8)-1)"
+        },
+        {
+          "celula": "C9",
+          "esperado": "Bruno",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ESQUERDA(B9;LOCALIZAR(\" \";B9)-1)"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=PRI.MAIÚSCULA(ARRUMAR(A2))`: o ARRUMAR tira os espaços do começo, do fim e os repetidos no meio; o PRI.MAIÚSCULA ajusta as letras.",
+        "`=ESQUERDA(B2;LOCALIZAR(\" \";B2)-1)`: LOCALIZAR acha a posição do primeiro espaço, e ESQUERDA pega tudo antes dele.",
+        "Um detalhe: o PRI.MAIÚSCULA também deixa \"Da\" com maiúscula (\"Maria Da Silva\"). Corrigir isso exigiria um SUBSTITUIR extra."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "PROPER",
+        "TRIM"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-19",
+    "nivel": 3,
+    "caso": false,
+    "exercicio": {
+      "id": "f5c53280-c883-52ed-8fcd-0aa6fe6243d0",
+      "slug": "desafio-2026-11-19",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Os 3 produtos mais vendidos",
+      "enunciado": [
+        "Monte o pódio do mês: em **E2:E4**, as três maiores quantidades vendidas (1º, 2º e 3º lugar, conforme a coluna D).",
+        "Em **F2:F4**, o nome do produto de cada posição. Tudo com fórmulas: o pódio precisa se atualizar se as vendas mudarem."
+      ],
+      "grade": {
+        "linhas": 22,
+        "colunas": 7,
+        "larguras": {
+          "A": 120,
+          "F": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Unidades",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Posição",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Unidades",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Fone"
+          },
+          "B2": {
+            "entrada": "733"
+          },
+          "A3": {
+            "entrada": "Mouse"
+          },
+          "B3": {
+            "entrada": "84"
+          },
+          "A4": {
+            "entrada": "Teclado"
+          },
+          "B4": {
+            "entrada": "843"
+          },
+          "A5": {
+            "entrada": "Monitor"
+          },
+          "B5": {
+            "entrada": "572"
+          },
+          "A6": {
+            "entrada": "Webcam"
+          },
+          "B6": {
+            "entrada": "163"
+          },
+          "A7": {
+            "entrada": "Cabo HDMI"
           },
           "B7": {
-            "entrada": "1,8"
+            "entrada": "563"
+          },
+          "A8": {
+            "entrada": "Pendrive"
+          },
+          "B8": {
+            "entrada": "244"
+          },
+          "A9": {
+            "entrada": "SSD"
+          },
+          "B9": {
+            "entrada": "442"
+          },
+          "A10": {
+            "entrada": "Roteador"
+          },
+          "B10": {
+            "entrada": "395"
+          },
+          "A11": {
+            "entrada": "Hub USB"
+          },
+          "B11": {
+            "entrada": "581"
+          },
+          "A12": {
+            "entrada": "Carregador"
+          },
+          "B12": {
+            "entrada": "336"
+          },
+          "A13": {
+            "entrada": "Caixa de som"
+          },
+          "B13": {
+            "entrada": "638"
+          },
+          "A14": {
+            "entrada": "Microfone"
+          },
+          "B14": {
+            "entrada": "191"
+          },
+          "A15": {
+            "entrada": "Suporte"
+          },
+          "B15": {
+            "entrada": "649"
+          },
+          "A16": {
+            "entrada": "Mousepad"
+          },
+          "B16": {
+            "entrada": "307"
+          },
+          "A17": {
+            "entrada": "Cadeira"
+          },
+          "B17": {
+            "entrada": "150"
+          },
+          "A18": {
+            "entrada": "Luminária"
+          },
+          "B18": {
+            "entrada": "306"
+          },
+          "A19": {
+            "entrada": "Notebook"
+          },
+          "B19": {
+            "entrada": "461"
+          },
+          "A20": {
+            "entrada": "Tablet"
+          },
+          "B20": {
+            "entrada": "375"
+          },
+          "A21": {
+            "entrada": "Smartwatch"
+          },
+          "B21": {
+            "entrada": "314"
+          },
+          "D2": {
+            "entrada": "1"
+          },
+          "D3": {
+            "entrada": "2"
+          },
+          "D4": {
+            "entrada": "3"
           }
         },
         "variaveis": [
@@ -1060,84 +3308,110 @@
           "B4",
           "B5",
           "B6",
-          "B7"
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B11",
+          "B12",
+          "B13",
+          "B14",
+          "B15",
+          "B16",
+          "B17",
+          "B18",
+          "B19",
+          "B20",
+          "B21"
         ]
       },
       "alvos": [
         {
-          "celula": "C2",
-          "esperado": "Leve",
+          "celula": "E2",
+          "esperado": 843,
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B2<=1;\"Leve\";B2<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=MAIOR($B$2:$B$21;D2)"
         },
         {
-          "celula": "C3",
-          "esperado": "Médio",
+          "celula": "E3",
+          "esperado": 733,
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B3<=1;\"Leve\";B3<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=MAIOR($B$2:$B$21;D3)"
         },
         {
-          "celula": "C4",
-          "esperado": "Pesado",
+          "celula": "E4",
+          "esperado": 649,
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B4<=1;\"Leve\";B4<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=MAIOR($B$2:$B$21;D4)"
         },
         {
-          "celula": "C5",
-          "esperado": "Leve",
+          "celula": "F2",
+          "esperado": "Teclado",
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B5<=1;\"Leve\";B5<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=ÍNDICE($A$2:$A$21;CORRESP(E2;$B$2:$B$21;0))"
         },
         {
-          "celula": "C6",
-          "esperado": "Pesado",
+          "celula": "F3",
+          "esperado": "Fone",
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B6<=1;\"Leve\";B6<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=ÍNDICE($A$2:$A$21;CORRESP(E3;$B$2:$B$21;0))"
         },
         {
-          "celula": "C7",
-          "esperado": "Médio",
+          "celula": "F4",
+          "esperado": "Suporte",
           "exigeFormula": true,
-          "solucaoReferencia": "=SES(B7<=1;\"Leve\";B7<=5;\"Médio\";VERDADEIRO;\"Pesado\")"
+          "solucaoReferencia": "=ÍNDICE($A$2:$A$21;CORRESP(E4;$B$2:$B$21;0))"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=SES(B2<=1;\"Leve\";B2<=5;\"Médio\";VERDADEIRO;\"Pesado\")` testa as condições em ordem e para na primeira verdadeira.",
-        "O `VERDADEIRO` no fim funciona como \"senão\". Com SE aninhado: `=SE(B2<=1;\"Leve\";SE(B2<=5;\"Médio\";\"Pesado\"))`."
+        "`=MAIOR($B$2:$B$21;D2)` devolve o D2-ésimo maior valor: com D2 = 1, o maior; com 2, o segundo maior. Usar a posição da coluna D deixa a fórmula copiável.",
+        "`=ÍNDICE($A$2:$A$21;CORRESP(E2;$B$2:$B$21;0))` acha em que linha está aquela quantidade e devolve o nome.",
+        "Atenção a empates: se dois produtos vendessem a mesma quantidade, o CORRESP acharia sempre o primeiro. Para um ranking à prova de empate, CLASSIFICAR é o caminho: `=CLASSIFICAR(A2:B21;2;-1)`."
       ],
-      "tentativasAteExplicacao": 99
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "LARGE",
+        "INDEX",
+        "MATCH"
+      ]
     }
   },
   {
-    "data": "2026-11-19",
+    "data": "2026-11-20",
+    "nivel": 3,
+    "caso": false,
     "exercicio": {
-      "id": "f5c53280-c883-52ed-8fcd-0aa6fe6243d0",
-      "slug": "desafio-2026-11-19",
+      "id": "4ffa1f19-4d38-5ade-85f1-f159cfb7cd3e",
+      "slug": "desafio-2026-11-20",
       "type": "formula",
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Pedidos grandes de SP",
+      "titulo": "Resumo por categoria, sem digitar as categorias",
       "enunciado": [
-        "Em **F1**, conte quantos pedidos são de **SP** e têm valor **acima de R$ 100**."
+        "Monte um resumo das compras por categoria, **sem digitar o nome de nenhuma categoria**.",
+        "Em **E2**, liste as categorias sem repetição e em ordem alfabética, com uma única fórmula. Em **F2:F6**, o total gasto em cada uma."
       ],
       "grade": {
-        "linhas": 10,
+        "linhas": 33,
         "colunas": 7,
         "larguras": {
-          "E": 150
+          "B": 110,
+          "C": 100,
+          "E": 120,
+          "F": 110
         },
         "celulas": {
           "A1": {
-            "entrada": "Pedido",
+            "entrada": "Item",
             "negrito": true
           },
           "B1": {
-            "entrada": "Estado",
+            "entrada": "Categoria",
             "negrito": true
           },
           "C1": {
@@ -1145,87 +3419,311 @@
             "negrito": true
           },
           "E1": {
-            "entrada": "SP acima de R$ 100",
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Total",
             "negrito": true
           },
           "A2": {
-            "entrada": "#2001"
+            "entrada": "Item 1"
           },
           "B2": {
-            "entrada": "SP"
+            "entrada": "Bebidas"
           },
           "C2": {
-            "entrada": "150",
+            "entrada": "45,57",
             "formato": "moeda"
           },
           "A3": {
-            "entrada": "#2002"
+            "entrada": "Item 2"
           },
           "B3": {
-            "entrada": "RJ"
+            "entrada": "Padaria"
           },
           "C3": {
-            "entrada": "80",
+            "entrada": "56,64",
             "formato": "moeda"
           },
           "A4": {
-            "entrada": "#2003"
+            "entrada": "Item 3"
           },
           "B4": {
-            "entrada": "SP"
+            "entrada": "Higiene"
           },
           "C4": {
-            "entrada": "95",
+            "entrada": "30,75",
             "formato": "moeda"
           },
           "A5": {
-            "entrada": "#2004"
+            "entrada": "Item 4"
           },
           "B5": {
-            "entrada": "MG"
+            "entrada": "Padaria"
           },
           "C5": {
-            "entrada": "210",
+            "entrada": "70,42",
             "formato": "moeda"
           },
           "A6": {
-            "entrada": "#2005"
+            "entrada": "Item 5"
           },
           "B6": {
-            "entrada": "SP"
+            "entrada": "Mercearia"
           },
           "C6": {
-            "entrada": "320",
+            "entrada": "15,28",
             "formato": "moeda"
           },
           "A7": {
-            "entrada": "#2006"
+            "entrada": "Item 6"
           },
           "B7": {
-            "entrada": "SP"
+            "entrada": "Padaria"
           },
           "C7": {
-            "entrada": "60",
+            "entrada": "23,49",
             "formato": "moeda"
           },
           "A8": {
-            "entrada": "#2007"
+            "entrada": "Item 7"
           },
           "B8": {
-            "entrada": "RJ"
+            "entrada": "Limpeza"
           },
           "C8": {
-            "entrada": "130",
+            "entrada": "80,72",
             "formato": "moeda"
           },
           "A9": {
-            "entrada": "#2008"
+            "entrada": "Item 8"
           },
           "B9": {
-            "entrada": "SP"
+            "entrada": "Higiene"
           },
           "C9": {
-            "entrada": "101",
+            "entrada": "76,62",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "Item 9"
+          },
+          "B10": {
+            "entrada": "Mercearia"
+          },
+          "C10": {
+            "entrada": "37,18",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "Item 10"
+          },
+          "B11": {
+            "entrada": "Bebidas"
+          },
+          "C11": {
+            "entrada": "54,92",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "Item 11"
+          },
+          "B12": {
+            "entrada": "Limpeza"
+          },
+          "C12": {
+            "entrada": "56,86",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "Item 12"
+          },
+          "B13": {
+            "entrada": "Mercearia"
+          },
+          "C13": {
+            "entrada": "18,19",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "Item 13"
+          },
+          "B14": {
+            "entrada": "Higiene"
+          },
+          "C14": {
+            "entrada": "83,62",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "Item 14"
+          },
+          "B15": {
+            "entrada": "Mercearia"
+          },
+          "C15": {
+            "entrada": "16,34",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "Item 15"
+          },
+          "B16": {
+            "entrada": "Bebidas"
+          },
+          "C16": {
+            "entrada": "42,75",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "Item 16"
+          },
+          "B17": {
+            "entrada": "Padaria"
+          },
+          "C17": {
+            "entrada": "36,06",
+            "formato": "moeda"
+          },
+          "A18": {
+            "entrada": "Item 17"
+          },
+          "B18": {
+            "entrada": "Padaria"
+          },
+          "C18": {
+            "entrada": "16,72",
+            "formato": "moeda"
+          },
+          "A19": {
+            "entrada": "Item 18"
+          },
+          "B19": {
+            "entrada": "Bebidas"
+          },
+          "C19": {
+            "entrada": "44,52",
+            "formato": "moeda"
+          },
+          "A20": {
+            "entrada": "Item 19"
+          },
+          "B20": {
+            "entrada": "Limpeza"
+          },
+          "C20": {
+            "entrada": "52,98",
+            "formato": "moeda"
+          },
+          "A21": {
+            "entrada": "Item 20"
+          },
+          "B21": {
+            "entrada": "Limpeza"
+          },
+          "C21": {
+            "entrada": "29,76",
+            "formato": "moeda"
+          },
+          "A22": {
+            "entrada": "Item 21"
+          },
+          "B22": {
+            "entrada": "Higiene"
+          },
+          "C22": {
+            "entrada": "22,28",
+            "formato": "moeda"
+          },
+          "A23": {
+            "entrada": "Item 22"
+          },
+          "B23": {
+            "entrada": "Padaria"
+          },
+          "C23": {
+            "entrada": "46,83",
+            "formato": "moeda"
+          },
+          "A24": {
+            "entrada": "Item 23"
+          },
+          "B24": {
+            "entrada": "Bebidas"
+          },
+          "C24": {
+            "entrada": "38,99",
+            "formato": "moeda"
+          },
+          "A25": {
+            "entrada": "Item 24"
+          },
+          "B25": {
+            "entrada": "Higiene"
+          },
+          "C25": {
+            "entrada": "41,92",
+            "formato": "moeda"
+          },
+          "A26": {
+            "entrada": "Item 25"
+          },
+          "B26": {
+            "entrada": "Padaria"
+          },
+          "C26": {
+            "entrada": "5,12",
+            "formato": "moeda"
+          },
+          "A27": {
+            "entrada": "Item 26"
+          },
+          "B27": {
+            "entrada": "Higiene"
+          },
+          "C27": {
+            "entrada": "52,27",
+            "formato": "moeda"
+          },
+          "A28": {
+            "entrada": "Item 27"
+          },
+          "B28": {
+            "entrada": "Limpeza"
+          },
+          "C28": {
+            "entrada": "25,42",
+            "formato": "moeda"
+          },
+          "A29": {
+            "entrada": "Item 28"
+          },
+          "B29": {
+            "entrada": "Limpeza"
+          },
+          "C29": {
+            "entrada": "76,3",
+            "formato": "moeda"
+          },
+          "A30": {
+            "entrada": "Item 29"
+          },
+          "B30": {
+            "entrada": "Bebidas"
+          },
+          "C30": {
+            "entrada": "47,85",
+            "formato": "moeda"
+          },
+          "A31": {
+            "entrada": "Item 30"
+          },
+          "B31": {
+            "entrada": "Higiene"
+          },
+          "C31": {
+            "entrada": "73,92",
             "formato": "moeda"
           }
         },
@@ -1237,134 +3735,1719 @@
           "C6",
           "C7",
           "C8",
-          "C9"
+          "C9",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24",
+          "C25",
+          "C26",
+          "C27",
+          "C28",
+          "C29",
+          "C30",
+          "C31"
         ]
       },
       "alvos": [
         {
-          "celula": "F1",
-          "esperado": 3,
+          "celula": "E2",
+          "esperado": [
+            [
+              "Bebidas"
+            ],
+            [
+              "Higiene"
+            ],
+            [
+              "Limpeza"
+            ],
+            [
+              "Mercearia"
+            ],
+            [
+              "Padaria"
+            ]
+          ],
           "exigeFormula": true,
-          "solucaoReferencia": "=CONT.SES(B2:B9;\"SP\";C2:C9;\">100\")"
+          "solucaoReferencia": "=CLASSIFICAR(ÚNICO(B2:B31))"
+        },
+        {
+          "celula": "F2",
+          "esperado": 274.6,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$31;E2;$C$2:$C$31)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F3",
+          "esperado": 381.38,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$31;E3;$C$2:$C$31)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F4",
+          "esperado": 322.04,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$31;E4;$C$2:$C$31)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F5",
+          "esperado": 86.99,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$31;E5;$C$2:$C$31)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F6",
+          "esperado": 255.28,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$31;E6;$C$2:$C$31)",
+          "formato": "moeda"
         }
       ],
       "dicas": [],
       "explicacao": [
-        "`=CONT.SES(B2:B9;\"SP\";C2:C9;\">100\")` conta as linhas que atendem às duas condições ao mesmo tempo: 3 pedidos.",
-        "Repare no critério `\">100\"`: o operador vai dentro das aspas. O pedido de R$ 101 entra; o de R$ 95, não."
+        "`=CLASSIFICAR(ÚNICO(B2:B31))`: o ÚNICO tira as repetições e o CLASSIFICAR ordena. O resultado derrama para baixo.",
+        "Depois, `=SOMASE($B$2:$B$31;E2;$C$2:$C$31)` soma cada categoria usando o nome que o próprio ÚNICO trouxe.",
+        "A vantagem: se aparecer uma categoria nova na base, ela entra no resumo sozinha."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
-        "COUNTIFS"
+        "UNIQUE",
+        "SORT",
+        "SUMIF"
       ]
     }
   },
   {
-    "data": "2026-11-20",
+    "data": "2026-11-21",
+    "nivel": 3,
+    "caso": true,
     "exercicio": {
-      "id": "4ffa1f19-4d38-5ade-85f1-f159cfb7cd3e",
-      "slug": "desafio-2026-11-20",
+      "id": "06652b1e-b67a-5c8b-9d87-91a62940f751",
+      "slug": "desafio-2026-11-21",
       "type": "formula",
       "trilha": "excel-ptbr",
       "modulo": "desafio",
       "ordem": 1,
-      "nivel": 2,
+      "nivel": 3,
       "plano": "free",
       "versao": 1,
-      "titulo": "Média só da turma A",
+      "titulo": "Caso real: para onde foi o dinheiro do cartão?",
       "enunciado": [
-        "Em **E1**, calcule a média das notas **só da turma A**."
+        "A fatura de outubro tem 40 compras. Vamos descobrir para onde o dinheiro foi.",
+        "1) Em **G2:G6**, o total de cada categoria.",
+        "2) Em **H2:H6**, quanto cada categoria representa do total da fatura.",
+        "3) Em **G8**, o **nome** da categoria com o maior gasto."
       ],
       "grade": {
-        "linhas": 10,
-        "colunas": 6,
+        "linhas": 43,
+        "colunas": 9,
         "larguras": {
-          "D": 140
+          "A": 100,
+          "B": 140,
+          "C": 110,
+          "F": 120,
+          "G": 110,
+          "H": 100
         },
         "celulas": {
           "A1": {
-            "entrada": "Turma",
+            "entrada": "Data",
             "negrito": true
           },
           "B1": {
-            "entrada": "Nota",
+            "entrada": "Descrição",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Categoria",
             "negrito": true
           },
           "D1": {
-            "entrada": "Média da turma A",
+            "entrada": "Valor",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "G1": {
+            "entrada": "Total",
+            "negrito": true
+          },
+          "H1": {
+            "entrada": "% do total",
+            "negrito": true
+          },
+          "F8": {
+            "entrada": "Maior gasto",
             "negrito": true
           },
           "A2": {
-            "entrada": "A"
+            "entrada": "01/10/2026"
           },
           "B2": {
-            "entrada": "7,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "App de corrida"
+          },
+          "C2": {
+            "entrada": "Transporte"
+          },
+          "D2": {
+            "entrada": "72,97",
+            "formato": "moeda"
           },
           "A3": {
-            "entrada": "B"
+            "entrada": "04/10/2026"
           },
           "B3": {
-            "entrada": "6,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Farmácia"
+          },
+          "C3": {
+            "entrada": "Saúde"
+          },
+          "D3": {
+            "entrada": "126,47",
+            "formato": "moeda"
           },
           "A4": {
-            "entrada": "A"
+            "entrada": "04/10/2026"
           },
           "B4": {
-            "entrada": "8,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Padaria Pão"
+          },
+          "C4": {
+            "entrada": "Mercado"
+          },
+          "D4": {
+            "entrada": "327,16",
+            "formato": "moeda"
           },
           "A5": {
-            "entrada": "B"
+            "entrada": "05/10/2026"
           },
           "B5": {
-            "entrada": "9,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Supermercado Bom"
+          },
+          "C5": {
+            "entrada": "Mercado"
+          },
+          "D5": {
+            "entrada": "167,49",
+            "formato": "moeda"
           },
           "A6": {
-            "entrada": "A"
+            "entrada": "06/10/2026"
           },
           "B6": {
-            "entrada": "6,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Laboratório"
+          },
+          "C6": {
+            "entrada": "Saúde"
+          },
+          "D6": {
+            "entrada": "360,73",
+            "formato": "moeda"
           },
           "A7": {
-            "entrada": "B"
+            "entrada": "06/10/2026"
           },
           "B7": {
-            "entrada": "7,0",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Restaurante Sabor"
+          },
+          "C7": {
+            "entrada": "Restaurante"
+          },
+          "D7": {
+            "entrada": "60,43",
+            "formato": "moeda"
           },
           "A8": {
-            "entrada": "A"
+            "entrada": "06/10/2026"
           },
           "B8": {
-            "entrada": "9,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Supermercado Bom"
+          },
+          "C8": {
+            "entrada": "Mercado"
+          },
+          "D8": {
+            "entrada": "129,04",
+            "formato": "moeda"
           },
           "A9": {
-            "entrada": "B"
+            "entrada": "07/10/2026"
           },
           "B9": {
-            "entrada": "5,5",
-            "formato": {
-              "casas": 1
-            }
+            "entrada": "Restaurante Sabor"
+          },
+          "C9": {
+            "entrada": "Restaurante"
+          },
+          "D9": {
+            "entrada": "395,61",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "08/10/2026"
+          },
+          "B10": {
+            "entrada": "Cinema"
+          },
+          "C10": {
+            "entrada": "Lazer"
+          },
+          "D10": {
+            "entrada": "273,55",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "09/10/2026"
+          },
+          "B11": {
+            "entrada": "Cinema"
+          },
+          "C11": {
+            "entrada": "Lazer"
+          },
+          "D11": {
+            "entrada": "76,12",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "10/10/2026"
+          },
+          "B12": {
+            "entrada": "Streaming"
+          },
+          "C12": {
+            "entrada": "Lazer"
+          },
+          "D12": {
+            "entrada": "310,77",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "12/10/2026"
+          },
+          "B13": {
+            "entrada": "Cinema"
+          },
+          "C13": {
+            "entrada": "Lazer"
+          },
+          "D13": {
+            "entrada": "39,04",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "13/10/2026"
+          },
+          "B14": {
+            "entrada": "Academia"
+          },
+          "C14": {
+            "entrada": "Saúde"
+          },
+          "D14": {
+            "entrada": "332,49",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "13/10/2026"
+          },
+          "B15": {
+            "entrada": "Laboratório"
+          },
+          "C15": {
+            "entrada": "Saúde"
+          },
+          "D15": {
+            "entrada": "177,01",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "14/10/2026"
+          },
+          "B16": {
+            "entrada": "Padaria Pão"
+          },
+          "C16": {
+            "entrada": "Mercado"
+          },
+          "D16": {
+            "entrada": "281,58",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "14/10/2026"
+          },
+          "B17": {
+            "entrada": "Restaurante Sabor"
+          },
+          "C17": {
+            "entrada": "Restaurante"
+          },
+          "D17": {
+            "entrada": "288,96",
+            "formato": "moeda"
+          },
+          "A18": {
+            "entrada": "15/10/2026"
+          },
+          "B18": {
+            "entrada": "Farmácia"
+          },
+          "C18": {
+            "entrada": "Saúde"
+          },
+          "D18": {
+            "entrada": "230,56",
+            "formato": "moeda"
+          },
+          "A19": {
+            "entrada": "16/10/2026"
+          },
+          "B19": {
+            "entrada": "App de corrida"
+          },
+          "C19": {
+            "entrada": "Transporte"
+          },
+          "D19": {
+            "entrada": "326,06",
+            "formato": "moeda"
+          },
+          "A20": {
+            "entrada": "16/10/2026"
+          },
+          "B20": {
+            "entrada": "Cinema"
+          },
+          "C20": {
+            "entrada": "Lazer"
+          },
+          "D20": {
+            "entrada": "137,49",
+            "formato": "moeda"
+          },
+          "A21": {
+            "entrada": "16/10/2026"
+          },
+          "B21": {
+            "entrada": "Laboratório"
+          },
+          "C21": {
+            "entrada": "Saúde"
+          },
+          "D21": {
+            "entrada": "90,89",
+            "formato": "moeda"
+          },
+          "A22": {
+            "entrada": "16/10/2026"
+          },
+          "B22": {
+            "entrada": "Supermercado Bom"
+          },
+          "C22": {
+            "entrada": "Mercado"
+          },
+          "D22": {
+            "entrada": "63,9",
+            "formato": "moeda"
+          },
+          "A23": {
+            "entrada": "16/10/2026"
+          },
+          "B23": {
+            "entrada": "Supermercado Bom"
+          },
+          "C23": {
+            "entrada": "Mercado"
+          },
+          "D23": {
+            "entrada": "375,73",
+            "formato": "moeda"
+          },
+          "A24": {
+            "entrada": "18/10/2026"
+          },
+          "B24": {
+            "entrada": "Restaurante Sabor"
+          },
+          "C24": {
+            "entrada": "Restaurante"
+          },
+          "D24": {
+            "entrada": "239,73",
+            "formato": "moeda"
+          },
+          "A25": {
+            "entrada": "20/10/2026"
+          },
+          "B25": {
+            "entrada": "Academia"
+          },
+          "C25": {
+            "entrada": "Saúde"
+          },
+          "D25": {
+            "entrada": "379,69",
+            "formato": "moeda"
+          },
+          "A26": {
+            "entrada": "22/10/2026"
+          },
+          "B26": {
+            "entrada": "Posto Shell"
+          },
+          "C26": {
+            "entrada": "Transporte"
+          },
+          "D26": {
+            "entrada": "37,78",
+            "formato": "moeda"
+          },
+          "A27": {
+            "entrada": "23/10/2026"
+          },
+          "B27": {
+            "entrada": "Restaurante Sabor"
+          },
+          "C27": {
+            "entrada": "Restaurante"
+          },
+          "D27": {
+            "entrada": "340,06",
+            "formato": "moeda"
+          },
+          "A28": {
+            "entrada": "24/10/2026"
+          },
+          "B28": {
+            "entrada": "Laboratório"
+          },
+          "C28": {
+            "entrada": "Saúde"
+          },
+          "D28": {
+            "entrada": "160,51",
+            "formato": "moeda"
+          },
+          "A29": {
+            "entrada": "26/10/2026"
+          },
+          "B29": {
+            "entrada": "Pizzaria Forno"
+          },
+          "C29": {
+            "entrada": "Restaurante"
+          },
+          "D29": {
+            "entrada": "24,25",
+            "formato": "moeda"
+          },
+          "A30": {
+            "entrada": "26/10/2026"
+          },
+          "B30": {
+            "entrada": "Streaming"
+          },
+          "C30": {
+            "entrada": "Lazer"
+          },
+          "D30": {
+            "entrada": "331,65",
+            "formato": "moeda"
+          },
+          "A31": {
+            "entrada": "26/10/2026"
+          },
+          "B31": {
+            "entrada": "Supermercado Bom"
+          },
+          "C31": {
+            "entrada": "Mercado"
+          },
+          "D31": {
+            "entrada": "311,96",
+            "formato": "moeda"
+          },
+          "A32": {
+            "entrada": "27/10/2026"
+          },
+          "B32": {
+            "entrada": "Academia"
+          },
+          "C32": {
+            "entrada": "Saúde"
+          },
+          "D32": {
+            "entrada": "146,77",
+            "formato": "moeda"
+          },
+          "A33": {
+            "entrada": "27/10/2026"
+          },
+          "B33": {
+            "entrada": "Hortifruti"
+          },
+          "C33": {
+            "entrada": "Mercado"
+          },
+          "D33": {
+            "entrada": "49,19",
+            "formato": "moeda"
+          },
+          "A34": {
+            "entrada": "27/10/2026"
+          },
+          "B34": {
+            "entrada": "Posto Shell"
+          },
+          "C34": {
+            "entrada": "Transporte"
+          },
+          "D34": {
+            "entrada": "242,15",
+            "formato": "moeda"
+          },
+          "A35": {
+            "entrada": "28/10/2026"
+          },
+          "B35": {
+            "entrada": "Hortifruti"
+          },
+          "C35": {
+            "entrada": "Mercado"
+          },
+          "D35": {
+            "entrada": "110,75",
+            "formato": "moeda"
+          },
+          "A36": {
+            "entrada": "29/10/2026"
+          },
+          "B36": {
+            "entrada": "Hortifruti"
+          },
+          "C36": {
+            "entrada": "Mercado"
+          },
+          "D36": {
+            "entrada": "336,72",
+            "formato": "moeda"
+          },
+          "A37": {
+            "entrada": "29/10/2026"
+          },
+          "B37": {
+            "entrada": "Laboratório"
+          },
+          "C37": {
+            "entrada": "Saúde"
+          },
+          "D37": {
+            "entrada": "173,3",
+            "formato": "moeda"
+          },
+          "A38": {
+            "entrada": "30/10/2026"
+          },
+          "B38": {
+            "entrada": "Academia"
+          },
+          "C38": {
+            "entrada": "Saúde"
+          },
+          "D38": {
+            "entrada": "176,06",
+            "formato": "moeda"
+          },
+          "A39": {
+            "entrada": "30/10/2026"
+          },
+          "B39": {
+            "entrada": "App de corrida"
+          },
+          "C39": {
+            "entrada": "Transporte"
+          },
+          "D39": {
+            "entrada": "366,15",
+            "formato": "moeda"
+          },
+          "A40": {
+            "entrada": "30/10/2026"
+          },
+          "B40": {
+            "entrada": "Cinema"
+          },
+          "C40": {
+            "entrada": "Lazer"
+          },
+          "D40": {
+            "entrada": "402",
+            "formato": "moeda"
+          },
+          "A41": {
+            "entrada": "30/10/2026"
+          },
+          "B41": {
+            "entrada": "Estacionamento"
+          },
+          "C41": {
+            "entrada": "Transporte"
+          },
+          "D41": {
+            "entrada": "295,61",
+            "formato": "moeda"
+          },
+          "F2": {
+            "entrada": "Mercado"
+          },
+          "F3": {
+            "entrada": "Restaurante"
+          },
+          "F4": {
+            "entrada": "Transporte"
+          },
+          "F5": {
+            "entrada": "Lazer"
+          },
+          "F6": {
+            "entrada": "Saúde"
+          }
+        },
+        "variaveis": [
+          "D2",
+          "D3",
+          "D4",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+          "D14",
+          "D15",
+          "D16",
+          "D17",
+          "D18",
+          "D19",
+          "D20",
+          "D21",
+          "D22",
+          "D23",
+          "D24",
+          "D25",
+          "D26",
+          "D27",
+          "D28",
+          "D29",
+          "D30",
+          "D31",
+          "D32",
+          "D33",
+          "D34",
+          "D35",
+          "D36",
+          "D37",
+          "D38",
+          "D39",
+          "D40",
+          "D41"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "G2",
+          "esperado": 2153.52,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($C$2:$C$41;F2;$D$2:$D$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G3",
+          "esperado": 1349.04,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($C$2:$C$41;F3;$D$2:$D$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G4",
+          "esperado": 1340.72,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($C$2:$C$41;F4;$D$2:$D$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G5",
+          "esperado": 1570.62,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($C$2:$C$41;F5;$D$2:$D$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G6",
+          "esperado": 2354.48,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($C$2:$C$41;F6;$D$2:$D$41)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "H2",
+          "esperado": 0.245600669679,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G2/SOMA($G$2:$G$6)",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H3",
+          "esperado": 0.15385282116,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G3/SOMA($G$2:$G$6)",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H4",
+          "esperado": 0.152903957173,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G4/SOMA($G$2:$G$6)",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H5",
+          "esperado": 0.179123167563,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G5/SOMA($G$2:$G$6)",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H6",
+          "esperado": 0.268519384424,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G6/SOMA($G$2:$G$6)",
+          "formato": "percentual"
+        },
+        {
+          "celula": "G8",
+          "esperado": "Saúde",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ÍNDICE(F2:F6;CORRESP(MÁXIMO(G2:G6);G2:G6;0))"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "**Etapa 1:** `=SOMASE($C$2:$C$41;F2;$D$2:$D$41)`.",
+        "**Etapa 2:** `=G2/SOMA($G$2:$G$6)`. O total da fatura fica travado com `$`; sem ele, ao copiar para baixo, o intervalo andaria junto e cada linha dividiria por um total diferente.",
+        "**Etapa 3:** `=ÍNDICE(F2:F6;CORRESP(MÁXIMO(G2:G6);G2:G6;0))`: acha o maior total e devolve o nome da categoria na mesma posição."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-22",
+    "nivel": 3,
+    "caso": true,
+    "exercicio": {
+      "id": "4040b232-c406-5593-aa78-0373ca1798ea",
+      "slug": "desafio-2026-11-22",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Caso real: a Black Friday está dando prejuízo?",
+      "enunciado": [
+        "O marketing definiu um desconto para cada produto. Antes de publicar, confira se algum vai ser vendido abaixo do custo.",
+        "1) Em **E2:E21**, o preço final com o desconto.",
+        "2) Em **F2:F21**, a margem sobre o preço final: (preço final − custo) ÷ preço final.",
+        "3) Em **I1**, quantos produtos ficaram com margem negativa. Em **H4**, a lista desses produtos, com uma única fórmula."
+      ],
+      "grade": {
+        "linhas": 26,
+        "colunas": 10,
+        "larguras": {
+          "A": 110,
+          "C": 110,
+          "E": 110,
+          "H": 120
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Custo",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Preço cheio",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Desconto",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Preço final",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Margem",
+            "negrito": true
+          },
+          "H1": {
+            "entrada": "No prejuízo",
+            "negrito": true
+          },
+          "H3": {
+            "entrada": "Quais",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Fone"
+          },
+          "B2": {
+            "entrada": "173",
+            "formato": "moeda"
+          },
+          "C2": {
+            "entrada": "259,5",
+            "formato": "moeda"
+          },
+          "D2": {
+            "entrada": "10%"
+          },
+          "A3": {
+            "entrada": "Mouse"
+          },
+          "B3": {
+            "entrada": "657",
+            "formato": "moeda"
+          },
+          "C3": {
+            "entrada": "1314",
+            "formato": "moeda"
+          },
+          "D3": {
+            "entrada": "20%"
+          },
+          "A4": {
+            "entrada": "Teclado"
+          },
+          "B4": {
+            "entrada": "748",
+            "formato": "moeda"
+          },
+          "C4": {
+            "entrada": "972,4",
+            "formato": "moeda"
+          },
+          "D4": {
+            "entrada": "30%"
+          },
+          "A5": {
+            "entrada": "Monitor"
+          },
+          "B5": {
+            "entrada": "841",
+            "formato": "moeda"
+          },
+          "C5": {
+            "entrada": "1093,3",
+            "formato": "moeda"
+          },
+          "D5": {
+            "entrada": "20%"
+          },
+          "A6": {
+            "entrada": "Webcam"
+          },
+          "B6": {
+            "entrada": "305",
+            "formato": "moeda"
+          },
+          "C6": {
+            "entrada": "396,5",
+            "formato": "moeda"
+          },
+          "D6": {
+            "entrada": "30%"
+          },
+          "A7": {
+            "entrada": "SSD"
+          },
+          "B7": {
+            "entrada": "645",
+            "formato": "moeda"
+          },
+          "C7": {
+            "entrada": "967,5",
+            "formato": "moeda"
+          },
+          "D7": {
+            "entrada": "50%"
+          },
+          "A8": {
+            "entrada": "Roteador"
+          },
+          "B8": {
+            "entrada": "731",
+            "formato": "moeda"
+          },
+          "C8": {
+            "entrada": "1462",
+            "formato": "moeda"
+          },
+          "D8": {
+            "entrada": "10%"
+          },
+          "A9": {
+            "entrada": "Hub USB"
+          },
+          "B9": {
+            "entrada": "620",
+            "formato": "moeda"
+          },
+          "C9": {
+            "entrada": "806",
+            "formato": "moeda"
+          },
+          "D9": {
+            "entrada": "50%"
+          },
+          "A10": {
+            "entrada": "Carregador"
+          },
+          "B10": {
+            "entrada": "300",
+            "formato": "moeda"
+          },
+          "C10": {
+            "entrada": "510",
+            "formato": "moeda"
+          },
+          "D10": {
+            "entrada": "40%"
+          },
+          "A11": {
+            "entrada": "Caixa de som"
+          },
+          "B11": {
+            "entrada": "224",
+            "formato": "moeda"
+          },
+          "C11": {
+            "entrada": "336",
+            "formato": "moeda"
+          },
+          "D11": {
+            "entrada": "10%"
+          },
+          "A12": {
+            "entrada": "Microfone"
+          },
+          "B12": {
+            "entrada": "626",
+            "formato": "moeda"
+          },
+          "C12": {
+            "entrada": "813,8",
+            "formato": "moeda"
+          },
+          "D12": {
+            "entrada": "30%"
+          },
+          "A13": {
+            "entrada": "Suporte"
+          },
+          "B13": {
+            "entrada": "657",
+            "formato": "moeda"
+          },
+          "C13": {
+            "entrada": "1116,9",
+            "formato": "moeda"
+          },
+          "D13": {
+            "entrada": "30%"
+          },
+          "A14": {
+            "entrada": "Cadeira"
+          },
+          "B14": {
+            "entrada": "218",
+            "formato": "moeda"
+          },
+          "C14": {
+            "entrada": "436",
+            "formato": "moeda"
+          },
+          "D14": {
+            "entrada": "30%"
+          },
+          "A15": {
+            "entrada": "Luminária"
+          },
+          "B15": {
+            "entrada": "829",
+            "formato": "moeda"
+          },
+          "C15": {
+            "entrada": "1243,5",
+            "formato": "moeda"
+          },
+          "D15": {
+            "entrada": "30%"
+          },
+          "A16": {
+            "entrada": "Tablet"
+          },
+          "B16": {
+            "entrada": "875",
+            "formato": "moeda"
+          },
+          "C16": {
+            "entrada": "1487,5",
+            "formato": "moeda"
+          },
+          "D16": {
+            "entrada": "20%"
+          },
+          "A17": {
+            "entrada": "Smartwatch"
+          },
+          "B17": {
+            "entrada": "472",
+            "formato": "moeda"
+          },
+          "C17": {
+            "entrada": "613,6",
+            "formato": "moeda"
+          },
+          "D17": {
+            "entrada": "30%"
+          },
+          "A18": {
+            "entrada": "Pendrive"
+          },
+          "B18": {
+            "entrada": "574",
+            "formato": "moeda"
+          },
+          "C18": {
+            "entrada": "746,2",
+            "formato": "moeda"
+          },
+          "D18": {
+            "entrada": "40%"
+          },
+          "A19": {
+            "entrada": "Cabo HDMI"
+          },
+          "B19": {
+            "entrada": "287",
+            "formato": "moeda"
+          },
+          "C19": {
+            "entrada": "487,9",
+            "formato": "moeda"
+          },
+          "D19": {
+            "entrada": "50%"
+          },
+          "A20": {
+            "entrada": "Impressora"
+          },
+          "B20": {
+            "entrada": "449",
+            "formato": "moeda"
+          },
+          "C20": {
+            "entrada": "898",
+            "formato": "moeda"
+          },
+          "D20": {
+            "entrada": "20%"
+          },
+          "A21": {
+            "entrada": "Câmera"
+          },
+          "B21": {
+            "entrada": "344",
+            "formato": "moeda"
+          },
+          "C21": {
+            "entrada": "584,8",
+            "formato": "moeda"
+          },
+          "D21": {
+            "entrada": "40%"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "C2",
+          "B3",
+          "C3",
+          "B4",
+          "C4",
+          "B5",
+          "C5",
+          "B6",
+          "C6",
+          "B7",
+          "C7",
+          "B8",
+          "C8",
+          "B9",
+          "C9",
+          "B10",
+          "C10",
+          "B11",
+          "C11",
+          "B12",
+          "C12",
+          "B13",
+          "C13",
+          "B14",
+          "C14",
+          "B15",
+          "C15",
+          "B16",
+          "C16",
+          "B17",
+          "C17",
+          "B18",
+          "C18",
+          "B19",
+          "C19",
+          "B20",
+          "C20",
+          "B21",
+          "C21"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E2",
+          "esperado": 233.55,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C2*(1-D2)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E3",
+          "esperado": 1051.2,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C3*(1-D3)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E4",
+          "esperado": 680.68,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C4*(1-D4)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E5",
+          "esperado": 874.64,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C5*(1-D5)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E6",
+          "esperado": 277.55,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C6*(1-D6)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E7",
+          "esperado": 483.75,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C7*(1-D7)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E8",
+          "esperado": 1315.8,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C8*(1-D8)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E9",
+          "esperado": 403.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C9*(1-D9)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E10",
+          "esperado": 306.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C10*(1-D10)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E11",
+          "esperado": 302.4,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C11*(1-D11)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E12",
+          "esperado": 569.66,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C12*(1-D12)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E13",
+          "esperado": 781.83,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C13*(1-D13)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E14",
+          "esperado": 305.2,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C14*(1-D14)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E15",
+          "esperado": 870.45,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C15*(1-D15)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E16",
+          "esperado": 1190.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C16*(1-D16)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E17",
+          "esperado": 429.52,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C17*(1-D17)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E18",
+          "esperado": 447.72,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C18*(1-D18)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E19",
+          "esperado": 243.95,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C19*(1-D19)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E20",
+          "esperado": 718.4,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C20*(1-D20)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E21",
+          "esperado": 350.88,
+          "exigeFormula": true,
+          "solucaoReferencia": "=C21*(1-D21)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "F2",
+          "esperado": 0.259259259259,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E2-B2)/E2",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F3",
+          "esperado": 0.375,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E3-B3)/E3",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F4",
+          "esperado": -0.098901098901,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E4-B4)/E4",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F5",
+          "esperado": 0.038461538462,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E5-B5)/E5",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F6",
+          "esperado": -0.098901098901,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E6-B6)/E6",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F7",
+          "esperado": -0.333333333333,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E7-B7)/E7",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F8",
+          "esperado": 0.444444444444,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E8-B8)/E8",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F9",
+          "esperado": -0.538461538462,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E9-B9)/E9",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F10",
+          "esperado": 0.019607843137,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E10-B10)/E10",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F11",
+          "esperado": 0.259259259259,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E11-B11)/E11",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F12",
+          "esperado": -0.098901098901,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E12-B12)/E12",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F13",
+          "esperado": 0.159663865546,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E13-B13)/E13",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F14",
+          "esperado": 0.285714285714,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E14-B14)/E14",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F15",
+          "esperado": 0.047619047619,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E15-B15)/E15",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F16",
+          "esperado": 0.264705882353,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E16-B16)/E16",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F17",
+          "esperado": -0.098901098901,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E17-B17)/E17",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F18",
+          "esperado": -0.282051282051,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E18-B18)/E18",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F19",
+          "esperado": -0.176470588235,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E19-B19)/E19",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F20",
+          "esperado": 0.375,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E20-B20)/E20",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F21",
+          "esperado": 0.019607843137,
+          "exigeFormula": true,
+          "solucaoReferencia": "=(E21-B21)/E21",
+          "formato": "percentual"
+        },
+        {
+          "celula": "I1",
+          "esperado": 8,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE(F2:F21;\"<0\")"
+        },
+        {
+          "celula": "H4",
+          "esperado": [
+            [
+              "Teclado"
+            ],
+            [
+              "Webcam"
+            ],
+            [
+              "SSD"
+            ],
+            [
+              "Hub USB"
+            ],
+            [
+              "Microfone"
+            ],
+            [
+              "Smartwatch"
+            ],
+            [
+              "Pendrive"
+            ],
+            [
+              "Cabo HDMI"
+            ]
+          ],
+          "exigeFormula": true,
+          "solucaoReferencia": "=FILTRO(A2:A21;F2:F21<0)"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "**Etapa 1:** `=C2*(1-D2)`. Como D2 já é uma porcentagem (30%), 1−D2 é a fração que o cliente paga.",
+        "**Etapa 2:** `=(E2-B2)/E2`. Margem negativa quer dizer preço final abaixo do custo.",
+        "**Etapa 3:** `=CONT.SE(F2:F21;\"<0\")` e `=FILTRO(A2:A21;F2:F21<0)`: o FILTRO aceita qualquer condição, não só igualdade."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-23",
+    "nivel": 1,
+    "caso": false,
+    "exercicio": {
+      "id": "d6007f34-d0fd-5aae-98a9-9d242ab8be48",
+      "slug": "desafio-2026-11-23",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 1,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Pesquisa de satisfação por loja",
+      "enunciado": [
+        "Cada linha é a nota de um cliente. A loja a analisar está em **E1**.",
+        "Em **E2**, conte quantas notas 4 ou 5 essa loja recebeu. Em **E3**, calcule a média das notas dela. As duas fórmulas precisam usar E1."
+      ],
+      "grade": {
+        "linhas": 22,
+        "colunas": 6,
+        "larguras": {
+          "B": 110,
+          "D": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Loja",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Nota (1 a 5)",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Loja",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Shopping"
+          },
+          "D2": {
+            "entrada": "Notas 4 ou 5",
+            "negrito": true
+          },
+          "D3": {
+            "entrada": "Média",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Shopping"
+          },
+          "B2": {
+            "entrada": "3"
+          },
+          "A3": {
+            "entrada": "Centro"
+          },
+          "B3": {
+            "entrada": "5"
+          },
+          "A4": {
+            "entrada": "Shopping"
+          },
+          "B4": {
+            "entrada": "5"
+          },
+          "A5": {
+            "entrada": "Shopping"
+          },
+          "B5": {
+            "entrada": "5"
+          },
+          "A6": {
+            "entrada": "Shopping"
+          },
+          "B6": {
+            "entrada": "3"
+          },
+          "A7": {
+            "entrada": "Online"
+          },
+          "B7": {
+            "entrada": "4"
+          },
+          "A8": {
+            "entrada": "Shopping"
+          },
+          "B8": {
+            "entrada": "5"
+          },
+          "A9": {
+            "entrada": "Centro"
+          },
+          "B9": {
+            "entrada": "4"
+          },
+          "A10": {
+            "entrada": "Online"
+          },
+          "B10": {
+            "entrada": "5"
+          },
+          "A11": {
+            "entrada": "Centro"
+          },
+          "B11": {
+            "entrada": "3"
+          },
+          "A12": {
+            "entrada": "Centro"
+          },
+          "B12": {
+            "entrada": "5"
+          },
+          "A13": {
+            "entrada": "Shopping"
+          },
+          "B13": {
+            "entrada": "2"
+          },
+          "A14": {
+            "entrada": "Online"
+          },
+          "B14": {
+            "entrada": "5"
+          },
+          "A15": {
+            "entrada": "Shopping"
+          },
+          "B15": {
+            "entrada": "2"
+          },
+          "A16": {
+            "entrada": "Centro"
+          },
+          "B16": {
+            "entrada": "2"
+          },
+          "A17": {
+            "entrada": "Online"
+          },
+          "B17": {
+            "entrada": "4"
+          },
+          "A18": {
+            "entrada": "Online"
+          },
+          "B18": {
+            "entrada": "3"
+          },
+          "A19": {
+            "entrada": "Online"
+          },
+          "B19": {
+            "entrada": "4"
+          },
+          "A20": {
+            "entrada": "Online"
+          },
+          "B20": {
+            "entrada": "4"
+          },
+          "A21": {
+            "entrada": "Online"
+          },
+          "B21": {
+            "entrada": "4"
           }
         },
         "variaveis": [
@@ -1375,15 +5458,39 @@
           "B6",
           "B7",
           "B8",
-          "B9"
-        ]
+          "B9",
+          "B10",
+          "B11",
+          "B12",
+          "B13",
+          "B14",
+          "B15",
+          "B16",
+          "B17",
+          "B18",
+          "B19",
+          "B20",
+          "B21"
+        ],
+        "alternativas": {
+          "E1": [
+            "Centro",
+            "Online"
+          ]
+        }
       },
       "alvos": [
         {
-          "celula": "E1",
-          "esperado": 7.875,
+          "celula": "E2",
+          "esperado": 3,
           "exigeFormula": true,
-          "solucaoReferencia": "=MÉDIASE(A2:A9;\"A\";B2:B9)",
+          "solucaoReferencia": "=CONT.SES(A2:A21;E1;B2:B21;\">=4\")"
+        },
+        {
+          "celula": "E3",
+          "esperado": 3.5714285714285716,
+          "exigeFormula": true,
+          "solucaoReferencia": "=MÉDIASE(A2:A21;E1;B2:B21)",
           "formato": {
             "casas": 2
           }
@@ -1391,335 +5498,14 @@
       ],
       "dicas": [],
       "explicacao": [
-        "`=MÉDIASE(A2:A9;\"A\";B2:B9)` faz a média só das linhas da turma A: 7,88.",
-        "Mesma lógica do SOMASE: onde procurar, o que procurar, de onde tirar os números."
+        "`=CONT.SES(A2:A21;E1;B2:B21;\">=4\")` conta as linhas da loja de E1 com nota 4 ou mais.",
+        "`=MÉDIASE(A2:A21;E1;B2:B21)` faz a média só das notas dessa loja.",
+        "Usar E1 em vez de escrever \"Shopping\" deixa a planilha reutilizável: basta trocar a loja."
       ],
       "tentativasAteExplicacao": 99,
       "funcoesExigidas": [
+        "COUNTIFS",
         "AVERAGEIF"
-      ]
-    }
-  },
-  {
-    "data": "2026-11-21",
-    "exercicio": {
-      "id": "06652b1e-b67a-5c8b-9d87-91a62940f751",
-      "slug": "desafio-2026-11-21",
-      "type": "formula",
-      "trilha": "excel-ptbr",
-      "modulo": "desafio",
-      "ordem": 1,
-      "nivel": 2,
-      "plano": "free",
-      "versao": 1,
-      "titulo": "Junte nome e sobrenome",
-      "enunciado": [
-        "Em **C2:C5**, junte o nome e o sobrenome com um espaço no meio, como em \"Maria Silva\"."
-      ],
-      "grade": {
-        "linhas": 7,
-        "colunas": 4,
-        "larguras": {
-          "B": 110,
-          "C": 150
-        },
-        "celulas": {
-          "A1": {
-            "entrada": "Nome",
-            "negrito": true
-          },
-          "B1": {
-            "entrada": "Sobrenome",
-            "negrito": true
-          },
-          "C1": {
-            "entrada": "Nome completo",
-            "negrito": true
-          },
-          "A2": {
-            "entrada": "Maria"
-          },
-          "B2": {
-            "entrada": "Silva"
-          },
-          "A3": {
-            "entrada": "João"
-          },
-          "B3": {
-            "entrada": "Souza"
-          },
-          "A4": {
-            "entrada": "Ana"
-          },
-          "B4": {
-            "entrada": "Oliveira"
-          },
-          "A5": {
-            "entrada": "Pedro"
-          },
-          "B5": {
-            "entrada": "Santos"
-          }
-        }
-      },
-      "alvos": [
-        {
-          "celula": "C2",
-          "esperado": "Maria Silva",
-          "exigeFormula": true,
-          "solucaoReferencia": "=A2&\" \"&B2"
-        },
-        {
-          "celula": "C3",
-          "esperado": "João Souza",
-          "exigeFormula": true,
-          "solucaoReferencia": "=A3&\" \"&B3"
-        },
-        {
-          "celula": "C4",
-          "esperado": "Ana Oliveira",
-          "exigeFormula": true,
-          "solucaoReferencia": "=A4&\" \"&B4"
-        },
-        {
-          "celula": "C5",
-          "esperado": "Pedro Santos",
-          "exigeFormula": true,
-          "solucaoReferencia": "=A5&\" \"&B5"
-        }
-      ],
-      "dicas": [],
-      "explicacao": [
-        "`=A2&\" \"&B2`: o `&` gruda textos, e o `\" \"` é o espaço entre eles.",
-        "Também funciona `=CONCAT(A2;\" \";B2)`. Sem o espaço, o resultado vira \"MariaSilva\"."
-      ],
-      "tentativasAteExplicacao": 99
-    }
-  },
-  {
-    "data": "2026-11-22",
-    "exercicio": {
-      "id": "4040b232-c406-5593-aa78-0373ca1798ea",
-      "slug": "desafio-2026-11-22",
-      "type": "formula",
-      "trilha": "excel-ptbr",
-      "modulo": "desafio",
-      "ordem": 1,
-      "nivel": 2,
-      "plano": "free",
-      "versao": 1,
-      "titulo": "Preço por unidade sem #DIV/0!",
-      "enunciado": [
-        "Em **D2:D6**, calcule o preço por unidade (total ÷ unidades).",
-        "Alguns produtos não foram comprados (0 unidades). Nesses, mostre **0** em vez de erro."
-      ],
-      "grade": {
-        "linhas": 8,
-        "colunas": 5,
-        "larguras": {
-          "A": 110,
-          "B": 110,
-          "D": 130
-        },
-        "celulas": {
-          "A1": {
-            "entrada": "Produto",
-            "negrito": true
-          },
-          "B1": {
-            "entrada": "Total pago",
-            "negrito": true
-          },
-          "C1": {
-            "entrada": "Unidades",
-            "negrito": true
-          },
-          "D1": {
-            "entrada": "Preço unitário",
-            "negrito": true
-          },
-          "A2": {
-            "entrada": "Arroz 5kg"
-          },
-          "B2": {
-            "entrada": "27,9",
-            "formato": "moeda"
-          },
-          "C2": {
-            "entrada": "1"
-          },
-          "A3": {
-            "entrada": "Café 500g"
-          },
-          "B3": {
-            "entrada": "19,8",
-            "formato": "moeda"
-          },
-          "C3": {
-            "entrada": "2"
-          },
-          "A4": {
-            "entrada": "Leite cx"
-          },
-          "B4": {
-            "entrada": "0",
-            "formato": "moeda"
-          },
-          "C4": {
-            "entrada": "0"
-          },
-          "A5": {
-            "entrada": "Óleo"
-          },
-          "B5": {
-            "entrada": "35,7",
-            "formato": "moeda"
-          },
-          "C5": {
-            "entrada": "3"
-          },
-          "A6": {
-            "entrada": "Açúcar"
-          },
-          "B6": {
-            "entrada": "0",
-            "formato": "moeda"
-          },
-          "C6": {
-            "entrada": "0"
-          }
-        },
-        "variaveis": [
-          "B2",
-          "B3",
-          "B4",
-          "B5",
-          "B6"
-        ]
-      },
-      "alvos": [
-        {
-          "celula": "D2",
-          "esperado": 27.9,
-          "exigeFormula": true,
-          "solucaoReferencia": "=SEERRO(B2/C2;0)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "D3",
-          "esperado": 9.9,
-          "exigeFormula": true,
-          "solucaoReferencia": "=SEERRO(B3/C3;0)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "D4",
-          "esperado": 0,
-          "exigeFormula": true,
-          "solucaoReferencia": "=SEERRO(B4/C4;0)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "D5",
-          "esperado": 11.9,
-          "exigeFormula": true,
-          "solucaoReferencia": "=SEERRO(B5/C5;0)",
-          "formato": "moeda"
-        },
-        {
-          "celula": "D6",
-          "esperado": 0,
-          "exigeFormula": true,
-          "solucaoReferencia": "=SEERRO(B6/C6;0)",
-          "formato": "moeda"
-        }
-      ],
-      "dicas": [],
-      "explicacao": [
-        "`=SEERRO(B2/C2;0)` tenta a divisão e, se der erro (como `#DIV/0!`), devolve 0.",
-        "Outra forma: `=SE(C2=0;0;B2/C2)`, que testa antes de dividir."
-      ],
-      "tentativasAteExplicacao": 99,
-      "funcoesExigidas": [
-        "IFERROR"
-      ]
-    }
-  },
-  {
-    "data": "2026-11-23",
-    "exercicio": {
-      "id": "d6007f34-d0fd-5aae-98a9-9d242ab8be48",
-      "slug": "desafio-2026-11-23",
-      "type": "formula",
-      "trilha": "excel-ptbr",
-      "modulo": "desafio",
-      "ordem": 1,
-      "nivel": 2,
-      "plano": "free",
-      "versao": 1,
-      "titulo": "Quanto fica a parcela?",
-      "enunciado": [
-        "Um celular de R$ 2.400 vai ser parcelado em 12 vezes, com juros de 1,99% ao mês.",
-        "Em **B5**, calcule o valor de cada parcela."
-      ],
-      "grade": {
-        "linhas": 7,
-        "colunas": 4,
-        "larguras": {
-          "A": 140,
-          "B": 120
-        },
-        "celulas": {
-          "A1": {
-            "entrada": "Valor da compra",
-            "negrito": true
-          },
-          "B1": {
-            "entrada": "2400",
-            "formato": "moeda"
-          },
-          "A2": {
-            "entrada": "Juros ao mês",
-            "negrito": true
-          },
-          "B2": {
-            "entrada": "1,99%"
-          },
-          "A3": {
-            "entrada": "Parcelas",
-            "negrito": true
-          },
-          "B3": {
-            "entrada": "12"
-          },
-          "A5": {
-            "entrada": "Valor da parcela",
-            "negrito": true
-          }
-        },
-        "variaveis": [
-          "B1",
-          "B2"
-        ]
-      },
-      "alvos": [
-        {
-          "celula": "B5",
-          "esperado": 226.8036797968,
-          "exigeFormula": true,
-          "solucaoReferencia": "=PGTO(B2;B3;-B1)",
-          "formato": "moeda",
-          "tolerancia": 1e-06
-        }
-      ],
-      "dicas": [],
-      "explicacao": [
-        "`=PGTO(B2;B3;-B1)`: taxa por período, número de parcelas e valor presente. O valor fica negativo (`-B1`) porque, para o Excel, é dinheiro que entra e depois sai: assim a parcela aparece positiva.",
-        "Cada parcela fica em R$ 226,80. No total, você paga R$ 2.721,64, ou R$ 321,64 de juros."
-      ],
-      "tentativasAteExplicacao": 99,
-      "funcoesExigidas": [
-        "PMT"
       ]
     }
   }

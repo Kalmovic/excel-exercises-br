@@ -48,7 +48,7 @@ type Props = {
   /** Exercício da trilha: troféu, pular, próximo módulo. */
   trilha?: Trilha;
   /** Desafio diário: card de compartilhamento depois de acertar. */
-  desafio?: { numero: number; data: string };
+  desafio?: { numero: number; data: string; rotulo: string };
 };
 
 export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: Props) {
@@ -179,7 +179,13 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: P
           onPular={trilha?.permitePular && !concluido ? pular : undefined}
           extra={
             desafio && concluido ? (
-              <CompartilharDesafio numero={desafio.numero} data={desafio.data} slug={ex.slug} versao={ex.versao} />
+              <CompartilharDesafio
+                numero={desafio.numero}
+                data={desafio.data}
+                rotulo={desafio.rotulo}
+                slug={ex.slug}
+                versao={ex.versao}
+              />
             ) : undefined
           }
           botaoVerificarRef={botaoVerificarRef}
