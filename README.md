@@ -64,3 +64,15 @@ Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKe
 - **Critério numa célula:** use `grade.alternativas` (ex.: `{"G1": ["Sul", "Nordeste"]}`). A correção troca a célula por essas opções e recusa quem escreveu o critério direto na fórmula.
 - **Adicionar um mês:** crie o JSON do mês (um item por dia, sem pular datas, `dicas: []`), inclua o import em `src/content/desafios/index.ts` e rode `npm test`, que confere o calendário, a curva e se cada solução passa.
 - Nos testes e2e, `DESAFIO_HOJE` fixa a data (ignorada em produção na Vercel).
+
+## Admin
+
+Área para navegar por todos os exercícios (trilha e desafios diários, inclusive os futuros) e testá-los.
+
+1. Defina a variável de ambiente `ADMIN_TOKEN` com uma senha de 12 caracteres ou mais: na Vercel, em Settings → Environment Variables; localmente, em `.env.local` (fora do git).
+2. Acesse `/admin/entrar` e digite a senha.
+
+- Sem `ADMIN_TOKEN`, o admin fica desligado. Para quem não está logado, `/admin` responde 404.
+- A checagem é no servidor (`src/lib/admin.ts`). O cookie é `httpOnly` e guarda um hash da senha, não a senha. Trocar a `ADMIN_TOKEN` derruba todas as sessões.
+- Em cada exercício, "Preencher solução" deixa a tela no estado que acerta, para testar a correção. O modo admin não lê nem grava o progresso do navegador.
+- Na Fase 3, isto vira um papel de admin na conta do Supabase.

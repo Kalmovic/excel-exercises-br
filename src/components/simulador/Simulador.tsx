@@ -19,10 +19,12 @@ import { PainelExercicio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
 import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
+import { PainelAdmin } from "@/components/admin/PainelAdmin";
+import { preencherSolucao } from "@/components/admin/solucao";
 
-function montar(ex: Exercicio): Omit<ContextoSimulador, "entradaRef"> {
+function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
-  const salvo = progresso.ler(ex.slug, ex.versao);
+  const salvo = restaurar ? progresso.ler(ex.slug, ex.versao) : undefined;
   if (salvo) {
     planilha.definirVarias(
       Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
@@ -49,18 +51,20 @@ type Props = {
   trilha?: Trilha;
   /** Desafio diário: card de compartilhamento depois de acertar. */
   desafio?: { numero: number; data: string; rotulo: string };
+  /** Visão admin: não lê nem grava progresso e mostra o gabarito. */
+  admin?: boolean;
 };
 
-export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: Props) {
+export default function Simulador({ exercicio: ex, proximo, trilha, desafio, admin = false }: Props) {
   const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
   const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
   const [trofeu, setTrofeu] = useState<{ tentativas: number } | null>(null);
-  const [nucleo, setNucleo] = useState(() => montar(ex));
+  const [nucleo, setNucleo] = useState(() => montar(ex, !admin));
   const [resultado, setResultado] = useState<Resultado | null>(null);
-  const [tentativas, setTentativas] = useState(() => progresso.ler(ex.slug, ex.versao)?.tentativas ?? 0);
+  const [tentativas, setTentativas] = useState(() => (admin ? 0 : (progresso.ler(ex.slug, ex.versao)?.tentativas ?? 0)));
   const [concluido, setConcluido] = useState(
-    () => progresso.ler(ex.slug, ex.versao)?.status === "concluido",
+    () => !admin && progresso.ler(ex.slug, ex.versao)?.status === "concluido",
   );
   const [dicasVistas, setDicasVistas] = useState(0);
 
@@ -68,6 +72,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: P
 
   /** Grava o estado atual do exercício (conteúdo, formatos e resposta). */
   const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number, historico?: boolean[]) => {
+    if (admin) return; // o admin testa sem mexer no progresso
     const atual = progresso.ler(ex.slug, ex.versao);
     progresso.salvar(ex.slug, {
       versao: ex.versao,
@@ -128,7 +133,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: P
     setTimeout(() => store.setState({ celebrando: false }), 1300);
     void celebrarAcerto(botaoVerificarRef.current);
     // Fim do módulo: troféu, só na primeira vez.
-    if (trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
+    if (!admin && trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
       const tudo = progresso.lerTudo();
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
       setTimeout(() => {
@@ -144,8 +149,8 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: P
   };
 
   const reiniciar = () => {
-    progresso.apagar(ex.slug);
-    setNucleo(montar(ex));
+    if (!admin) progresso.apagar(ex.slug);
+    setNucleo(montar(ex, !admin));
     setResultado(null);
     setTentativas(0);
     setConcluido(false);
@@ -178,7 +183,9 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio }: P
           onReiniciar={reiniciar}
           onPular={trilha?.permitePular && !concluido ? pular : undefined}
           extra={
-            desafio && concluido ? (
+            admin ? (
+              <PainelAdmin ex={ex} onPreencher={() => preencherSolucao(ex, nucleo.planilha, nucleo.store)} />
+            ) : desafio && concluido ? (
               <CompartilharDesafio
                 numero={desafio.numero}
                 data={desafio.data}

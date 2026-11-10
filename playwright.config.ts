@@ -21,7 +21,7 @@ export default defineConfig({
     url: "http://localhost:3100",
     reuseExistingServer: false,
     // Data fixa do desafio diário nos testes (ignorada em produção na Vercel).
-    env: { DESAFIO_HOJE: "2026-11-12" },
+    env: { DESAFIO_HOJE: "2026-11-12", ADMIN_TOKEN: "senha-de-teste-admin" },
     timeout: 60_000,
   },
 });

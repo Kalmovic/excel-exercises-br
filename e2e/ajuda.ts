@@ -1,6 +1,7 @@
 import { expect, type Page } from "@playwright/test";
 
-export const celula = (page: Page, end: string) => page.locator(`[data-celula="${end}"]`);
+// O Next mantém a página anterior montada e escondida depois de navegar: olhar só a visível.
+export const celula = (page: Page, end: string) => page.locator(`[data-celula="${end}"]`).filter({ visible: true });
 
 export async function abrir(page: Page, slug: string) {
   await page.goto(`/exercicios/${slug}`);
