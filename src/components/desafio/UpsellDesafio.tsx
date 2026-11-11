@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { registrar } from "@/lib/eventos";
 import type { Upsell } from "@/content/modulos-pro";
 
 const lista = (itens: string[]) =>
@@ -17,6 +20,7 @@ export function UpsellDesafio({ upsell }: { upsell: Upsell }) {
       </p>
       <Link
         href="/pro"
+        onClick={() => registrar({ nome: "upsell_clicou", origem: "desafio" })}
         className="inline-block rounded-md bg-accent px-3 py-1.5 font-medium text-ink hover:bg-accent"
       >
         Conhecer o Pro →

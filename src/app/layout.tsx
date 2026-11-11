@@ -3,6 +3,8 @@ import Link from "next/link";
 import "./globals.css";
 import { Logo } from "@/components/marca/Logo";
 import { MenuCelular } from "@/components/marca/MenuCelular";
+import { LinkRastreado } from "@/components/site/LinkRastreado";
+import { Analytics } from "@vercel/analytics/next";
 import { NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,9 +43,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/entrar" className="hidden text-ink hover:text-muted sm:inline">
                 Entrar
               </Link>
-              <Link href="/trilha" className="rounded-lg bg-ink px-4 py-2 whitespace-nowrap text-white hover:bg-ink-soft">
+              <LinkRastreado
+                href="/trilha"
+                className="rounded-lg bg-ink px-4 py-2 whitespace-nowrap text-white hover:bg-ink-soft"
+                evento={{ nome: "cta_landing", local: "cabecalho" }}
+              >
                 Começar grátis
-              </Link>
+              </LinkRastreado>
               <MenuCelular itens={[...NAV, { href: "/entrar", rotulo: "Entrar" }]} />
             </div>
           </div>
@@ -80,6 +86,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </p>
           </div>
         </footer>
+        {/* Visitas e eventos (src/lib/eventos.ts). Ativar em Vercel → Analytics. */}
+        <Analytics />
       </body>
     </html>
   );

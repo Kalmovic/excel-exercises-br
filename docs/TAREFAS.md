@@ -66,13 +66,19 @@ Diferenças em relação ao que a tarefa pedia:
 
 ## P1: o que falta para vender
 
-### P1-1. CI no GitHub Actions
+### P1-1. CI no GitHub Actions (feito em 11/11/2026)
+
+Workflow em `.github/workflows/ci.yml`: lint, tipos, testes unitários, build e e2e (com o projeto em modo dev) a cada push na `main` e em todo pull request; `test-results/` vira artefato quando falha. Pendente: ligar a proteção de branch exigindo o CI verde (Settings → Branches no GitHub).
 
 - **Evidência:** não existe `.github/`. Os 239 testes e os 28 e2e só rodam quando alguém lembra.
 - **Fazer:** workflow em push e PR: `npm ci`, `eslint`, `tsc`, `vitest`, `next build`, `playwright` (com `npx playwright install chromium`). Publicar o relatório do Playwright como artefato quando falhar.
 - **Pronto:** selo verde no `main`; um PR com teste quebrado é barrado.
 
-### P1-2. Analytics e monitoramento de erros
+### P1-2. Analytics e monitoramento de erros (feito em 11/11/2026, com ressalvas)
+
+Feito: `@vercel/analytics` (visitas) + `src/lib/eventos.ts` com os eventos tipados do funil, ligados nos componentes; erros do navegador (`window.error`, promessas rejeitadas, `error.tsx`, `global-error.tsx`) vão para `/api/erros`, que grava uma linha JSON `erro_cliente` no log da Vercel; 404 e página de erro na marca; dicas vistas e tempo ativo gravados no progresso.
+
+Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos personalizados da Vercel podem exigir plano pago; se for o caso, trocar o destino em `src/lib/eventos.ts` (Plausible ou PostHog). Para alertas de erro, trocar `/api/erros` por Sentry quando houver volume.
 
 - **Evidência:** nenhum script de medição. A métrica do roadmap ("conversão no fim do Intro; se baixa, reabrir Fundamentos") hoje não pode ser calculada. O bug P0-1 estava em produção sem ninguém saber.
 - **Fazer:** Vercel Analytics ou Plausible (sem cookies, dispensa banner) + Sentry (ou equivalente) para erros de cliente. Um módulo `lib/eventos.ts` com eventos tipados: `exercicio_aberto`, `verificou {ok, tentativa, motivo}`, `dica_vista`, `pulou`, `modulo_concluido`, `desafio_concluido {tentativas}`, `compartilhou`, `upsell_clicou {origem}`, `cta_landing`. Gravar também dicas vistas e tempo no progresso (o nivelamento vai precisar).

@@ -10,6 +10,7 @@ import { deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address"
 import { Planilha } from "@/engine/engine";
 import { corrigir, type Resultado } from "@/grader/corrigir";
 import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
+import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { BarraFormatacao } from "./BarraFormatacao";
 import { BarraFormulas } from "./BarraFormulas";
@@ -75,6 +76,26 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
 
   const { planilha, store } = nucleo;
 
+  // Dicas e tempo ativo, gravados no progresso para o nivelamento.
+  const dicasVistasRef = useRef(0);
+  const ultimoRegistro = useRef<number | null>(null);
+  const tempoDesdeUltimoRegistro = () => {
+    const agora = Date.now();
+    const antes = ultimoRegistro.current ?? agora;
+    ultimoRegistro.current = agora;
+    return Math.min(agora - antes, 10 * 60_000); // pausa longa não conta como estudo
+  };
+
+  // Exercício aberto: uma vez por montagem (o Next re-roda efeitos ao voltar
+  // para uma página escondida; o ref preservado evita contar de novo).
+  const aberturaRegistrada = useRef(false);
+  useEffect(() => {
+    ultimoRegistro.current ??= Date.now();
+    if (aberturaRegistrada.current || admin) return;
+    aberturaRegistrada.current = true;
+    registrar({ nome: "exercicio_aberto", slug: ex.slug, modulo: ex.modulo });
+  }, [admin, ex.slug, ex.modulo]);
+
   /** Grava o estado atual do exercício (conteúdo, formatos e resposta). */
   const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number, historico?: boolean[]) => {
     if (admin) return; // o admin testa sem mexer no progresso
@@ -89,6 +110,8 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
       formatos: planilha.formatosDoAluno(),
       resposta: store.getState().resposta,
       historico: historico ?? atual?.historico,
+      dicasVistas: Math.max(atual?.dicasVistas ?? 0, dicasVistasRef.current),
+      tempoMs: (atual?.tempoMs ?? 0) + tempoDesdeUltimoRegistro(),
     });
   };
   const persistirRef = useRef(persistir);
@@ -132,6 +155,12 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
       ? progresso.ler(ex.slug, ex.versao)?.historico
       : [...(progresso.ler(ex.slug, ex.versao)?.historico ?? []), r.ok];
     persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
+    if (!admin) {
+      registrar({ nome: "verificou", slug: ex.slug, ok: r.ok, tentativa: n, motivo: r.falhas[0]?.motivo });
+      if (r.ok && desafio && !concluido) {
+        registrar({ nome: "desafio_concluido", data: desafio.data, tentativas: historico?.length ?? n });
+      }
+    }
     if (r.ok) comemorar();
     else if (ex.type !== "text_answer") entradaRef.current?.focus();
   };
@@ -142,6 +171,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
     void celebrarAcerto(botaoVerificarRef.current);
     // Fim do módulo: troféu, só na primeira vez.
     if (!admin && trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
+      registrar({ nome: "modulo_concluido", modulo: trilha.modulo });
       const tudo = progresso.lerTudo();
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
       setTimeout(() => {
@@ -152,6 +182,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
   };
 
   const pular = () => {
+    registrar({ nome: "pulou", slug: ex.slug });
     progresso.pular(ex.slug, ex.versao);
     router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha?.proximoModulo?.href ?? "/"));
   };
@@ -246,7 +277,12 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
           proximo={proximo}
           proximoModulo={trilha?.proximoModulo}
           onVerificar={verificar}
-          onDica={() => setDicasVistas((d) => Math.min(d + 1, ex.dicas.length))}
+          onDica={() => {
+            const n = Math.min(dicasVistas + 1, ex.dicas.length);
+            setDicasVistas(n);
+            dicasVistasRef.current = n;
+            if (!admin) registrar({ nome: "dica_vista", slug: ex.slug, numero: n });
+          }}
           onReiniciar={reiniciar}
           onPular={trilha?.permitePular && !concluido ? pular : undefined}
           extra={

@@ -15,6 +15,10 @@ export type ProgressoExercicio = {
   resposta?: string;
   /** Resultado de cada verificação até acertar (true = acertou). */
   historico?: boolean[];
+  /** Quantas dicas foram abertas (para o nivelamento). */
+  dicasVistas?: number;
+  /** Tempo ativo no exercício, em ms (intervalos ociosos acima de 10 min são cortados). */
+  tempoMs?: number;
   atualizadoEm: string;
 };
 

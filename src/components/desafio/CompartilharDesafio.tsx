@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { dataBR } from "@/lib/data-sp";
 import { NOME_DESAFIO } from "@/lib/site";
+import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { ContagemRegressiva } from "./ContagemRegressiva";
 
@@ -48,10 +49,12 @@ export function CompartilharDesafio({
     try {
       if (navigator.share && matchMedia("(pointer: coarse)").matches) {
         await navigator.share({ text: texto });
+        registrar({ nome: "compartilhou", data, meio: "nativo" });
         return;
       }
       await navigator.clipboard.writeText(texto);
       setCopiado(true);
+      registrar({ nome: "compartilhou", data, meio: "copiar" });
       setTimeout(() => setCopiado(false), 2500);
     } catch {
       // usuário cancelou ou o navegador bloqueou: o texto continua visível para copiar à mão

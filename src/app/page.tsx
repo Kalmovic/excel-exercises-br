@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
+import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { exercicioDemo } from "@/content";
 import { NOME_DESAFIO, NOME_SITE } from "@/lib/site";
 
@@ -91,9 +92,9 @@ export default function Landing() {
               PROCV, SOMA e ponto e vírgula, do jeito que o Excel em português funciona.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/trilha" className={botaoEscuro}>
+              <LinkRastreado href="/trilha" className={botaoEscuro} evento={{ nome: "cta_landing", local: "hero" }}>
                 Começar grátis
-              </Link>
+              </LinkRastreado>
               <Link href="/desafio" className={botaoClaro}>
                 Jogar o desafio de hoje
               </Link>
@@ -225,9 +226,13 @@ export default function Landing() {
                 </li>
               ))}
             </ul>
-            <Link href="/trilha" className={`${botaoClaro} mt-auto text-center`}>
+            <LinkRastreado
+              href="/trilha"
+              className={`${botaoClaro} mt-auto text-center`}
+              evento={{ nome: "cta_landing", local: "planos" }}
+            >
               Começar grátis
-            </Link>
+            </LinkRastreado>
           </div>
           <div className="flex flex-col rounded-2xl border-2 border-ink bg-surface p-6 shadow-xl">
             <div className="flex items-center justify-between">
@@ -245,9 +250,13 @@ export default function Landing() {
                 </li>
               ))}
             </ul>
-            <Link href="/pro" className={`${botaoEscuro} mt-auto text-center`}>
+            <LinkRastreado
+              href="/pro"
+              className={`${botaoEscuro} mt-auto text-center`}
+              evento={{ nome: "upsell_clicou", origem: "landing" }}
+            >
               Assinar o Pro
-            </Link>
+            </LinkRastreado>
           </div>
         </div>
       </Secao>
@@ -293,9 +302,9 @@ export default function Landing() {
       <section className="bg-accent">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 py-16">
           <h2 className="max-w-2xl text-4xl font-extrabold tracking-tight">Sua primeira fórmula leva menos de um minuto.</h2>
-          <Link href="/trilha" className={botaoEscuro}>
+          <LinkRastreado href="/trilha" className={botaoEscuro} evento={{ nome: "cta_landing", local: "chamada_final" }}>
             Começar grátis
-          </Link>
+          </LinkRastreado>
         </div>
       </section>
     </>

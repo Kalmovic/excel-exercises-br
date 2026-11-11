@@ -83,3 +83,10 @@ Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKe
 - Cores e fontes são tokens em `src/app/globals.css` (`@theme`): `ink`, `accent` (amarelo marca-texto), `success`, `bg`, `line`… Use as classes `bg-ink`, `text-success`, `bg-accent-soft` etc., nunca cores soltas do Tailwind.
 - Fontes instaladas pelo npm (Fontsource): Bricolage Grotesque nos títulos, Inter no texto, JetBrains Mono em fórmulas.
 - `/` é a landing; a lista de módulos com progresso fica em `/trilha`. Páginas do app ficam no grupo de rotas `src/app/(app)` (com margem); a landing ocupa a largura toda.
+
+## Medição e CI
+
+- Visitas: Vercel Analytics (ativar no painel da Vercel → Analytics).
+- Eventos do funil: `registrar()` em `src/lib/eventos.ts` (tipados). Para trocar de ferramenta, mexer só ali.
+- Erros do navegador: `src/instrumentation-client.ts` e as páginas de erro enviam para `/api/erros`, que grava `{"tipo":"erro_cliente", ...}` no log do servidor. Na Vercel: Logs, filtrar por `erro_cliente`.
+- CI: `.github/workflows/ci.yml` roda lint, tipos, testes, build e e2e em todo push e PR.
