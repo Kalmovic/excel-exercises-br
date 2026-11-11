@@ -45,3 +45,36 @@ test("mapa: módulo concluído recolhe e o desafio do dia mostra se já jogou", 
   await expect(page.getByTestId("card-desafio")).toContainText("Você ainda não jogou hoje");
   await expect(page.getByTestId("progresso-geral")).toContainText("10 de 15 exercícios");
 });
+
+test("balão: fecha ao sair e voltar, e não cobre nenhuma casa", async ({ page }) => {
+  await limparArmazenamento(page);
+  await page.goto("/trilha");
+  const visivel = () => page.getByRole("dialog").filter({ visible: true });
+
+  // abre o balão de uma casa à direita, que antes abria por cima das outras
+  await page.getByTestId("casa-navegar-pelo-teclado").click();
+  const balao = await visivel().boundingBox();
+  const casas = page.locator("[data-mapa-casa]").filter({ visible: true });
+  for (let i = 0; i < (await casas.count()); i++) {
+    const c = await casas.nth(i).boundingBox();
+    if (!c || !balao) continue;
+    const sobrepoe = c.x < balao.x + balao.width && c.x + c.width > balao.x && c.y < balao.y + balao.height && c.y + c.height > balao.y;
+    expect(sobrepoe, `casa ${i} sob o balão`).toBe(false);
+  }
+
+  // entra pelo balão e volta: o balão não pode reaparecer aberto
+  await visivel().getByRole("link").click();
+  await expect(page).toHaveURL(/navegar-pelo-teclado/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/trilha$/);
+  await expect(page.getByTestId("mapa").filter({ visible: true })).toBeVisible();
+  await expect(visivel()).toHaveCount(0);
+
+  // mesmo saindo por outro link (cabeçalho), o balão fecha
+  await page.getByTestId("casa-digitar-um-valor").filter({ visible: true }).click();
+  await expect(visivel()).toHaveCount(1);
+  await page.getByRole("link", { name: "Desafio do dia" }).click();
+  await expect(page).toHaveURL(/\/desafio$/);
+  await page.goBack();
+  await expect(visivel()).toHaveCount(0);
+});

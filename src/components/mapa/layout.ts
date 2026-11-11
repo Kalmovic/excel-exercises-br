@@ -13,6 +13,8 @@ const ALTURA_BANNER = 92;
 const ESPACO_ANTES_BANNER = 24;
 export const TAMANHO_CASA = 56;
 export const TAMANHO_TROFEU = 72;
+/** Distância entre a borda direita do mapa e o balão de detalhes. */
+export const BALAO_ESPACO = 24;
 
 export type RegiaoEntrada = { slug: string; casas: number; recolhida: boolean };
 

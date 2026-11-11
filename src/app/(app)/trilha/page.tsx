@@ -61,7 +61,8 @@ export default function Trilha() {
           .
         </p>
       </aside>
-      <div className="overflow-x-auto pb-10">
+      {/* Mapa à esquerda; à direita, espaço livre para o balão de detalhes (nunca cobre outras casas). */}
+      <div className="overflow-x-auto pb-10 lg:pl-6" style={{ minWidth: 0 }}>
         <MapaTrilha regioes={regioes} trilha={trilha} />
       </div>
     </div>

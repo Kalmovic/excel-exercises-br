@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { IconeConquista } from "@/components/simulador/Trofeu";
 import { escolherInicio, type ItemTrilha } from "@/lib/inicio";
 import * as progresso from "@/lib/progresso";
-import { LARGURA, TAMANHO_CASA, TAMANHO_TROFEU, calcularLayout, chaveCasa, chaveTrofeu } from "./layout";
+import { BALAO_ESPACO, LARGURA, TAMANHO_CASA, TAMANHO_TROFEU, calcularLayout, chaveCasa, chaveTrofeu } from "./layout";
 
 export type RegiaoMapa = {
   slug: string;
@@ -92,6 +92,9 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
 
   // Balão aberto (uma casa ou troféu por vez).
   const [aberto, setAberto] = useState<string | null>(null);
+  // O Next mantém a página montada e escondida ao navegar; ao esconder, os
+  // efeitos são desfeitos. Fechar o balão aqui evita ele reaparecer na volta.
+  useEffect(() => () => setAberto(null), []);
   const raiz = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!aberto) return;
@@ -146,7 +149,7 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
   }, [atualY]);
 
   return (
-    <div ref={raiz} className="relative mx-auto" style={{ width: LARGURA, height: layout.altura }} data-testid="mapa">
+    <div ref={raiz} className="relative" style={{ width: LARGURA, height: layout.altura }} data-testid="mapa">
       <svg className="absolute inset-0" width={LARGURA} height={layout.altura} aria-hidden>
         {layout.trechos.map((t, i) => {
           const feito = percorrido(t.de) && percorrido(t.ate);
@@ -230,7 +233,6 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
                 pendente: "bg-surface text-ink border-line",
                 travado: "bg-header text-zinc-400 border-line",
               }[estado];
-          const ladoEsquerdo = c.x > LARGURA / 2;
           return (
             <li
               key={chave}
@@ -245,7 +247,9 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
                 aria-label={item ? `Exercício ${c.indice + 1}: ${item.titulo} (${rotuloEstado})` : `Módulo ${r.numero}: em breve`}
                 aria-expanded={aberto === chave}
                 onClick={() => setAberto(aberto === chave ? null : chave)}
-                className={`grid place-items-center rounded-full border-2 font-display text-lg font-bold shadow-sm transition hover:scale-105 ${estilo}`}
+                className={`grid place-items-center rounded-full border-2 font-display text-lg font-bold shadow-sm transition hover:scale-105 ${estilo} ${
+                  aberto === chave ? "outline-4 outline-offset-2 outline-ink/25" : ""
+                }`}
                 style={{ width: TAMANHO_CASA, height: TAMANHO_CASA }}
               >
                 {estado === "feito" && !ehAtual ? "✓" : estado === "travado" ? <Cadeado /> : c.indice + 1}
@@ -254,9 +258,8 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
                 <div
                   data-mapa-balao
                   role="dialog"
-                  className={`absolute top-1/2 z-40 w-60 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop ${
-                    ladoEsquerdo ? "right-[calc(100%+12px)]" : "left-[calc(100%+12px)]"
-                  }`}
+                  className="absolute top-1/2 z-40 w-60 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop"
+                  style={{ left: LARGURA + BALAO_ESPACO - (c.x - TAMANHO_CASA / 2) }}
                 >
                   {item ? (
                     <>
@@ -269,6 +272,7 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
                       </p>
                       <Link
                         href={`/exercicios/${item.slug}`}
+                        onClick={() => setAberto(null)}
                         className="block rounded-lg bg-ink px-3 py-2 text-center text-sm font-semibold text-white hover:bg-ink-soft"
                       >
                         {estado === "feito" ? "Refazer" : ehAtual || estado === "pulado" ? "Continuar" : "Começar"}
@@ -315,7 +319,8 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
               <div
                 data-mapa-balao
                 role="dialog"
-                className="absolute top-1/2 left-[calc(100%+12px)] z-40 w-56 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop"
+                className="absolute top-1/2 z-40 w-56 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop"
+                style={{ left: LARGURA + BALAO_ESPACO - (t.x - TAMANHO_TROFEU / 2) }}
               >
                 <p className="font-semibold">Troféu: {r.titulo}</p>
                 <p className="mt-1 text-sm text-muted">
