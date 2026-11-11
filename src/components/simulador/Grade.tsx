@@ -19,6 +19,8 @@ import {
   type Pos,
 } from "@/engine/address";
 import { alinhamento } from "@/engine/format";
+import { CORES_REFERENCIA, referenciasDaFormula } from "@/engine/referencias";
+import { FormulaColorida } from "./FormulaColorida";
 import { AjudaFormula, rastrearCursor, teclaDeFormula } from "./AjudaFormula";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
@@ -85,6 +87,32 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     return () => window.removeEventListener("mouseup", soltar);
   }, [store]);
 
+  // Modo "apontar": a referência inserida pelo clique, arrasto ou setas. Enquanto o
+  // texto não muda e o cursor está logo depois dela, novos cliques/setas a substituem.
+  const apontador = useRef<{ ini: number; fim: number; ancora: Pos; foco: Pos; rascunho: string } | null>(null);
+
+  const apontadorAtivo = () => {
+    const a = apontador.current;
+    const s = store.getState();
+    if (!a || s.modo === "pronto" || s.rascunho !== a.rascunho) return null;
+    const cursor = entradaRef.current?.selectionStart ?? s.rascunho.length;
+    return cursor === a.fim ? a : null;
+  };
+
+  const apontar = (de: Pos, ate: Pos) => {
+    const s = store.getState();
+    const ativo = apontadorAtivo();
+    const cursor = entradaRef.current?.selectionStart ?? s.rascunho.length;
+    const ini = ativo ? ativo.ini : cursor;
+    const fim = ativo ? ativo.fim : cursor;
+    const ref = intervaloParaTexto(normalizar(de, ate));
+    const novo = s.rascunho.slice(0, ini) + ref + s.rascunho.slice(fim);
+    apontador.current = { ini, fim: ini + ref.length, ancora: de, foco: ate, rascunho: novo };
+    cursorPendente.current = ini + ref.length;
+    s.setRascunho(novo);
+    store.setState({ cursor: ini + ref.length });
+  };
+
   const apontandoReferencia = () => {
     const { modo, rascunho } = store.getState();
     const el = entradaRef.current;
@@ -96,14 +124,10 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const aoPressionarCelula = (e: MouseEvent, p: Pos) => {
     e.preventDefault();
     const s = store.getState();
-    // Modo "apontar": clicar numa célula enquanto digita uma fórmula insere a referência.
-    if (apontandoReferencia() && !(p.linha === s.ancora.linha && p.coluna === s.ancora.coluna)) {
-      const el = entradaRef.current;
-      const cursor = el?.selectionStart ?? s.rascunho.length;
-      const ref = paraEndereco(p);
-      const novo = s.rascunho.slice(0, cursor) + ref + s.rascunho.slice(cursor);
-      cursorPendente.current = cursor + ref.length;
-      s.setRascunho(novo);
+    // Modo "apontar": clicar (ou arrastar) numa célula enquanto digita uma fórmula insere a referência.
+    if ((apontandoReferencia() || apontadorAtivo()) && !(p.linha === s.ancora.linha && p.coluna === s.ancora.coluna)) {
+      apontar(p, p);
+      store.setState({ arrasto: "apontar" });
       return;
     }
     if (s.modo !== "pronto" && !s.confirmar()) return;
@@ -115,6 +139,14 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     const s = store.getState();
     if (s.arrasto === "selecao") s.selecionarPeloMouse(p, true);
     if (s.arrasto === "alca") s.moverAlca(p);
+    if (s.arrasto === "apontar" && apontador.current) apontar(apontador.current.ancora, p);
+  };
+
+  const aoPressionarCabecalho = (e: MouseEvent, tipo: "coluna" | "linha", indice: number) => {
+    e.preventDefault();
+    const s = store.getState();
+    if (s.modo !== "pronto" && !s.confirmar()) return;
+    s.selecionarCabecalho(tipo, indice, e.shiftKey);
   };
 
   const aoTeclar = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -132,7 +164,18 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       };
       if (setas[tecla]) {
         e.preventDefault();
-        s.mover(...setas[tecla], e.shiftKey);
+        if (ctrl) s.moverAteBorda(...setas[tecla], e.shiftKey);
+        else s.mover(...setas[tecla], e.shiftKey);
+        return;
+      }
+      if (tecla === "Home") {
+        e.preventDefault();
+        s.irPara(ctrl ? "inicio" : "inicioDaLinha", e.shiftKey);
+        return;
+      }
+      if (tecla === "End" && ctrl) {
+        e.preventDefault();
+        s.irPara("fim", e.shiftKey);
         return;
       }
       if (tecla === "Enter") {
@@ -191,6 +234,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           }
           return;
         }
+        if (k === "a") return (e.preventDefault(), s.selecionarTudo());
         if (k === "z") return (e.preventDefault(), e.shiftKey ? planilha.refazer() : planilha.desfazer());
         if (k === "y") return (e.preventDefault(), planilha.refazer());
         if (k === "d") return (e.preventDefault(), s.preencherSelecao("baixo"));
@@ -219,6 +263,31 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       e.preventDefault();
       store.setState({ modo: s.modo === "inserir" ? "editar" : "inserir" });
       return;
+    }
+    // Fórmula esperando uma referência (depois de "=", "(", ";", operador): as setas
+    // apontam uma célula, como no Excel. Shift+seta estende para um intervalo.
+    if (tecla.startsWith("Arrow") && s.modo === "inserir" && s.rascunho.startsWith("=")) {
+      const a = apontadorAtivo();
+      if (a || apontandoReferencia()) {
+        e.preventDefault();
+        const d: Record<string, [number, number]> = {
+          ArrowUp: [-1, 0],
+          ArrowDown: [1, 0],
+          ArrowLeft: [0, -1],
+          ArrowRight: [0, 1],
+        };
+        const [dl, dc] = d[tecla];
+        const andar = (q: Pos) => ({
+          linha: Math.max(0, Math.min(planilha.linhas - 1, q.linha + dl)),
+          coluna: Math.max(0, Math.min(planilha.colunas - 1, q.coluna + dc)),
+        });
+        if (a && e.shiftKey) apontar(a.ancora, andar(a.foco));
+        else {
+          const q = andar(a ? a.foco : s.ancora);
+          apontar(q, q);
+        }
+        return;
+      }
     }
     // No modo inserir, setas confirmam e movem, exceto em fórmulas
     // (lá elas movem o cursor, o que é mais previsível para quem está aprendendo).
@@ -266,6 +335,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
 
   const editando = modo !== "pronto";
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
+  const refsCoradas = editando ? referenciasDaFormula(rascunho) : [];
 
   return (
     <div className="relative">
@@ -296,6 +366,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                 ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-500"
               }`}
               style={{ left: esquerda(c), top: 0, width: w, height: ALTURA }}
+              onMouseDown={(e) => aoPressionarCabecalho(e, "coluna", c)}
+              data-cabecalho={colunaParaLetras(c)}
             >
               {colunaParaLetras(c)}
             </div>
@@ -311,6 +383,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                 ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-500"
               }`}
               style={{ left: 0, top: ALTURA * (l + 1), width: LARGURA_CABECALHO, height: ALTURA }}
+              onMouseDown={(e) => aoPressionarCabecalho(e, "linha", l)}
+              data-cabecalho={l + 1}
             >
               {l + 1}
             </div>
@@ -391,6 +465,44 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             }}
           />
         )}
+        {/* referências da fórmula em edição, cada uma na sua cor */}
+        {refsCoradas.map((r, i) => {
+          const fl = Math.min(r.intervalo.fim.linha, planilha.linhas - 1);
+          const fc = Math.min(r.intervalo.fim.coluna, planilha.colunas - 1);
+          if (r.intervalo.inicio.linha > fl || r.intervalo.inicio.coluna > fc) return null;
+          const cor = CORES_REFERENCIA[r.cor];
+          return (
+            <div
+              key={i}
+              data-testid="referencia-colorida"
+              data-intervalo={r.texto.replace(/\$/g, "")}
+              className="pointer-events-none absolute border-2"
+              style={{
+                left: esquerda(r.intervalo.inicio.coluna) - 1,
+                top: ALTURA * (r.intervalo.inicio.linha + 1) - 1,
+                width: esquerda(fc + 1) - esquerda(r.intervalo.inicio.coluna) + 1,
+                height: ALTURA * (fl - r.intervalo.inicio.linha + 1) + 1,
+                borderColor: cor,
+                backgroundColor: `${cor}14`,
+              }}
+            />
+          );
+        })}
+        {/* texto colorido por cima do editor (o input fica com o texto transparente) */}
+        {refsCoradas.length > 0 && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute z-30 flex items-center overflow-hidden border-2 border-transparent px-1 whitespace-pre text-zinc-900"
+            style={{
+              left: esquerda(ancora.coluna) - 1,
+              top: ALTURA * (ancora.linha + 1) - 1,
+              width: larguraEditor + 2,
+              height: ALTURA + 1,
+            }}
+          >
+            <FormulaColorida texto={rascunho} refs={refsCoradas} />
+          </div>
+        )}
         {/* input da célula ativa: invisível no modo pronto, editor nos outros */}
         <input
           ref={entradaRef}
@@ -407,14 +519,14 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           onPaste={aoColar}
           onKeyDown={aoTeclar}
           className={`absolute z-20 border-2 border-success px-1 font-[inherit] text-[13px] outline-none ${
-            editando ? "bg-white text-zinc-900 opacity-100 shadow-md" : "opacity-0"
+            editando ? `bg-white opacity-100 shadow-md ${refsCoradas.length ? "text-transparent" : "text-zinc-900"}` : "opacity-0"
           }`}
           style={{
             left: esquerda(ancora.coluna) - 1,
             top: ALTURA * (ancora.linha + 1) - 1,
             width: editando ? larguraEditor + 2 : colunas[ancora.coluna] + 2,
             height: ALTURA + 1,
-            caretColor: editando ? undefined : "transparent",
+            caretColor: editando ? "#16181d" : "transparent",
             cursor: arrasto ? "crosshair" : undefined,
             pointerEvents: editando ? "auto" : "none",
           }}

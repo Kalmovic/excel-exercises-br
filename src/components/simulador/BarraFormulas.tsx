@@ -2,7 +2,10 @@
 
 import { intervaloParaTexto, normalizar, paraEndereco } from "@/engine/address";
 import { explicarErro, mensagemCircular } from "@/engine/erros";
+import { useRef } from "react";
+import { referenciasDaFormula } from "@/engine/referencias";
 import { rastrearCursor, teclaDeFormula } from "./AjudaFormula";
+import { FormulaColorida } from "./FormulaColorida";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 export function BarraFormulas() {
@@ -34,6 +37,8 @@ export function BarraFormulas() {
         : null;
   const nome = editando ? paraEndereco(ancora) : intervaloParaTexto(normalizar(ancora, foco));
   const voltarParaGrade = () => entradaRef.current?.focus();
+  const refs = editando ? referenciasDaFormula(rascunho) : [];
+  const espelhoRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="space-y-1">
@@ -72,13 +77,26 @@ export function BarraFormulas() {
         <span className="flex w-8 items-center justify-center border-r border-line font-serif italic text-zinc-500">
           fx
         </span>
+        <div className="relative min-w-0 flex-1">
+          {refs.length > 0 && (
+            <div
+              ref={espelhoRef}
+              aria-hidden
+              className="pointer-events-none absolute inset-0 overflow-hidden px-2 py-1.5 font-mono text-[13px] whitespace-pre text-zinc-900"
+            >
+              <FormulaColorida texto={rascunho} refs={refs} />
+            </div>
+          )}
         <input
           data-foco-proprio
           data-testid="barra-formulas"
           aria-label="Barra de fórmulas"
           autoComplete="off"
           spellCheck={false}
-          className="min-w-0 flex-1 px-2 py-1.5 font-mono text-[13px] outline-none"
+          className={`w-full bg-transparent px-2 py-1.5 font-mono text-[13px] caret-ink outline-none ${refs.length ? "text-transparent" : ""}`}
+          onScroll={(e) => {
+            if (espelhoRef.current) espelhoRef.current.scrollLeft = e.currentTarget.scrollLeft;
+          }}
           value={editando ? rascunho : planilha.bruto(ancora)}
           readOnly={somenteLeitura}
           onFocus={() => {
@@ -107,6 +125,7 @@ export function BarraFormulas() {
             }
           }}
         />
+        </div>
       </div>
       <p
         role="alert"

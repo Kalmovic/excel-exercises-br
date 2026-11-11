@@ -1,4 +1,5 @@
 import { CATALOGO, funcaoDoCatalogo, type FuncaoCatalogo } from "./catalogo";
+import { referenciasDaFormula } from "./referencias";
 
 /** Tira acentos e caixa: "média" e "MEDIA" casam com "MÉDIA". */
 const chave = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase();
@@ -92,8 +93,6 @@ export function argumentoDestacado(funcao: FuncaoCatalogo, argumento: number): n
 
 // --- F4 --------------------------------------------------------------------
 
-const REF = /\$?[A-Za-z]{1,3}\$?\d+(?::\$?[A-Za-z]{1,3}\$?\d+)?/g;
-
 function ciclar(ref: string): string {
   const m = /^(\$?)([A-Za-z]{1,3})(\$?)(\d+)$/.exec(ref)!;
   const [, c, col, l, lin] = m;
@@ -109,17 +108,8 @@ function ciclar(ref: string): string {
  * Num intervalo (B2:B7), as duas pontas mudam juntas.
  */
 export function alternarReferencia(texto: string, cursor: number) {
-  if (!texto.startsWith("=")) return null;
-  for (const m of texto.matchAll(REF)) {
-    const ini = m.index!;
-    const fim = ini + m[0].length;
-    if (cursor < ini || cursor > fim) continue;
-    if (dentroDeAspas(texto, ini)) continue;
-    // Faz parte de um nome maior (ex.: "LOG10" ou "CONT.SE1")?
-    if (LETRA.test(texto[ini - 1] ?? "") || /[A-Za-z0-9_.(]/.test(texto[fim] ?? "")) continue;
-    const partes = m[0].split(":");
-    const novo = partes.map(ciclar).join(":");
-    return { texto: texto.slice(0, ini) + novo + texto.slice(fim), cursor: ini + novo.length };
-  }
-  return null;
+  const ref = referenciasDaFormula(texto).find((r) => cursor >= r.inicio && cursor <= r.fim);
+  if (!ref) return null;
+  const novo = ref.texto.split(":").map(ciclar).join(":");
+  return { texto: texto.slice(0, ref.inicio) + novo + texto.slice(ref.fim), cursor: ref.inicio + novo.length };
 }

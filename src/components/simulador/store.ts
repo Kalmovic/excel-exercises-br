@@ -1,5 +1,6 @@
 import { createStore } from "zustand/vanilla";
 import { normalizar, type Intervalo, type Pos } from "@/engine/address";
+import { ateABorda, ultimaUsada } from "@/engine/navegacao";
 import type { Planilha } from "@/engine/engine";
 import type { Formato } from "@/content/schema";
 
@@ -17,7 +18,8 @@ export type EstadoSimulador = {
   /** Esc fecha a lista até o próximo caractere digitado. */
   sugestoesFechadas: boolean;
   mensagem: string | null;
-  arrasto: null | "selecao" | "alca";
+  /** "apontar": arrastando sobre a grade para inserir um intervalo na fórmula. */
+  arrasto: null | "selecao" | "alca" | "apontar";
   alca: Intervalo | null; // área de destino da alça de preenchimento
   copiado: Intervalo | null;
   /** Células-alvo piscam em verde logo após um acerto. */
@@ -32,6 +34,14 @@ export type EstadoSimulador = {
   /** Igual a `selecionar`, mas conta como mudança feita pelo mouse se algo mudou. */
   selecionarPeloMouse: (p: Pos, estender?: boolean) => void;
   mover: (dl: number, dc: number, estender?: boolean) => void;
+  /** Ctrl+seta: até a borda do bloco de dados. */
+  moverAteBorda: (dl: number, dc: number, estender?: boolean) => void;
+  /** Home, Ctrl+Home, Ctrl+End. */
+  irPara: (destino: "inicioDaLinha" | "inicio" | "fim", estender?: boolean) => void;
+  /** Ctrl+A. */
+  selecionarTudo: () => void;
+  /** Clique no cabeçalho da coluna ou da linha. */
+  selecionarCabecalho: (tipo: "coluna" | "linha", indice: number, estender?: boolean) => void;
   iniciarEdicao: (modo: "inserir" | "editar", texto?: string) => boolean;
   setRascunho: (t: string) => void;
   /** Grava o rascunho. Devolve false se a validação recusou. */
@@ -104,6 +114,52 @@ export function criarStore(
         coluna: clamp(base.coluna + dc, planilha.colunas),
       };
       set(estender ? { foco: p } : { ancora: p, foco: p, mensagem: null });
+    },
+
+    moverAteBorda: (dl, dc, estender = false) => {
+      if (fixa) return;
+      const { ancora, foco } = get();
+      const preenchida = (q: Pos) => {
+        const v = planilha.valor(q);
+        return v !== null && v !== "";
+      };
+      const p = ateABorda(estender ? foco : ancora, dl, dc, preenchida, planilha.linhas, planilha.colunas);
+      set(estender ? { foco: p } : { ancora: p, foco: p, mensagem: null });
+    },
+
+    irPara: (destino, estender = false) => {
+      if (fixa) return;
+      const { ancora, foco } = get();
+      const base = estender ? foco : ancora;
+      const preenchida = (q: Pos) => {
+        const v = planilha.valor(q);
+        return v !== null && v !== "";
+      };
+      const p =
+        destino === "inicioDaLinha"
+          ? { linha: base.linha, coluna: 0 }
+          : destino === "inicio"
+            ? { linha: 0, coluna: 0 }
+            : ultimaUsada(preenchida, planilha.linhas, planilha.colunas);
+      set(estender ? { foco: p } : { ancora: p, foco: p, mensagem: null });
+    },
+
+    selecionarTudo: () => {
+      if (fixa) return;
+      set({ ancora: { linha: 0, coluna: 0 }, foco: { linha: planilha.linhas - 1, coluna: planilha.colunas - 1 }, mensagem: null });
+    },
+
+    selecionarCabecalho: (tipo, indice, estender = false) => {
+      if (fixa) return;
+      const ultima = tipo === "coluna" ? planilha.linhas - 1 : planilha.colunas - 1;
+      const inicio = tipo === "coluna" ? { linha: 0, coluna: indice } : { linha: indice, coluna: 0 };
+      const fim = tipo === "coluna" ? { linha: ultima, coluna: indice } : { linha: indice, coluna: ultima };
+      const { ancora, mudancasPeloMouse } = get();
+      if (estender) {
+        // estende a partir da coluna/linha da célula ativa
+        const de = tipo === "coluna" ? { linha: 0, coluna: ancora.coluna } : { linha: ancora.linha, coluna: 0 };
+        set({ ancora: de, foco: fim, mensagem: null, mudancasPeloMouse: mudancasPeloMouse + 1 });
+      } else set({ ancora: inicio, foco: fim, mensagem: null, mudancasPeloMouse: mudancasPeloMouse + 1 });
     },
 
     iniciarEdicao: (modo, texto) => {

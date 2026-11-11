@@ -54,3 +54,58 @@ test("P3-2: F4 alterna o $ da referência", async ({ page }) => {
   await page.keyboard.press("F4");
   await expect(barra).toHaveValue("=$B$2");
 });
+
+test("P3-3: setas apontam a referência, com cores na grade", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  await celula(page, "B8").click();
+  await page.keyboard.type("=SOMA(");
+  await page.keyboard.press("ArrowUp");
+  const editor = page.getByTestId("editor-celula");
+  await expect(editor).toHaveValue("=SOMA(B7");
+  for (let i = 0; i < 5; i++) await page.keyboard.press("Shift+ArrowUp");
+  await expect(editor).toHaveValue("=SOMA(B2:B7");
+  await expect(page.locator('[data-testid="referencia-colorida"][data-intervalo="B2:B7"]')).toBeVisible();
+  await page.keyboard.type(")");
+  await expect(editor).toHaveValue("=SOMA(B2:B7)");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "B8")).toHaveText(/77\.500,00/);
+});
+
+test("P3-3: arrastar sobre a grade insere um intervalo", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  await celula(page, "C2").click();
+  await page.keyboard.type("=SOMA(");
+  await celula(page, "B2").hover();
+  await page.mouse.down();
+  await celula(page, "B5").hover();
+  await page.mouse.up();
+  await expect(page.getByTestId("editor-celula")).toHaveValue("=SOMA(B2:B5");
+  // clicar em outra célula logo depois troca a referência apontada
+  await celula(page, "B6").click();
+  await expect(page.getByTestId("editor-celula")).toHaveValue("=SOMA(B6");
+});
+
+test("P3-4: Ctrl+setas, Home, Ctrl+Home/End, Ctrl+A e cabeçalhos", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  const nome = page.getByTestId("caixa-nome");
+  await celula(page, "A1").click();
+  await page.keyboard.press("Control+ArrowDown");
+  await expect(nome).toHaveText("A8");
+  await page.keyboard.press("Control+ArrowDown");
+  await expect(nome).toHaveText("A10");
+  await page.keyboard.press("Control+ArrowUp");
+  await expect(nome).toHaveText("A8");
+  await celula(page, "B5").click();
+  await page.keyboard.press("Home");
+  await expect(nome).toHaveText("A5");
+  await page.keyboard.press("Control+End");
+  await expect(nome).toHaveText("B8");
+  await page.keyboard.press("Control+Home");
+  await expect(nome).toHaveText("A1");
+  await page.keyboard.press("Control+Shift+ArrowDown");
+  await expect(nome).toHaveText("A1:A8");
+  await page.keyboard.press("Control+a");
+  await expect(nome).toHaveText(/^A1:[A-Z]+\d+$/);
+  await page.locator('[data-cabecalho="B"]').filter({ visible: true }).click();
+  await expect(nome).toHaveText("B1:B10");
+});
