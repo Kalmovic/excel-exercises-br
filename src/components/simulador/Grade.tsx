@@ -21,6 +21,16 @@ import {
 import { alinhamento } from "@/engine/format";
 import { CORES_REFERENCIA, referenciasDaFormula } from "@/engine/referencias";
 import { FormulaColorida } from "./FormulaColorida";
+import { ajustarLinha, larguraParaCaber } from "./transbordo";
+
+let contextoMedida: CanvasRenderingContext2D | null = null;
+/** Largura do texto na fonte da grade (para transbordo, #### e ajuste de coluna). */
+function medirTexto(texto: string, negrito: boolean) {
+  contextoMedida ??= document.createElement("canvas").getContext("2d");
+  if (!contextoMedida) return 0;
+  contextoMedida.font = `${negrito ? "bold " : ""}13px Calibri, Carlito, Arial, sans-serif`;
+  return contextoMedida.measureText(texto).width;
+}
 import { AjudaFormula, rastrearCursor, teclaDeFormula } from "./AjudaFormula";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
@@ -52,11 +62,60 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const celebrando = useEstado((e) => e.celebrando);
 
   const selecao = normalizar(ancora, foco);
+  // Larguras ajustadas pelo aluno (arrastar a borda do cabeçalho ou duplo clique nela).
+  const [larguraManual, setLarguraManual] = useState<Record<number, number>>({});
   const colunas = useMemo(
     () =>
-      Array.from({ length: planilha.colunas }, (_, c) => larguras?.[colunaParaLetras(c)] ?? LARGURA_PADRAO),
-    [planilha.colunas, larguras],
+      Array.from(
+        { length: planilha.colunas },
+        (_, c) => larguraManual[c] ?? larguras?.[colunaParaLetras(c)] ?? LARGURA_PADRAO,
+      ),
+    [planilha.colunas, larguras, larguraManual],
   );
+
+  // O que cada célula mostra: texto longo invade as vazias à direita; número que não cabe vira ####.
+  const ajustes = useMemo(
+    () =>
+      Array.from({ length: planilha.linhas }, (_, l) =>
+        ajustarLinha(
+          colunas.map((w, c) => {
+            const p = { linha: l, coluna: c };
+            const v = planilha.valor(p);
+            return {
+              texto: planilha.exibicao(p),
+              tipo: typeof v === "number" ? ("numero" as const) : typeof v === "string" ? ("texto" as const) : ("outro" as const),
+              vazia: v === null || v === "",
+              negrito: planilha.negrito(paraEndereco(p)),
+              largura: w,
+            };
+          }),
+          medirTexto,
+        ),
+      ),
+    // versao: recalcula quando a planilha muda
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [planilha, colunas, versao],
+  );
+
+  const redimensionar = (c: number, x0: number) => {
+    const w0 = colunas[c];
+    const mover = (ev: globalThis.MouseEvent) =>
+      setLarguraManual((m) => ({ ...m, [c]: Math.max(24, Math.round(w0 + ev.clientX - x0)) }));
+    const soltar = () => {
+      window.removeEventListener("mousemove", mover);
+      window.removeEventListener("mouseup", soltar);
+    };
+    window.addEventListener("mousemove", mover);
+    window.addEventListener("mouseup", soltar);
+  };
+
+  const ajustarAoConteudo = (c: number) => {
+    const textos = Array.from({ length: planilha.linhas }, (_, l) => {
+      const p = { linha: l, coluna: c };
+      return { texto: planilha.exibicao(p), negrito: planilha.negrito(paraEndereco(p)) };
+    });
+    setLarguraManual((m) => ({ ...m, [c]: larguraParaCaber(textos, medirTexto) }));
+  };
   const esquerda = (c: number) => LARGURA_CABECALHO + colunas.slice(0, c).reduce((a, b) => a + b, 0);
   const larguraTotal = esquerda(planilha.colunas);
 
@@ -370,6 +429,21 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               data-cabecalho={colunaParaLetras(c)}
             >
               {colunaParaLetras(c)}
+              {/* borda arrastável: muda a largura; duplo clique ajusta ao conteúdo */}
+              <div
+                data-borda-coluna={colunaParaLetras(c)}
+                title="Arraste para mudar a largura · duplo clique ajusta ao conteúdo"
+                className="absolute top-0 right-[-4px] z-[3] h-full w-[7px] cursor-col-resize"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  redimensionar(c, e.clientX);
+                }}
+                onDoubleClick={(e) => {
+                  e.stopPropagation();
+                  ajustarAoConteudo(c);
+                }}
+              />
             </div>
           );
         })}
@@ -403,6 +477,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                 left={esquerda(c)}
                 top={ALTURA * (l + 1)}
                 largura={w}
+                texto={ajustes[l][c].texto}
+                larguraVisivel={ajustes[l][c].larguraVisivel}
                 naSelecao={contem(selecao, p) && !(l === ancora.linha && c === ancora.coluna)}
                 alvo={alvos.has(end)}
                 celebrando={celebrando && alvos.has(end)}
@@ -417,7 +493,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         {/* área copiada (tracejado) */}
         {copiado && (
           <div
-            className="pointer-events-none absolute border-2 border-dashed border-success"
+            className="pointer-events-none absolute z-[2] border-2 border-dashed border-success"
             style={{
               left: esquerda(copiado.inicio.coluna) - 1,
               top: ALTURA * (copiado.inicio.linha + 1) - 1,
@@ -428,7 +504,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         )}
         {/* contorno da seleção */}
         <div
-          className="pointer-events-none absolute border-2 border-success"
+          className="pointer-events-none absolute z-[2] border-2 border-success"
           style={{
             left: esquerda(selecao.inicio.coluna) - 1,
             top: ALTURA * (selecao.inicio.linha + 1) - 1,
@@ -439,7 +515,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         {/* destino da alça */}
         {alca && (
           <div
-            className="pointer-events-none absolute border border-dashed border-zinc-600 bg-zinc-500/10"
+            className="pointer-events-none absolute z-[2] border border-dashed border-zinc-600 bg-zinc-500/10"
             style={{
               left: esquerda(alca.inicio.coluna),
               top: ALTURA * (alca.inicio.linha + 1),
@@ -476,7 +552,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               key={i}
               data-testid="referencia-colorida"
               data-intervalo={r.texto.replace(/\$/g, "")}
-              className="pointer-events-none absolute border-2"
+              className="pointer-events-none absolute z-[2] border-2"
               style={{
                 left: esquerda(r.intervalo.inicio.coluna) - 1,
                 top: ALTURA * (r.intervalo.inicio.linha + 1) - 1,
@@ -552,6 +628,10 @@ type PropsCelula = {
   left: number;
   top: number;
   largura: number;
+  /** Texto a mostrar (pode ser #### quando o número não cabe). */
+  texto: string;
+  /** Maior que `largura` quando o texto invade as células vazias à direita. */
+  larguraVisivel: number;
   naSelecao: boolean;
   alvo: boolean;
   celebrando: boolean;
@@ -562,7 +642,7 @@ type PropsCelula = {
   onDuploClique: () => void;
 };
 
-function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, celebrando, onPressionar, onEntrar, onDuploClique }: PropsCelula) {
+function Celula({ endereco, pos, left, top, largura, texto, larguraVisivel, naSelecao, alvo, celebrando, onPressionar, onEntrar, onDuploClique }: PropsCelula) {
   const { planilha } = useSimulador();
   const valor = planilha.valor(pos);
   const circular = planilha.circular(pos);
@@ -574,7 +654,9 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, celebrando
       onMouseDown={(e) => onPressionar(e, pos)}
       onMouseEnter={() => onEntrar(pos)}
       onDoubleClick={onDuploClique}
-      className={`absolute overflow-hidden whitespace-nowrap border-r border-b border-line px-1 leading-[25px] ${
+      className={`absolute whitespace-nowrap border-r border-b border-line px-1 leading-[25px] ${
+        larguraVisivel > largura ? "z-[1] overflow-visible" : "overflow-hidden"
+      } ${
         celebrando
           ? "bg-success-bg motion-safe:animate-acerto"
           : naSelecao
@@ -598,7 +680,17 @@ function Celula({ endereco, pos, left, top, largura, naSelecao, alvo, celebrando
             : undefined
       }
     >
-      {planilha.exibicao(endereco)}
+      {larguraVisivel > largura ? (
+        // camada que passa por cima das vizinhas vazias (cobre as linhas de grade, como no Excel)
+        <span
+          className="pointer-events-none absolute top-0 left-0 overflow-hidden px-1"
+          style={{ width: larguraVisivel - 1, height: ALTURA - 1, background: "inherit" }}
+        >
+          {texto}
+        </span>
+      ) : (
+        texto
+      )}
     </div>
   );
 }

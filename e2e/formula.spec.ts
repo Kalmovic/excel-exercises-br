@@ -118,3 +118,34 @@ test("P3-6: a correção explica o erro (intervalo curto)", async ({ page }) => 
   await visivel(page, "verificar").click();
   await expect(visivel(page, "resultado")).toContainText("os dados vão até B7");
 });
+
+test("P3-5: texto longo invade a vizinha vazia; número que não cabe vira ####", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  await celula(page, "C2").click();
+  await page.keyboard.insertText("Observação bem comprida sobre janeiro");
+  await page.keyboard.press("Enter");
+  const camada = celula(page, "C2").locator("span");
+  await expect(camada).toHaveText("Observação bem comprida sobre janeiro");
+  expect((await camada.boundingBox())!.width).toBeGreaterThan(150);
+
+  await celula(page, "B8").click();
+  await page.keyboard.insertText("=B2*1000000000");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "B8")).toHaveText(/^#+$/);
+
+  // duplo clique na borda do cabeçalho ajusta a coluna e o número aparece
+  await page.locator('[data-borda-coluna="B"]').filter({ visible: true }).dblclick();
+  await expect(celula(page, "B8")).toHaveText(/12\.500\.000\.000\.000,00/);
+});
+
+test("P3-5: arrastar a borda do cabeçalho muda a largura", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  const antes = (await celula(page, "C2").boundingBox())!.width;
+  const borda = page.locator('[data-borda-coluna="C"]').filter({ visible: true });
+  const b = (await borda.boundingBox())!;
+  await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(b.x + 60, b.y + b.height / 2, { steps: 4 });
+  await page.mouse.up();
+  expect((await celula(page, "C2").boundingBox())!.width).toBeGreaterThan(antes + 40);
+});
