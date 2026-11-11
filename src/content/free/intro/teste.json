@@ -1,0 +1,385 @@
+[
+  {
+    "id": "cd76021e-ffcc-5c4c-bf45-9507ec3d7537",
+    "slug": "teste-intro-1",
+    "type": "text_answer",
+    "trilha": "excel-ptbr",
+    "modulo": "intro",
+    "ordem": 201,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Nome da célula",
+    "enunciado": [
+      "Qual é o nome da célula na **coluna F, linha 9**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "nome-da-celula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {}
+    },
+    "rotulo": "Nome da célula",
+    "aceitas": [
+      "F9"
+    ],
+    "normalizar": "endereco"
+  },
+  {
+    "id": "68cb276b-948b-5044-ba3c-2dfae19d6470",
+    "slug": "teste-intro-2",
+    "type": "select_range",
+    "trilha": "excel-ptbr",
+    "modulo": "intro",
+    "ordem": 202,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Selecionar um intervalo",
+    "enunciado": [
+      "Selecione o intervalo **A2:C6**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "selecionar-intervalo",
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "2,5"
+        },
+        "C2": {
+          "entrada": "5"
+        },
+        "A3": {
+          "entrada": "Caderno"
+        },
+        "B3": {
+          "entrada": "29,9"
+        },
+        "C3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "149"
+        },
+        "C4": {
+          "entrada": "20"
+        },
+        "A5": {
+          "entrada": "Notebook"
+        },
+        "B5": {
+          "entrada": "3200"
+        },
+        "C5": {
+          "entrada": "50"
+        },
+        "A6": {
+          "entrada": "Mouse"
+        },
+        "B6": {
+          "entrada": "59,9"
+        },
+        "C6": {
+          "entrada": "10"
+        }
+      }
+    },
+    "intervalo": "A2:C6"
+  },
+  {
+    "id": "79b23761-22b8-5561-8174-73aeb9169fd4",
+    "slug": "teste-intro-3",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "intro",
+    "ordem": 203,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Primeira fórmula",
+    "enunciado": [
+      "Em **D2**, some o preço (B2) e o frete (C2)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "primeira-formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "2,5"
+        },
+        "C2": {
+          "entrada": "5"
+        },
+        "A3": {
+          "entrada": "Caderno"
+        },
+        "B3": {
+          "entrada": "29,9"
+        },
+        "C3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "149"
+        },
+        "C4": {
+          "entrada": "20"
+        },
+        "A5": {
+          "entrada": "Notebook"
+        },
+        "B5": {
+          "entrada": "3200"
+        },
+        "C5": {
+          "entrada": "50"
+        },
+        "A6": {
+          "entrada": "Mouse"
+        },
+        "B6": {
+          "entrada": "59,9"
+        },
+        "C6": {
+          "entrada": "10"
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 7.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+C2"
+      }
+    ]
+  },
+  {
+    "id": "2057f355-2288-539a-bdcc-4e089b76dbeb",
+    "slug": "teste-intro-4",
+    "type": "format_cell",
+    "trilha": "excel-ptbr",
+    "modulo": "intro",
+    "ordem": 204,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Formatar como moeda",
+    "enunciado": [
+      "Os totais estão em **D2:D6**. Formate esse intervalo como **moeda**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "formato-moeda",
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "2,5"
+        },
+        "C2": {
+          "entrada": "5"
+        },
+        "A3": {
+          "entrada": "Caderno"
+        },
+        "B3": {
+          "entrada": "29,9"
+        },
+        "C3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "149"
+        },
+        "C4": {
+          "entrada": "20"
+        },
+        "A5": {
+          "entrada": "Notebook"
+        },
+        "B5": {
+          "entrada": "3200"
+        },
+        "C5": {
+          "entrada": "50"
+        },
+        "A6": {
+          "entrada": "Mouse"
+        },
+        "B6": {
+          "entrada": "59,9"
+        },
+        "C6": {
+          "entrada": "10"
+        },
+        "D2": {
+          "entrada": "=B2+C2"
+        },
+        "D3": {
+          "entrada": "=B3+C3"
+        },
+        "D4": {
+          "entrada": "=B4+C4"
+        },
+        "D5": {
+          "entrada": "=B5+C5"
+        },
+        "D6": {
+          "entrada": "=B6+C6"
+        }
+      }
+    },
+    "ferramentas": {
+      "formatacao": true
+    },
+    "alvos": [
+      {
+        "intervalo": "D2:D6",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "1aa4fe61-7328-5ea0-b9d8-199185e1d1a9",
+    "slug": "teste-intro-5",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "intro",
+    "ordem": 205,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Porcentagem",
+    "enunciado": [
+      "C2 guarda **0,05**. Formatada como porcentagem, ela mostra:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "formato-porcentagem",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "0,05%"
+      },
+      {
+        "texto": "5%"
+      },
+      {
+        "texto": "50%"
+      },
+      {
+        "texto": "500%"
+      }
+    ],
+    "correta": 1
+  }
+]

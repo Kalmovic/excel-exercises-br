@@ -58,7 +58,7 @@ describe("conteúdo", () => {
 
   it("Intro vem antes de Fundamentos e tem 10 exercícios grátis", () => {
     expect(exercicios[0].modulo).toBe("intro");
-    const intro = exercicios.filter((e) => e.modulo === "intro");
+    const intro = exerciciosDoModulo("intro");
     expect(intro).toHaveLength(10);
     expect(intro.every((e) => e.plano === "free")).toBe(true);
   });
@@ -66,6 +66,7 @@ describe("conteúdo", () => {
 
 describe("lições de 5 questões e teste do módulo", () => {
   const comLicoes = MODULOS.slice(1).map((m) => m.slug);
+  const comTeste = MODULOS.map((m) => m.slug);
 
   it("cada lição tem as 5 etapas, com o mesmo plano da principal", () => {
     for (const m of comLicoes)
@@ -83,12 +84,12 @@ describe("lições de 5 questões e teste do módulo", () => {
   });
 
   it("teste do módulo: 5 questões, sem dica, cada uma apontando para uma lição que existe", () => {
-    for (const m of comLicoes) {
+    for (const m of comTeste) {
       const t = testeDoModulo(m);
       expect(t, m).toHaveLength(5);
       for (const q of t) {
         expect(q.dicas).toEqual([]);
-        expect(exercicioPorSlug(q.revisar!)?.etapa, q.slug).toBe(1);
+        expect(exerciciosDoModulo(m).map((l) => l.slug), q.slug).toContain(q.revisar);
       }
     }
   });

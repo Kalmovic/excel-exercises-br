@@ -10,6 +10,7 @@ import i7 from "./free/intro/07-ler-a-barra-de-formulas.json";
 import i8 from "./free/intro/08-primeira-formula.json";
 import i9 from "./free/intro/09-formato-moeda.json";
 import i10 from "./free/intro/10-formato-porcentagem.json";
+import iTeste from "./free/intro/teste.json";
 import demo from "./free/demo/soma-gastos.json";
 import mFundamentos from "./modulos/fundamentos.json";
 import mLogica from "./modulos/logica.json";
@@ -34,7 +35,7 @@ import xCasos from "./extras/casos.json";
  * protegido por RLS; ver `exercicioLiberado` em `src/lib/acesso-conteudo.ts`.
  */
 const brutos: unknown[] = [
-  ...[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10],
+  ...[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, ...iTeste],
   ...mFundamentos,
   ...mLogica,
   ...mCondicionais,

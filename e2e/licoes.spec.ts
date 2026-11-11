@@ -76,3 +76,27 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
   await visivel(page, "proxima-teste").click();
   await expect(page.getByTestId("resultado-teste")).toContainText("Aprovado! Você acertou 5 de 5");
 });
+
+test("teste do Módulo 0: os cinco tipos de questão", async ({ page }) => {
+  await page.goto("/teste/intro");
+  const proxima = () => visivel(page, "proxima-teste").click();
+  await visivel(page, "campo-resposta").fill("F9");
+  await visivel(page, "verificar").click();
+  await proxima();
+  await celula(page, "A2").click();
+  await celula(page, "C6").click({ modifiers: ["Shift"] });
+  await visivel(page, "verificar").click();
+  await proxima();
+  await digitar(page, "D2", "=B2+C2");
+  await visivel(page, "verificar").click();
+  await proxima();
+  await celula(page, "D2").click();
+  await celula(page, "D6").click({ modifiers: ["Shift"] });
+  await visivel(page, "formatar-moeda").click();
+  await visivel(page, "verificar").click();
+  await proxima();
+  await visivel(page, "alternativas").locator("label").nth(1).click(); // (b) 5%
+  await visivel(page, "verificar").click();
+  await proxima();
+  await expect(page.getByTestId("resultado-teste")).toContainText("Aprovado! Você acertou 5 de 5");
+});

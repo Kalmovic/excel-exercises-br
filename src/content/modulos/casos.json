@@ -673,7 +673,8 @@
     "explicacao": [
       "`=MÍNIMO(B2;$I$2)` e `=C2*PROCV(C2;$F$2:$H$5;2;VERDADEIRO)-PROCV(C2;$F$2:$H$5;3;VERDADEIRO)`.",
       "O cálculo oficial é progressivo: cada alíquota incide só sobre a parte do salário dentro da sua faixa. A parcela a deduzir é o atalho que dá o mesmo resultado: para 3.500, 3.500 × 12% − 111,40 = 308,60.",
-      "Acima do teto, o desconto para em 988,09."
+      "Acima do teto, o desconto para em 988,09.",
+      "Fonte da tabela: Portaria Interministerial MPS/MF nº 13, de 13/01/2026 (gov.br). Ela muda todo janeiro."
     ],
     "tentativasAteExplicacao": 3,
     "errosComuns": [
