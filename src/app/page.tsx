@@ -34,7 +34,7 @@ const PASSOS = [
 
 const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href?: string }[] = [
   { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: "/exercicios/nome-da-celula" },
-  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem e o famoso $.", href: "/exercicios/soma-total-de-vendas" },
+  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem e o famoso $.", gratis: true, href: "/exercicios/soma-total-de-vendas" },
   { n: 2, titulo: "Lógica", desc: "SE, SE aninhado, E, OU, SES e SEERRO." },
   { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE." },
   { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX." },
@@ -44,7 +44,7 @@ const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href
   { n: 8, titulo: "Casos reais", desc: "Comissão, estoque, parcelamento e INSS por faixa." },
 ];
 
-const PLANO_GRATIS = ["Módulo Intro completo", `${NOME_DESAFIO}, todo dia`, "Ofensiva de dias seguidos", "1º exercício de cada módulo"];
+const PLANO_GRATIS = ["Módulos Intro e Fundamentos", `${NOME_DESAFIO}, todo dia`, "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
 const PLANO_PRO = [
   "Todos os módulos, do Fundamentos aos casos reais",
   "Pacote de exercícios novo todo mês",
@@ -55,8 +55,8 @@ const PLANO_PRO = [
 ];
 
 const PUBLICOS = [
-  { titulo: "Vaga de emprego", texto: "Prepare-se para o teste prático de Excel com simulados no formato das empresas.", link: "Prática de entrevista", href: "/pro" },
-  { titulo: "Concurso público", texto: "Questões no estilo das bancas, com uma planilha ao lado para testar cada alternativa.", link: "Excel para concurso", href: "/pro" },
+  { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE. Simulados no formato das empresas vêm no Pro.", link: "Começar pela trilha", href: "/trilha" },
+  { titulo: "Concurso público", texto: "As funções em português que as bancas cobram. Questões no estilo das bancas, com planilha ao lado, vêm no Pro.", link: "Ver o que vem no Pro", href: "/pro" },
   { titulo: "Empresas", texto: "Nivele a equipe, acompanhe o progresso de cada pessoa e meça o resultado antes e depois.", link: "Falar com a gente", href: "/empresas", escuro: true },
 ];
 
@@ -64,8 +64,8 @@ const FAQ = [
   ["Preciso ter o Excel instalado?", "Não. A planilha roda no navegador, com fórmulas iguais às do Excel em português. Não precisa instalar nada nem ter licença."],
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
-  ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc entram na trilha de concurso do Pro."],
-  ["Posso cancelar quando quiser?", "Sim. O Pro é uma assinatura sem fidelidade: você cancela quando quiser e mantém o acesso até o fim do período pago."],
+  ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
+  ["Quanto custa?", "O que está no ar hoje é grátis: os módulos Intro e Fundamentos e o desafio diário. O Pro ainda está em construção; preço e condições serão publicados aqui antes de qualquer cobrança."],
 ];
 
 function Check() {
@@ -106,7 +106,7 @@ export default function Landing() {
           <div className="min-w-0 rounded-2xl border border-line bg-surface p-5 shadow-xl" data-testid="experimente">
             <div className="mb-3 flex items-center justify-between">
               <span className="text-xs font-bold tracking-wider text-success uppercase">Experimente agora</span>
-              <span className="text-xs text-muted">Exercício 1 de 10</span>
+              <span className="text-xs text-muted">Demonstração</span>
             </div>
             <p className="mb-3 font-semibold">Em B6, some os gastos do mês (B2 até B5).</p>
             <SimuladorCarregavel exercicio={exercicioDemo} compacto />
@@ -154,7 +154,7 @@ export default function Landing() {
         <Rotulo>A trilha</Rotulo>
         <h2 className="mb-3 text-4xl font-extrabold tracking-tight">Do primeiro clique ao PROCV.</h2>
         <p className="mb-10 max-w-lg text-muted">
-          Nunca abriu uma planilha? Comece pelo Intro. Já sabe o básico? Faça o teste de nível e pule etapas.
+          Nunca abriu uma planilha? Comece pelo Intro. Já sabe o básico? Vá direto para o Fundamentos. Os próximos módulos estão em construção.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="modulos-landing">
           {MODULOS.map((m) => {
@@ -165,7 +165,7 @@ export default function Landing() {
                   {m.gratis ? (
                     <span className="rounded-full bg-success-bg px-2 py-0.5 text-[11px] font-semibold text-success">Grátis</span>
                   ) : (
-                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · 1º exercício grátis</span>
+                    <span className="rounded-full bg-header px-2 py-0.5 text-[11px] font-semibold text-muted">Em breve</span>
                   )}
                 </div>
                 <p className="mb-1 font-semibold">{m.titulo}</p>
@@ -192,21 +192,20 @@ export default function Landing() {
             <Rotulo>Grátis, todo dia</Rotulo>
             <h2 className="mb-3 text-4xl font-extrabold tracking-tight">{NOME_DESAFIO}</h2>
             <p className="mb-6 max-w-md text-muted">
-              Um desafio novo por dia, o mesmo para todo mundo. Resolva, mantenha sua ofensiva e compare com os amigos.
+              Um desafio novo por dia, o mesmo para todo mundo. Resolva, compartilhe o resultado e compare com os amigos.
             </p>
             <Link href="/desafio" className={botaoEscuro}>
               Jogar o desafio de hoje
             </Link>
           </div>
           <div className="max-w-md rounded-2xl bg-ink p-6 text-white shadow-xl lg:justify-self-center">
-            <p className="mb-4 font-display text-xl font-bold">{NOME_DESAFIO} #42</p>
+            <p className="mb-4 font-display text-xl font-bold">{NOME_DESAFIO} #12</p>
             <div className="mb-4 flex gap-1.5" aria-hidden>
               {["bg-accent", "bg-accent", "bg-success", "bg-ink-soft", "bg-ink-soft"].map((c, i) => (
                 <span key={i} className={`h-9 w-9 rounded-md ${c}`} />
               ))}
             </div>
-            <p className="mb-2 text-sm text-white/70">Resolvido na 3ª tentativa · ofensiva de 12 dias</p>
-            <p className="font-mono text-sm text-accent">planilhes.com.br/desafio</p>
+            <p className="text-sm text-white/70">Resolvido na 3ª tentativa · nível 2</p>
           </div>
         </div>
       </Secao>
@@ -214,7 +213,7 @@ export default function Landing() {
       {/* Planos */}
       <Secao id="precos" fundo="bg-surface">
         <Rotulo>Planos</Rotulo>
-        <h2 className="mb-10 max-w-xl text-4xl font-extrabold tracking-tight">Comece grátis. Assine quando quiser ir além.</h2>
+        <h2 className="mb-10 max-w-xl text-4xl font-extrabold tracking-tight">Comece grátis. O Pro vem aí.</h2>
         <div className="grid gap-6 md:grid-cols-2" data-testid="planos">
           <div className="flex flex-col rounded-2xl border border-line bg-bg p-6">
             <p className="font-semibold">Grátis</p>
@@ -237,12 +236,10 @@ export default function Landing() {
           <div className="flex flex-col rounded-2xl border-2 border-ink bg-surface p-6 shadow-xl">
             <div className="flex items-center justify-between">
               <p className="font-semibold">Pro</p>
-              <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold">Mais escolhido</span>
+              <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold">Em breve</span>
             </div>
-            <p className="font-display text-4xl font-extrabold">
-              [PREÇO]<span className="text-base font-medium text-muted">/mês</span>
-            </p>
-            <p className="mb-5 text-xs text-muted">ou [PREÇO ANUAL]/ano no Pix ou em até 12x</p>
+            <p className="font-display text-4xl font-extrabold">Em construção</p>
+            <p className="mb-5 text-xs text-muted">O preço sai aqui antes do lançamento. O que já é grátis continua grátis.</p>
             <ul className="mb-8 space-y-2 text-sm">
               {PLANO_PRO.map((t) => (
                 <li key={t} className="flex gap-2">
@@ -255,7 +252,7 @@ export default function Landing() {
               className={`${botaoEscuro} mt-auto text-center`}
               evento={{ nome: "upsell_clicou", origem: "landing" }}
             >
-              Assinar o Pro
+              Ver o que vem no Pro
             </LinkRastreado>
           </div>
         </div>

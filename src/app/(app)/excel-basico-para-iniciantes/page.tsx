@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { PreviaExercicio } from "@/components/previa/PreviaExercicio";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { exercicioPorSlug, exerciciosDoModulo, moduloPorSlug, proximoExercicio } from "@/content";
 import { dadosDaTrilha } from "@/content/trilha";
@@ -96,6 +97,7 @@ export default function ExcelBasico() {
         <h2 className="text-lg font-semibold">Experimente agora: {demo.titulo}</h2>
         <SimuladorCarregavel
           exercicio={demo}
+          previa={<PreviaExercicio exercicio={demo} />}
           proximo={prox ? { slug: prox.slug, titulo: prox.titulo } : undefined}
           trilha={dadosDaTrilha("intro").simulador}
         />

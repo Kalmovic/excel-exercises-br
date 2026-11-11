@@ -25,3 +25,39 @@ test("o exercício embutido no guia funciona", async ({ page }) => {
   await page.getByTestId("verificar").click();
   await expect(page.getByTestId("resultado")).toContainText("Correto!");
 });
+
+test.describe("exercício sem JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+
+  test("o HTML já traz o enunciado e os dados da planilha", async ({ page }) => {
+    await page.goto("/exercicios/soma-total-de-vendas");
+    const previa = page.getByTestId("previa-exercicio");
+    await expect(previa).toContainText("calcule o total vendido no semestre");
+    const grade = page.getByTestId("grade-estatica");
+    await expect(grade.getByRole("columnheader", { name: "B" })).toBeVisible();
+    await expect(grade).toContainText("Janeiro");
+    await expect(page.getByText("Carregando planilha…", { exact: true })).toHaveCount(0);
+  });
+});
+
+test("a grade não pula quando o simulador substitui a prévia", async ({ browser }) => {
+  const semJs = await browser.newContext({ javaScriptEnabled: false });
+  const p1 = await semJs.newPage();
+  await p1.goto("/exercicios/soma-total-de-vendas");
+  const antes = await p1.getByTestId("grade-estatica").boundingBox();
+  await semJs.close();
+
+  const comJs = await browser.newContext();
+  const p2 = await comJs.newPage();
+  await p2.goto("/exercicios/soma-total-de-vendas");
+  const grade = p2.getByTestId("grade").filter({ visible: true });
+  await expect(grade).toBeVisible();
+  await expect(p2.getByTestId("previa-exercicio")).toHaveCount(0);
+  const depois = await grade.boundingBox();
+  await comJs.close();
+
+  expect(antes && depois).toBeTruthy();
+  expect(Math.abs(antes!.y - depois!.y)).toBeLessThanOrEqual(4);
+  expect(Math.abs(antes!.width - depois!.width)).toBeLessThanOrEqual(4);
+  expect(Math.abs(antes!.height - depois!.height)).toBeLessThanOrEqual(4);
+});

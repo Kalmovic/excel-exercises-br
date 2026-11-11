@@ -5,8 +5,8 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { TextoRico } from "@/components/simulador/TextoRico";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
-import { colunaParaLetras, deEndereco, paraEndereco } from "@/engine/address";
-import { Planilha } from "@/engine/engine";
+import { GradeEstatica } from "@/components/previa/GradeEstatica";
+import { montarGrade } from "@/components/previa/montar";
 import { dataBR, ehDataISO } from "@/lib/data-sp";
 import { NOME_DESAFIO } from "@/lib/site";
 
@@ -41,22 +41,7 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
   const ex = desafio.exercicio;
   const numero = numeroDoDesafio(data);
   // Planilha resolvida, montada no servidor, para mostrar a tabela com o resultado.
-  const p = Planilha.deExercicio(ex);
-  p.definirVarias(ex.alvos.map((a) => ({ endereco: a.celula, bruto: a.solucaoReferencia })));
-  const alvos = new Set(ex.alvos.map((a) => a.celula));
-  const linhasUsadas = Math.max(
-    ...Object.keys(ex.grade.celulas).concat([...alvos]).map((e) => deEndereco(e).linha + 1),
-  );
-  const colunasUsadas = Math.max(
-    ...Object.keys(ex.grade.celulas).concat([...alvos]).map((e) => deEndereco(e).coluna + 1),
-  );
-  const tabela = Array.from({ length: linhasUsadas }, (_, l) =>
-    Array.from({ length: colunasUsadas }, (_, c) => {
-      const end = paraEndereco({ linha: l, coluna: c });
-      return { end, texto: p.exibicao(end), alvo: alvos.has(end), negrito: p.negrito(end) };
-    }),
-  );
-  p.destruir();
+  const grade = montarGrade(ex, { comSolucao: true });
 
   const primeiro = ex.alvos[0];
   const ultimo = ex.alvos[ex.alvos.length - 1];
@@ -85,35 +70,7 @@ async function Solucao({ params }: { params: PageProps<"/desafio/[data]">["param
         ))}
       </section>
 
-      <div className="overflow-x-auto">
-        <table className="border-collapse text-sm" data-testid="tabela-solucao">
-          <thead>
-            <tr>
-              <th className="border border-line bg-header px-2" />
-              {tabela[0].map((_, c) => (
-                <th key={c} className="border border-line bg-header px-3 py-1 font-normal text-zinc-600">
-                  {colunaParaLetras(c)}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tabela.map((linha, l) => (
-              <tr key={l}>
-                <th className="border border-line bg-header px-2 font-normal text-zinc-600">{l + 1}</th>
-                {linha.map((cel) => (
-                  <td
-                    key={cel.end}
-                    className={`border border-line px-3 py-1 whitespace-nowrap ${cel.alvo ? "bg-success-bg font-medium text-success" : "bg-white"} ${cel.negrito ? "font-bold" : ""}`}
-                  >
-                    {cel.texto}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <GradeEstatica grade={grade} solucao />
 
       <section className="space-y-3 leading-relaxed text-zinc-700">
         <h2 className="text-xl font-semibold text-zinc-900">A solução</h2>

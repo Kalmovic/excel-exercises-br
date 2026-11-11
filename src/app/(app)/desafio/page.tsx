@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import { PreviaExercicio } from "@/components/previa/PreviaExercicio";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { dataBR, somarDias } from "@/lib/data-sp";
@@ -71,6 +72,7 @@ async function DesafioDeHoje() {
       <SimuladorCarregavel
         key={hoje}
         exercicio={desafio.exercicio}
+        previa={<PreviaExercicio exercicio={desafio.exercicio} />}
         desafio={{ numero, data: hoje, rotulo: rotuloNivel(desafio), upsell: upsellDoExercicio(desafio.exercicio) }}
       />
     </>

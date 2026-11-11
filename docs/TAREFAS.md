@@ -110,6 +110,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 - **Evidência (em `src/app/page.tsx`):** `[PREÇO]/mês` e `[PREÇO ANUAL]` literais; selo "Pro · 1º exercício grátis" em Fundamentos, que é grátis; "Exercício 1 de 10" num exercício de demonstração; "ofensiva de 12 dias" sem ofensiva existir; "Assinar o Pro" leva a "em breve"; FAQ promete cancelamento sem fidelidade; `/termos` e `/privacidade` são provisórias.
 - **Fazer:** definir o preço (ver N-1); até o Pro existir, trocar "Assinar o Pro" por lista de espera (P1-7) e tirar o que é falso. Alternativa mais segura enquanto está em teste: `robots` com `noindex` no site inteiro, removido no lançamento.
 - **Pronto:** nenhuma afirmação da landing é falsa no dia em que o site for divulgado.
+- **Feito (parcial):** sem placeholders de preço; Pro aparece como "em construção"; Intro e Fundamentos marcados grátis e os demais "em breve"; sem ofensiva nem teste de nível; FAQ de cancelamento trocado por "Quanto custa?". **Falta:** preço (N-1), lista de espera (P1-7) e termos/privacidade reais (P1-8). Não pus `noindex` global: decidir antes de divulgar.
 
 ### P1-7. Captura de e-mail (lista de espera do Pro)
 
@@ -130,6 +131,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 - **Evidência:** sem JavaScript, `/exercicios/soma-total-de-vendas` mostra só o título e "Carregando planilha…". O enunciado e a tabela vivem dentro do simulador, que é `ssr: false`.
 - **Fazer:** renderizar no servidor o enunciado e uma tabela estática dos dados iniciais (reaproveitar a montagem de `desafio/[data]/page.tsx`, extraindo um componente `TabelaEstatica`), e hidratar o simulador por cima. Isso também melhora o tempo até aparecer conteúdo.
 - **Pronto:** teste sem JS encontra o enunciado e os dados; sem salto visível na hidratação.
+- **Feito:** `src/components/previa/` (`montarGrade`, `GradeEstatica`, `PreviaExercicio`). `SimuladorCarregavel` aceita `previa` e a mostra até o motor carregar. Usado em exercícios, desafio do dia e guia de iniciantes; a página de solução reaproveita `GradeEstatica`. Testes em `e2e/seo.spec.ts` (sem JS e sem salto).
 
 ### P2-2. Páginas de função
 
@@ -191,7 +193,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 1. P0-1 a P0-6 (um dia de trabalho, com testes).
 2. P1-1 (CI) e P1-2 (medição): tudo o que vem depois depende de saber se quebrou e se converteu.
 3. ~~P1-5 item 1 (desafios até dezembro)~~ feito; janeiro antes de 01/01/2027.
-4. P2-1 e P1-6: o que o Google e o visitante veem.
+4. ~~P2-1 e P1-6~~ feitos (P1-6 depende ainda de preço, lista e legal).
 5. P3-1 e P3-2 (autocompletar e F4), depois P1-5 (módulos).
 6. P1-3, P1-4, P1-7, P1-8: contas, pagamento, lista, legal.
 7. P2-2 (páginas de função), restante de P3 e P4.

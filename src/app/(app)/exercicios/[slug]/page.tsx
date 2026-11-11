@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PreviaExercicio } from "@/components/previa/PreviaExercicio";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { BarraProgressoModulo } from "@/components/site/BarraProgressoModulo";
 import { dadosDaTrilha } from "@/content/trilha";
@@ -42,6 +43,7 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
       <SimuladorCarregavel
         key={ex.slug}
         exercicio={ex}
+        previa={<PreviaExercicio exercicio={ex} />}
         proximo={prox ? { slug: prox.slug, titulo: prox.titulo } : undefined}
         trilha={trilha.simulador}
       />

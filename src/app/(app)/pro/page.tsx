@@ -13,7 +13,6 @@ const BENEFICIOS = [
   ["Todos os módulos", "Do Fundamentos aos casos reais, com dezenas de exercícios por módulo."],
   ["Pacote novo todo mês", "Exercícios em torno de um tema do mês: orçamento, Imposto de Renda, Black Friday, 13º."],
   ["Arquivo de desafios", "Todos os desafios diários que já passaram, para refazer na planilha."],
-  ["Congelar ofensiva", "Perdeu um dia? A sequência não zera."],
   ["Entrevista e concurso", "Prática no formato de testes de emprego e de questões de banca."],
   ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
 ] as const;
@@ -25,7 +24,7 @@ export default function Pro() {
         <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>
         <h1 className="text-3xl font-bold tracking-tight">Pro: pratique Excel até ficar fluente</h1>
         <p className="text-lg text-zinc-600">
-          O Intro e o desafio diário continuam grátis. O Pro é para quem quer ir além: todos os módulos, conteúdo novo
+          O Intro, o Fundamentos e o desafio diário continuam grátis. O Pro é para quem quer ir além: todos os módulos, conteúdo novo
           todo mês e o arquivo completo de desafios.
         </p>
       </header>
