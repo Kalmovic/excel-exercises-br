@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
-import { exercicioDemo } from "@/content";
+import { exercicioDemo, exerciciosDoModulo } from "@/content";
 import { NOME_DESAFIO, NOME_SITE, PRECO, economiaAnual, reais } from "@/lib/site";
 
 const botaoEscuro = "inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft";
@@ -32,16 +32,19 @@ const PASSOS = [
   ["Correção na hora", "Errou? Você recebe uma dica, tenta de novo e só vê a explicação completa quando precisar."],
 ];
 
+/** Primeiro exercício da trilha de cada módulo. */
+const inicioDo = (modulo: string) => `/exercicios/${exerciciosDoModulo(modulo)[0].slug}`;
+
 const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href: string }[] = [
-  { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: "/exercicios/nome-da-celula" },
-  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", href: "/exercicios/soma-total-de-vendas" },
-  { n: 2, titulo: "Lógica", desc: "SE, E, OU, SES e SEERRO.", href: "/exercicios/se-aprovado-ou-reprovado" },
-  { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE.", href: "/exercicios/cont-se-contar-status" },
-  { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", href: "/exercicios/procv-preco-pelo-codigo" },
-  { n: 5, titulo: "Texto", desc: "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR.", href: "/exercicios/juntar-nome-e-sobrenome" },
-  { n: 6, titulo: "Datas", desc: "DATADIF, DIATRABALHOTOTAL, FIMMÊS e DATAM.", href: "/exercicios/subtrair-datas-prazo" },
-  { n: 7, titulo: "Arrays dinâmicos", desc: "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA.", href: "/exercicios/sequencia-numerar-linhas" },
-  { n: 8, titulo: "Casos reais", desc: "Financiamento, ranking, estoque, comissão e orçamento.", href: "/exercicios/pgto-parcela-do-financiamento" },
+  { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: inicioDo("intro") },
+  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", href: inicioDo("fundamentos") },
+  { n: 2, titulo: "Lógica", desc: "SE, E, OU, SES e SEERRO.", href: inicioDo("logica") },
+  { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE.", href: inicioDo("condicionais") },
+  { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", href: inicioDo("busca") },
+  { n: 5, titulo: "Texto", desc: "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR.", href: inicioDo("texto") },
+  { n: 6, titulo: "Datas", desc: "HOJE, DATADIF, DIATRABALHOTOTAL e FIMMÊS.", href: inicioDo("datas") },
+  { n: 7, titulo: "Arrays dinâmicos", desc: "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA.", href: inicioDo("arrays") },
+  { n: 8, titulo: "Casos reais", desc: "Comissão, estoque, parcelamento e INSS por faixa.", href: inicioDo("casos") },
 ];
 
 const PLANO_GRATIS = ["Módulo Intro completo", "1º exercício de cada módulo", `${NOME_DESAFIO}, todo dia`, "Ofensiva de dias seguidos", "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];

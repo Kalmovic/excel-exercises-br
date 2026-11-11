@@ -4,7 +4,7 @@
   "type": "select_range",
   "trilha": "excel-ptbr",
   "modulo": "intro",
-  "ordem": 4,
+  "ordem": 3,
   "nivel": 1,
   "plano": "free",
   "versao": 1,
@@ -96,5 +96,7 @@
     "B2:D5 tem 3 colunas × 4 linhas = 12 células: as vendas de todos os produtos nos três meses.",
     "Você vai usar intervalos o tempo todo em fórmulas, como `=SOMA(B2:D5)`."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "A maioria das funções trabalha com um grupo de células de uma vez: o intervalo.",
+  "video": "Mostrar os dois jeitos de selecionar: arrastando e com Shift + setas."
 }

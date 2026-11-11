@@ -62,5 +62,7 @@
     "0,75 e 75% são o mesmo número. O formato de porcentagem multiplica por 100 só na exibição e acrescenta o símbolo %.",
     "Atalho no Excel: **Ctrl+Shift+5**."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "0,05 e 5% são o mesmo número escrito de jeitos diferentes.",
+  "video": "O caso dos 500% e como evitar: digite 5% direto, ou 0,05."
 }

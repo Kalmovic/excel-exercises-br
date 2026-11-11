@@ -1,0 +1,1574 @@
+[
+  {
+    "id": "c4f61652-919e-5e2c-94f7-fadd3f44d6f4",
+    "slug": "sequencia-numerar-linhas",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 101,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SEQUÊNCIA: numerar sem arrastar",
+    "enunciado": [
+      "Em **A2**, escreva uma fórmula que gere os números de **1 a 10**, um embaixo do outro, sem copiar a fórmula."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Nº",
+          "negrito": true
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "A2",
+        "esperado": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            8
+          ],
+          [
+            9
+          ],
+          [
+            10
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEQUÊNCIA(10)"
+      }
+    ],
+    "dicas": [
+      "`=SEQUÊNCIA(quantas_linhas)`.",
+      "A fórmula fica só em A2; o resultado **derrama** para as células de baixo."
+    ],
+    "explicacao": [
+      "`=SEQUÊNCIA(10)`. Com mais argumentos: `=SEQUÊNCIA(5;1;10;10)` gera 10, 20, 30, 40, 50.",
+      "Se alguma célula do caminho estiver ocupada, aparece #DESPEJAR!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SEQUENCE"
+    ],
+    "extra": true
+  },
+  {
+    "id": "e4337b59-f1a1-5ed2-bd4e-c59ba31c5ff3",
+    "slug": "unico-lista-sem-repetir",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 102,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÚNICO: a lista de clientes",
+    "enunciado": [
+      "Em **E2**, liste os clientes **sem repetir**, com uma fórmula só."
+    ],
+    "grade": {
+      "linhas": 16,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Clientes",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Carla"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Elisa"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Diego"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÚNICO(A2:A15)"
+      }
+    ],
+    "dicas": [
+      "`=ÚNICO(intervalo)` devolve cada valor uma vez só, na ordem em que aparecem."
+    ],
+    "explicacao": [
+      "`=ÚNICO(A2:A15)`. Se entrar um cliente novo na coluna A, a lista se atualiza sozinha.",
+      "É o substituto moderno de \"Remover duplicatas\", que é manual."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "UNIQUE"
+    ],
+    "extra": true
+  },
+  {
+    "id": "7f394923-e957-503a-96b6-c5ef87424403",
+    "slug": "classificar-unico",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 103,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CLASSIFICAR: em ordem alfabética",
+    "enunciado": [
+      "Em **E2**, liste as categorias sem repetir e em **ordem alfabética**."
+    ],
+    "grade": {
+      "linhas": 16,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Categorias",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Bebidas"
+          ],
+          [
+            "Limpeza"
+          ],
+          [
+            "Padaria"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(ÚNICO(B2:B15))"
+      }
+    ],
+    "dicas": [
+      "Comece com o ÚNICO e depois envolva com CLASSIFICAR."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(ÚNICO(B2:B15))`: uma função de array alimenta a outra.",
+      "Para ordem decrescente: `=CLASSIFICAR(ÚNICO(B2:B15);1;-1)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SORT",
+      "UNIQUE"
+    ],
+    "extra": true
+  },
+  {
+    "id": "5e507a1e-1313-5fd1-9c97-2f23bfbcfc01",
+    "slug": "filtro-por-categoria",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 104,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FILTRO: os valores de uma categoria",
+    "enunciado": [
+      "Em **E4**, liste os **valores** das vendas da categoria escolhida em **F1**."
+    ],
+    "grade": {
+      "linhas": 18,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Limpeza"
+        },
+        "E3": {
+          "entrada": "Valores",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 100,
+        "F": 100
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "alternativas": {
+        "F1": [
+          "Bebidas",
+          "Padaria"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E4",
+        "esperado": [
+          [
+            62
+          ],
+          [
+            231
+          ],
+          [
+            142
+          ],
+          [
+            127
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(C2:C15;B2:B15=F1)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "`=FILTRO(o_que_mostrar;condição)`.",
+      "A condição compara a coluna inteira com F1: `B2:B15=F1`."
+    ],
+    "explicacao": [
+      "`=FILTRO(C2:C15;B2:B15=F1)`. Troque F1 e a lista muda sozinha.",
+      "Se nada atender à condição, o FILTRO dá erro; o 3º argumento define o que mostrar nesse caso: `=FILTRO(C2:C15;B2:B15=F1;\"Nenhuma\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "extra": true
+  },
+  {
+    "id": "cb5668b0-fb2a-5a57-9f58-efe5eb99e79a",
+    "slug": "filtro-duas-condicoes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FILTRO com duas condições",
+    "enunciado": [
+      "Em **E5**, liste as **categorias** das compras do cliente de **F1** com valor **maior ou igual** a **F2**."
+    ],
+    "grade": {
+      "linhas": 18,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Ana"
+        },
+        "E2": {
+          "entrada": "Valor mínimo",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "Categorias",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 120,
+        "F": 100
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "F2"
+      ],
+      "alternativas": {
+        "F1": [
+          "Bruno",
+          "Carla"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E5",
+        "esperado": [
+          [
+            "Padaria"
+          ],
+          [
+            "Limpeza"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(B2:B15;(A2:A15=F1)*(C2:C15>=F2))"
+      }
+    ],
+    "dicas": [
+      "No FILTRO, \"e\" se escreve multiplicando as condições: `(cond1)*(cond2)`.",
+      "Cada condição entre parênteses: `(A2:A15=F1)` e `(C2:C15>=F2)`."
+    ],
+    "explicacao": [
+      "`=FILTRO(B2:B15;(A2:A15=F1)*(C2:C15>=F2))`: VERDADEIRO×VERDADEIRO = 1; qualquer FALSO zera a linha.",
+      "Para \"ou\", some as condições: `(cond1)+(cond2)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "extra": true
+  },
+  {
+    "id": "5ab89e3e-33e6-54b0-a340-6b5985e2e273",
+    "slug": "classificar-maior-para-menor",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 106,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CLASSIFICAR: do maior para o menor",
+    "enunciado": [
+      "Em **E2**, liste os valores da coluna C do **maior para o menor**."
+    ],
+    "grade": {
+      "linhas": 16,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Valores do maior para o menor",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 220
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            296
+          ],
+          [
+            274
+          ],
+          [
+            250
+          ],
+          [
+            231
+          ],
+          [
+            203
+          ],
+          [
+            142
+          ],
+          [
+            138
+          ],
+          [
+            133
+          ],
+          [
+            127
+          ],
+          [
+            109
+          ],
+          [
+            71
+          ],
+          [
+            62
+          ],
+          [
+            31
+          ],
+          [
+            18
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(C2:C15;1;-1)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "`=CLASSIFICAR(intervalo;coluna;ordem)`. Ordem 1 é crescente; -1, decrescente."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(C2:C15;1;-1)`. Como só há uma coluna, o índice é 1.",
+      "Os dados originais não mudam: o CLASSIFICAR mostra uma cópia ordenada."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SORT"
+    ],
+    "extra": true
+  },
+  {
+    "id": "ef1bc79e-7f8f-5b45-b1ae-d9b7716384c4",
+    "slug": "caso-resumo-por-cliente",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 107,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: resumo automático por cliente",
+    "enunciado": [
+      "Monte um resumo que se atualiza sozinho:",
+      "1) Em **E2**, os clientes sem repetir, em ordem alfabética. 2) Em **F2:F6**, o total de cada um. 3) Em **G2:G6**, quantas compras cada um fez."
+    ],
+    "grade": {
+      "linhas": 16,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Limpeza"
+        },
+        "C2": {
+          "entrada": "62",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Padaria"
+        },
+        "C3": {
+          "entrada": "133",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Elisa"
+        },
+        "B4": {
+          "entrada": "Bebidas"
+        },
+        "C4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Elisa"
+        },
+        "B5": {
+          "entrada": "Padaria"
+        },
+        "C5": {
+          "entrada": "31",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "Bebidas"
+        },
+        "C6": {
+          "entrada": "71",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Bruno"
+        },
+        "B7": {
+          "entrada": "Padaria"
+        },
+        "C7": {
+          "entrada": "203",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ana"
+        },
+        "B8": {
+          "entrada": "Limpeza"
+        },
+        "C8": {
+          "entrada": "231",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Limpeza"
+        },
+        "C9": {
+          "entrada": "142",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Carla"
+        },
+        "B10": {
+          "entrada": "Bebidas"
+        },
+        "C10": {
+          "entrada": "138",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Bruno"
+        },
+        "B11": {
+          "entrada": "Padaria"
+        },
+        "C11": {
+          "entrada": "274",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Elisa"
+        },
+        "B12": {
+          "entrada": "Bebidas"
+        },
+        "C12": {
+          "entrada": "296",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Diego"
+        },
+        "B13": {
+          "entrada": "Limpeza"
+        },
+        "C13": {
+          "entrada": "127",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Diego"
+        },
+        "B14": {
+          "entrada": "Padaria"
+        },
+        "C14": {
+          "entrada": "109",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Diego"
+        },
+        "B15": {
+          "entrada": "Bebidas"
+        },
+        "C15": {
+          "entrada": "18",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Compras",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110,
+        "F": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Ana"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Diego"
+          ],
+          [
+            "Elisa"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(ÚNICO(A2:A15))"
+      },
+      {
+        "celula": "F2",
+        "esperado": 364,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE($A$2:$A$15;E2;$C$2:$C$15)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 477,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE($A$2:$A$15;E3;$C$2:$C$15)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 413,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE($A$2:$A$15;E4;$C$2:$C$15)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F5",
+        "esperado": 254,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE($A$2:$A$15;E5;$C$2:$C$15)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F6",
+        "esperado": 577,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE($A$2:$A$15;E6;$C$2:$C$15)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G2",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE($A$2:$A$15;E2)"
+      },
+      {
+        "celula": "G3",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE($A$2:$A$15;E3)"
+      },
+      {
+        "celula": "G4",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE($A$2:$A$15;E4)"
+      },
+      {
+        "celula": "G5",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE($A$2:$A$15;E5)"
+      },
+      {
+        "celula": "G6",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE($A$2:$A$15;E6)"
+      }
+    ],
+    "dicas": [
+      "A lista de clientes sai de `CLASSIFICAR(ÚNICO(...))`.",
+      "Ao lado, SOMASE e CONT.SE usam o nome que o ÚNICO trouxe."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(ÚNICO(A2:A15))`, `=SOMASE($A$2:$A$15;E2;$C$2:$C$15)` e `=CONT.SE($A$2:$A$15;E2)`.",
+      "É uma tabela dinâmica feita só com fórmulas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SORT",
+      "UNIQUE",
+      "SUMIF"
+    ],
+    "extra": true
+  }
+]

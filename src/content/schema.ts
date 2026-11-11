@@ -36,6 +36,23 @@ export const alvoSchema = z.object({
   /** Fórmula canônica em pt-BR; usada no CI e na checagem anti-valor-digitado. */
   solucaoReferencia: z.string().startsWith("="),
   formato: formatoSchema.optional(),
+  /**
+   * O esperado depende do dia (ex.: `=B2-HOJE()`): a correção calcula a
+   * solução de referência na hora e compara com ela. `esperado` fica só de exemplo.
+   */
+  esperadoDaReferencia: z.boolean().optional(),
+});
+
+/**
+ * Erro comum previsto no roteiro: se a entrada do aluno (fórmula ou resposta,
+ * em maiúsculas e sem espaços) casar com `padrao` (expressão regular), a
+ * correção mostra `dica` no lugar da mensagem genérica.
+ */
+export const erroComumSchema = z.object({
+  padrao: z.string().min(1),
+  dica: z.string().min(1),
+  /** Só para esta célula (exercícios com mais de um alvo). */
+  celula: endereco.optional(),
 });
 
 const intervalo = z
@@ -88,6 +105,13 @@ const baseSchema = z.object({
   dicas: z.array(z.string()),
   explicacao: z.array(z.string()).min(1),
   tentativasAteExplicacao: z.number().int().min(1),
+  /** Contexto curto antes do enunciado: por que isso importa (roteiro). */
+  intro: z.string().optional(),
+  errosComuns: z.array(erroComumSchema).optional(),
+  /** Gancho e roteiro do vídeo curto (para gravação; não aparece na tela). */
+  video: z.string().optional(),
+  /** Prática extra: fora da trilha principal e do troféu, listada no fim do módulo. */
+  extra: z.boolean().optional(),
 });
 
 /** O tipo original. Exercícios sem `type` são deste tipo. */

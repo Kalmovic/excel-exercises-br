@@ -27,5 +27,7 @@
   "explicacao": [
     "Clicar numa célula a torna a célula ativa. Repare que a Caixa de Nome, à esquerda da barra de fórmulas, passou a mostrar C7."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Antes de escrever qualquer coisa, você precisa saber chegar na célula certa.",
+  "video": "Dispensa vídeo; usar o mesmo do 0.1."
 }

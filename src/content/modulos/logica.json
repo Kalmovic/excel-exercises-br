@@ -1,7 +1,7 @@
 [
   {
-    "id": "d2f99adf-5950-50ce-96a7-7089fee2d572",
-    "slug": "se-aprovado-ou-reprovado",
+    "id": "58b939cb-9706-545f-b5c4-5735ce60be2a",
+    "slug": "se-aprovado",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "logica",
@@ -10,16 +10,16 @@
     "plano": "free",
     "versao": 1,
     "titulo": "SE: aprovado ou reprovado",
+    "intro": "O SE faz uma pergunta e devolve uma coisa se a resposta for sim, e outra se for não.",
     "enunciado": [
-      "A média para passar é **7**.",
-      "Em **C2:C9**, escreva \"Aprovado\" para quem tirou 7 ou mais e \"Reprovado\" para os outros."
+      "A nota está na coluna B. Em **C2**, mostre \"Aprovado\" se a nota for 7 ou mais, e \"Reprovado\" caso contrário. Depois copie até **C6**."
     ],
     "grade": {
-      "linhas": 10,
+      "linhas": 7,
       "colunas": 4,
       "celulas": {
         "A1": {
-          "entrada": "Aluno",
+          "entrada": "Nome",
           "negrito": true
         },
         "B1": {
@@ -34,69 +34,48 @@
           "entrada": "Ana"
         },
         "B2": {
-          "entrada": "5"
+          "entrada": "7,5"
         },
         "A3": {
           "entrada": "Bruno"
         },
         "B3": {
-          "entrada": "8"
+          "entrada": "9,5"
         },
         "A4": {
           "entrada": "Carla"
         },
         "B4": {
-          "entrada": "9"
+          "entrada": "5"
         },
         "A5": {
           "entrada": "Diego"
         },
         "B5": {
-          "entrada": "4,5"
+          "entrada": "7"
         },
         "A6": {
           "entrada": "Elisa"
         },
         "B6": {
-          "entrada": "7,5"
-        },
-        "A7": {
-          "entrada": "Fábio"
-        },
-        "B7": {
-          "entrada": "8"
-        },
-        "A8": {
-          "entrada": "Gabi"
-        },
-        "B8": {
-          "entrada": "6,9"
-        },
-        "A9": {
-          "entrada": "Heitor"
-        },
-        "B9": {
-          "entrada": "3"
+          "entrada": "9"
         }
       },
       "larguras": {
-        "C": 110
+        "C": 120
       },
       "variaveis": [
         "B2",
         "B3",
         "B4",
         "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9"
+        "B6"
       ]
     },
     "alvos": [
       {
         "celula": "C2",
-        "esperado": "Reprovado",
+        "esperado": "Aprovado",
         "exigeFormula": true,
         "solucaoReferencia": "=SE(B2>=7;\"Aprovado\";\"Reprovado\")"
       },
@@ -108,13 +87,13 @@
       },
       {
         "celula": "C4",
-        "esperado": "Aprovado",
+        "esperado": "Reprovado",
         "exigeFormula": true,
         "solucaoReferencia": "=SE(B4>=7;\"Aprovado\";\"Reprovado\")"
       },
       {
         "celula": "C5",
-        "esperado": "Reprovado",
+        "esperado": "Aprovado",
         "exigeFormula": true,
         "solucaoReferencia": "=SE(B5>=7;\"Aprovado\";\"Reprovado\")"
       },
@@ -123,235 +102,160 @@
         "esperado": "Aprovado",
         "exigeFormula": true,
         "solucaoReferencia": "=SE(B6>=7;\"Aprovado\";\"Reprovado\")"
-      },
-      {
-        "celula": "C7",
-        "esperado": "Aprovado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B7>=7;\"Aprovado\";\"Reprovado\")"
-      },
-      {
-        "celula": "C8",
-        "esperado": "Reprovado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B8>=7;\"Aprovado\";\"Reprovado\")"
-      },
-      {
-        "celula": "C9",
-        "esperado": "Reprovado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B9>=7;\"Aprovado\";\"Reprovado\")"
       }
     ],
     "dicas": [
-      "O SE tem três partes: `=SE(teste;se_verdadeiro;se_falso)`.",
-      "O teste é `B2>=7`. Textos vão entre aspas: `\"Aprovado\"`.",
-      "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`"
+      "A estrutura é `SE(teste;valor se verdadeiro;valor se falso)`.",
+      "Texto vai entre aspas: `\"Aprovado\"`."
     ],
     "explicacao": [
-      "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`: se o teste for verdadeiro, devolve o primeiro valor; se não, o segundo.",
-      "`>=` inclui o 7. Com `>`, quem tirou exatamente 7 seria reprovado."
+      "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`: se a nota for maior ou igual a 7, então Aprovado, senão Reprovado.",
+      "Texto vai entre aspas; número e referência, não."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>7;",
+        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+      },
+      {
+        "padrao": ";APROVADO;REPROVADO\\)$",
+        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+      }
+    ],
+    "video": "Ler a fórmula em voz alta: \"SE a nota for maior ou igual a 7, então Aprovado, senão Reprovado\".",
     "funcoesExigidas": [
       "IF"
     ]
   },
   {
-    "id": "61a351c7-da65-5802-a0c3-4ddcd9df19c5",
-    "slug": "se-frete-gratis",
+    "id": "76b8ab7c-24dc-5684-9d12-6d5fcf282a42",
+    "slug": "se-aninhado-otimo-bom",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 2,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "SE com valores: frete grátis",
+    "titulo": "SE aninhado: três respostas",
+    "intro": "E quando há mais de duas respostas possíveis? Você coloca um SE dentro do outro.",
     "enunciado": [
-      "Pedidos a partir de **F1** têm frete grátis; os outros pagam o frete de **F2**.",
-      "Em **C2:C9**, calcule o frete de cada pedido."
+      "Em **C2**, mostre \"Ótimo\" para nota 9 ou mais, \"Bom\" para 7 ou mais, e \"Recuperação\" para o resto. Copie até **C6**."
     ],
     "grade": {
-      "linhas": 10,
-      "colunas": 7,
+      "linhas": 7,
+      "colunas": 4,
       "celulas": {
         "A1": {
-          "entrada": "Pedido",
+          "entrada": "Nome",
           "negrito": true
         },
         "B1": {
-          "entrada": "Valor",
+          "entrada": "Nota",
           "negrito": true
         },
         "C1": {
-          "entrada": "Frete",
+          "entrada": "Conceito",
           "negrito": true
         },
         "A2": {
-          "entrada": "#1001"
+          "entrada": "Ana"
         },
         "B2": {
-          "entrada": "330",
-          "formato": "moeda"
+          "entrada": "7,5"
         },
         "A3": {
-          "entrada": "#1002"
+          "entrada": "Bruno"
         },
         "B3": {
-          "entrada": "175,5",
-          "formato": "moeda"
+          "entrada": "9,5"
         },
         "A4": {
-          "entrada": "#1003"
+          "entrada": "Carla"
         },
         "B4": {
-          "entrada": "330",
-          "formato": "moeda"
+          "entrada": "5"
         },
         "A5": {
-          "entrada": "#1004"
+          "entrada": "Diego"
         },
         "B5": {
-          "entrada": "150",
-          "formato": "moeda"
+          "entrada": "7"
         },
         "A6": {
-          "entrada": "#1005"
+          "entrada": "Elisa"
         },
         "B6": {
-          "entrada": "150",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "#1006"
-        },
-        "B7": {
-          "entrada": "330",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "#1007"
-        },
-        "B8": {
-          "entrada": "59,9",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "#1008"
-        },
-        "B9": {
-          "entrada": "330",
-          "formato": "moeda"
-        },
-        "E1": {
-          "entrada": "Frete grátis a partir de",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "150",
-          "formato": "moeda"
-        },
-        "E2": {
-          "entrada": "Frete normal",
-          "negrito": true
-        },
-        "F2": {
-          "entrada": "19,9",
-          "formato": "moeda"
+          "entrada": "9"
         }
       },
       "larguras": {
-        "B": 100,
-        "E": 170
+        "C": 120
       },
       "variaveis": [
         "B2",
         "B3",
         "B4",
         "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "F1",
-        "F2"
+        "B6"
       ]
     },
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 0,
+        "esperado": "Bom",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(B2>=$F$1;0;$F$2)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(B2>=9;\"Ótimo\";SE(B2>=7;\"Bom\";\"Recuperação\"))"
       },
       {
         "celula": "C3",
-        "esperado": 0,
+        "esperado": "Ótimo",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(B3>=$F$1;0;$F$2)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(B3>=9;\"Ótimo\";SE(B3>=7;\"Bom\";\"Recuperação\"))"
       },
       {
         "celula": "C4",
-        "esperado": 0,
+        "esperado": "Recuperação",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(B4>=$F$1;0;$F$2)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(B4>=9;\"Ótimo\";SE(B4>=7;\"Bom\";\"Recuperação\"))"
       },
       {
         "celula": "C5",
-        "esperado": 0,
+        "esperado": "Bom",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(B5>=$F$1;0;$F$2)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(B5>=9;\"Ótimo\";SE(B5>=7;\"Bom\";\"Recuperação\"))"
       },
       {
         "celula": "C6",
-        "esperado": 0,
+        "esperado": "Ótimo",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(B6>=$F$1;0;$F$2)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "C7",
-        "esperado": 0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B7>=$F$1;0;$F$2)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "C8",
-        "esperado": 19.9,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B8>=$F$1;0;$F$2)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "C9",
-        "esperado": 0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(B9>=$F$1;0;$F$2)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(B6>=9;\"Ótimo\";SE(B6>=7;\"Bom\";\"Recuperação\"))"
       }
     ],
     "dicas": [
-      "O SE pode devolver números: `=SE(teste;0;frete)`.",
-      "As regras ficam em F1 e F2: trave com `$` para copiar."
+      "O segundo SE é o \"senão\" do primeiro.",
+      "Teste da faixa mais alta para a mais baixa: primeiro >=9, depois >=7."
     ],
     "explicacao": [
-      "`=SE(B2>=$F$1;0;$F$2)`: grátis (0) quando atinge o mínimo; senão, o frete normal.",
-      "Com as regras em células, mudar a promoção não exige mexer em nenhuma fórmula."
+      "`=SE(B2>=9;\"Ótimo\";SE(B2>=7;\"Bom\";\"Recuperação\"))`.",
+      "A ordem importa: se testasse >=7 primeiro, quem tirou 9,5 também cairia em \"Bom\"."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>=7;",
+        "dica": "Teste a faixa mais alta primeiro (>=9)."
+      }
+    ],
+    "video": "Desenhar a árvore de decisão antes de escrever a fórmula.",
     "funcoesExigidas": [
       "IF"
     ]
   },
   {
-    "id": "4eae70cc-ff8a-537a-b5ab-3ab0c73f9ae1",
-    "slug": "e-duas-condicoes",
+    "id": "971a069c-1960-5be8-b429-8b45ec8cb2bc",
+    "slug": "e-e-ou-bonus",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "logica",
@@ -359,17 +263,17 @@
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "E: bônus só com meta e sem faltas",
+    "titulo": "E e OU: duas condições",
+    "intro": "Às vezes a decisão depende de duas condições ao mesmo tempo.",
     "enunciado": [
-      "Ganha bônus quem **bateu a meta** (G1) **e** teve **no máximo** G2 faltas.",
-      "Em **D2:D9**, escreva \"Sim\" ou \"Não\"."
+      "Em **D2**, mostre \"Bônus\" se as vendas forem de pelo menos 10.000 **e** não houver faltas; senão, \"Sem bônus\". Copie até **D5**."
     ],
     "grade": {
-      "linhas": 10,
-      "colunas": 8,
+      "linhas": 6,
+      "colunas": 5,
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Nome",
           "negrito": true
         },
         "B1": {
@@ -388,7 +292,7 @@
           "entrada": "Ana"
         },
         "B2": {
-          "entrada": "75000",
+          "entrada": "12000",
           "formato": "moeda"
         },
         "C2": {
@@ -398,180 +302,102 @@
           "entrada": "Bruno"
         },
         "B3": {
-          "entrada": "123000",
+          "entrada": "15000",
           "formato": "moeda"
         },
         "C3": {
-          "entrada": "3"
+          "entrada": "2"
         },
         "A4": {
           "entrada": "Carla"
         },
         "B4": {
-          "entrada": "108000",
+          "entrada": "8000",
           "formato": "moeda"
         },
         "C4": {
-          "entrada": "1"
+          "entrada": "0"
         },
         "A5": {
           "entrada": "Diego"
         },
         "B5": {
-          "entrada": "71000",
+          "entrada": "10000",
           "formato": "moeda"
         },
         "C5": {
-          "entrada": "4"
-        },
-        "A6": {
-          "entrada": "Elisa"
-        },
-        "B6": {
-          "entrada": "122000",
-          "formato": "moeda"
-        },
-        "C6": {
-          "entrada": "2"
-        },
-        "A7": {
-          "entrada": "Fábio"
-        },
-        "B7": {
-          "entrada": "109000",
-          "formato": "moeda"
-        },
-        "C7": {
-          "entrada": "1"
-        },
-        "A8": {
-          "entrada": "Gabi"
-        },
-        "B8": {
-          "entrada": "116000",
-          "formato": "moeda"
-        },
-        "C8": {
           "entrada": "0"
-        },
-        "A9": {
-          "entrada": "Heitor"
-        },
-        "B9": {
-          "entrada": "119000",
-          "formato": "moeda"
-        },
-        "C9": {
-          "entrada": "1"
-        },
-        "F1": {
-          "entrada": "Meta",
-          "negrito": true
-        },
-        "G1": {
-          "entrada": "100000",
-          "formato": "moeda"
-        },
-        "F2": {
-          "entrada": "Faltas máximas",
-          "negrito": true
-        },
-        "G2": {
-          "entrada": "2"
         }
       },
       "larguras": {
         "B": 110,
-        "F": 130
+        "D": 110
       },
       "variaveis": [
         "B2",
         "B3",
         "B4",
         "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
         "C2",
         "C3",
         "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "G1",
-        "G2"
+        "C5"
       ]
     },
     "alvos": [
       {
         "celula": "D2",
-        "esperado": "Não",
+        "esperado": "Bônus",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B2>=$G$1;C2<=$G$2);\"Sim\";\"Não\")"
+        "solucaoReferencia": "=SE(E(B2>=10000;C2=0);\"Bônus\";\"Sem bônus\")"
       },
       {
         "celula": "D3",
-        "esperado": "Não",
+        "esperado": "Sem bônus",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B3>=$G$1;C3<=$G$2);\"Sim\";\"Não\")"
+        "solucaoReferencia": "=SE(E(B3>=10000;C3=0);\"Bônus\";\"Sem bônus\")"
       },
       {
         "celula": "D4",
-        "esperado": "Sim",
+        "esperado": "Sem bônus",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B4>=$G$1;C4<=$G$2);\"Sim\";\"Não\")"
+        "solucaoReferencia": "=SE(E(B4>=10000;C4=0);\"Bônus\";\"Sem bônus\")"
       },
       {
         "celula": "D5",
-        "esperado": "Não",
+        "esperado": "Bônus",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B5>=$G$1;C5<=$G$2);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D6",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B6>=$G$1;C6<=$G$2);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D7",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B7>=$G$1;C7<=$G$2);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D8",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B8>=$G$1;C8<=$G$2);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D9",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B9>=$G$1;C9<=$G$2);\"Sim\";\"Não\")"
+        "solucaoReferencia": "=SE(E(B5>=10000;C5=0);\"Bônus\";\"Sem bônus\")"
       }
     ],
     "dicas": [
-      "Quando duas condições precisam valer juntas, use `E(condição1;condição2)`.",
-      "O E vai dentro do teste do SE: `=SE(E(...);\"Sim\";\"Não\")`."
+      "E só é verdadeiro se todas as condições forem: `E(cond1;cond2)`.",
+      "O E vai dentro do teste do SE."
     ],
     "explicacao": [
-      "`=SE(E(B2>=$G$1;C2<=$G$2);\"Sim\";\"Não\")`: o E só é VERDADEIRO se as duas condições forem.",
-      "Bateu a meta mas faltou 3 vezes? Não ganha."
+      "`=SE(E(B2>=10000;C2=0);\"Bônus\";\"Sem bônus\")`.",
+      "E só é verdadeiro se todas as condições forem verdadeiras. OU é verdadeiro se pelo menos uma for."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+      },
+      {
+        "padrao": "10\\.000",
+        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+      }
+    ],
+    "video": "A mesma fórmula com E e com OU, e quem ganha bônus em cada caso.",
     "funcoesExigidas": [
       "IF",
       "AND"
     ]
   },
   {
-    "id": "0198d522-1f6e-549c-9d7e-f0eaf1aa61b6",
-    "slug": "ou-uma-condicao-basta",
+    "id": "2cbc91e2-564b-5468-a824-627d1aa1ebbb",
+    "slug": "ses-otimo-bom",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "logica",
@@ -579,217 +405,21 @@
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "OU: basta uma condição",
+    "titulo": "SES: a mesma decisão em linha reta",
+    "intro": "O SES faz o mesmo que vários SEs aninhados, mas em linha reta e mais fácil de ler. Disponível a partir do Excel 2019.",
     "enunciado": [
-      "A loja dá desconto para clientes **VIP** **ou** para compras **acima de R$ 500**.",
-      "Em **D2:D9**, escreva \"Sim\" para quem ganha desconto e \"Não\" para os outros."
+      "Refaça o exercício anterior usando **SES**: em **C2**, \"Ótimo\" para 9 ou mais, \"Bom\" para 7 ou mais, \"Recuperação\" para o resto. Copie até **C6**."
     ],
     "grade": {
-      "linhas": 10,
-      "colunas": 5,
+      "linhas": 7,
+      "colunas": 4,
       "celulas": {
         "A1": {
-          "entrada": "Cliente",
+          "entrada": "Nome",
           "negrito": true
         },
         "B1": {
-          "entrada": "VIP?",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Compra",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Desconto?",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Cliente 1"
-        },
-        "B2": {
-          "entrada": "Não"
-        },
-        "C2": {
-          "entrada": "320",
-          "formato": "moeda"
-        },
-        "A3": {
-          "entrada": "Cliente 2"
-        },
-        "B3": {
-          "entrada": "Não"
-        },
-        "C3": {
-          "entrada": "640",
-          "formato": "moeda"
-        },
-        "A4": {
-          "entrada": "Cliente 3"
-        },
-        "B4": {
-          "entrada": "Sim"
-        },
-        "C4": {
-          "entrada": "800",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "Cliente 4"
-        },
-        "B5": {
-          "entrada": "Não"
-        },
-        "C5": {
-          "entrada": "450",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "Cliente 5"
-        },
-        "B6": {
-          "entrada": "Sim"
-        },
-        "C6": {
-          "entrada": "520",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "Cliente 6"
-        },
-        "B7": {
-          "entrada": "Não"
-        },
-        "C7": {
-          "entrada": "800",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "Cliente 7"
-        },
-        "B8": {
-          "entrada": "Sim"
-        },
-        "C8": {
-          "entrada": "270",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "Cliente 8"
-        },
-        "B9": {
-          "entrada": "Sim"
-        },
-        "C9": {
-          "entrada": "270",
-          "formato": "moeda"
-        }
-      },
-      "larguras": {
-        "A": 100,
-        "C": 100,
-        "D": 100
-      },
-      "variaveis": [
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "D2",
-        "esperado": "Não",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B2=\"Sim\";C2>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D3",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B3=\"Sim\";C3>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D4",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B4=\"Sim\";C4>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D5",
-        "esperado": "Não",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B5=\"Sim\";C5>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D6",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B6=\"Sim\";C6>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D7",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B7=\"Sim\";C7>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D8",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B8=\"Sim\";C8>500);\"Sim\";\"Não\")"
-      },
-      {
-        "celula": "D9",
-        "esperado": "Sim",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(OU(B9=\"Sim\";C9>500);\"Sim\";\"Não\")"
-      }
-    ],
-    "dicas": [
-      "Com OU, uma condição verdadeira já basta: `OU(cond1;cond2)`.",
-      "Para comparar com texto, use aspas: `B2=\"Sim\"`."
-    ],
-    "explicacao": [
-      "`=SE(OU(B2=\"Sim\";C2>500);\"Sim\";\"Não\")`.",
-      "Compare com o E: lá as duas condições precisam valer; no OU, qualquer uma."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "IF",
-      "OR"
-    ]
-  },
-  {
-    "id": "37f3ba03-45fd-5075-a454-0e63b25bf6a4",
-    "slug": "ses-conceito-por-faixa",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "logica",
-    "ordem": 5,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "SES: conceito por faixa de pontos",
-    "enunciado": [
-      "A tabela em E:F mostra o conceito de cada faixa de pontos.",
-      "Em **C2:C9**, dê o conceito de cada aluno usando SES (ou SE dentro de SE)."
-    ],
-    "grade": {
-      "linhas": 10,
-      "colunas": 7,
-      "celulas": {
-        "A1": {
-          "entrada": "Aluno",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Pontos",
+          "entrada": "Nota",
           "negrito": true
         },
         "C1": {
@@ -800,178 +430,113 @@
           "entrada": "Ana"
         },
         "B2": {
-          "entrada": "67"
+          "entrada": "7,5"
         },
         "A3": {
           "entrada": "Bruno"
         },
         "B3": {
-          "entrada": "70"
+          "entrada": "9,5"
         },
         "A4": {
           "entrada": "Carla"
         },
         "B4": {
-          "entrada": "86"
+          "entrada": "5"
         },
         "A5": {
           "entrada": "Diego"
         },
         "B5": {
-          "entrada": "46"
+          "entrada": "7"
         },
         "A6": {
           "entrada": "Elisa"
         },
         "B6": {
-          "entrada": "74"
-        },
-        "A7": {
-          "entrada": "Fábio"
-        },
-        "B7": {
-          "entrada": "94"
-        },
-        "A8": {
-          "entrada": "Gabi"
-        },
-        "B8": {
-          "entrada": "71"
-        },
-        "A9": {
-          "entrada": "Heitor"
-        },
-        "B9": {
-          "entrada": "69"
-        },
-        "E1": {
-          "entrada": "A partir de",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "Conceito",
-          "negrito": true
-        },
-        "E2": {
-          "entrada": "90"
-        },
-        "F2": {
-          "entrada": "A"
-        },
-        "E3": {
-          "entrada": "75"
-        },
-        "F3": {
-          "entrada": "B"
-        },
-        "E4": {
-          "entrada": "60"
-        },
-        "F4": {
-          "entrada": "C"
-        },
-        "E5": {
-          "entrada": "0"
-        },
-        "F5": {
-          "entrada": "D"
+          "entrada": "9"
         }
       },
       "larguras": {
-        "E": 100
+        "C": 120
       },
       "variaveis": [
         "B2",
         "B3",
         "B4",
         "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9"
+        "B6"
       ]
     },
     "alvos": [
       {
         "celula": "C2",
-        "esperado": "C",
+        "esperado": "Bom",
         "exigeFormula": true,
-        "solucaoReferencia": "=SES(B2>=90;\"A\";B2>=75;\"B\";B2>=60;\"C\";VERDADEIRO;\"D\")"
+        "solucaoReferencia": "=SES(B2>=9;\"Ótimo\";B2>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
       },
       {
         "celula": "C3",
-        "esperado": "C",
+        "esperado": "Ótimo",
         "exigeFormula": true,
-        "solucaoReferencia": "=SES(B3>=90;\"A\";B3>=75;\"B\";B3>=60;\"C\";VERDADEIRO;\"D\")"
+        "solucaoReferencia": "=SES(B3>=9;\"Ótimo\";B3>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
       },
       {
         "celula": "C4",
-        "esperado": "B",
+        "esperado": "Recuperação",
         "exigeFormula": true,
-        "solucaoReferencia": "=SES(B4>=90;\"A\";B4>=75;\"B\";B4>=60;\"C\";VERDADEIRO;\"D\")"
+        "solucaoReferencia": "=SES(B4>=9;\"Ótimo\";B4>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
       },
       {
         "celula": "C5",
-        "esperado": "D",
+        "esperado": "Bom",
         "exigeFormula": true,
-        "solucaoReferencia": "=SES(B5>=90;\"A\";B5>=75;\"B\";B5>=60;\"C\";VERDADEIRO;\"D\")"
+        "solucaoReferencia": "=SES(B5>=9;\"Ótimo\";B5>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
       },
       {
         "celula": "C6",
-        "esperado": "C",
+        "esperado": "Ótimo",
         "exigeFormula": true,
-        "solucaoReferencia": "=SES(B6>=90;\"A\";B6>=75;\"B\";B6>=60;\"C\";VERDADEIRO;\"D\")"
-      },
-      {
-        "celula": "C7",
-        "esperado": "A",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SES(B7>=90;\"A\";B7>=75;\"B\";B7>=60;\"C\";VERDADEIRO;\"D\")"
-      },
-      {
-        "celula": "C8",
-        "esperado": "C",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SES(B8>=90;\"A\";B8>=75;\"B\";B8>=60;\"C\";VERDADEIRO;\"D\")"
-      },
-      {
-        "celula": "C9",
-        "esperado": "C",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SES(B9>=90;\"A\";B9>=75;\"B\";B9>=60;\"C\";VERDADEIRO;\"D\")"
+        "solucaoReferencia": "=SES(B6>=9;\"Ótimo\";B6>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
       }
     ],
     "dicas": [
-      "SES recebe pares teste/valor e devolve o valor do primeiro teste verdadeiro.",
-      "Comece pela faixa mais alta: `B2>=90;\"A\";B2>=75;\"B\";…`.",
-      "O último par `VERDADEIRO;\"D\"` funciona como \"senão\"."
+      "SES recebe pares de teste e resultado.",
+      "Para \"todo o resto\", termine com o par `VERDADEIRO;\"Recuperação\"`."
     ],
     "explicacao": [
-      "`=SES(B2>=90;\"A\";B2>=75;\"B\";B2>=60;\"C\";VERDADEIRO;\"D\")`.",
-      "Com SE aninhado: `=SE(B2>=90;\"A\";SE(B2>=75;\"B\";SE(B2>=60;\"C\";\"D\")))`. A ordem importa: começando por 60, quem fez 95 ganharia C."
+      "`=SES(B2>=9;\"Ótimo\";B2>=7;\"Bom\";VERDADEIRO;\"Recuperação\")`: devolve o resultado do primeiro teste verdadeiro.",
+      "O último teste, VERDADEIRO, funciona como \"para todo o resto\"."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
+        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+      }
+    ],
+    "video": "Comparar a fórmula aninhada e a SES lado a lado.",
     "funcoesExigidas": [
       "IFS"
     ]
   },
   {
-    "id": "886f6d03-01b1-5b59-99eb-998dd9625584",
-    "slug": "seerro-divisao-por-zero",
+    "id": "0d0b448e-7b9a-5334-aefc-ac9c3d06c500",
+    "slug": "seerro-preco-medio",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "logica",
-    "ordem": 6,
+    "ordem": 5,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "SEERRO: sem #DIV/0! na tabela",
+    "titulo": "SEERRO: sem #DIV/0! na tela",
+    "intro": "Erros como #DIV/0! assustam quem lê a planilha. O SEERRO troca o erro por algo apresentável.",
     "enunciado": [
-      "O ticket médio é o faturamento dividido pelo número de vendas. Algumas lojas não venderam nada, e a divisão dá #DIV/0!.",
-      "Em **D2:D9**, calcule o ticket médio, mostrando **0** quando der erro."
+      "Em **D2**, calcule o preço médio (total ÷ quantidade). Algumas linhas têm quantidade 0: quando der erro, mostre **0**. Copie até **D5**."
     ],
     "grade": {
-      "linhas": 10,
+      "linhas": 6,
       "colunas": 5,
       "celulas": {
         "A1": {
@@ -979,32 +544,32 @@
           "negrito": true
         },
         "B1": {
-          "entrada": "Faturamento",
+          "entrada": "Total",
           "negrito": true
         },
         "C1": {
-          "entrada": "Vendas",
+          "entrada": "Quantidade",
           "negrito": true
         },
         "D1": {
-          "entrada": "Ticket médio",
+          "entrada": "Preço médio",
           "negrito": true
         },
         "A2": {
           "entrada": "Loja A"
         },
         "B2": {
-          "entrada": "0",
+          "entrada": "1500",
           "formato": "moeda"
         },
         "C2": {
-          "entrada": "0"
+          "entrada": "3"
         },
         "A3": {
           "entrada": "Loja B"
         },
         "B3": {
-          "entrada": "0",
+          "entrada": "800",
           "formato": "moeda"
         },
         "C3": {
@@ -1014,65 +579,26 @@
           "entrada": "Loja C"
         },
         "B4": {
-          "entrada": "3400",
+          "entrada": "2400",
           "formato": "moeda"
         },
         "C4": {
-          "entrada": "2"
+          "entrada": "4"
         },
         "A5": {
           "entrada": "Loja D"
         },
         "B5": {
-          "entrada": "980",
-          "formato": "moeda"
-        },
-        "C5": {
-          "entrada": "5"
-        },
-        "A6": {
-          "entrada": "Loja E"
-        },
-        "B6": {
-          "entrada": "2500",
-          "formato": "moeda"
-        },
-        "C6": {
-          "entrada": "0"
-        },
-        "A7": {
-          "entrada": "Loja F"
-        },
-        "B7": {
-          "entrada": "3400",
-          "formato": "moeda"
-        },
-        "C7": {
-          "entrada": "2"
-        },
-        "A8": {
-          "entrada": "Loja G"
-        },
-        "B8": {
-          "entrada": "3400",
-          "formato": "moeda"
-        },
-        "C8": {
-          "entrada": "2"
-        },
-        "A9": {
-          "entrada": "Loja H"
-        },
-        "B9": {
           "entrada": "0",
           "formato": "moeda"
         },
-        "C9": {
+        "C5": {
           "entrada": "0"
         }
       },
       "larguras": {
-        "B": 120,
+        "B": 100,
+        "C": 110,
         "D": 120
       },
       "variaveis": [
@@ -1080,16 +606,16 @@
         "B3",
         "B4",
         "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9"
+        "C2",
+        "C3",
+        "C4",
+        "C5"
       ]
     },
     "alvos": [
       {
         "celula": "D2",
-        "esperado": 0,
+        "esperado": 500.0,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B2/C2;0)",
         "formato": "moeda"
@@ -1103,289 +629,36 @@
       },
       {
         "celula": "D4",
-        "esperado": 1700.0,
+        "esperado": 600.0,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B4/C4;0)",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 196.0,
+        "esperado": 0,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B5/C5;0)",
         "formato": "moeda"
-      },
-      {
-        "celula": "D6",
-        "esperado": 0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SEERRO(B6/C6;0)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "D7",
-        "esperado": 1700.0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SEERRO(B7/C7;0)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "D8",
-        "esperado": 1700.0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SEERRO(B8/C8;0)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "D9",
-        "esperado": 0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SEERRO(B9/C9;0)",
-        "formato": "moeda"
       }
     ],
     "dicas": [
-      "Primeiro escreva a conta `=B2/C2` e veja o erro aparecer.",
-      "Embrulhe a conta: `=SEERRO(conta;valor_se_der_erro)`."
+      "Escreva a conta `=B2/C2` e veja o erro aparecer.",
+      "Embrulhe: `=SEERRO(conta;valor se der erro)`."
     ],
     "explicacao": [
-      "`=SEERRO(B2/C2;0)`: se a conta der certo, mostra o resultado; se der qualquer erro, mostra 0.",
-      "Use com cuidado: o SEERRO esconde *qualquer* erro, inclusive um erro de digitação na fórmula."
+      "`=SEERRO(B2/C2;0)`: se a conta funcionar, aparece o resultado; se der qualquer erro, aparece o segundo argumento."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SEERRO\\(0;",
+        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+      }
+    ],
+    "video": "O alerta: SEERRO esconde todos os erros, inclusive os que você precisaria ver. Use com critério.",
     "funcoesExigidas": [
       "IFERROR"
-    ]
-  },
-  {
-    "id": "7fdc3c9a-9eea-519a-a5a7-de4273fda6ab",
-    "slug": "caso-aprovacao-de-credito",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "logica",
-    "ordem": 7,
-    "nivel": 3,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "Caso: aprovação de crédito",
-    "enunciado": [
-      "Regras do banco: quem tem **algum atraso** é \"Negado\". Sem atrasos, quem tem **score de 600 ou mais e renda de R$ 2.500 ou mais** é \"Aprovado\". O resto vai para \"Análise\".",
-      "Em **E2:E9**, aplique as regras."
-    ],
-    "grade": {
-      "linhas": 10,
-      "colunas": 6,
-      "celulas": {
-        "A1": {
-          "entrada": "Cliente",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Renda",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Atrasos",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Score",
-          "negrito": true
-        },
-        "E1": {
-          "entrada": "Crédito",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Ana"
-        },
-        "B2": {
-          "entrada": "26000",
-          "formato": "moeda"
-        },
-        "C2": {
-          "entrada": "0"
-        },
-        "D2": {
-          "entrada": "550"
-        },
-        "A3": {
-          "entrada": "Bruno"
-        },
-        "B3": {
-          "entrada": "20000",
-          "formato": "moeda"
-        },
-        "C3": {
-          "entrada": "0"
-        },
-        "D3": {
-          "entrada": "550"
-        },
-        "A4": {
-          "entrada": "Carla"
-        },
-        "B4": {
-          "entrada": "23000",
-          "formato": "moeda"
-        },
-        "C4": {
-          "entrada": "0"
-        },
-        "D4": {
-          "entrada": "550"
-        },
-        "A5": {
-          "entrada": "Diego"
-        },
-        "B5": {
-          "entrada": "25000",
-          "formato": "moeda"
-        },
-        "C5": {
-          "entrada": "0"
-        },
-        "D5": {
-          "entrada": "300"
-        },
-        "A6": {
-          "entrada": "Elisa"
-        },
-        "B6": {
-          "entrada": "23000",
-          "formato": "moeda"
-        },
-        "C6": {
-          "entrada": "1"
-        },
-        "D6": {
-          "entrada": "450"
-        },
-        "A7": {
-          "entrada": "Fábio"
-        },
-        "B7": {
-          "entrada": "20000",
-          "formato": "moeda"
-        },
-        "C7": {
-          "entrada": "0"
-        },
-        "D7": {
-          "entrada": "600"
-        },
-        "A8": {
-          "entrada": "Gabi"
-        },
-        "B8": {
-          "entrada": "27000",
-          "formato": "moeda"
-        },
-        "C8": {
-          "entrada": "2"
-        },
-        "D8": {
-          "entrada": "450"
-        },
-        "A9": {
-          "entrada": "Heitor"
-        },
-        "B9": {
-          "entrada": "24000",
-          "formato": "moeda"
-        },
-        "C9": {
-          "entrada": "2"
-        },
-        "D9": {
-          "entrada": "450"
-        }
-      },
-      "larguras": {
-        "B": 110,
-        "E": 110
-      },
-      "variaveis": [
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "D2",
-        "D3",
-        "D4",
-        "D5",
-        "D6",
-        "D7",
-        "D8",
-        "D9"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "E2",
-        "esperado": "Análise",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C2>0;\"Negado\";SE(E(D2>=600;B2>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E3",
-        "esperado": "Análise",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C3>0;\"Negado\";SE(E(D3>=600;B3>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E4",
-        "esperado": "Análise",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C4>0;\"Negado\";SE(E(D4>=600;B4>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E5",
-        "esperado": "Análise",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C5>0;\"Negado\";SE(E(D5>=600;B5>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E6",
-        "esperado": "Negado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C6>0;\"Negado\";SE(E(D6>=600;B6>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E7",
-        "esperado": "Aprovado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C7>0;\"Negado\";SE(E(D7>=600;B7>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E8",
-        "esperado": "Negado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C8>0;\"Negado\";SE(E(D8>=600;B8>=2500);\"Aprovado\";\"Análise\"))"
-      },
-      {
-        "celula": "E9",
-        "esperado": "Negado",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(C9>0;\"Negado\";SE(E(D9>=600;B9>=2500);\"Aprovado\";\"Análise\"))"
-      }
-    ],
-    "dicas": [
-      "Resolva uma regra de cada vez. A primeira: `SE(C2>0;\"Negado\";…)`.",
-      "No lugar do `…`, entra outro SE com E: score e renda."
-    ],
-    "explicacao": [
-      "`=SE(C2>0;\"Negado\";SE(E(D2>=600;B2>=2500);\"Aprovado\";\"Análise\"))`.",
-      "A regra mais forte (atraso) vem primeiro; só quem passa por ela chega ao segundo teste."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "IF",
-      "AND"
     ]
   }
 ]

@@ -4,7 +4,7 @@
   "type": "type_value",
   "trilha": "excel-ptbr",
   "modulo": "intro",
-  "ordem": 5,
+  "ordem": 4,
   "nivel": 1,
   "plano": "free",
   "versao": 1,
@@ -60,5 +60,7 @@
     "Ao apertar **Enter**, o valor é gravado e a seleção desce para a célula de baixo. **Esc** cancela o que você estava digitando.",
     "Números ficam alinhados à direita e textos à esquerda: um jeito rápido de perceber se o Excel entendeu o que você digitou como número."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Digitar é simples, mas existe uma regra: o valor só entra na célula quando você confirma.",
+  "video": "Enter desce, Tab vai para a direita, Esc cancela."
 }

@@ -10,6 +10,6 @@ test("dev: exercício funciona no primeiro carregamento", async ({ page }) => {
   await celula(page, "B8").click({ timeout: 90_000 });
   await page.keyboard.insertText("=SOMA(B2:B7)");
   await page.keyboard.press("Enter");
-  await expect(celula(page, "B8")).toHaveText(/77\.500,00/);
+  await expect(celula(page, "B8")).toHaveText(/7\.675,00/);
   expect(erros).toEqual([]);
 });

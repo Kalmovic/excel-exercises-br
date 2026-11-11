@@ -4,7 +4,7 @@
   "type": "click_cell",
   "trilha": "excel-ptbr",
   "modulo": "intro",
-  "ordem": 3,
+  "ordem": 7,
   "nivel": 1,
   "plano": "free",
   "versao": 1,
@@ -32,5 +32,7 @@
     "Usar o teclado é muito mais rápido do que ir e voltar com o mouse, principalmente quando você está digitando dados.",
     "Resumo: setas andam uma célula; **Enter** desce e **Tab** vai para a direita; **Shift+Enter** e **Shift+Tab** voltam."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Quem usa o teclado trabalha muito mais rápido do que quem vive no mouse.",
+  "video": "Mostrar Ctrl + seta numa planilha com 1.000 linhas."
 }

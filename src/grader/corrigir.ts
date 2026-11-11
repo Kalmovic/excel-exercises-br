@@ -23,6 +23,19 @@ function comoMatriz(alvo: Alvo): Valor[][] {
   return Array.isArray(alvo.esperado) ? alvo.esperado : [[alvo.esperado]];
 }
 
+/** Esperado calculado na hora pela solução de referência (respostas que mudam com o dia). */
+function esperadoAgora(p: Planilha, alvo: Alvo, ex: ExercicioFormula): Alvo["esperado"] {
+  if (!alvo.esperadoDaReferencia) return alvo.esperado;
+  const ref = Planilha.deExercicio(ex);
+  try {
+    ref.definirVarias([{ endereco: alvo.celula, bruto: alvo.solucaoReferencia }]);
+    const v = ref.valor(alvo.celula);
+    return typeof v === "object" && v !== null ? alvo.esperado : v;
+  } finally {
+    ref.destruir();
+  }
+}
+
 function conferirValores(p: Planilha, alvo: Alvo): boolean {
   const base = deEndereco(alvo.celula);
   const tol = alvo.tolerancia ?? TOLERANCIA_PADRAO;
@@ -149,8 +162,10 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
       });
       continue;
     }
-    if (!conferirValores(p, alvo)) {
-      const esperado = Array.isArray(alvo.esperado) || typeof alvo.esperado === "object" ? null : alvo.esperado;
+    const alvoAgora = { ...alvo, esperado: esperadoAgora(p, alvo, ex) };
+    if (!conferirValores(p, alvoAgora)) {
+      const esperado =
+        Array.isArray(alvoAgora.esperado) || typeof alvoAgora.esperado === "object" ? null : alvoAgora.esperado;
       const dica = diagnosticarValor({
         formulaAluno: p.bruto(c),
         formulaReferencia: alvo.solucaoReferencia,
@@ -223,6 +238,32 @@ export function estadoCorrecao(p: Planilha, tela: EstadoTela = TELA_PADRAO): Est
  * olham a planilha, então as chamadas antigas `corrigir(ex, p)` continuam iguais.
  */
 export function corrigir(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resultado {
+  return aplicarErrosComuns(ex, p, tela, corrigirPorTipo(ex, p, tela));
+}
+
+const normalizarEntrada = (s: string) => s.toUpperCase().replace(/\s+/g, "");
+
+/** Troca a mensagem genérica pela dica do roteiro quando o erro do aluno é um dos previstos. */
+function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undefined, r: Resultado): Resultado {
+  if (r.ok || !ex.errosComuns?.length) return r;
+  const casa = (entrada: string, celula?: string) =>
+    ex.errosComuns!.find(
+      (e) => (!e.celula || !celula || e.celula === celula) && new RegExp(e.padrao, "i").test(normalizarEntrada(entrada)),
+    );
+  if (ex.type === "text_answer") {
+    const e = casa(tela?.resposta ?? "");
+    return e ? { ok: false, falhas: [{ ...r.falhas[0], mensagem: e.dica }] } : r;
+  }
+  return {
+    ok: false,
+    falhas: r.falhas.map((f) => {
+      const e = f.celula ? casa(p.bruto(f.celula), f.celula) : undefined;
+      return e ? { ...f, mensagem: e.dica } : f;
+    }),
+  };
+}
+
+function corrigirPorTipo(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resultado {
   const estado = () => estadoCorrecao(p, tela);
   switch (ex.type) {
     case "formula":

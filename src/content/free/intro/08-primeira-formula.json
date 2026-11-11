@@ -46,5 +46,17 @@
     "`=A1+B1` soma o conteúdo das duas células. Se você digitasse 65 direto, o resultado estaria certo agora, mas não mudaria quando A1 ou B1 mudassem.",
     "Dica: enquanto escreve a fórmula, você pode clicar em A1 e em B1 em vez de digitar os nomes."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Toda fórmula começa com `=`. É assim que o Excel sabe que deve calcular, e não só mostrar o texto.",
+  "video": "O momento \"mágico\": mudar A1 e ver C1 mudar.",
+  "errosComuns": [
+    {
+      "padrao": "^A1\\+B1$",
+      "dica": "Toda fórmula começa com =. Escreva =A1+B1."
+    },
+    {
+      "padrao": "^-?\\d+([,.]\\d+)?$",
+      "dica": "Use uma fórmula, para ela se atualizar sozinha quando A1 ou B1 mudarem."
+    }
+  ]
 }

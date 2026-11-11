@@ -1,7 +1,7 @@
 [
   {
-    "id": "bb8654d7-bbcf-5360-b943-3a79701c3bdb",
-    "slug": "cont-se-contar-status",
+    "id": "14a028d3-69d0-5ef2-9602-85b6bab77c1b",
+    "slug": "cont-valores-vendas",
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
@@ -9,1141 +9,17 @@
     "nivel": 1,
     "plano": "free",
     "versao": 1,
-    "titulo": "CONT.SE: quantos boletos foram pagos",
+    "titulo": "CONT.VALORES: quantas vendas há",
+    "intro": "Quantas linhas têm dados? CONT.VALORES conta células que não estão vazias.",
     "enunciado": [
-      "Em **E1**, conte quantos boletos estão \"Pago\". Em **E2**, quantos estão \"Atrasado\"."
+      "A coluna A vai até a linha 12, mas só algumas têm vendedor. Em **G1**, conte quantas vendas foram registradas (use A2:A12)."
     ],
     "grade": {
-      "linhas": 14,
-      "colunas": 6,
-      "celulas": {
-        "A1": {
-          "entrada": "Conta",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Status",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Boleto 1"
-        },
-        "B2": {
-          "entrada": "Atrasado"
-        },
-        "A3": {
-          "entrada": "Boleto 2"
-        },
-        "B3": {
-          "entrada": "Atrasado"
-        },
-        "A4": {
-          "entrada": "Boleto 3"
-        },
-        "B4": {
-          "entrada": "Atrasado"
-        },
-        "A5": {
-          "entrada": "Boleto 4"
-        },
-        "B5": {
-          "entrada": "Pago"
-        },
-        "A6": {
-          "entrada": "Boleto 5"
-        },
-        "B6": {
-          "entrada": "Aberto"
-        },
-        "A7": {
-          "entrada": "Boleto 6"
-        },
-        "B7": {
-          "entrada": "Pago"
-        },
-        "A8": {
-          "entrada": "Boleto 7"
-        },
-        "B8": {
-          "entrada": "Pago"
-        },
-        "A9": {
-          "entrada": "Boleto 8"
-        },
-        "B9": {
-          "entrada": "Pago"
-        },
-        "A10": {
-          "entrada": "Boleto 9"
-        },
-        "B10": {
-          "entrada": "Pago"
-        },
-        "A11": {
-          "entrada": "Boleto 10"
-        },
-        "B11": {
-          "entrada": "Atrasado"
-        },
-        "A12": {
-          "entrada": "Boleto 11"
-        },
-        "B12": {
-          "entrada": "Aberto"
-        },
-        "A13": {
-          "entrada": "Boleto 12"
-        },
-        "B13": {
-          "entrada": "Pago"
-        },
-        "D1": {
-          "entrada": "Pagos",
-          "negrito": true
-        },
-        "D2": {
-          "entrada": "Atrasados",
-          "negrito": true
-        }
-      },
-      "larguras": {
-        "A": 100,
-        "D": 100
-      }
-    },
-    "alvos": [
-      {
-        "celula": "E1",
-        "esperado": 6,
-        "exigeFormula": true,
-        "solucaoReferencia": "=CONT.SE(B2:B13;\"Pago\")"
-      },
-      {
-        "celula": "E2",
-        "esperado": 4,
-        "exigeFormula": true,
-        "solucaoReferencia": "=CONT.SE(B2:B13;\"Atrasado\")"
-      }
-    ],
-    "dicas": [
-      "`=CONT.SE(onde_procurar;o_que_contar)`.",
-      "O texto procurado vai entre aspas: `\"Pago\"`."
-    ],
-    "explicacao": [
-      "`=CONT.SE(B2:B13;\"Pago\")` conta as células do intervalo iguais a \"Pago\". Maiúsculas e minúsculas tanto faz."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "COUNTIF"
-    ]
-  },
-  {
-    "id": "26548153-4098-5ab6-9428-9159225fbd24",
-    "slug": "somase-total-por-categoria",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 2,
-    "nivel": 1,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "SOMASE: total por categoria",
-    "enunciado": [
-      "Em **E2:E4**, some os gastos de cada categoria da coluna D."
-    ],
-    "grade": {
-      "linhas": 14,
-      "colunas": 6,
-      "celulas": {
-        "A1": {
-          "entrada": "Categoria",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Valor",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Lazer"
-        },
-        "B2": {
-          "entrada": "191,62",
-          "formato": "moeda"
-        },
-        "A3": {
-          "entrada": "Lazer"
-        },
-        "B3": {
-          "entrada": "148,37",
-          "formato": "moeda"
-        },
-        "A4": {
-          "entrada": "Transporte"
-        },
-        "B4": {
-          "entrada": "76,93",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "Mercado"
-        },
-        "B5": {
-          "entrada": "138,88",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "Transporte"
-        },
-        "B6": {
-          "entrada": "79,84",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "Lazer"
-        },
-        "B7": {
-          "entrada": "269",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "Transporte"
-        },
-        "B8": {
-          "entrada": "126,26",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "Lazer"
-        },
-        "B9": {
-          "entrada": "51,96",
-          "formato": "moeda"
-        },
-        "A10": {
-          "entrada": "Lazer"
-        },
-        "B10": {
-          "entrada": "230,36",
-          "formato": "moeda"
-        },
-        "A11": {
-          "entrada": "Lazer"
-        },
-        "B11": {
-          "entrada": "24,4",
-          "formato": "moeda"
-        },
-        "A12": {
-          "entrada": "Lazer"
-        },
-        "B12": {
-          "entrada": "87",
-          "formato": "moeda"
-        },
-        "A13": {
-          "entrada": "Lazer"
-        },
-        "B13": {
-          "entrada": "56,82",
-          "formato": "moeda"
-        },
-        "D1": {
-          "entrada": "Categoria",
-          "negrito": true
-        },
-        "E1": {
-          "entrada": "Total",
-          "negrito": true
-        },
-        "D2": {
-          "entrada": "Mercado"
-        },
-        "D3": {
-          "entrada": "Transporte"
-        },
-        "D4": {
-          "entrada": "Lazer"
-        }
-      },
-      "larguras": {
-        "A": 110,
-        "D": 110,
-        "E": 110
-      },
-      "variaveis": [
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10",
-        "B11",
-        "B12",
-        "B13"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "E2",
-        "esperado": 138.88,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASE($A$2:$A$13;D2;$B$2:$B$13)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "E3",
-        "esperado": 283.03,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASE($A$2:$A$13;D3;$B$2:$B$13)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "E4",
-        "esperado": 1059.53,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASE($A$2:$A$13;D4;$B$2:$B$13)",
-        "formato": "moeda"
-      }
-    ],
-    "dicas": [
-      "`=SOMASE(onde_está_a_categoria;qual_categoria;o_que_somar)`.",
-      "A categoria pode vir da célula ao lado: `D2`. Trave os intervalos com `$` para copiar."
-    ],
-    "explicacao": [
-      "`=SOMASE($A$2:$A$13;D2;$B$2:$B$13)`: procura D2 na coluna A e soma os valores da coluna B dessas linhas."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "SUMIF"
-    ]
-  },
-  {
-    "id": "9b301c48-3a84-589f-b512-5d4a652384ae",
-    "slug": "cont-se-com-operador",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 3,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "CONT.SE e SOMASE com \">\"",
-    "enunciado": [
-      "Em **E1**, conte os pedidos **acima de R$ 1.000**. Em **E2**, some o valor desses pedidos."
-    ],
-    "grade": {
-      "linhas": 14,
-      "colunas": 6,
-      "celulas": {
-        "A1": {
-          "entrada": "Pedido",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Valor",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "#2001"
-        },
-        "B2": {
-          "entrada": "329",
-          "formato": "moeda"
-        },
-        "A3": {
-          "entrada": "#2002"
-        },
-        "B3": {
-          "entrada": "1183",
-          "formato": "moeda"
-        },
-        "A4": {
-          "entrada": "#2003"
-        },
-        "B4": {
-          "entrada": "998",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "#2004"
-        },
-        "B5": {
-          "entrada": "576",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "#2005"
-        },
-        "B6": {
-          "entrada": "2519",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "#2006"
-        },
-        "B7": {
-          "entrada": "2752",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "#2007"
-        },
-        "B8": {
-          "entrada": "1259",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "#2008"
-        },
-        "B9": {
-          "entrada": "2521",
-          "formato": "moeda"
-        },
-        "A10": {
-          "entrada": "#2009"
-        },
-        "B10": {
-          "entrada": "2314",
-          "formato": "moeda"
-        },
-        "A11": {
-          "entrada": "#2010"
-        },
-        "B11": {
-          "entrada": "1831",
-          "formato": "moeda"
-        },
-        "A12": {
-          "entrada": "#2011"
-        },
-        "B12": {
-          "entrada": "845",
-          "formato": "moeda"
-        },
-        "A13": {
-          "entrada": "#2012"
-        },
-        "B13": {
-          "entrada": "1878",
-          "formato": "moeda"
-        },
-        "D1": {
-          "entrada": "Acima de R$ 1.000",
-          "negrito": true
-        },
-        "D2": {
-          "entrada": "Soma deles",
-          "negrito": true
-        }
-      },
-      "larguras": {
-        "B": 100,
-        "D": 150,
-        "E": 110
-      },
-      "variaveis": [
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10",
-        "B11",
-        "B12",
-        "B13"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "E1",
-        "esperado": 8,
-        "exigeFormula": true,
-        "solucaoReferencia": "=CONT.SE(B2:B13;\">1000\")"
-      },
-      {
-        "celula": "E2",
-        "esperado": 16257,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASE(B2:B13;\">1000\")",
-        "formato": "moeda"
-      }
-    ],
-    "dicas": [
-      "O critério pode ter operador, entre aspas: `\">1000\"`.",
-      "No SOMASE, quando o intervalo testado é o mesmo que se soma, o terceiro argumento é opcional."
-    ],
-    "explicacao": [
-      "`=CONT.SE(B2:B13;\">1000\")` e `=SOMASE(B2:B13;\">1000\")`.",
-      "Sem aspas (`>1000`), o Excel não entende o critério."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "COUNTIF",
-      "SUMIF"
-    ]
-  },
-  {
-    "id": "6f9c842a-2784-56e7-b4cc-cc5833607831",
-    "slug": "criterio-em-celula",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 4,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "Critério numa célula: \"<\"&E1",
-    "enunciado": [
-      "O estoque mínimo está em **E1**. Em **E2**, conte quantos produtos estão **abaixo** dele.",
-      "A fórmula precisa usar E1: se o mínimo mudar, a contagem acompanha."
-    ],
-    "grade": {
-      "linhas": 14,
-      "colunas": 6,
-      "celulas": {
-        "A1": {
-          "entrada": "Produto",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Estoque",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Produto 1"
-        },
-        "B2": {
-          "entrada": "8"
-        },
-        "A3": {
-          "entrada": "Produto 2"
-        },
-        "B3": {
-          "entrada": "13"
-        },
-        "A4": {
-          "entrada": "Produto 3"
-        },
-        "B4": {
-          "entrada": "27"
-        },
-        "A5": {
-          "entrada": "Produto 4"
-        },
-        "B5": {
-          "entrada": "32"
-        },
-        "A6": {
-          "entrada": "Produto 5"
-        },
-        "B6": {
-          "entrada": "54"
-        },
-        "A7": {
-          "entrada": "Produto 6"
-        },
-        "B7": {
-          "entrada": "60"
-        },
-        "A8": {
-          "entrada": "Produto 7"
-        },
-        "B8": {
-          "entrada": "28"
-        },
-        "A9": {
-          "entrada": "Produto 8"
-        },
-        "B9": {
-          "entrada": "3"
-        },
-        "A10": {
-          "entrada": "Produto 9"
-        },
-        "B10": {
-          "entrada": "14"
-        },
-        "A11": {
-          "entrada": "Produto 10"
-        },
-        "B11": {
-          "entrada": "50"
-        },
-        "A12": {
-          "entrada": "Produto 11"
-        },
-        "B12": {
-          "entrada": "42"
-        },
-        "A13": {
-          "entrada": "Produto 12"
-        },
-        "B13": {
-          "entrada": "46"
-        },
-        "D1": {
-          "entrada": "Estoque mínimo",
-          "negrito": true
-        },
-        "E1": {
-          "entrada": "15"
-        },
-        "D2": {
-          "entrada": "Abaixo do mínimo",
-          "negrito": true
-        }
-      },
-      "larguras": {
-        "A": 110,
-        "D": 150
-      },
-      "variaveis": [
-        "B2",
-        "B3",
-        "B4",
-        "B5",
-        "B6",
-        "B7",
-        "B8",
-        "B9",
-        "B10",
-        "B11",
-        "B12",
-        "B13",
-        "E1"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "E2",
-        "esperado": 4,
-        "exigeFormula": true,
-        "solucaoReferencia": "=CONT.SE(B2:B13;\"<\"&E1)"
-      }
-    ],
-    "dicas": [
-      "Escrever `\"<E1\"` não funciona: o Excel procuraria o texto E1.",
-      "Junte o operador com a célula usando `&`: `\"<\"&E1`."
-    ],
-    "explicacao": [
-      "`=CONT.SE(B2:B13;\"<\"&E1)`: o `&` monta o critério \"<15\" a partir do valor de E1."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "COUNTIF"
-    ]
-  },
-  {
-    "id": "aef48a16-e9ec-5a9a-9652-0cdd3a68e863",
-    "slug": "somases-duas-condicoes",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 5,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "SOMASES: duas condições ao mesmo tempo",
-    "enunciado": [
-      "Em **F4**, some as vendas do vendedor de **F1** no mês de **F2**."
-    ],
-    "grade": {
-      "linhas": 18,
-      "colunas": 7,
-      "celulas": {
-        "A1": {
-          "entrada": "Vendedor",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Mês",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Venda",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Ana"
-        },
-        "B2": {
-          "entrada": "Fev"
-        },
-        "C2": {
-          "entrada": "4500",
-          "formato": "moeda"
-        },
-        "A3": {
-          "entrada": "Carla"
-        },
-        "B3": {
-          "entrada": "Fev"
-        },
-        "C3": {
-          "entrada": "3800",
-          "formato": "moeda"
-        },
-        "A4": {
-          "entrada": "Ana"
-        },
-        "B4": {
-          "entrada": "Jan"
-        },
-        "C4": {
-          "entrada": "1600",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "Bruno"
-        },
-        "B5": {
-          "entrada": "Fev"
-        },
-        "C5": {
-          "entrada": "4900",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "Ana"
-        },
-        "B6": {
-          "entrada": "Jan"
-        },
-        "C6": {
-          "entrada": "800",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "Carla"
-        },
-        "B7": {
-          "entrada": "Fev"
-        },
-        "C7": {
-          "entrada": "4400",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "Bruno"
-        },
-        "B8": {
-          "entrada": "Jan"
-        },
-        "C8": {
-          "entrada": "2100",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "Carla"
-        },
-        "B9": {
-          "entrada": "Jan"
-        },
-        "C9": {
-          "entrada": "2200",
-          "formato": "moeda"
-        },
-        "A10": {
-          "entrada": "Ana"
-        },
-        "B10": {
-          "entrada": "Jan"
-        },
-        "C10": {
-          "entrada": "1300",
-          "formato": "moeda"
-        },
-        "A11": {
-          "entrada": "Carla"
-        },
-        "B11": {
-          "entrada": "Jan"
-        },
-        "C11": {
-          "entrada": "2700",
-          "formato": "moeda"
-        },
-        "A12": {
-          "entrada": "Bruno"
-        },
-        "B12": {
-          "entrada": "Fev"
-        },
-        "C12": {
-          "entrada": "2000",
-          "formato": "moeda"
-        },
-        "A13": {
-          "entrada": "Bruno"
-        },
-        "B13": {
-          "entrada": "Fev"
-        },
-        "C13": {
-          "entrada": "1400",
-          "formato": "moeda"
-        },
-        "A14": {
-          "entrada": "Carla"
-        },
-        "B14": {
-          "entrada": "Jan"
-        },
-        "C14": {
-          "entrada": "4500",
-          "formato": "moeda"
-        },
-        "A15": {
-          "entrada": "Carla"
-        },
-        "B15": {
-          "entrada": "Jan"
-        },
-        "C15": {
-          "entrada": "1500",
-          "formato": "moeda"
-        },
-        "A16": {
-          "entrada": "Bruno"
-        },
-        "B16": {
-          "entrada": "Fev"
-        },
-        "C16": {
-          "entrada": "3800",
-          "formato": "moeda"
-        },
-        "A17": {
-          "entrada": "Bruno"
-        },
-        "B17": {
-          "entrada": "Jan"
-        },
-        "C17": {
-          "entrada": "2100",
-          "formato": "moeda"
-        },
-        "E1": {
-          "entrada": "Vendedor",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "Bruno"
-        },
-        "E2": {
-          "entrada": "Mês",
-          "negrito": true
-        },
-        "F2": {
-          "entrada": "Fev"
-        },
-        "E4": {
-          "entrada": "Total",
-          "negrito": true
-        }
-      },
-      "larguras": {
-        "C": 100,
-        "F": 110
-      },
-      "variaveis": [
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17"
-      ],
-      "alternativas": {
-        "F1": [
-          "Ana",
-          "Carla"
-        ],
-        "F2": [
-          "Jan"
-        ]
-      }
-    },
-    "alvos": [
-      {
-        "celula": "F4",
-        "esperado": 12100,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASES(C2:C17;A2:A17;F1;B2:B17;F2)",
-        "formato": "moeda"
-      }
-    ],
-    "dicas": [
-      "No SOMASES o intervalo a somar vem **primeiro**: `=SOMASES(somar;onde1;critério1;onde2;critério2)`.",
-      "Use F1 e F2 como critérios, não os nomes digitados."
-    ],
-    "explicacao": [
-      "`=SOMASES(C2:C17;A2:A17;F1;B2:B17;F2)`: soma só as linhas em que as duas condições valem.",
-      "Atenção à ordem diferente do SOMASE, em que o intervalo a somar vem por último."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "SUMIFS"
-    ]
-  },
-  {
-    "id": "1df91d96-2ed7-5c63-a67b-5d90f9431085",
-    "slug": "mediase-media-por-setor",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 6,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "MÉDIASE: salário médio por setor",
-    "enunciado": [
-      "Em **F2:F4**, calcule o salário médio de cada setor."
-    ],
-    "grade": {
-      "linhas": 14,
-      "colunas": 7,
-      "celulas": {
-        "A1": {
-          "entrada": "Nome",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Setor",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Salário",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Pessoa 1"
-        },
-        "B2": {
-          "entrada": "TI"
-        },
-        "C2": {
-          "entrada": "4900",
-          "formato": "moeda"
-        },
-        "A3": {
-          "entrada": "Pessoa 2"
-        },
-        "B3": {
-          "entrada": "TI"
-        },
-        "C3": {
-          "entrada": "5100",
-          "formato": "moeda"
-        },
-        "A4": {
-          "entrada": "Pessoa 3"
-        },
-        "B4": {
-          "entrada": "TI"
-        },
-        "C4": {
-          "entrada": "7300",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "Pessoa 4"
-        },
-        "B5": {
-          "entrada": "RH"
-        },
-        "C5": {
-          "entrada": "2900",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "Pessoa 5"
-        },
-        "B6": {
-          "entrada": "RH"
-        },
-        "C6": {
-          "entrada": "3200",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "Pessoa 6"
-        },
-        "B7": {
-          "entrada": "TI"
-        },
-        "C7": {
-          "entrada": "3400",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "Pessoa 7"
-        },
-        "B8": {
-          "entrada": "RH"
-        },
-        "C8": {
-          "entrada": "5700",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "Pessoa 8"
-        },
-        "B9": {
-          "entrada": "TI"
-        },
-        "C9": {
-          "entrada": "7800",
-          "formato": "moeda"
-        },
-        "A10": {
-          "entrada": "Pessoa 9"
-        },
-        "B10": {
-          "entrada": "Vendas"
-        },
-        "C10": {
-          "entrada": "7800",
-          "formato": "moeda"
-        },
-        "A11": {
-          "entrada": "Pessoa 10"
-        },
-        "B11": {
-          "entrada": "Vendas"
-        },
-        "C11": {
-          "entrada": "5800",
-          "formato": "moeda"
-        },
-        "A12": {
-          "entrada": "Pessoa 11"
-        },
-        "B12": {
-          "entrada": "RH"
-        },
-        "C12": {
-          "entrada": "3100",
-          "formato": "moeda"
-        },
-        "A13": {
-          "entrada": "Pessoa 12"
-        },
-        "B13": {
-          "entrada": "RH"
-        },
-        "C13": {
-          "entrada": "6100",
-          "formato": "moeda"
-        },
-        "E1": {
-          "entrada": "Setor",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "Média",
-          "negrito": true
-        },
-        "E2": {
-          "entrada": "Vendas"
-        },
-        "E3": {
-          "entrada": "TI"
-        },
-        "E4": {
-          "entrada": "RH"
-        }
-      },
-      "larguras": {
-        "C": 100,
-        "F": 110
-      },
-      "variaveis": [
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13"
-      ]
-    },
-    "alvos": [
-      {
-        "celula": "F2",
-        "esperado": 6800.0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E2;$C$2:$C$13)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "F3",
-        "esperado": 5700.0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E3;$C$2:$C$13)",
-        "formato": "moeda"
-      },
-      {
-        "celula": "F4",
-        "esperado": 4200.0,
-        "exigeFormula": true,
-        "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E4;$C$2:$C$13)",
-        "formato": "moeda"
-      }
-    ],
-    "dicas": [
-      "MÉDIASE tem a mesma estrutura do SOMASE: `=MÉDIASE(onde;critério;o_que_calcular)`."
-    ],
-    "explicacao": [
-      "`=MÉDIASE($B$2:$B$13;E2;$C$2:$C$13)`.",
-      "Daria também `=SOMASE(...)/CONT.SE(...)`: soma do setor dividida pela quantidade de pessoas nele."
-    ],
-    "tentativasAteExplicacao": 3,
-    "funcoesExigidas": [
-      "AVERAGEIF"
-    ]
-  },
-  {
-    "id": "da7457a7-b65b-5cff-b440-3b78d630ea4d",
-    "slug": "caso-painel-de-entregas",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "condicionais",
-    "ordem": 7,
-    "nivel": 3,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "Caso: painel de entregas",
-    "enunciado": [
-      "Monte um painel em **G1:G4**: total de pedidos (conte a coluna A), quantos atrasados no Sul, quanto vale o que está atrasado no Norte e o maior pedido já entregue."
-    ],
-    "grade": {
-      "linhas": 18,
+      "linhas": 13,
       "colunas": 8,
       "celulas": {
         "A1": {
-          "entrada": "Pedido",
+          "entrada": "Vendedor",
           "negrito": true
         },
         "B1": {
@@ -1151,235 +27,106 @@
           "negrito": true
         },
         "C1": {
-          "entrada": "Status",
-          "negrito": true
-        },
-        "D1": {
           "entrada": "Valor",
           "negrito": true
         },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
         "A2": {
-          "entrada": "#3001"
+          "entrada": "Ana"
         },
         "B2": {
-          "entrada": "Norte"
+          "entrada": "Sul"
         },
         "C2": {
-          "entrada": "Atrasado"
-        },
-        "D2": {
-          "entrada": "632",
+          "entrada": "500",
           "formato": "moeda"
         },
+        "D2": {
+          "entrada": "Pago"
+        },
         "A3": {
-          "entrada": "#3002"
+          "entrada": "Bruno"
         },
         "B3": {
           "entrada": "Norte"
         },
         "C3": {
-          "entrada": "Atrasado"
+          "entrada": "300",
+          "formato": "moeda"
         },
         "D3": {
-          "entrada": "387",
-          "formato": "moeda"
+          "entrada": "Pendente"
         },
         "A4": {
-          "entrada": "#3003"
+          "entrada": "Ana"
         },
         "B4": {
-          "entrada": "Sul"
+          "entrada": "Norte"
         },
         "C4": {
-          "entrada": "Atrasado"
-        },
-        "D4": {
-          "entrada": "741",
+          "entrada": "450",
           "formato": "moeda"
         },
+        "D4": {
+          "entrada": "Pago"
+        },
         "A5": {
-          "entrada": "#3004"
+          "entrada": "Carla"
         },
         "B5": {
           "entrada": "Sul"
         },
         "C5": {
-          "entrada": "Atrasado"
-        },
-        "D5": {
           "entrada": "200",
           "formato": "moeda"
         },
+        "D5": {
+          "entrada": "Pago"
+        },
         "A6": {
-          "entrada": "#3005"
+          "entrada": "Bruno"
         },
         "B6": {
           "entrada": "Sul"
         },
         "C6": {
-          "entrada": "Atrasado"
+          "entrada": "700",
+          "formato": "moeda"
         },
         "D6": {
-          "entrada": "863",
-          "formato": "moeda"
+          "entrada": "Pago"
         },
         "A7": {
-          "entrada": "#3006"
+          "entrada": "Ana"
         },
         "B7": {
-          "entrada": "Norte"
+          "entrada": "Sul"
         },
         "C7": {
-          "entrada": "Atrasado"
+          "entrada": "150",
+          "formato": "moeda"
         },
         "D7": {
-          "entrada": "825",
-          "formato": "moeda"
+          "entrada": "Pendente"
         },
         "A8": {
-          "entrada": "#3007"
+          "entrada": "Carla"
         },
         "B8": {
-          "entrada": "Sul"
+          "entrada": "Norte"
         },
         "C8": {
-          "entrada": "Entregue"
+          "entrada": "600",
+          "formato": "moeda"
         },
         "D8": {
-          "entrada": "444",
-          "formato": "moeda"
-        },
-        "A9": {
-          "entrada": "#3008"
-        },
-        "B9": {
-          "entrada": "Sul"
-        },
-        "C9": {
-          "entrada": "Entregue"
-        },
-        "D9": {
-          "entrada": "284",
-          "formato": "moeda"
-        },
-        "A10": {
-          "entrada": "#3009"
-        },
-        "B10": {
-          "entrada": "Norte"
-        },
-        "C10": {
-          "entrada": "Entregue"
-        },
-        "D10": {
-          "entrada": "621",
-          "formato": "moeda"
-        },
-        "A11": {
-          "entrada": "#3010"
-        },
-        "B11": {
-          "entrada": "Sul"
-        },
-        "C11": {
-          "entrada": "Entregue"
-        },
-        "D11": {
-          "entrada": "423",
-          "formato": "moeda"
-        },
-        "A12": {
-          "entrada": "#3011"
-        },
-        "B12": {
-          "entrada": "Norte"
-        },
-        "C12": {
-          "entrada": "Atrasado"
-        },
-        "D12": {
-          "entrada": "206",
-          "formato": "moeda"
-        },
-        "A13": {
-          "entrada": "#3012"
-        },
-        "B13": {
-          "entrada": "Sul"
-        },
-        "C13": {
-          "entrada": "Entregue"
-        },
-        "D13": {
-          "entrada": "358",
-          "formato": "moeda"
-        },
-        "A14": {
-          "entrada": "#3013"
-        },
-        "B14": {
-          "entrada": "Sul"
-        },
-        "C14": {
-          "entrada": "Atrasado"
-        },
-        "D14": {
-          "entrada": "358",
-          "formato": "moeda"
-        },
-        "A15": {
-          "entrada": "#3014"
-        },
-        "B15": {
-          "entrada": "Sul"
-        },
-        "C15": {
-          "entrada": "Atrasado"
-        },
-        "D15": {
-          "entrada": "319",
-          "formato": "moeda"
-        },
-        "A16": {
-          "entrada": "#3015"
-        },
-        "B16": {
-          "entrada": "Sul"
-        },
-        "C16": {
-          "entrada": "Entregue"
-        },
-        "D16": {
-          "entrada": "229",
-          "formato": "moeda"
-        },
-        "A17": {
-          "entrada": "#3016"
-        },
-        "B17": {
-          "entrada": "Sul"
-        },
-        "C17": {
-          "entrada": "Entregue"
-        },
-        "D17": {
-          "entrada": "601",
-          "formato": "moeda"
+          "entrada": "Pago"
         },
         "F1": {
-          "entrada": "Total de pedidos",
-          "negrito": true
-        },
-        "F2": {
-          "entrada": "Atrasados no Sul",
-          "negrito": true
-        },
-        "F3": {
-          "entrada": "Valor atrasado no Norte",
-          "negrito": true
-        },
-        "F4": {
-          "entrada": "Maior pedido entregue",
+          "entrada": "Vendas registradas",
           "negrito": true
         }
       },
@@ -1389,66 +136,913 @@
         "G": 110
       },
       "variaveis": [
-        "D2",
-        "D3",
-        "D4",
-        "D5",
-        "D6",
-        "D7",
-        "D8",
-        "D9",
-        "D10",
-        "D11",
-        "D12",
-        "D13",
-        "D14",
-        "D15",
-        "D16",
-        "D17"
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
       ]
     },
     "alvos": [
       {
         "celula": "G1",
-        "esperado": 16,
+        "esperado": 7,
         "exigeFormula": true,
-        "solucaoReferencia": "=CONT.VALORES(A2:A17)"
+        "solucaoReferencia": "=CONT.VALORES(A2:A12)"
+      }
+    ],
+    "dicas": [
+      "CONT.VALORES conta qualquer célula preenchida, texto ou número."
+    ],
+    "explicacao": [
+      "`=CONT.VALORES(A2:A12)`. Para contar só números, existe o CONT.NÚM; para as vazias, CONTAR.VAZIO."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.NÚM\\(",
+        "dica": "A coluna A tem texto (nomes). CONT.NÚM só conta números."
       },
       {
-        "celula": "G2",
-        "esperado": 5,
+        "padrao": "\\(A1:",
+        "dica": "Começando em A1, o título da coluna também seria contado."
+      }
+    ],
+    "video": "A diferença entre CONT.VALORES, CONT.NÚM e CONTAR.VAZIO numa tabela só.",
+    "funcoesExigidas": [
+      "COUNTA"
+    ]
+  },
+  {
+    "id": "83b9c167-585f-5526-9300-dc73f2e22c7d",
+    "slug": "cont-se-vendas-da-ana",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 2,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SE: quantas vendas a Ana fez",
+    "intro": "Contar só o que atende a uma condição.",
+    "enunciado": [
+      "Em **G1**, conte quantas vendas a **Ana** fez."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Vendas da Ana",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 3,
         "exigeFormula": true,
-        "solucaoReferencia": "=CONT.SES(B2:B17;\"Sul\";C2:C17;\"Atrasado\")"
+        "solucaoReferencia": "=CONT.SE(A2:A8;\"Ana\")"
+      }
+    ],
+    "dicas": [
+      "`=CONT.SE(onde procurar;o que procurar)`.",
+      "Texto no critério vai entre aspas: `\"Ana\"`."
+    ],
+    "explicacao": [
+      "`=CONT.SE(A2:A8;\"Ana\")`. O critério pode ser texto, número, comparação (\">400\") ou uma célula onde está escrito Ana."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": ";ANA\\)$",
+        "dica": "Texto no critério vai entre aspas: \"Ana\"."
       },
       {
-        "celula": "G3",
-        "esperado": 2050,
-        "exigeFormula": true,
-        "solucaoReferencia": "=SOMASES(D2:D17;B2:B17;\"Norte\";C2:C17;\"Atrasado\")",
-        "formato": "moeda"
+        "padrao": "^=CONT\\.SE\\([B-D]",
+        "dica": "Os nomes estão na coluna A."
+      }
+    ],
+    "video": "Usar uma célula como critério, para trocar o vendedor sem mexer na fórmula.",
+    "funcoesExigidas": [
+      "COUNTIF"
+    ]
+  },
+  {
+    "id": "32cd3976-e69e-5d1a-a879-9c057a44b9a3",
+    "slug": "cont-ses-ana-no-sul",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SES: duas condições",
+    "intro": "E se forem duas condições? CONT.SES aceita quantas você precisar.",
+    "enunciado": [
+      "Em **G1**, conte quantas vendas a **Ana** fez na região **Sul**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Ana no Sul",
+          "negrito": true
+        }
       },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
       {
-        "celula": "G4",
-        "esperado": 621,
+        "celula": "G1",
+        "esperado": 2,
         "exigeFormula": true,
-        "solucaoReferencia": "=MÁXIMOSES(D2:D17;C2:C17;\"Entregue\")",
+        "solucaoReferencia": "=CONT.SES(A2:A8;\"Ana\";B2:B8;\"Sul\")"
+      }
+    ],
+    "dicas": [
+      "Os argumentos vêm em pares: intervalo, critério; intervalo, critério."
+    ],
+    "explicacao": [
+      "`=CONT.SES(A2:A8;\"Ana\";B2:B8;\"Sul\")`: as duas condições precisam valer na mesma linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "A2:A8;\\\"ANA\\\";B2:B9|A2:A9;\\\"ANA\\\";B2:B8",
+        "dica": "Os intervalos precisam ter o mesmo tamanho."
+      }
+    ],
+    "video": "Destacar as duas linhas que contam e a terceira venda da Ana, que não conta.",
+    "funcoesExigidas": [
+      "COUNTIFS"
+    ]
+  },
+  {
+    "id": "468a10ee-4e22-5404-9bd8-f2229ac89ff2",
+    "slug": "somase-total-da-ana",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASE: quanto a Ana vendeu",
+    "intro": "Em vez de contar, somar os valores de quem atende à condição.",
+    "enunciado": [
+      "Em **G1**, some o valor total vendido pela **Ana**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Total da Ana",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(A2:A8;\"Ana\";C2:C8)",
         "formato": "moeda"
       }
     ],
     "dicas": [
-      "CONT.VALORES conta células não vazias, inclusive texto.",
-      "CONT.SES e SOMASES aceitam vários pares intervalo/critério.",
-      "Para o maior com condição: `MÁXIMOSES(valores;onde;critério)`."
+      "`=SOMASE(onde procurar;o que procurar;o que somar)`.",
+      "O que somar é a coluna dos valores, C."
     ],
     "explicacao": [
-      "`=CONT.VALORES(A2:A17)`; `=CONT.SES(B2:B17;\"Sul\";C2:C17;\"Atrasado\")`.",
-      "`=SOMASES(D2:D17;B2:B17;\"Norte\";C2:C17;\"Atrasado\")`; `=MÁXIMOSES(D2:D17;C2:C17;\"Entregue\")`."
+      "`=SOMASE(A2:A8;\"Ana\";C2:C8)`: acha \"Ana\" na coluna A e soma o valor da mesma linha na coluna C."
     ],
     "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
+        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+      }
+    ],
+    "video": "Comparar com filtrar e somar à mão, e mostrar a fórmula se atualizando quando entra uma venda nova.",
     "funcoesExigidas": [
-      "COUNTIFS",
-      "SUMIFS",
-      "MAXIFS"
+      "SUMIF"
+    ]
+  },
+  {
+    "id": "19b85e80-b8c6-51eb-88f6-4f28651551df",
+    "slug": "somases-sul-pago",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASES: Sul e pago",
+    "intro": "Somar com várias condições. Atenção: a ordem dos argumentos é diferente da SOMASE.",
+    "enunciado": [
+      "Em **G1**, some o valor das vendas da região **Sul** que já estão **pagas**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Sul pago",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C8;B2:B8;\"Sul\";D2:D8;\"Pago\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Na SOMASES, o intervalo a somar vem **primeiro**.",
+      "Depois, os pares: `B2:B8;\"Sul\"` e `D2:D8;\"Pago\"`."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C8;B2:B8;\"Sul\";D2:D8;\"Pago\")`. A venda de 150 da Ana (Sul, Pendente) fica de fora."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
+        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+      }
+    ],
+    "video": "SOMASE e SOMASES lado a lado, com o primeiro argumento destacado: a pegadinha preferida das provas.",
+    "funcoesExigidas": [
+      "SUMIFS"
+    ]
+  },
+  {
+    "id": "76967453-ea12-5149-8fd2-ac90a28d0e61",
+    "slug": "mediase-media-do-norte",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIASE: a média de uma região",
+    "intro": "A média de só uma parte dos dados.",
+    "enunciado": [
+      "Em **G1**, calcule o valor médio das vendas da região **Norte**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Média do Norte",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 450,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIASE(B2:B8;\"Norte\";C2:C8)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Mesma estrutura da SOMASE: `MÉDIASE(onde;critério;o que calcular)`."
+    ],
+    "explicacao": [
+      "`=MÉDIASE(B2:B8;\"Norte\";C2:C8)`: Norte tem 300, 450 e 600; soma 1.350, dividida por 3."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "/7$",
+        "dica": "Dividir por 7 usa todas as vendas. São só 3 do Norte; a MÉDIASE conta sozinha."
+      }
+    ],
+    "video": "Fechar o módulo com um mini-relatório por região usando as três funções.",
+    "funcoesExigidas": [
+      "AVERAGEIF"
     ]
   }
 ]

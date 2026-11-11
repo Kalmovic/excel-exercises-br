@@ -209,5 +209,7 @@ Lote 1 (sem backend):
 - [x] Regra grátis/Pro: Intro inteiro + 1º exercício de cada módulo (inclusive Fundamentos). Paywall segue desligado.
 - [x] Ofensiva no navegador (`src/lib/ofensiva.ts`), na trilha e no fim do desafio.
 - [x] Origem desde a primeira visita (`src/lib/origem.ts`): UTM de primeiro toque, `?ref=` e `?cupom=` do último toque, em cookie de 60 dias; todo evento leva `origem`. Atenção: eventos personalizados da Vercel têm limite de propriedades por plano; trocar de provedor (PostHog) junto com o Lote 2.
-- [ ] Conteúdo pelo roteiro: campos `intro` e `errosComuns` no schema; reescrever os módulos; corrigir FILTRO com várias colunas no motor (7.1); confirmar a tabela do INSS 2026 (8.4).
+- [x] Conteúdo pelo roteiro: 52 exercícios na trilha (`src/content/modulos/*.json`, Intro em `free/intro`), com `intro`, `errosComuns` (dica do roteiro quando a entrada do aluno casa com o padrão) e `video`. Os 56 exercícios anteriores viraram prática extra Pro (`src/content/extras/*.json`, `extra: true`), listada no último exercício de cada módulo e fora do progresso e do troféu. FILTRO com várias colunas e "se vazia" corrigido no motor. HOJE (6.1) usa `esperadoDaReferencia`: a correção calcula a resposta do dia.
+- [ ] **Confirmar a tabela do INSS 2026** (exercício `desconto-do-inss`) numa fonte oficial antes de divulgar; atualizar todo janeiro.
+- [ ] Diferenças pequenas que ficaram em relação ao roteiro: 0.10 usa 0,75 (roteiro: 0,05); vários exercícios têm algumas linhas a mais que o roteiro, para treinar copiar a fórmula.
 - [ ] Landing pages por público (emprego, concurso, empresas, universidades), estáticas; formulários completos só com backend.

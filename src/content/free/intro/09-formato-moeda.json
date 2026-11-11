@@ -72,5 +72,7 @@
     "O formato muda só a **aparência**: o valor guardado continua 29,9, mas aparece como R$ 29,90.",
     "No Excel, esse botão fica na guia Página Inicial, grupo Número. Atalho: **Ctrl+Shift+4**."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Formatar muda só a aparência. O valor guardado continua o mesmo.",
+  "video": "Mostrar a barra de fórmulas com 29,9 enquanto a célula mostra R$ 29,90."
 }

@@ -14,20 +14,20 @@ test("regressão: SOMA, recusa de inglês e 'Próximo' dentro do módulo", async
   await verificarCorreto(page);
   await expect(page.getByRole("link", { name: "Próximo exercício →" })).toHaveAttribute(
     "href",
-    "/exercicios/media-minimo-maximo",
+    "/exercicios/media-mensal-de-vendas",
   );
 });
 
 test("regressão: referência absoluta com alça de preenchimento", async ({ page }) => {
-  await abrir(page, "referencia-absoluta-comissao");
+  await abrir(page, "comissao-com-cifrao");
   await digitar(page, "C2", "=B2*$F$1");
   await celula(page, "C2").click();
   const alca = await page.getByTestId("alca").boundingBox();
-  const c6 = await celula(page, "C6").boundingBox();
+  const c7 = await celula(page, "C7").boundingBox();
   await page.mouse.move(alca!.x + 3, alca!.y + 3);
   await page.mouse.down();
-  await page.mouse.move(c6!.x + 20, c6!.y + 10, { steps: 8 });
+  await page.mouse.move(c7!.x + 20, c7!.y + 10, { steps: 8 });
   await page.mouse.up();
-  await expect(celula(page, "C6")).toHaveText(/610,00/);
+  await expect(celula(page, "C7")).toHaveText(/66,00/);
   await verificarCorreto(page);
 });

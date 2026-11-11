@@ -44,10 +44,10 @@ describe.each(formulas.map((e) => [e.slug, e] as const))("%s", (_, ex) => {
 describe("casos específicos", () => {
   const porSlug = (s: string) => exercicios.find((e) => e.slug === s)!;
 
-  it("fórmula com constantes (=12500+9800+…) é pega pela perturbação", () => {
+  it("fórmula com constantes (=1200+950+…) é pega pela perturbação", () => {
     const ex = porSlug("soma-total-de-vendas");
     const p = Planilha.deExercicio(ex);
-    p.definir("B8", "=SOMA(12500;9800;14300;11250;15900;13750)");
+    p.definir("B8", "=SOMA(1200;950;1430;1100;1675;1320)");
     const r = corrigir(ex, p);
     expect(r.ok).toBe(false);
     expect(r.falhas[0].motivo).toBe("valor-fixo");

@@ -1,0 +1,974 @@
+[
+  {
+    "id": "77051192-2eaf-550a-bae0-42723b00eadd",
+    "slug": "subtrair-datas-prazo",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 101,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantos dias levou a entrega?",
+    "enunciado": [
+      "Em **D2:D7**, calcule quantos dias cada pedido levou entre a compra e a entrega."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "#4001"
+        },
+        "B2": {
+          "entrada": "19/04/2026"
+        },
+        "C2": {
+          "entrada": "08/05/2026"
+        },
+        "A3": {
+          "entrada": "#4002"
+        },
+        "B3": {
+          "entrada": "04/01/2026"
+        },
+        "C3": {
+          "entrada": "20/01/2026"
+        },
+        "A4": {
+          "entrada": "#4003"
+        },
+        "B4": {
+          "entrada": "16/07/2026"
+        },
+        "C4": {
+          "entrada": "18/07/2026"
+        },
+        "A5": {
+          "entrada": "#4004"
+        },
+        "B5": {
+          "entrada": "12/01/2026"
+        },
+        "C5": {
+          "entrada": "28/01/2026"
+        },
+        "A6": {
+          "entrada": "#4005"
+        },
+        "B6": {
+          "entrada": "20/11/2026"
+        },
+        "C6": {
+          "entrada": "13/12/2026"
+        },
+        "A7": {
+          "entrada": "#4006"
+        },
+        "B7": {
+          "entrada": "12/09/2026"
+        },
+        "C7": {
+          "entrada": "05/10/2026"
+        },
+        "D1": {
+          "entrada": "Dias",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 19,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2-B2"
+      },
+      {
+        "celula": "D3",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3-B3"
+      },
+      {
+        "celula": "D4",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4-B4"
+      },
+      {
+        "celula": "D5",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5-B5"
+      },
+      {
+        "celula": "D6",
+        "esperado": 23,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6-B6"
+      },
+      {
+        "celula": "D7",
+        "esperado": 23,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C7-B7"
+      }
+    ],
+    "dicas": [
+      "Datas são números por baixo dos panos: dá para subtrair.",
+      "Entrega menos compra: `=C2-B2`."
+    ],
+    "explicacao": [
+      "`=C2-B2`: no Excel, cada data é o número de dias desde 01/01/1900, então a subtração dá os dias entre elas.",
+      "Se aparecer uma data estranha no resultado, formate a célula como número."
+    ],
+    "tentativasAteExplicacao": 3,
+    "extra": true
+  },
+  {
+    "id": "16aa4908-0c39-5008-9060-a44e7305d380",
+    "slug": "mes-e-ano-de-uma-data",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 102,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÊS e ANO: separar partes da data",
+    "enunciado": [
+      "Em **B2:B7**, extraia o mês de cada data (1 a 12). Em **C2:C7**, o ano."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Data da venda",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "15/01/2026"
+        },
+        "A3": {
+          "entrada": "02/03/2026"
+        },
+        "A4": {
+          "entrada": "28/07/2026"
+        },
+        "A5": {
+          "entrada": "05/11/2026"
+        },
+        "A6": {
+          "entrada": "24/12/2026"
+        },
+        "A7": {
+          "entrada": "09/05/2026"
+        }
+      },
+      "larguras": {
+        "A": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A2)"
+      },
+      {
+        "celula": "B3",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A3)"
+      },
+      {
+        "celula": "B4",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A4)"
+      },
+      {
+        "celula": "B5",
+        "esperado": 11,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A5)"
+      },
+      {
+        "celula": "B6",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A6)"
+      },
+      {
+        "celula": "B7",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A7)"
+      },
+      {
+        "celula": "C2",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A2)"
+      },
+      {
+        "celula": "C3",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A3)"
+      },
+      {
+        "celula": "C4",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A4)"
+      },
+      {
+        "celula": "C5",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A5)"
+      },
+      {
+        "celula": "C6",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A6)"
+      },
+      {
+        "celula": "C7",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A7)"
+      }
+    ],
+    "dicas": [
+      "`=MÊS(data)` e `=ANO(data)`. Também existe `=DIA(data)`."
+    ],
+    "explicacao": [
+      "`=MÊS(A2)` e `=ANO(A2)`. Úteis para agrupar vendas por mês com SOMASE ou SOMASES."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "MONTH",
+      "YEAR"
+    ],
+    "extra": true
+  },
+  {
+    "id": "5146b04a-0b43-5530-ab52-afc6ee136be0",
+    "slug": "data-montar-a-partir-de-partes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 103,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATA: montar uma data",
+    "enunciado": [
+      "Um sistema exportou dia, mês e ano em colunas separadas. Em **D2:D5**, monte a data de verdade."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "5"
+        },
+        "B2": {
+          "entrada": "3"
+        },
+        "C2": {
+          "entrada": "2026"
+        },
+        "A3": {
+          "entrada": "31"
+        },
+        "B3": {
+          "entrada": "12"
+        },
+        "C3": {
+          "entrada": "2025"
+        },
+        "A4": {
+          "entrada": "1"
+        },
+        "B4": {
+          "entrada": "7"
+        },
+        "C4": {
+          "entrada": "2026"
+        },
+        "A5": {
+          "entrada": "15"
+        },
+        "B5": {
+          "entrada": "11"
+        },
+        "C5": {
+          "entrada": "2026"
+        }
+      },
+      "larguras": {
+        "D": 110
+      },
+      "variaveis": [
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-03-05"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATA(C2;B2;A2)",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2025-12-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATA(C3;B3;A3)",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2026-07-01"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATA(C4;B4;A4)",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-15"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATA(C5;B5;A5)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "A ordem dos argumentos é **ano; mês; dia**: `=DATA(ano;mês;dia)`."
+    ],
+    "explicacao": [
+      "`=DATA(C2;B2;A2)`. Juntar com `&` (\"5/3/2026\") daria um texto, que não serve para contas.",
+      "O DATA corrige excessos sozinho: dia 32 de janeiro vira 1º de fevereiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "DATE"
+    ],
+    "extra": true
+  },
+  {
+    "id": "2c4d38c8-a2a5-5594-b3fb-e6604b1594f3",
+    "slug": "datadif-idade-em-anos",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 104,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATADIF: idade em anos completos",
+    "enunciado": [
+      "Em **C2:C7**, calcule a idade de cada pessoa em **anos completos** na data de **F1**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nascimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Pessoa 1"
+        },
+        "B2": {
+          "entrada": "13/04/1964"
+        },
+        "A3": {
+          "entrada": "Pessoa 2"
+        },
+        "B3": {
+          "entrada": "28/11/1983"
+        },
+        "A4": {
+          "entrada": "Pessoa 3"
+        },
+        "B4": {
+          "entrada": "24/06/1996"
+        },
+        "A5": {
+          "entrada": "Pessoa 4"
+        },
+        "B5": {
+          "entrada": "10/08/1985"
+        },
+        "A6": {
+          "entrada": "Pessoa 5"
+        },
+        "B6": {
+          "entrada": "27/09/2003"
+        },
+        "A7": {
+          "entrada": "Pessoa 6"
+        },
+        "B7": {
+          "entrada": "17/02/1972"
+        },
+        "C1": {
+          "entrada": "Idade",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Data de referência",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "01/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "E": 150,
+        "F": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 62,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B2;$F$1;\"Y\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": 42,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B3;$F$1;\"Y\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B4;$F$1;\"Y\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": 41,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B5;$F$1;\"Y\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": 23,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B6;$F$1;\"Y\")"
+      },
+      {
+        "celula": "C7",
+        "esperado": 54,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B7;$F$1;\"Y\")"
+      }
+    ],
+    "dicas": [
+      "`=DATADIF(início;fim;\"Y\")` conta anos completos.",
+      "O fim é a data de referência, travada: `$F$1`."
+    ],
+    "explicacao": [
+      "`=DATADIF(B2;$F$1;\"Y\")`. Com \"M\" conta meses; com \"D\", dias.",
+      "Dividir a diferença por 365 erra por causa dos anos bissextos. O DATADIF não tem esse problema.",
+      "Num relatório de verdade, troque F1 por `HOJE()` para a idade se atualizar sozinha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "DATEDIF"
+    ],
+    "extra": true
+  },
+  {
+    "id": "c8cd40e1-4587-52f8-bffd-bf6185b3a466",
+    "slug": "diatrabalhototal-dias-uteis",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 105,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIATRABALHOTOTAL: dias úteis com feriados",
+    "enunciado": [
+      "Em **D2:D4**, conte os dias úteis de cada projeto, descontando fins de semana e os feriados da coluna F."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Projeto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Dias úteis",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Site novo"
+        },
+        "B2": {
+          "entrada": "02/11/2026"
+        },
+        "C2": {
+          "entrada": "27/11/2026"
+        },
+        "A3": {
+          "entrada": "Inventário"
+        },
+        "B3": {
+          "entrada": "09/11/2026"
+        },
+        "C3": {
+          "entrada": "20/11/2026"
+        },
+        "A4": {
+          "entrada": "Treinamento"
+        },
+        "B4": {
+          "entrada": "16/11/2026"
+        },
+        "C4": {
+          "entrada": "04/12/2026"
+        },
+        "F1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "02/11/2026"
+        },
+        "F3": {
+          "entrada": "15/11/2026"
+        },
+        "F4": {
+          "entrada": "20/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "D": 100,
+        "F": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 18,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B2;C2;$F$2:$F$4)"
+      },
+      {
+        "celula": "D3",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B3;C3;$F$2:$F$4)"
+      },
+      {
+        "celula": "D4",
+        "esperado": 14,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B4;C4;$F$2:$F$4)"
+      }
+    ],
+    "dicas": [
+      "`=DIATRABALHOTOTAL(início;fim;feriados)`.",
+      "Os feriados são um intervalo: trave com `$`."
+    ],
+    "explicacao": [
+      "`=DIATRABALHOTOTAL(B2;C2;$F$2:$F$4)`: conta de segunda a sexta, incluindo início e fim, menos os feriados.",
+      "Um feriado no sábado ou domingo não é descontado duas vezes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "NETWORKDAYS"
+    ],
+    "extra": true
+  },
+  {
+    "id": "0d6dd5b8-712a-56db-baa9-3db04b4aec3f",
+    "slug": "fimmes-fechamento-da-fatura",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 106,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FIMMÊS: fechamento da fatura",
+    "enunciado": [
+      "As compras entram na fatura que fecha no **último dia do próprio mês**. Em **B2:B6**, calcule essa data."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fecha em",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "15/01/2026"
+        },
+        "A3": {
+          "entrada": "03/02/2026"
+        },
+        "A4": {
+          "entrada": "30/06/2026"
+        },
+        "A5": {
+          "entrada": "11/11/2026"
+        },
+        "A6": {
+          "entrada": "20/12/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": {
+          "data": "2026-01-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A2;0)",
+        "formato": "data"
+      },
+      {
+        "celula": "B3",
+        "esperado": {
+          "data": "2026-02-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A3;0)",
+        "formato": "data"
+      },
+      {
+        "celula": "B4",
+        "esperado": {
+          "data": "2026-06-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A4;0)",
+        "formato": "data"
+      },
+      {
+        "celula": "B5",
+        "esperado": {
+          "data": "2026-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A5;0)",
+        "formato": "data"
+      },
+      {
+        "celula": "B6",
+        "esperado": {
+          "data": "2026-12-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A6;0)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "`=FIMMÊS(data;meses)` devolve o último dia do mês. Com 0, é o próprio mês."
+    ],
+    "explicacao": [
+      "`=FIMMÊS(A2;0)`. Com 1, seria o fim do mês seguinte; com -1, o do mês anterior.",
+      "Fevereiro e meses de 30 ou 31 dias são resolvidos sozinhos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "EOMONTH"
+    ],
+    "extra": true
+  },
+  {
+    "id": "5026a0eb-85b4-54a5-bd3f-3e2acb1f3f54",
+    "slug": "caso-contratos-vencidos",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 107,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: quais contratos já venceram?",
+    "enunciado": [
+      "1) Em **D2:D6**, calcule quando cada contrato termina: a data de início andando o número de meses (use DATAM).",
+      "2) Em **E2:E6**, escreva \"Vencido\" se o fim é antes da data de **H1** e \"Ativo\" se não."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meses",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Termina em",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Academia"
+        },
+        "B2": {
+          "entrada": "05/12/2025"
+        },
+        "C2": {
+          "entrada": "12"
+        },
+        "A3": {
+          "entrada": "Internet"
+        },
+        "B3": {
+          "entrada": "20/05/2026"
+        },
+        "C3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "Seguro"
+        },
+        "B4": {
+          "entrada": "01/03/2026"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "Streaming"
+        },
+        "B5": {
+          "entrada": "14/08/2026"
+        },
+        "C5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "Celular"
+        },
+        "B6": {
+          "entrada": "30/11/2025"
+        },
+        "C6": {
+          "entrada": "24"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "10/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "D": 120,
+        "E": 100,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-12-05"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B2;C2)",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2026-11-20"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;C3)",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2027-03-01"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B4;C4)",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-14"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B5;C5)",
+        "formato": "data"
+      },
+      {
+        "celula": "D6",
+        "esperado": {
+          "data": "2027-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B6;C6)",
+        "formato": "data"
+      },
+      {
+        "celula": "E2",
+        "esperado": "Ativo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D2<$H$1;\"Vencido\";\"Ativo\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "Ativo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D3<$H$1;\"Vencido\";\"Ativo\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Ativo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D4<$H$1;\"Vencido\";\"Ativo\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "Ativo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D5<$H$1;\"Vencido\";\"Ativo\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "Ativo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D6<$H$1;\"Vencido\";\"Ativo\")"
+      }
+    ],
+    "dicas": [
+      "`=DATAM(data;meses)` anda meses mantendo o dia.",
+      "Datas se comparam como números: `D2<$H$1` quer dizer \"antes de H1\"."
+    ],
+    "explicacao": [
+      "**Etapa 1:** `=DATAM(B2;C2)`. **Etapa 2:** `=SE(D2<$H$1;\"Vencido\";\"Ativo\")`.",
+      "Num controle real, H1 seria `=HOJE()` e a situação se atualizaria todo dia."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "EDATE",
+      "IF"
+    ],
+    "extra": true
+  }
+]

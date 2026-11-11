@@ -39,5 +39,13 @@
     "A célula ativa é **E4**: coluna E, linha 4. Os cabeçalhos da coluna e da linha da célula ativa ficam destacados.",
     "No Excel, o nome da célula ativa também aparece na **Caixa de Nome**, à esquerda da barra de fórmulas. Ela estava escondida neste exercício para não entregar a resposta."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Toda célula tem um endereço: a letra da coluna mais o número da linha. É assim que as fórmulas \"conversam\" com as células.",
+  "video": "\"Toda célula tem um endereço, como uma casa.\" Mostrar a caixa de nome mudando ao clicar em células diferentes.",
+  "errosComuns": [
+    {
+      "padrao": "^4E$",
+      "dica": "Primeiro a letra da coluna, depois o número da linha."
+    }
+  ]
 }

@@ -5,7 +5,7 @@ import { PainelTrilha } from "@/components/mapa/PainelTrilha";
 import type { ItemTrilha } from "@/lib/inicio";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import { MODULOS, exercicios, exerciciosDoModulo } from "@/content";
+import { MODULOS, exerciciosDaTrilha, exerciciosDoModulo } from "@/content";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { MODULOS_PLANEJADOS } from "@/content/modulos-pro";
 import { ptBR } from "@/engine/ptBR";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const pt = (f: string) => (ptBR.functions as Record<string, string>)[f] ?? f;
 
 export default function Trilha() {
-  const trilha = exercicios
+  const trilha = exerciciosDaTrilha()
     .filter(exercicioLiberado)
     .map(({ slug, titulo, modulo, versao }) => ({ slug, titulo, modulo, versao }));
 

@@ -4,7 +4,7 @@
   "type": "type_value",
   "trilha": "excel-ptbr",
   "modulo": "intro",
-  "ordem": 6,
+  "ordem": 5,
   "nivel": 1,
   "plano": "free",
   "versao": 1,
@@ -66,5 +66,7 @@
     "Digitar por cima substitui todo o conteúdo. **F2** e o **duplo clique** abrem a célula para edição, o que é útil para corrigir só um pedaço de um texto ou de uma fórmula.",
     "Repare que o Total em D2 mudou sozinho, de 300 para 360: ele é uma fórmula que usa C2."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Errou um valor? Dá para corrigir sem apagar tudo.",
+  "video": "F2 é o atalho mais subestimado do Excel."
 }

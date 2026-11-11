@@ -4,7 +4,7 @@
   "type": "text_answer",
   "trilha": "excel-ptbr",
   "modulo": "intro",
-  "ordem": 7,
+  "ordem": 6,
   "nivel": 1,
   "plano": "free",
   "versao": 1,
@@ -84,5 +84,13 @@
     "D4 guarda a fórmula `=B4+C4`. A célula mostra o **resultado**; a barra de fórmulas mostra a **conta**.",
     "Toda fórmula começa com `=`. Se B4 ou C4 mudarem, D4 recalcula sozinha."
   ],
-  "tentativasAteExplicacao": 3
+  "tentativasAteExplicacao": 3,
+  "intro": "Uma célula pode mostrar 300 e guardar uma fórmula. Entender isso evita muita confusão.",
+  "video": "Alterar B4 ao vivo e mostrar D4 se atualizando sozinha.",
+  "errosComuns": [
+    {
+      "padrao": "^300$",
+      "dica": "Esse é o resultado. Olhe a barra de fórmulas, acima da planilha."
+    }
+  ]
 }

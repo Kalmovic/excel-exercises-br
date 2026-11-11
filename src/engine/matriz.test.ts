@@ -107,7 +107,6 @@ export const CASOS: Caso[] = [
     funcao: "FILTRO com várias colunas",
     formula: "=FILTRO(A2:B6;B2:B6>20)",
     esperado: ["Bia", "Ana", "Duda"],
-    divergente: "O Excel aceita condição de 1 coluna para uma origem de várias colunas; o HyperFormula exige a mesma largura (#N/D).",
   },
   // Módulo 8
   { modulo: "8", funcao: "SOMARPRODUTO condicional", formula: '=SOMARPRODUTO((A2:A6="Ana")*B2:B6)', esperado: 40 },

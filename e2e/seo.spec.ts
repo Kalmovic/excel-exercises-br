@@ -33,9 +33,10 @@ test.describe("exercício sem JavaScript", () => {
     await page.goto("/exercicios/soma-total-de-vendas");
     const previa = page.getByTestId("previa-exercicio");
     await expect(previa).toContainText("calcule o total vendido no semestre");
+    await expect(previa).toContainText("Somar uma coluna inteira com uma fórmula só");
     const grade = page.getByTestId("grade-estatica");
     await expect(grade.getByRole("columnheader", { name: "B" })).toBeVisible();
-    await expect(grade).toContainText("Janeiro");
+    await expect(grade).toContainText("R$ 1.200,00");
     await expect(page.getByText("Carregando planilha…", { exact: true })).toHaveCount(0);
   });
 });

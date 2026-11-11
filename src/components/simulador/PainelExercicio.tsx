@@ -46,6 +46,11 @@ export function PainelExercicio({
   return (
     <aside className="flex flex-col gap-4">
       <section className="space-y-2 text-[15px] leading-relaxed text-zinc-800">
+        {ex.intro && (
+          <p className="border-l-2 border-accent pl-3 text-sm text-zinc-600" data-testid="intro-exercicio">
+            <TextoRico texto={ex.intro} />
+          </p>
+        )}
         {ex.enunciado.map((p, i) => (
           <p key={i}>
             <TextoRico texto={p} />

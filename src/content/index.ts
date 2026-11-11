@@ -1,9 +1,4 @@
 import { exercicioSchema, type Exercicio } from "./schema";
-import f1 from "./free/01-soma-total-de-vendas.json";
-import f2 from "./free/02-media-minimo-maximo.json";
-import f3 from "./free/03-operadores-lucro.json";
-import f4 from "./free/04-variacao-percentual.json";
-import f5 from "./free/05-referencia-absoluta-comissao.json";
 import i1 from "./free/intro/01-nome-da-celula.json";
 import i2 from "./free/intro/02-clicar-em-uma-celula.json";
 import i3 from "./free/intro/03-navegar-pelo-teclado.json";
@@ -23,6 +18,14 @@ import mTexto from "./modulos/texto.json";
 import mDatas from "./modulos/datas.json";
 import mArrays from "./modulos/arrays.json";
 import mCasos from "./modulos/casos.json";
+import xFundamentos from "./extras/fundamentos.json";
+import xLogica from "./extras/logica.json";
+import xCondicionais from "./extras/condicionais.json";
+import xBusca from "./extras/busca.json";
+import xTexto from "./extras/texto.json";
+import xDatas from "./extras/datas.json";
+import xArrays from "./extras/arrays.json";
+import xCasos from "./extras/casos.json";
 
 /**
  * Os exercícios só chegam ao navegador um por página (as páginas são de
@@ -31,7 +34,7 @@ import mCasos from "./modulos/casos.json";
  */
 const brutos: unknown[] = [
   ...[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10],
-  ...[f1, f2, f3, f4, f5, ...mFundamentos],
+  ...mFundamentos,
   ...mLogica,
   ...mCondicionais,
   ...mBusca,
@@ -39,6 +42,8 @@ const brutos: unknown[] = [
   ...mDatas,
   ...mArrays,
   ...mCasos,
+  // prática extra (Pro): fora da trilha principal, listada no fim de cada módulo
+  ...[xFundamentos, xLogica, xCondicionais, xBusca, xTexto, xDatas, xArrays, xCasos].flat(),
 ];
 
 /** Módulo da trilha (exceto Intro e Fundamentos) com o troféu padrão. */
@@ -116,15 +121,24 @@ export function moduloPorSlug(slug: string) {
   return MODULOS.find((m) => m.slug === slug);
 }
 
+/** Trilha principal do módulo (sem a prática extra). Define progresso, "próximo" e troféu. */
 export function exerciciosDoModulo(modulo: string) {
-  return exercicios.filter((e) => e.modulo === modulo);
+  return exercicios.filter((e) => e.modulo === modulo && !e.extra);
 }
+
+/** Prática extra do módulo (Pro). */
+export function extrasDoModulo(modulo: string) {
+  return exercicios.filter((e) => e.modulo === modulo && e.extra);
+}
+
+/** A trilha inteira, sem a prática extra. */
+export const exerciciosDaTrilha = () => exercicios.filter((e) => !e.extra);
 
 /** Próximo exercício do MESMO módulo (no fim do módulo, undefined). */
 export function proximoExercicio(slug: string) {
   const ex = exercicioPorSlug(slug);
   if (!ex) return undefined;
-  const lista = exerciciosDoModulo(ex.modulo);
+  const lista = ex.extra ? extrasDoModulo(ex.modulo) : exerciciosDoModulo(ex.modulo);
   return lista[lista.findIndex((e) => e.slug === slug) + 1];
 }
 

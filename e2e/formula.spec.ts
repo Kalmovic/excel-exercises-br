@@ -25,7 +25,7 @@ test("P3-1: autocompletar e dica de argumentos", async ({ page }) => {
   await page.keyboard.type(")");
   await expect(dica).toHaveCount(0);
   await page.keyboard.press("Enter");
-  await expect(celula(page, "B8")).toHaveText(/77\.500,00/);
+  await expect(celula(page, "B8")).toHaveText(/7\.675,00/);
 });
 
 test("P3-1: Esc fecha só a lista, sem cancelar a edição; acento é opcional", async ({ page }) => {
@@ -68,7 +68,7 @@ test("P3-3: setas apontam a referência, com cores na grade", async ({ page }) =
   await page.keyboard.type(")");
   await expect(editor).toHaveValue("=SOMA(B2:B7)");
   await page.keyboard.press("Enter");
-  await expect(celula(page, "B8")).toHaveText(/77\.500,00/);
+  await expect(celula(page, "B8")).toHaveText(/7\.675,00/);
 });
 
 test("P3-3: arrastar sobre a grade insere um intervalo", async ({ page }) => {
@@ -135,7 +135,7 @@ test("P3-5: texto longo invade a vizinha vazia; número que não cabe vira ####"
 
   // duplo clique na borda do cabeçalho ajusta a coluna e o número aparece
   await page.locator('[data-borda-coluna="B"]').filter({ visible: true }).dblclick();
-  await expect(celula(page, "B8")).toHaveText(/12\.500\.000\.000\.000,00/);
+  await expect(celula(page, "B8")).toHaveText(/1\.200\.000\.000\.000,00/);
 });
 
 test("P3-5: arrastar a borda do cabeçalho muda a largura", async ({ page }) => {

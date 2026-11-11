@@ -40,8 +40,9 @@ A matriz executável está em `src/engine/matriz.test.ts` (`npm test`).
 | --- | --- | --- | --- |
 | `DATADIF(...;"m")` (unidade minúscula) | aceita | `#NÚM!` | Normalizar a unidade no adapter antes do Módulo 6 |
 | `TEXTO(1,5;"0,00")` | `1,50` | `2,00` | Fora do MVP; plugin próprio se entrar no conteúdo |
-| `FILTRO(A2:B6;B2:B6>20)` (origem com várias colunas) | filtra as linhas | `#N/D` (exige condição da mesma largura) | Exercícios usam FILTRO de uma coluna; plugin próprio se precisar |
 | `">="&A1` com A1 = 1452,2 (número decimal virando texto) | `>=1452,2` | `>=1452.2`, e o critério dá `#VALOR!` | Conteúdo usa limites inteiros; a perturbação mantém inteiros. Corrigir no motor se um exercício precisar de critério decimal |
+
+Resolvido: `FILTRO` com origem de várias colunas e o 3º argumento "se vazia" (plugin `FiltroPlugin` em `src/engine/plugins.ts`). O tamanho reservado para o resultado é o da origem inteira, então uma célula ocupada nessa área dá `#DESPEJAR!` mesmo que o resultado seja menor.
 
 ## Pendências
 
