@@ -1,4 +1,5 @@
 import { exerciciosDoModulo, moduloPorSlug, proximoModulo, type Modulo } from "./index";
+import { exercicioLiberado } from "@/lib/acesso-conteudo";
 
 /** Dados do módulo do exercício: progresso, troféu e para onde ir depois. */
 export type Trilha = {
@@ -14,7 +15,7 @@ export type Trilha = {
 export function dadosDaTrilha(slugModulo: string) {
   const modulo = moduloPorSlug(slugModulo);
   if (!modulo) throw new Error(`Módulo desconhecido: ${slugModulo}`);
-  const lista = exerciciosDoModulo(slugModulo).filter((e) => e.plano === "free");
+  const lista = exerciciosDoModulo(slugModulo).filter(exercicioLiberado);
   const prox = proximoModulo(slugModulo);
   const simulador: Trilha = {
     modulo: modulo.slug,

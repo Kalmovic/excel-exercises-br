@@ -15,12 +15,41 @@ import i8 from "./free/intro/08-primeira-formula.json";
 import i9 from "./free/intro/09-formato-moeda.json";
 import i10 from "./free/intro/10-formato-porcentagem.json";
 import demo from "./free/demo/soma-gastos.json";
+import mFundamentos from "./modulos/fundamentos.json";
+import mLogica from "./modulos/logica.json";
+import mCondicionais from "./modulos/condicionais.json";
+import mBusca from "./modulos/busca.json";
+import mTexto from "./modulos/texto.json";
+import mDatas from "./modulos/datas.json";
+import mArrays from "./modulos/arrays.json";
+import mCasos from "./modulos/casos.json";
 
 /**
- * Só conteúdo GRÁTIS entra no bundle. O conteúdo pro (Fase 3) vem do
- * Supabase, protegido por RLS, e nunca é importado aqui.
+ * Os exercícios só chegam ao navegador um por página (as páginas são de
+ * servidor). Na Fase 3, o conteúdo Pro sai daqui e passa a vir do banco,
+ * protegido por RLS; ver `exercicioLiberado` em `src/lib/acesso-conteudo.ts`.
  */
-const brutos: unknown[] = [i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, f1, f2, f3, f4, f5];
+const brutos: unknown[] = [
+  ...[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10],
+  ...[f1, f2, f3, f4, f5, ...mFundamentos],
+  ...mLogica,
+  ...mCondicionais,
+  ...mBusca,
+  ...mTexto,
+  ...mDatas,
+  ...mArrays,
+  ...mCasos,
+];
+
+/** Módulo da trilha (exceto Intro e Fundamentos) com o troféu padrão. */
+const modulo = (numero: number, slug: string, titulo: string, descricao: string, trofeu: string): Modulo => ({
+  slug,
+  numero,
+  titulo,
+  descricao,
+  permitePular: false,
+  trofeu: { icone: "taca", descricao: trofeu },
+});
 
 export type Modulo = {
   slug: string;
@@ -50,13 +79,20 @@ export const MODULOS: readonly Modulo[] = [
     slug: "fundamentos",
     numero: 1,
     titulo: "Fundamentos",
-    descricao: "SOMA, MÉDIA, MÍNIMO/MÁXIMO, operadores, variação % e referência absoluta.",
+    descricao: "SOMA, MÉDIA, MÍNIMO/MÁXIMO, operadores, porcentagem, ARRED e o famoso $.",
     permitePular: false,
     trofeu: {
       icone: "taca",
       descricao: "SOMA, MÉDIA, operadores e o famoso $ já estão no seu repertório.",
     },
   },
+  modulo(2, "logica", "Lógica", "SE, E, OU, SES e SEERRO: a planilha que toma decisões.", "Sua planilha agora decide sozinha: SE, E, OU, SES e SEERRO."),
+  modulo(3, "condicionais", "Contar e somar com condição", "CONT.SE, SOMASE, SOMASES, MÉDIASE e companhia.", "Contar e somar só o que importa: CONT.SE, SOMASE e as versões com várias condições."),
+  modulo(4, "busca", "Busca", "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", "PROCV, ÍNDICE + CORRESP e PROCX: você encontra qualquer coisa numa tabela."),
+  modulo(5, "texto", "Texto", "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR, SUBSTITUIR.", "Juntar, cortar e limpar textos: dados bagunçados não te assustam mais."),
+  modulo(6, "datas", "Datas", "Diferença entre datas, DATA, DATADIF, dias úteis, FIMMÊS e DATAM.", "Prazos, idades, dias úteis e vencimentos, tudo calculado."),
+  modulo(7, "arrays", "Arrays dinâmicos", "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA: uma fórmula, muitos resultados.", "FILTRO, CLASSIFICAR e ÚNICO: o Excel moderno já é seu."),
+  modulo(8, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {

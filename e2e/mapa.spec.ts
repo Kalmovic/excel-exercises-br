@@ -1,14 +1,14 @@
 import { expect, test } from "@playwright/test";
 import { limparArmazenamento } from "./ajuda";
 
-test("mapa: usuário novo, casa atual, balão e módulos em breve", async ({ page }) => {
+test("mapa: usuário novo, casa atual, balão e todos os módulos", async ({ page }) => {
   await limparArmazenamento(page);
   await page.goto("/trilha");
   const mapa = page.getByTestId("mapa");
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAttribute("data-mapa-atual", "true");
   await expect(page.getByTestId("pino")).toBeVisible();
-  await expect(page.getByTestId("regiao-busca")).toContainText("Em breve");
-  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("0 de 15 exercícios");
+  await expect(page.getByTestId("casa-procv-preco-pelo-codigo")).toBeVisible();
+  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("0 de 67 exercícios");
 
   // a lista por baixo do desenho é navegável e acessível
   await expect(mapa.getByRole("list", { name: "Mapa da trilha" })).toBeVisible();
@@ -43,7 +43,7 @@ test("mapa: módulo concluído recolhe e o desafio do dia mostra se já jogou", 
   await intro.getByRole("button", { name: "Ver casas" }).click();
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAccessibleName(/\(feito\)/);
   await expect(page.getByTestId("card-desafio").filter({ visible: true })).toContainText("Você ainda não jogou hoje");
-  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("10 de 15 exercícios");
+  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("10 de 67 exercícios");
 });
 
 test("balão: fecha ao sair e voltar, e não cobre nenhuma casa", async ({ page }) => {

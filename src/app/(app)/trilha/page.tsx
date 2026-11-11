@@ -9,6 +9,7 @@ import { MODULOS, exercicios, exerciciosDoModulo } from "@/content";
 import { desafioDoDia, hojeNoServidor, numeroDoDesafio, rotuloNivel } from "@/content/desafios";
 import { MODULOS_PLANEJADOS } from "@/content/modulos-pro";
 import { ptBR } from "@/engine/ptBR";
+import { exercicioLiberado } from "@/lib/acesso-conteudo";
 
 export const metadata: Metadata = {
   title: "Trilha",
@@ -20,7 +21,7 @@ const pt = (f: string) => (ptBR.functions as Record<string, string>)[f] ?? f;
 
 export default function Trilha() {
   const trilha = exercicios
-    .filter((e) => e.plano === "free")
+    .filter(exercicioLiberado)
     .map(({ slug, titulo, modulo, versao }) => ({ slug, titulo, modulo, versao }));
 
   // Módulos que existem + os planejados (travados, "em breve"), na ordem da trilha.
@@ -34,7 +35,7 @@ export default function Trilha() {
       icone: m.trofeu.icone,
       disponivel: true,
       itens: exerciciosDoModulo(m.slug)
-        .filter((e) => e.plano === "free")
+        .filter(exercicioLiberado)
         .map(({ slug, titulo, nivel, versao }) => ({ slug, titulo, nivel, versao })),
     })),
     ...MODULOS_PLANEJADOS.map((m, i) => ({ ...m, numero: i + 1 }))

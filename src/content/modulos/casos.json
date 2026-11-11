@@ -1,0 +1,1287 @@
+[
+  {
+    "id": "f22a4ba9-6383-5f6d-9f00-2d73789b7e70",
+    "slug": "pgto-parcela-do-financiamento",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 1,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "PGTO: quanto fica a parcela?",
+    "enunciado": [
+      "Um financiamento de **B1**, a **B2** de juros ao mês, em **B3** parcelas.",
+      "Em **B5**, calcule a parcela (como valor positivo). Em **B6**, o total pago. Em **B7**, quanto disso é juros."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor financiado",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "1,9%"
+        },
+        "A3": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "24"
+        },
+        "A5": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "A6": {
+          "entrada": "Total pago",
+          "negrito": true
+        },
+        "A7": {
+          "entrada": "Total de juros",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 120
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 627.2887717487254,
+        "exigeFormula": true,
+        "solucaoReferencia": "=-PGTO(B2;B3;B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B6",
+        "esperado": 15054.930521969409,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5*B3",
+        "formato": "moeda",
+        "tolerancia": 0.05
+      },
+      {
+        "celula": "B7",
+        "esperado": 3054.930521969409,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6-B1",
+        "formato": "moeda",
+        "tolerancia": 0.05
+      }
+    ],
+    "dicas": [
+      "`=PGTO(taxa;número_de_parcelas;valor)`.",
+      "O PGTO devolve negativo (é dinheiro saindo). Ponha um `-` na frente da função.",
+      "Total pago = parcela × número de parcelas."
+    ],
+    "explicacao": [
+      "`=-PGTO(B2;B3;B1)`: a taxa e o prazo precisam estar na mesma unidade (ao mês, em meses).",
+      "`=B5*B3` e `=B6-B1` mostram o custo real do financiamento: o juro total."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "PMT"
+    ]
+  },
+  {
+    "id": "a7fc21e0-ca5d-50a2-b457-aa80c85a7d7a",
+    "slug": "maior-ranking-top-3",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MAIOR: o pódio de vendas",
+    "enunciado": [
+      "Em **E2:E4**, os três maiores valores de vendas (posições em D2:D4). Em **F2:F4**, o nome de quem vendeu cada um."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "90000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "39000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "98000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "59000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "43000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Heitor"
+        },
+        "B9": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "80000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "68000",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "Posição",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "1"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "D4": {
+          "entrada": "3"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "E": 110,
+        "F": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 98000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIOR($B$2:$B$11;D2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 95000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIOR($B$2:$B$11;D3)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 90000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIOR($B$2:$B$11;D4)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F2",
+        "esperado": "Carla",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$11;CORRESP(E2;$B$2:$B$11;0))"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Heitor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$11;CORRESP(E3;$B$2:$B$11;0))"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Ana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$11;CORRESP(E4;$B$2:$B$11;0))"
+      }
+    ],
+    "dicas": [
+      "`=MAIOR(intervalo;k)` devolve o k-ésimo maior. O k está em D2.",
+      "Para o nome: ÍNDICE + CORRESP procurando o valor encontrado."
+    ],
+    "explicacao": [
+      "`=MAIOR($B$2:$B$11;D2)` e `=ÍNDICE($A$2:$A$11;CORRESP(E2;$B$2:$B$11;0))`.",
+      "Para os piores, troque MAIOR por MENOR."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "LARGE"
+    ]
+  },
+  {
+    "id": "0b81c863-47d8-5c5f-8bdf-523af69bf7fa",
+    "slug": "menor-cotacao-mais-barata",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MENOR: as cotações mais baratas",
+    "enunciado": [
+      "Em **E1**, o menor preço. Em **E2**, o segundo menor. Em **E3**, o nome do fornecedor mais barato."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Fornecedor A"
+        },
+        "B2": {
+          "entrada": "18,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fornecedor B"
+        },
+        "B3": {
+          "entrada": "17,45",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Fornecedor C"
+        },
+        "B4": {
+          "entrada": "19,2",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Fornecedor D"
+        },
+        "B5": {
+          "entrada": "16,8",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fornecedor E"
+        },
+        "B6": {
+          "entrada": "17,1",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "Mais barato",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "2º mais barato",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Quem é o mais barato",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "D": 170,
+        "E": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E1",
+        "esperado": 16.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MENOR(B2:B6;1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E2",
+        "esperado": 17.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MENOR(B2:B6;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": "Fornecedor D",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(A2:A6;CORRESP(E1;B2:B6;0))"
+      }
+    ],
+    "dicas": [
+      "`=MENOR(intervalo;k)`: k = 1 é o menor, k = 2 o segundo.",
+      "O nome sai de ÍNDICE + CORRESP com o valor de E1."
+    ],
+    "explicacao": [
+      "`=MENOR(B2:B6;1)` é o mesmo que `=MÍNIMO(B2:B6)`; a vantagem do MENOR é o k.",
+      "`=ÍNDICE(A2:A6;CORRESP(E1;B2:B6;0))` traz o nome."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SMALL"
+    ]
+  },
+  {
+    "id": "6a982f2f-93dc-5cec-aa3f-aa38db2305c9",
+    "slug": "caso-reposicao-de-estoque",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 4,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: reposição de estoque",
+    "enunciado": [
+      "Regra da loja: quando o estoque fica **abaixo do mínimo**, compra-se o suficiente para chegar ao **dobro do mínimo**. Senão, não se compra nada.",
+      "1) Em **D2:D9**, quantas unidades comprar. 2) Em **G1**, quantos itens precisam de reposição. 3) Em **G2**, o total de unidades a comprar."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Comprar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Item 1"
+        },
+        "B2": {
+          "entrada": "30"
+        },
+        "C2": {
+          "entrada": "20"
+        },
+        "A3": {
+          "entrada": "Item 2"
+        },
+        "B3": {
+          "entrada": "29"
+        },
+        "C3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Item 3"
+        },
+        "B4": {
+          "entrada": "21"
+        },
+        "C4": {
+          "entrada": "10"
+        },
+        "A5": {
+          "entrada": "Item 4"
+        },
+        "B5": {
+          "entrada": "4"
+        },
+        "C5": {
+          "entrada": "10"
+        },
+        "A6": {
+          "entrada": "Item 5"
+        },
+        "B6": {
+          "entrada": "10"
+        },
+        "C6": {
+          "entrada": "15"
+        },
+        "A7": {
+          "entrada": "Item 6"
+        },
+        "B7": {
+          "entrada": "2"
+        },
+        "C7": {
+          "entrada": "20"
+        },
+        "A8": {
+          "entrada": "Item 7"
+        },
+        "B8": {
+          "entrada": "21"
+        },
+        "C8": {
+          "entrada": "15"
+        },
+        "A9": {
+          "entrada": "Item 8"
+        },
+        "B9": {
+          "entrada": "1"
+        },
+        "C9": {
+          "entrada": "20"
+        },
+        "F1": {
+          "entrada": "Itens a repor",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Unidades a comprar",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "F": 170
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2<C2;2*C2-B2;0)"
+      },
+      {
+        "celula": "D3",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B3<C3;2*C3-B3;0)"
+      },
+      {
+        "celula": "D4",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B4<C4;2*C4-B4;0)"
+      },
+      {
+        "celula": "D5",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B5<C5;2*C5-B5;0)"
+      },
+      {
+        "celula": "D6",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B6<C6;2*C6-B6;0)"
+      },
+      {
+        "celula": "D7",
+        "esperado": 38,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B7<C7;2*C7-B7;0)"
+      },
+      {
+        "celula": "D8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B8<C8;2*C8-B8;0)"
+      },
+      {
+        "celula": "D9",
+        "esperado": 39,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B9<C9;2*C9-B9;0)"
+      },
+      {
+        "celula": "G1",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(D2:D9;\">0\")"
+      },
+      {
+        "celula": "G2",
+        "esperado": 113,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(D2:D9)"
+      }
+    ],
+    "dicas": [
+      "Etapa 1: `=SE(B2<C2;2*C2-B2;0)`.",
+      "Etapa 2: conte quem tem compra maior que zero: `CONT.SE(D2:D9;\">0\")`."
+    ],
+    "explicacao": [
+      "**Etapa 1:** `=SE(B2<C2;2*C2-B2;0)`. **Etapas 2 e 3:** `=CONT.SE(D2:D9;\">0\")` e `=SOMA(D2:D9)`.",
+      "Com as regras em fórmulas, a lista de compras sai pronta toda semana."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "IF",
+      "COUNTIF"
+    ]
+  },
+  {
+    "id": "ec2b91a9-c89b-5e2b-a9dd-8e2e1cd341cd",
+    "slug": "caso-comissao-por-faixa",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 5,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: folha de comissões",
+    "enunciado": [
+      "1) Em **C2:C7**, busque a taxa de cada vendedor na tabela de faixas (F:G). 2) Em **D2:D7**, a comissão. 3) Em **G6**, o total de comissões."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "71000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "36000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "17000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "43000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "67000",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "2%"
+        },
+        "F3": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "3,5%"
+        },
+        "F4": {
+          "entrada": "50000",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "5%"
+        },
+        "F6": {
+          "entrada": "Total de comissões",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "D": 110,
+        "F": 160
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B2;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C3",
+        "esperado": 0.035,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B3;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      },
+      {
+        "celula": "C4",
+        "esperado": 0.02,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B4;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C5",
+        "esperado": 0.035,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B5;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      },
+      {
+        "celula": "C6",
+        "esperado": 0.02,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B6;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C7",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B7;$F$2:$G$4;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "D2",
+        "esperado": 3550.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*C2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 1260.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*C3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 340.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*C4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 1505.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5*C5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 300.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6*C6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 3350.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7*C7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G6",
+        "esperado": 10305.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(D2:D7)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "A taxa vem de um PROCV aproximado (VERDADEIRO).",
+      "Comissão = vendas × taxa. O total é uma SOMA."
+    ],
+    "explicacao": [
+      "**Etapa 1:** `=PROCV(B2;$F$2:$G$4;2;VERDADEIRO)`. **Etapa 2:** `=B2*C2`. **Etapa 3:** `=SOMA(D2:D7)`.",
+      "Separar a taxa numa coluna própria facilita conferir: dá para ver qual faixa cada um atingiu."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ]
+  },
+  {
+    "id": "60cbfbe0-d9b0-544d-9952-cd8ec273f03c",
+    "slug": "caso-orcamento-do-mes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 6,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: o orçamento do mês fecha?",
+    "enunciado": [
+      "1) Em **F2** e **F3**, o total de gastos fixos e variáveis. 2) Em **F4**, quanto sobra da renda (F1).",
+      "3) Em **F5**, quanto a sobra representa da renda. 4) Em **F6**, \"Meta batida\" se sobrou **20% ou mais** e \"Rever gastos\" se não."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Gasto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "Fixo"
+        },
+        "C2": {
+          "entrada": "1600",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Luz"
+        },
+        "B3": {
+          "entrada": "Fixo"
+        },
+        "C3": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "Fixo"
+        },
+        "C4": {
+          "entrada": "110",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Mercado"
+        },
+        "B5": {
+          "entrada": "Variável"
+        },
+        "C5": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Restaurante"
+        },
+        "B6": {
+          "entrada": "Variável"
+        },
+        "C6": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Uber"
+        },
+        "B7": {
+          "entrada": "Variável"
+        },
+        "C7": {
+          "entrada": "260",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Academia"
+        },
+        "B8": {
+          "entrada": "Fixo"
+        },
+        "C8": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Farmácia"
+        },
+        "B9": {
+          "entrada": "Variável"
+        },
+        "C9": {
+          "entrada": "140",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Renda",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Fixos",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Variáveis",
+          "negrito": true
+        },
+        "E4": {
+          "entrada": "Sobra",
+          "negrito": true
+        },
+        "E5": {
+          "entrada": "% guardado",
+          "negrito": true
+        },
+        "E6": {
+          "entrada": "Situação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "E": 110,
+        "F": 120
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 2010,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(B2:B9;\"Fixo\";C2:C9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 1770,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(B2:B9;\"Variável\";C2:C9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 720,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F1-F2-F3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F5",
+        "esperado": 0.16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F4/F1",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Rever gastos",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F5>=20%;\"Meta batida\";\"Rever gastos\")"
+      }
+    ],
+    "dicas": [
+      "SOMASE por tipo para F2 e F3.",
+      "Sobra = renda menos os dois totais; o percentual é sobra ÷ renda.",
+      "No SE, 20% pode ser escrito como `20%` ou `0,2`."
+    ],
+    "explicacao": [
+      "`=SOMASE(B2:B9;\"Fixo\";C2:C9)`, `=F1-F2-F3`, `=F4/F1` e `=SE(F5>=20%;\"Meta batida\";\"Rever gastos\")`.",
+      "A regra dos 20% guardados é uma referência comum de orçamento pessoal."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SUMIF",
+      "IF"
+    ]
+  },
+  {
+    "id": "2c2e5f28-1175-5fd3-be0c-f97fb69d199f",
+    "slug": "caso-boletim-escolar",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 7,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: fechamento do boletim",
+    "enunciado": [
+      "1) Em **E2:E7**, a média das duas provas, **arredondada para 1 casa**.",
+      "2) Em **F2:F7**: \"Reprovado por falta\" se a frequência é menor que 75%; senão, \"Aprovado\" com média 6 ou mais, e \"Recuperação\" abaixo disso."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prova 1",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prova 2",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Frequência",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Média",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "6,3"
+        },
+        "C2": {
+          "entrada": "8,7"
+        },
+        "D2": {
+          "entrada": "66%"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "8,8"
+        },
+        "C3": {
+          "entrada": "5"
+        },
+        "D3": {
+          "entrada": "74%"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "9,1"
+        },
+        "C4": {
+          "entrada": "5,9"
+        },
+        "D4": {
+          "entrada": "71%"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "7,5"
+        },
+        "C5": {
+          "entrada": "4,9"
+        },
+        "D5": {
+          "entrada": "62%"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "5"
+        },
+        "C6": {
+          "entrada": "10"
+        },
+        "D6": {
+          "entrada": "84%"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "4,6"
+        },
+        "C7": {
+          "entrada": "7,9"
+        },
+        "D7": {
+          "entrada": "68%"
+        }
+      },
+      "larguras": {
+        "D": 100,
+        "F": 170
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 7.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B2:C2);1)"
+      },
+      {
+        "celula": "E3",
+        "esperado": 6.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B3:C3);1)"
+      },
+      {
+        "celula": "E4",
+        "esperado": 7.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B4:C4);1)"
+      },
+      {
+        "celula": "E5",
+        "esperado": 6.2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B5:C5);1)"
+      },
+      {
+        "celula": "E6",
+        "esperado": 7.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B6:C6);1)"
+      },
+      {
+        "celula": "E7",
+        "esperado": 6.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIA(B7:C7);1)"
+      },
+      {
+        "celula": "F2",
+        "esperado": "Reprovado por falta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D2<75%;\"Reprovado por falta\";SE(E2>=6;\"Aprovado\";\"Recuperação\"))"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Reprovado por falta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D3<75%;\"Reprovado por falta\";SE(E3>=6;\"Aprovado\";\"Recuperação\"))"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Reprovado por falta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D4<75%;\"Reprovado por falta\";SE(E4>=6;\"Aprovado\";\"Recuperação\"))"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Reprovado por falta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D5<75%;\"Reprovado por falta\";SE(E5>=6;\"Aprovado\";\"Recuperação\"))"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Aprovado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D6<75%;\"Reprovado por falta\";SE(E6>=6;\"Aprovado\";\"Recuperação\"))"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Reprovado por falta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D7<75%;\"Reprovado por falta\";SE(E7>=6;\"Aprovado\";\"Recuperação\"))"
+      }
+    ],
+    "dicas": [
+      "Etapa 1: ARRED com MÉDIA dentro.",
+      "Etapa 2: a falta é testada primeiro; só depois a média."
+    ],
+    "explicacao": [
+      "**Etapa 1:** `=ARRED(MÉDIA(B2:C2);1)`. **Etapa 2:** `=SE(D2<75%;\"Reprovado por falta\";SE(E2>=6;\"Aprovado\";\"Recuperação\"))`.",
+      "A ordem dos testes segue a ordem das regras: a mais forte primeiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "ROUND",
+      "IF"
+    ]
+  }
+]

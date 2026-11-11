@@ -24,7 +24,7 @@ export default function Pro() {
         <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>
         <h1 className="text-3xl font-bold tracking-tight">Pro: pratique Excel até ficar fluente</h1>
         <p className="text-lg text-zinc-600">
-          O Intro, o Fundamentos e o desafio diário continuam grátis. O Pro é para quem quer ir além: todos os módulos, conteúdo novo
+          O Intro, o Fundamentos, o desafio diário e o começo de cada módulo continuam grátis. O Pro é para quem quer ir além: todos os exercícios, conteúdo novo
           todo mês e o arquivo completo de desafios.
         </p>
       </header>

@@ -13,9 +13,9 @@ describe("retrocompatibilidade do schema", () => {
     expect(resto).toEqual(legado);
   });
 
-  it("os 5 exercícios de Fundamentos continuam sendo de fórmula", () => {
+  it("os 8 exercícios de Fundamentos são de fórmula", () => {
     const f = exercicios.filter((e) => e.modulo === "fundamentos");
-    expect(f).toHaveLength(5);
+    expect(f).toHaveLength(8);
     expect(f.every((e) => e.type === "formula")).toBe(true);
   });
 
@@ -42,6 +42,14 @@ describe("conteúdo", () => {
     expect(exercicios.every((e) => e.dicas.length > 0)).toBe(true);
   });
 
+  it("módulos 2 a 8 têm 7 exercícios cada, com o primeiro grátis", () => {
+    for (const m of MODULOS.slice(2)) {
+      const lista = exercicios.filter((e) => e.modulo === m.slug);
+      expect(lista, m.slug).toHaveLength(7);
+      expect(lista[0].plano, m.slug).toBe("free");
+    }
+  });
+
   it("Intro vem antes de Fundamentos e tem 10 exercícios grátis", () => {
     expect(exercicios[0].modulo).toBe("intro");
     const intro = exercicios.filter((e) => e.modulo === "intro");
@@ -56,13 +64,15 @@ describe("navegação", () => {
     expect(proximoExercicio("media-minimo-maximo")?.slug).toBe("operadores-lucro");
     expect(proximoExercicio("operadores-lucro")?.slug).toBe("variacao-percentual");
     expect(proximoExercicio("variacao-percentual")?.slug).toBe("referencia-absoluta-comissao");
-    expect(proximoExercicio("referencia-absoluta-comissao")).toBeUndefined();
+    expect(proximoExercicio("referencia-absoluta-comissao")?.slug).toBe("porcentagem-do-total");
+    expect(proximoExercicio("referencia-mista-tabela-reajuste")).toBeUndefined();
   });
 
   it("o fim do Intro não pula para Fundamentos pelo 'Próximo'; isso é o próximo módulo", () => {
     expect(proximoExercicio("formato-porcentagem")).toBeUndefined();
     expect(proximoModulo("intro")?.primeiro.slug).toBe("soma-total-de-vendas");
-    expect(proximoModulo("fundamentos")).toBeUndefined();
+    expect(proximoModulo("fundamentos")?.primeiro.slug).toBe("se-aprovado-ou-reprovado");
+    expect(proximoModulo("casos")).toBeUndefined();
   });
 });
 

@@ -1,0 +1,1239 @@
+[
+  {
+    "id": "445d444c-6e26-58f2-869d-23b4477eea95",
+    "slug": "procv-preco-pelo-codigo",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "PROCV: o preço pelo código",
+    "enunciado": [
+      "A tabela de produtos está em **E1:G9**.",
+      "Em **B2:B7**, busque o preço de cada código da coluna A."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P03"
+        },
+        "A3": {
+          "entrada": "P01"
+        },
+        "A4": {
+          "entrada": "P07"
+        },
+        "A5": {
+          "entrada": "P05"
+        },
+        "A6": {
+          "entrada": "P02"
+        },
+        "A7": {
+          "entrada": "P08"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "P01"
+        },
+        "F2": {
+          "entrada": "Caneta"
+        },
+        "G2": {
+          "entrada": "3,5",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "P02"
+        },
+        "F3": {
+          "entrada": "Caderno"
+        },
+        "G3": {
+          "entrada": "18,9",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "P03"
+        },
+        "F4": {
+          "entrada": "Mochila"
+        },
+        "G4": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "P04"
+        },
+        "F5": {
+          "entrada": "Estojo"
+        },
+        "G5": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "P05"
+        },
+        "F6": {
+          "entrada": "Régua"
+        },
+        "G6": {
+          "entrada": "4,9",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "P06"
+        },
+        "F7": {
+          "entrada": "Cola"
+        },
+        "G7": {
+          "entrada": "7,8",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "P07"
+        },
+        "F8": {
+          "entrada": "Tesoura"
+        },
+        "G8": {
+          "entrada": "12",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "P08"
+        },
+        "F9": {
+          "entrada": "Lápis"
+        },
+        "G9": {
+          "entrada": "2,2",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "F": 110,
+        "G": 100
+      },
+      "variaveis": [
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8",
+        "G9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 129.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 3.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 12.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 4.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B6",
+        "esperado": 18.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B7",
+        "esperado": 2.2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A7;$E$2:$G$9;3;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "`=PROCV(o_que_procurar;tabela;número_da_coluna;FALSO)`.",
+      "O código é procurado na **primeira** coluna da tabela (E). O preço está na 3ª coluna da tabela.",
+      "FALSO pede correspondência exata. Trave a tabela com `$`."
+    ],
+    "explicacao": [
+      "`=PROCV(A2;$E$2:$G$9;3;FALSO)`: acha A2 na coluna E e devolve o valor da 3ª coluna da tabela, G.",
+      "Sem o FALSO, o PROCV faz busca aproximada e pode devolver o produto errado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ]
+  },
+  {
+    "id": "699df0fb-f739-5e0a-8ef4-653af98e00a6",
+    "slug": "procv-seerro-nao-encontrado",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV com SEERRO: código que não existe",
+    "enunciado": [
+      "Alguns códigos digitados não existem na tabela, e o PROCV devolve #N/D.",
+      "Em **B2:B7**, busque o nome do produto, mostrando \"Não encontrado\" quando o código não existir."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P02"
+        },
+        "A3": {
+          "entrada": "P11"
+        },
+        "A4": {
+          "entrada": "P06"
+        },
+        "A5": {
+          "entrada": "P09"
+        },
+        "A6": {
+          "entrada": "P04"
+        },
+        "A7": {
+          "entrada": "P01"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "P01"
+        },
+        "F2": {
+          "entrada": "Caneta"
+        },
+        "G2": {
+          "entrada": "3,5",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "P02"
+        },
+        "F3": {
+          "entrada": "Caderno"
+        },
+        "G3": {
+          "entrada": "18,9",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "P03"
+        },
+        "F4": {
+          "entrada": "Mochila"
+        },
+        "G4": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "P04"
+        },
+        "F5": {
+          "entrada": "Estojo"
+        },
+        "G5": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "P05"
+        },
+        "F6": {
+          "entrada": "Régua"
+        },
+        "G6": {
+          "entrada": "4,9",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "P06"
+        },
+        "F7": {
+          "entrada": "Cola"
+        },
+        "G7": {
+          "entrada": "7,8",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "P07"
+        },
+        "F8": {
+          "entrada": "Tesoura"
+        },
+        "G8": {
+          "entrada": "12",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "P08"
+        },
+        "F9": {
+          "entrada": "Lápis"
+        },
+        "G9": {
+          "entrada": "2,2",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 130,
+        "F": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Caderno",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A2;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      },
+      {
+        "celula": "B3",
+        "esperado": "Não encontrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A3;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      },
+      {
+        "celula": "B4",
+        "esperado": "Cola",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A4;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      },
+      {
+        "celula": "B5",
+        "esperado": "Não encontrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A5;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      },
+      {
+        "celula": "B6",
+        "esperado": "Estojo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A6;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      },
+      {
+        "celula": "B7",
+        "esperado": "Caneta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A7;$E$2:$G$9;2;FALSO);\"Não encontrado\")"
+      }
+    ],
+    "dicas": [
+      "Comece com o PROCV normal (coluna 2 da tabela) e veja o #N/D aparecer.",
+      "Embrulhe: `=SEERRO(PROCV(...);\"Não encontrado\")`."
+    ],
+    "explicacao": [
+      "`=SEERRO(PROCV(A2;$E$2:$G$9;2;FALSO);\"Não encontrado\")`.",
+      "No Excel novo, `SENÃODISP` faz o mesmo só para o #N/D, sem esconder outros erros."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "VLOOKUP",
+      "IFERROR"
+    ]
+  },
+  {
+    "id": "ed70b22d-ab51-5a81-af88-79e1a446a4b2",
+    "slug": "procv-aproximado-faixas",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV aproximado: desconto por faixa",
+    "enunciado": [
+      "A tabela em D:E mostra o desconto a partir de cada valor de compra.",
+      "Em **B2:B9**, busque o percentual de desconto de cada compra."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1999",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0%"
+        },
+        "D3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "5%"
+        },
+        "D4": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "8%"
+        },
+        "D5": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "12%"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "D": 110
+      },
+      "variaveis": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B3",
+        "esperado": 0.08,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B4",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B5",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B6",
+        "esperado": 0.08,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B7",
+        "esperado": 0.12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A7;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B8",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A8;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "B9",
+        "esperado": 0.12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A9;$D$2:$E$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      }
+    ],
+    "dicas": [
+      "Aqui o valor não aparece igual na tabela: você quer a **faixa**.",
+      "Com VERDADEIRO no último argumento, o PROCV pega a maior faixa que não passa do valor. A tabela precisa estar em ordem crescente."
+    ],
+    "explicacao": [
+      "`=PROCV(A2;$D$2:$E$5;2;VERDADEIRO)`: uma compra de 780 cai na faixa de 500 (5%).",
+      "É o jeito clássico de fazer tabelas de comissão, frete e impostos por faixa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ]
+  },
+  {
+    "id": "6cf48952-97a2-5cd9-8bc5-26e8cb2febad",
+    "slug": "proch-busca-na-horizontal",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCH: busca em tabela deitada",
+    "enunciado": [
+      "As metas estão numa tabela **horizontal** (meses na linha 1, metas na linha 2).",
+      "Em **B6:B9**, busque a meta de cada mês da coluna A."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mai",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Jun",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "45000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "53000",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "58000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A6": {
+          "entrada": "Mar"
+        },
+        "A7": {
+          "entrada": "Jan"
+        },
+        "A8": {
+          "entrada": "Jun"
+        },
+        "A9": {
+          "entrada": "Abr"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "G": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "F2",
+        "G2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 20000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A6;$B$1:$G$2;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B7",
+        "esperado": 25000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A7;$B$1:$G$2;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B8",
+        "esperado": 58000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A8;$B$1:$G$2;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B9",
+        "esperado": 53000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A9;$B$1:$G$2;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "PROCH é o PROCV deitado: procura na **primeira linha** e devolve de outra linha.",
+      "A meta está na 2ª linha da tabela `$B$1:$G$2`."
+    ],
+    "explicacao": [
+      "`=PROCH(A6;$B$1:$G$2;2;FALSO)`.",
+      "Se puder escolher, prefira tabelas em pé: PROCV, PROCX e filtros funcionam melhor com elas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "HLOOKUP"
+    ]
+  },
+  {
+    "id": "0186f94e-451d-5d2d-9c28-f5498b0bfc9b",
+    "slug": "indice-corresp-busca-a-esquerda",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÍNDICE + CORRESP: buscar à esquerda",
+    "enunciado": [
+      "Você tem a matrícula e quer o **nome**, que fica à **esquerda** dela. O PROCV não consegue.",
+      "Em **F2:F4**, busque o nome de cada matrícula usando ÍNDICE e CORRESP."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "M-104"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "M-221"
+        },
+        "C3": {
+          "entrada": "TI"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "M-087"
+        },
+        "C4": {
+          "entrada": "RH"
+        },
+        "A5": {
+          "entrada": "Diego Reis"
+        },
+        "B5": {
+          "entrada": "M-310"
+        },
+        "C5": {
+          "entrada": "TI"
+        },
+        "A6": {
+          "entrada": "Elisa Melo"
+        },
+        "B6": {
+          "entrada": "M-145"
+        },
+        "C6": {
+          "entrada": "Vendas"
+        },
+        "A7": {
+          "entrada": "Fábio Cruz"
+        },
+        "B7": {
+          "entrada": "M-276"
+        },
+        "C7": {
+          "entrada": "Financeiro"
+        },
+        "E1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "M-221"
+        },
+        "E3": {
+          "entrada": "M-145"
+        },
+        "E4": {
+          "entrada": "M-087"
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 100,
+        "F": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Bruno Lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$7;CORRESP(E2;$B$2:$B$7;0))"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Elisa Melo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$7;CORRESP(E3;$B$2:$B$7;0))"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Carla Dias",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($A$2:$A$7;CORRESP(E4;$B$2:$B$7;0))"
+      }
+    ],
+    "dicas": [
+      "`CORRESP(E2;$B$2:$B$7;0)` diz em que **posição** está a matrícula.",
+      "`ÍNDICE($A$2:$A$7;posição)` devolve o nome dessa posição."
+    ],
+    "explicacao": [
+      "`=ÍNDICE($A$2:$A$7;CORRESP(E2;$B$2:$B$7;0))`: o CORRESP acha a linha, o ÍNDICE pega o valor.",
+      "O 0 no CORRESP pede correspondência exata, como o FALSO do PROCV."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ]
+  },
+  {
+    "id": "a081a6e1-c2c8-52e2-9d7c-7b4cb590d8db",
+    "slug": "procx-busca-moderna",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX: a busca moderna",
+    "enunciado": [
+      "Mesma tabela, outra ferramenta. Em **F2:F4**, busque o **setor** de cada matrícula com PROCX. Se a matrícula não existir, mostre \"—\"."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "M-104"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "M-221"
+        },
+        "C3": {
+          "entrada": "TI"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "M-087"
+        },
+        "C4": {
+          "entrada": "RH"
+        },
+        "A5": {
+          "entrada": "Diego Reis"
+        },
+        "B5": {
+          "entrada": "M-310"
+        },
+        "C5": {
+          "entrada": "TI"
+        },
+        "A6": {
+          "entrada": "Elisa Melo"
+        },
+        "B6": {
+          "entrada": "M-145"
+        },
+        "C6": {
+          "entrada": "Vendas"
+        },
+        "A7": {
+          "entrada": "Fábio Cruz"
+        },
+        "B7": {
+          "entrada": "M-276"
+        },
+        "C7": {
+          "entrada": "Financeiro"
+        },
+        "E1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "M-310"
+        },
+        "E3": {
+          "entrada": "M-999"
+        },
+        "E4": {
+          "entrada": "M-104"
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 100,
+        "F": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "TI",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E2;$B$2:$B$7;$C$2:$C$7;\"—\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "—",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E3;$B$2:$B$7;$C$2:$C$7;\"—\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Vendas",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E4;$B$2:$B$7;$C$2:$C$7;\"—\")"
+      }
+    ],
+    "dicas": [
+      "`=PROCX(o_que_procurar;onde_procurar;o_que_devolver;se_não_achar)`.",
+      "Onde procurar: a coluna das matrículas. O que devolver: a coluna dos setores."
+    ],
+    "explicacao": [
+      "`=PROCX(E2;$B$2:$B$7;$C$2:$C$7;\"—\")`.",
+      "O PROCX busca em qualquer direção, é exato por padrão e já tem o \"se não encontrar\" embutido."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ]
+  },
+  {
+    "id": "35c2caa6-07c4-5fc6-b7c9-49d849e55290",
+    "slug": "indice-corresp-duas-direcoes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 7,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÍNDICE com dois CORRESP: linha e coluna",
+    "enunciado": [
+      "A tabela de frete cruza **origem** (linhas) e **destino** (colunas).",
+      "Em **C9:C11**, busque o frete de cada par origem/destino."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Origem \\ Destino",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "SP",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "RJ",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "MG",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "PR",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SP",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "57",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "21",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "33",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "RJ",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "49",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "38",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "MG",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "54",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "44",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "58",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "PR",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "48",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "47",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "39",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Origem",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "Destino",
+          "negrito": true
+        },
+        "C8": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "A9": {
+          "entrada": "SP"
+        },
+        "B9": {
+          "entrada": "MG"
+        },
+        "A10": {
+          "entrada": "PR"
+        },
+        "B10": {
+          "entrada": "RJ"
+        },
+        "A11": {
+          "entrada": "MG"
+        },
+        "B11": {
+          "entrada": "SP"
+        }
+      },
+      "larguras": {
+        "A": 140
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C9",
+        "esperado": 21,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($B$2:$E$5;CORRESP(A9;$A$2:$A$5;0);CORRESP(B9;$B$1:$E$1;0))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C10",
+        "esperado": 47,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($B$2:$E$5;CORRESP(A10;$A$2:$A$5;0);CORRESP(B10;$B$1:$E$1;0))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C11",
+        "esperado": 54,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE($B$2:$E$5;CORRESP(A11;$A$2:$A$5;0);CORRESP(B11;$B$1:$E$1;0))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O ÍNDICE aceita linha **e** coluna: `ÍNDICE(tabela;linha;coluna)`.",
+      "Um CORRESP acha a linha da origem (coluna A); outro acha a coluna do destino (linha 1)."
+    ],
+    "explicacao": [
+      "`=ÍNDICE($B$2:$E$5;CORRESP(A9;$A$2:$A$5;0);CORRESP(B9;$B$1:$E$1;0))`.",
+      "É a busca mais flexível do Excel: funciona com qualquer tabela de dupla entrada."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ]
+  }
+]

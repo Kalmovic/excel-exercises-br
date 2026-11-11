@@ -99,8 +99,8 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 - **Evidência:** existem 15 exercícios (Intro 10, Fundamentos 5) e 14 desafios. A landing promete 9 módulos. **Os desafios acabam em 23/11/2026**; em 24/11 a página fica vazia.
 - **Fazer, nesta ordem:**
   1. ~~Desafios de 24/11 a 31/12~~ **Feito:** 52 desafios até 31/12/2026 (`2026-12.json`), com temas de Black Friday, 13º, festas e fechamento do ano. **Próximo lote (janeiro) precisa entrar antes de 01/01/2027.** O motor não tem MÉDIASES: use SOMASES/CONT.SES.
-  2. Completar Fundamentos até ~8 (MÍNIMO/MÁXIMO separados, ARRED, referência mista, porcentagem do total).
-  3. Módulos 2 a 8, ~7 por módulo, com o nível 1 de cada função marcado como grátis.
+  2. ~~Completar Fundamentos até ~8~~ **Feito:** porcentagem do total, ARRED e referência mista (8 exercícios).
+  3. ~~Módulos 2 a 8~~ **Feito:** 7 exercícios cada em `src/content/modulos/*.json` (49 no total). Grátis: o 1º de cada módulo e os de nível 1; o resto é `pro`, mas fica aberto enquanto `PAYWALL_ATIVO` (`src/lib/acesso-conteudo.ts`) for false. Ao ligar o paywall, mover o conteúdo Pro para o banco (P4-6).
   4. Antes do Módulo 6: HOJE com data fixa (`hojeFixo`) e DATADIF com unidade minúscula. Antes do 7: FILTRO com várias colunas (plugin). Ver `docs/FASE-0.md`.
   5. Conferir a matriz e uma amostra dos exercícios num Excel pt-BR real.
 - **Pronto:** cada exercício passa no teste de conteúdo; `MODULOS` e `MODULOS_PLANEJADOS` unificados numa lista só (hoje são duas, em `content/index.ts` e `content/modulos-pro.ts`).
@@ -194,6 +194,6 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 2. P1-1 (CI) e P1-2 (medição): tudo o que vem depois depende de saber se quebrou e se converteu.
 3. ~~P1-5 item 1 (desafios até dezembro)~~ feito; janeiro antes de 01/01/2027.
 4. ~~P2-1 e P1-6~~ feitos (P1-6 depende ainda de preço, lista e legal).
-5. ~~P3-1 e P3-2~~ feitos; depois P1-5 (módulos).
+5. ~~P3-1 e P3-2~~ e ~~P1-5 (módulos)~~ feitos.
 6. P1-3, P1-4, P1-7, P1-8: contas, pagamento, lista, legal.
 7. P2-2 (páginas de função), restante de P3 e P4.

@@ -1,0 +1,672 @@
+[
+  {
+    "id": "b93f8bac-2e5a-575c-9fd6-d3341b134f02",
+    "slug": "juntar-nome-e-sobrenome",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Juntar textos: nome completo",
+    "enunciado": [
+      "Em **C2:C7**, junte nome e sobrenome com um espaço no meio (ex.: \"Ana Souza\")."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Nome completo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Souza"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Lima"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Dias"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Reis"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Melo"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Cruz"
+        }
+      },
+      "larguras": {
+        "C": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Ana Souza",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\" \"&B2"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Bruno Lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A3&\" \"&B3"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Carla Dias",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A4&\" \"&B4"
+      },
+      {
+        "celula": "C5",
+        "esperado": "Diego Reis",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A5&\" \"&B5"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Elisa Melo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A6&\" \"&B6"
+      },
+      {
+        "celula": "C7",
+        "esperado": "Fábio Cruz",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A7&\" \"&B7"
+      }
+    ],
+    "dicas": [
+      "O `&` junta textos: `=A2&B2` daria \"AnaSouza\".",
+      "Coloque o espaço entre aspas no meio: `=A2&\" \"&B2`."
+    ],
+    "explicacao": [
+      "`=A2&\" \"&B2`. O mesmo com função: `=CONCAT(A2;\" \";B2)`."
+    ],
+    "tentativasAteExplicacao": 3
+  },
+  {
+    "id": "e2e604ee-108d-5523-b451-1ae566367799",
+    "slug": "esquerda-sigla-do-estado",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 2,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "ESQUERDA: a sigla do estado",
+    "enunciado": [
+      "Os códigos dos pedidos começam com a sigla do estado. Em **B2:B7**, extraia essas **2 primeiras letras**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Estado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SP-10293"
+        },
+        "A3": {
+          "entrada": "RJ-55120"
+        },
+        "A4": {
+          "entrada": "MG-00871"
+        },
+        "A5": {
+          "entrada": "PR-31002"
+        },
+        "A6": {
+          "entrada": "BA-77311"
+        },
+        "A7": {
+          "entrada": "SC-12009"
+        }
+      },
+      "larguras": {
+        "A": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "SP",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A2;2)"
+      },
+      {
+        "celula": "B3",
+        "esperado": "RJ",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A3;2)"
+      },
+      {
+        "celula": "B4",
+        "esperado": "MG",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A4;2)"
+      },
+      {
+        "celula": "B5",
+        "esperado": "PR",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A5;2)"
+      },
+      {
+        "celula": "B6",
+        "esperado": "BA",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A6;2)"
+      },
+      {
+        "celula": "B7",
+        "esperado": "SC",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A7;2)"
+      }
+    ],
+    "dicas": [
+      "`=ESQUERDA(texto;quantos_caracteres)`."
+    ],
+    "explicacao": [
+      "`=ESQUERDA(A2;2)` pega os 2 primeiros caracteres. Para os últimos, existe DIREITA."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "LEFT"
+    ]
+  },
+  {
+    "id": "a6d0633d-cf1e-5f45-b6b3-09de5c0f2e40",
+    "slug": "arrumar-e-pri-maiuscula",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Limpar nomes: ARRUMAR e PRI.MAIÚSCULA",
+    "enunciado": [
+      "Os nomes vieram de um formulário com espaços sobrando e maiúsculas bagunçadas.",
+      "Em **B2:B6**, deixe cada nome sem espaços extras e com a inicial de cada palavra maiúscula."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Como foi digitado",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "  ana   souza"
+        },
+        "A3": {
+          "entrada": "BRUNO LIMA "
+        },
+        "A4": {
+          "entrada": "carla  dias"
+        },
+        "A5": {
+          "entrada": " DIEGO reis"
+        },
+        "A6": {
+          "entrada": "elisa MELO"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Ana Souza",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A2))"
+      },
+      {
+        "celula": "B3",
+        "esperado": "Bruno Lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A3))"
+      },
+      {
+        "celula": "B4",
+        "esperado": "Carla Dias",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A4))"
+      },
+      {
+        "celula": "B5",
+        "esperado": "Diego Reis",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A5))"
+      },
+      {
+        "celula": "B6",
+        "esperado": "Elisa Melo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A6))"
+      }
+    ],
+    "dicas": [
+      "ARRUMAR tira os espaços do começo, do fim e os repetidos no meio.",
+      "PRI.MAIÚSCULA põe a primeira letra de cada palavra em maiúscula. Uma função vai dentro da outra."
+    ],
+    "explicacao": [
+      "`=PRI.MAIÚSCULA(ARRUMAR(A2))`: primeiro limpa, depois ajusta as maiúsculas.",
+      "Para tudo maiúsculo ou minúsculo, existem MAIÚSCULA e MINÚSCULA."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "TRIM",
+      "PROPER"
+    ]
+  },
+  {
+    "id": "04742968-939a-599f-ad1d-dad1cb732714",
+    "slug": "ext-texto-ano-do-pedido",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "EXT.TEXTO: o ano no meio do código",
+    "enunciado": [
+      "Os códigos seguem o padrão **PED-AAAA-NNNN**. Em **B2:B6**, extraia o ano (os 4 dígitos depois de \"PED-\")."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PED-2024-0042"
+        },
+        "A3": {
+          "entrada": "PED-2025-1187"
+        },
+        "A4": {
+          "entrada": "PED-2026-0003"
+        },
+        "A5": {
+          "entrada": "PED-2025-0450"
+        },
+        "A6": {
+          "entrada": "PED-2026-0999"
+        }
+      },
+      "larguras": {
+        "A": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "2024",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;5;4)"
+      },
+      {
+        "celula": "B3",
+        "esperado": "2025",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A3;5;4)"
+      },
+      {
+        "celula": "B4",
+        "esperado": "2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A4;5;4)"
+      },
+      {
+        "celula": "B5",
+        "esperado": "2025",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A5;5;4)"
+      },
+      {
+        "celula": "B6",
+        "esperado": "2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A6;5;4)"
+      }
+    ],
+    "dicas": [
+      "`=EXT.TEXTO(texto;posição_inicial;quantos)`.",
+      "Conte: P-E-D-hífen são 4 caracteres, então o ano começa na posição 5."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;5;4)`: a partir do 5º caractere, pega 4.",
+      "O resultado é texto (\"2026\"). Para virar número: `=VALOR(EXT.TEXTO(A2;5;4))`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "MID"
+    ]
+  },
+  {
+    "id": "2a1c86a3-eb69-5e1c-b0b7-e61c32b9b7b0",
+    "slug": "num-caract-validar-tamanho",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "NÚM.CARACT: o CPF tem 11 dígitos?",
+    "enunciado": [
+      "Em **B2:B7**, escreva \"OK\" quando o CPF tiver exatamente **11** caracteres e \"Verificar\" quando não tiver."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "CPF (só números)",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Válido?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "12345678901"
+        },
+        "A3": {
+          "entrada": "9876543210"
+        },
+        "A4": {
+          "entrada": "11122233344"
+        },
+        "A5": {
+          "entrada": "555666777"
+        },
+        "A6": {
+          "entrada": "40011122233"
+        },
+        "A7": {
+          "entrada": "123456789012"
+        }
+      },
+      "larguras": {
+        "A": 160
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A2)=11;\"OK\";\"Verificar\")"
+      },
+      {
+        "celula": "B3",
+        "esperado": "Verificar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A3)=11;\"OK\";\"Verificar\")"
+      },
+      {
+        "celula": "B4",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A4)=11;\"OK\";\"Verificar\")"
+      },
+      {
+        "celula": "B5",
+        "esperado": "Verificar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A5)=11;\"OK\";\"Verificar\")"
+      },
+      {
+        "celula": "B6",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A6)=11;\"OK\";\"Verificar\")"
+      },
+      {
+        "celula": "B7",
+        "esperado": "Verificar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÚM.CARACT(A7)=11;\"OK\";\"Verificar\")"
+      }
+    ],
+    "dicas": [
+      "`NÚM.CARACT(A2)` conta os caracteres.",
+      "Use dentro de um SE: `=SE(NÚM.CARACT(A2)=11;…;…)`."
+    ],
+    "explicacao": [
+      "`=SE(NÚM.CARACT(A2)=11;\"OK\";\"Verificar\")`.",
+      "É uma checagem de tamanho, não de CPF válido: os dígitos verificadores precisam de outra conta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "LEN",
+      "IF"
+    ]
+  },
+  {
+    "id": "dd52a696-0314-5ab6-be05-efb5fe54ef20",
+    "slug": "substituir-tirar-hifen",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBSTITUIR: tirar o hífen",
+    "enunciado": [
+      "O sistema de mensagens não aceita hífen. Em **B2:B5**, escreva o telefone sem o \"-\"."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Telefone",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sem hífen",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "(11) 98877-6655"
+        },
+        "A3": {
+          "entrada": "(21) 99123-4567"
+        },
+        "A4": {
+          "entrada": "(31) 98765-4321"
+        },
+        "A5": {
+          "entrada": "(41) 99988-7766"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 150
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "(11) 988776655",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A2;\"-\";\"\")"
+      },
+      {
+        "celula": "B3",
+        "esperado": "(21) 991234567",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A3;\"-\";\"\")"
+      },
+      {
+        "celula": "B4",
+        "esperado": "(31) 987654321",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A4;\"-\";\"\")"
+      },
+      {
+        "celula": "B5",
+        "esperado": "(41) 999887766",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A5;\"-\";\"\")"
+      }
+    ],
+    "dicas": [
+      "`=SUBSTITUIR(texto;o_que_tirar;o_que_pôr)`.",
+      "Para apagar, troque por texto vazio: `\"\"`."
+    ],
+    "explicacao": [
+      "`=SUBSTITUIR(A2;\"-\";\"\")`.",
+      "Dá para encadear: `=SUBSTITUIR(SUBSTITUIR(A2;\"-\";\"\");\" \";\"\")` tira também os espaços."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "SUBSTITUTE"
+    ]
+  },
+  {
+    "id": "e0233cf7-0da4-5e71-aee2-a2f0e3d522b1",
+    "slug": "localizar-primeiro-nome",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 7,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "LOCALIZAR + ESQUERDA: o primeiro nome",
+    "enunciado": [
+      "Os nomes têm tamanhos diferentes, então não dá para pegar um número fixo de letras.",
+      "Em **B2:B5**, extraia o primeiro nome: tudo antes do primeiro espaço."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome completo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Primeiro nome",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Mariana Alves"
+        },
+        "A3": {
+          "entrada": "João Pedro Santos"
+        },
+        "A4": {
+          "entrada": "Lu Prado"
+        },
+        "A5": {
+          "entrada": "Roberto Nunes"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Mariana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A2;LOCALIZAR(\" \";A2)-1)"
+      },
+      {
+        "celula": "B3",
+        "esperado": "João",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A3;LOCALIZAR(\" \";A3)-1)"
+      },
+      {
+        "celula": "B4",
+        "esperado": "Lu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A4;LOCALIZAR(\" \";A4)-1)"
+      },
+      {
+        "celula": "B5",
+        "esperado": "Roberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A5;LOCALIZAR(\" \";A5)-1)"
+      }
+    ],
+    "dicas": [
+      "`LOCALIZAR(\" \";A2)` diz em que posição está o primeiro espaço.",
+      "O primeiro nome tem uma letra a menos que essa posição: `ESQUERDA(A2;posição-1)`."
+    ],
+    "explicacao": [
+      "`=ESQUERDA(A2;LOCALIZAR(\" \";A2)-1)`: em \"Lu Prado\" o espaço está na posição 3, então pega 2 letras.",
+      "É a combinação mais usada para separar textos de tamanho variável."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "LEFT",
+      "SEARCH"
+    ]
+  }
+]

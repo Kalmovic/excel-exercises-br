@@ -1,0 +1,453 @@
+[
+  {
+    "id": "b1d5cb45-9c55-5a8d-a800-cb6fd851a978",
+    "slug": "porcentagem-do-total",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Quanto cada gasto pesa no total",
+    "enunciado": [
+      "O total do mês já está em **B7**.",
+      "Em **C2:C6**, calcule quanto cada gasto representa do total. Escreva a fórmula em C2 e copie para baixo."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Gasto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "% do total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mercado"
+        },
+        "B3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Transporte"
+        },
+        "B4": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Lazer"
+        },
+        "B5": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Contas"
+        },
+        "B6": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B7": {
+          "entrada": "=SOMA(B2:B6)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 100
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2/$B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C3",
+        "esperado": 0.277778,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3/$B$7",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      },
+      {
+        "celula": "C4",
+        "esperado": 0.093333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4/$B$7",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      },
+      {
+        "celula": "C5",
+        "esperado": 0.084444,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5/$B$7",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      },
+      {
+        "celula": "C6",
+        "esperado": 0.144444,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6/$B$7",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      }
+    ],
+    "dicas": [
+      "Percentual do total = parte ÷ total. Em C2: `B2/B7`.",
+      "Ao copiar para baixo, o total não pode andar: trave com `$B$7` (F4)."
+    ],
+    "explicacao": [
+      "`=B2/$B$7`: a parte varia, o total fica travado. A coluna somada dá 100%.",
+      "Sem o `$`, C3 dividiria por B8, que está vazia, e daria #DIV/0!."
+    ],
+    "tentativasAteExplicacao": 3
+  },
+  {
+    "id": "88abfed5-52ee-55ab-8659-7359bc9ed2a7",
+    "slug": "arred-preco-por-unidade",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "ARRED: preço por unidade em centavos",
+    "enunciado": [
+      "Em **D2:D6**, calcule o preço de cada unidade (preço ÷ unidades), **arredondado para 2 casas** com a função ARRED."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço do pacote",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Unidades",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Arroz 5 kg"
+        },
+        "B2": {
+          "entrada": "27,9",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "3"
+        },
+        "A3": {
+          "entrada": "Café 500 g"
+        },
+        "B3": {
+          "entrada": "18,45",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "7"
+        },
+        "A4": {
+          "entrada": "Azeite"
+        },
+        "B4": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "6"
+        },
+        "A5": {
+          "entrada": "Leite (cx)"
+        },
+        "B5": {
+          "entrada": "61,2",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "A6": {
+          "entrada": "Sabão"
+        },
+        "B6": {
+          "entrada": "23,75",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "9"
+        },
+        "D1": {
+          "entrada": "Preço por unidade",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 130,
+        "D": 140
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 9.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B2/C2;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 2.64,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B3/C3;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 6.65,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B4/C4;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 5.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B5/C5;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 2.64,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B6/C6;2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "A estrutura é `=ARRED(número;casas)`. O número aqui é a conta `B2/C2`.",
+      "Formatar como moeda só esconde as casas; o ARRED muda o valor de verdade."
+    ],
+    "explicacao": [
+      "`=ARRED(B2/C2;2)`: divide e arredonda para centavos. 0,5 centavo arredonda para cima, como no Excel.",
+      "ARRED também aceita casas negativas: `ARRED(1234;-2)` dá 1200."
+    ],
+    "tentativasAteExplicacao": 3,
+    "funcoesExigidas": [
+      "ROUND"
+    ]
+  },
+  {
+    "id": "29476baf-a1da-56a9-97bd-67ebe24a1da5",
+    "slug": "referencia-mista-tabela-reajuste",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Referência mista: tabela de reajustes",
+    "enunciado": [
+      "Monte a tabela de preços reajustados: cada célula é o preço da coluna A com o reajuste da linha 1.",
+      "Escreva **uma** fórmula em **B2** que funcione copiada para todo o bloco **B2:D5**."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Preço \\ Reajuste",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "5%"
+        },
+        "C1": {
+          "entrada": "10%"
+        },
+        "D1": {
+          "entrada": "15%"
+        },
+        "A2": {
+          "entrada": "50",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "80",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "200",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 150
+      },
+      "variaveis": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "B1",
+        "C1",
+        "D1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 52.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*(1+B$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C2",
+        "esperado": 55.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*(1+C$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D2",
+        "esperado": 57.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*(1+D$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 84.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+B$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 88.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+C$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 92.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+D$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 126.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+B$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 132.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+C$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 138.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+D$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 210.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+B$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 220.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+C$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 230.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+D$1)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O preço está sempre na coluna A, e o reajuste sempre na linha 1.",
+      "Trave só o que não pode andar: `$A2` trava a coluna; `B$1` trava a linha.",
+      "`=$A2*(1+B$1)`. Aperte F4 várias vezes para chegar em cada forma."
+    ],
+    "explicacao": [
+      "`=$A2*(1+B$1)`: copiando para a direita, `$A2` continua na coluna A; copiando para baixo, `B$1` continua na linha 1.",
+      "É a referência **mista**: metade travada, metade livre. Com `$A$2` ou `$B$1` a tabela inteira repetiria um valor só."
+    ],
+    "tentativasAteExplicacao": 3
+  }
+]

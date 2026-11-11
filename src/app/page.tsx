@@ -32,21 +32,21 @@ const PASSOS = [
   ["Correção na hora", "Errou? Você recebe uma dica, tenta de novo e só vê a explicação completa quando precisar."],
 ];
 
-const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href?: string }[] = [
+const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href: string }[] = [
   { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: "/exercicios/nome-da-celula" },
-  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem e o famoso $.", gratis: true, href: "/exercicios/soma-total-de-vendas" },
-  { n: 2, titulo: "Lógica", desc: "SE, SE aninhado, E, OU, SES e SEERRO." },
-  { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE." },
-  { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX." },
-  { n: 5, titulo: "Texto", desc: "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR." },
-  { n: 6, titulo: "Datas", desc: "HOJE, DATADIF, DIATRABALHOTOTAL, FIMMÊS." },
-  { n: 7, titulo: "Arrays dinâmicos", desc: "FILTRO, CLASSIFICAR e ÚNICO." },
-  { n: 8, titulo: "Casos reais", desc: "Comissão, estoque, parcelamento e INSS por faixa." },
+  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", gratis: true, href: "/exercicios/soma-total-de-vendas" },
+  { n: 2, titulo: "Lógica", desc: "SE, E, OU, SES e SEERRO.", href: "/exercicios/se-aprovado-ou-reprovado" },
+  { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE.", href: "/exercicios/cont-se-contar-status" },
+  { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", href: "/exercicios/procv-preco-pelo-codigo" },
+  { n: 5, titulo: "Texto", desc: "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR.", href: "/exercicios/juntar-nome-e-sobrenome" },
+  { n: 6, titulo: "Datas", desc: "DATADIF, DIATRABALHOTOTAL, FIMMÊS e DATAM.", href: "/exercicios/subtrair-datas-prazo" },
+  { n: 7, titulo: "Arrays dinâmicos", desc: "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA.", href: "/exercicios/sequencia-numerar-linhas" },
+  { n: 8, titulo: "Casos reais", desc: "Financiamento, ranking, estoque, comissão e orçamento.", href: "/exercicios/pgto-parcela-do-financiamento" },
 ];
 
-const PLANO_GRATIS = ["Módulos Intro e Fundamentos", `${NOME_DESAFIO}, todo dia`, "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
+const PLANO_GRATIS = ["Módulos Intro e Fundamentos", "Os primeiros exercícios de cada módulo", `${NOME_DESAFIO}, todo dia`, "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
 const PLANO_PRO = [
-  "Todos os módulos, do Fundamentos aos casos reais",
+  "Todos os exercícios dos módulos 2 a 8",
   "Pacote de exercícios novo todo mês",
   "Questões de concurso com planilha para testar",
   "Simulados de teste de Excel para vagas",
@@ -65,7 +65,7 @@ const FAQ = [
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
   ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
-  ["Quanto custa?", `O que está no ar hoje é grátis: os módulos Intro e Fundamentos e o desafio diário. O Pro vai custar R$ ${PRECO.mensal} por mês (assinatura no cartão ou um mês avulso no Pix) ou R$ ${PRECO.anualPorMes} por mês no plano anual, 10% mais barato. Ele ainda está em construção: nada é cobrado antes do lançamento.`],
+  ["Quanto custa?", `Intro, Fundamentos, o desafio diário e os primeiros exercícios de cada módulo são grátis. O Pro vai custar R$ ${PRECO.mensal} por mês (assinatura no cartão ou um mês avulso no Pix) ou R$ ${PRECO.anualPorMes} por mês no plano anual, 10% mais barato. Durante os testes, tudo está aberto e nada é cobrado.`],
 ];
 
 function Check() {
@@ -154,7 +154,7 @@ export default function Landing() {
         <Rotulo>A trilha</Rotulo>
         <h2 className="mb-3 text-4xl font-extrabold tracking-tight">Do primeiro clique ao PROCV.</h2>
         <p className="mb-10 max-w-lg text-muted">
-          Nunca abriu uma planilha? Comece pelo Intro. Já sabe o básico? Vá direto para o Fundamentos. Os próximos módulos estão em construção.
+          Nunca abriu uma planilha? Comece pelo Intro. Já sabe o básico? Pule para o módulo que precisar.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="modulos-landing">
           {MODULOS.map((m) => {
@@ -165,21 +165,17 @@ export default function Landing() {
                   {m.gratis ? (
                     <span className="rounded-full bg-success-bg px-2 py-0.5 text-[11px] font-semibold text-success">Grátis</span>
                   ) : (
-                    <span className="rounded-full bg-header px-2 py-0.5 text-[11px] font-semibold text-muted">Em breve</span>
+                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · início grátis</span>
                   )}
                 </div>
                 <p className="mb-1 font-semibold">{m.titulo}</p>
                 <p className="text-sm text-muted">{m.desc}</p>
               </>
             );
-            return m.href ? (
+            return (
               <Link key={m.n} href={m.href} className="rounded-xl border border-line bg-bg p-4 hover:border-ink">
                 {conteudo}
               </Link>
-            ) : (
-              <div key={m.n} className="rounded-xl border border-line bg-bg p-4">
-                {conteudo}
-              </div>
             );
           })}
         </div>

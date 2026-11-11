@@ -6,9 +6,10 @@ import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { BarraProgressoModulo } from "@/components/site/BarraProgressoModulo";
 import { dadosDaTrilha } from "@/content/trilha";
 import { exercicioPorSlug, exercicios, moduloPorSlug, proximoExercicio } from "@/content";
+import { exercicioLiberado } from "@/lib/acesso-conteudo";
 
 export function generateStaticParams() {
-  return exercicios.filter((e) => e.plano === "free").map((e) => ({ slug: e.slug }));
+  return exercicios.filter(exercicioLiberado).map((e) => ({ slug: e.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/exercicios/[slug]">): Promise<Metadata> {
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/exercicios/[slug]
 export default async function PaginaExercicio({ params }: PageProps<"/exercicios/[slug]">) {
   const { slug } = await params;
   const ex = exercicioPorSlug(slug);
-  if (!ex || ex.plano !== "free") notFound();
+  if (!ex || !exercicioLiberado(ex)) notFound();
   const prox = proximoExercicio(slug);
   const modulo = moduloPorSlug(ex.modulo);
   const trilha = dadosDaTrilha(ex.modulo);
@@ -37,6 +38,11 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
           Módulo {modulo?.numero}: {modulo?.titulo}
         </Link>{" "}
         / Exercício {ex.ordem}
+        {ex.plano === "pro" && (
+          <span className="ml-2 rounded bg-accent px-1.5 py-0.5 text-xs font-medium text-ink" title="Aberto para todos durante os testes">
+            Pro · aberto nos testes
+          </span>
+        )}
       </nav>
       <BarraProgressoModulo itens={trilha.itensComTitulo} atual={ex.slug} />
       <h1 className="text-2xl font-bold tracking-tight">{ex.titulo}</h1>

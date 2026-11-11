@@ -55,7 +55,7 @@ export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
     case "concluido":
       return (
         <div className="space-y-3" data-testid="cta">
-          <p className="text-muted">Você concluiu todos os exercícios disponíveis. Novos módulos em breve!</p>
+          <p className="text-muted">Você concluiu a trilha inteira. Agora é manter o ritmo com o desafio do dia!</p>
           <Link href="/desafio" className={botao}>
             Jogar o desafio de hoje
           </Link>
