@@ -8,7 +8,7 @@ import * as progresso from "@/lib/progresso";
 const lerTudo = () => JSON.stringify([progresso.lerTudo(), progresso.lerPreferencias()]);
 const noServidor = () => "";
 
-const botao = "inline-block rounded-md bg-ink px-5 py-3 font-medium text-white shadow-sm hover:bg-ink-soft";
+const botao = "inline-block rounded-lg bg-ink px-5 py-3 font-semibold text-white shadow-sm hover:bg-ink-soft";
 
 /** Botão principal da página inicial. Depende do localStorage, então só aparece no navegador. */
 export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
@@ -54,9 +54,12 @@ export function ComecarCta({ trilha }: { trilha: ItemTrilha[] }) {
       );
     case "concluido":
       return (
-        <p className="font-medium text-success" data-testid="cta">
-          Você concluiu todos os exercícios grátis disponíveis. Novos módulos em breve!
-        </p>
+        <div className="space-y-3" data-testid="cta">
+          <p className="text-muted">Você concluiu todos os exercícios disponíveis. Novos módulos em breve!</p>
+          <Link href="/desafio" className={botao}>
+            Jogar o desafio de hoje
+          </Link>
+        </div>
       );
   }
 }

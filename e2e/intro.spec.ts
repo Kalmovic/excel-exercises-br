@@ -113,7 +113,7 @@ test("pular questão: avança, não conta como feita e aparece na lista", async 
   // A página anterior fica montada (escondida) para preservar estado: olhar só a visível.
   await expect(page.getByTestId("progresso-modulo").filter({ visible: true })).toContainText("0 de 10");
   await page.goto("/trilha");
-  await expect(page.locator("#modulo-intro")).toContainText("pulada");
+  await expect(page.getByTestId("casa-nome-da-celula")).toHaveAccessibleName(/\(pulado\)/);
   await expect(page.getByTestId("cta")).toContainText("Continuar: Selecionar uma célula com o mouse");
 });
 

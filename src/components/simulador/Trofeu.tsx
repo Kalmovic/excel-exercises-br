@@ -83,8 +83,8 @@ export function IconeTrofeu({ className }: { className?: string }) {
       />
       <rect x="29" y="37" width="6" height="9" fill="#d97706" />
       <rect x="20" y="46" width="24" height="7" rx="2" fill="#92400e" />
-      <text x="32" y="30" textAnchor="middle" fontSize="11" fontWeight="700" fill="#78350f" fontFamily="sans-serif">
-        fx
+      <text x="32" y="31" textAnchor="middle" fontSize="13" fontWeight="800" fill="#78350f" fontFamily="monospace">
+        =
       </text>
     </svg>
   );
@@ -100,17 +100,17 @@ export function IconeMedalha({ className }: { className?: string }) {
     <svg viewBox="0 0 64 64" className={className} aria-hidden>
       <defs>
         <linearGradient id="prata" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f1f5f9" />
-          <stop offset="0.6" stopColor="#cbd5e1" />
-          <stop offset="1" stopColor="#94a3b8" />
+          <stop offset="0" stopColor="#f8f8f4" />
+          <stop offset="0.6" stopColor="#d6d5cc" />
+          <stop offset="1" stopColor="#a8a79c" />
         </linearGradient>
       </defs>
-      <path d="M20 4h10l4 18h-10z" fill="#059669" />
-      <path d="M44 4H34l-4 18h10z" fill="#047857" />
-      <circle cx="32" cy="40" r="18" fill="url(#prata)" stroke="#94a3b8" strokeWidth="2" />
-      <circle cx="32" cy="40" r="13" fill="none" stroke="#e2e8f0" strokeWidth="1.5" />
-      <text x="32" y="45" textAnchor="middle" fontSize="13" fontWeight="700" fill="#334155" fontFamily="sans-serif">
-        fx
+      <path d="M20 4h10l4 18h-10z" fill="#ffd23f" />
+      <path d="M44 4H34l-4 18h10z" fill="#16181d" />
+      <circle cx="32" cy="40" r="18" fill="url(#prata)" stroke="#16181d" strokeWidth="2" />
+      <circle cx="32" cy="40" r="13" fill="none" stroke="#ffffff" strokeWidth="1.5" opacity="0.8" />
+      <text x="32" y="46" textAnchor="middle" fontSize="16" fontWeight="800" fill="#16181d" fontFamily="monospace">
+        =
       </text>
     </svg>
   );
