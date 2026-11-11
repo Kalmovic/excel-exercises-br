@@ -114,7 +114,10 @@
     "video": "A diferença entre `;` (\"e\") e `:` (\"até\"), o erro mais comum de quem começa.",
     "funcoesExigidas": [
       "SUM"
-    ]
+    ],
+    "licao": "soma-total-de-vendas",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "ce2f541e-537f-5fd9-b44d-19296e453f67",
@@ -243,7 +246,10 @@
     "video": "O cuidado com zero e com célula vazia.",
     "funcoesExigidas": [
       "AVERAGE"
-    ]
+    ],
+    "licao": "media-mensal-de-vendas",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "d7bbffdb-6e0a-539e-9769-f796b6fd6cc5",
@@ -364,7 +370,10 @@
     "funcoesExigidas": [
       "MIN",
       "MAX"
-    ]
+    ],
+    "licao": "minimo-e-maximo",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "b6a56947-c5e2-59e0-905c-46f26ef005bc",
@@ -454,7 +463,10 @@
         "dica": "No Excel, a multiplicação é o asterisco (*), não o x."
       }
     ],
-    "video": "Mostrar as duas versões lado a lado e a diferença de R$ 980."
+    "video": "Mostrar as duas versões lado a lado e a diferença de R$ 980.",
+    "licao": "ordem-das-contas",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "bcf3ff17-22f5-5116-beda-75535a356caa",
@@ -573,7 +585,10 @@
         "dica": "A base é sempre o valor antigo: divida por B2."
       }
     ],
-    "video": "A fórmula que todo analista usa todo dia, e o erro de dividir pelo valor errado."
+    "video": "A fórmula que todo analista usa todo dia, e o erro de dividir pelo valor errado.",
+    "licao": "variacao-de-janeiro-para-fevereiro",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "62429128-90b7-5979-b364-3aca0bc4d5df",
@@ -732,7 +747,10 @@
         "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
       }
     ],
-    "video": "Arrastar a versão errada, mostrar os zeros e corrigir com F4. É o vídeo mais importante do módulo."
+    "video": "Arrastar a versão errada, mostrar os zeros e corrigir com F4. É o vídeo mais importante do módulo.",
+    "licao": "comissao-com-cifrao",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "5f3c19b3-713b-5620-a889-0647596df336",
@@ -961,6 +979,4127 @@
         "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
       }
     ],
-    "video": "Apertar F4 quatro vezes e mostrar os quatro estados."
+    "video": "Apertar F4 quatro vezes e mostrar os quatro estados.",
+    "licao": "referencia-mista-precos-quantidades",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "1566facf-6640-50e9-a17a-9617f81bd06f",
+    "slug": "soma-total-de-vendas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "SOMA do 1º trimestre",
+    "enunciado": [
+      "Em **B8**, some só as vendas do 1º trimestre: janeiro a março."
+    ],
+    "dicas": [
+      "O 1º trimestre vai de B2 (Jan) até B4 (Mar)."
+    ],
+    "explicacao": [
+      "`=SOMA(B2:B4)`: o intervalo pode ser só um pedaço da coluna."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "soma-total-de-vendas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "1º trimestre",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 3580,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B2:B4)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2;B7\\)$",
+        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "c9ece25d-fd22-5753-b329-a04319124b7d",
+    "slug": "soma-total-de-vendas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "SOMA do 2º trimestre",
+    "enunciado": [
+      "Em **B8**, some as vendas do 2º trimestre: abril a junho."
+    ],
+    "dicas": [
+      "Abril está em B5 e junho em B7."
+    ],
+    "explicacao": [
+      "`=SOMA(B5:B7)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "soma-total-de-vendas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "2º trimestre",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 4095,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B5:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2;B7\\)$",
+        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "fec2e99b-e09f-5af5-90a9-7419597f5e95",
+    "slug": "soma-total-de-vendas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: a SOMA que deu 2.520",
+    "enunciado": [
+      "A célula **B8** deveria mostrar o total do semestre, mas mostra 2.520. Corrija a fórmula."
+    ],
+    "dicas": [
+      "Clique em B8 e olhe a barra de fórmulas: o separador é ; ou :?"
+    ],
+    "explicacao": [
+      "O ponto e vírgula somou só Jan e Jun (1.200 + 1.320 = 2.520). Com dois-pontos, `=SOMA(B2:B7)` soma de B2 até B7."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "soma-total-de-vendas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2;B7)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 7675,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B2:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2;B7\\)$",
+        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "0367774e-6b19-5d02-8810-642ae85a3c5f",
+    "slug": "soma-total-de-vendas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que quer dizer **B2:B7** numa fórmula?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Os dois-pontos querem dizer \"até\": B2:B7 é o intervalo de B2 até B7, seis células."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "soma-total-de-vendas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "B2 e B7",
+        "dica": "Isso seria B2;B7, com ponto e vírgula."
+      },
+      {
+        "texto": "De B2 até B7"
+      },
+      {
+        "texto": "B2 dividido por B7",
+        "dica": "A divisão é a barra: B2/B7."
+      },
+      {
+        "texto": "B2 menos B7",
+        "dica": "A subtração é o sinal de menos: B2-B7."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "652021e4-f7fa-59e5-9d43-1a87ea21133d",
+    "slug": "media-mensal-de-vendas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 22,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIA do 1º trimestre",
+    "enunciado": [
+      "Em **B8**, calcule a média de vendas do 1º trimestre (janeiro a março)."
+    ],
+    "dicas": [
+      "Mesma função, intervalo menor: B2:B4."
+    ],
+    "explicacao": [
+      "`=MÉDIA(B2:B4)` → 1.193,33."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "media-mensal-de-vendas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Média 1º tri",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 1193.333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(B2:B4)",
+        "formato": "moeda",
+        "tolerancia": 0.0001
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2:B7\\)/7$",
+        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+      },
+      {
+        "padrao": "B2:B8",
+        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "5a3f4dc0-64b2-5b78-ae74-84eba9701cbd",
+    "slug": "media-mensal-de-vendas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 23,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIA das notas",
+    "enunciado": [
+      "As notas de um aluno estão em **B2:B5**. Em **B6**, calcule a média."
+    ],
+    "dicas": [
+      "`=MÉDIA(B2:B5)`."
+    ],
+    "explicacao": [
+      "A média de 8, 6, 9 e 7 é 30 ÷ 4 = 7,5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "media-mensal-de-vendas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Prova",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P1"
+        },
+        "B2": {
+          "entrada": "8"
+        },
+        "A3": {
+          "entrada": "P2"
+        },
+        "B3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "P3"
+        },
+        "B4": {
+          "entrada": "9"
+        },
+        "A5": {
+          "entrada": "P4"
+        },
+        "B5": {
+          "entrada": "7"
+        },
+        "A6": {
+          "entrada": "Média",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 7.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(B2:B5)"
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2:B7\\)/7$",
+        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+      },
+      {
+        "padrao": "B2:B8",
+        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "a0590e8e-4366-51ac-ae83-8cb53bc438ea",
+    "slug": "media-mensal-de-vendas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 24,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: zero e célula vazia",
+    "enunciado": [
+      "Em **B6**, calcule a média de **B2:B5**. Repare: uma célula está vazia e outra tem zero."
+    ],
+    "dicas": [
+      "A MÉDIA ignora a célula vazia, mas conta o zero."
+    ],
+    "explicacao": [
+      "`=MÉDIA(B2:B5)` dá 10: (10 + 0 + 20) ÷ 3. A vazia é ignorada; o zero entra na conta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "media-mensal-de-vendas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "a"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "b"
+        },
+        "A4": {
+          "entrada": "c"
+        },
+        "B4": {
+          "entrada": "0"
+        },
+        "A5": {
+          "entrada": "d"
+        },
+        "B5": {
+          "entrada": "20"
+        },
+        "A6": {
+          "entrada": "Média",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(B2:B5)"
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B2:B5\\)/4$",
+        "dica": "Dividindo por 4 você contou a célula vazia. A MÉDIA ignora vazias e conta o zero."
+      },
+      {
+        "padrao": "^=SOMA\\(B2:B7\\)/7$",
+        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+      },
+      {
+        "padrao": "B2:B8",
+        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+      }
+    ]
+  },
+  {
+    "id": "0c8d7515-5cc5-52cf-aa98-e17e592541e4",
+    "slug": "media-mensal-de-vendas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Uma célula **vazia** dentro do intervalo da MÉDIA…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "A MÉDIA soma e divide só pelas células com número: a vazia não entra em nenhuma das duas contas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "media-mensal-de-vendas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Conta como zero",
+        "dica": "Quem conta é a célula com zero digitado. A vazia fica de fora."
+      },
+      {
+        "texto": "É ignorada"
+      },
+      {
+        "texto": "Dá erro",
+        "dica": "A MÉDIA lida com vazias sem erro."
+      },
+      {
+        "texto": "Conta como 1"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "085fbeb4-71a4-5543-83dc-b01c5c45f7e7",
+    "slug": "minimo-e-maximo-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 32,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÍNIMO do 2º trimestre",
+    "enunciado": [
+      "Em **B8**, a menor venda do 2º trimestre (abril a junho)."
+    ],
+    "dicas": [
+      "Abril a junho: B5:B7."
+    ],
+    "explicacao": [
+      "`=MÍNIMO(B5:B7)` → 1.100."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "minimo-e-maximo",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Menor 2º tri",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 1100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B5:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "MIN"
+    ]
+  },
+  {
+    "id": "b7f6aae1-b43a-583f-ab5b-d9e2ce7f3564",
+    "slug": "minimo-e-maximo-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 33,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A amplitude: melhor menos pior",
+    "enunciado": [
+      "Em **B8**, calcule a diferença entre o melhor e o pior mês."
+    ],
+    "dicas": [
+      "Dá para usar duas funções na mesma fórmula: uma menos a outra."
+    ],
+    "explicacao": [
+      "`=MÁXIMO(B2:B7)-MÍNIMO(B2:B7)` → 1.675 − 950 = 725."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "minimo-e-maximo",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Amplitude",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 725,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(B2:B7)-MÍNIMO(B2:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "MAX",
+      "MIN"
+    ]
+  },
+  {
+    "id": "70bae0e3-71f1-50c7-bad6-688478c20796",
+    "slug": "minimo-e-maximo-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 34,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: temperatura negativa",
+    "enunciado": [
+      "As temperaturas da semana estão em **B2:B5**. Em **B6**, a mínima."
+    ],
+    "dicas": [
+      "Entre números negativos, o menor é o que está mais longe do zero."
+    ],
+    "explicacao": [
+      "`=MÍNIMO(B2:B5)` → −8. −8 é menor que −3: quanto mais negativo, menor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "minimo-e-maximo",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Temperatura",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Seg"
+        },
+        "B2": {
+          "entrada": "-3"
+        },
+        "A3": {
+          "entrada": "Ter"
+        },
+        "B3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "Qua"
+        },
+        "B4": {
+          "entrada": "-8"
+        },
+        "A5": {
+          "entrada": "Qui"
+        },
+        "B5": {
+          "entrada": "5"
+        },
+        "A6": {
+          "entrada": "Mínima",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": -8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B2:B5)"
+      }
+    ],
+    "funcoesExigidas": [
+      "MIN"
+    ]
+  },
+  {
+    "id": "d84faf3e-297b-51c1-a96d-7d24bd93dfab",
+    "slug": "minimo-e-maximo-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 35,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá o **MÁXIMO** de 5, −10 e 3?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O maior dos três é 5. O sinal de menos deixa o −10 como o menor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "minimo-e-maximo",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "−10",
+        "dica": "−10 é o menor dos três."
+      },
+      {
+        "texto": "5"
+      },
+      {
+        "texto": "10",
+        "dica": "O sinal faz parte do número: −10 não vale 10."
+      },
+      {
+        "texto": "3"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "c164bd05-6519-59d9-addf-5720c499208d",
+    "slug": "ordem-das-contas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 42,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total com desconto",
+    "enunciado": [
+      "Preço em **A2**, quantidade em **B2** e desconto em dinheiro em **C2**. Em **D2**, o total: preço × quantidade − desconto."
+    ],
+    "dicas": [
+      "Multiplicação antes da subtração, sem precisar de parênteses."
+    ],
+    "explicacao": [
+      "`=A2*B2-C2` → 160 − 10 = 150."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ordem-das-contas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "80",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "2"
+        },
+        "C2": {
+          "entrada": "10",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 100,
+        "D": 110
+      },
+      "variaveis": [
+        "A2",
+        "B2",
+        "C2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 150,
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2*B2-C2",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A2\\*\\(B2\\+C2\\)$",
+        "dica": "Os parênteses fizeram o frete ser multiplicado pela quantidade."
+      },
+      {
+        "padrao": "^=A2X",
+        "dica": "No Excel, a multiplicação é o asterisco (*), não o x."
+      }
+    ]
+  },
+  {
+    "id": "8e86e6ba-bf56-51be-bb48-5b5fdd45a862",
+    "slug": "ordem-das-contas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 43,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média de duas notas com parênteses",
+    "enunciado": [
+      "Em **C2**, a média das notas de A2 e B2, sem usar a função MÉDIA."
+    ],
+    "dicas": [
+      "A soma precisa acontecer antes da divisão: parênteses."
+    ],
+    "explicacao": [
+      "`=(A2+B2)/2` → 7. Sem parênteses, `=A2+B2/2` daria 8 + 3 = 11."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ordem-das-contas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota 1",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota 2",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Média",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "8"
+        },
+        "B2": {
+          "entrada": "6"
+        }
+      },
+      "variaveis": [
+        "A2",
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(A2+B2)/2"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A2\\+B2/2$",
+        "dica": "Sem parênteses, o Excel divide antes de somar: deu 11. Use =(A2+B2)/2."
+      },
+      {
+        "padrao": "^=A2\\*\\(B2\\+C2\\)$",
+        "dica": "Os parênteses fizeram o frete ser multiplicado pela quantidade."
+      },
+      {
+        "padrao": "^=A2X",
+        "dica": "No Excel, a multiplicação é o asterisco (*), não o x."
+      }
+    ]
+  },
+  {
+    "id": "b3622e73-8a30-5ec7-bd05-075b09518eea",
+    "slug": "ordem-das-contas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 44,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a conta que deveria dar 30",
+    "enunciado": [
+      "A célula **A2** deveria calcular (10 + 5) × 2 = 30, mas mostra 20. Corrija a fórmula."
+    ],
+    "dicas": [
+      "O Excel faz a multiplicação primeiro. Para somar antes, use parênteses."
+    ],
+    "explicacao": [
+      "`=10+5*2` dá 20 porque 5*2 vem primeiro. Com `=(10+5)*2`, a soma vem antes: 30."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ordem-das-contas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 2,
+      "celulas": {
+        "A1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "=10+5*2",
+          "bloqueada": false
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "A2",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(10+5)*2"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A2\\*\\(B2\\+C2\\)$",
+        "dica": "Os parênteses fizeram o frete ser multiplicado pela quantidade."
+      },
+      {
+        "padrao": "^=A2X",
+        "dica": "No Excel, a multiplicação é o asterisco (*), não o x."
+      }
+    ]
+  },
+  {
+    "id": "c4611ae3-bd62-525c-aba0-fb38780d4a12",
+    "slug": "ordem-das-contas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 45,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual é o resultado de **=2+3\\*4**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "3*4 = 12 primeiro, depois 2 + 12 = 14."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ordem-das-contas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "20",
+        "dica": "Isso seria (2+3)*4. Sem parênteses, a multiplicação vem primeiro."
+      },
+      {
+        "texto": "14"
+      },
+      {
+        "texto": "24"
+      },
+      {
+        "texto": "9"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "9f3f986e-e1bb-5ba7-bb72-53dea2356a64",
+    "slug": "variacao-de-janeiro-para-fevereiro-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Variação de fevereiro para março",
+    "enunciado": [
+      "Em **C4**, a variação de março (B4) em relação a fevereiro (B3)."
+    ],
+    "dicas": [
+      "(novo − antigo) ÷ antigo. O antigo agora é fevereiro."
+    ],
+    "explicacao": [
+      "`=(B4-B3)/B3` → 50,53%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "variacao-de-janeiro-para-fevereiro",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Variação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C4",
+        "esperado": 0.505263,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(B4-B3)/B3",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B3-B2/B2$",
+        "dica": "Sem parênteses, o Excel divide antes de subtrair."
+      },
+      {
+        "padrao": "^=\\(B3-B2\\)/B3$",
+        "dica": "A base é sempre o valor antigo: divida por B2."
+      }
+    ]
+  },
+  {
+    "id": "88a2627a-533c-5afe-a127-7164091a845b",
+    "slug": "variacao-de-janeiro-para-fevereiro-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Variação do semestre",
+    "enunciado": [
+      "Em **C7**, a variação de junho (B7) em relação a janeiro (B2)."
+    ],
+    "dicas": [
+      "A base é janeiro, o mês mais antigo."
+    ],
+    "explicacao": [
+      "`=(B7-B2)/B2` → 10%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "variacao-de-janeiro-para-fevereiro",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Variação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C7",
+        "esperado": 0.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(B7-B2)/B2",
+        "formato": "percentual"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B3-B2/B2$",
+        "dica": "Sem parênteses, o Excel divide antes de subtrair."
+      },
+      {
+        "padrao": "^=\\(B3-B2\\)/B3$",
+        "dica": "A base é sempre o valor antigo: divida por B2."
+      }
+    ]
+  },
+  {
+    "id": "7369ae28-502c-58f7-84fa-6e55db126727",
+    "slug": "variacao-de-janeiro-para-fevereiro-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a variação de 33,57%",
+    "enunciado": [
+      "Alguém calculou em **C4** a variação de fevereiro para março e chegou a 33,57%. Corrija a fórmula."
+    ],
+    "dicas": [
+      "Por qual mês a diferença foi dividida?"
+    ],
+    "explicacao": [
+      "A base é sempre o valor antigo: `=(B4-B3)/B3`. Dividir pelo novo (1.430) dá 33,57%, um erro comum."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "variacao-de-janeiro-para-fevereiro",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Variação",
+          "negrito": true
+        },
+        "C4": {
+          "entrada": "=(B4-B3)/B4",
+          "bloqueada": false,
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C4",
+        "esperado": 0.505263,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(B4-B3)/B3",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B3-B2/B2$",
+        "dica": "Sem parênteses, o Excel divide antes de subtrair."
+      },
+      {
+        "padrao": "^=\\(B3-B2\\)/B3$",
+        "dica": "A base é sempre o valor antigo: divida por B2."
+      }
+    ]
+  },
+  {
+    "id": "d5afd434-70fe-590a-8387-edb4ddf3e085",
+    "slug": "variacao-de-janeiro-para-fevereiro-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "As vendas foram de **200** para **300**. Qual foi a variação?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "(300 − 200) ÷ 200 = 100 ÷ 200 = 50%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "variacao-de-janeiro-para-fevereiro",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "33%",
+        "dica": "33% seria dividindo pelo novo (300). A base é o antigo."
+      },
+      {
+        "texto": "50%"
+      },
+      {
+        "texto": "100%",
+        "dica": "100% seria dobrar, de 200 para 400."
+      },
+      {
+        "texto": "150%"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "811b027d-4660-5170-b460-4de4137289c0",
+    "slug": "comissao-com-cifrao-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Imposto sobre cada venda",
+    "enunciado": [
+      "O imposto (10%) está em **F2**. Em **C2**, calcule o imposto sobre B2 numa fórmula que funcione copiada até **C7**."
+    ],
+    "dicas": [
+      "Trave a taxa com $: `$F$2`."
+    ],
+    "explicacao": [
+      "`=B2*$F$2` → 120 na primeira linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-com-cifrao",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Imposto",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Imposto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "10%"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 120,
+        "C": 110,
+        "E": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "F2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 120.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*$F$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 95.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*$F$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 143.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*$F$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 110.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5*$F$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 167.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6*$F$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 132.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7*$F$2",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*F[2-9]$",
+        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+      }
+    ]
+  },
+  {
+    "id": "17b882d9-5be8-5393-81f5-7befa460e580",
+    "slug": "comissao-com-cifrao-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendas em dólar",
+    "enunciado": [
+      "A cotação do dólar (5,00) está em **F3**. Em **C2**, converta a venda de B2 para dólar, numa fórmula que funcione copiada até **C7**."
+    ],
+    "dicas": [
+      "Converter para dólar é dividir pela cotação, travada."
+    ],
+    "explicacao": [
+      "`=B2/$F$3` → 240 na primeira linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-com-cifrao",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Em dólar",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Cotação",
+          "negrito": true
+        },
+        "F3": {
+          "entrada": "5"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 120,
+        "C": 110,
+        "E": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "F3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 240.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2/$F$3"
+      },
+      {
+        "celula": "C3",
+        "esperado": 190.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3/$F$3"
+      },
+      {
+        "celula": "C4",
+        "esperado": 286.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4/$F$3"
+      },
+      {
+        "celula": "C5",
+        "esperado": 220.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5/$F$3"
+      },
+      {
+        "celula": "C6",
+        "esperado": 335.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6/$F$3"
+      },
+      {
+        "celula": "C7",
+        "esperado": 264.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7/$F$3"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*F[2-9]$",
+        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+      }
+    ]
+  },
+  {
+    "id": "e6ab2583-e9ea-5d5c-9b75-d667fd98f01c",
+    "slug": "comissao-com-cifrao-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: zeros a partir da segunda linha",
+    "enunciado": [
+      "A coluna C usa `=B2*$F1`, copiada para baixo, e dá zero a partir da segunda linha. Corrija **C2** e copie de novo até **C7**."
+    ],
+    "dicas": [
+      "O cifrão de `$F1` trava a coluna. E a linha?"
+    ],
+    "explicacao": [
+      "`$F1` travou só a coluna; ao copiar, a linha andou para F2, F3… O certo é `$F$1`, com a linha travada também."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-com-cifrao",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "1430",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "1675",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "5%"
+        },
+        "C2": {
+          "entrada": "=B2*$F1",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "=B3*$F2",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "=B4*$F3",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "=B5*$F4",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "=B6*$F5",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "=B7*$F6",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 120,
+        "C": 110,
+        "E": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 60.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 47.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 71.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 55.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 83.75,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 66.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7*$F$1",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*F[2-9]$",
+        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+      }
+    ]
+  },
+  {
+    "id": "27fcdcfa-a956-582e-a341-9d23d72709af",
+    "slug": "comissao-com-cifrao-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Na referência **$F$1**, o cifrão antes do 1 trava o quê?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Cada cifrão trava o que vem logo depois dele: `$F` trava a coluna, `$1` trava a linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-com-cifrao",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A coluna",
+        "dica": "O cifrão antes do F trava a coluna."
+      },
+      {
+        "texto": "A linha"
+      },
+      {
+        "texto": "A planilha"
+      },
+      {
+        "texto": "O valor",
+        "dica": "O $ trava a referência, não o valor."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "7cfdbc9b-8475-53d8-831c-f18dece4c72e",
+    "slug": "referencia-mista-precos-quantidades-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 72,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Tabuada com uma fórmula só",
+    "enunciado": [
+      "Monte a tabuada de 1 a 10: escreva em **B2** uma fórmula que, copiada para todo o bloco **B2:K11**, multiplique o número da coluna A pelo da linha 1."
+    ],
+    "dicas": [
+      "Trave a coluna A no primeiro número e a linha 1 no segundo."
+    ],
+    "explicacao": [
+      "`=$A2*B$1`: o mesmo padrão da tabela de preços."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "referencia-mista-precos-quantidades",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "×",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "2",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "3",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "4",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "5",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "6",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "7",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "8",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "9",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "10",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1",
+          "negrito": true
+        },
+        "A3": {
+          "entrada": "2",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "3",
+          "negrito": true
+        },
+        "A5": {
+          "entrada": "4",
+          "negrito": true
+        },
+        "A6": {
+          "entrada": "5",
+          "negrito": true
+        },
+        "A7": {
+          "entrada": "6",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "7",
+          "negrito": true
+        },
+        "A9": {
+          "entrada": "8",
+          "negrito": true
+        },
+        "A10": {
+          "entrada": "9",
+          "negrito": true
+        },
+        "A11": {
+          "entrada": "10",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 44,
+        "B": 44,
+        "C": 44,
+        "D": 44,
+        "E": 44,
+        "F": 44,
+        "G": 44,
+        "H": 44,
+        "I": 44,
+        "J": 44,
+        "K": 44,
+        "L": 44
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*B$1"
+      },
+      {
+        "celula": "C2",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*C$1"
+      },
+      {
+        "celula": "D2",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*D$1"
+      },
+      {
+        "celula": "E2",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*E$1"
+      },
+      {
+        "celula": "F2",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*F$1"
+      },
+      {
+        "celula": "G2",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*G$1"
+      },
+      {
+        "celula": "H2",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*H$1"
+      },
+      {
+        "celula": "I2",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*I$1"
+      },
+      {
+        "celula": "J2",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*J$1"
+      },
+      {
+        "celula": "K2",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A2*K$1"
+      },
+      {
+        "celula": "B3",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*B$1"
+      },
+      {
+        "celula": "C3",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*C$1"
+      },
+      {
+        "celula": "D3",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*D$1"
+      },
+      {
+        "celula": "E3",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*E$1"
+      },
+      {
+        "celula": "F3",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*F$1"
+      },
+      {
+        "celula": "G3",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*G$1"
+      },
+      {
+        "celula": "H3",
+        "esperado": 14,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*H$1"
+      },
+      {
+        "celula": "I3",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*I$1"
+      },
+      {
+        "celula": "J3",
+        "esperado": 18,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*J$1"
+      },
+      {
+        "celula": "K3",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*K$1"
+      },
+      {
+        "celula": "B4",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*B$1"
+      },
+      {
+        "celula": "C4",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*C$1"
+      },
+      {
+        "celula": "D4",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*D$1"
+      },
+      {
+        "celula": "E4",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*E$1"
+      },
+      {
+        "celula": "F4",
+        "esperado": 15,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*F$1"
+      },
+      {
+        "celula": "G4",
+        "esperado": 18,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*G$1"
+      },
+      {
+        "celula": "H4",
+        "esperado": 21,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*H$1"
+      },
+      {
+        "celula": "I4",
+        "esperado": 24,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*I$1"
+      },
+      {
+        "celula": "J4",
+        "esperado": 27,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*J$1"
+      },
+      {
+        "celula": "K4",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*K$1"
+      },
+      {
+        "celula": "B5",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*B$1"
+      },
+      {
+        "celula": "C5",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*C$1"
+      },
+      {
+        "celula": "D5",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*D$1"
+      },
+      {
+        "celula": "E5",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*E$1"
+      },
+      {
+        "celula": "F5",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*F$1"
+      },
+      {
+        "celula": "G5",
+        "esperado": 24,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*G$1"
+      },
+      {
+        "celula": "H5",
+        "esperado": 28,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*H$1"
+      },
+      {
+        "celula": "I5",
+        "esperado": 32,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*I$1"
+      },
+      {
+        "celula": "J5",
+        "esperado": 36,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*J$1"
+      },
+      {
+        "celula": "K5",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*K$1"
+      },
+      {
+        "celula": "B6",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*B$1"
+      },
+      {
+        "celula": "C6",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*C$1"
+      },
+      {
+        "celula": "D6",
+        "esperado": 15,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*D$1"
+      },
+      {
+        "celula": "E6",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*E$1"
+      },
+      {
+        "celula": "F6",
+        "esperado": 25,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*F$1"
+      },
+      {
+        "celula": "G6",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*G$1"
+      },
+      {
+        "celula": "H6",
+        "esperado": 35,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*H$1"
+      },
+      {
+        "celula": "I6",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*I$1"
+      },
+      {
+        "celula": "J6",
+        "esperado": 45,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*J$1"
+      },
+      {
+        "celula": "K6",
+        "esperado": 50,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*K$1"
+      },
+      {
+        "celula": "B7",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*B$1"
+      },
+      {
+        "celula": "C7",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*C$1"
+      },
+      {
+        "celula": "D7",
+        "esperado": 18,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*D$1"
+      },
+      {
+        "celula": "E7",
+        "esperado": 24,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*E$1"
+      },
+      {
+        "celula": "F7",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*F$1"
+      },
+      {
+        "celula": "G7",
+        "esperado": 36,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*G$1"
+      },
+      {
+        "celula": "H7",
+        "esperado": 42,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*H$1"
+      },
+      {
+        "celula": "I7",
+        "esperado": 48,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*I$1"
+      },
+      {
+        "celula": "J7",
+        "esperado": 54,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*J$1"
+      },
+      {
+        "celula": "K7",
+        "esperado": 60,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*K$1"
+      },
+      {
+        "celula": "B8",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*B$1"
+      },
+      {
+        "celula": "C8",
+        "esperado": 14,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*C$1"
+      },
+      {
+        "celula": "D8",
+        "esperado": 21,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*D$1"
+      },
+      {
+        "celula": "E8",
+        "esperado": 28,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*E$1"
+      },
+      {
+        "celula": "F8",
+        "esperado": 35,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*F$1"
+      },
+      {
+        "celula": "G8",
+        "esperado": 42,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*G$1"
+      },
+      {
+        "celula": "H8",
+        "esperado": 49,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*H$1"
+      },
+      {
+        "celula": "I8",
+        "esperado": 56,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*I$1"
+      },
+      {
+        "celula": "J8",
+        "esperado": 63,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*J$1"
+      },
+      {
+        "celula": "K8",
+        "esperado": 70,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A8*K$1"
+      },
+      {
+        "celula": "B9",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*B$1"
+      },
+      {
+        "celula": "C9",
+        "esperado": 16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*C$1"
+      },
+      {
+        "celula": "D9",
+        "esperado": 24,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*D$1"
+      },
+      {
+        "celula": "E9",
+        "esperado": 32,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*E$1"
+      },
+      {
+        "celula": "F9",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*F$1"
+      },
+      {
+        "celula": "G9",
+        "esperado": 48,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*G$1"
+      },
+      {
+        "celula": "H9",
+        "esperado": 56,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*H$1"
+      },
+      {
+        "celula": "I9",
+        "esperado": 64,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*I$1"
+      },
+      {
+        "celula": "J9",
+        "esperado": 72,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*J$1"
+      },
+      {
+        "celula": "K9",
+        "esperado": 80,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A9*K$1"
+      },
+      {
+        "celula": "B10",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*B$1"
+      },
+      {
+        "celula": "C10",
+        "esperado": 18,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*C$1"
+      },
+      {
+        "celula": "D10",
+        "esperado": 27,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*D$1"
+      },
+      {
+        "celula": "E10",
+        "esperado": 36,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*E$1"
+      },
+      {
+        "celula": "F10",
+        "esperado": 45,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*F$1"
+      },
+      {
+        "celula": "G10",
+        "esperado": 54,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*G$1"
+      },
+      {
+        "celula": "H10",
+        "esperado": 63,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*H$1"
+      },
+      {
+        "celula": "I10",
+        "esperado": 72,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*I$1"
+      },
+      {
+        "celula": "J10",
+        "esperado": 81,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*J$1"
+      },
+      {
+        "celula": "K10",
+        "esperado": 90,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A10*K$1"
+      },
+      {
+        "celula": "B11",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*B$1"
+      },
+      {
+        "celula": "C11",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*C$1"
+      },
+      {
+        "celula": "D11",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*D$1"
+      },
+      {
+        "celula": "E11",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*E$1"
+      },
+      {
+        "celula": "F11",
+        "esperado": 50,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*F$1"
+      },
+      {
+        "celula": "G11",
+        "esperado": 60,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*G$1"
+      },
+      {
+        "celula": "H11",
+        "esperado": 70,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*H$1"
+      },
+      {
+        "celula": "I11",
+        "esperado": 80,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*I$1"
+      },
+      {
+        "celula": "J11",
+        "esperado": 90,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*J$1"
+      },
+      {
+        "celula": "K11",
+        "esperado": 100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A11*K$1"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+      },
+      {
+        "padrao": "^=A\\d\\*[B-E]\\d$",
+        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+      }
+    ]
+  },
+  {
+    "id": "8fb30e64-bb78-515f-ad61-7700f6fccc38",
+    "slug": "referencia-mista-precos-quantidades-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 73,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço reajustado",
+    "enunciado": [
+      "Preços em **A3:A7** e reajustes em **B2:D2**. Em **B3**, o preço reajustado, numa fórmula que funcione copiada para **B3:D7**."
+    ],
+    "dicas": [
+      "Reajustar 10% é multiplicar por (1 + 10%)."
+    ],
+    "explicacao": [
+      "`=$A3*(1+B$2)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "referencia-mista-precos-quantidades",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 5,
+      "celulas": {
+        "A2": {
+          "entrada": "Preço \\ Reajuste",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "5%"
+        },
+        "C2": {
+          "entrada": "10%"
+        },
+        "D2": {
+          "entrada": "15%"
+        },
+        "A3": {
+          "entrada": "50",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "80",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "350",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 140
+      },
+      "variaveis": [
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "B2",
+        "C2",
+        "D2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": 52.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+B$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 55.00000000000001,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+C$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 57.49999999999999,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*(1+D$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 84.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+B$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 88.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+C$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 92.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*(1+D$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 126.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+B$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 132.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+C$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 138.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*(1+D$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B6",
+        "esperado": 210.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*(1+B$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 220.00000000000003,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*(1+C$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 229.99999999999997,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*(1+D$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B7",
+        "esperado": 367.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*(1+B$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 385.00000000000006,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*(1+C$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 402.49999999999994,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*(1+D$2)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+      },
+      {
+        "padrao": "^=A\\d\\*[B-E]\\d$",
+        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+      }
+    ]
+  },
+  {
+    "id": "8b3b06e3-0db9-5f8a-8f4f-62301203ffc1",
+    "slug": "referencia-mista-precos-quantidades-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 74,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: as travas trocadas",
+    "enunciado": [
+      "A tabela usa `=A$3*$B2` em B3, copiada para o bloco, e os valores estão errados. Corrija **B3** e copie de novo para **B3:E7**."
+    ],
+    "dicas": [
+      "A quantidade fica na coluna A; o preço, na linha 2. Onde vai cada cifrão?"
+    ],
+    "explicacao": [
+      "As travas estavam trocadas. A quantidade precisa travar a coluna (`$A3`) e o preço, a linha (`B$2`): `=$A3*B$2`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "referencia-mista-precos-quantidades",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A2": {
+          "entrada": "Qtd \\ Preço",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "10",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "25",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "75",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1"
+        },
+        "A4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "4"
+        },
+        "A7": {
+          "entrada": "5"
+        },
+        "B3": {
+          "entrada": "=A$3*$B2",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "=B$3*$B2",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "=C$3*$B2",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=D$3*$B2",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "=A$3*$B3",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "=B$3*$B3",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "=C$3*$B3",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=D$3*$B3",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "=A$3*$B4",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "=B$3*$B4",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=C$3*$B4",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=D$3*$B4",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "=A$3*$B5",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "=B$3*$B5",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=C$3*$B5",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=D$3*$B5",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "B7": {
+          "entrada": "=A$3*$B6",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "=B$3*$B6",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=C$3*$B6",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=D$3*$B6",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*B$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 25,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*C$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*D$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 75,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A3*E$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*B$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 50,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*C$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 80,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*D$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 150,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A4*E$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*B$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 75,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*C$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 120,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*D$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 225,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A5*E$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B6",
+        "esperado": 40,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*B$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*C$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 160,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*D$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A6*E$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B7",
+        "esperado": 50,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*B$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 125,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*C$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*D$2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 375,
+        "exigeFormula": true,
+        "solucaoReferencia": "=$A7*E$2",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+      },
+      {
+        "padrao": "^=A\\d\\*[B-E]\\d$",
+        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+      }
+    ]
+  },
+  {
+    "id": "4ad4eca3-97fc-5965-95f4-ed106d6e1ee9",
+    "slug": "referencia-mista-precos-quantidades-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 75,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Com **$A3**, ao copiar a fórmula para a **direita**, a referência…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "`$A` trava a coluna: para a direita, continua A3. Para baixo, a linha anda (A4, A5…)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "referencia-mista-precos-quantidades",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Vira B3",
+        "dica": "Viraria B3 sem o cifrão antes do A."
+      },
+      {
+        "texto": "Continua A3"
+      },
+      {
+        "texto": "Vira A4",
+        "dica": "Para a direita, a linha não muda."
+      },
+      {
+        "texto": "Dá erro"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "72d0d490-cef2-5c36-a8a8-5ead47a34f58",
+    "slug": "teste-fundamentos-1",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total das despesas",
+    "enunciado": [
+      "As despesas de 5 meses estão em **C2:C6**. Em **C7**, o total."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "soma-total-de-vendas",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 7,
+      "celulas": {
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "Jan"
+        },
+        "C2": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Fev"
+        },
+        "C3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Mar"
+        },
+        "C4": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Abr"
+        },
+        "C5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "Mai"
+        },
+        "C6": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3%"
+        },
+        "B7": {
+          "entrada": "Total",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C7",
+        "esperado": 4450,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(C2:C6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "c8abd9fe-9466-5860-90c8-eabb26e2dc09",
+    "slug": "teste-fundamentos-2",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média mensal",
+    "enunciado": [
+      "Em **C8**, a média mensal das despesas de **C2:C6**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "media-mensal-de-vendas",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 7,
+      "celulas": {
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "Jan"
+        },
+        "C2": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Fev"
+        },
+        "C3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Mar"
+        },
+        "C4": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Abr"
+        },
+        "C5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "Mai"
+        },
+        "C6": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3%"
+        },
+        "B8": {
+          "entrada": "Média",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C8",
+        "esperado": 890,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(C2:C6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "23ab9516-5014-5e56-baa7-62e8bd5f3bdd",
+    "slug": "teste-fundamentos-3",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Variação de fevereiro",
+    "enunciado": [
+      "Em **D3**, a variação de C3 em relação a C2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "variacao-de-janeiro-para-fevereiro",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 7,
+      "celulas": {
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "Jan"
+        },
+        "C2": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Fev"
+        },
+        "C3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Mar"
+        },
+        "C4": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Abr"
+        },
+        "C5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "Mai"
+        },
+        "C6": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3%"
+        },
+        "D1": {
+          "entrada": "Variação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D3",
+        "esperado": 0.1875,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C3-C2)/C2",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "690189d1-990c-5cee-bece-a07525f27b00",
+    "slug": "teste-fundamentos-4",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Taxa sobre cada despesa",
+    "enunciado": [
+      "Em **D2**, aplique a taxa de **F1** sobre C2, numa fórmula que funcione copiada até **D6**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "comissao-com-cifrao",
+    "type": "formula",
+    "grade": {
+      "linhas": 9,
+      "colunas": 7,
+      "celulas": {
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "Jan"
+        },
+        "C2": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Fev"
+        },
+        "C3": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Mar"
+        },
+        "C4": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Abr"
+        },
+        "C5": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "Mai"
+        },
+        "C6": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3%"
+        },
+        "D1": {
+          "entrada": "Com taxa",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 24.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 28.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 21.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 33.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*$F$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 27.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6*$F$1",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "cf4f4669-ab2a-54cc-8922-e88f624d4eca",
+    "slug": "teste-fundamentos-5",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ordem das contas",
+    "enunciado": [
+      "Quanto dá **=(2+3)\\*4**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "ordem-das-contas",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "14"
+      },
+      {
+        "texto": "20"
+      },
+      {
+        "texto": "24"
+      },
+      {
+        "texto": "9"
+      }
+    ],
+    "correta": 1
   }
 ]

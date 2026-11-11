@@ -1,3 +1,4 @@
+import { chaveProgresso, type LicaoDoExercicio } from "./licao";
 import { exercicioSchema, type Exercicio } from "./schema";
 import i1 from "./free/intro/01-nome-da-celula.json";
 import i2 from "./free/intro/02-clicar-em-uma-celula.json";
@@ -121,9 +122,30 @@ export function moduloPorSlug(slug: string) {
   return MODULOS.find((m) => m.slug === slug);
 }
 
-/** Trilha principal do módulo (sem a prática extra). Define progresso, "próximo" e troféu. */
+/** Casa da trilha: exercício avulso (Intro) ou a questão principal de uma lição. */
+const ehCasa = (e: Exercicio) => !e.extra && !e.teste && (!e.etapa || e.etapa === 1);
+
+/** Trilha principal do módulo (lições, sem a prática extra nem o teste). Define progresso, "próximo" e troféu. */
 export function exerciciosDoModulo(modulo: string) {
-  return exercicios.filter((e) => e.modulo === modulo && !e.extra);
+  return exercicios.filter((e) => e.modulo === modulo && ehCasa(e));
+}
+
+/** As questões de uma lição, na ordem (1 = principal … 5 = múltipla escolha). */
+export function questoesDaLicao(licao: string) {
+  return exercicios.filter((e) => e.licao === licao && !e.teste).sort((a, b) => (a.etapa ?? 0) - (b.etapa ?? 0));
+}
+
+/** Dados da lição para o simulador marcar "lição concluída" (undefined fora de lição). */
+export function licaoDoExercicio(ex: Exercicio): LicaoDoExercicio | undefined {
+  if (!ex.licao) return undefined;
+  const partes = questoesDaLicao(ex.licao);
+  const principal = partes[0];
+  return { slug: ex.licao, versao: principal.versao, partes: partes.map((q) => ({ chave: chaveProgresso(q), versao: q.versao })) };
+}
+
+/** As 5 questões do teste do módulo. */
+export function testeDoModulo(modulo: string) {
+  return exercicios.filter((e) => e.modulo === modulo && e.teste).sort((a, b) => a.ordem - b.ordem);
 }
 
 /** Prática extra do módulo (Pro). */
@@ -131,13 +153,21 @@ export function extrasDoModulo(modulo: string) {
   return exercicios.filter((e) => e.modulo === modulo && e.extra);
 }
 
-/** A trilha inteira, sem a prática extra. */
-export const exerciciosDaTrilha = () => exercicios.filter((e) => !e.extra);
+/** A trilha inteira: uma casa por lição, sem a prática extra nem os testes. */
+export const exerciciosDaTrilha = () => exercicios.filter(ehCasa);
 
 /** Próximo exercício do MESMO módulo (no fim do módulo, undefined). */
 export function proximoExercicio(slug: string) {
   const ex = exercicioPorSlug(slug);
   if (!ex) return undefined;
+  if (ex.licao) {
+    // Dentro da lição: a próxima questão; depois da última, a próxima lição.
+    const questoes = questoesDaLicao(ex.licao);
+    const seguinte = questoes[questoes.findIndex((e) => e.slug === slug) + 1];
+    if (seguinte) return seguinte;
+    const casas = exerciciosDoModulo(ex.modulo);
+    return casas[casas.findIndex((e) => e.slug === ex.licao) + 1];
+  }
   const lista = ex.extra ? extrasDoModulo(ex.modulo) : exerciciosDoModulo(ex.modulo);
   return lista[lista.findIndex((e) => e.slug === slug) + 1];
 }

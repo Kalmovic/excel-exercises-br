@@ -33,7 +33,7 @@ test("progresso grava dicas vistas e tempo ativo", async ({ page }) => {
   await page.keyboard.press("Enter");
   await page.getByTestId("verificar").click();
   await expect(page.getByTestId("resultado")).toContainText("Correto!");
-  const p = await page.evaluate(() => JSON.parse(localStorage.getItem("excel-br:progresso:v1") ?? "{}")["soma-total-de-vendas"]);
+  const p = await page.evaluate(() => JSON.parse(localStorage.getItem("excel-br:progresso:v1") ?? "{}")["soma-total-de-vendas#1"]); // questão 1 da lição
   expect(p.dicasVistas).toBe(2);
   expect(p.tempoMs).toBeGreaterThan(0);
 });

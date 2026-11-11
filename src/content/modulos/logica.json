@@ -126,7 +126,10 @@
     "video": "Ler a fórmula em voz alta: \"SE a nota for maior ou igual a 7, então Aprovado, senão Reprovado\".",
     "funcoesExigidas": [
       "IF"
-    ]
+    ],
+    "licao": "se-aprovado",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "76b8ab7c-24dc-5684-9d12-6d5fcf282a42",
@@ -251,7 +254,10 @@
     "video": "Desenhar a árvore de decisão antes de escrever a fórmula.",
     "funcoesExigidas": [
       "IF"
-    ]
+    ],
+    "licao": "se-aninhado-otimo-bom",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "971a069c-1960-5be8-b429-8b45ec8cb2bc",
@@ -393,7 +399,10 @@
     "funcoesExigidas": [
       "IF",
       "AND"
-    ]
+    ],
+    "licao": "e-e-ou-bonus",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "2cbc91e2-564b-5468-a824-627d1aa1ebbb",
@@ -518,7 +527,10 @@
     "video": "Comparar a fórmula aninhada e a SES lado a lado.",
     "funcoesExigidas": [
       "IFS"
-    ]
+    ],
+    "licao": "ses-otimo-bom",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "0d0b448e-7b9a-5334-aefc-ac9c3d06c500",
@@ -659,6 +671,1787 @@
     "video": "O alerta: SEERRO esconde todos os erros, inclusive os que você precisaria ver. Use com critério.",
     "funcoesExigidas": [
       "IFERROR"
+    ],
+    "licao": "seerro-preco-medio",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "ec93d113-fb88-52da-8a51-d974de48aa71",
+    "slug": "se-aprovado-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "SE: maior ou menor de idade",
+    "enunciado": [
+      "A idade está em **B2**. Em **C2**, mostre \"Maior\" se for 18 ou mais, senão \"Menor\"."
+    ],
+    "dicas": [
+      "Mesma estrutura: `=SE(teste;se verdadeiro;se falso)`."
+    ],
+    "explicacao": [
+      "`=SE(B2>=18;\"Maior\";\"Menor\")` → Menor (17 não chega a 18)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aprovado",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Idade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Lia"
+        },
+        "B2": {
+          "entrada": "17"
+        }
+      },
+      "larguras": {
+        "C": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Menor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=18;\"Maior\";\"Menor\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>7;",
+        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+      },
+      {
+        "padrao": ";APROVADO;REPROVADO\\)$",
+        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+      }
     ]
+  },
+  {
+    "id": "0780911e-1573-53b9-aae2-0fdebc70abbb",
+    "slug": "se-aprovado-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "SE com números: frete",
+    "enunciado": [
+      "A compra está em **B2**. Em **C2**, o frete: 0 se a compra for de pelo menos 200, senão 15."
+    ],
+    "dicas": [
+      "Números vão sem aspas."
+    ],
+    "explicacao": [
+      "`=SE(B2>=200;0;15)` → 15. Números e referências vão sem aspas; só texto leva aspas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aprovado",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "#101"
+        },
+        "B2": {
+          "entrada": "180",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "C": 100
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 15,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=200;0;15)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>7;",
+        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+      },
+      {
+        "padrao": ";APROVADO;REPROVADO\\)$",
+        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+      }
+    ]
+  },
+  {
+    "id": "c43a7dee-9c7a-5b6c-a7d2-a5980ec59b76",
+    "slug": "se-aprovado-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: o #NOME? do SE",
+    "enunciado": [
+      "A fórmula em **C2** dá `#NOME?`. Corrija-a para mostrar \"Aprovado\" (nota 7 ou mais) ou \"Reprovado\"."
+    ],
+    "dicas": [
+      "Sem aspas, o Excel acha que Aprovado é o nome de uma função."
+    ],
+    "explicacao": [
+      "Textos vão entre aspas: `=SE(B2>=7;\"Aprovado\";\"Reprovado\")`. Sem elas, o Excel procura uma função chamada Aprovado e dá #NOME?."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aprovado",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "7,5"
+        },
+        "C2": {
+          "entrada": "=SE(B2>=7;Aprovado;Reprovado)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 120
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Aprovado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=7;\"Aprovado\";\"Reprovado\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>7;",
+        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+      },
+      {
+        "padrao": ";APROVADO;REPROVADO\\)$",
+        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+      }
+    ]
+  },
+  {
+    "id": "8f93a25d-0fe5-553f-ae6b-95ba62727d81",
+    "slug": "se-aprovado-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em **SE(teste; A; B)**, quando o teste é **falso**, o resultado é…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O SE devolve o segundo argumento (A) se o teste for verdadeiro e o terceiro (B) se for falso."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aprovado",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A",
+        "dica": "A é o resultado quando o teste é verdadeiro."
+      },
+      {
+        "texto": "B"
+      },
+      {
+        "texto": "Erro"
+      },
+      {
+        "texto": "0"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "5396e19c-e334-5353-a5db-79e64387aea9",
+    "slug": "se-aninhado-otimo-bom-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Frete por peso",
+    "enunciado": [
+      "O peso está em **B2** (kg). Em **C2**, o frete: 10 até 1 kg, 20 até 5 kg e 35 acima disso."
+    ],
+    "dicas": [
+      "Aqui as faixas são \"até\": comece pela menor (<=1)."
+    ],
+    "explicacao": [
+      "`=SE(B2<=1;10;SE(B2<=5;20;35))` → 20. Com \"até\", a ordem é da menor faixa para a maior."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aninhado-otimo-bom",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Pacote",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Peso",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P1"
+        },
+        "B2": {
+          "entrada": "3"
+        }
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2<=1;10;SE(B2<=5;20;35))",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>=7;",
+        "dica": "Teste a faixa mais alta primeiro (>=9)."
+      }
+    ]
+  },
+  {
+    "id": "0934dfd3-c433-5c48-ab03-824c22f79328",
+    "slug": "se-aninhado-otimo-bom-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Meta, perto ou abaixo",
+    "enunciado": [
+      "As vendas estão em **B2**. Em **C2**: \"Meta batida\" a partir de 10.000, \"Perto\" a partir de 8.000, senão \"Abaixo\"."
+    ],
+    "dicas": [
+      "Comece pela faixa mais alta."
+    ],
+    "explicacao": [
+      "`=SE(B2>=10000;\"Meta batida\";SE(B2>=8000;\"Perto\";\"Abaixo\"))` → Perto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aninhado-otimo-bom",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Bia"
+        },
+        "B2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "C": 120
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Perto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=10000;\"Meta batida\";SE(B2>=8000;\"Perto\";\"Abaixo\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>=7;",
+        "dica": "Teste a faixa mais alta primeiro (>=9)."
+      }
+    ]
+  },
+  {
+    "id": "a4422eea-0247-5ade-bf4c-007e5fe16f6e",
+    "slug": "se-aninhado-otimo-bom-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o 9,5 que virou Bom",
+    "enunciado": [
+      "A fórmula em **C2** dá \"Bom\" para a nota 9,5, que deveria ser \"Ótimo\". Corrija-a."
+    ],
+    "dicas": [
+      "Qual teste o 9,5 encontra primeiro?"
+    ],
+    "explicacao": [
+      "O teste >=7 vinha primeiro e capturava o 9,5. Testando a faixa mais alta antes: `=SE(B2>=9;\"Ótimo\";SE(B2>=7;\"Bom\";\"Recuperação\"))`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aninhado-otimo-bom",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conceito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "9,5"
+        },
+        "C2": {
+          "entrada": "=SE(B2>=7;\"Bom\";SE(B2>=9;\"Ótimo\";\"Recuperação\"))",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 120
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Ótimo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=9;\"Ótimo\";SE(B2>=7;\"Bom\";\"Recuperação\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(B\\d>=7;",
+        "dica": "Teste a faixa mais alta primeiro (>=9)."
+      }
+    ]
+  },
+  {
+    "id": "0f0d596e-1153-5624-adf3-e0f9b807e3b3",
+    "slug": "se-aninhado-otimo-bom-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 25,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Num SE aninhado com faixas de \"maior ou igual\", por onde começar?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Com \"maior ou igual\", a maior faixa vem primeiro; senão, o primeiro teste captura todo mundo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-aninhado-otimo-bom",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Pela menor faixa",
+        "dica": "Começando pela menor, quem está numa faixa alta também passa no primeiro teste."
+      },
+      {
+        "texto": "Pela maior faixa"
+      },
+      {
+        "texto": "Tanto faz"
+      },
+      {
+        "texto": "Pela do meio"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "260a9254-62a5-5b07-bbe2-5efe836c9ea8",
+    "slug": "e-e-ou-bonus-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "OU: desconto para VIP ou compra grande",
+    "enunciado": [
+      "Em **D2**, \"Desconto\" se o cliente (C2) for \"VIP\" **ou** a compra (B2) for de pelo menos 500; senão, \"Sem desconto\"."
+    ],
+    "dicas": [
+      "Com OU, basta uma condição."
+    ],
+    "explicacao": [
+      "`=SE(OU(C2=\"VIP\";B2>=500);\"Desconto\";\"Sem desconto\")` → Desconto (a compra passou de 500)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "e-e-ou-bonus",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Desconto?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rui"
+        },
+        "B2": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Comum"
+        }
+      },
+      "larguras": {
+        "D": 120
+      },
+      "variaveis": [
+        "B2"
+      ],
+      "alternativas": {
+        "C2": [
+          "VIP"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Desconto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C2=\"VIP\";B2>=500);\"Desconto\";\"Sem desconto\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "OR"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+      },
+      {
+        "padrao": "10\\.000",
+        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+      }
+    ]
+  },
+  {
+    "id": "4d6e96e8-9286-59ef-9d2f-e60f520adbb1",
+    "slug": "e-e-ou-bonus-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E: nota e frequência",
+    "enunciado": [
+      "Em **D2**, \"Aprovado\" se a nota (B2) for 7 ou mais **e** a frequência (C2) for 75% ou mais; senão, \"Reprovado\"."
+    ],
+    "dicas": [
+      "As duas condições precisam valer: E."
+    ],
+    "explicacao": [
+      "`=SE(E(B2>=7;C2>=75%);\"Aprovado\";\"Reprovado\")` → Reprovado (frequência abaixo de 75%)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "e-e-ou-bonus",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frequência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Leo"
+        },
+        "B2": {
+          "entrada": "8"
+        },
+        "C2": {
+          "entrada": "70%"
+        }
+      },
+      "larguras": {
+        "C": 110,
+        "D": 110
+      },
+      "variaveis": [
+        "B2",
+        "C2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Reprovado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B2>=7;C2>=75%);\"Aprovado\";\"Reprovado\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "AND"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+      },
+      {
+        "padrao": "10\\.000",
+        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+      }
+    ]
+  },
+  {
+    "id": "52b58213-4f8c-5485-b103-c11b5023ddac",
+    "slug": "e-e-ou-bonus-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o E escrito como palavra",
+    "enunciado": [
+      "A célula **D2** deveria mostrar \"Bônus\" para vendas de pelo menos 10.000 **e** nenhuma falta, mas a fórmula está escrita errado. Corrija-a."
+    ],
+    "dicas": [
+      "E é uma função, com parênteses e ponto e vírgula."
+    ],
+    "explicacao": [
+      "No Excel, E é uma função: `E(B2>=10000;C2=0)`. Escrito como palavra no meio do teste, a fórmula não funciona."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "e-e-ou-bonus",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Bônus?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "0"
+        },
+        "D2": {
+          "entrada": "=SE(B2>=10000 E C2=0;\"Bônus\";\"Sem bônus\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "D": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Bônus",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B2>=10000;C2=0);\"Bônus\";\"Sem bônus\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "AND"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+      },
+      {
+        "padrao": "10\\.000",
+        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+      }
+    ]
+  },
+  {
+    "id": "48ca1cc6-d2f4-5af5-88e4-b2e108671492",
+    "slug": "e-e-ou-bonus-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "**OU(VERDADEIRO; FALSO)** resulta em…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Basta uma condição verdadeira para o OU ser verdadeiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "e-e-ou-bonus",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "VERDADEIRO"
+      },
+      {
+        "texto": "FALSO",
+        "dica": "FALSO seria com E. No OU, basta uma verdadeira."
+      },
+      {
+        "texto": "Erro"
+      },
+      {
+        "texto": "1"
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "03bf881e-4c54-58e5-a677-c34f7bc10ded",
+    "slug": "ses-otimo-bom-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SES: frete por peso",
+    "enunciado": [
+      "Refaça o frete por peso com SES: em **C2**, 10 até 1 kg, 20 até 5 kg e 35 acima disso."
+    ],
+    "dicas": [
+      "Pares teste/valor, e VERDADEIRO no fim para o resto."
+    ],
+    "explicacao": [
+      "`=SES(B2<=1;10;B2<=5;20;VERDADEIRO;35)` → 20."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ses-otimo-bom",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Pacote",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Peso",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P1"
+        },
+        "B2": {
+          "entrada": "3"
+        }
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(B2<=1;10;B2<=5;20;VERDADEIRO;35)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "IFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
+        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+      }
+    ]
+  },
+  {
+    "id": "58cd0dc4-8234-513c-b998-22e0d3767251",
+    "slug": "ses-otimo-bom-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SES: conceito de A a D",
+    "enunciado": [
+      "Em **C2**, o conceito da nota de B2: A a partir de 9, B a partir de 7, C a partir de 5, D no resto."
+    ],
+    "dicas": [
+      "Quatro respostas: três testes e o VERDADEIRO final."
+    ],
+    "explicacao": [
+      "`=SES(B2>=9;\"A\";B2>=7;\"B\";B2>=5;\"C\";VERDADEIRO;\"D\")` → C."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ses-otimo-bom",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conceito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Duda"
+        },
+        "B2": {
+          "entrada": "5,5"
+        }
+      },
+      "larguras": {
+        "C": 100
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "C",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(B2>=9;\"A\";B2>=7;\"B\";B2>=5;\"C\";VERDADEIRO;\"D\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
+        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+      }
+    ]
+  },
+  {
+    "id": "d181d08e-49f5-55c1-bce6-43fd112753f9",
+    "slug": "ses-otimo-bom-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o #N/D da nota 4",
+    "enunciado": [
+      "A fórmula em **C2** dá `#N/D` para a nota 4. Corrija-a para mostrar \"Recuperação\" abaixo de 7."
+    ],
+    "dicas": [
+      "Nenhum teste foi verdadeiro para a nota 4."
+    ],
+    "explicacao": [
+      "Faltou o par final: `…;VERDADEIRO;\"Recuperação\")`. Sem ele, quando nenhum teste é verdadeiro, o SES dá #N/D."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ses-otimo-bom",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conceito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Gil"
+        },
+        "B2": {
+          "entrada": "4"
+        },
+        "C2": {
+          "entrada": "=SES(B2>=9;\"Ótimo\";B2>=7;\"Bom\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 120
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Recuperação",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(B2>=9;\"Ótimo\";B2>=7;\"Bom\";VERDADEIRO;\"Recuperação\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
+        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+      }
+    ]
+  },
+  {
+    "id": "3acb36fa-7468-5963-b0f0-6c73a517efaa",
+    "slug": "ses-otimo-bom-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Para que serve o **VERDADEIRO** no último par do SES?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "VERDADEIRO é sempre verdadeiro: funciona como \"para todo o resto\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ses-otimo-bom",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Encerrar a fórmula"
+      },
+      {
+        "texto": "Cobrir todos os outros casos"
+      },
+      {
+        "texto": "Converter em texto"
+      },
+      {
+        "texto": "Nada, é opcional",
+        "dica": "Sem ele, quem não passa em nenhum teste recebe #N/D."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "d347ccb8-3cb4-5e5a-a328-52f52c1f5be7",
+    "slug": "seerro-preco-medio-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Taxa de conversão com traço",
+    "enunciado": [
+      "Em **D2**, a taxa de conversão (compras ÷ visitas). Quando não houver visitas, mostre um traço: \"-\". Copie até **D5**."
+    ],
+    "dicas": [
+      "A conta é C2/B2; o traço vai entre aspas."
+    ],
+    "explicacao": [
+      "`=SEERRO(C2/B2;\"-\")`: o segundo argumento pode ser texto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "seerro-preco-medio",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Visitas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Compras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Conversão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Seg"
+        },
+        "B2": {
+          "entrada": "0"
+        },
+        "C2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "Ter"
+        },
+        "B3": {
+          "entrada": "200"
+        },
+        "C3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Qua"
+        },
+        "B4": {
+          "entrada": "150"
+        },
+        "C4": {
+          "entrada": "6"
+        },
+        "A5": {
+          "entrada": "Qui"
+        },
+        "B5": {
+          "entrada": "0"
+        },
+        "C5": {
+          "entrada": "0"
+        }
+      },
+      "larguras": {
+        "D": 110
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "-",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(C2/B2;\"-\")",
+        "formato": "percentual"
+      },
+      {
+        "celula": "D3",
+        "esperado": 0.05,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(C3/B3;\"-\")",
+        "formato": "percentual"
+      },
+      {
+        "celula": "D4",
+        "esperado": 0.04,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(C4/B4;\"-\")",
+        "formato": "percentual"
+      },
+      {
+        "celula": "D5",
+        "esperado": "-",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(C5/B5;\"-\")",
+        "formato": "percentual"
+      }
+    ],
+    "funcoesExigidas": [
+      "IFERROR"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SEERRO\\(0;",
+        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+      }
+    ]
+  },
+  {
+    "id": "372e9eba-e39e-50da-b966-820399240257",
+    "slug": "seerro-preco-medio-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média que ainda não tem dados",
+    "enunciado": [
+      "A coluna B ainda está vazia. Em **D2**, a média de **B2:B5**, mostrando \"Sem dados\" em vez do erro."
+    ],
+    "dicas": [
+      "A média de nada dá #DIV/0!. Embrulhe com SEERRO."
+    ],
+    "explicacao": [
+      "`=SEERRO(MÉDIA(B2:B5);\"Sem dados\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "seerro-preco-medio",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Semana",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1"
+        },
+        "A3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "3"
+        },
+        "A5": {
+          "entrada": "4"
+        },
+        "D1": {
+          "entrada": "Média",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "D": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Sem dados",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(MÉDIA(B2:B5);\"Sem dados\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IFERROR",
+      "AVERAGE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SEERRO\\(0;",
+        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+      }
+    ]
+  },
+  {
+    "id": "e2d95fa3-79d1-584c-a774-4586fc6235b4",
+    "slug": "seerro-preco-medio-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o zero que escondia um erro",
+    "enunciado": [
+      "O preço médio em **C2** mostra 0, mas a quantidade não é zero: alguém escreveu \"dez\" por extenso em **B2**. Corrija o dado em B2."
+    ],
+    "dicas": [
+      "O SEERRO escondeu um #VALOR!: a conta não sabe dividir por um texto."
+    ],
+    "explicacao": [
+      "Com 10 em número, `=SEERRO(A2/B2;0)` mostra 15. O SEERRO tinha escondido um erro de digitação que precisava ser corrigido."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "seerro-preco-medio",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "type_value",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço médio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "dez",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "=SEERRO(A2/B2;0)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 10
+      }
+    ]
+  },
+  {
+    "id": "6acbd78b-a476-5fa0-a6ac-ead4329c66e4",
+    "slug": "seerro-preco-medio-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual erro aparece ao dividir por zero?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Divisão por zero dá #DIV/0!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "seerro-preco-medio",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "#N/D",
+        "dica": "#N/D é \"não disponível\", comum em buscas."
+      },
+      {
+        "texto": "#DIV/0!"
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "#VALOR! aparece quando o tipo está errado, como texto numa conta."
+      },
+      {
+        "texto": "#REF!",
+        "dica": "#REF! é referência inválida."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "0fe2f0c9-b6ed-5eb6-b57f-771fe2579314",
+    "slug": "teste-logica-1",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Meta",
+    "enunciado": [
+      "Em **D2**, \"Meta\" se B2 for 8.000 ou mais, senão \"Abaixo\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "se-aprovado",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rafa"
+        },
+        "B2": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "1"
+        },
+        "D1": {
+          "entrada": "Meta?",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "D": 90,
+        "E": 100,
+        "F": 90,
+        "G": 90
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Meta",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2>=8000;\"Meta\";\"Abaixo\")"
+      }
+    ]
+  },
+  {
+    "id": "0b98d909-430f-56fd-af85-71a44b3b86d5",
+    "slug": "teste-logica-2",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Bônus",
+    "enunciado": [
+      "Em **E2**, \"Bônus\" se B2 for 8.000 ou mais **e** não houver faltas (C2), senão \"Sem bônus\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "e-e-ou-bonus",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rafa"
+        },
+        "B2": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "1"
+        },
+        "E1": {
+          "entrada": "Bônus?",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "D": 90,
+        "E": 100,
+        "F": 90,
+        "G": 90
+      },
+      "variaveis": [
+        "B2",
+        "C2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Sem bônus",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B2>=8000;C2=0);\"Bônus\";\"Sem bônus\")"
+      }
+    ]
+  },
+  {
+    "id": "e638d021-c4c3-55f6-92e5-743168990864",
+    "slug": "teste-logica-3",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ouro, prata ou bronze",
+    "enunciado": [
+      "Em **F2**: \"Ouro\" a partir de 10.000, \"Prata\" a partir de 8.000, senão \"Bronze\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "se-aninhado-otimo-bom",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rafa"
+        },
+        "B2": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "1"
+        },
+        "F1": {
+          "entrada": "Faixa",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "D": 90,
+        "E": 100,
+        "F": 90,
+        "G": 90
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(B2>=10000;\"Ouro\";B2>=8000;\"Prata\";VERDADEIRO;\"Bronze\")"
+      }
+    ]
+  },
+  {
+    "id": "ffbdc92f-3741-53f0-b739-a5f5406ac7e9",
+    "slug": "teste-logica-4",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Divisão sem erro",
+    "enunciado": [
+      "Em **G2**, divida B2 por H2 (vazia), mostrando 0 se der erro."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "seerro-preco-medio",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rafa"
+        },
+        "B2": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "1"
+        },
+        "G1": {
+          "entrada": "Divisão",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Divisor",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "D": 90,
+        "E": 100,
+        "F": 90,
+        "G": 90
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B2/H2;0)"
+      }
+    ]
+  },
+  {
+    "id": "9d416773-4503-5ec4-875f-f94c3ad4def2",
+    "slug": "teste-logica-5",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E lógico",
+    "enunciado": [
+      "**E(VERDADEIRO; FALSO)** resulta em:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "e-e-ou-bonus",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "VERDADEIRO"
+      },
+      {
+        "texto": "FALSO"
+      },
+      {
+        "texto": "Erro"
+      },
+      {
+        "texto": "0"
+      }
+    ],
+    "correta": 1
   }
 ]

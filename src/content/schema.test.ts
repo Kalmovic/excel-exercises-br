@@ -4,7 +4,7 @@ import extrasFundamentos from "./extras/fundamentos.json";
 // Exercício antigo, escrito antes do campo `type` existir.
 const legado = extrasFundamentos[0];
 import { exercicioSchema } from "./schema";
-import { MODULOS, exercicios, proximoExercicio, proximoModulo } from "./index";
+import { MODULOS, exercicioPorSlug, exercicios, exerciciosDoModulo, proximoExercicio, proximoModulo, questoesDaLicao, testeDoModulo } from "./index";
 
 describe("retrocompatibilidade do schema", () => {
   it("JSON sem `type` vira formula e nada mais muda", () => {
@@ -17,7 +17,7 @@ describe("retrocompatibilidade do schema", () => {
   });
 
   it("os 7 exercícios de Fundamentos (fora a prática extra) são de fórmula", () => {
-    const f = exercicios.filter((e) => e.modulo === "fundamentos" && !e.extra);
+    const f = exerciciosDoModulo("fundamentos");
     expect(f).toHaveLength(7);
     expect(f.every((e) => e.type === "formula")).toBe(true);
   });
@@ -42,14 +42,14 @@ describe("conteúdo", () => {
   });
 
   it("todo exercício da trilha tem pelo menos uma dica (só o desafio diário é sem dica)", () => {
-    expect(exercicios.every((e) => e.dicas.length > 0)).toBe(true);
+    expect(exercicios.filter((e) => !e.teste).every((e) => e.dicas.length > 0)).toBe(true);
   });
 
   it("trilha segue o roteiro: 52 exercícios, o 1º de cada módulo grátis", () => {
-    const porModulo = MODULOS.map((m) => exercicios.filter((e) => e.modulo === m.slug && !e.extra).length);
+    const porModulo = MODULOS.map((m) => exerciciosDoModulo(m.slug).length);
     expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 3, 4]);
     for (const m of MODULOS.slice(1)) {
-      const lista = exercicios.filter((e) => e.modulo === m.slug && !e.extra);
+      const lista = exerciciosDoModulo(m.slug);
       expect(lista[0].plano, m.slug).toBe("free");
       expect(lista.slice(1).every((e) => e.plano === "pro"), m.slug).toBe(true);
       expect(lista.every((e) => e.intro), m.slug).toBe(true);
@@ -64,11 +64,45 @@ describe("conteúdo", () => {
   });
 });
 
+describe("lições de 5 questões e teste do módulo", () => {
+  const comLicoes = ["fundamentos", "logica", "condicionais"];
+
+  it("cada lição tem as 5 etapas, com o mesmo plano da principal", () => {
+    for (const m of comLicoes)
+      for (const l of exerciciosDoModulo(m)) {
+        const q = questoesDaLicao(l.slug);
+        expect(q.map((x) => x.etapa), l.slug).toEqual([1, 2, 3, 4, 5]);
+        expect(q.every((x) => x.plano === l.plano), l.slug).toBe(true);
+        expect(q[4].type, l.slug).toBe("multiple_choice");
+      }
+  });
+
+  it("múltipla escolha tem a alternativa correta dentro da lista", () => {
+    for (const e of exercicios)
+      if (e.type === "multiple_choice") expect(e.correta, e.slug).toBeLessThan(e.opcoes.length);
+  });
+
+  it("teste do módulo: 5 questões, sem dica, cada uma apontando para uma lição que existe", () => {
+    for (const m of comLicoes) {
+      const t = testeDoModulo(m);
+      expect(t, m).toHaveLength(5);
+      for (const q of t) {
+        expect(q.dicas).toEqual([]);
+        expect(exercicioPorSlug(q.revisar!)?.etapa, q.slug).toBe(1);
+      }
+    }
+  });
+
+  it("o Intro continua sem lições de 5 questões", () => {
+    expect(exercicios.filter((e) => e.modulo === "intro").every((e) => !e.licao)).toBe(true);
+  });
+});
+
 describe("navegação", () => {
   it("'Próximo' de Fundamentos segue o roteiro", () => {
-    expect(proximoExercicio("soma-total-de-vendas")?.slug).toBe("media-mensal-de-vendas");
-    expect(proximoExercicio("comissao-com-cifrao")?.slug).toBe("referencia-mista-precos-quantidades");
-    expect(proximoExercicio("referencia-mista-precos-quantidades")).toBeUndefined();
+    expect(proximoExercicio("soma-total-de-vendas")?.slug).toBe("soma-total-de-vendas-variacao-a");
+    expect(proximoExercicio("soma-total-de-vendas-conceito")?.slug).toBe("media-mensal-de-vendas");
+    expect(proximoExercicio("referencia-mista-precos-quantidades-conceito")).toBeUndefined();
   });
 
   it("a prática extra tem o próprio 'próximo' e não entra na trilha", () => {

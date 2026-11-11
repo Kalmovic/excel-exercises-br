@@ -14,7 +14,7 @@ test("regressão: SOMA, recusa de inglês e 'Próximo' dentro do módulo", async
   await verificarCorreto(page);
   await expect(page.getByRole("link", { name: "Próximo exercício →" })).toHaveAttribute(
     "href",
-    "/exercicios/media-mensal-de-vendas",
+    "/exercicios/soma-total-de-vendas-variacao-a",
   );
 });
 

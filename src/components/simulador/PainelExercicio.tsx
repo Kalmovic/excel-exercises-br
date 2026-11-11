@@ -51,7 +51,7 @@ export function PainelExercicio({
             <TextoRico texto={ex.intro} />
           </p>
         )}
-        {ex.enunciado.map((p, i) => (
+        {ex.type !== "multiple_choice" && ex.enunciado.map((p, i) => (
           <p key={i}>
             <TextoRico texto={p} />
           </p>

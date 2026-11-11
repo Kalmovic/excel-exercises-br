@@ -141,3 +141,18 @@ export function salvarPreferencias(p: Preferencias) {
     window.dispatchEvent(new Event(EVENTO));
   } catch {}
 }
+
+// --- lições de 5 questões ----------------------------------------------------
+
+/**
+ * Se todas as questões da lição estão concluídas, grava a lição como
+ * concluída (no slug da lição, que é o que o mapa e o troféu leem).
+ */
+export function concluirLicaoSeCompleta(licao: { slug: string; versao: number; partes: { chave: string; versao: number }[] }) {
+  const tudo = lerTudo();
+  const completa = licao.partes.every((q) => tudo[q.chave]?.versao === q.versao && tudo[q.chave]?.status === "concluido");
+  if (!completa || tudo[licao.slug]?.status === "concluido") return completa;
+  const tentativas = licao.partes.reduce((s, q) => s + (tudo[q.chave]?.tentativas ?? 0), 0);
+  salvar(licao.slug, { versao: licao.versao, status: "concluido", tentativas, conteudos: {} });
+  return true;
+}

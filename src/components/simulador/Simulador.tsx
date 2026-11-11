@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { celulasDestacadas } from "@/content/destaque";
+import { chaveProgresso, type LicaoDoExercicio } from "@/content/licao";
 import type { Exercicio } from "@/content/schema";
 import type { Trilha } from "@/content/trilha";
 import { deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
@@ -14,6 +15,8 @@ import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { BarraFormatacao } from "./BarraFormatacao";
 import { BarraFormulas } from "./BarraFormulas";
+import { Alternativas } from "./Alternativas";
+import { TextoRico } from "./TextoRico";
 import { CampoResposta } from "./CampoResposta";
 import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
@@ -28,7 +31,7 @@ import { preencherSolucao } from "@/components/admin/solucao";
 
 function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
-  const salvo = restaurar ? progresso.ler(ex.slug, ex.versao) : undefined;
+  const salvo = restaurar ? progresso.ler(chaveProgresso(ex), ex.versao) : undefined;
   if (salvo) {
     planilha.definirVarias(
       Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
@@ -60,18 +63,34 @@ type Props = {
   admin?: boolean;
   /** Versão enxuta (card da landing): só barra de fórmulas, grade e Conferir. */
   compacto?: boolean;
+  /** Questão de uma lição de 5: ao acertar a última que faltava, a lição fica concluída. */
+  licao?: LicaoDoExercicio;
+  /** Teste do módulo: uma tentativa, sem gravar progresso; avisa o resultado. */
+  teste?: { aoResponder: (ok: boolean) => void };
 };
 
-export default function Simulador({ exercicio: ex, proximo, trilha, desafio, admin = false, compacto = false }: Props) {
+export default function Simulador({
+  exercicio: ex,
+  proximo,
+  trilha,
+  desafio,
+  admin: adminProp = false,
+  compacto = false,
+  licao,
+  teste,
+}: Props) {
+  // No teste do módulo, nada é lido nem gravado no progresso (como no admin).
+  const admin = adminProp || !!teste;
+  const chave = chaveProgresso(ex);
   const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
   const botaoVerificarRef = useRef<HTMLButtonElement | null>(null);
   const [trofeu, setTrofeu] = useState<{ tentativas: number } | null>(null);
   const [nucleo, setNucleo] = useState(() => montar(ex, !admin));
   const [resultado, setResultado] = useState<Resultado | null>(null);
-  const [tentativas, setTentativas] = useState(() => (admin ? 0 : (progresso.ler(ex.slug, ex.versao)?.tentativas ?? 0)));
+  const [tentativas, setTentativas] = useState(() => (admin ? 0 : (progresso.ler(chave, ex.versao)?.tentativas ?? 0)));
   const [concluido, setConcluido] = useState(
-    () => !admin && progresso.ler(ex.slug, ex.versao)?.status === "concluido",
+    () => !admin && progresso.ler(chave, ex.versao)?.status === "concluido",
   );
   const [dicasVistas, setDicasVistas] = useState(0);
 
@@ -100,8 +119,8 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
   /** Grava o estado atual do exercício (conteúdo, formatos e resposta). */
   const persistir = (status?: progresso.ProgressoExercicio["status"], n?: number, historico?: boolean[]) => {
     if (admin) return; // o admin testa sem mexer no progresso
-    const atual = progresso.ler(ex.slug, ex.versao);
-    progresso.salvar(ex.slug, {
+    const atual = progresso.ler(chave, ex.versao);
+    progresso.salvar(chave, {
       versao: ex.versao,
       status: status ?? atual?.status ?? "em-andamento",
       tentativas: n ?? atual?.tentativas ?? 0,
@@ -150,12 +169,17 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
     setResultado(r);
     setTentativas(n);
     if (r.ok) setConcluido(true);
-    const anterior = progresso.ler(ex.slug, ex.versao)?.status;
+    const anterior = progresso.ler(chave, ex.versao)?.status;
     // Histórico de acertos/erros por verificação (card de compartilhamento do desafio).
     const historico = concluido
-      ? progresso.ler(ex.slug, ex.versao)?.historico
-      : [...(progresso.ler(ex.slug, ex.versao)?.historico ?? []), r.ok];
+      ? progresso.ler(chave, ex.versao)?.historico
+      : [...(progresso.ler(chave, ex.versao)?.historico ?? []), r.ok];
     persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
+    if (teste) {
+      teste.aoResponder(r.ok);
+      return;
+    }
+    if (r.ok && licao && !adminProp) progresso.concluirLicaoSeCompleta(licao);
     if (!admin) {
       registrar({ nome: "verificou", slug: ex.slug, ok: r.ok, tentativa: n, motivo: r.falhas[0]?.motivo });
       if (r.ok && desafio && !concluido) {
@@ -184,7 +208,7 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
 
   const pular = () => {
     registrar({ nome: "pulou", slug: ex.slug });
-    progresso.pular(ex.slug, ex.versao);
+    progresso.pular(chave, ex.versao);
     router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha?.proximoModulo?.href ?? "/"));
   };
 
@@ -192,13 +216,13 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
     if (desafio && !admin) {
       // No desafio, Recomeçar limpa só a planilha: as tentativas e o histórico
       // (os quadrados do card) continuam valendo.
-      const atual = progresso.ler(ex.slug, ex.versao);
-      if (atual) progresso.salvar(ex.slug, { ...atual, conteudos: {}, formatos: {}, resposta: "" });
+      const atual = progresso.ler(chave, ex.versao);
+      if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, resposta: "" });
       setNucleo(montar(ex, false));
       setResultado(null);
       return;
     }
-    if (!admin) progresso.apagar(ex.slug);
+    if (!admin) progresso.apagar(chave);
     setNucleo(montar(ex, !admin));
     setResultado(null);
     setTentativas(0);
@@ -261,13 +285,29 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0 space-y-2">
           {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
-          {nucleo.formatacao && <BarraFormatacao />}
-          <BarraFormulas />
-          <Grade larguras={ex.grade.larguras} />
-          <p className="text-xs text-zinc-500">
-            Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D preenche para baixo ·
-            Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
-          </p>
+          {ex.type === "multiple_choice" && (
+            <div className="space-y-4">
+              <div className="space-y-2 text-lg font-semibold" data-testid="pergunta">
+                {ex.enunciado.map((p, i) => (
+                  <p key={i}>
+                    <TextoRico texto={p} />
+                  </p>
+                ))}
+              </div>
+              <Alternativas opcoes={ex.opcoes} bloqueado={concluido} />
+            </div>
+          )}
+          {ex.type !== "multiple_choice" && (
+            <>
+              {nucleo.formatacao && <BarraFormatacao />}
+              <BarraFormulas />
+              <Grade larguras={ex.grade.larguras} />
+              <p className="text-xs text-zinc-500">
+                Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D preenche para baixo ·
+                Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
+              </p>
+            </>
+          )}
         </div>
         <PainelExercicio
           exercicio={ex}

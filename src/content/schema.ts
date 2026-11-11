@@ -112,6 +112,16 @@ const baseSchema = z.object({
   video: z.string().optional(),
   /** Prática extra: fora da trilha principal e do troféu, listada no fim do módulo. */
   extra: z.boolean().optional(),
+  /**
+   * Lição de 5 questões (roteiro): `licao` é o slug da questão principal, que
+   * dá nome à lição; `etapa` vai de 1 (principal) a 5 (múltipla escolha).
+   */
+  licao: z.string().optional(),
+  etapa: z.number().int().min(1).max(5).optional(),
+  papel: z.enum(["principal", "variacao", "pegadinha", "conceito"]).optional(),
+  /** Questão do teste do módulo: sem dica; `revisar` é a lição indicada a quem errar. */
+  teste: z.boolean().optional(),
+  revisar: z.string().optional(),
 });
 
 /** O tipo original. Exercícios sem `type` são deste tipo. */
@@ -161,6 +171,15 @@ export const exercicioFormatCellSchema = baseSchema.extend({
   alvos: z.array(z.object({ intervalo, formato: z.enum(["moeda", "percentual"]) })).min(1),
 });
 
+/** Pergunta conceitual com alternativas (sem planilha). */
+export const exercicioMultipleChoiceSchema = baseSchema.extend({
+  type: z.literal("multiple_choice"),
+  /** `dica` aparece quando o aluno escolhe esta alternativa errada. */
+  opcoes: z.array(z.object({ texto: z.string().min(1), dica: z.string().optional() })).min(2).max(6),
+  /** Índice (base 0) da alternativa correta. */
+  correta: z.number().int().min(0),
+});
+
 /**
  * Retrocompatibilidade: um JSON sem `type` é tratado como `"formula"`.
  * Os exercícios que já existiam não precisam mudar.
@@ -173,6 +192,7 @@ export const exercicioSchema = z.preprocess(
     exercicioClickCellSchema,
     exercicioSelectRangeSchema,
     exercicioTypeValueSchema,
+    exercicioMultipleChoiceSchema,
     exercicioFormatCellSchema,
   ]),
 );

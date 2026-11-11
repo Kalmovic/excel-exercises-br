@@ -15,6 +15,7 @@ export function celulasDestacadas(ex: Exercicio): string[] {
     case "text_answer":
     case "click_cell":
     case "select_range":
+    case "multiple_choice":
       return [];
   }
 }

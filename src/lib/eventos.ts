@@ -18,7 +18,8 @@ export type Evento =
   | { nome: "desafio_concluido"; data: string; tentativas: number }
   | { nome: "compartilhou"; data: string; meio: "nativo" | "copiar" }
   | { nome: "upsell_clicou"; origem: "desafio" | "landing" | "trilha" }
-  | { nome: "lead_b2b"; formulario: "contato" | "indicacao"; publico: string };
+  | { nome: "lead_b2b"; formulario: "contato" | "indicacao"; publico: string }
+  | { nome: "teste_concluido"; modulo: string; acertos: number; aprovado: boolean };
 
 export function registrar(evento: Evento) {
   const { nome, ...props } = evento;

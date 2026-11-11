@@ -173,7 +173,10 @@
     "video": "A diferença entre CONT.VALORES, CONT.NÚM e CONTAR.VAZIO numa tabela só.",
     "funcoesExigidas": [
       "COUNTA"
-    ]
+    ],
+    "licao": "cont-valores-vendas",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "83b9c167-585f-5526-9300-dc73f2e22c7d",
@@ -350,7 +353,10 @@
     "video": "Usar uma célula como critério, para trocar o vendedor sem mexer na fórmula.",
     "funcoesExigidas": [
       "COUNTIF"
-    ]
+    ],
+    "licao": "cont-se-vendas-da-ana",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "32cd3976-e69e-5d1a-a879-9c057a44b9a3",
@@ -522,7 +528,10 @@
     "video": "Destacar as duas linhas que contam e a terceira venda da Ana, que não conta.",
     "funcoesExigidas": [
       "COUNTIFS"
-    ]
+    ],
+    "licao": "cont-ses-ana-no-sul",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "468a10ee-4e22-5404-9bd8-f2229ac89ff2",
@@ -696,7 +705,10 @@
     "video": "Comparar com filtrar e somar à mão, e mostrar a fórmula se atualizando quando entra uma venda nova.",
     "funcoesExigidas": [
       "SUMIF"
-    ]
+    ],
+    "licao": "somase-total-da-ana",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "19b85e80-b8c6-51eb-88f6-4f28651551df",
@@ -870,7 +882,10 @@
     "video": "SOMASE e SOMASES lado a lado, com o primeiro argumento destacado: a pegadinha preferida das provas.",
     "funcoesExigidas": [
       "SUMIFS"
-    ]
+    ],
+    "licao": "somases-sul-pago",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "76967453-ea12-5149-8fd2-ac90a28d0e61",
@@ -1043,6 +1058,4013 @@
     "video": "Fechar o módulo com um mini-relatório por região usando as três funções.",
     "funcoesExigidas": [
       "AVERAGEIF"
+    ],
+    "licao": "mediase-media-do-norte",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "cff58e5a-da97-5a53-a961-f9349211470d",
+    "slug": "cont-valores-vendas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "CONT.VALORES dos status",
+    "enunciado": [
+      "Em **G1**, conte quantos status estão preenchidos em **D2:D12**."
+    ],
+    "dicas": [
+      "Mesma função, outra coluna."
+    ],
+    "explicacao": [
+      "`=CONT.VALORES(D2:D12)` → 7."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-valores-vendas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Status preenchidos",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.VALORES(D2:D12)"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTA"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.NÚM\\(",
+        "dica": "A coluna A tem texto (nomes). CONT.NÚM só conta números."
+      },
+      {
+        "padrao": "\\(A1:",
+        "dica": "Começando em A1, o título da coluna também seria contado."
+      }
     ]
+  },
+  {
+    "id": "6f7e1da7-944d-5733-88a6-59877cb94043",
+    "slug": "cont-valores-vendas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "CONT.NÚM: só os números",
+    "enunciado": [
+      "Em **G1**, conte só as células **com número** em **C2:C12**."
+    ],
+    "dicas": [
+      "Para contar só números, existe CONT.NÚM."
+    ],
+    "explicacao": [
+      "`=CONT.NÚM(C2:C12)` → 7."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-valores-vendas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Valores numéricos",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.NÚM(C2:C12)"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.NÚM\\(",
+        "dica": "A coluna A tem texto (nomes). CONT.NÚM só conta números."
+      },
+      {
+        "padrao": "\\(A1:",
+        "dica": "Começando em A1, o título da coluna também seria contado."
+      }
+    ]
+  },
+  {
+    "id": "3da65aca-5f59-55e6-96ac-48f24d60fa27",
+    "slug": "cont-valores-vendas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: 8 vendas que eram 7",
+    "enunciado": [
+      "A fórmula em **G1** diz que há 8 vendas, mas são 7. Corrija-a."
+    ],
+    "dicas": [
+      "Olhe onde o intervalo começa."
+    ],
+    "explicacao": [
+      "O intervalo começava em A1 e contou o cabeçalho \"Vendedor\". O certo é `=CONT.VALORES(A2:A12)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-valores-vendas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Vendas registradas",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "=CONT.VALORES(A1:A12)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.VALORES(A2:A12)"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTA"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.NÚM\\(",
+        "dica": "A coluna A tem texto (nomes). CONT.NÚM só conta números."
+      },
+      {
+        "padrao": "\\(A1:",
+        "dica": "Começando em A1, o título da coluna também seria contado."
+      }
+    ]
+  },
+  {
+    "id": "e04f6045-73b4-5953-82b5-0094cf6a6ffc",
+    "slug": "cont-valores-vendas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que o **CONT.VALORES** conta?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "CONT.VALORES conta qualquer célula preenchida: texto, número ou data."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-valores-vendas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Só números",
+        "dica": "Esse é o CONT.NÚM."
+      },
+      {
+        "texto": "Células preenchidas"
+      },
+      {
+        "texto": "Células vazias",
+        "dica": "Esse é o CONTAR.VAZIO."
+      },
+      {
+        "texto": "Só textos"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "f08dfad0-2854-5e7b-8ae8-f99656da4f45",
+    "slug": "cont-se-vendas-da-ana-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 22,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SE: vendas pendentes",
+    "enunciado": [
+      "Em **G1**, conte quantas vendas estão **pendentes**."
+    ],
+    "dicas": [
+      "O status está na coluna D."
+    ],
+    "explicacao": [
+      "`=CONT.SE(D2:D8;\"Pendente\")` → 2."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-vendas-da-ana",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Pendentes",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(D2:D8;\"Pendente\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";ANA\\)$",
+        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+      },
+      {
+        "padrao": "^=CONT\\.SE\\([B-D]",
+        "dica": "Os nomes estão na coluna A."
+      }
+    ]
+  },
+  {
+    "id": "a282705e-d4d6-5ee4-9d6d-d3aa77fdad66",
+    "slug": "cont-se-vendas-da-ana-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 23,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SE com comparação",
+    "enunciado": [
+      "Em **G1**, conte quantas vendas passaram de **400**."
+    ],
+    "dicas": [
+      "O critério com operador vai entre aspas: \">400\"."
+    ],
+    "explicacao": [
+      "`=CONT.SE(C2:C8;\">400\")` → 4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-vendas-da-ana",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Acima de 400",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(C2:C8;\">400\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";ANA\\)$",
+        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+      },
+      {
+        "padrao": "^=CONT\\.SE\\([B-D]",
+        "dica": "Os nomes estão na coluna A."
+      }
+    ]
+  },
+  {
+    "id": "f329711d-95b4-5635-8481-44c05c008c16",
+    "slug": "cont-se-vendas-da-ana-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 24,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o critério sem aspas",
+    "enunciado": [
+      "A fórmula em **G1** deveria contar as vendas acima de 400, mas não funciona. Corrija-a."
+    ],
+    "dicas": [
+      "Critério com operador vai entre aspas."
+    ],
+    "explicacao": [
+      "O critério `>400` precisa de aspas: `\">400\"`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-vendas-da-ana",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Acima de 400",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "=CONT.SE(C2:C8;>400)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(C2:C8;\">400\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";ANA\\)$",
+        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+      },
+      {
+        "padrao": "^=CONT\\.SE\\([B-D]",
+        "dica": "Os nomes estão na coluna A."
+      }
+    ]
+  },
+  {
+    "id": "2a3f8fd9-d0f3-5a24-ad77-74f4e2038e81",
+    "slug": "cont-se-vendas-da-ana-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Como escrever \"maior que 400\" no critério do CONT.SE?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Critério com operador é um texto: vai entre aspas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-vendas-da-ana",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": ">400",
+        "dica": "Sem aspas, o Excel não entende o critério."
+      },
+      {
+        "texto": "\">400\""
+      },
+      {
+        "texto": "(>400)"
+      },
+      {
+        "texto": "[>400]"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "cc7d4b80-5619-5cea-8df6-506adf84884e",
+    "slug": "cont-ses-ana-no-sul-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SES: Bruno no Sul",
+    "enunciado": [
+      "Em **G1**, conte as vendas do **Bruno** na região **Sul**."
+    ],
+    "dicas": [
+      "Dois pares: vendedor e região."
+    ],
+    "explicacao": [
+      "`=CONT.SES(A2:A8;\"Bruno\";B2:B8;\"Sul\")` → 1."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-ses-ana-no-sul",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Bruno no Sul",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(A2:A8;\"Bruno\";B2:B8;\"Sul\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "A2:A8;\\\"ANA\\\";B2:B9|A2:A9;\\\"ANA\\\";B2:B8",
+        "dica": "Os intervalos precisam ter o mesmo tamanho."
+      }
+    ]
+  },
+  {
+    "id": "a72effe7-36fd-566f-86e4-325725986dd1",
+    "slug": "cont-ses-ana-no-sul-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SES com comparação",
+    "enunciado": [
+      "Em **G1**, conte as vendas **pagas** acima de **400**."
+    ],
+    "dicas": [
+      "Um critério de texto e um de comparação."
+    ],
+    "explicacao": [
+      "`=CONT.SES(D2:D8;\"Pago\";C2:C8;\">400\")` → 4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-ses-ana-no-sul",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Pagas acima de 400",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(D2:D8;\"Pago\";C2:C8;\">400\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "A2:A8;\\\"ANA\\\";B2:B9|A2:A9;\\\"ANA\\\";B2:B8",
+        "dica": "Os intervalos precisam ter o mesmo tamanho."
+      }
+    ]
+  },
+  {
+    "id": "d0572253-9221-5eea-9320-e02f50f84c6a",
+    "slug": "cont-ses-ana-no-sul-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: Ana ou Bruno",
+    "enunciado": [
+      "A fórmula em **G1** deveria contar as vendas da Ana **ou** do Bruno, mas dá 0. Corrija-a."
+    ],
+    "dicas": [
+      "O CONT.SES exige todas as condições na mesma linha."
+    ],
+    "explicacao": [
+      "Ninguém é Ana e Bruno ao mesmo tempo. Para \"ou\", some dois CONT.SE: `=CONT.SE(A2:A8;\"Ana\")+CONT.SE(A2:A8;\"Bruno\")` → 5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-ses-ana-no-sul",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Ana ou Bruno",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "=CONT.SES(A2:A8;\"Ana\";A2:A8;\"Bruno\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(A2:A8;\"Ana\")+CONT.SE(A2:A8;\"Bruno\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "A2:A8;\\\"ANA\\\";B2:B9|A2:A9;\\\"ANA\\\";B2:B8",
+        "dica": "Os intervalos precisam ter o mesmo tamanho."
+      }
+    ]
+  },
+  {
+    "id": "f4f9a712-b193-5414-9c93-12f462550cb0",
+    "slug": "cont-ses-ana-no-sul-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "No CONT.SES, as condições são combinadas com…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Todas as condições precisam valer na mesma linha: é um E."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-ses-ana-no-sul",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "E"
+      },
+      {
+        "texto": "OU",
+        "dica": "Para OU, some dois CONT.SE."
+      },
+      {
+        "texto": "Tanto faz"
+      },
+      {
+        "texto": "Só a primeira conta"
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "5d1ba8e5-4fb5-5b13-84a1-e572a0c82855",
+    "slug": "somase-total-da-ana-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASE: total do Bruno",
+    "enunciado": [
+      "Em **G1**, o total vendido pelo **Bruno**."
+    ],
+    "dicas": [
+      "Onde procurar, o quê, o que somar."
+    ],
+    "explicacao": [
+      "`=SOMASE(A2:A8;\"Bruno\";C2:C8)` → 1.000."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somase-total-da-ana",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Total do Bruno",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(A2:A8;\"Bruno\";C2:C8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
+        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+      }
+    ]
+  },
+  {
+    "id": "79ad55cc-bbaf-5992-b524-b6776476df16",
+    "slug": "somase-total-da-ana-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASE por região",
+    "enunciado": [
+      "Em **G1**, o total da região **Norte**."
+    ],
+    "dicas": [
+      "A região está na coluna B."
+    ],
+    "explicacao": [
+      "`=SOMASE(B2:B8;\"Norte\";C2:C8)` → 1.350."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somase-total-da-ana",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Total do Norte",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1350,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(B2:B8;\"Norte\";C2:C8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
+        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+      }
+    ]
+  },
+  {
+    "id": "cdf6e867-07f7-53ff-95c7-81f8dce4ff94",
+    "slug": "somase-total-da-ana-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: precisa do terceiro argumento?",
+    "enunciado": [
+      "Em **G1**, some só as vendas **acima de 400**."
+    ],
+    "dicas": [
+      "O critério está na própria coluna que você vai somar."
+    ],
+    "explicacao": [
+      "`=SOMASE(C2:C8;\">400\")` → 2.250. Quando o critério está na coluna somada, o terceiro argumento é dispensável."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somase-total-da-ana",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Acima de 400",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 2250,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(C2:C8;\">400\")",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
+        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+      }
+    ]
+  },
+  {
+    "id": "c34f576a-9313-5dbf-aa73-439a04183272",
+    "slug": "somase-total-da-ana-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em **=SOMASE(A2:A8;\"Ana\";C2:C8)**, o que é C2:C8?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O terceiro argumento é o intervalo somado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somase-total-da-ana",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Onde procurar",
+        "dica": "Onde procurar é A2:A8."
+      },
+      {
+        "texto": "O critério",
+        "dica": "O critério é \"Ana\"."
+      },
+      {
+        "texto": "O que somar"
+      },
+      {
+        "texto": "Onde mostrar o resultado"
+      }
+    ],
+    "correta": 2
+  },
+  {
+    "id": "9b4a31dc-211d-5932-9f31-761ec4112152",
+    "slug": "somases-sul-pago-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASES: Ana e pago",
+    "enunciado": [
+      "Em **G1**, o total da **Ana** com status **Pago**."
+    ],
+    "dicas": [
+      "O intervalo a somar vem primeiro."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C8;A2:A8;\"Ana\";D2:D8;\"Pago\")` → 950."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-sul-pago",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Ana paga",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 950,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C8;A2:A8;\"Ana\";D2:D8;\"Pago\")",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
+        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+      }
+    ]
+  },
+  {
+    "id": "6364141d-5478-5b17-bcc8-026b088f345a",
+    "slug": "somases-sul-pago-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASES com comparação",
+    "enunciado": [
+      "Em **G1**, o total do **Norte** só com vendas de pelo menos **400**."
+    ],
+    "dicas": [
+      "A coluna somada também pode ser critério."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C8;B2:B8;\"Norte\";C2:C8;\">=400\")` → 1.050."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-sul-pago",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Norte, 400 ou mais",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1050,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C8;B2:B8;\"Norte\";C2:C8;\">=400\")",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
+        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+      }
+    ]
+  },
+  {
+    "id": "ae461177-923f-5dae-b966-9f4ecc24f1ed",
+    "slug": "somases-sul-pago-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: pago em minúsculas",
+    "enunciado": [
+      "O critério foi digitado \"pago\", em minúsculas. Quanto dá **=SOMASES(C2:C8;B2:B8;\"Sul\";D2:D8;\"pago\")**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Critérios não diferenciam maiúsculas: \"pago\" e \"Pago\" são iguais. O resultado continua 1.400."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-sul-pago",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "0",
+        "dica": "Os critérios não diferenciam maiúsculas de minúsculas."
+      },
+      {
+        "texto": "1.400"
+      },
+      {
+        "texto": "Erro"
+      },
+      {
+        "texto": "150"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "d35060a3-3e75-5461-8dee-aca91e460473",
+    "slug": "somases-sul-pago-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Na SOMASES, o **primeiro** argumento é…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Na SOMASES, o que somar vem primeiro; na SOMASE, por último."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-sul-pago",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "O critério"
+      },
+      {
+        "texto": "O intervalo a somar"
+      },
+      {
+        "texto": "O intervalo do critério",
+        "dica": "Esse é o primeiro argumento da SOMASE, não da SOMASES."
+      },
+      {
+        "texto": "A condição"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "c6bc15f6-6fc5-5f99-9b9d-afd1eafeddf1",
+    "slug": "mediase-media-do-norte-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIASE da Ana",
+    "enunciado": [
+      "Em **G1**, o valor médio das vendas da **Ana**."
+    ],
+    "dicas": [
+      "Mesma estrutura da SOMASE."
+    ],
+    "explicacao": [
+      "`=MÉDIASE(A2:A8;\"Ana\";C2:C8)` → 366,67."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "mediase-media-do-norte",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Média da Ana",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 366.666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIASE(A2:A8;\"Ana\";C2:C8)",
+        "formato": "moeda",
+        "tolerancia": 0.0001
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGEIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "/7$",
+        "dica": "Dividir por 7 usa todas as vendas. São só 3 do Norte; a MÉDIASE conta sozinha."
+      }
+    ]
+  },
+  {
+    "id": "118f0379-0cb3-55f3-aebe-4bc643925324",
+    "slug": "mediase-media-do-norte-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIASE das pagas",
+    "enunciado": [
+      "Em **G1**, o valor médio das vendas **pagas**."
+    ],
+    "dicas": [
+      "O status está na coluna D."
+    ],
+    "explicacao": [
+      "`=MÉDIASE(D2:D8;\"Pago\";C2:C8)` → 490."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "mediase-media-do-norte",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Média das pagas",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 490,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIASE(D2:D8;\"Pago\";C2:C8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGEIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "/7$",
+        "dica": "Dividir por 7 usa todas as vendas. São só 3 do Norte; a MÉDIASE conta sozinha."
+      }
+    ]
+  },
+  {
+    "id": "4f25497f-b02c-5605-96d0-1a6861d56e80",
+    "slug": "mediase-media-do-norte-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a média da Daniela",
+    "enunciado": [
+      "A fórmula em **G1** calcula a média da Daniela, que não tem vendas, e dá `#DIV/0!`. Corrija-a para mostrar 0 nesse caso."
+    ],
+    "dicas": [
+      "Sem vendas, não há o que dividir. Lembra do SEERRO?"
+    ],
+    "explicacao": [
+      "`=SEERRO(MÉDIASE(A2:A8;\"Daniela\";C2:C8);0)` → 0."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "mediase-media-do-norte",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Média da Daniela",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "=MÉDIASE(A2:A8;\"Daniela\";C2:C8)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(MÉDIASE(A2:A8;\"Daniela\";C2:C8);0)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGEIF",
+      "IFERROR"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "/7$",
+        "dica": "Dividir por 7 usa todas as vendas. São só 3 do Norte; a MÉDIASE conta sozinha."
+      }
+    ]
+  },
+  {
+    "id": "d30b16a3-8966-5a60-884e-a512a3173db7",
+    "slug": "mediase-media-do-norte-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "A **MÉDIASE** de um vendedor sem nenhuma venda resulta em…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Média de nenhum valor é divisão por zero: #DIV/0!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "mediase-media-do-norte",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "0",
+        "dica": "Não há o que dividir: o resultado é um erro, não zero."
+      },
+      {
+        "texto": "#DIV/0!"
+      },
+      {
+        "texto": "#N/D"
+      },
+      {
+        "texto": "Célula vazia"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "e7b34ec1-9ce2-5794-abd6-952deefa99cf",
+    "slug": "teste-condicionais-1",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendas da Carla",
+    "enunciado": [
+      "Em **G1**, quantas vendas a **Carla** fez?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "cont-se-vendas-da-ana",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Resposta",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(A2:A8;\"Carla\")"
+      }
+    ]
+  },
+  {
+    "id": "6e4e4c43-754a-50fe-85d0-667e2a3684f7",
+    "slug": "teste-condicionais-2",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total do Sul",
+    "enunciado": [
+      "Em **G1**, o total vendido na região **Sul**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "somase-total-da-ana",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Resposta",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 1550,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(B2:B8;\"Sul\";C2:C8)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "02ddb4c4-bcef-540f-877a-bf2582d1d253",
+    "slug": "teste-condicionais-3",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Norte pago",
+    "enunciado": [
+      "Em **G1**, quantas vendas do **Norte** estão **pagas**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "cont-ses-ana-no-sul",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Resposta",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(B2:B8;\"Norte\";D2:D8;\"Pago\")"
+      }
+    ]
+  },
+  {
+    "id": "4ef01fdc-6858-55a8-9948-d626167d43b8",
+    "slug": "teste-condicionais-4",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total pendente",
+    "enunciado": [
+      "Em **G1**, o total ainda **pendente**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "somase-total-da-ana",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Resposta",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 100,
+        "F": 190,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 450,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(D2:D8;\"Pendente\";C2:C8)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "77d63f58-c540-5731-9931-27f6db518917",
+    "slug": "teste-condicionais-5",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fórmula correta",
+    "enunciado": [
+      "Qual fórmula está escrita corretamente?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "somases-sul-pago",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "=SOMASES(B2:B8;\"Sul\";C2:C8)"
+      },
+      {
+        "texto": "=SOMASES(C2:C8;B2:B8;\"Sul\")"
+      },
+      {
+        "texto": "=SOMASE(C2:C8;B2:B8;\"Sul\")"
+      },
+      {
+        "texto": "=SOMASE(\"Sul\";B2:B8;C2:C8)"
+      }
+    ],
+    "correta": 1
   }
 ]

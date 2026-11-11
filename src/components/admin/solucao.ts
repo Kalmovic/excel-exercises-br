@@ -27,6 +27,9 @@ export function preencherSolucao(ex: Exercicio, planilha: Planilha, store: Store
     case "text_answer":
       store.getState().setResposta(ex.aceitas[0]);
       return;
+    case "multiple_choice":
+      store.getState().setResposta(String(ex.correta));
+      return;
     case "click_cell": {
       // Direto no estado: não conta como mudança pelo mouse e ignora a seleção travada.
       const p = deIntervalo(ex.celula).inicio;

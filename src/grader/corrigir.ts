@@ -8,6 +8,7 @@ import { iguais, TOLERANCIA_PADRAO, type EstadoCorrecao, type Falha, type Result
 import { validarClickCell } from "./validadores/click-cell";
 import { validarFormatCell } from "./validadores/format-cell";
 import { validarSelectRange } from "./validadores/select-range";
+import { validarMultipleChoice } from "./validadores/multiple-choice";
 import { validarTextAnswer } from "./validadores/text-answer";
 import { validarTypeValue } from "./validadores/type-value";
 
@@ -278,5 +279,7 @@ function corrigirPorTipo(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resulta
       return validarTypeValue(ex, estado());
     case "format_cell":
       return validarFormatCell(ex, estado());
+    case "multiple_choice":
+      return validarMultipleChoice(ex, estado());
   }
 }

@@ -215,3 +215,13 @@ Lote 1 (sem backend):
 - [x] Páginas por público, estáticas e no sitemap: `/teste-de-excel`, `/excel-para-concurso` (com exercício grátis embutido), `/empresas` e `/universidades` (piloto, FAQ, "fale com a gente" e "indicar uma empresa" com o nome de quem indicou). Formulários validados com o mesmo esquema no navegador e no servidor (`src/lib/contato.ts`), com consentimento e campo-armadilha contra robôs.
 - [ ] **Provisório:** `/api/contato` só grava no log do servidor (`lead_b2b` nos Logs da Vercel). No Lote 2: tabela de leads no Supabase + e-mail para a equipe (Resend). Os leads ficam no log da Vercel enquanto isso (retenção curta; conferir com frequência).
 - [ ] Preço de empresas na página (a partir de R$ 15/pessoa/mês, mínimo 5, anual) é a hipótese do doc: confirmar antes de divulgar. O piloto promete medir o nível antes e depois: até o teste de nível existir (tarefa 9), fazer à mão.
+
+### Roteiro v2: lições de 5 questões e teste do módulo (docs/roteiro-exercicios.md)
+
+Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no topo (a casa do mapa é a lição, concluída quando as 5 questões estão feitas); o Intro fica sem lições de 5 questões; pegadinha de "por quê?" vira "corrija a fórmula" (a célula começa com a fórmula errada) e, quando não há o que consertar, múltipla escolha; conteúdo em lotes.
+
+- [x] Infra: tipo `multiple_choice` (alternativas com dica por alternativa errada); campos `licao`, `etapa`, `papel`, `teste`, `revisar`; progresso por questão em `licao#etapa` e "lição concluída" no slug da lição (`src/content/licao.ts`, `concluirLicaoSeCompleta`); teste do módulo em `/teste/[modulo]` (uma tentativa por questão, 4 de 5 aprova, revisão das lições erradas, resultado em `src/lib/testes.ts`), oferecido na última questão do módulo.
+- [x] Conteúdo dos módulos 1 a 3: 18 lições × 4 questões novas + 3 testes (gerador em scratchpad; o JSON em `src/content/modulos/` é a fonte).
+- [ ] Conteúdo dos módulos 4 a 8 (24 lições × 4 questões + 5 testes).
+- [ ] Teste aprovado conta para o certificado: depende do backend (validação no servidor).
+- [ ] O Intro não tem teste (decisão de manter o Intro só com os exercícios da planilha); confirmar se o teste do Módulo 0 do roteiro entra.
