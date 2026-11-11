@@ -95,7 +95,10 @@
     "video": "Mostrar que a data é um número, formatando uma data como Número.",
     "funcoesExigidas": [
       "TODAY"
-    ]
+    ],
+    "licao": "hoje-dias-ate-o-vencimento",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "b977b70b-cd99-5a87-8635-bfce2184de78",
@@ -197,7 +200,10 @@
     "funcoesExigidas": [
       "YEAR",
       "MONTH"
-    ]
+    ],
+    "licao": "ano-e-mes-de-uma-venda",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "0f5f78bf-ca88-55ab-a30c-f0fd6b67d58c",
@@ -295,7 +301,10 @@
     "video": "Montar \"6 anos e 8 meses\" juntando dois DATADIF com &.",
     "funcoesExigidas": [
       "DATEDIF"
-    ]
+    ],
+    "licao": "datadif-tempo-de-empresa",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "85ac1ff0-e16f-5256-984a-17f8605d5436",
@@ -377,7 +386,10 @@
     "video": "Montar uma lista de feriados nacionais numa aba e usar em todas as fórmulas.",
     "funcoesExigidas": [
       "NETWORKDAYS"
-    ]
+    ],
+    "licao": "diatrabalhototal-dezembro",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "f9387fdc-2c0c-572c-ac7f-5c13da50e7e6",
@@ -467,6 +479,1566 @@
     "video": "O truque: =FIMMÊS(A2;-1)+1 dá o primeiro dia do mês.",
     "funcoesExigidas": [
       "EOMONTH"
+    ],
+    "licao": "fimmes-vencimento-mes-seguinte",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "70363dbc-98fb-507b-bee9-94a6eaf71306",
+    "slug": "hoje-dias-ate-o-vencimento-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "HOJE: dias desde a compra",
+    "enunciado": [
+      "Em **B2**, calcule quantos dias se passaram desde a compra de A2."
+    ],
+    "dicas": [
+      "Agora a data de hoje vem primeiro: hoje − compra."
+    ],
+    "explicacao": [
+      "`=HOJE()-A2`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "hoje-dias-ate-o-vencimento",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Dias desde",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "01/09/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 71,
+        "exigeFormula": true,
+        "solucaoReferencia": "=HOJE()-A2",
+        "esperadoDaReferencia": true
+      }
+    ],
+    "funcoesExigidas": [
+      "TODAY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
+        "dica": "Amanhã a conta estará errada. Use HOJE()."
+      }
     ]
+  },
+  {
+    "id": "cf750783-b212-591a-ad6c-422126aae434",
+    "slug": "hoje-dias-ate-o-vencimento-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Vencida ou em dia",
+    "enunciado": [
+      "Em **C2**, mostre \"Vencida\" se o vencimento de B2 já passou, senão \"Em dia\"."
+    ],
+    "dicas": [
+      "\"Já passou\" é ser menor que HOJE()."
+    ],
+    "explicacao": [
+      "`=SE(B2<HOJE();\"Vencida\";\"Em dia\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "hoje-dias-ate-o-vencimento",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Luz"
+        },
+        "B2": {
+          "entrada": "10/01/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Vencida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B2<HOJE();\"Vencida\";\"Em dia\")",
+        "esperadoDaReferencia": true
+      }
+    ],
+    "funcoesExigidas": [
+      "TODAY",
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
+        "dica": "Amanhã a conta estará errada. Use HOJE()."
+      }
+    ]
+  },
+  {
+    "id": "6fed65e1-5d5f-5354-978f-10ce1c9f5b68",
+    "slug": "hoje-dias-ate-o-vencimento-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: o #NOME? do HOJE",
+    "enunciado": [
+      "A fórmula em **C2** dá `#NOME?`. Corrija-a para calcular os dias até o vencimento."
+    ],
+    "dicas": [
+      "Funções sem argumento ainda precisam dos parênteses."
+    ],
+    "explicacao": [
+      "Faltaram os parênteses: `=B2-HOJE()`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "hoje-dias-ate-o-vencimento",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dias",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "05/01/2027"
+        },
+        "C2": {
+          "entrada": "=B2-HOJE",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 55,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2-HOJE()",
+        "esperadoDaReferencia": true
+      }
+    ],
+    "funcoesExigidas": [
+      "TODAY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
+        "dica": "Amanhã a conta estará errada. Use HOJE()."
+      }
+    ]
+  },
+  {
+    "id": "fa0f8422-846a-5102-88b0-fea454489166",
+    "slug": "hoje-dias-ate-o-vencimento-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quando o valor de **HOJE()** muda?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "HOJE() é recalculada sempre que a planilha abre ou muda: amanhã, mostra a data de amanhã."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "hoje-dias-ate-o-vencimento",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Nunca"
+      },
+      {
+        "texto": "Todo dia, quando a planilha recalcula"
+      },
+      {
+        "texto": "Só quando você redigita"
+      },
+      {
+        "texto": "A cada hora",
+        "dica": "HOJE() devolve só a data, sem hora."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "fcb4807d-8a23-5451-83c3-41615c18c8e2",
+    "slug": "ano-e-mes-de-uma-venda-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 22,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÊS de uma data",
+    "enunciado": [
+      "Em **B2**, extraia o mês da data de A2."
+    ],
+    "dicas": [
+      "MÊS devolve de 1 a 12."
+    ],
+    "explicacao": [
+      "`=MÊS(A2)` → 11."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ano-e-mes-de-uma-venda",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 11,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÊS(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "MONTH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=(ESQUERDA|DIREITA|EXT\\.TEXTO)\\(",
+        "dica": "Datas não são texto. Use as funções de data: ANO e MÊS."
+      }
+    ]
+  },
+  {
+    "id": "02b61944-65b3-5539-9a25-253fb0cf7198",
+    "slug": "ano-e-mes-de-uma-venda-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 23,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIA de uma data",
+    "enunciado": [
+      "Em **B2**, extraia o dia da data de A2."
+    ],
+    "dicas": [
+      "Existe também a função DIA."
+    ],
+    "explicacao": [
+      "`=DIA(A2)` → 25."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ano-e-mes-de-uma-venda",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "25/12/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 25,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIA(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "DAY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=(ESQUERDA|DIREITA|EXT\\.TEXTO)\\(",
+        "dica": "Datas não são texto. Use as funções de data: ANO e MÊS."
+      }
+    ]
+  },
+  {
+    "id": "5ae1ebb1-0844-5f78-8330-17864f76e758",
+    "slug": "ano-e-mes-de-uma-venda-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 24,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a data com pontos",
+    "enunciado": [
+      "**B2** usa `=ANO(A2)` e dá `#VALOR!`, porque A2 foi digitada com pontos (15.03.2026). Corrija a data em **A2**."
+    ],
+    "dicas": [
+      "No Excel em português, a data se escreve com barras."
+    ],
+    "explicacao": [
+      "Com pontos, a data vira texto. Digitada como 15/03/2026, ela vira data e o ANO funciona."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ano-e-mes-de-uma-venda",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "type_value",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "15.03.2026",
+          "bloqueada": false
+        },
+        "B2": {
+          "entrada": "=ANO(A2)"
+        }
+      },
+      "larguras": {
+        "A": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "A2",
+        "esperado": {
+          "data": "2026-03-15"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fe0b0708-cf43-51cb-b259-ecfa73896347",
+    "slug": "ano-e-mes-de-uma-venda-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em 2026, quanto dá **=ANO(HOJE())**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "ANO pega o ano da data de hoje: 2026."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ano-e-mes-de-uma-venda",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "26",
+        "dica": "ANO devolve o ano com 4 dígitos."
+      },
+      {
+        "texto": "2026"
+      },
+      {
+        "texto": "A data de hoje"
+      },
+      {
+        "texto": "Erro"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "98930da7-0c7b-589a-9005-8a30f303412d",
+    "slug": "datadif-tempo-de-empresa-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATADIF: a idade",
+    "enunciado": [
+      "Em **C2**, calcule a idade em anos completos entre o nascimento (A2) e a referência (B2)."
+    ],
+    "dicas": [
+      "Idade é tempo em anos completos."
+    ],
+    "explicacao": [
+      "`=DATADIF(A2;B2;\"Y\")` → 31."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datadif-tempo-de-empresa",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nascimento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Referência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Idade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "20/05/1995"
+        },
+        "B2": {
+          "entrada": "01/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 31,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(A2;B2;\"Y\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "DATEDIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DATADIF\\(B\\d;A\\d",
+        "dica": "A data inicial vem primeiro."
+      },
+      {
+        "padrao": "/365",
+        "dica": "Assim você ganha anos quebrados e erra com anos bissextos. Use DATADIF com \"Y\"."
+      }
+    ]
+  },
+  {
+    "id": "d872f340-1f2e-50ca-abb6-afa762ed94bc",
+    "slug": "datadif-tempo-de-empresa-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATADIF em meses",
+    "enunciado": [
+      "Em **C2**, os **meses** completos entre A2 e B2."
+    ],
+    "dicas": [
+      "A unidade dos meses é \"M\"."
+    ],
+    "explicacao": [
+      "`=DATADIF(A2;B2;\"M\")` → 9 (o 10º mês só fecha em 15/11)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datadif-tempo-de-empresa",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meses",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "15/01/2026"
+        },
+        "B2": {
+          "entrada": "01/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(A2;B2;\"M\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "DATEDIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DATADIF\\(B\\d;A\\d",
+        "dica": "A data inicial vem primeiro."
+      },
+      {
+        "padrao": "/365",
+        "dica": "Assim você ganha anos quebrados e erra com anos bissextos. Use DATADIF com \"Y\"."
+      }
+    ]
+  },
+  {
+    "id": "1b5161ba-b49b-5e3a-bb17-1ab286462758",
+    "slug": "datadif-tempo-de-empresa-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: 5 ou 6 anos?",
+    "enunciado": [
+      "Admissão em 01/12/2020. Em 30/11/2026, o DATADIF com \"Y\" dá 5, e não 6. Está errado?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "DATADIF com \"Y\" conta anos **completos**: o 6º só fecha no dia 01/12/2026."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datadif-tempo-de-empresa",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Sim, deveria dar 6",
+        "dica": "O 6º ano só se completa em 01/12/2026."
+      },
+      {
+        "texto": "Não: o 6º ano ainda não se completou"
+      },
+      {
+        "texto": "Sim, faltou o \"M\""
+      },
+      {
+        "texto": "Depende do formato da célula"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "9ab39336-55d1-52d3-8d27-4d4e2a682738",
+    "slug": "datadif-tempo-de-empresa-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "A unidade **\"M\"** no DATADIF devolve…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "\"M\" conta meses completos entre as duas datas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datadif-tempo-de-empresa",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Meses completos"
+      },
+      {
+        "texto": "O mês da data",
+        "dica": "Esse é o MÊS()."
+      },
+      {
+        "texto": "Minutos"
+      },
+      {
+        "texto": "Meses arredondados",
+        "dica": "São meses completos, sem arredondar."
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "485c2842-7176-5109-8af3-8a8774fdc5f9",
+    "slug": "diatrabalhototal-dezembro-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dias úteis de novembro",
+    "enunciado": [
+      "Em **C2**, conte os dias úteis de novembro de 2026, descontando os feriados de **E2:E4**."
+    ],
+    "dicas": [
+      "Os feriados podem ser um intervalo."
+    ],
+    "explicacao": [
+      "`=DIATRABALHOTOTAL(A2;B2;E2:E4)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalhototal-dezembro",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dias úteis",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "01/11/2026"
+        },
+        "B2": {
+          "entrada": "30/11/2026"
+        },
+        "E1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "02/11/2026"
+        },
+        "E3": {
+          "entrada": "15/11/2026"
+        },
+        "E4": {
+          "entrada": "20/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 100,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 19,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(A2;B2;E2:E4)"
+      }
+    ],
+    "funcoesExigidas": [
+      "NETWORKDAYS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DIATRABALHOTOTAL\\(A2;B2\\)$",
+        "dica": "Faltou informar o feriado no terceiro argumento."
+      },
+      {
+        "padrao": "^=B2-A2$",
+        "dica": "Isso conta todos os dias, inclusive fins de semana."
+      }
+    ]
+  },
+  {
+    "id": "06d70232-a27a-545a-95b9-11bc8cc202ab",
+    "slug": "diatrabalhototal-dezembro-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIATRABALHO: a data de entrega",
+    "enunciado": [
+      "A entrega leva **10 dias úteis** a partir de A2. Em **C2**, calcule a data de entrega."
+    ],
+    "dicas": [
+      "DIATRABALHO devolve a data; DIATRABALHOTOTAL conta os dias."
+    ],
+    "explicacao": [
+      "`=DIATRABALHO(A2;B2)` → 15/12/2026."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalhototal-dezembro",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Dias úteis",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "01/12/2026"
+        },
+        "B2": {
+          "entrada": "10"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": {
+          "data": "2026-12-15"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(A2;B2)",
+        "formato": "data"
+      }
+    ],
+    "funcoesExigidas": [
+      "WORKDAY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DIATRABALHOTOTAL\\(A2;B2\\)$",
+        "dica": "Faltou informar o feriado no terceiro argumento."
+      },
+      {
+        "padrao": "^=B2-A2$",
+        "dica": "Isso conta todos os dias, inclusive fins de semana."
+      }
+    ]
+  },
+  {
+    "id": "b40af703-b94d-5890-8269-44d335bcdba5",
+    "slug": "diatrabalhototal-dezembro-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o feriado que não mudou nada",
+    "enunciado": [
+      "Incluir 15/11/2026 na lista de feriados não mudou o resultado do DIATRABALHOTOTAL. Por quê?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Fins de semana já ficam de fora: um feriado no domingo não muda nada."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalhototal-dezembro",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A lista estava errada"
+      },
+      {
+        "texto": "Em 2026, 15/11 cai num domingo, que já não era contado"
+      },
+      {
+        "texto": "Feriados só valem no 3º argumento travado"
+      },
+      {
+        "texto": "O DIATRABALHOTOTAL ignora feriados"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "4953c8cf-f23f-58c3-81c6-4bbc0a58dd89",
+    "slug": "diatrabalhototal-dezembro-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que o **DIATRABALHOTOTAL** conta?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Conta os dias de semana entre as datas, inclusive, e desconta os feriados."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalhototal-dezembro",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Todos os dias"
+      },
+      {
+        "texto": "Segunda a sexta, menos os feriados informados"
+      },
+      {
+        "texto": "Segunda a sábado"
+      },
+      {
+        "texto": "Só os feriados"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "d0e5cfc3-2e27-573c-810a-f74b87e1ef15",
+    "slug": "fimmes-vencimento-mes-seguinte-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FIMMÊS do próprio mês",
+    "enunciado": [
+      "Em **B2**, o último dia do mês da data de A2."
+    ],
+    "dicas": [
+      "Com 0, é o próprio mês."
+    ],
+    "explicacao": [
+      "`=FIMMÊS(A2;0)` → 30/04/2026."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "fimmes-vencimento-mes-seguinte",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fim do mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "10/04/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": {
+          "data": "2026-04-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A2;0)",
+        "formato": "data"
+      }
+    ],
+    "funcoesExigidas": [
+      "EOMONTH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d\\+30$",
+        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+      }
+    ]
+  },
+  {
+    "id": "ad9b4320-b3ab-5ed3-866c-deb5647c67fa",
+    "slug": "fimmes-vencimento-mes-seguinte-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FIMMÊS três meses depois",
+    "enunciado": [
+      "Em **B2**, o vencimento: fim do mês, 3 meses depois da compra de A2."
+    ],
+    "dicas": [
+      "O 2º argumento é quantos meses andar."
+    ],
+    "explicacao": [
+      "`=FIMMÊS(A2;3)` → 28/02/2027."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "fimmes-vencimento-mes-seguinte",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "15/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": {
+          "data": "2027-02-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A2;3)",
+        "formato": "data"
+      }
+    ],
+    "funcoesExigidas": [
+      "EOMONTH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d\\+30$",
+        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+      }
+    ]
+  },
+  {
+    "id": "cdbe4733-0ef8-5ff9-8aa1-89d742f950a4",
+    "slug": "fimmes-vencimento-mes-seguinte-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o +30 que pulou fevereiro",
+    "enunciado": [
+      "Para o vencimento no fim do mês seguinte à compra de A2 (31/01/2026), alguém usou `=A2+30` em B2 e deu 02/03/2026. Corrija."
+    ],
+    "dicas": [
+      "Fevereiro tem 28 dias. Para fim de mês, use FIMMÊS."
+    ],
+    "explicacao": [
+      "Somar 30 dias pulou fevereiro. `=FIMMÊS(A2;1)` → 28/02/2026."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "fimmes-vencimento-mes-seguinte",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "31/01/2026"
+        },
+        "B2": {
+          "entrada": "=A2+30",
+          "bloqueada": false,
+          "formato": "data"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": {
+          "data": "2026-02-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A2;1)",
+        "formato": "data"
+      }
+    ],
+    "funcoesExigidas": [
+      "EOMONTH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d\\+30$",
+        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+      }
+    ]
+  },
+  {
+    "id": "72ccbb04-759f-5a55-920e-a9b07fc5fedd",
+    "slug": "fimmes-vencimento-mes-seguinte-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "**=FIMMÊS(data;0)** devolve…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Com 0, o FIMMÊS fica no próprio mês."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "fimmes-vencimento-mes-seguinte",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "O primeiro dia do mês",
+        "dica": "O primeiro dia sai com =FIMMÊS(data;-1)+1."
+      },
+      {
+        "texto": "O último dia do mesmo mês"
+      },
+      {
+        "texto": "O último dia do mês seguinte",
+        "dica": "Esse é com 1."
+      },
+      {
+        "texto": "A própria data"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "652075f4-7733-5ef9-ae01-434ccdd6e979",
+    "slug": "teste-datas-1",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ano da data",
+    "enunciado": [
+      "Em **D2**, o ano da data em A2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "ano-e-mes-de-uma-venda",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Referência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "18/07/2026"
+        },
+        "B2": {
+          "entrada": "03/03/2015"
+        },
+        "C2": {
+          "entrada": "01/11/2026"
+        },
+        "D1": {
+          "entrada": "Ano",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "F": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 2026,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ANO(A2)"
+      }
+    ]
+  },
+  {
+    "id": "7ad462ae-5928-5a5a-a8e3-db2e501d4967",
+    "slug": "teste-datas-2",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Anos completos",
+    "enunciado": [
+      "Em **E2**, os anos completos entre B2 e C2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "datadif-tempo-de-empresa",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Referência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "18/07/2026"
+        },
+        "B2": {
+          "entrada": "03/03/2015"
+        },
+        "C2": {
+          "entrada": "01/11/2026"
+        },
+        "E1": {
+          "entrada": "Anos",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "F": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 11,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATADIF(B2;C2;\"Y\")"
+      }
+    ]
+  },
+  {
+    "id": "487db3a9-1dc5-5fcb-9fb7-5ab1122acb1c",
+    "slug": "teste-datas-3",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dias úteis de outubro",
+    "enunciado": [
+      "Em **C2**, os dias úteis de 01/10/2026 a 31/10/2026, descontando o feriado de E2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "diatrabalhototal-dezembro",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dias úteis",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "01/10/2026"
+        },
+        "B2": {
+          "entrada": "31/10/2026"
+        },
+        "E1": {
+          "entrada": "Feriado",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "12/10/2026"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 100,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 21,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(A2;B2;E2)"
+      }
+    ]
+  },
+  {
+    "id": "e7859b2e-8af5-5699-b487-62ef1ab6e83e",
+    "slug": "teste-datas-4",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fim do mês seguinte",
+    "enunciado": [
+      "Em **F2**, o último dia do mês seguinte à data de A2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "fimmes-vencimento-mes-seguinte",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Referência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "18/07/2026"
+        },
+        "B2": {
+          "entrada": "03/03/2015"
+        },
+        "C2": {
+          "entrada": "01/11/2026"
+        },
+        "F1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "F": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": {
+          "data": "2026-08-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=FIMMÊS(A2;1)",
+        "formato": "data"
+      }
+    ]
+  },
+  {
+    "id": "dc72baf9-b81e-5993-90f8-86f226498622",
+    "slug": "teste-datas-5",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que é uma data",
+    "enunciado": [
+      "Para o Excel, uma data é:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "hoje-dias-ate-o-vencimento",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Um texto"
+      },
+      {
+        "texto": "Um número de dias"
+      },
+      {
+        "texto": "Uma fórmula"
+      },
+      {
+        "texto": "Uma imagem"
+      }
+    ],
+    "correta": 1
   }
 ]

@@ -92,7 +92,10 @@
         "dica": "O + soma números. Para juntar textos, use &."
       }
     ],
-    "video": "Juntar três colunas (rua, número, bairro) num endereço completo."
+    "video": "Juntar três colunas (rua, número, bairro) num endereço completo.",
+    "licao": "juntar-nome-e-sobrenome-com-espaco",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "6ea5b533-8d4a-5596-b2d3-3bf6526a98c6",
@@ -201,7 +204,10 @@
     "funcoesExigidas": [
       "LEFT",
       "RIGHT"
-    ]
+    ],
+    "licao": "esquerda-e-direita-do-pedido",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "a92f26c8-ef42-5e3e-967f-3abe1277fc28",
@@ -281,7 +287,10 @@
     "video": "Numerar os caracteres em cima do código, um por um.",
     "funcoesExigidas": [
       "MID"
-    ]
+    ],
+    "licao": "ext-texto-ano-do-codigo",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "42be509c-0fad-5db7-9004-46b872c946fc",
@@ -361,7 +370,10 @@
     "video": "O caso real: um PROCV que dá #N/D por causa de um espaço invisível, resolvido com ARRUMAR.",
     "funcoesExigidas": [
       "TRIM"
-    ]
+    ],
+    "licao": "arrumar-espacos-sobrando",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "fab05b32-4096-5696-a91a-31a24e0f95fe",
@@ -442,7 +454,10 @@
     "video": "Mostrar a limitação: \"maria da silva\" vira \"Maria Da Silva\".",
     "funcoesExigidas": [
       "PROPER"
-    ]
+    ],
+    "licao": "pri-maiuscula-nomes",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "4c311e77-28b2-50c5-8840-3c1d63fbfd88",
@@ -551,7 +566,10 @@
     "funcoesExigidas": [
       "SEARCH",
       "LEFT"
-    ]
+    ],
+    "licao": "localizar-arroba",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "564f4a77-e612-55af-8950-481d3ac4b6c5",
@@ -631,6 +649,2106 @@
     "video": "Limpar uma coluna de telefones, tirando parênteses, espaços e hífens com SUBSTITUIR encadeado.",
     "funcoesExigidas": [
       "SUBSTITUTE"
+    ],
+    "licao": "substituir-underline-por-hifen",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "e6d8270f-3ca0-54e4-b4b3-90071b2b0452",
+    "slug": "juntar-nome-e-sobrenome-com-espaco-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Juntar: rua e número",
+    "enunciado": [
+      "Em **C2**, monte o endereço no formato \"Rua das Flores, 120\"."
+    ],
+    "dicas": [
+      "A vírgula e o espaço também vão entre aspas: \", \"."
+    ],
+    "explicacao": [
+      "`=A2&\", \"&B2`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "juntar-nome-e-sobrenome-com-espaco",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Rua",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Endereço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rua das Flores"
+        },
+        "B2": {
+          "entrada": "120"
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "C": 180
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Rua das Flores, 120",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\", \"&B2"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d&B\\d$",
+        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+      },
+      {
+        "padrao": "^=A\\d\\+B\\d$",
+        "dica": "O + soma números. Para juntar textos, use &."
+      }
     ]
+  },
+  {
+    "id": "a60585a0-6e54-5ee5-bc3d-c461cbdd55ad",
+    "slug": "juntar-nome-e-sobrenome-com-espaco-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Juntar: cidade e UF",
+    "enunciado": [
+      "Em **C2**, monte \"Rio de Janeiro/RJ\"."
+    ],
+    "dicas": [
+      "A barra é um texto: \"/\"."
+    ],
+    "explicacao": [
+      "`=A2&\"/\"&B2`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "juntar-nome-e-sobrenome-com-espaco",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "UF",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Local",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rio de Janeiro"
+        },
+        "B2": {
+          "entrada": "RJ"
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "C": 160
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Rio de Janeiro/RJ",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\"/\"&B2"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d&B\\d$",
+        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+      },
+      {
+        "padrao": "^=A\\d\\+B\\d$",
+        "dica": "O + soma números. Para juntar textos, use &."
+      }
+    ]
+  },
+  {
+    "id": "e3cc994c-9f21-5ef2-a005-2aa87a43e9a6",
+    "slug": "juntar-nome-e-sobrenome-com-espaco-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: dois espaços no meio",
+    "enunciado": [
+      "A fórmula em **C2** junta nome e sobrenome, mas saem **dois** espaços no meio, porque A2 tem um espaço sobrando no fim. Corrija-a."
+    ],
+    "dicas": [
+      "Limpe o nome antes de juntar: ARRUMAR."
+    ],
+    "explicacao": [
+      "`=ARRUMAR(A2)&\" \"&B2`: o ARRUMAR tira o espaço que sobrava no fim do nome."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "juntar-nome-e-sobrenome-com-espaco",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Completo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Maria "
+        },
+        "B2": {
+          "entrada": "Souza"
+        },
+        "C2": {
+          "entrada": "=A2&\" \"&B2",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "C": 150
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Maria Souza",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRUMAR(A2)&\" \"&B2"
+      }
+    ],
+    "funcoesExigidas": [
+      "TRIM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=A\\d&B\\d$",
+        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+      },
+      {
+        "padrao": "^=A\\d\\+B\\d$",
+        "dica": "O + soma números. Para juntar textos, use &."
+      }
+    ]
+  },
+  {
+    "id": "662cb442-0b3a-53d5-bc12-3940f45c51f5",
+    "slug": "juntar-nome-e-sobrenome-com-espaco-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual operador junta textos?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O & cola textos: =A2&B2."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "juntar-nome-e-sobrenome-com-espaco",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "+",
+        "dica": "O + soma números e dá #VALOR! com texto."
+      },
+      {
+        "texto": "&"
+      },
+      {
+        "texto": "*"
+      },
+      {
+        "texto": ";",
+        "dica": "O ; separa argumentos de função."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "95d6874e-6b92-5dc4-85e2-f2a6d3af692f",
+    "slug": "esquerda-e-direita-do-pedido-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 22,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIREITA: o número do pedido",
+    "enunciado": [
+      "Em **B2**, extraia o número do pedido (os 4 últimos caracteres) do código de A2."
+    ],
+    "dicas": [
+      "DIREITA pega do fim."
+    ],
+    "explicacao": [
+      "`=DIREITA(A2;4)` → 1187."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "esquerda-e-direita-do-pedido",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "RJ-2025-1187"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "1187",
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIREITA(A2;4)"
+      }
+    ],
+    "funcoesExigidas": [
+      "RIGHT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DIREITA\\(A\\d;2\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim.",
+        "celula": "B2"
+      },
+      {
+        "padrao": "^=ESQUERDA\\(A\\d;4\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim."
+      }
+    ]
+  },
+  {
+    "id": "83ccbd17-8051-54f5-9748-968f41a14194",
+    "slug": "esquerda-e-direita-do-pedido-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 23,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ESQUERDA: o começo do CEP",
+    "enunciado": [
+      "Em **B2**, extraia os 5 primeiros dígitos do CEP de A2."
+    ],
+    "dicas": [
+      "ESQUERDA pega do começo."
+    ],
+    "explicacao": [
+      "`=ESQUERDA(A2;5)` → 20040."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "esquerda-e-direita-do-pedido",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "CEP",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "20040-020"
+        }
+      },
+      "larguras": {
+        "A": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "20040",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(A2;5)"
+      }
+    ],
+    "funcoesExigidas": [
+      "LEFT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DIREITA\\(A\\d;2\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim.",
+        "celula": "B2"
+      },
+      {
+        "padrao": "^=ESQUERDA\\(A\\d;4\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim."
+      }
+    ]
+  },
+  {
+    "id": "0004111e-3015-5603-8468-1a87eb2bc325",
+    "slug": "esquerda-e-direita-do-pedido-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 24,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o 6-42",
+    "enunciado": [
+      "O código **SP-2026-42** termina num número de **2** dígitos. A fórmula em **B2** devolveu \"6-42\". Corrija-a para trazer só o número."
+    ],
+    "dicas": [
+      "Quantos dígitos tem este número?"
+    ],
+    "explicacao": [
+      "Aqui o número tem 2 dígitos: `=DIREITA(A2;2)`. ESQUERDA e DIREITA contam uma quantidade fixa; para tamanhos variáveis, use LOCALIZAR (lição 5.6)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "esquerda-e-direita-do-pedido",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SP-2026-42"
+        },
+        "B2": {
+          "entrada": "=DIREITA(A2;4)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "42",
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIREITA(A2;2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "RIGHT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DIREITA\\(A\\d;2\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim.",
+        "celula": "B2"
+      },
+      {
+        "padrao": "^=ESQUERDA\\(A\\d;4\\)$",
+        "dica": "ESQUERDA pega do começo; DIREITA, do fim."
+      }
+    ]
+  },
+  {
+    "id": "62146861-2fdd-5a35-90ff-091e0794a0ba",
+    "slug": "esquerda-e-direita-do-pedido-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá **=ESQUERDA(\"Planilha\";4)**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "ESQUERDA pega os 4 primeiros caracteres: Plan."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "esquerda-e-direita-do-pedido",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Plan"
+      },
+      {
+        "texto": "ilha",
+        "dica": "Esses são os 4 últimos: DIREITA."
+      },
+      {
+        "texto": "lanh"
+      },
+      {
+        "texto": "Planilha"
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "9193c68b-b1dd-5c49-8fa3-9d3b11265b70",
+    "slug": "ext-texto-ano-do-codigo-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "EXT.TEXTO: outro ano",
+    "enunciado": [
+      "Em **B2**, extraia o ano do código de A2."
+    ],
+    "dicas": [
+      "Mesmo formato do código, mesma posição."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;4;4)` → 2025."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ext-texto-ano-do-codigo",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "RJ-2025-1187"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "2025",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;4;4)"
+      }
+    ],
+    "funcoesExigidas": [
+      "MID"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";3;4\\)$",
+        "dica": "Conte o hífen também: o ano começa na posição 4."
+      }
+    ]
+  },
+  {
+    "id": "4b107006-f549-5363-bd6e-142023566beb",
+    "slug": "ext-texto-ano-do-codigo-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "EXT.TEXTO: a categoria",
+    "enunciado": [
+      "Em **B2**, extraia a categoria (as 3 letras do meio) do código **PRD-ABC-77**."
+    ],
+    "dicas": [
+      "Conte: P, R, D e o hífen vêm antes."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;5;3)` → ABC."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ext-texto-ano-do-codigo",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PRD-ABC-77"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "ABC",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;5;3)"
+      }
+    ],
+    "funcoesExigidas": [
+      "MID"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";3;4\\)$",
+        "dica": "Conte o hífen também: o ano começa na posição 4."
+      }
+    ]
+  },
+  {
+    "id": "af5ec9ab-782c-5bfb-b151-9c7fe353c0e1",
+    "slug": "ext-texto-ano-do-codigo-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o ano que veio com o resto",
+    "enunciado": [
+      "A fórmula em **B2** trouxe \"2026-0042\" em vez do ano. Corrija-a."
+    ],
+    "dicas": [
+      "O 3º argumento é a quantidade de caracteres."
+    ],
+    "explicacao": [
+      "Pedir 10 caracteres a partir da posição 4 vai até o fim do texto. O ano tem 4: `=EXT.TEXTO(A2;4;4)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ext-texto-ano-do-codigo",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ano",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SP-2026-0042"
+        },
+        "B2": {
+          "entrada": "=EXT.TEXTO(A2;4;10)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;4;4)"
+      }
+    ],
+    "funcoesExigidas": [
+      "MID"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";3;4\\)$",
+        "dica": "Conte o hífen também: o ano começa na posição 4."
+      }
+    ]
+  },
+  {
+    "id": "bf362315-93fe-5647-aecc-347055752d61",
+    "slug": "ext-texto-ano-do-codigo-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em **EXT.TEXTO(texto; 4; 2)**, o 2 significa…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O terceiro argumento é quantos caracteres pegar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ext-texto-ano-do-codigo",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A posição final"
+      },
+      {
+        "texto": "A quantidade de caracteres"
+      },
+      {
+        "texto": "A ocorrência"
+      },
+      {
+        "texto": "A segunda palavra"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "8fa0edb5-8699-5234-b5a7-285282fa9ef5",
+    "slug": "arrumar-espacos-sobrando-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRUMAR: o nome da cidade",
+    "enunciado": [
+      "Em **B2**, limpe os espaços do texto de A2."
+    ],
+    "dicas": [
+      "Mesma função."
+    ],
+    "explicacao": [
+      "`=ARRUMAR(A2)` → Rio de Janeiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "arrumar-espacos-sobrando",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Limpo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "  Rio   de Janeiro"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Rio de Janeiro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRUMAR(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TRIM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
+        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+      }
+    ]
+  },
+  {
+    "id": "f758536a-da85-5e1c-97e2-8b3fcce9124f",
+    "slug": "arrumar-espacos-sobrando-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRUMAR para comparar",
+    "enunciado": [
+      "A2 tem um código com espaço no início. Em **B2**, confira se, limpo, ele é igual a \"P03\" (a resposta é VERDADEIRO ou FALSO)."
+    ],
+    "dicas": [
+      "Uma comparação com = devolve VERDADEIRO ou FALSO."
+    ],
+    "explicacao": [
+      "`=ARRUMAR(A2)=\"P03\"` → VERDADEIRO. Sem o ARRUMAR, o espaço faria a comparação dar FALSO."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "arrumar-espacos-sobrando",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "É P03?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": " P03"
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": true,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRUMAR(A2)=\"P03\""
+      }
+    ],
+    "funcoesExigidas": [
+      "TRIM"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
+        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+      }
+    ]
+  },
+  {
+    "id": "46ab3556-50f5-5bd9-b476-e61e75e6b6b7",
+    "slug": "arrumar-espacos-sobrando-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o PROCV que não acha",
+    "enunciado": [
+      "O PROCV em **G2** dá `#N/D`, mas o código existe na tabela: F2 tem um espaço sobrando. Corrija a fórmula."
+    ],
+    "dicas": [
+      "Limpe o que vai ser procurado."
+    ],
+    "explicacao": [
+      "`=PROCV(ARRUMAR(F2);A2:C4;3;FALSO)`: o ARRUMAR tira o espaço invisível antes da busca."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "arrumar-espacos-sobrando",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": " P03"
+        },
+        "G2": {
+          "entrada": "=PROCV(F2;A2:C4;3;FALSO)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "F": 100,
+        "G": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 149,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(ARRUMAR(F2);A2:C4;3;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "TRIM",
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
+        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+      }
+    ]
+  },
+  {
+    "id": "906c651f-8886-51f1-a368-1ee8ac93b79a",
+    "slug": "arrumar-espacos-sobrando-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que ARRUMAR devolve para \"  a   b  \"?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Tira as pontas e deixa um espaço só entre as palavras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "arrumar-espacos-sobrando",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "\"ab\"",
+        "dica": "O ARRUMAR mantém um espaço entre as palavras."
+      },
+      {
+        "texto": "\"a b\""
+      },
+      {
+        "texto": "\"a   b\""
+      },
+      {
+        "texto": "\" a b \"",
+        "dica": "Os espaços das pontas saem."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "7bfa6faa-147f-5308-9fc9-cb910d936150",
+    "slug": "pri-maiuscula-nomes-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PRI.MAIÚSCULA: nome em maiúsculas",
+    "enunciado": [
+      "Em **B2**, ajuste o nome de A2."
+    ],
+    "dicas": [
+      "Mesma função."
+    ],
+    "explicacao": [
+      "`=PRI.MAIÚSCULA(A2)` → João Da Silva (repare no \"Da\")."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pri-maiuscula-nomes",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "JOÃO DA SILVA"
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "João Da Silva",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "PROPER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MAIÚSCULA\\(",
+        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+      }
+    ]
+  },
+  {
+    "id": "eb8d6689-99ef-5616-8b48-d574cf15a093",
+    "slug": "pri-maiuscula-nomes-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MAIÚSCULA: a UF",
+    "enunciado": [
+      "Em **B2**, deixe a UF de A2 toda em maiúsculas."
+    ],
+    "dicas": [
+      "Prima da PRI.MAIÚSCULA: MAIÚSCULA."
+    ],
+    "explicacao": [
+      "`=MAIÚSCULA(A2)` → RJ."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pri-maiuscula-nomes",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "UF",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigida",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "rj"
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "RJ",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "UPPER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MAIÚSCULA\\(",
+        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+      }
+    ]
+  },
+  {
+    "id": "1c9096eb-605e-500f-bdb2-3d8616f6a4ca",
+    "slug": "pri-maiuscula-nomes-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o e-mail com maiúsculas",
+    "enunciado": [
+      "A fórmula em **B2** deixou o e-mail como \"Ana.Lima@Empresa.Com\". E-mail fica todo em minúsculas: corrija-a."
+    ],
+    "dicas": [
+      "Qual função deixa tudo em minúsculas?"
+    ],
+    "explicacao": [
+      "`=MINÚSCULA(A2)`. PRI.MAIÚSCULA põe inicial maiúscula até depois do ponto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pri-maiuscula-nomes",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana.Lima@Empresa.com"
+        },
+        "B2": {
+          "entrada": "=PRI.MAIÚSCULA(A2)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 180
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "ana.lima@empresa.com",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MINÚSCULA(A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "LOWER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MAIÚSCULA\\(",
+        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+      }
+    ]
+  },
+  {
+    "id": "3189989a-beb4-5383-8f19-2852c1d40c4a",
+    "slug": "pri-maiuscula-nomes-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual função transforma \"rio de janeiro\" em \"RIO DE JANEIRO\"?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "MAIÚSCULA deixa todas as letras maiúsculas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pri-maiuscula-nomes",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "PRI.MAIÚSCULA",
+        "dica": "Essa daria \"Rio De Janeiro\"."
+      },
+      {
+        "texto": "MAIÚSCULA"
+      },
+      {
+        "texto": "MINÚSCULA"
+      },
+      {
+        "texto": "ARRUMAR"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "2131b331-0d44-5f61-a93e-a4c0d769c592",
+    "slug": "localizar-arroba-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "LOCALIZAR: o primeiro hífen",
+    "enunciado": [
+      "Em **B2**, ache a posição do primeiro hífen no código de A2."
+    ],
+    "dicas": [
+      "Mesma função, outro caractere."
+    ],
+    "explicacao": [
+      "`=LOCALIZAR(\"-\";A2)` → 3."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "localizar-arroba",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Posição",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SP-2026-0042"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
+        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+      },
+      {
+        "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
+        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+      }
+    ]
+  },
+  {
+    "id": "42b33952-8a20-588e-9d9b-c203c253526a",
+    "slug": "localizar-arroba-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O domínio do e-mail",
+    "enunciado": [
+      "Em **B2**, extraia o domínio do e-mail de A2 (tudo depois do @)."
+    ],
+    "dicas": [
+      "O domínio começa uma posição depois do @. Peça bastante caracteres no fim."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;LOCALIZAR(\"@\";A2)+1;100)`: pedir 100 caracteres vai até o fim do texto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "localizar-arroba",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Domínio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "ana.lima@empresa.com.br"
+        }
+      },
+      "larguras": {
+        "A": 200,
+        "B": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "empresa.com.br",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;LOCALIZAR(\"@\";A2)+1;100)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH",
+      "MID"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
+        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+      },
+      {
+        "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
+        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+      }
+    ]
+  },
+  {
+    "id": "dd2ac965-3180-5b28-8a78-d7dbd830079d",
+    "slug": "localizar-arroba-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o e-mail sem @",
+    "enunciado": [
+      "A fórmula em **B2** dá `#VALOR!`, porque o e-mail de A2 foi digitado sem @. Corrija-a para mostrar \"Sem @\" nesse caso."
+    ],
+    "dicas": [
+      "LOCALIZAR dá erro quando não acha. Lembra do SEERRO?"
+    ],
+    "explicacao": [
+      "`=SEERRO(LOCALIZAR(\"@\";A2);\"Sem @\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "localizar-arroba",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Posição do @",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "ana.lima.empresa.com"
+        },
+        "B2": {
+          "entrada": "=LOCALIZAR(\"@\";A2)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 200,
+        "B": 120
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Sem @",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(LOCALIZAR(\"@\";A2);\"Sem @\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH",
+      "IFERROR"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
+        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+      },
+      {
+        "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
+        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+      }
+    ]
+  },
+  {
+    "id": "420d99da-e8ff-5694-a72d-ebcfeb8e97bf",
+    "slug": "localizar-arroba-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá **=LOCALIZAR(\"a\";\"Banana\")**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "LOCALIZAR devolve a primeira ocorrência: posição 2."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "localizar-arroba",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "1",
+        "dica": "O B está na posição 1."
+      },
+      {
+        "texto": "2"
+      },
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "6"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "8c7c0d09-06c3-5d93-b289-af986d565479",
+    "slug": "substituir-underline-por-hifen-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBSTITUIR: tirar o hífen",
+    "enunciado": [
+      "Em **B2**, tire o hífen do telefone de A2."
+    ],
+    "dicas": [
+      "Para apagar, troque por \"\"."
+    ],
+    "explicacao": [
+      "`=SUBSTITUIR(A2;\"-\";\"\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "substituir-underline-por-hifen",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Telefone",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sem hífen",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "(21) 99876-5432"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 150
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "(21) 998765432",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A2;\"-\";\"\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUBSTITUTE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MUDAR\\(",
+        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+      }
+    ]
+  },
+  {
+    "id": "ae69cec5-01ce-5c26-983b-acfb84a0b4dc",
+    "slug": "substituir-underline-por-hifen-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBSTITUIR só a segunda",
+    "enunciado": [
+      "Em **B2**, troque só o **segundo** underline do código de A2 por uma barra (/)."
+    ],
+    "dicas": [
+      "O 4º argumento diz qual ocorrência trocar."
+    ],
+    "explicacao": [
+      "`=SUBSTITUIR(A2;\"_\";\"/\";2)` → PED_2026/001."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "substituir-underline-por-hifen",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PED_2026_001"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "PED_2026/001",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A2;\"_\";\"/\";2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUBSTITUTE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MUDAR\\(",
+        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+      }
+    ]
+  },
+  {
+    "id": "f7623cd4-48a7-5a0a-b6a3-a951047ead7d",
+    "slug": "substituir-underline-por-hifen-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o SUBSTITUIR que não mudou nada",
+    "enunciado": [
+      "A fórmula em **B2** deveria trocar PED por PEDIDO, mas não mudou nada. Corrija-a."
+    ],
+    "dicas": [
+      "O SUBSTITUIR diferencia maiúsculas de minúsculas."
+    ],
+    "explicacao": [
+      "\"ped\" é diferente de \"PED\" para o SUBSTITUIR: `=SUBSTITUIR(A2;\"PED\";\"PEDIDO\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "substituir-underline-por-hifen",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PED_2026_001"
+        },
+        "B2": {
+          "entrada": "=SUBSTITUIR(A2;\"ped\";\"PEDIDO\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 150
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "PEDIDO_2026_001",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SUBSTITUIR(A2;\"PED\";\"PEDIDO\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUBSTITUTE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MUDAR\\(",
+        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+      }
+    ]
+  },
+  {
+    "id": "43eb35aa-9fa8-59bb-9557-2b7105551cf4",
+    "slug": "substituir-underline-por-hifen-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá **=SUBSTITUIR(\"a-b-c\";\"-\";\"\")**?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Trocar o hífen por nada apaga os dois: abc."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "substituir-underline-por-hifen",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "a-b-c"
+      },
+      {
+        "texto": "abc"
+      },
+      {
+        "texto": "a b c",
+        "dica": "Trocar por \"\" apaga; não vira espaço."
+      },
+      {
+        "texto": "Erro"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "9112376f-d8ab-577e-bb93-eed2a754dc82",
+    "slug": "teste-texto-1",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Nome completo",
+    "enunciado": [
+      "Em **E2**, monte \"Ana Lima\" a partir de A2 e B2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "juntar-nome-e-sobrenome-com-espaco",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Lima"
+        },
+        "C2": {
+          "entrada": "MG-2024-0318"
+        },
+        "D2": {
+          "entrada": "  carlos   souza "
+        },
+        "E1": {
+          "entrada": "Completo",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 120,
+        "D": 150,
+        "E": 110,
+        "H": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Ana Lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\" \"&B2"
+      }
+    ]
+  },
+  {
+    "id": "b1623cd6-905c-508a-98fc-98b3a2628656",
+    "slug": "teste-texto-2",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "UF do código",
+    "enunciado": [
+      "Em **F2**, extraia a UF do código em C2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "esquerda-e-direita-do-pedido",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Lima"
+        },
+        "C2": {
+          "entrada": "MG-2024-0318"
+        },
+        "D2": {
+          "entrada": "  carlos   souza "
+        },
+        "F1": {
+          "entrada": "UF",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 120,
+        "D": 150,
+        "E": 110,
+        "H": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "MG",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESQUERDA(C2;2)"
+      }
+    ]
+  },
+  {
+    "id": "548fab0f-b5e7-5726-a7a8-18acbf0113af",
+    "slug": "teste-texto-3",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ano do código",
+    "enunciado": [
+      "Em **G2**, extraia o ano do código em C2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "ext-texto-ano-do-codigo",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Lima"
+        },
+        "C2": {
+          "entrada": "MG-2024-0318"
+        },
+        "D2": {
+          "entrada": "  carlos   souza "
+        },
+        "G1": {
+          "entrada": "Ano",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 120,
+        "D": 150,
+        "E": 110,
+        "H": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "2024",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(C2;4;4)"
+      }
+    ]
+  },
+  {
+    "id": "d7c67f2f-46b0-5efd-b4e0-5b1c8e159d04",
+    "slug": "teste-texto-4",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Nome limpo",
+    "enunciado": [
+      "Em **H2**, deixe o nome de D2 como \"Carlos Souza\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "arrumar-espacos-sobrando",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Como veio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Lima"
+        },
+        "C2": {
+          "entrada": "MG-2024-0318"
+        },
+        "D2": {
+          "entrada": "  carlos   souza "
+        },
+        "H1": {
+          "entrada": "Corrigido",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "C": 120,
+        "D": 150,
+        "E": 110,
+        "H": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H2",
+        "esperado": "Carlos Souza",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(D2))"
+      }
+    ]
+  },
+  {
+    "id": "76c735af-9e60-5423-8c72-4f7d282be0e6",
+    "slug": "teste-texto-5",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Posição de um caractere",
+    "enunciado": [
+      "Qual função encontra a posição de um caractere num texto?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "localizar-arroba",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "EXT.TEXTO"
+      },
+      {
+        "texto": "LOCALIZAR"
+      },
+      {
+        "texto": "SUBSTITUIR"
+      },
+      {
+        "texto": "ARRUMAR"
+      }
+    ],
+    "correta": 1
   }
 ]

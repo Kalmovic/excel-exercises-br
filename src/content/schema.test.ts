@@ -65,7 +65,7 @@ describe("conteúdo", () => {
 });
 
 describe("lições de 5 questões e teste do módulo", () => {
-  const comLicoes = ["fundamentos", "logica", "condicionais"];
+  const comLicoes = MODULOS.slice(1).map((m) => m.slug);
 
   it("cada lição tem as 5 etapas, com o mesmo plano da principal", () => {
     for (const m of comLicoes)

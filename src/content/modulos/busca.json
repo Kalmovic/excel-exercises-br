@@ -143,7 +143,10 @@
     "video": "O vídeo-chave da trilha: o perigo de esquecer o FALSO, com um resultado errado que parece certo.",
     "funcoesExigidas": [
       "VLOOKUP"
-    ]
+    ],
+    "licao": "procv-preco-pelo-codigo-exato",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "9cde1c61-671a-5eae-9433-1f55055f3f37",
@@ -304,7 +307,10 @@
     "video": "Desenhar as faixas numa régua e mostrar onde o 12.500 cai.",
     "funcoesExigidas": [
       "VLOOKUP"
-    ]
+    ],
+    "licao": "procv-faixa-de-comissao",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "ee7af5a7-cceb-57cd-8c0d-09fd7ef5d392",
@@ -437,7 +443,10 @@
     "video": "Curto. A mensagem principal é que o PROCX substitui os dois.",
     "funcoesExigidas": [
       "HLOOKUP"
-    ]
+    ],
+    "licao": "proch-meta-de-marco",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "e8040688-2fba-5998-9dba-29831287b436",
@@ -569,7 +578,10 @@
     "funcoesExigidas": [
       "INDEX",
       "MATCH"
-    ]
+    ],
+    "licao": "indice-corresp-codigo-da-mochila",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "cfacbc29-469e-5d45-849f-d747fc4d40b7",
@@ -709,6 +721,2668 @@
     "video": "\"Esqueça o número da coluna\": o PROCX e o PROCV resolvendo o mesmo problema.",
     "funcoesExigidas": [
       "XLOOKUP"
+    ],
+    "licao": "procx-preco-do-mouse",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "830df90d-865b-5bcd-9cc0-015f09d719d4",
+    "slug": "procv-preco-pelo-codigo-exato-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "PROCV: o preço do mouse",
+    "enunciado": [
+      "O código **P05** está em **F2**. Em **G2**, traga o preço."
+    ],
+    "dicas": [
+      "Mesma fórmula, outro código."
+    ],
+    "explicacao": [
+      "`=PROCV(F2;A2:C6;3;FALSO)` → 59,90."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-preco-pelo-codigo-exato",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "P05"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 59.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(F2;A2:C6;3;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
+        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+      },
+      {
+        "padrao": ";4;",
+        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+      }
     ]
+  },
+  {
+    "id": "34af2d63-97b1-5d7c-97f5-b7e91db5364f",
+    "slug": "procv-preco-pelo-codigo-exato-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "PROCV: o nome do produto",
+    "enunciado": [
+      "O código **P02** está em **F2**. Em **G2**, traga o **nome** do produto."
+    ],
+    "dicas": [
+      "O nome é a 2ª coluna da tabela."
+    ],
+    "explicacao": [
+      "`=PROCV(F2;A2:C6;2;FALSO)` → Caderno."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-preco-pelo-codigo-exato",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "P02"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "Caderno",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(F2;A2:C6;2;FALSO)"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
+        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+      },
+      {
+        "padrao": ";4;",
+        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+      }
+    ]
+  },
+  {
+    "id": "78f68d36-df07-5f13-afa4-ffc7ba1c51b1",
+    "slug": "procv-preco-pelo-codigo-exato-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: o #N/D do PROCV",
+    "enunciado": [
+      "A fórmula em **G2** dá `#N/D`, mas o código P03 existe. Corrija-a para trazer o preço."
+    ],
+    "dicas": [
+      "Em qual coluna o PROCV procura?"
+    ],
+    "explicacao": [
+      "O intervalo começava na coluna B (produto), e o PROCV procura sempre na **primeira** coluna do intervalo. Com `A2:C6`, o código está na primeira coluna e o preço é a 3ª."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-preco-pelo-codigo-exato",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "P03"
+        },
+        "G2": {
+          "entrada": "=PROCV(F2;B2:C6;2;FALSO)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 149,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(F2;A2:C6;3;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
+        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+      },
+      {
+        "padrao": ";4;",
+        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+      }
+    ]
+  },
+  {
+    "id": "01694320-db07-5044-955e-7b4ba98232d7",
+    "slug": "procv-preco-pelo-codigo-exato-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Onde o PROCV procura o valor?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O PROCV procura sempre na primeira coluna do intervalo e devolve a coluna pedida."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-preco-pelo-codigo-exato",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Em qualquer coluna"
+      },
+      {
+        "texto": "Na primeira coluna da tabela"
+      },
+      {
+        "texto": "Na última coluna"
+      },
+      {
+        "texto": "Na coluna indicada no 3º argumento",
+        "dica": "O 3º argumento diz de qual coluna devolver, não onde procurar."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "4529b069-74a2-5acb-b51b-e57d94bc8d1a",
+    "slug": "procv-faixa-de-comissao-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Faixa: venda de 4.000",
+    "enunciado": [
+      "Em **C2**, traga a taxa de comissão da venda de B2."
+    ],
+    "dicas": [
+      "4.000 ainda não chega a 5.000."
+    ],
+    "explicacao": [
+      "`=PROCV(B2;$E$2:$F$5;2;VERDADEIRO)` → 2%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-faixa-de-comissao",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "4000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.02,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";FALSO\\)$",
+        "dica": "12.500 não está na tabela. Para faixas, use VERDADEIRO."
+      },
+      {
+        "padrao": "E[3-9]:F[6-9]",
+        "dica": "Ao copiar, a tabela de faixas saiu do lugar. Trave com $: $E$2:$F$5."
+      }
+    ]
+  },
+  {
+    "id": "88ff4bfa-46c6-523d-9cc0-49c144c83498",
+    "slug": "procv-faixa-de-comissao-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Faixa: exatamente no limite",
+    "enunciado": [
+      "Em **C2**, traga a taxa da venda de B2, que é exatamente 20.000."
+    ],
+    "dicas": [
+      "O valor igual ao limite entra na faixa."
+    ],
+    "explicacao": [
+      "`=PROCV(B2;$E$2:$F$5;2;VERDADEIRO)` → 7%: \"a partir de 20.000\" inclui o 20.000."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-faixa-de-comissao",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.07,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";FALSO\\)$",
+        "dica": "12.500 não está na tabela. Para faixas, use VERDADEIRO."
+      },
+      {
+        "padrao": "E[3-9]:F[6-9]",
+        "dica": "Ao copiar, a tabela de faixas saiu do lugar. Trave com $: $E$2:$F$5."
+      }
+    ]
+  },
+  {
+    "id": "e2ce42b6-16c5-517b-97c3-5d8ebddb9fe2",
+    "slug": "procv-faixa-de-comissao-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a tabela de cabeça para baixo",
+    "enunciado": [
+      "A tabela de faixas foi digitada do maior para o menor (20.000 em cima) e o PROCV com VERDADEIRO passou a errar. Por quê?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Na busca aproximada, o PROCV percorre a primeira coluna supondo que ela está em ordem crescente."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-faixa-de-comissao",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "O PROCV não aceita faixas"
+      },
+      {
+        "texto": "A busca aproximada exige a primeira coluna em ordem crescente"
+      },
+      {
+        "texto": "Faltou o FALSO",
+        "dica": "Com FALSO, a busca seria exata e nenhuma faixa seria encontrada."
+      },
+      {
+        "texto": "A tabela precisa estar travada"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "5c591126-71ee-5a61-bbf1-c837e2928643",
+    "slug": "procv-faixa-de-comissao-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 25,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Com VERDADEIRO, quando o valor fica entre duas faixas, o PROCV devolve…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Ele para na maior faixa que não passa do valor procurado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-faixa-de-comissao",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A maior faixa que não passa do valor"
+      },
+      {
+        "texto": "A faixa mais próxima",
+        "dica": "Não é a mais próxima: 9.999 fica na de 5.000, e não na de 10.000."
+      },
+      {
+        "texto": "A primeira da tabela"
+      },
+      {
+        "texto": "Um erro"
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "c21ad203-6fe8-5d9c-a952-e8a6cfb157d7",
+    "slug": "proch-meta-de-marco-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCH: a meta de junho",
+    "enunciado": [
+      "Em **B5**, traga a meta do mês de **A5**."
+    ],
+    "dicas": [
+      "Mesma fórmula, outro mês."
+    ],
+    "explicacao": [
+      "`=PROCH(A5;B1:G2;2;FALSO)` → 15.000."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "proch-meta-de-marco",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mai",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Jun",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "11000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "13000",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "14000",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A5": {
+          "entrada": "Jun"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "G": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "F2",
+        "G2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 15000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A5;B1:G2;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "HLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(",
+        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+      }
+    ]
+  },
+  {
+    "id": "65516407-71d0-5828-8412-439793ae1cc7",
+    "slug": "proch-meta-de-marco-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCH: o realizado de abril",
+    "enunciado": [
+      "A linha 3 tem o realizado. Em **B5**, traga o **realizado** do mês de **A5**."
+    ],
+    "dicas": [
+      "A tabela agora vai até a linha 3, e o realizado é a 3ª linha."
+    ],
+    "explicacao": [
+      "`=PROCH(A5;B1:G3;3;FALSO)` → 12.900."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "proch-meta-de-marco",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mai",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Jun",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "11000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "13000",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "14000",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "12800",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "12900",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "14100",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "15600",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A5": {
+          "entrada": "Abr"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "G": 100
+      },
+      "variaveis": [
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "F3",
+        "G3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 12900,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A5;B1:G3;3;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "HLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(",
+        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+      }
+    ]
+  },
+  {
+    "id": "e9204bff-821e-5cb3-808d-add3a8f7ebfc",
+    "slug": "proch-meta-de-marco-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a meta errada de março",
+    "enunciado": [
+      "A fórmula em **B5** traz a meta errada para março. Corrija-a."
+    ],
+    "dicas": [
+      "Sem o 4º argumento, a busca é aproximada."
+    ],
+    "explicacao": [
+      "Sem FALSO, a busca aproximada exige ordem, e os meses não estão em ordem alfabética. Com FALSO, a busca é exata: 12.000."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "proch-meta-de-marco",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mai",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Jun",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "11000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "13000",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "14000",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A5": {
+          "entrada": "Mar"
+        },
+        "B5": {
+          "entrada": "=PROCH(A5;B1:G2;2)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "G": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "F2",
+        "G2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 12000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCH(A5;B1:G2;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "HLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(",
+        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+      }
+    ]
+  },
+  {
+    "id": "1f04f46d-1fa9-51ab-93c4-a96754bb7141",
+    "slug": "proch-meta-de-marco-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O PROCH procura o valor na…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O PROCH é o PROCV deitado: procura na primeira linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "proch-meta-de-marco",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Primeira coluna",
+        "dica": "Esse é o PROCV."
+      },
+      {
+        "texto": "Primeira linha"
+      },
+      {
+        "texto": "Última linha"
+      },
+      {
+        "texto": "Qualquer linha"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "928bc519-1061-5462-a405-702f373a75b4",
+    "slug": "indice-corresp-codigo-da-mochila-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÍNDICE + CORRESP: o código do notebook",
+    "enunciado": [
+      "Em **G2**, traga o código do produto de **F2**."
+    ],
+    "dicas": [
+      "A mesma combinação, outro produto."
+    ],
+    "explicacao": [
+      "`=ÍNDICE(A2:A6;CORRESP(F2;B2:B6;0))` → P04."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "indice-corresp-codigo-da-mochila",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Notebook"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "P04",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(A2:A6;CORRESP(F2;B2:B6;0))"
+      }
+    ],
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
+        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+      },
+      {
+        "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
+        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+      }
+    ]
+  },
+  {
+    "id": "bf240143-9853-5035-9791-c4a9f0e816e0",
+    "slug": "indice-corresp-codigo-da-mochila-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÍNDICE + CORRESP: o preço do caderno",
+    "enunciado": [
+      "Em **G2**, traga o **preço** do produto de **F2**, com ÍNDICE e CORRESP."
+    ],
+    "dicas": [
+      "Troque só a coluna do ÍNDICE: C2:C6."
+    ],
+    "explicacao": [
+      "`=ÍNDICE(C2:C6;CORRESP(F2;B2:B6;0))` → 29,90."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "indice-corresp-codigo-da-mochila",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Caderno"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 29.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(C2:C6;CORRESP(F2;B2:B6;0))",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
+        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+      },
+      {
+        "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
+        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+      }
+    ]
+  },
+  {
+    "id": "c2f76fbe-11cd-562c-9bc3-f1618fd56895",
+    "slug": "indice-corresp-codigo-da-mochila-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o 3 no lugar do código",
+    "enunciado": [
+      "A fórmula em **G2** devolve 3, e não o código da mochila. Complete-a para trazer o código."
+    ],
+    "dicas": [
+      "O CORRESP devolve a posição. Quem busca o valor nessa posição?"
+    ],
+    "explicacao": [
+      "O CORRESP sozinho devolve a posição (3). Em volta dele, o ÍNDICE pega o código: `=ÍNDICE(A2:A6;CORRESP(F2;B2:B6;0))`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "indice-corresp-codigo-da-mochila",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Mochila"
+        },
+        "G2": {
+          "entrada": "=CORRESP(F2;B2:B6;0)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "P03",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(A2:A6;CORRESP(F2;B2:B6;0))"
+      }
+    ],
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
+        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+      },
+      {
+        "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
+        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+      }
+    ]
+  },
+  {
+    "id": "2971a3f9-65d8-5cfa-924d-ac41c9b33275",
+    "slug": "indice-corresp-codigo-da-mochila-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que o CORRESP devolve?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O CORRESP devolve a posição dentro do intervalo, que pode ser diferente do número da linha na planilha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "indice-corresp-codigo-da-mochila",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "O valor encontrado",
+        "dica": "Quem devolve o valor é o ÍNDICE."
+      },
+      {
+        "texto": "A posição do valor dentro do intervalo"
+      },
+      {
+        "texto": "O número da linha na planilha",
+        "dica": "A Mochila está na linha 4 da planilha, mas na posição 3 do intervalo."
+      },
+      {
+        "texto": "VERDADEIRO ou FALSO"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "09b03d37-1ec8-5676-a4f1-60930931e263",
+    "slug": "procx-preco-do-mouse-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX para a esquerda",
+    "enunciado": [
+      "Em **G2**, traga o **código** do produto de **F2** com PROCX."
+    ],
+    "dicas": [
+      "O PROCX não se importa com a direção: devolva A2:A6."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;B2:B6;A2:A6)` → P04."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-preco-do-mouse",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Notebook"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "P04",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;B2:B6;A2:A6)"
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
+        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+      }
+    ]
+  },
+  {
+    "id": "72030259-3322-55bf-85d2-828baa993588",
+    "slug": "procx-preco-do-mouse-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX: produto que não existe",
+    "enunciado": [
+      "Em **G2**, traga o preço do produto de **F2**. Se ele não existir, mostre \"Não encontrado\"."
+    ],
+    "dicas": [
+      "Use o 4º argumento."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;B2:B6;C2:C6;\"Não encontrado\")`: o Teclado não está no catálogo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-preco-do-mouse",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Teclado"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "Não encontrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;B2:B6;C2:C6;\"Não encontrado\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
+        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+      }
+    ]
+  },
+  {
+    "id": "3e047b68-8175-5966-b2b9-dadfa2bdfc43",
+    "slug": "procx-preco-do-mouse-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o PROCX que dá erro",
+    "enunciado": [
+      "A fórmula em **G2** dá erro. Corrija-a para trazer o preço do produto de F2."
+    ],
+    "dicas": [
+      "Compare o tamanho dos dois intervalos."
+    ],
+    "explicacao": [
+      "Os intervalos de busca e de retorno precisam ter o mesmo tamanho: B2:B6 e C2:C6 (5 linhas cada)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-preco-do-mouse",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Mouse"
+        },
+        "G2": {
+          "entrada": "=PROCX(F2;B2:B6;C2:C7)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 59.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;B2:B6;C2:C6)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
+        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+      }
+    ]
+  },
+  {
+    "id": "36e1d1fa-f93f-59ef-8456-e53b0f723ed5",
+    "slug": "procx-preco-do-mouse-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Diferente do PROCV, o PROCX…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O PROCX recebe a coluna de busca e a de retorno separadas, em qualquer posição."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-preco-do-mouse",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Só busca para a direita",
+        "dica": "Isso é limitação do PROCV."
+      },
+      {
+        "texto": "Precisa do número da coluna",
+        "dica": "Quem precisa é o PROCV."
+      },
+      {
+        "texto": "Busca para qualquer lado"
+      },
+      {
+        "texto": "Não faz busca exata",
+        "dica": "A busca exata é o padrão do PROCX."
+      }
+    ],
+    "correta": 2
+  },
+  {
+    "id": "c8404ad8-59b1-529a-b5de-a75b4809d159",
+    "slug": "teste-busca-1",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço do notebook",
+    "enunciado": [
+      "O código **P04** está em **F2**. Em **G2**, traga o preço."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "procv-preco-pelo-codigo-exato",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "P04"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(F2;A2:C6;3;FALSO)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "ef4722c4-0335-5280-acad-92de15e83ec6",
+    "slug": "teste-busca-2",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Código da caneta",
+    "enunciado": [
+      "Em **G2**, traga o código do produto de **F2**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "indice-corresp-codigo-da-mochila",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Caneta"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "P01",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;B2:B6;A2:A6)"
+      }
+    ]
+  },
+  {
+    "id": "073857de-6e1c-5ac0-b215-bb9707ec2611",
+    "slug": "teste-busca-3",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Taxa da venda de 7.500",
+    "enunciado": [
+      "Em **C2**, traga a taxa de comissão da venda de B2 pela tabela de faixas."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "procv-faixa-de-comissao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "7500",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "E": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.03,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "percentual"
+      }
+    ]
+  },
+  {
+    "id": "63d16b8b-592d-5d39-bfe5-7c7d3500ac36",
+    "slug": "teste-busca-4",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço da régua",
+    "enunciado": [
+      "Em **G2**, traga o preço do produto de **F2**; se não existir, mostre \"Não encontrado\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "procx-preco-do-mouse",
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Régua"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 100,
+        "F": 110,
+        "G": 130
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "Não encontrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;B2:B6;C2:C6;\"Não encontrado\")"
+      }
+    ]
+  },
+  {
+    "id": "366c279f-e682-596a-8e43-24ab5059705d",
+    "slug": "teste-busca-5",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Busca exata",
+    "enunciado": [
+      "Para busca exata no PROCV, o 4º argumento deve ser:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "procv-preco-pelo-codigo-exato",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "VERDADEIRO"
+      },
+      {
+        "texto": "FALSO"
+      },
+      {
+        "texto": "1"
+      },
+      {
+        "texto": "Vazio"
+      }
+    ],
+    "correta": 1
   }
 ]

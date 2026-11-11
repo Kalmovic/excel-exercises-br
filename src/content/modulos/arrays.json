@@ -193,7 +193,10 @@
     "video": "Adicionar uma venda nova no Sul e ver o resultado crescer sozinho.",
     "funcoesExigidas": [
       "FILTER"
-    ]
+    ],
+    "licao": "filtro-vendas-do-sul",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "ebcaffe4-f9b8-51e0-aff0-53a0c44aa0e7",
@@ -416,7 +419,10 @@
     "video": "Combinar com FILTRO: as vendas do Sul, da maior para a menor, numa fórmula só.",
     "funcoesExigidas": [
       "SORT"
-    ]
+    ],
+    "licao": "classificar-maior-valor",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "55b6d11e-1869-5770-9029-2165ff43e022",
@@ -587,6 +593,2691 @@
     "video": "Fechar o módulo montando um relatório dinâmico: ÚNICO para os vendedores e SOMASE ao lado.",
     "funcoesExigidas": [
       "UNIQUE"
+    ],
+    "licao": "classificar-unico-vendedores",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "d4d3a1d1-9fff-5ae5-b0da-0f9c44adb747",
+    "slug": "filtro-vendas-do-sul-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "FILTRO: as vendas da Ana",
+    "enunciado": [
+      "Em **F2**, mostre todas as vendas da **Ana**."
+    ],
+    "dicas": [
+      "A condição agora olha a coluna A."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:D8;A2:A8=\"Ana\")` → 3 linhas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-vendas-do-sul",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            150,
+            "Pendente"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;A2:A8=\"Ana\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
     ]
+  },
+  {
+    "id": "8aea74dc-0e36-5a42-904d-d843c3302f64",
+    "slug": "filtro-vendas-do-sul-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "FILTRO com comparação",
+    "enunciado": [
+      "Em **F2**, mostre as vendas **acima de 400**."
+    ],
+    "dicas": [
+      "A condição pode ser uma comparação: C2:C8>400."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:D8;C2:C8>400)` → 4 linhas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-vendas-do-sul",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;C2:C8>400)"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ]
+  },
+  {
+    "id": "4dbfca7a-ba64-540d-9574-976f50fb88cd",
+    "slug": "filtro-vendas-do-sul-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 14,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: a região que não existe",
+    "enunciado": [
+      "A fórmula em **F2** procura a região Leste, que não existe, e dá erro. Corrija-a para mostrar \"Nenhuma venda\" nesse caso."
+    ],
+    "dicas": [
+      "Use o 3º argumento do FILTRO."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:D8;B2:B8=\"Leste\";\"Nenhuma venda\")`. No Excel, sem o 3º argumento, aparece #CALC!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-vendas-do-sul",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F2": {
+          "entrada": "=FILTRO(A2:D8;B2:B8=\"Leste\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Nenhuma venda",
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;B2:B8=\"Leste\";\"Nenhuma venda\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ]
+  },
+  {
+    "id": "451524d9-eb8a-59d6-9092-6c90c35d0e4c",
+    "slug": "filtro-vendas-do-sul-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Uma venda nova do Sul é adicionada dentro do intervalo. O que acontece com o FILTRO?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "A fórmula é recalculada com os dados novos: a venda aparece no resultado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-vendas-do-sul",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Nada"
+      },
+      {
+        "texto": "O resultado se atualiza sozinho"
+      },
+      {
+        "texto": "Dá erro"
+      },
+      {
+        "texto": "É preciso refazer a fórmula"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "4c620da2-727d-5863-b1a6-854e8090adb7",
+    "slug": "classificar-maior-valor-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CLASSIFICAR por vendedor",
+    "enunciado": [
+      "Em **F2**, mostre a tabela em ordem alfabética de vendedor."
+    ],
+    "dicas": [
+      "Vendedor é a 1ª coluna; 1 é crescente."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(A2:D8;1;1)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-maior-valor",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            150,
+            "Pendente"
+          ],
+          [
+            "Bruno",
+            "Norte",
+            300,
+            "Pendente"
+          ],
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(A2:D8;1;1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;C",
+        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
+        "dica": "Sem o -1, a ordem é crescente."
+      }
+    ]
+  },
+  {
+    "id": "8e566ba1-d83e-5104-a574-279921cf8aa3",
+    "slug": "classificar-maior-valor-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FILTRO e CLASSIFICAR juntos",
+    "enunciado": [
+      "Em **F2**, mostre só as vendas do **Sul**, da maior para a menor."
+    ],
+    "dicas": [
+      "Filtre primeiro e classifique o resultado."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Sul\");3;-1)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-maior-valor",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            150,
+            "Pendente"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Sul\");3;-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;C",
+        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
+        "dica": "Sem o -1, a ordem é crescente."
+      }
+    ]
+  },
+  {
+    "id": "3e3f1b15-21b5-524b-9ec5-d8b777985e97",
+    "slug": "classificar-maior-valor-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: começou pela menor",
+    "enunciado": [
+      "A fórmula em **F2** começou pela venda de 150, e a ideia era ver as maiores primeiro. Corrija-a."
+    ],
+    "dicas": [
+      "Qual argumento define a ordem?"
+    ],
+    "explicacao": [
+      "Faltou o -1: sem ele, a ordem é crescente."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-maior-valor",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F2": {
+          "entrada": "=CLASSIFICAR(A2:D8;3)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Norte",
+            300,
+            "Pendente"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            150,
+            "Pendente"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(A2:D8;3;-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;C",
+        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
+        "dica": "Sem o -1, a ordem é crescente."
+      }
+    ]
+  },
+  {
+    "id": "61d88bff-c841-5fd1-a64e-c69a79ff80df",
+    "slug": "classificar-maior-valor-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 25,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em **=CLASSIFICAR(dados;2;1)**, o 2 indica…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O 2º argumento é a coluna, dentro do intervalo, usada para ordenar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-maior-valor",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A segunda linha"
+      },
+      {
+        "texto": "A segunda coluna do intervalo"
+      },
+      {
+        "texto": "Ordem decrescente",
+        "dica": "A ordem é o 3º argumento."
+      },
+      {
+        "texto": "Dois resultados"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "ee032b42-0e48-5cdd-abd8-773321547c6b",
+    "slug": "classificar-unico-vendedores-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÚNICO: as regiões",
+    "enunciado": [
+      "Em **F2**, liste as regiões sem repetição."
+    ],
+    "dicas": [
+      "Mesma função, outra coluna."
+    ],
+    "explicacao": [
+      "`=ÚNICO(B2:B8)` → Sul, Norte."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-unico-vendedores",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Sul"
+          ],
+          [
+            "Norte"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÚNICO(B2:B8)"
+      }
+    ],
+    "funcoesExigidas": [
+      "UNIQUE"
+    ]
+  },
+  {
+    "id": "1c408491-8bbb-55f1-89d2-39b0c3d80730",
+    "slug": "classificar-unico-vendedores-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantos vendedores diferentes",
+    "enunciado": [
+      "Em **F2**, conte quantos vendedores diferentes existem."
+    ],
+    "dicas": [
+      "Conte o resultado do ÚNICO."
+    ],
+    "explicacao": [
+      "`=CONT.VALORES(ÚNICO(A2:A8))` → 3."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-unico-vendedores",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.VALORES(ÚNICO(A2:A8))"
+      }
+    ],
+    "funcoesExigidas": [
+      "UNIQUE",
+      "COUNTA"
+    ]
+  },
+  {
+    "id": "cdb221a9-584b-5359-af75-5580ce0b7f80",
+    "slug": "classificar-unico-vendedores-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a Ana em dobro",
+    "enunciado": [
+      "O ÚNICO em **F2** listou \"Ana\" duas vezes: uma das células tem \"Ana \" com espaço no fim. Corrija a fórmula."
+    ],
+    "dicas": [
+      "Limpe os nomes antes de tirar os repetidos."
+    ],
+    "explicacao": [
+      "Para o Excel, \"Ana\" e \"Ana \" são textos diferentes. `=ÚNICO(ARRUMAR(A2:A8))` limpa antes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-unico-vendedores",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana "
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F2": {
+          "entrada": "=ÚNICO(A2:A8)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Carla"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÚNICO(ARRUMAR(A2:A8))"
+      }
+    ],
+    "funcoesExigidas": [
+      "UNIQUE",
+      "TRIM"
+    ]
+  },
+  {
+    "id": "4155e24d-78db-5e5e-9909-1ffa8b01e2eb",
+    "slug": "classificar-unico-vendedores-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que **=ÚNICO(A2:A8)** devolve?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "ÚNICO devolve cada valor uma vez, na ordem em que aparece."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificar-unico-vendedores",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A quantidade de nomes"
+      },
+      {
+        "texto": "Cada valor uma vez"
+      },
+      {
+        "texto": "Só os valores que aparecem uma única vez",
+        "dica": "Isso exige o 3º argumento do ÚNICO."
+      },
+      {
+        "texto": "O primeiro valor"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "0e358017-40fb-560e-9805-a01e49fe99ad",
+    "slug": "teste-arrays-1",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Só as pagas",
+    "enunciado": [
+      "Em **F2**, mostre só as vendas **pagas**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "filtro-vendas-do-sul",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;D2:D8=\"Pago\")"
+      }
+    ]
+  },
+  {
+    "id": "818b1dbd-8ce6-5091-a83b-3efecffd54f7",
+    "slug": "teste-arrays-2",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Do menor para o maior",
+    "enunciado": [
+      "Em **F2**, mostre a tabela do menor valor para o maior."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "classificar-maior-valor",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            150,
+            "Pendente"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Norte",
+            300,
+            "Pendente"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(A2:D8;3;1)"
+      }
+    ]
+  },
+  {
+    "id": "ccb72345-5c64-5dfc-9894-b4a2e4c8f52d",
+    "slug": "teste-arrays-3",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Status sem repetição",
+    "enunciado": [
+      "Em **F2**, liste os status sem repetição."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "classificar-unico-vendedores",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Pago"
+          ],
+          [
+            "Pendente"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÚNICO(D2:D8)"
+      }
+    ]
+  },
+  {
+    "id": "ff0db004-8ae9-5e4b-8b67-51332744ccce",
+    "slug": "teste-arrays-4",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Norte, do maior para o menor",
+    "enunciado": [
+      "Em **F2**, mostre as vendas do **Norte**, da maior para a menor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "classificar-maior-valor",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Norte",
+            300,
+            "Pendente"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Norte\");3;-1)"
+      }
+    ]
+  },
+  {
+    "id": "547855ac-d3f8-5c2e-a54a-32d6d157d893",
+    "slug": "teste-arrays-5",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O #DESPEJAR!",
+    "enunciado": [
+      "O erro **#DESPEJAR!** significa:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "filtro-vendas-do-sul",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Divisão por zero"
+      },
+      {
+        "texto": "Há algo ocupando as células onde o resultado iria aparecer"
+      },
+      {
+        "texto": "A fórmula não achou nada"
+      },
+      {
+        "texto": "Nome de função errado"
+      }
+    ],
+    "correta": 1
   }
 ]

@@ -222,6 +222,7 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 
 - [x] Infra: tipo `multiple_choice` (alternativas com dica por alternativa errada); campos `licao`, `etapa`, `papel`, `teste`, `revisar`; progresso por questão em `licao#etapa` e "lição concluída" no slug da lição (`src/content/licao.ts`, `concluirLicaoSeCompleta`); teste do módulo em `/teste/[modulo]` (uma tentativa por questão, 4 de 5 aprova, revisão das lições erradas, resultado em `src/lib/testes.ts`), oferecido na última questão do módulo.
 - [x] Conteúdo dos módulos 1 a 3: 18 lições × 4 questões novas + 3 testes (gerador em scratchpad; o JSON em `src/content/modulos/` é a fonte).
-- [ ] Conteúdo dos módulos 4 a 8 (24 lições × 4 questões + 5 testes).
+- [x] Conteúdo dos módulos 4 a 8 (24 lições × 4 questões + 5 testes): a trilha completa tem 52 lições, 42 delas com 5 questões, e 8 testes de módulo.
+- Adaptações em relação ao roteiro: pegadinhas que perguntam "por quê?" sem nada a consertar viraram múltipla escolha (4.2, 6.3, 6.4, 8.1); as de dado digitado errado viraram "corrija o dado" (2.5, 6.2, 8.2); a do 5.2 pede o número com 2 dígitos via DIREITA(A2;2) (o roteiro sugere LOCALIZAR, citado na explicação); 4.3 e 4.4 usam a célula A5/F2 em vez do texto literal.
 - [ ] Teste aprovado conta para o certificado: depende do backend (validação no servidor).
 - [ ] O Intro não tem teste (decisão de manter o Intro só com os exercícios da planilha); confirmar se o teste do Módulo 0 do roteiro entra.

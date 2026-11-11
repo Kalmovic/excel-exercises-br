@@ -158,7 +158,10 @@
     "video": "Mudar a tabela de faixas (5% vira 6%) e ver todas as comissões mudarem juntas.",
     "funcoesExigidas": [
       "VLOOKUP"
-    ]
+    ],
+    "licao": "comissao-por-faixa-valor",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "8045ff0b-3812-58a6-88e5-587364fb7494",
@@ -362,7 +365,10 @@
     "video": "Montar a planilha completa de estoque em 90 segundos.",
     "funcoesExigidas": [
       "IF"
-    ]
+    ],
+    "licao": "controle-de-estoque",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "b2071847-5a72-5f64-9dbe-8223b3ea93d7",
@@ -448,7 +454,10 @@
     "video": "Comparar à vista e parcelado e mostrar quanto custam os juros. Gancho forte para redes sociais.",
     "funcoesExigidas": [
       "PMT"
-    ]
+    ],
+    "licao": "pgto-parcelamento",
+    "etapa": 1,
+    "papel": "principal"
   },
   {
     "id": "3ef4b890-59fc-5ca8-acad-45a1cc59cd15",
@@ -681,6 +690,1949 @@
     "funcoesExigidas": [
       "MIN",
       "VLOOKUP"
+    ],
+    "licao": "desconto-do-inss",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "c2525552-0928-500f-ada1-9da68e0d260b",
+    "slug": "comissao-por-faixa-valor-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 12,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Comissão de uma venda pequena",
+    "enunciado": [
+      "Em **C2**, calcule o valor da comissão da venda de B2."
+    ],
+    "dicas": [
+      "Venda × taxa da faixa."
+    ],
+    "explicacao": [
+      "`=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)` → 60."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-por-faixa-valor",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 60.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(B\\d;\\$?E\\$?2:\\$?F\\$?5;2;VERDADEIRO\\)$",
+        "dica": "Isso é a taxa. Multiplique pela venda para chegar ao valor."
+      },
+      {
+        "padrao": "E[3-9]:F[6-9]",
+        "dica": "A tabela de faixas precisa ficar travada: $E$2:$F$5."
+      }
     ]
+  },
+  {
+    "id": "583bf9a1-f06b-5d72-8c6b-e5c68e77af87",
+    "slug": "comissao-por-faixa-valor-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 13,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Comissão de uma venda grande",
+    "enunciado": [
+      "Em **C2**, calcule o valor da comissão da venda de B2."
+    ],
+    "dicas": [
+      "Venda × taxa da faixa."
+    ],
+    "explicacao": [
+      "`=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)` → 1750."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-por-faixa-valor",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 1750.0000000000002,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCV\\(B\\d;\\$?E\\$?2:\\$?F\\$?5;2;VERDADEIRO\\)$",
+        "dica": "Isso é a taxa. Multiplique pela venda para chegar ao valor."
+      },
+      {
+        "padrao": "E[3-9]:F[6-9]",
+        "dica": "A tabela de faixas precisa ficar travada: $E$2:$F$5."
+      }
+    ]
+  },
+  {
+    "id": "b3b41bc3-21ae-5da8-b62c-907282e1569d",
+    "slug": "comissao-por-faixa-valor-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: o salto da comissão",
+    "enunciado": [
+      "Por que uma venda de 9.999 rende 299,97 de comissão, e uma de 10.000 rende 500?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Nessa regra, a taxa da faixa vale para a venda inteira: passar de 9.999 para 10.000 muda tudo de 3% para 5%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-por-faixa-valor",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Erro de arredondamento"
+      },
+      {
+        "texto": "Aos 10.000 a venda muda de faixa, e a nova taxa vale para o valor inteiro"
+      },
+      {
+        "texto": "O PROCV está sem FALSO"
+      },
+      {
+        "texto": "A tabela está fora de ordem"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "4c552f8d-75fe-5917-a907-01141544146c",
+    "slug": "comissao-por-faixa-valor-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 15,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Para copiar a fórmula para os outros vendedores, o que precisa estar travado?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "A tabela de faixas fica no mesmo lugar: $E$2:$F$5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "comissao-por-faixa-valor",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A venda",
+        "dica": "A venda precisa andar com a linha."
+      },
+      {
+        "texto": "A tabela de faixas"
+      },
+      {
+        "texto": "O resultado"
+      },
+      {
+        "texto": "Nada"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "be2787bb-9f47-5ccc-be9f-b09f4a3540a1",
+    "slug": "controle-de-estoque-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Estoque: tudo OK?",
+    "enunciado": [
+      "Em **E2**, o estoque atual. Em **G2**, \"Repor\" se estiver no mínimo ou abaixo, senão \"OK\"."
+    ],
+    "dicas": [
+      "Mesmas fórmulas da lição."
+    ],
+    "explicacao": [
+      "70 está acima do mínimo de 40: OK."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "controle-de-estoque",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Inicial",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "100"
+        },
+        "C2": {
+          "entrada": "0"
+        },
+        "D2": {
+          "entrada": "30"
+        },
+        "F2": {
+          "entrada": "40"
+        }
+      },
+      "larguras": {
+        "G": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 70,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+C2-D2"
+      },
+      {
+        "celula": "G2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E2<=F2;\"Repor\";\"OK\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(E\\d<F\\d;",
+        "dica": "No mínimo exato também precisa repor: use <=."
+      },
+      {
+        "padrao": "^=B\\d\\+C\\d\\+D\\d$",
+        "dica": "Saídas diminuem o estoque: subtraia D."
+      }
+    ]
+  },
+  {
+    "id": "899ac195-4f62-5997-951b-81ac79cabb43",
+    "slug": "controle-de-estoque-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Estoque negativo",
+    "enunciado": [
+      "Em **E2**, o estoque atual. Em **G2**, mostre \"Erro de lançamento\" se o estoque ficar negativo; senão, \"Repor\" ou \"OK\"."
+    ],
+    "dicas": [
+      "Teste o negativo primeiro."
+    ],
+    "explicacao": [
+      "`=SE(E2<0;\"Erro de lançamento\";SE(E2<=F2;\"Repor\";\"OK\"))`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "controle-de-estoque",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Inicial",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Cola"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "C2": {
+          "entrada": "5"
+        },
+        "D2": {
+          "entrada": "20"
+        },
+        "F2": {
+          "entrada": "30"
+        }
+      },
+      "larguras": {
+        "G": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": -5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+C2-D2"
+      },
+      {
+        "celula": "G2",
+        "esperado": "Erro de lançamento",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E2<0;\"Erro de lançamento\";SE(E2<=F2;\"Repor\";\"OK\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(E\\d<F\\d;",
+        "dica": "No mínimo exato também precisa repor: use <=."
+      },
+      {
+        "padrao": "^=B\\d\\+C\\d\\+D\\d$",
+        "dica": "Saídas diminuem o estoque: subtraia D."
+      }
+    ]
+  },
+  {
+    "id": "b3c0bada-4375-5367-b9a6-7959cbd44eb6",
+    "slug": "controle-de-estoque-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o estoque de 115",
+    "enunciado": [
+      "O estoque atual em **E2** deu 115, em vez de 25, porque as saídas foram lançadas como número negativo em **D2**. Corrija o lançamento."
+    ],
+    "dicas": [
+      "A fórmula já subtrai as saídas."
+    ],
+    "explicacao": [
+      "Subtrair um número negativo vira soma: 50 + 20 − (−45) = 115. Com as saídas positivas (45), o estoque volta a 25."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "controle-de-estoque",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "type_value",
+    "grade": {
+      "linhas": 3,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Inicial",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Atual",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "50"
+        },
+        "C2": {
+          "entrada": "20"
+        },
+        "D2": {
+          "entrada": "-45",
+          "bloqueada": false
+        },
+        "E2": {
+          "entrada": "=B2+C2-D2"
+        }
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 45
+      }
+    ]
+  },
+  {
+    "id": "5d1bf882-45a6-5498-9c05-dab9c4f5b82c",
+    "slug": "controle-de-estoque-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 25,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual fórmula calcula o estoque atual?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "O que havia, mais o que entrou, menos o que saiu."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "controle-de-estoque",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Inicial + entradas + saídas",
+        "dica": "Saídas diminuem o estoque."
+      },
+      {
+        "texto": "Inicial + entradas − saídas"
+      },
+      {
+        "texto": "Inicial − entradas + saídas"
+      },
+      {
+        "texto": "Entradas − saídas",
+        "dica": "Faltou o que já havia."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "89c04507-096a-5f7f-80b5-b2b28bfe1cf5",
+    "slug": "pgto-parcelamento-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PGTO com juros de 1,5%",
+    "enunciado": [
+      "Em **B4**, a parcela de B1 em B3 vezes, com os juros de B2."
+    ],
+    "dicas": [
+      "Mesma fórmula da lição."
+    ],
+    "explicacao": [
+      "`=PGTO(B2;B3;-B1)` → 210,63."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pgto-parcelamento",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "1,5%"
+        },
+        "A3": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "Parcela",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110
+      },
+      "variaveis": [
+        "B1",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B4",
+        "esperado": 210.63025755445867,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PGTO(B2;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "funcoesExigidas": [
+      "PMT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PGTO\\(B2;B3;B1\\)$",
+        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+      }
+    ]
+  },
+  {
+    "id": "06a3ce78-0652-59a3-82c0-3e84a6ec7965",
+    "slug": "pgto-parcelamento-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PGTO sem juros",
+    "enunciado": [
+      "Em **B4**, a parcela de B1 em B3 vezes, **sem juros** (B2 = 0%)."
+    ],
+    "dicas": [
+      "Com taxa zero, o PGTO só divide."
+    ],
+    "explicacao": [
+      "`=PGTO(B2;B3;-B1)` → 200: sem juros, é 1.200 ÷ 6."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pgto-parcelamento",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "0%"
+        },
+        "A3": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "Parcela",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110
+      },
+      "variaveis": [
+        "B1",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B4",
+        "esperado": 200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PGTO(B2;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "funcoesExigidas": [
+      "PMT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PGTO\\(B2;B3;B1\\)$",
+        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+      }
+    ]
+  },
+  {
+    "id": "bb407fbd-9461-5aa0-b7a9-90e60030c491",
+    "slug": "pgto-parcelamento-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: taxa anual, parcela mensal",
+    "enunciado": [
+      "Os juros em **B2** são de **24% ao ano**, mas as 12 parcelas são mensais. A fórmula em B4 deu cerca de 830. Corrija-a."
+    ],
+    "dicas": [
+      "Taxa e parcelas precisam estar no mesmo período."
+    ],
+    "explicacao": [
+      "Com parcelas mensais, a taxa precisa ser mensal: `=PGTO(B2/12;B3;-B1)` → 302,59."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pgto-parcelamento",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao ano",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "24%"
+        },
+        "A3": {
+          "entrada": "Parcelas mensais",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "12"
+        },
+        "A4": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "=PGTO(B2;B3;-B1)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 110
+      },
+      "variaveis": [
+        "B1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B4",
+        "esperado": 302.5907091934445,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PGTO(B2/12;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "funcoesExigidas": [
+      "PMT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PGTO\\(B2;B3;B1\\)$",
+        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+      }
+    ]
+  },
+  {
+    "id": "a3a9dca1-4a66-507d-a39f-840a39b0c1e2",
+    "slug": "pgto-parcelamento-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Por que o **PGTO** devolve um valor negativo?"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Parcela é dinheiro saindo do seu bolso: o Excel mostra negativo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pgto-parcelamento",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Erro de conta"
+      },
+      {
+        "texto": "Na convenção do Excel, dinheiro que sai é negativo"
+      },
+      {
+        "texto": "Os juros são negativos"
+      },
+      {
+        "texto": "Formato da célula"
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "40918b4d-750b-5a92-a4bc-6424e0ab88c6",
+    "slug": "desconto-do-inss-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 42,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "INSS só na primeira faixa",
+    "enunciado": [
+      "Em **C2**, a base (salário limitado ao teto). Em **D2**, o desconto do INSS."
+    ],
+    "dicas": [
+      "Mesmas fórmulas da lição."
+    ],
+    "explicacao": [
+      "Só a 1ª faixa: 1.500 × 7,5% = 112,50."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "desconto-do-inss",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Base",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "INSS",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Início da faixa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Alíquota",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Parcela a deduzir",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Teto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "7,5%"
+        },
+        "H2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "1621,01",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "9%"
+        },
+        "H3": {
+          "entrada": "24,32",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "2902,85",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "12%"
+        },
+        "H4": {
+          "entrada": "111,4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "4354,28",
+          "formato": "moeda"
+        },
+        "G5": {
+          "entrada": "14%"
+        },
+        "H5": {
+          "entrada": "198,49",
+          "formato": "moeda"
+        },
+        "I2": {
+          "entrada": "8475,55",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 86,
+        "B": 96,
+        "C": 92,
+        "D": 86,
+        "E": 16,
+        "F": 96,
+        "G": 62,
+        "H": 112,
+        "I": 92
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 1500,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B2;$I$2)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      },
+      {
+        "celula": "D2",
+        "esperado": 112.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*PROCV(C2;$F$2:$H$5;2;VERDADEIRO)-PROCV(C2;$F$2:$H$5;3;VERDADEIRO)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      }
+    ],
+    "funcoesExigidas": [
+      "MIN",
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
+        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+      },
+      {
+        "padrao": "^=B\\d$",
+        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+      }
+    ]
+  },
+  {
+    "id": "ec1c2ecb-360e-5f5f-b433-df31a5f0457a",
+    "slug": "desconto-do-inss-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 43,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "INSS acima do teto",
+    "enunciado": [
+      "Em **C2**, a base (salário limitado ao teto). Em **D2**, o desconto do INSS."
+    ],
+    "dicas": [
+      "Mesmas fórmulas da lição."
+    ],
+    "explicacao": [
+      "A base para no teto (8.475,55) e o desconto é o máximo: 988,09."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "desconto-do-inss",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Base",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "INSS",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Início da faixa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Alíquota",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Parcela a deduzir",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Teto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "7,5%"
+        },
+        "H2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "1621,01",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "9%"
+        },
+        "H3": {
+          "entrada": "24,32",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "2902,85",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "12%"
+        },
+        "H4": {
+          "entrada": "111,4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "4354,28",
+          "formato": "moeda"
+        },
+        "G5": {
+          "entrada": "14%"
+        },
+        "H5": {
+          "entrada": "198,49",
+          "formato": "moeda"
+        },
+        "I2": {
+          "entrada": "8475,55",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 86,
+        "B": 96,
+        "C": 92,
+        "D": 86,
+        "E": 16,
+        "F": 96,
+        "G": 62,
+        "H": 112,
+        "I": 92
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 8475.55,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B2;$I$2)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      },
+      {
+        "celula": "D2",
+        "esperado": 988.087,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*PROCV(C2;$F$2:$H$5;2;VERDADEIRO)-PROCV(C2;$F$2:$H$5;3;VERDADEIRO)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      }
+    ],
+    "funcoesExigidas": [
+      "MIN",
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
+        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+      },
+      {
+        "padrao": "^=B\\d$",
+        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+      }
+    ]
+  },
+  {
+    "id": "c58cb7b1-3aa3-590a-8486-323f37b8759f",
+    "slug": "desconto-do-inss-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a alíquota efetiva",
+    "enunciado": [
+      "Quem ganha 3.000 está \"na faixa de 12%\". O desconto já está em D2. Em **E2**, calcule quanto do salário vai, de fato, para o INSS."
+    ],
+    "dicas": [
+      "Divida o desconto pelo salário."
+    ],
+    "explicacao": [
+      "`=D2/B2` → 8,29%: essa é a alíquota efetiva, bem menor que os 12% da faixa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "desconto-do-inss",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Base",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "INSS",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "=MÍNIMO(B2;$I$2)",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=C2*PROCV(C2;$F$2:$H$5;2;VERDADEIRO)-PROCV(C2;$F$2:$H$5;3;VERDADEIRO)",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Início da faixa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Alíquota",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Parcela a deduzir",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Teto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "7,5%"
+        },
+        "H2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "1621,01",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "9%"
+        },
+        "H3": {
+          "entrada": "24,32",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "2902,85",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "12%"
+        },
+        "H4": {
+          "entrada": "111,4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "4354,28",
+          "formato": "moeda"
+        },
+        "G5": {
+          "entrada": "14%"
+        },
+        "H5": {
+          "entrada": "198,49",
+          "formato": "moeda"
+        },
+        "I2": {
+          "entrada": "8475,55",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Efetiva",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 86,
+        "B": 96,
+        "C": 92,
+        "D": 86,
+        "E": 16,
+        "F": 96,
+        "G": 62,
+        "H": 112,
+        "I": 92
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 0.082867,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D2/B2",
+        "formato": "percentual",
+        "tolerancia": 0.0001
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
+        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+      },
+      {
+        "padrao": "^=B\\d$",
+        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+      }
+    ]
+  },
+  {
+    "id": "fd4f0741-eead-59d5-af01-b8205bae4ac0",
+    "slug": "desconto-do-inss-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 45,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "No INSS progressivo, a alíquota de 14%…"
+    ],
+    "dicas": [
+      "Releia a pergunta com calma: a resposta está na regra da lição."
+    ],
+    "explicacao": [
+      "Cada alíquota incide só sobre o trecho do salário dentro da sua faixa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "desconto-do-inss",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Incide sobre o salário todo",
+        "dica": "Cada alíquota vale só para o trecho do salário dentro da sua faixa."
+      },
+      {
+        "texto": "Incide só sobre a parte acima de 4.354,27"
+      },
+      {
+        "texto": "É a média das faixas"
+      },
+      {
+        "texto": "Só vale acima do teto",
+        "dica": "Acima do teto, o desconto para de crescer."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "d7bcc94d-4107-59d0-ab5d-83dcd0c24697",
+    "slug": "teste-casos-1",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Comissão de 15.000",
+    "enunciado": [
+      "Em **C2**, a comissão da venda de B2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "comissao-por-faixa-valor",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "A partir de",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "2%"
+        },
+        "E3": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "3%"
+        },
+        "E4": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "5%"
+        },
+        "E5": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "7%"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 110,
+        "E": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 750,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "81d7e8d1-ab77-5721-8ee1-9f29ec003524",
+    "slug": "teste-casos-2",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Repor ou OK",
+    "enunciado": [
+      "Em **E2**, o estoque atual. Em **G2**, \"Repor\" ou \"OK\"."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "controle-de-estoque",
+    "type": "formula",
+    "grade": {
+      "linhas": 3,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Inicial",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Lápis"
+        },
+        "B2": {
+          "entrada": "80"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "D2": {
+          "entrada": "60"
+        },
+        "F2": {
+          "entrada": "25"
+        }
+      },
+      "larguras": {
+        "G": 140
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 30,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+C2-D2"
+      },
+      {
+        "celula": "G2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E2<=F2;\"Repor\";\"OK\")"
+      }
+    ]
+  },
+  {
+    "id": "1dd86d0d-f67f-5754-af66-202d5fb9e21c",
+    "slug": "teste-casos-3",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Parcela de 2.400",
+    "enunciado": [
+      "Em **B4**, a parcela de B1 em B3 vezes, com os juros de B2."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "pgto-parcelamento",
+    "type": "formula",
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "1%"
+        },
+        "A3": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "Parcela",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110
+      },
+      "variaveis": [
+        "B1",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B4",
+        "esperado": 253.3969837228112,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PGTO(B2;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ]
+  },
+  {
+    "id": "3608ae35-becd-5b7b-949f-a7e9e9eec1e8",
+    "slug": "teste-casos-4",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "INSS de 5.000",
+    "enunciado": [
+      "Em **C2**, a base; em **D2**, o desconto do INSS."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "desconto-do-inss",
+    "type": "formula",
+    "grade": {
+      "linhas": 6,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Base",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "INSS",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Início da faixa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Alíquota",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Parcela a deduzir",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Teto",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "7,5%"
+        },
+        "H2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "1621,01",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "9%"
+        },
+        "H3": {
+          "entrada": "24,32",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "2902,85",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "12%"
+        },
+        "H4": {
+          "entrada": "111,4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "4354,28",
+          "formato": "moeda"
+        },
+        "G5": {
+          "entrada": "14%"
+        },
+        "H5": {
+          "entrada": "198,49",
+          "formato": "moeda"
+        },
+        "I2": {
+          "entrada": "8475,55",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 86,
+        "B": 96,
+        "C": 92,
+        "D": 86,
+        "E": 16,
+        "F": 96,
+        "G": 62,
+        "H": 112,
+        "I": 92
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 5000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B2;$I$2)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      },
+      {
+        "celula": "D2",
+        "esperado": 501.5100000000001,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*PROCV(C2;$F$2:$H$5;2;VERDADEIRO)-PROCV(C2;$F$2:$H$5;3;VERDADEIRO)",
+        "formato": "moeda",
+        "tolerancia": 0.01
+      }
+    ]
+  },
+  {
+    "id": "91bfe533-128a-53f0-bdc5-e140cf4c0dfc",
+    "slug": "teste-casos-5",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Alíquota efetiva",
+    "enunciado": [
+      "Quem ganha 5.000 paga 501,51 de INSS. A alíquota efetiva é:"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "desconto-do-inss",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "14%"
+      },
+      {
+        "texto": "Cerca de 10%"
+      },
+      {
+        "texto": "7,5%"
+      },
+      {
+        "texto": "12%"
+      }
+    ],
+    "correta": 1
   }
 ]
