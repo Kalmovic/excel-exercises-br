@@ -109,3 +109,12 @@ test("P3-4: Ctrl+setas, Home, Ctrl+Home/End, Ctrl+A e cabeçalhos", async ({ pag
   await page.locator('[data-cabecalho="B"]').filter({ visible: true }).click();
   await expect(nome).toHaveText("B1:B10");
 });
+
+test("P3-6: a correção explica o erro (intervalo curto)", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  await celula(page, "B8").click();
+  await page.keyboard.insertText("=SOMA(B2:B6)");
+  await page.keyboard.press("Enter");
+  await visivel(page, "verificar").click();
+  await expect(visivel(page, "resultado")).toContainText("os dados vão até B7");
+});

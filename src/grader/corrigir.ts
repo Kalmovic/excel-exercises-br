@@ -3,6 +3,7 @@ import { Planilha } from "@/engine/engine";
 import { deEndereco } from "@/engine/address";
 import { ptBR } from "@/engine/ptBR";
 import { explicarErro } from "@/engine/erros";
+import { diagnosticarValor, diagnosticarValorFixo } from "./diagnostico";
 import { iguais, TOLERANCIA_PADRAO, type EstadoCorrecao, type Falha, type Resultado } from "./tipos";
 import { validarClickCell } from "./validadores/click-cell";
 import { validarFormatCell } from "./validadores/format-cell";
@@ -53,13 +54,18 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   for (let r = 0; r < rodadas; r++) {
     const fator = FATORES[r % FATORES.length];
     const grade = structuredClone(ex.grade);
-    for (const end of variaveis) {
+    for (const [i, end] of variaveis.entries()) {
       const cel = grade.celulas[end];
       if (!cel) continue;
       const n = Number(cel.entrada.replace(/\./g, "").replace(",", ".").replace("%", ""));
       if (Number.isNaN(n)) continue;
       const pct = cel.entrada.trim().endsWith("%");
-      const novo = Math.round(n * fator * 100) / 100;
+      // Fator um pouco diferente por célula: com o mesmo fator em todas, uma
+      // proporção digitada à mão (=1800/4500) continuaria dando certo.
+      // Inteiros continuam inteiros: além de mais realista (quantidades, limites),
+      // evita uma divergência do motor, que junta decimais com ponto em ">="&G2.
+      const bruto = n * fator * (1 + 0.03 * ((i % 5) - 2));
+      const novo = Number.isInteger(n) ? Math.round(bruto) : Math.round(bruto * 100) / 100;
       cel.entrada = String(novo).replace(".", ",") + (pct ? "%" : "");
     }
     for (const end of comAlternativas) {
@@ -144,7 +150,18 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
       continue;
     }
     if (!conferirValores(p, alvo)) {
-      falhas.push({ celula: c, motivo: "valor", mensagem: `O resultado em ${c} não está certo.` });
+      const esperado = Array.isArray(alvo.esperado) || typeof alvo.esperado === "object" ? null : alvo.esperado;
+      const dica = diagnosticarValor({
+        formulaAluno: p.bruto(c),
+        formulaReferencia: alvo.solucaoReferencia,
+        obtido: valor,
+        esperado,
+      });
+      falhas.push({
+        celula: c,
+        motivo: "valor",
+        mensagem: `O resultado em ${c} não está certo.${dica ? ` ${dica}` : ""}`,
+      });
     }
   }
 
@@ -171,10 +188,14 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
 
   if (falhas.length === 0) {
     for (const c of conferirComPerturbacao(ex, p.conteudos())) {
+      const alvo = ex.alvos.find((a) => a.celula === c);
+      const dica = alvo && diagnosticarValorFixo(p.bruto(c), alvo.solucaoReferencia);
       falhas.push({
         celula: c,
         motivo: "valor-fixo",
-        mensagem: `O valor em ${c} está certo agora, mas não acompanha mudanças nos dados. Confira as referências (faltou um $?) ou se algum número foi digitado à mão.`,
+        mensagem: `O valor em ${c} está certo agora, mas não acompanha mudanças nos dados. ${
+          dica ?? "Confira as referências (faltou um $?) ou se algum número foi digitado à mão."
+        }`,
       });
     }
   }
