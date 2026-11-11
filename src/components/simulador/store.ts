@@ -10,6 +10,12 @@ export type EstadoSimulador = {
   foco: Pos; // outra ponta da seleção
   modo: Modo;
   rascunho: string;
+  /** Posição do cursor no rascunho (para o autocompletar e o F4). */
+  cursor: number;
+  /** Sugestão destacada na lista do autocompletar. */
+  indiceSugestao: number;
+  /** Esc fecha a lista até o próximo caractere digitado. */
+  sugestoesFechadas: boolean;
   mensagem: string | null;
   arrasto: null | "selecao" | "alca";
   alca: Intervalo | null; // área de destino da alça de preenchimento
@@ -60,6 +66,9 @@ export function criarStore(
     foco,
     modo: "pronto",
     rascunho: "",
+    cursor: 0,
+    indiceSugestao: 0,
+    sugestoesFechadas: false,
     mensagem: null,
     arrasto: null,
     alca: null,
@@ -104,16 +113,20 @@ export function criarStore(
         set({ mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." });
         return false;
       }
+      const rascunho = texto ?? planilha.bruto(ancora);
       set({
         modo,
-        rascunho: texto ?? planilha.bruto(ancora),
+        rascunho,
+        cursor: rascunho.length,
+        indiceSugestao: 0,
+        sugestoesFechadas: false,
         mensagem: null,
         foco: ancora,
       });
       return true;
     },
 
-    setRascunho: (t) => set({ rascunho: t, mensagem: null }),
+    setRascunho: (t) => set({ rascunho: t, mensagem: null, indiceSugestao: 0, sugestoesFechadas: false }),
 
     confirmar: () => {
       const { modo, rascunho, ancora } = get();

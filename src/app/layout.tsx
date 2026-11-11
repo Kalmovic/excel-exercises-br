@@ -5,10 +5,11 @@ import { Logo } from "@/components/marca/Logo";
 import { MenuCelular } from "@/components/marca/MenuCelular";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { Analytics } from "@vercel/analytics/next";
-import { NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
+import { INDEXAR_SITE, NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(URL_SITE),
+  ...(INDEXAR_SITE ? {} : { robots: { index: false, follow: false } }),
   openGraph: { siteName: NOME_SITE, locale: "pt_BR", type: "website" },
   title: {
     default: `${NOME_SITE}: exercícios de Excel na prática, em português`,

@@ -2,6 +2,7 @@
 
 import { intervaloParaTexto, normalizar, paraEndereco } from "@/engine/address";
 import { explicarErro, mensagemCircular } from "@/engine/erros";
+import { rastrearCursor, teclaDeFormula } from "./AjudaFormula";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 export function BarraFormulas() {
@@ -83,8 +84,13 @@ export function BarraFormulas() {
           onFocus={() => {
             if (!somenteLeitura && store.getState().modo === "pronto") store.getState().iniciarEdicao("editar");
           }}
-          onChange={(e) => store.getState().setRascunho(e.target.value)}
+          onChange={(e) => {
+            store.getState().setRascunho(e.target.value);
+            store.setState({ cursor: e.target.selectionStart ?? 0 });
+          }}
+          {...rastrearCursor(store)}
           onKeyDown={(e) => {
+            if (teclaDeFormula(e, store)) return; // autocompletar e F4
             const s = store.getState();
             if (e.key === "Enter" || e.key === "Tab") {
               e.preventDefault();

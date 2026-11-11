@@ -61,3 +61,9 @@ test("a grade não pula quando o simulador substitui a prévia", async ({ browse
   expect(Math.abs(antes!.width - depois!.width)).toBeLessThanOrEqual(4);
   expect(Math.abs(antes!.height - depois!.height)).toBeLessThanOrEqual(4);
 });
+
+test("em teste, o site fica fora dos buscadores", async ({ request }) => {
+  const r = await request.get("/");
+  expect(r.headers()["x-robots-tag"]).toBe("noindex, nofollow");
+  expect(await r.text()).toMatch(/<meta name="robots" content="noindex, nofollow"/);
+});

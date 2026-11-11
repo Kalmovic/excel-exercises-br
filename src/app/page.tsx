@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { exercicioDemo } from "@/content";
-import { NOME_DESAFIO, NOME_SITE } from "@/lib/site";
+import { NOME_DESAFIO, NOME_SITE, PRECO } from "@/lib/site";
 
 const botaoEscuro = "inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft";
 const botaoClaro = "inline-block rounded-lg border border-ink bg-surface px-5 py-3 text-sm font-semibold text-ink hover:bg-bg";
@@ -65,7 +65,7 @@ const FAQ = [
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
   ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
-  ["Quanto custa?", "O que está no ar hoje é grátis: os módulos Intro e Fundamentos e o desafio diário. O Pro ainda está em construção; preço e condições serão publicados aqui antes de qualquer cobrança."],
+  ["Quanto custa?", `O que está no ar hoje é grátis: os módulos Intro e Fundamentos e o desafio diário. O Pro vai custar R$ ${PRECO.mensal} por mês (assinatura no cartão ou um mês avulso no Pix) ou R$ ${PRECO.anualPorMes} por mês no plano anual, 10% mais barato. Ele ainda está em construção: nada é cobrado antes do lançamento.`],
 ];
 
 function Check() {
@@ -238,8 +238,14 @@ export default function Landing() {
               <p className="font-semibold">Pro</p>
               <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold">Em breve</span>
             </div>
-            <p className="font-display text-4xl font-extrabold">Em construção</p>
-            <p className="mb-5 text-xs text-muted">O preço sai aqui antes do lançamento. O que já é grátis continua grátis.</p>
+            <p className="font-display text-4xl font-extrabold" data-testid="preco-pro">
+              R$ {PRECO.anualPorMes}
+              <span className="text-base font-medium text-muted">/mês</span>
+            </p>
+            <p className="mb-5 text-xs text-muted">
+              no plano anual (R$ {PRECO.anual} por ano, 10% de desconto) ou R$ {PRECO.mensal} no mensal. Em construção:
+              nada é cobrado antes do lançamento.
+            </p>
             <ul className="mb-8 space-y-2 text-sm">
               {PLANO_PRO.map((t) => (
                 <li key={t} className="flex gap-2">

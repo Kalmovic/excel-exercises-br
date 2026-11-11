@@ -16,6 +16,7 @@ const SOBRESCRITAS: Record<string, string> = {
   SORT: "CLASSIFICAR",
   UNIQUE: "ÚNICO",
   CONCAT: "CONCAT",
+  IFNA: "SENÃODISP",
 };
 
 export const ptBR = {

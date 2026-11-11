@@ -5,6 +5,7 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
   type ClipboardEvent,
   type KeyboardEvent,
   type MouseEvent,
@@ -18,6 +19,7 @@ import {
   type Pos,
 } from "@/engine/address";
 import { alinhamento } from "@/engine/format";
+import { AjudaFormula, rastrearCursor, teclaDeFormula } from "./AjudaFormula";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 const LARGURA_PADRAO = 96;
@@ -55,6 +57,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   );
   const esquerda = (c: number) => LARGURA_CABECALHO + colunas.slice(0, c).reduce((a, b) => a + b, 0);
   const larguraTotal = esquerda(planilha.colunas);
+
+  // A ajuda de fórmula fica fora da área rolável (para não ser cortada) e acompanha a rolagem.
+  const [rolagem, setRolagem] = useState({ x: 0, y: 0 });
 
   // Depois de inserir uma referência pelo clique, põe o cursor logo após ela.
   // useLayoutEffect roda antes do navegador processar a próxima tecla.
@@ -113,6 +118,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   };
 
   const aoTeclar = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (teclaDeFormula(e, store)) return; // autocompletar e F4
     const s = store.getState();
     const ctrl = e.ctrlKey || e.metaKey;
     const tecla = e.key;
@@ -262,7 +268,12 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
 
   return (
-    <div className="overflow-auto rounded-md border border-zinc-300 bg-white shadow-sm" data-testid="grade">
+    <div className="relative">
+      <div
+        onScroll={(e) => setRolagem({ x: e.currentTarget.scrollLeft, y: e.currentTarget.scrollTop })}
+        className="overflow-auto rounded-md border border-zinc-300 bg-white shadow-sm"
+        data-testid="grade"
+      >
       <div
         className="relative select-none font-[Calibri,Carlito,Arial,sans-serif] text-[13px]"
         style={{ width: larguraTotal, height: ALTURA * (planilha.linhas + 1) }}
@@ -388,7 +399,11 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           autoComplete="off"
           spellCheck={false}
           value={editando ? rascunho : ""}
-          onChange={(e) => aoDigitar(e.target.value)}
+          onChange={(e) => {
+            aoDigitar(e.target.value);
+            if (store.getState().modo !== "pronto") store.setState({ cursor: e.target.selectionStart ?? 0 });
+          }}
+          {...rastrearCursor(store)}
           onPaste={aoColar}
           onKeyDown={aoTeclar}
           className={`absolute z-20 border-2 border-success px-1 font-[inherit] text-[13px] outline-none ${
@@ -408,6 +423,13 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       <span className="sr-only" aria-live="polite">
         {intervaloParaTexto(selecao)}
       </span>
+      </div>
+      {editando && (
+        <AjudaFormula
+          left={Math.max(0, esquerda(ancora.coluna) - rolagem.x)}
+          top={ALTURA * (ancora.linha + 2) - rolagem.y + 2}
+        />
+      )}
     </div>
   );
 }

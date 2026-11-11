@@ -110,7 +110,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 - **Evidência (em `src/app/page.tsx`):** `[PREÇO]/mês` e `[PREÇO ANUAL]` literais; selo "Pro · 1º exercício grátis" em Fundamentos, que é grátis; "Exercício 1 de 10" num exercício de demonstração; "ofensiva de 12 dias" sem ofensiva existir; "Assinar o Pro" leva a "em breve"; FAQ promete cancelamento sem fidelidade; `/termos` e `/privacidade` são provisórias.
 - **Fazer:** definir o preço (ver N-1); até o Pro existir, trocar "Assinar o Pro" por lista de espera (P1-7) e tirar o que é falso. Alternativa mais segura enquanto está em teste: `robots` com `noindex` no site inteiro, removido no lançamento.
 - **Pronto:** nenhuma afirmação da landing é falsa no dia em que o site for divulgado.
-- **Feito (parcial):** sem placeholders de preço; Pro aparece como "em construção"; Intro e Fundamentos marcados grátis e os demais "em breve"; sem ofensiva nem teste de nível; FAQ de cancelamento trocado por "Quanto custa?". **Falta:** preço (N-1), lista de espera (P1-7) e termos/privacidade reais (P1-8). Não pus `noindex` global: decidir antes de divulgar.
+- **Feito (parcial):** sem placeholders de preço; Pro aparece como "em construção"; Intro e Fundamentos marcados grátis e os demais "em breve"; sem ofensiva nem teste de nível; FAQ de cancelamento trocado por "Quanto custa?". Preço definido: R$ 30/mês (cartão recorrente ou mês avulso no Pix) ou R$ 27/mês no anual (R$ 324, 10% off), em `PRECO` (`src/lib/site.ts`); a landing mostra o de R$ 27. Site inteiro com `noindex` (meta + `X-Robots-Tag`) até `INDEXAR_SITE=1` na Vercel. **Falta:** lista de espera (P1-7) e termos/privacidade reais (P1-8).
 
 ### P1-7. Captura de e-mail (lista de espera do Pro)
 
@@ -151,8 +151,8 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 
 ## P3: simulador (o que mais melhora o aprendizado)
 
-1. **Autocompletar de funções e dica de argumentos em pt-BR.** Ao digitar `=PRO`, listar PROCV, PROCX…; dentro da função, mostrar `PROCV(valor_procurado; matriz_tabela; núm_índice_coluna; [procurar_intervalo])` com o argumento atual em negrito. É o maior ganho didático isolado.
-2. **F4 alterna `$`.** A dica do exercício 5 manda apertar F4, e a tecla não faz nada no simulador. Ciclo `B2 → $B$2 → B$2 → $B2`.
+1. ~~**Autocompletar de funções e dica de argumentos em pt-BR.**~~ **Feito:** catálogo em `src/engine/catalogo.ts` (um teste garante que toda função existe no motor), lógica pura em `src/engine/autocompletar.ts`, interface em `AjudaFormula.tsx`. Tab/Enter escolhe, Esc fecha a lista, acento opcional. IFNA passou a se chamar SENÃODISP, como no Excel BR. Ao digitar `=PRO`, listar PROCV, PROCX…; dentro da função, mostrar `PROCV(valor_procurado; matriz_tabela; núm_índice_coluna; [procurar_intervalo])` com o argumento atual em negrito. É o maior ganho didático isolado.
+2. ~~**F4 alterna `$`.**~~ **Feito** (célula e barra de fórmulas; intervalo muda as duas pontas). A dica do exercício 5 manda apertar F4, e a tecla não faz nada no simulador. Ciclo `B2 → $B$2 → B$2 → $B2`.
 3. **Referências coloridas.** Cada referência da fórmula numa cor, com o intervalo correspondente contornado na grade; arrastar o mouse insere intervalo (`B2:B7`), não só uma célula; setas inserem referência quando a fórmula espera uma (modo apontar pelo teclado).
 4. **Navegação do Excel:** Ctrl+setas (hoje anda uma célula; o Excel vai até a borda dos dados), Home/End, Ctrl+A, clique no cabeçalho seleciona coluna/linha.
 5. **Texto longo é cortado.** O Excel deixa o texto invadir células vazias à direita; número que não cabe vira `####`. Permitir arrastar a borda da coluna.
@@ -194,6 +194,6 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 2. P1-1 (CI) e P1-2 (medição): tudo o que vem depois depende de saber se quebrou e se converteu.
 3. ~~P1-5 item 1 (desafios até dezembro)~~ feito; janeiro antes de 01/01/2027.
 4. ~~P2-1 e P1-6~~ feitos (P1-6 depende ainda de preço, lista e legal).
-5. P3-1 e P3-2 (autocompletar e F4), depois P1-5 (módulos).
+5. ~~P3-1 e P3-2~~ feitos; depois P1-5 (módulos).
 6. P1-3, P1-4, P1-7, P1-8: contas, pagamento, lista, legal.
 7. P2-2 (páginas de função), restante de P3 e P4.
