@@ -9,6 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: URL_SITE, lastModified: agora, changeFrequency: "weekly", priority: 1 },
     { url: `${URL_SITE}/excel-basico-para-iniciantes`, lastModified: agora, changeFrequency: "monthly", priority: 0.9 },
     { url: `${URL_SITE}/desafio`, lastModified: agora, changeFrequency: "daily", priority: 0.8 },
+    // Páginas por público
+    ...["/teste-de-excel", "/excel-para-concurso", "/empresas", "/universidades"].map((p) => ({
+      url: `${URL_SITE}${p}`,
+      lastModified: agora,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     // Soluções comentadas: só de desafios que já passaram.
     ...desafiosAnteriores(hojeNoServidor()).map((d) => ({
       url: `${URL_SITE}/desafio/${d.data}`,

@@ -23,6 +23,9 @@ export const INDEXAR_SITE = process.env.INDEXAR_SITE === "1";
  */
 export const PRECO = { mensal: 34.9, anualPorMes: 19.9, anual: 238.8, parcelasAnual: 12, garantiaDias: 7 } as const;
 
+/** Empresas (PME): por pessoa por mês, contrato anual (hipótese do doc de go-to-market). */
+export const PRECO_EMPRESAS = { porPessoaDesde: 15, minimoPessoas: 5 } as const;
+
 /** 19.9 -> "R$ 19,90" */
 export const reais = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 

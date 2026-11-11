@@ -58,9 +58,10 @@ const PLANO_PRO = [
 ];
 
 const PUBLICOS = [
-  { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE. Simulados no formato das empresas vêm no Pro.", link: "Começar pela trilha", href: "/trilha" },
-  { titulo: "Concurso público", texto: "As funções em português que as bancas cobram. Questões no estilo das bancas, com planilha ao lado, vêm no Pro.", link: "Ver o que vem no Pro", href: "/pro" },
-  { titulo: "Empresas", texto: "Nivele a equipe, acompanhe o progresso de cada pessoa e meça o resultado antes e depois.", link: "Falar com a gente", href: "/empresas", escuro: true },
+  { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE e referência absoluta.", link: "Preparar para o teste", href: "/teste-de-excel" },
+  { titulo: "Concurso público", texto: "As funções em português que as bancas cobram, testadas numa planilha de verdade.", link: "Excel para concurso", href: "/excel-para-concurso" },
+  { titulo: "Empresas", texto: "Nivele a equipe com um piloto de 30 dias e o resultado medido antes e depois.", link: "Falar com a gente", href: "/empresas", escuro: true },
+  { titulo: "Universidades", texto: "Trilha prática de Excel como atividade complementar, com piloto grátis para uma turma.", link: "Montar um piloto", href: "/universidades", escuro: true },
 ];
 
 const FAQ = [
@@ -273,7 +274,7 @@ export default function Landing() {
       <Secao>
         <Rotulo>Para quem é</Rotulo>
         <h2 className="mb-10 max-w-xl text-4xl font-extrabold tracking-tight">Seja qual for o seu motivo para aprender.</h2>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {PUBLICOS.map((p) => (
             <div key={p.titulo} className={`rounded-xl border p-5 ${p.escuro ? "border-ink bg-ink text-white" : "border-line bg-surface"}`}>
               <p className="mb-1 font-semibold">{p.titulo}</p>
