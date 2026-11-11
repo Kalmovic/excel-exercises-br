@@ -34,6 +34,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
       Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
     );
     for (const [end, f] of Object.entries(salvo.formatos ?? {})) planilha.formatar(deIntervalo(end), f);
+    planilha.limparHistorico(); // Ctrl+Z não apaga o progresso restaurado
   }
   const inicio = ex.inicio?.selecao ?? ex.inicio?.celulaAtiva;
   return {

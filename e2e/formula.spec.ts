@@ -149,3 +149,15 @@ test("P3-5: arrastar a borda do cabeçalho muda a largura", async ({ page }) => 
   await page.mouse.up();
   expect((await celula(page, "C2").boundingBox())!.width).toBeGreaterThan(antes + 40);
 });
+
+test("P3-7: Ctrl+Z desfaz a formatação e Ctrl+Y refaz", async ({ page }) => {
+  await page.goto("/exercicios/formato-moeda");
+  await celula(page, "B2").click();
+  await page.getByTestId("formatar-moeda").click();
+  await expect(celula(page, "B2")).toHaveText(/R\$\s2,50/);
+  await celula(page, "B2").click(); // devolve o foco para a grade
+  await page.keyboard.press("Control+z");
+  await expect(celula(page, "B2")).toHaveText("2,5");
+  await page.keyboard.press("Control+y");
+  await expect(celula(page, "B2")).toHaveText(/R\$\s2,50/);
+});

@@ -39,6 +39,11 @@ function normalizarEntrada(bruto: string): string {
  *
  * Também funciona como "store externo" para `useSyncExternalStore`.
  */
+type FotoFormato = { end: string; formato?: Formato; doAluno?: Formato };
+type AcaoHistorico =
+  | { tipo: "motor"; passos: number }
+  | { tipo: "formato"; antes: FotoFormato[]; depois: FotoFormato[] };
+
 export class Planilha {
   readonly linhas: number;
   readonly colunas: number;
@@ -50,6 +55,12 @@ export class Planilha {
   private formatos = new Map<string, Formato>();
   /** Formatos aplicados pelo aluno (barra R$ / %), para salvar no progresso. */
   private formatosAluno = new Map<string, Formato>();
+  /**
+   * Histórico próprio para o Ctrl+Z: intercala operações do motor (que tem o
+   * seu undo, contado em passos) e de formatação (que fica fora dele).
+   */
+  private historico: AcaoHistorico[] = [];
+  private refeitos: AcaoHistorico[] = [];
   private area: Intervalo | null = null; // última área copiada
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
@@ -70,7 +81,7 @@ export class Planilha {
     for (const [end, f] of Object.entries(extras.formatos ?? {})) if (f) this.formatos.set(end, f);
     this.hf = HyperFormula.buildFromArray(dados, {
       ...CONFIG_PT_BR,
-      undoLimit: 200,
+      undoLimit: 1000,
     });
   }
 
@@ -182,15 +193,42 @@ export class Planilha {
   /**
    * Aplica um formato (barra R$ / %). Vale também para células bloqueadas:
    * a trava é do conteúdo, não da aparência. Fica fora do HyperFormula,
-   * então Ctrl+Z não desfaz formatação.
+   * por isso tem um histórico próprio (ver `desfazer`).
    */
   formatar(intervalo: Intervalo, formato: Formato) {
+    const antes: FotoFormato[] = [];
+    const depois: FotoFormato[] = [];
     for (const p of posicoes(intervalo)) {
       const end = paraEndereco(p);
-      this.formatos.set(end, formato);
-      this.formatosAluno.set(end, formato);
+      antes.push({ end, formato: this.formatos.get(end), doAluno: this.formatosAluno.get(end) });
+      depois.push({ end, formato, doAluno: formato });
     }
+    this.aplicarFormatos(depois);
+    this.registrar({ tipo: "formato", antes, depois });
     this.notificar();
+  }
+
+  private aplicarFormatos(fotos: FotoFormato[]) {
+    for (const { end, formato, doAluno } of fotos) {
+      if (formato) this.formatos.set(end, formato);
+      else this.formatos.delete(end);
+      if (doAluno) this.formatosAluno.set(end, doAluno);
+      else this.formatosAluno.delete(end);
+    }
+  }
+
+  private registrar(acao: AcaoHistorico) {
+    this.historico.push(acao);
+    if (this.historico.length > 200) this.historico.shift();
+    this.refeitos = [];
+  }
+
+  /** Depois de restaurar o progresso salvo: Ctrl+Z não deve apagar o que foi restaurado. */
+  limparHistorico() {
+    this.historico = [];
+    this.refeitos = [];
+    this.hf.clearUndoStack();
+    this.hf.clearRedoStack();
   }
 
   formatosDoAluno(): Record<string, Formato> {
@@ -231,6 +269,7 @@ export class Planilha {
       return { ok: false, mensagem: diagnosticarSintaxe(entrada) };
     }
     this.hf.setCellContents(this.addr(end), entrada || null);
+    this.registrar({ tipo: "motor", passos: 1 });
     this.notificar();
     return { ok: true };
   }
@@ -243,6 +282,7 @@ export class Planilha {
         this.hf.setCellContents(this.addr(endereco), normalizarEntrada(bruto) || null);
       }
     });
+    this.registrar({ tipo: "motor", passos: 1 });
     this.notificar();
   }
 
@@ -284,6 +324,7 @@ export class Planilha {
         if (!this.bloqueada(p)) this.hf.setCellContents(this.addr(p), null);
       }
     });
+    this.registrar({ tipo: "motor", passos: 1 });
     this.notificar();
   }
 
@@ -317,6 +358,7 @@ export class Planilha {
     const altD = Math.max(destino.fim.linha - destino.inicio.linha + 1, altO);
     const largD = Math.max(destino.fim.coluna - destino.inicio.coluna + 1, largO);
     // Cola célula a célula para respeitar células bloqueadas e o limite da grade.
+    let passos = 0;
     for (let dl = 0; dl < altD; dl++)
       for (let dc = 0; dc < largD; dc++) {
         const alvo = { linha: destino.inicio.linha + dl, coluna: destino.inicio.coluna + dc };
@@ -329,23 +371,31 @@ export class Planilha {
         if (fonte.linha === alvo.linha && fonte.coluna === alvo.coluna) continue;
         this.hf.copy({ start: this.addr(fonte), end: this.addr(fonte) });
         this.hf.paste(this.addr(alvo));
+        passos++;
       }
     this.hf.clearClipboard();
+    if (passos) this.registrar({ tipo: "motor", passos });
     this.notificar();
   }
 
+  /** Ctrl+Z: desfaz a última ação, seja de conteúdo ou de formatação. */
   desfazer() {
-    if (this.hf.isThereSomethingToUndo()) {
-      this.hf.undo();
-      this.notificar();
-    }
+    const acao = this.historico.pop();
+    if (!acao) return;
+    if (acao.tipo === "formato") this.aplicarFormatos(acao.antes);
+    else for (let i = 0; i < acao.passos && this.hf.isThereSomethingToUndo(); i++) this.hf.undo();
+    this.refeitos.push(acao);
+    this.notificar();
   }
 
+  /** Ctrl+Y / Ctrl+Shift+Z. */
   refazer() {
-    if (this.hf.isThereSomethingToRedo()) {
-      this.hf.redo();
-      this.notificar();
-    }
+    const acao = this.refeitos.pop();
+    if (!acao) return;
+    if (acao.tipo === "formato") this.aplicarFormatos(acao.depois);
+    else for (let i = 0; i < acao.passos && this.hf.isThereSomethingToRedo(); i++) this.hf.redo();
+    this.historico.push(acao);
+    this.notificar();
   }
 
   destruir() {
