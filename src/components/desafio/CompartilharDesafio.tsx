@@ -6,6 +6,7 @@ import { NOME_DESAFIO } from "@/lib/site";
 import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { ContagemRegressiva } from "./ContagemRegressiva";
+import { SeloOfensiva } from "@/components/site/SeloOfensiva";
 
 /** Texto do card, estilo Wordle: um quadrado por verificação. */
 export function textoCompartilhamento(
@@ -63,6 +64,7 @@ export function CompartilharDesafio({
 
   return (
     <section className="space-y-3 rounded-md border border-success/30 bg-white p-3" data-testid="compartilhar">
+      <SeloOfensiva />
       <pre className="rounded bg-bg p-2 font-sans text-sm whitespace-pre-wrap text-zinc-800" data-testid="texto-compartilhar">
         {texto}
       </pre>

@@ -15,8 +15,19 @@ export const URL_SITE =
  */
 export const INDEXAR_SITE = process.env.INDEXAR_SITE === "1";
 
-/** Preços do Pro, em reais. O anual é cobrado de uma vez (10% de desconto). */
-export const PRECO = { mensal: 30, anualPorMes: 27, anual: 27 * 12 } as const;
+/**
+ * Preços do Pro, em reais (hipótese a testar, ver doc de go-to-market).
+ * Mensal: cartão recorrente. Anual: Pix à vista ou cartão em até 12x.
+ * Mudança de preço vale só para novos assinantes: no checkout (Fase 3), o
+ * valor fica gravado na assinatura, não lido daqui.
+ */
+export const PRECO = { mensal: 34.9, anualPorMes: 19.9, anual: 238.8, parcelasAnual: 12, garantiaDias: 7 } as const;
+
+/** 19.9 -> "R$ 19,90" */
+export const reais = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+/** Quanto o anual economiza em relação a 12 meses do mensal, em %. */
+export const economiaAnual = () => Math.round((1 - PRECO.anual / (PRECO.mensal * 12)) * 100);
 
 /** Nome da marca. Fica só aqui: se o registro no INPI mudar o nome, troca-se em um lugar. */
 export const NOME_SITE = "Planilhês";

@@ -6,6 +6,7 @@ import { ComecarCta } from "@/components/site/ComecarCta";
 import type { ItemTrilha } from "@/lib/inicio";
 import * as progresso from "@/lib/progresso";
 import { NOME_DESAFIO } from "@/lib/site";
+import { SeloOfensiva } from "@/components/site/SeloOfensiva";
 
 const noServidor = () => "";
 
@@ -79,7 +80,8 @@ export function PainelTrilha({ trilha, desafio }: { trilha: ItemTrilha[]; desafi
         <div className="h-2.5 overflow-hidden rounded-full bg-header">
           <div className="h-full rounded-full bg-success transition-[width]" style={{ width: `${trilha.length ? (feitos / trilha.length) * 100 : 0}%` }} />
         </div>
-        <p className="mt-3 text-sm text-muted">
+        <SeloOfensiva className="mt-3" />
+        <p className="mt-2 text-sm text-muted">
           {dados?.trofeus ? `${dados.trofeus} ${dados.trofeus === 1 ? "troféu conquistado" : "troféus conquistados"}. ` : ""}
           Seu progresso fica salvo neste navegador.
         </p>

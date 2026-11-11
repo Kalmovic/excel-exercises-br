@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MODULOS_PLANEJADOS } from "@/content/modulos-pro";
+import { PRECO, economiaAnual, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Pro: em breve",
@@ -24,10 +25,35 @@ export default function Pro() {
         <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>
         <h1 className="text-3xl font-bold tracking-tight">Pro: pratique Excel até ficar fluente</h1>
         <p className="text-lg text-zinc-600">
-          O Intro, o Fundamentos, o desafio diário e o começo de cada módulo continuam grátis. O Pro é para quem quer ir além: todos os exercícios, conteúdo novo
+          O Intro, o desafio diário, a ofensiva e o 1º exercício de cada módulo continuam grátis. O Pro é para quem quer ir além: todos os exercícios, conteúdo novo
           todo mês e o arquivo completo de desafios.
         </p>
       </header>
+
+      <section className="grid gap-3 sm:grid-cols-2" data-testid="precos-pro">
+        <div className="rounded-lg border-2 border-ink bg-white p-4">
+          <p className="text-sm font-semibold">Anual · mais vantajoso</p>
+          <p className="font-display text-3xl font-extrabold">
+            {reais(PRECO.anualPorMes)}
+            <span className="text-base font-medium text-muted">/mês</span>
+          </p>
+          <p className="text-sm text-zinc-600">
+            {reais(PRECO.anual)} no Pix ou em até {PRECO.parcelasAnual}x no cartão. {economiaAnual()}% a menos que o mensal.
+          </p>
+        </div>
+        <div className="rounded-lg border border-line bg-white p-4">
+          <p className="text-sm font-semibold">Mensal</p>
+          <p className="font-display text-3xl font-extrabold">
+            {reais(PRECO.mensal)}
+            <span className="text-base font-medium text-muted">/mês</span>
+          </p>
+          <p className="text-sm text-zinc-600">No cartão, renovação automática. Cancele quando quiser.</p>
+        </div>
+        <p className="text-sm text-zinc-600 sm:col-span-2">
+          Garantia de {PRECO.garantiaDias} dias: se não gostar, devolvemos o valor. Menos que um lanche por mês, contra
+          cursos de Excel de R$ 300 ou mais.
+        </p>
+      </section>
 
       <ul className="grid gap-3 sm:grid-cols-2" data-testid="beneficios-pro">
         {BENEFICIOS.map(([titulo, texto]) => (

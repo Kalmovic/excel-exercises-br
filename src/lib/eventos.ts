@@ -1,4 +1,5 @@
 import { track } from "@vercel/analytics";
+import { resumoOrigem } from "./origem";
 
 /**
  * Eventos de produto, tipados. Mudar o destino (Vercel Analytics hoje;
@@ -21,7 +22,8 @@ export type Evento =
 export function registrar(evento: Evento) {
   const { nome, ...props } = evento;
   try {
-    track(nome, props as Record<string, string | number | boolean>);
+    // Toda medição leva a origem (canal, afiliado ou cupom), para ver a conversão por origem.
+    track(nome, { ...(props as Record<string, string | number | boolean>), origem: resumoOrigem() });
   } catch {
     // medição nunca pode quebrar a página
   }

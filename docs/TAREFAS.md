@@ -197,3 +197,17 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 5. ~~P3-1 e P3-2~~ e ~~P1-5 (módulos)~~ feitos.
 6. P1-3, P1-4, P1-7, P1-8: contas, pagamento, lista, legal.
 7. P2-2 (páginas de função), restante de P3 e P4.
+
+---
+
+## Go-to-market (docs/go-to-market.md) e roteiro (docs/roteiro-exercicios.md)
+
+Decisões (11/11/2026): roteiro vira a fonte do conteúdo, e os exercícios extras que já existem viram "prática extra" do Pro; e-mail com Resend + agenda própria (tabela + cron); gateway ainda em aberto (comparativo de taxas na conversa: Asaas, Stripe, Mercado Pago). **O backend (Lote 2: Supabase, checkout com webhook, eventos no banco) vem logo depois do Lote 1.**
+
+Lote 1 (sem backend):
+- [x] Preços novos (34,90 / 19,90 no anual = 238,80, Pix ou 12x), garantia de 7 dias e comparativo na landing e em `/pro` (`PRECO` em `src/lib/site.ts`). "Só para novos assinantes" vale no checkout: o preço fica gravado na assinatura.
+- [x] Regra grátis/Pro: Intro inteiro + 1º exercício de cada módulo (inclusive Fundamentos). Paywall segue desligado.
+- [x] Ofensiva no navegador (`src/lib/ofensiva.ts`), na trilha e no fim do desafio.
+- [x] Origem desde a primeira visita (`src/lib/origem.ts`): UTM de primeiro toque, `?ref=` e `?cupom=` do último toque, em cookie de 60 dias; todo evento leva `origem`. Atenção: eventos personalizados da Vercel têm limite de propriedades por plano; trocar de provedor (PostHog) junto com o Lote 2.
+- [ ] Conteúdo pelo roteiro: campos `intro` e `errosComuns` no schema; reescrever os módulos; corrigir FILTRO com várias colunas no motor (7.1); confirmar a tabela do INSS 2026 (8.4).
+- [ ] Landing pages por público (emprego, concurso, empresas, universidades), estáticas; formulários completos só com backend.

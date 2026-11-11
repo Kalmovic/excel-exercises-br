@@ -7,7 +7,7 @@
     "modulo": "fundamentos",
     "ordem": 6,
     "nivel": 2,
-    "plano": "free",
+    "plano": "pro",
     "versao": 1,
     "titulo": "Quanto cada gasto pesa no total",
     "enunciado": [
@@ -146,7 +146,7 @@
     "modulo": "fundamentos",
     "ordem": 7,
     "nivel": 2,
-    "plano": "free",
+    "plano": "pro",
     "versao": 1,
     "titulo": "ARRED: preço por unidade em centavos",
     "enunciado": [
@@ -299,7 +299,7 @@
     "modulo": "fundamentos",
     "ordem": 8,
     "nivel": 3,
-    "plano": "free",
+    "plano": "pro",
     "versao": 1,
     "titulo": "Referência mista: tabela de reajustes",
     "enunciado": [

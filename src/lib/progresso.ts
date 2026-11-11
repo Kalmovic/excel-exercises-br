@@ -3,6 +3,7 @@
  * no Supabase no primeiro login.
  */
 import type { Formato } from "@/content/schema";
+import { registrarAtividade } from "./ofensiva";
 
 export type ProgressoExercicio = {
   versao: number;
@@ -44,6 +45,8 @@ export function ler(slug: string, versao: number): ProgressoExercicio | undefine
 export function salvar(slug: string, dados: Omit<ProgressoExercicio, "atualizadoEm">) {
   try {
     const tudo = lerTudo();
+    // Concluiu agora (não estava concluído): conta para a ofensiva do dia.
+    if (dados.status === "concluido" && tudo[slug]?.status !== "concluido") registrarAtividade();
     tudo[slug] = { ...dados, atualizadoEm: new Date().toISOString() };
     localStorage.setItem(CHAVE, JSON.stringify(tudo));
     window.dispatchEvent(new Event(EVENTO));

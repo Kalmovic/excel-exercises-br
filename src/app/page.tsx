@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { exercicioDemo } from "@/content";
-import { NOME_DESAFIO, NOME_SITE, PRECO } from "@/lib/site";
+import { NOME_DESAFIO, NOME_SITE, PRECO, economiaAnual, reais } from "@/lib/site";
 
 const botaoEscuro = "inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft";
 const botaoClaro = "inline-block rounded-lg border border-ink bg-surface px-5 py-3 text-sm font-semibold text-ink hover:bg-bg";
@@ -34,7 +34,7 @@ const PASSOS = [
 
 const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href: string }[] = [
   { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: "/exercicios/nome-da-celula" },
-  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", gratis: true, href: "/exercicios/soma-total-de-vendas" },
+  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", href: "/exercicios/soma-total-de-vendas" },
   { n: 2, titulo: "Lógica", desc: "SE, E, OU, SES e SEERRO.", href: "/exercicios/se-aprovado-ou-reprovado" },
   { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE.", href: "/exercicios/cont-se-contar-status" },
   { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", href: "/exercicios/procv-preco-pelo-codigo" },
@@ -44,9 +44,9 @@ const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href
   { n: 8, titulo: "Casos reais", desc: "Financiamento, ranking, estoque, comissão e orçamento.", href: "/exercicios/pgto-parcela-do-financiamento" },
 ];
 
-const PLANO_GRATIS = ["Módulos Intro e Fundamentos", "Os primeiros exercícios de cada módulo", `${NOME_DESAFIO}, todo dia`, "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
+const PLANO_GRATIS = ["Módulo Intro completo", "1º exercício de cada módulo", `${NOME_DESAFIO}, todo dia`, "Ofensiva de dias seguidos", "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
 const PLANO_PRO = [
-  "Todos os exercícios dos módulos 2 a 8",
+  "Todos os exercícios, do Fundamentos aos casos reais",
   "Pacote de exercícios novo todo mês",
   "Questões de concurso com planilha para testar",
   "Simulados de teste de Excel para vagas",
@@ -65,7 +65,7 @@ const FAQ = [
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
   ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
-  ["Quanto custa?", `Intro, Fundamentos, o desafio diário e os primeiros exercícios de cada módulo são grátis. O Pro vai custar R$ ${PRECO.mensal} por mês (assinatura no cartão ou um mês avulso no Pix) ou R$ ${PRECO.anualPorMes} por mês no plano anual, 10% mais barato. Durante os testes, tudo está aberto e nada é cobrado.`],
+  ["Quanto custa?", `O Intro completo, o desafio diário, a ofensiva e o 1º exercício de cada módulo são grátis. O Pro vai custar ${reais(PRECO.anualPorMes)} por mês no plano anual (${reais(PRECO.anual)} no Pix ou em até ${PRECO.parcelasAnual}x no cartão) ou ${reais(PRECO.mensal)} no mensal. Há garantia de ${PRECO.garantiaDias} dias. Durante os testes, tudo está aberto e nada é cobrado.`],
 ];
 
 function Check() {
@@ -165,7 +165,7 @@ export default function Landing() {
                   {m.gratis ? (
                     <span className="rounded-full bg-success-bg px-2 py-0.5 text-[11px] font-semibold text-success">Grátis</span>
                   ) : (
-                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · início grátis</span>
+                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · 1º exercício grátis</span>
                   )}
                 </div>
                 <p className="mb-1 font-semibold">{m.titulo}</p>
@@ -235,12 +235,15 @@ export default function Landing() {
               <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold">Em breve</span>
             </div>
             <p className="font-display text-4xl font-extrabold" data-testid="preco-pro">
-              R$ {PRECO.anualPorMes}
+              {reais(PRECO.anualPorMes)}
               <span className="text-base font-medium text-muted">/mês</span>
             </p>
-            <p className="mb-5 text-xs text-muted">
-              no plano anual (R$ {PRECO.anual} por ano, 10% de desconto) ou R$ {PRECO.mensal} no mensal. Em construção:
-              nada é cobrado antes do lançamento.
+            <p className="text-xs text-muted">
+              no plano anual: {reais(PRECO.anual)} no Pix ou em até {PRECO.parcelasAnual}x no cartão ({economiaAnual()}% a
+              menos que o mensal). Ou {reais(PRECO.mensal)} no mensal.
+            </p>
+            <p className="mt-2 mb-5 text-xs text-muted">
+              Menos que um lanche por mês. Cursos de Excel custam R$ 300 ou mais.
             </p>
             <ul className="mb-8 space-y-2 text-sm">
               {PLANO_PRO.map((t) => (
@@ -256,6 +259,9 @@ export default function Landing() {
             >
               Ver o que vem no Pro
             </LinkRastreado>
+            <p className="mt-3 text-center text-xs text-muted" data-testid="garantia">
+              Garantia de {PRECO.garantiaDias} dias: não gostou, devolvemos o valor. Durante os testes, nada é cobrado.
+            </p>
           </div>
         </div>
       </Secao>
