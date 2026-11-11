@@ -9,7 +9,14 @@ import {
   type Pos,
 } from "./address";
 import { formatarValor, type TipoDetalhado, type ValorCelula } from "./format";
-import { funcoesUsadas, paraExibicao, paraMotor, validarIdioma, type Validacao } from "./formula";
+import {
+  diagnosticarSintaxe,
+  funcoesUsadas,
+  paraExibicao,
+  paraMotor,
+  validarIdioma,
+  type Validacao,
+} from "./formula";
 import { CONFIG_PT_BR, garantirRegistro } from "./ptBR";
 
 const SHEET = 0;
@@ -217,7 +224,13 @@ export class Planilha {
     }
     const v = validarIdioma(bruto.trim());
     if (!v.ok) return v;
-    this.hf.setCellContents(this.addr(end), normalizarEntrada(bruto) || null);
+    const entrada = normalizarEntrada(bruto);
+    // Fórmula que o motor não consegue ler: recusa com explicação (o Excel
+    // também não deixa gravar), em vez de gravar e mostrar #ERROR!.
+    if (entrada.startsWith("=") && !this.hf.validateFormula(entrada)) {
+      return { ok: false, mensagem: diagnosticarSintaxe(entrada) };
+    }
+    this.hf.setCellContents(this.addr(end), entrada || null);
     this.notificar();
     return { ok: true };
   }
@@ -231,6 +244,38 @@ export class Planilha {
       }
     });
     this.notificar();
+  }
+
+  /** Conteúdo bruto de um intervalo como texto (tab entre colunas, quebra entre linhas), para a área de transferência. */
+  textoDoIntervalo(intervalo: Intervalo): string {
+    const linhas: string[] = [];
+    for (let l = intervalo.inicio.linha; l <= intervalo.fim.linha; l++) {
+      const cols: string[] = [];
+      for (let c = intervalo.inicio.coluna; c <= intervalo.fim.coluna; c++) cols.push(this.bruto({ linha: l, coluna: c }));
+      linhas.push(cols.join("\t"));
+    }
+    return linhas.join("\n");
+  }
+
+  /**
+   * Cola texto vindo de fora (outra planilha, editor de texto) a partir de
+   * `inicio`. Tab separa colunas e quebra de linha separa linhas. Cada célula
+   * passa pelas mesmas validações da digitação; devolve a primeira recusa.
+   */
+  colarTexto(inicio: Pos, texto: string): Validacao & { fim: Pos } {
+    const linhas = texto.replace(/\r/g, "").replace(/\n$/, "").split("\n");
+    let primeiraRecusa: string | null = null;
+    let fim = inicio;
+    linhas.forEach((linha, dl) =>
+      linha.split("\t").forEach((valor, dc) => {
+        const p = { linha: inicio.linha + dl, coluna: inicio.coluna + dc };
+        if (p.linha >= this.linhas || p.coluna >= this.colunas) return;
+        fim = { linha: Math.max(fim.linha, p.linha), coluna: Math.max(fim.coluna, p.coluna) };
+        const r = this.definir(p, valor);
+        if (!r.ok && !primeiraRecusa) primeiraRecusa = r.mensagem;
+      }),
+    );
+    return primeiraRecusa ? { ok: false, mensagem: primeiraRecusa, fim } : { ok: true, fim };
   }
 
   limpar(intervalo: Intervalo) {

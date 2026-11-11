@@ -3,22 +3,25 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { ComecarCta } from "@/components/site/ComecarCta";
-import { diasEntre, hojeSP } from "@/lib/data-sp";
 import type { ItemTrilha } from "@/lib/inicio";
 import * as progresso from "@/lib/progresso";
 import { NOME_DESAFIO } from "@/lib/site";
 
 const noServidor = () => "";
 
-/** Coluna fixa ao lado do mapa: próximo passo, desafio de hoje e progresso geral. */
-export function PainelTrilha({ trilha, lancamento }: { trilha: ItemTrilha[]; lancamento: string }) {
+/** Desafio de hoje, calculado no servidor (data em São Paulo, número e versão do exercício). */
+export type DesafioDeHoje = { slug: string; versao: number; numero: number; rotulo: string } | null;
+
+/**
+ * Coluna fixa ao lado do mapa: próximo passo, desafio de hoje e progresso geral.
+ * `desafio` undefined = ainda carregando a parte que depende da data.
+ */
+export function PainelTrilha({ trilha, desafio }: { trilha: ItemTrilha[]; desafio?: DesafioDeHoje }) {
   const bruto = useSyncExternalStore(
     progresso.assinar,
     () => {
-      const hoje = hojeSP();
       return JSON.stringify({
-        hoje,
-        desafio: progresso.ler(`desafio-${hoje}`, 1) ?? null,
+        desafio: desafio ? (progresso.ler(desafio.slug, desafio.versao) ?? null) : null,
         tudo: progresso.lerTudo(),
         trofeus: Object.keys(progresso.lerTrofeus()).length,
       });
@@ -27,14 +30,12 @@ export function PainelTrilha({ trilha, lancamento }: { trilha: ItemTrilha[]; lan
   );
   const dados = bruto
     ? (JSON.parse(bruto) as {
-        hoje: string;
         desafio: progresso.ProgressoExercicio | null;
         tudo: Record<string, progresso.ProgressoExercicio>;
         trofeus: number;
       })
     : null;
   const feitos = dados ? trilha.filter((i) => dados.tudo[i.slug]?.versao === i.versao && dados.tudo[i.slug]?.status === "concluido").length : 0;
-  const numero = dados ? diasEntre(lancamento, dados.hoje) + 1 : null;
   const desafioFeito = dados?.desafio?.status === "concluido";
 
   return (
@@ -51,10 +52,13 @@ export function PainelTrilha({ trilha, lancamento }: { trilha: ItemTrilha[]; lan
       >
         <p className="font-display text-lg font-bold">
           {NOME_DESAFIO}
-          {numero && numero > 0 ? ` #${numero}` : ""} →
+          {desafio ? ` #${desafio.numero}` : ""} →
         </p>
-        {!dados ? (
+        {desafio && <p className="text-xs text-white/60">{desafio.rotulo}</p>}
+        {!dados || desafio === undefined ? (
           <p className="text-sm text-white/70">Um desafio novo todo dia, o mesmo para todo mundo.</p>
+        ) : desafio === null ? (
+          <p className="mt-1 text-sm text-white/70">Sem desafio hoje. Veja a solução de ontem.</p>
         ) : desafioFeito ? (
           <p className="mt-1 text-sm text-white/80">
             <span className="mr-2 tracking-widest">{(dados.desafio?.historico ?? [true]).map((ok) => (ok ? "🟩" : "🟨")).join("")}</span>

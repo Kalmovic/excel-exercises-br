@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { Logo } from "@/components/marca/Logo";
+import { MenuCelular } from "@/components/marca/MenuCelular";
 import { NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -36,13 +37,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
               ))}
             </nav>
-            <div className="flex items-center gap-4 text-sm font-medium">
+            <div className="flex items-center gap-3 text-sm font-medium sm:gap-4">
               <Link href="/entrar" className="hidden text-ink hover:text-muted sm:inline">
                 Entrar
               </Link>
-              <Link href="/trilha" className="rounded-lg bg-ink px-4 py-2 text-white hover:bg-ink-soft">
+              <Link href="/trilha" className="rounded-lg bg-ink px-4 py-2 whitespace-nowrap text-white hover:bg-ink-soft">
                 Começar grátis
               </Link>
+              <MenuCelular itens={[...NAV, { href: "/entrar", rotulo: "Entrar" }]} />
             </div>
           </div>
         </header>

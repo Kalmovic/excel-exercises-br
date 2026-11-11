@@ -13,7 +13,14 @@ Como conferir qualquer tarefa: `npm test`, `npx eslint src e2e`, `npm run build`
 
 ---
 
-## P0: bugs (corrigir antes de qualquer outra coisa)
+## P0: bugs (todos corrigidos em 11/11/2026)
+
+Os seis itens abaixo foram corrigidos, cada um com teste em `e2e/bugs.spec.ts` (e `e2e/dev.spec.ts` para o modo dev). As descrições ficam como registro.
+
+Diferenças em relação ao que a tarefa pedia:
+
+- **P0-1:** em vez de recriar a planilha ao voltar, o motor deixou de ser destruído no cleanup do efeito (a instância vai para o coletor de lixo quando some a referência). É mais simples e preserva o que o aluno digitou.
+- **P0-2:** corrigido o estouro e criado o menu de celular. A revisão visual seção por seção em 360/768 px não foi feita; o teste garante só que não há rolagem horizontal em 375 px.
 
 ### P0-1. A planilha quebra ao voltar para um exercício, e o modo dev não funciona
 
@@ -157,7 +164,8 @@ Como conferir qualquer tarefa: `npm test`, `npx eslint src e2e`, `npm run build`
 4. **Progresso:** exportar/importar backup enquanto não há contas; limpar entradas órfãs; teste de migração de formato.
 5. **Admin:** simular a data do desafio (ver `/desafio` como será num dia futuro), validar um JSON de exercício colado, lista com problemas de qualidade (sem dica, sem `variaveis`).
 6. **Conteúdo fora do código:** quando houver banco, desafios e exercícios Pro saem do repositório (obrigatório se o repo virar público por causa da GPL).
-7. **Higiene:** `.env.example` (`ADMIN_TOKEN`, `NEXT_PUBLIC_SITE_URL`, `DESAFIO_HOJE`) e o aviso do Vitest sobre `__dirname`.
+7. **Aviso do modo dev** em `/exercicios/[slug]`: `params` lido fora de `Suspense` ("instant-shell-url-data"). Não afeta produção (todas as páginas são pré-geradas); resolver com `Suspense` em volta do conteúdo ou `export const instant = false`.
+8. **Higiene:** `.env.example` (`ADMIN_TOKEN`, `NEXT_PUBLIC_SITE_URL`, `DESAFIO_HOJE`) e o aviso do Vitest sobre `__dirname`.
 
 ---
 

@@ -108,7 +108,10 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
     };
   }, [planilha, store]);
 
-  useEffect(() => () => planilha.destruir(), [planilha]);
+  // Não destruir o motor no cleanup: o Next esconde a página ao navegar (e o
+  // StrictMode do dev simula isso) rodando os cleanups, mas mantém o estado.
+  // Destruir aqui deixava `nucleo` apontando para uma instância morta e a
+  // grade quebrava ao voltar. Sem referências, a instância vai para o GC.
 
   const verificar = () => {
     const s = store.getState();
@@ -154,6 +157,15 @@ export default function Simulador({ exercicio: ex, proximo, trilha, desafio, adm
   };
 
   const reiniciar = () => {
+    if (desafio && !admin) {
+      // No desafio, Recomeçar limpa só a planilha: as tentativas e o histórico
+      // (os quadrados do card) continuam valendo.
+      const atual = progresso.ler(ex.slug, ex.versao);
+      if (atual) progresso.salvar(ex.slug, { ...atual, conteudos: {}, formatos: {}, resposta: "" });
+      setNucleo(montar(ex, false));
+      setResultado(null);
+      return;
+    }
     if (!admin) progresso.apagar(ex.slug);
     setNucleo(montar(ex, !admin));
     setResultado(null);

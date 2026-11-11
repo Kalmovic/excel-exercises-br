@@ -126,3 +126,28 @@ export function validarIdioma(formula: string): Validacao {
   }
   return { ok: true };
 }
+
+/**
+ * Explica por que uma fórmula não pode ser lida. Chamada quando o motor
+ * recusa a sintaxe: o Excel não aceita gravar uma fórmula assim, e aqui
+ * também não (em vez de mostrar #ERROR!).
+ */
+export function diagnosticarSintaxe(formula: string): string {
+  const corpo = formula.slice(1).trim();
+  if (corpo === "") return "A fórmula está vazia: depois do = vem a conta, como =A1+B1.";
+  const aspas = (formula.match(/"/g) ?? []).length;
+  if (aspas % 2 === 1) return "Faltou fechar as aspas de um texto.";
+  let saldo = 0;
+  for (const t of tokenizar(formula)) {
+    if (t.tipo !== "outro") continue;
+    if (t.valor === "(") saldo++;
+    if (t.valor === ")") saldo--;
+    if (saldo < 0) return "Tem um parêntese fechando sem ter aberto.";
+  }
+  if (saldo > 0) {
+    return saldo === 1 ? "Faltou fechar um parêntese." : `Faltou fechar ${saldo} parênteses.`;
+  }
+  if (/[+\-*/^&;=<>]\s*$/.test(corpo)) return "A fórmula termina num operador: falta o que vem depois dele.";
+  if (/\(\s*\)/.test(corpo) && !/\b[A-ZÀ-Ú.]+\(\s*\)/i.test(corpo)) return "Tem parênteses vazios na fórmula.";
+  return "Há um problema na escrita desta fórmula. Confira os parênteses, os ; entre os argumentos e as aspas.";
+}

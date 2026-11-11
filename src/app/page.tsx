@@ -77,7 +77,7 @@ export default function Landing() {
       {/* Hero */}
       <section className="border-b border-line bg-bg">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 lg:grid-cols-2 lg:py-24">
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <span className="inline-block rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium">
               Exercícios de Excel na prática, em português
             </span>
@@ -101,7 +101,8 @@ export default function Landing() {
             <p className="text-xs text-muted">Sem cadastro para começar. Sem instalar nada.</p>
           </div>
 
-          <div className="rounded-2xl border border-line bg-surface p-5 shadow-xl" data-testid="experimente">
+          {/* min-w-0: sem isso, a coluna cresce até a largura da grade e empurra a página no celular */}
+          <div className="min-w-0 rounded-2xl border border-line bg-surface p-5 shadow-xl" data-testid="experimente">
             <div className="mb-3 flex items-center justify-between">
               <span className="text-xs font-bold tracking-wider text-success uppercase">Experimente agora</span>
               <span className="text-xs text-muted">Exercício 1 de 10</span>

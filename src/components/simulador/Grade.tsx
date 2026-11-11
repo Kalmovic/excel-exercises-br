@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, type KeyboardEvent, type MouseEvent } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  type ClipboardEvent,
+  type KeyboardEvent,
+  type MouseEvent,
+} from "react";
 import {
   colunaParaLetras,
   contem,
@@ -13,6 +21,14 @@ import { alinhamento } from "@/engine/format";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 
 const LARGURA_PADRAO = 96;
+
+async function escreverNaAreaDeTransferencia(texto: string) {
+  try {
+    await navigator.clipboard.writeText(texto);
+  } catch {
+    // sem permissão (ou contexto inseguro): a cópia interna continua funcionando
+  }
+}
 const ALTURA = 26;
 const LARGURA_CABECALHO = 44;
 
@@ -145,8 +161,30 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           return;
         }
         const k = tecla.toLowerCase();
-        if (k === "c") return (e.preventDefault(), s.copiar());
-        if (k === "v") return (e.preventDefault(), s.colar());
+        if (k === "c") {
+          e.preventDefault();
+          s.copiar();
+          void escreverNaAreaDeTransferencia(planilha.textoDoIntervalo(s.selecao()));
+          return;
+        }
+        if (k === "x") {
+          // Recortar: vai para a área do sistema e sai daqui. Ao colar, as
+          // referências ficam como estão (como no Excel).
+          e.preventDefault();
+          void escreverNaAreaDeTransferencia(planilha.textoDoIntervalo(s.selecao()));
+          s.apagarSelecao();
+          store.setState({ copiado: null });
+          return;
+        }
+        if (k === "v") {
+          // Com uma cópia interna marcada, cola ajustando as referências.
+          // Sem ela, deixa o navegador disparar o evento "paste" (texto de fora).
+          if (s.copiado) {
+            e.preventDefault();
+            s.colar();
+          }
+          return;
+        }
         if (k === "z") return (e.preventDefault(), e.shiftKey ? planilha.refazer() : planilha.desfazer());
         if (k === "y") return (e.preventDefault(), planilha.refazer());
         if (k === "d") return (e.preventDefault(), s.preencherSelecao("baixo"));
@@ -189,6 +227,22 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       };
       s.mover(...d[tecla]);
     }
+  };
+
+  // Colar vindo de fora (Ctrl+V sem cópia interna, ou menu do navegador).
+  // Editando uma célula, o texto entra no editor normalmente.
+  const aoColar = (e: ClipboardEvent<HTMLInputElement>) => {
+    const s = store.getState();
+    if (s.modo !== "pronto") return;
+    e.preventDefault();
+    if (s.copiado) {
+      s.colar();
+      return;
+    }
+    const texto = e.clipboardData.getData("text/plain");
+    if (!texto) return;
+    const r = planilha.colarTexto(s.ancora, texto);
+    store.setState({ foco: r.fim, mensagem: r.ok ? null : r.mensagem });
   };
 
   const aoDigitar = (valor: string) => {
@@ -335,6 +389,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           spellCheck={false}
           value={editando ? rascunho : ""}
           onChange={(e) => aoDigitar(e.target.value)}
+          onPaste={aoColar}
           onKeyDown={aoTeclar}
           className={`absolute z-20 border-2 border-success px-1 font-[inherit] text-[13px] outline-none ${
             editando ? "bg-white text-zinc-900 opacity-100 shadow-md" : "opacity-0"

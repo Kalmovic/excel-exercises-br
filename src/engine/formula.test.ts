@@ -41,3 +41,30 @@ describe("booleanos", () => {
     expect(paraMotor('="FALSO"')).toBe('="FALSO"');
   });
 });
+
+describe("sintaxe: recusada com explicação, nunca #ERROR!", () => {
+  const casos: [string, RegExp][] = [
+    ["=SOMA(B2:B7", /Faltou fechar um parêntese/],
+    ["=SE(A1>0;SOMA(B1:B2", /Faltou fechar 2 parênteses/],
+    ["=SOMA(B2:B7))", /fechando sem ter aberto/],
+    ["=SOMA(B2:B7)+", /termina num operador/],
+    ['=SE(A1>0;"sim;"não")', /aspas/],
+    ["=", /vazia/],
+  ];
+  it.each(casos)("%s", async (formula, msg) => {
+    const { Planilha } = await import("./engine");
+    const p = new Planilha({ linhas: 9, colunas: 4, celulas: {} });
+    const r = p.definir("C1", formula);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.mensagem).toMatch(msg);
+    expect(p.valor("C1")).toBeNull(); // nada foi gravado
+  });
+
+  it("fórmulas válidas continuam passando", async () => {
+    const { Planilha } = await import("./engine");
+    const p = new Planilha({ linhas: 9, colunas: 4, celulas: {} });
+    for (const f of ["=SOMA(B2:B7)", "=SE(A1>0;\"sim\";\"não\")", "=PROCV(A1;B1:C3;2;FALSO)", "=HOJE()", "=-A1", "=(1+2)*3"]) {
+      expect(p.definir("C1", f), f).toEqual({ ok: true });
+    }
+  });
+});
