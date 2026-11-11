@@ -98,7 +98,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 
 - **Evidência:** existem 15 exercícios (Intro 10, Fundamentos 5) e 14 desafios. A landing promete 9 módulos. **Os desafios acabam em 23/11/2026**; em 24/11 a página fica vazia.
 - **Fazer, nesta ordem:**
-  1. Desafios de 24/11 a 31/12 (curva da semana; dezembro com tema de 13º e orçamento).
+  1. ~~Desafios de 24/11 a 31/12~~ **Feito:** 52 desafios até 31/12/2026 (`2026-12.json`), com temas de Black Friday, 13º, festas e fechamento do ano. **Próximo lote (janeiro) precisa entrar antes de 01/01/2027.** O motor não tem MÉDIASES: use SOMASES/CONT.SES.
   2. Completar Fundamentos até ~8 (MÍNIMO/MÁXIMO separados, ARRED, referência mista, porcentagem do total).
   3. Módulos 2 a 8, ~7 por módulo, com o nível 1 de cada função marcado como grátis.
   4. Antes do Módulo 6: HOJE com data fixa (`hojeFixo`) e DATADIF com unidade minúscula. Antes do 7: FILTRO com várias colunas (plugin). Ver `docs/FASE-0.md`.
@@ -190,7 +190,7 @@ Pendente (precisa de você): ativar Analytics no painel da Vercel. Eventos perso
 
 1. P0-1 a P0-6 (um dia de trabalho, com testes).
 2. P1-1 (CI) e P1-2 (medição): tudo o que vem depois depende de saber se quebrou e se converteu.
-3. P1-5 item 1 (desafios até dezembro): prazo em 23/11.
+3. ~~P1-5 item 1 (desafios até dezembro)~~ feito; janeiro antes de 01/01/2027.
 4. P2-1 e P1-6: o que o Google e o visitante veem.
 5. P3-1 e P3-2 (autocompletar e F4), depois P1-5 (módulos).
 6. P1-3, P1-4, P1-7, P1-8: contas, pagamento, lista, legal.

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { exercicioSchema } from "@/content/schema";
 import { diasEntre, hojeSP } from "@/lib/data-sp";
 import novembro2026 from "./2026-11.json";
+import dezembro2026 from "./2026-12.json";
 
 /**
  * Desafios diários. Este módulo é SÓ DO SERVIDOR: o `import "server-only"`
@@ -42,7 +43,7 @@ export type Desafio = z.infer<typeof desafioSchema>;
 /** Dia do desafio nº 1. */
 export const LANCAMENTO = "2026-11-10";
 
-export const desafios: Desafio[] = [...novembro2026]
+export const desafios: Desafio[] = [...novembro2026, ...dezembro2026]
   .map((d) => desafioSchema.parse(d))
   .sort((a, b) => a.data.localeCompare(b.data));
 

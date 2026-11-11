@@ -5508,5 +5508,2239 @@
         "AVERAGEIF"
       ]
     }
+  },
+  {
+    "data": "2026-11-24",
+    "nivel": 2,
+    "caso": false,
+    "exercicio": {
+      "id": "d9817ff6-7c94-5833-b1f7-40cea8ed9c88",
+      "slug": "desafio-2026-11-24",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Black Friday: o cupom vale para este produto?",
+      "enunciado": [
+        "O cupom dá **15% de desconto**, mas só em produtos de **R$ 200 ou mais**. As regras estão em F1 e F2.",
+        "Em **C2:C11**, calcule o preço final de cada produto: com desconto quando o cupom vale, e o preço normal quando não vale."
+      ],
+      "grade": {
+        "linhas": 13,
+        "colunas": 7,
+        "larguras": {
+          "A": 130,
+          "C": 110,
+          "E": 170
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Preço",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Fone sem fio"
+          },
+          "B2": {
+            "entrada": "89,9",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Air fryer"
+          },
+          "B3": {
+            "entrada": "299,9",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Cafeteira"
+          },
+          "B4": {
+            "entrada": "89",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Liquidificador"
+          },
+          "B5": {
+            "entrada": "359",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Smartwatch"
+          },
+          "B6": {
+            "entrada": "179",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Ventilador"
+          },
+          "B7": {
+            "entrada": "149,9",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "Mochila"
+          },
+          "B8": {
+            "entrada": "149,9",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "Tênis"
+          },
+          "B9": {
+            "entrada": "199,9",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "Perfume"
+          },
+          "B10": {
+            "entrada": "149,9",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "Caixa de som"
+          },
+          "B11": {
+            "entrada": "89",
+            "formato": "moeda"
+          },
+          "C1": {
+            "entrada": "Com cupom",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Cupom vale a partir de",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "200",
+            "formato": "moeda"
+          },
+          "E2": {
+            "entrada": "Desconto do cupom",
+            "negrito": true
+          },
+          "F2": {
+            "entrada": "15%"
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B11",
+          "F1",
+          "F2"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": 89.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B2>=$F$1;B2*(1-$F$2);B2)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C3",
+          "esperado": 254.915,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B3>=$F$1;B3*(1-$F$2);B3)",
+          "formato": "moeda",
+          "tolerancia": 0.0001
+        },
+        {
+          "celula": "C4",
+          "esperado": 89,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B4>=$F$1;B4*(1-$F$2);B4)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C5",
+          "esperado": 305.15,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B5>=$F$1;B5*(1-$F$2);B5)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C6",
+          "esperado": 179,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B6>=$F$1;B6*(1-$F$2);B6)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C7",
+          "esperado": 149.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B7>=$F$1;B7*(1-$F$2);B7)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C8",
+          "esperado": 149.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B8>=$F$1;B8*(1-$F$2);B8)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C9",
+          "esperado": 199.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B9>=$F$1;B9*(1-$F$2);B9)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C10",
+          "esperado": 149.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B10>=$F$1;B10*(1-$F$2);B10)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C11",
+          "esperado": 89,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SE(B11>=$F$1;B11*(1-$F$2);B11)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SE(B2>=$F$1;B2*(1-$F$2);B2)`: se o preço chega ao mínimo, aplica o desconto; senão, devolve o próprio preço.",
+        "As regras ficam travadas com `$` para a fórmula poder ser copiada até C11. Escrever 200 e 15% dentro da fórmula funcionaria hoje, mas obrigaria a mexer em dez fórmulas quando a loja mudar a regra."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "IF"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-25",
+    "nivel": 2,
+    "caso": false,
+    "exercicio": {
+      "id": "e7855783-1779-5711-807d-d8a409a715bc",
+      "slug": "desafio-2026-11-25",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 2,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Frete por estado (e grátis no resto)",
+      "enunciado": [
+        "A tabela em E:F tem o frete de cada estado atendido pela transportadora. Nos outros estados, a loja oferece **frete grátis**.",
+        "Em **C2:C11**, busque o frete de cada pedido. Quando o estado não estiver na tabela, o frete é **0**."
+      ],
+      "grade": {
+        "linhas": 12,
+        "colunas": 7,
+        "larguras": {
+          "C": 100
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Pedido",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Estado",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "#6001"
+          },
+          "B2": {
+            "entrada": "MG"
+          },
+          "A3": {
+            "entrada": "#6002"
+          },
+          "B3": {
+            "entrada": "BA"
+          },
+          "A4": {
+            "entrada": "#6003"
+          },
+          "B4": {
+            "entrada": "GO"
+          },
+          "A5": {
+            "entrada": "#6004"
+          },
+          "B5": {
+            "entrada": "PE"
+          },
+          "A6": {
+            "entrada": "#6005"
+          },
+          "B6": {
+            "entrada": "RJ"
+          },
+          "A7": {
+            "entrada": "#6006"
+          },
+          "B7": {
+            "entrada": "SC"
+          },
+          "A8": {
+            "entrada": "#6007"
+          },
+          "B8": {
+            "entrada": "PE"
+          },
+          "A9": {
+            "entrada": "#6008"
+          },
+          "B9": {
+            "entrada": "PE"
+          },
+          "A10": {
+            "entrada": "#6009"
+          },
+          "B10": {
+            "entrada": "PR"
+          },
+          "A11": {
+            "entrada": "#6010"
+          },
+          "B11": {
+            "entrada": "MG"
+          },
+          "C1": {
+            "entrada": "Frete",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "Estado",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Frete",
+            "negrito": true
+          },
+          "E2": {
+            "entrada": "SP"
+          },
+          "F2": {
+            "entrada": "12,9",
+            "formato": "moeda"
+          },
+          "E3": {
+            "entrada": "RJ"
+          },
+          "F3": {
+            "entrada": "15,9",
+            "formato": "moeda"
+          },
+          "E4": {
+            "entrada": "MG"
+          },
+          "F4": {
+            "entrada": "17,5",
+            "formato": "moeda"
+          },
+          "E5": {
+            "entrada": "PR"
+          },
+          "F5": {
+            "entrada": "19,9",
+            "formato": "moeda"
+          },
+          "E6": {
+            "entrada": "RS"
+          },
+          "F6": {
+            "entrada": "24,9",
+            "formato": "moeda"
+          },
+          "E7": {
+            "entrada": "BA"
+          },
+          "F7": {
+            "entrada": "29,9",
+            "formato": "moeda"
+          }
+        },
+        "variaveis": [
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "C2",
+          "esperado": 17.5,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B2;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C3",
+          "esperado": 29.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B3;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C4",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B4;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C5",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B5;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C6",
+          "esperado": 15.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B6;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C7",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B7;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C8",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B8;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C9",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B9;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C10",
+          "esperado": 19.9,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B10;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "C11",
+          "esperado": 17.5,
+          "exigeFormula": true,
+          "solucaoReferencia": "=PROCX(B11;$E$2:$E$7;$F$2:$F$7;0)",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=PROCX(B2;$E$2:$E$7;$F$2:$F$7;0)`: procura o estado na tabela e devolve o frete; o último argumento é o que aparece quando não acha.",
+        "Com PROCV: `=SEERRO(PROCV(B2;$E$2:$F$7;2;FALSO);0)`. Sem o tratamento, os pedidos de SC, GO, DF e PE mostrariam `#N/D`."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-26",
+    "nivel": 3,
+    "caso": false,
+    "exercicio": {
+      "id": "8b24e7a3-959d-5dc9-acd9-15dd1860c6ee",
+      "slug": "desafio-2026-11-26",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Black Friday ou black fraude?",
+      "enunciado": [
+        "Para cada produto, a planilha tem o **menor preço dos últimos 30 dias** e o **preço na Black Friday**.",
+        "Em **F2**, conte quantos produtos estão realmente mais baratos na Black Friday. Em **E5**, liste esses produtos com uma única fórmula."
+      ],
+      "grade": {
+        "linhas": 26,
+        "colunas": 7,
+        "larguras": {
+          "A": 110,
+          "B": 170,
+          "C": 170,
+          "E": 150
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Produto",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Menor preço (30 dias)",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Preço na Black Friday",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "TV 55\""
+          },
+          "B2": {
+            "entrada": "1659,9",
+            "formato": "moeda"
+          },
+          "C2": {
+            "entrada": "1327,9",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Notebook"
+          },
+          "B3": {
+            "entrada": "1529,9",
+            "formato": "moeda"
+          },
+          "C3": {
+            "entrada": "1223,9",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Celular"
+          },
+          "B4": {
+            "entrada": "1719,9",
+            "formato": "moeda"
+          },
+          "C4": {
+            "entrada": "1719,9",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Tablet"
+          },
+          "B5": {
+            "entrada": "3219,9",
+            "formato": "moeda"
+          },
+          "C5": {
+            "entrada": "3380,9",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Geladeira"
+          },
+          "B6": {
+            "entrada": "409,9",
+            "formato": "moeda"
+          },
+          "C6": {
+            "entrada": "409,9",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Micro-ondas"
+          },
+          "B7": {
+            "entrada": "1129,9",
+            "formato": "moeda"
+          },
+          "C7": {
+            "entrada": "960,4",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "Fritadeira"
+          },
+          "B8": {
+            "entrada": "2439,9",
+            "formato": "moeda"
+          },
+          "C8": {
+            "entrada": "2195,9",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "Aspirador"
+          },
+          "B9": {
+            "entrada": "3519,9",
+            "formato": "moeda"
+          },
+          "C9": {
+            "entrada": "3167,9",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "Monitor"
+          },
+          "B10": {
+            "entrada": "2279,9",
+            "formato": "moeda"
+          },
+          "C10": {
+            "entrada": "2051,9",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "Console"
+          },
+          "B11": {
+            "entrada": "939,9",
+            "formato": "moeda"
+          },
+          "C11": {
+            "entrada": "845,9",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "Impressora"
+          },
+          "B12": {
+            "entrada": "1059,9",
+            "formato": "moeda"
+          },
+          "C12": {
+            "entrada": "1165,9",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "Câmera"
+          },
+          "B13": {
+            "entrada": "3149,9",
+            "formato": "moeda"
+          },
+          "C13": {
+            "entrada": "3307,4",
+            "formato": "moeda"
+          },
+          "E1": {
+            "entrada": "Desconto de verdade",
+            "negrito": true
+          },
+          "E2": {
+            "entrada": "Quantos",
+            "negrito": true
+          },
+          "E4": {
+            "entrada": "Quais",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "B2",
+          "C2",
+          "B3",
+          "C3",
+          "B4",
+          "C4",
+          "B5",
+          "C5",
+          "B6",
+          "C6",
+          "B7",
+          "C7",
+          "B8",
+          "C8",
+          "B9",
+          "C9",
+          "B10",
+          "C10",
+          "B11",
+          "C11",
+          "B12",
+          "C12",
+          "B13",
+          "C13"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "F2",
+          "esperado": 7,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMARPRODUTO((C2:C13<B2:B13)*1)"
+        },
+        {
+          "celula": "E5",
+          "esperado": [
+            [
+              "TV 55\""
+            ],
+            [
+              "Notebook"
+            ],
+            [
+              "Micro-ondas"
+            ],
+            [
+              "Fritadeira"
+            ],
+            [
+              "Aspirador"
+            ],
+            [
+              "Monitor"
+            ],
+            [
+              "Console"
+            ]
+          ],
+          "exigeFormula": true,
+          "solucaoReferencia": "=FILTRO(A2:A13;C2:C13<B2:B13)"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=FILTRO(A2:A13;C2:C13<B2:B13)` compara as duas colunas linha a linha e mantém só os produtos com preço menor.",
+        "Para contar, `=SOMARPRODUTO((C2:C13<B2:B13)*1)` transforma cada VERDADEIRO em 1 e soma.",
+        "O CONT.SE não serve aqui: ele compara com um valor fixo, e a comparação é entre duas colunas."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "FILTER"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-27",
+    "nivel": 3,
+    "caso": false,
+    "exercicio": {
+      "id": "c6f2a6b3-c546-57c0-bbe1-849607f13ddc",
+      "slug": "desafio-2026-11-27",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Black Friday: a hora de pico",
+      "enunciado": [
+        "A loja virtual registrou as vendas de cada hora da Black Friday.",
+        "Em **E1**, mostre a **hora** com mais vendas. Em **E2**, some as vendas das **20h às 23h**, inclusive."
+      ],
+      "grade": {
+        "linhas": 18,
+        "colunas": 6,
+        "larguras": {
+          "B": 110,
+          "D": 190,
+          "E": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Hora",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Vendas",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "8"
+          },
+          "B2": {
+            "entrada": "830",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "9"
+          },
+          "B3": {
+            "entrada": "390",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "10"
+          },
+          "B4": {
+            "entrada": "520",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "11"
+          },
+          "B5": {
+            "entrada": "320",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "12"
+          },
+          "B6": {
+            "entrada": "420",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "13"
+          },
+          "B7": {
+            "entrada": "710",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "14"
+          },
+          "B8": {
+            "entrada": "900",
+            "formato": "moeda"
+          },
+          "A9": {
+            "entrada": "15"
+          },
+          "B9": {
+            "entrada": "410",
+            "formato": "moeda"
+          },
+          "A10": {
+            "entrada": "16"
+          },
+          "B10": {
+            "entrada": "480",
+            "formato": "moeda"
+          },
+          "A11": {
+            "entrada": "17"
+          },
+          "B11": {
+            "entrada": "210",
+            "formato": "moeda"
+          },
+          "A12": {
+            "entrada": "18"
+          },
+          "B12": {
+            "entrada": "800",
+            "formato": "moeda"
+          },
+          "A13": {
+            "entrada": "19"
+          },
+          "B13": {
+            "entrada": "420",
+            "formato": "moeda"
+          },
+          "A14": {
+            "entrada": "20"
+          },
+          "B14": {
+            "entrada": "830",
+            "formato": "moeda"
+          },
+          "A15": {
+            "entrada": "21"
+          },
+          "B15": {
+            "entrada": "1270",
+            "formato": "moeda"
+          },
+          "A16": {
+            "entrada": "22"
+          },
+          "B16": {
+            "entrada": "770",
+            "formato": "moeda"
+          },
+          "A17": {
+            "entrada": "23"
+          },
+          "B17": {
+            "entrada": "400",
+            "formato": "moeda"
+          },
+          "D1": {
+            "entrada": "Hora de pico",
+            "negrito": true
+          },
+          "D2": {
+            "entrada": "Vendido das 20h às 23h",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B11",
+          "B12",
+          "B13",
+          "B14",
+          "B15",
+          "B16",
+          "B17"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E1",
+          "esperado": 21,
+          "exigeFormula": true,
+          "solucaoReferencia": "=ÍNDICE(A2:A17;CORRESP(MÁXIMO(B2:B17);B2:B17;0))"
+        },
+        {
+          "celula": "E2",
+          "esperado": 3270,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASES(B2:B17;A2:A17;\">=20\";A2:A17;\"<=23\")",
+          "formato": "moeda"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=ÍNDICE(A2:A17;CORRESP(MÁXIMO(B2:B17);B2:B17;0))`: acha o maior valor de vendas, descobre a posição e devolve a hora da mesma linha.",
+        "`=SOMASES(B2:B17;A2:A17;\">=20\";A2:A17;\"<=23\")` usa o mesmo intervalo duas vezes para fazer um \"entre\": hora maior ou igual a 20 **e** menor ou igual a 23."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "SUMIFS"
+      ]
+    }
+  },
+  {
+    "data": "2026-11-28",
+    "nivel": 3,
+    "caso": true,
+    "exercicio": {
+      "id": "4e3c03fc-43d4-55fa-a486-0b87f023d596",
+      "slug": "desafio-2026-11-28",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Caso real: balanço da Black Friday",
+      "enunciado": [
+        "A loja fechou a Black Friday com 36 pedidos. Hora do balanço.",
+        "1) Em **G2:G5**, o total vendido em cada categoria.",
+        "2) Em **G7**, o ticket médio (valor médio por pedido).",
+        "3) Em **G8**, a porcentagem de pedidos que usaram cupom."
+      ],
+      "grade": {
+        "linhas": 39,
+        "colunas": 8,
+        "larguras": {
+          "B": 110,
+          "C": 100,
+          "D": 100,
+          "F": 120,
+          "G": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Pedido",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Valor",
+            "negrito": true
+          },
+          "D1": {
+            "entrada": "Usou cupom",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "#7001"
+          },
+          "B2": {
+            "entrada": "Eletrônicos"
+          },
+          "C2": {
+            "entrada": "720,82",
+            "formato": "moeda"
+          },
+          "D2": {
+            "entrada": "Sim"
+          },
+          "A3": {
+            "entrada": "#7002"
+          },
+          "B3": {
+            "entrada": "Beleza"
+          },
+          "C3": {
+            "entrada": "192,26",
+            "formato": "moeda"
+          },
+          "D3": {
+            "entrada": "Não"
+          },
+          "A4": {
+            "entrada": "#7003"
+          },
+          "B4": {
+            "entrada": "Beleza"
+          },
+          "C4": {
+            "entrada": "193,03",
+            "formato": "moeda"
+          },
+          "D4": {
+            "entrada": "Não"
+          },
+          "A5": {
+            "entrada": "#7004"
+          },
+          "B5": {
+            "entrada": "Beleza"
+          },
+          "C5": {
+            "entrada": "376,06",
+            "formato": "moeda"
+          },
+          "D5": {
+            "entrada": "Não"
+          },
+          "A6": {
+            "entrada": "#7005"
+          },
+          "B6": {
+            "entrada": "Moda"
+          },
+          "C6": {
+            "entrada": "593,82",
+            "formato": "moeda"
+          },
+          "D6": {
+            "entrada": "Sim"
+          },
+          "A7": {
+            "entrada": "#7006"
+          },
+          "B7": {
+            "entrada": "Moda"
+          },
+          "C7": {
+            "entrada": "891,95",
+            "formato": "moeda"
+          },
+          "D7": {
+            "entrada": "Sim"
+          },
+          "A8": {
+            "entrada": "#7007"
+          },
+          "B8": {
+            "entrada": "Moda"
+          },
+          "C8": {
+            "entrada": "476,27",
+            "formato": "moeda"
+          },
+          "D8": {
+            "entrada": "Não"
+          },
+          "A9": {
+            "entrada": "#7008"
+          },
+          "B9": {
+            "entrada": "Eletrônicos"
+          },
+          "C9": {
+            "entrada": "612,75",
+            "formato": "moeda"
+          },
+          "D9": {
+            "entrada": "Não"
+          },
+          "A10": {
+            "entrada": "#7009"
+          },
+          "B10": {
+            "entrada": "Moda"
+          },
+          "C10": {
+            "entrada": "64,63",
+            "formato": "moeda"
+          },
+          "D10": {
+            "entrada": "Não"
+          },
+          "A11": {
+            "entrada": "#7010"
+          },
+          "B11": {
+            "entrada": "Moda"
+          },
+          "C11": {
+            "entrada": "72,67",
+            "formato": "moeda"
+          },
+          "D11": {
+            "entrada": "Não"
+          },
+          "A12": {
+            "entrada": "#7011"
+          },
+          "B12": {
+            "entrada": "Moda"
+          },
+          "C12": {
+            "entrada": "288,81",
+            "formato": "moeda"
+          },
+          "D12": {
+            "entrada": "Sim"
+          },
+          "A13": {
+            "entrada": "#7012"
+          },
+          "B13": {
+            "entrada": "Moda"
+          },
+          "C13": {
+            "entrada": "617,47",
+            "formato": "moeda"
+          },
+          "D13": {
+            "entrada": "Não"
+          },
+          "A14": {
+            "entrada": "#7013"
+          },
+          "B14": {
+            "entrada": "Casa"
+          },
+          "C14": {
+            "entrada": "389,88",
+            "formato": "moeda"
+          },
+          "D14": {
+            "entrada": "Não"
+          },
+          "A15": {
+            "entrada": "#7014"
+          },
+          "B15": {
+            "entrada": "Beleza"
+          },
+          "C15": {
+            "entrada": "622,97",
+            "formato": "moeda"
+          },
+          "D15": {
+            "entrada": "Não"
+          },
+          "A16": {
+            "entrada": "#7015"
+          },
+          "B16": {
+            "entrada": "Eletrônicos"
+          },
+          "C16": {
+            "entrada": "795,93",
+            "formato": "moeda"
+          },
+          "D16": {
+            "entrada": "Não"
+          },
+          "A17": {
+            "entrada": "#7016"
+          },
+          "B17": {
+            "entrada": "Casa"
+          },
+          "C17": {
+            "entrada": "808,01",
+            "formato": "moeda"
+          },
+          "D17": {
+            "entrada": "Não"
+          },
+          "A18": {
+            "entrada": "#7017"
+          },
+          "B18": {
+            "entrada": "Casa"
+          },
+          "C18": {
+            "entrada": "354,02",
+            "formato": "moeda"
+          },
+          "D18": {
+            "entrada": "Sim"
+          },
+          "A19": {
+            "entrada": "#7018"
+          },
+          "B19": {
+            "entrada": "Casa"
+          },
+          "C19": {
+            "entrada": "60,91",
+            "formato": "moeda"
+          },
+          "D19": {
+            "entrada": "Sim"
+          },
+          "A20": {
+            "entrada": "#7019"
+          },
+          "B20": {
+            "entrada": "Eletrônicos"
+          },
+          "C20": {
+            "entrada": "444,38",
+            "formato": "moeda"
+          },
+          "D20": {
+            "entrada": "Sim"
+          },
+          "A21": {
+            "entrada": "#7020"
+          },
+          "B21": {
+            "entrada": "Eletrônicos"
+          },
+          "C21": {
+            "entrada": "273,62",
+            "formato": "moeda"
+          },
+          "D21": {
+            "entrada": "Sim"
+          },
+          "A22": {
+            "entrada": "#7021"
+          },
+          "B22": {
+            "entrada": "Casa"
+          },
+          "C22": {
+            "entrada": "417,88",
+            "formato": "moeda"
+          },
+          "D22": {
+            "entrada": "Não"
+          },
+          "A23": {
+            "entrada": "#7022"
+          },
+          "B23": {
+            "entrada": "Beleza"
+          },
+          "C23": {
+            "entrada": "650,73",
+            "formato": "moeda"
+          },
+          "D23": {
+            "entrada": "Não"
+          },
+          "A24": {
+            "entrada": "#7023"
+          },
+          "B24": {
+            "entrada": "Casa"
+          },
+          "C24": {
+            "entrada": "881,99",
+            "formato": "moeda"
+          },
+          "D24": {
+            "entrada": "Não"
+          },
+          "A25": {
+            "entrada": "#7024"
+          },
+          "B25": {
+            "entrada": "Beleza"
+          },
+          "C25": {
+            "entrada": "756,88",
+            "formato": "moeda"
+          },
+          "D25": {
+            "entrada": "Não"
+          },
+          "A26": {
+            "entrada": "#7025"
+          },
+          "B26": {
+            "entrada": "Eletrônicos"
+          },
+          "C26": {
+            "entrada": "768,81",
+            "formato": "moeda"
+          },
+          "D26": {
+            "entrada": "Sim"
+          },
+          "A27": {
+            "entrada": "#7026"
+          },
+          "B27": {
+            "entrada": "Eletrônicos"
+          },
+          "C27": {
+            "entrada": "199,98",
+            "formato": "moeda"
+          },
+          "D27": {
+            "entrada": "Não"
+          },
+          "A28": {
+            "entrada": "#7027"
+          },
+          "B28": {
+            "entrada": "Moda"
+          },
+          "C28": {
+            "entrada": "799,96",
+            "formato": "moeda"
+          },
+          "D28": {
+            "entrada": "Não"
+          },
+          "A29": {
+            "entrada": "#7028"
+          },
+          "B29": {
+            "entrada": "Beleza"
+          },
+          "C29": {
+            "entrada": "866,35",
+            "formato": "moeda"
+          },
+          "D29": {
+            "entrada": "Não"
+          },
+          "A30": {
+            "entrada": "#7029"
+          },
+          "B30": {
+            "entrada": "Eletrônicos"
+          },
+          "C30": {
+            "entrada": "279,38",
+            "formato": "moeda"
+          },
+          "D30": {
+            "entrada": "Não"
+          },
+          "A31": {
+            "entrada": "#7030"
+          },
+          "B31": {
+            "entrada": "Moda"
+          },
+          "C31": {
+            "entrada": "291,55",
+            "formato": "moeda"
+          },
+          "D31": {
+            "entrada": "Não"
+          },
+          "A32": {
+            "entrada": "#7031"
+          },
+          "B32": {
+            "entrada": "Eletrônicos"
+          },
+          "C32": {
+            "entrada": "241,68",
+            "formato": "moeda"
+          },
+          "D32": {
+            "entrada": "Não"
+          },
+          "A33": {
+            "entrada": "#7032"
+          },
+          "B33": {
+            "entrada": "Eletrônicos"
+          },
+          "C33": {
+            "entrada": "750,29",
+            "formato": "moeda"
+          },
+          "D33": {
+            "entrada": "Sim"
+          },
+          "A34": {
+            "entrada": "#7033"
+          },
+          "B34": {
+            "entrada": "Moda"
+          },
+          "C34": {
+            "entrada": "135,1",
+            "formato": "moeda"
+          },
+          "D34": {
+            "entrada": "Não"
+          },
+          "A35": {
+            "entrada": "#7034"
+          },
+          "B35": {
+            "entrada": "Eletrônicos"
+          },
+          "C35": {
+            "entrada": "738,67",
+            "formato": "moeda"
+          },
+          "D35": {
+            "entrada": "Não"
+          },
+          "A36": {
+            "entrada": "#7035"
+          },
+          "B36": {
+            "entrada": "Eletrônicos"
+          },
+          "C36": {
+            "entrada": "642,52",
+            "formato": "moeda"
+          },
+          "D36": {
+            "entrada": "Não"
+          },
+          "A37": {
+            "entrada": "#7036"
+          },
+          "B37": {
+            "entrada": "Casa"
+          },
+          "C37": {
+            "entrada": "339,22",
+            "formato": "moeda"
+          },
+          "D37": {
+            "entrada": "Sim"
+          },
+          "F1": {
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "G1": {
+            "entrada": "Total",
+            "negrito": true
+          },
+          "F2": {
+            "entrada": "Eletrônicos"
+          },
+          "F3": {
+            "entrada": "Casa"
+          },
+          "F4": {
+            "entrada": "Moda"
+          },
+          "F5": {
+            "entrada": "Beleza"
+          },
+          "F7": {
+            "entrada": "Ticket médio",
+            "negrito": true
+          },
+          "F8": {
+            "entrada": "% com cupom",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24",
+          "C25",
+          "C26",
+          "C27",
+          "C28",
+          "C29",
+          "C30",
+          "C31",
+          "C32",
+          "C33",
+          "C34",
+          "C35",
+          "C36",
+          "C37"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "G2",
+          "esperado": 6468.83,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$37;F2;$C$2:$C$37)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G3",
+          "esperado": 3251.91,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$37;F3;$C$2:$C$37)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G4",
+          "esperado": 4232.23,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$37;F4;$C$2:$C$37)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G5",
+          "esperado": 3658.28,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMASE($B$2:$B$37;F5;$C$2:$C$37)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "G7",
+          "esperado": 489.201389,
+          "exigeFormula": true,
+          "solucaoReferencia": "=MÉDIA(C2:C37)",
+          "formato": "moeda",
+          "tolerancia": 0.0001
+        },
+        {
+          "celula": "G8",
+          "esperado": 0.305556,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE(D2:D37;\"Sim\")/CONT.VALORES(D2:D37)",
+          "formato": "percentual",
+          "tolerancia": 0.0001
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "**Etapa 1:** `=SOMASE($B$2:$B$37;F2;$C$2:$C$37)`, copiada até G5.",
+        "**Etapa 2:** `=MÉDIA(C2:C37)`: o ticket médio é a média dos valores dos pedidos.",
+        "**Etapa 3:** `=CONT.SE(D2:D37;\"Sim\")/CONT.VALORES(D2:D37)`: pedidos com cupom divididos pelo total de pedidos. Com a célula em formato de porcentagem, 0,33 aparece como 33%."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-29",
+    "nivel": 3,
+    "caso": true,
+    "exercicio": {
+      "id": "404aeb86-474e-5ebc-ba3a-32cab3649ee0",
+      "slug": "desafio-2026-11-29",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 3,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Caso real: qual categoria mais volta?",
+      "enunciado": [
+        "Depois da Black Friday, começaram as devoluções. A coluna C diz se cada pedido foi entregue ou devolvido.",
+        "1) Em **F2:F5**, quantos pedidos cada categoria teve. 2) Em **G2:G5**, quantos foram devolvidos.",
+        "3) Em **H2:H5**, a taxa de devolução (devolvidos ÷ pedidos). 4) Em **F7**, o nome da categoria com a maior taxa."
+      ],
+      "grade": {
+        "linhas": 42,
+        "colunas": 9,
+        "larguras": {
+          "B": 110,
+          "C": 100,
+          "E": 120,
+          "G": 100
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Pedido",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "C1": {
+            "entrada": "Situação",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "#8001"
+          },
+          "B2": {
+            "entrada": "Calçados"
+          },
+          "C2": {
+            "entrada": "Entregue"
+          },
+          "A3": {
+            "entrada": "#8002"
+          },
+          "B3": {
+            "entrada": "Roupas"
+          },
+          "C3": {
+            "entrada": "Entregue"
+          },
+          "A4": {
+            "entrada": "#8003"
+          },
+          "B4": {
+            "entrada": "Eletrônicos"
+          },
+          "C4": {
+            "entrada": "Entregue"
+          },
+          "A5": {
+            "entrada": "#8004"
+          },
+          "B5": {
+            "entrada": "Acessórios"
+          },
+          "C5": {
+            "entrada": "Entregue"
+          },
+          "A6": {
+            "entrada": "#8005"
+          },
+          "B6": {
+            "entrada": "Calçados"
+          },
+          "C6": {
+            "entrada": "Entregue"
+          },
+          "A7": {
+            "entrada": "#8006"
+          },
+          "B7": {
+            "entrada": "Roupas"
+          },
+          "C7": {
+            "entrada": "Devolvido"
+          },
+          "A8": {
+            "entrada": "#8007"
+          },
+          "B8": {
+            "entrada": "Eletrônicos"
+          },
+          "C8": {
+            "entrada": "Entregue"
+          },
+          "A9": {
+            "entrada": "#8008"
+          },
+          "B9": {
+            "entrada": "Acessórios"
+          },
+          "C9": {
+            "entrada": "Devolvido"
+          },
+          "A10": {
+            "entrada": "#8009"
+          },
+          "B10": {
+            "entrada": "Calçados"
+          },
+          "C10": {
+            "entrada": "Devolvido"
+          },
+          "A11": {
+            "entrada": "#8010"
+          },
+          "B11": {
+            "entrada": "Roupas"
+          },
+          "C11": {
+            "entrada": "Entregue"
+          },
+          "A12": {
+            "entrada": "#8011"
+          },
+          "B12": {
+            "entrada": "Eletrônicos"
+          },
+          "C12": {
+            "entrada": "Entregue"
+          },
+          "A13": {
+            "entrada": "#8012"
+          },
+          "B13": {
+            "entrada": "Acessórios"
+          },
+          "C13": {
+            "entrada": "Entregue"
+          },
+          "A14": {
+            "entrada": "#8013"
+          },
+          "B14": {
+            "entrada": "Calçados"
+          },
+          "C14": {
+            "entrada": "Devolvido"
+          },
+          "A15": {
+            "entrada": "#8014"
+          },
+          "B15": {
+            "entrada": "Roupas"
+          },
+          "C15": {
+            "entrada": "Entregue"
+          },
+          "A16": {
+            "entrada": "#8015"
+          },
+          "B16": {
+            "entrada": "Eletrônicos"
+          },
+          "C16": {
+            "entrada": "Entregue"
+          },
+          "A17": {
+            "entrada": "#8016"
+          },
+          "B17": {
+            "entrada": "Acessórios"
+          },
+          "C17": {
+            "entrada": "Entregue"
+          },
+          "A18": {
+            "entrada": "#8017"
+          },
+          "B18": {
+            "entrada": "Calçados"
+          },
+          "C18": {
+            "entrada": "Entregue"
+          },
+          "A19": {
+            "entrada": "#8018"
+          },
+          "B19": {
+            "entrada": "Roupas"
+          },
+          "C19": {
+            "entrada": "Entregue"
+          },
+          "A20": {
+            "entrada": "#8019"
+          },
+          "B20": {
+            "entrada": "Eletrônicos"
+          },
+          "C20": {
+            "entrada": "Entregue"
+          },
+          "A21": {
+            "entrada": "#8020"
+          },
+          "B21": {
+            "entrada": "Acessórios"
+          },
+          "C21": {
+            "entrada": "Devolvido"
+          },
+          "A22": {
+            "entrada": "#8021"
+          },
+          "B22": {
+            "entrada": "Calçados"
+          },
+          "C22": {
+            "entrada": "Entregue"
+          },
+          "A23": {
+            "entrada": "#8022"
+          },
+          "B23": {
+            "entrada": "Roupas"
+          },
+          "C23": {
+            "entrada": "Devolvido"
+          },
+          "A24": {
+            "entrada": "#8023"
+          },
+          "B24": {
+            "entrada": "Eletrônicos"
+          },
+          "C24": {
+            "entrada": "Entregue"
+          },
+          "A25": {
+            "entrada": "#8024"
+          },
+          "B25": {
+            "entrada": "Acessórios"
+          },
+          "C25": {
+            "entrada": "Entregue"
+          },
+          "A26": {
+            "entrada": "#8025"
+          },
+          "B26": {
+            "entrada": "Calçados"
+          },
+          "C26": {
+            "entrada": "Devolvido"
+          },
+          "A27": {
+            "entrada": "#8026"
+          },
+          "B27": {
+            "entrada": "Roupas"
+          },
+          "C27": {
+            "entrada": "Entregue"
+          },
+          "A28": {
+            "entrada": "#8027"
+          },
+          "B28": {
+            "entrada": "Eletrônicos"
+          },
+          "C28": {
+            "entrada": "Entregue"
+          },
+          "A29": {
+            "entrada": "#8028"
+          },
+          "B29": {
+            "entrada": "Acessórios"
+          },
+          "C29": {
+            "entrada": "Entregue"
+          },
+          "A30": {
+            "entrada": "#8029"
+          },
+          "B30": {
+            "entrada": "Calçados"
+          },
+          "C30": {
+            "entrada": "Devolvido"
+          },
+          "A31": {
+            "entrada": "#8030"
+          },
+          "B31": {
+            "entrada": "Roupas"
+          },
+          "C31": {
+            "entrada": "Devolvido"
+          },
+          "A32": {
+            "entrada": "#8031"
+          },
+          "B32": {
+            "entrada": "Eletrônicos"
+          },
+          "C32": {
+            "entrada": "Entregue"
+          },
+          "A33": {
+            "entrada": "#8032"
+          },
+          "B33": {
+            "entrada": "Acessórios"
+          },
+          "C33": {
+            "entrada": "Entregue"
+          },
+          "A34": {
+            "entrada": "#8033"
+          },
+          "B34": {
+            "entrada": "Calçados"
+          },
+          "C34": {
+            "entrada": "Devolvido"
+          },
+          "A35": {
+            "entrada": "#8034"
+          },
+          "B35": {
+            "entrada": "Roupas"
+          },
+          "C35": {
+            "entrada": "Entregue"
+          },
+          "A36": {
+            "entrada": "#8035"
+          },
+          "B36": {
+            "entrada": "Eletrônicos"
+          },
+          "C36": {
+            "entrada": "Entregue"
+          },
+          "A37": {
+            "entrada": "#8036"
+          },
+          "B37": {
+            "entrada": "Acessórios"
+          },
+          "C37": {
+            "entrada": "Devolvido"
+          },
+          "A38": {
+            "entrada": "#8037"
+          },
+          "B38": {
+            "entrada": "Calçados"
+          },
+          "C38": {
+            "entrada": "Devolvido"
+          },
+          "A39": {
+            "entrada": "#8038"
+          },
+          "B39": {
+            "entrada": "Roupas"
+          },
+          "C39": {
+            "entrada": "Devolvido"
+          },
+          "A40": {
+            "entrada": "#8039"
+          },
+          "B40": {
+            "entrada": "Eletrônicos"
+          },
+          "C40": {
+            "entrada": "Entregue"
+          },
+          "A41": {
+            "entrada": "#8040"
+          },
+          "B41": {
+            "entrada": "Acessórios"
+          },
+          "C41": {
+            "entrada": "Entregue"
+          },
+          "E1": {
+            "entrada": "Categoria",
+            "negrito": true
+          },
+          "F1": {
+            "entrada": "Pedidos",
+            "negrito": true
+          },
+          "G1": {
+            "entrada": "Devolvidos",
+            "negrito": true
+          },
+          "H1": {
+            "entrada": "Taxa",
+            "negrito": true
+          },
+          "E2": {
+            "entrada": "Calçados"
+          },
+          "E3": {
+            "entrada": "Roupas"
+          },
+          "E4": {
+            "entrada": "Eletrônicos"
+          },
+          "E5": {
+            "entrada": "Acessórios"
+          },
+          "E7": {
+            "entrada": "Maior taxa",
+            "negrito": true
+          }
+        }
+      },
+      "alvos": [
+        {
+          "celula": "F2",
+          "esperado": 10,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE($B$2:$B$41;E2)"
+        },
+        {
+          "celula": "F3",
+          "esperado": 10,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE($B$2:$B$41;E3)"
+        },
+        {
+          "celula": "F4",
+          "esperado": 10,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE($B$2:$B$41;E4)"
+        },
+        {
+          "celula": "F5",
+          "esperado": 10,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SE($B$2:$B$41;E5)"
+        },
+        {
+          "celula": "G2",
+          "esperado": 6,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SES($B$2:$B$41;E2;$C$2:$C$41;\"Devolvido\")"
+        },
+        {
+          "celula": "G3",
+          "esperado": 4,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SES($B$2:$B$41;E3;$C$2:$C$41;\"Devolvido\")"
+        },
+        {
+          "celula": "G4",
+          "esperado": 0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SES($B$2:$B$41;E4;$C$2:$C$41;\"Devolvido\")"
+        },
+        {
+          "celula": "G5",
+          "esperado": 3,
+          "exigeFormula": true,
+          "solucaoReferencia": "=CONT.SES($B$2:$B$41;E5;$C$2:$C$41;\"Devolvido\")"
+        },
+        {
+          "celula": "H2",
+          "esperado": 0.6,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G2/F2",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H3",
+          "esperado": 0.4,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G3/F3",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H4",
+          "esperado": 0.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G4/F4",
+          "formato": "percentual"
+        },
+        {
+          "celula": "H5",
+          "esperado": 0.3,
+          "exigeFormula": true,
+          "solucaoReferencia": "=G5/F5",
+          "formato": "percentual"
+        },
+        {
+          "celula": "F7",
+          "esperado": "Calçados",
+          "exigeFormula": true,
+          "solucaoReferencia": "=ÍNDICE(E2:E5;CORRESP(MÁXIMO(H2:H5);H2:H5;0))"
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "**Etapas 1 e 2:** `=CONT.SE($B$2:$B$41;E2)` conta os pedidos da categoria; `=CONT.SES($B$2:$B$41;E2;$C$2:$C$41;\"Devolvido\")` conta só os devolvidos.",
+        "**Etapa 3:** `=G2/F2`. Olhar o número absoluto de devoluções engana: uma categoria com muitos pedidos pode ter muitas devoluções e, mesmo assim, taxa baixa.",
+        "**Etapa 4:** `=ÍNDICE(E2:E5;CORRESP(MÁXIMO(H2:H5);H2:H5;0))`."
+      ],
+      "tentativasAteExplicacao": 99
+    }
+  },
+  {
+    "data": "2026-11-30",
+    "nivel": 1,
+    "caso": false,
+    "exercicio": {
+      "id": "277dc310-dd41-50ef-b058-156de5bf456d",
+      "slug": "desafio-2026-11-30",
+      "type": "formula",
+      "trilha": "excel-ptbr",
+      "modulo": "desafio",
+      "ordem": 1,
+      "nivel": 1,
+      "plano": "free",
+      "versao": 1,
+      "titulo": "Ceia de Natal: quanto cada um paga?",
+      "enunciado": [
+        "A família vai dividir a ceia igualmente. O número de pessoas está em **E1**.",
+        "Em **E2**, calcule o total da ceia. Em **E3**, quanto cada pessoa paga."
+      ],
+      "grade": {
+        "linhas": 9,
+        "colunas": 6,
+        "larguras": {
+          "A": 130,
+          "D": 120,
+          "E": 110
+        },
+        "celulas": {
+          "A1": {
+            "entrada": "Item",
+            "negrito": true
+          },
+          "B1": {
+            "entrada": "Valor",
+            "negrito": true
+          },
+          "A2": {
+            "entrada": "Peru"
+          },
+          "B2": {
+            "entrada": "189,9",
+            "formato": "moeda"
+          },
+          "A3": {
+            "entrada": "Bacalhau"
+          },
+          "B3": {
+            "entrada": "240",
+            "formato": "moeda"
+          },
+          "A4": {
+            "entrada": "Arroz e farofa"
+          },
+          "B4": {
+            "entrada": "45,5",
+            "formato": "moeda"
+          },
+          "A5": {
+            "entrada": "Saladas"
+          },
+          "B5": {
+            "entrada": "62,3",
+            "formato": "moeda"
+          },
+          "A6": {
+            "entrada": "Sobremesas"
+          },
+          "B6": {
+            "entrada": "98",
+            "formato": "moeda"
+          },
+          "A7": {
+            "entrada": "Bebidas"
+          },
+          "B7": {
+            "entrada": "156,4",
+            "formato": "moeda"
+          },
+          "A8": {
+            "entrada": "Panetone"
+          },
+          "B8": {
+            "entrada": "54,9",
+            "formato": "moeda"
+          },
+          "D1": {
+            "entrada": "Pessoas",
+            "negrito": true
+          },
+          "E1": {
+            "entrada": "6"
+          },
+          "D2": {
+            "entrada": "Total da ceia",
+            "negrito": true
+          },
+          "D3": {
+            "entrada": "Cada um paga",
+            "negrito": true
+          }
+        },
+        "variaveis": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6",
+          "B7",
+          "B8",
+          "E1"
+        ]
+      },
+      "alvos": [
+        {
+          "celula": "E2",
+          "esperado": 847.0,
+          "exigeFormula": true,
+          "solucaoReferencia": "=SOMA(B2:B8)",
+          "formato": "moeda"
+        },
+        {
+          "celula": "E3",
+          "esperado": 141.166667,
+          "exigeFormula": true,
+          "solucaoReferencia": "=E2/E1",
+          "formato": "moeda",
+          "tolerancia": 0.0001
+        }
+      ],
+      "dicas": [],
+      "explicacao": [
+        "`=SOMA(B2:B8)` dá o total; `=E2/E1` divide pelo número de pessoas.",
+        "Usar E1 na fórmula, e não o número 6, deixa a conta pronta para quando a tia avisar que vai levar o namorado."
+      ],
+      "tentativasAteExplicacao": 99,
+      "funcoesExigidas": [
+        "SUM"
+      ]
+    }
   }
 ]
