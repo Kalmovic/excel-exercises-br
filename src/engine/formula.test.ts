@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { funcoesUsadas, paraExibicao, paraMotor, validarIdioma } from "./formula";
+import { funcoesUsadas, validarIdioma } from "./formula";
 
 describe("validarIdioma", () => {
   it("aceita pt-BR", () => {
@@ -35,11 +35,6 @@ describe("funcoesUsadas", () => {
 });
 
 describe("booleanos", () => {
-  it("ida e volta", () => {
-    expect(paraMotor("=SE(A1;VERDADEIRO;falso)")).toBe("=SE(A1;VERDADEIRO();FALSO())");
-    expect(paraExibicao("=SE(A1;VERDADEIRO();FALSO())")).toBe("=SE(A1;VERDADEIRO;FALSO)");
-    expect(paraMotor('="FALSO"')).toBe('="FALSO"');
-  });
 });
 
 describe("sintaxe: recusada com explicação, nunca #ERROR!", () => {

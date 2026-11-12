@@ -226,3 +226,9 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - Adaptações em relação ao roteiro: pegadinhas que perguntam "por quê?" sem nada a consertar viraram múltipla escolha (4.2, 6.3, 6.4, 8.1); as de dado digitado errado viraram "corrija o dado" (2.5, 6.2, 8.2); a do 5.2 pede o número com 2 dígitos via DIREITA(A2;2) (o roteiro sugere LOCALIZAR, citado na explicação); 4.3 e 4.4 usam a célula A5/F2 em vez do texto literal.
 - [ ] Teste aprovado conta para o certificado: depende do backend (validação no servidor).
 - [x] Teste do Módulo 0 incluído (`src/content/free/intro/teste.json`): resposta, seleção, fórmula, formatação e múltipla escolha. O Intro continua sem lições de 5 questões.
+
+### Motor de fórmulas (12/11/2026)
+
+- [x] HyperFormula removido; motor próprio em `src/engine/motor/` (sem dependências, ~6 KB gzip). Resolve a questão da GPL sem custo e sem abrir o código. A tabela de nomes pt-BR das funções ficou em `src/engine/nomes-dados.ts`.
+- [ ] Testar no site com uso real (fórmulas inesperadas de aluno). Funções fora do catálogo dão a mensagem "ainda não está disponível no simulador"; acrescentar em `FUNCOES` quando aparecerem.
+- [ ] Conferir no Excel pt-BR real os casos da matriz (`matriz.test.ts`), como já previsto na Fase 0.

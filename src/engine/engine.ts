@@ -1,53 +1,48 @@
-import { DetailedCellError, ErrorType, HyperFormula } from "hyperformula";
 import type { Exercicio, Formato } from "@/content/schema";
-import {
-  deEndereco,
-  normalizar,
-  paraEndereco,
-  posicoes,
-  type Intervalo,
-  type Pos,
-} from "./address";
+import { deEndereco, paraEndereco, posicoes, type Intervalo, type Pos } from "./address";
 import { formatarValor, type TipoDetalhado, type ValorCelula } from "./format";
-import {
-  diagnosticarSintaxe,
-  funcoesUsadas,
-  paraExibicao,
-  paraMotor,
-  validarIdioma,
-  type Validacao,
-} from "./formula";
-import { CONFIG_PT_BR, garantirRegistro } from "./ptBR";
-
-const SHEET = 0;
+import { diagnosticarSintaxe, funcoesUsadas, validarIdioma, type Validacao } from "./formula";
+import { lerEntrada, normalizarFormula } from "./motor/entrada";
+import { Calculo, FUNCOES, type Conteudo } from "./motor/nucleo";
+import { analisar, type No } from "./motor/parser";
+import { referenciasDaFormula } from "./referencias";
 
 export type Grade = Exercicio["grade"];
 
 export type Alteracao = { endereco: string; bruto: string };
 
-/** Ajustes de entrada que o Excel aceita e o HyperFormula não. */
-function normalizarEntrada(bruto: string): string {
-  const s = bruto.trim() === "" ? "" : bruto;
-  if (s.startsWith("=")) return paraMotor(s);
-  // "R$ 1.234,50" -> "R$1.234,50"
-  return s.replace(/^(-?)R\$\s+/, "$1R$");
+type FotoFormato = { end: string; formato?: Formato; doAluno?: Formato };
+type Mudanca = { end: string; antes?: string; depois?: string };
+type AcaoHistorico = { tipo: "celulas"; mudancas: Mudanca[] } | { tipo: "formato"; antes: FotoFormato[]; depois: FotoFormato[] };
+
+const pt = (n: number) => String(Math.round(n * 1e10) / 1e10).replace(".", ",");
+const dois = (n: number) => String(n).padStart(2, "0");
+
+/** Fórmula com erro de escrita vinda do conteúdo (pegadinhas): mostra o texto e calcula como erro. */
+const ERRO_DE_ESCRITA: No = { t: "erro", v: "#NOME?" };
+
+/** Funções usadas na fórmula que o motor ainda não calcula. */
+function naoImplementadas(no: No, out = new Set<string>()): Set<string> {
+  if (no.t === "fn") {
+    if (!FUNCOES[no.nome]) out.add(no.nome);
+    no.args.forEach((a) => naoImplementadas(a, out));
+  } else if (no.t === "un" || no.t === "pct") naoImplementadas(no.x, out);
+  else if (no.t === "bin") { naoImplementadas(no.a, out); naoImplementadas(no.b, out); }
+  return out;
 }
 
 /**
- * Adapter do motor de fórmulas. A UI só conversa com esta classe,
- * então dá para trocar o HyperFormula sem mexer nos componentes.
+ * Adaptador do motor de fórmulas. A UI só conversa com esta classe; o cálculo
+ * é do motor próprio (`./motor`), que entende pt-BR direto.
  *
  * Também funciona como "store externo" para `useSyncExternalStore`.
  */
-type FotoFormato = { end: string; formato?: Formato; doAluno?: Formato };
-type AcaoHistorico =
-  | { tipo: "motor"; passos: number }
-  | { tipo: "formato"; antes: FotoFormato[]; depois: FotoFormato[] };
-
 export class Planilha {
   readonly linhas: number;
   readonly colunas: number;
-  private hf: HyperFormula;
+  private calculo = new Calculo();
+  /** O que aparece na barra de fórmulas de cada célula preenchida (chave "linha,coluna"). */
+  private textos = new Map<string, string>();
   private versao = 0;
   private ouvintes = new Set<() => void>();
   private bloqueadas = new Set<string>();
@@ -55,41 +50,27 @@ export class Planilha {
   private formatos = new Map<string, Formato>();
   /** Formatos aplicados pelo aluno (barra R$ / %), para salvar no progresso. */
   private formatosAluno = new Map<string, Formato>();
-  /**
-   * Histórico próprio para o Ctrl+Z: intercala operações do motor (que tem o
-   * seu undo, contado em passos) e de formatação (que fica fora dele).
-   */
+  /** Histórico do Ctrl+Z: conteúdo das células e formatação, na ordem em que aconteceram. */
   private historico: AcaoHistorico[] = [];
   private refeitos: AcaoHistorico[] = [];
   private area: Intervalo | null = null; // última área copiada
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
-    garantirRegistro();
     this.linhas = grade.linhas;
     this.colunas = grade.colunas;
-    // `null` = célula vazia. String vazia conta como conteúdo e bloquearia o spill.
-    const dados: (string | null)[][] = Array.from({ length: grade.linhas }, () =>
-      Array.from({ length: grade.colunas }, () => null),
-    );
     for (const [end, cel] of Object.entries(grade.celulas)) {
-      const { linha, coluna } = deEndereco(end);
-      dados[linha][coluna] = normalizarEntrada(cel.entrada) || null;
+      this.gravar(deEndereco(end), cel.entrada);
       if (cel.bloqueada ?? cel.entrada !== "") this.bloqueadas.add(end);
       if (cel.formato) this.formatos.set(end, cel.formato);
       if (cel.negrito) this.negritos.add(end);
     }
     for (const [end, f] of Object.entries(extras.formatos ?? {})) if (f) this.formatos.set(end, f);
-    this.hf = HyperFormula.buildFromArray(dados, {
-      ...CONFIG_PT_BR,
-      undoLimit: 1000,
-    });
   }
 
   /** Monta a planilha de um exercício, aplicando também os formatos das células-alvo. */
   static deExercicio(ex: Exercicio) {
     return new Planilha(ex.grade, {
-      formatos:
-        ex.type === "formula" ? Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])) : {},
+      formatos: ex.type === "formula" ? Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])) : {},
     });
   }
 
@@ -111,45 +92,42 @@ export class Planilha {
 
   // --- leitura -------------------------------------------------------------
 
-  private addr(end: string | Pos) {
-    const p = typeof end === "string" ? deEndereco(end) : end;
-    return { sheet: SHEET, row: p.linha, col: p.coluna };
+  private pos(end: string | Pos): Pos {
+    return typeof end === "string" ? deEndereco(end) : end;
+  }
+  private chave(end: string | Pos) {
+    const p = this.pos(end);
+    return `${p.linha},${p.coluna}`;
   }
 
   valor(end: string | Pos): ValorCelula {
-    const v = this.hf.getCellValue(this.addr(end));
-    if (v instanceof DetailedCellError) return { erro: v.value };
-    return v as ValorCelula;
+    const p = this.pos(end);
+    return this.calculo.ler(p.linha, p.coluna);
   }
 
   tipo(end: string | Pos): TipoDetalhado {
-    return this.hf.getCellValueDetailedType(this.addr(end)) as TipoDetalhado;
+    const p = this.pos(end);
+    return this.calculo.tipo(p.linha, p.coluna);
   }
 
-  /** Mensagem de erro do motor (em inglês), útil para depuração e para o tutor de IA. */
+  /** Mensagem técnica do erro (o motor próprio já usa os nomes em português). */
   mensagemErro(end: string | Pos): string | undefined {
-    const v = this.hf.getCellValue(this.addr(end));
-    return v instanceof DetailedCellError ? v.message : undefined;
+    const v = this.valor(end);
+    return v !== null && typeof v === "object" ? v.erro : undefined;
   }
 
   /** O que aparece na barra de fórmulas. */
   bruto(end: string | Pos): string {
-    const s = this.hf.getCellSerialized(this.addr(end));
-    if (s === null || s === undefined) return "";
-    if (typeof s === "string") return paraExibicao(s);
-    if (typeof s === "number") return String(s).replace(".", ",");
-    if (typeof s === "boolean") return s ? "VERDADEIRO" : "FALSO";
-    return String(s);
+    return this.textos.get(this.chave(end)) ?? "";
   }
 
   /**
    * A fórmula depende do próprio resultado (ex.: `=SOMA(B2:B8)` dentro de B8).
-   * O HyperFormula devolve #CYCLE!; o Excel mostra 0 e um aviso, e é isso que
-   * reproduzimos na exibição.
+   * O Excel mostra 0 e um aviso, e é isso que reproduzimos na exibição.
    */
   circular(end: string | Pos): boolean {
-    const v = this.hf.getCellValue(this.addr(end));
-    return v instanceof DetailedCellError && v.type === ErrorType.CYCLE;
+    const v = this.valor(end);
+    return v !== null && typeof v === "object" && v.erro === "#CIRC!";
   }
 
   /** Células com fórmula envolvidas em referência circular, em ordem de leitura. */
@@ -170,12 +148,14 @@ export class Planilha {
   }
 
   temFormula(end: string | Pos): boolean {
-    return this.hf.doesCellHaveFormula(this.addr(end));
+    const p = this.pos(end);
+    return this.calculo.temFormula(p.linha, p.coluna);
   }
 
   /** Célula preenchida por uma fórmula de array (FILTRO, ÚNICO…) que derramou. */
   derramada(end: string | Pos): boolean {
-    return this.hf.isCellPartOfArray(this.addr(end)) && !this.temFormula(end);
+    const p = this.pos(end);
+    return this.calculo.derramada(p.linha, p.coluna);
   }
 
   funcoesUsadas(end: string | Pos): string[] {
@@ -192,8 +172,7 @@ export class Planilha {
 
   /**
    * Aplica um formato (barra R$ / %). Vale também para células bloqueadas:
-   * a trava é do conteúdo, não da aparência. Fica fora do HyperFormula,
-   * por isso tem um histórico próprio (ver `desfazer`).
+   * a trava é do conteúdo, não da aparência.
    */
   formatar(intervalo: Intervalo, formato: Formato) {
     const antes: FotoFormato[] = [];
@@ -227,8 +206,6 @@ export class Planilha {
   limparHistorico() {
     this.historico = [];
     this.refeitos = [];
-    this.hf.clearUndoStack();
-    this.hf.clearRedoStack();
   }
 
   formatosDoAluno(): Record<string, Formato> {
@@ -239,50 +216,94 @@ export class Planilha {
     return this.negritos.has(end);
   }
 
-  /** Conteúdo bruto de todas as células não vazias (para correção e progresso). */
+  /** Conteúdo bruto de todas as células preenchidas (para correção e progresso). Derramadas não entram. */
   conteudos(): Record<string, string> {
     const out: Record<string, string> = {};
-    for (let linha = 0; linha < this.linhas; linha++)
-      for (let coluna = 0; coluna < this.colunas; coluna++) {
-        // Células preenchidas por derramamento (FILTRO, ÚNICO…) não são conteúdo:
-        // regravá-las como valor bloquearia o próprio derramamento (#DESPEJAR!).
-        if (this.derramada({ linha, coluna })) continue;
-        const b = this.bruto({ linha, coluna });
-        if (b !== "") out[paraEndereco({ linha, coluna })] = b;
-      }
+    for (const [k, t] of this.textos) {
+      const [linha, coluna] = k.split(",").map(Number);
+      out[paraEndereco({ linha, coluna })] = t;
+    }
     return out;
   }
 
   // --- escrita -------------------------------------------------------------
 
-  /** Valida (idioma pt-BR) e grava. Não grava se a validação falhar. */
+  /** Grava sem validar (dados do exercício, restauração, colar). Devolve o texto anterior. */
+  private gravar(p: Pos, bruto: string): string | undefined {
+    const k = `${p.linha},${p.coluna}`;
+    const antes = this.textos.get(k);
+    let conteudo: Conteudo | null;
+    let texto: string;
+    try {
+      conteudo = lerEntrada(bruto);
+      texto = conteudo === null ? "" : "formula" in conteudo ? normalizarFormula(bruto) : this.textoDe(conteudo, bruto);
+    } catch {
+      conteudo = { formula: ERRO_DE_ESCRITA };
+      texto = bruto.trim();
+    }
+    this.calculo.definir(p.linha, p.coluna, conteudo);
+    if (texto === "") this.textos.delete(k);
+    else this.textos.set(k, texto);
+    return antes;
+  }
+
+  /** Como o Excel mostra na barra o valor digitado: 1234,5 para "R$ 1.234,50", 15/03/2026 para a data. */
+  private textoDe(c: Conteudo, bruto: string): string {
+    if ("formula" in c) return bruto;
+    const v = c.valor;
+    if (typeof v === "boolean") return v ? "VERDADEIRO" : "FALSO";
+    if (typeof v !== "number") return typeof v === "string" ? v : bruto;
+    if (c.tipo === "NUMBER_PERCENT") return `${pt(v * 100)}%`;
+    if (c.tipo === "NUMBER_DATE") {
+      const d = new Date(Date.UTC(1899, 11, 30) + v * 86400000);
+      return `${dois(d.getUTCDate())}/${dois(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`;
+    }
+    if (c.tipo === "NUMBER_TIME") {
+      const s = Math.round(v * 86400);
+      return `${dois(Math.floor(s / 3600))}:${dois(Math.floor((s % 3600) / 60))}`;
+    }
+    return pt(v);
+  }
+
+  private aplicar(mudancas: Mudanca[], lado: "antes" | "depois") {
+    for (const m of mudancas) this.gravar(deEndereco(m.end), m[lado] ?? "");
+  }
+
+  /** Valida (idioma pt-BR e escrita) e grava. Não grava se a validação falhar. */
   definir(end: string | Pos, bruto: string): Validacao {
     if (this.bloqueada(end)) {
       return { ok: false, mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." };
     }
-    const v = validarIdioma(bruto.trim());
+    const entrada = bruto.trim();
+    const v = validarIdioma(entrada);
     if (!v.ok) return v;
-    const entrada = normalizarEntrada(bruto);
-    // Fórmula que o motor não consegue ler: recusa com explicação (o Excel
-    // também não deixa gravar), em vez de gravar e mostrar #ERROR!.
-    if (entrada.startsWith("=") && !this.hf.validateFormula(entrada)) {
-      return { ok: false, mensagem: diagnosticarSintaxe(entrada) };
+    // Fórmula que não pode ser lida: recusa com explicação (o Excel também não deixa gravar).
+    if (entrada.startsWith("=")) {
+      let no: No;
+      try {
+        no = analisar(entrada);
+      } catch {
+        return { ok: false, mensagem: diagnosticarSintaxe(entrada) };
+      }
+      const faltam = [...naoImplementadas(no)];
+      if (faltam.length) return { ok: false, mensagem: `A função ${faltam[0]} ainda não está disponível no simulador.` };
     }
-    this.hf.setCellContents(this.addr(end), entrada || null);
-    this.registrar({ tipo: "motor", passos: 1 });
+    const p = this.pos(end);
+    const antes = this.gravar(p, bruto);
+    this.registrar({ tipo: "celulas", mudancas: [{ end: paraEndereco(p), antes, depois: this.textos.get(`${p.linha},${p.coluna}`) }] });
     this.notificar();
     return { ok: true };
   }
 
   /** Grava várias células de uma vez, sem validação de idioma (uso interno e restauração). */
   definirVarias(alteracoes: Alteracao[]) {
-    this.hf.batch(() => {
-      for (const { endereco, bruto } of alteracoes) {
-        if (this.bloqueada(endereco)) continue;
-        this.hf.setCellContents(this.addr(endereco), normalizarEntrada(bruto) || null);
-      }
-    });
-    this.registrar({ tipo: "motor", passos: 1 });
+    const mudancas: Mudanca[] = [];
+    for (const { endereco, bruto } of alteracoes) {
+      if (this.bloqueada(endereco)) continue;
+      const antes = this.gravar(deEndereco(endereco), bruto);
+      mudancas.push({ end: endereco, antes, depois: this.textos.get(this.chave(endereco)) });
+    }
+    this.registrar({ tipo: "celulas", mudancas });
     this.notificar();
   }
 
@@ -319,12 +340,12 @@ export class Planilha {
   }
 
   limpar(intervalo: Intervalo) {
-    this.hf.batch(() => {
-      for (const p of posicoes(intervalo)) {
-        if (!this.bloqueada(p)) this.hf.setCellContents(this.addr(p), null);
-      }
-    });
-    this.registrar({ tipo: "motor", passos: 1 });
+    const mudancas: Mudanca[] = [];
+    for (const p of posicoes(intervalo)) {
+      if (this.bloqueada(p) || !this.textos.has(`${p.linha},${p.coluna}`)) continue;
+      mudancas.push({ end: paraEndereco(p), antes: this.gravar(p, "") });
+    }
+    if (mudancas.length) this.registrar({ tipo: "celulas", mudancas });
     this.notificar();
   }
 
@@ -357,24 +378,24 @@ export class Planilha {
     const largO = origem.fim.coluna - origem.inicio.coluna + 1;
     const altD = Math.max(destino.fim.linha - destino.inicio.linha + 1, altO);
     const largD = Math.max(destino.fim.coluna - destino.inicio.coluna + 1, largO);
-    // Cola célula a célula para respeitar células bloqueadas e o limite da grade.
-    let passos = 0;
+    // Lê a origem antes de escrever: colar sobre ela mesma não pode embaralhar.
+    const fonte = (l: number, c: number) => this.bruto({ linha: l, coluna: c });
+    const plano: { alvo: Pos; texto: string }[] = [];
     for (let dl = 0; dl < altD; dl++)
       for (let dc = 0; dc < largD; dc++) {
         const alvo = { linha: destino.inicio.linha + dl, coluna: destino.inicio.coluna + dc };
         if (alvo.linha >= this.linhas || alvo.coluna >= this.colunas) continue;
         if (this.bloqueada(alvo)) continue;
-        const fonte = {
-          linha: origem.inicio.linha + (dl % altO),
-          coluna: origem.inicio.coluna + (dc % largO),
-        };
-        if (fonte.linha === alvo.linha && fonte.coluna === alvo.coluna) continue;
-        this.hf.copy({ start: this.addr(fonte), end: this.addr(fonte) });
-        this.hf.paste(this.addr(alvo));
-        passos++;
+        const de = { linha: origem.inicio.linha + (dl % altO), coluna: origem.inicio.coluna + (dc % largO) };
+        if (de.linha === alvo.linha && de.coluna === alvo.coluna) continue;
+        const t = fonte(de.linha, de.coluna);
+        plano.push({ alvo, texto: t.startsWith("=") ? deslocarFormula(t, alvo.linha - de.linha, alvo.coluna - de.coluna) : t });
       }
-    this.hf.clearClipboard();
-    if (passos) this.registrar({ tipo: "motor", passos });
+    const mudancas: Mudanca[] = plano.map(({ alvo, texto }) => {
+      const antes = this.gravar(alvo, texto);
+      return { end: paraEndereco(alvo), antes, depois: this.textos.get(`${alvo.linha},${alvo.coluna}`) };
+    });
+    if (mudancas.length) this.registrar({ tipo: "celulas", mudancas });
     this.notificar();
   }
 
@@ -383,7 +404,7 @@ export class Planilha {
     const acao = this.historico.pop();
     if (!acao) return;
     if (acao.tipo === "formato") this.aplicarFormatos(acao.antes);
-    else for (let i = 0; i < acao.passos && this.hf.isThereSomethingToUndo(); i++) this.hf.undo();
+    else this.aplicar([...acao.mudancas].reverse(), "antes");
     this.refeitos.push(acao);
     this.notificar();
   }
@@ -393,15 +414,38 @@ export class Planilha {
     const acao = this.refeitos.pop();
     if (!acao) return;
     if (acao.tipo === "formato") this.aplicarFormatos(acao.depois);
-    else for (let i = 0; i < acao.passos && this.hf.isThereSomethingToRedo(); i++) this.hf.redo();
+    else this.aplicar(acao.mudancas, "depois");
     this.historico.push(acao);
     this.notificar();
   }
 
   destruir() {
-    this.hf.destroy();
     this.ouvintes.clear();
   }
 }
 
-export { normalizar };
+/** Ajusta as referências relativas de uma fórmula copiada (B2 → B3); as com $ ficam. Fora da planilha vira #REF!. */
+export function deslocarFormula(formula: string, dl: number, dc: number): string {
+  const refs = referenciasDaFormula(formula);
+  let out = formula;
+  for (const r of [...refs].reverse()) {
+    let quebrou = false;
+    const novo = r.texto
+      .split(":")
+      .map((parte) =>
+        parte.replace(/^(\$?)([A-Za-z]{1,3})(\$?)(\d+)$/, (_, cAbs: string, col: string, lAbs: string, lin: string) => {
+          let c = [...col.toUpperCase()].reduce((a, ch) => a * 26 + ch.charCodeAt(0) - 64, 0);
+          let l = Number(lin);
+          if (!cAbs) c += dc;
+          if (!lAbs) l += dl;
+          if (c < 1 || l < 1) quebrou = true;
+          let letras = "";
+          for (let n = c; n > 0; n = Math.floor((n - 1) / 26)) letras = String.fromCharCode(65 + ((n - 1) % 26)) + letras;
+          return `${cAbs}${letras}${lAbs}${l}`;
+        }),
+      )
+      .join(":");
+    out = out.slice(0, r.inicio) + (quebrou ? "#REF!" : novo) + out.slice(r.fim);
+  }
+  return out;
+}

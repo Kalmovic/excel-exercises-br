@@ -9,6 +9,7 @@ export const EXPLICACAO_ERRO: Record<string, string> = {
   "#VALOR!": "um argumento tem o tipo errado, como um texto numa conta",
   "#REF!": "a fórmula aponta para uma célula que não existe",
   "#NÚM!": "um número não é válido para esta função",
+  "#CALC!": "o cálculo não encontrou nenhum resultado, como um FILTRO sem nenhuma linha. Use o 3º argumento do FILTRO para mostrar uma mensagem",
   "#DESPEJAR!": "o resultado precisa de várias células, mas há algo preenchido no caminho. Libere as células abaixo ou à direita",
 };
 

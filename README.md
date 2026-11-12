@@ -18,7 +18,7 @@ npm run e2e     # Playwright contra o build (precisa do build antes)
 
 ```text
 src/
-├─ engine/        adapter do HyperFormula: idioma pt-BR, plugins, formatação, análise de fórmulas
+├─ engine/        motor de fórmulas próprio (motor/), adaptador Planilha, formatação, análise de fórmulas
 ├─ grader/        correção: `corrigir` despacha por tipo; validadores/ tem um validador puro por tipo
 ├─ content/       schema Zod (union por `type`), módulos (index.ts) e exercícios grátis (free/, free/intro/)
 ├─ components/
@@ -52,7 +52,7 @@ Enter / Shift+Enter, Tab / Shift+Tab, setas (Shift estende a seleção), F2 edit
 
 ## Licença
 
-Usa [HyperFormula](https://hyperformula.handsontable.com/) sob GPLv3 (`licenseKey: "gpl-v3"`). Ver a discussão de licença em docs/FASE-0.md.
+O motor de fórmulas é próprio (`src/engine/motor/`), sem dependências de terceiros. Ver docs/FASE-0.md.
 
 ## Desafio diário
 

@@ -34,7 +34,13 @@ A matriz executável está em `src/engine/matriz.test.ts` (`npm test`).
 4. **`R$ 20` com espaço** não era reconhecido como moeda. O adapter remove o espaço.
 5. **Célula vazia precisa ser `null`**, não `""`. String vazia bloqueava o derramamento de FILTRO/ÚNICO.
 
-## Divergências conhecidas (testes marcados como `[divergente]`)
+## Motor próprio (12/11/2026)
+
+O HyperFormula foi substituído por um motor próprio (`src/engine/motor/`): parser pt-BR direto, cálculo sob demanda com dependências e ciclos, resultados que derramam, critérios, datas no sistema 1900 e as funções do catálogo. Motivo: o HyperFormula é GPLv3 ou pago, e roda no navegador. Comparação dos motores no branch `spike/motor` (`spike/RESULTADO.md`).
+
+Garantias: as soluções de todos os exercícios e desafios e a matriz de funções passam (`npm test`); `motor/robustez.test.ts` gera ~3.000 variações erradas de fórmulas de aluno e confere que o motor nunca quebra. As divergências abaixo eram do HyperFormula e não existem mais (DATADIF com unidade minúscula, TEXTO com formato pt-BR, FILTRO com várias colunas, `">="&A1` com decimal).
+
+## Divergências conhecidas (histórico, do HyperFormula) (testes marcados como `[divergente]`)
 
 | Caso | Excel | HyperFormula | Plano |
 | --- | --- | --- | --- |

@@ -3,7 +3,7 @@
  *
  * `ok`: comportamento igual ao Excel pt-BR.
  * `divergente`: diferença conhecida em relação ao Excel. O teste afirma a
- * divergência; se uma atualização do HyperFormula corrigir, ele quebra e
+ * divergência; se uma mudança no motor corrigir, ele quebra e
  * avisa para atualizarmos docs/FASE-0.md.
  *
  * Valores esperados: calculados à mão a partir do comportamento documentado do
@@ -94,7 +94,6 @@ export const CASOS: Caso[] = [
     funcao: "DATADIF unidade minúscula",
     formula: '=DATADIF(C2;C5;"m")',
     esperado: 9,
-    divergente: 'O Excel aceita "m"; o HyperFormula só aceita "M" (#NÚM!).',
   },
   { modulo: "6", funcao: "DIATRABALHOTOTAL", formula: "=DIATRABALHOTOTAL(DATA(2026;11;2);DATA(2026;11;30))", esperado: 21 },
   { modulo: "6", funcao: "FIMMÊS", formula: "=FIMMÊS(DATA(2026;2;10);0)", esperado: d("2026-02-28") },
@@ -117,7 +116,6 @@ export const CASOS: Caso[] = [
     funcao: "TEXTO com formato pt-BR",
     formula: '=TEXTO(1,5;"0,00")',
     esperado: "1,50",
-    divergente: 'O HyperFormula interpreta o formato com ponto decimal; "0,00" vira "2,00".',
   },
 ];
 

@@ -3,7 +3,6 @@ import { PT_PARA_CANONICO, ptBR } from "./ptBR";
 /**
  * Análise léxica mínima de fórmulas, para:
  * - descobrir quais funções o aluno usou (ignorando texto entre aspas);
- * - aceitar VERDADEIRO/FALSO sem parênteses (o HyperFormula exige `FALSO()`);
  * - recusar nomes em inglês ou sem acento com uma sugestão.
  */
 
@@ -59,26 +58,6 @@ export function funcoesUsadas(formula: string): string[] {
     }
   }
   return [...usadas];
-}
-
-const BOOLEANOS = new Set(["VERDADEIRO", "FALSO"]);
-
-/** Converte `FALSO` solto em `FALSO()`, que é o que o HyperFormula entende. */
-export function paraMotor(formula: string): string {
-  if (!formula.startsWith("=")) return formula;
-  return tokenizar(formula)
-    .map((t) =>
-      t.tipo === "ident" && !t.funcao && BOOLEANOS.has(t.valor.toUpperCase())
-        ? `${t.valor.toUpperCase()}()`
-        : t.valor,
-    )
-    .join("");
-}
-
-/** Inverso de `paraMotor`: mostra `FALSO` como o Excel mostra. */
-export function paraExibicao(formula: string): string {
-  if (!formula.startsWith("=")) return formula;
-  return formula.replace(/\b(VERDADEIRO|FALSO)\(\)/g, "$1");
 }
 
 function semAcento(s: string) {

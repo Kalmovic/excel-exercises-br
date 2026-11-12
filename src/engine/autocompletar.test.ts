@@ -1,4 +1,3 @@
-import { HyperFormula } from "hyperformula";
 import { describe, expect, it } from "vitest";
 import {
   alternarReferencia,
@@ -9,12 +8,11 @@ import {
   sugestoes,
 } from "./autocompletar";
 import { CATALOGO, funcaoDoCatalogo } from "./catalogo";
-import { garantirRegistro } from "./ptBR";
+import { FUNCOES } from "./motor/nucleo";
 
 describe("catálogo", () => {
   it("só tem funções que o motor conhece", () => {
-    garantirRegistro();
-    const motor = new Set(HyperFormula.getRegisteredFunctionNames("ptBR"));
+    const motor = new Set(Object.keys(FUNCOES));
     expect(CATALOGO.filter((f) => !motor.has(f.nome)).map((f) => f.nome)).toEqual([]);
   });
   it("sem nomes repetidos", () => {
