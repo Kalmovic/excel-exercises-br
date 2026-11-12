@@ -78,3 +78,40 @@ test("balão: fecha ao sair e voltar, e não cobre nenhuma casa", async ({ page 
   await page.goBack();
   await expect(visivel()).toHaveCount(0);
 });
+
+test("trilha centraliza a casa atual a cada visita, inclusive ao voltar", async ({ page }) => {
+  await limparArmazenamento(page);
+  await page.goto("/trilha");
+  // Conclui as 30 primeiras casas: a atual fica bem abaixo da dobra.
+  const casas = await page.$$eval("[data-testid^='casa-']", (e) => e.map((x) => x.getAttribute("data-testid")!.slice(5)));
+  await page.evaluate((slugs) => {
+    const p: Record<string, unknown> = {};
+    slugs.forEach((s) => (p[s] = { versao: 1, status: "concluido", tentativas: 1, conteudos: {}, atualizadoEm: "2026-11-10T10:00:00Z" }));
+    localStorage.setItem("excel-br:progresso:v1", JSON.stringify(p));
+  }, casas.slice(0, 30));
+
+  const centralizada = () =>
+    expect
+      .poll(() =>
+        page.evaluate(() => {
+          const r = document.querySelector("[data-mapa-atual='true']")?.getBoundingClientRect();
+          return r ? Math.abs(r.top + r.height / 2 - innerHeight / 2) : 9999;
+        }),
+      )
+      .toBeLessThan(60);
+
+  await page.goto("/");
+  const irParaTrilha = () => page.locator("a[href='/trilha']").filter({ visible: true }).first().click();
+  await irParaTrilha();
+  await expect(page).toHaveURL(/\/trilha$/);
+  await centralizada();
+
+  // Sai e volta: o Next reaproveita a página escondida, e ela precisa rolar de novo.
+  await page.goto("/");
+  await irParaTrilha();
+  await centralizada();
+  await page.locator("a[href='/']").filter({ visible: true }).first().click();
+  await expect(page).toHaveURL(/\/$/);
+  await irParaTrilha();
+  await centralizada();
+});

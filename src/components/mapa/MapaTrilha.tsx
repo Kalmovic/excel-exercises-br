@@ -138,14 +138,17 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
     return () => cancelAnimationFrame(id);
   }, [atualX, atualY]);
 
-  // Abre a página já na casa atual.
-  const rolou = useRef(false);
+  // Centraliza a casa atual sempre que a trilha aparece: o Next mantém a página
+  // montada e escondida entre navegações, e ao reaparecer os efeitos rodam de novo.
+  // O quadro seguinte deixa o Next terminar a própria rolagem da navegação.
   useEffect(() => {
-    if (atualY === undefined || rolou.current) return;
-    rolou.current = true;
-    raiz.current
-      ?.querySelector(`[data-mapa-atual="true"]`)
-      ?.scrollIntoView({ block: "center", behavior: "smooth" });
+    if (atualY === undefined) return;
+    const id = requestAnimationFrame(() =>
+      raiz.current
+        ?.querySelector(`[data-mapa-atual="true"]`)
+        ?.scrollIntoView({ block: "center", behavior: "smooth" }),
+    );
+    return () => cancelAnimationFrame(id);
   }, [atualY]);
 
   return (
