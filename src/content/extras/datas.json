@@ -133,7 +133,7 @@
     ],
     "dicas": [
       "Datas são números por baixo dos panos: dá para subtrair.",
-      "Entrega menos compra: `=C2-B2`."
+      "Datas são números: a diferença em dias é uma subtração. Qual data vem primeiro na conta?"
     ],
     "explicacao": [
       "`=C2-B2`: no Excel, cada data é o número de dias desde 01/01/1900, então a subtração dá os dias entre elas.",
@@ -535,7 +535,7 @@
     ],
     "dicas": [
       "`=DATADIF(início;fim;\"Y\")` conta anos completos.",
-      "O fim é a data de referência, travada: `$F$1`."
+      "O fim é a data de referência, que fica numa célula só: ao copiar, ela não pode andar."
     ],
     "explicacao": [
       "`=DATADIF(B2;$F$1;\"Y\")`. Com \"M\" conta meses; com \"D\", dias.",
@@ -653,7 +653,7 @@
     ],
     "dicas": [
       "`=DIATRABALHOTOTAL(início;fim;feriados)`.",
-      "Os feriados são um intervalo: trave com `$`."
+      "Os feriados são um intervalo que não pode andar quando você copiar a fórmula."
     ],
     "explicacao": [
       "`=DIATRABALHOTOTAL(B2;C2;$F$2:$F$4)`: conta de segunda a sexta, incluindo início e fim, menos os feriados.",
@@ -958,7 +958,7 @@
     ],
     "dicas": [
       "`=DATAM(data;meses)` anda meses mantendo o dia.",
-      "Datas se comparam como números: `D2<$H$1` quer dizer \"antes de H1\"."
+      "Datas se comparam como números: uma data menor é uma data anterior."
     ],
     "explicacao": [
       "**Etapa 1:** `=DATAM(B2;C2)`. **Etapa 2:** `=SE(D2<$H$1;\"Vencido\";\"Ativo\")`.",

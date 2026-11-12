@@ -79,7 +79,7 @@
     ],
     "dicas": [
       "Datas são números: dá para subtrair uma da outra.",
-      "HOJE não tem argumentos, mas os parênteses são obrigatórios: `HOJE()`."
+      "HOJE não tem argumentos, mas os parênteses são obrigatórios."
     ],
     "explicacao": [
       "`=B2-HOJE()`: a diferença entre as datas, em dias. O resultado muda todo dia, sozinho.",
@@ -89,7 +89,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
-        "dica": "Amanhã a conta estará errada. Use HOJE()."
+        "dica": "Uma data digitada à mão não muda: amanhã a conta estará errada. Existe uma função que sempre traz a data do dia."
       }
     ],
     "video": "Mostrar que a data é um número, formatando uma data como Número.",
@@ -193,7 +193,7 @@
     "errosComuns": [
       {
         "padrao": "^=(ESQUERDA|DIREITA|EXT\\.TEXTO)\\(",
-        "dica": "Datas não são texto. Use as funções de data: ANO e MÊS."
+        "dica": "Datas não são texto: cortar caracteres não funciona. Existem funções próprias para tirar partes de uma data."
       }
     ],
     "video": "Bônus: DIA() e DIA.DA.SEMANA().",
@@ -295,7 +295,7 @@
       },
       {
         "padrao": "/365",
-        "dica": "Assim você ganha anos quebrados e erra com anos bissextos. Use DATADIF com \"Y\"."
+        "dica": "Assim você ganha anos quebrados e erra nos anos bissextos. Existe uma função que conta anos completos entre duas datas."
       }
     ],
     "video": "Montar \"6 anos e 8 meses\" juntando dois DATADIF com &.",
@@ -376,7 +376,7 @@
     "errosComuns": [
       {
         "padrao": "^=DIATRABALHOTOTAL\\(A2;B2\\)$",
-        "dica": "Faltou informar o feriado no terceiro argumento."
+        "dica": "Faltou considerar o feriado: confira os argumentos da função."
       },
       {
         "padrao": "^=B2-A2$",
@@ -473,7 +473,7 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d\\+30$",
-        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+        "dica": "Somar 30 dias não cai no fim do mês. Existe uma função que devolve o último dia do mês."
       }
     ],
     "video": "O truque: =FIMMÊS(A2;-1)+1 dá o primeiro dia do mês.",
@@ -545,7 +545,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
-        "dica": "Amanhã a conta estará errada. Use HOJE()."
+        "dica": "Uma data digitada à mão não muda: amanhã a conta estará errada. Existe uma função que sempre traz a data do dia."
       }
     ]
   },
@@ -618,7 +618,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
-        "dica": "Amanhã a conta estará errada. Use HOJE()."
+        "dica": "Uma data digitada à mão não muda: amanhã a conta estará errada. Existe uma função que sempre traz a data do dia."
       }
     ]
   },
@@ -694,7 +694,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d-4\\d{4}$|^=B\\d-\\\"?\\d{2}/\\d{2}/\\d{4}",
-        "dica": "Amanhã a conta estará errada. Use HOJE()."
+        "dica": "Uma data digitada à mão não muda: amanhã a conta estará errada. Existe uma função que sempre traz a data do dia."
       }
     ]
   },
@@ -804,7 +804,7 @@
     "errosComuns": [
       {
         "padrao": "^=(ESQUERDA|DIREITA|EXT\\.TEXTO)\\(",
-        "dica": "Datas não são texto. Use as funções de data: ANO e MÊS."
+        "dica": "Datas não são texto: cortar caracteres não funciona. Existem funções próprias para tirar partes de uma data."
       }
     ]
   },
@@ -868,7 +868,7 @@
     "errosComuns": [
       {
         "padrao": "^=(ESQUERDA|DIREITA|EXT\\.TEXTO)\\(",
-        "dica": "Datas não são texto. Use as funções de data: ANO e MÊS."
+        "dica": "Datas não são texto: cortar caracteres não funciona. Existem funções próprias para tirar partes de uma data."
       }
     ]
   },
@@ -961,7 +961,7 @@
     "opcoes": [
       {
         "texto": "26",
-        "dica": "ANO devolve o ano com 4 dígitos."
+        "dica": "Confira quantos dígitos o ANO devolve."
       },
       {
         "texto": "2026"
@@ -1046,7 +1046,7 @@
       },
       {
         "padrao": "/365",
-        "dica": "Assim você ganha anos quebrados e erra com anos bissextos. Use DATADIF com \"Y\"."
+        "dica": "Assim você ganha anos quebrados e erra nos anos bissextos. Existe uma função que conta anos completos entre duas datas."
       }
     ]
   },
@@ -1064,7 +1064,7 @@
       "Em **C2**, os **meses** completos entre A2 e B2."
     ],
     "dicas": [
-      "A unidade dos meses é \"M\"."
+      "Confira a unidade do DATADIF: qual letra conta meses?"
     ],
     "explicacao": [
       "`=DATADIF(A2;B2;\"M\")` → 9 (o 10º mês só fecha em 15/11)."
@@ -1121,7 +1121,7 @@
       },
       {
         "padrao": "/365",
-        "dica": "Assim você ganha anos quebrados e erra com anos bissextos. Use DATADIF com \"Y\"."
+        "dica": "Assim você ganha anos quebrados e erra nos anos bissextos. Existe uma função que conta anos completos entre duas datas."
       }
     ]
   },
@@ -1157,7 +1157,7 @@
     "opcoes": [
       {
         "texto": "Sim, deveria dar 6",
-        "dica": "O 6º ano só se completa em 01/12/2026."
+        "dica": "O DATADIF com \"Y\" conta anos completos. Quando o 6º ano se completa?"
       },
       {
         "texto": "Não: o 6º ano ainda não se completou"
@@ -1299,7 +1299,7 @@
     "errosComuns": [
       {
         "padrao": "^=DIATRABALHOTOTAL\\(A2;B2\\)$",
-        "dica": "Faltou informar o feriado no terceiro argumento."
+        "dica": "Faltou considerar o feriado: confira os argumentos da função."
       },
       {
         "padrao": "^=B2-A2$",
@@ -1377,7 +1377,7 @@
     "errosComuns": [
       {
         "padrao": "^=DIATRABALHOTOTAL\\(A2;B2\\)$",
-        "dica": "Faltou informar o feriado no terceiro argumento."
+        "dica": "Faltou considerar o feriado: confira os argumentos da função."
       },
       {
         "padrao": "^=B2-A2$",
@@ -1538,7 +1538,7 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d\\+30$",
-        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+        "dica": "Somar 30 dias não cai no fim do mês. Existe uma função que devolve o último dia do mês."
       }
     ]
   },
@@ -1605,7 +1605,7 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d\\+30$",
-        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+        "dica": "Somar 30 dias não cai no fim do mês. Existe uma função que devolve o último dia do mês."
       }
     ]
   },
@@ -1623,7 +1623,7 @@
       "Para o vencimento no fim do mês seguinte à compra de A2 (31/01/2026), alguém usou `=A2+30` em B2 e deu 02/03/2026. Corrija."
     ],
     "dicas": [
-      "Fevereiro tem 28 dias. Para fim de mês, use FIMMÊS."
+      "Fevereiro tem 28 dias. Para fim de mês, existe uma função própria."
     ],
     "explicacao": [
       "Somar 30 dias pulou fevereiro. `=FIMMÊS(A2;1)` → 28/02/2026."
@@ -1677,7 +1677,7 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d\\+30$",
-        "dica": "Somar 30 dias não cai no fim do mês. Use FIMMÊS."
+        "dica": "Somar 30 dias não cai no fim do mês. Existe uma função que devolve o último dia do mês."
       }
     ]
   },

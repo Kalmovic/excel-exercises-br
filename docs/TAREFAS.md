@@ -232,3 +232,9 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] HyperFormula removido; motor próprio em `src/engine/motor/` (sem dependências, ~6 KB gzip). Resolve a questão da GPL sem custo e sem abrir o código. A tabela de nomes pt-BR das funções ficou em `src/engine/nomes-dados.ts`.
 - [ ] Testar no site com uso real (fórmulas inesperadas de aluno). Funções fora do catálogo dão a mensagem "ainda não está disponível no simulador"; acrescentar em `FUNCOES` quando aparecerem.
 - [ ] Conferir no Excel pt-BR real os casos da matriz (`matriz.test.ts`), como já previsto na Fase 0.
+
+### Dicas sem resposta (12/11/2026)
+
+- [x] Dicas, erros comuns, dicas das alternativas e o feedback automático (`src/grader/diagnostico.ts`) apontam onde olhar sem dar a fórmula, o intervalo ou o operador certos.
+- [x] A explicação (que tem a solução) aparece ao acertar, ou se o aluno clicar em "Travou? Ver a solução" depois de algumas tentativas. Não abre mais sozinha.
+- [x] Teste permanente em `src/content/conteudo.test.ts` ("dicas e mensagens não entregam a resposta"): reprova conteúdo novo que traga fórmula com referência, operador indicado ou células da solução que não estão no enunciado.

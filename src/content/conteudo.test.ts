@@ -107,3 +107,26 @@ describe("referência circular", () => {
     expect(corrigir(ex4, p).falhas[0].mensagem).toContain("divisão por zero");
   });
 });
+
+describe("dicas e mensagens não entregam a resposta", () => {
+  // Pode: função e estrutura com nomes genéricos (`=SOMA(intervalo)`), apontar o problema.
+  // Não pode: fórmula com referência, célula da solução que o enunciado não diz, a correção pronta.
+  const entrega = (texto: string, enunciado: string, solucoes: string[]) => {
+    const motivos: string[] = [];
+    for (const m of texto.matchAll(/`([^`]+)`/g))
+      if (/\$?[A-Z]{1,2}\$?\d/.test(m[1]) && /[(=*/+&-]/.test(m[1])) motivos.push(`fórmula com referência: ${m[1]}`);
+    if (/=[A-ZÀ-Ú.]*\(?\$?[A-Z]{1,2}\$?\d/.test(texto)) motivos.push("fórmula pronta");
+    const refs = new Set(solucoes.flatMap((f) => [...f.toUpperCase().matchAll(/\$?[A-Z]{1,2}\$?\d+(?::\$?[A-Z]{1,2}\$?\d+)?/g)].map((m) => m[0].replace(/\$/g, ""))));
+    for (const m of texto.toUpperCase().matchAll(/\$?[A-Z]{1,2}\$?\d+(?::\$?[A-Z]{1,2}\$?\d+)?/g)) {
+      const r = m[0].replace(/\$/g, "");
+      if (refs.has(r) && !enunciado.toUpperCase().includes(r)) motivos.push(`referência da solução ${r}`);
+    }
+    if (/\b(use|troque por|escreva)\b[^.]*(>=|<=|<>|\$[A-Z])/i.test(texto)) motivos.push("diz a correção");
+    return motivos;
+  };
+  it.each(exercicios.map((e) => [e.slug, e] as const))("%s", (_, ex) => {
+    const sol = ex.type === "formula" ? ex.alvos.map((a) => a.solucaoReferencia) : [];
+    const enun = ex.enunciado.join(" ");
+    for (const t of [...ex.dicas, ...(ex.errosComuns ?? []).map((e) => e.dica)]) expect(entrega(t, enun, sol), t).toEqual([]);
+  });
+});

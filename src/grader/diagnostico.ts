@@ -34,18 +34,16 @@ function dicaDeIntervalo(aluno: string, ref: string): string | null {
     const mesmaLinha = a.inicio.linha === r.inicio.linha && a.fim.linha === r.fim.linha;
     if (mesmaColuna && mesmaLinha) continue;
     if (mesmaColuna) {
-      const fimR = paraEndereco(r.fim);
-      const iniR = paraEndereco(r.inicio);
       if (a.inicio.linha === r.inicio.linha && a.fim.linha < r.fim.linha)
-        return `Seu intervalo ${txt(a)} para antes da hora: os dados vão até ${fimR}.`;
+        return `Seu intervalo ${txt(a)} termina cedo demais: confira até onde vão os dados que o enunciado pede.`;
       if (a.inicio.linha === r.inicio.linha && a.fim.linha > r.fim.linha)
-        return `Seu intervalo ${txt(a)} vai além dos dados, que terminam em ${fimR}.`;
+        return `Seu intervalo ${txt(a)} vai longe demais: ele inclui linhas que não fazem parte do que o enunciado pede.`;
       if (a.inicio.linha === r.inicio.linha - 1 && a.fim.linha === r.fim.linha)
-        return `Seu intervalo ${txt(a)} começa no cabeçalho. Os dados começam em ${iniR}.`;
-      if (a.inicio.linha > r.inicio.linha) return `Seu intervalo ${txt(a)} começa tarde: os dados começam em ${iniR}.`;
-      return `Confira o intervalo ${txt(a)}: os dados que importam aqui estão em ${txt(r)}.`;
+        return `Seu intervalo ${txt(a)} inclui o cabeçalho da coluna. Confira onde os dados começam.`;
+      if (a.inicio.linha > r.inicio.linha) return `Seu intervalo ${txt(a)} começa tarde: ficou dado de fora no começo.`;
+      return `Confira o intervalo ${txt(a)}: ele cobre exatamente os dados que o enunciado pede?`;
     }
-    if (mesmaLinha) return `O intervalo ${txt(a)} está na coluna errada. Confira em que coluna estão os dados (${txt(r)}).`;
+    if (mesmaLinha) return `O intervalo ${txt(a)} está na coluna errada. Confira em que coluna estão os dados que você quer usar.`;
   }
   return null;
 }
@@ -56,10 +54,10 @@ function dicaDeValor(obtido: ValorCelula, esperado: ValorCelula): string | null 
   const perto = (a: number, b: number) => Math.abs(a - b) <= Math.max(1e-9, Math.abs(b) * 1e-9);
   if (perto(obtido, -esperado)) return "O valor está certo, mas o sinal está trocado.";
   if (perto(obtido, esperado * 100))
-    return "O resultado está 100 vezes maior. Em porcentagem, não multiplique por 100: o formato % já faz isso.";
-  if (perto(obtido, esperado / 100)) return "O resultado está 100 vezes menor. Confira se a porcentagem foi dividida por 100 duas vezes.";
-  if (obtido !== 0 && perto(1 / obtido, esperado)) return "A divisão está invertida: confira o que vai em cima e o que vai embaixo.";
-  if (Math.abs(obtido - esperado) < 0.01) return "Quase: a diferença está nas casas decimais. Confira se o exercício pede arredondar (ARRED).";
+    return "O resultado está 100 vezes maior. Lembre que o formato % já multiplica a exibição por 100.";
+  if (perto(obtido, esperado / 100)) return "O resultado está 100 vezes menor. Confira como a porcentagem entrou na conta.";
+  if (obtido !== 0 && perto(1 / obtido, esperado)) return "Confira a ordem da divisão: o que vai em cima e o que vai embaixo?";
+  if (Math.abs(obtido - esperado) < 0.01) return "Quase: a diferença está nas casas decimais. Releia o enunciado sobre arredondamento.";
   return null;
 }
 
@@ -67,12 +65,11 @@ function dicaDeOperador(aluno: string, ref: string): string | null {
   const a = semAspas(aluno);
   const r = semAspas(ref);
   const tem = (s: string, op: string) => new RegExp(op === ">" ? ">(?!=)" : op === "<" ? "<(?![=>])" : op).test(s);
-  if (tem(r, ">=") && !tem(a, ">=") && tem(a, ">"))
-    return "Você usou > (maior que). O enunciado inclui o próprio valor: use >= (maior ou igual).";
-  if (tem(r, "<=") && !tem(a, "<=") && tem(a, "<"))
-    return "Você usou < (menor que). O enunciado inclui o próprio valor: use <= (menor ou igual).";
-  if (tem(r, ">") && !tem(r, ">=") && tem(a, ">=")) return "Você usou >= e o enunciado pede só os maiores: use > (sem o igual).";
-  if (tem(r, "<") && !tem(r, "<=") && tem(a, "<=")) return "Você usou <= e o enunciado pede só os menores: use < (sem o igual).";
+  const sinal = "Confira o sinal de comparação: o valor exato do limite deve entrar ou ficar de fora?";
+  if (tem(r, ">=") && !tem(a, ">=") && tem(a, ">")) return sinal;
+  if (tem(r, "<=") && !tem(a, "<=") && tem(a, "<")) return sinal;
+  if (tem(r, ">") && !tem(r, ">=") && tem(a, ">=")) return sinal;
+  if (tem(r, "<") && !tem(r, "<=") && tem(a, "<=")) return sinal;
   return null;
 }
 
@@ -81,12 +78,12 @@ function dicaDeBusca(aluno: string, ref: string): string | null {
   const exata = /PROC[VH]\([^)]*;\s*FALSO\s*\)/i.test(ref);
   const m = /PROC([VH])\(([^()]*)\)/i.exec(aluno);
   if (exata && m && m[2].split(";").length === 3)
-    return `Faltou o FALSO no fim do PROC${m[1].toUpperCase()}: sem ele, a busca é aproximada e pode trazer a linha errada.`;
+    return `Confira o último argumento do PROC${m[1].toUpperCase()}: sem ele, a busca é aproximada. É esse o tipo de busca que você quer?`;
   const col = (f: string) => /PROC[VH]\([^;]*;[^;]*;\s*(\d+)/i.exec(f)?.[1];
   const ca = col(aluno);
   const cr = col(ref);
   if (ca && cr && ca !== cr)
-    return `Confira o número da coluna no PROCV (${ca}): conte as colunas a partir da primeira coluna da tabela.`;
+    return "Confira o número da coluna no PROCV: conte as colunas a partir da primeira coluna da tabela que você selecionou.";
   return null;
 }
 
@@ -99,11 +96,10 @@ function dicaDeCelulaIgnorada(aluno: string, ref: string): string | null {
     if (multi(r.intervalo)) continue;
     const { linha, coluna } = r.intervalo.inicio;
     if (!doAluno.some((i) => cobre(i, linha, coluna))) {
-      const nome = paraEndereco(r.intervalo.inicio);
       const travada = /\$[A-Z]+\$\d+/i.test(r.texto);
       return travada
-        ? `Sua fórmula não usa ${nome}. Se ela foi copiada de outra célula, a referência andou: trave com $ (${r.texto.toUpperCase()}), apertando F4.`
-        : `Sua fórmula não usa ${nome}, e o cálculo depende dessa célula. Use a referência em vez de digitar o valor.`;
+        ? "Sua fórmula não usa uma das células de que o cálculo depende. Se ela foi copiada de outra célula, alguma referência pode ter andado junto: precisava ficar parada?"
+        : "Sua fórmula não usa uma das células que o enunciado indica. Use a referência da célula em vez de digitar o valor.";
     }
   }
   return null;
@@ -126,7 +122,7 @@ function dicaDeFuncao(aluno: string, ref: string): string | null {
   ];
   const mesmaFamilia = (x: string, y: string) => familias.some((f) => f.includes(x) && f.includes(y));
   if (sobra.length === 1 && faltam.length === 1 && !mesmaFamilia(sobra[0], faltam[0]))
-    return `Confira a função: aqui o cálculo pede ${pt(faltam[0])}, e sua fórmula usa ${pt(sobra[0])}.`;
+    return `Confira a função: ${pt(sobra[0])} faz o cálculo que o enunciado pede?`;
   return null;
 }
 

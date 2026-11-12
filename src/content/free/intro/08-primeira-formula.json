@@ -40,7 +40,7 @@
   "dicas": [
     "Selecione C1 e comece digitando =.",
     "Depois do =, escreva o nome das células com o sinal de + entre elas.",
-    "Digite `=A1+B1` e aperte Enter."
+    "Uma fórmula começa com = e usa os nomes das células, não os números."
   ],
   "explicacao": [
     "`=A1+B1` soma o conteúdo das duas células. Se você digitasse 65 direto, o resultado estaria certo agora, mas não mudaria quando A1 ou B1 mudassem.",
@@ -52,11 +52,11 @@
   "errosComuns": [
     {
       "padrao": "^A1\\+B1$",
-      "dica": "Toda fórmula começa com =. Escreva =A1+B1."
+      "dica": "Toda fórmula começa com =."
     },
     {
       "padrao": "^-?\\d+([,.]\\d+)?$",
-      "dica": "Use uma fórmula, para ela se atualizar sozinha quando A1 ou B1 mudarem."
+      "dica": "Use uma fórmula, para o resultado se atualizar sozinho quando os valores mudarem."
     }
   ]
 }

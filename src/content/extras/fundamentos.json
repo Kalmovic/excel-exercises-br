@@ -161,9 +161,9 @@
       "MAX"
     ],
     "dicas": [
-      "As três funções recebem o mesmo intervalo: as notas de B2 até B9.",
+      "As três funções recebem o mesmo intervalo: todas as notas.",
       "Os nomes levam acento: `MÉDIA`, `MÍNIMO`, `MÁXIMO`.",
-      "Em E2: `=MÉDIA(B2:B9)`. Faça o mesmo com `MÍNIMO` e `MÁXIMO`."
+      "As três funções recebem o mesmo intervalo: todas as notas."
     ],
     "explicacao": [
       "`MÉDIA` soma os valores e divide pela quantidade; `MÍNIMO` e `MÁXIMO` devolvem o menor e o maior valor do intervalo.",
@@ -320,8 +320,8 @@
     ],
     "dicas": [
       "Os operadores do Excel são `+`, `-`, `*` (multiplicação) e `/` (divisão).",
-      "Em D2, a fórmula usa as células da mesma linha: B2 e C2.",
-      "`=B2-C2` em D2. Depois copie para baixo: o Excel ajusta para B3-C3, B4-C4…"
+      "A fórmula usa as células da mesma linha.",
+      "Escreva a conta na primeira linha e copie para baixo: o Excel ajusta as referências sozinho."
     ],
     "explicacao": [
       "`=B2-C2` subtrai o custo da receita.",
@@ -460,7 +460,7 @@
     "dicas": [
       "Variação = (valor novo − valor antigo) ÷ valor antigo.",
       "Use parênteses: sem eles, o Excel faz a divisão antes da subtração.",
-      "Em D2: `=(C2-B2)/B2`. Depois copie para D3:D5."
+      "(novo − antigo) ÷ antigo. Use parênteses para a subtração vir primeiro, e depois copie para baixo."
     ],
     "explicacao": [
       "`=(C2-B2)/B2` calcula quanto o valor mudou em relação ao ano anterior. A célula já está formatada como porcentagem, então 0,15 aparece como 15%.",
@@ -596,9 +596,9 @@
       }
     ],
     "dicas": [
-      "Comissão = vendas × taxa. Em C2: vendas está em B2, a taxa em F1.",
-      "Copie `=B2*F1` para baixo e veja o que acontece com a referência à taxa em C3. Ela andou para F2, que está vazia.",
-      "Trave a referência à taxa com cifrões: `=B2*$F$1`. Pressionar F4 com o cursor na referência alterna entre os modos no Excel."
+      "Comissão = vendas × taxa. Onde está a venda de cada linha, e onde está a taxa?",
+      "Copie sua fórmula para baixo e olhe a de C3: para onde foi a referência à taxa?",
+      "A referência à taxa precisa ficar parada ao copiar. Com o cursor na referência, a tecla F4 alterna os cifrões."
     ],
     "explicacao": [
       "`=B2*$F$1`: o cifrão trava a coluna (`$F`) e a linha (`$1`). Ao copiar, B2 vira B3, B4… mas `$F$1` continua apontando para a taxa.",
@@ -738,8 +738,8 @@
       }
     ],
     "dicas": [
-      "Percentual do total = parte ÷ total. Em C2: `B2/B7`.",
-      "Ao copiar para baixo, o total não pode andar: trave com `$B$7` (F4)."
+      "Percentual do total = parte ÷ total. Onde está o total?",
+      "Ao copiar para baixo, o total não pode andar junto. Como deixar uma referência parada?"
     ],
     "explicacao": [
       "`=B2/$B$7`: a parte varia, o total fica travado. A coluna somada dá 100%.",
@@ -889,7 +889,7 @@
       }
     ],
     "dicas": [
-      "A estrutura é `=ARRED(número;casas)`. O número aqui é a conta `B2/C2`.",
+      "A estrutura é `=ARRED(número;casas)`. O número pode ser uma conta inteira.",
       "Formatar como moeda só esconde as casas; o ARRED muda o valor de verdade."
     ],
     "explicacao": [
@@ -1052,8 +1052,8 @@
     ],
     "dicas": [
       "O preço está sempre na coluna A, e o reajuste sempre na linha 1.",
-      "Trave só o que não pode andar: `$A2` trava a coluna; `B$1` trava a linha.",
-      "`=$A2*(1+B$1)`. Aperte F4 várias vezes para chegar em cada forma."
+      "Trave só o que não pode andar: um número fica sempre na mesma coluna; o outro, sempre na mesma linha.",
+      "Monte a fórmula na primeira célula e pense, em cada referência, o que pode andar e o que fica parado. F4 alterna as formas."
     ],
     "explicacao": [
       "`=$A2*(1+B$1)`: copiando para a direita, `$A2` continua na coluna A; copiando para baixo, `B$1` continua na linha 1.",

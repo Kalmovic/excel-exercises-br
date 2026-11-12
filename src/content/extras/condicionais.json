@@ -127,7 +127,7 @@
     ],
     "dicas": [
       "`=CONT.SE(onde_procurar;o_que_contar)`.",
-      "O texto procurado vai entre aspas: `\"Pago\"`."
+      "O texto procurado vai entre aspas."
     ],
     "explicacao": [
       "`=CONT.SE(B2:B13;\"Pago\")` conta as células do intervalo iguais a \"Pago\". Maiúsculas e minúsculas tanto faz."
@@ -311,7 +311,7 @@
     ],
     "dicas": [
       "`=SOMASE(onde_está_a_categoria;qual_categoria;o_que_somar)`.",
-      "A categoria pode vir da célula ao lado: `D2`. Trave os intervalos com `$` para copiar."
+      "O critério pode vir de uma célula, em vez de ser digitado. Pense no que precisa ficar parado quando você copiar a fórmula."
     ],
     "explicacao": [
       "`=SOMASE($A$2:$A$13;D2;$B$2:$B$13)`: procura D2 na coluna A e soma os valores da coluna B dessas linhas."
@@ -631,8 +631,8 @@
       }
     ],
     "dicas": [
-      "Escrever `\"<E1\"` não funciona: o Excel procuraria o texto E1.",
-      "Junte o operador com a célula usando `&`: `\"<\"&E1`."
+      "Escrever a referência dentro das aspas não funciona: o Excel procuraria o texto, não a célula.",
+      "O operador vai entre aspas, e a célula vem fora delas: junte os dois com &."
     ],
     "explicacao": [
       "`=CONT.SE(B2:B13;\"<\"&E1)`: o `&` monta o critério \"<15\" a partir do valor de E1."
@@ -895,7 +895,7 @@
     ],
     "dicas": [
       "No SOMASES o intervalo a somar vem **primeiro**: `=SOMASES(somar;onde1;critério1;onde2;critério2)`.",
-      "Use F1 e F2 como critérios, não os nomes digitados."
+      "Use as células escolhidas no enunciado como critérios, não os nomes digitados."
     ],
     "explicacao": [
       "`=SOMASES(C2:C17;A2:A17;F1;B2:B17;F2)`: soma só as linhas em que as duas condições valem.",

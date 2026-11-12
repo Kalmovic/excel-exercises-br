@@ -183,7 +183,7 @@
     ],
     "dicas": [
       "`FILTRO(o que mostrar;a condição)`.",
-      "A condição compara cada linha da coluna B com \"Sul\": `B2:B8=\"Sul\"`."
+      "A condição compara cada linha de uma coluna com o valor que você procura, de uma vez só."
     ],
     "explicacao": [
       "`=FILTRO(A2:D8;B2:B8=\"Sul\")`: mantém as linhas em que a condição é verdadeira.",
@@ -400,7 +400,7 @@
     ],
     "dicas": [
       "`CLASSIFICAR(dados;por qual coluna;ordem)`.",
-      "Valor é a 3ª coluna; -1 é decrescente."
+      "Conte em qual coluna do intervalo está o valor. O último argumento define a ordem."
     ],
     "explicacao": [
       "`=CLASSIFICAR(A2:D8;3;-1)`: 1 é crescente, -1 é decrescente."
@@ -409,11 +409,11 @@
     "errosComuns": [
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;C",
-        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+        "dica": "O CLASSIFICAR pede o número da coluna dentro do intervalo, não a letra. Conte a partir da primeira coluna selecionada."
       },
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
-        "dica": "Sem o -1, a ordem é crescente."
+        "dica": "Confira o último argumento: sem ele, a ordem é crescente."
       }
     ],
     "video": "Combinar com FILTRO: as vendas do Sul, da maior para a menor, numa fórmula só.",
@@ -801,7 +801,7 @@
       "Em **F2**, mostre as vendas **acima de 400**."
     ],
     "dicas": [
-      "A condição pode ser uma comparação: C2:C8>400."
+      "A condição também pode ser uma comparação numérica feita sobre a coluna inteira."
     ],
     "explicacao": [
       "`=FILTRO(A2:D8;C2:C8>400)` → 4 linhas."
@@ -1215,7 +1215,7 @@
       "Em **F2**, mostre a tabela em ordem alfabética de vendedor."
     ],
     "dicas": [
-      "Vendedor é a 1ª coluna; 1 é crescente."
+      "Conte em qual coluna do intervalo está o vendedor. O último argumento define a ordem."
     ],
     "explicacao": [
       "`=CLASSIFICAR(A2:D8;1;1)`."
@@ -1416,11 +1416,11 @@
     "errosComuns": [
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;C",
-        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+        "dica": "O CLASSIFICAR pede o número da coluna dentro do intervalo, não a letra. Conte a partir da primeira coluna selecionada."
       },
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
-        "dica": "Sem o -1, a ordem é crescente."
+        "dica": "Confira o último argumento: sem ele, a ordem é crescente."
       }
     ]
   },
@@ -1622,11 +1622,11 @@
     "errosComuns": [
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;C",
-        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+        "dica": "O CLASSIFICAR pede o número da coluna dentro do intervalo, não a letra. Conte a partir da primeira coluna selecionada."
       },
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
-        "dica": "Sem o -1, a ordem é crescente."
+        "dica": "Confira o último argumento: sem ele, a ordem é crescente."
       }
     ]
   },
@@ -1849,11 +1849,11 @@
     "errosComuns": [
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;C",
-        "dica": "Informe o número da coluna dentro do intervalo: Valor é a 3ª."
+        "dica": "O CLASSIFICAR pede o número da coluna dentro do intervalo, não a letra. Conte a partir da primeira coluna selecionada."
       },
       {
         "padrao": "^=CLASSIFICAR\\(A2:D8;3\\)$",
-        "dica": "Sem o -1, a ordem é crescente."
+        "dica": "Confira o último argumento: sem ele, a ordem é crescente."
       }
     ]
   },

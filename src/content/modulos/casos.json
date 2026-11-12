@@ -148,11 +148,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(B\\d;\\$?E\\$?2:\\$?F\\$?5;2;VERDADEIRO\\)$",
-        "dica": "Isso é a taxa. Multiplique pela venda para chegar ao valor."
+        "dica": "Isso é a taxa, não o valor da comissão. Falta um passo."
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "A tabela de faixas precisa ficar travada: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ],
     "video": "Mudar a tabela de faixas (5% vira 6%) e ver todas as comissões mudarem juntas.",
@@ -345,7 +345,7 @@
     ],
     "dicas": [
       "Atual = o que havia + o que entrou − o que saiu.",
-      "No SE, \"no mínimo ou abaixo\" é `<=`."
+      "No SE, pense em qual comparação inclui o valor exato do mínimo."
     ],
     "explicacao": [
       "`=B2+C2-D2` e `=SE(E2<=F2;\"Repor\";\"OK\")`.",
@@ -355,11 +355,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(E\\d<F\\d;",
-        "dica": "No mínimo exato também precisa repor: use <=."
+        "dica": "Quem está exatamente no mínimo também precisa repor. O seu teste inclui esse caso?"
       },
       {
         "padrao": "^=B\\d\\+C\\d\\+D\\d$",
-        "dica": "Saídas diminuem o estoque: subtraia D."
+        "dica": "Saídas diminuem o estoque. Confira o sinal de cada parte da conta."
       }
     ],
     "video": "Montar a planilha completa de estoque em 90 segundos.",
@@ -448,7 +448,7 @@
     "errosComuns": [
       {
         "padrao": "^=PGTO\\(B2;B3;B1\\)$",
-        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+        "dica": "O PGTO devolve negativo porque, para o Excel, é dinheiro saindo. Como fazer o resultado aparecer positivo?"
       }
     ],
     "video": "Comparar à vista e parcelado e mostrar quanto custam os juros. Gancho forte para redes sociais.",
@@ -680,11 +680,11 @@
     "errosComuns": [
       {
         "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
-        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+        "dica": "Assim você cobra a alíquota da faixa sobre o salário inteiro, até sobre a parte das faixas mais baixas. O que a tabela tem para compensar isso?"
       },
       {
         "padrao": "^=B\\d$",
-        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+        "dica": "A base precisa respeitar o teto. Que função devolve o menor entre dois valores?"
       }
     ],
     "video": "Desenhar as quatro faixas e mostrar por que quem ganha 3.500 paga 8,8% de INSS, e não 12% (a alíquota efetiva).",
@@ -804,11 +804,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(B\\d;\\$?E\\$?2:\\$?F\\$?5;2;VERDADEIRO\\)$",
-        "dica": "Isso é a taxa. Multiplique pela venda para chegar ao valor."
+        "dica": "Isso é a taxa, não o valor da comissão. Falta um passo."
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "A tabela de faixas precisa ficar travada: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ]
   },
@@ -920,11 +920,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(B\\d;\\$?E\\$?2:\\$?F\\$?5;2;VERDADEIRO\\)$",
-        "dica": "Isso é a taxa. Multiplique pela venda para chegar ao valor."
+        "dica": "Isso é a taxa, não o valor da comissão. Falta um passo."
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "A tabela de faixas precisa ficar travada: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ]
   },
@@ -1115,11 +1115,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(E\\d<F\\d;",
-        "dica": "No mínimo exato também precisa repor: use <=."
+        "dica": "Quem está exatamente no mínimo também precisa repor. O seu teste inclui esse caso?"
       },
       {
         "padrao": "^=B\\d\\+C\\d\\+D\\d$",
-        "dica": "Saídas diminuem o estoque: subtraia D."
+        "dica": "Saídas diminuem o estoque. Confira o sinal de cada parte da conta."
       }
     ]
   },
@@ -1219,11 +1219,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(E\\d<F\\d;",
-        "dica": "No mínimo exato também precisa repor: use <=."
+        "dica": "Quem está exatamente no mínimo também precisa repor. O seu teste inclui esse caso?"
       },
       {
         "padrao": "^=B\\d\\+C\\d\\+D\\d$",
-        "dica": "Saídas diminuem o estoque: subtraia D."
+        "dica": "Saídas diminuem o estoque. Confira o sinal de cada parte da conta."
       }
     ]
   },
@@ -1427,7 +1427,7 @@
     "errosComuns": [
       {
         "padrao": "^=PGTO\\(B2;B3;B1\\)$",
-        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+        "dica": "O PGTO devolve negativo porque, para o Excel, é dinheiro saindo. Como fazer o resultado aparecer positivo?"
       }
     ]
   },
@@ -1511,7 +1511,7 @@
     "errosComuns": [
       {
         "padrao": "^=PGTO\\(B2;B3;B1\\)$",
-        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+        "dica": "O PGTO devolve negativo porque, para o Excel, é dinheiro saindo. Como fazer o resultado aparecer positivo?"
       }
     ]
   },
@@ -1599,7 +1599,7 @@
     "errosComuns": [
       {
         "padrao": "^=PGTO\\(B2;B3;B1\\)$",
-        "dica": "O PGTO devolve negativo porque é dinheiro saindo. Coloque um menos na frente do valor: -B1."
+        "dica": "O PGTO devolve negativo porque, para o Excel, é dinheiro saindo. Como fazer o resultado aparecer positivo?"
       }
     ]
   },
@@ -1804,11 +1804,11 @@
     "errosComuns": [
       {
         "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
-        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+        "dica": "Assim você cobra a alíquota da faixa sobre o salário inteiro, até sobre a parte das faixas mais baixas. O que a tabela tem para compensar isso?"
       },
       {
         "padrao": "^=B\\d$",
-        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+        "dica": "A base precisa respeitar o teto. Que função devolve o menor entre dois valores?"
       }
     ]
   },
@@ -1968,11 +1968,11 @@
     "errosComuns": [
       {
         "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
-        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+        "dica": "Assim você cobra a alíquota da faixa sobre o salário inteiro, até sobre a parte das faixas mais baixas. O que a tabela tem para compensar isso?"
       },
       {
         "padrao": "^=B\\d$",
-        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+        "dica": "A base precisa respeitar o teto. Que função devolve o menor entre dois valores?"
       }
     ]
   },
@@ -2132,11 +2132,11 @@
     "errosComuns": [
       {
         "padrao": "^=C\\d\\*PROCV\\(C\\d;\\$F\\$2:\\$H\\$5;2;VERDADEIRO\\)$",
-        "dica": "Assim você cobra a alíquota da faixa até da parte que está nas faixas mais baixas. Subtraia a parcela a deduzir."
+        "dica": "Assim você cobra a alíquota da faixa sobre o salário inteiro, até sobre a parte das faixas mais baixas. O que a tabela tem para compensar isso?"
       },
       {
         "padrao": "^=B\\d$",
-        "dica": "Limite a base ao teto com MÍNIMO: =MÍNIMO(B2;$I$2)."
+        "dica": "A base precisa respeitar o teto. Que função devolve o menor entre dois valores?"
       }
     ]
   },
@@ -2172,7 +2172,7 @@
     "opcoes": [
       {
         "texto": "Incide sobre o salário todo",
-        "dica": "Cada alíquota vale só para o trecho do salário dentro da sua faixa."
+        "dica": "Se fosse assim, o INSS não seria progressivo. Releia como as faixas funcionam."
       },
       {
         "texto": "Incide só sobre a parte acima de 4.354,27"

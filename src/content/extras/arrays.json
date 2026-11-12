@@ -739,7 +739,7 @@
     ],
     "dicas": [
       "`=FILTRO(o_que_mostrar;condição)`.",
-      "A condição compara a coluna inteira com F1: `B2:B15=F1`."
+      "A condição compara a coluna inteira com o valor escolhido no enunciado, de uma vez só."
     ],
     "explicacao": [
       "`=FILTRO(C2:C15;B2:B15=F1)`. Troque F1 e a lista muda sozinha.",
@@ -987,7 +987,7 @@
     ],
     "dicas": [
       "No FILTRO, \"e\" se escreve multiplicando as condições: `(cond1)*(cond2)`.",
-      "Cada condição entre parênteses: `(A2:A15=F1)` e `(C2:C15>=F2)`."
+      "Escreva cada condição entre parênteses e combine as duas."
     ],
     "explicacao": [
       "`=FILTRO(B2:B15;(A2:A15=F1)*(C2:C15>=F2))`: VERDADEIRO×VERDADEIRO = 1; qualquer FALSO zera a linha.",
@@ -1556,7 +1556,7 @@
       }
     ],
     "dicas": [
-      "A lista de clientes sai de `CLASSIFICAR(ÚNICO(...))`.",
+      "Comece pela lista de clientes sem repetição e em ordem. Depois, monte as colunas ao lado.",
       "Ao lado, SOMASE e CONT.SE usam o nome que o ÚNICO trouxe."
     ],
     "explicacao": [

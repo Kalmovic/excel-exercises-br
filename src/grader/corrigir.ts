@@ -210,7 +210,7 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
         celula: c,
         motivo: "valor-fixo",
         mensagem: `O valor em ${c} está certo agora, mas não acompanha mudanças nos dados. ${
-          dica ?? "Confira as referências (faltou um $?) ou se algum número foi digitado à mão."
+          dica ?? "Confira se as referências continuam certas ao copiar a fórmula, e se algum número foi digitado à mão."
         }`,
       });
     }

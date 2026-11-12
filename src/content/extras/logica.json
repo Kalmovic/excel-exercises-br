@@ -145,8 +145,8 @@
     ],
     "dicas": [
       "O SE tem três partes: `=SE(teste;se_verdadeiro;se_falso)`.",
-      "O teste é `B2>=7`. Textos vão entre aspas: `\"Aprovado\"`.",
-      "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`"
+      "O teste compara a nota com a média. Textos vão entre aspas.",
+      "O teste compara a nota com a média; os dois resultados são textos."
     ],
     "explicacao": [
       "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`: se o teste for verdadeiro, devolve o primeiro valor; se não, o segundo.",
@@ -339,7 +339,7 @@
     ],
     "dicas": [
       "O SE pode devolver números: `=SE(teste;0;frete)`.",
-      "As regras ficam em F1 e F2: trave com `$` para copiar."
+      "As regras ficam em células fixas. Ao copiar, elas não podem andar junto."
     ],
     "explicacao": [
       "`=SE(B2>=$F$1;0;$F$2)`: grátis (0) quando atinge o mínimo; senão, o frete normal.",
@@ -756,7 +756,7 @@
     ],
     "dicas": [
       "Com OU, uma condição verdadeira já basta: `OU(cond1;cond2)`.",
-      "Para comparar com texto, use aspas: `B2=\"Sim\"`."
+      "Para comparar uma célula com um texto, o texto vai entre aspas."
     ],
     "explicacao": [
       "`=SE(OU(B2=\"Sim\";C2>500);\"Sim\";\"Não\")`.",
@@ -947,8 +947,8 @@
     ],
     "dicas": [
       "SES recebe pares teste/valor e devolve o valor do primeiro teste verdadeiro.",
-      "Comece pela faixa mais alta: `B2>=90;\"A\";B2>=75;\"B\";…`.",
-      "O último par `VERDADEIRO;\"D\"` funciona como \"senão\"."
+      "Comece pela faixa mais alta e desça.",
+      "O último par pode usar VERDADEIRO como teste: ele funciona como \"senão\"."
     ],
     "explicacao": [
       "`=SES(B2>=90;\"A\";B2>=75;\"B\";B2>=60;\"C\";VERDADEIRO;\"D\")`.",
@@ -1150,7 +1150,7 @@
       }
     ],
     "dicas": [
-      "Primeiro escreva a conta `=B2/C2` e veja o erro aparecer.",
+      "Escreva primeiro só a conta e veja o erro aparecer. Depois, embrulhe.",
       "Embrulhe a conta: `=SEERRO(conta;valor_se_der_erro)`."
     ],
     "explicacao": [
@@ -1381,7 +1381,7 @@
       }
     ],
     "dicas": [
-      "Resolva uma regra de cada vez. A primeira: `SE(C2>0;\"Negado\";…)`.",
+      "Resolva uma regra de cada vez, começando pela mais forte: quem tem atraso.",
       "No lugar do `…`, entra outro SE com E: score e renda."
     ],
     "explicacao": [

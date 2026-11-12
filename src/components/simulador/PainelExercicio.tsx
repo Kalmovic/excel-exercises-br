@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode, Ref } from "react";
+import { useState, type ReactNode, type Ref } from "react";
 import type { Exercicio } from "@/content/schema";
 import type { Resultado } from "@/grader/corrigir";
 import { TextoRico } from "./TextoRico";
@@ -40,7 +40,11 @@ export function PainelExercicio({
   extra,
   botaoVerificarRef,
 }: Props) {
-  const mostrarExplicacao = concluido || tentativas >= ex.tentativasAteExplicacao;
+  // A solução comentada aparece ao acertar, ou se o aluno pedir depois de algumas tentativas.
+  // Nunca sozinha: errar não pode virar atalho para a resposta.
+  const [pediuSolucao, setPediuSolucao] = useState(false);
+  const podePedirSolucao = !concluido && tentativas >= ex.tentativasAteExplicacao;
+  const mostrarExplicacao = concluido || (pediuSolucao && podePedirSolucao);
   const alvos = descricaoAlvos(ex);
 
   return (
@@ -147,6 +151,17 @@ export function PainelExercicio({
             ))}
           </ol>
         </section>
+      )}
+
+      {podePedirSolucao && !pediuSolucao && (
+        <button
+          type="button"
+          onClick={() => setPediuSolucao(true)}
+          className="self-start text-sm text-muted underline underline-offset-4 hover:text-ink"
+          data-testid="ver-solucao"
+        >
+          Travou? Ver a solução
+        </button>
       )}
 
       {mostrarExplicacao && (

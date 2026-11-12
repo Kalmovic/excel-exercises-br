@@ -109,8 +109,8 @@
       }
     ],
     "dicas": [
-      "O `&` junta textos: `=A2&B2` daria \"AnaSouza\".",
-      "Coloque o espaço entre aspas no meio: `=A2&\" \"&B2`."
+      "O `&` junta textos, mas cola um no outro, sem espaço.",
+      "O espaço também é um texto: ele entra no meio, entre aspas."
     ],
     "explicacao": [
       "`=A2&\" \"&B2`. O mesmo com função: `=CONCAT(A2;\" \";B2)`."
@@ -492,8 +492,8 @@
       }
     ],
     "dicas": [
-      "`NÚM.CARACT(A2)` conta os caracteres.",
-      "Use dentro de um SE: `=SE(NÚM.CARACT(A2)=11;…;…)`."
+      "NÚM.CARACT conta os caracteres de um texto.",
+      "Use a contagem de caracteres como teste de um SE."
     ],
     "explicacao": [
       "`=SE(NÚM.CARACT(A2)=11;\"OK\";\"Verificar\")`.",
@@ -662,8 +662,8 @@
       }
     ],
     "dicas": [
-      "`LOCALIZAR(\" \";A2)` diz em que posição está o primeiro espaço.",
-      "O primeiro nome tem uma letra a menos que essa posição: `ESQUERDA(A2;posição-1)`."
+      "O LOCALIZAR diz em que posição está o primeiro espaço.",
+      "O primeiro nome termina logo antes do espaço. Quantos caracteres isso dá, a partir da posição que você achou?"
     ],
     "explicacao": [
       "`=ESQUERDA(A2;LOCALIZAR(\" \";A2)-1)`: em \"Lu Prado\" o espaço está na posição 3, então pega 2 letras.",

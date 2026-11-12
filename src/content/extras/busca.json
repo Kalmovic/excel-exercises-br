@@ -197,9 +197,9 @@
       }
     ],
     "dicas": [
-      "`=PROCV(o_que_procurar;tabela;número_da_coluna;FALSO)`.",
-      "O código é procurado na **primeira** coluna da tabela (E). O preço está na 3ª coluna da tabela.",
-      "FALSO pede correspondência exata. Trave a tabela com `$`."
+      "`=PROCV(o_que_procurar;tabela;número_da_coluna;tipo_de_busca)`.",
+      "O código é procurado na **primeira** coluna da tabela. Conte em qual coluna da tabela está o preço.",
+      "O último argumento define o tipo de busca. Ao copiar, a tabela precisa ficar parada."
     ],
     "explicacao": [
       "`=PROCV(A2;$E$2:$G$9;3;FALSO)`: acha A2 na coluna E e devolve o valor da 3ª coluna da tabela, G.",
@@ -394,7 +394,7 @@
     ],
     "dicas": [
       "Comece com o PROCV normal (coluna 2 da tabela) e veja o #N/D aparecer.",
-      "Embrulhe: `=SEERRO(PROCV(...);\"Não encontrado\")`."
+      "Embrulhe a busca: `=SEERRO(busca;o que mostrar se der erro)`."
     ],
     "explicacao": [
       "`=SEERRO(PROCV(A2;$E$2:$G$9;2;FALSO);\"Não encontrado\")`.",
@@ -735,7 +735,7 @@
     ],
     "dicas": [
       "PROCH é o PROCV deitado: procura na **primeira linha** e devolve de outra linha.",
-      "A meta está na 2ª linha da tabela `$B$1:$G$2`."
+      "Conte as linhas da tabela que você selecionou: em qual delas está a meta?"
     ],
     "explicacao": [
       "`=PROCH(A6;$B$1:$G$2;2;FALSO)`.",
@@ -877,8 +877,8 @@
       }
     ],
     "dicas": [
-      "`CORRESP(E2;$B$2:$B$7;0)` diz em que **posição** está a matrícula.",
-      "`ÍNDICE($A$2:$A$7;posição)` devolve o nome dessa posição."
+      "O CORRESP diz em que **posição** está a matrícula na coluna das matrículas.",
+      "O ÍNDICE devolve o item que está numa posição da coluna dos nomes."
     ],
     "explicacao": [
       "`=ÍNDICE($A$2:$A$7;CORRESP(E2;$B$2:$B$7;0))`: o CORRESP acha a linha, o ÍNDICE pega o valor.",

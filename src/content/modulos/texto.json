@@ -85,11 +85,11 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d&B\\d$",
-        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+        "dica": "Faltou o espaço entre as partes: o espaço também é um texto que precisa ser juntado."
       },
       {
         "padrao": "^=A\\d\\+B\\d$",
-        "dica": "O + soma números. Para juntar textos, use &."
+        "dica": "O + soma números; com texto, dá erro. Qual operador junta textos?"
       }
     ],
     "video": "Juntar três colunas (rua, número, bairro) num endereço completo.",
@@ -281,7 +281,7 @@
     "errosComuns": [
       {
         "padrao": ";3;4\\)$",
-        "dica": "Conte o hífen também: o ano começa na posição 4."
+        "dica": "Confira a posição inicial: conte caractere por caractere, incluindo o hífen."
       }
     ],
     "video": "Numerar os caracteres em cima do código, um por um.",
@@ -364,7 +364,7 @@
     "errosComuns": [
       {
         "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
       }
     ],
     "video": "O caso real: um PROCV que dá #N/D por causa de um espaço invisível, resolvido com ARRUMAR.",
@@ -448,7 +448,7 @@
     "errosComuns": [
       {
         "padrao": "^=MAIÚSCULA\\(",
-        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+        "dica": "MAIÚSCULA deixa todas as letras maiúsculas. Existe outra função que muda só as iniciais."
       }
     ],
     "video": "Mostrar a limitação: \"maria da silva\" vira \"Maria Da Silva\".",
@@ -555,11 +555,11 @@
     "errosComuns": [
       {
         "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
-        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+        "dica": "Confira a ordem dos argumentos do LOCALIZAR: primeiro o que procurar, depois onde."
       },
       {
         "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
-        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+        "dica": "Assim o @ vem junto. A posição que o LOCALIZAR devolve é a do próprio @: quantos caracteres você quer de fato?"
       }
     ],
     "video": "A combinação ESQUERDA + LOCALIZAR, que resolve metade dos problemas de texto do dia a dia.",
@@ -643,7 +643,7 @@
     "errosComuns": [
       {
         "padrao": "^=MUDAR\\(",
-        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+        "dica": "MUDAR troca por posição. Aqui você quer trocar um trecho pelo conteúdo, onde quer que ele apareça."
       }
     ],
     "video": "Limpar uma coluna de telefones, tirando parênteses, espaços e hífens com SUBSTITUIR encadeado.",
@@ -717,11 +717,11 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d&B\\d$",
-        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+        "dica": "Faltou o espaço entre as partes: o espaço também é um texto que precisa ser juntado."
       },
       {
         "padrao": "^=A\\d\\+B\\d$",
-        "dica": "O + soma números. Para juntar textos, use &."
+        "dica": "O + soma números; com texto, dá erro. Qual operador junta textos?"
       }
     ]
   },
@@ -788,11 +788,11 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d&B\\d$",
-        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+        "dica": "Faltou o espaço entre as partes: o espaço também é um texto que precisa ser juntado."
       },
       {
         "padrao": "^=A\\d\\+B\\d$",
-        "dica": "O + soma números. Para juntar textos, use &."
+        "dica": "O + soma números; com texto, dá erro. Qual operador junta textos?"
       }
     ]
   },
@@ -865,11 +865,11 @@
     "errosComuns": [
       {
         "padrao": "^=A\\d&B\\d$",
-        "dica": "Faltou o espaço entre o nome e o sobrenome: =A2&\" \"&B2."
+        "dica": "Faltou o espaço entre as partes: o espaço também é um texto que precisa ser juntado."
       },
       {
         "padrao": "^=A\\d\\+B\\d$",
-        "dica": "O + soma números. Para juntar textos, use &."
+        "dica": "O + soma números; com texto, dá erro. Qual operador junta textos?"
       }
     ]
   },
@@ -1229,7 +1229,7 @@
     "errosComuns": [
       {
         "padrao": ";3;4\\)$",
-        "dica": "Conte o hífen também: o ano começa na posição 4."
+        "dica": "Confira a posição inicial: conte caractere por caractere, incluindo o hífen."
       }
     ]
   },
@@ -1291,7 +1291,7 @@
     "errosComuns": [
       {
         "padrao": ";3;4\\)$",
-        "dica": "Conte o hífen também: o ano começa na posição 4."
+        "dica": "Confira a posição inicial: conte caractere por caractere, incluindo o hífen."
       }
     ]
   },
@@ -1357,7 +1357,7 @@
     "errosComuns": [
       {
         "padrao": ";3;4\\)$",
-        "dica": "Conte o hífen também: o ano começa na posição 4."
+        "dica": "Confira a posição inicial: conte caractere por caractere, incluindo o hífen."
       }
     ]
   },
@@ -1465,7 +1465,7 @@
     "errosComuns": [
       {
         "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
       }
     ]
   },
@@ -1524,7 +1524,7 @@
     "errosComuns": [
       {
         "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
       }
     ]
   },
@@ -1636,7 +1636,7 @@
     "errosComuns": [
       {
         "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\". Você quer manter um espaço entre as palavras: use ARRUMAR."
+        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
       }
     ]
   },
@@ -1672,7 +1672,7 @@
     "opcoes": [
       {
         "texto": "\"ab\"",
-        "dica": "O ARRUMAR mantém um espaço entre as palavras."
+        "dica": "O ARRUMAR não tira todos os espaços. Releia o que ele faz."
       },
       {
         "texto": "\"a b\""
@@ -1682,7 +1682,7 @@
       },
       {
         "texto": "\" a b \"",
-        "dica": "Os espaços das pontas saem."
+        "dica": "Releia o que o ARRUMAR faz com os espaços do começo e do fim."
       }
     ],
     "correta": 1
@@ -1746,7 +1746,7 @@
     "errosComuns": [
       {
         "padrao": "^=MAIÚSCULA\\(",
-        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+        "dica": "MAIÚSCULA deixa todas as letras maiúsculas. Existe outra função que muda só as iniciais."
       }
     ]
   },
@@ -1805,7 +1805,7 @@
     "errosComuns": [
       {
         "padrao": "^=MAIÚSCULA\\(",
-        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+        "dica": "MAIÚSCULA deixa todas as letras maiúsculas. Existe outra função que muda só as iniciais."
       }
     ]
   },
@@ -1872,7 +1872,7 @@
     "errosComuns": [
       {
         "padrao": "^=MAIÚSCULA\\(",
-        "dica": "MAIÚSCULA deixa tudo em maiúscula. Para só as iniciais, use PRI.MAIÚSCULA."
+        "dica": "MAIÚSCULA deixa todas as letras maiúsculas. Existe outra função que muda só as iniciais."
       }
     ]
   },
@@ -1980,11 +1980,11 @@
     "errosComuns": [
       {
         "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
-        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+        "dica": "Confira a ordem dos argumentos do LOCALIZAR: primeiro o que procurar, depois onde."
       },
       {
         "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
-        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+        "dica": "Assim o @ vem junto. A posição que o LOCALIZAR devolve é a do próprio @: quantos caracteres você quer de fato?"
       }
     ]
   },
@@ -2048,11 +2048,11 @@
     "errosComuns": [
       {
         "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
-        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+        "dica": "Confira a ordem dos argumentos do LOCALIZAR: primeiro o que procurar, depois onde."
       },
       {
         "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
-        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+        "dica": "Assim o @ vem junto. A posição que o LOCALIZAR devolve é a do próprio @: quantos caracteres você quer de fato?"
       }
     ]
   },
@@ -2120,11 +2120,11 @@
     "errosComuns": [
       {
         "padrao": "^=LOCALIZAR\\(A\\d;\\\"@\\\"\\)$",
-        "dica": "Primeiro o que procurar, depois onde: =LOCALIZAR(\"@\";A2)."
+        "dica": "Confira a ordem dos argumentos do LOCALIZAR: primeiro o que procurar, depois onde."
       },
       {
         "padrao": "LOCALIZAR\\(\\\"@\\\";A\\d\\)\\)$",
-        "dica": "Assim o @ vem junto. Tire 1 da posição: …-1."
+        "dica": "Assim o @ vem junto. A posição que o LOCALIZAR devolve é a do próprio @: quantos caracteres você quer de fato?"
       }
     ]
   },
@@ -2233,7 +2233,7 @@
     "errosComuns": [
       {
         "padrao": "^=MUDAR\\(",
-        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+        "dica": "MUDAR troca por posição. Aqui você quer trocar um trecho pelo conteúdo, onde quer que ele apareça."
       }
     ]
   },
@@ -2296,7 +2296,7 @@
     "errosComuns": [
       {
         "padrao": "^=MUDAR\\(",
-        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+        "dica": "MUDAR troca por posição. Aqui você quer trocar um trecho pelo conteúdo, onde quer que ele apareça."
       }
     ]
   },
@@ -2363,7 +2363,7 @@
     "errosComuns": [
       {
         "padrao": "^=MUDAR\\(",
-        "dica": "MUDAR troca por posição. Para trocar por conteúdo, use SUBSTITUIR."
+        "dica": "MUDAR troca por posição. Aqui você quer trocar um trecho pelo conteúdo, onde quer que ele apareça."
       }
     ]
   },

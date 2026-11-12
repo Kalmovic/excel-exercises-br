@@ -106,7 +106,7 @@
     ],
     "dicas": [
       "A estrutura é `SE(teste;valor se verdadeiro;valor se falso)`.",
-      "Texto vai entre aspas: `\"Aprovado\"`."
+      "Texto vai entre aspas."
     ],
     "explicacao": [
       "`=SE(B2>=7;\"Aprovado\";\"Reprovado\")`: se a nota for maior ou igual a 7, então Aprovado, senão Reprovado.",
@@ -116,11 +116,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>7;",
-        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+        "dica": "Quem tirou exatamente 7 também é aprovado. O seu teste inclui o 7?"
       },
       {
         "padrao": ";APROVADO;REPROVADO\\)$",
-        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+        "dica": "Os textos da resposta precisam ir entre aspas duplas."
       }
     ],
     "video": "Ler a fórmula em voz alta: \"SE a nota for maior ou igual a 7, então Aprovado, senão Reprovado\".",
@@ -238,7 +238,7 @@
     ],
     "dicas": [
       "O segundo SE é o \"senão\" do primeiro.",
-      "Teste da faixa mais alta para a mais baixa: primeiro >=9, depois >=7."
+      "Teste da faixa mais alta para a mais baixa."
     ],
     "explicacao": [
       "`=SE(B2>=9;\"Ótimo\";SE(B2>=7;\"Bom\";\"Recuperação\"))`.",
@@ -248,7 +248,7 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>=7;",
-        "dica": "Teste a faixa mais alta primeiro (>=9)."
+        "dica": "Confira a ordem dos testes: qual faixa precisa ser testada primeiro?"
       }
     ],
     "video": "Desenhar a árvore de decisão antes de escrever a fórmula.",
@@ -388,11 +388,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(OU\\(",
-        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. As duas condições precisam valer ao mesmo tempo?"
       },
       {
         "padrao": "10\\.000",
-        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+        "dica": "Dentro da fórmula, números vão sem o ponto de milhar."
       }
     ],
     "video": "A mesma fórmula com E e com OU, e quem ganha bônus em cada caso.",
@@ -511,7 +511,7 @@
     ],
     "dicas": [
       "SES recebe pares de teste e resultado.",
-      "Para \"todo o resto\", termine com o par `VERDADEIRO;\"Recuperação\"`."
+      "Para \"todo o resto\", o último par usa um teste que é sempre verdadeiro."
     ],
     "explicacao": [
       "`=SES(B2>=9;\"Ótimo\";B2>=7;\"Bom\";VERDADEIRO;\"Recuperação\")`: devolve o resultado do primeiro teste verdadeiro.",
@@ -521,7 +521,7 @@
     "errosComuns": [
       {
         "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
-        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+        "dica": "Quando nenhum teste é verdadeiro, o SES dá #N/D. Falta um par que cubra \"todo o resto\"."
       }
     ],
     "video": "Comparar a fórmula aninhada e a SES lado a lado.",
@@ -655,7 +655,7 @@
       }
     ],
     "dicas": [
-      "Escreva a conta `=B2/C2` e veja o erro aparecer.",
+      "Escreva primeiro só a conta e veja o erro aparecer. Depois, embrulhe.",
       "Embrulhe: `=SEERRO(conta;valor se der erro)`."
     ],
     "explicacao": [
@@ -665,7 +665,7 @@
     "errosComuns": [
       {
         "padrao": "^=SEERRO\\(0;",
-        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+        "dica": "Confira a ordem dos argumentos do SEERRO: o que vem primeiro, a conta ou o valor alternativo?"
       }
     ],
     "video": "O alerta: SEERRO esconde todos os erros, inclusive os que você precisaria ver. Use com critério.",
@@ -744,11 +744,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>7;",
-        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+        "dica": "Quem tirou exatamente 7 também é aprovado. O seu teste inclui o 7?"
       },
       {
         "padrao": ";APROVADO;REPROVADO\\)$",
-        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+        "dica": "Os textos da resposta precisam ir entre aspas duplas."
       }
     ]
   },
@@ -822,11 +822,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>7;",
-        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+        "dica": "Quem tirou exatamente 7 também é aprovado. O seu teste inclui o 7?"
       },
       {
         "padrao": ";APROVADO;REPROVADO\\)$",
-        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+        "dica": "Os textos da resposta precisam ir entre aspas duplas."
       }
     ]
   },
@@ -902,11 +902,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>7;",
-        "dica": "Quem tirou exatamente 7 também é aprovado: use >=."
+        "dica": "Quem tirou exatamente 7 também é aprovado. O seu teste inclui o 7?"
       },
       {
         "padrao": ";APROVADO;REPROVADO\\)$",
-        "dica": "Textos vão entre aspas duplas: \"Aprovado\"."
+        "dica": "Os textos da resposta precisam ir entre aspas duplas."
       }
     ]
   },
@@ -942,7 +942,7 @@
     "opcoes": [
       {
         "texto": "A",
-        "dica": "A é o resultado quando o teste é verdadeiro."
+        "dica": "Releia a ordem dos argumentos do SE."
       },
       {
         "texto": "B"
@@ -970,7 +970,7 @@
       "O peso está em **B2** (kg). Em **C2**, o frete: 10 até 1 kg, 20 até 5 kg e 35 acima disso."
     ],
     "dicas": [
-      "Aqui as faixas são \"até\": comece pela menor (<=1)."
+      "Aqui as faixas são \"até\": por qual faixa faz sentido começar?"
     ],
     "explicacao": [
       "`=SE(B2<=1;10;SE(B2<=5;20;35))` → 20. Com \"até\", a ordem é da menor faixa para a maior."
@@ -1022,7 +1022,7 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>=7;",
-        "dica": "Teste a faixa mais alta primeiro (>=9)."
+        "dica": "Confira a ordem dos testes: qual faixa precisa ser testada primeiro?"
       }
     ]
   },
@@ -1095,7 +1095,7 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>=7;",
-        "dica": "Teste a faixa mais alta primeiro (>=9)."
+        "dica": "Confira a ordem dos testes: qual faixa precisa ser testada primeiro?"
       }
     ]
   },
@@ -1171,7 +1171,7 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(B\\d>=7;",
-        "dica": "Teste a faixa mais alta primeiro (>=9)."
+        "dica": "Confira a ordem dos testes: qual faixa precisa ser testada primeiro?"
       }
     ]
   },
@@ -1303,11 +1303,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(OU\\(",
-        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. As duas condições precisam valer ao mesmo tempo?"
       },
       {
         "padrao": "10\\.000",
-        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+        "dica": "Dentro da fórmula, números vão sem o ponto de milhar."
       }
     ]
   },
@@ -1389,11 +1389,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(OU\\(",
-        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. As duas condições precisam valer ao mesmo tempo?"
       },
       {
         "padrao": "10\\.000",
-        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+        "dica": "Dentro da fórmula, números vão sem o ponto de milhar."
       }
     ]
   },
@@ -1478,11 +1478,11 @@
     "errosComuns": [
       {
         "padrao": "^=SE\\(OU\\(",
-        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. Use E."
+        "dica": "Com OU, quem vendeu muito mas faltou também ganharia. As duas condições precisam valer ao mesmo tempo?"
       },
       {
         "padrao": "10\\.000",
-        "dica": "Dentro da fórmula, números vão sem separador de milhar: 10000."
+        "dica": "Dentro da fórmula, números vão sem o ponto de milhar."
       }
     ]
   },
@@ -1521,7 +1521,7 @@
       },
       {
         "texto": "FALSO",
-        "dica": "FALSO seria com E. No OU, basta uma verdadeira."
+        "dica": "Esse seria o resultado do E. Releia como o OU funciona."
       },
       {
         "texto": "Erro"
@@ -1598,7 +1598,7 @@
     "errosComuns": [
       {
         "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
-        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+        "dica": "Quando nenhum teste é verdadeiro, o SES dá #N/D. Falta um par que cubra \"todo o resto\"."
       }
     ]
   },
@@ -1670,7 +1670,7 @@
     "errosComuns": [
       {
         "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
-        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+        "dica": "Quando nenhum teste é verdadeiro, o SES dá #N/D. Falta um par que cubra \"todo o resto\"."
       }
     ]
   },
@@ -1746,7 +1746,7 @@
     "errosComuns": [
       {
         "padrao": "^=SES\\(B\\d>=9;\\\"ÓTIMO\\\";B\\d>=7;\\\"BOM\\\"\\)$",
-        "dica": "Notas abaixo de 7 dão #N/D. Adicione um último par com VERDADEIRO para cobrir o resto."
+        "dica": "Quando nenhum teste é verdadeiro, o SES dá #N/D. Falta um par que cubra \"todo o resto\"."
       }
     ]
   },
@@ -1791,7 +1791,7 @@
       },
       {
         "texto": "Nada, é opcional",
-        "dica": "Sem ele, quem não passa em nenhum teste recebe #N/D."
+        "dica": "Pense no que acontece com quem não passa em nenhum dos testes do SES."
       }
     ],
     "correta": 1
@@ -1810,7 +1810,7 @@
       "Em **D2**, a taxa de conversão (compras ÷ visitas). Quando não houver visitas, mostre um traço: \"-\". Copie até **D5**."
     ],
     "dicas": [
-      "A conta é C2/B2; o traço vai entre aspas."
+      "O valor alternativo do SEERRO pode ser um texto, e texto vai entre aspas."
     ],
     "explicacao": [
       "`=SEERRO(C2/B2;\"-\")`: o segundo argumento pode ser texto."
@@ -1927,7 +1927,7 @@
     "errosComuns": [
       {
         "padrao": "^=SEERRO\\(0;",
-        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+        "dica": "Confira a ordem dos argumentos do SEERRO: o que vem primeiro, a conta ou o valor alternativo?"
       }
     ]
   },
@@ -2003,7 +2003,7 @@
     "errosComuns": [
       {
         "padrao": "^=SEERRO\\(0;",
-        "dica": "A conta vem primeiro; o valor alternativo, depois: =SEERRO(B2/C2;0)."
+        "dica": "Confira a ordem dos argumentos do SEERRO: o que vem primeiro, a conta ou o valor alternativo?"
       }
     ]
   },

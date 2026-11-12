@@ -98,7 +98,7 @@
     ],
     "dicas": [
       "A estrutura é `=SOMA(intervalo)`.",
-      "O intervalo vai de B2 até B7: escreva com dois-pontos, `B2:B7`."
+      "O intervalo vai do primeiro ao último mês, com dois-pontos entre as pontas."
     ],
     "explicacao": [
       "`=SOMA(B2:B7)`: SOMA recebe um intervalo e soma tudo que está nele.",
@@ -108,7 +108,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2;B7\\)$",
-        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+        "dica": "Com ponto e vírgula, você somou só duas células, a primeira e a última. Qual sinal quer dizer \"até\"?"
       }
     ],
     "video": "A diferença entre `;` (\"e\") e `:` (\"até\"), o erro mais comum de quem começa.",
@@ -226,7 +226,7 @@
     ],
     "dicas": [
       "`=MÉDIA(intervalo)` soma e divide pela quantidade sozinha.",
-      "Use só os meses: B2:B7 (sem o total de B8)."
+      "Use só os meses, sem a linha do total."
     ],
     "explicacao": [
       "`=MÉDIA(B2:B7)`: soma os valores e divide pela quantidade de células com número.",
@@ -236,11 +236,11 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
       },
       {
         "padrao": "B2:B8",
-        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
       }
     ],
     "video": "O cuidado com zero e com célula vazia.",
@@ -582,7 +582,7 @@
       },
       {
         "padrao": "^=\\(B3-B2\\)/B3$",
-        "dica": "A base é sempre o valor antigo: divida por B2."
+        "dica": "Confira por qual valor você dividiu: a variação usa sempre o valor antigo como base."
       }
     ],
     "video": "A fórmula que todo analista usa todo dia, e o erro de dividir pelo valor errado.",
@@ -733,8 +733,8 @@
       }
     ],
     "dicas": [
-      "Comissão = venda × taxa. Em C2: `B2*F1`.",
-      "Copie para baixo e veja o que acontece com F1. Ela precisa ficar travada: `$F$1` (F4)."
+      "Comissão = venda × taxa. Onde está a venda de cada linha, e onde está a taxa?",
+      "Copie para baixo e veja o que acontece com a referência à taxa. Ela precisa ficar parada."
     ],
     "explicacao": [
       "`=B2*$F$1`: o cifrão trava a coluna e a linha. Ao copiar, B2 vira B3, B4…, mas `$F$1` continua apontando para a taxa.",
@@ -744,7 +744,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d\\*F[2-9]$",
-        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+        "dica": "Ao copiar, a referência à taxa andou junto e saiu do lugar. Como deixá-la parada?"
       }
     ],
     "video": "Arrastar a versão errada, mostrar os zeros e corrigir com F4. É o vídeo mais importante do módulo.",
@@ -962,7 +962,7 @@
     ],
     "dicas": [
       "A quantidade está sempre na coluna A; o preço, sempre na linha 2.",
-      "Trave só o que não pode andar: `$A3` e `B$2`. Aperte F4 várias vezes para chegar em cada forma."
+      "Trave só o que não pode andar: a quantidade fica sempre na mesma coluna; o preço, sempre na mesma linha. Aperte F4 várias vezes para ver cada forma."
     ],
     "explicacao": [
       "`=$A3*B$2`: a primeira parte trava a coluna A e deixa a linha andar; a segunda trava a linha 2 e deixa a coluna andar.",
@@ -972,11 +972,11 @@
     "errosComuns": [
       {
         "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
-        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Cada referência precisa travar só uma parte."
       },
       {
         "padrao": "^=A\\d\\*[B-E]\\d$",
-        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+        "dica": "Ao copiar, as referências saem do lugar. Pense no que cada uma precisa manter fixo: a coluna, a linha ou nada?"
       }
     ],
     "video": "Apertar F4 quatro vezes e mostrar os quatro estados.",
@@ -998,7 +998,7 @@
       "Em **B8**, some só as vendas do 1º trimestre: janeiro a março."
     ],
     "dicas": [
-      "O 1º trimestre vai de B2 (Jan) até B4 (Mar)."
+      "O 1º trimestre vai de janeiro a março. Ache essas linhas na planilha."
     ],
     "explicacao": [
       "`=SOMA(B2:B4)`: o intervalo pode ser só um pedaço da coluna."
@@ -1095,7 +1095,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2;B7\\)$",
-        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+        "dica": "Com ponto e vírgula, você somou só duas células, a primeira e a última. Qual sinal quer dizer \"até\"?"
       }
     ]
   },
@@ -1113,7 +1113,7 @@
       "Em **B8**, some as vendas do 2º trimestre: abril a junho."
     ],
     "dicas": [
-      "Abril está em B5 e junho em B7."
+      "Ache as linhas de abril e de junho na planilha."
     ],
     "explicacao": [
       "`=SOMA(B5:B7)`."
@@ -1210,7 +1210,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2;B7\\)$",
-        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+        "dica": "Com ponto e vírgula, você somou só duas células, a primeira e a última. Qual sinal quer dizer \"até\"?"
       }
     ]
   },
@@ -1330,7 +1330,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2;B7\\)$",
-        "dica": "Com ponto e vírgula, você somou só B2 e B7. Para o intervalo inteiro, use dois-pontos: B2:B7."
+        "dica": "Com ponto e vírgula, você somou só duas células, a primeira e a última. Qual sinal quer dizer \"até\"?"
       }
     ]
   },
@@ -1396,7 +1396,7 @@
       "Em **B8**, calcule a média de vendas do 1º trimestre (janeiro a março)."
     ],
     "dicas": [
-      "Mesma função, intervalo menor: B2:B4."
+      "Mesma função, intervalo menor: só os meses do trimestre."
     ],
     "explicacao": [
       "`=MÉDIA(B2:B4)` → 1.193,33."
@@ -1494,11 +1494,11 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
       },
       {
         "padrao": "B2:B8",
-        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
       }
     ]
   },
@@ -1516,7 +1516,7 @@
       "As notas de um aluno estão em **B2:B5**. Em **B6**, calcule a média."
     ],
     "dicas": [
-      "`=MÉDIA(B2:B5)`."
+      "A média das quatro notas sai de uma função só."
     ],
     "explicacao": [
       "A média de 8, 6, 9 e 7 é 30 ÷ 4 = 7,5."
@@ -1588,11 +1588,11 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
       },
       {
         "padrao": "B2:B8",
-        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
       }
     ]
   },
@@ -1681,11 +1681,11 @@
       },
       {
         "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "São 6 meses, não 7. A MÉDIA conta sozinha."
+        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
       },
       {
         "padrao": "B2:B8",
-        "dica": "O intervalo inclui o total de B8. Use só os meses: B2:B7."
+        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
       }
     ]
   },
@@ -1721,7 +1721,7 @@
     "opcoes": [
       {
         "texto": "Conta como zero",
-        "dica": "Quem conta é a célula com zero digitado. A vazia fica de fora."
+        "dica": "Isso vale para uma célula com zero digitado. A pergunta fala de uma célula vazia."
       },
       {
         "texto": "É ignorada"
@@ -1750,7 +1750,7 @@
       "Em **B8**, a menor venda do 2º trimestre (abril a junho)."
     ],
     "dicas": [
-      "Abril a junho: B5:B7."
+      "O 2º trimestre vai de abril a junho. Ache essas linhas na planilha."
     ],
     "explicacao": [
       "`=MÍNIMO(B5:B7)` → 1.100."
@@ -2240,7 +2240,7 @@
     "errosComuns": [
       {
         "padrao": "^=A2\\+B2/2$",
-        "dica": "Sem parênteses, o Excel divide antes de somar: deu 11. Use =(A2+B2)/2."
+        "dica": "Sem parênteses, o Excel divide antes de somar. Como fazer a soma acontecer primeiro?"
       },
       {
         "padrao": "^=A2\\*\\(B2\\+C2\\)$",
@@ -2341,7 +2341,7 @@
     "opcoes": [
       {
         "texto": "20",
-        "dica": "Isso seria (2+3)*4. Sem parênteses, a multiplicação vem primeiro."
+        "dica": "Isso seria (2+3)*4. Sem parênteses, qual operação vem primeiro?"
       },
       {
         "texto": "14"
@@ -2469,7 +2469,7 @@
       },
       {
         "padrao": "^=\\(B3-B2\\)/B3$",
-        "dica": "A base é sempre o valor antigo: divida por B2."
+        "dica": "Confira por qual valor você dividiu: a variação usa sempre o valor antigo como base."
       }
     ]
   },
@@ -2586,7 +2586,7 @@
       },
       {
         "padrao": "^=\\(B3-B2\\)/B3$",
-        "dica": "A base é sempre o valor antigo: divida por B2."
+        "dica": "Confira por qual valor você dividiu: a variação usa sempre o valor antigo como base."
       }
     ]
   },
@@ -2709,7 +2709,7 @@
       },
       {
         "padrao": "^=\\(B3-B2\\)/B3$",
-        "dica": "A base é sempre o valor antigo: divida por B2."
+        "dica": "Confira por qual valor você dividiu: a variação usa sempre o valor antigo como base."
       }
     ]
   },
@@ -2745,7 +2745,7 @@
     "opcoes": [
       {
         "texto": "33%",
-        "dica": "33% seria dividindo pelo novo (300). A base é o antigo."
+        "dica": "33% seria dividindo pelo valor novo. Qual é a base da variação?"
       },
       {
         "texto": "50%"
@@ -2774,7 +2774,7 @@
       "O imposto (10%) está em **F2**. Em **C2**, calcule o imposto sobre B2 numa fórmula que funcione copiada até **C7**."
     ],
     "dicas": [
-      "Trave a taxa com $: `$F$2`."
+      "Ao copiar, a taxa não pode andar. Como travar uma referência?"
     ],
     "explicacao": [
       "`=B2*$F$2` → 120 na primeira linha."
@@ -2913,7 +2913,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d\\*F[2-9]$",
-        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+        "dica": "Ao copiar, a referência à taxa andou junto e saiu do lugar. Como deixá-la parada?"
       }
     ]
   },
@@ -3064,7 +3064,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d\\*F[2-9]$",
-        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+        "dica": "Ao copiar, a referência à taxa andou junto e saiu do lugar. Como deixá-la parada?"
       }
     ]
   },
@@ -3082,7 +3082,7 @@
       "A coluna C usa `=B2*$F1`, copiada para baixo, e dá zero a partir da segunda linha. Corrija **C2** e copie de novo até **C7**."
     ],
     "dicas": [
-      "O cifrão de `$F1` trava a coluna. E a linha?"
+      "O cifrão trava só o que vem logo depois dele. O que ficou livre na referência à taxa?"
     ],
     "explicacao": [
       "`$F1` travou só a coluna; ao copiar, a linha andou para F2, F3… O certo é `$F$1`, com a linha travada também."
@@ -3251,7 +3251,7 @@
     "errosComuns": [
       {
         "padrao": "^=B\\d\\*F[2-9]$",
-        "dica": "Ao copiar, a referência à taxa andou e saiu de F1. Trave com $: =B2*$F$1 (F4)."
+        "dica": "Ao copiar, a referência à taxa andou junto e saiu do lugar. Como deixá-la parada?"
       }
     ]
   },
@@ -3287,7 +3287,7 @@
     "opcoes": [
       {
         "texto": "A coluna",
-        "dica": "O cifrão antes do F trava a coluna."
+        "dica": "Cada cifrão trava o que vem logo depois dele."
       },
       {
         "texto": "A linha"
@@ -4035,11 +4035,11 @@
     "errosComuns": [
       {
         "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
-        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Cada referência precisa travar só uma parte."
       },
       {
         "padrao": "^=A\\d\\*[B-E]\\d$",
-        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+        "dica": "Ao copiar, as referências saem do lugar. Pense no que cada uma precisa manter fixo: a coluna, a linha ou nada?"
       }
     ]
   },
@@ -4229,11 +4229,11 @@
     "errosComuns": [
       {
         "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
-        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Cada referência precisa travar só uma parte."
       },
       {
         "padrao": "^=A\\d\\*[B-E]\\d$",
-        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+        "dica": "Ao copiar, as referências saem do lugar. Pense no que cada uma precisa manter fixo: a coluna, a linha ou nada?"
       }
     ]
   },
@@ -4556,11 +4556,11 @@
     "errosComuns": [
       {
         "padrao": "^=\\$A\\$3\\*\\$B\\$2$",
-        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Trave só a coluna da quantidade e a linha do preço."
+        "dica": "Travou demais: a tabela inteira fica com o mesmo valor. Cada referência precisa travar só uma parte."
       },
       {
         "padrao": "^=A\\d\\*[B-E]\\d$",
-        "dica": "Ao copiar, as referências saem do lugar. Use $A3 e B$2."
+        "dica": "Ao copiar, as referências saem do lugar. Pense no que cada uma precisa manter fixo: a coluna, a linha ou nada?"
       }
     ]
   },
@@ -4596,14 +4596,14 @@
     "opcoes": [
       {
         "texto": "Vira B3",
-        "dica": "Viraria B3 sem o cifrão antes do A."
+        "dica": "Repare no cifrão antes do A: o que ele faz?"
       },
       {
         "texto": "Continua A3"
       },
       {
         "texto": "Vira A4",
-        "dica": "Para a direita, a linha não muda."
+        "dica": "Ao copiar para a direita, o que pode mudar numa referência: a coluna ou a linha?"
       },
       {
         "texto": "Dá erro"

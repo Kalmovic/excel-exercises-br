@@ -60,7 +60,7 @@
   "dicas": [
     "Selecione C2.",
     "Digitar 120 e apertar Enter substitui o valor inteiro.",
-    "Com F2 ou duplo clique, o cursor vai para o fim do conteúdo: apague o 100 com Backspace e digite 120."
+    "Com F2 ou duplo clique, o cursor vai para o fim do conteúdo. Apague o que está errado e digite o valor certo."
   ],
   "explicacao": [
     "Digitar por cima substitui todo o conteúdo. **F2** e o **duplo clique** abrem a célula para edição, o que é útil para corrigir só um pedaço de um texto ou de uma fórmula.",

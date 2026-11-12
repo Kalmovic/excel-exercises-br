@@ -282,7 +282,7 @@
       }
     ],
     "dicas": [
-      "`=MAIOR(intervalo;k)` devolve o k-ésimo maior. O k está em D2.",
+      "`=MAIOR(intervalo;k)` devolve o k-ésimo maior. A posição já está na planilha.",
       "Para o nome: ÍNDICE + CORRESP procurando o valor encontrado."
     ],
     "explicacao": [
@@ -406,7 +406,7 @@
     ],
     "dicas": [
       "`=MENOR(intervalo;k)`: k = 1 é o menor, k = 2 o segundo.",
-      "O nome sai de ÍNDICE + CORRESP com o valor de E1."
+      "O nome sai de ÍNDICE + CORRESP, procurando o valor que você acabou de achar."
     ],
     "explicacao": [
       "`=MENOR(B2:B6;1)` é o mesmo que `=MÍNIMO(B2:B6)`; a vantagem do MENOR é o k.",
@@ -611,8 +611,8 @@
       }
     ],
     "dicas": [
-      "Etapa 1: `=SE(B2<C2;2*C2-B2;0)`.",
-      "Etapa 2: conte quem tem compra maior que zero: `CONT.SE(D2:D9;\">0\")`."
+      "Etapa 1: compare o estoque com o mínimo. Se estiver abaixo, a compra completa até o dobro do mínimo; senão, é zero.",
+      "Etapa 2: conte quem tem compra maior que zero."
     ],
     "explicacao": [
       "**Etapa 1:** `=SE(B2<C2;2*C2-B2;0)`. **Etapas 2 e 3:** `=CONT.SE(D2:D9;\">0\")` e `=SOMA(D2:D9)`.",
@@ -845,7 +845,7 @@
       }
     ],
     "dicas": [
-      "A taxa vem de um PROCV aproximado (VERDADEIRO).",
+      "A taxa vem de uma busca por faixa, como na lição de comissão.",
       "Comissão = vendas × taxa. O total é uma SOMA."
     ],
     "explicacao": [
@@ -1052,7 +1052,7 @@
       }
     ],
     "dicas": [
-      "SOMASE por tipo para F2 e F3.",
+      "Os totais por tipo saem de uma soma com condição.",
       "Sobra = renda menos os dois totais; o percentual é sobra ÷ renda.",
       "No SE, 20% pode ser escrito como `20%` ou `0,2`."
     ],

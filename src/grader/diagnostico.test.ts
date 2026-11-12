@@ -24,13 +24,13 @@ function mensagem(slug: string, formulas: Record<string, string>, copiar?: [stri
 
 describe("feedback específico", () => {
   it("intervalo que para antes do fim", () => {
-    expect(mensagem("soma-total-de-vendas", { B8: "=SOMA(B2:B6)" })).toContain("os dados vão até B7");
+    expect(mensagem("soma-total-de-vendas", { B8: "=SOMA(B2:B6)" })).toContain("termina cedo demais");
   });
   it("intervalo que começa no cabeçalho", () => {
     // (na SOMA o cabeçalho de texto é ignorado e o valor dá certo; numa contagem, não)
     expect(
       diagnosticarValor({ formulaAluno: "=CONT.VALORES(A1:A13)", formulaReferencia: "=CONT.VALORES(A2:A13)", obtido: 13, esperado: 12 }),
-    ).toContain("começa no cabeçalho");
+    ).toContain("inclui o cabeçalho");
   });
   it("coluna errada", () => {
     expect(mensagem("somase-total-por-categoria", { E2: "=SOMASE($A$2:$A$13;D2;$C$2:$C$13)" })).toBeTruthy();
@@ -51,17 +51,17 @@ describe("feedback específico", () => {
         obtido: "Reprovado",
         esperado: "Aprovado",
       }),
-    ).toContain("use >=");
+    ).toContain("sinal de comparação");
     expect(formulas).toBeTruthy();
   });
   it("PROCV sem o FALSO e coluna errada", () => {
     expect(
       diagnosticarValor({ formulaAluno: "=PROCV(A2;$E$2:$G$9;3)", formulaReferencia: "=PROCV(A2;$E$2:$G$9;3;FALSO)", obtido: 1, esperado: 2 }),
-    ).toContain("Faltou o FALSO");
+    ).toContain("último argumento do PROCV");
     expect(mensagem("procv-preco-pelo-codigo", { B2: "=PROCV(A2;$E$2:$G$9;2;FALSO)" })).toContain("número da coluna");
   });
   it("divisão invertida", () => {
-    expect(mensagem("porcentagem-do-total", { C2: "=$B$7/B2" })).toContain("divisão está invertida");
+    expect(mensagem("porcentagem-do-total", { C2: "=$B$7/B2" })).toContain("ordem da divisão");
   });
   it("porcentagem multiplicada por 100", () => {
     expect(mensagem("porcentagem-do-total", { C2: "=B2/$B$7*100" })).toContain("100 vezes maior");
@@ -70,7 +70,7 @@ describe("feedback específico", () => {
     expect(mensagem("pgto-parcela-do-financiamento", { B5: "=PGTO(B2;B3;B1)" })).toContain("sinal está trocado");
   });
   it("função trocada", () => {
-    expect(mensagem("soma-total-de-vendas", { B8: "=MÉDIA(B2:B7)" })).toContain("pede SOMA, e sua fórmula usa MÉDIA");
+    expect(mensagem("soma-total-de-vendas", { B8: "=MÉDIA(B2:B7)" })).toContain("MÉDIA faz o cálculo que o enunciado pede");
   });
   it("SE aninhado no lugar de SES não é tratado como função errada", () => {
     expect(
@@ -79,11 +79,11 @@ describe("feedback específico", () => {
   });
   it("esqueceu o $ e copiou a fórmula", () => {
     const m = mensagem("referencia-absoluta-comissao", { C2: "=B2*F1" }, ["C2", "C3:C6"]);
-    expect(m).toMatch(/não usa F1|\$F\$1/);
+    expect(m).toContain("precisava ficar parada");
   });
   it("critério digitado em vez da célula", () => {
     const m = mensagem("criterio-em-celula", { E2: '=CONT.SE(B2:B13;"<15")' });
-    expect(m).toContain("não usa E1");
+    expect(m).toContain("não usa uma das células");
   });
   it("só números na fórmula", () => {
     const formulas = { C2: "=1800/4500", C3: "=B3/$B$7", C4: "=B4/$B$7", C5: "=B5/$B$7", C6: "=B6/$B$7" };

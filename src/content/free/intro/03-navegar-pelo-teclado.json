@@ -25,7 +25,7 @@
   "inputMethod": "keyboard",
   "dicas": [
     "A seta → anda uma coluna para a direita; a seta ↓ desce uma linha.",
-    "De A1 até C3: duas vezes → e duas vezes ↓.",
+    "Cada tecla de seta anda uma célula. Conte quantas colunas e quantas linhas separam as duas células.",
     "Enter também desce uma linha, e Tab anda para a direita."
   ],
   "explicacao": [

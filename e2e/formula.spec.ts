@@ -116,7 +116,7 @@ test("P3-6: a correção explica o erro (intervalo curto)", async ({ page }) => 
   await page.keyboard.insertText("=SOMA(B2:B6)");
   await page.keyboard.press("Enter");
   await visivel(page, "verificar").click();
-  await expect(visivel(page, "resultado")).toContainText("os dados vão até B7");
+  await expect(visivel(page, "resultado")).toContainText("termina cedo demais");
 });
 
 test("P3-5: texto longo invade a vizinha vazia; número que não cabe vira ####", async ({ page }) => {

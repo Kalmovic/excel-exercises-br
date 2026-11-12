@@ -167,7 +167,7 @@
       },
       {
         "padrao": "\\(A1:",
-        "dica": "Começando em A1, o título da coluna também seria contado."
+        "dica": "Começando na linha 1, o título da coluna também seria contado."
       }
     ],
     "video": "A diferença entre CONT.VALORES, CONT.NÚM e CONTAR.VAZIO numa tabela só.",
@@ -334,7 +334,7 @@
     ],
     "dicas": [
       "`=CONT.SE(onde procurar;o que procurar)`.",
-      "Texto no critério vai entre aspas: `\"Ana\"`."
+      "Texto no critério vai entre aspas."
     ],
     "explicacao": [
       "`=CONT.SE(A2:A8;\"Ana\")`. O critério pode ser texto, número, comparação (\">400\") ou uma célula onde está escrito Ana."
@@ -343,11 +343,11 @@
     "errosComuns": [
       {
         "padrao": ";ANA\\)$",
-        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+        "dica": "Texto no critério vai entre aspas."
       },
       {
         "padrao": "^=CONT\\.SE\\([B-D]",
-        "dica": "Os nomes estão na coluna A."
+        "dica": "Confira em que coluna estão os nomes."
       }
     ],
     "video": "Usar uma célula como critério, para trocar o vendedor sem mexer na fórmula.",
@@ -699,7 +699,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
-        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+        "dica": "Faltou dizer ao Excel o que somar: o terceiro argumento é a coluna dos valores."
       }
     ],
     "video": "Comparar com filtrar e somar à mão, e mostrar a fórmula se atualizando quando entra uma venda nova.",
@@ -867,7 +867,7 @@
     ],
     "dicas": [
       "Na SOMASES, o intervalo a somar vem **primeiro**.",
-      "Depois, os pares: `B2:B8;\"Sul\"` e `D2:D8;\"Pago\"`."
+      "Depois do intervalo a somar, vêm os pares: onde procurar e o que procurar, uma condição de cada vez."
     ],
     "explicacao": [
       "`=SOMASES(C2:C8;B2:B8;\"Sul\";D2:D8;\"Pago\")`. A venda de 150 da Ana (Sul, Pendente) fica de fora."
@@ -876,7 +876,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
-        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+        "dica": "Confira a ordem dos argumentos: na SOMASES ela é diferente da SOMASE."
       }
     ],
     "video": "SOMASE e SOMASES lado a lado, com o primeiro argumento destacado: a pegadinha preferida das provas.",
@@ -1236,7 +1236,7 @@
       },
       {
         "padrao": "\\(A1:",
-        "dica": "Começando em A1, o título da coluna também seria contado."
+        "dica": "Começando na linha 1, o título da coluna também seria contado."
       }
     ]
   },
@@ -1413,7 +1413,7 @@
       },
       {
         "padrao": "\\(A1:",
-        "dica": "Começando em A1, o título da coluna também seria contado."
+        "dica": "Começando na linha 1, o título da coluna também seria contado."
       }
     ]
   },
@@ -1594,7 +1594,7 @@
       },
       {
         "padrao": "\\(A1:",
-        "dica": "Começando em A1, o título da coluna também seria contado."
+        "dica": "Começando na linha 1, o título da coluna também seria contado."
       }
     ]
   },
@@ -1814,11 +1814,11 @@
     "errosComuns": [
       {
         "padrao": ";ANA\\)$",
-        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+        "dica": "Texto no critério vai entre aspas."
       },
       {
         "padrao": "^=CONT\\.SE\\([B-D]",
-        "dica": "Os nomes estão na coluna A."
+        "dica": "Confira em que coluna estão os nomes."
       }
     ]
   },
@@ -1991,11 +1991,11 @@
     "errosComuns": [
       {
         "padrao": ";ANA\\)$",
-        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+        "dica": "Texto no critério vai entre aspas."
       },
       {
         "padrao": "^=CONT\\.SE\\([B-D]",
-        "dica": "Os nomes estão na coluna A."
+        "dica": "Confira em que coluna estão os nomes."
       }
     ]
   },
@@ -2172,11 +2172,11 @@
     "errosComuns": [
       {
         "padrao": ";ANA\\)$",
-        "dica": "Texto no critério vai entre aspas: \"Ana\"."
+        "dica": "Texto no critério vai entre aspas."
       },
       {
         "padrao": "^=CONT\\.SE\\([B-D]",
-        "dica": "Os nomes estão na coluna A."
+        "dica": "Confira em que coluna estão os nomes."
       }
     ]
   },
@@ -2965,7 +2965,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
-        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+        "dica": "Faltou dizer ao Excel o que somar: o terceiro argumento é a coluna dos valores."
       }
     ]
   },
@@ -3139,7 +3139,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
-        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+        "dica": "Faltou dizer ao Excel o que somar: o terceiro argumento é a coluna dos valores."
       }
     ]
   },
@@ -3313,7 +3313,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASE\\(A2:A8;\\\"ANA\\\"\\)$",
-        "dica": "Diga ao Excel qual coluna somar: a dos valores (C2:C8)."
+        "dica": "Faltou dizer ao Excel o que somar: o terceiro argumento é a coluna dos valores."
       }
     ]
   },
@@ -3534,7 +3534,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
-        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+        "dica": "Confira a ordem dos argumentos: na SOMASES ela é diferente da SOMASE."
       }
     ]
   },
@@ -3708,7 +3708,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMASES\\(B2:B8;\\\"SUL\\\"",
-        "dica": "Na SOMASES, o intervalo a somar vem primeiro: =SOMASES(C2:C8;…)."
+        "dica": "Confira a ordem dos argumentos: na SOMASES ela é diferente da SOMASE."
       }
     ]
   },
@@ -3744,7 +3744,7 @@
     "opcoes": [
       {
         "texto": "0",
-        "dica": "Os critérios não diferenciam maiúsculas de minúsculas."
+        "dica": "Releia: o critério diferencia maiúsculas de minúsculas?"
       },
       {
         "texto": "1.400"
@@ -4365,7 +4365,7 @@
     "opcoes": [
       {
         "texto": "0",
-        "dica": "Não há o que dividir: o resultado é um erro, não zero."
+        "dica": "Se o vendedor não tem nenhuma venda, a média divide por quanto?"
       },
       {
         "texto": "#DIV/0!"

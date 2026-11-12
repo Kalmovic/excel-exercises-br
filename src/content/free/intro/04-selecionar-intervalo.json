@@ -88,9 +88,9 @@
   },
   "intervalo": "B2:D5",
   "dicas": [
-    "B2 é o canto superior esquerdo do bloco; D5 é o canto inferior direito.",
+    "Um intervalo vai do canto superior esquerdo ao canto inferior direito do bloco.",
     "Segure o botão do mouse em B2 e só solte em D5.",
-    "Pelo teclado: com B2 ativa, segure Shift e aperte → duas vezes e ↓ três vezes."
+    "Pelo teclado: com a primeira célula ativa, segure Shift e use as setas até a outra ponta."
   ],
   "explicacao": [
     "B2:D5 tem 3 colunas × 4 linhas = 12 células: as vendas de todos os produtos nos três meses.",

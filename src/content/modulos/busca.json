@@ -123,7 +123,7 @@
     ],
     "dicas": [
       "`=PROCV(o que procurar;onde;qual coluna devolver;tipo de busca)`.",
-      "O preço é a 3ª coluna da tabela. FALSO quer dizer busca exata."
+      "Conte em qual coluna da tabela está o preço. O último argumento define o tipo de busca."
     ],
     "explicacao": [
       "`=PROCV(F2;A2:C6;3;FALSO)`: procura na primeira coluna da tabela e devolve a coluna pedida, contando a partir da primeira.",
@@ -133,11 +133,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
       },
       {
         "padrao": ";4;",
-        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+        "dica": "O número da coluna passou do tamanho da tabela. Conte as colunas da tabela que você selecionou."
       }
     ],
     "video": "O vídeo-chave da trilha: o perigo de esquecer o FALSO, com um resultado errado que parece certo.",
@@ -297,11 +297,11 @@
     "errosComuns": [
       {
         "padrao": ";FALSO\\)$",
-        "dica": "12.500 não está na tabela. Para faixas, use VERDADEIRO."
+        "dica": "O valor procurado não aparece igual na tabela: aqui você precisa da faixa, não de uma busca exata. Qual tipo de busca o último argumento pede?"
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "Ao copiar, a tabela de faixas saiu do lugar. Trave com $: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ],
     "video": "Desenhar as faixas numa régua e mostrar onde o 12.500 cai.",
@@ -427,7 +427,7 @@
     ],
     "dicas": [
       "Procura na primeira linha do intervalo e devolve o valor de outra linha.",
-      "A meta está na 2ª linha de B1:G2."
+      "Conte as linhas da tabela que você selecionou: em qual delas está a meta?"
     ],
     "explicacao": [
       "`=PROCH(A5;B1:G2;2;FALSO)`: fora a direção, funciona igual ao PROCV.",
@@ -437,7 +437,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(",
-        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+        "dica": "Os meses estão numa linha, não numa coluna. Existe uma busca feita para tabelas deitadas."
       }
     ],
     "video": "Curto. A mensagem principal é que o PROCX substitui os dois.",
@@ -567,11 +567,11 @@
     "errosComuns": [
       {
         "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
-        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+        "dica": "Confira o último argumento do CORRESP: qual valor pede a busca exata?"
       },
       {
         "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
-        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+        "dica": "Os dois intervalos precisam cobrir as mesmas linhas. Compare onde cada um começa e termina."
       }
     ],
     "video": "Montar a fórmula em duas etapas: primeiro o CORRESP sozinho (devolve 3), depois o ÍNDICE em volta.",
@@ -715,7 +715,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
-        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+        "dica": "O terceiro argumento do PROCX é só a coluna que você quer de volta, não a tabela inteira."
       }
     ],
     "video": "\"Esqueça o número da coluna\": o PROCX e o PROCV resolvendo o mesmo problema.",
@@ -857,11 +857,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
       },
       {
         "padrao": ";4;",
-        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+        "dica": "O número da coluna passou do tamanho da tabela. Conte as colunas da tabela que você selecionou."
       }
     ]
   },
@@ -879,7 +879,7 @@
       "O código **P02** está em **F2**. Em **G2**, traga o **nome** do produto."
     ],
     "dicas": [
-      "O nome é a 2ª coluna da tabela."
+      "Conte em qual coluna da tabela está o nome."
     ],
     "explicacao": [
       "`=PROCV(F2;A2:C6;2;FALSO)` → Caderno."
@@ -988,11 +988,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
       },
       {
         "padrao": ";4;",
-        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+        "dica": "O número da coluna passou do tamanho da tabela. Conte as colunas da tabela que você selecionou."
       }
     ]
   },
@@ -1132,11 +1132,11 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem FALSO, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
       },
       {
         "padrao": ";4;",
-        "dica": "A tabela só tem 3 colunas: o preço é a coluna 3."
+        "dica": "O número da coluna passou do tamanho da tabela. Conte as colunas da tabela que você selecionou."
       }
     ]
   },
@@ -1293,11 +1293,11 @@
     "errosComuns": [
       {
         "padrao": ";FALSO\\)$",
-        "dica": "12.500 não está na tabela. Para faixas, use VERDADEIRO."
+        "dica": "O valor procurado não aparece igual na tabela: aqui você precisa da faixa, não de uma busca exata. Qual tipo de busca o último argumento pede?"
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "Ao copiar, a tabela de faixas saiu do lugar. Trave com $: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ]
   },
@@ -1405,11 +1405,11 @@
     "errosComuns": [
       {
         "padrao": ";FALSO\\)$",
-        "dica": "12.500 não está na tabela. Para faixas, use VERDADEIRO."
+        "dica": "O valor procurado não aparece igual na tabela: aqui você precisa da faixa, não de uma busca exata. Qual tipo de busca o último argumento pede?"
       },
       {
         "padrao": "E[3-9]:F[6-9]",
-        "dica": "Ao copiar, a tabela de faixas saiu do lugar. Trave com $: $E$2:$F$5."
+        "dica": "Ao copiar, a tabela de faixas andou junto. O que precisa ficar parado?"
       }
     ]
   },
@@ -1451,7 +1451,7 @@
       },
       {
         "texto": "Faltou o FALSO",
-        "dica": "Com FALSO, a busca seria exata e nenhuma faixa seria encontrada."
+        "dica": "O problema não está no último argumento. Releia o que a busca aproximada exige da tabela."
       },
       {
         "texto": "A tabela precisa estar travada"
@@ -1633,7 +1633,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(",
-        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+        "dica": "Os meses estão numa linha, não numa coluna. Existe uma busca feita para tabelas deitadas."
       }
     ]
   },
@@ -1651,7 +1651,7 @@
       "A linha 3 tem o realizado. Em **B5**, traga o **realizado** do mês de **A5**."
     ],
     "dicas": [
-      "A tabela agora vai até a linha 3, e o realizado é a 3ª linha."
+      "A tabela agora tem mais uma linha. Ela precisa entrar na seleção, e o número da linha muda."
     ],
     "explicacao": [
       "`=PROCH(A5;B1:G3;3;FALSO)` → 12.900."
@@ -1793,7 +1793,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(",
-        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+        "dica": "Os meses estão numa linha, não numa coluna. Existe uma busca feita para tabelas deitadas."
       }
     ]
   },
@@ -1930,7 +1930,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCV\\(",
-        "dica": "Os meses estão numa linha, não numa coluna: use PROCH."
+        "dica": "Os meses estão numa linha, não numa coluna. Existe uma busca feita para tabelas deitadas."
       }
     ]
   },
@@ -2104,11 +2104,11 @@
     "errosComuns": [
       {
         "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
-        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+        "dica": "Confira o último argumento do CORRESP: qual valor pede a busca exata?"
       },
       {
         "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
-        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+        "dica": "Os dois intervalos precisam cobrir as mesmas linhas. Compare onde cada um começa e termina."
       }
     ]
   },
@@ -2126,7 +2126,7 @@
       "Em **G2**, traga o **preço** do produto de **F2**, com ÍNDICE e CORRESP."
     ],
     "dicas": [
-      "Troque só a coluna do ÍNDICE: C2:C6."
+      "A busca é a mesma; muda só a coluna de onde o ÍNDICE devolve o valor."
     ],
     "explicacao": [
       "`=ÍNDICE(C2:C6;CORRESP(F2;B2:B6;0))` → 29,90."
@@ -2244,11 +2244,11 @@
     "errosComuns": [
       {
         "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
-        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+        "dica": "Confira o último argumento do CORRESP: qual valor pede a busca exata?"
       },
       {
         "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
-        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+        "dica": "Os dois intervalos precisam cobrir as mesmas linhas. Compare onde cada um começa e termina."
       }
     ]
   },
@@ -2380,11 +2380,11 @@
     "errosComuns": [
       {
         "padrao": "CORRESP\\([^;]*;B2:B6\\)\\)$",
-        "dica": "Use 0 no CORRESP para busca exata: CORRESP(F2;B2:B6;0)."
+        "dica": "Confira o último argumento do CORRESP: qual valor pede a busca exata?"
       },
       {
         "padrao": "ÍNDICE\\(A2:A6;CORRESP\\([^;]*;B2:B[5-9];",
-        "dica": "As duas colunas precisam ter as mesmas linhas: A2:A6 e B2:B6."
+        "dica": "Os dois intervalos precisam cobrir as mesmas linhas. Compare onde cada um começa e termina."
       }
     ]
   },
@@ -2449,7 +2449,7 @@
       "Em **G2**, traga o **código** do produto de **F2** com PROCX."
     ],
     "dicas": [
-      "O PROCX não se importa com a direção: devolva A2:A6."
+      "O PROCX não se importa com a direção: a coluna de retorno pode estar à esquerda."
     ],
     "explicacao": [
       "`=PROCX(F2;B2:B6;A2:A6)` → P04."
@@ -2558,7 +2558,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
-        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+        "dica": "O terceiro argumento do PROCX é só a coluna que você quer de volta, não a tabela inteira."
       }
     ]
   },
@@ -2692,7 +2692,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
-        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+        "dica": "O terceiro argumento do PROCX é só a coluna que você quer de volta, não a tabela inteira."
       }
     ]
   },
@@ -2832,7 +2832,7 @@
     "errosComuns": [
       {
         "padrao": "^=PROCX\\(F2;B2:B6;B2:C6",
-        "dica": "O terceiro argumento é só a coluna que você quer: C2:C6."
+        "dica": "O terceiro argumento do PROCX é só a coluna que você quer de volta, não a tabela inteira."
       }
     ]
   },
