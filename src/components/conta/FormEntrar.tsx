@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useConta } from "@/lib/conta";
 import { supabaseNavegador } from "@/lib/supabase/navegador";
 
@@ -24,6 +24,14 @@ export function FormEntrar() {
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
   const campoCodigo = useRef<HTMLInputElement>(null);
+  // Voltou do link do e-mail sem conseguir entrar (/auth/confirmar manda ?erro=link).
+  const linkFalhou = useSyncExternalStore(
+    () => () => {},
+    () => new URLSearchParams(window.location.search).get("erro") === "link",
+    () => false,
+  );
+  const [pediuDeNovo, setPediuDeNovo] = useState(false);
+  const aviso = erro ?? (linkFalhou && !pediuDeNovo ? "O link venceu ou foi aberto em outro navegador. Peça um novo abaixo." : null);
 
   useEffect(() => {
     if (passo === "codigo") campoCodigo.current?.focus();
@@ -49,10 +57,16 @@ export function FormEntrar() {
   const pedirCodigo = async (e: React.FormEvent) => {
     e.preventDefault();
     const limpo = email.trim().toLowerCase();
+    setPediuDeNovo(true);
     if (!EMAIL.test(limpo)) return setErro("Confira o e-mail: parece faltar alguma parte.");
     setErro(null);
     setEnviando(true);
-    const { error } = await supabaseNavegador()!.auth.signInWithOtp({ email: limpo, options: { shouldCreateUser: true } });
+    const { error } = await supabaseNavegador()!.auth.signInWithOtp({ email: limpo, options: {
+        shouldCreateUser: true,
+        // O e-mail traz o código e, enquanto o modelo padrão estiver ativo, um link que cai aqui.
+        emailRedirectTo: `${window.location.origin}/auth/confirmar?proximo=${encodeURIComponent(destino())}`,
+      },
+    });
     setEnviando(false);
     if (error) return setErro(mensagemDeErro(error.status, error.message));
     setEmail(limpo);
@@ -89,7 +103,7 @@ export function FormEntrar() {
           data-testid="email-entrar"
         />
       </label>
-      {erro && <p className="text-sm text-red-700" role="alert">{erro}</p>}
+      {aviso && <p className="text-sm text-red-700" role="alert">{aviso}</p>}
       <button type="submit" disabled={enviando} className={botao}>
         {enviando ? "Enviando…" : "Receber código por e-mail"}
       </button>
@@ -98,7 +112,8 @@ export function FormEntrar() {
   ) : (
     <form onSubmit={confirmar} className="space-y-3" noValidate>
       <p>
-        Mandamos um código para <strong>{email}</strong>. Ele chega em até 1 minuto; confira também o spam.
+        Mandamos um e-mail para <strong>{email}</strong>. Digite o código abaixo ou clique no link do e-mail, neste
+        mesmo navegador. Chega em até 1 minuto; confira também o spam.
       </p>
       <label className="block space-y-1">
         <span className="text-sm font-medium">Código</span>
