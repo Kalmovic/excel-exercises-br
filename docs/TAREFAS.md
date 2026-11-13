@@ -238,3 +238,14 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] Dicas, erros comuns, dicas das alternativas e o feedback automático (`src/grader/diagnostico.ts`) apontam onde olhar sem dar a fórmula, o intervalo ou o operador certos.
 - [x] A explicação (que tem a solução) aparece ao acertar, ou se o aluno clicar em "Travou? Ver a solução" depois de algumas tentativas. Não abre mais sozinha.
 - [x] Teste permanente em `src/content/conteudo.test.ts` ("dicas e mensagens não entregam a resposta"): reprova conteúdo novo que traga fórmula com referência, operador indicado ou células da solução que não estão no enunciado.
+
+### Backend, etapa 1: contas (13/11/2026)
+
+- [x] Supabase (projeto `mbiurlkcrqpnxwzinqje`, criado pela integração da Vercel). Banco em `supabase/migrations/`: `perfis`, `progresso`, `estado_aluno`, `assinaturas`, `eventos_pagamento`, todas com RLS. Teste das regras em `supabase/testes/rls.sql` (8 verificações, desfaz tudo no fim).
+- [x] Login sem senha com código de 6 dígitos por e-mail (`/entrar`), "Minha conta" (`/conta`) com plano e Sair. Cabeçalho mostra Entrar / Minha conta.
+- [x] Sincronização (`src/lib/conta.ts` + regras puras em `src/lib/sincronizar.ts`): ao entrar, junta o progresso do navegador com o da conta (concluído não volta atrás, troféus e ofensiva somam, aprovação em teste não se perde); depois, cada mudança sobe em 1,5 s. Ao sair, o navegador é limpo. Origem do aluno vai para o perfil no 1º login.
+- [x] `usuarioEhPro()` lê `assinaturas.acesso_ate` com a sessão do aluno; `ehAdmin()` aceita `perfis.papel = 'admin'` além da senha antiga. `src/proxy.ts` renova o token antes de cada página (só para quem tem cookie de login).
+- [x] Sem `SUPABASE_URL`/`SUPABASE_PUBLISHABLE_KEY`, as contas ficam desligadas e o site funciona como antes (é assim que os testes e2e rodam).
+- Verificado à mão contra o Supabase real (aluno de teste `e2e@teste.planilhes.com.br`, com senha, criado por SQL): dois aparelhos sincronizando, sair limpa o navegador, Pro liberado só com assinatura em dia. Falta transformar isso em teste e2e automático (precisa da rede liberada e da senha do aluno de teste).
+- [ ] No painel do Supabase: modelos de e-mail em pt-BR (`supabase/templates/codigo-de-acesso.html`) e SMTP do Resend com o domínio `planilhes.com.br`. Até lá, o e-mail sai em inglês e com limite de 2 por hora.
+- [ ] Etapa 2: checkout Asaas (sandbox), webhook com token e idempotência em `eventos_pagamento`, `acesso_ate`.

@@ -18,6 +18,12 @@ export function lerDias(): string[] {
   }
 }
 
+export function gravarDias(dias: string[]) {
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(dias.slice(-MAX_DIAS)));
+  } catch {}
+}
+
 /** Marca o dia de hoje como dia com atividade. */
 export function registrarAtividade(hoje = hojeSP()) {
   try {

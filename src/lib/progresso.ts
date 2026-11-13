@@ -64,6 +64,18 @@ export function apagar(slug: string) {
   } catch {}
 }
 
+/** Substitui todo o progresso local (usado ao juntar com a conta). */
+export function gravarTudo(tudo: Progresso) {
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(tudo));
+  } catch {}
+}
+
+/** Avisa a página (mapa, painel, sincronização) que o progresso mudou. */
+export function avisarMudanca() {
+  window.dispatchEvent(new Event(EVENTO));
+}
+
 export function assinar(fn: () => void) {
   window.addEventListener(EVENTO, fn);
   window.addEventListener("storage", fn);
@@ -101,6 +113,12 @@ export function registrarTrofeu(modulo: string): boolean {
   }
 }
 
+export function gravarTrofeus(t: Trofeus) {
+  try {
+    localStorage.setItem(CHAVE_TROFEUS, JSON.stringify(t));
+  } catch {}
+}
+
 /** Todos os exercícios da lista concluídos (na versão atual)? */
 export function trilhaConcluida(itens: { slug: string; versao: number }[]): boolean {
   const tudo = lerTudo();
@@ -133,6 +151,12 @@ export function lerPreferencias(): Preferencias {
   } catch {
     return {};
   }
+}
+
+export function gravarPreferencias(p: Preferencias) {
+  try {
+    localStorage.setItem(CHAVE_PREFS, JSON.stringify(p));
+  } catch {}
 }
 
 export function salvarPreferencias(p: Preferencias) {

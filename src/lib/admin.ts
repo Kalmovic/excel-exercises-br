@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
+import { supabaseServidor } from "./supabase/servidor";
 
 /**
  * Acesso de admin enquanto não existem contas (Fase 3 troca por um papel
@@ -46,8 +47,19 @@ export async function ehAdmin(): Promise<boolean> {
   // página como dependente do request. Se a checagem da senha viesse antes, no
   // build (sem ADMIN_TOKEN) a página seria congelada como um 404 estático.
   const valor = (await cookies()).get(COOKIE_ADMIN)?.value;
+  if (await papelAdmin()) return true;
   const senha = senhaConfigurada();
   if (!senha) return false;
   if (!valor || valor.length !== 64) return false;
   return timingSafeEqual(Buffer.from(valor, "hex"), hash(senha));
+}
+
+/** Conta com papel "admin" na tabela perfis (o aluno não consegue mudar o próprio papel). */
+async function papelAdmin(): Promise<boolean> {
+  const supabase = await supabaseServidor();
+  if (!supabase) return false;
+  const { data: sessao } = await supabase.auth.getClaims();
+  if (!sessao?.claims?.sub) return false;
+  const { data } = await supabase.from("perfis").select("papel").maybeSingle<{ papel: string }>();
+  return data?.papel === "admin";
 }

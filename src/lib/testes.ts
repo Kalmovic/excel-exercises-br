@@ -12,6 +12,12 @@ export function lerTestes(): Record<string, ResultadoTeste> {
   }
 }
 
+export function gravarTestes(t: Record<string, ResultadoTeste>) {
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(t));
+  } catch {}
+}
+
 /** Guarda a tentativa. Aprovação, uma vez conquistada, não se perde numa nova tentativa pior. */
 export function registrarTeste(modulo: string, acertos: number, total: number) {
   try {
@@ -26,5 +32,7 @@ export function registrarTeste(modulo: string, acertos: number, total: number) {
       tentativas: (antes?.tentativas ?? 0) + 1,
     };
     localStorage.setItem(CHAVE, JSON.stringify(tudo));
+    // Mesmo evento do progresso: a sincronização com a conta escuta este.
+    window.dispatchEvent(new Event("excel-br:progresso"));
   } catch {}
 }

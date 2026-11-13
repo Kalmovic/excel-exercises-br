@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { Logo } from "@/components/marca/Logo";
 import { MenuCelular } from "@/components/marca/MenuCelular";
+import { BotaoConta } from "@/components/conta/BotaoConta";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { Analytics } from "@vercel/analytics/next";
 import { INDEXAR_SITE, NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
@@ -41,9 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               ))}
             </nav>
             <div className="flex items-center gap-3 text-sm font-medium sm:gap-4">
-              <Link href="/entrar" className="hidden text-ink hover:text-muted sm:inline">
-                Entrar
-              </Link>
+              <BotaoConta className="hidden text-ink hover:text-muted sm:inline" />
               <LinkRastreado
                 href="/trilha"
                 className="rounded-lg bg-ink px-4 py-2 whitespace-nowrap text-white hover:bg-ink-soft"

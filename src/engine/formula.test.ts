@@ -34,9 +34,6 @@ describe("funcoesUsadas", () => {
   });
 });
 
-describe("booleanos", () => {
-});
-
 describe("sintaxe: recusada com explicação, nunca #ERROR!", () => {
   const casos: [string, RegExp][] = [
     ["=SOMA(B2:B7", /Faltou fechar um parêntese/],
