@@ -63,7 +63,9 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
   await visivel(page, "proxima-teste").click();
   const resultado = page.getByTestId("resultado-teste");
   await expect(resultado).toContainText("acertou 3 de 5");
-  await expect(page.getByTestId("revisar")).toContainText("SOMASE");
+  await expect(page.getByTestId("revisar")).toHaveCount(2);
+  await expect(page.getByTestId("revisar").first()).toHaveAttribute("title", /SOMASE/);
+  await expect(page.getByTestId("comecar-revisao")).toHaveAttribute("href", /somase/);
 
   await resultado.getByRole("button", { name: "Refazer o teste" }).click();
   for (const r of ['=CONT.SE(A2:A8;"Carla")', '=SOMASE(B2:B8;"Sul";C2:C8)', '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASE(D2:D8;"Pendente";C2:C8)']) {
@@ -74,7 +76,9 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
   await visivel(page, "alternativas").getByText('=SOMASES(C2:C8;B2:B8;"Sul")').click();
   await visivel(page, "verificar").click();
   await visivel(page, "proxima-teste").click();
-  await expect(page.getByTestId("resultado-teste")).toContainText("Aprovado! Você acertou 5 de 5");
+  await expect(page.getByTestId("resultado-teste")).toContainText("Gabaritou! Módulo");
+  await expect(page.getByTestId("proximo-modulo")).toContainText("Começar o Módulo 4: Busca");
+  await expect(page.getByTestId("questoes-teste").getByLabel("acertou")).toHaveCount(5);
 });
 
 test("teste do Módulo 0: os cinco tipos de questão", async ({ page }) => {
@@ -98,5 +102,5 @@ test("teste do Módulo 0: os cinco tipos de questão", async ({ page }) => {
   await visivel(page, "alternativas").locator("label").nth(1).click(); // (b) 5%
   await visivel(page, "verificar").click();
   await proxima();
-  await expect(page.getByTestId("resultado-teste")).toContainText("Aprovado! Você acertou 5 de 5");
+  await expect(page.getByTestId("resultado-teste")).toContainText("Gabaritou! Módulo");
 });
