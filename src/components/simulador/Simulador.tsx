@@ -282,12 +282,12 @@ export default function Simulador({
 
   return (
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0 space-y-2">
           {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
           {ex.type === "multiple_choice" && (
             <div className="space-y-4">
-              <div className="space-y-2 text-lg font-semibold" data-testid="pergunta">
+              <div className="space-y-2 text-lg font-semibold [overflow-wrap:anywhere]" data-testid="pergunta">
                 {ex.enunciado.map((p, i) => (
                   <p key={i}>
                     <TextoRico texto={p} />

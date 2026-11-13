@@ -12,7 +12,7 @@ import { montarGrade } from "./montar";
 export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
   const alvos = descricaoAlvos(ex);
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]" data-testid="previa-exercicio">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]" data-testid="previa-exercicio">
       <div className="min-w-0 space-y-2">
         {ex.type !== "multiple_choice" && (
           <div className="space-y-1" aria-hidden>
@@ -31,7 +31,7 @@ export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
         {ex.type === "multiple_choice" ? (
           <ol className="list-[lower-alpha] space-y-2 pl-6" data-testid="alternativas-estaticas">
             {ex.opcoes.map((o, i) => (
-              <li key={i} className="rounded-lg border border-line bg-white px-4 py-3 text-[15px]">
+              <li key={i} className="rounded-lg border border-line bg-white px-4 py-3 text-[15px] [overflow-wrap:anywhere]">
                 {o.texto}
               </li>
             ))}
@@ -40,7 +40,7 @@ export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
           <GradeEstatica grade={montarGrade(ex)} />
         )}
       </div>
-      <aside className="flex flex-col gap-4">
+      <aside className="flex min-w-0 flex-col gap-4 [overflow-wrap:anywhere]">
         <section className="space-y-2 text-[15px] leading-relaxed text-zinc-800">
           {ex.intro && (
             <p className="border-l-2 border-accent pl-3 text-sm text-zinc-600" data-testid="intro-exercicio">

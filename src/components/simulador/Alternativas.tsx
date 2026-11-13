@@ -8,7 +8,7 @@ export function Alternativas({ opcoes, bloqueado }: { opcoes: { texto: string }[
   const escolha = useEstado((e) => e.resposta);
   const letras = "abcdef";
   return (
-    <fieldset className="space-y-2" data-testid="alternativas" disabled={bloqueado}>
+    <fieldset className="min-w-0 space-y-2 [overflow-wrap:anywhere]" data-testid="alternativas" disabled={bloqueado}>
       <legend className="sr-only">Alternativas</legend>
       {opcoes.map((o, i) => {
         const marcada = escolha === String(i);

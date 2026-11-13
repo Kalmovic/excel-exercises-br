@@ -32,6 +32,15 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Fórmula se lê como se digita: sem ligaduras (">=" não pode virar "≥", nem "<>" virar "≠"). */
+code,
+kbd,
+pre,
+.font-mono {
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+
 @theme {
   --animate-pop: pop 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-acerto: acerto 1200ms ease-out both;

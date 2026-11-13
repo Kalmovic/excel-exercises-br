@@ -48,7 +48,7 @@ export function PainelExercicio({
   const alvos = descricaoAlvos(ex);
 
   return (
-    <aside className="flex flex-col gap-4">
+    <aside className="flex min-w-0 flex-col gap-4 [overflow-wrap:anywhere]">
       <section className="space-y-2 text-[15px] leading-relaxed text-zinc-800">
         {ex.intro && (
           <p className="border-l-2 border-accent pl-3 text-sm text-zinc-600" data-testid="intro-exercicio">

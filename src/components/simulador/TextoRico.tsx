@@ -8,7 +8,7 @@ export function TextoRico({ texto }: { texto: string }) {
       {partes.map((p, i) => {
         if (p.startsWith("`") && p.endsWith("`"))
           return (
-            <code key={i} className="rounded bg-header px-1 py-0.5 font-mono text-[0.9em] text-success">
+            <code key={i} className="rounded bg-header px-1 py-0.5 font-mono text-[0.9em] text-success [overflow-wrap:anywhere] [box-decoration-break:clone]">
               {p.slice(1, -1)}
             </code>
           );
