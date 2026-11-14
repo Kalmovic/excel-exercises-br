@@ -44,6 +44,8 @@ pre,
 @theme {
   --animate-pop: pop 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-acerto: acerto 1200ms ease-out both;
+  --animate-sheet: sheet 280ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  --animate-esmaecer: esmaecer 200ms ease-out both;
   --animate-subir: subir 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-brilho: brilho 2.4s ease-in-out infinite;
 }
@@ -57,6 +59,16 @@ pre,
 @keyframes acerto {
   0% { background-color: #ffd23f; }
   100% { background-color: #e3f4f1; }
+}
+
+@keyframes sheet {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes esmaecer {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes subir {

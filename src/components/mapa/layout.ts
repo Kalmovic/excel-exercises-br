@@ -4,10 +4,11 @@
  * ser testada e para o mapa crescer com o conteúdo sem desenho à mão.
  */
 
-export const LARGURA = 360;
+/** Cabe na área útil de um celular de 360px (360 menos as margens de 16px). */
+export const LARGURA = 320;
 const CENTRO = LARGURA / 2;
 /** Zigue-zague: deslocamento horizontal de cada casa, em ciclo. */
-const ONDA = [0, 64, 104, 64, 0, -64, -104, -64];
+const ONDA = [0, 56, 92, 56, 0, -56, -92, -56];
 const PASSO = 84; // distância vertical entre casas
 const ALTURA_BANNER = 92;
 const ESPACO_ANTES_BANNER = 24;

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { MapaTrilha, type RegiaoMapa } from "@/components/mapa/MapaTrilha";
 import { PainelTrilha } from "@/components/mapa/PainelTrilha";
 import type { ItemTrilha } from "@/lib/inicio";
@@ -54,19 +53,12 @@ export default function Trilha() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[340px_1fr]">
-      <aside className="space-y-4 lg:sticky lg:top-8 lg:self-start">
-        <h1 className="text-3xl font-bold tracking-tight">Sua trilha</h1>
+      <aside className="space-y-3 lg:sticky lg:top-8 lg:self-start">
+        <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">Sua trilha</h1>
         {/* A parte que depende da data roda por request; o resto da página é estático. */}
         <Suspense fallback={<PainelTrilha trilha={trilha} />}>
           <PainelComDesafio trilha={trilha} />
         </Suspense>
-        <p className="text-sm text-muted">
-          Nunca abriu uma planilha?{" "}
-          <Link href="/excel-basico-para-iniciantes" className="text-success underline-offset-4 hover:underline">
-            Leia o guia de Excel básico
-          </Link>
-          .
-        </p>
       </aside>
       {/* Mapa à esquerda; à direita, espaço livre para o balão de detalhes (nunca cobre outras casas). */}
       <div className="overflow-x-auto pb-10 lg:pl-6" style={{ minWidth: 0 }}>

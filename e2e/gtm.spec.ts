@@ -16,7 +16,7 @@ test("origem: UTM da primeira visita, afiliado em cookie", async ({ page, contex
 test("ofensiva: concluir um exercício começa a sequência", async ({ page }) => {
   await limparArmazenamento(page);
   await page.goto("/trilha");
-  await expect(visivel(page, "ofensiva")).toContainText("começar sua ofensiva");
+  await expect(page.getByTestId("ofensiva")).toHaveCount(0); // sem exercício feito, nada de ofensiva
   await page.goto("/exercicios/soma-total-de-vendas");
   await celula(page, "B8").click();
   await page.keyboard.insertText("=SOMA(B2:B7)");

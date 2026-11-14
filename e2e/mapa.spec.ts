@@ -8,7 +8,9 @@ test("mapa: usuário novo, casa atual, balão e todos os módulos", async ({ pag
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAttribute("data-mapa-atual", "true");
   await expect(page.getByTestId("pino")).toBeVisible();
   await expect(page.getByTestId("casa-procv-preco-pelo-codigo-exato")).toBeVisible();
-  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("0 de 52 exercícios");
+  // Aluno novo: o painel só mostra o botão de começar (sem contador em zero).
+  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("Começar pelo básico");
+  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).not.toContainText("exercícios");
 
   // a lista por baixo do desenho é navegável e acessível
   await expect(mapa.getByRole("list", { name: "Mapa da trilha" })).toBeVisible();
@@ -42,7 +44,7 @@ test("mapa: módulo concluído recolhe e o desafio do dia mostra se já jogou", 
   await expect(page.getByTestId("casa-soma-total-de-vendas")).toHaveAttribute("data-mapa-atual", "true");
   await intro.getByRole("button", { name: "Ver casas" }).click();
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAccessibleName(/\(feito\)/);
-  await expect(page.getByTestId("card-desafio").filter({ visible: true })).toContainText("Você ainda não jogou hoje");
+  await expect(page.getByTestId("card-desafio").filter({ visible: true })).toContainText("Jogar →");
   await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("10 de 52 exercícios");
 });
 
@@ -114,4 +116,17 @@ test("trilha centraliza a casa atual a cada visita, inclusive ao voltar", async 
   await expect(page).toHaveURL(/\/$/);
   await irParaTrilha();
   await centralizada();
+});
+
+test("celular: casa abre painel de baixo, sem rolar a página para o lado", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 780 });
+  await limparArmazenamento(page);
+  await page.goto("/trilha");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+  await page.getByTestId("casa-clicar-em-uma-celula").click();
+  const painel = page.getByTestId("painel-inferior");
+  await expect(painel.getByRole("dialog")).toContainText("Selecionar uma célula com o mouse");
+  await expect(painel.getByRole("link", { name: "Começar" })).toBeInViewport();
+  await page.keyboard.press("Escape");
+  await expect(painel).toHaveCount(0);
 });

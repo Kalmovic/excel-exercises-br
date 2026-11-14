@@ -8,10 +8,10 @@ import * as progresso from "@/lib/progresso";
 const ler = () => JSON.stringify(calcularOfensiva(lerDias(), hojeSP()));
 
 /** Dias seguidos com exercício concluído. Lê do navegador; no servidor não mostra nada. */
-export function SeloOfensiva({ className = "" }: { className?: string }) {
+export function SeloOfensiva({ className = "", ocultarVazio = false }: { className?: string; ocultarVazio?: boolean }) {
   const bruto = useSyncExternalStore(progresso.assinar, ler, () => "null");
   const o = JSON.parse(bruto) as Ofensiva | null;
-  if (!o) return null;
+  if (!o || (ocultarVazio && o.atual === 0)) return null;
   const dias = (n: number) => `${n} ${n === 1 ? "dia seguido" : "dias seguidos"}`;
   return (
     <p className={`text-sm ${className}`} data-testid="ofensiva" aria-live="polite">

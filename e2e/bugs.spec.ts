@@ -97,7 +97,7 @@ test("P0-6: card do desafio na trilha usa o desafio de hoje do servidor", async 
   const card = visivel(page, "card-desafio");
   await expect(card).toContainText("#3"); // DESAFIO_HOJE=2026-11-12
   await expect(card).toContainText("Nível 3");
-  await expect(card).toContainText("ainda não jogou");
+  await expect(card).toContainText("Jogar →");
   await page.evaluate(() =>
     localStorage.setItem(
       "excel-br:progresso:v1",

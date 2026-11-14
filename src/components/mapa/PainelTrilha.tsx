@@ -7,6 +7,7 @@ import type { ItemTrilha } from "@/lib/inicio";
 import * as progresso from "@/lib/progresso";
 import { NOME_DESAFIO } from "@/lib/site";
 import { SeloOfensiva } from "@/components/site/SeloOfensiva";
+import { useConta } from "@/lib/conta";
 
 const noServidor = () => "";
 
@@ -38,54 +39,63 @@ export function PainelTrilha({ trilha, desafio }: { trilha: ItemTrilha[]; desafi
     : null;
   const feitos = dados ? trilha.filter((i) => dados.tudo[i.slug]?.versao === i.versao && dados.tudo[i.slug]?.status === "concluido").length : 0;
   const desafioFeito = dados?.desafio?.status === "concluido";
+  const conta = useConta();
+
+  const desafioPendente = desafio && dados && !desafioFeito;
 
   return (
-    <div className="space-y-4">
-      <section className="rounded-2xl border border-line bg-surface p-5" aria-label="Próximo passo">
-        <p className="mb-3 text-xs font-bold tracking-wider text-success uppercase">Próximo passo</p>
+    <div className="space-y-3">
+      <section className="space-y-4 rounded-2xl border border-line bg-surface p-5" aria-label="Seu progresso" data-testid="progresso-geral">
+        {/* Aluno novo: só o botão de começar. Números e ofensiva aparecem depois do 1º exercício. */}
+        {feitos > 0 && (
+          <div className="space-y-2">
+            <p className="font-semibold">
+              {feitos} de {trilha.length} exercícios
+            </p>
+            <div className="h-2 overflow-hidden rounded-full bg-header">
+              <div className="h-full rounded-full bg-success transition-[width]" style={{ width: `${(feitos / trilha.length) * 100}%` }} />
+            </div>
+          </div>
+        )}
+        {/* Uma questão feita já conta para a ofensiva, mesmo sem lição completa. */}
+        <SeloOfensiva ocultarVazio />
         <ComecarCta trilha={trilha} />
+        {feitos > 0 && conta.estado === "anonimo" && (
+          <p className="text-sm text-muted">
+            <Link href="/entrar?proximo=/trilha" className="text-success underline-offset-4 hover:underline">
+              Crie uma conta
+            </Link>{" "}
+            para não perder seu progresso.
+          </p>
+        )}
       </section>
 
       <Link
         href="/desafio"
-        className="block rounded-2xl bg-ink p-5 text-white hover:bg-ink-soft"
+        className="flex items-center justify-between gap-3 rounded-2xl bg-ink px-5 py-3.5 text-white hover:bg-ink-soft"
         data-testid="card-desafio"
       >
-        <p className="font-display text-lg font-bold">
-          {NOME_DESAFIO}
-          {desafio ? ` #${desafio.numero}` : ""} →
-        </p>
-        {desafio && <p className="text-xs text-white/60">{desafio.rotulo}</p>}
-        {!dados || desafio === undefined ? (
-          <p className="text-sm text-white/70">Um desafio novo todo dia, o mesmo para todo mundo.</p>
-        ) : desafio === null ? (
-          <p className="mt-1 text-sm text-white/70">Sem desafio hoje. Veja a solução de ontem.</p>
-        ) : desafioFeito ? (
-          <p className="mt-1 text-sm text-white/80">
-            <span className="mr-2 tracking-widest">{(dados.desafio?.historico ?? [true]).map((ok) => (ok ? "🟩" : "🟨")).join("")}</span>
-            Feito hoje. Volte amanhã!
-          </p>
-        ) : (
-          <p className="mt-1 text-sm text-accent">Você ainda não jogou hoje.</p>
-        )}
+        <span className="min-w-0">
+          <span className="block font-display font-bold">
+            {NOME_DESAFIO}
+            {desafio ? ` #${desafio.numero}` : ""}
+          </span>
+          {desafio && <span className="block text-xs text-white/60">{desafio.rotulo}</span>}
+        </span>
+        <span className="shrink-0 text-sm">
+          {desafio === null ? (
+            <span className="text-white/70">Ver o de ontem →</span>
+          ) : desafioFeito ? (
+            <span className="tracking-widest" title="Feito hoje">
+              {(dados?.desafio?.historico ?? [true]).map((ok) => (ok ? "🟩" : "🟨")).join("")}
+            </span>
+          ) : desafioPendente ? (
+            <span className="font-semibold text-accent">Jogar →</span>
+          ) : (
+            <span className="text-white/70">→</span>
+          )}
+        </span>
       </Link>
-
-      <section className="rounded-2xl border border-line bg-surface p-5" aria-label="Seu progresso" data-testid="progresso-geral">
-        <div className="mb-2 flex items-baseline justify-between">
-          <p className="font-semibold">Seu progresso</p>
-          <p className="text-sm text-muted">
-            {feitos} de {trilha.length} exercícios
-          </p>
-        </div>
-        <div className="h-2.5 overflow-hidden rounded-full bg-header">
-          <div className="h-full rounded-full bg-success transition-[width]" style={{ width: `${trilha.length ? (feitos / trilha.length) * 100 : 0}%` }} />
-        </div>
-        <SeloOfensiva className="mt-3" />
-        <p className="mt-2 text-sm text-muted">
-          {dados?.trofeus ? `${dados.trofeus} ${dados.trofeus === 1 ? "troféu conquistado" : "troféus conquistados"}. ` : ""}
-          Seu progresso fica salvo neste navegador.
-        </p>
-      </section>
     </div>
   );
 }

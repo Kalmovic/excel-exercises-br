@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { PainelInferior } from "@/components/site/PainelInferior";
 import { IconeConquista } from "@/components/simulador/Trofeu";
 import { escolherInicio, type ItemTrilha } from "@/lib/inicio";
 import * as progresso from "@/lib/progresso";
@@ -151,8 +152,62 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
     return () => cancelAnimationFrame(id);
   }, [atualY]);
 
+  const telaLarga = useSyncExternalStore(assinarLargura, lerLargura, () => true);
+
+  // Detalhes de uma casa ou troféu: no balão ao lado (telas largas) ou no painel de baixo (celular).
+  const fechar = useCallback(() => setAberto(null), []);
+  const detalheCasa = (c: (typeof layout.casas)[number], grande = false) => {
+    const r = regioes.find((x) => x.slug === c.regiao)!;
+    const item = r.disponivel ? r.itens[c.indice] : undefined;
+    if (!item)
+      return (
+        <>
+          <p className="font-semibold">{r.titulo}</p>
+          <p className="mt-1 text-sm text-muted">Este módulo está a caminho. {r.descricao}</p>
+        </>
+      );
+    const estado = estadoDe(item);
+    const ehAtual = item.slug === atual;
+    return (
+      <>
+        <p className="text-xs text-muted">
+          Exercício {c.indice + 1} · Nível {item.nivel} · ~{MINUTOS[item.nivel] ?? 3} min
+        </p>
+        <p className="my-1 font-semibold">{item.titulo}</p>
+        <p className="mb-3 text-xs text-muted">
+          {estado === "feito" ? "Feito ✓" : estado === "pulado" ? "Você pulou este" : ehAtual ? "É aqui que você está" : "Ainda não feito"}
+        </p>
+        <Link
+          href={`/exercicios/${item.slug}`}
+          onClick={() => setAberto(null)}
+          className={`block rounded-lg bg-ink px-3 text-center font-semibold text-white hover:bg-ink-soft ${grande ? "py-3 text-base" : "py-2 text-sm"}`}
+        >
+          {estado === "feito" ? "Refazer" : ehAtual || estado === "pulado" ? "Continuar" : "Começar"}
+        </Link>
+      </>
+    );
+  };
+  const detalheTrofeu = (regiao: string) => {
+    const r = regioes.find((x) => x.slug === regiao)!;
+    const conquistado = trofeus[r.slug];
+    return (
+      <>
+        <p className="font-semibold">Troféu: {r.titulo}</p>
+        <p className="mt-1 text-sm text-muted">
+          {conquistado
+            ? `Conquistado em ${new Date(conquistado).toLocaleDateString("pt-BR")}.`
+            : r.disponivel
+              ? `Complete os ${r.itens.length} exercícios do módulo para ganhar.`
+              : "Disponível quando o módulo for lançado."}
+        </p>
+      </>
+    );
+  };
+  const casaAberta = layout.casas.find((c) => chaveCasa(c.regiao, c.indice) === aberto);
+  const trofeuAberto = layout.trofeus.find((t) => chaveTrofeu(t.regiao) === aberto);
+
   return (
-    <div ref={raiz} className="relative" style={{ width: LARGURA, height: layout.altura }} data-testid="mapa">
+    <div ref={raiz} className="relative mx-auto sm:mx-0" style={{ width: LARGURA, height: layout.altura }} data-testid="mapa">
       <svg className="absolute inset-0" width={LARGURA} height={layout.altura} aria-hidden>
         {layout.trechos.map((t, i) => {
           const feito = percorrido(t.de) && percorrido(t.ate);
@@ -257,36 +312,14 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
               >
                 {estado === "feito" && !ehAtual ? "✓" : estado === "travado" ? <Cadeado /> : c.indice + 1}
               </button>
-              {aberto === chave && (
+              {aberto === chave && telaLarga && (
                 <div
                   data-mapa-balao
                   role="dialog"
                   className="absolute top-1/2 z-40 w-60 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop"
                   style={{ left: LARGURA + BALAO_ESPACO - (c.x - TAMANHO_CASA / 2) }}
                 >
-                  {item ? (
-                    <>
-                      <p className="text-xs text-muted">
-                        Exercício {c.indice + 1} · Nível {item.nivel} · ~{MINUTOS[item.nivel] ?? 3} min
-                      </p>
-                      <p className="my-1 font-semibold">{item.titulo}</p>
-                      <p className="mb-3 text-xs text-muted">
-                        {estado === "feito" ? "Feito ✓" : estado === "pulado" ? "Você pulou este" : ehAtual ? "É aqui que você está" : "Ainda não feito"}
-                      </p>
-                      <Link
-                        href={`/exercicios/${item.slug}`}
-                        onClick={() => setAberto(null)}
-                        className="block rounded-lg bg-ink px-3 py-2 text-center text-sm font-semibold text-white hover:bg-ink-soft"
-                      >
-                        {estado === "feito" ? "Refazer" : ehAtual || estado === "pulado" ? "Continuar" : "Começar"}
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <p className="font-semibold">{r.titulo}</p>
-                      <p className="mt-1 text-sm text-muted">Este módulo está a caminho. {r.descricao}</p>
-                    </>
-                  )}
+                  {detalheCasa(c)}
                 </div>
               )}
             </li>
@@ -318,21 +351,14 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
             >
               <IconeConquista icone={r.icone} className={`h-12 w-12 ${conquistado ? "" : "opacity-35 grayscale"}`} />
             </button>
-            {aberto === chave && (
+            {aberto === chave && telaLarga && (
               <div
                 data-mapa-balao
                 role="dialog"
                 className="absolute top-1/2 z-40 w-56 -translate-y-1/2 rounded-xl border border-line bg-surface p-4 shadow-xl motion-safe:animate-pop"
                 style={{ left: LARGURA + BALAO_ESPACO - (t.x - TAMANHO_TROFEU / 2) }}
               >
-                <p className="font-semibold">Troféu: {r.titulo}</p>
-                <p className="mt-1 text-sm text-muted">
-                  {conquistado
-                    ? `Conquistado em ${new Date(conquistado).toLocaleDateString("pt-BR")}.`
-                    : r.disponivel
-                      ? `Complete os ${r.itens.length} exercícios do módulo para ganhar.`
-                      : "Disponível quando o módulo for lançado."}
-                </p>
+                {detalheTrofeu(t.regiao)}
               </div>
             )}
           </div>
@@ -349,6 +375,21 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
           <Pino />
         </div>
       )}
+
+      {!telaLarga && (casaAberta || trofeuAberto) && (
+        <PainelInferior titulo="Detalhes" aoFechar={fechar} data-mapa-balao>
+          {casaAberta ? detalheCasa(casaAberta, true) : detalheTrofeu(trofeuAberto!.regiao)}
+        </PainelInferior>
+      )}
     </div>
   );
 }
+
+/** Telas a partir de 640px têm espaço para o balão ao lado do mapa; abaixo disso, painel de baixo. */
+const LARGURA_BALAO = "(min-width: 640px)";
+function assinarLargura(f: () => void) {
+  const m = window.matchMedia(LARGURA_BALAO);
+  m.addEventListener("change", f);
+  return () => m.removeEventListener("change", f);
+}
+const lerLargura = () => window.matchMedia(LARGURA_BALAO).matches;
