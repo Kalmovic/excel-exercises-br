@@ -68,5 +68,15 @@
   ],
   "tentativasAteExplicacao": 3,
   "intro": "Errou um valor? Dá para corrigir sem apagar tudo.",
-  "video": "F2 é o atalho mais subestimado do Excel."
+  "video": "F2 é o atalho mais subestimado do Excel.",
+  "toque": {
+    "enunciado": [
+      "O preço da mochila em **C2** está errado: deveria ser **120**, não 100.",
+      "Corrija o valor: toque em **C2** e digite o valor certo por cima."
+    ],
+    "dicas": [
+      "Selecione C2.",
+      "Digitar 120 e confirmar substitui o valor inteiro."
+    ]
+  }
 }

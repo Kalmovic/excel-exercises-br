@@ -98,5 +98,15 @@
   ],
   "tentativasAteExplicacao": 3,
   "intro": "A maioria das funções trabalha com um grupo de células de uma vez: o intervalo.",
-  "video": "Mostrar os dois jeitos de selecionar: arrastando e com Shift + setas."
+  "video": "Mostrar os dois jeitos de selecionar: arrastando e com Shift + setas.",
+  "toque": {
+    "enunciado": [
+      "Um **intervalo** é um bloco de células. Ele é escrito com dois-pontos: `B2:D5` quer dizer \"de B2 até D5\".",
+      "Selecione o intervalo **B2:D5**: toque em **B2**, depois em **↔ Estender** (acima da planilha) e, por fim, em **D5**."
+    ],
+    "dicas": [
+      "Um intervalo vai do canto superior esquerdo ao canto inferior direito do bloco.",
+      "Errou? Toque de novo em B2 e repita: o primeiro toque marca o começo, e o toque depois de ↔ Estender marca o fim."
+    ]
+  }
 }

@@ -11,7 +11,7 @@ export function validarClickCell(ex: ExercicioDoTipo<"click_cell">, e: EstadoCor
       mensagem: `A célula ativa agora é ${normalizarIntervalo(e.ativa)}. Confira a letra da coluna e o número da linha.`,
     });
   }
-  if (ex.inputMethod === "keyboard" && e.mudancasPeloMouse > 0) {
+  if (ex.inputMethod === "keyboard" && !e.semTecladoFisico && e.mudancasPeloMouse > 0) {
     return falhou({
       celula: ex.celula,
       motivo: "usou-mouse",

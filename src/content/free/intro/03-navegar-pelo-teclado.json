@@ -10,7 +10,7 @@
   "versao": 1,
   "titulo": "Andar pela planilha com o teclado",
   "enunciado": [
-    "Sem usar o mouse, leve a seleção de **A1** até **C3** usando as **setas do teclado**.",
+    "Leve a seleção de **A1** até **C3** usando só as **setas do teclado**.",
     "Se as setas não responderem, clique em A1 uma vez (clicar na própria A1 não conta). Se mudar de célula com o mouse, use Recomeçar."
   ],
   "grade": {
@@ -34,5 +34,14 @@
   ],
   "tentativasAteExplicacao": 3,
   "intro": "Quem usa o teclado trabalha muito mais rápido do que quem vive no mouse.",
-  "video": "Mostrar Ctrl + seta numa planilha com 1.000 linhas."
+  "video": "Mostrar Ctrl + seta numa planilha com 1.000 linhas.",
+  "toque": {
+    "enunciado": [
+      "No celular não há setas: toque na célula **C3**, duas colunas à direita e duas linhas abaixo de A1.",
+      "No computador, refaça este exercício só com as setas: é o atalho que mais economiza tempo no dia a dia."
+    ],
+    "dicas": [
+      "Conte a partir de A1: duas colunas para a direita (B, C) e duas linhas para baixo (2, 3)."
+    ]
+  }
 }

@@ -48,8 +48,10 @@ export function PainelExercicio({
   const alvos = descricaoAlvos(ex);
 
   return (
-    <aside className="flex min-w-0 flex-col gap-4 [overflow-wrap:anywhere]">
-      <section className="space-y-2 text-[15px] leading-relaxed text-zinc-800">
+    // No celular, o painel "se desfaz" (contents): o enunciado sobe para antes da
+    // planilha (order-first) e o resto (botões, resultado, dicas) fica depois dela.
+    <aside className="contents min-w-0 [overflow-wrap:anywhere] lg:flex lg:flex-col lg:gap-4">
+      <section className="order-first space-y-2 text-[15px] leading-relaxed text-zinc-800 lg:order-none">
         {ex.intro && (
           <p className="border-l-2 border-accent pl-3 text-sm text-zinc-600" data-testid="intro-exercicio">
             <TextoRico texto={ex.intro} />

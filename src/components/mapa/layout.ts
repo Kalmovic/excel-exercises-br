@@ -10,7 +10,7 @@ const CENTRO = LARGURA / 2;
 /** Zigue-zague: deslocamento horizontal de cada casa, em ciclo. */
 const ONDA = [0, 56, 92, 56, 0, -56, -92, -56];
 const PASSO = 84; // distância vertical entre casas
-const ALTURA_BANNER = 92;
+const ALTURA_BANNER = 108; // cabe a descrição do módulo em 2 linhas, mesmo no celular
 const ESPACO_ANTES_BANNER = 24;
 export const TAMANHO_CASA = 56;
 export const TAMANHO_TROFEU = 72;
@@ -60,7 +60,8 @@ export function calcularLayout(regioes: RegiaoEntrada[]): Layout {
   for (const r of regioes) {
     if (banners.length > 0) y += ESPACO_ANTES_BANNER;
     banners.push({ regiao: r.slug, y, altura: ALTURA_BANNER });
-    y += ALTURA_BANNER + PASSO * 0.6;
+    // Espaço para o pino "você está aqui" (46px acima da casa) não cobrir o cartão.
+    y += ALTURA_BANNER + PASSO * 0.6 + 32;
 
     if (!r.recolhida) {
       for (let i = 0; i < r.casas; i++) {

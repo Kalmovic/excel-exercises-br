@@ -11,7 +11,7 @@
   "titulo": "O que tem dentro de uma célula?",
   "enunciado": [
     "A célula **D4** mostra **300**, mas o que está guardado nela não é o número 300.",
-    "Clique em D4 e olhe a **barra de fórmulas** (a faixa com fx, acima da planilha). Escreva no campo o que aparece lá."
+    "Selecione D4 e olhe a **barra de fórmulas** (a faixa com fx, acima da planilha). Escreva no campo o que aparece lá."
   ],
   "grade": {
     "linhas": 6,
@@ -77,7 +77,7 @@
   ],
   "normalizar": "formula",
   "dicas": [
-    "Clique em D4 primeiro; a barra de fórmulas sempre mostra o conteúdo da célula ativa.",
+    "Selecione D4 primeiro; a barra de fórmulas sempre mostra o conteúdo da célula ativa.",
     "O conteúdo começa com o sinal de igual (=)."
   ],
   "explicacao": [

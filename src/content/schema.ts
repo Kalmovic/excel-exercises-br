@@ -110,6 +110,11 @@ const baseSchema = z.object({
   errosComuns: z.array(erroComumSchema).optional(),
   /** Gancho e roteiro do vídeo curto (para gravação; não aparece na tela). */
   video: z.string().optional(),
+  /**
+   * Textos para aparelhos sem teclado físico (celular, tablet), quando o
+   * exercício pede teclado. Com isto, a correção também deixa de exigir as setas.
+   */
+  toque: z.object({ enunciado: z.array(z.string()).min(1), dicas: z.array(z.string()).optional() }).optional(),
   /** Prática extra: fora da trilha principal e do troféu, listada no fim do módulo. */
   extra: z.boolean().optional(),
   /**

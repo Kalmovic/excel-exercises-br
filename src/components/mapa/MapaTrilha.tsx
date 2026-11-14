@@ -269,7 +269,7 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
               {r.titulo}
               {completa && <span className="ml-2 text-sm font-semibold text-success">Concluído ✓</span>}
             </p>
-            <p className="truncate text-xs text-muted">{r.descricao}</p>
+            <p className="line-clamp-2 text-xs text-muted">{r.descricao}</p>
           </section>
         );
       })}

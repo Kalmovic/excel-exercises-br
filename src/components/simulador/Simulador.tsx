@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { adaptarAoToque, useSemTeclado } from "@/lib/toque";
+import { BarraToque } from "./BarraToque";
 import { celulasDestacadas } from "@/content/destaque";
 import { chaveProgresso, type LicaoDoExercicio } from "@/content/licao";
 import type { Exercicio } from "@/content/schema";
@@ -70,7 +72,7 @@ type Props = {
 };
 
 export default function Simulador({
-  exercicio: ex,
+  exercicio: original,
   proximo,
   trilha,
   desafio,
@@ -79,6 +81,9 @@ export default function Simulador({
   licao,
   teste,
 }: Props) {
+  // Celular sem teclado: exercícios "use as setas" trocam o texto e aceitam toque.
+  const semTeclado = useSemTeclado();
+  const ex = useMemo(() => adaptarAoToque(original, semTeclado), [original, semTeclado]);
   // No teste do módulo, nada é lido nem gravado no progresso (como no admin).
   const admin = adminProp || !!teste;
   const chave = chaveProgresso(ex);
@@ -164,6 +169,7 @@ export default function Simulador({
       selecao: intervaloParaTexto(s.selecao()),
       resposta: s.resposta,
       mudancasPeloMouse: s.mudancasPeloMouse,
+      semTecladoFisico: semTeclado,
     });
     const n = tentativas + 1;
     setResultado(r);
@@ -282,7 +288,7 @@ export default function Simulador({
 
   return (
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>
-      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
         <div className="min-w-0 space-y-2">
           {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
           {ex.type === "multiple_choice" && (
@@ -300,6 +306,7 @@ export default function Simulador({
           {ex.type !== "multiple_choice" && (
             <>
               {nucleo.formatacao && <BarraFormatacao />}
+              {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />
               {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}

@@ -12,7 +12,7 @@ import { montarGrade } from "./montar";
 export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
   const alvos = descricaoAlvos(ex);
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]" data-testid="previa-exercicio">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6" data-testid="previa-exercicio">
       <div className="min-w-0 space-y-2">
         {ex.type !== "multiple_choice" && (
           <div className="space-y-1" aria-hidden>
@@ -40,8 +40,8 @@ export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
           <GradeEstatica grade={montarGrade(ex)} />
         )}
       </div>
-      <aside className="flex min-w-0 flex-col gap-4 [overflow-wrap:anywhere]">
-        <section className="space-y-2 text-[15px] leading-relaxed text-zinc-800">
+      <aside className="contents min-w-0 [overflow-wrap:anywhere] lg:flex lg:flex-col lg:gap-4">
+        <section className="order-first space-y-2 text-[15px] leading-relaxed text-zinc-800 lg:order-none">
           {ex.intro && (
             <p className="border-l-2 border-accent pl-3 text-sm text-zinc-600" data-testid="intro-exercicio">
               <TextoRico texto={ex.intro} />

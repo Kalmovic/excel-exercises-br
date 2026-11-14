@@ -11,7 +11,7 @@
   "titulo": "Formatar como moeda (R$)",
   "enunciado": [
     "Os preços na coluna B estão como números simples.",
-    "Formate **B2:B5** como **moeda**: selecione o intervalo e clique no botão **R$**, na barra acima da planilha."
+    "Formate **B2:B5** como **moeda**: selecione o intervalo e use o botão **R$**, na barra acima da planilha."
   ],
   "grade": {
     "linhas": 7,
@@ -65,8 +65,8 @@
     }
   ],
   "dicas": [
-    "Primeiro selecione o intervalo inteiro, arrastando o mouse.",
-    "Com o intervalo selecionado, clique em R$."
+    "Primeiro selecione o intervalo inteiro, de B2 até B5.",
+    "Com o intervalo selecionado, use o botão R$."
   ],
   "explicacao": [
     "O formato muda só a **aparência**: o valor guardado continua 29,9, mas aparece como R$ 29,90.",
@@ -74,5 +74,15 @@
   ],
   "tentativasAteExplicacao": 3,
   "intro": "Formatar muda só a aparência. O valor guardado continua o mesmo.",
-  "video": "Mostrar a barra de fórmulas com 29,9 enquanto a célula mostra R$ 29,90."
+  "video": "Mostrar a barra de fórmulas com 29,9 enquanto a célula mostra R$ 29,90.",
+  "toque": {
+    "enunciado": [
+      "Os preços na coluna B estão como números simples.",
+      "Formate **B2:B5** como **moeda**: selecione o intervalo e use o botão **R$**, na barra acima da planilha."
+    ],
+    "dicas": [
+      "Toque em B2, depois em ↔ Estender e em B5.",
+      "Com o intervalo selecionado, toque em R$."
+    ]
+  }
 }

@@ -85,6 +85,9 @@ describe("click_cell", () => {
   it("teclado: recusa se usou o mouse", () => {
     expect(validarClickCell(teclado, estado({ ativa: "C3", mudancasPeloMouse: 1 })).falhas[0].motivo).toBe("usou-mouse");
   });
+  it("teclado: no celular (sem teclado físico) o toque vale", () => {
+    expect(validarClickCell(teclado, estado({ ativa: "C3", mudancasPeloMouse: 1, semTecladoFisico: true })).ok).toBe(true);
+  });
 });
 
 describe("select_range", () => {

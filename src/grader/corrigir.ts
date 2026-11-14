@@ -220,7 +220,7 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
 }
 
 /** O que a tela sabe e a planilha não: seleção, resposta digitada, uso do mouse. */
-export type EstadoTela = Pick<EstadoCorrecao, "ativa" | "selecao" | "resposta" | "mudancasPeloMouse">;
+export type EstadoTela = Pick<EstadoCorrecao, "ativa" | "selecao" | "resposta" | "mudancasPeloMouse" | "semTecladoFisico">;
 
 const TELA_PADRAO: EstadoTela = { ativa: "A1", selecao: "A1", resposta: "", mudancasPeloMouse: 0 };
 

@@ -28,6 +28,8 @@ export type EstadoSimulador = {
   mudancasPeloMouse: number;
   /** Resposta dos exercícios text_answer. */
   resposta: string;
+  /** Celular: o próximo toque estende a seleção (o Shift+clique de quem não tem teclado). */
+  estenderNoToque: boolean;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -85,6 +87,7 @@ export function criarStore(
     copiado: null,
     celebrando: false,
     mudancasPeloMouse: 0,
+    estenderNoToque: false,
     resposta,
 
     selecao: () => normalizar(get().ancora, get().foco),

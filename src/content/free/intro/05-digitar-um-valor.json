@@ -10,7 +10,7 @@
   "versao": 1,
   "titulo": "Digitar um valor",
   "enunciado": [
-    "Faltou a quantidade de cadernos. Digite **150** na célula **B3** e pressione **Enter**.",
+    "Faltou a quantidade de cadernos. Digite **150** na célula **B3** e confirme com **Enter**.",
     "Para digitar, basta selecionar a célula e começar a escrever."
   ],
   "grade": {
@@ -53,8 +53,8 @@
     }
   ],
   "dicas": [
-    "Clique em B3 (ou chegue nela com as setas).",
-    "Digite 150 e aperte Enter para gravar."
+    "Selecione B3.",
+    "Digite 150 e confirme com Enter para gravar."
   ],
   "explicacao": [
     "Ao apertar **Enter**, o valor é gravado e a seleção desce para a célula de baixo. **Esc** cancela o que você estava digitando.",

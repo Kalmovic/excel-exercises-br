@@ -40,6 +40,8 @@ export type EstadoCorrecao = {
   resposta: string;
   /** Quantas vezes a célula ativa ou a seleção mudou por clique/arrasto. */
   mudancasPeloMouse: number;
+  /** Aparelho sem teclado físico: exercícios "use as setas" aceitam toque. */
+  semTecladoFisico?: boolean;
 };
 
 export const TOLERANCIA_PADRAO = 1e-9;

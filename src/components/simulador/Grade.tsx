@@ -190,8 +190,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       return;
     }
     if (s.modo !== "pronto" && !s.confirmar()) return;
-    s.selecionarPeloMouse(p, e.shiftKey);
-    store.setState({ arrasto: "selecao" });
+    // "Estender seleção" (barra de toque) vale por um toque, como um Shift+clique.
+    s.selecionarPeloMouse(p, e.shiftKey || s.estenderNoToque);
+    store.setState({ arrasto: "selecao", estenderNoToque: false });
   };
 
   const aoEntrarCelula = (p: Pos) => {
