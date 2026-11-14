@@ -114,7 +114,7 @@ test("pular questão: avança, não conta como feita e aparece na lista", async 
   await expect(page.getByTestId("progresso-modulo").filter({ visible: true })).toContainText("0 de 10");
   await page.goto("/trilha");
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAccessibleName(/\(pulado\)/);
-  await expect(page.getByTestId("cta")).toContainText("Continuar: Selecionar uma célula com o mouse");
+  await expect(page.getByTestId("cta")).toContainText("Continuar: Selecionar uma célula");
 });
 
 test("formatação sobrevive ao recarregar", async ({ page }) => {

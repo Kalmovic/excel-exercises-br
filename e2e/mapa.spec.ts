@@ -16,7 +16,7 @@ test("mapa: usuário novo, casa atual, balão e todos os módulos", async ({ pag
   await expect(mapa.getByRole("list", { name: "Mapa da trilha" })).toBeVisible();
   await page.getByTestId("casa-clicar-em-uma-celula").click();
   const balao = page.getByRole("dialog");
-  await expect(balao).toContainText("Selecionar uma célula com o mouse");
+  await expect(balao).toContainText("Selecionar uma célula");
   await expect(balao).toContainText("Nível 1");
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toHaveCount(0);
@@ -125,7 +125,7 @@ test("celular: casa abre painel de baixo, sem rolar a página para o lado", asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
   await page.getByTestId("casa-clicar-em-uma-celula").click();
   const painel = page.getByTestId("painel-inferior");
-  await expect(painel.getByRole("dialog")).toContainText("Selecionar uma célula com o mouse");
+  await expect(painel.getByRole("dialog")).toContainText("Selecionar uma célula");
   await expect(painel.getByRole("link", { name: "Começar" })).toBeInViewport();
   await page.keyboard.press("Escape");
   await expect(painel).toHaveCount(0);

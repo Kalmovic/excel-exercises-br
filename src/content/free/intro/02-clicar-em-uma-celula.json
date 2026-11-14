@@ -8,10 +8,10 @@
   "nivel": 1,
   "plano": "free",
   "versao": 1,
-  "titulo": "Selecionar uma célula com o mouse",
+  "titulo": "Selecionar uma célula",
   "enunciado": [
-    "Clique na célula **C7**.",
-    "Lembre: **C** é a coluna e **7** é a linha. Depois de clicar, aperte Verificar."
+    "Selecione a célula **C7**: clique nela ou, no celular, toque nela.",
+    "Lembre: **C** é a coluna e **7** é a linha. Depois, aperte Verificar."
   ],
   "grade": {
     "linhas": 10,
@@ -25,7 +25,7 @@
     "Desça pela coluna C até a linha 7."
   ],
   "explicacao": [
-    "Clicar numa célula a torna a célula ativa. Repare que a Caixa de Nome, à esquerda da barra de fórmulas, passou a mostrar C7."
+    "Selecionar uma célula a torna a célula ativa. Repare que a Caixa de Nome, à esquerda da barra de fórmulas, passou a mostrar C7."
   ],
   "tentativasAteExplicacao": 3,
   "intro": "Antes de escrever qualquer coisa, você precisa saber chegar na célula certa.",

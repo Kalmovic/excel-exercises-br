@@ -302,7 +302,8 @@ export default function Simulador({
               {nucleo.formatacao && <BarraFormatacao />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />
-              <p className="text-xs text-zinc-500">
+              {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
+              <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
                 Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D preenche para baixo ·
                 Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
               </p>
