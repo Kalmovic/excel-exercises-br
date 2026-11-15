@@ -2,57 +2,58 @@
 
 import { useEstado, useSimulador } from "./contexto";
 
+const AJUDA = {
+  inicio: "Toque na primeira célula do intervalo.",
+  fim: "Agora toque na última célula.",
+  nenhum: "Toque duas vezes numa célula para digitar.",
+};
+
 /**
  * Atalhos para quem não tem teclado nem mouse (celular): no toque não dá para
- * arrastar a seleção, segurar Shift ou apertar Ctrl+D. Só aparece em telas de toque.
+ * arrastar a seleção nem apertar Ctrl+D. Só aparece em telas de toque.
  */
 export function BarraToque() {
   const { planilha, store } = useSimulador();
-  const estender = useEstado((e) => e.estenderNoToque);
+  const intervalo = useEstado((e) => e.intervaloNoToque);
   const botao = "rounded-md border px-2.5 py-1.5 text-sm font-medium whitespace-nowrap";
+  // mousedown + preventDefault: não tira o foco (nem a seleção) da grade
+  const acao = (f: () => void) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    f();
+  };
 
   return (
     <div className="space-y-1">
-      <div className="flex gap-2" role="toolbar" aria-label="Atalhos de toque" data-testid="barra-toque">
+      <div className="flex gap-2 overflow-x-auto" role="toolbar" aria-label="Atalhos de toque" data-testid="barra-toque">
         <button
           type="button"
-          aria-pressed={estender}
-          // mousedown + preventDefault: não tira o foco (nem a seleção) da grade
-          onMouseDown={(e) => {
-            e.preventDefault();
-            store.setState({ estenderNoToque: !estender });
-          }}
-          className={`${botao} ${estender ? "border-ink bg-accent text-ink" : "border-line bg-white text-ink"}`}
-          data-testid="estender-selecao"
-          title="Estender seleção: o próximo toque marca a outra ponta do intervalo"
+          aria-pressed={intervalo !== null}
+          onMouseDown={acao(() => store.setState({ intervaloNoToque: intervalo ? null : "inicio" }))}
+          className={`${botao} ${intervalo ? "border-ink bg-accent text-ink" : "border-line bg-white text-ink"}`}
+          data-testid="selecionar-intervalo"
         >
-          ↔ Estender
+          ▦ Selecionar intervalo
         </button>
         <button
           type="button"
-          onMouseDown={(e) => {
-            e.preventDefault();
-            store.getState().preencherSelecao("baixo");
-          }}
+          onMouseDown={acao(() => store.getState().preencherSelecao("baixo"))}
           className={`${botao} border-line bg-white text-ink`}
           data-testid="preencher-abaixo"
-          title="Preencher para baixo (copia a primeira linha da seleção para as de baixo)"
+          title="Copia a primeira célula da seleção para as de baixo (Ctrl+D)"
         >
           ↓ Preencher
         </button>
         <button
           type="button"
-          onMouseDown={(e) => {
-            e.preventDefault();
-            planilha.desfazer();
-          }}
+          onMouseDown={acao(() => planilha.desfazer())}
           className={`${botao} border-line bg-white text-ink`}
+          aria-label="Desfazer"
         >
-          ↶ Desfazer
+          ↶
         </button>
       </div>
-      <p className="min-h-4 text-xs text-muted" aria-live="polite">
-        {estender ? "Agora toque na outra ponta do intervalo." : ""}
+      <p className={`text-xs ${intervalo ? "font-semibold text-ink" : "text-muted"}`} aria-live="polite" data-testid="ajuda-toque">
+        {AJUDA[intervalo ?? "nenhum"]}
       </p>
     </div>
   );

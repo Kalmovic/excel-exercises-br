@@ -28,8 +28,11 @@ export type EstadoSimulador = {
   mudancasPeloMouse: number;
   /** Resposta dos exercícios text_answer. */
   resposta: string;
-  /** Celular: o próximo toque estende a seleção (o Shift+clique de quem não tem teclado). */
-  estenderNoToque: boolean;
+  /**
+   * Celular: seleção de intervalo em dois toques (o arrastar de quem não tem mouse).
+   * "inicio": o próximo toque marca a primeira célula; "fim": marca a última.
+   */
+  intervaloNoToque: null | "inicio" | "fim";
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -87,7 +90,7 @@ export function criarStore(
     copiado: null,
     celebrando: false,
     mudancasPeloMouse: 0,
-    estenderNoToque: false,
+    intervaloNoToque: null,
     resposta,
 
     selecao: () => normalizar(get().ancora, get().foco),

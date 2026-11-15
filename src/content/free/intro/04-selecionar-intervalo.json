@@ -102,11 +102,11 @@
   "toque": {
     "enunciado": [
       "Um **intervalo** é um bloco de células. Ele é escrito com dois-pontos: `B2:D5` quer dizer \"de B2 até D5\".",
-      "Selecione o intervalo **B2:D5**: toque em **B2**, depois em **↔ Estender** (acima da planilha) e, por fim, em **D5**."
+      "Selecione o intervalo **B2:D5**: toque em **▦ Selecionar intervalo** (acima da planilha), depois em **B2** e por fim em **D5**."
     ],
     "dicas": [
-      "Um intervalo vai do canto superior esquerdo ao canto inferior direito do bloco.",
-      "Errou? Toque de novo em B2 e repita: o primeiro toque marca o começo, e o toque depois de ↔ Estender marca o fim."
+      "Um intervalo vai do canto superior esquerdo (B2) ao canto inferior direito (D5).",
+      "Errou? Toque de novo em ▦ Selecionar intervalo e repita: o 1º toque marca o começo, o 2º marca o fim."
     ]
   }
 }

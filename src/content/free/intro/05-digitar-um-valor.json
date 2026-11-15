@@ -62,5 +62,15 @@
   ],
   "tentativasAteExplicacao": 3,
   "intro": "Digitar é simples, mas existe uma regra: o valor só entra na célula quando você confirma.",
-  "video": "Enter desce, Tab vai para a direita, Esc cancela."
+  "video": "Enter desce, Tab vai para a direita, Esc cancela.",
+  "toque": {
+    "enunciado": [
+      "Faltou a quantidade de cadernos. Toque **duas vezes** na célula **B3**, digite **150** e confirme com a tecla de Enter do teclado (↵).",
+      "No celular, o teclado só abre com o toque duplo: um toque só seleciona."
+    ],
+    "dicas": [
+      "Toque duas vezes em B3.",
+      "Digite 150 e confirme com ↵."
+    ]
+  }
 }

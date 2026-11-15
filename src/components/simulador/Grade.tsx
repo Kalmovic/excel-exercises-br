@@ -1,5 +1,6 @@
 "use client";
 
+import { useSemTeclado } from "@/lib/toque";
 import {
   useEffect,
   useLayoutEffect,
@@ -51,6 +52,7 @@ const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
 export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa } = useSimulador();
+  const semTeclado = useSemTeclado();
   const versao = useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
   const foco = useEstado((e) => e.foco);
@@ -137,8 +139,11 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   useEffect(() => {
     // Não rouba o foco de campos que têm o próprio foco (barra de fórmulas, campo de resposta).
     if (document.activeElement?.closest("[data-foco-proprio]")) return;
-    entradaRef.current?.focus({ preventScroll: true });
-  }, [ancora, modo, entradaRef]);
+    const el = entradaRef.current;
+    // Celular, fora da edição: refoca para o teclado virtual fechar (inputMode "none").
+    if (semTeclado && modo === "pronto" && el && document.activeElement === el) el.blur();
+    el?.focus({ preventScroll: true });
+  }, [ancora, modo, entradaRef, semTeclado]);
 
   useEffect(() => {
     const soltar = () => store.getState().terminarArrasto();
@@ -190,9 +195,13 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       return;
     }
     if (s.modo !== "pronto" && !s.confirmar()) return;
-    // "Estender seleção" (barra de toque) vale por um toque, como um Shift+clique.
-    s.selecionarPeloMouse(p, e.shiftKey || s.estenderNoToque);
-    store.setState({ arrasto: "selecao", estenderNoToque: false });
+    // "Selecionar intervalo" (barra de toque): 1º toque marca o começo, 2º toque o fim.
+    const fimDoIntervalo = s.intervaloNoToque === "fim";
+    s.selecionarPeloMouse(p, e.shiftKey || fimDoIntervalo);
+    store.setState({
+      arrasto: "selecao",
+      intervaloNoToque: s.intervaloNoToque === "inicio" ? "fim" : null,
+    });
   };
 
   const aoEntrarCelula = (p: Pos) => {
@@ -391,7 +400,17 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     s.setRascunho(valor);
   };
 
-  const iniciarEdicaoNaAtiva = () => store.getState().iniciarEdicao("editar");
+  const iniciarEdicaoNaAtiva = () => {
+    if (!store.getState().iniciarEdicao("editar")) return;
+    // Celular: o teclado virtual só abre aqui (toque duplo). O foco precisa acontecer
+    // dentro do próprio toque, senão o celular não mostra o teclado.
+    const el = entradaRef.current;
+    if (semTeclado && el) {
+      el.inputMode = "text";
+      el.blur();
+      el.focus({ preventScroll: true });
+    }
+  };
 
   const editando = modo !== "pronto";
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
@@ -587,6 +606,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           aria-label={`Célula ${paraEndereco(ancora)}`}
           autoComplete="off"
           spellCheck={false}
+          // Celular: selecionar uma célula não abre o teclado; só o toque duplo (edição).
+          inputMode={semTeclado && !editando ? "none" : "text"}
           value={editando ? rascunho : ""}
           onChange={(e) => {
             aoDigitar(e.target.value);

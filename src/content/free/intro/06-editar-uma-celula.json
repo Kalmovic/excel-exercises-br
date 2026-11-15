@@ -72,11 +72,11 @@
   "toque": {
     "enunciado": [
       "O preço da mochila em **C2** está errado: deveria ser **120**, não 100.",
-      "Corrija o valor: toque em **C2** e digite o valor certo por cima."
+      "Corrija o valor: toque **duas vezes** em **C2**, apague o que está lá e digite o valor certo."
     ],
     "dicas": [
-      "Selecione C2.",
-      "Digitar 120 e confirmar substitui o valor inteiro."
+      "Toque duas vezes em C2 para editar.",
+      "Apague o 100, digite 120 e confirme com ↵."
     ]
   }
 }
