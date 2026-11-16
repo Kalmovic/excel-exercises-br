@@ -1,0 +1,1946 @@
+[
+  {
+    "id": "e6e921bf-ece5-59a2-a4d1-afdc1e2be4e3",
+    "slug": "sim-avancado-1",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 1,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço com PROCX",
+    "enunciado": [
+      "O código está em **I1**. Em **I2**, traga o preço do produto. Se o código não existir, a célula deve mostrar **Não encontrado**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=PROCX(I1;A2:A9;F2:F9;\"Não encontrado\")`: o 4º argumento é o que aparece quando não acha."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "P05"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ],
+      "alternativas": {
+        "I1": [
+          "P02",
+          "P99"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 59.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(I1;A2:A9;F2:F9;\"Não encontrado\")",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "e909a8d9-27ad-5e69-91d7-84f69a609545",
+    "slug": "sim-avancado-2",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 2,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fornecedor pelo nome",
+    "enunciado": [
+      "O nome do produto está em **I1**. Em **I2**, traga o fornecedor. Repare que o nome do produto **não** está na primeira coluna da tabela."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=ÍNDICE(D2:D9;CORRESP(I1;B2:B9;0))`: o CORRESP acha a linha do produto e o ÍNDICE pega o fornecedor dessa linha. `=PROCX(I1;B2:B9;D2:D9)` também resolve."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Monitor"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "alternativas": {
+        "I1": [
+          "Caderno",
+          "Estojo"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": "Gama",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(D2:D9;CORRESP(I1;B2:B9;0))"
+      }
+    ]
+  },
+  {
+    "id": "c7b97a05-fb5c-5ce3-bc17-d2b3d0f12c2d",
+    "slug": "sim-avancado-3",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 3,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Busca sem erro na tela",
+    "enunciado": [
+      "O código em **I1** pode não existir. Em **I2**, traga o estoque do produto com **PROCV** e, quando o código não existir, mostre **Não cadastrado** no lugar do erro."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SEERRO(PROCV(I1;A2:F9;5;FALSO);\"Não cadastrado\")`: o SEERRO troca o #N/D pelo texto."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "P99"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ],
+      "alternativas": {
+        "I1": [
+          "P03",
+          "P08"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(I1;A2:F9;5;FALSO);\"Não cadastrado\")"
+      }
+    ]
+  },
+  {
+    "id": "e2d0de78-a485-5aa7-8f1b-d6129d079862",
+    "slug": "sim-avancado-4",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 4,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Situação do estoque",
+    "enunciado": [
+      "Em **G2**, classifique o estoque e copie até **G9**: **Esgotado** se for 0, **Crítico** até 5, **Baixo** até 20 e **OK** acima disso."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SES(E2=0;\"Esgotado\";E2<=5;\"Crítico\";E2<=20;\"Baixo\";VERDADEIRO;\"OK\")`: as condições são testadas em ordem. SE aninhado também vale."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Situação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E2=0;\"Esgotado\";E2<=5;\"Crítico\";E2<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G3",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E3=0;\"Esgotado\";E3<=5;\"Crítico\";E3<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G4",
+        "esperado": "Baixo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E4=0;\"Esgotado\";E4<=5;\"Crítico\";E4<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G5",
+        "esperado": "Crítico",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E5=0;\"Esgotado\";E5<=5;\"Crítico\";E5<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G6",
+        "esperado": "Baixo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E6=0;\"Esgotado\";E6<=5;\"Crítico\";E6<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G7",
+        "esperado": "Esgotado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E7=0;\"Esgotado\";E7<=5;\"Crítico\";E7<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G8",
+        "esperado": "Crítico",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E8=0;\"Esgotado\";E8<=5;\"Crítico\";E8<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      },
+      {
+        "celula": "G9",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E9=0;\"Esgotado\";E9<=5;\"Crítico\";E9<=20;\"Baixo\";VERDADEIRO;\"OK\")"
+      }
+    ]
+  },
+  {
+    "id": "644d52e8-fb01-5746-b0de-c4de24441812",
+    "slug": "sim-avancado-5",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 5,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dinheiro parado no estoque",
+    "enunciado": [
+      "Em **I2**, calcule o valor total em estoque (estoque × preço) **só da categoria** em **I1**, numa fórmula só, sem colunas auxiliares."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SOMARPRODUTO((C2:C9=I1)*E2:E9*F2:F9)`: a comparação vira 1 (é da categoria) ou 0 (não é), e o SOMARPRODUTO soma estoque × preço só dessas linhas."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Valor em estoque",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Eletrônicos"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ],
+      "alternativas": {
+        "I1": [
+          "Papelaria",
+          "Acessórios"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 15173.2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMARPRODUTO((C2:C9=I1)*E2:E9*F2:F9)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "92b57b2e-0c98-55d6-a538-4cb5dad0ed05",
+    "slug": "sim-avancado-6",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 6,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Reposição urgente",
+    "enunciado": [
+      "Em **I3**, conte quantos produtos da categoria em **I1** têm estoque **abaixo** do valor em **I2**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=CONT.SES(C2:C9;I1;E2:E9;\"<\"&I2)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Estoque abaixo de",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Produtos",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Eletrônicos"
+        },
+        "I2": {
+          "entrada": "10"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ],
+      "alternativas": {
+        "I1": [
+          "Papelaria",
+          "Acessórios"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I3",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(C2:C9;I1;E2:E9;\"<\"&I2)"
+      }
+    ]
+  },
+  {
+    "id": "e57dd0eb-bfb9-51a9-9644-2a77311ca269",
+    "slug": "sim-avancado-7",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 7,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Prazo em dias úteis",
+    "enunciado": [
+      "Em **D2**, calcule quantos **dias úteis** (segunda a sexta) há entre o pedido e a entrega, contando os dois dias, e copie até **D6**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=DIATRABALHOTOTAL(B2;C2)`: conta segunda a sexta, incluindo o dia inicial e o final."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 7,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Data do pedido",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Dias úteis",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1001"
+        },
+        "B2": {
+          "entrada": "03/11/2026"
+        },
+        "C2": {
+          "entrada": "10/11/2026"
+        },
+        "A3": {
+          "entrada": "1002"
+        },
+        "B3": {
+          "entrada": "05/11/2026"
+        },
+        "C3": {
+          "entrada": "19/11/2026"
+        },
+        "A4": {
+          "entrada": "1003"
+        },
+        "B4": {
+          "entrada": "13/11/2026"
+        },
+        "C4": {
+          "entrada": "16/11/2026"
+        },
+        "A5": {
+          "entrada": "1004"
+        },
+        "B5": {
+          "entrada": "20/11/2026"
+        },
+        "C5": {
+          "entrada": "04/12/2026"
+        },
+        "A6": {
+          "entrada": "1005"
+        },
+        "B6": {
+          "entrada": "27/11/2026"
+        },
+        "C6": {
+          "entrada": "30/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 120,
+        "C": 110,
+        "D": 100
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B2;C2)"
+      },
+      {
+        "celula": "D3",
+        "esperado": 11,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B3;C3)"
+      },
+      {
+        "celula": "D4",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B4;C4)"
+      },
+      {
+        "celula": "D5",
+        "esperado": 11,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B5;C5)"
+      },
+      {
+        "celula": "D6",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHOTOTAL(B6;C6)"
+      }
+    ]
+  },
+  {
+    "id": "a276f775-4396-5922-8ac7-912bfa9320f0",
+    "slug": "sim-avancado-8",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-avancado",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço médio arredondado",
+    "enunciado": [
+      "Em **I2**, calcule o preço médio da categoria em **I1**, **arredondado para 1 casa decimal**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=ARRED(MÉDIASE(C2:C9;I1;F2:F9);1)`: o ARRED por fora arredonda o resultado da média."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "Papelaria"
+        },
+        "D2": {
+          "entrada": "Alfa"
+        },
+        "E2": {
+          "entrada": "120"
+        },
+        "F2": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Caderno"
+        },
+        "C3": {
+          "entrada": "Papelaria"
+        },
+        "D3": {
+          "entrada": "Beta"
+        },
+        "E3": {
+          "entrada": "35"
+        },
+        "F3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Acessórios"
+        },
+        "D4": {
+          "entrada": "Alfa"
+        },
+        "E4": {
+          "entrada": "8"
+        },
+        "F4": {
+          "entrada": "149",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Notebook"
+        },
+        "C5": {
+          "entrada": "Eletrônicos"
+        },
+        "D5": {
+          "entrada": "Gama"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "F5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P05"
+        },
+        "B6": {
+          "entrada": "Mouse"
+        },
+        "C6": {
+          "entrada": "Eletrônicos"
+        },
+        "D6": {
+          "entrada": "Gama"
+        },
+        "E6": {
+          "entrada": "18"
+        },
+        "F6": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P06"
+        },
+        "B7": {
+          "entrada": "Estojo"
+        },
+        "C7": {
+          "entrada": "Acessórios"
+        },
+        "D7": {
+          "entrada": "Beta"
+        },
+        "E7": {
+          "entrada": "0"
+        },
+        "F7": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P07"
+        },
+        "B8": {
+          "entrada": "Monitor"
+        },
+        "C8": {
+          "entrada": "Eletrônicos"
+        },
+        "D8": {
+          "entrada": "Gama"
+        },
+        "E8": {
+          "entrada": "5"
+        },
+        "F8": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P08"
+        },
+        "B9": {
+          "entrada": "Agenda"
+        },
+        "C9": {
+          "entrada": "Papelaria"
+        },
+        "D9": {
+          "entrada": "Alfa"
+        },
+        "E9": {
+          "entrada": "22"
+        },
+        "F9": {
+          "entrada": "39,9",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Preço médio",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Acessórios"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 90,
+        "C": 105,
+        "D": 90,
+        "E": 70,
+        "F": 90,
+        "G": 90,
+        "H": 150,
+        "I": 110
+      },
+      "variaveis": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E8",
+        "E9"
+      ],
+      "alternativas": {
+        "I1": [
+          "Papelaria",
+          "Eletrônicos"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 86.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(MÉDIASE(C2:C9;I1;F2:F9);1)",
+        "formato": "moeda"
+      }
+    ]
+  }
+]

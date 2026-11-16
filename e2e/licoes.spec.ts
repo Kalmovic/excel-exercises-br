@@ -52,6 +52,8 @@ test("a lição só conta no mapa quando as 5 questões estão feitas", async ({
 
 test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar", async ({ page }) => {
   await page.goto("/teste/condicionais");
+  await expect(page.getByTestId("editor-celula").first()).toBeAttached();
+  await expect(page.getByTestId("painel-admin")).toHaveCount(0); // gabarito escondido no teste
   const respostas = ['=CONT.SE(A2:A8;"Carla")', "=1", '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASE(D2:D8;"Pendente";C2:C8)'];
   for (const r of respostas) {
     await digitar(page, "G1", r);

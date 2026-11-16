@@ -19,11 +19,12 @@ export function gravarTestes(t: Record<string, ResultadoTeste>) {
 }
 
 /** Guarda a tentativa. Aprovação, uma vez conquistada, não se perde numa nova tentativa pior. */
-export function registrarTeste(modulo: string, acertos: number, total: number) {
+/** `minimo`: acertos para passar (testes de módulo: 4 de 5; simulados: 70%). */
+export function registrarTeste(modulo: string, acertos: number, total: number, minimo = APROVACAO) {
   try {
     const tudo = lerTestes();
     const antes = tudo[modulo];
-    const aprovadoAgora = acertos >= APROVACAO;
+    const aprovadoAgora = acertos >= minimo;
     tudo[modulo] = {
       acertos: Math.max(acertos, antes?.acertos ?? 0),
       total,

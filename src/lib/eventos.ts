@@ -19,7 +19,9 @@ export type Evento =
   | { nome: "compartilhou"; data: string; meio: "nativo" | "copiar" }
   | { nome: "upsell_clicou"; origem: "desafio" | "landing" | "trilha" }
   | { nome: "lead_b2b"; formulario: "contato" | "indicacao"; publico: string }
-  | { nome: "teste_concluido"; modulo: string; acertos: number; aprovado: boolean };
+  | { nome: "teste_concluido"; modulo: string; acertos: number; aprovado: boolean }
+  | { nome: "simulado_iniciado"; nivel: string }
+  | { nome: "simulado_entregue"; nivel: string; acertos: number; aprovado: boolean; segundos: number; noTempo: boolean };
 
 export function registrar(evento: Evento) {
   const { nome, ...props } = evento;

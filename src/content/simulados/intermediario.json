@@ -1,0 +1,2234 @@
+[
+  {
+    "id": "9fb06174-84b1-5c68-8291-0f737ab3f8a2",
+    "slug": "sim-intermediario-1",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 1,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Folha por setor",
+    "enunciado": [
+      "O setor está em **I1**. Em **I2**, calcule a soma dos salários desse setor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SOMASE(C2:C11;I1;D2:D11)`: soma os salários das linhas em que o setor é igual a I1."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Folha do setor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "TI"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "Vendas",
+          "RH"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 19800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(C2:C11;I1;D2:D11)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "38210228-cd71-5801-ad3c-b6a916f99af2",
+    "slug": "sim-intermediario-2",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Funcionários por setor",
+    "enunciado": [
+      "O setor está em **I1**. Em **I2**, conte quantos funcionários trabalham nesse setor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=CONT.SE(C2:C11;I1)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Funcionários",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Vendas"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "RH",
+          "TI"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(C2:C11;I1)"
+      }
+    ]
+  },
+  {
+    "id": "a8679421-f3cb-56a9-a3a4-190ac8d69af6",
+    "slug": "sim-intermediario-3",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média salarial do setor",
+    "enunciado": [
+      "O setor está em **I1**. Em **I2**, calcule a média salarial desse setor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=MÉDIASE(C2:C11;I1;D2:D11)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Média salarial",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "RH"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "Vendas",
+          "TI"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 4000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIASE(C2:C11;I1;D2:D11)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "12d1d0fd-2bec-5855-ac19-0dc82fbe2ced",
+    "slug": "sim-intermediario-4",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Salário pela matrícula",
+    "enunciado": [
+      "A matrícula está em **I1**. Em **I2**, traga o salário desse funcionário, buscando pela matrícula."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=PROCV(I1;A2:E11;4;FALSO)`: o salário é a 4ª coluna da tabela, e FALSO pede a matrícula exata."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "M08"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "M03",
+          "M10"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 5600,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(I1;A2:E11;4;FALSO)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "fe024012-9709-5891-9064-69bf6d8a090f",
+    "slug": "sim-intermediario-5",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Reajuste salarial",
+    "enunciado": [
+      "O percentual de reajuste está em **I1**. Em **F2**, calcule o novo salário e copie até **F11**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=D2*(1+$I$1)`: somar 1 ao percentual aplica o aumento de uma vez. O `$` trava o reajuste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "F1": {
+          "entrada": "Novo salário",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Reajuste",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "8%",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11",
+        "I1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 3456.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D2*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 4428.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D3*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 7344.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D4*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F5",
+        "esperado": 3132.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D5*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F6",
+        "esperado": 7992.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D6*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F7",
+        "esperado": 3780.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D7*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F8",
+        "esperado": 4212.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D8*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F9",
+        "esperado": 6048.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D9*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F10",
+        "esperado": 5184.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D10*(1+$I$1)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F11",
+        "esperado": 5616.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D11*(1+$I$1)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "c4419329-3469-508d-90fc-503f83a5674e",
+    "slug": "sim-intermediario-6",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quem recebe bônus",
+    "enunciado": [
+      "Recebe bônus quem **não teve faltas** e ganha **até R$ 4.000**. Em **F2**, mostre **Sim** ou **Não** e copie até **F11**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SE(E(E2=0;D2<=4000);\"Sim\";\"Não\")`: o E exige as duas condições ao mesmo tempo."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "F1": {
+          "entrada": "Bônus",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E2=0;D2<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E3=0;D3<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E4=0;D4<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E5=0;D5<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E6=0;D6<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E7=0;D7<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F8",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E8=0;D8<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F9",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E9=0;D9<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F10",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E10=0;D10<=4000);\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "F11",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(E11=0;D11<=4000);\"Sim\";\"Não\")"
+      }
+    ]
+  },
+  {
+    "id": "0de4e622-3b70-5ca8-af99-61547d6f29be",
+    "slug": "sim-intermediario-7",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Folha com duas condições",
+    "enunciado": [
+      "Em **I3**, some os salários do setor em **I1** apenas de quem teve **no máximo** o número de faltas em **I2**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SOMASES(D2:D11;C2:C11;I1;E2:E11;\"<=\"&I2)`: o critério \"até\" junta o operador com a célula."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Faltas até",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Folha",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Vendas"
+        },
+        "I2": {
+          "entrada": "1"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "TI",
+          "Financeiro"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I3",
+        "esperado": 6700,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(D2:D11;C2:C11;I1;E2:E11;\"<=\"&I2)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "315a0560-8d6e-5616-aefe-5879337cd5fe",
+    "slug": "sim-intermediario-8",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-intermediario",
+    "ordem": 8,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contar com duas condições",
+    "enunciado": [
+      "Em **I3**, conte quantos funcionários do setor em **I1** ganham **mais** que o valor em **I2**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=CONT.SES(C2:C11;I1;D2:D11;\">\"&I2)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faltas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "M01"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "M02"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "RH"
+        },
+        "D3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "M03"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "TI"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "M04"
+        },
+        "B5": {
+          "entrada": "Diego"
+        },
+        "C5": {
+          "entrada": "Vendas"
+        },
+        "D5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "3"
+        },
+        "A6": {
+          "entrada": "M05"
+        },
+        "B6": {
+          "entrada": "Elisa"
+        },
+        "C6": {
+          "entrada": "TI"
+        },
+        "D6": {
+          "entrada": "7400",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "M06"
+        },
+        "B7": {
+          "entrada": "Fábio"
+        },
+        "C7": {
+          "entrada": "Vendas"
+        },
+        "D7": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "1"
+        },
+        "A8": {
+          "entrada": "M07"
+        },
+        "B8": {
+          "entrada": "Gabi"
+        },
+        "C8": {
+          "entrada": "RH"
+        },
+        "D8": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "0"
+        },
+        "A9": {
+          "entrada": "M08"
+        },
+        "B9": {
+          "entrada": "Hugo"
+        },
+        "C9": {
+          "entrada": "TI"
+        },
+        "D9": {
+          "entrada": "5600",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "4"
+        },
+        "A10": {
+          "entrada": "M09"
+        },
+        "B10": {
+          "entrada": "Iara"
+        },
+        "C10": {
+          "entrada": "Financeiro"
+        },
+        "D10": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "0"
+        },
+        "A11": {
+          "entrada": "M10"
+        },
+        "B11": {
+          "entrada": "João"
+        },
+        "C11": {
+          "entrada": "Financeiro"
+        },
+        "D11": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "2"
+        },
+        "H1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Salário acima de",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Quantos",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "TI"
+        },
+        "I2": {
+          "entrada": "6000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 95,
+        "D": 95,
+        "E": 60,
+        "F": 105,
+        "G": 90,
+        "H": 150,
+        "I": 100
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "alternativas": {
+        "I1": [
+          "Financeiro",
+          "Vendas"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I3",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(C2:C11;I1;D2:D11;\">\"&I2)"
+      }
+    ]
+  }
+]

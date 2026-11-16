@@ -1,0 +1,2314 @@
+[
+  {
+    "id": "3be64015-e825-53e8-9453-a611a1ea893e",
+    "slug": "sim-basico-1",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total de cada venda",
+    "enunciado": [
+      "Esta é a planilha de vendas da semana.",
+      "Em **F2**, calcule o total da venda (quantidade × preço) e copie a fórmula até **F9**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=D2*E2` em F2, copiado até F9: a referência relativa acompanha cada linha."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 6400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D2*E2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 898.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D3*E3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 2697,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D4*E4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F5",
+        "esperado": 1299.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D5*E5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F6",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D6*E6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F7",
+        "esperado": 1798,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D7*E7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F8",
+        "esperado": 1198.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D8*E8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F9",
+        "esperado": 519.6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D9*E9",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "2397b798-1ce4-5618-87ba-4f524bc7cbaf",
+    "slug": "sim-basico-2",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 2,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Resumo das vendas",
+    "enunciado": [
+      "Preencha o resumo da semana: o **total geral** em **F11**, a **média por venda** em **F12**, a **maior venda** em **F13** e a **menor venda** em **F14**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SOMA(F2:F9)`, `=MÉDIA(F2:F9)`, `=MÁXIMO(F2:F9)` e `=MÍNIMO(F2:F9)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 14,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=D3*E3",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=D4*E4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=D5*E5",
+          "formato": "moeda"
+        },
+        "F6": {
+          "entrada": "=D6*E6",
+          "formato": "moeda"
+        },
+        "F7": {
+          "entrada": "=D7*E7",
+          "formato": "moeda"
+        },
+        "F8": {
+          "entrada": "=D8*E8",
+          "formato": "moeda"
+        },
+        "F9": {
+          "entrada": "=D9*E9",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "Total geral",
+          "negrito": true
+        },
+        "E12": {
+          "entrada": "Média por venda",
+          "negrito": true
+        },
+        "E13": {
+          "entrada": "Maior venda",
+          "negrito": true
+        },
+        "E14": {
+          "entrada": "Menor venda",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F11",
+        "esperado": 18010.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(F2:F9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F12",
+        "esperado": 2251.2625,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(F2:F9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F13",
+        "esperado": 6400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(F2:F9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F14",
+        "esperado": 519.6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(F2:F9)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "1da4ec24-69d1-54c4-9319-8dbe8a38d2fa",
+    "slug": "sim-basico-3",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 3,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Comissão dos vendedores",
+    "enunciado": [
+      "A taxa de comissão está em **I1**. Em **G2**, calcule a comissão da venda e copie até **G9**.",
+      "A fórmula precisa continuar certa se a taxa em I1 mudar."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=F2*$I$1`: o `$` trava a taxa, que fica parada enquanto a fórmula desce."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=D3*E3",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=D4*E4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=D5*E5",
+          "formato": "moeda"
+        },
+        "F6": {
+          "entrada": "=D6*E6",
+          "formato": "moeda"
+        },
+        "F7": {
+          "entrada": "=D7*E7",
+          "formato": "moeda"
+        },
+        "F8": {
+          "entrada": "=D8*E8",
+          "formato": "moeda"
+        },
+        "F9": {
+          "entrada": "=D9*E9",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "5%",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "I1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 320.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F2*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G3",
+        "esperado": 44.925,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F3*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G4",
+        "esperado": 134.85,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F4*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G5",
+        "esperado": 64.95,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F5*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G6",
+        "esperado": 160.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F6*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G7",
+        "esperado": 89.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F7*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G8",
+        "esperado": 59.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F8*$I$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G9",
+        "esperado": 25.98,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F9*$I$1",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "de85661b-5812-5019-8c92-6f0e2925aba6",
+    "slug": "sim-basico-4",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 4,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Bateu a meta?",
+    "enunciado": [
+      "A meta mínima por venda está em **I1**. Em **G2**, mostre **Bateu** se o total da venda for maior ou igual à meta, ou **Não bateu** se não for. Copie até **G9**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=SE(F2>=$I$1;\"Bateu\";\"Não bateu\")`, com a meta travada."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=D3*E3",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=D4*E4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=D5*E5",
+          "formato": "moeda"
+        },
+        "F6": {
+          "entrada": "=D6*E6",
+          "formato": "moeda"
+        },
+        "F7": {
+          "entrada": "=D7*E7",
+          "formato": "moeda"
+        },
+        "F8": {
+          "entrada": "=D8*E8",
+          "formato": "moeda"
+        },
+        "F9": {
+          "entrada": "=D9*E9",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Meta mínima",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "1500",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "I1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": "Bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F2>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G3",
+        "esperado": "Não bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F3>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G4",
+        "esperado": "Bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F4>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G5",
+        "esperado": "Não bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F5>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G6",
+        "esperado": "Bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F6>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G7",
+        "esperado": "Bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F7>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G8",
+        "esperado": "Não bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F8>=$I$1;\"Bateu\";\"Não bateu\")"
+      },
+      {
+        "celula": "G9",
+        "esperado": "Não bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(F9>=$I$1;\"Bateu\";\"Não bateu\")"
+      }
+    ]
+  },
+  {
+    "id": "e8212826-d24b-5bbc-9eba-44f642bea73b",
+    "slug": "sim-basico-5",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 5,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Participação no total",
+    "enunciado": [
+      "O total da semana está em **F10**. Em **G2**, calcule quanto cada venda representa do total, em **porcentagem**, e copie até **G9**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=F2/$F$10` com formato de porcentagem. O `$` mantém o total fixo."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=D3*E3",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=D4*E4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=D5*E5",
+          "formato": "moeda"
+        },
+        "F6": {
+          "entrada": "=D6*E6",
+          "formato": "moeda"
+        },
+        "F7": {
+          "entrada": "=D7*E7",
+          "formato": "moeda"
+        },
+        "F8": {
+          "entrada": "=D8*E8",
+          "formato": "moeda"
+        },
+        "F9": {
+          "entrada": "=D9*E9",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F10": {
+          "entrada": "=SOMA(F2:F9)",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Participação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 0.3553561613,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F2/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G3",
+        "esperado": 0.0498886736,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F3/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G4",
+        "esperado": 0.1497493073,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F4/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G5",
+        "esperado": 0.0721261959,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F5/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G6",
+        "esperado": 0.1776780806,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F6/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G7",
+        "esperado": 0.0998328716,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F7/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G8",
+        "esperado": 0.0665182314,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F8/$F$10",
+        "formato": "percentual"
+      },
+      {
+        "celula": "G9",
+        "esperado": 0.0288504783,
+        "exigeFormula": true,
+        "solucaoReferencia": "=F9/$F$10",
+        "formato": "percentual"
+      }
+    ]
+  },
+  {
+    "id": "fef20050-57b7-590c-9490-703835d1ebfc",
+    "slug": "sim-basico-6",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 6,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Distância da maior venda",
+    "enunciado": [
+      "Em **G2**, calcule quanto falta para a venda chegar à **maior venda da semana** e copie até **G9**. A maior venda deve ser calculada pela fórmula."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=MÁXIMO($F$2:$F$9)-F2`: o intervalo do MÁXIMO fica travado; só a venda da linha anda."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=D3*E3",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=D4*E4",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=D5*E5",
+          "formato": "moeda"
+        },
+        "F6": {
+          "entrada": "=D6*E6",
+          "formato": "moeda"
+        },
+        "F7": {
+          "entrada": "=D7*E7",
+          "formato": "moeda"
+        },
+        "F8": {
+          "entrada": "=D8*E8",
+          "formato": "moeda"
+        },
+        "F9": {
+          "entrada": "=D9*E9",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Falta p/ maior",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G3",
+        "esperado": 5501.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G4",
+        "esperado": 3703,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G5",
+        "esperado": 5101.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G6",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G7",
+        "esperado": 4602,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G8",
+        "esperado": 5202.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G9",
+        "esperado": 5880.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO($F$2:$F$9)-F9",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "8aac4253-006f-5304-b273-1287ba93b23a",
+    "slug": "sim-basico-7",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 7,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Formatação",
+    "enunciado": [
+      "A planilha está sem formatação. Formate os totais **F2:F9** e as comissões **G2:G9** como **moeda**, e a taxa em **I1** como **porcentagem**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Selecione o intervalo e use os botões R$ e %. O valor guardado não muda, só a aparência."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "format_cell",
+    "grade": {
+      "linhas": 10,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=D2*E2"
+        },
+        "F3": {
+          "entrada": "=D3*E3"
+        },
+        "F4": {
+          "entrada": "=D4*E4"
+        },
+        "F5": {
+          "entrada": "=D5*E5"
+        },
+        "F6": {
+          "entrada": "=D6*E6"
+        },
+        "F7": {
+          "entrada": "=D7*E7"
+        },
+        "F8": {
+          "entrada": "=D8*E8"
+        },
+        "F9": {
+          "entrada": "=D9*E9"
+        },
+        "G1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "0,05"
+        },
+        "H1": {
+          "entrada": "Taxa",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "=F2*$I$1"
+        },
+        "G3": {
+          "entrada": "=F3*$I$1"
+        },
+        "G4": {
+          "entrada": "=F4*$I$1"
+        },
+        "G5": {
+          "entrada": "=F5*$I$1"
+        },
+        "G6": {
+          "entrada": "=F6*$I$1"
+        },
+        "G7": {
+          "entrada": "=F7*$I$1"
+        },
+        "G8": {
+          "entrada": "=F8*$I$1"
+        },
+        "G9": {
+          "entrada": "=F9*$I$1"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 100,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      }
+    },
+    "alvos": [
+      {
+        "intervalo": "F2:F9",
+        "formato": "moeda"
+      },
+      {
+        "intervalo": "G2:G9",
+        "formato": "moeda"
+      },
+      {
+        "intervalo": "I1",
+        "formato": "percentual"
+      }
+    ],
+    "ferramentas": {
+      "formatacao": true
+    }
+  },
+  {
+    "id": "70da2e92-1645-5ee2-9177-acfe14fd35d1",
+    "slug": "sim-basico-8",
+    "trilha": "excel-ptbr",
+    "modulo": "simulado-basico",
+    "ordem": 8,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Identificação da venda",
+    "enunciado": [
+      "Em **F2**, junte o nome do vendedor e a região no formato **Ana - Sul** (com espaço, hífen e espaço) e copie até **F9**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "`=A2&\" - \"&B2`. Também vale `=CONCATENAR(A2;\" - \";B2)`."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "Notebook"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "Mouse"
+        },
+        "D3": {
+          "entrada": "15"
+        },
+        "E3": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "Monitor"
+        },
+        "D4": {
+          "entrada": "3"
+        },
+        "E4": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "Teclado"
+        },
+        "D5": {
+          "entrada": "10"
+        },
+        "E5": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "Notebook"
+        },
+        "D6": {
+          "entrada": "1"
+        },
+        "E6": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "Monitor"
+        },
+        "D7": {
+          "entrada": "2"
+        },
+        "E7": {
+          "entrada": "899",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "Mouse"
+        },
+        "D8": {
+          "entrada": "20"
+        },
+        "E8": {
+          "entrada": "59,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "Teclado"
+        },
+        "D9": {
+          "entrada": "4"
+        },
+        "E9": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Identificação",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 70,
+        "C": 90,
+        "D": 50,
+        "E": 90,
+        "F": 130,
+        "G": 110,
+        "H": 130,
+        "I": 90
+      },
+      "alternativas": {
+        "A2": [
+          "Lia",
+          "Rui"
+        ],
+        "A3": [
+          "Téo",
+          "Mel"
+        ],
+        "A4": [
+          "Lia",
+          "Rui"
+        ],
+        "A5": [
+          "Téo",
+          "Mel"
+        ],
+        "A6": [
+          "Lia",
+          "Rui"
+        ],
+        "A7": [
+          "Téo",
+          "Mel"
+        ],
+        "A8": [
+          "Lia",
+          "Rui"
+        ],
+        "A9": [
+          "Téo",
+          "Mel"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Ana - Sul",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\" - \"&B2"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Bruno - Norte",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A3&\" - \"&B3"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Carla - Sul",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A4&\" - \"&B4"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Diego - Leste",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A5&\" - \"&B5"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Elisa - Norte",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A6&\" - \"&B6"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Fábio - Leste",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A7&\" - \"&B7"
+      },
+      {
+        "celula": "F8",
+        "esperado": "Gabi - Sul",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A8&\" - \"&B8"
+      },
+      {
+        "celula": "F9",
+        "esperado": "Hugo - Norte",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A9&\" - \"&B9"
+      }
+    ]
+  }
+]

@@ -259,3 +259,10 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [ ] Teste completo no site: pagar no sandbox com cartão de teste e ver o Pro liberado (precisa das variáveis na Vercel e do webhook cadastrado no Asaas).
 - [ ] Conferir se a página de pagamento da cobrança anual oferece parcelamento em 12x (a página /pro promete); se não, ajustar a cobrança ou o texto.
 - [ ] Lembrete de renovação do anual por e-mail (Resend), perto do vencimento.
+
+### Pro: simulado de teste de vaga (16/11/2026)
+
+- [x] `/simulado` (3 níveis) e `/simulado/[nivel]`: planilha de empresa com 8 tarefas, tempo (20/25/30 min), ir e voltar sem perder a resposta (React Activity), sem dicas nem correção até a entrega, entrega automática no fim do tempo, nota, aprovação com 70% e resolução de cada tarefa. Resultado guardado em `testes` (`simulado-<nivel>`), que já sincroniza com a conta.
+- [x] Conteúdo em `src/content/simulados/*.json` (fora de `exercicios`: não entra na trilha nem no sitemap), validado em `src/content/simulados.test.ts` pelo motor.
+- [x] Corrigido: o gabarito do admin aparecia no teste de módulo (e apareceria no simulado), porque o painel usava `admin`, que também é true nesses modos.
+- [ ] Próximo: questões de concurso.

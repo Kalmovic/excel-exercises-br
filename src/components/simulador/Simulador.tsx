@@ -69,6 +69,11 @@ type Props = {
   licao?: LicaoDoExercicio;
   /** Teste do módulo: uma tentativa, sem gravar progresso; avisa o resultado. */
   teste?: { aoResponder: (ok: boolean) => void };
+  /**
+   * Simulado de vaga: sem correção na hora nem dicas. A questão entrega ao pai
+   * uma função que corrige o estado atual da planilha, chamada na entrega da prova.
+   */
+  simulado?: { registrar: (corrigirAgora: () => boolean) => void };
 };
 
 export default function Simulador({
@@ -80,12 +85,13 @@ export default function Simulador({
   compacto = false,
   licao,
   teste,
+  simulado,
 }: Props) {
   // Celular sem teclado: exercícios "use as setas" trocam o texto e aceitam toque.
   const semTeclado = useSemTeclado();
   const ex = useMemo(() => adaptarAoToque(original, semTeclado), [original, semTeclado]);
   // No teste do módulo, nada é lido nem gravado no progresso (como no admin).
-  const admin = adminProp || !!teste;
+  const admin = adminProp || !!teste || !!simulado;
   const chave = chaveProgresso(ex);
   const router = useRouter();
   const entradaRef = useRef<HTMLInputElement | null>(null);
@@ -160,6 +166,22 @@ export default function Simulador({
   // StrictMode do dev simula isso) rodando os cleanups, mas mantém o estado.
   // Destruir aqui deixava `nucleo` apontando para uma instância morta e a
   // grade quebrava ao voltar. Sem referências, a instância vai para o GC.
+
+  // Simulado: registra a correção desta questão (o pai chama na entrega).
+  useEffect(() => {
+    if (!simulado) return;
+    simulado.registrar(() => {
+      const s = store.getState();
+      if (s.modo !== "pronto") s.confirmar(); // o que estava sendo digitado conta
+      return corrigir(ex, planilha, {
+        ativa: paraEndereco(s.ancora),
+        selecao: intervaloParaTexto(s.selecao()),
+        resposta: s.resposta,
+        mudancasPeloMouse: s.mudancasPeloMouse,
+        semTecladoFisico: semTeclado,
+      }).ok;
+    });
+  }, [simulado, ex, planilha, store, semTeclado]);
 
   const verificar = () => {
     const s = store.getState();
@@ -326,6 +348,7 @@ export default function Simulador({
           proximo={proximo}
           proximoModulo={trilha?.proximoModulo}
           onVerificar={verificar}
+          semCorrecao={!!simulado}
           onDica={() => {
             const n = Math.min(dicasVistas + 1, ex.dicas.length);
             setDicasVistas(n);
@@ -335,7 +358,9 @@ export default function Simulador({
           onReiniciar={reiniciar}
           onPular={trilha?.permitePular && !concluido ? pular : undefined}
           extra={
-            admin ? (
+            // Só o admin de verdade: no teste e no simulado `admin` também é true
+            // (para não gravar progresso), e o gabarito não pode aparecer ao aluno.
+            adminProp ? (
               <PainelAdmin ex={ex} onPreencher={() => preencherSolucao(ex, nucleo.planilha, nucleo.store)} />
             ) : desafio && concluido ? (
               <>

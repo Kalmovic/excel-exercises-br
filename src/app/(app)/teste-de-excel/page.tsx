@@ -55,6 +55,16 @@ export default function TesteDeExcel() {
       <Secao rotulo="O que costuma cair" titulo="As funções dos testes práticos">
         <Cartoes itens={CAI} />
       </Secao>
+      <section className="flex flex-col gap-5 rounded-3xl bg-ink p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8" data-testid="cta-simulado">
+        <div className="space-y-2">
+          <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-ink">Pro</span>
+          <p className="font-display text-2xl font-extrabold">Faça um simulado do teste, com tempo</p>
+          <p className="text-white/70">Uma planilha de empresa, 8 tarefas, sem dicas. Básico, intermediário ou avançado, e a nota na hora.</p>
+        </div>
+        <Link href="/simulado" className="shrink-0 rounded-lg bg-accent px-5 py-3 font-semibold text-ink hover:brightness-95">
+          Ver os simulados
+        </Link>
+      </section>
       <Secao rotulo="Perguntas frequentes" titulo="Sobre o teste de Excel">
         <Perguntas itens={FAQ} />
       </Secao>

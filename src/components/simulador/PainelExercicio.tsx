@@ -23,6 +23,8 @@ type Props = {
   /** Conteúdo extra depois do resultado (ex.: compartilhar o desafio). */
   extra?: ReactNode;
   botaoVerificarRef?: Ref<HTMLButtonElement>;
+  /** Simulado: sem Verificar, dicas nem solução (a correção é na entrega da prova). */
+  semCorrecao?: boolean;
 };
 
 export function PainelExercicio({
@@ -39,6 +41,7 @@ export function PainelExercicio({
   proximoModulo,
   extra,
   botaoVerificarRef,
+  semCorrecao = false,
 }: Props) {
   // A solução comentada aparece ao acertar, ou se o aluno pedir depois de algumas tentativas.
   // Nunca sozinha: errar não pode virar atalho para a resposta.
@@ -71,6 +74,7 @@ export function PainelExercicio({
       </section>
 
       <div className="flex flex-wrap gap-2">
+        {!semCorrecao && (
         <button
           type="button"
           onClick={onVerificar}
@@ -80,6 +84,7 @@ export function PainelExercicio({
         >
           Verificar
         </button>
+        )}
         {ex.dicas.length > 0 && (
           <button
             type="button"
@@ -155,7 +160,7 @@ export function PainelExercicio({
         </section>
       )}
 
-      {podePedirSolucao && !pediuSolucao && (
+      {!semCorrecao && podePedirSolucao && !pediuSolucao && (
         <button
           type="button"
           onClick={() => setPediuSolucao(true)}

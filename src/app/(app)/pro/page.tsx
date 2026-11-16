@@ -70,11 +70,7 @@ const PARA_QUEM = [
   "Usa Excel no trabalho e quer parar de depender dos outros",
   "Começou do zero e quer um caminho em ordem",
 ];
-const NAO_E = [
-  "Prefere só assistir aulas em vídeo",
-  "Procura VBA, macros, Power BI ou Python (ainda não temos)",
-  "Precisa das fórmulas em inglês (aqui elas são em português, como no Excel brasileiro)",
-];
+const NAO_E = ["Prefere só assistir aulas em vídeo"];
 
 export default function Pro() {
   // Variáveis do Asaas lidas no build: sem elas, os botões viram "em breve".
@@ -124,7 +120,7 @@ export default function Pro() {
           [`${n.modulos}`, "módulos completos", "do Fundamentos aos casos reais"],
           [`${n.questoesPro}`, "questões de lição", "com dicas e explicação"],
           [`${n.testes}`, "testes de módulo", "para provar que aprendeu"],
-          [`${n.extras}`, "exercícios extras", "para treinar mais cada tema"],
+          ["3", "simulados de vaga", "teste prático com tempo, como no processo seletivo"],
         ].map(([valor, rotulo, detalhe]) => (
           <div key={rotulo} className="rounded-2xl border border-line bg-surface p-5">
             <p className="font-display text-4xl font-extrabold">{valor}</p>
@@ -283,6 +279,7 @@ export default function Pro() {
                   [`Todas as lições dos ${n.modulos} módulos (${n.questoesPro + n.questoesGratis} questões)`, false, true],
                   [`Teste de cada módulo (${n.testes} testes)`, false, true],
                   [`Prática extra (${n.extras} exercícios)`, false, true],
+                  ["Simulados de teste de vaga, com tempo (3 níveis)", false, true],
                   ["Arquivo com todos os desafios anteriores", "só o de ontem", true],
                 ] as [string, boolean | string, boolean][]
               ).map(([recurso, gratis, pro]) => (
@@ -354,11 +351,10 @@ export default function Pro() {
 
       {/* Chegando */}
       <Secao rotulo="Chegando ao Pro" titulo="Sem custo extra para quem assina">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-3">
           {[
             ["Pacote do mês", "Exercícios em torno de um tema: orçamento, Imposto de Renda, Black Friday, 13º."],
             ["Excel para concurso", "Questões no formato das bancas, com a planilha para testar a resposta."],
-            ["Simulado de vaga", "O teste prático de Excel dos processos seletivos, cronometrado."],
             ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
           ].map(([titulo, texto]) => (
             <div key={titulo} className="rounded-2xl border border-dashed border-line bg-bg p-5">
