@@ -120,5 +120,5 @@ test("página do Pro: números reais, comparação e, sem Asaas, botões em brev
   await expect(page.getByTestId("exercicio-embutido")).toBeVisible(); // lição grátis jogável
   await expect(page.getByTestId("precos-pro")).toContainText("Em breve");
   await expect(page.getByTestId("garantia")).toContainText("Garantia incondicional de 7 dias");
-  await expect(page.getByRole("img", { name: /garantia incondicional de 7 dias/i }).first()).toBeVisible(); // selo
+  await expect(page.getByRole("img", { name: /garantia incondicional de 7 dias/i }).first()).toBeVisible(); // selo (arte)
 });

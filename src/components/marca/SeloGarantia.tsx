@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useId } from "react";
 
 /** Contorno de roseta (borda recortada) com `pontas` pontas, centrado em (cx, cy). */
@@ -12,10 +13,25 @@ function roseta(cx: number, cy: number, raioFora: number, raioDentro: number, po
 }
 
 /**
- * Selo dourado de garantia (SVG, nítido em qualquer tamanho).
- * `dias` vem de PRECO.garantiaDias.
+ * Selo dourado de garantia. `dias` vem de PRECO.garantiaDias.
+ * Para 7 dias, usa a arte em public/selo-garantia-7-dias.webp; para outro prazo,
+ * o selo desenhado abaixo (a arte diz "7" e não pode aparecer com outra garantia).
  */
 export function SeloGarantia({ dias, className = "h-40 w-40" }: { dias: number; className?: string }) {
+  if (dias === 7)
+    return (
+      <Image
+        src="/selo-garantia-7-dias.webp"
+        width={480}
+        height={480}
+        alt="Selo: garantia incondicional de 7 dias"
+        className={`${className} object-contain`}
+      />
+    );
+  return <SeloDesenhado dias={dias} className={className} />;
+}
+
+function SeloDesenhado({ dias, className }: { dias: number; className: string }) {
   const id = useId().replace(/:/g, "");
   const ouro = `ouro-${id}`;
   const ouroEscuro = `ouro-escuro-${id}`;
