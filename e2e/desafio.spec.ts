@@ -116,7 +116,9 @@ test("nenhum desafio vai no JavaScript enviado ao navegador", () => {
 test("página do Pro: números reais, comparação e, sem Asaas, botões em breve", async ({ page }) => {
   await page.goto("/pro");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.locator("table")).toContainText("Arquivo com todos os desafios anteriores");
+  await expect(page.getByTestId("comparacao")).toContainText("Arquivo com todos os desafios anteriores");
+  await expect(page.getByTestId("exercicio-embutido")).toBeVisible(); // lição grátis jogável
   await expect(page.getByTestId("precos-pro")).toContainText("Em breve");
-  await expect(page.getByTestId("garantia")).toContainText("Garantia de 7 dias");
+  await expect(page.getByTestId("garantia")).toContainText("Garantia incondicional de 7 dias");
+  await expect(page.getByRole("img", { name: /garantia incondicional de 7 dias/i }).first()).toBeVisible(); // selo
 });

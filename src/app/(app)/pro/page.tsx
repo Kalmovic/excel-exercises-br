@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { MODULOS, exercicios, exerciciosDoModulo } from "@/content";
+import { SeloGarantia } from "@/components/marca/SeloGarantia";
+import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
+import { MODULOS, exercicios, exerciciosDoModulo, questoesDaLicao } from "@/content";
 import { asaasConfigurado } from "@/lib/asaas";
 import { NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
 
@@ -10,6 +12,9 @@ export const metadata: Metadata = {
   description: "Todos os módulos de Excel em português, com correção na hora: SE, SOMASE, PROCV, datas, textos e casos reais.",
   robots: { index: false, follow: true },
 };
+
+/** A lição grátis de PROCV (1ª do Módulo 4), jogável na página. */
+const LICAO_AMOSTRA = "procv-preco-pelo-codigo-exato";
 
 /** Tudo contado do conteúdo de verdade: a página nunca promete um número que não existe. */
 function numeros() {
@@ -32,8 +37,43 @@ const PERGUNTAS: [string, string][] = [
   ["Consigo cancelar quando quiser?", "Sim. No mensal, você cancela a renovação em Minha conta, num clique, e continua Pro até o fim do mês já pago. O anual não renova sozinho."],
   ["Quais as formas de pagamento?", "Mensal no cartão de crédito. Anual no Pix ou no cartão. O pagamento é feito no Asaas, um sistema de pagamentos brasileiro: o Planilhês não vê nem guarda os dados do seu cartão."],
   ["Preciso ter o Excel instalado?", "Não. A planilha roda no navegador, no computador ou no celular, com as fórmulas em português como no Excel brasileiro."],
+  ["Funciona no celular?", "Funciona. No celular você seleciona e edita as células com toques, e uma barrinha faz o papel do mouse e do Ctrl+D. Para estudar muito tempo seguido, o computador é mais confortável."],
   ["E o que eu já fiz no plano grátis?", "Continua lá. O progresso fica na sua conta, e o Pro só libera o resto da trilha."],
   ["Serve para quem está começando?", "Sim. A trilha começa no Intro (grátis) e cada lição tem dicas e explicação. Se você já sabe o básico, pode ir direto ao módulo que precisa."],
+  ["Tem certificado?", "Ainda não. O certificado por módulo está nos próximos passos e vai entrar no Pro sem custo extra para quem já assina."],
+];
+
+const METODO = [
+  {
+    numero: "1",
+    titulo: "Você escreve a fórmula",
+    texto:
+      "Nada de assistir alguém fazendo. Cada lição é uma planilha de verdade no navegador, com as funções em português. A correção confere o resultado e se você usou as células certas, não um número digitado à mão.",
+  },
+  {
+    numero: "2",
+    titulo: "Você erra com segurança",
+    texto:
+      "Errou? A dica aponta onde olhar sem entregar a resposta: o intervalo termina cedo demais, o sinal de comparação deixa o limite de fora. A explicação completa vem quando você acerta, ou quando pedir.",
+  },
+  {
+    numero: "3",
+    titulo: "Você não esquece",
+    texto:
+      "Cada lição tem 5 questões: a principal, duas variações, uma pegadinha e uma de conceito. No fim do módulo, um teste sem dicas. E o desafio diário mantém a mão quente.",
+  },
+];
+
+const PARA_QUEM = [
+  "Vai fazer o teste prático de Excel de uma vaga",
+  "Estuda para concurso que cobra planilha",
+  "Usa Excel no trabalho e quer parar de depender dos outros",
+  "Começou do zero e quer um caminho em ordem",
+];
+const NAO_E = [
+  "Prefere só assistir aulas em vídeo",
+  "Procura VBA, macros, Power BI ou Python (ainda não temos)",
+  "Precisa das fórmulas em inglês (aqui elas são em português, como no Excel brasileiro)",
 ];
 
 export default function Pro() {
@@ -43,36 +83,37 @@ export default function Pro() {
   const total = n.questoesPro + n.extras;
 
   return (
-    <div className="space-y-20 pb-8">
+    <div className="space-y-24 pb-8">
       {/* Topo */}
       <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
         <div className="space-y-6">
           <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-semibold text-ink">Planilhês Pro</span>
-          <h1 className="font-display text-4xl leading-[1.05] font-extrabold tracking-tight sm:text-5xl">
-            Pratique até o Excel virar reflexo.
-          </h1>
+          <h1 className="font-display text-4xl leading-[1.05] font-extrabold tracking-tight sm:text-6xl">Pratique até o Excel virar reflexo.</h1>
           <p className="max-w-xl text-lg text-muted">
-            O grátis te mostra o caminho. O Pro libera a trilha inteira: {n.modulos} módulos, do SOMA ao PROCV, com {total} exercícios corrigidos na
-            hora, numa planilha de verdade, em português.
+            O grátis te mostra o caminho. O Pro libera a trilha inteira: {n.modulos} módulos, do SOMA ao PROCV, com {total} exercícios corrigidos na hora,
+            numa planilha de verdade, em português.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Cta aVenda={aVenda} plano="anual" grande>
               Assinar o Pro
             </Cta>
-            <a href="#planos" className="rounded-lg border border-ink bg-surface px-6 py-3.5 font-semibold hover:bg-bg">
-              Ver os planos
+            <a href="#amostra" className="rounded-lg border border-ink bg-surface px-6 py-3.5 font-semibold hover:bg-bg">
+              Testar uma lição grátis
             </a>
           </div>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-            {[`Garantia de ${PRECO.garantiaDias} dias`, "Cancele quando quiser", "Pix ou cartão"].map((t) => (
-              <li key={t} className="flex items-center gap-1.5">
-                <span className="text-success" aria-hidden>
-                  ✓
-                </span>
-                {t}
-              </li>
-            ))}
-          </ul>
+          <div className="flex items-center gap-4">
+            <SeloGarantia dias={PRECO.garantiaDias} className="h-20 w-20 shrink-0" />
+            <ul className="space-y-1 text-sm text-muted">
+              {[`Garantia incondicional de ${PRECO.garantiaDias} dias`, "Cancele quando quiser", "Pix ou cartão"].map((t) => (
+                <li key={t} className="flex items-center gap-1.5">
+                  <span className="text-success" aria-hidden>
+                    ✓
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <Ilustracao />
       </section>
@@ -93,10 +134,138 @@ export default function Pro() {
         ))}
       </section>
 
+      {/* Carta: a dor */}
+      <section className="mx-auto max-w-2xl space-y-5 text-lg leading-relaxed">
+        <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Você não precisa de mais um curso de Excel.</h2>
+        <p>
+          Você já assistiu aula de PROCV. Talvez várias. Na hora fez sentido. Uma semana depois, diante de uma planilha de verdade, a fórmula não sai:
+          aparece <code className="rounded bg-header px-1.5 font-mono text-base">#N/D</code>, você não lembra a ordem dos argumentos e volta para o
+          vídeo.
+        </p>
+        <p>
+          O problema não é você. É o formato. Ver alguém fazendo dá a <strong>sensação</strong> de aprender, mas a habilidade só aparece quando você
+          escreve a fórmula com as próprias mãos, erra, entende o porquê e tenta de novo.
+        </p>
+        <p>
+          É para isso que o Planilhês existe: em vez de horas de vídeo, centenas de exercícios curtos numa planilha que corrige na hora. Alguns
+          minutos por dia, e o PROCV do teste da vaga, do concurso ou do relatório de segunda-feira sai sem você precisar procurar no Google.
+        </p>
+        <p className="font-semibold">Equipe Planilhês</p>
+      </section>
+
+      {/* Método */}
+      <Secao rotulo="O método" titulo="Ler, escrever, conferir. E repetir.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {METODO.map((m) => (
+            <div key={m.numero} className="rounded-2xl border border-line bg-surface p-6">
+              <span className="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-accent font-display text-lg font-extrabold text-ink">{m.numero}</span>
+              <p className="mb-2 text-lg font-semibold">{m.titulo}</p>
+              <p className="text-muted">{m.texto}</p>
+            </div>
+          ))}
+        </div>
+      </Secao>
+
+      {/* Amostra jogável */}
+      <section id="amostra" className="scroll-mt-20 space-y-6">
+        <div>
+          <p className="mb-2 text-xs font-bold tracking-wider text-success uppercase">Experimente</p>
+          <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Uma lição do Módulo 4, de graça, aqui mesmo</h2>
+          <p className="mt-2 max-w-2xl text-muted">É assim que todo o Pro funciona: você lê o problema, escreve a fórmula e a planilha confere. Sem cadastro.</p>
+        </div>
+        <ExercicioEmbutido slug={LICAO_AMOSTRA} />
+      </section>
+
+      {/* Currículo */}
+      <Secao rotulo="O que tem dentro" titulo="O currículo completo, lição por lição">
+        <div className="space-y-3">
+          {MODULOS.filter((m) => m.slug !== "intro").map((m, i) => {
+            const licoes = exerciciosDoModulo(m.slug);
+            const questoes = licoes.reduce((s, l) => s + Math.max(1, questoesDaLicao(l.slug).length), 0);
+            return (
+              <details key={m.slug} className="group rounded-2xl border border-line bg-surface" open={i === 0}>
+                <summary className="flex cursor-pointer list-none items-center gap-4 p-5">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-ink font-display font-bold text-accent">{m.numero}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-semibold">{m.titulo}</span>
+                    <span className="block text-sm text-muted">
+                      {licoes.length} lições · {questoes} questões · teste no final
+                    </span>
+                  </span>
+                  <span className="text-2xl text-muted transition group-open:rotate-45" aria-hidden>
+                    +
+                  </span>
+                </summary>
+                <div className="border-t border-line px-5 pt-3 pb-5">
+                  <p className="mb-3 text-sm text-muted">{m.descricao}</p>
+                  <ol className="space-y-1.5">
+                    {licoes.map((l, j) => (
+                      <li key={l.slug} className="flex items-center gap-3 text-sm">
+                        <span className="w-5 shrink-0 text-right font-mono text-muted">{j + 1}</span>
+                        <span className="min-w-0 flex-1">{l.titulo}</span>
+                        {l.plano === "free" ? (
+                          <Link href={`/exercicios/${l.slug}`} className="shrink-0 rounded-full bg-success-bg px-2 py-0.5 text-xs font-semibold text-success">
+                            grátis
+                          </Link>
+                        ) : (
+                          <span className="shrink-0 rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">Pro</span>
+                        )}
+                      </li>
+                    ))}
+                    <li className="flex items-center gap-3 border-t border-line pt-2 text-sm font-semibold">
+                      <span className="w-5 shrink-0 text-right" aria-hidden>
+                        ★
+                      </span>
+                      <span className="flex-1">Teste do módulo: 5 questões, sem dicas</span>
+                      <span className="shrink-0 rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">Pro</span>
+                    </li>
+                  </ol>
+                </div>
+              </details>
+            );
+          })}
+          <p className="text-sm text-muted">
+            Mais {n.extras} exercícios de prática extra, divididos pelos módulos, e o arquivo com todos os {NOME_DESAFIO} anteriores.
+          </p>
+        </div>
+      </Secao>
+
+      {/* Para quem é */}
+      <Secao rotulo="Para quem é" titulo="Feito para quem precisa usar, não só entender">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-line bg-surface p-6">
+            <p className="mb-4 font-semibold">O Pro é para você se…</p>
+            <ul className="space-y-3">
+              {PARA_QUEM.map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success text-xs font-bold text-white" aria-hidden>
+                    ✓
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-line bg-bg p-6">
+            <p className="mb-4 font-semibold">Talvez não seja, se você…</p>
+            <ul className="space-y-3 text-muted">
+              {NAO_E.map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-header text-xs font-bold" aria-hidden>
+                    ×
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Secao>
+
       {/* Grátis x Pro */}
       <Secao rotulo="Comparação" titulo="O que muda quando você assina">
         <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-          <table className="w-full text-left text-sm sm:text-base">
+          <table className="w-full text-left text-sm sm:text-base" data-testid="comparacao">
             <thead className="bg-header text-sm">
               <tr>
                 <th className="px-4 py-3 font-semibold sm:px-6">Recurso</th>
@@ -128,52 +297,11 @@ export default function Pro() {
         </div>
       </Secao>
 
-      {/* A trilha */}
-      <Secao rotulo="A trilha" titulo="Do primeiro clique ao PROCV, em ordem">
-        <ol className="grid gap-3 sm:grid-cols-2">
-          {MODULOS.filter((m) => m.slug !== "intro").map((m) => {
-            const licoes = exerciciosDoModulo(m.slug).length;
-            return (
-              <li key={m.slug} className="flex gap-4 rounded-2xl border border-line bg-surface p-5">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-ink font-display font-bold text-accent">{m.numero}</span>
-                <div className="min-w-0">
-                  <p className="font-semibold">{m.titulo}</p>
-                  <p className="text-sm text-muted">{m.descricao}</p>
-                  <p className="mt-1 text-xs text-muted">
-                    {licoes} lições · a 1ª é grátis · teste no final
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      </Secao>
-
-      {/* Chegando */}
-      <Secao rotulo="Chegando ao Pro" titulo="Sem custo extra para quem assina">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["Pacote do mês", "Exercícios em torno de um tema: orçamento, Imposto de Renda, Black Friday, 13º."],
-            ["Excel para concurso", "Questões no formato das bancas, com a planilha para testar a resposta."],
-            ["Simulado de vaga", "O teste prático de Excel dos processos seletivos, cronometrado."],
-            ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
-          ].map(([titulo, texto]) => (
-            <div key={titulo} className="rounded-2xl border border-dashed border-line bg-bg p-5">
-              <span className="mb-2 inline-block rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">em breve</span>
-              <p className="font-semibold">{titulo}</p>
-              <p className="text-sm text-muted">{texto}</p>
-            </div>
-          ))}
-        </div>
-      </Secao>
-
       {/* Planos */}
       <Secao id="planos" rotulo="Planos" titulo="Menos que um lanche por mês">
         <div className="grid gap-4 md:grid-cols-2" data-testid="precos-pro">
           <div className="relative flex flex-col rounded-3xl border-2 border-ink bg-surface p-6 shadow-xl sm:p-8">
-            <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">
-              {economiaAnual()}% mais barato
-            </span>
+            <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">{economiaAnual()}% mais barato</span>
             <p className="font-semibold">Anual</p>
             <p className="mt-2 font-display text-5xl font-extrabold">
               {reais(PRECO.anualPorMes)}
@@ -200,13 +328,45 @@ export default function Pro() {
             </div>
           </div>
         </div>
-        <div className="mt-4 flex flex-wrap items-center gap-4 rounded-2xl bg-success-bg p-5" data-testid="garantia">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-success font-display text-xl font-bold text-white" aria-hidden>
-            {PRECO.garantiaDias}
-          </span>
-          <p className="flex-1 text-ink">
-            <strong>Garantia de {PRECO.garantiaDias} dias.</strong> Assine, faça os exercícios e, se não for para você, devolvemos o valor inteiro.
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-5">
+          <div>
+            <p className="font-semibold">Para a sua equipe ou turma</p>
+            <p className="text-sm text-muted">Licenças em grupo e um piloto de 30 dias, com o resultado medido antes e depois.</p>
+          </div>
+          <Link href="/empresas" className="rounded-lg border border-ink bg-white px-5 py-2.5 font-semibold hover:bg-bg">
+            Falar com a gente
+          </Link>
+        </div>
+      </Secao>
+
+      {/* Garantia */}
+      <section className="flex flex-col items-center gap-8 rounded-3xl bg-success-bg p-8 text-center sm:flex-row sm:p-12 sm:text-left" data-testid="garantia">
+        <SeloGarantia dias={PRECO.garantiaDias} className="h-44 w-44 shrink-0" />
+        <div className="space-y-3">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight">Garantia incondicional de {PRECO.garantiaDias} dias</h2>
+          <p className="text-lg text-ink">
+            Assine, faça os exercícios, teste os módulos. Se em {PRECO.garantiaDias} dias você achar que não é para você, mande um e-mail e devolvemos o
+            valor inteiro. Sem perguntas, sem formulário de retenção.
           </p>
+          <p className="text-sm text-muted">O risco é todo nosso.</p>
+        </div>
+      </section>
+
+      {/* Chegando */}
+      <Secao rotulo="Chegando ao Pro" titulo="Sem custo extra para quem assina">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Pacote do mês", "Exercícios em torno de um tema: orçamento, Imposto de Renda, Black Friday, 13º."],
+            ["Excel para concurso", "Questões no formato das bancas, com a planilha para testar a resposta."],
+            ["Simulado de vaga", "O teste prático de Excel dos processos seletivos, cronometrado."],
+            ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
+          ].map(([titulo, texto]) => (
+            <div key={titulo} className="rounded-2xl border border-dashed border-line bg-bg p-5">
+              <span className="mb-2 inline-block rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">em breve</span>
+              <p className="font-semibold">{titulo}</p>
+              <p className="text-sm text-muted">{texto}</p>
+            </div>
+          ))}
         </div>
       </Secao>
 
@@ -231,7 +391,9 @@ export default function Pro() {
       <section className="flex flex-col items-start gap-6 rounded-3xl bg-ink p-8 text-white sm:p-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="space-y-2">
           <p className="font-display text-3xl font-extrabold sm:text-4xl">O próximo PROCV você faz de olhos fechados.</p>
-          <p className="text-white/70">A partir de {reais(PRECO.anualPorMes)}/mês, com garantia de {PRECO.garantiaDias} dias.</p>
+          <p className="text-white/70">
+            A partir de {reais(PRECO.anualPorMes)}/mês, com garantia de {PRECO.garantiaDias} dias.
+          </p>
         </div>
         {aVenda ? (
           <Link href="/assinar?plano=anual" className="shrink-0 rounded-lg bg-accent px-6 py-3.5 font-semibold text-ink hover:brightness-95">
