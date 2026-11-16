@@ -1,7 +1,56 @@
-<div style="font-family: Arial, Helvetica, sans-serif; max-width: 480px; margin: 0 auto; color: #16181d;">
-  <p style="font-size: 20px; font-weight: bold; margin: 0 0 16px;">Planilhês</p>
-  <p style="font-size: 16px; margin: 0 0 16px;">Seu código para entrar:</p>
-  <p style="font-family: 'Courier New', monospace; font-size: 32px; font-weight: bold; letter-spacing: 6px; background: #fff6cc; border-radius: 8px; padding: 16px; text-align: center; margin: 0 0 16px;">{{ .Token }}</p>
-  <p style="font-size: 14px; color: #4a4e57; margin: 0 0 8px;">Digite o código na tela de login. Ele vale por 10 minutos e só pode ser usado uma vez.</p>
-  <p style="font-size: 14px; color: #4a4e57; margin: 0;">Não pediu este código? Pode ignorar este e-mail: ninguém entra na sua conta sem ele.</p>
-</div>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Seu código de acesso</title>
+</head>
+<body style="margin:0;padding:0;background:#f7f7f2;">
+<!-- Aparece na prévia da caixa de entrada (e na notificação do celular). -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">Seu código é {{ .Token }}. Vale por 10 minutos.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f7f2;">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:480px;">
+        <!-- Marca -->
+        <tr>
+          <td style="padding:0 4px 20px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="36" height="36" align="center" valign="middle" style="width:36px;height:36px;background:#16181d;border-radius:8px;font-family:'Courier New',Courier,monospace;font-size:20px;font-weight:bold;color:#ffd23f;line-height:36px;">=</td>
+                <td style="padding-left:10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:#16181d;">Planilhês</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- Cartão -->
+        <tr>
+          <td style="background:#ffffff;border:1px solid #e4e4dc;border-radius:16px;padding:32px 28px;">
+            <h1 style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.25;color:#16181d;">Seu código para entrar</h1>
+            <p style="margin:0 0 24px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#4a4e57;">Use o código abaixo para entrar na sua conta do Planilhês.</p>
+
+            <!-- O código numa "barra de fórmulas", como no simulador -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e4e4dc;border-radius:10px;border-collapse:separate;">
+              <tr>
+                <td width="56" align="center" valign="middle" style="width:56px;background:#f0efe8;border-right:1px solid #e4e4dc;border-radius:10px 0 0 10px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;color:#4a4e57;">fx</td>
+                <td align="center" valign="middle" style="padding:14px 8px;background:#fff6cc;border:2px solid #0f766e;border-radius:0 10px 10px 0;font-family:'Courier New',Courier,monospace;font-size:34px;font-weight:bold;letter-spacing:8px;color:#16181d;">{{ .Token }}</td>
+              </tr>
+            </table>
+
+            <p style="margin:24px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#4a4e57;">Digite o código na tela do Planilhês. Ele vale por <strong style="color:#16181d;">10 minutos</strong> e só pode ser usado uma vez.</p>
+          </td>
+        </tr>
+        <!-- Rodapé -->
+        <tr>
+          <td style="padding:20px 4px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#4a4e57;">
+            <p style="margin:0;">Não pediu este código? Pode ignorar este e-mail: ninguém entra na sua conta sem ele.</p>
+            <p style="margin:12px 0 0;color:#8a8d94;">Planilhês · exercícios de Excel na prática, em português<br><a href="https://planilhes.com.br" style="color:#0f766e;text-decoration:none;">planilhes.com.br</a></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
