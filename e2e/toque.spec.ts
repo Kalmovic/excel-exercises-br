@@ -51,7 +51,8 @@ test("celular: um toque seleciona sem abrir o teclado; o toque duplo abre", asyn
   const editor = page.getByTestId("editor-celula");
   await cel(page, "B3").tap();
   await expect(editor).toHaveAttribute("inputmode", "none"); // teclado do celular fechado
-  await page.getByTestId("preencher-abaixo").tap(); // botão também não abre
+  await page.getByTestId("selecionar-intervalo").tap(); // botão também não abre
+  await page.getByTestId("selecionar-intervalo").tap(); // (liga e desliga o modo, sem mudar dados)
   await expect(editor).toHaveAttribute("inputmode", "none");
   await cel(page, "B3").dblclick();
   await expect(editor).toHaveAttribute("inputmode", "text"); // agora o teclado abre
