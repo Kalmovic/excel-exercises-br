@@ -25,6 +25,8 @@ type Props = {
   botaoVerificarRef?: Ref<HTMLButtonElement>;
   /** Simulado: sem Verificar, dicas nem solução (a correção é na entrega da prova). */
   semCorrecao?: boolean;
+  /** Fora da trilha (ex.: questão de concurso): sem "próximo exercício" nem "fim do módulo". */
+  avulso?: boolean;
 };
 
 export function PainelExercicio({
@@ -42,6 +44,7 @@ export function PainelExercicio({
   extra,
   botaoVerificarRef,
   semCorrecao = false,
+  avulso = false,
 }: Props) {
   // A solução comentada aparece ao acertar, ou se o aluno pedir depois de algumas tentativas.
   // Nunca sozinha: errar não pode virar atalho para a resposta.
@@ -200,7 +203,7 @@ export function PainelExercicio({
           Próximo módulo →
         </Link>
       )}
-      {concluido && !proximo && !proximoModulo && (
+      {concluido && !avulso && !proximo && !proximoModulo && (
         <Link href="/" className="self-start text-success underline">
           Este foi o último exercício do módulo. Voltar para a lista
         </Link>

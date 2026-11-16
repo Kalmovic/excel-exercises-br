@@ -1,6 +1,7 @@
 "use client";
 
 import { useEstado, useSimulador } from "./contexto";
+import { TextoRico } from "./TextoRico";
 
 /** Alternativas da múltipla escolha. A escolha fica em `resposta` (o índice, como texto). */
 export function Alternativas({ opcoes, bloqueado }: { opcoes: { texto: string }[]; bloqueado: boolean }) {
@@ -28,7 +29,7 @@ export function Alternativas({ opcoes, bloqueado }: { opcoes: { texto: string }[
               className="mt-1"
             />
             <span>
-              <span className="mr-1 font-mono text-muted">({letras[i]})</span> {o.texto}
+              <span className="mr-1 font-mono text-muted">({letras[i]})</span> <TextoRico texto={o.texto} />
             </span>
           </label>
         );

@@ -265,4 +265,5 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] `/simulado` (3 níveis) e `/simulado/[nivel]`: planilha de empresa com 8 tarefas, tempo (20/25/30 min), ir e voltar sem perder a resposta (React Activity), sem dicas nem correção até a entrega, entrega automática no fim do tempo, nota, aprovação com 70% e resolução de cada tarefa. Resultado guardado em `testes` (`simulado-<nivel>`), que já sincroniza com a conta.
 - [x] Conteúdo em `src/content/simulados/*.json` (fora de `exercicios`: não entra na trilha nem no sitemap), validado em `src/content/simulados.test.ts` pelo motor.
 - [x] Corrigido: o gabarito do admin aparecia no teste de módulo (e apareceria no simulado), porque o painel usava `admin`, que também é true nesses modos.
-- [ ] Próximo: questões de concurso.
+- [x] Questões de concurso (`/concurso`, `/concurso/[slug]`): 30 questões inéditas no estilo de FCC, Cesgranrio, Vunesp, FGV e Cebraspe (certo/errado), com a planilha ao lado para testar as alternativas, filtro por banca e tema e explicação de cada alternativa errada. Conteúdo em `src/content/concurso/questoes.json`, conferido no motor por `src/content/concurso.test.ts` (campo `conferir`).
+- [ ] Ainda "em breve" no Pro: pacote do mês e certificado.

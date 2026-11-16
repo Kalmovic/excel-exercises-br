@@ -74,6 +74,8 @@ type Props = {
    * uma função que corrige o estado atual da planilha, chamada na entrega da prova.
    */
   simulado?: { registrar: (corrigirAgora: () => boolean) => void };
+  /** Fora da trilha (questão de concurso): a página cuida da navegação. */
+  avulso?: boolean;
 };
 
 export default function Simulador({
@@ -86,6 +88,7 @@ export default function Simulador({
   licao,
   teste,
   simulado,
+  avulso = false,
 }: Props) {
   // Celular sem teclado: exercícios "use as setas" trocam o texto e aceitam toque.
   const semTeclado = useSemTeclado();
@@ -322,6 +325,14 @@ export default function Simulador({
                   </p>
                 ))}
               </div>
+              {ex.comPlanilha && (
+                <div className="space-y-2" data-testid="planilha-de-teste">
+                  <p className="text-xs text-muted">Planilha para testar as alternativas: o que você digita aqui não conta como resposta.</p>
+                  {semTeclado && <BarraToque />}
+                  <BarraFormulas />
+                  <Grade larguras={ex.grade.larguras} />
+                </div>
+              )}
               <Alternativas opcoes={ex.opcoes} bloqueado={concluido} />
             </div>
           )}
@@ -349,6 +360,7 @@ export default function Simulador({
           proximoModulo={trilha?.proximoModulo}
           onVerificar={verificar}
           semCorrecao={!!simulado}
+          avulso={avulso}
           onDica={() => {
             const n = Math.min(dicasVistas + 1, ex.dicas.length);
             setDicasVistas(n);

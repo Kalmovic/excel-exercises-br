@@ -29,13 +29,16 @@ export function PreviaExercicio({ exercicio: ex }: { exercicio: Exercicio }) {
           </div>
         )}
         {ex.type === "multiple_choice" ? (
-          <ol className="list-[lower-alpha] space-y-2 pl-6" data-testid="alternativas-estaticas">
-            {ex.opcoes.map((o, i) => (
-              <li key={i} className="rounded-lg border border-line bg-white px-4 py-3 text-[15px] [overflow-wrap:anywhere]">
-                {o.texto}
-              </li>
-            ))}
-          </ol>
+          <>
+            {ex.comPlanilha && <GradeEstatica grade={montarGrade(ex)} />}
+            <ol className="list-[lower-alpha] space-y-2 pl-6" data-testid="alternativas-estaticas">
+              {ex.opcoes.map((o, i) => (
+                <li key={i} className="rounded-lg border border-line bg-white px-4 py-3 text-[15px] [overflow-wrap:anywhere]">
+                  <TextoRico texto={o.texto} />
+                </li>
+              ))}
+            </ol>
+          </>
         ) : (
           <GradeEstatica grade={montarGrade(ex)} />
         )}

@@ -1,0 +1,2087 @@
+[
+  {
+    "id": "7e9f2df8-e4a1-5e88-8cba-5a698e63ec68",
+    "slug": "concurso-01-ordem-das-operacoes",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 1,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ordem das operações",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, um técnico digitou, em uma célula vazia, a fórmula `=2+3*2^2`.",
+      "O resultado exibido na célula é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Primeiro a potência (2^2 = 4), depois a multiplicação (3*4 = 12) e por fim a soma (2+12 = 14)."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "14"
+      },
+      {
+        "texto": "20",
+        "dica": "Confira a ordem: a soma não é feita antes da multiplicação."
+      },
+      {
+        "texto": "38",
+        "dica": "A potência vale só para o número imediatamente antes do ^."
+      },
+      {
+        "texto": "64",
+        "dica": "Os parênteses que mudariam a ordem não estão na fórmula."
+      },
+      {
+        "texto": "100",
+        "dica": "Releia a ordem de precedência: potência, depois multiplicação, depois soma."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Operadores",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=2+3*2^2",
+        "esperado": 14
+      }
+    ]
+  },
+  {
+    "id": "80799e72-85df-5990-94e1-43022dfa2a8e",
+    "slug": "concurso-02-tres-contagens-na-mesma-formula",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Três contagens na mesma fórmula",
+    "enunciado": [
+      "Considere o intervalo A1:A6 da planilha ao lado: A1 = 5, A2 = ok, A3 vazia, A4 = 0, A5 = 12 e A6 vazia.",
+      "O resultado de `=CONT.NÚM(A1:A6)+CONT.VALORES(A1:A6)+CONTAR.VAZIO(A1:A6)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "5"
+        },
+        "A2": {
+          "entrada": "ok"
+        },
+        "A4": {
+          "entrada": "0"
+        },
+        "A5": {
+          "entrada": "12"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "CONT.NÚM conta 3 (5, 0 e 12), CONT.VALORES conta 4 (inclui o texto) e CONTAR.VAZIO conta 2. Total: 9."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "9"
+      },
+      {
+        "texto": "6",
+        "dica": "Confira se o zero conta como número e como valor."
+      },
+      {
+        "texto": "7",
+        "dica": "CONT.VALORES conta também o texto."
+      },
+      {
+        "texto": "8",
+        "dica": "Confira quantas células estão vazias."
+      },
+      {
+        "texto": "10",
+        "dica": "O texto não é contado por CONT.NÚM."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Funções de contagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.NÚM(A1:A6)+CONT.VALORES(A1:A6)+CONTAR.VAZIO(A1:A6)",
+        "esperado": 9
+      }
+    ]
+  },
+  {
+    "id": "1a1c8a1a-6dc9-5a17-a091-c2dfc372886e",
+    "slug": "concurso-03-procv-por-faixa",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV por faixa",
+    "enunciado": [
+      "A tabela A1:B5 define a comissão por faixa de vendas. Na coluna A estão os valores mínimos de cada faixa, em ordem crescente.",
+      "O resultado de `=PROCV(7500;A2:B5;2;VERDADEIRO)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendas a partir de",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0"
+        },
+        "B2": {
+          "entrada": "0%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "1000"
+        },
+        "B3": {
+          "entrada": "2%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "5000"
+        },
+        "B4": {
+          "entrada": "5%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "10000"
+        },
+        "B5": {
+          "entrada": "8%",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Com VERDADEIRO (busca aproximada), o PROCV fica com a maior faixa que não passa de 7.500: a de 5.000, comissão de 5%."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "5%"
+      },
+      {
+        "texto": "8%",
+        "dica": "Com VERDADEIRO, o PROCV não pega a faixa seguinte: ele fica no maior valor que não passa do procurado."
+      },
+      {
+        "texto": "2%",
+        "dica": "7.500 já passou do início da faixa de 5.000."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "Com VERDADEIRO, não é preciso achar o valor exato."
+      },
+      {
+        "texto": "0%",
+        "dica": "Confira em que faixa 7.500 se encaixa."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(7500;A2:B5;2;VERDADEIRO)",
+        "esperado": 0.05
+      }
+    ]
+  },
+  {
+    "id": "a47c552d-9ddf-5d8f-88cd-e7fcec2e5ccd",
+    "slug": "concurso-04-pedaco-de-um-codigo",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pedaço de um código",
+    "enunciado": [
+      "A célula A1 contém o texto **SP-2026-0417**.",
+      "A fórmula `=EXT.TEXTO(A1;4;4)` retorna:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "SP-2026-0417"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "EXT.TEXTO(texto; início; quantos): a partir do 4º caractere, 4 caracteres: 2026."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "2026"
+      },
+      {
+        "texto": "-202",
+        "dica": "Conte a posição inicial de novo: o 4º caractere."
+      },
+      {
+        "texto": "SP-2",
+        "dica": "Essa é a parte da esquerda; EXT.TEXTO começa no meio."
+      },
+      {
+        "texto": "0417",
+        "dica": "O último bloco começa em outra posição."
+      },
+      {
+        "texto": "026-",
+        "dica": "Confira onde começa a contagem: o primeiro caractere é a posição 1."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=EXT.TEXTO(A1;4;4)",
+        "esperado": "2026"
+      }
+    ]
+  },
+  {
+    "id": "f157bd4f-2ffa-5ee9-8daf-5cabcddbab79",
+    "slug": "concurso-05-copia-para-a-direita",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Cópia para a direita",
+    "enunciado": [
+      "A célula B2 contém a fórmula `=B1*$A2`. Ela é copiada para a célula D2.",
+      "A fórmula em D2 será:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A2": {
+          "entrada": "3"
+        },
+        "B1": {
+          "entrada": "10"
+        },
+        "C1": {
+          "entrada": "20"
+        },
+        "D1": {
+          "entrada": "30"
+        },
+        "B2": {
+          "entrada": "=B1*$A2"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Copiar duas colunas para a direita: B1 vira D1. Em $A2 a coluna está travada e a linha não muda (cópia na mesma linha)."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=D1*$A2`"
+      },
+      {
+        "texto": "`=D1*$C2`",
+        "dica": "O $ antes da letra trava a coluna."
+      },
+      {
+        "texto": "`=B1*$A2`",
+        "dica": "B1 não tem $: ao copiar, ela anda."
+      },
+      {
+        "texto": "`=D1*A2`",
+        "dica": "O $ não some quando a fórmula é copiada."
+      },
+      {
+        "texto": "`=D2*$A2`",
+        "dica": "Ao copiar na mesma linha, os números das linhas não mudam."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Referências",
+    "comPlanilha": true
+  },
+  {
+    "id": "7749466f-f58b-5a4f-aa94-89d809be994e",
+    "slug": "concurso-06-formato-de-porcentagem",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 6,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Formato de porcentagem",
+    "enunciado": [
+      "A célula A1 contém o número 0,25. É aplicado o formato **Porcentagem**, sem casas decimais.",
+      "A célula passa a exibir:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "O formato de porcentagem mostra o número × 100 com o símbolo %: 0,25 aparece como 25%. O valor guardado continua 0,25."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "25%"
+      },
+      {
+        "texto": "0,25%",
+        "dica": "O formato de porcentagem multiplica a exibição por 100."
+      },
+      {
+        "texto": "2500%",
+        "dica": "Multiplica por 100 uma vez só."
+      },
+      {
+        "texto": "0%",
+        "dica": "O valor não é arredondado para baixo assim."
+      },
+      {
+        "texto": "25",
+        "dica": "O formato acrescenta o símbolo %."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Formatação",
+    "comPlanilha": false
+  },
+  {
+    "id": "8c46baec-d443-5623-aa82-cdc4c84ae83f",
+    "slug": "concurso-07-referencia-absoluta-na-copia",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 7,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Referência absoluta na cópia",
+    "enunciado": [
+      "Na planilha, a célula C1 contém `=A1*$B$1`. Um analista copia C1 para C3.",
+      "Qual fórmula ficará em C3?"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10"
+        },
+        "A2": {
+          "entrada": "20"
+        },
+        "A3": {
+          "entrada": "30"
+        },
+        "B1": {
+          "entrada": "2"
+        },
+        "C1": {
+          "entrada": "=A1*$B$1"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A1 é relativa e desce duas linhas (A3). $B$1 é absoluta e não muda. Teste: copie C1 e cole em C3 na planilha."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=A3*$B$1`"
+      },
+      {
+        "texto": "`=A3*$B$3`",
+        "dica": "Com $ na coluna e na linha, B1 fica parada."
+      },
+      {
+        "texto": "`=A1*$B$1`",
+        "dica": "A1 não tem $: ela acompanha a cópia."
+      },
+      {
+        "texto": "`=C3*$B$1`",
+        "dica": "Copiar na mesma coluna não muda a letra."
+      },
+      {
+        "texto": "`=A3*B3`",
+        "dica": "Os $ continuam na fórmula copiada."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Referências",
+    "comPlanilha": true
+  },
+  {
+    "id": "c16b89e7-63dc-52cd-9ce5-e233c8af078c",
+    "slug": "concurso-08-se-dentro-de-se",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 8,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SE dentro de SE",
+    "enunciado": [
+      "A célula A1 contém o valor 7.",
+      "A fórmula `=SE(A1>=9;\"A\";SE(A1>=7;\"B\";\"C\"))` retorna:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "7"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "7 não é maior ou igual a 9, então vai para o SE de dentro: 7>=7 é verdadeiro, resultado \"B\"."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "B"
+      },
+      {
+        "texto": "A",
+        "dica": "O primeiro teste é A1>=9."
+      },
+      {
+        "texto": "C",
+        "dica": "O segundo SE é avaliado quando o primeiro é falso."
+      },
+      {
+        "texto": "FALSO",
+        "dica": "As duas saídas do SE interno são textos."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "A fórmula é válida."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(A1>=9;\"A\";SE(A1>=7;\"B\";\"C\"))",
+        "esperado": "B"
+      }
+    ]
+  },
+  {
+    "id": "596377ee-cc22-5236-a771-a95066659fd2",
+    "slug": "concurso-09-contar-notas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 9,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contar notas",
+    "enunciado": [
+      "O intervalo A1:A6 contém as notas 4, 7, 7, 9, 5 e 10.",
+      "O resultado de `=CONT.SE(A1:A6;\">=7\")` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "4"
+        },
+        "A2": {
+          "entrada": "7"
+        },
+        "A3": {
+          "entrada": "7"
+        },
+        "A4": {
+          "entrada": "9"
+        },
+        "A5": {
+          "entrada": "5"
+        },
+        "A6": {
+          "entrada": "10"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Notas maiores ou iguais a 7: 7, 7, 9 e 10. São 4."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "4"
+      },
+      {
+        "texto": "3",
+        "dica": "Confira se o 7 entra quando o critério tem o =."
+      },
+      {
+        "texto": "33",
+        "dica": "CONT.SE conta células, não soma valores."
+      },
+      {
+        "texto": "2",
+        "dica": "Conte todas as notas que atendem ao critério."
+      },
+      {
+        "texto": "6",
+        "dica": "O critério deixa algumas notas de fora."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "CONT.SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE(A1:A6;\">=7\")",
+        "esperado": 4
+      }
+    ]
+  },
+  {
+    "id": "f27a7f11-8d67-5eb6-8133-1d8a56e42640",
+    "slug": "concurso-10-diferenca-entre-datas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 10,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Diferença entre datas",
+    "enunciado": [
+      "A1 contém 10/03/2026 e B1 contém 25/03/2026, ambas formatadas como data.",
+      "A fórmula `=B1-A1`, numa célula com formato Geral, exibe:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10/03/2026"
+        },
+        "B1": {
+          "entrada": "25/03/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Datas são números (dias). 25/03 menos 10/03 dá 15 dias."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "15"
+      },
+      {
+        "texto": "16",
+        "dica": "A subtração não conta o primeiro dia."
+      },
+      {
+        "texto": "14",
+        "dica": "Confira a conta de novo."
+      },
+      {
+        "texto": "25/03/2026",
+        "dica": "O resultado é um número de dias."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Datas são números para o Excel; dá para subtrair."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B1-A1",
+        "esperado": 15
+      }
+    ]
+  },
+  {
+    "id": "e7ea4f99-ce49-5bd0-bce8-d43f28f6d28b",
+    "slug": "concurso-11-contar-com-duas-condicoes",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 11,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contar com duas condições",
+    "enunciado": [
+      "A planilha registra vendas por região (A2:A6) e valor (B2:B6).",
+      "O resultado de `=CONT.SES(A2:A6;\"Sul\";B2:B6;\">1000\")` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Sul"
+        },
+        "B2": {
+          "entrada": "500"
+        },
+        "A3": {
+          "entrada": "Norte"
+        },
+        "B3": {
+          "entrada": "1200"
+        },
+        "A4": {
+          "entrada": "Sul"
+        },
+        "B4": {
+          "entrada": "1500"
+        },
+        "A5": {
+          "entrada": "Sul"
+        },
+        "B5": {
+          "entrada": "2000"
+        },
+        "A6": {
+          "entrada": "Norte"
+        },
+        "B6": {
+          "entrada": "300"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Linhas do Sul com valor acima de 1.000: 1.500 e 2.000. São 2."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "2"
+      },
+      {
+        "texto": "3",
+        "dica": "As duas condições precisam valer na mesma linha."
+      },
+      {
+        "texto": "1",
+        "dica": "Confira todas as linhas do Sul."
+      },
+      {
+        "texto": "5",
+        "dica": "CONT.SES não conta todas as linhas."
+      },
+      {
+        "texto": "3500",
+        "dica": "CONT.SES conta linhas, não soma valores."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "CONT.SES",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SES(A2:A6;\"Sul\";B2:B6;\">1000\")",
+        "esperado": 2
+      }
+    ]
+  },
+  {
+    "id": "d690b1b7-66f7-5005-bb28-670311c3eace",
+    "slug": "concurso-12-soma-por-vendedor",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Soma por vendedor",
+    "enunciado": [
+      "A coluna A traz o vendedor e a coluna B o valor de cada venda.",
+      "O resultado de `=SOMASE(A2:A6;\"Ana\";B2:B6)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "100"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "B3": {
+          "entrada": "200"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "50"
+        },
+        "A5": {
+          "entrada": "Caio"
+        },
+        "B5": {
+          "entrada": "300"
+        },
+        "A6": {
+          "entrada": "Ana"
+        },
+        "B6": {
+          "entrada": "25"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Vendas da Ana: 100 + 50 + 25 = 175."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "175"
+      },
+      {
+        "texto": "3",
+        "dica": "SOMASE soma os valores, não conta as vendas."
+      },
+      {
+        "texto": "675",
+        "dica": "Só entram as linhas da Ana."
+      },
+      {
+        "texto": "100",
+        "dica": "Há mais de uma venda da Ana."
+      },
+      {
+        "texto": "58,33",
+        "dica": "SOMASE não calcula média."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "SOMASE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMASE(A2:A6;\"Ana\";B2:B6)",
+        "esperado": 175
+      }
+    ]
+  },
+  {
+    "id": "44f23124-2051-557a-b9a9-822de13d6863",
+    "slug": "concurso-13-soma-com-intervalo-e-celula",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMA com intervalo e célula",
+    "enunciado": [
+      "Na planilha, A1:A4 contém 10, 20, 30 e 40, e B1:B4 contém 1, 2, 3 e 4.",
+      "O resultado de `=SOMA(A1:A3;B2)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10"
+        },
+        "A2": {
+          "entrada": "20"
+        },
+        "A3": {
+          "entrada": "30"
+        },
+        "A4": {
+          "entrada": "40"
+        },
+        "B1": {
+          "entrada": "1"
+        },
+        "B2": {
+          "entrada": "2"
+        },
+        "B3": {
+          "entrada": "3"
+        },
+        "B4": {
+          "entrada": "4"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A1:A3 soma 60, e B2 acrescenta 2: 62."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "62"
+      },
+      {
+        "texto": "63",
+        "dica": "Confira qual célula de B entra na soma."
+      },
+      {
+        "texto": "66",
+        "dica": "Só uma célula da coluna B entra."
+      },
+      {
+        "texto": "100",
+        "dica": "O intervalo vai só até A3."
+      },
+      {
+        "texto": "60",
+        "dica": "O ponto e vírgula acrescenta mais um argumento à soma."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "SOMA",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMA(A1:A3;B2)",
+        "esperado": 62
+      }
+    ]
+  },
+  {
+    "id": "ccacc732-fdb2-5509-85df-c901dbd5049a",
+    "slug": "concurso-14-se-com-ou",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SE com OU",
+    "enunciado": [
+      "A1 contém 8 e B1 contém o texto **não**.",
+      "A fórmula `=SE(OU(A1>10;B1=\"sim\");\"Aprovado\";\"Revisar\")` retorna:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "8"
+        },
+        "B1": {
+          "entrada": "não"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "8 não é maior que 10 e B1 não é \"sim\": o OU é falso, e o SE devolve \"Revisar\"."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Revisar"
+      },
+      {
+        "texto": "Aprovado",
+        "dica": "OU precisa de pelo menos uma condição verdadeira."
+      },
+      {
+        "texto": "VERDADEIRO",
+        "dica": "O SE devolve um dos dois textos."
+      },
+      {
+        "texto": "FALSO",
+        "dica": "O SE devolve um dos dois textos."
+      },
+      {
+        "texto": "#NOME?",
+        "dica": "As funções estão escritas certas."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "SE com OU",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(OU(A1>10;B1=\"sim\");\"Aprovado\";\"Revisar\")",
+        "esperado": "Revisar"
+      }
+    ]
+  },
+  {
+    "id": "ae57f8d3-61ba-5899-82ff-429255c44e77",
+    "slug": "concurso-15-divisao-por-zero",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Divisão por zero",
+    "enunciado": [
+      "A1 contém 10 e B1 contém 0.",
+      "Ao digitar `=A1/B1` em C1, a célula exibe:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10"
+        },
+        "B1": {
+          "entrada": "0"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Divisão por zero gera #DIV/0!. Para evitar, use SEERRO ou teste o divisor com SE."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "#DIV/0!"
+      },
+      {
+        "texto": "0",
+        "dica": "Dividir por zero não dá zero."
+      },
+      {
+        "texto": "10",
+        "dica": "Dividir por zero não mantém o valor."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Esse erro aparece com texto onde se espera número."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "Esse erro é de busca que não encontrou."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Erros",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=A1/B1",
+        "esperado": "#DIV/0!"
+      }
+    ]
+  },
+  {
+    "id": "942ee903-a3f2-53ef-ba21-11c17d3db7bf",
+    "slug": "concurso-16-juntar-sobrenome-e-nome",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 16,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Juntar sobrenome e nome",
+    "enunciado": [
+      "A1 contém **Maria** e B1 contém **Silva**.",
+      "A fórmula `=B1&\", \"&A1` retorna:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Maria"
+        },
+        "B1": {
+          "entrada": "Silva"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "O & junta os pedaços na ordem: B1, a vírgula com espaço e A1."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Silva, Maria"
+      },
+      {
+        "texto": "Maria, Silva",
+        "dica": "Confira a ordem das células na fórmula."
+      },
+      {
+        "texto": "SilvaMaria",
+        "dica": "O texto entre aspas também entra."
+      },
+      {
+        "texto": "Silva&Maria",
+        "dica": "O & junta; ele não aparece no resultado."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Juntar textos com & é válido."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B1&\", \"&A1",
+        "esperado": "Silva, Maria"
+      }
+    ]
+  },
+  {
+    "id": "180bb8f1-4919-5134-b427-dcdb3ef31b0f",
+    "slug": "concurso-17-segundo-maior-valor",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 17,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Segundo maior valor",
+    "enunciado": [
+      "O intervalo A1:A6 contém 8, 15, 3, 15, 10 e 7.",
+      "O resultado de `=MAIOR(A1:A6;2)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "8"
+        },
+        "A2": {
+          "entrada": "15"
+        },
+        "A3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "15"
+        },
+        "A5": {
+          "entrada": "10"
+        },
+        "A6": {
+          "entrada": "7"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Em ordem decrescente: 15, 15, 10, 8, 7, 3. O 2º maior é 15 (o repetido conta)."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "15"
+      },
+      {
+        "texto": "10",
+        "dica": "Valores repetidos contam como posições diferentes."
+      },
+      {
+        "texto": "8",
+        "dica": "MAIOR conta a partir do maior valor."
+      },
+      {
+        "texto": "2",
+        "dica": "MAIOR devolve um valor do intervalo, não a posição."
+      },
+      {
+        "texto": "3",
+        "dica": "Esse é o menor valor."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "MAIOR",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MAIOR(A1:A6;2)",
+        "esperado": 15
+      }
+    ]
+  },
+  {
+    "id": "f6fdad36-32d0-5fca-8025-7f1bb98eade0",
+    "slug": "concurso-18-seerro-na-divisao",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 18,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SEERRO na divisão",
+    "enunciado": [
+      "A1 contém 10 e B1 contém 0.",
+      "A fórmula `=SEERRO(A1/B1;\"-\")` retorna:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10"
+        },
+        "B1": {
+          "entrada": "0"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A1/B1 dá #DIV/0!, e o SEERRO troca o erro pelo texto \"-\"."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "-"
+      },
+      {
+        "texto": "0",
+        "dica": "O SEERRO devolve o segundo argumento quando há erro."
+      },
+      {
+        "texto": "#DIV/0!",
+        "dica": "O SEERRO esconde o erro."
+      },
+      {
+        "texto": "10",
+        "dica": "A divisão não acontece; dá erro."
+      },
+      {
+        "texto": "FALSO",
+        "dica": "O segundo argumento é o texto \"-\"."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "SEERRO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SEERRO(A1/B1;\"-\")",
+        "esperado": "-"
+      }
+    ]
+  },
+  {
+    "id": "0b99380e-edab-5143-a55b-eed1a9272ead",
+    "slug": "concurso-19-referencia-mista",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 19,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Referência mista",
+    "enunciado": [
+      "A célula C2 contém `=$A2+B$1`. A fórmula é copiada para E4.",
+      "A fórmula resultante em E4 é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A2": {
+          "entrada": "1"
+        },
+        "A3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "3"
+        },
+        "B1": {
+          "entrada": "10"
+        },
+        "C1": {
+          "entrada": "20"
+        },
+        "D1": {
+          "entrada": "30"
+        },
+        "C2": {
+          "entrada": "=$A2+B$1"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "De C2 para E4: duas colunas e duas linhas. $A2 trava a coluna (vira $A4); B$1 trava a linha (vira D$1)."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=$A4+D$1`"
+      },
+      {
+        "texto": "`=$A2+D$1`",
+        "dica": "Em $A2 só a coluna está travada; a linha anda."
+      },
+      {
+        "texto": "`=$C4+D$3`",
+        "dica": "Confira o que cada $ trava."
+      },
+      {
+        "texto": "`=$A4+B$1`",
+        "dica": "Em B$1 a coluna não está travada."
+      },
+      {
+        "texto": "`=$A4+D$3`",
+        "dica": "Em B$1 a linha está travada."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "Referências",
+    "comPlanilha": true
+  },
+  {
+    "id": "974f6ab1-150a-527e-a4e6-09563cd0ee7b",
+    "slug": "concurso-20-procv-exato",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 20,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV exato",
+    "enunciado": [
+      "Considere a tabela de produtos da planilha.",
+      "O resultado de `=PROCV(\"P03\";A2:C5;3;FALSO)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P01"
+        },
+        "B2": {
+          "entrada": "Lápis"
+        },
+        "C2": {
+          "entrada": "1,5"
+        },
+        "A3": {
+          "entrada": "P02"
+        },
+        "B3": {
+          "entrada": "Borracha"
+        },
+        "C3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "P03"
+        },
+        "B4": {
+          "entrada": "Régua"
+        },
+        "C4": {
+          "entrada": "4,5"
+        },
+        "A5": {
+          "entrada": "P04"
+        },
+        "B5": {
+          "entrada": "Cola"
+        },
+        "C5": {
+          "entrada": "6"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "O PROCV acha P03 na primeira coluna e devolve a 3ª coluna dessa linha: 4,5."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "4,5"
+      },
+      {
+        "texto": "Régua",
+        "dica": "O 3 indica a terceira coluna do intervalo."
+      },
+      {
+        "texto": "P03",
+        "dica": "O PROCV devolve um valor de outra coluna."
+      },
+      {
+        "texto": "6",
+        "dica": "Confira a linha do código procurado."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "O código existe na primeira coluna."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(\"P03\";A2:C5;3;FALSO)",
+        "esperado": 4.5
+      }
+    ]
+  },
+  {
+    "id": "31e3dacd-0935-5da2-ad0f-debbc318b2d5",
+    "slug": "concurso-21-arred-e-truncar",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 21,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRED e TRUNCAR",
+    "enunciado": [
+      "A1 contém 3,786.",
+      "O resultado de `=ARRED(A1;2)+TRUNCAR(A1;1)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "3,786"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "ARRED(3,786;2) = 3,79 e TRUNCAR(3,786;1) = 3,7. Soma: 7,49."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "7,49"
+      },
+      {
+        "texto": "7,5",
+        "dica": "TRUNCAR corta; não arredonda."
+      },
+      {
+        "texto": "7,48",
+        "dica": "ARRED com 2 casas olha a terceira casa."
+      },
+      {
+        "texto": "7,59",
+        "dica": "Confira o TRUNCAR com 1 casa."
+      },
+      {
+        "texto": "7,58",
+        "dica": "Confira os dois resultados separadamente."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "Arredondamento",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ARRED(A1;2)+TRUNCAR(A1;1)",
+        "esperado": 7.49
+      }
+    ]
+  },
+  {
+    "id": "5ca0fb16-5123-5ffb-94f2-d0d810f8f10d",
+    "slug": "concurso-22-idade-com-datadif",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 22,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Idade com DATADIF",
+    "enunciado": [
+      "A1 contém a data de nascimento 15/08/1990 e B1 contém 10/08/2026.",
+      "O resultado de `=DATADIF(A1;B1;\"Y\")` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "15/08/1990"
+        },
+        "B1": {
+          "entrada": "10/08/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "\"Y\" conta anos completos. Em 10/08/2026 a pessoa ainda não fez aniversário: 35 anos."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "35"
+      },
+      {
+        "texto": "36",
+        "dica": "Em 10/08 o aniversário de 2026 ainda não chegou."
+      },
+      {
+        "texto": "12775",
+        "dica": "\"Y\" conta anos completos, não dias."
+      },
+      {
+        "texto": "431",
+        "dica": "\"Y\" conta anos completos, não meses."
+      },
+      {
+        "texto": "#NÚM!",
+        "dica": "A data inicial é anterior à final; a fórmula funciona."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DATADIF(A1;B1;\"Y\")",
+        "esperado": 35
+      }
+    ]
+  },
+  {
+    "id": "7e90f573-b96a-51e7-8ef9-9971783e7465",
+    "slug": "concurso-23-somarproduto",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 23,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMARPRODUTO",
+    "enunciado": [
+      "A2:A4 contém as quantidades 2, 3 e 5, e B2:B4 os preços 10, 4 e 2.",
+      "O resultado de `=SOMARPRODUTO(A2:A4;B2:B4)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2"
+        },
+        "A3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "5"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "B3": {
+          "entrada": "4"
+        },
+        "B4": {
+          "entrada": "2"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "2×10 + 3×4 + 5×2 = 20 + 12 + 10 = 42."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "42"
+      },
+      {
+        "texto": "26",
+        "dica": "SOMARPRODUTO multiplica linha a linha antes de somar."
+      },
+      {
+        "texto": "10",
+        "dica": "Some todos os produtos."
+      },
+      {
+        "texto": "160",
+        "dica": "Não é a soma das quantidades vezes a soma dos preços."
+      },
+      {
+        "texto": "80",
+        "dica": "Confira cada produto: 2×10, 3×4 e 5×2."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "SOMARPRODUTO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMARPRODUTO(A2:A4;B2:B4)",
+        "esperado": 42
+      }
+    ]
+  },
+  {
+    "id": "83a5b6c4-8584-5351-8c0f-6cf1d1edcd59",
+    "slug": "concurso-24-indice-com-corresp",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 24,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÍNDICE com CORRESP",
+    "enunciado": [
+      "A2:A5 contém os nomes Ana, Bia, Caio e Duda, e B2:B5 as idades 30, 25, 41 e 19.",
+      "O resultado de `=ÍNDICE(B2:B5;CORRESP(\"Caio\";A2:A5;0))` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Idade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "30"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "B3": {
+          "entrada": "25"
+        },
+        "A4": {
+          "entrada": "Caio"
+        },
+        "B4": {
+          "entrada": "41"
+        },
+        "A5": {
+          "entrada": "Duda"
+        },
+        "B5": {
+          "entrada": "19"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "CORRESP acha Caio na 3ª posição; ÍNDICE(B2:B5;3) devolve 41."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "41"
+      },
+      {
+        "texto": "3",
+        "dica": "CORRESP devolve a posição, mas o ÍNDICE usa essa posição para buscar o valor."
+      },
+      {
+        "texto": "Caio",
+        "dica": "O ÍNDICE busca na coluna B."
+      },
+      {
+        "texto": "25",
+        "dica": "Confira a posição de Caio na lista."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "Caio está na lista."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "ÍNDICE e CORRESP",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ÍNDICE(B2:B5;CORRESP(\"Caio\";A2:A5;0))",
+        "esperado": 41
+      }
+    ]
+  },
+  {
+    "id": "c396f249-9f18-5e9d-a801-753991a06374",
+    "slug": "concurso-25-media-com-texto-e-vazia",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 25,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÉDIA com texto e vazia",
+    "enunciado": [
+      "A1 = 10, A2 = 20, A3 vazia, A4 = texto e A5 = 30.",
+      "Julgue o item: a fórmula `=MÉDIA(A1:A5)` retorna 12."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10"
+        },
+        "A2": {
+          "entrada": "20"
+        },
+        "A4": {
+          "entrada": "texto"
+        },
+        "A5": {
+          "entrada": "30"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. A MÉDIA ignora células vazias e com texto: (10+20+30)/3 = 20. O 12 viria de dividir por 5."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "Confira quais células a MÉDIA leva em conta."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "MÉDIA",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MÉDIA(A1:A5)",
+        "esperado": 20
+      }
+    ]
+  },
+  {
+    "id": "6b2ced14-7975-5fad-be19-383774b6aedc",
+    "slug": "concurso-26-o-erro-n-d",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 26,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O erro #N/D",
+    "enunciado": [
+      "Julgue o item: no PROCV com o último argumento FALSO, o erro #N/D indica que o valor procurado não foi encontrado na primeira coluna do intervalo de busca."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "P01"
+        },
+        "B1": {
+          "entrada": "10"
+        },
+        "A2": {
+          "entrada": "P02"
+        },
+        "B2": {
+          "entrada": "20"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. Com FALSO, o PROCV exige o valor exato na primeira coluna; se não acha, devolve #N/D."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "Teste na planilha um PROCV com um código que não existe."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(\"P09\";A1:B2;2;FALSO)",
+        "esperado": "#N/D"
+      }
+    ]
+  },
+  {
+    "id": "40e5678c-7b90-5ff5-ba43-a48840d3ddef",
+    "slug": "concurso-27-aumento-de-10",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 27,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Aumento de 10%",
+    "enunciado": [
+      "A1 contém 200.",
+      "Julgue o item: a fórmula `=A1*1,1` aumenta o valor de A1 em 10% e resulta em 220."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "200"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. Multiplicar por 1,1 é o mesmo que A1 + 10% de A1: 200 + 20 = 220."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "Multiplicar por 1,1 é somar 10% ao valor."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Porcentagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=A1*1,1",
+        "esperado": 220
+      }
+    ]
+  },
+  {
+    "id": "9a719d20-c4d0-5b5e-b7f6-ebf7c20d8091",
+    "slug": "concurso-28-arred-com-duas-casas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 28,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRED com duas casas",
+    "enunciado": [
+      "Julgue o item: a fórmula `=ARRED(2,567;2)` resulta em 2,56."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. A terceira casa é 7 (5 ou mais), então arredonda para cima: 2,57. Quem corta sem arredondar é o TRUNCAR."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "ARRED olha a terceira casa decimal para decidir."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Arredondamento",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ARRED(2,567;2)",
+        "esperado": 2.57
+      }
+    ]
+  },
+  {
+    "id": "a00a0544-7c5a-5319-9d86-9ec553414a1b",
+    "slug": "concurso-29-a-funcao-e",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 29,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A função E",
+    "enunciado": [
+      "A1 contém 5 e B1 contém 12.",
+      "Julgue o item: a fórmula `=E(A1>3;B1<10)` retorna VERDADEIRO."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "5"
+        },
+        "B1": {
+          "entrada": "12"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. A1>3 é verdadeiro, mas B1<10 é falso; com uma condição falsa, o E retorna FALSO."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "O E só é verdadeiro se todas as condições forem."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Funções lógicas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=E(A1>3;B1<10)",
+        "esperado": false
+      }
+    ]
+  },
+  {
+    "id": "5c0f6552-c25f-530f-99c3-44bbf509ab6b",
+    "slug": "concurso-30-minimo-com-zero-e-vazia",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 30,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÍNIMO com zero e vazia",
+    "enunciado": [
+      "A1:A5 contém 7, 0, 4, (vazia) e 9.",
+      "Julgue o item: a fórmula `=MÍNIMO(A1:A5)` retorna 4, porque o zero é ignorado."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "7"
+        },
+        "A2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "4"
+        },
+        "A5": {
+          "entrada": "9"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. A célula vazia é ignorada, mas o zero conta: o mínimo é 0."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "O zero é um número como outro qualquer."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "MÍNIMO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MÍNIMO(A1:A5)",
+        "esperado": 0
+      }
+    ]
+  }
+]

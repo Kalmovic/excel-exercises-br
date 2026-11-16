@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { SeloGarantia } from "@/components/marca/SeloGarantia";
 import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
 import { MODULOS, exercicios, exerciciosDoModulo, questoesDaLicao } from "@/content";
+import { QUESTOES_CONCURSO } from "@/content/concurso";
 import { asaasConfigurado } from "@/lib/asaas";
 import { NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
 
@@ -280,6 +281,7 @@ export default function Pro() {
                   [`Teste de cada módulo (${n.testes} testes)`, false, true],
                   [`Prática extra (${n.extras} exercícios)`, false, true],
                   ["Simulados de teste de vaga, com tempo (3 níveis)", false, true],
+                  [`Questões de concurso no estilo das bancas (${QUESTOES_CONCURSO.length})`, false, true],
                   ["Arquivo com todos os desafios anteriores", "só o de ontem", true],
                 ] as [string, boolean | string, boolean][]
               ).map(([recurso, gratis, pro]) => (
@@ -351,10 +353,9 @@ export default function Pro() {
 
       {/* Chegando */}
       <Secao rotulo="Chegando ao Pro" titulo="Sem custo extra para quem assina">
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           {[
             ["Pacote do mês", "Exercícios em torno de um tema: orçamento, Imposto de Renda, Black Friday, 13º."],
-            ["Excel para concurso", "Questões no formato das bancas, com a planilha para testar a resposta."],
             ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
           ].map(([titulo, texto]) => (
             <div key={titulo} className="rounded-2xl border border-dashed border-line bg-bg p-5">

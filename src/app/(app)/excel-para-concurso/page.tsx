@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Cartoes, CtaTrilha, LinkExercicio, Perguntas, Secao, Topo } from "@/components/publico/blocos";
 import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
@@ -42,6 +43,16 @@ export default function ExcelParaConcurso() {
       <Secao rotulo="O que as bancas cobram" titulo="Os assuntos que mais caem">
         <Cartoes itens={COBRA} />
       </Secao>
+      <section className="flex flex-col gap-5 rounded-3xl bg-ink p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8" data-testid="cta-questoes-concurso">
+        <div className="space-y-2">
+          <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-ink">Pro</span>
+          <p className="font-display text-2xl font-extrabold">Questões no estilo das bancas, com a planilha ao lado</p>
+          <p className="text-white/70">FCC, Cesgranrio, Vunesp, FGV e Cebraspe. Teste cada alternativa antes de responder.</p>
+        </div>
+        <Link href="/concurso" className="shrink-0 rounded-lg bg-accent px-5 py-3 font-semibold text-ink hover:brightness-95">
+          Ver as questões
+        </Link>
+      </section>
       <Secao rotulo="Perguntas frequentes" titulo="Sobre Excel em concurso">
         <Perguntas itens={FAQ} />
       </Secao>

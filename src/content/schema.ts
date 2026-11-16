@@ -110,6 +110,9 @@ const baseSchema = z.object({
   errosComuns: z.array(erroComumSchema).optional(),
   /** Gancho e roteiro do vídeo curto (para gravação; não aparece na tela). */
   video: z.string().optional(),
+  /** Questões de concurso: banca no estilo da qual a questão (inédita) foi escrita, e o tema. */
+  banca: z.string().optional(),
+  tema: z.string().optional(),
   /**
    * Textos para aparelhos sem teclado físico (celular, tablet), quando o
    * exercício pede teclado. Com isto, a correção também deixa de exigir as setas.
@@ -183,6 +186,10 @@ export const exercicioMultipleChoiceSchema = baseSchema.extend({
   opcoes: z.array(z.object({ texto: z.string().min(1), dica: z.string().optional() })).min(2).max(6),
   /** Índice (base 0) da alternativa correta. */
   correta: z.number().int().min(0),
+  /** Mostra a planilha (editável, sem correção) para o aluno testar as alternativas. */
+  comPlanilha: z.boolean().optional(),
+  /** Só para o teste de conteúdo: fórmulas que a questão afirma, conferidas no motor. */
+  conferir: z.array(z.object({ formula: z.string().startsWith("="), esperado: valorSchema })).optional(),
 });
 
 /**
