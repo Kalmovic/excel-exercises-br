@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SeloGarantia } from "@/components/marca/SeloGarantia";
+import { IconeTrofeu } from "@/components/simulador/Trofeu";
+import { modulosDoEspecialista } from "@/lib/especialista";
 import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
 import { MODULOS, exercicios, exerciciosDoModulo, questoesDaLicao } from "@/content";
 import { QUESTOES_CONCURSO } from "@/content/concurso";
@@ -43,7 +45,7 @@ const PERGUNTAS: [string, string][] = [
   ["Serve para quem está começando?", "Sim. A trilha começa no Intro (grátis) e cada lição tem dicas e explicação. Se você já sabe o básico, pode ir direto ao módulo que precisa."],
   [
     "Tem certificado?",
-    "Tem. Passou no teste de um módulo, você emite o certificado com seu nome e um link público de verificação, pronto para adicionar ao LinkedIn. Antes de emitir, conferimos suas respostas de novo.",
+    "Tem. Ao passar no teste de todos os módulos, você recebe o certificado de Especialista em Excel; no caminho, cada módulo também vira um certificado. Todos têm seu nome e um link público de verificação, prontos para o LinkedIn. Antes de emitir, conferimos suas respostas de novo.",
   ],
 ];
 
@@ -104,7 +106,7 @@ export default function Pro() {
           <div className="flex items-center gap-4">
             <SeloGarantia dias={PRECO.garantiaDias} className="h-20 w-20 shrink-0" />
             <ul className="space-y-1 text-sm text-muted">
-              {[`Garantia incondicional de ${PRECO.garantiaDias} dias`, "Cancele quando quiser", "Pix ou cartão"].map((t) => (
+              {[`Garantia incondicional de ${PRECO.garantiaDias} dias`, "Certificado de Especialista", "Cancele quando quiser"].map((t) => (
                 <li key={t} className="flex items-center gap-1.5">
                   <span className="text-success" aria-hidden>
                     ✓
@@ -230,6 +232,49 @@ export default function Pro() {
         </div>
       </Secao>
 
+      {/* Prática que não acaba */}
+      <Secao rotulo="Prática que não acaba" titulo="O Pro não termina na última lição">
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ["Um desafio novo todo dia", `O ${NOME_DESAFIO}: uma planilha nova a cada dia, com a ofensiva para manter o ritmo e o arquivo de todos os anteriores.`],
+            ["Conteúdo novo todo mês", "Pacotes temáticos (orçamento, Imposto de Renda, Black Friday, 13º) e mais questões de concurso e de simulado entrando na plataforma."],
+            ["Refaça quando quiser", "Lições, testes de módulo e simulados podem ser refeitos à vontade. Errou? Volta, treina e tenta de novo."],
+          ].map(([titulo, texto]) => (
+            <div key={titulo} className="rounded-2xl border border-line bg-surface p-6">
+              <p className="mb-2 text-lg font-semibold">{titulo}</p>
+              <p className="text-muted">{texto}</p>
+            </div>
+          ))}
+        </div>
+      </Secao>
+
+      {/* Certificado de Especialista */}
+      <section className="grid items-center gap-8 rounded-3xl border-4 border-amber-400 bg-amber-50 p-6 sm:p-10 md:grid-cols-[auto_1fr]" data-testid="secao-especialista">
+        <IconeTrofeu className="mx-auto h-32 w-32" />
+        <div className="space-y-3">
+          <p className="text-xs font-bold tracking-wider text-amber-700 uppercase">Certificado</p>
+          <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Termine a trilha como Especialista em Excel</h2>
+          <p className="text-lg text-ink">
+            Passe no teste de cada um dos {modulosDoEspecialista().length} módulos e receba o <strong>certificado de Especialista em Excel</strong>, com seu nome e um
+            link público de verificação. No caminho, cada módulo concluído também vira um certificado.
+          </p>
+          <ul className="space-y-1.5 text-ink">
+            {[
+              "Suas respostas são corrigidas de novo antes de emitir: quem vê o certificado sabe que foi conquistado.",
+              "Um clique adiciona ao perfil do LinkedIn, e outro compartilha num post.",
+              "Salve em PDF para anexar ao currículo.",
+            ].map((t) => (
+              <li key={t} className="flex gap-2">
+                <span className="text-success" aria-hidden>
+                  ✓
+                </span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Para quem é */}
       <Secao rotulo="Para quem é" titulo="Feito para quem precisa usar, não só entender">
         <div className="grid gap-4 md:grid-cols-2">
@@ -285,7 +330,7 @@ export default function Pro() {
                   [`Prática extra (${n.extras} exercícios)`, false, true],
                   ["Simulados de teste de vaga, com tempo (3 níveis)", false, true],
                   [`Questões de concurso no estilo das bancas (${QUESTOES_CONCURSO.length})`, false, true],
-                  ["Certificado por módulo, com verificação para o LinkedIn", false, true],
+                  ["Certificado de Especialista em Excel e por módulo, com verificação para o LinkedIn", false, true],
                   ["Arquivo com todos os desafios anteriores", "só o de ontem", true],
                 ] as [string, boolean | string, boolean][]
               ).map(([recurso, gratis, pro]) => (

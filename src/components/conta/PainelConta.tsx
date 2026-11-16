@@ -10,6 +10,7 @@ import * as progresso from "@/lib/progresso";
 import { PRECO, reais } from "@/lib/site";
 import { supabaseNavegador } from "@/lib/supabase/navegador";
 import { lerTestes } from "@/lib/testes";
+import { IconeTrofeu } from "@/components/simulador/Trofeu";
 
 type Assinatura = {
   plano: string;
@@ -26,9 +27,11 @@ export function PainelConta({
   trilha,
   modulos,
   titulos,
+  modulosEspecialista,
 }: {
   trilha: { slug: string; versao: number }[];
   modulos: number;
+  modulosEspecialista: string[];
   /** slug do módulo -> "Módulo N: Título" */
   titulos: Record<string, string>;
 }) {
@@ -91,7 +94,7 @@ export function PainelConta({
 
       <Progresso trilha={trilha} modulos={modulos} />
 
-      <Certificados titulos={titulos} />
+      <Certificados titulos={titulos} modulosEspecialista={modulosEspecialista} />
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-5 text-sm">
         <p className="text-muted">Entre com este e-mail em qualquer aparelho para continuar de onde parou.</p>
@@ -233,9 +236,13 @@ function Progresso({ trilha, modulos }: { trilha: { slug: string; versao: number
 
 type Certificado = { codigo: string; modulo: string; emitido_em: string };
 
-/** Certificados do aluno (lidos pelo RLS: só os dele). */
-function Certificados({ titulos }: { titulos: Record<string, string> }) {
+/**
+ * Certificados do aluno (lidos pelo RLS: só os dele). O de Especialista é o
+ * principal; os de módulo são as etapas até ele.
+ */
+function Certificados({ titulos, modulosEspecialista }: { titulos: Record<string, string>; modulosEspecialista: string[] }) {
   const [lista, setLista] = useState<Certificado[] | null>(null);
+  const [versao, setVersao] = useState(0);
   useEffect(() => {
     void supabaseNavegador()
       ?.from("certificados")
@@ -243,16 +250,48 @@ function Certificados({ titulos }: { titulos: Record<string, string> }) {
       .order("emitido_em")
       .returns<Certificado[]>()
       .then(({ data }) => setLista(data ?? []));
-  }, []);
+  }, [versao]);
   if (lista === null) return null;
+  const especialista = lista.find((c) => c.modulo === "especialista");
+  const deModulo = lista.filter((c) => c.modulo !== "especialista");
+  const feitos = modulosEspecialista.filter((m) => deModulo.some((c) => c.modulo === m));
+  const faltam = modulosEspecialista.filter((m) => !feitos.includes(m));
+
   return (
-    <section className={`${cartao} space-y-3`} aria-label="Certificados" data-testid="certificados-conta">
+    <section className={`${cartao} space-y-5`} aria-label="Certificados" data-testid="certificados-conta">
       <h2 className="text-lg font-semibold">Certificados</h2>
-      {lista.length === 0 ? (
-        <p className="text-sm text-muted">Passe no teste de um módulo (4 de 5) para ganhar o certificado, com link de verificação para o LinkedIn.</p>
-      ) : (
+
+      <div className={`rounded-2xl border-2 p-5 ${especialista ? "border-amber-500 bg-amber-50" : "border-line bg-bg"}`} data-testid="especialista-conta">
+        <div className="flex items-start gap-4">
+          <IconeTrofeu className={`h-14 w-14 shrink-0 ${especialista ? "" : "opacity-40 grayscale"}`} />
+          <div className="min-w-0 flex-1 space-y-2">
+            <p className="font-display text-xl font-extrabold">Especialista em Excel</p>
+            {especialista ? (
+              <Link href={`/certificado/${especialista.codigo}`} className="inline-block font-semibold text-success underline-offset-4 hover:underline">
+                Ver e compartilhar o certificado →
+              </Link>
+            ) : (
+              <>
+                <p className="text-sm text-muted">
+                  O certificado da trilha completa: passe no teste de todos os módulos. {feitos.length} de {modulosEspecialista.length} módulos certificados.
+                </p>
+                <div className="h-2 overflow-hidden rounded-full bg-header">
+                  <div className="h-full rounded-full bg-amber-500" style={{ width: `${(feitos.length / modulosEspecialista.length) * 100}%` }} />
+                </div>
+                {faltam.length > 0 ? (
+                  <p className="text-xs text-muted">Faltam: {faltam.map((m) => titulos[m] ?? m).join(" · ")}</p>
+                ) : (
+                  <EmitirEspecialista aoEmitir={() => setVersao((v) => v + 1)} />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {deModulo.length > 0 && (
         <ul className="divide-y divide-line">
-          {lista.map((c) => (
+          {deModulo.map((c) => (
             <li key={c.codigo} className="flex items-center justify-between gap-3 py-2.5">
               <span className="min-w-0">
                 <span className="block truncate font-medium">{titulos[c.modulo] ?? c.modulo}</span>
@@ -266,5 +305,47 @@ function Certificados({ titulos }: { titulos: Record<string, string> }) {
         </ul>
       )}
     </section>
+  );
+}
+
+function EmitirEspecialista({ aoEmitir }: { aoEmitir: () => void }) {
+  const [nome, setNome] = useState("");
+  const [erro, setErro] = useState<string | null>(null);
+  const [enviando, setEnviando] = useState(false);
+  useEffect(() => {
+    void supabaseNavegador()
+      ?.from("perfis")
+      .select("nome")
+      .maybeSingle<{ nome: string | null }>()
+      .then(({ data }) => data?.nome && setNome((n) => n || data.nome!));
+  }, []);
+  return (
+    <form
+      className="space-y-2"
+      noValidate
+      onSubmit={async (e) => {
+        e.preventDefault();
+        const limpo = nome.trim().replace(/\s+/g, " ");
+        if (limpo.split(" ").length < 2) return setErro("Escreva seu nome completo.");
+        setEnviando(true);
+        setErro(null);
+        const r = await fetch("/api/certificado/especialista", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ nome: limpo }) });
+        setEnviando(false);
+        if (!r.ok) return setErro(((await r.json().catch(() => ({}))) as { erro?: string }).erro ?? "Não deu certo agora.");
+        aoEmitir();
+      }}
+    >
+      <p className="text-sm font-semibold text-success">Você completou todos os módulos! 🎉</p>
+      <input
+        value={nome}
+        onChange={(e) => (setNome(e.target.value), setErro(null))}
+        placeholder="Nome completo no certificado"
+        className="w-full rounded-lg border border-line bg-white px-3 py-2"
+      />
+      {erro && <p className="text-sm text-red-700">{erro}</p>}
+      <button type="submit" disabled={enviando} className="rounded-lg bg-ink px-4 py-2 font-semibold text-white disabled:opacity-50">
+        {enviando ? "Emitindo…" : "Emitir certificado de Especialista"}
+      </button>
+    </form>
   );
 }

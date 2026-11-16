@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PainelConta } from "@/components/conta/PainelConta";
 import { MODULOS, exerciciosDaTrilha } from "@/content";
+import { modulosDoEspecialista } from "@/lib/especialista";
 
 export const metadata: Metadata = { title: "Minha conta", robots: { index: false, follow: false } };
 
@@ -12,6 +13,7 @@ export default function Pagina() {
         trilha={trilha}
         modulos={MODULOS.length}
         titulos={Object.fromEntries(MODULOS.map((m) => [m.slug, `Módulo ${m.numero}: ${m.titulo}`]))}
+        modulosEspecialista={modulosDoEspecialista()}
       />
     </div>
   );
