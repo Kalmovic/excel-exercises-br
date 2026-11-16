@@ -64,15 +64,20 @@ export function iniciarConta() {
   });
 }
 
+// Fora do hook: o React compara os snapshots por referência, e um objeto novo a
+// cada chamada parece "mudou" (re-renderização sem fim).
+const CARREGANDO: Conta = { estado: "carregando" };
+const assinarConta = (f: () => void) => {
+  ouvintes.add(f);
+  return () => {
+    ouvintes.delete(f);
+  };
+};
+const lerConta = () => atual;
+const lerContaNoServidor = () => CARREGANDO;
+
 export function useConta(): Conta {
-  return useSyncExternalStore(
-    (f) => {
-      ouvintes.add(f);
-      return () => ouvintes.delete(f);
-    },
-    () => atual,
-    () => ({ estado: "carregando" }) as Conta,
-  );
+  return useSyncExternalStore(assinarConta, lerConta, lerContaNoServidor);
 }
 
 export async function sair() {
