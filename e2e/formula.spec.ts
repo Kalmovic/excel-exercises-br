@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { celula, limparArmazenamento } from "./ajuda";
+import { celula, digitar, limparArmazenamento } from "./ajuda";
 
 const visivel = (page: import("@playwright/test").Page, id: string) => page.getByTestId(id).filter({ visible: true });
 
@@ -160,4 +160,19 @@ test("P3-7: Ctrl+Z desfaz a formatação e Ctrl+Y refaz", async ({ page }) => {
   await expect(celula(page, "B2")).toHaveText("2,5");
   await page.keyboard.press("Control+y");
   await expect(celula(page, "B2")).toHaveText(/R\$\s2,50/);
+});
+
+test("Ctrl+D: numa célula copia a de cima; num intervalo copia a primeira linha", async ({ page }) => {
+  await page.goto("/exercicios/se-aninhado-otimo-bom");
+  await digitar(page, "C2", '=SE(B2>=9;"Ótimo";SE(B2>=7;"Bom";"Recuperação"))');
+  await celula(page, "C3").click();
+  await page.keyboard.press("Control+d");
+  await expect(celula(page, "C3")).toHaveText("Ótimo"); // B3 = 9,5
+  await celula(page, "C3").click();
+  await page.keyboard.press("Shift+ArrowDown");
+  await page.keyboard.press("Shift+ArrowDown");
+  await page.keyboard.press("Shift+ArrowDown");
+  await page.keyboard.press("Control+d");
+  await expect(celula(page, "C6")).toHaveText("Ótimo"); // B6 = 9
+  await expect(celula(page, "C4")).toHaveText("Recuperação"); // B4 = 5
 });

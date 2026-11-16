@@ -224,6 +224,20 @@ export function criarStore(
     preencherSelecao: (direcao) => {
       if (fixa) return;
       const s = get().selecao();
+      // Como no Excel: seleção de uma linha só (ex.: uma célula) copia a linha de CIMA;
+      // de uma coluna só, com Ctrl+R, copia a coluna da ESQUERDA.
+      if (direcao === "baixo" && s.fim.linha === s.inicio.linha) {
+        if (s.inicio.linha === 0) return;
+        const acima = s.inicio.linha - 1;
+        planilha.preencher({ inicio: { linha: acima, coluna: s.inicio.coluna }, fim: { linha: acima, coluna: s.fim.coluna } }, s);
+        return;
+      }
+      if (direcao === "direita" && s.fim.coluna === s.inicio.coluna) {
+        if (s.inicio.coluna === 0) return;
+        const esquerda = s.inicio.coluna - 1;
+        planilha.preencher({ inicio: { linha: s.inicio.linha, coluna: esquerda }, fim: { linha: s.fim.linha, coluna: esquerda } }, s);
+        return;
+      }
       if (direcao === "baixo" && s.fim.linha > s.inicio.linha) {
         planilha.preencher(
           { inicio: s.inicio, fim: { linha: s.inicio.linha, coluna: s.fim.coluna } },

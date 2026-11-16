@@ -311,7 +311,7 @@ export default function Simulador({
               <Grade larguras={ex.grade.larguras} />
               {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
               <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
-                Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D preenche para baixo ·
+                Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·
                 Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
               </p>
             </>
