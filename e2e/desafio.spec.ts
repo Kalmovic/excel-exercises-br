@@ -113,9 +113,10 @@ test("nenhum desafio vai no JavaScript enviado ao navegador", () => {
   expect(vazou).toEqual([]);
 });
 
-test("página do Pro (em breve)", async ({ page }) => {
+test("página do Pro: números reais, comparação e, sem Asaas, botões em breve", async ({ page }) => {
   await page.goto("/pro");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Pro");
-  await expect(page.getByTestId("beneficios-pro")).toContainText("Arquivo de desafios");
-  await expect(page.getByText("ainda não está à venda")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator("table")).toContainText("Arquivo com todos os desafios anteriores");
+  await expect(page.getByTestId("precos-pro")).toContainText("Em breve");
+  await expect(page.getByTestId("garantia")).toContainText("Garantia de 7 dias");
 });
