@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MODULOS_PLANEJADOS } from "@/content/modulos-pro";
+import { asaasConfigurado } from "@/lib/asaas";
 import { PRECO, economiaAnual, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Pro: em breve",
+  title: "Pro",
   description: "Todos os módulos de Excel em português, pacotes de exercícios novos todo mês e o arquivo de desafios.",
   // Página provisória enquanto o Pro não existe: fora do índice de busca.
   robots: { index: false, follow: true },
@@ -19,10 +20,22 @@ const BENEFICIOS = [
 ] as const;
 
 export default function Pro() {
+  // Variáveis do Asaas lidas no build: sem elas, a página continua "em breve".
+  const aVenda = asaasConfigurado();
+  const assinar = (plano: "anual" | "mensal", destaque: boolean) =>
+    aVenda && (
+      <Link
+        href={`/assinar?plano=${plano}`}
+        className={`mt-3 block rounded-lg px-4 py-2.5 text-center font-semibold ${destaque ? "bg-ink text-white hover:bg-ink-soft" : "border border-ink bg-white text-ink hover:bg-bg"}`}
+        data-testid={`assinar-${plano}`}
+      >
+        Assinar {plano}
+      </Link>
+    );
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <header className="space-y-3">
-        <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>
+        {!aVenda && <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium text-ink">Em breve</span>}
         <h1 className="text-3xl font-bold tracking-tight">Pro: pratique Excel até ficar fluente</h1>
         <p className="text-lg text-zinc-600">
           O Intro, o desafio diário, a ofensiva e o 1º exercício de cada módulo continuam grátis. O Pro é para quem quer ir além: todos os exercícios, conteúdo novo
@@ -40,6 +53,7 @@ export default function Pro() {
           <p className="text-sm text-zinc-600">
             {reais(PRECO.anual)} no Pix ou em até {PRECO.parcelasAnual}x no cartão. {economiaAnual()}% a menos que o mensal.
           </p>
+          {assinar("anual", true)}
         </div>
         <div className="rounded-lg border border-line bg-white p-4">
           <p className="text-sm font-semibold">Mensal</p>
@@ -48,6 +62,7 @@ export default function Pro() {
             <span className="text-base font-medium text-muted">/mês</span>
           </p>
           <p className="text-sm text-zinc-600">No cartão, renovação automática. Cancele quando quiser.</p>
+          {assinar("mensal", false)}
         </div>
         <p className="text-sm text-zinc-600 sm:col-span-2">
           Garantia de {PRECO.garantiaDias} dias: se não gostar, devolvemos o valor. Menos que um lanche por mês, contra
@@ -73,12 +88,14 @@ export default function Pro() {
         </ol>
       </section>
 
+      {!aVenda && (
       <div className="flex flex-wrap items-center gap-4 rounded-lg border border-accent bg-accent-soft p-4">
         <p className="flex-1 text-ink">O Pro ainda não está à venda. Enquanto isso, o desafio de hoje te espera.</p>
         <Link href="/desafio" className="rounded-md bg-ink px-4 py-2 font-medium text-white hover:bg-ink-soft">
           Fazer o desafio de hoje
         </Link>
       </div>
+      )}
     </div>
   );
 }

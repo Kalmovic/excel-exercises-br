@@ -249,3 +249,13 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - Verificado à mão contra o Supabase real (aluno de teste `e2e@teste.planilhes.com.br`, com senha, criado por SQL): dois aparelhos sincronizando, sair limpa o navegador, Pro liberado só com assinatura em dia. Falta transformar isso em teste e2e automático (precisa da rede liberada e da senha do aluno de teste).
 - [ ] No painel do Supabase: modelos de e-mail em pt-BR (`supabase/templates/codigo-de-acesso.html`) e SMTP do Resend com o domínio `planilhes.com.br`. Até lá, o e-mail sai em inglês e com limite de 2 por hora.
 - [ ] Etapa 2: checkout Asaas (sandbox), webhook com token e idempotência em `eventos_pagamento`, `acesso_ate`.
+
+### Backend, etapa 2: pagamento com Asaas (16/11/2026)
+
+- [x] Banco: `supabase/migrations/20261116120000_pagamentos.sql` com `aplicar_evento_pagamento(evento)`: idempotente pelo id do aviso, numa transação, só o servidor executa. Regras: pago = acesso até vencimento + 1 mês (mensal) ou data paga + 1 ano (anual), + 3 dias; atraso mantém o acesso; cancelar mantém o período pago; reembolso corta na hora. Teste em `supabase/testes/pagamentos.sql` (10 verificações).
+- [x] `POST /api/assinatura` (checkout: cliente + assinatura mensal no cartão ou cobrança anual Pix/cartão no Asaas; status "pendente"), `POST /api/assinatura/cancelar`, `POST /api/asaas/webhook` (token `asaas-access-token`, reembolso também cancela a renovação).
+- [x] Telas: `/assinar` (plano, nome, CPF), botões em `/pro` (só com o Asaas configurado), "Minha conta" com pendente/Pro/atrasado/cancelado, atualizando sozinha enquanto o pagamento está pendente.
+- [x] Chamadas conferidas no sandbox do Asaas (cliente, assinatura e 1ª cobrança, cobrança anual).
+- [ ] Teste completo no site: pagar no sandbox com cartão de teste e ver o Pro liberado (precisa das variáveis na Vercel e do webhook cadastrado no Asaas).
+- [ ] Conferir se a página de pagamento da cobrança anual oferece parcelamento em 12x (a página /pro promete); se não, ajustar a cobrança ou o texto.
+- [ ] Lembrete de renovação do anual por e-mail (Resend), perto do vencimento.
