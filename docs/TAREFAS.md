@@ -224,7 +224,7 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] Conteúdo dos módulos 1 a 3: 18 lições × 4 questões novas + 3 testes (gerador em scratchpad; o JSON em `src/content/modulos/` é a fonte).
 - [x] Conteúdo dos módulos 4 a 8 (24 lições × 4 questões + 5 testes): a trilha completa tem 52 lições, 42 delas com 5 questões, e 8 testes de módulo.
 - Adaptações em relação ao roteiro: pegadinhas que perguntam "por quê?" sem nada a consertar viraram múltipla escolha (4.2, 6.3, 6.4, 8.1); as de dado digitado errado viraram "corrija o dado" (2.5, 6.2, 8.2); a do 5.2 pede o número com 2 dígitos via DIREITA(A2;2) (o roteiro sugere LOCALIZAR, citado na explicação); 4.3 e 4.4 usam a célula A5/F2 em vez do texto literal.
-- [ ] Teste aprovado conta para o certificado: depende do backend (validação no servidor).
+- [x] Teste aprovado conta para o certificado, com a correção refeita no servidor.
 - [x] Teste do Módulo 0 incluído (`src/content/free/intro/teste.json`): resposta, seleção, fórmula, formatação e múltipla escolha. O Intro continua sem lições de 5 questões.
 
 ### Motor de fórmulas (12/11/2026)
@@ -266,4 +266,5 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] Conteúdo em `src/content/simulados/*.json` (fora de `exercicios`: não entra na trilha nem no sitemap), validado em `src/content/simulados.test.ts` pelo motor.
 - [x] Corrigido: o gabarito do admin aparecia no teste de módulo (e apareceria no simulado), porque o painel usava `admin`, que também é true nesses modos.
 - [x] Questões de concurso (`/concurso`, `/concurso/[slug]`): 30 questões inéditas no estilo de FCC, Cesgranrio, Vunesp, FGV e Cebraspe (certo/errado), com a planilha ao lado para testar as alternativas, filtro por banca e tema e explicação de cada alternativa errada. Conteúdo em `src/content/concurso/questoes.json`, conferido no motor por `src/content/concurso.test.ts` (campo `conferir`).
-- [ ] Ainda "em breve" no Pro: pacote do mês e certificado.
+- [x] Certificado por módulo: emitido no resultado do teste aprovado (ou em `/certificado/emitir`, depois de entrar). O servidor corrige de novo as respostas (`src/grader/conferir-teste.ts`) antes de gravar em `certificados` (migration `20261117120000_certificados.sql`, teste em `supabase/testes/certificados.sql`). Página pública `/certificado/[codigo]` (verificação pela função `verificar_certificado`, sem expor o aluno), botão do LinkedIn, copiar link e Salvar em PDF. Lista em Minha conta.
+- [ ] Ainda "em breve" no Pro: pacote do mês.

@@ -29,6 +29,7 @@ import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
 import { UpsellDesafio } from "@/components/desafio/UpsellDesafio";
 import type { Upsell } from "@/content/modulos-pro";
 import { PainelAdmin } from "@/components/admin/PainelAdmin";
+import type { RespostaQuestao } from "@/grader/conferir-teste";
 import { preencherSolucao } from "@/components/admin/solucao";
 
 function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
@@ -68,7 +69,7 @@ type Props = {
   /** Questão de uma lição de 5: ao acertar a última que faltava, a lição fica concluída. */
   licao?: LicaoDoExercicio;
   /** Teste do módulo: uma tentativa, sem gravar progresso; avisa o resultado. */
-  teste?: { aoResponder: (ok: boolean) => void };
+  teste?: { aoResponder: (ok: boolean, resposta: RespostaQuestao) => void };
   /**
    * Simulado de vaga: sem correção na hora nem dicas. A questão entrega ao pai
    * uma função que corrige o estado atual da planilha, chamada na entrega da prova.
@@ -207,7 +208,14 @@ export default function Simulador({
       : [...(progresso.ler(chave, ex.versao)?.historico ?? []), r.ok];
     persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
     if (teste) {
-      teste.aoResponder(r.ok);
+      // O que ficou na tela vai junto: o servidor corrige de novo para emitir o certificado.
+      teste.aoResponder(r.ok, {
+        conteudos: Object.fromEntries(Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end))),
+        formatos: planilha.formatosDoAluno(),
+        resposta: s.resposta,
+        ativa: paraEndereco(s.ancora),
+        selecao: intervaloParaTexto(s.selecao()),
+      });
       return;
     }
     if (r.ok && licao && !adminProp) progresso.concluirLicaoSeCompleta(licao);

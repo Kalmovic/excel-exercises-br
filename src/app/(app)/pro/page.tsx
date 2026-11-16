@@ -41,7 +41,10 @@ const PERGUNTAS: [string, string][] = [
   ["Funciona no celular?", "Funciona. No celular você seleciona e edita as células com toques, e uma barrinha faz o papel do mouse e do Ctrl+D. Para estudar muito tempo seguido, o computador é mais confortável."],
   ["E o que eu já fiz no plano grátis?", "Continua lá. O progresso fica na sua conta, e o Pro só libera o resto da trilha."],
   ["Serve para quem está começando?", "Sim. A trilha começa no Intro (grátis) e cada lição tem dicas e explicação. Se você já sabe o básico, pode ir direto ao módulo que precisa."],
-  ["Tem certificado?", "Ainda não. O certificado por módulo está nos próximos passos e vai entrar no Pro sem custo extra para quem já assina."],
+  [
+    "Tem certificado?",
+    "Tem. Passou no teste de um módulo, você emite o certificado com seu nome e um link público de verificação, pronto para adicionar ao LinkedIn. Antes de emitir, conferimos suas respostas de novo.",
+  ],
 ];
 
 const METODO = [
@@ -282,6 +285,7 @@ export default function Pro() {
                   [`Prática extra (${n.extras} exercícios)`, false, true],
                   ["Simulados de teste de vaga, com tempo (3 níveis)", false, true],
                   [`Questões de concurso no estilo das bancas (${QUESTOES_CONCURSO.length})`, false, true],
+                  ["Certificado por módulo, com verificação para o LinkedIn", false, true],
                   ["Arquivo com todos os desafios anteriores", "só o de ontem", true],
                 ] as [string, boolean | string, boolean][]
               ).map(([recurso, gratis, pro]) => (
@@ -353,10 +357,9 @@ export default function Pro() {
 
       {/* Chegando */}
       <Secao rotulo="Chegando ao Pro" titulo="Sem custo extra para quem assina">
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3 sm:max-w-md">
           {[
             ["Pacote do mês", "Exercícios em torno de um tema: orçamento, Imposto de Renda, Black Friday, 13º."],
-            ["Certificado", "Por módulo, com link público de verificação para o LinkedIn."],
           ].map(([titulo, texto]) => (
             <div key={titulo} className="rounded-2xl border border-dashed border-line bg-bg p-5">
               <span className="mb-2 inline-block rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">em breve</span>

@@ -8,7 +8,11 @@ export default function Pagina() {
   const trilha = exerciciosDaTrilha().map(({ slug, versao }) => ({ slug, versao }));
   return (
     <div className="mx-auto max-w-2xl py-4">
-      <PainelConta trilha={trilha} modulos={MODULOS.length} />
+      <PainelConta
+        trilha={trilha}
+        modulos={MODULOS.length}
+        titulos={Object.fromEntries(MODULOS.map((m) => [m.slug, `Módulo ${m.numero}: ${m.titulo}`]))}
+      />
     </div>
   );
 }

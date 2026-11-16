@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className="h-full antialiased">
       <body className="flex min-h-full flex-col bg-bg text-ink">
-        <header className="border-b border-line bg-bg">
+        <header className="border-b border-line bg-bg print:hidden">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
             <Logo />
             <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </div>
         </header>
         <main className="flex w-full flex-1 flex-col">{children}</main>
-        <footer className="bg-ink text-white">
+        <footer className="bg-ink text-white print:hidden">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-display text-lg font-bold">{NOME_SITE}</span>

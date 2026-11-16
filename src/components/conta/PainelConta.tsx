@@ -22,7 +22,16 @@ type Assinatura = {
 const data = (iso: string) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
 const cartao = "rounded-2xl border border-line bg-surface p-5 sm:p-6";
 
-export function PainelConta({ trilha, modulos }: { trilha: { slug: string; versao: number }[]; modulos: number }) {
+export function PainelConta({
+  trilha,
+  modulos,
+  titulos,
+}: {
+  trilha: { slug: string; versao: number }[];
+  modulos: number;
+  /** slug do módulo -> "Módulo N: Título" */
+  titulos: Record<string, string>;
+}) {
   const conta = useConta();
   const router = useRouter();
   const [assinatura, setAssinatura] = useState<Assinatura | null | undefined>(undefined);
@@ -81,6 +90,8 @@ export function PainelConta({ trilha, modulos }: { trilha: { slug: string; versa
       </section>
 
       <Progresso trilha={trilha} modulos={modulos} />
+
+      <Certificados titulos={titulos} />
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-5 text-sm">
         <p className="text-muted">Entre com este e-mail em qualquer aparelho para continuar de onde parou.</p>
@@ -216,6 +227,44 @@ function Progresso({ trilha, modulos }: { trilha: { slug: string; versao: number
           </div>
         ))}
       </dl>
+    </section>
+  );
+}
+
+type Certificado = { codigo: string; modulo: string; emitido_em: string };
+
+/** Certificados do aluno (lidos pelo RLS: só os dele). */
+function Certificados({ titulos }: { titulos: Record<string, string> }) {
+  const [lista, setLista] = useState<Certificado[] | null>(null);
+  useEffect(() => {
+    void supabaseNavegador()
+      ?.from("certificados")
+      .select("codigo, modulo, emitido_em")
+      .order("emitido_em")
+      .returns<Certificado[]>()
+      .then(({ data }) => setLista(data ?? []));
+  }, []);
+  if (lista === null) return null;
+  return (
+    <section className={`${cartao} space-y-3`} aria-label="Certificados" data-testid="certificados-conta">
+      <h2 className="text-lg font-semibold">Certificados</h2>
+      {lista.length === 0 ? (
+        <p className="text-sm text-muted">Passe no teste de um módulo (4 de 5) para ganhar o certificado, com link de verificação para o LinkedIn.</p>
+      ) : (
+        <ul className="divide-y divide-line">
+          {lista.map((c) => (
+            <li key={c.codigo} className="flex items-center justify-between gap-3 py-2.5">
+              <span className="min-w-0">
+                <span className="block truncate font-medium">{titulos[c.modulo] ?? c.modulo}</span>
+                <span className="font-mono text-xs text-muted">{c.codigo}</span>
+              </span>
+              <Link href={`/certificado/${c.codigo}`} className="shrink-0 text-sm font-semibold text-success underline-offset-4 hover:underline">
+                Ver certificado
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

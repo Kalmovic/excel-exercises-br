@@ -6,6 +6,8 @@ import type { Exercicio } from "@/content/schema";
 import { registrar } from "@/lib/eventos";
 import { APROVACAO, registrarTeste } from "@/lib/testes";
 import { celebrarTrofeu } from "@/lib/celebrar";
+import type { RespostaQuestao } from "@/grader/conferir-teste";
+import { EmitirCertificado } from "@/components/conta/EmitirCertificado";
 import SimuladorCarregavel from "./SimuladorCarregavel";
 import { IconeConquista } from "./Trofeu";
 
@@ -25,11 +27,14 @@ type Props = {
 export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
   const [indice, setIndice] = useState(0);
   const [respostas, setRespostas] = useState<boolean[]>([]);
+  // O que o aluno fez em cada questão: vai para o servidor na emissão do certificado.
+  const [entregas, setEntregas] = useState<RespostaQuestao[]>([]);
   const [rodada, setRodada] = useState(0);
   const fim = respostas.length === questoes.length && indice >= questoes.length;
   const respondida = respostas.length > indice;
 
-  const responder = (ok: boolean) => {
+  const responder = (ok: boolean, entrega: RespostaQuestao) => {
+    setEntregas((e) => (e.length > indice ? e : [...e, entrega]));
     setRespostas((r) => {
       if (r.length > indice) return r; // uma tentativa por questão
       const novas = [...r, ok];
@@ -50,8 +55,10 @@ export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
         respostas={respostas}
         revisar={revisar}
         proximo={proximo}
+        entregas={entregas}
         onRefazer={() => {
           setRespostas([]);
+          setEntregas([]);
           setIndice(0);
           setRodada((r) => r + 1);
         }}
@@ -94,6 +101,7 @@ function ResultadoTeste({
   modulo,
   questoes,
   respostas,
+  entregas,
   revisar,
   proximo,
   onRefazer,
@@ -101,6 +109,7 @@ function ResultadoTeste({
   modulo: Modulo;
   questoes: Exercicio[];
   respostas: boolean[];
+  entregas: RespostaQuestao[];
   revisar: Props["revisar"];
   proximo?: Proximo;
   onRefazer: () => void;
@@ -177,6 +186,8 @@ function ResultadoTeste({
             );
           })}
         </ol>
+
+        {aprovado && <EmitirCertificado modulo={modulo.slug} tituloModulo={`Módulo ${modulo.numero}: ${modulo.titulo}`} entregas={entregas} />}
 
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           {aprovado ? (
