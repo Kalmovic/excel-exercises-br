@@ -23,6 +23,7 @@ import { alinhamento } from "@/engine/format";
 import { CORES_REFERENCIA, referenciasDaFormula } from "@/engine/referencias";
 import { FormulaColorida } from "./FormulaColorida";
 import { IconeFunil, MenuFiltro } from "./MenuFiltro";
+import { CORES_DESTAQUE } from "@/engine/condicional";
 import { ajustarLinha, larguraParaCaber } from "./transbordo";
 
 let contextoMedida: CanvasRenderingContext2D | null = null;
@@ -763,6 +764,10 @@ function Celula({ endereco, pos, left, top, largura, texto, larguraVisivel, naSe
   const circular = planilha.circular(pos);
   const alinh = circular ? "direita" : alinhamento(valor);
   const erro = typeof valor === "object" && valor !== null && !circular;
+  // Formatação condicional: destaque (fundo e texto), escala de cor e barra de dados.
+  const cond = planilha.estiloCondicional(endereco);
+  const destaque = cond?.destaque ? CORES_DESTAQUE[cond.destaque] : undefined;
+  const pintada = !celebrando && !naSelecao && (destaque || cond?.escala);
   return (
     <div
       data-celula={endereco}
@@ -786,7 +791,10 @@ function Celula({ endereco, pos, left, top, largura, texto, larguraVisivel, naSe
         width: largura,
         height: ALTURA,
         textAlign: alinh === "direita" ? "right" : alinh === "centro" ? "center" : "left",
+        ...(pintada ? { backgroundColor: destaque?.fundo ?? cond?.escala } : {}),
+        ...(destaque && !erro ? { color: destaque.texto } : {}),
       }}
+      data-destaque={cond?.destaque}
       title={
         circular
           ? `${endereco}: referência circular`
@@ -795,7 +803,17 @@ function Celula({ endereco, pos, left, top, largura, texto, larguraVisivel, naSe
             : undefined
       }
     >
-      {larguraVisivel > largura ? (
+      {cond?.barra !== undefined && (
+        <span
+          aria-hidden
+          data-barra
+          className="pointer-events-none absolute top-[3px] bottom-[3px] left-0.5 rounded-[1px]"
+          style={{ width: `calc(${cond.barra * 100}% - 4px)`, background: "linear-gradient(90deg, #638EC6, #c9d7ee)" }}
+        />
+      )}
+      {cond?.barra !== undefined ? (
+        <span className="relative">{texto}</span>
+      ) : larguraVisivel > largura ? (
         // camada que passa por cima das vizinhas vazias (cobre as linhas de grade, como no Excel)
         <span
           className="pointer-events-none absolute top-0 left-0 overflow-hidden px-1"

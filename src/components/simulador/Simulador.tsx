@@ -56,6 +56,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
     formatacao: ex.ferramentas?.formatacao ?? false,
     dados: ex.ferramentas?.dados ?? false,
     dinamica: ex.ferramentas?.dinamica ?? false,
+    condicional: ex.ferramentas?.condicional ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
     selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
@@ -355,7 +356,7 @@ export default function Simulador({
           {ex.type !== "multiple_choice" && (
             <>
               {nucleo.formatacao && <BarraFormatacao />}
-              {(nucleo.dados || nucleo.dinamica) && <BarraDados />}
+              {(nucleo.dados || nucleo.dinamica || nucleo.condicional) && <BarraDados />}
               {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />

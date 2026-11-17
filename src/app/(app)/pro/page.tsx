@@ -21,9 +21,6 @@ export const metadata: Metadata = {
 /** A lição grátis de PROCV (1ª do Módulo 4), jogável na página. */
 const LICAO_AMOSTRA = "procv-preco-pelo-codigo-exato";
 
-/** Módulos lançados agora: ganham o selo "novo" no currículo. */
-const NOVOS = new Set(["dados", "dinamica"]);
-
 /** "Além das fórmulas": o que o aluno faz com as ferramentas do Excel, na própria grade. */
 const FERRAMENTAS = [
   {
@@ -168,7 +165,6 @@ export default function Pro() {
       >
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-ink">NOVO</span>
             <span className="text-xs font-bold tracking-wider text-white/60 uppercase">Além das fórmulas</span>
           </div>
           <h2 className="font-display text-3xl leading-tight font-extrabold tracking-tight sm:text-4xl">
@@ -249,7 +245,7 @@ export default function Pro() {
         <AbasAmostra
           abas={[
             { id: "procv", rotulo: "PROCV", detalhe: "Módulo 4 · Busca", conteudo: <ExercicioEmbutido slug={LICAO_AMOSTRA} /> },
-            { id: "dinamica", rotulo: "Tabela dinâmica", detalhe: "Módulo 9 · novo", conteudo: <ExercicioEmbutido slug={LICAO_DINAMICA} /> },
+            { id: "dinamica", rotulo: "Tabela dinâmica", detalhe: "Módulo 9 · Tabela dinâmica", conteudo: <ExercicioEmbutido slug={LICAO_DINAMICA} /> },
           ]}
         />
       </section>
@@ -265,10 +261,7 @@ export default function Pro() {
                 <summary className="flex cursor-pointer list-none items-center gap-4 p-5">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-ink font-display font-bold text-accent">{m.numero}</span>
                   <span className="min-w-0 flex-1">
-                    <span className="flex items-center gap-2 font-semibold">
-                      {m.titulo}
-                      {NOVOS.has(m.slug) && <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] font-bold text-ink">novo</span>}
-                    </span>
+                    <span className="block font-semibold">{m.titulo}</span>
                     <span className="block text-sm text-muted">
                       {licoes.length} lições · {questoes} questões · teste no final
                     </span>

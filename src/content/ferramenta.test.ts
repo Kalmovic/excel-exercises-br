@@ -87,4 +87,22 @@ describe("exercícios de ferramenta", () => {
     expect(p.definir("H8", "=SOMA(H2:H5)").ok).toBe(true);
     expect(corrigir(ex, p).ok).toBe(false);
   });
+
+  describe("formatação condicional: a correção conta sem entregar", () => {
+    const ex = ferramentas.find((e) => e.slug === "destaque-vendas-baixas-pegadinha")!;
+    const com = (r: import("./schema").RegraCondicional) => {
+      const p = Planilha.deExercicio(ex);
+      expect(p.adicionarRegra(r).ok).toBe(true);
+      return corrigir(ex, p);
+    };
+    it("Maior do que 1000 deixa de fora quem vendeu exatamente 1000", () =>
+      expect(com({ tipo: "maior", intervalo: "C2:C11", valor: "1000", estilo: "verde" }).falhas[0].mensagem).toContain(
+        "2 células que deveriam estar destacadas",
+      ));
+    it("Entre 1000 e um valor alto também acerta", () =>
+      expect(com({ tipo: "entre", intervalo: "C2:C11", valor: "1000", valor2: "1000000", estilo: "verde" }).ok).toBe(true));
+    it("Maior do que 999,99 também acerta", () => expect(com({ tipo: "maior", intervalo: "C2:C11", valor: "999,99", estilo: "verde" }).ok).toBe(true));
+    it("cor errada", () =>
+      expect(com({ tipo: "maior", intervalo: "C2:C11", valor: "999,99", estilo: "vermelho" }).falhas[0].mensagem).toContain("outra cor"));
+  });
 });

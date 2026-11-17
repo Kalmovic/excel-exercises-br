@@ -1,4 +1,4 @@
-import type { Dinamica, Exercicio, Formato, Ordenacao, Recursos } from "@/content/schema";
+import type { Dinamica, Exercicio, Formato, Ordenacao, Recursos, RegraCondicional } from "@/content/schema";
 import {
   colunaParaLetras,
   deEndereco,
@@ -18,6 +18,7 @@ import { analisar, type No } from "./motor/parser";
 import { referenciasDaFormula } from "./referencias";
 import { compararParaClassificar } from "./classificar";
 import { calcularDinamica } from "./dinamica";
+import { calcularCondicionais, type EstiloCelula } from "./condicional";
 
 export type Grade = Exercicio["grade"];
 
@@ -35,6 +36,7 @@ type Foto = {
   filtro: Filtro | null;
   ordenacoes: Ordenacao[];
   dinamicas: Dinamica[];
+  condicionais: RegraCondicional[];
 };
 type AcaoHistorico =
   | { tipo: "celulas"; mudancas: Mudanca[] }
@@ -104,7 +106,10 @@ export class Planilha {
   private formatosDinamicas = new Map<string, Formato>();
   private negritosDinamicas = new Set<string>();
   /** O exercício já começa com filtro / tabela dinâmica: o progresso precisa gravar quando o aluno os remove. */
-  private inicial = { filtro: false, dinamicas: false };
+  private inicial = { filtro: false, dinamicas: false, condicionais: false };
+  /** Regras de formatação condicional (a última tem prioridade) e o estilo que cada célula ganhou. */
+  private condicionais: RegraCondicional[] = [];
+  private estilos = new Map<string, EstiloCelula>();
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
     this.linhas = grade.linhas;
@@ -118,7 +123,11 @@ export class Planilha {
     }
     for (const [end, f] of Object.entries(extras.formatos ?? {})) if (f) this.formatos.set(end, f);
     if (grade.recursos) {
-      this.inicial = { filtro: !!grade.recursos.filtro, dinamicas: !!grade.recursos.dinamicas?.length };
+      this.inicial = {
+        filtro: !!grade.recursos.filtro,
+        dinamicas: !!grade.recursos.dinamicas?.length,
+        condicionais: !!grade.recursos.condicionais?.length,
+      };
       this.aplicarRecursos(grade.recursos, { inicial: true });
     }
   }
@@ -506,6 +515,7 @@ export class Planilha {
     else if (this.inicial.filtro) r.filtro = null; // o aluno desligou o filtro que o exercício trazia
     if (this.ordenacoes.length) r.ordenacoes = this.ordenacoes.map((o) => structuredClone(o));
     if (this.dinamicas.length || this.inicial.dinamicas) r.dinamicas = structuredClone(this.dinamicas);
+    if (this.condicionais.length || this.inicial.condicionais) r.condicionais = structuredClone(this.condicionais);
     return r;
   }
 
@@ -532,6 +542,7 @@ export class Planilha {
     }
     // Tabelas dinâmicas: a lista salva substitui a atual (inclusive as que o exercício já trazia).
     if (r.dinamicas) this.dinamicas = structuredClone(r.dinamicas).filter((d) => this.recortar(deIntervalo(d.origem)));
+    if (r.condicionais) this.condicionais = structuredClone(r.condicionais);
     this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
@@ -764,6 +775,95 @@ export class Planilha {
   private atualizarDerivados() {
     this.atualizarDinamicas();
     this.atualizarOcultas();
+    this.atualizarCondicionais();
+  }
+
+  // --- formatação condicional ---------------------------------------------------
+
+  private atualizarCondicionais() {
+    if (this.condicionais.length === 0) {
+      this.estilos = new Map();
+      return;
+    }
+    this.estilos = calcularCondicionais(this.condicionais, {
+      valor: (p) => this.valor(p),
+      texto: (p) => this.textoParaFiltro(p),
+      formula: (f, origem, p) => this.avaliarFormulaEm(f, origem, p),
+      limites: { linhas: this.linhas, colunas: this.colunas },
+    });
+  }
+
+  /** Avalia a fórmula de uma regra escrita para `origem`, ajustada para a célula `p` (como copiar a fórmula). */
+  private avaliarFormulaEm(formula: string, origem: Pos, p: Pos): ValorCelula {
+    try {
+      const f = deslocarFormula(formula, p.linha - origem.linha, p.coluna - origem.coluna);
+      return this.calculo.avaliarAvulsa(analisar(f));
+    } catch {
+      return null;
+    }
+  }
+
+  /** Estilo da formatação condicional na célula (destaque, barra de dados, escala de cor). */
+  estiloCondicional(end: string | Pos): EstiloCelula | undefined {
+    return this.estilos.get(typeof end === "string" ? end : paraEndereco(end));
+  }
+
+  /** Células do intervalo com destaque (opcionalmente só desta cor). */
+  destacadas(intervalo: Intervalo, estilo?: EstiloCelula["destaque"]): string[] {
+    return [...posicoes(intervalo)]
+      .map(paraEndereco)
+      .filter((e) => {
+        const d = this.estilos.get(e)?.destaque;
+        return d && (!estilo || d === estilo);
+      });
+  }
+
+  regrasCondicionais(): RegraCondicional[] {
+    return this.condicionais;
+  }
+
+  /**
+   * Nova regra. A fórmula de "Usar uma fórmula" é conferida como se fosse
+   * digitada numa célula (idioma e escrita), e recusada com explicação.
+   */
+  adicionarRegra(regra: RegraCondicional): Validacao {
+    if (regra.tipo === "formula") {
+      const v = validarIdioma(regra.formula.trim());
+      if (!v.ok) return v;
+      let no: No;
+      try {
+        no = analisar(regra.formula.trim());
+      } catch {
+        return { ok: false, mensagem: diagnosticarSintaxe(regra.formula.trim()) };
+      }
+      const faltam = [...naoImplementadas(no)];
+      if (faltam.length) return { ok: false, mensagem: `A função ${faltam[0]} ainda não está disponível no simulador.` };
+    }
+    if (this.condicionais.length >= 20) return { ok: false, mensagem: "No máximo 20 regras por planilha." };
+    this.mudarEstado(() => {
+      this.condicionais.push(structuredClone(regra));
+    });
+    return { ok: true };
+  }
+
+  removerRegra(i: number) {
+    if (!this.condicionais[i]) return;
+    this.mudarEstado(() => {
+      this.condicionais.splice(i, 1);
+    });
+  }
+
+  /** Limpar Regras: das que tocam o intervalo, ou da planilha inteira (`null`). */
+  limparRegras(intervalo: Intervalo | null) {
+    const toca = (r: RegraCondicional) => {
+      if (!intervalo) return true;
+      const i = deIntervalo(r.intervalo);
+      return !(i.fim.linha < intervalo.inicio.linha || i.inicio.linha > intervalo.fim.linha || i.fim.coluna < intervalo.inicio.coluna || i.inicio.coluna > intervalo.fim.coluna);
+    };
+    if (!this.condicionais.some(toca)) return;
+    this.mudarEstado(() => {
+      this.condicionais = this.condicionais.filter((r) => !toca(r));
+    });
   }
 
   /**
@@ -938,6 +1038,7 @@ export class Planilha {
       filtro: this.filtro ? structuredClone(this.filtro) : null,
       ordenacoes: structuredClone(this.ordenacoes),
       dinamicas: structuredClone(this.dinamicas),
+      condicionais: structuredClone(this.condicionais),
     };
   }
 
@@ -955,6 +1056,7 @@ export class Planilha {
     this.filtro = f.filtro ? structuredClone(f.filtro) : null;
     this.ordenacoes = structuredClone(f.ordenacoes);
     this.dinamicas = structuredClone(f.dinamicas);
+    this.condicionais = structuredClone(f.condicionais);
   }
 
   /** Aplica uma mudança de recurso com um retrato antes e depois (para o Ctrl+Z). */

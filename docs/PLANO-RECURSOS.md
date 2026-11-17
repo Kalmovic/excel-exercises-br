@@ -72,12 +72,21 @@ Ficou para depois:
 - O filtro aqui reage na hora quando um valor muda; no Excel ele só se reaplica com "Reaplicar". Isso só faz diferença se o aluno editar dados dentro da tabela filtrada.
 - A prévia estática do servidor (`montarGrade`) ainda mostra as linhas escondidas pelo filtro inicial, até a página hidratar.
 
-### Fase 2: Formatação condicional
+### Fase 2: Formatação condicional, feita em 17/11/2026
 
 - Regras: maior/menor/igual/entre, texto contém, duplicados, top N, "fórmula personalizada" (avaliada pelo motor, com a referência relativa à primeira célula), barras de dados e escala de cores.
 - Grade: a cor vem da regra, calculada a cada versão da planilha.
 - Correção: `destacadas`, que compara o conjunto de células que ficaram coloridas. Assim, quem escolheu "Maior que 1000" ou a fórmula `=$C2>1000` acerta do mesmo jeito.
 - Conteúdo: lições no módulo "Organizar dados" ou num módulo "Visualizar dados" (com gráficos).
+
+
+O que entrou: menu "Formatação Condicional" como o do Excel (Realçar Regras das Células, Primeiros/Últimos, Barras de Dados, Escalas de Cor, Nova Regra com fórmula, Limpar e Gerenciar Regras), os três estilos prontos do Excel, regra de fórmula relativa à primeira célula (avaliada pelo próprio motor, com a mesma validação de idioma e escrita das células), prioridade da regra mais nova, correção pelo conjunto de células destacadas (`destacadas`) e por `formatoVisual`, e o Módulo 10 com 3 lições e o teste (20 exercícios). Testes: `src/engine/condicional.test.ts`, `src/content/ferramenta.test.ts` e `e2e/condicional.spec.ts`.
+
+Diferenças conscientes e o que ficou para depois:
+- "Maior/Menor do que" com número ignora células vazias e de texto. No Excel, vazia conta como 0 e texto é "maior" que qualquer número, o que confunde mais do que ensina.
+- Valor da regra digitado, não referência de célula (`=$F$1`). Barras de dados só com mínimo 0 e máximo automático; escala só de 3 cores.
+- Formatos personalizados (escolher cor, negrito) e conjuntos de ícones.
+- "Limpar Regras das Células Selecionadas" remove a regra inteira que toca a seleção (o Excel recorta o intervalo dela).
 
 ### Fase 3: Tabela dinâmica (na grade), feita em 17/11/2026
 

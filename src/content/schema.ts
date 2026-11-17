@@ -97,6 +97,29 @@ export const dinamicaSchema = z
   })
   .refine((d) => d.colunas.length === 0 || d.valores.length <= 1, "Com um campo em Colunas, só um campo em Valores.");
 
+/** Os três estilos prontos do Excel ("Preenchimento Vermelho Claro e Texto Vermelho Escuro"…). */
+export const estiloDestaqueSchema = z.enum(["vermelho", "amarelo", "verde"]);
+
+/**
+ * Regra de formatação condicional, como os itens do menu do Excel:
+ * Realçar Regras das Células (maior, menor, entre, igual, texto, duplicados,
+ * exclusivos), Primeiros/Últimos (top, acima/abaixo da média), uma fórmula
+ * (relativa à primeira célula do intervalo), Barras de Dados e Escala de Cor.
+ */
+export const regraCondicionalSchema = z.discriminatedUnion("tipo", [
+  z.object({
+    tipo: z.enum(["maior", "menor", "igual", "texto"]),
+    intervalo,
+    valor: z.string().max(100),
+    estilo: estiloDestaqueSchema,
+  }),
+  z.object({ tipo: z.literal("entre"), intervalo, valor: z.string().max(100), valor2: z.string().max(100), estilo: estiloDestaqueSchema }),
+  z.object({ tipo: z.enum(["duplicados", "unicos", "acimaMedia", "abaixoMedia"]), intervalo, estilo: estiloDestaqueSchema }),
+  z.object({ tipo: z.enum(["maiores", "menores"]), intervalo, n: z.number().int().min(1).max(1000), estilo: estiloDestaqueSchema }),
+  z.object({ tipo: z.literal("formula"), intervalo, formula: z.string().startsWith("=").max(300), estilo: estiloDestaqueSchema }),
+  z.object({ tipo: z.enum(["barras", "escala"]), intervalo }),
+]);
+
 export const recursosSchema = z.object({
   /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. null = desligado. */
   filtro: z
@@ -104,6 +127,8 @@ export const recursosSchema = z.object({
     .nullable()
     .optional(),
   dinamicas: z.array(dinamicaSchema).max(3).optional(),
+  /** Regras de formatação condicional; a última criada tem prioridade (como no Excel). */
+  condicionais: z.array(regraCondicionalSchema).max(20).optional(),
   /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
 });
@@ -154,6 +179,8 @@ const baseSchema = z.object({
       dados: z.boolean().optional(),
       /** Botão Tabela dinâmica e o painel de campos. */
       dinamica: z.boolean().optional(),
+      /** Menu Formatação Condicional. */
+      condicional: z.boolean().optional(),
     })
     .optional(),
   /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
@@ -271,6 +298,19 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
     filtros: z.array(z.object({ campo: z.string(), valores: z.array(z.string()).nullable() })).default([]),
     mensagem: z.string().optional(),
   }),
+  /**
+   * Formatação condicional: exatamente estas células do intervalo ficam
+   * destacadas (com qualquer regra que chegue lá), opcionalmente nesta cor.
+   */
+  z.object({
+    tipo: z.literal("destacadas"),
+    intervalo,
+    esperado: z.array(endereco),
+    estilo: estiloDestaqueSchema.optional(),
+    mensagem: z.string().optional(),
+  }),
+  /** Barras de dados ou escala de cor aplicadas exatamente neste intervalo. */
+  z.object({ tipo: z.literal("formatoVisual"), intervalo, visual: z.enum(["barras", "escala"]), mensagem: z.string().optional() }),
   /** Resultado de uma célula, com fórmula e (opcional) usando uma função. */
   z.object({
     tipo: z.literal("celula"),
@@ -315,6 +355,8 @@ export type Alvo = z.infer<typeof alvoSchema>;
 export type Recursos = z.infer<typeof recursosSchema>;
 export type Ordenacao = z.infer<typeof ordenacaoSchema>;
 export type Dinamica = z.infer<typeof dinamicaSchema>;
+export type RegraCondicional = z.infer<typeof regraCondicionalSchema>;
+export type EstiloDestaque = z.infer<typeof estiloDestaqueSchema>;
 export type FuncaoValor = z.infer<typeof funcaoValorSchema>;
 export type Verificacao = z.infer<typeof verificacaoSchema>;
 export type Exercicio = z.infer<typeof exercicioSchema>;

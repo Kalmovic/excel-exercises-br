@@ -1,5 +1,6 @@
 import type { Dinamica, ExercicioDoTipo, FuncaoValor, Verificacao } from "@/content/schema";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
+import { CORES_DESTAQUE } from "@/engine/condicional";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
 import type { Planilha } from "@/engine/engine";
 import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } from "../tipos";
@@ -54,6 +55,22 @@ function conferir(v: Verificacao, p: Planilha): Falha | null {
     }
     case "dinamica":
       return conferirDinamica(v, p);
+    case "destacadas":
+      return conferirDestacadas(v, p);
+    case "formatoVisual": {
+      const alvo = intervaloParaTexto(deIntervalo(v.intervalo));
+      const tem = p.regrasCondicionais().some((r) => r.tipo === v.visual && intervaloParaTexto(deIntervalo(r.intervalo)) === alvo);
+      if (tem) return null;
+      const nome = v.visual === "barras" ? "Barras de Dados" : "Escala de Cor";
+      const outro = p.regrasCondicionais().find((r) => r.tipo === v.visual);
+      return {
+        celula: v.intervalo.split(":")[0],
+        motivo: "recurso",
+        mensagem: outro
+          ? `Há ${nome} em ${outro.intervalo}, mas a pergunta pede em ${v.intervalo}. Selecione só os números antes de aplicar.`
+          : `Ainda não há ${nome} em ${v.intervalo}. Selecione os valores e use Formatação Condicional → ${nome}.`,
+      };
+    }
     case "celula": {
       const c = v.celula;
       const valor = p.valor(c);
@@ -146,3 +163,31 @@ function diferenca(v: VerificacaoDinamica, d: Dinamica, p: Planilha, i: number, 
 }
 
 const normalizar = (t: string) => intervaloParaTexto(deIntervalo(t));
+
+/**
+ * Formatação condicional pelo resultado: quais células ficaram destacadas.
+ * "Maior do que 999,99", "Entre 1000 e 9999" e a fórmula `>=1000` dão o
+ * mesmo conjunto, e todas acertam. A mensagem conta, sem entregar quais são.
+ */
+function conferirDestacadas(v: Extract<Verificacao, { tipo: "destacadas" }>, p: Planilha): Falha | null {
+  const int = deIntervalo(v.intervalo);
+  const celula = v.intervalo.split(":")[0];
+  const todas = new Set(p.destacadas(int));
+  const certas = new Set(v.esperado);
+  const iguais = (a: Set<string>, b: Set<string>) => a.size === b.size && [...a].every((x) => b.has(x));
+  if (iguais(todas, certas)) {
+    if (!v.estilo) return null;
+    const naCor = new Set(p.destacadas(int, v.estilo));
+    if (iguais(naCor, certas)) return null;
+    return { celula, motivo: "formato", mensagem: `As células certas estão destacadas, mas com outra cor. A pergunta pede ${CORES_DESTAQUE[v.estilo].nome.toLowerCase()}.` };
+  }
+  if (todas.size === 0)
+    return { celula, motivo: "formato", mensagem: `Nenhuma célula de ${v.intervalo} está destacada ainda. Selecione o intervalo e use Formatação Condicional.` };
+  const sobram = [...todas].filter((x) => !certas.has(x)).length;
+  const faltam = [...certas].filter((x) => !todas.has(x)).length;
+  const partes = [
+    sobram ? `${sobram} ${sobram === 1 ? "célula destacada que não deveria" : "células destacadas que não deveriam"}` : "",
+    faltam ? `${faltam} ${faltam === 1 ? "célula que deveria estar destacada e não está" : "células que deveriam estar destacadas e não estão"}` : "",
+  ].filter(Boolean);
+  return { celula, motivo: "formato", mensagem: `Quase: há ${partes.join(" e ")}. Confira a regra (o valor, o tipo de comparação e o intervalo).` };
+}

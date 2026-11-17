@@ -16,6 +16,8 @@ export type ContextoSimulador = {
   dados: boolean;
   /** Botão Tabela dinâmica e o painel Campos da Tabela Dinâmica. */
   dinamica: boolean;
+  /** Menu Formatação Condicional. */
+  condicional: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */

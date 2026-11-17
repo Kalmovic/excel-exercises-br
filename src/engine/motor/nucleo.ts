@@ -433,20 +433,30 @@ export class Calculo {
     return this.derramado.has(k);
   }
 
+  private contexto(): Ctx {
+    const agora = () => { const d = new Date(); return this.hoje() + (d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds()) / 86400; };
+    return {
+      ler: (a, b) => this.ler(a, b),
+      hoje: this.hoje,
+      agora,
+      oculta: (x) => this.linhaOculta(x),
+      ehSubtotal: (a, b) => { const y = this.conteudos.get(`${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
+    };
+  }
+
+  /** Avalia uma fórmula que não está em célula nenhuma (regra de formatação condicional). */
+  avaliarAvulsa(no: No): V {
+    const r = avaliar(no, this.contexto());
+    return Array.isArray(r) ? (r[0]?.[0] ?? null) : r;
+  }
+
   private calcular(k: string): V {
     if (this.cache.has(k)) return this.cache.get(k)!;
     if (this.pilha.has(k)) return E("#CIRC!");
     const no = (this.conteudos.get(k) as { formula: No }).formula;
     this.pilha.add(k);
     const [l, c] = k.split(",").map(Number);
-    const agora = () => { const d = new Date(); return this.hoje() + (d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds()) / 86400; };
-    const r = avaliar(no, {
-      ler: (a, b) => this.ler(a, b),
-      hoje: this.hoje,
-      agora,
-      oculta: (x) => this.linhaOculta(x),
-      ehSubtotal: (a, b) => { const y = this.conteudos.get(`${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
-    });
+    const r = avaliar(no, this.contexto());
     this.pilha.delete(k);
     let v: V;
     if (Array.isArray(r)) {

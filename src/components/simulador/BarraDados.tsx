@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { IconeFunil } from "./MenuFiltro";
+import { FormatacaoCondicional } from "./MenuCondicional";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
 
 /**
@@ -11,7 +12,7 @@ import { useSimulador, useVersaoPlanilha } from "./contexto";
  * registros encontrados"). Com `ferramentas.dinamica`: Tabela dinâmica.
  */
 export function BarraDados() {
-  const { planilha, store, dados, dinamica } = useSimulador();
+  const { planilha, store, dados, dinamica, condicional } = useSimulador();
   useVersaoPlanilha();
   const [inserindo, setInserindo] = useState(false);
   const filtro = planilha.filtroAtual();
@@ -27,8 +28,7 @@ export function BarraDados() {
 
   return (
     <div className="space-y-1">
-      <div className="flex flex-wrap items-center gap-1 rounded-md border border-zinc-300 bg-white p-1 text-sm shadow-sm" role="toolbar" aria-label="Dados">
-        <span className="px-2 text-xs text-zinc-500">Dados:</span>
+      <div className="flex flex-wrap items-center gap-1 rounded-md border border-zinc-300 bg-white p-1 text-sm shadow-sm" role="toolbar" aria-label="Ferramentas">
         {dados && (
           <>
             <button
@@ -52,6 +52,7 @@ export function BarraDados() {
             </button>
           </>
         )}
+        {condicional && <FormatacaoCondicional classeBotao={botao} />}
         {dinamica && (
           <button
             type="button"
