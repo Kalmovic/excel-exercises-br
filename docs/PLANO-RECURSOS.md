@@ -114,7 +114,7 @@ Ficou para depois:
 ## Certificado e página Pro
 
 - `modulosDoEspecialista()` conta **todo módulo que tem teste**. Cada módulo novo entra automaticamente no certificado de Especialista e, com isso, a página Pro passa a mostrar os números novos sozinha.
-- **Decisão pendente:** quem já é Especialista continua com o certificado (ele foi emitido e é verificável), mas o "faltam X módulos" de quem está no meio vai crescer. Alternativa: certificado "Especialista" (atual) + "Especialista Avançado" (módulos novos).
+- **Decidido (17/11/2026):** todo módulo novo com teste entra no Especialista. Ainda não há usuários, então ninguém perde nada; não haverá um "Especialista Avançado" separado.
 - Página Pro: uma seção "Além das fórmulas" com prévia jogável da tabela dinâmica (o `ExercicioEmbutido` já existe).
 
 ## Como conferir cada fase
