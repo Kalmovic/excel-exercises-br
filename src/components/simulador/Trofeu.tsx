@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -63,31 +64,9 @@ export function TrofeuModal({ titulo, icone, descricao, exercicios, tentativas, 
   );
 }
 
+/** Troféu do Planilhês (arte em public/trofeu.webp, fundo transparente). */
 export function IconeTrofeu({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden>
-      <defs>
-        <linearGradient id="ouro" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#fde68a" />
-          <stop offset="0.55" stopColor="#f59e0b" />
-          <stop offset="1" stopColor="#b45309" />
-        </linearGradient>
-      </defs>
-      <path d="M18 10h28v14a14 14 0 0 1-28 0z" fill="url(#ouro)" />
-      <path
-        d="M18 14H10v4a10 10 0 0 0 10 10M46 14h8v4a10 10 0 0 1-10 10"
-        fill="none"
-        stroke="#d97706"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <rect x="29" y="37" width="6" height="9" fill="#d97706" />
-      <rect x="20" y="46" width="24" height="7" rx="2" fill="#92400e" />
-      <text x="32" y="31" textAnchor="middle" fontSize="13" fontWeight="800" fill="#78350f" fontFamily="monospace">
-        =
-      </text>
-    </svg>
-  );
+  return <Image src="/trofeu.webp" alt="" width={240} height={240} className={`object-contain ${className ?? ""}`} aria-hidden />;
 }
 
 /** Medalha (módulos de entrada) ou taça (módulos de conteúdo). */
