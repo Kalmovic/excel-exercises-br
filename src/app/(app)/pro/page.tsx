@@ -7,7 +7,7 @@ import { modulosDoEspecialista } from "@/lib/especialista";
 import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
 import { MODULOS, exercicios, exerciciosDoModulo, questoesDaLicao } from "@/content";
 import { QUESTOES_CONCURSO } from "@/content/concurso";
-import { asaasConfigurado } from "@/lib/asaas";
+import { stripeConfigurado } from "@/lib/stripe";
 import { NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ const PERGUNTAS: [string, string][] = [
     `Você tem ${PRECO.garantiaDias} dias para testar. Se não gostar, é só pedir pelo e-mail e devolvemos o valor inteiro, sem perguntas.`,
   ],
   ["Consigo cancelar quando quiser?", "Sim. No mensal, você cancela a renovação em Minha conta, num clique, e continua Pro até o fim do mês já pago. O anual não renova sozinho."],
-  ["Quais as formas de pagamento?", "Mensal no cartão de crédito. Anual no Pix ou no cartão. O pagamento é feito no Asaas, um sistema de pagamentos brasileiro: o Planilhês não vê nem guarda os dados do seu cartão."],
+  ["Quais as formas de pagamento?", "Cartão de crédito: o mensal renova sozinho e o anual dá para parcelar. O pagamento é feito no Stripe, usado por milhões de empresas: o Planilhês não vê nem guarda os dados do seu cartão."],
   ["Preciso ter o Excel instalado?", "Não. A planilha roda no navegador, no computador ou no celular, com as fórmulas em português como no Excel brasileiro."],
   ["Funciona no celular?", "Funciona. No celular você seleciona e edita as células com toques, e uma barrinha faz o papel do mouse e do Ctrl+D. Para estudar muito tempo seguido, o computador é mais confortável."],
   ["E o que eu já fiz no plano grátis?", "Continua lá. O progresso fica na sua conta, e o Pro só libera o resto da trilha."],
@@ -79,8 +79,8 @@ const PARA_QUEM = [
 const NAO_E = ["Prefere só assistir aulas em vídeo"];
 
 export default function Pro() {
-  // Variáveis do Asaas lidas no build: sem elas, os botões viram "em breve".
-  const aVenda = asaasConfigurado();
+  // Variáveis do Stripe lidas no build: sem elas, os botões viram "em breve".
+  const aVenda = stripeConfigurado();
   const n = numeros();
   const total = n.questoesPro + n.extras;
 
@@ -355,7 +355,7 @@ export default function Pro() {
               {reais(PRECO.anualPorMes)}
               <span className="text-lg font-medium text-muted">/mês</span>
             </p>
-            <p className="mt-1 text-sm text-muted">{reais(PRECO.anual)} de uma vez, no Pix ou no cartão. 12 meses de acesso, sem renovação automática.</p>
+            <p className="mt-1 text-sm text-muted">{reais(PRECO.anual)} de uma vez, no cartão (dá para parcelar). 12 meses de acesso, sem renovação automática.</p>
             <div className="mt-auto pt-6">
               <Cta aVenda={aVenda} plano="anual" largo>
                 Assinar o anual

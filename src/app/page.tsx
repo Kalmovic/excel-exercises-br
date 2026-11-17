@@ -69,7 +69,7 @@ const FAQ = [
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
   ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
-  ["Quanto custa?", `O Intro completo, o desafio diário, a ofensiva e o 1º exercício de cada módulo são grátis. O Pro vai custar ${reais(PRECO.anualPorMes)} por mês no plano anual (${reais(PRECO.anual)} no Pix ou em até ${PRECO.parcelasAnual}x no cartão) ou ${reais(PRECO.mensal)} no mensal. Há garantia de ${PRECO.garantiaDias} dias. Durante os testes, tudo está aberto e nada é cobrado.`],
+  ["Quanto custa?", `O Intro completo, o desafio diário, a ofensiva e o 1º exercício de cada módulo são grátis. O Pro vai custar ${reais(PRECO.anualPorMes)} por mês no plano anual (${reais(PRECO.anual)}, em até ${PRECO.parcelasAnual}x no cartão) ou ${reais(PRECO.mensal)} no mensal. Há garantia de ${PRECO.garantiaDias} dias. Durante os testes, tudo está aberto e nada é cobrado.`],
 ];
 
 function Check() {
@@ -243,7 +243,7 @@ export default function Landing() {
               <span className="text-base font-medium text-muted">/mês</span>
             </p>
             <p className="text-xs text-muted">
-              no plano anual: {reais(PRECO.anual)} no Pix ou em até {PRECO.parcelasAnual}x no cartão ({economiaAnual()}% a
+              no plano anual: {reais(PRECO.anual)} em até {PRECO.parcelasAnual}x no cartão ({economiaAnual()}% a
               menos que o mensal). Ou {reais(PRECO.mensal)} no mensal.
             </p>
             <p className="mt-2 mb-5 text-xs text-muted">

@@ -271,3 +271,14 @@ Decisões (11/11/2026): uma página por questão, com as 5 etapas da lição no 
 - [x] LinkedIn: "Adicionar ao perfil" e "Compartilhar no LinkedIn" (post com o link), com imagem de prévia gerada (`/certificado/[codigo]/opengraph-image`).
 - [x] Página Pro: seções "Prática que não acaba" (só o que existe ou o plano mensal) e "Certificado de Especialista".
 - [ ] Ainda "em breve" no Pro: pacote do mês. Ideia para tornar "infinito" literal: treino sem fim com variações geradas dos exercícios (o motor recalcula a resposta pela fórmula de referência).
+
+### Pagamento: troca do Asaas pelo Stripe (17/11/2026)
+
+Motivo: no Stripe, o nome público da empresa e o nome na fatura do cartão são configuráveis (no Asaas, só a razão social ou o nome fantasia do CNPJ). O código e a função do Asaas foram removidos.
+
+- [x] Banco (`20261117130000_stripe.sql`): colunas `stripe_cliente_id` e `stripe_assinatura_id`; função genérica `registrar_pagamento(evento, ação)`, idempotente e numa transação. Teste em `supabase/testes/pagamentos.sql` (11 verificações).
+- [x] `src/lib/pagamento-stripe.ts` traduz o aviso do Stripe em ação (liberar, atrasar, cancelar renovação, reativar, revogar); o aluno é achado pelo `client_reference_id` ou pelo cliente do Stripe.
+- [x] `POST /api/assinatura` (Checkout: mensal = assinatura no cartão; anual = pagamento único, parcelável), `/api/assinatura/cancelar` (no fim do período), `/api/assinatura/portal` (cartão e faturas), `/api/stripe/webhook` (assinatura conferida; reembolso também cancela a assinatura).
+- [x] `/assinar` sem nome e CPF (o Stripe coleta o necessário). Cupons do Stripe aceitos no checkout.
+- [ ] Configurar a conta do Stripe (nome público, logo, webhook, portal) e testar no modo de teste.
+- [ ] Pix no anual: ativar no Stripe, se disponível na conta, e voltar a citar na landing.

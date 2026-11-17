@@ -1,97 +1,82 @@
 import { NextResponse } from "next/server";
+import type Stripe from "stripe";
 import { z } from "zod";
-import {
-  ErroAsaas,
-  apagarCobranca,
-  asaasConfigurado,
-  cancelarAssinatura,
-  criarAssinaturaMensal,
-  criarCliente,
-  criarCobrancaAnual,
-  primeiraCobranca,
-} from "@/lib/asaas";
-import { cpfValido, digitosCpf } from "@/lib/cpf";
-import { hojeSP, somarDias } from "@/lib/data-sp";
 import { PRECO } from "@/lib/site";
+import { clienteStripe, stripeConfigurado } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { usuarioAtual } from "@/lib/supabase/servidor";
 
-const pedido = z.object({
-  plano: z.enum(["mensal", "anual"]),
-  nome: z.string().trim().min(3, "Escreva seu nome completo.").max(80),
-  cpf: z.string().refine(cpfValido, "Confira o CPF: os dígitos não batem."),
-});
+const pedido = z.object({ plano: z.enum(["mensal", "anual"]) });
+const centavos = (reais: number) => Math.round(reais * 100);
 
-type Linha = {
-  plano: string;
-  status: string;
-  acesso_ate: string | null;
-  asaas_cliente_id: string | null;
-  asaas_assinatura_id: string | null;
-  asaas_cobranca_id: string | null;
-};
+type Linha = { status: string; acesso_ate: string | null; stripe_cliente_id: string | null };
 
 /**
- * Checkout: cria a cobrança no Asaas e devolve a página de pagamento dele.
+ * Checkout: cria a sessão de pagamento no Stripe e devolve o link dela.
  *
  * O aluno NÃO vira Pro aqui: só fica "pendente". Quem libera o acesso é o
- * webhook, quando o Asaas avisa que o pagamento foi confirmado.
+ * webhook, quando o Stripe avisa que o pagamento foi confirmado.
  */
 export async function POST(request: Request) {
   const usuario = await usuarioAtual();
   if (!usuario) return erro(401, "Entre na sua conta para assinar.");
-  // Sem a chave do Asaas ou a chave secreta do Supabase (que grava a assinatura), não há checkout.
-  if (!asaasConfigurado() || !process.env.SUPABASE_SECRET_KEY) return erro(503, "Pagamentos ainda não estão ligados.");
-
+  if (!stripeConfigurado() || !process.env.SUPABASE_SECRET_KEY) return erro(503, "Pagamentos ainda não estão ligados.");
   const dados = pedido.safeParse(await request.json().catch(() => null));
-  if (!dados.success) return erro(400, dados.error.issues[0]?.message ?? "Dados inválidos.");
-  const { plano, nome } = dados.data;
-  const cpf = digitosCpf(dados.data.cpf);
+  if (!dados.success) return erro(400, "Plano inválido.");
+  const { plano } = dados.data;
 
   const admin = supabaseAdmin();
-  const { data: atual } = await admin.from("assinaturas").select("*").eq("usuario_id", usuario.id).maybeSingle<Linha>();
+  const { data: atual } = await admin.from("assinaturas").select("status, acesso_ate, stripe_cliente_id").eq("usuario_id", usuario.id).maybeSingle<Linha>();
   if (atual?.acesso_ate && new Date(atual.acesso_ate) > new Date())
     return erro(409, `Você já é Pro até ${new Date(atual.acesso_ate).toLocaleDateString("pt-BR")}.`);
 
   try {
-    // Checkout anterior abandonado: some com a cobrança velha para não ficar gerando boleto.
-    if (atual?.status === "pendente") {
-      if (atual.asaas_assinatura_id) await cancelarAssinatura(atual.asaas_assinatura_id).catch(() => {});
-      if (atual.asaas_cobranca_id) await apagarCobranca(atual.asaas_cobranca_id).catch(() => {});
-    }
-
-    const cliente = atual?.asaas_cliente_id ?? (await criarCliente({ nome, email: usuario.email ?? "", cpf, usuarioId: usuario.id })).id;
-    const hoje = hojeSP();
-    let assinaturaId: string | null = null;
-    let cobranca;
-    if (plano === "mensal") {
-      const assinatura = await criarAssinaturaMensal({ cliente, valor: PRECO.mensal, hoje, usuarioId: usuario.id });
-      assinaturaId = assinatura.id;
-      cobranca = await primeiraCobranca(assinatura.id);
-      if (!cobranca) throw new Error("assinatura criada sem cobrança");
-    } else {
-      cobranca = await criarCobrancaAnual({ cliente, valor: PRECO.anual, vencimento: somarDias(hoje, 3), usuarioId: usuario.id });
-    }
+    const stripe = clienteStripe();
+    // Um cliente no Stripe por aluno: os avisos chegam com esse id, e é por ele que achamos o aluno.
+    const cliente =
+      atual?.stripe_cliente_id ?? (await stripe.customers.create({ email: usuario.email, metadata: { usuario_id: usuario.id } })).id;
+    const origem = new URL(request.url).origin;
+    const comum: Stripe.Checkout.SessionCreateParams = {
+      customer: cliente,
+      client_reference_id: usuario.id,
+      locale: "pt-BR",
+      allow_promotion_codes: true, // cupons (afiliados, campanhas) criados no painel do Stripe
+      success_url: `${origem}/conta?pagamento=ok`,
+      cancel_url: `${origem}/pro`,
+      metadata: { usuario_id: usuario.id, plano },
+    };
+    const sessao = await stripe.checkout.sessions.create(
+      plano === "mensal"
+        ? {
+            ...comum,
+            mode: "subscription",
+            line_items: [{ quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.mensal), recurring: { interval: "month" }, product_data: { name: "Planilhês Pro mensal" } } }],
+            subscription_data: { metadata: { usuario_id: usuario.id } },
+          }
+        : {
+            ...comum,
+            mode: "payment",
+            line_items: [{ quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.anual), product_data: { name: "Planilhês Pro anual (12 meses de acesso)" } } }],
+            payment_method_options: { card: { installments: { enabled: true } } }, // parcelado no cartão
+            payment_intent_data: { metadata: { usuario_id: usuario.id } },
+          },
+    );
 
     // Com a chave secreta: o aluno não pode escrever na própria assinatura.
     const { error } = await admin.from("assinaturas").upsert({
       usuario_id: usuario.id,
       plano,
       status: "pendente",
-      asaas_cliente_id: cliente,
-      asaas_assinatura_id: assinaturaId,
-      asaas_cobranca_id: plano === "anual" ? cobranca.id : null,
-      fatura_url: cobranca.invoiceUrl,
+      stripe_cliente_id: cliente,
+      fatura_url: sessao.url,
       atualizado_em: new Date().toISOString(),
     });
     if (error) throw new Error(`gravar assinatura: ${error.message}`);
     console.log(JSON.stringify({ tipo: "checkout_criado", plano, usuario: usuario.id }));
-    return NextResponse.json({ url: cobranca.invoiceUrl });
+    return NextResponse.json({ url: sessao.url });
   } catch (e) {
     console.error(JSON.stringify({ tipo: "erro_checkout", mensagem: String(e) }));
-    if (e instanceof ErroAsaas && e.status === 400)
-      return erro(400, e.detalhes[0]?.description ?? "O Asaas recusou os dados. Confira o nome e o CPF.");
-    return erro(502, "Não conseguimos falar com o sistema de pagamento. Tente de novo em alguns minutos.");
+    return erro(502, "Não conseguimos abrir o pagamento agora. Tente de novo em alguns minutos.");
   }
 }
 

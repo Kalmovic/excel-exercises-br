@@ -7,7 +7,7 @@ import { supabaseServidor } from "./supabase/servidor";
  *
  * Lê a sessão do cookie (por isso a página precisa de <Suspense> em volta) e a
  * linha do aluno em `assinaturas`, pelo RLS: cada um só enxerga a própria.
- * Pro = `acesso_ate` no futuro. Quem grava `acesso_ate` é o webhook do Asaas.
+ * Pro = `acesso_ate` no futuro. Quem grava `acesso_ate` é o webhook do Stripe.
  */
 export async function usuarioEhPro(): Promise<boolean> {
   const supabase = await supabaseServidor();

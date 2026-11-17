@@ -113,7 +113,7 @@ test("nenhum desafio vai no JavaScript enviado ao navegador", () => {
   expect(vazou).toEqual([]);
 });
 
-test("página do Pro: números reais, comparação e, sem Asaas, botões em breve", async ({ page }) => {
+test("página do Pro: números reais, comparação e, sem Stripe, botões em breve", async ({ page }) => {
   await page.goto("/pro");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(page.getByTestId("comparacao")).toContainText("Arquivo com todos os desafios anteriores");

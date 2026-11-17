@@ -17,7 +17,7 @@ type Assinatura = {
   status: "pendente" | "ativa" | "atrasada" | "cancelada";
   acesso_ate: string | null;
   fatura_url: string | null;
-  asaas_assinatura_id: string | null;
+  stripe_assinatura_id: string | null;
 };
 
 const data = (iso: string) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
@@ -44,12 +44,12 @@ export function PainelConta({
     if (conta.estado !== "logado") return;
     void supabaseNavegador()!
       .from("assinaturas")
-      .select("plano, status, acesso_ate, fatura_url, asaas_assinatura_id")
+      .select("plano, status, acesso_ate, fatura_url, stripe_assinatura_id")
       .maybeSingle<Assinatura>()
       .then(({ data }) => setAssinatura(data));
   }, [conta, versao]);
 
-  // Pagamento pendente: confere de 5 em 5 segundos até o aviso do Asaas chegar.
+  // Pagamento pendente: confere de 5 em 5 segundos até o aviso do Stripe chegar.
   const pendente = assinatura?.status === "pendente";
   useEffect(() => {
     if (!pendente) return;
@@ -150,7 +150,7 @@ function Plano({ assinatura: a, aoMudar }: { assinatura: Assinatura | null; aoMu
       </div>
     );
 
-  const renova = a.plano === "mensal" && a.status !== "cancelada" && !!a.asaas_assinatura_id;
+  const renova = a.plano === "mensal" && a.status !== "cancelada" && !!a.stripe_assinatura_id;
   return (
     <div className="space-y-3">
       <div>
@@ -162,6 +162,7 @@ function Plano({ assinatura: a, aoMudar }: { assinatura: Assinatura | null; aoMu
       {a.status === "atrasada" && <p className="text-sm text-red-700">O último pagamento não passou. Confira o cartão para não perder o acesso.</p>}
       {a.status === "cancelada" && <p className="text-sm text-muted">A renovação está cancelada. Você continua Pro até essa data.</p>}
       {a.plano === "anual" && <p className="text-sm text-muted">O plano anual não renova sozinho: avisamos por e-mail perto do fim.</p>}
+      <BotaoPortal />
       {renova && (
         <button
           type="button"
@@ -347,5 +348,27 @@ function EmitirEspecialista({ aoEmitir }: { aoEmitir: () => void }) {
         {enviando ? "Emitindo…" : "Emitir certificado de Especialista"}
       </button>
     </form>
+  );
+}
+
+/** Portal do Stripe: trocar o cartão e ver as faturas. */
+function BotaoPortal() {
+  const [abrindo, setAbrindo] = useState(false);
+  return (
+    <button
+      type="button"
+      disabled={abrindo}
+      onClick={async () => {
+        setAbrindo(true);
+        const r = await fetch("/api/assinatura/portal", { method: "POST" });
+        const json = (await r.json().catch(() => ({}))) as { url?: string };
+        if (json.url) window.location.href = json.url;
+        else setAbrindo(false);
+      }}
+      className="mr-4 text-sm text-success underline-offset-4 hover:underline disabled:opacity-50"
+      data-testid="portal-stripe"
+    >
+      {abrindo ? "Abrindo…" : "Cartão e faturas"}
+    </button>
   );
 }

@@ -5,7 +5,7 @@ import { SUPABASE_URL } from "./config";
 /**
  * Cliente com a chave SECRETA: ignora o RLS. Só para o que nenhum aluno pode
  * fazer por conta própria, como gravar a assinatura ao receber o webhook do
- * Asaas. Nunca importar em código que vai para o navegador (o "server-only"
+ * Stripe. Nunca importar em código que vai para o navegador (o "server-only"
  * acima quebra o build se isso acontecer).
  */
 export function supabaseAdmin() {

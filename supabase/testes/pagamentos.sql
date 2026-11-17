@@ -1,72 +1,54 @@
--- Teste da função aplicar_evento_pagamento (o que o webhook do Asaas chama).
--- Cria um aluno falso, simula os avisos e desfaz tudo no fim (a exceção final).
--- Resultado esperado: o erro "PAGAMENTOS OK: ...".
+-- Teste de registrar_pagamento (o que o webhook do Stripe chama).
+-- Resultado esperado: o erro "PAGAMENTOS OK: ...". Tudo é desfeito no fim.
 do $$
 declare
   a uuid := gen_random_uuid();
   r text;
   ate timestamptz;
   st text;
-  ev jsonb;
 begin
   insert into auth.users (id, email, aud, role) values (a, 'pag@teste.invalid', 'authenticated', 'authenticated');
-  insert into public.assinaturas (usuario_id, plano, status, asaas_assinatura_id, fatura_url)
-    values (a, 'mensal', 'pendente', 'sub_teste', 'https://exemplo/fatura');
+  -- O checkout grava o cliente do Stripe numa linha pendente.
+  insert into public.assinaturas (usuario_id, plano, status, stripe_cliente_id, fatura_url) values (a, 'mensal', 'pendente', 'cus_teste', 'https://checkout');
 
-  -- 1. Cartão confirmado: ativa, acesso até vencimento + 1 mês + 3 dias, fatura some.
-  ev := jsonb_build_object('id', 'evt_1', 'event', 'PAYMENT_CONFIRMED',
-          'payment', jsonb_build_object('id', 'pay_1', 'subscription', 'sub_teste', 'dueDate', '2026-11-16'));
-  r := public.aplicar_evento_pagamento(ev);
+  -- 1. Fatura paga, achada pelo cliente: ativa até a data, fatura some, guarda a assinatura.
+  r := public.registrar_pagamento('evt_1', 'invoice.paid', '{}', 'liberar', 'cus_teste', null, 'mensal', '2026-12-20', 'sub_1');
   select acesso_ate, status into ate, st from public.assinaturas where usuario_id = a;
-  if r <> 'aplicado' or st <> 'ativa' or ate::date <> date '2026-12-19' then
-    raise exception 'FALHA 1: % % %', r, st, ate; end if;
-  if (select fatura_url from public.assinaturas where usuario_id = a) is not null then raise exception 'FALHA 1b: fatura'; end if;
+  if r <> 'aplicado' or st <> 'ativa' or ate::date <> date '2026-12-20' then raise exception 'FALHA 1: % % %', r, st, ate; end if;
+  if (select fatura_url is not null or stripe_assinatura_id <> 'sub_1' from public.assinaturas where usuario_id = a) then raise exception 'FALHA 1b'; end if;
 
   -- 2. O mesmo aviso de novo: não aplica duas vezes.
-  if public.aplicar_evento_pagamento(ev) <> 'repetido' then raise exception 'FALHA 2: repetido'; end if;
+  if public.registrar_pagamento('evt_1', 'invoice.paid', '{}', 'liberar', 'cus_teste', null, 'mensal', '2027-06-01', 'sub_1') <> 'repetido' then raise exception 'FALHA 2'; end if;
 
-  -- 3. RECEIVED do mesmo pagamento (outro aviso): não estende de novo.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_2', 'event', 'PAYMENT_RECEIVED',
-          'payment', jsonb_build_object('id', 'pay_1', 'subscription', 'sub_teste', 'dueDate', '2026-11-16')));
-  if (select acesso_ate::date from public.assinaturas where usuario_id = a) <> date '2026-12-19' then raise exception 'FALHA 3: duplicou'; end if;
+  -- 3. Renovação: estende. 4. Aviso velho fora de ordem: não encurta.
+  r := public.registrar_pagamento('evt_2', 'invoice.paid', '{}', 'liberar', 'cus_teste', null, 'mensal', '2027-01-20', 'sub_1');
+  r := public.registrar_pagamento('evt_3', 'invoice.paid', '{}', 'liberar', 'cus_teste', null, 'mensal', '2026-12-20', 'sub_1');
+  if (select acesso_ate::date from public.assinaturas where usuario_id = a) <> date '2027-01-20' then raise exception 'FALHA 3/4'; end if;
 
-  -- 4. Renovação de dezembro: estende até 19/01.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_3', 'event', 'PAYMENT_CONFIRMED',
-          'payment', jsonb_build_object('id', 'pay_2', 'subscription', 'sub_teste', 'dueDate', '2026-12-16')));
-  if (select acesso_ate::date from public.assinaturas where usuario_id = a) <> date '2027-01-19' then raise exception 'FALHA 4: renovação'; end if;
+  -- 5. Pagamento falhou: atrasada, acesso mantido.
+  r := public.registrar_pagamento('evt_4', 'invoice.payment_failed', '{}', 'atrasar', 'cus_teste');
+  if (select status from public.assinaturas where usuario_id = a) <> 'atrasada' then raise exception 'FALHA 5'; end if;
 
-  -- 5. Aviso atrasado do pagamento de novembro chegando depois: não encurta.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_4', 'event', 'PAYMENT_RECEIVED',
-          'payment', jsonb_build_object('id', 'pay_1b', 'subscription', 'sub_teste', 'dueDate', '2026-11-16')));
-  if (select acesso_ate::date from public.assinaturas where usuario_id = a) <> date '2027-01-19' then raise exception 'FALHA 5: encurtou'; end if;
-
-  -- 6. Atraso: status atrasada, acesso mantido.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_5', 'event', 'PAYMENT_OVERDUE',
-          'payment', jsonb_build_object('id', 'pay_3', 'subscription', 'sub_teste', 'dueDate', '2027-01-16')));
+  -- 6. Cancelou a renovação: cancelada, acesso mantido. 7. Desistiu de cancelar: ativa de novo.
+  r := public.registrar_pagamento('evt_5', 'customer.subscription.updated', '{}', 'cancelar_renovacao', 'cus_teste');
   select acesso_ate, status into ate, st from public.assinaturas where usuario_id = a;
-  if st <> 'atrasada' or ate::date <> date '2027-01-19' then raise exception 'FALHA 6: atraso % %', st, ate; end if;
-
-  -- 7. Cancelou a renovação: cancelada, mas o período pago continua.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_6', 'event', 'SUBSCRIPTION_DELETED',
-          'subscription', jsonb_build_object('id', 'sub_teste')));
-  select acesso_ate, status into ate, st from public.assinaturas where usuario_id = a;
-  if st <> 'cancelada' or ate::date <> date '2027-01-19' then raise exception 'FALHA 7: cancelamento % %', st, ate; end if;
+  if st <> 'cancelada' or ate::date <> date '2027-01-20' then raise exception 'FALHA 6'; end if;
+  r := public.registrar_pagamento('evt_6', 'customer.subscription.updated', '{}', 'reativar', 'cus_teste');
+  if (select status from public.assinaturas where usuario_id = a) <> 'ativa' then raise exception 'FALHA 7'; end if;
 
   -- 8. Reembolso: acesso termina agora.
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_7', 'event', 'PAYMENT_REFUNDED',
-          'payment', jsonb_build_object('id', 'pay_2', 'subscription', 'sub_teste', 'dueDate', '2026-12-16')));
-  if r <> 'reembolsado' or (select acesso_ate from public.assinaturas where usuario_id = a) > now() then raise exception 'FALHA 8: reembolso'; end if;
+  r := public.registrar_pagamento('evt_7', 'charge.refunded', '{}', 'revogar', 'cus_teste');
+  if (select acesso_ate > now() from public.assinaturas where usuario_id = a) then raise exception 'FALHA 8'; end if;
 
-  -- 9. Anual (cobrança avulsa, achada pela referência externa = id do aluno): 1 ano + 3 dias da data paga.
-  update public.assinaturas set plano = 'anual', status = 'pendente', acesso_ate = null, asaas_assinatura_id = null where usuario_id = a;
-  r := public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_8', 'event', 'PAYMENT_RECEIVED',
-          'payment', jsonb_build_object('id', 'pay_anual', 'externalReference', a::text, 'dueDate', '2026-11-19', 'paymentDate', '2026-11-17')));
-  if (select acesso_ate::date from public.assinaturas where usuario_id = a) <> date '2027-11-20' then raise exception 'FALHA 9: anual'; end if;
+  -- 9. Anual pelo aluno do aviso (client_reference_id), mesmo sem linha antes.
+  delete from public.assinaturas where usuario_id = a;
+  r := public.registrar_pagamento('evt_8', 'checkout.session.completed', '{}', 'liberar', 'cus_novo', a, 'anual', '2027-11-20');
+  if (select plano <> 'anual' or stripe_cliente_id <> 'cus_novo' from public.assinaturas where usuario_id = a) then raise exception 'FALHA 9'; end if;
 
-  -- 10. Aviso de quem não existe: registrado, não quebra.
-  if public.aplicar_evento_pagamento(jsonb_build_object('id', 'evt_9', 'event', 'PAYMENT_RECEIVED',
-          'payment', jsonb_build_object('id', 'pay_x', 'subscription', 'sub_outra'))) <> 'desconhecido' then raise exception 'FALHA 10'; end if;
+  -- 10. Aviso de quem não existe: registrado, não quebra. 11. Ignorado: só registra.
+  if public.registrar_pagamento('evt_9', 'invoice.paid', '{}', 'liberar', 'cus_outro', null, 'mensal', '2027-01-01') <> 'desconhecido' then raise exception 'FALHA 10'; end if;
+  if public.registrar_pagamento('evt_10', 'payment_intent.created', '{}', 'ignorar') <> 'ignorado' then raise exception 'FALHA 11'; end if;
 
-  raise exception 'PAGAMENTOS OK: 10 verificações passaram (tudo desfeito)';
+  raise exception 'PAGAMENTOS OK: 11 verificações passaram (tudo desfeito)';
 end;
 $$;

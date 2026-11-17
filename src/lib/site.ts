@@ -17,7 +17,7 @@ export const INDEXAR_SITE = process.env.INDEXAR_SITE === "1";
 
 /**
  * Preços do Pro, em reais (hipótese a testar, ver doc de go-to-market).
- * Mensal: cartão recorrente. Anual: Pix à vista ou cartão em até 12x.
+ * Mensal: cartão recorrente. Anual: cartão, à vista ou em até 12x (Stripe).
  * Mudança de preço vale só para novos assinantes: no checkout (Fase 3), o
  * valor fica gravado na assinatura, não lido daqui.
  */

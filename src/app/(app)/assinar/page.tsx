@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { FormAssinar } from "@/components/conta/FormAssinar";
 import { EmBreve } from "@/components/site/EmBreve";
-import { asaasConfigurado } from "@/lib/asaas";
+import { stripeConfigurado } from "@/lib/stripe";
 import { contasLigadas } from "@/lib/supabase/config";
 
 export const metadata: Metadata = { title: "Assinar o Pro", robots: { index: false, follow: false } };
 
 export default function Pagina() {
-  if (!contasLigadas() || !asaasConfigurado())
+  if (!contasLigadas() || !stripeConfigurado())
     return (
       <EmBreve titulo="O Pro chega em breve">
         <p>Ainda não estamos vendendo o Pro. Enquanto isso, o Intro, o desafio do dia e a trilha seguem grátis.</p>

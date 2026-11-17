@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { useConta } from "@/lib/conta";
-import { cpfValido, formatarCpf } from "@/lib/cpf";
 import { PRECO, economiaAnual, reais } from "@/lib/site";
 
 type Plano = "anual" | "mensal";
@@ -12,7 +11,7 @@ const PLANOS: Record<Plano, { titulo: string; preco: string; detalhe: string }> 
   anual: {
     titulo: "Anual",
     preco: `${reais(PRECO.anualPorMes)}/mês`,
-    detalhe: `${reais(PRECO.anual)} de uma vez, no Pix ou no cartão. ${economiaAnual()}% a menos que o mensal. 12 meses de acesso.`,
+    detalhe: `${reais(PRECO.anual)} de uma vez, no cartão (dá para parcelar). ${economiaAnual()}% a menos que o mensal. 12 meses de acesso.`,
   },
   mensal: {
     titulo: "Mensal",
@@ -28,8 +27,6 @@ export function FormAssinar() {
   const inicial = useSyncExternalStore(() => () => {}, planoDaUrl, () => "anual" as Plano);
   const [escolhido, setEscolhido] = useState<Plano | null>(null);
   const plano = escolhido ?? inicial;
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
 
@@ -50,26 +47,23 @@ export function FormAssinar() {
 
   const enviar = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (nome.trim().split(/\s+/).length < 2) return setErro("Escreva seu nome completo, como no CPF.");
-    if (!cpfValido(cpf)) return setErro("Confira o CPF: os dígitos não batem.");
     setErro(null);
     setEnviando(true);
     try {
       const r = await fetch("/api/assinatura", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plano, nome, cpf }),
+        body: JSON.stringify({ plano }),
       });
       const json = (await r.json().catch(() => ({}))) as { url?: string; erro?: string };
       if (!r.ok || !json.url) throw new Error(json.erro ?? "Não deu certo agora. Tente de novo.");
-      window.location.href = json.url; // página de pagamento do Asaas
+      window.location.href = json.url; // página de pagamento do Stripe
     } catch (e) {
       setErro((e as Error).message);
       setEnviando(false);
     }
   };
 
-  const campo = "w-full rounded-lg border border-line bg-white px-4 py-3 text-base outline-none focus:ring-2 focus:ring-accent";
   return (
     <form onSubmit={enviar} className="space-y-5" noValidate>
       <fieldset className="grid gap-3 sm:grid-cols-2">
@@ -89,24 +83,6 @@ export function FormAssinar() {
         ))}
       </fieldset>
 
-      <label className="block space-y-1">
-        <span className="text-sm font-medium">Nome completo</span>
-        <input autoComplete="name" value={nome} onChange={(e) => (setNome(e.target.value), setErro(null))} className={campo} data-testid="nome-assinar" />
-      </label>
-      <label className="block space-y-1">
-        <span className="text-sm font-medium">CPF</span>
-        <input
-          inputMode="numeric"
-          autoComplete="off"
-          placeholder="000.000.000-00"
-          value={cpf}
-          onChange={(e) => (setCpf(formatarCpf(e.target.value)), setErro(null))}
-          className={campo}
-          data-testid="cpf-assinar"
-        />
-        <span className="block text-xs text-muted">Exigido pelo sistema de pagamento para emitir a cobrança.</span>
-      </label>
-
       {erro && (
         <p className="text-sm text-red-700" role="alert">
           {erro}
@@ -121,7 +97,7 @@ export function FormAssinar() {
         {enviando ? "Preparando o pagamento…" : "Ir para o pagamento"}
       </button>
       <p className="text-sm text-muted">
-        Você paga no Asaas, nosso sistema de pagamento. Assim que o pagamento for confirmado, o Pro é liberado na sua conta.
+        O pagamento é feito no Stripe, com segurança: o Planilhês não vê nem guarda os dados do seu cartão. Assim que o pagamento for confirmado, o Pro é liberado na sua conta.
         Garantia de {PRECO.garantiaDias} dias: se não gostar, devolvemos o valor.
       </p>
     </form>
