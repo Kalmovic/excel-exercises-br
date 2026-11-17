@@ -32,6 +32,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("MAIOR", "matriz; k", "O k-ésimo maior valor."),
   f("MENOR", "matriz; k", "O k-ésimo menor valor."),
   f("MED", "núm1; [núm2]; ...", "Mediana: o valor do meio."),
+  f("SUBTOTAL", "núm_função; ref1; [ref2]; ...", "Soma, conta ou faz a média só das linhas visíveis (ignora as escondidas pelo filtro). 9 = soma, 1 = média, 3 = contar valores."),
   // lógica
   f("SE", "teste_lógico; [valor_se_verdadeiro]; [valor_se_falso]", "Devolve um valor se o teste for verdadeiro e outro se for falso."),
   f("SES", "teste_lógico1; valor_se_verdadeiro1; ...", "Testa várias condições em ordem e devolve o valor da primeira verdadeira."),

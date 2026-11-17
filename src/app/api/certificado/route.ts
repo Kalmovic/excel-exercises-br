@@ -2,6 +2,7 @@ import { randomInt } from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { testeDoModulo } from "@/content";
+import { recursosSchema } from "@/content/schema";
 import { PAYWALL_ATIVO } from "@/lib/acesso-conteudo";
 import { usuarioEhPro } from "@/lib/acesso";
 import { conferirTeste } from "@/grader/conferir-teste";
@@ -12,6 +13,8 @@ import { usuarioAtual } from "@/lib/supabase/servidor";
 const resposta = z.object({
   conteudos: z.record(z.string(), z.string()),
   formatos: z.record(z.string(), z.enum(["moeda", "percentual", "geral"])).optional(),
+  // Filtro e classificações: só configuração, com limites no próprio schema.
+  recursos: recursosSchema.optional(),
   resposta: z.string().optional(),
   ativa: z.string().optional(),
   selecao: z.string().optional(),

@@ -2,7 +2,7 @@
  * Progresso local (Fase 1). Na Fase 3 isto migra para a tabela `progresso`
  * no Supabase no primeiro login.
  */
-import type { Formato } from "@/content/schema";
+import type { Formato, Recursos } from "@/content/schema";
 import { registrarAtividade } from "./ofensiva";
 
 export type ProgressoExercicio = {
@@ -13,6 +13,8 @@ export type ProgressoExercicio = {
   conteudos: Record<string, string>;
   /** Campos novos são opcionais: progresso salvo antes deles continua válido. */
   formatos?: Record<string, Formato>;
+  /** Filtro e classificações feitos pelo aluno (configuração, não o resultado). */
+  recursos?: Recursos;
   resposta?: string;
   /** Resultado de cada verificação até acertar (true = acertou). */
   historico?: boolean[];

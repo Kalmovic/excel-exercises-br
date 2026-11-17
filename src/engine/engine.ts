@@ -1,5 +1,15 @@
-import type { Exercicio, Formato } from "@/content/schema";
-import { deEndereco, paraEndereco, posicoes, type Intervalo, type Pos } from "./address";
+import type { Exercicio, Formato, Ordenacao, Recursos } from "@/content/schema";
+import {
+  colunaParaLetras,
+  deEndereco,
+  deIntervalo,
+  intervaloParaTexto,
+  letrasParaColuna,
+  paraEndereco,
+  posicoes,
+  type Intervalo,
+  type Pos,
+} from "./address";
 import { formatarValor, type TipoDetalhado, type ValorCelula } from "./format";
 import { diagnosticarSintaxe, funcoesUsadas, validarIdioma, type Validacao } from "./formula";
 import { lerEntrada, normalizarFormula } from "./motor/entrada";
@@ -13,7 +23,40 @@ export type Alteracao = { endereco: string; bruto: string };
 
 type FotoFormato = { end: string; formato?: Formato; doAluno?: Formato };
 type Mudanca = { end: string; antes?: string; depois?: string };
-type AcaoHistorico = { tipo: "celulas"; mudancas: Mudanca[] } | { tipo: "formato"; antes: FotoFormato[]; depois: FotoFormato[] };
+/** Retrato completo (planilhas do simulador são pequenas): usado por classificar e filtrar. */
+type Foto = {
+  textos: Map<string, string>;
+  formatos: Map<string, Formato>;
+  formatosAluno: Map<string, Formato>;
+  negritos: Set<string>;
+  bloqueadas: Set<string>;
+  filtro: Filtro | null;
+  ordenacoes: Ordenacao[];
+};
+type AcaoHistorico =
+  | { tipo: "celulas"; mudancas: Mudanca[] }
+  | { tipo: "formato"; antes: FotoFormato[]; depois: FotoFormato[] }
+  | { tipo: "estado"; antes: Foto; depois: Foto };
+
+/** AutoFiltro: a primeira linha do intervalo é o cabeçalho; critérios por letra da coluna. */
+export type Filtro = { intervalo: Intervalo; criterios: Record<string, string[]> };
+
+/**
+ * Ordem do Classificar do Excel: números < textos < FALSO < VERDADEIRO < erros,
+ * e as vazias sempre por último (também na ordem decrescente).
+ */
+export function compararParaClassificar(a: ValorCelula, b: ValorCelula, desc = false): number {
+  const vazia = (v: ValorCelula) => v === null || v === "";
+  if (vazia(a) || vazia(b)) return vazia(a) === vazia(b) ? 0 : vazia(a) ? 1 : -1;
+  const rank = (v: ValorCelula) => (typeof v === "number" ? 0 : typeof v === "string" ? 1 : typeof v === "boolean" ? 2 : 3);
+  let r = rank(a) - rank(b);
+  if (r === 0) {
+    if (typeof a === "number") r = a - (b as number);
+    else if (typeof a === "string") r = a.localeCompare(b as string, "pt-BR", { sensitivity: "base", numeric: false });
+    else if (typeof a === "boolean") r = Number(a) - Number(b);
+  }
+  return desc ? -r : r;
+}
 
 const pt = (n: number) => String(Math.round(n * 1e10) / 1e10).replace(".", ",");
 const dois = (n: number) => String(n).padStart(2, "0");
@@ -54,10 +97,16 @@ export class Planilha {
   private historico: AcaoHistorico[] = [];
   private refeitos: AcaoHistorico[] = [];
   private area: Intervalo | null = null; // última área copiada
+  private filtro: Filtro | null = null;
+  /** Classificações feitas desde o estado inicial (é isso que o progresso guarda). */
+  private ordenacoes: Ordenacao[] = [];
+  /** Linhas escondidas pelo filtro, recalculadas a cada mudança. */
+  private ocultas = new Set<number>();
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
     this.linhas = grade.linhas;
     this.colunas = grade.colunas;
+    this.calculo.linhaOculta = (l) => this.ocultas.has(l);
     for (const [end, cel] of Object.entries(grade.celulas)) {
       this.gravar(deEndereco(end), cel.entrada);
       if (cel.bloqueada ?? cel.entrada !== "") this.bloqueadas.add(end);
@@ -65,6 +114,7 @@ export class Planilha {
       if (cel.negrito) this.negritos.add(end);
     }
     for (const [end, f] of Object.entries(extras.formatos ?? {})) if (f) this.formatos.set(end, f);
+    if (grade.recursos) this.aplicarRecursos(grade.recursos, { inicial: true });
   }
 
   /** Monta a planilha de um exercício, aplicando também os formatos das células-alvo. */
@@ -86,6 +136,7 @@ export class Planilha {
   getVersion = () => this.versao;
 
   private notificar() {
+    this.atualizarOcultas();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
   }
@@ -404,6 +455,7 @@ export class Planilha {
     const acao = this.historico.pop();
     if (!acao) return;
     if (acao.tipo === "formato") this.aplicarFormatos(acao.antes);
+    else if (acao.tipo === "estado") this.restaurar(acao.antes);
     else this.aplicar([...acao.mudancas].reverse(), "antes");
     this.refeitos.push(acao);
     this.notificar();
@@ -414,8 +466,304 @@ export class Planilha {
     const acao = this.refeitos.pop();
     if (!acao) return;
     if (acao.tipo === "formato") this.aplicarFormatos(acao.depois);
+    else if (acao.tipo === "estado") this.restaurar(acao.depois);
     else this.aplicar(acao.mudancas, "depois");
     this.historico.push(acao);
+    this.notificar();
+  }
+
+  // --- recursos: filtro e classificação -------------------------------------
+
+  /** Configuração atual dos recursos (o que o progresso guarda e o certificado reenvia). */
+  recursos(): Recursos {
+    const r: Recursos = {};
+    if (this.filtro)
+      r.filtro = {
+        intervalo: intervaloParaTexto(this.filtro.intervalo),
+        criterios: Object.fromEntries(Object.entries(this.filtro.criterios).map(([c, valores]) => [c, { valores }])),
+      };
+    if (this.ordenacoes.length) r.ordenacoes = this.ordenacoes.map((o) => structuredClone(o));
+    return r;
+  }
+
+  /**
+   * Restaura recursos salvos: refaz as classificações na ordem e liga o filtro.
+   * Sem histórico (Ctrl+Z não desfaz o que foi restaurado). `inicial`: estado do
+   * próprio exercício, que não conta como classificação feita pelo aluno.
+   */
+  aplicarRecursos(r: Recursos, { inicial = false } = {}) {
+    for (const o of r.ordenacoes ?? []) {
+      const int = this.recortar(deIntervalo(o.intervalo));
+      if (!int) continue;
+      this.ordenar(int, o);
+      if (!inicial) this.ordenacoes.push(structuredClone(o));
+    }
+    if (r.filtro) {
+      const int = this.recortar(deIntervalo(r.filtro.intervalo));
+      if (int)
+        this.filtro = {
+          intervalo: int,
+          criterios: Object.fromEntries(Object.entries(r.filtro.criterios).map(([c, k]) => [c, [...k.valores]])),
+        };
+    }
+    this.atualizarOcultas();
+    this.versao++;
+    this.ouvintes.forEach((fn) => fn());
+  }
+
+  /** O intervalo cortado nas bordas da planilha (null se ficar fora). */
+  private recortar(i: Intervalo): Intervalo | null {
+    const fim = { linha: Math.min(i.fim.linha, this.linhas - 1), coluna: Math.min(i.fim.coluna, this.colunas - 1) };
+    return i.inicio.linha > fim.linha || i.inicio.coluna > fim.coluna ? null : { inicio: i.inicio, fim };
+  }
+
+  filtroAtual(): Filtro | null {
+    return this.filtro;
+  }
+
+  /** A linha está escondida pelo filtro. */
+  linhaOculta(linha: number): boolean {
+    return this.ocultas.has(linha);
+  }
+
+  /** Números (base 1) das linhas de dados visíveis no intervalo do filtro, sem o cabeçalho. */
+  linhasVisiveis(): number[] {
+    if (!this.filtro) return [];
+    const { inicio, fim } = this.filtro.intervalo;
+    const out: number[] = [];
+    for (let l = inicio.linha + 1; l <= fim.linha; l++) if (!this.ocultas.has(l)) out.push(l + 1);
+    return out;
+  }
+
+  /** Total de linhas de dados no filtro (para "4 de 12 registros encontrados"). */
+  totalDoFiltro(): number {
+    return this.filtro ? this.filtro.intervalo.fim.linha - this.filtro.intervalo.inicio.linha : 0;
+  }
+
+  /** O texto que o filtro compara: o que aparece na célula, sem espaços nas pontas. */
+  textoParaFiltro(p: Pos): string {
+    const v = this.valor(p);
+    return v === null || v === "" ? "" : this.exibicao(p).trim();
+  }
+
+  private atualizarOcultas() {
+    const novo = new Set<number>();
+    const f = this.filtro;
+    if (f) {
+      const cols = Object.entries(f.criterios).map(([letra, valores]) => ({ coluna: letrasParaColuna(letra), ok: new Set(valores) }));
+      for (let l = f.intervalo.inicio.linha + 1; l <= f.intervalo.fim.linha; l++)
+        if (cols.some(({ coluna, ok }) => !ok.has(this.textoParaFiltro({ linha: l, coluna })))) novo.add(l);
+    }
+    const mudou = novo.size !== this.ocultas.size || [...novo].some((l) => !this.ocultas.has(l));
+    this.ocultas = novo;
+    if (mudou) this.calculo.invalidar(); // SUBTOTAL depende das linhas visíveis
+  }
+
+  /**
+   * Os textos de uma coluna do filtro, para a lista de caixas de seleção: só os
+   * das linhas que passam nos critérios das OUTRAS colunas (como no Excel).
+   * Números primeiro (em ordem), depois textos em ordem alfabética, (Vazias) por último.
+   */
+  valoresDaColuna(coluna: number): string[] {
+    const f = this.filtro;
+    if (!f) return [];
+    const letra = colunaParaLetras(coluna);
+    const outras = Object.entries(f.criterios)
+      .filter(([c]) => c !== letra)
+      .map(([c, valores]) => ({ coluna: letrasParaColuna(c), ok: new Set(valores) }));
+    const vistos = new Map<string, ValorCelula>();
+    for (let l = f.intervalo.inicio.linha + 1; l <= f.intervalo.fim.linha; l++) {
+      if (outras.some(({ coluna: c, ok }) => !ok.has(this.textoParaFiltro({ linha: l, coluna: c })))) continue;
+      const p = { linha: l, coluna };
+      const t = this.textoParaFiltro(p);
+      if (!vistos.has(t)) vistos.set(t, this.valor(p));
+    }
+    return [...vistos.entries()].sort((a, b) => compararParaClassificar(a[1], b[1])).map(([t]) => t);
+  }
+
+  /** Liga o AutoFiltro no intervalo (a primeira linha vira cabeçalho com as setas). */
+  ligarFiltro(intervalo: Intervalo) {
+    const int = this.recortar(intervalo);
+    if (!int || int.fim.linha === int.inicio.linha) return;
+    this.mudarEstado(() => {
+      this.filtro = { intervalo: int, criterios: {} };
+    });
+  }
+
+  desligarFiltro() {
+    if (!this.filtro) return;
+    this.mudarEstado(() => {
+      this.filtro = null;
+    });
+  }
+
+  /** Critério de uma coluna: os textos que ficam visíveis. `null` limpa o filtro da coluna. */
+  filtrarColuna(coluna: number, valores: string[] | null) {
+    const f = this.filtro;
+    if (!f) return;
+    const letra = colunaParaLetras(coluna);
+    this.mudarEstado(() => {
+      const criterios = { ...f.criterios };
+      if (valores === null) delete criterios[letra];
+      else criterios[letra] = [...valores];
+      this.filtro = { ...f, criterios };
+    });
+  }
+
+  /** Limpa os critérios de todas as colunas (o filtro continua ligado). */
+  limparFiltros() {
+    const f = this.filtro;
+    if (!f || Object.keys(f.criterios).length === 0) return;
+    this.mudarEstado(() => {
+      this.filtro = { ...f, criterios: {} };
+    });
+  }
+
+  /**
+   * Classificar: reordena as linhas do intervalo (inclusive os dados do
+   * exercício, que são bloqueados para digitação mas podem ser organizados),
+   * levando junto formato e negrito, como o Excel.
+   */
+  classificar(o: Ordenacao) {
+    const int = this.recortar(deIntervalo(o.intervalo));
+    if (!int) return;
+    this.mudarEstado(() => {
+      this.ordenar(int, o);
+      this.ordenacoes.push(structuredClone(o));
+    });
+  }
+
+  private ordenar(int: Intervalo, o: Ordenacao) {
+    const primeira = int.inicio.linha + (o.cabecalho ? 1 : 0);
+    if (primeira >= int.fim.linha) return;
+    const linhas = Array.from({ length: int.fim.linha - primeira + 1 }, (_, i) => primeira + i);
+    const chaves = o.chaves.map((k) => ({ coluna: letrasParaColuna(k.coluna), desc: k.ordem === "desc" }));
+    const valores = new Map(linhas.map((l) => [l, chaves.map((k) => this.valor({ linha: l, coluna: k.coluna }))]));
+    const ordem = [...linhas].sort((a, b) => {
+      for (const [i, k] of chaves.entries()) {
+        const r = compararParaClassificar(valores.get(a)![i], valores.get(b)![i], k.desc);
+        if (r !== 0) return r;
+      }
+      return a - b; // estável, como o Excel
+    });
+    const cols = Array.from({ length: int.fim.coluna - int.inicio.coluna + 1 }, (_, i) => int.inicio.coluna + i);
+    const linhaDe = (l: number) =>
+      cols.map((c) => {
+        const end = paraEndereco({ linha: l, coluna: c });
+        return {
+          texto: this.textos.get(`${l},${c}`) ?? "",
+          formato: this.formatos.get(end),
+          aluno: this.formatosAluno.get(end),
+          negrito: this.negritos.has(end),
+          bloqueada: this.bloqueadas.has(end),
+        };
+      });
+    const fotos = ordem.map(linhaDe);
+    fotos.forEach((foto, i) => {
+      const destino = primeira + i;
+      const origem = ordem[i];
+      cols.forEach((c, j) => {
+        const x = foto[j];
+        const end = paraEndereco({ linha: destino, coluna: c });
+        this.gravar({ linha: destino, coluna: c }, x.texto.startsWith("=") ? deslocarFormula(x.texto, destino - origem, 0) : x.texto);
+        if (x.formato) this.formatos.set(end, x.formato);
+        else this.formatos.delete(end);
+        if (x.aluno) this.formatosAluno.set(end, x.aluno);
+        else this.formatosAluno.delete(end);
+        if (x.negrito) this.negritos.add(end);
+        else this.negritos.delete(end);
+        if (x.bloqueada) this.bloqueadas.add(end);
+        else this.bloqueadas.delete(end);
+      });
+    });
+  }
+
+  /**
+   * "Região atual" do Excel (Ctrl+Shift+8): o bloco de dados em volta da célula,
+   * até as linhas e colunas vazias. É o que Filtro e Classificar usam quando a
+   * seleção é uma célula só.
+   */
+  regiaoAtual(p: Pos): Intervalo {
+    const cheia = (l: number, c: number) => {
+      if (l < 0 || c < 0 || l >= this.linhas || c >= this.colunas) return false;
+      const v = this.valor({ linha: l, coluna: c });
+      return v !== null && v !== "";
+    };
+    let [l0, c0, l1, c1] = [p.linha, p.coluna, p.linha, p.coluna];
+    for (let mudou = true; mudou; ) {
+      mudou = false;
+      const linhaTem = (l: number) => Array.from({ length: c1 - c0 + 3 }, (_, i) => c0 - 1 + i).some((c) => cheia(l, c));
+      const colunaTem = (c: number) => Array.from({ length: l1 - l0 + 3 }, (_, i) => l0 - 1 + i).some((l) => cheia(l, c));
+      if (l0 > 0 && linhaTem(l0 - 1)) {
+        l0--;
+        mudou = true;
+      }
+      if (l1 < this.linhas - 1 && linhaTem(l1 + 1)) {
+        l1++;
+        mudou = true;
+      }
+      if (c0 > 0 && colunaTem(c0 - 1)) {
+        c0--;
+        mudou = true;
+      }
+      if (c1 < this.colunas - 1 && colunaTem(c1 + 1)) {
+        c1++;
+        mudou = true;
+      }
+    }
+    return { inicio: { linha: l0, coluna: c0 }, fim: { linha: l1, coluna: c1 } };
+  }
+
+  /**
+   * O Excel adivinha se a primeira linha é cabeçalho. Aqui: todas as células
+   * dela são texto e (estão em negrito ou a linha de baixo tem algo que não é texto).
+   */
+  pareceCabecalho(int: Intervalo): boolean {
+    const l = int.inicio.linha;
+    if (l >= int.fim.linha) return false;
+    const cols = Array.from({ length: int.fim.coluna - int.inicio.coluna + 1 }, (_, i) => int.inicio.coluna + i);
+    const textos = cols.every((c) => typeof this.valor({ linha: l, coluna: c }) === "string");
+    if (!textos) return false;
+    const negrito = cols.every((c) => this.negritos.has(paraEndereco({ linha: l, coluna: c })));
+    const abaixoNaoTexto = cols.some((c) => {
+      const v = this.valor({ linha: l + 1, coluna: c });
+      return v !== null && v !== "" && typeof v !== "string";
+    });
+    return negrito || abaixoNaoTexto;
+  }
+
+  private fotografar(): Foto {
+    return {
+      textos: new Map(this.textos),
+      formatos: new Map(this.formatos),
+      formatosAluno: new Map(this.formatosAluno),
+      negritos: new Set(this.negritos),
+      bloqueadas: new Set(this.bloqueadas),
+      filtro: this.filtro ? structuredClone(this.filtro) : null,
+      ordenacoes: structuredClone(this.ordenacoes),
+    };
+  }
+
+  private restaurar(f: Foto) {
+    for (const k of new Set([...this.textos.keys(), ...f.textos.keys()])) {
+      const novo = f.textos.get(k) ?? "";
+      if ((this.textos.get(k) ?? "") === novo) continue;
+      const [linha, coluna] = k.split(",").map(Number);
+      this.gravar({ linha, coluna }, novo);
+    }
+    this.formatos = new Map(f.formatos);
+    this.formatosAluno = new Map(f.formatosAluno);
+    this.negritos = new Set(f.negritos);
+    this.bloqueadas = new Set(f.bloqueadas);
+    this.filtro = f.filtro ? structuredClone(f.filtro) : null;
+    this.ordenacoes = structuredClone(f.ordenacoes);
+  }
+
+  /** Aplica uma mudança de recurso com um retrato antes e depois (para o Ctrl+Z). */
+  private mudarEstado(fn: () => void) {
+    const antes = this.fotografar();
+    fn();
+    this.registrar({ tipo: "estado", antes, depois: this.fotografar() });
     this.notificar();
   }
 

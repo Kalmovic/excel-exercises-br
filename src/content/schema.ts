@@ -59,6 +59,34 @@ const intervalo = z
   .string()
   .regex(/^[A-Z]{1,2}[1-9]\d*(:[A-Z]{1,2}[1-9]\d*)?$/, "Intervalo no formato B2:D5");
 
+const letraColuna = z.string().regex(/^[A-Z]{1,2}$/, "Coluna no formato B");
+
+/**
+ * Recursos da planilha além das células (filtro, classificação…). Guardamos a
+ * CONFIGURAÇÃO, nunca o resultado: assim o progresso fica pequeno e o servidor
+ * refaz o resultado ao corrigir o certificado. O mesmo schema vale para o
+ * estado inicial do exercício (`grade.recursos`), o progresso e o envio do teste.
+ */
+export const ordenacaoSchema = z.object({
+  intervalo,
+  /** Primeira chave decide; as seguintes desempatam (Classificar personalizado). */
+  chaves: z.array(z.object({ coluna: letraColuna, ordem: z.enum(["asc", "desc"]) })).min(1).max(3),
+  /** A primeira linha do intervalo é cabeçalho e fica no lugar. */
+  cabecalho: z.boolean(),
+});
+
+/** Critério de uma coluna do filtro: os textos (como aparecem na célula) que ficam visíveis. "" = (Vazias). */
+export const criterioFiltroSchema = z.object({ valores: z.array(z.string().max(200)).max(200) });
+
+export const recursosSchema = z.object({
+  /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. */
+  filtro: z
+    .object({ intervalo, criterios: z.record(letraColuna, criterioFiltroSchema) })
+    .optional(),
+  /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
+  ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
+});
+
 /** Campos comuns a todos os tipos de exercício. */
 const baseSchema = z.object({
   id: z.uuid(),
@@ -84,6 +112,8 @@ const baseSchema = z.object({
      * que a checagem testa no lugar delas (ex.: ["RJ", "MG"]).
      */
     alternativas: z.record(endereco, z.array(z.string()).min(1)).optional(),
+    /** Estado inicial dos recursos (ex.: o filtro já aplicado num exercício de SUBTOTAL). */
+    recursos: recursosSchema.optional(),
   }),
   /** Seleção ao abrir o exercício (padrão: A1). */
   inicio: z.object({ celulaAtiva: endereco.optional(), selecao: intervalo.optional() }).optional(),
@@ -99,6 +129,8 @@ const baseSchema = z.object({
       caixaDeNome: z.boolean().optional(),
       /** A célula ativa não pode mudar (ex.: "qual é o nome desta célula?"). */
       selecaoFixa: z.boolean().optional(),
+      /** Barra "Dados": Filtro (Ctrl+Shift+L) e Classificar. */
+      dados: z.boolean().optional(),
     })
     .optional(),
   /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
@@ -193,6 +225,36 @@ export const exercicioMultipleChoiceSchema = baseSchema.extend({
 });
 
 /**
+ * O que a correção confere num exercício de ferramenta (classificar, filtrar…).
+ * Sempre pelo resultado quando dá: quem chega lá por outro caminho também acerta.
+ */
+export const verificacaoSchema = z.discriminatedUnion("tipo", [
+  /** Valores do intervalo, na ordem (ex.: depois de classificar). */
+  z.object({ tipo: z.literal("valores"), intervalo, esperado: z.array(z.array(valorSchema)).min(1), mensagem: z.string().optional() }),
+  /** Linhas (números da planilha) que ficam visíveis no intervalo do filtro, fora o cabeçalho. */
+  z.object({ tipo: z.literal("linhasVisiveis"), esperado: z.array(z.number().int().positive()), mensagem: z.string().optional() }),
+  /** O filtro está ligado (opcionalmente, exatamente neste intervalo). */
+  z.object({ tipo: z.literal("filtroAtivo"), intervalo: intervalo.optional(), mensagem: z.string().optional() }),
+  /** Resultado de uma célula, com fórmula e (opcional) usando uma função. */
+  z.object({
+    tipo: z.literal("celula"),
+    celula: endereco,
+    esperado: valorSchema,
+    tolerancia: z.number().positive().optional(),
+    funcao: z.string().optional(),
+    mensagem: z.string().optional(),
+  }),
+]);
+
+/** Ferramentas do Excel usadas na própria grade (barra Dados e, nas próximas fases, as outras). */
+export const exercicioFerramentaSchema = baseSchema.extend({
+  type: z.literal("ferramenta"),
+  verificacoes: z.array(verificacaoSchema).min(1),
+  /** Um jeito de resolver (recursos e células digitadas): o teste de conteúdo confere que ele passa. */
+  solucao: z.object({ recursos: recursosSchema.optional(), celulas: z.record(endereco, z.string()).optional() }),
+});
+
+/**
  * Retrocompatibilidade: um JSON sem `type` é tratado como `"formula"`.
  * Os exercícios que já existiam não precisam mudar.
  */
@@ -206,6 +268,7 @@ export const exercicioSchema = z.preprocess(
     exercicioTypeValueSchema,
     exercicioMultipleChoiceSchema,
     exercicioFormatCellSchema,
+    exercicioFerramentaSchema,
   ]),
 );
 
@@ -213,6 +276,9 @@ export type Valor = z.infer<typeof valorSchema>;
 export type Formato = z.infer<typeof formatoSchema>;
 export type CelulaInicial = z.infer<typeof celulaInicialSchema>;
 export type Alvo = z.infer<typeof alvoSchema>;
+export type Recursos = z.infer<typeof recursosSchema>;
+export type Ordenacao = z.infer<typeof ordenacaoSchema>;
+export type Verificacao = z.infer<typeof verificacaoSchema>;
 export type Exercicio = z.infer<typeof exercicioSchema>;
 export type TipoExercicio = Exercicio["type"];
 export type ExercicioDoTipo<T extends TipoExercicio> = Extract<Exercicio, { type: T }>;

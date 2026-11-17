@@ -17,7 +17,9 @@ export type MotivoFalha =
   | "celula-errada"
   | "usou-mouse"
   | "selecao-errada"
-  | "formato";
+  | "formato"
+  // ferramentas (filtro, classificar…)
+  | "recurso";
 
 export type Falha = { celula: string; motivo: MotivoFalha; mensagem: string };
 export type Resultado = { ok: boolean; falhas: Falha[] };

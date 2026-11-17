@@ -12,6 +12,8 @@ export type ContextoSimulador = {
   alvos: Set<string>;
   /** Barra de formatação (R$, %) e seus atalhos. */
   formatacao: boolean;
+  /** Barra Dados: Filtro (Ctrl+Shift+L) e Classificar. */
+  dados: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */

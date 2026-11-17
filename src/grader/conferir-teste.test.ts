@@ -18,6 +18,7 @@ function respostaCerta(q: Exercicio): RespostaQuestao {
   return {
     conteudos: Object.fromEntries(Object.entries(p.conteudos()).filter(([end]) => !p.bloqueada(end))),
     formatos: p.formatosDoAluno(),
+    recursos: p.recursos(),
     resposta: s.resposta,
     ativa: paraEndereco(s.ancora),
     selecao: paraEndereco(sel.inicio) === paraEndereco(sel.fim) ? paraEndereco(sel.inicio) : `${paraEndereco(sel.inicio)}:${paraEndereco(sel.fim)}`,

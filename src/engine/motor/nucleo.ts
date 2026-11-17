@@ -89,7 +89,15 @@ function elemento(a: R, b: R, f: (x: V, y: V) => V): R {
 }
 const mapa = (a: R, f: (x: V) => V): R => (ehM(a) ? a.map((l) => l.map(f)) : f(a));
 
-type Ctx = { ler: (l: number, c: number) => V; hoje: () => number; agora: () => number };
+type Ctx = {
+  ler: (l: number, c: number) => V;
+  hoje: () => number;
+  agora: () => number;
+  /** Linha escondida pelo filtro (SUBTOTAL a ignora). */
+  oculta?: (l: number) => boolean;
+  /** Célula com fórmula de SUBTOTAL (SUBTOTAL ignora, para não somar duas vezes). */
+  ehSubtotal?: (l: number, c: number) => boolean;
+};
 
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 const MESES_LONGOS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
@@ -208,6 +216,28 @@ const diasUteis = (a: number, b: number, fer: Set<number>) => { let n = 0; const
 const feriados = (n: No | undefined, ctx: Ctx) => new Set(n ? achatar(ev(n, ctx)).filter((v): v is number => typeof v === "number") : []);
 const somaMeses = (s: number, n: number, fim: boolean) => { const p = partes(s); const t = p.m - 1 + n; const a = p.a + Math.floor(t / 12), m = (((t % 12) + 12) % 12) + 1; return serial(a, m, fim ? fimDoMes(a, m) : Math.min(p.d, fimDoMes(a, m))); };
 
+const soNumeros = (vs: V[]) => vs.filter((v): v is number => typeof v === "number");
+const media = (ns: number[]) => (ns.length ? ns.reduce((a, b) => a + b, 0) / ns.length : E("#DIV/0!"));
+const variancia = (ns: number[], amostra: boolean): V => {
+  if (ns.length < (amostra ? 2 : 1)) return E("#DIV/0!");
+  const m = ns.reduce((a, b) => a + b, 0) / ns.length;
+  return ns.reduce((s, x) => s + (x - m) ** 2, 0) / (ns.length - (amostra ? 1 : 0));
+};
+/** As 11 funções do SUBTOTAL, pelo número. */
+const SUBTOTAIS: Record<number, (vs: V[]) => V> = {
+  1: (vs) => media(soNumeros(vs)),
+  2: (vs) => soNumeros(vs).length,
+  3: (vs) => vs.filter((v) => v !== null && v !== "").length,
+  4: (vs) => { const ns = soNumeros(vs); return ns.length ? Math.max(...ns) : 0; },
+  5: (vs) => { const ns = soNumeros(vs); return ns.length ? Math.min(...ns) : 0; },
+  6: (vs) => soNumeros(vs).reduce((a, b) => a * b, 1),
+  7: (vs) => { const v = variancia(soNumeros(vs), true); return typeof v === "number" ? Math.sqrt(v) : v; },
+  8: (vs) => { const v = variancia(soNumeros(vs), false); return typeof v === "number" ? Math.sqrt(v) : v; },
+  9: (vs) => soNumeros(vs).reduce((a, b) => a + b, 0),
+  10: (vs) => variancia(soNumeros(vs), true),
+  11: (vs) => variancia(soNumeros(vs), false),
+};
+
 export const FUNCOES: Record<string, F> = {
   SOMA: agregado((ns) => ns.reduce((a, b) => a + b, 0)),
   "MÉDIA": agregado((ns) => (ns.length ? ns.reduce((a, b) => a + b, 0) / ns.length : E("#DIV/0!"))),
@@ -243,6 +273,28 @@ export const FUNCOES: Record<string, F> = {
   "MÁXIMOSES": (args, ctx) => { const val = achatar(ev(args[0], ctx)); const ok = pares(args, ctx, 1); const ns = val.filter((v, i): v is number => ok(i) && typeof v === "number"); return ns.length ? Math.max(...ns) : 0; },
   "MÍNIMOSES": (args, ctx) => { const val = achatar(ev(args[0], ctx)); const ok = pares(args, ctx, 1); const ns = val.filter((v, i): v is number => ok(i) && typeof v === "number"); return ns.length ? Math.min(...ns) : 0; },
   SOMARPRODUTO: (args, ctx) => { const ms = args.map((a) => achatar(ev(a, ctx))); let s = 0; for (let i = 0; i < ms[0].length; i++) { let p = 1; for (const m of ms) { const v = m[i]; if (ehErro(v)) return v; p *= typeof v === "number" ? v : typeof v === "boolean" ? Number(v) : 0; } s += p; } return s; },
+  /**
+   * SUBTOTAL(função; ref1; ...): como o Excel, ignora as linhas escondidas pelo
+   * filtro e as células que já são SUBTOTAL. 1–11 e 101–111 (no simulador, as
+   * linhas só se escondem pelo filtro, então as duas famílias dão o mesmo).
+   */
+  SUBTOTAL: (args, ctx) => {
+    const n = numArg(args[0], ctx);
+    const op = SUBTOTAIS[n > 100 ? n - 100 : n];
+    if (!op || args.length < 2) return E("#VALOR!");
+    const vals: V[] = [];
+    for (const a of args.slice(1)) {
+      const [ini, fim] = a.t === "int" ? [a.a, a.b] : a.t === "ref" ? [a, a] : [null, null];
+      if (!ini || !fim) return E("#VALOR!");
+      for (let l = ini.l; l <= fim.l; l++) {
+        if (ctx.oculta?.(l)) continue;
+        for (let c = ini.c; c <= fim.c; c++) if (!ctx.ehSubtotal?.(l, c)) vals.push(ctx.ler(l, c));
+      }
+    }
+    const erro = vals.find(ehErro);
+    if (erro && n % 100 !== 2 && n % 100 !== 3) return erro;
+    return op(vals);
+  },
   PROCV: (args, ctx) => { const chave = esc(args[0], ctx); const t = comoM(ev(args[1], ctx)); const col = numArg(args[2], ctx); const aprox = args[3] ? (bool(esc(args[3], ctx)) as boolean) : true; if (col < 1 || col > t[0].length) return E("#REF!"); const i = busca(chave, t.map((l) => l[0]), aprox); return i < 0 ? E("#N/D") : t[i][col - 1]; },
   PROCH: (args, ctx) => { const chave = esc(args[0], ctx); const t = comoM(ev(args[1], ctx)); const lin = numArg(args[2], ctx); const aprox = args[3] ? (bool(esc(args[3], ctx)) as boolean) : true; if (lin < 1 || lin > t.length) return E("#REF!"); const i = busca(chave, t[0], aprox); return i < 0 ? E("#N/D") : t[lin - 1][i]; },
   PROCX: (args, ctx) => {
@@ -334,6 +386,9 @@ export type Conteudo = { formula: No } | { valor: V; tipo: Tipo };
 
 const DATAS = new Set(["DATA", "HOJE", "FIMMÊS", "DATAM", "DIATRABALHO"]);
 
+const usaSubtotal = (no: No): boolean =>
+  no.t === "fn" ? no.nome === "SUBTOTAL" || no.args.some(usaSubtotal) : no.t === "un" || no.t === "pct" ? usaSubtotal(no.x) : no.t === "bin" ? usaSubtotal(no.a) || usaSubtotal(no.b) : false;
+
 /**
  * Uma planilha calculada sob demanda: cada leitura calcula o que falta e
  * guarda em cache até a próxima mudança. As planilhas dos exercícios são
@@ -345,6 +400,8 @@ export class Calculo {
   private tipos = new Map<string, Tipo>();
   private derramado = new Map<string, V>();
   private pilha = new Set<string>();
+  /** Linhas escondidas pelo filtro (quem decide é a Planilha). */
+  linhaOculta: (l: number) => boolean = () => false;
   constructor(
     private hoje: () => number = () => { const d = new Date(); return serial(d.getFullYear(), d.getMonth() + 1, d.getDate()); },
   ) {}
@@ -353,6 +410,11 @@ export class Calculo {
     const k = `${l},${c}`;
     if (conteudo === null) this.conteudos.delete(k);
     else this.conteudos.set(k, conteudo);
+    this.invalidar();
+  }
+
+  /** Recalcula tudo na próxima leitura (ex.: o filtro mudou e o SUBTOTAL depende dele). */
+  invalidar() {
     this.cache.clear();
     this.tipos.clear();
     this.derramado.clear();
@@ -378,7 +440,13 @@ export class Calculo {
     this.pilha.add(k);
     const [l, c] = k.split(",").map(Number);
     const agora = () => { const d = new Date(); return this.hoje() + (d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds()) / 86400; };
-    const r = avaliar(no, { ler: (a, b) => this.ler(a, b), hoje: this.hoje, agora });
+    const r = avaliar(no, {
+      ler: (a, b) => this.ler(a, b),
+      hoje: this.hoje,
+      agora,
+      oculta: (x) => this.linhaOculta(x),
+      ehSubtotal: (a, b) => { const y = this.conteudos.get(`${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
+    });
     this.pilha.delete(k);
     let v: V;
     if (Array.isArray(r)) {

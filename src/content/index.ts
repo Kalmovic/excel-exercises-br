@@ -19,6 +19,7 @@ import mBusca from "./modulos/busca.json";
 import mTexto from "./modulos/texto.json";
 import mDatas from "./modulos/datas.json";
 import mArrays from "./modulos/arrays.json";
+import mDados from "./modulos/dados.json";
 import mCasos from "./modulos/casos.json";
 import xFundamentos from "./extras/fundamentos.json";
 import xLogica from "./extras/logica.json";
@@ -43,6 +44,7 @@ const brutos: unknown[] = [
   ...mTexto,
   ...mDatas,
   ...mArrays,
+  ...mDados,
   ...mCasos,
   // prática extra (Pro): fora da trilha principal, listada no fim de cada módulo
   ...[xFundamentos, xLogica, xCondicionais, xBusca, xTexto, xDatas, xArrays, xCasos].flat(),
@@ -99,7 +101,8 @@ export const MODULOS: readonly Modulo[] = [
   modulo(5, "texto", "Texto", "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR, SUBSTITUIR.", "Juntar, cortar e limpar textos: dados bagunçados não te assustam mais."),
   modulo(6, "datas", "Datas", "Diferença entre datas, DATA, DATADIF, dias úteis, FIMMÊS e DATAM.", "Prazos, idades, dias úteis e vencimentos, tudo calculado."),
   modulo(7, "arrays", "Arrays dinâmicos", "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA: uma fórmula, muitos resultados.", "FILTRO, CLASSIFICAR e ÚNICO: o Excel moderno já é seu."),
-  modulo(8, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(8, "dados", "Organizar dados", "Classificar, filtrar e SUBTOTAL: arrumar e resumir a tabela direto na grade.", "Classificar, filtrar e somar só o que aparece: a tabela fica do jeito que você precisa."),
+  modulo(9, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {

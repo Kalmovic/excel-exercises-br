@@ -11,6 +11,7 @@ import { validarSelectRange } from "./validadores/select-range";
 import { validarMultipleChoice } from "./validadores/multiple-choice";
 import { validarTextAnswer } from "./validadores/text-answer";
 import { validarTypeValue } from "./validadores/type-value";
+import { validarFerramenta } from "./validadores/ferramenta";
 
 export type { EstadoCorrecao, Falha, MotivoFalha, Resultado } from "./tipos";
 
@@ -281,5 +282,7 @@ function corrigirPorTipo(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resulta
       return validarFormatCell(ex, estado());
     case "multiple_choice":
       return validarMultipleChoice(ex, estado());
+    case "ferramenta":
+      return validarFerramenta(ex, p);
   }
 }

@@ -16,6 +16,7 @@ import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { BarraFormatacao } from "./BarraFormatacao";
+import { BarraDados } from "./BarraDados";
 import { BarraFormulas } from "./BarraFormulas";
 import { Alternativas } from "./Alternativas";
 import { TextoRico } from "./TextoRico";
@@ -36,6 +37,8 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
   const planilha = Planilha.deExercicio(ex);
   const salvo = restaurar ? progresso.ler(chaveProgresso(ex), ex.versao) : undefined;
   if (salvo) {
+    // Classificações primeiro: elas movem as linhas, e o conteúdo salvo já está nas posições finais.
+    if (salvo.recursos) planilha.aplicarRecursos(salvo.recursos);
     planilha.definirVarias(
       Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
     );
@@ -50,6 +53,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
     }),
     alvos: new Set(celulasDestacadas(ex)),
     formatacao: ex.ferramentas?.formatacao ?? false,
+    dados: ex.ferramentas?.dados ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
     selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
@@ -143,6 +147,7 @@ export default function Simulador({
         Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
       ),
       formatos: planilha.formatosDoAluno(),
+      recursos: planilha.recursos(),
       resposta: store.getState().resposta,
       historico: historico ?? atual?.historico,
       dicasVistas: Math.max(atual?.dicasVistas ?? 0, dicasVistasRef.current),
@@ -212,6 +217,7 @@ export default function Simulador({
       teste.aoResponder(r.ok, {
         conteudos: Object.fromEntries(Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end))),
         formatos: planilha.formatosDoAluno(),
+        recursos: planilha.recursos(),
         resposta: s.resposta,
         ativa: paraEndereco(s.ancora),
         selecao: intervaloParaTexto(s.selecao()),
@@ -256,7 +262,7 @@ export default function Simulador({
       // No desafio, Recomeçar limpa só a planilha: as tentativas e o histórico
       // (os quadrados do card) continuam valendo.
       const atual = progresso.ler(chave, ex.versao);
-      if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, resposta: "" });
+      if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, recursos: {}, resposta: "" });
       setNucleo(montar(ex, false));
       setResultado(null);
       return;
@@ -347,6 +353,7 @@ export default function Simulador({
           {ex.type !== "multiple_choice" && (
             <>
               {nucleo.formatacao && <BarraFormatacao />}
+              {nucleo.dados && <BarraDados />}
               {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />

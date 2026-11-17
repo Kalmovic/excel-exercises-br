@@ -24,6 +24,10 @@ export function preencherSolucao(ex: Exercicio, planilha: Planilha, store: Store
     case "format_cell":
       for (const a of ex.alvos) planilha.formatar(deIntervalo(a.intervalo), a.formato);
       return;
+    case "ferramenta":
+      if (ex.solucao.recursos) planilha.aplicarRecursos(ex.solucao.recursos);
+      planilha.definirVarias(Object.entries(ex.solucao.celulas ?? {}).map(([endereco, bruto]) => ({ endereco, bruto })));
+      return;
     case "text_answer":
       store.getState().setResposta(ex.aceitas[0]);
       return;

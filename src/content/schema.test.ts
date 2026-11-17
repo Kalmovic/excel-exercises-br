@@ -45,9 +45,9 @@ describe("conteúdo", () => {
     expect(exercicios.filter((e) => !e.teste).every((e) => e.dicas.length > 0)).toBe(true);
   });
 
-  it("trilha segue o roteiro: 52 exercícios, o 1º de cada módulo grátis", () => {
+  it("trilha segue o roteiro: 55 exercícios, o 1º de cada módulo grátis", () => {
     const porModulo = MODULOS.map((m) => exerciciosDoModulo(m.slug).length);
-    expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 3, 4]);
+    expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 3, 3, 4]);
     for (const m of MODULOS.slice(1)) {
       const lista = exerciciosDoModulo(m.slug);
       expect(lista[0].plano, m.slug).toBe("free");

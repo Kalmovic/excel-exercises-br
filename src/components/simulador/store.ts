@@ -1,5 +1,5 @@
 import { createStore } from "zustand/vanilla";
-import { normalizar, type Intervalo, type Pos } from "@/engine/address";
+import { colunaParaLetras, intervaloParaTexto, normalizar, type Intervalo, type Pos } from "@/engine/address";
 import { ateABorda, ultimaUsada } from "@/engine/navegacao";
 import type { Planilha } from "@/engine/engine";
 import type { Formato } from "@/content/schema";
@@ -62,6 +62,10 @@ export type EstadoSimulador = {
   terminarArrasto: () => void;
   setResposta: (t: string) => void;
   formatarSelecao: (formato: Formato) => void;
+  /** Botão Filtro / Ctrl+Shift+L: liga na seleção (ou na região atual) ou desliga. */
+  alternarFiltro: () => void;
+  /** Classificar pela coluna da célula ativa: a tabela do filtro, a seleção ou a região atual. */
+  classificar: (ordem: "asc" | "desc", coluna?: number) => void;
 };
 
 const clamp = (v: number, max: number) => Math.max(0, Math.min(max - 1, v));
@@ -115,10 +119,11 @@ export function criarStore(
       if (fixa) return; // seleção travada: ignora em silêncio
       const { ancora, foco } = get();
       const base = estender ? foco : ancora;
-      const p = {
-        linha: clamp(base.linha + dl, planilha.linhas),
-        coluna: clamp(base.coluna + dc, planilha.colunas),
-      };
+      let linha = clamp(base.linha + dl, planilha.linhas);
+      // Linhas escondidas pelo filtro são puladas, como no Excel.
+      while (dl !== 0 && planilha.linhaOculta(linha) && linha > 0 && linha < planilha.linhas - 1) linha += Math.sign(dl);
+      if (planilha.linhaOculta(linha)) linha = base.linha;
+      const p = { linha, coluna: clamp(base.coluna + dc, planilha.colunas) };
       set(estender ? { foco: p } : { ancora: p, foco: p, mensagem: null });
     },
 
@@ -291,6 +296,42 @@ export function criarStore(
     setResposta: (t) => set({ resposta: t }),
 
     formatarSelecao: (formato) => planilha.formatar(get().selecao(), formato),
+
+    alternarFiltro: () => {
+      if (planilha.filtroAtual()) return planilha.desligarFiltro();
+      const sel = get().selecao();
+      const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
+      const int = umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
+      if (int.inicio.linha === int.fim.linha) {
+        set({ mensagem: "Selecione uma célula dentro da tabela (com cabeçalho e dados) para ligar o filtro." });
+        return;
+      }
+      planilha.ligarFiltro(int);
+    },
+
+    classificar: (ordem, coluna) => {
+      const { ancora } = get();
+      const sel = get().selecao();
+      const f = planilha.filtroAtual();
+      const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
+      // Com filtro ligado, classifica a tabela do filtro (o cabeçalho fica no lugar).
+      const int = f ? f.intervalo : umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
+      if (int.inicio.linha === int.fim.linha) {
+        set({ mensagem: "Selecione uma célula dentro da tabela para classificar." });
+        return;
+      }
+      const col = coluna ?? ancora.coluna;
+      if (col < int.inicio.coluna || col > int.fim.coluna) {
+        set({ mensagem: "A célula ativa precisa estar numa coluna da tabela: é por ela que o Excel classifica." });
+        return;
+      }
+      planilha.classificar({
+        intervalo: intervaloParaTexto(int),
+        chaves: [{ coluna: colunaParaLetras(col), ordem }],
+        cabecalho: f ? true : planilha.pareceCabecalho(int),
+      });
+      set({ mensagem: null });
+    },
   }));
 }
 

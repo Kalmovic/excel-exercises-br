@@ -22,6 +22,7 @@ import {
 import { alinhamento } from "@/engine/format";
 import { CORES_REFERENCIA, referenciasDaFormula } from "@/engine/referencias";
 import { FormulaColorida } from "./FormulaColorida";
+import { IconeFunil, MenuFiltro } from "./MenuFiltro";
 import { ajustarLinha, larguraParaCaber } from "./transbordo";
 
 let contextoMedida: CanvasRenderingContext2D | null = null;
@@ -51,7 +52,7 @@ const LARGURA_CABECALHO = 44;
 const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
 export function Grade({ larguras }: { larguras?: Record<string, number> }) {
-  const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa } = useSimulador();
+  const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa, dados } = useSimulador();
   const semTeclado = useSemTeclado();
   const versao = useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
@@ -120,6 +121,20 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   };
   const esquerda = (c: number) => LARGURA_CABECALHO + colunas.slice(0, c).reduce((a, b) => a + b, 0);
   const larguraTotal = esquerda(planilha.colunas);
+
+  // Linhas escondidas pelo filtro têm altura zero: a posição de cada linha depende das de cima.
+  const tops = useMemo(() => {
+    const t = [ALTURA];
+    for (let l = 0; l < planilha.linhas; l++) t.push(t[l] + (planilha.linhaOculta(l) ? 0 : ALTURA));
+    return t;
+    // versao: o filtro (ou um valor filtrado) mudou
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [planilha, versao]);
+  const topo = (l: number) => tops[Math.max(0, Math.min(l, planilha.linhas))];
+  const alturaEntre = (de: number, ate: number) => topo(ate + 1) - topo(de);
+  const filtro = planilha.filtroAtual();
+  const filtrando = !!filtro && Object.keys(filtro.criterios).length > 0;
+  const [menuFiltro, setMenuFiltro] = useState<number | null>(null);
 
   // A ajuda de fórmula fica fora da área rolável (para não ser cortada) e acompanha a rolagem.
   const [rolagem, setRolagem] = useState({ x: 0, y: 0 });
@@ -272,6 +287,12 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         return;
       }
       if (ctrl) {
+        // Ctrl+Shift+L: liga/desliga o filtro, como no Excel.
+        if (dados && e.shiftKey && e.code === "KeyL") {
+          e.preventDefault();
+          s.alternarFiltro();
+          return;
+        }
         // Ctrl+Shift+4 (R$) e Ctrl+Shift+5 (%), como no Excel. e.code ignora o layout do teclado.
         if (formatacao && e.shiftKey && (e.code === "Digit4" || e.code === "Digit5")) {
           e.preventDefault();
@@ -425,7 +446,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       >
       <div
         className="relative select-none font-[Calibri,Carlito,Arial,sans-serif] text-[13px]"
-        style={{ width: larguraTotal, height: ALTURA * (planilha.linhas + 1) }}
+        style={{ width: larguraTotal, height: topo(planilha.linhas) }}
         onMouseLeave={() => {
           if (store.getState().arrasto === "alca") store.setState({ alca: null });
         }}
@@ -469,14 +490,18 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         })}
         {/* linhas */}
         {Array.from({ length: planilha.linhas }, (_, l) => {
+          if (planilha.linhaOculta(l)) return null;
           const ativa = l >= selecao.inicio.linha && l <= selecao.fim.linha;
+          // Como no Excel: com algum critério ligado, os números das linhas da tabela ficam azuis.
+          const azul = filtrando && filtro && l > filtro.intervalo.inicio.linha && l <= filtro.intervalo.fim.linha;
           return (
             <div
               key={`l${l}`}
+              data-linha-filtrada={azul || undefined}
               className={`absolute flex items-center justify-center border-r border-b border-zinc-300 ${
                 ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-500"
-              }`}
-              style={{ left: 0, top: ALTURA * (l + 1), width: LARGURA_CABECALHO, height: ALTURA }}
+              } ${azul ? "!text-blue-600" : ""}`}
+              style={{ left: 0, top: topo(l), width: LARGURA_CABECALHO, height: ALTURA }}
               onMouseDown={(e) => aoPressionarCabecalho(e, "linha", l)}
               data-cabecalho={l + 1}
             >
@@ -486,7 +511,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         })}
         {/* células */}
         {Array.from({ length: planilha.linhas }, (_, l) =>
-          colunas.map((w, c) => {
+          planilha.linhaOculta(l) ? null : colunas.map((w, c) => {
             const p = { linha: l, coluna: c };
             const end = paraEndereco(p);
             return (
@@ -495,7 +520,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                 endereco={end}
                 pos={p}
                 left={esquerda(c)}
-                top={ALTURA * (l + 1)}
+                top={topo(l)}
                 largura={w}
                 texto={ajustes[l][c].texto}
                 larguraVisivel={ajustes[l][c].larguraVisivel}
@@ -510,15 +535,43 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             );
           }),
         )}
+        {/* setas do AutoFiltro no cabeçalho da tabela */}
+        {filtro &&
+          Array.from({ length: filtro.intervalo.fim.coluna - filtro.intervalo.inicio.coluna + 1 }, (_, i) => {
+            const c = filtro.intervalo.inicio.coluna + i;
+            const letra = colunaParaLetras(c);
+            const ativo = !!filtro.criterios[letra];
+            return (
+              <button
+                key={`f${c}`}
+                type="button"
+                data-testid={`seta-filtro-${letra}`}
+                aria-label={`Filtrar a coluna ${letra}`}
+                title={ativo ? "Filtro aplicado nesta coluna" : "Filtrar ou classificar"}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (store.getState().modo !== "pronto" && !store.getState().confirmar()) return;
+                  setMenuFiltro((m) => (m === c ? null : c));
+                }}
+                className={`absolute z-[4] flex items-center justify-center rounded-sm border text-[9px] leading-none shadow-sm ${
+                  ativo ? "border-blue-500 bg-blue-50 text-blue-700" : "border-zinc-400 bg-white text-zinc-600 hover:bg-zinc-100"
+                }`}
+                style={{ left: esquerda(c + 1) - 19, top: topo(filtro.intervalo.inicio.linha) + 4, width: 16, height: 17 }}
+              >
+                {ativo ? <IconeFunil /> : "▼"}
+              </button>
+            );
+          })}
         {/* área copiada (tracejado) */}
         {copiado && (
           <div
             className="pointer-events-none absolute z-[2] border-2 border-dashed border-success"
             style={{
               left: esquerda(copiado.inicio.coluna) - 1,
-              top: ALTURA * (copiado.inicio.linha + 1) - 1,
+              top: topo(copiado.inicio.linha) - 1,
               width: esquerda(copiado.fim.coluna + 1) - esquerda(copiado.inicio.coluna) + 1,
-              height: ALTURA * (copiado.fim.linha - copiado.inicio.linha + 1) + 1,
+              height: alturaEntre(copiado.inicio.linha, copiado.fim.linha) + 1,
             }}
           />
         )}
@@ -527,9 +580,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           className="pointer-events-none absolute z-[2] border-2 border-success"
           style={{
             left: esquerda(selecao.inicio.coluna) - 1,
-            top: ALTURA * (selecao.inicio.linha + 1) - 1,
+            top: topo(selecao.inicio.linha) - 1,
             width: esquerda(selecao.fim.coluna + 1) - esquerda(selecao.inicio.coluna) + 1,
-            height: ALTURA * (selecao.fim.linha - selecao.inicio.linha + 1) + 1,
+            height: alturaEntre(selecao.inicio.linha, selecao.fim.linha) + 1,
           }}
         />
         {/* destino da alça */}
@@ -538,9 +591,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             className="pointer-events-none absolute z-[2] border border-dashed border-zinc-600 bg-zinc-500/10"
             style={{
               left: esquerda(alca.inicio.coluna),
-              top: ALTURA * (alca.inicio.linha + 1),
+              top: topo(alca.inicio.linha),
               width: esquerda(alca.fim.coluna + 1) - esquerda(alca.inicio.coluna),
-              height: ALTURA * (alca.fim.linha - alca.inicio.linha + 1),
+              height: alturaEntre(alca.inicio.linha, alca.fim.linha),
             }}
           />
         )}
@@ -557,7 +610,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             className="absolute z-10 h-[7px] w-[7px] cursor-crosshair border border-white bg-success"
             style={{
               left: esquerda(selecao.fim.coluna + 1) - 4,
-              top: ALTURA * (selecao.fim.linha + 2) - 4,
+              top: topo(selecao.fim.linha + 1) - 4,
             }}
           />
         )}
@@ -575,9 +628,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               className="pointer-events-none absolute z-[2] border-2"
               style={{
                 left: esquerda(r.intervalo.inicio.coluna) - 1,
-                top: ALTURA * (r.intervalo.inicio.linha + 1) - 1,
+                top: topo(r.intervalo.inicio.linha) - 1,
                 width: esquerda(fc + 1) - esquerda(r.intervalo.inicio.coluna) + 1,
-                height: ALTURA * (fl - r.intervalo.inicio.linha + 1) + 1,
+                height: alturaEntre(r.intervalo.inicio.linha, fl) + 1,
                 borderColor: cor,
                 backgroundColor: `${cor}14`,
               }}
@@ -591,7 +644,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             className="pointer-events-none absolute z-30 flex items-center overflow-hidden border-2 border-transparent px-1 whitespace-pre text-zinc-900"
             style={{
               left: esquerda(ancora.coluna) - 1,
-              top: ALTURA * (ancora.linha + 1) - 1,
+              top: topo(ancora.linha) - 1,
               width: larguraEditor + 2,
               height: ALTURA + 1,
             }}
@@ -621,7 +674,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           }`}
           style={{
             left: esquerda(ancora.coluna) - 1,
-            top: ALTURA * (ancora.linha + 1) - 1,
+            top: topo(ancora.linha) - 1,
             width: editando ? larguraEditor + 2 : colunas[ancora.coluna] + 2,
             height: ALTURA + 1,
             caretColor: editando ? "#16181d" : "transparent",
@@ -634,10 +687,22 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
         {intervaloParaTexto(selecao)}
       </span>
       </div>
+      {filtro && menuFiltro !== null && menuFiltro >= filtro.intervalo.inicio.coluna && menuFiltro <= filtro.intervalo.fim.coluna && (
+        <MenuFiltro
+          key={menuFiltro}
+          coluna={menuFiltro}
+          left={Math.max(0, Math.min(esquerda(menuFiltro + 1) - 19 - rolagem.x, larguraTotal - 240))}
+          top={topo(filtro.intervalo.inicio.linha + 1) - rolagem.y}
+          fechar={() => {
+            setMenuFiltro(null);
+            entradaRef.current?.focus({ preventScroll: true });
+          }}
+        />
+      )}
       {editando && (
         <AjudaFormula
           left={Math.max(0, esquerda(ancora.coluna) - rolagem.x)}
-          top={ALTURA * (ancora.linha + 2) - rolagem.y + 2}
+          top={topo(ancora.linha + 1) - rolagem.y + 2}
         />
       )}
     </div>

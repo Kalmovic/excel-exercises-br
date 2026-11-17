@@ -9,7 +9,7 @@
  *
  * Função pura: sem navegador e sem banco.
  */
-import type { Exercicio, Formato } from "@/content/schema";
+import { recursosSchema, type Exercicio, type Formato, type Recursos } from "@/content/schema";
 import { deIntervalo } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 import { corrigir } from "./corrigir";
@@ -18,6 +18,7 @@ import { corrigir } from "./corrigir";
 export type RespostaQuestao = {
   conteudos: Record<string, string>;
   formatos?: Record<string, Formato>;
+  recursos?: Recursos;
   resposta?: string;
   ativa?: string;
   selecao?: string;
@@ -32,6 +33,10 @@ export function conferirQuestao(q: Exercicio, r: RespostaQuestao | undefined): b
   if (!r) return false;
   try {
     const p = Planilha.deExercicio(q);
+    // Recursos (filtro, classificações) antes das células, como na restauração do progresso.
+    // Validados de novo aqui: o que chega da internet não é confiável.
+    const recursos = recursosSchema.safeParse(r.recursos ?? {});
+    if (recursos.success) p.aplicarRecursos(recursos.data);
     // Só células que o aluno pode editar, com endereço e tamanho sãos (entrada vem da internet).
     const entradas = Object.entries(r.conteudos ?? {})
       .filter(([end, texto]) => ENDERECO.test(end) && typeof texto === "string" && texto.length <= MAX_TEXTO && !p.bloqueada(end))
