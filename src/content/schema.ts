@@ -78,11 +78,32 @@ export const ordenacaoSchema = z.object({
 /** Critério de uma coluna do filtro: os textos (como aparecem na célula) que ficam visíveis. "" = (Vazias). */
 export const criterioFiltroSchema = z.object({ valores: z.array(z.string().max(200)).max(200) });
 
+export const funcaoValorSchema = z.enum(["soma", "contagem", "media", "max", "min"]);
+
+/**
+ * Tabela dinâmica: a configuração das quatro áreas, como no painel do Excel.
+ * Campos pela letra da coluna na origem. Por ora: até 1 campo em Linhas, 1 em
+ * Colunas (e aí só 1 em Valores), 3 em Valores e 2 em Filtros.
+ */
+export const dinamicaSchema = z
+  .object({
+    origem: intervalo,
+    destino: endereco,
+    linhas: z.array(letraColuna).max(1),
+    colunas: z.array(letraColuna).max(1),
+    valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema })).max(3),
+    /** `valores: null` = (Tudo). */
+    filtros: z.array(z.object({ campo: letraColuna, valores: z.array(z.string().max(200)).max(200).nullable() })).max(2),
+  })
+  .refine((d) => d.colunas.length === 0 || d.valores.length <= 1, "Com um campo em Colunas, só um campo em Valores.");
+
 export const recursosSchema = z.object({
-  /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. */
+  /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. null = desligado. */
   filtro: z
     .object({ intervalo, criterios: z.record(letraColuna, criterioFiltroSchema) })
+    .nullable()
     .optional(),
+  dinamicas: z.array(dinamicaSchema).max(3).optional(),
   /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
 });
@@ -131,6 +152,8 @@ const baseSchema = z.object({
       selecaoFixa: z.boolean().optional(),
       /** Barra "Dados": Filtro (Ctrl+Shift+L) e Classificar. */
       dados: z.boolean().optional(),
+      /** Botão Tabela dinâmica e o painel de campos. */
+      dinamica: z.boolean().optional(),
     })
     .optional(),
   /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
@@ -235,6 +258,19 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
   z.object({ tipo: z.literal("linhasVisiveis"), esperado: z.array(z.number().int().positive()), mensagem: z.string().optional() }),
   /** O filtro está ligado (opcionalmente, exatamente neste intervalo). */
   z.object({ tipo: z.literal("filtroAtivo"), intervalo: intervalo.optional(), mensagem: z.string().optional() }),
+  /**
+   * A tabela dinâmica tem esta configuração (campos pelo NOME do cabeçalho).
+   * Valores sem `campo`: qualquer campo serve (contagem de Vendedor = contagem de Valor).
+   */
+  z.object({
+    tipo: z.literal("dinamica"),
+    origem: intervalo,
+    linhas: z.array(z.string()).default([]),
+    colunas: z.array(z.string()).default([]),
+    valores: z.array(z.object({ campo: z.string().optional(), funcao: funcaoValorSchema })).default([]),
+    filtros: z.array(z.object({ campo: z.string(), valores: z.array(z.string()).nullable() })).default([]),
+    mensagem: z.string().optional(),
+  }),
   /** Resultado de uma célula, com fórmula e (opcional) usando uma função. */
   z.object({
     tipo: z.literal("celula"),
@@ -278,6 +314,8 @@ export type CelulaInicial = z.infer<typeof celulaInicialSchema>;
 export type Alvo = z.infer<typeof alvoSchema>;
 export type Recursos = z.infer<typeof recursosSchema>;
 export type Ordenacao = z.infer<typeof ordenacaoSchema>;
+export type Dinamica = z.infer<typeof dinamicaSchema>;
+export type FuncaoValor = z.infer<typeof funcaoValorSchema>;
 export type Verificacao = z.infer<typeof verificacaoSchema>;
 export type Exercicio = z.infer<typeof exercicioSchema>;
 export type TipoExercicio = Exercicio["type"];

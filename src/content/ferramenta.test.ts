@@ -62,4 +62,29 @@ describe("exercícios de ferramenta", () => {
     expect(conferirQuestao(ex, { conteudos: {}, recursos: { filtro: { intervalo: "ZZ999", criterios: {} } } })).toBe(false);
     expect(conferirQuestao(ex, { conteudos: {}, recursos: "lixo" as never })).toBe(false);
   });
+
+  describe("tabela dinâmica: a correção diz o que mudar", () => {
+    const ex = ferramentas.find((e) => e.slug === "dinamica-total-por-regiao-pegadinha")!;
+    const montar = (config: Partial<import("./schema").Dinamica>) => {
+      const p = Planilha.deExercicio(ex);
+      p.inserirDinamica({ inicio: { linha: 0, coluna: 0 }, fim: { linha: 14, coluna: 4 } }, { linha: 0, coluna: 6 });
+      p.configurarDinamica(0, { ...p.tabelasDinamicas()[0].config, ...config });
+      return corrigir(ex, p);
+    };
+    it("sem tabela", () => expect(corrigir(ex, Planilha.deExercicio(ex)).falhas[0].mensagem).toContain("Ainda não há tabela dinâmica"));
+    it("Soma no lugar de Média", () =>
+      expect(montar({ linhas: ["D"], valores: [{ campo: "E", funcao: "soma" }] }).falhas[0].mensagem).toContain("“Soma de Valor”"));
+    it("campo errado em Linhas", () =>
+      expect(montar({ linhas: ["C"], valores: [{ campo: "E", funcao: "media" }] }).falhas[0].mensagem).toContain("Em Linhas está Região"));
+    it("campo a mais em Colunas", () =>
+      expect(montar({ linhas: ["D"], colunas: ["A"], valores: [{ campo: "E", funcao: "media" }] }).falhas[0].mensagem).toContain("Tire Canal de Colunas"));
+    it("certo", () => expect(montar({ linhas: ["D"], valores: [{ campo: "E", funcao: "media" }] }).ok).toBe(true));
+  });
+
+  it("pegadinha do Total Geral: somar a coluna inteira da tabela dinâmica não passa", () => {
+    const ex = ferramentas.find((e) => e.slug === "dinamica-usar-resultado-pegadinha")!;
+    const p = Planilha.deExercicio(ex);
+    expect(p.definir("H8", "=SOMA(H2:H5)").ok).toBe(true);
+    expect(corrigir(ex, p).ok).toBe(false);
+  });
 });

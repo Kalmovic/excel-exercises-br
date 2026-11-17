@@ -79,13 +79,21 @@ Ficou para depois:
 - Correção: `destacadas`, que compara o conjunto de células que ficaram coloridas. Assim, quem escolheu "Maior que 1000" ou a fórmula `=$C2>1000` acerta do mesmo jeito.
 - Conteúdo: lições no módulo "Organizar dados" ou num módulo "Visualizar dados" (com gráficos).
 
-### Fase 3: Tabela dinâmica (na grade)
+### Fase 3: Tabela dinâmica (na grade), feita em 17/11/2026
 
 - Inserir → Tabela dinâmica com a seleção como fonte e uma célula de destino. A tabela aparece na grade, ancorada no destino, e o painel "Campos" fica ao lado (Filtros / Colunas / Linhas / Valores, arrastando os campos).
 - As células de saída ficam bloqueadas e podem ser lidas por fórmulas (`=G5*2` funciona). Igual ao Excel, ela **não se atualiza sozinha**: há um botão "Atualizar", o que também vira pegadinha de conteúdo.
 - Agregações: Soma, Contagem, Média, Máx e Mín. Total geral e "% do total" ficam para depois.
 - Correção: `dinamica`, que compara a configuração e o resultado.
 - Conteúdo: módulo próprio, "Tabela dinâmica". É o carro-chefe da página Pro.
+
+O que entrou: cálculo puro em `src/engine/dinamica.ts` (layout compacto do Excel pt-BR: "Rótulos de Linha", "Soma de Valor", "Total Geral", filtros em cima), integração na `Planilha` (saída gravada no motor, bloqueada, lida por fórmulas, fora do progresso), botão "Tabela dinâmica" com a janela de origem/destino, painel "Campos da Tabela Dinâmica" com arrastar e soltar, caixas de seleção e o menu ⋯ (para o celular), correção por configuração com mensagens específicas ("Os valores estão como Soma de Valor…"), e o Módulo 9 com 3 lições e o teste (20 exercícios). Testes: `src/engine/dinamica.test.ts`, `src/components/simulador/dinamica-acoes.test.ts`, `src/content/ferramenta.test.ts` e `e2e/dinamica.spec.ts`.
+
+Diferenças conscientes e o que ficou para depois:
+- **Atualiza sozinha.** No Excel, ela só muda com "Atualizar"; aqui acompanha a origem na hora. A lição 1 explica a diferença (é uma pergunta clássica). Para reproduzir o Excel, seria preciso guardar no progresso uma cópia da origem do momento da última atualização.
+- **Um campo por área** em Linhas e Colunas, e só um valor quando há Colunas. Dois campos em Linhas (com subtotais) é o próximo passo.
+- Classificar e filtrar os itens pela seta de "Rótulos de Linha", "Mostrar valores como % do total", agrupar datas por mês e INFODADOSTABELADINÂMICA.
+- O filtro da tabela dinâmica fica no painel, não numa seta na própria grade.
 
 ### Fase 4: Gráficos
 

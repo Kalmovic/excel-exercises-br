@@ -17,6 +17,7 @@ import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
 import { BarraFormatacao } from "./BarraFormatacao";
 import { BarraDados } from "./BarraDados";
+import { PainelDinamica } from "./PainelDinamica";
 import { BarraFormulas } from "./BarraFormulas";
 import { Alternativas } from "./Alternativas";
 import { TextoRico } from "./TextoRico";
@@ -54,6 +55,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
     alvos: new Set(celulasDestacadas(ex)),
     formatacao: ex.ferramentas?.formatacao ?? false,
     dados: ex.ferramentas?.dados ?? false,
+    dinamica: ex.ferramentas?.dinamica ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
     selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
@@ -353,10 +355,11 @@ export default function Simulador({
           {ex.type !== "multiple_choice" && (
             <>
               {nucleo.formatacao && <BarraFormatacao />}
-              {nucleo.dados && <BarraDados />}
+              {(nucleo.dados || nucleo.dinamica) && <BarraDados />}
               {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />
+              {nucleo.dinamica && <PainelDinamica />}
               {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
               <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
                 Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·

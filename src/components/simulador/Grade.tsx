@@ -563,6 +563,34 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               </button>
             );
           })}
+        {/* tabelas dinâmicas: o quadro vazio antes de escolher os campos, o erro, e o contorno da ativa */}
+        {planilha.tabelasDinamicas().map((t, i) => {
+          const fl = Math.min(t.area.fim.linha, planilha.linhas - 1);
+          const fc = Math.min(t.area.fim.coluna, planilha.colunas - 1);
+          const ativa = contem(t.area, ancora);
+          if (!t.vazia && !t.erro && !ativa) return null;
+          return (
+            <div
+              key={`d${i}`}
+              data-testid={t.vazia ? "dinamica-vazia" : t.erro ? "dinamica-erro" : "dinamica-ativa"}
+              className={`pointer-events-none absolute z-[1] flex items-center justify-center p-2 text-center text-xs leading-snug ${
+                t.erro
+                  ? "border-2 border-dashed border-red-400 bg-red-50/70 text-red-800"
+                  : t.vazia
+                    ? "border border-zinc-400 bg-zinc-50 text-zinc-500"
+                    : "border-2 border-blue-300/70"
+              }`}
+              style={{
+                left: esquerda(t.area.inicio.coluna),
+                top: topo(t.area.inicio.linha),
+                width: esquerda(fc + 1) - esquerda(t.area.inicio.coluna),
+                height: alturaEntre(t.area.inicio.linha, fl),
+              }}
+            >
+              {t.erro ? "A tabela dinâmica não cabe aqui" : t.vazia ? "Tabela dinâmica: escolha os campos no painel abaixo" : null}
+            </div>
+          );
+        })}
         {/* área copiada (tracejado) */}
         {copiado && (
           <div

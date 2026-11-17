@@ -1,4 +1,4 @@
-import type { Exercicio, Formato, Ordenacao, Recursos } from "@/content/schema";
+import type { Dinamica, Exercicio, Formato, Ordenacao, Recursos } from "@/content/schema";
 import {
   colunaParaLetras,
   deEndereco,
@@ -16,6 +16,8 @@ import { lerEntrada, normalizarFormula } from "./motor/entrada";
 import { Calculo, FUNCOES, type Conteudo } from "./motor/nucleo";
 import { analisar, type No } from "./motor/parser";
 import { referenciasDaFormula } from "./referencias";
+import { compararParaClassificar } from "./classificar";
+import { calcularDinamica } from "./dinamica";
 
 export type Grade = Exercicio["grade"];
 
@@ -32,6 +34,7 @@ type Foto = {
   bloqueadas: Set<string>;
   filtro: Filtro | null;
   ordenacoes: Ordenacao[];
+  dinamicas: Dinamica[];
 };
 type AcaoHistorico =
   | { tipo: "celulas"; mudancas: Mudanca[] }
@@ -41,22 +44,13 @@ type AcaoHistorico =
 /** AutoFiltro: a primeira linha do intervalo é o cabeçalho; critérios por letra da coluna. */
 export type Filtro = { intervalo: Intervalo; criterios: Record<string, string[]> };
 
-/**
- * Ordem do Classificar do Excel: números < textos < FALSO < VERDADEIRO < erros,
- * e as vazias sempre por último (também na ordem decrescente).
- */
-export function compararParaClassificar(a: ValorCelula, b: ValorCelula, desc = false): number {
-  const vazia = (v: ValorCelula) => v === null || v === "";
-  if (vazia(a) || vazia(b)) return vazia(a) === vazia(b) ? 0 : vazia(a) ? 1 : -1;
-  const rank = (v: ValorCelula) => (typeof v === "number" ? 0 : typeof v === "string" ? 1 : typeof v === "boolean" ? 2 : 3);
-  let r = rank(a) - rank(b);
-  if (r === 0) {
-    if (typeof a === "number") r = a - (b as number);
-    else if (typeof a === "string") r = a.localeCompare(b as string, "pt-BR", { sensitivity: "base", numeric: false });
-    else if (typeof a === "boolean") r = Number(a) - Number(b);
-  }
-  return desc ? -r : r;
-}
+export { compararParaClassificar };
+
+/** O que cada tabela dinâmica ocupa na grade agora (e por que não aparece, se for o caso). */
+type SituacaoDinamica = { area: Intervalo; vazia: boolean; erro: string | null };
+
+const contemPos = (i: Intervalo, p: Pos) =>
+  p.linha >= i.inicio.linha && p.linha <= i.fim.linha && p.coluna >= i.inicio.coluna && p.coluna <= i.fim.coluna;
 
 const pt = (n: number) => String(Math.round(n * 1e10) / 1e10).replace(".", ",");
 const dois = (n: number) => String(n).padStart(2, "0");
@@ -102,6 +96,15 @@ export class Planilha {
   private ordenacoes: Ordenacao[] = [];
   /** Linhas escondidas pelo filtro, recalculadas a cada mudança. */
   private ocultas = new Set<number>();
+  /** Tabelas dinâmicas (configuração) e o que cada uma ocupa na grade agora. */
+  private dinamicas: Dinamica[] = [];
+  private saidasDinamicas: SituacaoDinamica[] = [];
+  /** Células escritas pelas tabelas dinâmicas ("linha,coluna"): bloqueadas, fora do progresso. */
+  private celulasDinamicas = new Set<string>();
+  private formatosDinamicas = new Map<string, Formato>();
+  private negritosDinamicas = new Set<string>();
+  /** O exercício já começa com filtro / tabela dinâmica: o progresso precisa gravar quando o aluno os remove. */
+  private inicial = { filtro: false, dinamicas: false };
 
   constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
     this.linhas = grade.linhas;
@@ -114,7 +117,10 @@ export class Planilha {
       if (cel.negrito) this.negritos.add(end);
     }
     for (const [end, f] of Object.entries(extras.formatos ?? {})) if (f) this.formatos.set(end, f);
-    if (grade.recursos) this.aplicarRecursos(grade.recursos, { inicial: true });
+    if (grade.recursos) {
+      this.inicial = { filtro: !!grade.recursos.filtro, dinamicas: !!grade.recursos.dinamicas?.length };
+      this.aplicarRecursos(grade.recursos, { inicial: true });
+    }
   }
 
   /** Monta a planilha de um exercício, aplicando também os formatos das células-alvo. */
@@ -136,7 +142,7 @@ export class Planilha {
   getVersion = () => this.versao;
 
   private notificar() {
-    this.atualizarOcultas();
+    this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
   }
@@ -169,7 +175,10 @@ export class Planilha {
 
   /** O que aparece na barra de fórmulas. */
   bruto(end: string | Pos): string {
-    return this.textos.get(this.chave(end)) ?? "";
+    const k = this.chave(end);
+    // Tabela dinâmica: a barra de fórmulas mostra o valor, como no Excel.
+    if (this.celulasDinamicas.has(k)) return this.exibicao(end);
+    return this.textos.get(k) ?? "";
   }
 
   /**
@@ -194,8 +203,8 @@ export class Planilha {
 
   exibicao(end: string | Pos): string {
     const e = typeof end === "string" ? end : paraEndereco(end);
-    if (this.circular(e)) return formatarValor(0, "NUMBER_RAW", this.formatos.get(e));
-    return formatarValor(this.valor(e), this.tipo(e), this.formatos.get(e));
+    if (this.circular(e)) return formatarValor(0, "NUMBER_RAW", this.formatoDe(e));
+    return formatarValor(this.valor(e), this.tipo(e), this.formatoDe(e));
   }
 
   temFormula(end: string | Pos): boolean {
@@ -214,11 +223,24 @@ export class Planilha {
   }
 
   bloqueada(end: string | Pos): boolean {
-    return this.bloqueadas.has(typeof end === "string" ? end : paraEndereco(end));
+    return this.bloqueadas.has(typeof end === "string" ? end : paraEndereco(end)) || this.daDinamica(end);
+  }
+
+  /** A célula é parte da saída de uma tabela dinâmica. */
+  daDinamica(end: string | Pos): boolean {
+    return this.celulasDinamicas.has(this.chave(end));
+  }
+
+  /** Por que a célula não pode ser editada (null se pode). */
+  motivoBloqueio(end: string | Pos): string | null {
+    if (this.daDinamica(end)) return "Não é possível alterar esta parte de uma tabela dinâmica. Mude os campos no painel Campos da Tabela Dinâmica.";
+    if (this.bloqueada(end)) return "Esta célula faz parte dos dados do exercício e não pode ser alterada.";
+    return null;
   }
 
   formatoDe(end: string | Pos): Formato | undefined {
-    return this.formatos.get(typeof end === "string" ? end : paraEndereco(end));
+    const e = typeof end === "string" ? end : paraEndereco(end);
+    return this.formatos.get(e) ?? this.formatosDinamicas.get(e);
   }
 
   /**
@@ -264,7 +286,7 @@ export class Planilha {
   }
 
   negrito(end: string): boolean {
-    return this.negritos.has(end);
+    return this.negritos.has(end) || this.negritosDinamicas.has(end);
   }
 
   /** Conteúdo bruto de todas as células preenchidas (para correção e progresso). Derramadas não entram. */
@@ -322,9 +344,8 @@ export class Planilha {
 
   /** Valida (idioma pt-BR e escrita) e grava. Não grava se a validação falhar. */
   definir(end: string | Pos, bruto: string): Validacao {
-    if (this.bloqueada(end)) {
-      return { ok: false, mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." };
-    }
+    const motivo = this.motivoBloqueio(end);
+    if (motivo) return { ok: false, mensagem: motivo };
     const entrada = bruto.trim();
     const v = validarIdioma(entrada);
     if (!v.ok) return v;
@@ -482,7 +503,9 @@ export class Planilha {
         intervalo: intervaloParaTexto(this.filtro.intervalo),
         criterios: Object.fromEntries(Object.entries(this.filtro.criterios).map(([c, valores]) => [c, { valores }])),
       };
+    else if (this.inicial.filtro) r.filtro = null; // o aluno desligou o filtro que o exercício trazia
     if (this.ordenacoes.length) r.ordenacoes = this.ordenacoes.map((o) => structuredClone(o));
+    if (this.dinamicas.length || this.inicial.dinamicas) r.dinamicas = structuredClone(this.dinamicas);
     return r;
   }
 
@@ -498,7 +521,8 @@ export class Planilha {
       this.ordenar(int, o);
       if (!inicial) this.ordenacoes.push(structuredClone(o));
     }
-    if (r.filtro) {
+    if (r.filtro === null) this.filtro = null;
+    else if (r.filtro) {
       const int = this.recortar(deIntervalo(r.filtro.intervalo));
       if (int)
         this.filtro = {
@@ -506,7 +530,9 @@ export class Planilha {
           criterios: Object.fromEntries(Object.entries(r.filtro.criterios).map(([c, k]) => [c, [...k.valores]])),
         };
     }
-    this.atualizarOcultas();
+    // Tabelas dinâmicas: a lista salva substitui a atual (inclusive as que o exercício já trazia).
+    if (r.dinamicas) this.dinamicas = structuredClone(r.dinamicas).filter((d) => this.recortar(deIntervalo(d.origem)));
+    this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
   }
@@ -732,6 +758,176 @@ export class Planilha {
     return negrito || abaixoNaoTexto;
   }
 
+  // --- tabela dinâmica ---------------------------------------------------------
+
+  /** Filtro e tabelas dinâmicas dependem dos valores: recalculados a cada mudança. */
+  private atualizarDerivados() {
+    this.atualizarDinamicas();
+    this.atualizarOcultas();
+  }
+
+  /**
+   * Reescreve a saída de todas as tabelas dinâmicas. Diferença consciente para o
+   * Excel: aqui ela acompanha a origem sozinha (lá precisa de "Atualizar").
+   */
+  private atualizarDinamicas() {
+    for (const k of this.celulasDinamicas) {
+      const [l, c] = k.split(",").map(Number);
+      if (!this.textos.has(k)) this.calculo.definir(l, c, null);
+    }
+    this.celulasDinamicas = new Set();
+    this.formatosDinamicas = new Map();
+    this.negritosDinamicas = new Set();
+    this.saidasDinamicas = this.dinamicas.map((d) => {
+      const origem = this.recortar(deIntervalo(d.origem))!;
+      const destino = deEndereco(d.destino);
+      const nomes = this.nomesDosCampos(origem);
+      const saida = calcularDinamica(d, origem, nomes, {
+        valor: (l, c) => this.valor({ linha: l, coluna: c }),
+        texto: (l, c) => this.textoParaFiltro({ linha: l, coluna: c }),
+      });
+      const area: Intervalo = {
+        inicio: destino,
+        fim: { linha: destino.linha + Math.max(saida.altura, 1) - 1, coluna: destino.coluna + Math.max(saida.largura, 1) - 1 },
+      };
+      if (area.fim.linha >= this.linhas || area.fim.coluna >= this.colunas)
+        return { area, vazia: saida.vazia, erro: "A tabela dinâmica não cabe a partir daqui. Mude o destino ou tire campos." };
+      const ocupada = saida.celulas
+        .map((x) => ({ linha: destino.linha + x.dl, coluna: destino.coluna + x.dc }))
+        .find((p) => this.textos.has(`${p.linha},${p.coluna}`) || this.celulasDinamicas.has(`${p.linha},${p.coluna}`) || contemPos(origem, p));
+      if (ocupada)
+        return { area, vazia: saida.vazia, erro: `A tabela dinâmica não cabe: ${paraEndereco(ocupada)} já tem dados. Mude o destino ou apague o que está lá.` };
+      for (const x of saida.celulas) {
+        const p = { linha: destino.linha + x.dl, coluna: destino.coluna + x.dc };
+        const k = `${p.linha},${p.coluna}`;
+        const end = paraEndereco(p);
+        this.celulasDinamicas.add(k);
+        if (x.valor === null) continue;
+        const tipo = typeof x.valor === "number" ? "NUMBER_RAW" : typeof x.valor === "string" ? "STRING" : typeof x.valor === "boolean" ? "BOOLEAN" : "ERROR";
+        this.calculo.definir(p.linha, p.coluna, { valor: x.valor, tipo });
+        if (x.negrito) this.negritosDinamicas.add(end);
+        if (x.formatoDe) {
+          const f = this.formatoDoCampo(origem, x.formatoDe);
+          if (f) this.formatosDinamicas.set(end, f);
+        }
+      }
+      return { area, vazia: saida.vazia, erro: null };
+    });
+  }
+
+  /** Formato de um campo da origem (o da primeira célula de dados que tiver um). */
+  private formatoDoCampo(origem: Intervalo, letra: string): Formato | undefined {
+    const c = letrasParaColuna(letra);
+    for (let l = origem.inicio.linha + 1; l <= origem.fim.linha; l++) {
+      const end = paraEndereco({ linha: l, coluna: c });
+      const f = this.formatos.get(end);
+      if (f) return f;
+      const t = this.tipo(end);
+      if (t === "NUMBER_CURRENCY") return "moeda";
+      if (t === "NUMBER_PERCENT") return "percentual";
+      if (t === "NUMBER_DATE") return "data";
+      if (this.valor(end) !== null) return undefined;
+    }
+    return undefined;
+  }
+
+  /** Nome de cada campo (letra → texto do cabeçalho). */
+  private nomesDosCampos(origem: Intervalo): Record<string, string> {
+    const out: Record<string, string> = {};
+    for (let c = origem.inicio.coluna; c <= origem.fim.coluna; c++)
+      out[colunaParaLetras(c)] = this.textoParaFiltro({ linha: origem.inicio.linha, coluna: c }) || `Coluna${c + 1}`;
+    return out;
+  }
+
+  /** As tabelas dinâmicas, com a área que ocupam e o erro (se não couberem). */
+  tabelasDinamicas(): { config: Dinamica; area: Intervalo; vazia: boolean; erro: string | null }[] {
+    return this.dinamicas.map((config, i) => ({ config, ...this.saidasDinamicas[i] }));
+  }
+
+  /** Índice da tabela dinâmica que tem esta célula na área (-1 se nenhuma). */
+  dinamicaEm(p: Pos): number {
+    return this.saidasDinamicas.findIndex((s) => contemPos(s.area, p));
+  }
+
+  /** Campos da origem: letra, nome do cabeçalho e se são só números (vão para Valores com Soma). */
+  camposDaDinamica(i: number): { letra: string; nome: string; numerico: boolean }[] {
+    const d = this.dinamicas[i];
+    if (!d) return [];
+    const origem = this.recortar(deIntervalo(d.origem))!;
+    const nomes = this.nomesDosCampos(origem);
+    return Object.entries(nomes).map(([letra, nome]) => {
+      const c = letrasParaColuna(letra);
+      let algum = false;
+      let numerico = true;
+      for (let l = origem.inicio.linha + 1; l <= origem.fim.linha; l++) {
+        const v = this.valor({ linha: l, coluna: c });
+        if (v === null || v === "") continue;
+        algum = true;
+        if (typeof v !== "number") numerico = false;
+      }
+      return { letra, nome, numerico: algum && numerico };
+    });
+  }
+
+  /** Itens de um campo (para o filtro da tabela dinâmica), na ordem do Excel. */
+  itensDoCampo(i: number, letra: string): string[] {
+    const d = this.dinamicas[i];
+    if (!d) return [];
+    const origem = this.recortar(deIntervalo(d.origem))!;
+    const c = letrasParaColuna(letra);
+    const vistos = new Map<string, ValorCelula>();
+    for (let l = origem.inicio.linha + 1; l <= origem.fim.linha; l++) {
+      const p = { linha: l, coluna: c };
+      const t = this.textoParaFiltro(p);
+      if (!vistos.has(t)) vistos.set(t, this.valor(p));
+    }
+    return [...vistos.entries()].sort((a, b) => compararParaClassificar(a[1], b[1])).map(([t]) => t);
+  }
+
+  /**
+   * Inserir → Tabela dinâmica. A origem precisa ter cabeçalho (todo campo com
+   * nome) e pelo menos uma linha de dados; o destino, ficar fora dela e vazio.
+   */
+  inserirDinamica(origem: Intervalo, destino: Pos): Validacao {
+    const o = this.recortar(origem);
+    if (!o || o.fim.linha === o.inicio.linha)
+      return { ok: false, mensagem: "Selecione a tabela inteira, com o cabeçalho e pelo menos uma linha de dados." };
+    for (let c = o.inicio.coluna; c <= o.fim.coluna; c++)
+      if (this.textoParaFiltro({ linha: o.inicio.linha, coluna: c }) === "")
+        return { ok: false, mensagem: "O nome do campo da tabela dinâmica não é válido: toda coluna da origem precisa de um cabeçalho." };
+    if (destino.linha >= this.linhas || destino.coluna >= this.colunas) return { ok: false, mensagem: "O destino fica fora da planilha." };
+    if (contemPos(o, destino)) return { ok: false, mensagem: "O destino não pode ficar dentro dos dados de origem." };
+    if (this.textos.has(`${destino.linha},${destino.coluna}`) || this.daDinamica(destino))
+      return { ok: false, mensagem: `${paraEndereco(destino)} já tem conteúdo. Escolha uma célula vazia para a tabela dinâmica.` };
+    if (this.dinamicas.length >= 3) return { ok: false, mensagem: "Este exercício aceita no máximo 3 tabelas dinâmicas." };
+    this.mudarEstado(() => {
+      this.dinamicas.push({
+        origem: intervaloParaTexto(o),
+        destino: paraEndereco(destino),
+        linhas: [],
+        colunas: [],
+        valores: [],
+        filtros: [],
+      });
+    });
+    return { ok: true };
+  }
+
+  /** Troca a configuração (os campos nas quatro áreas) da tabela dinâmica `i`. */
+  configurarDinamica(i: number, config: Dinamica) {
+    if (!this.dinamicas[i]) return;
+    this.mudarEstado(() => {
+      this.dinamicas[i] = structuredClone(config);
+    });
+  }
+
+  removerDinamica(i: number) {
+    if (!this.dinamicas[i]) return;
+    this.mudarEstado(() => {
+      this.dinamicas.splice(i, 1);
+    });
+  }
+
   private fotografar(): Foto {
     return {
       textos: new Map(this.textos),
@@ -741,6 +937,7 @@ export class Planilha {
       bloqueadas: new Set(this.bloqueadas),
       filtro: this.filtro ? structuredClone(this.filtro) : null,
       ordenacoes: structuredClone(this.ordenacoes),
+      dinamicas: structuredClone(this.dinamicas),
     };
   }
 
@@ -757,6 +954,7 @@ export class Planilha {
     this.bloqueadas = new Set(f.bloqueadas);
     this.filtro = f.filtro ? structuredClone(f.filtro) : null;
     this.ordenacoes = structuredClone(f.ordenacoes);
+    this.dinamicas = structuredClone(f.dinamicas);
   }
 
   /** Aplica uma mudança de recurso com um retrato antes e depois (para o Ctrl+Z). */

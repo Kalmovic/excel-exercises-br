@@ -176,8 +176,9 @@ export function criarStore(
     iniciarEdicao: (modo, texto) => {
       const { ancora } = get();
       if (fixa) return false;
-      if (planilha.bloqueada(ancora)) {
-        set({ mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." });
+      const motivo = planilha.motivoBloqueio(ancora);
+      if (motivo) {
+        set({ mensagem: motivo });
         return false;
       }
       const rascunho = texto ?? planilha.bruto(ancora);
