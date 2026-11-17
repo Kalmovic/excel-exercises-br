@@ -67,3 +67,22 @@ test("fórmula lendo a tabela dinâmica que o exercício já traz", async ({ pag
   await expect(celula(page, "H8")).toHaveText(/51,5/);
   await verificarCorreto(page);
 });
+
+test("página Pro: destaque da tabela dinâmica abre a lição jogável na aba certa", async ({ page }) => {
+  await page.goto("/pro");
+  const destaque = page.getByTestId("secao-ferramentas");
+  await expect(destaque).toContainText("Total Geral");
+  await expect(destaque).toContainText("R$ 24.260,00"); // calculado pelo motor, não escrito à mão
+  await expect(page.getByTestId("aba-amostra-procv")).toHaveAttribute("aria-selected", "true");
+  await page.getByTestId("cta-dinamica").click();
+  await expect(page.getByTestId("aba-amostra-dinamica")).toHaveAttribute("aria-selected", "true");
+  const amostra = page.getByTestId("exercicio-embutido");
+  await expect(amostra).toContainText("Tabela dinâmica: total por região");
+  await amostra.locator('[data-celula="B3"]').click();
+  await amostra.getByTestId("botao-dinamica").click();
+  await amostra.getByTestId("dinamica-ok").click();
+  await amostra.locator('[data-campo="Região"]').check();
+  await amostra.locator('[data-campo="Valor"]').check();
+  await amostra.getByTestId("verificar").click();
+  await expect(amostra.getByTestId("resultado")).toContainText("Correto!");
+});
