@@ -18,6 +18,7 @@ import * as progresso from "@/lib/progresso";
 import { BarraFormatacao } from "./BarraFormatacao";
 import { BarraDados } from "./BarraDados";
 import { PainelDinamica } from "./PainelDinamica";
+import { PainelGrafico } from "./PainelGrafico";
 import { BarraFormulas } from "./BarraFormulas";
 import { Alternativas } from "./Alternativas";
 import { TextoRico } from "./TextoRico";
@@ -57,6 +58,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
     dados: ex.ferramentas?.dados ?? false,
     dinamica: ex.ferramentas?.dinamica ?? false,
     condicional: ex.ferramentas?.condicional ?? false,
+    grafico: ex.ferramentas?.grafico ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
     selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
@@ -146,9 +148,7 @@ export default function Simulador({
       versao: ex.versao,
       status: status ?? atual?.status ?? "em-andamento",
       tentativas: n ?? atual?.tentativas ?? 0,
-      conteudos: Object.fromEntries(
-        Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
-      ),
+      conteudos: planilha.conteudosDoAluno(),
       formatos: planilha.formatosDoAluno(),
       recursos: planilha.recursos(),
       resposta: store.getState().resposta,
@@ -218,7 +218,7 @@ export default function Simulador({
     if (teste) {
       // O que ficou na tela vai junto: o servidor corrige de novo para emitir o certificado.
       teste.aoResponder(r.ok, {
-        conteudos: Object.fromEntries(Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end))),
+        conteudos: planilha.conteudosDoAluno(),
         formatos: planilha.formatosDoAluno(),
         recursos: planilha.recursos(),
         resposta: s.resposta,
@@ -356,11 +356,12 @@ export default function Simulador({
           {ex.type !== "multiple_choice" && (
             <>
               {nucleo.formatacao && <BarraFormatacao />}
-              {(nucleo.dados || nucleo.dinamica || nucleo.condicional) && <BarraDados />}
+              {(nucleo.dados || nucleo.dinamica || nucleo.condicional || nucleo.grafico) && <BarraDados />}
               {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
               <BarraFormulas />
               <Grade larguras={ex.grade.larguras} />
               {nucleo.dinamica && <PainelDinamica />}
+              {nucleo.grafico && <PainelGrafico />}
               {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
               <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
                 Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·

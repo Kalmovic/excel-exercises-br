@@ -33,6 +33,8 @@ export type EstadoSimulador = {
    * "inicio": o próximo toque marca a primeira célula; "fim": marca a última.
    */
   intervaloNoToque: null | "inicio" | "fim";
+  /** Gráfico selecionado (clique nele): abre o painel Design do Gráfico. */
+  graficoAtivo: number | null;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -95,6 +97,7 @@ export function criarStore(
     celebrando: false,
     mudancasPeloMouse: 0,
     intervaloNoToque: null,
+    graficoAtivo: null,
     resposta,
 
     selecao: () => normalizar(get().ancora, get().foco),

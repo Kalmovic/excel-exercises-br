@@ -104,10 +104,17 @@ Diferenças conscientes e o que ficou para depois:
 - Classificar e filtrar os itens pela seta de "Rótulos de Linha", "Mostrar valores como % do total", agrupar datas por mês e INFODADOSTABELADINÂMICA.
 - O filtro da tabela dinâmica fica no painel, não numa seta na própria grade.
 
-### Fase 4: Gráficos
+### Fase 4: Gráficos, feita em 17/11/2026
 
 - Inserir gráfico da seleção (colunas, barras, linhas e pizza), desenhado em SVG por cima da grade, com título e rótulos.
 - Correção: `grafico` (tipo e intervalo da série). Conteúdo conceitual: qual gráfico usar para cada caso, que é tema clássico de concurso.
+
+
+O que entrou: botão "Inserir Gráfico" (colunas, barras, linhas, pizza) a partir da seleção ou da região atual; gráfico em SVG flutuando sobre a grade, que acompanha os dados; painel "Design do Gráfico" (tipo, título, rótulos de dados, Alternar Linha/Coluna, intervalo e posição); leitura do intervalo como o Excel (primeira coluna = categorias, primeira linha = séries, e a exceção da coluna de números com cabeçalho, que vira série); correção pelo resultado (categorias e séries), com mensagens para as pegadinhas (linha do Total, alternar, ano virando série, tipo errado); e o Módulo 11 com 3 lições e o teste (20 exercícios). Testes: `src/engine/grafico.test.ts`, `src/content/ferramenta.test.ts` e `e2e/graficos.spec.ts`.
+
+Também entrou uma correção geral: apagar uma célula editável que o exercício trazia preenchida agora é gravado no progresso (`conteudosDoAluno`). Antes, o valor original voltava ao recarregar e na correção do certificado.
+
+Ficou para depois: arrastar e redimensionar o gráfico com o mouse (hoje a posição é um campo), seleção não contígua (Ctrl+clique), títulos de eixo, gráfico de dispersão e combinação, e barras na ordem do Excel (o Excel desenha a primeira categoria embaixo; aqui fica em cima, que é o que a maioria espera).
 
 ### Fase 5: Validação de dados
 

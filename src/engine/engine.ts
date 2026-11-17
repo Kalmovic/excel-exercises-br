@@ -1,4 +1,4 @@
-import type { Dinamica, Exercicio, Formato, Ordenacao, Recursos, RegraCondicional } from "@/content/schema";
+import type { Dinamica, Exercicio, Formato, Grafico, Ordenacao, Recursos, RegraCondicional } from "@/content/schema";
 import {
   colunaParaLetras,
   deEndereco,
@@ -19,6 +19,7 @@ import { referenciasDaFormula } from "./referencias";
 import { compararParaClassificar } from "./classificar";
 import { calcularDinamica } from "./dinamica";
 import { calcularCondicionais, type EstiloCelula } from "./condicional";
+import { dadosDoGrafico, type DadosGrafico } from "./grafico";
 
 export type Grade = Exercicio["grade"];
 
@@ -37,6 +38,7 @@ type Foto = {
   ordenacoes: Ordenacao[];
   dinamicas: Dinamica[];
   condicionais: RegraCondicional[];
+  graficos: Grafico[];
 };
 type AcaoHistorico =
   | { tipo: "celulas"; mudancas: Mudanca[] }
@@ -106,7 +108,10 @@ export class Planilha {
   private formatosDinamicas = new Map<string, Formato>();
   private negritosDinamicas = new Set<string>();
   /** O exercício já começa com filtro / tabela dinâmica: o progresso precisa gravar quando o aluno os remove. */
-  private inicial = { filtro: false, dinamicas: false, condicionais: false };
+  private inicial = { filtro: false, dinamicas: false, condicionais: false, graficos: false };
+  private graficosLista: Grafico[] = [];
+  /** Células editáveis que o exercício já traz preenchidas (para gravar quando o aluno as apaga). */
+  private preenchidasEditaveis = new Set<string>();
   /** Regras de formatação condicional (a última tem prioridade) e o estilo que cada célula ganhou. */
   private condicionais: RegraCondicional[] = [];
   private estilos = new Map<string, EstiloCelula>();
@@ -118,6 +123,7 @@ export class Planilha {
     for (const [end, cel] of Object.entries(grade.celulas)) {
       this.gravar(deEndereco(end), cel.entrada);
       if (cel.bloqueada ?? cel.entrada !== "") this.bloqueadas.add(end);
+      else if (cel.entrada.trim() !== "") this.preenchidasEditaveis.add(end);
       if (cel.formato) this.formatos.set(end, cel.formato);
       if (cel.negrito) this.negritos.add(end);
     }
@@ -127,6 +133,7 @@ export class Planilha {
         filtro: !!grade.recursos.filtro,
         dinamicas: !!grade.recursos.dinamicas?.length,
         condicionais: !!grade.recursos.condicionais?.length,
+        graficos: !!grade.recursos.graficos?.length,
       };
       this.aplicarRecursos(grade.recursos, { inicial: true });
     }
@@ -299,6 +306,17 @@ export class Planilha {
   }
 
   /** Conteúdo bruto de todas as células preenchidas (para correção e progresso). Derramadas não entram. */
+  /**
+   * O que o aluno escreveu (o que o progresso guarda e o certificado reenvia):
+   * as células editáveis, e "" nas que o exercício trazia preenchidas e o
+   * aluno apagou (sem isso, o valor original voltaria ao restaurar).
+   */
+  conteudosDoAluno(): Record<string, string> {
+    const out = Object.fromEntries(Object.entries(this.conteudos()).filter(([end]) => !this.bloqueada(end)));
+    for (const end of this.preenchidasEditaveis) if (!(end in out) && !this.bloqueada(end)) out[end] = "";
+    return out;
+  }
+
   conteudos(): Record<string, string> {
     const out: Record<string, string> = {};
     for (const [k, t] of this.textos) {
@@ -516,6 +534,7 @@ export class Planilha {
     if (this.ordenacoes.length) r.ordenacoes = this.ordenacoes.map((o) => structuredClone(o));
     if (this.dinamicas.length || this.inicial.dinamicas) r.dinamicas = structuredClone(this.dinamicas);
     if (this.condicionais.length || this.inicial.condicionais) r.condicionais = structuredClone(this.condicionais);
+    if (this.graficosLista.length || this.inicial.graficos) r.graficos = structuredClone(this.graficosLista);
     return r;
   }
 
@@ -543,6 +562,7 @@ export class Planilha {
     // Tabelas dinâmicas: a lista salva substitui a atual (inclusive as que o exercício já trazia).
     if (r.dinamicas) this.dinamicas = structuredClone(r.dinamicas).filter((d) => this.recortar(deIntervalo(d.origem)));
     if (r.condicionais) this.condicionais = structuredClone(r.condicionais);
+    if (r.graficos) this.graficosLista = structuredClone(r.graficos);
     this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
@@ -1028,6 +1048,60 @@ export class Planilha {
     });
   }
 
+  // --- gráficos ------------------------------------------------------------------
+
+  graficos(): Grafico[] {
+    return this.graficosLista;
+  }
+
+  /** Categorias e séries do gráfico `i`, lidas da planilha agora (o gráfico acompanha os dados). */
+  dadosDoGrafico(i: number): DadosGrafico {
+    const g = this.graficosLista[i];
+    if (!g) return { categorias: [], series: [], erro: "Gráfico inexistente." };
+    return dadosDoGrafico(g, {
+      valor: (p) => (p.linha < this.linhas && p.coluna < this.colunas ? this.valor(p) : null),
+      texto: (p) => (p.linha < this.linhas && p.coluna < this.colunas ? this.textoParaFiltro(p) : ""),
+      formato: (p) => this.formatoDe(p),
+    });
+  }
+
+  /**
+   * Inserir → Gráfico. Ancorado duas colunas depois dos dados (ou abaixo,
+   * se não houver espaço), como o Excel faz perto da seleção.
+   */
+  inserirGrafico(tipo: Grafico["tipo"], dados: Intervalo): Validacao & { indice?: number } {
+    const d = this.recortar(dados);
+    if (!d) return { ok: false, mensagem: "Selecione os dados do gráfico." };
+    if (this.graficosLista.length >= 4) return { ok: false, mensagem: "No máximo 4 gráficos por planilha." };
+    const aoLado = { linha: d.inicio.linha, coluna: d.fim.coluna + 2 };
+    const posicao = aoLado.coluna < this.colunas ? aoLado : { linha: Math.min(d.fim.linha + 2, this.linhas - 1), coluna: d.inicio.coluna };
+    const g: Grafico = { tipo, dados: intervaloParaTexto(d), posicao: paraEndereco(posicao), titulo: "", rotulos: false, alternar: false };
+    const teste = dadosDoGrafico(g, {
+      valor: (p) => this.valor(p),
+      texto: (p) => this.textoParaFiltro(p),
+      formato: (p) => this.formatoDe(p),
+    });
+    if (teste.erro) return { ok: false, mensagem: `${teste.erro} Selecione a tabela com os rótulos e os valores.` };
+    this.mudarEstado(() => {
+      this.graficosLista.push(g);
+    });
+    return { ok: true, indice: this.graficosLista.length - 1 };
+  }
+
+  configurarGrafico(i: number, g: Grafico) {
+    if (!this.graficosLista[i]) return;
+    this.mudarEstado(() => {
+      this.graficosLista[i] = structuredClone(g);
+    });
+  }
+
+  removerGrafico(i: number) {
+    if (!this.graficosLista[i]) return;
+    this.mudarEstado(() => {
+      this.graficosLista.splice(i, 1);
+    });
+  }
+
   private fotografar(): Foto {
     return {
       textos: new Map(this.textos),
@@ -1039,6 +1113,7 @@ export class Planilha {
       ordenacoes: structuredClone(this.ordenacoes),
       dinamicas: structuredClone(this.dinamicas),
       condicionais: structuredClone(this.condicionais),
+      graficos: structuredClone(this.graficosLista),
     };
   }
 
@@ -1057,6 +1132,7 @@ export class Planilha {
     this.ordenacoes = structuredClone(f.ordenacoes);
     this.dinamicas = structuredClone(f.dinamicas);
     this.condicionais = structuredClone(f.condicionais);
+    this.graficosLista = structuredClone(f.graficos);
   }
 
   /** Aplica uma mudança de recurso com um retrato antes e depois (para o Ctrl+Z). */

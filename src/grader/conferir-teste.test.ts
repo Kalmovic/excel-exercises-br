@@ -16,7 +16,7 @@ function respostaCerta(q: Exercicio): RespostaQuestao {
   const s = store.getState();
   const sel = s.selecao();
   return {
-    conteudos: Object.fromEntries(Object.entries(p.conteudos()).filter(([end]) => !p.bloqueada(end))),
+    conteudos: p.conteudosDoAluno(),
     formatos: p.formatosDoAluno(),
     recursos: p.recursos(),
     resposta: s.resposta,

@@ -10,6 +10,7 @@ import type { ExercicioDoTipo } from "./schema";
 import { Planilha } from "@/engine/engine";
 import { corrigir } from "@/grader/corrigir";
 import { conferirQuestao } from "@/grader/conferir-teste";
+import { deIntervalo } from "@/engine/address";
 
 const ferramentas = exercicios.filter((e): e is ExercicioDoTipo<"ferramenta"> => e.type === "ferramenta");
 
@@ -28,7 +29,7 @@ describe("exercícios de ferramenta", () => {
     it("a tela inicial não passa", () => expect(corrigir(ex, Planilha.deExercicio(ex)).ok).toBe(false));
     it("o servidor confere igual a partir do progresso salvo", () => {
       const p = resolver(ex);
-      const conteudos = Object.fromEntries(Object.entries(p.conteudos()).filter(([end]) => !p.bloqueada(end)));
+      const conteudos = p.conteudosDoAluno();
       expect(conferirQuestao(ex, { conteudos, recursos: JSON.parse(JSON.stringify(p.recursos())) })).toBe(true);
     });
   });
@@ -104,5 +105,25 @@ describe("exercícios de ferramenta", () => {
     it("Maior do que 999,99 também acerta", () => expect(com({ tipo: "maior", intervalo: "C2:C11", valor: "999,99", estilo: "verde" }).ok).toBe(true));
     it("cor errada", () =>
       expect(com({ tipo: "maior", intervalo: "C2:C11", valor: "999,99", estilo: "vermelho" }).falhas[0].mensagem).toContain("outra cor"));
+  });
+
+  describe("gráficos: a correção aponta a pegadinha", () => {
+    const comGrafico = (slug: string, tipo: import("./schema").TipoGrafico, dados: string, ajuste: Partial<import("./schema").Grafico> = {}) => {
+      const ex = ferramentas.find((e) => e.slug === slug)!;
+      const p = Planilha.deExercicio(ex);
+      expect(p.inserirGrafico(tipo, deIntervalo(dados)).ok).toBe(true);
+      if (Object.keys(ajuste).length) p.configurarGrafico(0, { ...p.graficos()[0], ...ajuste });
+      return corrigir(ex, p);
+    };
+    it("linha do Total junto", () =>
+      expect(comGrafico("grafico-vendas-por-mes-pegadinha", "colunas", "A1:B8").falhas[0].mensagem).toContain("uma categoria a mais"));
+    it("sem Alternar Linha/Coluna", () =>
+      expect(comGrafico("grafico-participacao-canal-pegadinha", "colunas", "A1:D4").falhas[0].mensagem).toContain("Alternar Linha/Coluna"));
+    it("ano lido como série", () =>
+      expect(comGrafico("grafico-duas-series-pegadinha", "linhas", "A1:B6").falhas[0].mensagem).toContain("virou série"));
+    it("tipo errado com os dados certos", () =>
+      expect(comGrafico("grafico-participacao-canal", "colunas", "A1:B5").falhas[0].mensagem).toContain("não é o melhor"));
+    it("falta o título", () =>
+      expect(comGrafico("grafico-vendas-por-mes-variacao-b", "colunas", "A1:B7").falhas[0].mensagem).toContain("Falta o título"));
   });
 });

@@ -18,6 +18,8 @@ export type ContextoSimulador = {
   dinamica: boolean;
   /** Menu Formatação Condicional. */
   condicional: boolean;
+  /** Menu Inserir Gráfico e o painel Design do Gráfico. */
+  grafico: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */

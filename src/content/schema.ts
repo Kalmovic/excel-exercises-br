@@ -120,6 +120,22 @@ export const regraCondicionalSchema = z.discriminatedUnion("tipo", [
   z.object({ tipo: z.enum(["barras", "escala"]), intervalo }),
 ]);
 
+export const tipoGraficoSchema = z.enum(["colunas", "barras", "linhas", "pizza"]);
+
+/**
+ * Gráfico flutuando sobre a grade, ancorado em `posicao`. Como no Excel: a
+ * primeira coluna de `dados` são as categorias e a primeira linha, os nomes
+ * das séries (`alternar` troca os dois: "Alternar Linha/Coluna").
+ */
+export const graficoSchema = z.object({
+  tipo: tipoGraficoSchema,
+  dados: intervalo,
+  posicao: endereco,
+  titulo: z.string().max(80),
+  rotulos: z.boolean(),
+  alternar: z.boolean(),
+});
+
 export const recursosSchema = z.object({
   /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. null = desligado. */
   filtro: z
@@ -129,6 +145,7 @@ export const recursosSchema = z.object({
   dinamicas: z.array(dinamicaSchema).max(3).optional(),
   /** Regras de formatação condicional; a última criada tem prioridade (como no Excel). */
   condicionais: z.array(regraCondicionalSchema).max(20).optional(),
+  graficos: z.array(graficoSchema).max(4).optional(),
   /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
 });
@@ -181,6 +198,8 @@ const baseSchema = z.object({
       dinamica: z.boolean().optional(),
       /** Menu Formatação Condicional. */
       condicional: z.boolean().optional(),
+      /** Menu Inserir Gráfico e o painel Design do Gráfico. */
+      grafico: z.boolean().optional(),
     })
     .optional(),
   /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
@@ -311,6 +330,20 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
   }),
   /** Barras de dados ou escala de cor aplicadas exatamente neste intervalo. */
   z.object({ tipo: z.literal("formatoVisual"), intervalo, visual: z.enum(["barras", "escala"]), mensagem: z.string().optional() }),
+  /**
+   * Um gráfico deste tipo mostrando exatamente estas categorias e séries
+   * (pelo resultado: o intervalo pode ter sido escolhido de outro jeito).
+   * Pizza confere só a primeira série, que é a única que ela desenha.
+   */
+  z.object({
+    tipo: z.literal("grafico"),
+    grafico: tipoGraficoSchema,
+    categorias: z.array(z.string()),
+    series: z.array(z.object({ nome: z.string(), valores: z.array(z.number().nullable()) })).min(1),
+    titulo: z.string().optional(),
+    rotulos: z.boolean().optional(),
+    mensagem: z.string().optional(),
+  }),
   /** Resultado de uma célula, com fórmula e (opcional) usando uma função. */
   z.object({
     tipo: z.literal("celula"),
@@ -356,6 +389,8 @@ export type Recursos = z.infer<typeof recursosSchema>;
 export type Ordenacao = z.infer<typeof ordenacaoSchema>;
 export type Dinamica = z.infer<typeof dinamicaSchema>;
 export type RegraCondicional = z.infer<typeof regraCondicionalSchema>;
+export type Grafico = z.infer<typeof graficoSchema>;
+export type TipoGrafico = z.infer<typeof tipoGraficoSchema>;
 export type EstiloDestaque = z.infer<typeof estiloDestaqueSchema>;
 export type FuncaoValor = z.infer<typeof funcaoValorSchema>;
 export type Verificacao = z.infer<typeof verificacaoSchema>;

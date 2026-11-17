@@ -1,0 +1,2291 @@
+[
+  {
+    "id": "62fbe9d5-4304-51c9-bfaa-358b0f7bc775",
+    "slug": "grafico-vendas-por-mes",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Gráfico de colunas: vendas por mês",
+    "enunciado": [
+      "Crie um **gráfico de colunas** com as **vendas de cada mês**."
+    ],
+    "dicas": [
+      "Selecione a tabela (ou só uma célula dela) e use Inserir Gráfico.",
+      "Colunas é o gráfico para comparar valores lado a lado."
+    ],
+    "explicacao": [
+      "Com uma célula da tabela selecionada, **Inserir Gráfico → Colunas**.",
+      "O Excel lê a primeira coluna como categorias (os meses) e a primeira linha como o nome da série (Vendas). Com uma série só, o nome dela vira o título."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-vendas-por-mes",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Um gráfico diz em um segundo o que a tabela leva um minuto para mostrar. Em relatório, apresentação e teste de vaga, ele aparece o tempo todo.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "13100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "16800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "15400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              12000,
+              9500,
+              14200,
+              13100,
+              16800,
+              15400
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B7",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "01440876-6b39-552b-a9cc-2e0bad7187e8",
+    "slug": "grafico-vendas-por-mes-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Gráfico de linhas: a evolução",
+    "enunciado": [
+      "Crie um gráfico que mostre a **evolução** do número de clientes ativos **ao longo dos meses**."
+    ],
+    "dicas": [
+      "Para mostrar uma tendência no tempo, um tipo de gráfico liga os pontos."
+    ],
+    "explicacao": [
+      "**Inserir Gráfico → Linhas**.",
+      "Linhas mostram tendência: dá para ver que maio caiu um pouco, mas a curva sobe. Colunas também mostrariam os números, mas a evolução fica mais clara com a linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-vendas-por-mes",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Clientes ativos",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "320"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "345"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "390"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "410"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "402"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "455"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Clientes ativos",
+            "valores": [
+              320,
+              345,
+              390,
+              410,
+              402,
+              455
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:B7",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "ed8f61f1-9626-553a-913f-4ab7fad569c9",
+    "slug": "grafico-vendas-por-mes-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Título do gráfico",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com as vendas de cada mês e o título **Vendas do 1º semestre**."
+    ],
+    "dicas": [
+      "Depois de inserir, clique no gráfico: o painel Design do Gráfico tem o campo do título."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → Colunas, depois **Título do gráfico**: Vendas do 1º semestre.",
+      "Sem título, o Excel usa o nome da série (Vendas). Um título que diz o período evita a pergunta \"de quando é isso?\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-vendas-por-mes",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "13100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "16800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "15400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              12000,
+              9500,
+              14200,
+              13100,
+              16800,
+              15400
+            ]
+          }
+        ],
+        "titulo": "Vendas do 1º semestre"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B7",
+            "posicao": "F1",
+            "titulo": "Vendas do 1º semestre",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "11f66e03-fdfe-5fd2-976d-aae9813fffb4",
+    "slug": "grafico-vendas-por-mes-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: a linha do total",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com as vendas **de cada mês**."
+    ],
+    "dicas": [
+      "Olhe a última linha da tabela antes de inserir o gráfico.",
+      "Com uma célula só selecionada, o Excel pega a tabela inteira, até a última linha preenchida."
+    ],
+    "explicacao": [
+      "Selecione só **A1:B7** (sem a linha do Total) e insira o gráfico. Se já inseriu, corrija em **Dados** no Design do Gráfico.",
+      "Com o Total junto, aparece uma coluna gigante que achata todas as outras, e o gráfico deixa de comparar os meses."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-vendas-por-mes",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "13100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "16800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "15400",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2:B7)",
+          "negrito": true,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              12000,
+              9500,
+              14200,
+              13100,
+              16800,
+              15400
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B7",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "c975347c-360c-5603-95ea-419d4cbdf6b8",
+    "slug": "grafico-vendas-por-mes-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Qual gráfico para o tempo?",
+    "enunciado": [
+      "Você quer mostrar como o faturamento **evoluiu mês a mês** durante dois anos. Qual gráfico é o mais indicado?"
+    ],
+    "dicas": [
+      "Pense em qual gráfico liga um ponto ao seguinte."
+    ],
+    "explicacao": [
+      "**Linhas.** Com 24 meses, a linha mostra a tendência de relance. Colunas funcionam com poucos períodos; pizza não mostra tempo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-vendas-por-mes",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Pizza",
+        "dica": "Pizza mostra partes de um todo num momento só, não a passagem do tempo."
+      },
+      {
+        "texto": "Linhas"
+      },
+      {
+        "texto": "Barras",
+        "dica": "Barras são boas para comparar categorias, principalmente com nomes longos."
+      },
+      {
+        "texto": "Nenhum: tempo só em tabela.",
+        "dica": "Gráfico de linhas é justamente para isso."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "384d4397-d68e-5a5b-beff-fce76f265b79",
+    "slug": "grafico-participacao-canal",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pizza: a participação de cada canal",
+    "enunciado": [
+      "Crie um gráfico que mostre a **participação** de cada canal no total vendido."
+    ],
+    "dicas": [
+      "Participação no total = partes de um todo. Um tipo de gráfico tem exatamente esse formato."
+    ],
+    "explicacao": [
+      "**Inserir Gráfico → Pizza**.",
+      "Cada fatia é um canal, e o tamanho é a fatia do total. Pizza funciona bem com poucas categorias (até umas 5 ou 6)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-participacao-canal",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Pizza é o gráfico mais usado e mais mal usado do escritório. Aqui você aprende quando ele ajuda e quando atrapalha.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "31000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marketplace"
+        },
+        "B4": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "9000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Loja",
+          "Site",
+          "Marketplace",
+          "Telefone"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              42000,
+              31000,
+              18000,
+              9000
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "A1:B5",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "fb7e5835-eb76-5df2-b38c-14d6023df3bb",
+    "slug": "grafico-participacao-canal-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Barras: nomes longos",
+    "enunciado": [
+      "Crie um gráfico comparando as **unidades vendidas** de cada produto. Os nomes são longos: escolha o tipo que deixa todos legíveis."
+    ],
+    "dicas": [
+      "Em colunas, os nomes ficam espremidos embaixo. Existe a versão deitada."
+    ],
+    "explicacao": [
+      "**Inserir Gráfico → Barras**.",
+      "Barras deitadas dão espaço para o nome inteiro à esquerda. Com nomes longos ou muitas categorias, é a escolha certa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-participacao-canal",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Unidades",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook Ultra 14 polegadas"
+        },
+        "B2": {
+          "entrada": "186"
+        },
+        "A3": {
+          "entrada": "Monitor curvo 27 polegadas"
+        },
+        "B3": {
+          "entrada": "142"
+        },
+        "A4": {
+          "entrada": "Teclado mecânico sem fio"
+        },
+        "B4": {
+          "entrada": "97"
+        },
+        "A5": {
+          "entrada": "Mouse ergonômico vertical"
+        },
+        "B5": {
+          "entrada": "88"
+        },
+        "A6": {
+          "entrada": "Headset com microfone"
+        },
+        "B6": {
+          "entrada": "61"
+        }
+      },
+      "larguras": {
+        "A": 190,
+        "B": 80,
+        "C": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "barras",
+        "categorias": [
+          "Notebook Ultra 14 polegadas",
+          "Monitor curvo 27 polegadas",
+          "Teclado mecânico sem fio",
+          "Mouse ergonômico vertical",
+          "Headset com microfone"
+        ],
+        "series": [
+          {
+            "nome": "Unidades",
+            "valores": [
+              186,
+              142,
+              97,
+              88,
+              61
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "barras",
+            "dados": "A1:B6",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "04b752df-5fa1-5ab9-9bdb-d54d176b4368",
+    "slug": "grafico-participacao-canal-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Rótulos de dados",
+    "enunciado": [
+      "Crie a pizza da participação de cada canal **com os valores escritos em cada fatia**."
+    ],
+    "dicas": [
+      "No Design do Gráfico há uma opção que escreve o valor em cada fatia."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → Pizza e marque **Rótulos de dados**.",
+      "Pizza sem números obriga quem lê a adivinhar fatias parecidas. Com os rótulos, ninguém precisa voltar à tabela."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-participacao-canal",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "31000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marketplace"
+        },
+        "B4": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "9000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Loja",
+          "Site",
+          "Marketplace",
+          "Telefone"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              42000,
+              31000,
+              18000,
+              9000
+            ]
+          }
+        ],
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "A1:B5",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "27e9abb7-f3ae-5dca-a69a-2fa137c6465c",
+    "slug": "grafico-participacao-canal-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: agrupar por mês",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com **um grupo de colunas para cada mês**, e uma cor para cada **produto**."
+    ],
+    "dicas": [
+      "Insira o gráfico e olhe o que está embaixo de cada grupo de colunas. São meses?",
+      "O Excel decide sozinho o que é categoria e o que é série. Há um botão para trocar."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → Colunas e depois **Alternar Linha/Coluna** no Design do Gráfico.",
+      "Sem alternar, cada grupo é um produto e as cores são os meses. Os números são os mesmos, mas a comparação que salta aos olhos é outra."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-participacao-canal",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook"
+        },
+        "B2": {
+          "entrada": "40"
+        },
+        "C2": {
+          "entrada": "35"
+        },
+        "D2": {
+          "entrada": "52"
+        },
+        "A3": {
+          "entrada": "Mouse"
+        },
+        "B3": {
+          "entrada": "120"
+        },
+        "C3": {
+          "entrada": "140"
+        },
+        "D3": {
+          "entrada": "110"
+        },
+        "A4": {
+          "entrada": "Monitor"
+        },
+        "B4": {
+          "entrada": "25"
+        },
+        "C4": {
+          "entrada": "30"
+        },
+        "D4": {
+          "entrada": "41"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar"
+        ],
+        "series": [
+          {
+            "nome": "Notebook",
+            "valores": [
+              40,
+              35,
+              52
+            ]
+          },
+          {
+            "nome": "Mouse",
+            "valores": [
+              120,
+              140,
+              110
+            ]
+          },
+          {
+            "nome": "Monitor",
+            "valores": [
+              25,
+              30,
+              41
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:D4",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "c912e09a-6564-5554-86d1-e9b3265c28ba",
+    "slug": "grafico-participacao-canal-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quando usar pizza?",
+    "enunciado": [
+      "Em qual situação a **pizza** é uma boa escolha?"
+    ],
+    "dicas": [
+      "Pense no que as fatias precisam somar."
+    ],
+    "explicacao": [
+      "Pizza mostra **partes de um todo**, com poucas categorias: as fatias somam 100%. Para comparar períodos ou muitas categorias, colunas ou barras são mais fáceis de ler."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-participacao-canal",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Mostrar como as vendas mudaram mês a mês.",
+        "dica": "Evolução no tempo pede linhas."
+      },
+      {
+        "texto": "Mostrar quanto cada canal representa do total, com 4 canais."
+      },
+      {
+        "texto": "Comparar 30 produtos.",
+        "dica": "Com 30 fatias ninguém lê nada; use barras."
+      },
+      {
+        "texto": "Comparar dois anos lado a lado.",
+        "dica": "Pizza só desenha uma série; para comparar anos, colunas agrupadas."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "c8a7696b-cd57-5ea2-8d42-536e72bb8bc2",
+    "slug": "grafico-duas-series",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas séries: comparar os anos",
+    "enunciado": [
+      "Crie um gráfico de **colunas** comparando o faturamento de **2025** e **2026** em cada trimestre."
+    ],
+    "dicas": [
+      "Selecione a tabela inteira: cada coluna de números vira uma série, com uma cor."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → **Colunas** com **A1:C5**.",
+      "Cada trimestre ganha duas colunas lado a lado (colunas agrupadas), e a legenda diz qual cor é qual ano."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-duas-series",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Comparar períodos lado a lado é o gráfico de toda reunião de resultado: este ano contra o ano passado.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Trimestre",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "'2025",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "'2026",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "T1"
+        },
+        "B2": {
+          "entrada": "48000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "52000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "T2"
+        },
+        "B3": {
+          "entrada": "51000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "58500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "T3"
+        },
+        "B4": {
+          "entrada": "47500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "61000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "T4"
+        },
+        "B5": {
+          "entrada": "60200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "67400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        "series": [
+          {
+            "nome": "2025",
+            "valores": [
+              48000,
+              51000,
+              47500,
+              60200
+            ]
+          },
+          {
+            "nome": "2026",
+            "valores": [
+              52000,
+              58500,
+              61000,
+              67400
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C5",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "c35e0391-76dc-58f4-aef3-f161f90a7d63",
+    "slug": "grafico-duas-series-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas linhas",
+    "enunciado": [
+      "Crie um gráfico de **linhas** comparando a evolução de **2025** e **2026** ao longo dos trimestres."
+    ],
+    "dicas": [
+      "O mesmo intervalo do exercício anterior, outro tipo de gráfico."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → **Linhas** com A1:C5.",
+      "Com duas linhas, dá para ver em que trimestre a distância entre os anos aumentou."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-duas-series",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Trimestre",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "'2025",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "'2026",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "T1"
+        },
+        "B2": {
+          "entrada": "48000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "52000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "T2"
+        },
+        "B3": {
+          "entrada": "51000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "58500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "T3"
+        },
+        "B4": {
+          "entrada": "47500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "61000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "T4"
+        },
+        "B5": {
+          "entrada": "60200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "67400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        "series": [
+          {
+            "nome": "2025",
+            "valores": [
+              48000,
+              51000,
+              47500,
+              60200
+            ]
+          },
+          {
+            "nome": "2026",
+            "valores": [
+              52000,
+              58500,
+              61000,
+              67400
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:C5",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "a78e5309-2d2e-573d-98fa-e69bb04a6237",
+    "slug": "grafico-duas-series-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ranking pronto para apresentar",
+    "enunciado": [
+      "Crie um gráfico de **barras** com as unidades de cada produto, o título **Mais vendidos** e os **valores escritos** em cada barra."
+    ],
+    "dicas": [
+      "Três ajustes: o tipo, o título e os rótulos de dados."
+    ],
+    "explicacao": [
+      "Barras, título *Mais vendidos* e **Rótulos de dados** marcado.",
+      "É o gráfico que vai direto para o slide: quem olha não precisa da tabela."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-duas-series",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Unidades",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook Ultra 14 polegadas"
+        },
+        "B2": {
+          "entrada": "186"
+        },
+        "A3": {
+          "entrada": "Monitor curvo 27 polegadas"
+        },
+        "B3": {
+          "entrada": "142"
+        },
+        "A4": {
+          "entrada": "Teclado mecânico sem fio"
+        },
+        "B4": {
+          "entrada": "97"
+        },
+        "A5": {
+          "entrada": "Mouse ergonômico vertical"
+        },
+        "B5": {
+          "entrada": "88"
+        },
+        "A6": {
+          "entrada": "Headset com microfone"
+        },
+        "B6": {
+          "entrada": "61"
+        }
+      },
+      "larguras": {
+        "A": 190,
+        "B": 80,
+        "C": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "barras",
+        "categorias": [
+          "Notebook Ultra 14 polegadas",
+          "Monitor curvo 27 polegadas",
+          "Teclado mecânico sem fio",
+          "Mouse ergonômico vertical",
+          "Headset com microfone"
+        ],
+        "series": [
+          {
+            "nome": "Unidades",
+            "valores": [
+              186,
+              142,
+              97,
+              88,
+              61
+            ]
+          }
+        ],
+        "titulo": "Mais vendidos",
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "barras",
+            "dados": "A1:B6",
+            "posicao": "F1",
+            "titulo": "Mais vendidos",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "b2a1dce5-c2ca-5cb1-96f9-c7c5b763fed1",
+    "slug": "grafico-duas-series-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 34,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o ano que virou série",
+    "enunciado": [
+      "Crie um gráfico de **linhas** do **faturamento ao longo dos anos**, com os anos embaixo, no eixo."
+    ],
+    "dicas": [
+      "Insira o gráfico e olhe o eixo de baixo e a legenda. Os anos estão onde deveriam?",
+      "Quando a primeira coluna é só de números e tem cabeçalho, o Excel acha que ela é mais uma série. A célula do canto decide isso."
+    ],
+    "explicacao": [
+      "Apague o cabeçalho **Ano** (A1) e o Excel passa a ler os anos como categorias. Outro jeito no Excel de verdade: *Selecionar Dados → Editar* os rótulos do eixo.",
+      "É um dos erros mais comuns em gráfico: aparece uma linha \"Ano\" quase reta lá embaixo e o eixo mostra 1, 2, 3, 4, 5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-duas-series",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Ano",
+          "negrito": true,
+          "bloqueada": false
+        },
+        "B1": {
+          "entrada": "Faturamento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2021"
+        },
+        "B2": {
+          "entrada": "310000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "2022"
+        },
+        "B3": {
+          "entrada": "345000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "2023"
+        },
+        "B4": {
+          "entrada": "332000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "2024"
+        },
+        "B5": {
+          "entrada": "389000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "2025"
+        },
+        "B6": {
+          "entrada": "421000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "series": [
+          {
+            "nome": "Faturamento",
+            "valores": [
+              310000,
+              345000,
+              332000,
+              389000,
+              421000
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:B6",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      },
+      "celulas": {
+        "A1": ""
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "89212452-4907-5f06-9974-18383b814c0d",
+    "slug": "grafico-duas-series-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Por que o ano virou linha?",
+    "enunciado": [
+      "Num gráfico de \"Ano\" e \"Faturamento\", apareceu uma linha chamada **Ano** e o eixo mostra 1, 2, 3… Por quê?"
+    ],
+    "dicas": [
+      "Os anos são números. O que o Excel faz com uma coluna de números?"
+    ],
+    "explicacao": [
+      "Os anos são **números**, e a coluna tem cabeçalho: o Excel a leu como mais uma série de valores, não como rótulos. Com o canto (A1) vazio, ele entende que a primeira coluna são as categorias."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-duas-series",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Porque o gráfico de linhas não aceita anos.",
+        "dica": "Aceita: o problema é como a coluna foi lida."
+      },
+      {
+        "texto": "Porque os anos são números e o Excel os leu como mais uma série."
+      },
+      {
+        "texto": "Porque faltou formatar os anos como data.",
+        "dica": "Não é formato: é o Excel achando que a coluna tem valores para desenhar."
+      },
+      {
+        "texto": "Porque o faturamento tem R$.",
+        "dica": "O formato do faturamento não muda a leitura da coluna dos anos."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "ec2a320e-325a-5b96-93e9-a88113eac042",
+    "slug": "teste-graficos-1",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Evolução das vendas",
+    "enunciado": [
+      "Crie um gráfico que mostre a **evolução das vendas** ao longo dos meses (sem a linha do Total)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-vendas-por-mes",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "13100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "16800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "15400",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2:B7)",
+          "negrito": true,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              12000,
+              9500,
+              14200,
+              13100,
+              16800,
+              15400
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:B7",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "51701417-a68b-51e9-859d-6ff45bdfb5dd",
+    "slug": "teste-graficos-2",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Participação com valores",
+    "enunciado": [
+      "Crie um gráfico da **participação** de cada canal no total, **com os valores** em cada parte."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-participacao-canal",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "31000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marketplace"
+        },
+        "B4": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "9000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Loja",
+          "Site",
+          "Marketplace",
+          "Telefone"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              42000,
+              31000,
+              18000,
+              9000
+            ]
+          }
+        ],
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "A1:B5",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "a8d15d39-0b13-56f2-bb99-34b6a002a6d5",
+    "slug": "teste-graficos-3",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Anos lado a lado",
+    "enunciado": [
+      "Crie um gráfico de **colunas** comparando **2025** e **2026** em cada trimestre, com o título **Faturamento**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-duas-series",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Trimestre",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "'2025",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "'2026",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "T1"
+        },
+        "B2": {
+          "entrada": "48000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "52000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "T2"
+        },
+        "B3": {
+          "entrada": "51000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "58500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "T3"
+        },
+        "B4": {
+          "entrada": "47500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "61000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "T4"
+        },
+        "B5": {
+          "entrada": "60200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "67400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        "series": [
+          {
+            "nome": "2025",
+            "valores": [
+              48000,
+              51000,
+              47500,
+              60200
+            ]
+          },
+          {
+            "nome": "2026",
+            "valores": [
+              52000,
+              58500,
+              61000,
+              67400
+            ]
+          }
+        ],
+        "titulo": "Faturamento"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C5",
+            "posicao": "F1",
+            "titulo": "Faturamento",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "8f7aaeb5-2bdb-5a1c-9a9f-a64ad9879ec5",
+    "slug": "teste-graficos-4",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Um grupo por mês",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com **um grupo para cada mês** e uma cor para cada produto."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-participacao-canal",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook"
+        },
+        "B2": {
+          "entrada": "40"
+        },
+        "C2": {
+          "entrada": "35"
+        },
+        "D2": {
+          "entrada": "52"
+        },
+        "A3": {
+          "entrada": "Mouse"
+        },
+        "B3": {
+          "entrada": "120"
+        },
+        "C3": {
+          "entrada": "140"
+        },
+        "D3": {
+          "entrada": "110"
+        },
+        "A4": {
+          "entrada": "Monitor"
+        },
+        "B4": {
+          "entrada": "25"
+        },
+        "C4": {
+          "entrada": "30"
+        },
+        "D4": {
+          "entrada": "41"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar"
+        ],
+        "series": [
+          {
+            "nome": "Notebook",
+            "valores": [
+              40,
+              35,
+              52
+            ]
+          },
+          {
+            "nome": "Mouse",
+            "valores": [
+              120,
+              140,
+              110
+            ]
+          },
+          {
+            "nome": "Monitor",
+            "valores": [
+              25,
+              30,
+              41
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:D4",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "539a168e-13ae-5cd1-9cbf-a51355179d90",
+    "slug": "teste-graficos-5",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Nomes longos",
+    "enunciado": [
+      "Qual gráfico é o mais indicado para comparar 12 produtos com **nomes longos**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-participacao-canal",
+    "teste": true,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Pizza"
+      },
+      {
+        "texto": "Linhas"
+      },
+      {
+        "texto": "Barras"
+      },
+      {
+        "texto": "Colunas"
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  }
+]

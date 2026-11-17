@@ -14,6 +14,7 @@ import {
 import {
   colunaParaLetras,
   contem,
+  deEndereco,
   intervaloParaTexto,
   normalizar,
   paraEndereco,
@@ -24,6 +25,7 @@ import { CORES_REFERENCIA, referenciasDaFormula } from "@/engine/referencias";
 import { FormulaColorida } from "./FormulaColorida";
 import { IconeFunil, MenuFiltro } from "./MenuFiltro";
 import { CORES_DESTAQUE } from "@/engine/condicional";
+import { GraficoSvg } from "./GraficoSvg";
 import { ajustarLinha, larguraParaCaber } from "./transbordo";
 
 let contextoMedida: CanvasRenderingContext2D | null = null;
@@ -47,6 +49,9 @@ async function escreverNaAreaDeTransferencia(texto: string) {
   }
 }
 const ALTURA = 26;
+/** Tamanho do gráfico na grade (o Excel usa 480 × 288; aqui um pouco menor, para caber ao lado dos dados). */
+const LARGURA_GRAFICO = 380;
+const ALTURA_GRAFICO = 240;
 const LARGURA_CABECALHO = 44;
 
 /** Caracteres depois dos quais um clique insere uma referência na fórmula. */
@@ -64,6 +69,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const alca = useEstado((e) => e.alca);
   const arrasto = useEstado((e) => e.arrasto);
   const celebrando = useEstado((e) => e.celebrando);
+  const graficoAtivo = useEstado((e) => e.graficoAtivo);
 
   const selecao = normalizar(ancora, foco);
   // Larguras ajustadas pelo aluno (arrastar a borda do cabeçalho ou duplo clique nela).
@@ -161,6 +167,13 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     el?.focus({ preventScroll: true });
   }, [ancora, modo, entradaRef, semTeclado]);
 
+  // Gráfico selecionado (recém-inserido, por exemplo): rola a grade até ele, se estiver fora da vista.
+  const gradeRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (graficoAtivo === null) return;
+    gradeRef.current?.querySelector(`[data-testid="grafico-${graficoAtivo}"]`)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [graficoAtivo]);
+
   useEffect(() => {
     const soltar = () => store.getState().terminarArrasto();
     window.addEventListener("mouseup", soltar);
@@ -204,6 +217,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const aoPressionarCelula = (e: MouseEvent, p: Pos) => {
     e.preventDefault();
     const s = store.getState();
+    if (s.graficoAtivo !== null) store.setState({ graficoAtivo: null });
     // Modo "apontar": clicar (ou arrastar) numa célula enquanto digita uma fórmula insere a referência.
     if ((apontandoReferencia() || apontadorAtivo()) && !(p.linha === s.ancora.linha && p.coluna === s.ancora.coluna)) {
       apontar(p, p);
@@ -441,6 +455,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   return (
     <div className="relative">
       <div
+        ref={gradeRef}
         onScroll={(e) => setRolagem({ x: e.currentTarget.scrollLeft, y: e.currentTarget.scrollTop })}
         className="overflow-auto rounded-md border border-zinc-300 bg-white shadow-sm"
         data-testid="grade"
@@ -589,6 +604,31 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               }}
             >
               {t.erro ? "A tabela dinâmica não cabe aqui" : t.vazia ? "Tabela dinâmica: escolha os campos no painel abaixo" : null}
+            </div>
+          );
+        })}
+        {/* gráficos: flutuam sobre as células, ancorados na célula de posição */}
+        {planilha.graficos().map((g, i) => {
+          const p = deEndereco(g.posicao);
+          const ativo = graficoAtivo === i;
+          return (
+            <div
+              key={`g${i}`}
+              data-testid={`grafico-${i}`}
+              role="button"
+              aria-label={`Gráfico ${i + 1} (clique para editar)`}
+              aria-pressed={ativo}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const s = store.getState();
+                if (s.modo !== "pronto" && !s.confirmar()) return;
+                store.setState({ graficoAtivo: i });
+              }}
+              className={`absolute z-[6] cursor-pointer overflow-hidden rounded-sm bg-white shadow-md ${ativo ? "ring-2 ring-success" : "ring-1 ring-zinc-300"}`}
+              style={{ left: esquerda(Math.min(p.coluna, planilha.colunas - 1)), top: topo(Math.min(p.linha, planilha.linhas - 1)), width: LARGURA_GRAFICO, height: ALTURA_GRAFICO }}
+            >
+              <GraficoSvg dados={planilha.dadosDoGrafico(i)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={LARGURA_GRAFICO} altura={ALTURA_GRAFICO} />
             </div>
           );
         })}

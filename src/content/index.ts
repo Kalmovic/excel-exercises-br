@@ -22,6 +22,7 @@ import mArrays from "./modulos/arrays.json";
 import mDados from "./modulos/dados.json";
 import mDinamica from "./modulos/dinamica.json";
 import mDestaque from "./modulos/destaque.json";
+import mGraficos from "./modulos/graficos.json";
 import mCasos from "./modulos/casos.json";
 import xFundamentos from "./extras/fundamentos.json";
 import xLogica from "./extras/logica.json";
@@ -49,6 +50,7 @@ const brutos: unknown[] = [
   ...mDados,
   ...mDinamica,
   ...mDestaque,
+  ...mGraficos,
   ...mCasos,
   // prática extra (Pro): fora da trilha principal, listada no fim de cada módulo
   ...[xFundamentos, xLogica, xCondicionais, xBusca, xTexto, xDatas, xArrays, xCasos].flat(),
@@ -108,7 +110,8 @@ export const MODULOS: readonly Modulo[] = [
   modulo(8, "dados", "Organizar dados", "Classificar, filtrar e SUBTOTAL: arrumar e resumir a tabela direto na grade.", "Classificar, filtrar e somar só o que aparece: a tabela fica do jeito que você precisa."),
   modulo(9, "dinamica", "Tabela dinâmica", "Resumir uma tabela inteira arrastando campos: totais, contagens, tabelas cruzadas e filtros.", "Tabela dinâmica dominada: você resume qualquer base de dados em segundos."),
   modulo(10, "destaque", "Formatação condicional", "A planilha que aponta o problema: realçar valores, duplicados, os maiores, a linha inteira com fórmula e barras de dados.", "Formatação condicional dominada: sua planilha mostra sozinha o que importa."),
-  modulo(11, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(11, "graficos", "Gráficos", "Colunas, linhas, barras e pizza: escolher o gráfico certo, título, rótulos e as pegadinhas de como o Excel lê os dados.", "Gráficos dominados: você escolhe o tipo certo e evita as armadilhas do Excel."),
+  modulo(12, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {

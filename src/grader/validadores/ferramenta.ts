@@ -1,4 +1,5 @@
-import type { Dinamica, ExercicioDoTipo, FuncaoValor, Verificacao } from "@/content/schema";
+import type { Dinamica, ExercicioDoTipo, FuncaoValor, Grafico, Verificacao } from "@/content/schema";
+import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
@@ -57,6 +58,8 @@ function conferir(v: Verificacao, p: Planilha): Falha | null {
       return conferirDinamica(v, p);
     case "destacadas":
       return conferirDestacadas(v, p);
+    case "grafico":
+      return conferirGrafico(v, p);
     case "formatoVisual": {
       const alvo = intervaloParaTexto(deIntervalo(v.intervalo));
       const tem = p.regrasCondicionais().some((r) => r.tipo === v.visual && intervaloParaTexto(deIntervalo(r.intervalo)) === alvo);
@@ -190,4 +193,50 @@ function conferirDestacadas(v: Extract<Verificacao, { tipo: "destacadas" }>, p: 
     faltam ? `${faltam} ${faltam === 1 ? "célula que deveria estar destacada e não está" : "células que deveriam estar destacadas e não estão"}` : "",
   ].filter(Boolean);
   return { celula, motivo: "formato", mensagem: `Quase: há ${partes.join(" e ")}. Confira a regra (o valor, o tipo de comparação e o intervalo).` };
+}
+
+const NOME_GRAFICO = { colunas: "colunas", barras: "barras", linhas: "linhas", pizza: "pizza" } as const;
+
+/**
+ * Gráfico pelo resultado: as categorias e as séries que ele desenha. Quem
+ * selecionou o intervalo de outro jeito, mas chegou no mesmo gráfico, acerta.
+ */
+function conferirGrafico(v: Extract<Verificacao, { tipo: "grafico" }>, p: Planilha): Falha | null {
+  const lista = p.graficos();
+  if (lista.length === 0)
+    return { celula: "A1", motivo: "recurso", mensagem: "Ainda não há gráfico. Selecione os dados e use Inserir Gráfico." };
+  const diffs = lista.map((g, i) => diferencaGrafico(v, g, p.dadosDoGrafico(i)));
+  if (diffs.some((d) => d === null)) return null;
+  return { celula: lista[0].posicao, motivo: "recurso", mensagem: diffs[0]! };
+}
+
+function diferencaGrafico(v: Extract<Verificacao, { tipo: "grafico" }>, g: Grafico, d: DadosGrafico): string | null {
+  const norm = (t: string) => t.trim().toUpperCase();
+  const mesmas = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => norm(x) === norm(b[i]));
+  const numeros = (a: (number | null)[], b: (number | null)[]) =>
+    a.length === b.length && a.every((x, i) => (x === null ? b[i] === null : b[i] !== null && Math.abs(x - b[i]!) < 1e-9));
+  const series = v.grafico === "pizza" ? v.series.slice(0, 1) : v.series;
+  const delas = v.grafico === "pizza" ? d.series.slice(0, 1) : d.series;
+  const dadosCertos =
+    mesmas(d.categorias, v.categorias) &&
+    delas.length === series.length &&
+    series.every((s, i) => numeros(delas[i].valores, s.valores) && (v.grafico === "pizza" || norm(delas[i].nome) === norm(s.nome)));
+  if (!dadosCertos) {
+    if (mesmas(d.categorias, series.map((s) => s.nome)) && v.categorias.length > 0)
+      return "As séries e as categorias estão trocadas. Use Alternar Linha/Coluna no Design do Gráfico.";
+    if (d.categorias.length === v.categorias.length + 1)
+      return "O gráfico tem uma categoria a mais. Confira o intervalo de dados: tem alguma linha que não deveria entrar?";
+    // Categorias viraram 1, 2, 3… e apareceu uma série a mais: a coluna de rótulos (anos) foi lida como números.
+    const numeradas = d.categorias.length > 0 && d.categorias.every((c, i) => c === String(i + 1));
+    if (numeradas && d.series.length > series.length)
+      return "Uma coluna de rótulos virou série no gráfico. Confira como o Excel lê a primeira coluna.";
+    return "O gráfico não está mostrando os dados pedidos. Confira o intervalo de dados (com o cabeçalho e os rótulos).";
+  }
+  if (g.tipo !== v.grafico)
+    return `Os dados estão certos, mas um gráfico de ${NOME_GRAFICO[g.tipo]} não é o melhor para esta pergunta. Pense no que ela quer mostrar: comparação, evolução no tempo ou partes de um todo.`;
+  if (v.titulo !== undefined && norm(g.titulo) !== norm(v.titulo))
+    return g.titulo.trim() ? `O título do gráfico está diferente do pedido.` : "Falta o título do gráfico (no Design do Gráfico).";
+  if (v.rotulos !== undefined && g.rotulos !== v.rotulos)
+    return v.rotulos ? "Falta mostrar os rótulos de dados (os valores em cima de cada barra ou fatia)." : "Tire os rótulos de dados: a pergunta não pede.";
+  return null;
 }
