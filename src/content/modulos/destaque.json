@@ -234,8 +234,8 @@
       "A mesma família de regras da lição anterior; muda o sentido da comparação e a cor."
     ],
     "explicacao": [
-      "**É Maior do que…** → 3000 (ou 3.000), com *Preenchimento Verde e Texto Verde Escuro*.",
-      "O valor da regra aceita o número como você escreveria na célula: 3000, 3.000 ou R$ 3.000."
+      "**É Maior do que…** → 3000, com *Preenchimento Verde e Texto Verde Escuro*.",
+      "No Excel, digite só o número (3000) na caixa da regra: é o jeito que nunca falha. O formato R$ da célula não muda a comparação."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "destaque-vendas-baixas",
@@ -662,7 +662,7 @@
     ],
     "explicacao": [
       "*É Maior do que 1000* deixa de fora Daniel e Hugo, que venderam exatamente R$ 1.000.",
-      "Caminhos que funcionam: **É Maior do que 999,99**, **Está Entre** 1000 e um valor bem alto (o Entre inclui as pontas), ou **Nova Regra** com a fórmula `=C2>=1000`."
+      "Caminhos que funcionam: **Nova Regra** com a fórmula `=C2>=1000` (o mais seguro) ou **Está Entre** 1000 e um valor bem alto (o Entre inclui as pontas). *É Maior do que 999,99* só serve se os valores não tiverem mais de duas casas."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "destaque-vendas-baixas",
@@ -1298,7 +1298,7 @@
       "Não precisa calcular a média: a regra calcula sozinha."
     ],
     "explicacao": [
-      "**Abaixo da Média…** em amarelo, A média é R$ 1.708,00, e a regra acompanha se os valores mudarem."
+      "**Abaixo da Média…** em amarelo. A média é R$ 1.708,00, e a regra acompanha se os valores mudarem."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "destaque-pedidos-repetidos",

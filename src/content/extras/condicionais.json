@@ -1097,21 +1097,21 @@
     "alvos": [
       {
         "celula": "F2",
-        "esperado": 6800.0,
+        "esperado": 6800,
         "exigeFormula": true,
         "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E2;$C$2:$C$13)",
         "formato": "moeda"
       },
       {
         "celula": "F3",
-        "esperado": 5700.0,
+        "esperado": 5700,
         "exigeFormula": true,
         "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E3;$C$2:$C$13)",
         "formato": "moeda"
       },
       {
         "celula": "F4",
-        "esperado": 4200.0,
+        "esperado": 4200,
         "exigeFormula": true,
         "solucaoReferencia": "=MÉDIASE($B$2:$B$13;E4;$C$2:$C$13)",
         "formato": "moeda"

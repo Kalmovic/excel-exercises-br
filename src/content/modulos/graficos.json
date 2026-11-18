@@ -18,7 +18,8 @@
     ],
     "explicacao": [
       "Com uma célula da tabela selecionada, **Inserir Gráfico → Colunas**.",
-      "O Excel lê a primeira coluna como categorias (os meses) e a primeira linha como o nome da série (Vendas). Com uma série só, o nome dela vira o título."
+      "O Excel lê a primeira coluna como categorias (os meses) e a primeira linha como o nome da série (Vendas). Com uma série só, o nome dela vira o título.",
+      "No Excel, o caminho é **Inserir → Inserir Gráfico de Colunas ou de Barras → Colunas Agrupadas**."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "grafico-vendas-por-mes",
@@ -413,7 +414,7 @@
       "Com uma célula só selecionada, o Excel pega a tabela inteira, até a última linha preenchida."
     ],
     "explicacao": [
-      "Selecione só **A1:B7** (sem a linha do Total) e insira o gráfico. Se já inseriu, corrija em **Dados** no Design do Gráfico.",
+      "Selecione só **A1:B7** (sem a linha do Total) e insira o gráfico. Se já inseriu, corrija em **Design do Gráfico → Selecionar Dados**, ou arraste a borda azul do intervalo para tirar a linha do Total.",
       "Com o Total junto, aparece uma coluna gigante que achata todas as outras, e o gráfico deixa de comparar os meses."
     ],
     "tentativasAteExplicacao": 3,
@@ -1147,7 +1148,8 @@
     ],
     "explicacao": [
       "Inserir Gráfico → **Colunas** com **A1:C5**.",
-      "Cada trimestre ganha duas colunas lado a lado (colunas agrupadas), e a legenda diz qual cor é qual ano."
+      "Cada trimestre ganha duas colunas lado a lado (colunas agrupadas), e a legenda diz qual cor é qual ano.",
+      "Repare que os cabeçalhos 2025 e 2026 estão como texto. Se fossem números, o Excel poderia desenhá-los como dados, a mesma armadilha da pegadinha do Ano."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "grafico-duas-series",
@@ -1436,7 +1438,8 @@
     ],
     "explicacao": [
       "Barras, título *Mais vendidos* e **Rótulos de dados** marcado.",
-      "É o gráfico que vai direto para o slide: quem olha não precisa da tabela."
+      "É o gráfico que vai direto para o slide: quem olha não precisa da tabela.",
+      "No Excel, as barras saem de baixo para cima: o primeiro da tabela fica embaixo. Para o campeão ficar no topo, classifique a tabela do menor para o maior ou marque **Categorias em ordem inversa** em Formatar Eixo. Aqui no simulador, a primeira barra fica em cima."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "grafico-duas-series",
@@ -1555,7 +1558,7 @@
       "Quando a primeira coluna é só de números e tem cabeçalho, o Excel acha que ela é mais uma série. A célula do canto decide isso."
     ],
     "explicacao": [
-      "Apague o cabeçalho **Ano** (A1) e o Excel passa a ler os anos como categorias. Outro jeito no Excel de verdade: *Selecionar Dados → Editar* os rótulos do eixo.",
+      "Jeito rápido: apague o cabeçalho **Ano** (A1), e o Excel passa a ler os anos como categorias. Jeito limpo, no Excel: **Selecionar Dados** → remova a série *Ano* e, em **Rótulos do Eixo Horizontal (Categorias) → Editar**, escolha A2:A6. Outra saída é digitar os anos como texto ('2021).",
       "É um dos erros mais comuns em gráfico: aparece uma linha \"Ano\" quase reta lá embaixo e o eixo mostra 1, 2, 3, 4, 5."
     ],
     "tentativasAteExplicacao": 3,

@@ -1343,7 +1343,7 @@
       "A tabela dinâmica guarda uma cópia dos dados de quando foi montada."
     ],
     "explicacao": [
-      "A tabela dinâmica do Excel **não se atualiza sozinha**: use **Analisar Tabela Dinâmica → Atualizar** (Alt+F5) depois de mudar a origem.",
+      "A tabela dinâmica do Excel **não se atualiza sozinha**: clique com o botão direito nela → **Atualizar** (ou Alt+F5) depois de mudar a origem.",
       "Aqui no simulador ela acompanha a origem na hora, para facilitar. No Excel de verdade, esquecer de atualizar é um erro clássico de relatório."
     ],
     "tentativasAteExplicacao": 3,
@@ -1394,7 +1394,7 @@
     ],
     "explicacao": [
       "**Região** em **Linhas**, **Canal** em **Colunas**, **Valor** em **Valores**.",
-      "As células vazias são combinações que não aconteceram (o Leste nunca vendeu pelo canal Site, por exemplo). Os totais aparecem dos dois lados."
+      "Cada célula do meio responde a uma combinação: o Sul vendeu R$ 3.480,00 pelo Site, por exemplo. Se uma combinação nunca tivesse acontecido, a célula ficaria vazia. Os totais aparecem dos dois lados: Total Geral na última linha e na última coluna."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "dinamica-regiao-por-canal",
@@ -3100,7 +3100,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.5152514427040396,
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "solucao": {
@@ -4151,7 +4151,7 @@
       "Teste na planilha de uma lição anterior: clique num total e comece a digitar."
     ],
     "explicacao": [
-      "O Excel não deixa: *Não é possível alterar esta parte de uma tabela dinâmica*. Ela só muda pelos campos ou pela origem.",
+      "O Excel recusa e avisa que não é possível alterar essa parte da tabela dinâmica. Ela só muda pelos campos ou pela origem.",
       "Para um ajuste manual, copie a tabela e cole como valores em outro lugar."
     ],
     "tentativasAteExplicacao": 3,
@@ -4852,7 +4852,7 @@
     "versao": 1,
     "titulo": "Vendas do Norte",
     "enunciado": [
-      "Crie uma tabela dinâmica em **G1** com **quantas vendas** cada **vendedor** fez, considerando **só a região Norte**."
+      "Crie uma tabela dinâmica em **G1** com **quantas vendas** cada **vendedor** fez, considerando **só a região Sul**."
     ],
     "dicas": [],
     "explicacao": [
@@ -5143,7 +5143,7 @@
           {
             "campo": "Região",
             "valores": [
-              "Norte"
+              "Sul"
             ]
           }
         ]
@@ -5169,7 +5169,7 @@
               {
                 "campo": "C",
                 "valores": [
-                  "Norte"
+                  "Sul"
                 ]
               }
             ]
@@ -5498,7 +5498,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.29472382522671065,
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "solucao": {

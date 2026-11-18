@@ -627,7 +627,7 @@
     "alvos": [
       {
         "celula": "D2",
-        "esperado": 500.0,
+        "esperado": 500,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B2/C2;0)",
         "formato": "moeda"
@@ -641,7 +641,7 @@
       },
       {
         "celula": "D4",
-        "esperado": 600.0,
+        "esperado": 600,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B4/C4;0)",
         "formato": "moeda"
@@ -924,7 +924,7 @@
       "Em **SE(teste; A; B)**, quando o teste é **falso**, o resultado é…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Lembre a ordem das três partes do SE: primeiro vem o teste. E depois?"
     ],
     "explicacao": [
       "O SE devolve o segundo argumento (A) se o teste for verdadeiro e o terceiro (B) se for falso."
@@ -948,10 +948,12 @@
         "texto": "B"
       },
       {
-        "texto": "Erro"
+        "texto": "Erro",
+        "dica": "Teste falso não é erro: o SE tem uma parte só para esse caso."
       },
       {
-        "texto": "0"
+        "texto": "0",
+        "dica": "O SE só devolveria 0 se 0 estivesse escrito na fórmula. Aqui não há 0 nenhum."
       }
     ],
     "correta": 1
@@ -1189,7 +1191,7 @@
       "Num SE aninhado com faixas de \"maior ou igual\", por onde começar?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Imagine uma nota bem alta passando pelos testes na ordem: em qual ela para primeiro?"
     ],
     "explicacao": [
       "Com \"maior ou igual\", a maior faixa vem primeiro; senão, o primeiro teste captura todo mundo."
@@ -1213,10 +1215,12 @@
         "texto": "Pela maior faixa"
       },
       {
-        "texto": "Tanto faz"
+        "texto": "Tanto faz",
+        "dica": "Não é tanto faz: o SE para no primeiro teste verdadeiro, então a ordem muda o resultado."
       },
       {
-        "texto": "Pela do meio"
+        "texto": "Pela do meio",
+        "dica": "Começando pelo meio, quem está na faixa mais alta também passa no primeiro teste e fica na faixa errada."
       }
     ],
     "correta": 1
@@ -1500,7 +1504,7 @@
       "**OU(VERDADEIRO; FALSO)** resulta em…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Compare E e OU: um exige que todas as condições sejam verdadeiras; o outro, quantas?"
     ],
     "explicacao": [
       "Basta uma condição verdadeira para o OU ser verdadeiro."
@@ -1524,10 +1528,12 @@
         "dica": "Esse seria o resultado do E. Releia como o OU funciona."
       },
       {
-        "texto": "Erro"
+        "texto": "Erro",
+        "dica": "E e OU aceitam VERDADEIRO e FALSO direto, sem erro."
       },
       {
-        "texto": "1"
+        "texto": "1",
+        "dica": "O OU devolve um valor lógico, não um número."
       }
     ],
     "correta": 0
@@ -1764,7 +1770,7 @@
       "Para que serve o **VERDADEIRO** no último par do SES?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense no que acontece com quem não passa em nenhum dos testes anteriores."
     ],
     "explicacao": [
       "VERDADEIRO é sempre verdadeiro: funciona como \"para todo o resto\"."
@@ -1781,13 +1787,15 @@
     },
     "opcoes": [
       {
-        "texto": "Encerrar a fórmula"
+        "texto": "Encerrar a fórmula",
+        "dica": "Quem encerra a fórmula é o parêntese de fecho. O VERDADEIRO está no lugar de um teste, como nos outros pares."
       },
       {
         "texto": "Cobrir todos os outros casos"
       },
       {
-        "texto": "Converter em texto"
+        "texto": "Converter em texto",
+        "dica": "O VERDADEIRO não converte nada: ele ocupa a posição de teste, como os outros pares do SES."
       },
       {
         "texto": "Nada, é opcional",
@@ -2085,7 +2093,7 @@
       "Qual erro aparece ao dividir por zero?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Cada erro do Excel tem um nome que lembra a causa."
     ],
     "explicacao": [
       "Divisão por zero dá #DIV/0!."
@@ -2253,7 +2261,13 @@
       "variaveis": [
         "B2",
         "C2"
-      ]
+      ],
+      "alternativas": {
+        "C2": [
+          "0",
+          "1"
+        ]
+      }
     },
     "alvos": [
       {
@@ -2401,7 +2415,13 @@
       },
       "variaveis": [
         "B2"
-      ]
+      ],
+      "alternativas": {
+        "H2": [
+          "4",
+          "5"
+        ]
+      }
     },
     "alvos": [
       {

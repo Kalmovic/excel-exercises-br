@@ -18,7 +18,7 @@
     ],
     "explicacao": [
       "Com uma célula da coluna **Valor** ativa, **Dados → Classificar de Z a A** (ou a seta do filtro → *Classificar do Maior para o Menor*).",
-      "O Excel percebe que a primeira linha é cabeçalho (está em negrito) e deixa ela no lugar. Cada linha anda inteira: o vendedor continua junto da venda dele."
+      "O Excel percebe que a primeira linha é cabeçalho (é texto em cima de números, e costuma estar em negrito) e deixa ela no lugar. Cada linha anda inteira: o vendedor continua junto da venda dele."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "dados-classificar-maior-valor",
@@ -279,7 +279,7 @@
     ],
     "explicacao": [
       "Com uma célula da coluna **Vendedor** ativa, **Classificar de A a Z**.",
-      "Repare que o acento não atrapalha: Íris fica entre Hugo e o fim da lista, como no Excel."
+      "Repare que o acento não atrapalha: Íris vem logo depois de Hugo, como se fosse Iris."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "dados-classificar-maior-valor",
@@ -722,11 +722,11 @@
     ],
     "dicas": [
       "Classificar de novo não desfaz a ordem anterior nos empates: quem tem a mesma região mantém a ordem que já tinha.",
-      "Por isso a ordem dos cliques importa. Pense em qual critério precisa ser o último a ser aplicado."
+      "Na janela Classificar, cada critério é um nível. O de cima manda; o de baixo desempata."
     ],
     "explicacao": [
-      "Classifique **primeiro pelo critério de desempate** (Valor, do maior para o menor) e **depois pelo principal** (Região, de A a Z).",
-      "A classificação do Excel é *estável*: nos empates de Região, as linhas ficam na ordem em que já estavam, ou seja, por valor. No Excel de verdade, **Dados → Classificar** também deixa adicionar os dois níveis numa janela só."
+      "Use **Dados → Classificar**: primeiro nível **Região** (A a Z) e **Adicionar Nível** com **Valor** (Do Maior para o Menor).",
+      "Outro caminho é classificar duas vezes, primeiro pelo critério de desempate (Valor) e depois pelo principal (Região). Funciona porque a classificação do Excel é *estável*: nos empates de Região, as linhas ficam na ordem em que já estavam."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "dados-classificar-maior-valor",
@@ -1008,10 +1008,10 @@
     "type": "multiple_choice",
     "opcoes": [
       {
-        "texto": "Só os valores mudam de ordem, e cada valor passa a aparecer ao lado do vendedor errado."
+        "texto": "Só a coluna Valor muda de ordem e os valores ficam ao lado do vendedor errado."
       },
       {
-        "texto": "A tabela inteira é classificada do mesmo jeito.",
+        "texto": "A tabela inteira é classificada junto, como se você tivesse selecionado tudo.",
         "dica": "Isso acontece com **Expandir a seleção**, não com *Continuar com a seleção atual*."
       },
       {
@@ -3791,16 +3791,16 @@
         "exigeFormula": true,
         "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
         "formato": "percentual",
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "dicas": [
-      "MÁXIMO para no primeiro erro que encontra no intervalo.",
+      "Se houver um erro qualquer no intervalo, o MÁXIMO devolve o erro em vez do resultado.",
       "AGREGAR faz as mesmas contas do SUBTOTAL e tem uma opção para pular os erros."
     ],
     "explicacao": [
       "`=AGREGAR(4;6;D2:D7)` → 4 é MÁXIMO e 6 é \"ignorar erros\".",
-      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim); a opção 7 ignora erros e também as linhas escondidas pelo filtro."
+      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim). A opção 7 ignora erros **e** linhas ocultas, tanto pelo filtro quanto à mão."
     ],
     "tentativasAteExplicacao": 3,
     "grade": {

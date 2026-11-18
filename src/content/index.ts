@@ -98,7 +98,7 @@ export const MODULOS: readonly Modulo[] = [
     slug: "fundamentos",
     numero: 1,
     titulo: "Fundamentos",
-    descricao: "SOMA, MÉDIA, MÍNIMO/MÁXIMO, operadores, porcentagem, ARRED e o famoso $.",
+    descricao: "SOMA, MÉDIA, MÍNIMO/MÁXIMO, operadores, porcentagem e o famoso $.",
     permitePular: false,
     trofeu: {
       icone: "taca",
@@ -109,15 +109,15 @@ export const MODULOS: readonly Modulo[] = [
   modulo(3, "condicionais", "Contar e somar com condição", "CONT.SE, SOMASE, SOMASES, MÉDIASE e companhia.", "Contar e somar só o que importa: CONT.SE, SOMASE e as versões com várias condições."),
   modulo(4, "busca", "Busca", "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", "PROCV, ÍNDICE + CORRESP e PROCX: você encontra qualquer coisa numa tabela."),
   modulo(5, "texto", "Texto", "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR, SUBSTITUIR.", "Juntar, cortar e limpar textos: dados bagunçados não te assustam mais."),
-  modulo(6, "datas", "Datas", "Diferença entre datas, DATA, DATADIF, dias úteis, FIMMÊS e DATAM.", "Prazos, idades, dias úteis e vencimentos, tudo calculado."),
-  modulo(7, "arrays", "Arrays dinâmicos", "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA: uma fórmula, muitos resultados.", "FILTRO, CLASSIFICAR e ÚNICO: o Excel moderno já é seu."),
+  modulo(6, "datas", "Datas", "HOJE, ANO e MÊS, DATADIF, dias úteis com feriados e FIMMÊS: prazos e vencimentos.", "Prazos, idades, dias úteis e vencimentos, tudo calculado."),
+  modulo(7, "arrays", "Arrays dinâmicos", "FILTRO, CLASSIFICAR e ÚNICO: uma fórmula, muitos resultados.", "FILTRO, CLASSIFICAR e ÚNICO: o Excel moderno já é seu."),
   modulo(8, "dados", "Organizar dados", "Classificar, filtrar e SUBTOTAL: arrumar e resumir a tabela direto na grade.", "Classificar, filtrar e somar só o que aparece: a tabela fica do jeito que você precisa."),
   modulo(9, "dinamica", "Tabela dinâmica", "Resumir uma tabela inteira arrastando campos: totais, contagens, tabelas cruzadas e filtros.", "Tabela dinâmica dominada: você resume qualquer base de dados em segundos."),
   modulo(10, "destaque", "Formatação condicional", "A planilha que aponta o problema: realçar valores, duplicados, os maiores, a linha inteira com fórmula e barras de dados.", "Formatação condicional dominada: sua planilha mostra sozinha o que importa."),
   modulo(11, "graficos", "Gráficos", "Colunas, linhas, barras e pizza: escolher o gráfico certo, título, rótulos e as pegadinhas de como o Excel lê os dados.", "Gráficos dominados: você escolhe o tipo certo e evita as armadilhas do Excel."),
   modulo(12, "validacao", "Validação de dados", "Listas suspensas, números e datas dentro da regra, mensagens e como achar o que já estava errado.", "Validação de dados dominada: sua planilha só aceita o que faz sentido."),
   modulo(13, "abas", "Várias abas", "Fórmulas que leem outras abas: somar, buscar com PROCV e SOMASE e montar o resumo do trimestre.", "Várias abas dominadas: sua planilha cresce sem virar bagunça."),
-  modulo(14, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(14, "casos", "Casos reais", "Comissão por faixa, controle de estoque, parcelamento com PGTO e o desconto do INSS.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {

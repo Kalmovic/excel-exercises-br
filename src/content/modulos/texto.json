@@ -441,7 +441,7 @@
       "PRI.MAIÚSCULA põe a primeira letra de cada palavra em maiúscula e o resto em minúscula."
     ],
     "explicacao": [
-      "`=PRI.MAIÚSCULA(A2)`. Primas: MAIÚSCULA e MINÚSCULA.",
+      "`=PRI.MAIÚSCULA(A2)`. Funções parecidas: MAIÚSCULA (tudo maiúsculo) e MINÚSCULA (tudo minúsculo).",
       "Limitação: \"maria da silva\" vira \"Maria Da Silva\"."
     ],
     "tentativasAteExplicacao": 3,
@@ -887,7 +887,7 @@
       "Qual operador junta textos?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Para somar existe o +; para juntar textos existe outro símbolo."
     ],
     "explicacao": [
       "O & cola textos: =A2&B2."
@@ -911,7 +911,8 @@
         "texto": "&"
       },
       {
-        "texto": "*"
+        "texto": "*",
+        "dica": "O * multiplica números; com texto, dá #VALOR!."
       },
       {
         "texto": ";",
@@ -1071,7 +1072,7 @@
       "Quantos dígitos tem este número?"
     ],
     "explicacao": [
-      "Aqui o número tem 2 dígitos: `=DIREITA(A2;2)`. ESQUERDA e DIREITA contam uma quantidade fixa; para tamanhos variáveis, use LOCALIZAR (lição 5.6)."
+      "Aqui o número tem 2 dígitos: `=DIREITA(A2;2)`. ESQUERDA e DIREITA contam uma quantidade fixa; para tamanhos variáveis, use LOCALIZAR (lição *LOCALIZAR: a posição do @*)."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "esquerda-e-direita-do-pedido",
@@ -1139,7 +1140,7 @@
       "Quanto dá **=ESQUERDA(\"Planilha\";4)**?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "A ESQUERDA pega caracteres a partir de qual lado do texto?"
     ],
     "explicacao": [
       "ESQUERDA pega os 4 primeiros caracteres: Plan."
@@ -1163,10 +1164,12 @@
         "dica": "Esses são os 4 últimos: DIREITA."
       },
       {
-        "texto": "lanh"
+        "texto": "lanh",
+        "dica": "Isso seria do 2º ao 5º caractere, que é trabalho do EXT.TEXTO."
       },
       {
-        "texto": "Planilha"
+        "texto": "Planilha",
+        "dica": "Com 4, a ESQUERDA não devolve o texto inteiro."
       }
     ],
     "correta": 0
@@ -1375,7 +1378,7 @@
       "Em **EXT.TEXTO(texto; 4; 2)**, o 2 significa…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "EXT.TEXTO(texto; onde começa; …): o que mais falta saber para cortar o pedaço?"
     ],
     "explicacao": [
       "O terceiro argumento é quantos caracteres pegar."
@@ -1392,16 +1395,19 @@
     },
     "opcoes": [
       {
-        "texto": "A posição final"
+        "texto": "A posição final",
+        "dica": "Não é onde termina: com 4 e 2, o corte terminaria antes de começar."
       },
       {
         "texto": "A quantidade de caracteres"
       },
       {
-        "texto": "A ocorrência"
+        "texto": "A ocorrência",
+        "dica": "O EXT.TEXTO não procura nada, então não há ocorrência: ele corta pela posição."
       },
       {
-        "texto": "A segunda palavra"
+        "texto": "A segunda palavra",
+        "dica": "O EXT.TEXTO trabalha com caracteres, não com palavras."
       }
     ],
     "correta": 1
@@ -1545,7 +1551,8 @@
       "Limpe o que vai ser procurado."
     ],
     "explicacao": [
-      "`=PROCV(ARRUMAR(F2);A2:C4;3;FALSO)`: o ARRUMAR tira o espaço invisível antes da busca."
+      "`=PROCV(ARRUMAR(F2);A2:C4;3;FALSO)`: o ARRUMAR tira o espaço invisível antes da busca.",
+      "Atenção: o ARRUMAR não tira o espaço \"não separável\" que vem de páginas da web. Nesse caso, use `=ARRUMAR(SUBSTITUIR(A2;CARACT(160);\" \"))`."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "arrumar-espacos-sobrando",
@@ -1635,8 +1642,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       }
     ]
   },
@@ -1654,7 +1662,7 @@
       "O que ARRUMAR devolve para \"  a   b  \"?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense nos espaços das pontas e nos do meio: o ARRUMAR trata os dois do mesmo jeito?"
     ],
     "explicacao": [
       "Tira as pontas e deixa um espaço só entre as palavras."
@@ -1678,7 +1686,8 @@
         "texto": "\"a b\""
       },
       {
-        "texto": "\"a   b\""
+        "texto": "\"a   b\"",
+        "dica": "As pontas saíram, mas e os três espaços do meio? O ARRUMAR também mexe neles."
       },
       {
         "texto": "\" a b \"",
@@ -1890,7 +1899,7 @@
       "Qual função transforma \"rio de janeiro\" em \"RIO DE JANEIRO\"?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Repare que todas as letras ficaram maiúsculas, não só as primeiras."
     ],
     "explicacao": [
       "MAIÚSCULA deixa todas as letras maiúsculas."
@@ -1914,10 +1923,12 @@
         "texto": "MAIÚSCULA"
       },
       {
-        "texto": "MINÚSCULA"
+        "texto": "MINÚSCULA",
+        "dica": "A MINÚSCULA faz o contrário: deixa todas as letras pequenas."
       },
       {
-        "texto": "ARRUMAR"
+        "texto": "ARRUMAR",
+        "dica": "O ARRUMAR só mexe nos espaços; as letras ficam como estão."
       }
     ],
     "correta": 1
@@ -2142,7 +2153,7 @@
       "Quanto dá **=LOCALIZAR(\"a\";\"Banana\")**?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Conte as letras de Banana a partir de 1. O LOCALIZAR para na primeira vez que acha."
     ],
     "explicacao": [
       "LOCALIZAR devolve a primeira ocorrência: posição 2."
@@ -2166,10 +2177,12 @@
         "texto": "2"
       },
       {
-        "texto": "3"
+        "texto": "3",
+        "dica": "Na posição 3 está um n."
       },
       {
-        "texto": "6"
+        "texto": "6",
+        "dica": "6 é a posição do último a. O LOCALIZAR para no primeiro que encontra."
       }
     ],
     "correta": 1
@@ -2381,7 +2394,7 @@
       "Quanto dá **=SUBSTITUIR(\"a-b-c\";\"-\";\"\")**?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense no que significa trocar algo por \"\" (aspas sem nada dentro)."
     ],
     "explicacao": [
       "Trocar o hífen por nada apaga os dois: abc."
@@ -2398,7 +2411,8 @@
     },
     "opcoes": [
       {
-        "texto": "a-b-c"
+        "texto": "a-b-c",
+        "dica": "Os hífens estão no texto, então o SUBSTITUIR mexe neles."
       },
       {
         "texto": "abc"
@@ -2408,7 +2422,8 @@
         "dica": "Trocar por \"\" apaga; não vira espaço."
       },
       {
-        "texto": "Erro"
+        "texto": "Erro",
+        "dica": "Trocar por \"\" é permitido: o texto vazio é um valor válido."
       }
     ],
     "correta": 1
@@ -2476,6 +2491,16 @@
         "D": 150,
         "E": 110,
         "H": 130
+      },
+      "alternativas": {
+        "A2": [
+          "Bia",
+          "Ana"
+        ],
+        "B2": [
+          "Souza",
+          "Lima"
+        ]
       }
     },
     "alvos": [
@@ -2550,6 +2575,12 @@
         "D": 150,
         "E": 110,
         "H": 130
+      },
+      "alternativas": {
+        "C2": [
+          "SP-2025-0042",
+          "MG-2024-0318"
+        ]
       }
     },
     "alvos": [
@@ -2624,6 +2655,12 @@
         "D": 150,
         "E": 110,
         "H": 130
+      },
+      "alternativas": {
+        "C2": [
+          "SP-2025-0042",
+          "MG-2024-0318"
+        ]
       }
     },
     "alvos": [
@@ -2698,6 +2735,12 @@
         "D": 150,
         "E": 110,
         "H": 130
+      },
+      "alternativas": {
+        "D2": [
+          "  maria   lima ",
+          " carlos souza "
+        ]
       }
     },
     "alvos": [

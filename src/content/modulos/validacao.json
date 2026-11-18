@@ -18,7 +18,7 @@
     ],
     "explicacao": [
       "**Validação de Dados → Permitir: Lista → Fonte:** `Pago;Pendente;Cancelado`.",
-      "Agora cada célula de C2:C10 tem uma setinha, e qualquer coisa fora da lista é recusada. Acaba o \"pago\", \"PG\" e \"Pago.\" misturados no relatório."
+      "Agora cada célula de C2:C10 tem uma setinha, e o que está fora da lista é recusado. Acaba o \"PG\", o \"Pgo\" e o \"Pago.\" misturados no relatório."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "validacao-lista-status",
@@ -198,7 +198,7 @@
     ],
     "explicacao": [
       "**Permitir: Lista → Fonte:** `=$F$2:$F$5`.",
-      "Com a lista num intervalo, para incluir um departamento novo basta escrever na tabela de departamentos (e ajustar o intervalo, se ele crescer)."
+      "Com a lista num intervalo, incluir um departamento novo é só escrever na tabela de departamentos. Dica de escritório: transforme F1:F5 numa **Tabela** (Ctrl+Alt+T) ou dê um nome ao intervalo, e a lista cresce sozinha."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "validacao-lista-status",
@@ -1764,7 +1764,7 @@
     ],
     "explicacao": [
       "Circular Dados Inválidos marca **Pgo** (C3) e **Cancelad** (C8): troque por Pago e Cancelado.",
-      "Repare que \"pendente\" em minúsculas não foi marcado: a lista não diferencia maiúsculas."
+      "Repare que \"pendente\", em minúsculas, não foi circulado aqui. Vale padronizar mesmo assim: escolha **Pendente** na setinha. Se no seu Excel ele aparecer circulado, é por causa das minúsculas, e a correção é a mesma."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "validacao-dados-antigos",
