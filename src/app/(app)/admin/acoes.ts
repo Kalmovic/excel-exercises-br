@@ -1,10 +1,13 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { COOKIE_ADMIN, senhaCorreta, valorDoCookie } from "@/lib/admin";
+import { limitar } from "@/lib/limite";
 
 export async function entrar(formulario: FormData) {
+  // Limite por IP: o atraso abaixo não impede tentativas em paralelo.
+  if (limitar(await headers(), "loginAdmin")) redirect("/admin/entrar?erro=limite");
   const senha = String(formulario.get("senha") ?? "");
   if (!senhaCorreta(senha)) {
     // Atraso fixo: deixa tentativa e erro em massa bem mais lento.

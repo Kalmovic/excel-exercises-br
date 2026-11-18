@@ -24,6 +24,17 @@ export async function POST(request: Request) {
   }
 
   const acao = traduzirEvento(evento);
+  // Disputa (chargeback): o aviso traz a cobrança, não o cliente. Busca no Stripe.
+  if (acao.acao === "revogar" && !acao.cliente && acao.cobranca) {
+    try {
+      const c = await clienteStripe().charges.retrieve(acao.cobranca);
+      acao.cliente = typeof c.customer === "string" ? c.customer : (c.customer?.id ?? null);
+    } catch (e) {
+      // 500: o Stripe tenta de novo mais tarde.
+      console.error(JSON.stringify({ tipo: "erro_webhook_stripe", evento: evento.type, id: evento.id, mensagem: String(e) }));
+      return NextResponse.json({ erro: "falha ao buscar a cobrança" }, { status: 500 });
+    }
+  }
   const { data: resultado, error } = await supabaseAdmin().rpc("registrar_pagamento", {
     p_evento_id: evento.id,
     p_tipo: evento.type,
@@ -41,7 +52,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ erro: "falha ao aplicar" }, { status: 500 });
   }
 
-  // Reembolso: além de cortar o acesso (no banco), para de cobrar o cartão.
+  // Reembolso ou disputa: além de cortar o acesso (no banco), para de cobrar o cartão.
   if (resultado === "aplicado" && acao.acao === "revogar" && acao.cliente) {
     const { data } = await supabaseAdmin()
       .from("assinaturas")

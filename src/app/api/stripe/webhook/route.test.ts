@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const SEGREDO = "whsec_teste_segredo";
 const rpc = vi.fn();
 const cancelar = vi.fn(async () => ({}));
+const buscarCobranca = vi.fn(async (id: string) => ({ id, customer: "cus_7" }));
 vi.mock("@/lib/supabase/admin", () => ({
   supabaseAdmin: () => ({
     rpc,
@@ -13,7 +14,7 @@ vi.mock("@/lib/supabase/admin", () => ({
 vi.mock("@/lib/stripe", async () => {
   const { default: S } = await import("stripe");
   const s = new S("sk_test_x");
-  return { clienteStripe: () => ({ webhooks: s.webhooks, subscriptions: { cancel: cancelar } }) };
+  return { clienteStripe: () => ({ webhooks: s.webhooks, subscriptions: { cancel: cancelar }, charges: { retrieve: buscarCobranca } }) };
 });
 
 const stripe = new Stripe("sk_test_x");
@@ -26,7 +27,9 @@ const anualPago = {
   id: "evt_1",
   type: "checkout.session.completed",
   created: Math.floor(Date.now() / 1000),
-  data: { object: { mode: "payment", payment_status: "paid", customer: "cus_1", client_reference_id: "u1" } },
+  data: {
+    object: { mode: "payment", payment_status: "paid", customer: "cus_1", client_reference_id: "u1", currency: "brl", metadata: { usuario_id: "u1", plano: "anual" } },
+  },
 };
 
 describe("webhook do Stripe", async () => {
@@ -59,6 +62,23 @@ describe("webhook do Stripe", async () => {
     await POST(assinado({ id: "evt_2", type: "charge.refunded", created: anualPago.created, data: { object: { customer: "cus_1", refunded: true } } }));
     expect(rpc).toHaveBeenCalledWith("registrar_pagamento", expect.objectContaining({ p_acao: "revogar" }));
     expect(cancelar).toHaveBeenCalledWith("sub_1");
+  });
+
+  it("contestação: busca o cliente pela cobrança, revoga e cancela a assinatura", async () => {
+    rpc.mockResolvedValue({ data: "aplicado", error: null });
+    const r = await POST(assinado({ id: "evt_3", type: "charge.dispute.created", created: anualPago.created, data: { object: { id: "dp_1", charge: "ch_9" } } }));
+    expect(r.status).toBe(200);
+    expect(buscarCobranca).toHaveBeenCalledWith("ch_9");
+    expect(rpc).toHaveBeenCalledWith("registrar_pagamento", expect.objectContaining({ p_acao: "revogar", p_cliente: "cus_7" }));
+    expect(cancelar).toHaveBeenCalledWith("sub_1");
+  });
+
+  it("contestação com o Stripe fora do ar: 500 (o Stripe reenvia) e nada no banco", async () => {
+    buscarCobranca.mockRejectedValueOnce(new Error("rede"));
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const r = await POST(assinado({ id: "evt_4", type: "charge.dispute.created", created: anualPago.created, data: { object: { id: "dp_2", charge: "ch_9" } } }));
+    expect(r.status).toBe(500);
+    expect(rpc).not.toHaveBeenCalled();
   });
 
   it("erro no banco: 500 (o Stripe reenvia)", async () => {

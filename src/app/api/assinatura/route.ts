@@ -33,8 +33,20 @@ export async function POST(request: Request) {
   try {
     const stripe = clienteStripe();
     // Um cliente no Stripe por aluno: os avisos chegam com esse id, e é por ele que achamos o aluno.
+    //
+    // Corrida: dois checkouts ao mesmo tempo, sem linha ainda, criariam dois clientes
+    // (o último upsert ganha, e a fatura do outro chegaria sem aluno). A chave de
+    // idempotência faz o Stripe devolver o MESMO cliente para o mesmo aluno por 24 h.
+    // Depois disso a linha já existe. E, de todo jeito, a fatura do mensal traz o
+    // aluno nos metadados da assinatura (src/lib/pagamento-stripe.ts).
     const cliente =
-      atual?.stripe_cliente_id ?? (await stripe.customers.create({ email: usuario.email, metadata: { usuario_id: usuario.id } })).id;
+      atual?.stripe_cliente_id ??
+      (
+        await stripe.customers.create(
+          { email: usuario.email, metadata: { usuario_id: usuario.id } },
+          { idempotencyKey: `cliente-${usuario.id}-${usuario.email ?? ""}`.slice(0, 255) },
+        )
+      ).id;
     const origem = new URL(request.url).origin;
     const comum: Stripe.Checkout.SessionCreateParams = {
       customer: cliente,
