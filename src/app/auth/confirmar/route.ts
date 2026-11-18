@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
+import { destinoSeguro } from "@/lib/destino";
 import { SUPABASE_CHAVE_PUBLICA, SUPABASE_URL, contasLigadas } from "@/lib/supabase/config";
 
 /**
@@ -14,8 +15,8 @@ import { SUPABASE_CHAVE_PUBLICA, SUPABASE_URL, contasLigadas } from "@/lib/supab
 export async function GET(request: NextRequest) {
   const url = request.nextUrl;
   const code = url.searchParams.get("code");
-  const p = url.searchParams.get("proximo");
-  const proximo = p && p.startsWith("/") && !p.startsWith("//") ? p : "/trilha";
+  // Só caminhos do próprio site (ver src/lib/destino.ts: "/\\evil.com" levaria para outro).
+  const proximo = destinoSeguro(url.searchParams.get("proximo"), url.origin);
   const falhou = NextResponse.redirect(new URL("/entrar?erro=link", url.origin));
   if (!code || !contasLigadas()) return falhou;
 
