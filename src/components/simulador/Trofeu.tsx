@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 type Props = {
   titulo: string;
@@ -25,7 +26,8 @@ export function TrofeuModal({ titulo, icone, descricao, exercicios, tentativas, 
     return () => window.removeEventListener("keydown", esc);
   }, [onFechar]);
 
-  return (
+  // No <body>: dentro da página, um ancestral com transform encolhia o fundo escuro.
+  return createPortal(
     <div
       className="fixed inset-0 z-50 grid place-items-center bg-zinc-950/50 p-4 backdrop-blur-sm"
       onMouseDown={(e) => e.target === e.currentTarget && onFechar()}
@@ -60,7 +62,8 @@ export function TrofeuModal({ titulo, icone, descricao, exercicios, tentativas, 
         </div>
         <p className="mt-4 text-xs text-zinc-400">Seu progresso fica salvo neste navegador.</p>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

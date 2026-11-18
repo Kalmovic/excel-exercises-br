@@ -197,7 +197,7 @@ export default function ExcelBasico() {
           ))}
         </ol>
         <p>
-          Terminou? O próximo passo é o <Link href="/#modulo-fundamentos" className="text-success underline">Módulo 1: Fundamentos</Link>,
+          Terminou? O próximo passo é o <Link href="/trilha#modulo-fundamentos" className="text-success underline">Módulo 1: Fundamentos</Link>,
           com SOMA, MÉDIA, MÍNIMO, MÁXIMO e referência absoluta.
         </p>
       </Secao>

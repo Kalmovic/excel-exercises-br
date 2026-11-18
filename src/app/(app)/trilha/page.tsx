@@ -59,6 +59,21 @@ export default function Trilha() {
         <Suspense fallback={<PainelTrilha trilha={trilha} />}>
           <PainelComDesafio trilha={trilha} />
         </Suspense>
+        {/* A trilha é longa: um índice para pular direto ao módulo. */}
+        <details className="rounded-xl border border-line bg-surface" data-testid="indice-modulos">
+          <summary className="cursor-pointer px-4 py-3 text-sm font-semibold">Ir para um módulo</summary>
+          <ol className="space-y-1 px-4 pb-3 text-sm">
+            {regioes
+              .filter((r) => r.disponivel)
+              .map((r) => (
+                <li key={r.slug}>
+                  <a href={`#modulo-${r.slug}`} className="text-success underline-offset-4 hover:underline">
+                    <span className="font-mono text-xs text-muted">{r.numero}</span> {r.titulo}
+                  </a>
+                </li>
+              ))}
+          </ol>
+        </details>
       </aside>
       {/* Mapa à esquerda; à direita, espaço livre para o balão de detalhes (nunca cobre outras casas). */}
       <div className="overflow-x-auto pb-10 lg:pl-6" style={{ minWidth: 0 }}>
