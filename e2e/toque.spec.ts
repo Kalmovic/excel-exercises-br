@@ -63,3 +63,9 @@ test("celular: um toque seleciona sem abrir o teclado; o toque duplo abre", asyn
   await visivel(page, "verificar").tap();
   await expect(visivel(page, "resultado")).toContainText("Correto!");
 });
+
+test("celular: sem a linha de atalhos de teclado embaixo da grade", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas");
+  await expect(visivel(page, "verificar")).toBeVisible();
+  await expect(page.getByTestId("atalhos")).toHaveCount(0);
+});

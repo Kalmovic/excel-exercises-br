@@ -23,3 +23,34 @@ export async function limparArmazenamento(page: Page) {
   await page.goto("/");
   await page.evaluate(() => localStorage.clear());
 }
+
+type CorpoCorrecao = { modulo: string; indice: number; resposta: Record<string, unknown> };
+
+/**
+ * Correção do teste do módulo (`POST /api/teste/corrigir`, da F1). Por padrão usa a
+ * rota de verdade e só cai no roteiro (`resultados`, em ordem) quando ela não existe
+ * (404). Com `forcar`, nunca vai ao servidor. Devolve os corpos enviados.
+ */
+export async function simularCorrecao(
+  page: Page,
+  resultados: boolean[],
+  { forcar = false, atraso = 0, falhar = 0 }: { forcar?: boolean; atraso?: number; falhar?: number } = {},
+) {
+  const corpos: CorpoCorrecao[] = [];
+  const fila = [...resultados];
+  let falhas = falhar;
+  await page.route("**/api/teste/corrigir", async (route) => {
+    if (falhas > 0) {
+      falhas--;
+      return route.abort("internetdisconnected");
+    }
+    corpos.push(route.request().postDataJSON() as CorpoCorrecao);
+    if (!forcar) {
+      const real = await route.fetch().catch(() => null);
+      if (real && real.status() !== 404) return route.fulfill({ response: real });
+    }
+    if (atraso) await new Promise((r) => setTimeout(r, atraso));
+    await route.fulfill({ json: { ok: fila.shift() ?? false } });
+  });
+  return corpos;
+}

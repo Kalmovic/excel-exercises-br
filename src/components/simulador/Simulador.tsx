@@ -22,7 +22,7 @@ import { TextoRico } from "./TextoRico";
 import { CampoResposta } from "./CampoResposta";
 import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
-import { PainelExercicio } from "./PainelExercicio";
+import { AnuncioResultado, PainelExercicio, textoDoAnuncio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
 import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
@@ -62,6 +62,10 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
   };
 }
 
+/** Linha de atalhos embaixo da grade (só com teclado). A F4 acrescenta como sair da grade com o Tab. */
+const ATALHOS =
+  "Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima · Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula";
+
 type Props = {
   exercicio: Exercicio;
   proximo?: { slug: string; titulo: string };
@@ -75,8 +79,15 @@ type Props = {
   compacto?: boolean;
   /** Questão de uma lição de 5: ao acertar a última que faltava, a lição fica concluída. */
   licao?: LicaoDoExercicio;
-  /** Teste do módulo: uma tentativa, sem gravar progresso; avisa o resultado. */
-  teste?: { aoResponder: (ok: boolean, resposta: RespostaQuestao) => void };
+  /**
+   * Teste do módulo: uma tentativa, sem gravar progresso nem corrigir aqui (a
+   * questão chega sem gabarito). `corrigir` pergunta ao servidor; uma falha
+   * (rede, servidor) rejeita a promessa e a resposta pode ser reenviada.
+   */
+  teste?: {
+    corrigir: (resposta: RespostaQuestao) => Promise<boolean>;
+    aoResponder: (ok: boolean, resposta: RespostaQuestao) => void;
+  };
   /**
    * Simulado de vaga: sem correção na hora nem dicas. A questão entrega ao pai
    * uma função que corrige o estado atual da planilha, chamada na entrega da prova.
@@ -115,6 +126,13 @@ export default function Simulador({
     () => !admin && progresso.ler(chave, ex.versao)?.status === "concluido",
   );
   const [dicasVistas, setDicasVistas] = useState(0);
+  // Verificar com a célula ainda em edição e inválida: o painel avisa (antes, silêncio).
+  const [aviso, setAviso] = useState<string | null>(null);
+  // Teste do módulo: estado da conferência no servidor.
+  const [conferindo, setConferindo] = useState(false);
+  const [falhaEnvio, setFalhaEnvio] = useState(false);
+  const [respondida, setRespondida] = useState<boolean | null>(null);
+  const enviando = useRef(false);
 
   const { planilha, store } = nucleo;
 
@@ -193,9 +211,54 @@ export default function Simulador({
     });
   }, [simulado, ex, planilha, store, semTeclado]);
 
-  const verificar = () => {
+  /** Confirma o que estava sendo digitado; se a célula estiver inválida, avisa e devolve false. */
+  const confirmarEdicao = () => {
     const s = store.getState();
-    if (s.modo !== "pronto" && !s.confirmar()) return;
+    if (s.modo === "pronto" || s.confirmar()) {
+      setAviso(null);
+      return true;
+    }
+    setAviso("A célula ainda está em edição e tem um erro (veja o aviso perto da barra de fórmulas). Corrija ou aperte Esc antes de verificar.");
+    return false;
+  };
+
+  /** O que ficou na tela: vai para o servidor no teste do módulo e na emissão do certificado. */
+  const respostaAtual = (): RespostaQuestao => {
+    const s = store.getState();
+    return {
+      conteudos: planilha.conteudosDoAluno(),
+      formatos: planilha.formatosDoAluno(),
+      recursos: planilha.recursos(),
+      resposta: s.resposta,
+      ativa: paraEndereco(s.ancora),
+      selecao: intervaloParaTexto(s.selecao()),
+    };
+  };
+
+  /** Teste do módulo: uma resposta só, conferida pelo servidor. */
+  const verificarNoServidor = async (t: NonNullable<Props["teste"]>) => {
+    if (enviando.current || respondida !== null) return;
+    if (!confirmarEdicao()) return;
+    const resposta = respostaAtual();
+    enviando.current = true;
+    setConferindo(true);
+    setFalhaEnvio(false);
+    try {
+      const ok = await t.corrigir(resposta);
+      setRespondida(ok);
+      t.aoResponder(ok, resposta);
+    } catch {
+      setFalhaEnvio(true); // não conta: o aluno pode enviar de novo
+    } finally {
+      enviando.current = false;
+      setConferindo(false);
+    }
+  };
+
+  const verificar = () => {
+    if (teste) return void verificarNoServidor(teste);
+    if (!confirmarEdicao()) return;
+    const s = store.getState();
     const r = corrigir(ex, planilha, {
       ativa: paraEndereco(s.ancora),
       selecao: intervaloParaTexto(s.selecao()),
@@ -212,19 +275,9 @@ export default function Simulador({
     const historico = concluido
       ? progresso.ler(chave, ex.versao)?.historico
       : [...(progresso.ler(chave, ex.versao)?.historico ?? []), r.ok];
-    persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
-    if (teste) {
-      // O que ficou na tela vai junto: o servidor corrige de novo para emitir o certificado.
-      teste.aoResponder(r.ok, {
-        conteudos: planilha.conteudosDoAluno(),
-        formatos: planilha.formatosDoAluno(),
-        recursos: planilha.recursos(),
-        resposta: s.resposta,
-        ativa: paraEndereco(s.ancora),
-        selecao: intervaloParaTexto(s.selecao()),
-      });
-      return;
-    }
+    // Concluído continua concluído, também depois de Recomeçar e errar de novo.
+    const status = r.ok || concluido || anterior === "concluido" ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento";
+    persistir(status, n, historico);
     if (r.ok && licao && !adminProp) progresso.concluirLicaoSeCompleta(licao);
     if (!admin) {
       registrar({ nome: "verificou", slug: ex.slug, ok: r.ok, tentativa: n, motivo: r.falhas[0]?.motivo });
@@ -232,8 +285,8 @@ export default function Simulador({
         registrar({ nome: "desafio_concluido", data: desafio.data, tentativas: historico?.length ?? n });
       }
     }
+    // Errou: o foco fica onde estava (no Verificar), para o leitor de tela anunciar o resultado.
     if (r.ok) comemorar();
-    else if (ex.type !== "text_answer") entradaRef.current?.focus();
   };
 
   const comemorar = () => {
@@ -258,22 +311,20 @@ export default function Simulador({
     router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha?.proximoModulo?.href ?? "/"));
   };
 
+  // Recomeçar limpa só a planilha e a resposta. As tentativas e o histórico
+  // continuam valendo: errar, recomeçar e acertar não é "de primeira", e no
+  // desafio os quadrados do card contam tudo. Concluído continua concluído.
   const reiniciar = () => {
-    if (desafio && !admin) {
-      // No desafio, Recomeçar limpa só a planilha: as tentativas e o histórico
-      // (os quadrados do card) continuam valendo.
+    if (!admin) {
       const atual = progresso.ler(chave, ex.versao);
       if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, recursos: {}, resposta: "" });
-      setNucleo(montar(ex, false));
-      setResultado(null);
-      return;
     }
-    if (!admin) progresso.apagar(chave);
-    setNucleo(montar(ex, !admin));
+    setNucleo(montar(ex, false));
     setResultado(null);
-    setTentativas(0);
+    setAviso(null);
+    setFalhaEnvio(false);
+    if (desafio) return; // o card de compartilhar continua na tela
     setConcluido(false);
-    setDicasVistas(0);
   };
 
   if (compacto) {
@@ -301,6 +352,8 @@ export default function Simulador({
               Recomeçar
             </button>
           </div>
+          <AnuncioResultado texto={textoDoAnuncio({ resultado, tentativas, aviso })} />
+          {aviso && !resultado && <p className="rounded-lg bg-warning-bg px-3 py-2 text-sm text-ink">{aviso}</p>}
           {resultado && (
             <p
               key={tentativas}
@@ -348,7 +401,7 @@ export default function Simulador({
                   <Grade larguras={ex.grade.larguras} />
                 </div>
               )}
-              <Alternativas opcoes={ex.opcoes} bloqueado={concluido} />
+              <Alternativas opcoes={ex.opcoes} bloqueado={concluido || respondida !== null || conferindo} />
             </div>
           )}
           {ex.type !== "multiple_choice" && (
@@ -359,11 +412,12 @@ export default function Simulador({
                 entradaRef={entradaRef}
                 barraToque={semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer"}
               />
-              {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
-              <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
-                Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·
-                Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
-              </p>
+              {/* Atalhos de teclado: só para quem tem teclado (no celular não aparece). */}
+              {!semTeclado && (
+                <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
+                  {ATALHOS}
+                </p>
+              )}
             </>
           )}
         </div>
@@ -378,6 +432,8 @@ export default function Simulador({
           onVerificar={verificar}
           semCorrecao={!!simulado}
           avulso={avulso}
+          aviso={aviso}
+          modoTeste={teste ? { conferindo, falhaEnvio, respondida } : undefined}
           onDica={() => {
             const n = Math.min(dicasVistas + 1, ex.dicas.length);
             setDicasVistas(n);
