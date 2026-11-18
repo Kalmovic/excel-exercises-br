@@ -3,6 +3,7 @@
 import { createContext, useContext, useSyncExternalStore, type RefObject } from "react";
 import { useStore } from "zustand";
 import type { Planilha } from "@/engine/engine";
+import type { Pos } from "@/engine/address";
 import type { EstadoSimulador, StoreSimulador } from "./store";
 
 export type ContextoSimulador = {
@@ -26,6 +27,12 @@ export type ContextoSimulador = {
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */
   selecaoFixa: boolean;
+  /** Pasta com várias abas: o nome desta (referências de outras abas não são desenhadas aqui). */
+  nomeAba?: string;
+  /** Apontando de outra aba: clicar numa célula insere `Aba!B2` na fórmula que está sendo escrita lá. */
+  apontarExterno?: (de: Pos, ate: Pos) => void;
+  /** A fórmula sendo escrita na outra aba (para desenhar as referências que caem nesta). */
+  formulaExterna?: string;
 };
 
 export const Contexto = createContext<ContextoSimulador | null>(null);

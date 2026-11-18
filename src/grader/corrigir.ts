@@ -57,7 +57,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   const variaveis = ex.grade.variaveis ?? [];
   const alternativas = ex.grade.alternativas ?? {};
   const comAlternativas = Object.keys(alternativas);
-  if (variaveis.length === 0 && comAlternativas.length === 0) return [];
+  const variaveisNasAbas = (ex.abas ?? []).some((a) => a.grade.variaveis?.length);
+  if (variaveis.length === 0 && comAlternativas.length === 0 && !variaveisNasAbas) return [];
   const falhas = new Set<string>();
 
   // Rodadas: números multiplicados por um fator e, em cada rodada, as células
@@ -69,8 +70,14 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   for (let r = 0; r < rodadas; r++) {
     const fator = FATORES[r % FATORES.length];
     const grade = structuredClone(ex.grade);
-    for (const [i, end] of variaveis.entries()) {
-      const cel = grade.celulas[end];
+    const abas = structuredClone(ex.abas);
+    // As variáveis de todas as abas, na mesma rodada (a fórmula do aluno pode ler qualquer uma).
+    const alvos = [
+      ...variaveis.map((end) => ({ g: grade, end })),
+      ...(abas ?? []).flatMap((a) => (a.grade.variaveis ?? []).map((end) => ({ g: a.grade, end }))),
+    ];
+    for (const [i, { g, end }] of alvos.entries()) {
+      const cel = g.celulas[end];
       if (!cel) continue;
       const n = Number(cel.entrada.replace(/\./g, "").replace(",", ".").replace("%", ""));
       if (Number.isNaN(n)) continue;
@@ -88,8 +95,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
       grade.celulas[end] = { ...(grade.celulas[end] ?? {}), entrada: lista[r % lista.length] };
     }
 
-    const aluno = new Planilha(grade);
-    const referencia = new Planilha(grade);
+    const aluno = Planilha.deGrades(grade, abas);
+    const referencia = Planilha.deGrades(grade, abas);
     try {
       aluno.definirVarias(
         Object.entries(conteudos)

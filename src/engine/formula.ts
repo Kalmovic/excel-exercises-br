@@ -128,5 +128,8 @@ export function diagnosticarSintaxe(formula: string): string {
   }
   if (/[+\-*/^&;=<>]\s*$/.test(corpo)) return "A fórmula termina num operador: falta o que vem depois dele.";
   if (/\(\s*\)/.test(corpo) && !/\b[A-ZÀ-Ú.]+\(\s*\)/i.test(corpo)) return "Tem parênteses vazios na fórmula.";
+  // Aba com espaço no nome, sem aspas: =SOMA(Vendas 2025!B2:B6)
+  const aba = /(?:^|[(;=+\-*/&<>])\s*([A-Za-zÀ-ÿ0-9_.]+(?: [A-Za-zÀ-ÿ0-9_.]+)+)!\$?[A-Za-z]/.exec(corpo);
+  if (aba) return `Nome de aba com espaço vai entre aspas simples: '${aba[1]}'!`;
   return "Há um problema na escrita desta fórmula. Confira os parênteses, os ; entre os argumentos e as aspas.";
 }

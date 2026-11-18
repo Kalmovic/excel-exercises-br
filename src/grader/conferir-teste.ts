@@ -25,6 +25,8 @@ export type RespostaQuestao = {
 };
 
 const ENDERECO = /^[A-Z]{1,2}[1-9]\d{0,2}$/;
+/** Célula do aluno, com ou sem a aba na frente ("Vendas!B2"). */
+const ENDERECO_COM_ABA = /^(?:[^:\\/?*[\]!']{1,31}!)?[A-Z]{1,2}[1-9]\d{0,2}$/;
 const INTERVALO = /^[A-Z]{1,2}[1-9]\d{0,2}(:[A-Z]{1,2}[1-9]\d{0,2})?$/;
 const MAX_CELULAS = 300;
 const MAX_TEXTO = 500;
@@ -39,7 +41,7 @@ export function conferirQuestao(q: Exercicio, r: RespostaQuestao | undefined): b
     if (recursos.success) p.aplicarRecursos(recursos.data);
     // Só células que o aluno pode editar, com endereço e tamanho sãos (entrada vem da internet).
     const entradas = Object.entries(r.conteudos ?? {})
-      .filter(([end, texto]) => ENDERECO.test(end) && typeof texto === "string" && texto.length <= MAX_TEXTO && !p.bloqueada(end))
+      .filter(([end, texto]) => ENDERECO_COM_ABA.test(end) && typeof texto === "string" && texto.length <= MAX_TEXTO && !p.bloqueada(end))
       .slice(0, MAX_CELULAS);
     p.definirVarias(entradas.map(([endereco, bruto]) => ({ endereco, bruto })));
     for (const [end, f] of Object.entries(r.formatos ?? {}).slice(0, MAX_CELULAS))

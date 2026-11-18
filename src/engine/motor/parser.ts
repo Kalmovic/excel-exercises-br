@@ -6,15 +6,15 @@ export type No =
   | { t: "num"; v: number }
   | { t: "txt"; v: string }
   | { t: "bool"; v: boolean }
-  | { t: "ref"; l: number; c: number }
-  | { t: "int"; a: { l: number; c: number }; b: { l: number; c: number } }
+  | { t: "ref"; l: number; c: number; aba?: string }
+  | { t: "int"; a: { l: number; c: number }; b: { l: number; c: number }; aba?: string }
   | { t: "un"; op: string; x: No }
   | { t: "pct"; x: No }
   | { t: "bin"; op: string; a: No; b: No }
   | { t: "fn"; nome: string; args: No[] }
   | { t: "erro"; v: string };
 
-type Tok = { k: "num" | "txt" | "id" | "ref" | "op" | "(" | ")" | ";" | "fim" | "erro"; v: string };
+type Tok = { k: "num" | "txt" | "id" | "ref" | "aba" | "op" | "(" | ")" | ";" | "fim" | "erro"; v: string };
 
 const REF = /^\$?([A-Z]{1,3})\$?(\d+)/;
 const ID = /^[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*/;
@@ -36,6 +36,12 @@ function tokens(s: string): Tok[] {
       out.push({ k: "txt", v }); i = j + 1; continue;
     }
     let m;
+    // Nome de aba antes de uma referência: Vendas!A1 ou 'Base 2024'!A1 (aspas simples quando tem espaço).
+    if ((m = /^'((?:[^']|'')+)'!/.exec(r)) || (m = /^([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*)!/.exec(r))) {
+      out.push({ k: "aba", v: m[1].replace(/''/g, "'") });
+      i += m[0].length;
+      continue;
+    }
     if ((m = /^#(N\/D|DIV\/0!|VALOR!|REF!|NOME\?|NÚM!|NULO!|CALC!|DESPEJAR!)/.exec(r))) { out.push({ k: "erro", v: m[0] }); i += m[0].length; continue; }
     if ((m = /^\d+(,\d+)?/.exec(r)) && !/^[A-Za-z]/.test(r.slice(m[0].length))) { out.push({ k: "num", v: m[0] }); i += m[0].length; continue; }
     if ((m = REF.exec(r.toUpperCase())) && !/^[A-Za-z0-9_.(]/.test(r.slice(m[0].length))) { out.push({ k: "ref", v: m[0].toUpperCase() }); i += m[0].length; continue; }
@@ -69,10 +75,13 @@ export function analisar(formula: string): No {
     if (t.k === "erro") return { t: "erro", v: t.v };
     if (t.k === "op" && (t.v === "-" || t.v === "+")) { const x = expr(6); return t.v === "-" ? { t: "un", op: "-", x } : x; }
     if (t.k === "(") { const x = expr(0); espera(")"); return x; }
-    if (t.k === "ref") {
-      const a = posRef(t.v);
-      if (olha().k === "op" && olha().v === ":") { pega(); const b = posRef(espera("ref").v); return { t: "int", a: { l: Math.min(a.l, b.l), c: Math.min(a.c, b.c) }, b: { l: Math.max(a.l, b.l), c: Math.max(a.c, b.c) } }; }
-      return { t: "ref", ...a };
+    if (t.k === "aba" || t.k === "ref") {
+      const aba = t.k === "aba" ? t.v : undefined;
+      const r = t.k === "aba" ? espera("ref") : t;
+      const a = posRef(r.v);
+      const comAba = <T extends object>(x: T) => (aba === undefined ? x : { ...x, aba });
+      if (olha().k === "op" && olha().v === ":") { pega(); const b = posRef(espera("ref").v); return comAba({ t: "int" as const, a: { l: Math.min(a.l, b.l), c: Math.min(a.c, b.c) }, b: { l: Math.max(a.l, b.l), c: Math.max(a.c, b.c) } }); }
+      return comAba({ t: "ref" as const, ...a });
     }
     if (t.k === "id") {
       if (olha().k === "(") {

@@ -90,13 +90,14 @@ function elemento(a: R, b: R, f: (x: V, y: V) => V): R {
 const mapa = (a: R, f: (x: V) => V): R => (ehM(a) ? a.map((l) => l.map(f)) : f(a));
 
 type Ctx = {
-  ler: (l: number, c: number) => V;
+  /** `aba` ausente: a aba da própria fórmula. Aba que não existe: #REF!. */
+  ler: (l: number, c: number, aba?: string) => V;
   hoje: () => number;
   agora: () => number;
   /** Linha escondida pelo filtro (SUBTOTAL a ignora). */
-  oculta?: (l: number) => boolean;
+  oculta?: (l: number, aba?: string) => boolean;
   /** Célula com fórmula de SUBTOTAL (SUBTOTAL ignora, para não somar duas vezes). */
-  ehSubtotal?: (l: number, c: number) => boolean;
+  ehSubtotal?: (l: number, c: number, aba?: string) => boolean;
 };
 
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
@@ -155,8 +156,8 @@ function avaliar0(no: No, ctx: Ctx): R {
     case "txt": return no.v;
     case "bool": return no.v;
     case "erro": return E(no.v);
-    case "ref": return ctx.ler(no.l, no.c);
-    case "int": return Array.from({ length: no.b.l - no.a.l + 1 }, (_, i) => Array.from({ length: no.b.c - no.a.c + 1 }, (_, j) => ctx.ler(no.a.l + i, no.a.c + j)));
+    case "ref": return ctx.ler(no.l, no.c, no.aba);
+    case "int": return Array.from({ length: no.b.l - no.a.l + 1 }, (_, i) => Array.from({ length: no.b.c - no.a.c + 1 }, (_, j) => ctx.ler(no.a.l + i, no.a.c + j, no.aba)));
     case "un": return mapa(avaliar(no.x, ctx), (v) => { const n = num(v); return ehErro(n) ? n : -n; });
     case "pct": return mapa(avaliar(no.x, ctx), (v) => { const n = num(v); return ehErro(n) ? n : n / 100; });
     case "bin": return elemento(avaliar(no.a, ctx), avaliar(no.b, ctx), (x, y) => binop(no.op, x, y));
@@ -286,9 +287,10 @@ export const FUNCOES: Record<string, F> = {
     for (const a of args.slice(1)) {
       const [ini, fim] = a.t === "int" ? [a.a, a.b] : a.t === "ref" ? [a, a] : [null, null];
       if (!ini || !fim) return E("#VALOR!");
+      const aba = a.t === "int" || a.t === "ref" ? a.aba : undefined;
       for (let l = ini.l; l <= fim.l; l++) {
-        if (ctx.oculta?.(l)) continue;
-        for (let c = ini.c; c <= fim.c; c++) if (!ctx.ehSubtotal?.(l, c)) vals.push(ctx.ler(l, c));
+        if (ctx.oculta?.(l, aba)) continue;
+        for (let c = ini.c; c <= fim.c; c++) if (!ctx.ehSubtotal?.(l, c, aba)) vals.push(ctx.ler(l, c, aba));
       }
     }
     const erro = vals.find(ehErro);
@@ -368,7 +370,7 @@ export const FUNCOES: Record<string, F> = {
     const l = a.l + numArg(args[1], ctx), c = a.c + numArg(args[2], ctx);
     const h = args[3] ? numArg(args[3], ctx) : altura0, w = args[4] ? numArg(args[4], ctx) : largura0;
     if (l < 0 || c < 0 || h < 1 || w < 1) return E("#REF!");
-    const m = Array.from({ length: h }, (_, i) => Array.from({ length: w }, (_, j) => ctx.ler(l + i, c + j)));
+    const m = Array.from({ length: h }, (_, i) => Array.from({ length: w }, (_, j) => ctx.ler(l + i, c + j, base.aba)));
     return h === 1 && w === 1 ? m[0][0] : m;
   },
   PROCURAR: lift((p, t, ini) => { const a = txt(p) as string, b = txt(t) as string; const i = b.indexOf(a, (ini === null ? 1 : (num(ini) as number)) - 1); return i < 0 ? E("#VALOR!") : i + 1; }),
@@ -395,19 +397,28 @@ const usaSubtotal = (no: No): boolean =>
  * pequenas (até 50 × 26), então recalcular tudo a cada mudança é instantâneo.
  */
 export class Calculo {
+  /** Chaves "aba:linha,coluna" (aba é o índice). Cada aba é uma Planilha; o cálculo é um só. */
   private conteudos = new Map<string, Conteudo>();
   private cache = new Map<string, V>();
   private tipos = new Map<string, Tipo>();
   private derramado = new Map<string, V>();
   private pilha = new Set<string>();
-  /** Linhas escondidas pelo filtro (quem decide é a Planilha). */
-  linhaOculta: (l: number) => boolean = () => false;
+  /** Nomes das abas, na ordem (o índice é a aba). */
+  abas: string[] = ["Planilha1"];
+  /** Linhas escondidas pelo filtro de cada aba (quem decide é a Planilha da aba). */
+  linhaOculta: (l: number, aba: number) => boolean = () => false;
   constructor(
     private hoje: () => number = () => { const d = new Date(); return serial(d.getFullYear(), d.getMonth() + 1, d.getDate()); },
   ) {}
 
-  definir(l: number, c: number, conteudo: Conteudo | null) {
-    const k = `${l},${c}`;
+  /** Índice da aba pelo nome, sem diferenciar maiúsculas (-1 se não existe). */
+  indiceDaAba(nome: string): number {
+    const n = nome.toUpperCase();
+    return this.abas.findIndex((a) => a.toUpperCase() === n);
+  }
+
+  definir(l: number, c: number, conteudo: Conteudo | null, s = 0) {
+    const k = `${s}:${l},${c}`;
     if (conteudo === null) this.conteudos.delete(k);
     else this.conteudos.set(k, conteudo);
     this.invalidar();
@@ -420,33 +431,35 @@ export class Calculo {
     this.derramado.clear();
   }
 
-  temFormula(l: number, c: number) {
-    const x = this.conteudos.get(`${l},${c}`);
+  temFormula(l: number, c: number, s = 0) {
+    const x = this.conteudos.get(`${s}:${l},${c}`);
     return !!x && "formula" in x;
   }
 
   /** Preenchida pelo resultado de uma fórmula que derramou (FILTRO, ÚNICO…). */
-  derramada(l: number, c: number) {
-    const k = `${l},${c}`;
+  derramada(l: number, c: number, s = 0) {
+    const k = `${s}:${l},${c}`;
     if (this.conteudos.has(k)) return false;
-    this.ler(l, c);
+    this.ler(l, c, s);
     return this.derramado.has(k);
   }
 
-  private contexto(): Ctx {
+  /** Contexto de avaliação de uma fórmula que mora na aba `s`. */
+  private contexto(s: number): Ctx {
     const agora = () => { const d = new Date(); return this.hoje() + (d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds()) / 86400; };
+    const aba = (nome?: string) => (nome === undefined ? s : this.indiceDaAba(nome));
     return {
-      ler: (a, b) => this.ler(a, b),
+      ler: (a, b, nome) => { const t = aba(nome); return t < 0 ? E("#REF!") : this.ler(a, b, t); },
       hoje: this.hoje,
       agora,
-      oculta: (x) => this.linhaOculta(x),
-      ehSubtotal: (a, b) => { const y = this.conteudos.get(`${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
+      oculta: (x, nome) => { const t = aba(nome); return t >= 0 && this.linhaOculta(x, t); },
+      ehSubtotal: (a, b, nome) => { const y = this.conteudos.get(`${aba(nome)}:${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
     };
   }
 
   /** Avalia uma fórmula que não está em célula nenhuma (regra de formatação condicional). */
-  avaliarAvulsa(no: No): V {
-    const r = avaliar(no, this.contexto());
+  avaliarAvulsa(no: No, s = 0): V {
+    const r = avaliar(no, this.contexto(s));
     return Array.isArray(r) ? (r[0]?.[0] ?? null) : r;
   }
 
@@ -455,15 +468,17 @@ export class Calculo {
     if (this.pilha.has(k)) return E("#CIRC!");
     const no = (this.conteudos.get(k) as { formula: No }).formula;
     this.pilha.add(k);
-    const [l, c] = k.split(",").map(Number);
-    const r = avaliar(no, this.contexto());
+    const [s, resto] = k.split(":");
+    const [l, c] = resto.split(",").map(Number);
+    const r = avaliar(no, this.contexto(Number(s)));
     this.pilha.delete(k);
     let v: V;
     if (Array.isArray(r)) {
-      const ocupado = r.some((linha, i) => linha.some((_, j) => (i || j) && (this.conteudos.has(`${l + i},${c + j}`) || this.derramado.has(`${l + i},${c + j}`))));
+      const chave = (i: number, j: number) => `${s}:${l + i},${c + j}`;
+      const ocupado = r.some((linha, i) => linha.some((_, j) => (i || j) && (this.conteudos.has(chave(i, j)) || this.derramado.has(chave(i, j)))));
       if (ocupado) v = E("#DESPEJAR!");
       else {
-        r.forEach((linha, i) => linha.forEach((x, j) => { if (i || j) this.derramado.set(`${l + i},${c + j}`, x ?? null); }));
+        r.forEach((linha, i) => linha.forEach((x, j) => { if (i || j) this.derramado.set(chave(i, j), x ?? null); }));
         v = r[0][0] ?? null;
       }
     } else v = r;
@@ -471,8 +486,8 @@ export class Calculo {
     return v;
   }
 
-  ler(l: number, c: number): V {
-    const k = `${l},${c}`;
+  ler(l: number, c: number, s = 0): V {
+    const k = `${s}:${l},${c}`;
     const x = this.conteudos.get(k);
     if (x && "formula" in x) return this.calcular(k);
     if (x) return x.valor;
@@ -483,35 +498,36 @@ export class Calculo {
   }
 
   /** Tipo do valor, para a exibição (data, moeda, porcentagem…), como o Excel infere. */
-  tipo(l: number, c: number): Tipo {
-    const v = this.ler(l, c);
+  tipo(l: number, c: number, s = 0): Tipo {
+    const v = this.ler(l, c, s);
     if (v === null) return "EMPTY";
     if (typeof v === "string") return "STRING";
     if (typeof v === "boolean") return "BOOLEAN";
     if (typeof v === "object") return "ERROR";
-    const k = `${l},${c}`;
+    const k = `${s}:${l},${c}`;
     const x = this.conteudos.get(k);
     if (!x) return "NUMBER_RAW";
     if ("valor" in x) return x.tipo;
-    if (!this.tipos.has(k)) { this.tipos.set(k, "NUMBER_RAW"); this.tipos.set(k, this.tipoDe(x.formula)); }
+    if (!this.tipos.has(k)) { this.tipos.set(k, "NUMBER_RAW"); this.tipos.set(k, this.tipoDe(x.formula, s)); }
     return this.tipos.get(k)!;
   }
 
-  private tipoDe(no: No): Tipo {
+  private tipoDe(no: No, s: number): Tipo {
+    const aba = (nome?: string) => (nome === undefined ? s : this.indiceDaAba(nome));
     switch (no.t) {
-      case "ref": { const t = this.tipo(no.l, no.c); return t.startsWith("NUMBER") ? t : "NUMBER_RAW"; }
+      case "ref": { const a = aba(no.aba); if (a < 0) return "NUMBER_RAW"; const t = this.tipo(no.l, no.c, a); return t.startsWith("NUMBER") ? t : "NUMBER_RAW"; }
       case "pct": return "NUMBER_PERCENT";
       case "fn":
         if (DATAS.has(no.nome)) return "NUMBER_DATE";
         if (no.nome === "AGORA") return "NUMBER_DATETIME";
         if (["SE", "SEERRO", "MÍNIMO", "MÁXIMO", "SOMA", "ARRED"].includes(no.nome) && no.args.length) {
-          const ts = no.args.map((a) => this.tipoDe(a)).filter((t) => t !== "NUMBER_RAW");
+          const ts = no.args.map((a) => this.tipoDe(a, s)).filter((t) => t !== "NUMBER_RAW");
           return ts.length && ts.every((t) => t === ts[0]) && ts[0] !== "NUMBER_PERCENT" ? ts[0] : "NUMBER_RAW";
         }
         return "NUMBER_RAW";
-      case "int": { const t = this.tipo(no.a.l, no.a.c); return t.startsWith("NUMBER") ? t : "NUMBER_RAW"; }
+      case "int": { const a = aba(no.aba); if (a < 0) return "NUMBER_RAW"; const t = this.tipo(no.a.l, no.a.c, a); return t.startsWith("NUMBER") ? t : "NUMBER_RAW"; }
       case "bin": {
-        const a = this.tipoDe(no.a), b = this.tipoDe(no.b);
+        const a = this.tipoDe(no.a, s), b = this.tipoDe(no.b, s);
         if (no.op === "-" && a === "NUMBER_DATE" && b === "NUMBER_DATE") return "NUMBER_RAW";
         if ((no.op === "+" || no.op === "-") && (a === "NUMBER_DATE" || b === "NUMBER_DATE")) return "NUMBER_DATE";
         if ((no.op === "+" || no.op === "-") && a === b) return a;

@@ -59,7 +59,9 @@ const LARGURA_CABECALHO = 44;
 const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
 export function Grade({ larguras }: { larguras?: Record<string, number> }) {
-  const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa, dados } = useSimulador();
+  const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa, dados, nomeAba, apontarExterno, formulaExterna } = useSimulador();
+  // Apontando de outra aba: arrastar sobre a grade estende o intervalo inserido na fórmula de lá.
+  const inicioExterno = useRef<Pos | null>(null);
   const semTeclado = useSemTeclado();
   const versao = useVersaoPlanilha();
   const ancora = useEstado((e) => e.ancora);
@@ -160,14 +162,20 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   }, [rascunho, entradaRef]);
 
   // Mantém o foco no input da grade (ele captura a digitação, inclusive acentos).
+  const apontandoDeFora = !!apontarExterno;
   useEffect(() => {
+    // Apontando de outra aba, quem digita é a barra de fórmulas (a célula da fórmula está lá).
+    if (apontandoDeFora) {
+      document.querySelector<HTMLInputElement>('[data-testid="barra-formulas"]')?.focus();
+      return;
+    }
     // Não rouba o foco de campos que têm o próprio foco (barra de fórmulas, campo de resposta).
     if (document.activeElement?.closest("[data-foco-proprio]")) return;
     const el = entradaRef.current;
     // Celular, fora da edição: refoca para o teclado virtual fechar (inputMode "none").
     if (semTeclado && modo === "pronto" && el && document.activeElement === el) el.blur();
     el?.focus({ preventScroll: true });
-  }, [ancora, modo, entradaRef, semTeclado]);
+  }, [ancora, modo, entradaRef, semTeclado, apontandoDeFora]);
 
   // Gráfico selecionado (recém-inserido, por exemplo): rola a grade até ele, se estiver fora da vista.
   const gradeRef = useRef<HTMLDivElement>(null);
@@ -177,7 +185,10 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   }, [graficoAtivo]);
 
   useEffect(() => {
-    const soltar = () => store.getState().terminarArrasto();
+    const soltar = () => {
+      inicioExterno.current = null;
+      store.getState().terminarArrasto();
+    };
     window.addEventListener("mouseup", soltar);
     return () => window.removeEventListener("mouseup", soltar);
   }, [store]);
@@ -218,6 +229,11 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
 
   const aoPressionarCelula = (e: MouseEvent, p: Pos) => {
     e.preventDefault();
+    if (apontarExterno) {
+      inicioExterno.current = p;
+      apontarExterno(p, p);
+      return;
+    }
     const s = store.getState();
     if (s.graficoAtivo !== null) store.setState({ graficoAtivo: null });
     // Modo "apontar": clicar (ou arrastar) numa célula enquanto digita uma fórmula insere a referência.
@@ -237,6 +253,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   };
 
   const aoEntrarCelula = (p: Pos) => {
+    if (apontarExterno && inicioExterno.current) return apontarExterno(inicioExterno.current, p);
     const s = store.getState();
     if (s.arrasto === "selecao") s.selecionarPeloMouse(p, true);
     if (s.arrasto === "alca") s.moverAlca(p);
@@ -452,7 +469,10 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
 
   const editando = modo !== "pronto";
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
-  const refsCoradas = editando ? referenciasDaFormula(rascunho) : [];
+  // Referências da fórmula: todas colorem o texto; na grade, só as que caem nesta aba.
+  const daqui = (aba?: string) => (aba === undefined ? !formulaExterna : !!nomeAba && aba.toUpperCase() === nomeAba.toUpperCase());
+  const refsTexto = editando ? referenciasDaFormula(rascunho) : [];
+  const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter((r) => daqui(r.aba));
 
   return (
     <div className="relative">
@@ -723,7 +743,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           );
         })}
         {/* texto colorido por cima do editor (o input fica com o texto transparente) */}
-        {refsCoradas.length > 0 && (
+        {refsTexto.length > 0 && (
           <div
             aria-hidden
             className="pointer-events-none absolute z-30 flex items-center overflow-hidden border-2 border-transparent px-1 whitespace-pre text-zinc-900"
@@ -734,7 +754,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
               height: ALTURA + 1,
             }}
           >
-            <FormulaColorida texto={rascunho} refs={refsCoradas} />
+            <FormulaColorida texto={rascunho} refs={refsTexto} />
           </div>
         )}
         {/* input da célula ativa: invisível no modo pronto, editor nos outros */}
@@ -755,7 +775,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           onPaste={aoColar}
           onKeyDown={aoTeclar}
           className={`absolute z-20 border-2 border-success px-1 font-[inherit] text-[13px] outline-none ${
-            editando ? `bg-white opacity-100 shadow-md ${refsCoradas.length ? "text-transparent" : "text-zinc-900"}` : "opacity-0"
+            editando ? `bg-white opacity-100 shadow-md ${refsTexto.length ? "text-transparent" : "text-zinc-900"}` : "opacity-0"
           }`}
           style={{
             left: esquerda(ancora.coluna) - 1,

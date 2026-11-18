@@ -15,10 +15,7 @@ import { corrigir, type Resultado } from "@/grader/corrigir";
 import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
-import { BarraFormatacao } from "./BarraFormatacao";
-import { BarraDados } from "./BarraDados";
-import { PainelDinamica } from "./PainelDinamica";
-import { PainelGrafico } from "./PainelGrafico";
+import { AreaPlanilha } from "./AreaPlanilha";
 import { BarraFormulas } from "./BarraFormulas";
 import { Alternativas } from "./Alternativas";
 import { TextoRico } from "./TextoRico";
@@ -356,13 +353,12 @@ export default function Simulador({
           )}
           {ex.type !== "multiple_choice" && (
             <>
-              {nucleo.formatacao && <BarraFormatacao />}
-              {(nucleo.dados || nucleo.dinamica || nucleo.condicional || nucleo.grafico || nucleo.validacao) && <BarraDados />}
-              {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
-              <BarraFormulas />
-              <Grade larguras={ex.grade.larguras} />
-              {nucleo.dinamica && <PainelDinamica />}
-              {nucleo.grafico && <PainelGrafico />}
+              <AreaPlanilha
+                ex={ex}
+                nucleo={nucleo}
+                entradaRef={entradaRef}
+                barraToque={semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer"}
+              />
               {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
               <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
                 Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·

@@ -168,6 +168,27 @@ export const recursosSchema = z.object({
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
 });
 
+/** Nome de aba como o Excel aceita: até 31 caracteres, sem : \\ / ? * [ ] nem ! (que separa a aba da célula). */
+const nomeAba = z.string().regex(/^[^:\\/?*[\]!']{1,31}$/, "Nome de aba inválido");
+
+export const gradeSchema = z.object({
+  /** Nome da aba (padrão: Planilha1). */
+  nome: nomeAba.optional(),
+  linhas: z.number().int().min(1).max(50),
+  colunas: z.number().int().min(1).max(26),
+  larguras: z.record(z.string(), z.number()).optional(),
+  celulas: z.record(endereco, celulaInicialSchema),
+  /** Células perturbadas na checagem anti-valor-digitado. */
+  variaveis: z.array(endereco).optional(),
+  /**
+   * Células de texto usadas como critério (ex.: F1 = "SP") e outros valores
+   * que a checagem testa no lugar delas (ex.: ["RJ", "MG"]).
+   */
+  alternativas: z.record(endereco, z.array(z.string()).min(1)).optional(),
+  /** Estado inicial dos recursos (ex.: o filtro já aplicado num exercício de SUBTOTAL). */
+  recursos: recursosSchema.optional(),
+});
+
 /** Campos comuns a todos os tipos de exercício. */
 const baseSchema = z.object({
   id: z.uuid(),
@@ -181,21 +202,9 @@ const baseSchema = z.object({
   titulo: z.string().min(3),
   /** Parágrafos; aceitam `código` e **negrito**. */
   enunciado: z.array(z.string()).min(1),
-  grade: z.object({
-    linhas: z.number().int().min(1).max(50),
-    colunas: z.number().int().min(1).max(26),
-    larguras: z.record(z.string(), z.number()).optional(),
-    celulas: z.record(endereco, celulaInicialSchema),
-    /** Células perturbadas na checagem anti-valor-digitado. */
-    variaveis: z.array(endereco).optional(),
-    /**
-     * Células de texto usadas como critério (ex.: F1 = "SP") e outros valores
-     * que a checagem testa no lugar delas (ex.: ["RJ", "MG"]).
-     */
-    alternativas: z.record(endereco, z.array(z.string()).min(1)).optional(),
-    /** Estado inicial dos recursos (ex.: o filtro já aplicado num exercício de SUBTOTAL). */
-    recursos: recursosSchema.optional(),
-  }),
+  grade: gradeSchema,
+  /** Outras abas da pasta, depois da principal (`grade`). Fórmulas as leem com Nome!A1. */
+  abas: z.array(z.object({ nome: nomeAba, grade: gradeSchema })).max(5).optional(),
   /** Seleção ao abrir o exercício (padrão: A1). */
   inicio: z.object({ celulaAtiva: endereco.optional(), selecao: intervalo.optional() }).optional(),
   /**

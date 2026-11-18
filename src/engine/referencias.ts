@@ -14,7 +14,12 @@ export type ReferenciaNaFormula = {
   intervalo: Intervalo;
   /** Índice em CORES_REFERENCIA. A mesma referência repetida mantém a cor. */
   cor: number;
+  /** Aba da referência (`Vendas!B2`); ausente = a aba da própria fórmula. `inicio` aponta para depois do "!". */
+  aba?: string;
 };
+
+/** Nome de aba logo antes de uma referência: Vendas! ou 'Base 2024'! */
+const PREFIXO_ABA = /(?:'((?:[^']|'')+)'|([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*))!$/;
 
 /** Referências de célula/intervalo de uma fórmula, fora de aspas e de nomes de função. */
 export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
@@ -34,12 +39,14 @@ export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
     if (aspas[inicio]) continue;
     // Faz parte de um nome maior (LOG10, CONT.SE1…) ou é uma função (ex.: "A1(")?
     if (LETRA.test(formula[inicio - 1] ?? "") || /[0-9.]/.test(formula[inicio - 1] ?? "")) continue;
-    if (/[A-Za-z0-9_.(]/.test(formula[fim] ?? "")) continue;
+    if (/[A-Za-z0-9_.(!]/.test(formula[fim] ?? "")) continue; // "Q1!" é nome de aba, não célula
     const [a, b = a] = m[0].replace(/\$/g, "").toUpperCase().split(":");
     const intervalo = normalizar(deEndereco(a), deEndereco(b));
-    const chave = `${a}:${b}`;
+    const p = formula[inicio - 1] === "!" ? PREFIXO_ABA.exec(formula.slice(0, inicio)) : null;
+    const aba = p ? (p[1]?.replace(/''/g, "'") ?? p[2]) : undefined;
+    const chave = `${aba ?? ""}!${a}:${b}`;
     if (!cores.has(chave)) cores.set(chave, cores.size % CORES_REFERENCIA.length);
-    out.push({ inicio, fim, texto: m[0], intervalo, cor: cores.get(chave)! });
+    out.push({ inicio, fim, texto: m[0], intervalo, cor: cores.get(chave)!, ...(aba !== undefined ? { aba } : {}) });
   }
   return out;
 }

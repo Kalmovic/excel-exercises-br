@@ -83,7 +83,9 @@ function naoImplementadas(no: No, out = new Set<string>()): Set<string> {
 export class Planilha {
   readonly linhas: number;
   readonly colunas: number;
-  private calculo = new Calculo();
+  /** Cálculo (compartilhado entre as abas de uma Pasta) e o índice desta aba nele. */
+  private calculo: Calculo;
+  readonly aba: number;
   /** O que aparece na barra de fórmulas de cada célula preenchida (chave "linha,coluna"). */
   private textos = new Map<string, string>();
   private versao = 0;
@@ -119,10 +121,17 @@ export class Planilha {
   private condicionais: RegraCondicional[] = [];
   private estilos = new Map<string, EstiloCelula>();
 
-  constructor(grade: Grade, extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {}) {
+  constructor(
+    grade: Grade,
+    extras: { formatos?: Record<string, Grade["celulas"][string]["formato"]> } = {},
+    vinculo?: { calculo: Calculo; aba: number },
+  ) {
     this.linhas = grade.linhas;
     this.colunas = grade.colunas;
-    this.calculo.linhaOculta = (l) => this.ocultas.has(l);
+    this.calculo = vinculo?.calculo ?? new Calculo();
+    this.aba = vinculo?.aba ?? 0;
+    // Numa Pasta, quem distribui por aba é ela (cada aba tem o seu filtro).
+    if (!vinculo) this.calculo.linhaOculta = (l) => this.ocultas.has(l);
     for (const [end, cel] of Object.entries(grade.celulas)) {
       this.gravar(deEndereco(end), cel.entrada);
       if (cel.bloqueada ?? cel.entrada !== "") this.bloqueadas.add(end);
@@ -144,10 +153,58 @@ export class Planilha {
   }
 
   /** Monta a planilha de um exercício, aplicando também os formatos das células-alvo. */
+  /**
+   * A planilha do exercício. Com várias abas, devolve a primeira de uma Pasta
+   * (as outras ficam em `planilha.pasta`): correção, progresso e certificado
+   * continuam conversando com uma Planilha só.
+   */
   static deExercicio(ex: Exercicio) {
-    return new Planilha(ex.grade, {
-      formatos: ex.type === "formula" ? Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])) : {},
+    const formatos = ex.type === "formula" ? Object.fromEntries(ex.alvos.map((a) => [a.celula, a.formato])) : {};
+    return Planilha.deGrades(ex.grade, ex.abas, formatos);
+  }
+
+  /** Primeira aba (`grade`) e as outras (`abas`), já ligadas numa Pasta quando houver mais de uma. */
+  static deGrades(grade: Grade, abas: Exercicio["abas"], formatos: Record<string, Formato | undefined> = {}) {
+    if (!abas?.length) return new Planilha(grade, { formatos });
+    return new Pasta([{ nome: grade.nome ?? "Planilha1", grade, formatos }, ...abas.map((a) => ({ nome: a.nome, grade: a.grade }))]).abas[0];
+  }
+
+  // --- várias abas ----------------------------------------------------------
+
+  /** A pasta de trabalho, quando o exercício tem várias abas. */
+  pasta?: Pasta;
+  /** Chamado depois de cada mudança (a Pasta usa para avisar as outras abas). */
+  aoMudar?: () => void;
+
+  /** Outra aba mudou: fórmulas daqui podem depender dela. Recalcula o que é derivado e avisa a tela. */
+  refrescar() {
+    this.atualizarDerivados();
+    this.versao++;
+    this.ouvintes.forEach((fn) => fn());
+  }
+
+  /**
+   * A fórmula fica em maiúsculas ao ser gravada (`=VENDAS!B2`); o nome da aba
+   * volta para a grafia dela (`=Vendas!B2`), como o Excel mostra.
+   */
+  private grafarAbas(formula: string): string {
+    const nomes = this.calculo.abas;
+    if (nomes.length < 2) return formula;
+    return formula.replace(/("(?:[^"]|"")*")|'((?:[^']|'')+)'!|([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!/g, (m, texto, citado, simples) => {
+      if (texto) return texto;
+      const nome = (citado ?? simples).replace(/''/g, "'");
+      const i = this.calculo.indiceDaAba(nome);
+      if (i < 0) return m;
+      return citado !== undefined ? `'${nomes[i].replace(/'/g, "''")}'!` : `${nomes[i]}!`;
     });
+  }
+
+  /** "Vendas!A1" → a Planilha da aba Vendas e "A1". Sem "!", esta aba. */
+  private daAba(end: string): [Planilha, string] | null {
+    const i = end.lastIndexOf("!");
+    if (i < 0) return [this, end];
+    const alvo = this.pasta?.aba(end.slice(0, i).replace(/^'(.*)'$/, "$1"));
+    return alvo ? [alvo, end.slice(i + 1)] : null;
   }
 
   // --- store externo -------------------------------------------------------
@@ -165,6 +222,7 @@ export class Planilha {
     this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
+    this.aoMudar?.();
   }
 
   // --- leitura -------------------------------------------------------------
@@ -179,12 +237,12 @@ export class Planilha {
 
   valor(end: string | Pos): ValorCelula {
     const p = this.pos(end);
-    return this.calculo.ler(p.linha, p.coluna);
+    return this.calculo.ler(p.linha, p.coluna, this.aba);
   }
 
   tipo(end: string | Pos): TipoDetalhado {
     const p = this.pos(end);
-    return this.calculo.tipo(p.linha, p.coluna);
+    return this.calculo.tipo(p.linha, p.coluna, this.aba);
   }
 
   /** Mensagem técnica do erro (o motor próprio já usa os nomes em português). */
@@ -229,13 +287,13 @@ export class Planilha {
 
   temFormula(end: string | Pos): boolean {
     const p = this.pos(end);
-    return this.calculo.temFormula(p.linha, p.coluna);
+    return this.calculo.temFormula(p.linha, p.coluna, this.aba);
   }
 
   /** Célula preenchida por uma fórmula de array (FILTRO, ÚNICO…) que derramou. */
   derramada(end: string | Pos): boolean {
     const p = this.pos(end);
-    return this.calculo.derramada(p.linha, p.coluna);
+    return this.calculo.derramada(p.linha, p.coluna, this.aba);
   }
 
   funcoesUsadas(end: string | Pos): string[] {
@@ -243,6 +301,10 @@ export class Planilha {
   }
 
   bloqueada(end: string | Pos): boolean {
+    if (typeof end === "string" && end.includes("!")) {
+      const alvo = this.daAba(end);
+      return !alvo || alvo[0].bloqueada(alvo[1]);
+    }
     return this.bloqueadas.has(typeof end === "string" ? end : paraEndereco(end)) || this.daDinamica(end);
   }
 
@@ -316,8 +378,12 @@ export class Planilha {
    * aluno apagou (sem isso, o valor original voltaria ao restaurar).
    */
   conteudosDoAluno(): Record<string, string> {
-    const out = Object.fromEntries(Object.entries(this.conteudos()).filter(([end]) => !this.bloqueada(end)));
+    const out: Record<string, string> = Object.fromEntries(Object.entries(this.conteudos()).filter(([end]) => !this.bloqueada(end)));
     for (const end of this.preenchidasEditaveis) if (!(end in out) && !this.bloqueada(end)) out[end] = "";
+    // Na primeira aba de uma Pasta, junta as outras com o nome na frente ("Vendas!A1").
+    if (this.pasta && this.pasta.abas[0] === this)
+      for (const aba of this.pasta.abas.slice(1))
+        for (const [end, t] of Object.entries(aba.conteudosDoAluno())) out[`${this.pasta.nomeDe(aba)}!${end}`] = t;
     return out;
   }
 
@@ -340,12 +406,12 @@ export class Planilha {
     let texto: string;
     try {
       conteudo = lerEntrada(bruto);
-      texto = conteudo === null ? "" : "formula" in conteudo ? normalizarFormula(bruto) : this.textoDe(conteudo, bruto);
+      texto = conteudo === null ? "" : "formula" in conteudo ? this.grafarAbas(normalizarFormula(bruto)) : this.textoDe(conteudo, bruto);
     } catch {
       conteudo = { formula: ERRO_DE_ESCRITA };
       texto = bruto.trim();
     }
-    this.calculo.definir(p.linha, p.coluna, conteudo);
+    this.calculo.definir(p.linha, p.coluna, conteudo, this.aba);
     if (texto === "") this.textos.delete(k);
     else this.textos.set(k, texto);
     return antes;
@@ -407,8 +473,17 @@ export class Planilha {
   /** Grava várias células de uma vez, sem validação de idioma (uso interno e restauração). */
   definirVarias(alteracoes: Alteracao[]) {
     const mudancas: Mudanca[] = [];
+    // Endereços com aba ("Vendas!A1") vão para a aba deles.
+    const deOutras = alteracoes.filter((a) => a.endereco.includes("!"));
+    const porAba = new Map<Planilha, Alteracao[]>();
+    for (const a of deOutras) {
+      const alvo = this.daAba(a.endereco);
+      if (!alvo || alvo[0] === this) continue;
+      porAba.set(alvo[0], [...(porAba.get(alvo[0]) ?? []), { endereco: alvo[1], bruto: a.bruto }]);
+    }
+    for (const [aba, lista] of porAba) aba.definirVarias(lista);
     for (const { endereco, bruto } of alteracoes) {
-      if (this.bloqueada(endereco)) continue;
+      if (endereco.includes("!") || this.bloqueada(endereco)) continue;
       const antes = this.gravar(deEndereco(endereco), bruto);
       mudancas.push({ end: endereco, antes, depois: this.textos.get(this.chave(endereco)) });
     }
@@ -829,7 +904,7 @@ export class Planilha {
   private avaliarFormulaEm(formula: string, origem: Pos, p: Pos): ValorCelula {
     try {
       const f = deslocarFormula(formula, p.linha - origem.linha, p.coluna - origem.coluna);
-      return this.calculo.avaliarAvulsa(analisar(f));
+      return this.calculo.avaliarAvulsa(analisar(f), this.aba);
     } catch {
       return null;
     }
@@ -905,7 +980,7 @@ export class Planilha {
   private atualizarDinamicas() {
     for (const k of this.celulasDinamicas) {
       const [l, c] = k.split(",").map(Number);
-      if (!this.textos.has(k)) this.calculo.definir(l, c, null);
+      if (!this.textos.has(k)) this.calculo.definir(l, c, null, this.aba);
     }
     this.celulasDinamicas = new Set();
     this.formatosDinamicas = new Map();
@@ -936,7 +1011,7 @@ export class Planilha {
         this.celulasDinamicas.add(k);
         if (x.valor === null) continue;
         const tipo = typeof x.valor === "number" ? "NUMBER_RAW" : typeof x.valor === "string" ? "STRING" : typeof x.valor === "boolean" ? "BOOLEAN" : "ERROR";
-        this.calculo.definir(p.linha, p.coluna, { valor: x.valor, tipo });
+        this.calculo.definir(p.linha, p.coluna, { valor: x.valor, tipo }, this.aba);
         if (x.negrito) this.negritosDinamicas.add(end);
         if (x.formatoDe) {
           const f = this.formatoDoCampo(origem, x.formatoDe);
@@ -1297,4 +1372,39 @@ export function deslocarFormula(formula: string, dl: number, dc: number): string
     out = out.slice(0, r.inicio) + (quebrou ? "#REF!" : novo) + out.slice(r.fim);
   }
   return out;
+}
+
+/**
+ * Pasta de trabalho: várias abas (cada uma uma Planilha) com um cálculo só,
+ * para que `=Vendas!B2` funcione. Quando uma aba muda, as outras recalculam
+ * o que é derivado (filtro, tabela dinâmica…) e avisam a tela.
+ */
+export class Pasta {
+  readonly calculo = new Calculo();
+  readonly abas: Planilha[];
+
+  constructor(folhas: { nome: string; grade: Grade; formatos?: Record<string, Formato | undefined> }[]) {
+    this.calculo.abas = folhas.map((f) => f.nome);
+    this.abas = folhas.map((f, i) => new Planilha(f.grade, { formatos: f.formatos }, { calculo: this.calculo, aba: i }));
+    this.calculo.linhaOculta = (l, aba) => this.abas[aba]?.linhaOculta(l) ?? false;
+    for (const p of this.abas) {
+      p.pasta = this;
+      p.aoMudar = () => this.abas.forEach((o) => o !== p && o.refrescar());
+    }
+    // Recursos de uma aba (tabela dinâmica, regras) podem ler outra: recalcula com todas montadas.
+    this.abas.forEach((p) => p.refrescar());
+  }
+
+  nomes(): string[] {
+    return this.calculo.abas;
+  }
+
+  nomeDe(p: Planilha): string {
+    return this.calculo.abas[p.aba];
+  }
+
+  aba(nome: string): Planilha | undefined {
+    const i = this.calculo.indiceDaAba(nome);
+    return i < 0 ? undefined : this.abas[i];
+  }
 }

@@ -1,0 +1,3434 @@
+[
+  {
+    "id": "9c823c39-75ea-5e44-9325-5cf21d2d2913",
+    "slug": "abas-total-de-outra-aba",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Somar dados de outra aba",
+    "enunciado": [
+      "Na aba **Resumo**, em **B2**, calcule o **total de vendas de janeiro**. Os dados estão na aba **Jan**."
+    ],
+    "dicas": [
+      "Clique na aba Jan embaixo da planilha para ver onde estão os números.",
+      "Para usar uma célula de outra aba, escreva o nome da aba e um ponto de exclamação antes do endereço. Também dá para clicar na aba no meio da fórmula e selecionar."
+    ],
+    "explicacao": [
+      "`=SOMA(Jan!B2:B6)`.",
+      "Comece a fórmula em B2, clique na aba **Jan**, selecione as vendas e aperte Enter: o Excel escreve `Jan!` sozinho e volta para o Resumo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-total-de-outra-aba",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Planilha de verdade quase nunca cabe numa aba só: um mês por aba, os dados numa e o resumo em outra. Ler uma aba a partir da outra é o passo que falta.",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Total de janeiro",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6355,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Jan!B2:B6)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUM"
+    ]
+  },
+  {
+    "id": "c834f389-078e-51f2-b26d-a48cff06d20e",
+    "slug": "abas-total-de-outra-aba-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Média de outra aba",
+    "enunciado": [
+      "Na aba **Resumo**, em **B2**, calcule a **média de vendas de fevereiro** (aba **Fev**)."
+    ],
+    "dicas": [
+      "É a mesma ideia, com outra função e outra aba."
+    ],
+    "explicacao": [
+      "`=MÉDIA(Fev!B2:B6)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-total-de-outra-aba",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Média de fevereiro",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 1284.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(Fev!B2:B6)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "AVERAGE"
+    ]
+  },
+  {
+    "id": "a5c816e6-43b9-5050-8d06-d2c032624b4d",
+    "slug": "abas-total-de-outra-aba-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 13,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Três abas numa fórmula",
+    "enunciado": [
+      "Em **B2**, calcule o **total do trimestre**: as vendas de **Jan**, **Fev** e **Mar** juntas."
+    ],
+    "dicas": [
+      "Uma fórmula pode ler várias abas ao mesmo tempo."
+    ],
+    "explicacao": [
+      "`=SOMA(Jan!B2:B6)+SOMA(Fev!B2:B6)+SOMA(Mar!B2:B6)` (ou tudo dentro de um SOMA só, separado por ;).",
+      "No Excel também existe a referência 3D, `=SOMA(Jan:Mar!B2:B6)`, que soma a mesma área de todas as abas entre Jan e Mar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-total-de-outra-aba",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Total do trimestre",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 19635,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Jan!B2:B6;Fev!B2:B6;Mar!B2:B6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "8172d82c-affe-58bb-8371-47ccf9114fa3",
+    "slug": "abas-total-de-outra-aba-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: aba com espaço no nome",
+    "enunciado": [
+      "Em **B2**, calcule o **total de vendas** da aba **Vendas 2025**."
+    ],
+    "dicas": [
+      "Escreva a fórmula como nas outras e veja o que acontece.",
+      "O espaço no meio do nome confunde o Excel. Existe um sinal que \"embrulha\" o nome inteiro."
+    ],
+    "explicacao": [
+      "`=SOMA('Vendas 2025'!B2:B6)`, com o nome entre **aspas simples**.",
+      "Clicando na aba durante a fórmula, o Excel coloca as aspas sozinho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-total-de-outra-aba",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Total de 2025",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Vendas 2025",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6355,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA('Vendas 2025'!B2:B6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "c8b7cdc5-1c0f-5670-9151-32337a9dc0c2",
+    "slug": "abas-total-de-outra-aba-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Como escrever a referência?",
+    "enunciado": [
+      "Como se escreve, numa fórmula, a célula **B2** da aba **Vendas**?"
+    ],
+    "dicas": [
+      "O separador entre a aba e a célula é um sinal de pontuação."
+    ],
+    "explicacao": [
+      "`Vendas!B2`: o nome da aba, um **ponto de exclamação** e o endereço. Com espaço no nome: `'Vendas 2025'!B2`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "abas-total-de-outra-aba",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "Vendas.B2",
+        "dica": "Ponto é usado em nomes de funções, como CONT.SE; para abas é outro sinal."
+      },
+      {
+        "texto": "Vendas!B2"
+      },
+      {
+        "texto": "B2(Vendas)",
+        "dica": "A aba vem antes da célula."
+      },
+      {
+        "texto": "Vendas:B2",
+        "dica": "Dois-pontos separam o início e o fim de um intervalo (B2:B6)."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "bc075e8b-1b65-5bd8-ba8d-e0c547052d17",
+    "slug": "abas-procv-tabela-de-precos",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV em outra aba",
+    "enunciado": [
+      "Na aba **Pedidos**, em **C2:C6**, traga o **preço** de cada código da tabela da aba **Preços**."
+    ],
+    "dicas": [
+      "É um PROCV comum; só a tabela que está em outra aba.",
+      "Antes de copiar a fórmula para baixo, pense no que precisa ficar fixo."
+    ],
+    "explicacao": [
+      "`=PROCV(A2;Preços!$A$2:$B$6;2;FALSO)` em C2 e copie até C6.",
+      "A tabela de preços numa aba separada é o jeito organizado: o pedido fica limpo e a tabela pode crescer sem atrapalhar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-procv-tabela-de-precos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Tabela de preços numa aba, pedidos em outra: é assim que planilha de empresa se organiza. O PROCV atravessa as abas sem problema.",
+    "grade": {
+      "nome": "Pedidos",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 80,
+        "B": 60,
+        "C": 110,
+        "D": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "C30"
+        },
+        "B2": {
+          "entrada": "3"
+        },
+        "A3": {
+          "entrada": "A10"
+        },
+        "B3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "E50"
+        },
+        "B4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "B20"
+        },
+        "B5": {
+          "entrada": "1"
+        },
+        "A6": {
+          "entrada": "D40"
+        },
+        "B6": {
+          "entrada": "25"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Preços",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 80,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Código",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Preço",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "A10"
+            },
+            "B2": {
+              "entrada": "18,9",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "B20"
+            },
+            "B3": {
+              "entrada": "120,0",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "C30"
+            },
+            "B4": {
+              "entrada": "24,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "D40"
+            },
+            "B5": {
+              "entrada": "7,8",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "E50"
+            },
+            "B6": {
+              "entrada": "39,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 24.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 18.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 39.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 120.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 7.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ]
+  },
+  {
+    "id": "3d76a114-e252-5aed-abcc-ec6ca1d94323",
+    "slug": "abas-procv-tabela-de-precos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASE em outra aba",
+    "enunciado": [
+      "No **Resumo**, em **B2:B4**, calcule o **total de cada vendedor** a partir da aba **Lançamentos**."
+    ],
+    "dicas": [
+      "SOMASE recebe três intervalos e critérios; os dois intervalos da soma estão na outra aba.",
+      "O critério pode ser o nome que está na coluna A do próprio Resumo."
+    ],
+    "explicacao": [
+      "`=SOMASE(Lançamentos!$A$2:$A$8;A2;Lançamentos!$B$2:$B$8)` em B2 e copie até B4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-procv-tabela-de-precos",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 96,
+        "B": 120,
+        "C": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Lançamentos",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "150",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Ana"
+            },
+            "B4": {
+              "entrada": "420",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Carla"
+            },
+            "B5": {
+              "entrada": "980",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Bruno"
+            },
+            "B6": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "Ana"
+            },
+            "B7": {
+              "entrada": "75",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "Carla"
+            },
+            "B8": {
+              "entrada": "130",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7",
+            "B8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 795,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Lançamentos!$A$2:$A$8;A2;Lançamentos!$B$2:$B$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 360,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Lançamentos!$A$2:$A$8;A3;Lançamentos!$B$2:$B$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 1110,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Lançamentos!$A$2:$A$8;A4;Lançamentos!$B$2:$B$8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ]
+  },
+  {
+    "id": "478d70ce-97e4-5c06-a439-fc18fc6f1618",
+    "slug": "abas-procv-tabela-de-precos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SE em outra aba",
+    "enunciado": [
+      "No **Resumo**, em **B2:B4**, conte **quantas vendas** cada vendedor tem na aba **Lançamentos**."
+    ],
+    "dicas": [
+      "CONT.SE precisa do intervalo (na outra aba) e do critério (aqui no Resumo)."
+    ],
+    "explicacao": [
+      "`=CONT.SE(Lançamentos!$A$2:$A$8;A2)` em B2 e copie até B4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-procv-tabela-de-precos",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 96,
+        "B": 120,
+        "C": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Lançamentos",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "150",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Ana"
+            },
+            "B4": {
+              "entrada": "420",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Carla"
+            },
+            "B5": {
+              "entrada": "980",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Bruno"
+            },
+            "B6": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "Ana"
+            },
+            "B7": {
+              "entrada": "75",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "Carla"
+            },
+            "B8": {
+              "entrada": "130",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7",
+            "B8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(Lançamentos!$A$2:$A$8;A2)"
+      },
+      {
+        "celula": "B3",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(Lançamentos!$A$2:$A$8;A3)"
+      },
+      {
+        "celula": "B4",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(Lançamentos!$A$2:$A$8;A4)"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ]
+  },
+  {
+    "id": "025af574-88fb-58f4-803c-39604b265a73",
+    "slug": "abas-procv-tabela-de-precos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 24,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a tabela que andou",
+    "enunciado": [
+      "Na aba **Pedidos**, em **C2:C6**, traga o preço de cada código (aba **Preços**). Escreva em C2 e **copie para baixo**."
+    ],
+    "dicas": [
+      "Copie sem travar nada e olhe a última linha: o intervalo da tabela andou junto?",
+      "Ao copiar, só o código do pedido deve andar. A tabela precisa ficar parada."
+    ],
+    "explicacao": [
+      "`=PROCV(A2;Preços!$A$2:$B$6;2;FALSO)`: o **$** trava a tabela da outra aba como travaria uma da mesma aba.",
+      "Sem o $, em C6 a tabela vira Preços!A6:B10, que começa no último código e deixa os outros de fora."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-procv-tabela-de-precos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Pedidos",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 80,
+        "B": 60,
+        "C": 110,
+        "D": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "C30"
+        },
+        "B2": {
+          "entrada": "3"
+        },
+        "A3": {
+          "entrada": "A10"
+        },
+        "B3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "E50"
+        },
+        "B4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "B20"
+        },
+        "B5": {
+          "entrada": "1"
+        },
+        "A6": {
+          "entrada": "D40"
+        },
+        "B6": {
+          "entrada": "25"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Preços",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 80,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Código",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Preço",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "A10"
+            },
+            "B2": {
+              "entrada": "18,9",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "B20"
+            },
+            "B3": {
+              "entrada": "120,0",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "C30"
+            },
+            "B4": {
+              "entrada": "24,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "D40"
+            },
+            "B5": {
+              "entrada": "7,8",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "E50"
+            },
+            "B6": {
+              "entrada": "39,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 24.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 18.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 39.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 120.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 7.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PREÇOS!A\\d+:B\\d+",
+        "dica": "A tabela de preços andou quando a fórmula foi copiada. Trave o intervalo da outra aba com $, como faria na mesma aba."
+      }
+    ]
+  },
+  {
+    "id": "20a9019d-64a9-5c2e-bb74-15538d8343c7",
+    "slug": "abas-procv-tabela-de-precos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E se a aba mudar de nome?",
+    "enunciado": [
+      "No Excel, você renomeia a aba **Preços** para **Tabela**. O que acontece com as fórmulas que usavam `Preços!`?"
+    ],
+    "dicas": [
+      "O Excel acompanha as referências quando você muda a estrutura da pasta."
+    ],
+    "explicacao": [
+      "Elas são **atualizadas sozinhas** para `Tabela!`. Mas se a aba for **excluída**, viram #REF!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "abas-procv-tabela-de-precos",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "Viram #REF!.",
+        "dica": "Isso acontece se a aba for excluída, não renomeada."
+      },
+      {
+        "texto": "São atualizadas para Tabela!."
+      },
+      {
+        "texto": "Continuam com Preços! e dão #NOME?.",
+        "dica": "O Excel troca o nome nas fórmulas sozinho."
+      },
+      {
+        "texto": "O Excel não deixa renomear.",
+        "dica": "Deixa: basta dar dois cliques na aba."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "88282039-cc59-5f00-81d1-6cb133ab6bf6",
+    "slug": "abas-resumo-trimestre",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Resumo do trimestre",
+    "enunciado": [
+      "No **Resumo**, em **B2:B4**, traga o total de cada mês (abas **Jan**, **Fev** e **Mar**) e, em **B5**, o total do trimestre."
+    ],
+    "dicas": [
+      "Cada linha lê uma aba diferente; não dá para só copiar a fórmula para baixo.",
+      "O total do trimestre pode somar o próprio Resumo."
+    ],
+    "explicacao": [
+      "B2 `=SOMA(Jan!B2:B6)`, B3 `=SOMA(Fev!B2:B6)`, B4 `=SOMA(Mar!B2:B6)` e B5 `=SOMA(B2:B4)`.",
+      "Copiar não troca o nome da aba: cada mês precisa da sua fórmula (ou da função INDIRETO, que fica para depois)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-resumo-trimestre",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O resumo que junta as abas é o coração de qualquer controle mensal: cada mês na sua aba, e uma aba que mostra tudo.",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Janeiro"
+        },
+        "A3": {
+          "entrada": "Fevereiro"
+        },
+        "A4": {
+          "entrada": "Março"
+        },
+        "A5": {
+          "entrada": "Trimestre",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6355,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Jan!B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 6420,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Fev!B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 6860,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Mar!B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 19635,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B2:B4)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "e6fbcb06-68f0-5b56-aac3-8de73b967437",
+    "slug": "abas-resumo-trimestre-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Crescimento entre meses",
+    "enunciado": [
+      "Em **B2**, calcule quanto as vendas de **março** cresceram em relação a **janeiro**, em **porcentagem**."
+    ],
+    "dicas": [
+      "Crescimento = (novo − antigo) / antigo. Cada um vem de uma aba."
+    ],
+    "explicacao": [
+      "`=SOMA(Mar!B2:B6)/SOMA(Jan!B2:B6)-1`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-resumo-trimestre",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Crescimento Jan → Mar",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 0.07946498819826897,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Mar!B2:B6)/SOMA(Jan!B2:B6)-1",
+        "formato": "percentual"
+      }
+    ]
+  },
+  {
+    "id": "bde66f48-c356-5dcf-b6b4-5260f1bdd059",
+    "slug": "abas-resumo-trimestre-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A maior venda do trimestre",
+    "enunciado": [
+      "Em **B2**, mostre a **maior venda individual** do trimestre (qualquer mês)."
+    ],
+    "dicas": [
+      "MÁXIMO aceita vários intervalos separados por ponto e vírgula, de abas diferentes."
+    ],
+    "explicacao": [
+      "`=MÁXIMO(Jan!B2:B6;Fev!B2:B6;Mar!B2:B6)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-resumo-trimestre",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Maior venda",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 1800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(Jan!B2:B6;Fev!B2:B6;Mar!B2:B6)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "MAX"
+    ]
+  },
+  {
+    "id": "a2115262-84fe-5fdc-83fc-cda6633a0632",
+    "slug": "abas-resumo-trimestre-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 34,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: uma aba maior que a outra",
+    "enunciado": [
+      "No **Resumo**, em **B2:B4**, traga o total de cada mês e, em **B5**, o total do trimestre."
+    ],
+    "dicas": [
+      "Abra cada aba antes de escrever a fórmula dela. Elas têm o mesmo tamanho?",
+      "Quem copia a fórmula de janeiro e só troca o nome da aba pode deixar alguém de fora."
+    ],
+    "explicacao": [
+      "Fevereiro tem um vendedor a mais (Fábio, na linha 7): `=SOMA(Fev!B2:B7)`.",
+      "Com B2:B6, o total de fevereiro sai R$ 640 menor e ninguém percebe. Confira o tamanho de cada aba, ou some a coluna inteira (`Fev!B:B`) quando a aba só tem a tabela."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-resumo-trimestre",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 120,
+        "C": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Janeiro"
+        },
+        "A3": {
+          "entrada": "Fevereiro"
+        },
+        "A4": {
+          "entrada": "Março"
+        },
+        "A5": {
+          "entrada": "Trimestre",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "Fábio"
+            },
+            "B7": {
+              "entrada": "640",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6355,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Jan!B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 7060,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Fev!B2:B7)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 6860,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Mar!B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B5",
+        "esperado": 20275,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B2:B4)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "FEV!B2:B6",
+        "celula": "B3",
+        "dica": "O total de fevereiro está menor do que deveria. Abra a aba Fev e confira até que linha vão os dados."
+      }
+    ]
+  },
+  {
+    "id": "152a40f8-d1e6-506c-9e9b-5647ad7337ca",
+    "slug": "abas-resumo-trimestre-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Referência 3D",
+    "enunciado": [
+      "No Excel, o que faz `=SOMA(Jan:Mar!B2)`?"
+    ],
+    "dicas": [
+      "Os dois-pontos entre os nomes das abas formam um intervalo de abas."
+    ],
+    "explicacao": [
+      "Soma a célula **B2 de todas as abas de Jan até Mar** (referência 3D). Uma aba nova colocada entre elas entra na soma sozinha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "abas-resumo-trimestre",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "Soma B2 das abas Jan e Mar, só as duas.",
+        "dica": "Os dois-pontos pegam também as abas do meio."
+      },
+      {
+        "texto": "Soma B2 de todas as abas de Jan até Mar."
+      },
+      {
+        "texto": "Dá erro: não existe aba chamada Jan:Mar.",
+        "dica": "No Excel, isso é uma referência 3D válida."
+      },
+      {
+        "texto": "Soma de B2 até a última linha da aba Mar.",
+        "dica": "O intervalo é de abas, não de linhas."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "57b1f690-06bb-5f34-94a5-8e228dbc6ebe",
+    "slug": "teste-abas-1",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total de março",
+    "enunciado": [
+      "Na aba **Resumo**, em **B2**, calcule o total de vendas de **março** (aba **Mar**)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "revisar": "abas-total-de-outra-aba",
+    "teste": true,
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Total de março",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6860,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Mar!B2:B6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "c01fcbdd-8158-522f-ac4c-5ffd8aefefe4",
+    "slug": "teste-abas-2",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Preço de outra aba",
+    "enunciado": [
+      "Na aba **Pedidos**, em **C2:C6**, traga o preço de cada código da aba **Preços**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "revisar": "abas-procv-tabela-de-precos",
+    "teste": true,
+    "grade": {
+      "nome": "Pedidos",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 80,
+        "B": 60,
+        "C": 110,
+        "D": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "C30"
+        },
+        "B2": {
+          "entrada": "3"
+        },
+        "A3": {
+          "entrada": "A10"
+        },
+        "B3": {
+          "entrada": "10"
+        },
+        "A4": {
+          "entrada": "E50"
+        },
+        "B4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "B20"
+        },
+        "B5": {
+          "entrada": "1"
+        },
+        "A6": {
+          "entrada": "D40"
+        },
+        "B6": {
+          "entrada": "25"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Preços",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 80,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Código",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Preço",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "A10"
+            },
+            "B2": {
+              "entrada": "18,9",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "B20"
+            },
+            "B3": {
+              "entrada": "120,0",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "C30"
+            },
+            "B4": {
+              "entrada": "24,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "D40"
+            },
+            "B5": {
+              "entrada": "7,8",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "E50"
+            },
+            "B6": {
+              "entrada": "39,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 24.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 18.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 39.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 120.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 7.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;Preços!$A$2:$B$6;2;FALSO)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "261937e9-4de7-52eb-b637-c84eb64f3958",
+    "slug": "teste-abas-3",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média do trimestre",
+    "enunciado": [
+      "Em **B2**, calcule a **média de todas as vendas** do trimestre (abas Jan, Fev e Mar)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "revisar": "abas-resumo-trimestre",
+    "teste": true,
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Média do trimestre",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "950",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1430",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1100",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1675",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1320",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "880",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1510",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "990",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1720",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 1309.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÉDIA(Jan!B2:B6;Fev!B2:B6;Mar!B2:B6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "8cf90367-b706-538f-ad11-359b66f28a71",
+    "slug": "teste-abas-4",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Aba com espaço",
+    "enunciado": [
+      "Em **B2**, calcule o total de vendas da aba **Vendas 2025**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "formula",
+    "revisar": "abas-total-de-outra-aba",
+    "teste": true,
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 110,
+        "D": 96
+      },
+      "celulas": {
+        "A2": {
+          "entrada": "Total de 2025",
+          "negrito": true
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Vendas 2025",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 96,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Vendedor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Vendas",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "1410",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "1020",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Carla"
+            },
+            "B4": {
+              "entrada": "1380",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "Daniel"
+            },
+            "B5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Eva"
+            },
+            "B6": {
+              "entrada": "1800",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 6860,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA('Vendas 2025'!B2:B6)",
+        "formato": "moeda"
+      }
+    ]
+  },
+  {
+    "id": "6c35b35f-f6d2-59ba-9e02-f1eb61833a43",
+    "slug": "teste-abas-5",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Separador da aba",
+    "enunciado": [
+      "Qual destas fórmulas lê corretamente a célula B2 da aba **Vendas 2025**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "type": "multiple_choice",
+    "revisar": "abas-total-de-outra-aba",
+    "teste": true,
+    "opcoes": [
+      {
+        "texto": "=Vendas 2025!B2"
+      },
+      {
+        "texto": "='Vendas 2025'!B2"
+      },
+      {
+        "texto": "=\"Vendas 2025\"!B2"
+      },
+      {
+        "texto": "=Vendas_2025.B2"
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  }
+]

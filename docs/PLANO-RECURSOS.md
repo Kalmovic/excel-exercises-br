@@ -129,13 +129,21 @@ Diferenças conscientes e o que ficou para depois:
 - "Ignorar em branco" fica sempre ligado; a opção "Personalizado" (fórmula) e limites com referência de célula (`=$F$1`) ficaram de fora.
 - Colar e a alça de preenchimento passam por cima da validação, como no Excel (a lição 1 ensina isso), mas aqui não levam a regra da origem junto.
 
-### Fase 6: Várias abas
+### Fase 6: Várias abas, feita em 18/11/2026
 
 - Schema: `abas: [{ nome, grade }]`, mantendo `grade` como "uma aba só".
 - Parser: `Vendas!A1` e `'Base 2024'!A1:C10`. O cálculo passa a usar a chave `aba,linha,coluna`.
 - Grade: barra de abas embaixo, e apontar um intervalo de outra aba enquanto se digita a fórmula.
 - Progresso: endereços com prefixo (`"Resumo!C2"`); sem `!` continua sendo a primeira aba.
 - Conteúdo: consolidação, PROCV em outra aba e resumo mensal. Fica por último porque é a maior mudança no motor.
+
+
+O que entrou: referências `Vendas!B2` e `'Vendas 2025'!B2:B6` no parser; o cálculo com chave "aba:linha,coluna"; a `Pasta` (cada aba continua sendo uma `Planilha`, todas com um cálculo só, avisando umas às outras); `Planilha.deExercicio` devolvendo a primeira aba de uma Pasta, o que deixou correção, progresso e certificado sem mudanças; o progresso das outras abas com o nome na frente ("Vendas!B4"); o nome da aba com a grafia original na barra de fórmulas; copiar fórmula andando a célula e mantendo a aba; checagem anti-valor-digitado perturbando os números de todas as abas; a mensagem para aba com espaço sem aspas; e, na tela, a barra de abas, um store por aba (cada uma lembra a seleção) e o "apontar em outra aba" (clicar ou arrastar insere `Aba!B2:B6` na fórmula e o Enter volta para a origem). Módulo 13 com 3 lições e o teste (20 exercícios). Testes: `src/engine/abas.test.ts` e `e2e/abas.spec.ts`.
+
+Diferenças conscientes e o que ficou para depois:
+- Referência 3D (`=SOMA(Jan:Mar!B2)`) e INDIRETO: só aparecem como pergunta conceitual.
+- O aluno não cria, renomeia nem exclui abas; as abas vêm do exercício.
+- As respostas ficam sempre na primeira aba. Filtro, tabela dinâmica, regras e gráficos funcionam em qualquer aba, mas o progresso guarda os recursos só da primeira.
 
 ### Funções novas (em paralelo, baratas)
 
