@@ -125,6 +125,31 @@ describe("exercícios de ferramenta", () => {
       expect(comGrafico("grafico-participacao-canal", "colunas", "A1:B5").falhas[0].mensagem).toContain("não é o melhor"));
     it("falta o título", () =>
       expect(comGrafico("grafico-vendas-por-mes-variacao-b", "colunas", "A1:B7").falhas[0].mensagem).toContain("Falta o título"));
+    it("coluna da Margem junto", () =>
+      expect(comGrafico("grafico-colunas-certas", "colunas", "A1:D7").falhas[0].mensagem).toContain("uma série a mais: Margem"));
+    it("coluna do Total junto", () =>
+      expect(comGrafico("grafico-colunas-certas-pegadinha", "colunas", "A1:F5").falhas[0].mensagem).toContain("uma série a mais: Total"));
+    it("o gráfico pronto já começa com a série a mais", () => {
+      const ex = ferramentas.find((e) => e.slug === "grafico-colunas-certas-variacao-a")!;
+      expect(corrigir(ex, Planilha.deExercicio(ex)).falhas[0].mensagem).toContain("Taxa de resolução");
+    });
+    it("ranking sem classificar", () =>
+      expect(comGrafico("grafico-ranking", "colunas", "A1:B7").falhas[0].mensagem).toContain("fora da ordem pedida"));
+    it("ranking classificado pelo nome não passa", () => {
+      const ex = ferramentas.find((e) => e.slug === "grafico-ranking")!;
+      const p = Planilha.deExercicio(ex);
+      p.classificar({ intervalo: "A1:B7", chaves: [{ coluna: "A", ordem: "desc" }], cabecalho: true });
+      p.inserirGrafico("colunas", deIntervalo("A1:B7"));
+      expect(corrigir(ex, p).falhas[0].mensagem).toContain("fora da ordem pedida");
+    });
+    it("top 5 com os 8 vendedores", () => {
+      const ex = ferramentas.find((e) => e.slug === "grafico-ranking-pegadinha")!;
+      const p = Planilha.deExercicio(ex);
+      p.classificar({ intervalo: "A1:B9", chaves: [{ coluna: "B", ordem: "desc" }], cabecalho: true });
+      p.inserirGrafico("colunas", deIntervalo("A1:B9"));
+      expect(corrigir(ex, p).falhas[0].mensagem).toContain("tem 8 categorias, mas a pergunta pede só 5");
+    });
+    it("top 5 sem classificar não passa", () => expect(comGrafico("grafico-ranking-pegadinha", "colunas", "A1:B6").ok).toBe(false));
   });
 
   describe("validação: a correção testa o comportamento", () => {
@@ -155,5 +180,29 @@ describe("exercícios de ferramenta", () => {
           erro: { titulo: "Quantidade inválida", texto: "Use um número de 1 a 100." },
         }).falhas[0].mensagem,
       ).toContain("em 8 de 9 células"));
+    it("CPF com pontos: 11 caracteres não basta", () =>
+      expect(
+        comRegra("validacao-cpf-pegadinha", { intervalo: "B2:B10", permitir: "comprimento", operador: "igual", valor1: "11" }).falhas[0].mensagem,
+      ).toContain("“123.456.789-09” (14 caracteres)"));
+    it("CPF: menor ou igual a 11 aceita o incompleto", () =>
+      expect(
+        comRegra("validacao-cpf", { intervalo: "B2:B10", permitir: "comprimento", operador: "menorIgual", valor1: "11" }).falhas[0].mensagem,
+      ).toContain("“1234567890” (10 caracteres)"));
+    it("recesso com 'está entre' faz o contrário", () =>
+      expect(
+        comRegra("validacao-periodo-pegadinha", { intervalo: "B2:B9", permitir: "data", operador: "entre", valor1: "20/12/2026", valor2: "20/01/2027" }).falhas[0]
+          .mensagem,
+      ).toContain("não está entre"));
+    it("'depois de' não inclui o dia", () =>
+      expect(comRegra("validacao-periodo-variacao-b", { intervalo: "B2:B8", permitir: "data", operador: "maiorIgual", valor1: "18/11/2026" }).falhas[0].mensagem).toContain(
+        "“18/11/2026”",
+      ));
+    it("CPF começando com zero: só com apóstrofo cabe nos 11", () => {
+      const ex = ferramentas.find((e) => e.slug === "validacao-cpf")!;
+      const p = Planilha.deExercicio(ex);
+      p.adicionarValidacao({ intervalo: "B2:B10", permitir: "comprimento", operador: "igual", valor1: "11" });
+      expect(p.aceitariaNaCelula("B2", "01234567890")).toBe(false);
+      expect(p.aceitariaNaCelula("B2", "'01234567890")).toBe(true);
+    });
   });
 });

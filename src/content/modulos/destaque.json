@@ -2622,6 +2622,1845 @@
     }
   },
   {
+    "id": "138807ec-2f16-549c-b63b-f6f3d66f7532",
+    "slug": "destaque-prazos-vencidos",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Datas: prazos vencidos",
+    "enunciado": [
+      "Hoje é **18/11/2026**. Na coluna **Prazo**, destaque em **vermelho** os prazos **vencidos** (datas **antes** de hoje)."
+    ],
+    "dicas": [
+      "Para o Excel, data é número: as regras de maior e menor funcionam com datas.",
+      "Digite a data na regra do jeito que você digitaria numa célula (dia/mês/ano)."
+    ],
+    "explicacao": [
+      "Selecione **D2:D11** → **É Menor do que…** → **18/11/2026**, em vermelho.",
+      "*Menor do que* é estrito: o prazo de hoje (P-104) não fica vermelho, porque ainda dá para cumprir. Quatro prazos estão vencidos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-prazos-vencidos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Em escritório de advocacia, contabilidade ou RH, prazo perdido custa caro. Uma regra de cor faz a planilha avisar sozinha.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 64,
+        "B": 128,
+        "C": 112,
+        "D": 84,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-101"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "P-102"
+        },
+        "B3": {
+          "entrada": "João Ferreira"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "P-103"
+        },
+        "B4": {
+          "entrada": "Clínica Vida"
+        },
+        "C4": {
+          "entrada": "Petição inicial"
+        },
+        "D4": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "P-104"
+        },
+        "B5": {
+          "entrada": "Ana Souza"
+        },
+        "C5": {
+          "entrada": "Réplica"
+        },
+        "D5": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "P-105"
+        },
+        "B6": {
+          "entrada": "Transportes Rápido"
+        },
+        "C6": {
+          "entrada": "Recurso"
+        },
+        "D6": {
+          "entrada": "02/12/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "P-106"
+        },
+        "B7": {
+          "entrada": "Pedro Alves"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "P-107"
+        },
+        "B8": {
+          "entrada": "Padaria Trigo"
+        },
+        "C8": {
+          "entrada": "Embargos"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "P-108"
+        },
+        "B9": {
+          "entrada": "Marta Lima"
+        },
+        "C9": {
+          "entrada": "Petição inicial"
+        },
+        "D9": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "A10": {
+          "entrada": "P-109"
+        },
+        "B10": {
+          "entrada": "Construtora Alfa"
+        },
+        "C10": {
+          "entrada": "Réplica"
+        },
+        "D10": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "P-110"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Recurso"
+        },
+        "D11": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "D2:D11",
+        "esperado": [
+          "D2",
+          "D4",
+          "D7",
+          "D10"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "menor",
+            "intervalo": "D2:D11",
+            "valor": "18/11/2026",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "a2d1fe31-446a-5d18-a2b9-da293a1f2c08",
+    "slug": "destaque-prazos-vencidos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Prazos da semana",
+    "enunciado": [
+      "Destaque em **amarelo** os prazos que vencem **nesta semana**: de **18/11/2026 a 24/11/2026**, incluindo os dois dias."
+    ],
+    "dicas": [
+      "Uma regra só, com duas datas: o começo e o fim da semana."
+    ],
+    "explicacao": [
+      "Selecione **D2:D11** → **Está Entre…** → **18/11/2026** e **24/11/2026**, em amarelo.",
+      "*Está Entre* inclui as pontas: o prazo de hoje (18/11) entra. Ficam amarelos os prazos de 18, 19 e 21/11."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-prazos-vencidos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 64,
+        "B": 128,
+        "C": 112,
+        "D": 84,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-101"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "P-102"
+        },
+        "B3": {
+          "entrada": "João Ferreira"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "P-103"
+        },
+        "B4": {
+          "entrada": "Clínica Vida"
+        },
+        "C4": {
+          "entrada": "Petição inicial"
+        },
+        "D4": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "P-104"
+        },
+        "B5": {
+          "entrada": "Ana Souza"
+        },
+        "C5": {
+          "entrada": "Réplica"
+        },
+        "D5": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "P-105"
+        },
+        "B6": {
+          "entrada": "Transportes Rápido"
+        },
+        "C6": {
+          "entrada": "Recurso"
+        },
+        "D6": {
+          "entrada": "02/12/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "P-106"
+        },
+        "B7": {
+          "entrada": "Pedro Alves"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "P-107"
+        },
+        "B8": {
+          "entrada": "Padaria Trigo"
+        },
+        "C8": {
+          "entrada": "Embargos"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "P-108"
+        },
+        "B9": {
+          "entrada": "Marta Lima"
+        },
+        "C9": {
+          "entrada": "Petição inicial"
+        },
+        "D9": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "A10": {
+          "entrada": "P-109"
+        },
+        "B10": {
+          "entrada": "Construtora Alfa"
+        },
+        "C10": {
+          "entrada": "Réplica"
+        },
+        "D10": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "P-110"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Recurso"
+        },
+        "D11": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "D2:D11",
+        "esperado": [
+          "D5",
+          "D8",
+          "D11"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "entre",
+            "intervalo": "D2:D11",
+            "valor": "18/11/2026",
+            "valor2": "24/11/2026",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "b2ee239a-9331-5daf-bed0-4426d4802648",
+    "slug": "destaque-prazos-vencidos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 43,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Linha inteira, com a data numa célula",
+    "enunciado": [
+      "A data de hoje está em **G1**. Pinte em **vermelho** a **linha inteira** (de A a D) de cada prazo **vencido** (antes da data de G1), usando a célula **G1** na regra."
+    ],
+    "dicas": [
+      "Linha inteira pede uma regra de fórmula, escrita pensando na primeira linha da seleção.",
+      "Dois endereços na fórmula: a coluna do prazo precisa ficar fixa, e a célula da data de hoje fica fixa por inteiro."
+    ],
+    "explicacao": [
+      "Selecione **A2:D11** → **Nova Regra: usar uma fórmula** → `=$D2<$G$1`, em vermelho.",
+      "`$D2` trava a coluna do prazo e deixa a linha andar; `$G$1` trava a célula toda, porque todas as linhas comparam com a mesma data. Mudando G1, as cores acompanham."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-prazos-vencidos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 64,
+        "B": 128,
+        "C": 112,
+        "D": 84,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-101"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "P-102"
+        },
+        "B3": {
+          "entrada": "João Ferreira"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "P-103"
+        },
+        "B4": {
+          "entrada": "Clínica Vida"
+        },
+        "C4": {
+          "entrada": "Petição inicial"
+        },
+        "D4": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "P-104"
+        },
+        "B5": {
+          "entrada": "Ana Souza"
+        },
+        "C5": {
+          "entrada": "Réplica"
+        },
+        "D5": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "P-105"
+        },
+        "B6": {
+          "entrada": "Transportes Rápido"
+        },
+        "C6": {
+          "entrada": "Recurso"
+        },
+        "D6": {
+          "entrada": "02/12/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "P-106"
+        },
+        "B7": {
+          "entrada": "Pedro Alves"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "P-107"
+        },
+        "B8": {
+          "entrada": "Padaria Trigo"
+        },
+        "C8": {
+          "entrada": "Embargos"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "P-108"
+        },
+        "B9": {
+          "entrada": "Marta Lima"
+        },
+        "C9": {
+          "entrada": "Petição inicial"
+        },
+        "D9": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "A10": {
+          "entrada": "P-109"
+        },
+        "B10": {
+          "entrada": "Construtora Alfa"
+        },
+        "C10": {
+          "entrada": "Réplica"
+        },
+        "D10": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "P-110"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Recurso"
+        },
+        "D11": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2<$G$1",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "4dade6ce-8dcb-5b0d-bfbd-3856fb4a91cd",
+    "slug": "destaque-prazos-vencidos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: processo sem prazo",
+    "enunciado": [
+      "Dois processos ainda **não têm prazo** (a célula está vazia).",
+      "Pinte em **vermelho** a **linha inteira** (de A a D) de cada prazo **vencido** (antes da data de **G1**)."
+    ],
+    "dicas": [
+      "Teste a regra com uma célula vazia: para o Excel, vazio numa comparação vale zero, e zero é uma data muito antiga.",
+      "A regra precisa de duas condições: ter prazo, e o prazo ser antes de hoje."
+    ],
+    "explicacao": [
+      "Selecione **A2:D11** → fórmula `=E($D2<>\"\";$D2<$G$1)`, em vermelho.",
+      "Só com `=$D2<$G$1`, as linhas sem prazo também ficam vermelhas: o vazio conta como zero (o dia 0 do Excel), que é antes de qualquer data. No Excel, até a regra pronta *É Menor do que* pinta as células vazias."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-prazos-vencidos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 64,
+        "B": 128,
+        "C": 112,
+        "D": 84,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-101"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "P-102"
+        },
+        "B3": {
+          "entrada": "João Ferreira"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "P-103"
+        },
+        "B4": {
+          "entrada": "Clínica Vida"
+        },
+        "C4": {
+          "entrada": "Petição inicial"
+        },
+        "A5": {
+          "entrada": "P-104"
+        },
+        "B5": {
+          "entrada": "Ana Souza"
+        },
+        "C5": {
+          "entrada": "Réplica"
+        },
+        "D5": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "P-105"
+        },
+        "B6": {
+          "entrada": "Transportes Rápido"
+        },
+        "C6": {
+          "entrada": "Recurso"
+        },
+        "D6": {
+          "entrada": "02/12/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "P-106"
+        },
+        "B7": {
+          "entrada": "Pedro Alves"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "P-107"
+        },
+        "B8": {
+          "entrada": "Padaria Trigo"
+        },
+        "C8": {
+          "entrada": "Embargos"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "P-108"
+        },
+        "B9": {
+          "entrada": "Marta Lima"
+        },
+        "C9": {
+          "entrada": "Petição inicial"
+        },
+        "A10": {
+          "entrada": "P-109"
+        },
+        "B10": {
+          "entrada": "Construtora Alfa"
+        },
+        "C10": {
+          "entrada": "Réplica"
+        },
+        "D10": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "P-110"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Recurso"
+        },
+        "D11": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($D2<>\"\";$D2<$G$1)",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "dc1bc339-f713-5e91-92c4-b3b30ee181b4",
+    "slug": "destaque-prazos-vencidos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Que a data de hoje se atualize sozinha",
+    "enunciado": [
+      "A regra `=$D2<$G$1` depende de alguém digitar a data de hoje em G1 todo dia. Como fazer a planilha marcar os vencidos sozinha, todos os dias?"
+    ],
+    "dicas": [
+      "Existe uma função que devolve a data do dia, sem argumento nenhum."
+    ],
+    "explicacao": [
+      "Use **HOJE()**: na própria regra (`=$D2<HOJE()`) ou em G1. Toda vez que a planilha abre ou recalcula, HOJE() vira a data do dia, e as cores acompanham.",
+      "Digitar a data na regra congela o dia: amanhã ela continua comparando com a data antiga."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-prazos-vencidos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Trocar $G$1 por HOJE() (ou pôr =HOJE() em G1)."
+      },
+      {
+        "texto": "Digitar a data de hoje direto na regra, no lugar de $G$1.",
+        "dica": "Assim a data fica fixa: amanhã a regra ainda compara com hoje."
+      },
+      {
+        "texto": "Apertar F9 todo dia.",
+        "dica": "F9 recalcula, mas a data digitada em G1 continua a mesma."
+      },
+      {
+        "texto": "Trocar a regra por Barras de Dados.",
+        "dica": "Barras mostram tamanho, não dizem se o prazo venceu."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "4d26f51c-3b7c-5f2d-b42d-a53a689db891",
+    "slug": "destaque-texto-contem",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Texto que contém uma palavra",
+    "enunciado": [
+      "Na coluna **Assunto**, destaque em **amarelo** os processos que **mencionam \"trabalhista\"**, em qualquer parte do texto."
+    ],
+    "dicas": [
+      "O assunto é uma frase inteira: comparar com a palavra sozinha não encontra nada.",
+      "Procure em Realçar Regras das Células uma regra que olhe um pedaço do texto."
+    ],
+    "explicacao": [
+      "Selecione **C2:C11** → **Texto que Contém…** → **trabalhista**, em amarelo.",
+      "*É Igual a* só destacaria uma célula com o texto exato \"trabalhista\". *Texto que Contém* acha a palavra no começo, no meio ou no fim, sem diferenciar maiúsculas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-texto-contem",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Descrições, observações e e-mails são textos longos. Achar todos os que falam de um assunto é a busca que mais se faz numa lista.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 56,
+        "B": 112,
+        "C": 210,
+        "D": 92,
+        "E": 24
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Assunto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mariana Lima"
+        },
+        "C2": {
+          "entrada": "Ação trabalhista: horas extras"
+        },
+        "D2": {
+          "entrada": "Dra. Paula"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Ana Lima"
+        },
+        "C3": {
+          "entrada": "Revisão de contrato de aluguel"
+        },
+        "D3": {
+          "entrada": "Dr. Renato"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Recurso trabalhista"
+        },
+        "D4": {
+          "entrada": "Dra. Paula"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Luciana Prado"
+        },
+        "C5": {
+          "entrada": "Divórcio consensual"
+        },
+        "D5": {
+          "entrada": "Dra. Sônia"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Ana Lima"
+        },
+        "C6": {
+          "entrada": "Cobrança de aluguel atrasado"
+        },
+        "D6": {
+          "entrada": "Dr. Renato"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Rescisão trabalhista"
+        },
+        "D7": {
+          "entrada": "Dra. Paula"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "João Ferreira"
+        },
+        "C8": {
+          "entrada": "Inventário"
+        },
+        "D8": {
+          "entrada": "Dra. Sônia"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Clínica Vida"
+        },
+        "C9": {
+          "entrada": "Recurso: multa da Vigilância"
+        },
+        "D9": {
+          "entrada": "Dr. Renato"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Acordo trabalhista"
+        },
+        "D10": {
+          "entrada": "Dra. Paula"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Juliana Lima"
+        },
+        "C11": {
+          "entrada": "Recurso de apelação: aluguel"
+        },
+        "D11": {
+          "entrada": "Dra. Sônia"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C4",
+          "C7",
+          "C10"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "texto",
+            "intervalo": "C2:C11",
+            "valor": "trabalhista",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "3c66ff33-ba00-5afc-a59d-8998823d9c87",
+    "slug": "destaque-texto-contem-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Os processos de aluguel",
+    "enunciado": [
+      "Destaque em **verde** os assuntos que falam de **aluguel**."
+    ],
+    "dicas": [
+      "É a mesma regra da questão anterior, com outra palavra e outra cor."
+    ],
+    "explicacao": [
+      "**C2:C11** → **Texto que Contém…** → **aluguel**, em verde.",
+      "Três processos: a revisão de contrato, a cobrança e o recurso de apelação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-texto-contem",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 56,
+        "B": 112,
+        "C": 210,
+        "D": 92,
+        "E": 24
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Assunto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mariana Lima"
+        },
+        "C2": {
+          "entrada": "Ação trabalhista: horas extras"
+        },
+        "D2": {
+          "entrada": "Dra. Paula"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Ana Lima"
+        },
+        "C3": {
+          "entrada": "Revisão de contrato de aluguel"
+        },
+        "D3": {
+          "entrada": "Dr. Renato"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Recurso trabalhista"
+        },
+        "D4": {
+          "entrada": "Dra. Paula"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Luciana Prado"
+        },
+        "C5": {
+          "entrada": "Divórcio consensual"
+        },
+        "D5": {
+          "entrada": "Dra. Sônia"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Ana Lima"
+        },
+        "C6": {
+          "entrada": "Cobrança de aluguel atrasado"
+        },
+        "D6": {
+          "entrada": "Dr. Renato"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Rescisão trabalhista"
+        },
+        "D7": {
+          "entrada": "Dra. Paula"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "João Ferreira"
+        },
+        "C8": {
+          "entrada": "Inventário"
+        },
+        "D8": {
+          "entrada": "Dra. Sônia"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Clínica Vida"
+        },
+        "C9": {
+          "entrada": "Recurso: multa da Vigilância"
+        },
+        "D9": {
+          "entrada": "Dr. Renato"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Acordo trabalhista"
+        },
+        "D10": {
+          "entrada": "Dra. Paula"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Juliana Lima"
+        },
+        "C11": {
+          "entrada": "Recurso de apelação: aluguel"
+        },
+        "D11": {
+          "entrada": "Dra. Sônia"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C3",
+          "C6",
+          "C11"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "texto",
+            "intervalo": "C2:C11",
+            "valor": "aluguel",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "6f23f026-36b5-5662-b1a3-f0f217ba12aa",
+    "slug": "destaque-texto-contem-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 53,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Linha inteira com texto que contém",
+    "enunciado": [
+      "Pinte em **vermelho** a **linha inteira** (de A a D) dos processos cujo **assunto** menciona **\"recurso\"**."
+    ],
+    "dicas": [
+      "Linha inteira pede fórmula. A função LOCALIZAR devolve a posição de um texto dentro de outro, ou erro se não achar.",
+      "A regra precisa de VERDADEIRO ou FALSO: existe uma função que pergunta se o resultado é um número."
+    ],
+    "explicacao": [
+      "Selecione **A2:D11** → fórmula `=ÉNÚM(LOCALIZAR(\"recurso\";$C2))`, em vermelho.",
+      "LOCALIZAR não diferencia maiúsculas e dá erro quando não acha; ÉNÚM transforma isso em VERDADEIRO ou FALSO. Também funciona `=CONT.SE($C2;\"*recurso*\")`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-texto-contem",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 56,
+        "B": 112,
+        "C": 210,
+        "D": 92,
+        "E": 24
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Assunto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mariana Lima"
+        },
+        "C2": {
+          "entrada": "Ação trabalhista: horas extras"
+        },
+        "D2": {
+          "entrada": "Dra. Paula"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Ana Lima"
+        },
+        "C3": {
+          "entrada": "Revisão de contrato de aluguel"
+        },
+        "D3": {
+          "entrada": "Dr. Renato"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Recurso trabalhista"
+        },
+        "D4": {
+          "entrada": "Dra. Paula"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Luciana Prado"
+        },
+        "C5": {
+          "entrada": "Divórcio consensual"
+        },
+        "D5": {
+          "entrada": "Dra. Sônia"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Ana Lima"
+        },
+        "C6": {
+          "entrada": "Cobrança de aluguel atrasado"
+        },
+        "D6": {
+          "entrada": "Dr. Renato"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Rescisão trabalhista"
+        },
+        "D7": {
+          "entrada": "Dra. Paula"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "João Ferreira"
+        },
+        "C8": {
+          "entrada": "Inventário"
+        },
+        "D8": {
+          "entrada": "Dra. Sônia"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Clínica Vida"
+        },
+        "C9": {
+          "entrada": "Recurso: multa da Vigilância"
+        },
+        "D9": {
+          "entrada": "Dr. Renato"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Acordo trabalhista"
+        },
+        "D10": {
+          "entrada": "Dra. Paula"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Juliana Lima"
+        },
+        "C11": {
+          "entrada": "Recurso de apelação: aluguel"
+        },
+        "D11": {
+          "entrada": "Dra. Sônia"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "A9",
+          "B9",
+          "C9",
+          "D9",
+          "A11",
+          "B11",
+          "C11",
+          "D11"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=ÉNÚM(LOCALIZAR(\"recurso\";$C2))",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "e8eca1cf-8d8a-5906-9cba-64b0b4d2032f",
+    "slug": "destaque-texto-contem-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 54,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a regra do colega",
+    "enunciado": [
+      "Um colega criou uma regra para destacar em **amarelo** os processos da cliente **Ana Lima**, mas ela está pintando clientes demais.",
+      "Corrija: na coluna **Cliente**, só **Ana Lima** deve ficar amarela."
+    ],
+    "dicas": [
+      "Veja primeiro qual regra o colega usou: o menu de Formatação Condicional tem onde listar as regras da planilha.",
+      "Mariana Lima e Juliana Lima têm \"ana Lima\" dentro do nome. Criar uma regra nova por cima não apaga a antiga."
+    ],
+    "explicacao": [
+      "**Gerenciar Regras…** → **Excluir** a regra *Texto que contém Ana Lima*. Depois, **B2:B11** → **É Igual a…** → **Ana Lima**, em amarelo.",
+      "*Texto que Contém* também acha o nome dentro de outro nome. E quem só cria a regra certa, sem excluir a do colega, continua com Mariana e Juliana amarelas: as duas regras valem ao mesmo tempo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-texto-contem",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 56,
+        "B": 112,
+        "C": 210,
+        "D": 92,
+        "E": 24
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Assunto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mariana Lima"
+        },
+        "C2": {
+          "entrada": "Ação trabalhista: horas extras"
+        },
+        "D2": {
+          "entrada": "Dra. Paula"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Ana Lima"
+        },
+        "C3": {
+          "entrada": "Revisão de contrato de aluguel"
+        },
+        "D3": {
+          "entrada": "Dr. Renato"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Recurso trabalhista"
+        },
+        "D4": {
+          "entrada": "Dra. Paula"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Luciana Prado"
+        },
+        "C5": {
+          "entrada": "Divórcio consensual"
+        },
+        "D5": {
+          "entrada": "Dra. Sônia"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Ana Lima"
+        },
+        "C6": {
+          "entrada": "Cobrança de aluguel atrasado"
+        },
+        "D6": {
+          "entrada": "Dr. Renato"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Rescisão trabalhista"
+        },
+        "D7": {
+          "entrada": "Dra. Paula"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "João Ferreira"
+        },
+        "C8": {
+          "entrada": "Inventário"
+        },
+        "D8": {
+          "entrada": "Dra. Sônia"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Clínica Vida"
+        },
+        "C9": {
+          "entrada": "Recurso: multa da Vigilância"
+        },
+        "D9": {
+          "entrada": "Dr. Renato"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Acordo trabalhista"
+        },
+        "D10": {
+          "entrada": "Dra. Paula"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Juliana Lima"
+        },
+        "C11": {
+          "entrada": "Recurso de apelação: aluguel"
+        },
+        "D11": {
+          "entrada": "Dra. Sônia"
+        }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "texto",
+            "intervalo": "B2:B11",
+            "valor": "Ana Lima",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B11",
+        "esperado": [
+          "B3",
+          "B6"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "Ana Lima",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "044ca6ad-2f68-557d-87a6-a3ad0ad10986",
+    "slug": "destaque-texto-contem-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "De onde vem essa cor?",
+    "enunciado": [
+      "Você abriu uma planilha de outra pessoa e uma célula está colorida, mas você não sabe por quê. Onde ver qual regra está pintando a célula?"
+    ],
+    "dicas": [
+      "A cor de uma regra não fica guardada na célula: fica numa lista de regras."
+    ],
+    "explicacao": [
+      "**Formatação Condicional → Gerenciar Regras…** lista cada regra, o intervalo em que vale e a cor. Dali dá para excluir (ou, no Excel, editar) a regra.",
+      "Pintar a célula com *Sem Preenchimento* não resolve: a regra continua lá e volta a pintar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-texto-contem",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Em Cor de Preenchimento, na Página Inicial.",
+        "dica": "Ali fica a cor pintada à mão. A cor de uma regra continua mesmo depois de Sem Preenchimento."
+      },
+      {
+        "texto": "Na barra de fórmulas, com a célula selecionada.",
+        "dica": "A barra mostra o conteúdo da célula, não as regras de cor."
+      },
+      {
+        "texto": "Em Formatação Condicional → Gerenciar Regras."
+      },
+      {
+        "texto": "Em Validação de Dados.",
+        "dica": "Validação controla o que pode ser digitado, não a cor."
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "8cfc1046-4683-5090-858d-e92cdf64dc7b",
     "slug": "teste-destaque-1",
     "trilha": "excel-ptbr",
@@ -3207,198 +5046,209 @@
     "ordem": 204,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "As duas menores",
+    "versao": 2,
+    "titulo": "Próximos dias",
     "enunciado": [
-      "Destaque em **vermelho** as **2 menores** vendas."
+      "Destaque em **amarelo** os prazos que vencem **de 19/11/2026 a 25/11/2026**, incluindo os dois dias."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "destaque-pedidos-repetidos",
+    "revisar": "destaque-prazos-vencidos",
     "teste": true,
     "type": "ferramenta",
     "grade": {
       "linhas": 13,
-      "colunas": 6,
+      "colunas": 7,
       "larguras": {
-        "A": 84,
-        "B": 72,
-        "C": 96,
-        "D": 88,
-        "E": 40,
-        "F": 40
+        "A": 64,
+        "B": 128,
+        "C": 112,
+        "D": 84,
+        "E": 24,
+        "F": 48,
+        "G": 84
       },
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Processo",
           "negrito": true
         },
         "B1": {
-          "entrada": "Região",
+          "entrada": "Cliente",
           "negrito": true
         },
         "C1": {
-          "entrada": "Valor",
+          "entrada": "Providência",
           "negrito": true
         },
         "D1": {
-          "entrada": "Status",
+          "entrada": "Prazo",
           "negrito": true
         },
         "A2": {
-          "entrada": "Ana"
+          "entrada": "P-101"
         },
         "B2": {
-          "entrada": "Sul"
+          "entrada": "Mercado Bom Preço"
         },
         "C2": {
-          "entrada": "1200",
-          "formato": "moeda"
+          "entrada": "Contestação"
         },
         "D2": {
-          "entrada": "Pago"
+          "entrada": "10/11/2026",
+          "formato": "data"
         },
         "A3": {
-          "entrada": "Bruno"
+          "entrada": "P-102"
         },
         "B3": {
-          "entrada": "Norte"
+          "entrada": "João Ferreira"
         },
         "C3": {
-          "entrada": "450",
-          "formato": "moeda"
+          "entrada": "Recurso"
         },
         "D3": {
-          "entrada": "Atrasado"
+          "entrada": "25/11/2026",
+          "formato": "data"
         },
         "A4": {
-          "entrada": "Carla"
+          "entrada": "P-103"
         },
         "B4": {
-          "entrada": "Sul"
+          "entrada": "Clínica Vida"
         },
         "C4": {
-          "entrada": "3800",
-          "formato": "moeda"
+          "entrada": "Petição inicial"
         },
         "D4": {
-          "entrada": "Pago"
+          "entrada": "17/11/2026",
+          "formato": "data"
         },
         "A5": {
-          "entrada": "Daniel"
+          "entrada": "P-104"
         },
         "B5": {
-          "entrada": "Leste"
+          "entrada": "Ana Souza"
         },
         "C5": {
-          "entrada": "1000",
-          "formato": "moeda"
+          "entrada": "Réplica"
         },
         "D5": {
-          "entrada": "Pendente"
+          "entrada": "18/11/2026",
+          "formato": "data"
         },
         "A6": {
-          "entrada": "Eva"
+          "entrada": "P-105"
         },
         "B6": {
-          "entrada": "Norte"
+          "entrada": "Transportes Rápido"
         },
         "C6": {
-          "entrada": "250",
-          "formato": "moeda"
+          "entrada": "Recurso"
         },
         "D6": {
-          "entrada": "Atrasado"
+          "entrada": "02/12/2026",
+          "formato": "data"
         },
         "A7": {
-          "entrada": "Fábio"
+          "entrada": "P-106"
         },
         "B7": {
-          "entrada": "Sul"
+          "entrada": "Pedro Alves"
         },
         "C7": {
-          "entrada": "3200",
-          "formato": "moeda"
+          "entrada": "Contestação"
         },
         "D7": {
-          "entrada": "Pago"
+          "entrada": "05/11/2026",
+          "formato": "data"
         },
         "A8": {
-          "entrada": "Gabi"
+          "entrada": "P-107"
         },
         "B8": {
-          "entrada": "Leste"
+          "entrada": "Padaria Trigo"
         },
         "C8": {
-          "entrada": "700",
-          "formato": "moeda"
+          "entrada": "Embargos"
         },
         "D8": {
-          "entrada": "Pago"
+          "entrada": "21/11/2026",
+          "formato": "data"
         },
         "A9": {
-          "entrada": "Hugo"
+          "entrada": "P-108"
         },
         "B9": {
-          "entrada": "Norte"
+          "entrada": "Marta Lima"
         },
         "C9": {
-          "entrada": "1000",
-          "formato": "moeda"
+          "entrada": "Petição inicial"
         },
         "D9": {
-          "entrada": "Atrasado"
+          "entrada": "30/11/2026",
+          "formato": "data"
         },
         "A10": {
-          "entrada": "Íris"
+          "entrada": "P-109"
         },
         "B10": {
-          "entrada": "Sul"
+          "entrada": "Construtora Alfa"
         },
         "C10": {
-          "entrada": "5100",
-          "formato": "moeda"
+          "entrada": "Réplica"
         },
         "D10": {
-          "entrada": "Pago"
+          "entrada": "12/11/2026",
+          "formato": "data"
         },
         "A11": {
-          "entrada": "João"
+          "entrada": "P-110"
         },
         "B11": {
-          "entrada": "Leste"
+          "entrada": "Carlos Dias"
         },
         "C11": {
-          "entrada": "380",
-          "formato": "moeda"
+          "entrada": "Recurso"
         },
         "D11": {
-          "entrada": "Pendente"
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
         }
       }
     },
     "verificacoes": [
       {
         "tipo": "destacadas",
-        "intervalo": "C2:C11",
+        "intervalo": "D2:D11",
         "esperado": [
-          "C6",
-          "C11"
+          "D3",
+          "D8",
+          "D11"
         ],
-        "estilo": "vermelho"
+        "estilo": "amarelo"
       }
     ],
     "solucao": {
       "recursos": {
         "condicionais": [
           {
-            "tipo": "menores",
-            "intervalo": "C2:C11",
-            "n": 2,
-            "estilo": "vermelho"
+            "tipo": "entre",
+            "intervalo": "D2:D11",
+            "valor": "19/11/2026",
+            "valor2": "25/11/2026",
+            "estilo": "amarelo"
           }
         ]
       }
@@ -3415,34 +5265,34 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Meta incluída",
+    "versao": 2,
+    "titulo": "Só a cliente certa",
     "enunciado": [
-      "Qual regra destaca as vendas de **R$ 1.000 ou mais**, incluindo quem vendeu exatamente R$ 1.000?"
+      "Na coluna Cliente há **Ana Lima**, **Mariana Lima** e **Juliana Lima**. Qual regra destaca **só Ana Lima**?"
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "destaque-vendas-baixas",
+    "revisar": "destaque-texto-contem",
     "teste": true,
     "type": "multiple_choice",
     "opcoes": [
       {
-        "texto": "É Maior do que 1000"
+        "texto": "Texto que Contém \"Ana Lima\""
       },
       {
-        "texto": "Está Entre 1000 e 1000000"
+        "texto": "Texto que Contém \"Ana\""
       },
       {
-        "texto": "É Igual a 1000"
+        "texto": "É Igual a \"Ana Lima\""
       },
       {
-        "texto": "10 Primeiros Itens"
+        "texto": "Valores Duplicados"
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "grade": {
       "linhas": 1,
       "colunas": 1,

@@ -2285,6 +2285,1277 @@
     }
   },
   {
+    "id": "b55754da-4a01-5421-a656-cf5f4ab31b82",
+    "slug": "validacao-cpf",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Comprimento do texto: CPF com 11 dígitos",
+    "enunciado": [
+      "Na coluna **CPF** (B2:B10), digitada só com números, aceite apenas CPFs com **exatamente 11 dígitos**."
+    ],
+    "dicas": [
+      "Em Permitir há uma opção que conta quantos caracteres a célula tem.",
+      "Exatamente 11: escolha o operador \"é igual a\"."
+    ],
+    "explicacao": [
+      "Selecione B2:B10 → **Validação de Dados** → Permitir: **Comprimento do texto** → Dados: **é igual a** → Comprimento: **11**.",
+      "Um CPF com um dígito a menos (ou a mais) é barrado na hora, antes de virar cadastro errado ou nota fiscal devolvida."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cpf",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "CPF com dígito faltando, sigla de estado escrita por extenso, resumo que não cabe no relatório: o comprimento do texto pega esses erros sem fórmula nenhuma.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 112,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "12345678901",
+          "98765432100"
+        ],
+        "recusa": [
+          "1234567890",
+          "123456789012"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "comprimento",
+            "operador": "igual",
+            "valor1": "11"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B10"
+    }
+  },
+  {
+    "id": "6ab31d0a-cc5f-55a3-834c-3aa05fd8ae5e",
+    "slug": "validacao-cpf-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Sigla do estado com 2 letras",
+    "enunciado": [
+      "Na coluna **UF** (C2:C10), aceite só siglas com **2 letras** (SP, RJ, MG…)."
+    ],
+    "dicas": [
+      "É o mesmo caminho do CPF. O que muda é o número."
+    ],
+    "explicacao": [
+      "Selecione C2:C10 → Validação de Dados → **Comprimento do texto** → **é igual a** → **2**.",
+      "A regra conta letras, não confere se a sigla existe: \"XX\" passaria. Para aceitar só as 27 siglas, use uma lista suspensa com elas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cpf",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 120,
+        "C": 72,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "UF",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula"
+        },
+        "B2": {
+          "entrada": "Campinas"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Niterói"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Belo Horizonte"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Curitiba"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Recife"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Salvador"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Porto Alegre"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Goiânia"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Manaus"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "SP",
+          "mg"
+        ],
+        "recusa": [
+          "S",
+          "São Paulo",
+          "SPA"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "comprimento",
+            "operador": "igual",
+            "valor1": "2"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "C2:C10"
+    }
+  },
+  {
+    "id": "88caa8ba-e92a-5d7a-b997-be6c63e5cf53",
+    "slug": "validacao-cpf-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Resumo em até 60 caracteres",
+    "enunciado": [
+      "Na coluna **Andamento** (B2:B8), o resumo pode ter **no máximo 60 caracteres**."
+    ],
+    "dicas": [
+      "\"No máximo 60\" quer dizer 60 ou menos. Qual operador diz isso?"
+    ],
+    "explicacao": [
+      "Selecione B2:B8 → Validação de Dados → **Comprimento do texto** → **é menor ou igual a** → **60**.",
+      "Serve para texto que vai para relatório, etiqueta ou sistema que corta o que passa do limite. Espaços e pontuação também contam."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cpf",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 112,
+        "B": 200,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Andamento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PROC-2026-014"
+        },
+        "A3": {
+          "entrada": "PROC-2026-027"
+        },
+        "A4": {
+          "entrada": "PROC-2026-031"
+        },
+        "A5": {
+          "entrada": "PROC-2026-045"
+        },
+        "A6": {
+          "entrada": "PROC-2026-052"
+        },
+        "A7": {
+          "entrada": "PROC-2026-068"
+        },
+        "A8": {
+          "entrada": "PROC-2026-073"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B8",
+        "aceita": [
+          "Aguardando audiência",
+          "Petição protocolada; aguardando despacho do juiz da 3ª vara."
+        ],
+        "recusa": [
+          "Petição protocolada; aguardando despacho do juiz da 13ª vara."
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B8",
+            "permitir": "comprimento",
+            "operador": "menorIgual",
+            "valor1": "60"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B8"
+    }
+  },
+  {
+    "id": "e5d5126a-6590-5c69-adc4-f75b23997066",
+    "slug": "validacao-cpf-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: CPF com pontos e traço",
+    "enunciado": [
+      "Na coluna **CPF** (B2:B10), os CPFs são digitados **com pontos e traço**, como **123.456.789-09**. Aceite só os que estiverem completos, nesse formato."
+    ],
+    "dicas": [
+      "Conte todos os caracteres de 123.456.789-09, não só os números.",
+      "Pontos e traço também ocupam lugar no texto."
+    ],
+    "explicacao": [
+      "11 dígitos + 2 pontos + 1 traço = **14 caracteres**. Comprimento do texto → é igual a → **14**.",
+      "Com 11, todo CPF digitado do jeito combinado seria recusado. Antes de criar a regra, combine com a equipe um formato só: com ou sem pontos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cpf",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 112,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "123.456.789-09",
+          "987.654.321-00"
+        ],
+        "recusa": [
+          "12345678909",
+          "123.456.789-0",
+          "123.456.789-099"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "comprimento",
+            "operador": "igual",
+            "valor1": "14"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B10"
+    }
+  },
+  {
+    "id": "a511087a-c668-5017-a1a4-63fdae8477b5",
+    "slug": "validacao-cpf-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CPF que começa com zero",
+    "enunciado": [
+      "A coluna CPF aceita só **11 caracteres**. Alguém digita o CPF **01234567890** e o Excel recusa. Por quê?"
+    ],
+    "dicas": [
+      "Pense no que o Excel faz com um número que começa com zero."
+    ],
+    "explicacao": [
+      "**O zero da frente some.** 01234567890 vira o número 1234567890, com 10 dígitos. Para guardar como texto, digite com apóstrofo (**'01234567890**) ou formate a coluna como Texto antes de digitar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cpf",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "CPF que começa com zero é inválido.",
+        "dica": "Existem CPFs que começam com zero. O problema é como o Excel guarda o que foi digitado."
+      },
+      {
+        "texto": "A regra de comprimento não funciona com números.",
+        "dica": "Funciona: ela conta os caracteres do que ficou na célula."
+      },
+      {
+        "texto": "O Excel guardou como número e apagou o zero da frente: sobraram 10 dígitos."
+      },
+      {
+        "texto": "Faltou a mensagem de entrada.",
+        "dica": "A mensagem só orienta; ela não muda o que é aceito."
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "e4f01781-df3a-53d2-8627-5c1d25269fcf",
+    "slug": "validacao-periodo",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Datas dentro de um período",
+    "enunciado": [
+      "Os lançamentos são de **novembro de 2026**. Na coluna **Data** (C2:C9), aceite só datas de **01/11/2026 a 30/11/2026**."
+    ],
+    "dicas": [
+      "Em Permitir, escolha Data. O operador é o que pega um começo e um fim.",
+      "Escreva as datas no formato dd/mm/aaaa."
+    ],
+    "explicacao": [
+      "Selecione C2:C9 → Validação de Dados → Permitir: **Data** → Dados: **está entre** → Mínimo **01/11/2026** e Máximo **30/11/2026** (no Excel: Data inicial e Data final).",
+      "As pontas contam: 01/11 e 30/11 são aceitas. Um lançamento de outubro digitado por engano na prestação de contas de novembro é barrado na hora."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-periodo",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Prestação de contas do mês, vigência de contrato, prazo de entrega: data fora do período é um erro clássico, e silencioso, de planilha.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 168,
+        "B": 88,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Táxi para o fórum"
+        },
+        "B2": {
+          "entrada": "86,50",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Cópias autenticadas"
+        },
+        "B3": {
+          "entrada": "42",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Custas de distribuição"
+        },
+        "B4": {
+          "entrada": "312,40",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Correios (AR)"
+        },
+        "B5": {
+          "entrada": "28,90",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Almoço com cliente"
+        },
+        "B6": {
+          "entrada": "145",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Estacionamento"
+        },
+        "B7": {
+          "entrada": "36",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Material de escritório"
+        },
+        "B8": {
+          "entrada": "189,90",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Motoboy"
+        },
+        "B9": {
+          "entrada": "55",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C9",
+        "aceita": [
+          "01/11/2026",
+          "18/11/2026",
+          "30/11/2026"
+        ],
+        "recusa": [
+          "31/10/2026",
+          "01/12/2026",
+          "abc"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C9",
+            "permitir": "data",
+            "operador": "entre",
+            "valor1": "01/11/2026",
+            "valor2": "30/11/2026"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "C2:C9"
+    }
+  },
+  {
+    "id": "fc1d4f60-0501-5e05-94fc-c7e514345000",
+    "slug": "validacao-periodo-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Até uma data: maiores de idade",
+    "enunciado": [
+      "O cadastro só aceita quem nasceu **até 18/11/2008**, inclusive. Configure a coluna **Nascimento** (B2:B9)."
+    ],
+    "dicas": [
+      "\"Até\", com o próprio dia incluído: qual operador inclui a ponta?"
+    ],
+    "explicacao": [
+      "Selecione B2:B9 → Validação de Dados → **Data** → **é menor ou igual a** → **18/11/2008**.",
+      "Com \"é menor do que\", quem nasceu exatamente em 18/11/2008 seria recusado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-periodo",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 112,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nascimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "18/11/2008",
+          "05/03/1990"
+        ],
+        "recusa": [
+          "19/11/2008",
+          "10/02/2012"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "data",
+            "operador": "menorIgual",
+            "valor1": "18/11/2008"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B9"
+    }
+  },
+  {
+    "id": "88efe975-3bcf-51a4-98cd-1d268d9ee965",
+    "slug": "validacao-periodo-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Depois de uma data",
+    "enunciado": [
+      "Os equipamentos foram emprestados em **18/11/2026**. A **Devolução** (B2:B8) tem que ser **depois** do empréstimo: o próprio dia 18 não vale."
+    ],
+    "dicas": [
+      "\"Depois\", sem incluir o dia: o operador não é o \"ou igual\"."
+    ],
+    "explicacao": [
+      "Selecione B2:B8 → Validação de Dados → **Data** → **é maior do que** → **18/11/2026**.",
+      "\"Maior do que\" deixa a ponta de fora; \"maior ou igual\" deixaria entrar o dia 18. Leia o pedido com atenção a essa diferença."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-periodo",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 112,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Equipamento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Devolução",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook"
+        },
+        "A3": {
+          "entrada": "Projetor"
+        },
+        "A4": {
+          "entrada": "Câmera"
+        },
+        "A5": {
+          "entrada": "Tripé"
+        },
+        "A6": {
+          "entrada": "Caixa de som"
+        },
+        "A7": {
+          "entrada": "Microfone"
+        },
+        "A8": {
+          "entrada": "Tablet"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B8",
+        "aceita": [
+          "19/11/2026",
+          "05/12/2026"
+        ],
+        "recusa": [
+          "18/11/2026",
+          "10/11/2026"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B8",
+            "permitir": "data",
+            "operador": "maior",
+            "valor1": "18/11/2026"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B8"
+    }
+  },
+  {
+    "id": "8d91c9f3-9c55-56b9-be41-c58305c1a3f6",
+    "slug": "validacao-periodo-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 54,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: fora do recesso",
+    "enunciado": [
+      "As audiências **não podem** ser marcadas no recesso forense, de **20/12/2026 a 20/01/2027**. Configure a coluna **Audiência** (B2:B9)."
+    ],
+    "dicas": [
+      "A regra descreve o que é permitido. Aqui o permitido é tudo, menos um período.",
+      "Procure o operador que é o contrário de \"está entre\"."
+    ],
+    "explicacao": [
+      "Selecione B2:B9 → Validação de Dados → **Data** → **não está entre** → **20/12/2026** e **20/01/2027**.",
+      "Com \"está entre\", a planilha faria o contrário: só aceitaria datas do recesso. As pontas também ficam de fora: 20/12 e 20/01 são recusadas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-periodo",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 112,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Audiência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PROC-2026-101"
+        },
+        "A3": {
+          "entrada": "PROC-2026-108"
+        },
+        "A4": {
+          "entrada": "PROC-2026-115"
+        },
+        "A5": {
+          "entrada": "PROC-2026-122"
+        },
+        "A6": {
+          "entrada": "PROC-2026-137"
+        },
+        "A7": {
+          "entrada": "PROC-2026-141"
+        },
+        "A8": {
+          "entrada": "PROC-2026-156"
+        },
+        "A9": {
+          "entrada": "PROC-2026-163"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "19/12/2026",
+          "21/01/2027",
+          "10/03/2027"
+        ],
+        "recusa": [
+          "20/12/2026",
+          "25/12/2026",
+          "20/01/2027"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "data",
+            "operador": "fora",
+            "valor1": "20/12/2026",
+            "valor2": "20/01/2027"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "B2:B9"
+    }
+  },
+  {
+    "id": "3f874f61-fe06-5509-a570-730afff1eab4",
+    "slug": "validacao-periodo-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E a data da ponta?",
+    "enunciado": [
+      "A regra é **Data está entre 01/11/2026 e 30/11/2026**. O que acontece quando alguém digita **30/11/2026**?"
+    ],
+    "dicas": [
+      "\"Entre\", no Excel, inclui ou não as pontas?"
+    ],
+    "explicacao": [
+      "**É aceita.** No Excel, \"está entre\" inclui a data inicial e a final. Para deixar uma ponta de fora, use \"é maior do que\" ou \"é menor do que\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-periodo",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "É recusada: o \"entre\" não inclui as pontas.",
+        "dica": "No Excel, \"está entre\" inclui a data inicial e a final."
+      },
+      {
+        "texto": "É aceita: as duas pontas fazem parte do período."
+      },
+      {
+        "texto": "É aceita só se tiver hora.",
+        "dica": "A hora não muda nada aqui: 30/11/2026 está dentro do período."
+      },
+      {
+        "texto": "Depende do formato da célula.",
+        "dica": "O formato só muda a aparência; a regra compara a data."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "14c891a1-c70b-55d4-8afe-f44338ced733",
     "slug": "teste-validacao-1",
     "trilha": "excel-ptbr",
@@ -2689,24 +3960,24 @@
     }
   },
   {
-    "id": "c763e53d-708c-5c7c-8201-0ccf14de5cf8",
+    "id": "44a6a743-7eaa-5bc5-9a85-1d05ec105ccb",
     "slug": "teste-validacao-3",
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 203,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Nota de 0 a 5",
+    "versao": 2,
+    "titulo": "Telefone com DDD",
     "enunciado": [
-      "A **Nota** (B2:B9) vai de **0 a 5**, aceitando decimais (3,5)."
+      "O **Telefone** (B2:B9), só com números e com DDD, tem **10 ou 11 dígitos** (fixo ou celular)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "validacao-quantidade",
+    "revisar": "validacao-cpf",
     "teste": true,
     "type": "ferramenta",
     "grade": {
@@ -2714,7 +3985,7 @@
       "colunas": 8,
       "larguras": {
         "A": 96,
-        "B": 96,
+        "B": 112,
         "C": 96,
         "D": 96,
         "E": 32,
@@ -2722,15 +3993,15 @@
       },
       "celulas": {
         "A1": {
-          "entrada": "Aluno",
+          "entrada": "Cliente",
           "negrito": true
         },
         "B1": {
-          "entrada": "Nota",
+          "entrada": "Telefone",
           "negrito": true
         },
         "A2": {
-          "entrada": "Ana"
+          "entrada": "Ana Paula"
         },
         "A3": {
           "entrada": "Bruno"
@@ -2792,13 +4063,12 @@
         "tipo": "validacao",
         "intervalo": "B2:B9",
         "aceita": [
-          "0",
-          "3,5",
-          "5"
+          "1132654000",
+          "11987654321"
         ],
         "recusa": [
-          "5,5",
-          "-1"
+          "987654321",
+          "119876543210"
         ]
       }
     ],
@@ -2807,10 +4077,10 @@
         "validacoes": [
           {
             "intervalo": "B2:B9",
-            "permitir": "decimal",
+            "permitir": "comprimento",
             "operador": "entre",
-            "valor1": "0",
-            "valor2": "5"
+            "valor1": "10",
+            "valor2": "11"
           }
         ]
       }
@@ -2987,38 +4257,38 @@
     }
   },
   {
-    "id": "48d3dd3b-bac1-53cf-ae3f-a1a26ad337fe",
+    "id": "392fa5b6-d6d8-5cb6-804b-57558f91c74d",
     "slug": "teste-validacao-5",
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Separador da lista",
+    "versao": 2,
+    "titulo": "Menos um período",
     "enunciado": [
-      "No Excel em português, como escrever a Fonte de uma lista com **Sim** e **Não**?"
+      "Uma agenda deve aceitar qualquer data, **menos** as de **24/12/2026 a 01/01/2027** (escritório fechado). Em Dados, qual opção usar?"
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "validacao-lista-status",
+    "revisar": "validacao-periodo",
     "teste": true,
     "type": "multiple_choice",
     "opcoes": [
       {
-        "texto": "Sim,Não"
+        "texto": "está entre"
       },
       {
-        "texto": "Sim;Não"
+        "texto": "não está entre"
       },
       {
-        "texto": "Sim Não"
+        "texto": "é diferente de"
       },
       {
-        "texto": "\"Sim\" e \"Não\""
+        "texto": "é maior do que"
       }
     ],
     "correta": 1,

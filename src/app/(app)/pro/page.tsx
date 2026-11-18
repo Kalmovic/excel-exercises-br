@@ -30,7 +30,7 @@ const FERRAMENTAS = [
   { modulo: "destaque", titulo: "Formatação condicional", texto: "A planilha aponta o problema: abaixo da meta, duplicados, a linha inteira com fórmula, barras de dados." },
   { modulo: "dados", titulo: "Filtrar, classificar e SUBTOTAL", texto: "As setas no cabeçalho e o total que acompanha o filtro (o SOMA não acompanha)." },
   { modulo: "validacao", titulo: "Validação de dados", texto: "Lista suspensa, números e datas dentro da regra, e como achar o que já estava errado." },
-  { modulo: "abas", titulo: "Várias abas", texto: "Fórmulas que leem outras abas: PROCV na tabela de preços e o resumo do trimestre." },
+  { modulo: "abas", titulo: "Várias abas", texto: "Fórmulas que leem outras abas: PROCV na tabela de preços, o resumo do trimestre e a conferência de uma lista contra a outra." },
 ];
 
 /** Número do módulo (os números mudam quando a trilha ganha módulos; aqui vêm do conteúdo). */

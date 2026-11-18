@@ -334,6 +334,27 @@ function diferencaGrafico(v: Extract<Verificacao, { tipo: "grafico" }>, g: Grafi
       return "As séries e as categorias estão trocadas. Use Alternar Linha/Coluna no Design do Gráfico.";
     if (d.categorias.length === v.categorias.length + 1)
       return "O gráfico tem uma categoria a mais. Confira o intervalo de dados: tem alguma linha que não deveria entrar?";
+    if (d.categorias.length > v.categorias.length + 1 && v.categorias.every((c) => d.categorias.some((x) => norm(x) === norm(c))))
+      return `O gráfico tem ${d.categorias.length} categorias, mas a pergunta pede só ${v.categorias.length}. Confira o intervalo de dados: selecione só as linhas pedidas.`;
+    // As séries pedidas estão lá (mesmas categorias), mas sobrou coluna: ex.: Margem (%) ou Total junto.
+    const sobra = d.series.filter((s) => !series.some((x) => norm(x.nome) === norm(s.nome)));
+    if (
+      v.grafico !== "pizza" &&
+      mesmas(d.categorias, v.categorias) &&
+      sobra.length > 0 &&
+      series.every((s) => d.series.some((x) => norm(x.nome) === norm(s.nome) && numeros(x.valores, s.valores)))
+    )
+      return `O gráfico tem ${sobra.length === 1 ? "uma série a mais" : `${sobra.length} séries a mais`}: ${sobra.map((s) => s.nome).join(" e ")}. Selecione só as colunas pedidas (ou corrija o intervalo em Selecionar Dados).`;
+    // Mesmas categorias com os mesmos valores, em outra ordem: falta classificar.
+    const chave = (cats: string[], ss: { valores: (number | null)[] }[]) =>
+      cats.map((c, i) => `${norm(c)}=${ss.map((s) => s.valores[i]).join("/")}`).sort().join("|");
+    if (
+      d.categorias.length === v.categorias.length &&
+      !mesmas(d.categorias, v.categorias) &&
+      delas.length === series.length &&
+      chave(d.categorias, delas) === chave(v.categorias, series)
+    )
+      return "Os dados estão certos, mas fora da ordem pedida. Classifique a tabela pela coluna dos valores (Dados → Classificar): o gráfico acompanha.";
     // Categorias viraram 1, 2, 3… e apareceu uma série a mais: a coluna de rótulos (anos) foi lida como números.
     const numeradas = d.categorias.length > 0 && d.categorias.every((c, i) => c === String(i + 1));
     if (numeradas && d.series.length > series.length)
@@ -375,10 +396,24 @@ function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Pl
     }
   }
   for (const c of celulas) {
+    const permitir = p.validacaoEm(c)!.permitir;
+    // Comprimento conta todos os caracteres; data depende do operador (entre, não está entre, maior do que…).
+    const comoTexto = (x: string) => (permitir === "comprimento" ? `“${x}” (${x.replace(/^'/, "").length} caracteres)` : `“${x}”`);
     const recusou = v.aceita.find((x) => !p.aceitariaNaCelula(c, x));
-    if (recusou !== undefined) return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o tipo (inteiro ou decimal) e se os limites incluem as pontas.`);
+    if (recusou !== undefined) {
+      if (permitir === "comprimento")
+        return falha(`A regra recusa ${comoTexto(recusou)}, que deveria ser aceito. Confira o comprimento: pontos, traços e espaços também contam.`);
+      if (permitir === "data")
+        return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o operador (está entre, não está entre, maior do que…) e as datas-limite.`);
+      return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o tipo (inteiro ou decimal) e se os limites incluem as pontas.`);
+    }
     const aceitou = v.recusa.find((x) => p.aceitariaNaCelula(c, x));
-    if (aceitou !== undefined) return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o tipo e os limites.`);
+    if (aceitou !== undefined) {
+      if (permitir === "comprimento") return falha(`A regra aceita ${comoTexto(aceitou)}, que deveria ser recusado. Confira o operador e o comprimento.`);
+      if (permitir === "data")
+        return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o operador (está entre, não está entre, maior do que…) e as datas-limite.`);
+      return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o tipo e os limites.`);
+    }
   }
   // Mensagens em todas as células: quem aplicou só numa parte do intervalo não passa.
   const igual = (a: string | undefined, b: string) => (a ?? "").trim().toUpperCase() === b.trim().toUpperCase();

@@ -78,6 +78,27 @@ describe("casos específicos", () => {
     expect(corrigir(ex, p).ok).toBe(true);
   });
 
+  it("boleto: juros de 1% ao mês cobrados por dia são recusados com a dica do período", () => {
+    const ex = porSlug("boleto-em-atraso-pegadinha");
+    const p = Planilha.deExercicio(ex);
+    expect(p.valor("G3")).toBeCloseTo(554.4, 6);
+    const r = corrigir(ex, p);
+    expect(r.ok).toBe(false);
+    expect(r.falhas.find((f) => f.celula === "G3")?.mensagem).toContain("1% por dia");
+  });
+
+  it("boleto pago antes do vencimento: atraso sem MÁXIMO fica negativo e é recusado", () => {
+    const ex = porSlug("boleto-em-atraso-variacao-b");
+    const p = Planilha.deExercicio(ex);
+    for (const l of [2, 3, 4]) {
+      p.definir(`E${l}`, `=D${l}-C${l}`);
+      p.definir(`F${l}`, `=SE(E${l}>0;B${l}*$K$1;0)`);
+    }
+    expect(p.valor("E2")).toBe(-4);
+    const r = corrigir(ex, p);
+    expect(r.falhas.find((f) => f.celula === "E2")?.mensagem).toContain("negativo");
+  });
+
   it("variação: forma alternativa =C2/B2-1 também passa", () => {
     const ex = porSlug("variacao-percentual");
     const p = Planilha.deExercicio(ex);

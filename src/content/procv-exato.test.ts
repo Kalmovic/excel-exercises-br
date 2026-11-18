@@ -24,6 +24,9 @@ const EXATOS = [
   "abas-procv-tabela-de-precos",
   "abas-procv-tabela-de-precos-pegadinha",
   "teste-abas-2",
+  "abas-conferir-recebimentos-variacao-a",
+  "abas-conferir-recebimentos-variacao-b",
+  "abas-conferir-recebimentos-pegadinha",
   "arrumar-espacos-sobrando-pegadinha",
 ];
 
