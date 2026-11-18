@@ -2490,25 +2490,231 @@
     "correta": 1
   },
   {
-    "id": "0e358017-40fb-560e-9805-a01e49fe99ad",
-    "slug": "teste-arrays-1",
+    "id": "85cb881f-44a1-5e9f-b786-e0717b3c9880",
+    "slug": "filtro-condicoes-e-ou",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 201,
+    "ordem": 4,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "Só as pagas",
+    "titulo": "FILTRO com duas condições",
     "enunciado": [
-      "Em **F2**, mostre só as vendas **pagas**."
+      "Em **F2**, mostre as vendas do **Sul** que já estão **pagas** (as quatro colunas)."
     ],
-    "dicas": [],
+    "dicas": [
+      "Cada condição fica entre parênteses, do mesmo jeito que no FILTRO de uma condição só.",
+      "Para exigir as duas ao mesmo tempo, junte os parênteses com um asterisco (o sinal de multiplicar)."
+    ],
     "explicacao": [
-      "Revise a lição indicada no resultado do teste."
+      "`=FILTRO(A2:D8;(B2:B8=\"Sul\")*(D2:D8=\"Pago\"))` → 3 vendas.",
+      "Cada condição vira uma lista de VERDADEIRO e FALSO, uma por linha. Multiplicando, VERDADEIRO × VERDADEIRO dá 1 e qualquer FALSO dá 0: só fica a linha que passa nas **duas**. O * funciona como **E**."
     ],
-    "tentativasAteExplicacao": 99,
-    "teste": true,
-    "revisar": "filtro-vendas-do-sul",
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-condicoes-e-ou",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "intro": "Na vida real o pedido quase nunca tem uma condição só: as vendas do Sul que já foram pagas, os processos de um advogado que vencem este mês. No FILTRO, as condições se juntam com * (E) e + (OU).",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Sul",
+            200,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;(B2:B8=\"Sul\")*(D2:D8=\"Pago\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(.*;E\\(",
+        "dica": "A função E não serve dentro do FILTRO: ela junta a coluna inteira num único VERDADEIRO ou FALSO, e o FILTRO precisa de uma resposta para cada linha. Junte as condições com um asterisco."
+      },
+      {
+        "padrao": "^=FILTRO\\(.*\\)\\+\\(",
+        "dica": "Com o sinal de mais, basta UMA condição ser verdadeira: entram vendas do Norte pagas e do Sul pendentes. Aqui a venda precisa passar nas duas."
+      }
+    ]
+  },
+  {
+    "id": "17c04111-d574-58be-8bf7-ed923a17916c",
+    "slug": "filtro-condicoes-e-ou-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "OU: a Ana ou a Carla",
+    "enunciado": [
+      "Em **F2**, mostre as vendas da **Ana** e também as da **Carla**."
+    ],
+    "dicas": [
+      "Nenhuma venda é da Ana e da Carla ao mesmo tempo: a linha entra se passar em **qualquer uma** das condições. Para isso, junte os parênteses com o sinal de mais."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:D8;(A2:A8=\"Ana\")+(A2:A8=\"Carla\"))` → 5 vendas.",
+      "Com **+**, VERDADEIRO + FALSO dá 1: basta uma condição para a linha ficar. O + funciona como **OU**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-condicoes-e-ou",
+    "etapa": 2,
+    "papel": "variacao",
     "type": "formula",
     "grade": {
       "linhas": 10,
@@ -2667,9 +2873,216 @@
             "Pago"
           ],
           [
-            "Bruno",
+            "Ana",
             "Sul",
-            700,
+            150,
+            "Pendente"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;(A2:A8=\"Ana\")+(A2:A8=\"Carla\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(.*;OU\\(",
+        "dica": "A função OU não serve dentro do FILTRO: ela junta a coluna inteira numa resposta só. Junte as condições com o sinal de mais."
+      },
+      {
+        "padrao": "\\)\\*\\(",
+        "dica": "Com o asterisco, a venda teria que ser da Ana e da Carla ao mesmo tempo, e isso não existe. Para uma ou outra, junte as condições com o sinal de mais."
+      }
+    ]
+  },
+  {
+    "id": "dd80131b-6764-5a95-95a4-8928a3599d6a",
+    "slug": "filtro-condicoes-e-ou-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Uma faixa de valores",
+    "enunciado": [
+      "Em **F2**, mostre as vendas **de R$ 300 a R$ 600**, incluindo as duas pontas."
+    ],
+    "dicas": [
+      "Uma faixa são duas condições sobre a mesma coluna: a partir de um valor **e** até outro.",
+      "Incluindo as pontas, a comparação leva o sinal de igual junto."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:D8;(C2:C8>=300)*(C2:C8<=600))` → 4 vendas.",
+      "É o mesmo * de antes, agora nas duas pontas da mesma coluna. Sem o igual, as vendas de exatamente R$ 300 e R$ 600 ficariam de fora."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-condicoes-e-ou",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ],
+          [
+            "Bruno",
+            "Norte",
+            300,
+            "Pendente"
+          ],
+          [
+            "Ana",
+            "Norte",
+            450,
             "Pago"
           ],
           [
@@ -2680,30 +3093,497 @@
           ]
         ],
         "exigeFormula": true,
-        "solucaoReferencia": "=FILTRO(A2:D8;D2:D8=\"Pago\")"
+        "solucaoReferencia": "=FILTRO(A2:D8;(C2:C8>=300)*(C2:C8<=600))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "C2:C8>300\\)|C2:C8<600\\)",
+        "dica": "As pontas também contam: a venda de exatamente R$ 300 e a de R$ 600 precisam aparecer. Confira os sinais de comparação."
+      },
+      {
+        "padrao": "\\)\\+\\(",
+        "dica": "Com o sinal de mais, entra a venda que passa em qualquer uma das pontas, ou seja, todas. Numa faixa, a venda precisa passar nas duas."
       }
     ]
   },
   {
-    "id": "818b1dbd-8ce6-5091-a83b-3efecffd54f7",
-    "slug": "teste-arrays-2",
+    "id": "8562e903-2344-589c-9ae1-69b208620da3",
+    "slug": "filtro-condicoes-e-ou-pegadinha",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 202,
+    "ordem": 44,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "Do menor para o maior",
+    "titulo": "Pegadinha: o E que dá #VALOR!",
     "enunciado": [
-      "Em **F2**, mostre a tabela do menor valor para o maior."
+      "A fórmula em **F2** deveria mostrar as vendas do **Norte** já **pagas**, mas dá **#VALOR!**. Corrija-a."
     ],
-    "dicas": [],
+    "dicas": [
+      "A função E devolve **um** único VERDADEIRO ou FALSO para a tabela toda, e o FILTRO precisa de uma resposta para cada linha.",
+      "Volte ao jeito desta lição: cada condição entre parênteses, juntas por um sinal."
+    ],
     "explicacao": [
-      "Revise a lição indicada no resultado do teste."
+      "`=FILTRO(A2:D8;(B2:B8=\"Norte\")*(D2:D8=\"Pago\"))`.",
+      "É o erro mais comum com FILTRO: a função E olha todas as linhas juntas e devolve um resultado só. Dentro do FILTRO, o papel do E é do `*`, que trabalha linha por linha (e o do OU é do `+`)."
     ],
-    "tentativasAteExplicacao": 99,
-    "teste": true,
-    "revisar": "classificar-maior-valor",
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-condicoes-e-ou",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F2": {
+          "entrada": "=FILTRO(A2:D8;E(B2:B8=\"Norte\";D2:D8=\"Pago\"))",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Norte",
+            450,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:D8;(B2:B8=\"Norte\")*(D2:D8=\"Pago\"))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(.*;E\\(",
+        "dica": "A função E não serve dentro do FILTRO: ela junta a coluna inteira num único VERDADEIRO ou FALSO, e o FILTRO precisa de uma resposta para cada linha. Junte as condições com um asterisco."
+      }
+    ]
+  },
+  {
+    "id": "0cb78d15-9b9f-5ffe-9de4-2e5bf7d99e6e",
+    "slug": "filtro-condicoes-e-ou-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quais vendas aparecem em **=FILTRO(A2:D8;(B2:B8=\"Sul\")+(D2:D8=\"Pago\"))**?"
+    ],
+    "dicas": [
+      "Lembre o que cada sinal faz: um exige as duas condições, o outro aceita qualquer uma."
+    ],
+    "explicacao": [
+      "Com **+**, a linha entra se passar em **pelo menos uma** condição: todas as do Sul (pagas ou não) e todas as pagas (de qualquer região)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-condicoes-e-ou",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Só as do Sul que estão pagas",
+        "dica": "Essa seria com o asterisco. O + aceita a linha que passa em qualquer uma das condições."
+      },
+      {
+        "texto": "As do Sul e também as pagas de qualquer região"
+      },
+      {
+        "texto": "Nenhuma: o FILTRO não aceita o sinal de mais",
+        "dica": "Aceita: o + entre as condições é o jeito de fazer OU no FILTRO."
+      },
+      {
+        "texto": "Só as que não são do Sul nem estão pagas",
+        "dica": "Essas são justamente as únicas que ficam de fora."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "de7ed693-78f4-5b95-867a-870740bd1397",
+    "slug": "pegar-ranking-maiores",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PEGAR: as 3 maiores vendas",
+    "enunciado": [
+      "Em **F2**, mostre as **3 maiores** vendas (as quatro colunas), da maior para a menor."
+    ],
+    "dicas": [
+      "Primeiro coloque a tabela em ordem, da maior para a menor venda.",
+      "Depois, a função PEGAR fica só com as primeiras linhas do que você classificou: o segundo argumento diz quantas."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(A2:D8;3;-1);3)`: o CLASSIFICAR põe as maiores em cima e o PEGAR fica com as 3 primeiras linhas.",
+      "Troque o 3 por 5 e o ranking cresce. Se uma venda mudar de valor, o ranking se refaz sozinho. O PEGAR existe no Excel 365."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pegar-ranking-maiores",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "intro": "Ranking é pedido toda semana: os 3 maiores clientes, os 5 contratos de maior valor. Classifique e pegue só o começo da lista, numa fórmula que se atualiza sozinha.",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:D8;3;-1);3)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TAKE",
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PEGAR\\(A2:D8",
+        "dica": "Sem classificar antes, o PEGAR fica com as primeiras linhas da tabela como ela está, não com as maiores vendas."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(PEGAR",
+        "dica": "A ordem das funções importa: pegando antes de classificar, você só ordena as primeiras linhas da tabela. Classifique primeiro e pegue depois."
+      },
+      {
+        "padrao": "CLASSIFICAR\\(A2:D8;3(;1)?\\)",
+        "dica": "Em ordem crescente, o começo da lista são as menores vendas. Confira o último argumento do CLASSIFICAR."
+      }
+    ]
+  },
+  {
+    "id": "7b3cd49b-488c-5932-8e59-c7ba40201495",
+    "slug": "pegar-ranking-maiores-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "As 2 menores",
+    "enunciado": [
+      "Em **F2**, mostre as **2 menores** vendas, da menor para a maior."
+    ],
+    "dicas": [
+      "Agora a ordem do CLASSIFICAR é crescente: as menores ficam no começo da lista."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(A2:D8;3;1);2)`.",
+      "O mesmo molde serve para os dois lados do ranking: muda só a ordem do CLASSIFICAR e a quantidade do PEGAR."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pegar-ranking-maiores",
+    "etapa": 2,
+    "papel": "variacao",
     "type": "formula",
     "grade": {
       "linhas": 10,
@@ -2854,17 +3734,195 @@
             "Sul",
             200,
             "Pago"
-          ],
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:D8;3;1);2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TAKE",
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PEGAR\\(A2:D8",
+        "dica": "Sem classificar antes, o PEGAR fica com as primeiras linhas da tabela como ela está, não com as maiores vendas."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(PEGAR",
+        "dica": "A ordem das funções importa: pegando antes de classificar, você só ordena as primeiras linhas da tabela. Classifique primeiro e pegue depois."
+      }
+    ]
+  },
+  {
+    "id": "e1d496bc-0c86-5576-88d1-a670770d6110",
+    "slug": "pegar-ranking-maiores-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ranking só do Sul",
+    "enunciado": [
+      "Em **F2**, mostre as **2 maiores** vendas da região **Sul**, da maior para a menor."
+    ],
+    "dicas": [
+      "São três passos, de dentro para fora: filtrar o Sul, classificar e pegar.",
+      "O CLASSIFICAR pode receber o resultado do FILTRO, e o PEGAR, o resultado do CLASSIFICAR."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Sul\");3;-1);2)`.",
+      "Leia de dentro para fora: o FILTRO separa o Sul, o CLASSIFICAR põe as maiores em cima e o PEGAR fica com as 2 primeiras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pegar-ranking-maiores",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
           [
             "Bruno",
-            "Norte",
-            300,
-            "Pendente"
-          ],
-          [
-            "Ana",
-            "Norte",
-            450,
+            "Sul",
+            700,
             "Pago"
           ],
           [
@@ -2872,11 +3930,441 @@
             "Sul",
             500,
             "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Sul\");3;-1);2)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TAKE",
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(PEGAR",
+        "dica": "A ordem das funções importa: pegando antes de classificar, você só ordena as primeiras linhas da tabela. Classifique primeiro e pegue depois."
+      }
+    ]
+  },
+  {
+    "id": "540e0afc-f0c8-596f-8233-ced17cc1d426",
+    "slug": "pegar-ranking-maiores-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o Top 3 que não é top",
+    "enunciado": [
+      "Um colega montou o **Top 3** em **F2**, mas a lista mostra a venda de R$ 300 e deixa de fora a de R$ 700. Corrija a fórmula."
+    ],
+    "dicas": [
+      "O PEGAR não procura os maiores: ele só corta o começo da lista, do jeito que ela está.",
+      "Falta colocar a tabela em ordem antes de pegar."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(A2:D8;3;-1);3)`.",
+      "Sozinho, o PEGAR devolve as 3 primeiras linhas da tabela, na ordem em que foram digitadas. Parece um ranking, mas não é: sempre classifique antes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pegar-ranking-maiores",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "F2": {
+          "entrada": "=PEGAR(A2:D8;3)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
           ],
           [
             "Carla",
             "Norte",
             600,
+            "Pago"
+          ],
+          [
+            "Ana",
+            "Sul",
+            500,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:D8;3;-1);3)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TAKE",
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PEGAR\\(A2:D8",
+        "dica": "Sem classificar antes, o PEGAR fica com as primeiras linhas da tabela como ela está, não com as maiores vendas."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(PEGAR",
+        "dica": "A ordem das funções importa: pegando antes de classificar, você só ordena as primeiras linhas da tabela. Classifique primeiro e pegue depois."
+      }
+    ]
+  },
+  {
+    "id": "782caa11-0d7b-5ffb-b4ce-d728ab1945da",
+    "slug": "pegar-ranking-maiores-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "O que **=PEGAR(CLASSIFICAR(A2:D8;3;-1);-2)** mostra?"
+    ],
+    "dicas": [
+      "Com número negativo, o PEGAR conta a partir do fim da lista. E o que fica no fim de uma lista do maior para o menor?"
+    ],
+    "explicacao": [
+      "Com **-2**, o PEGAR fica com as **2 últimas** linhas. Numa lista do maior para o menor, as últimas são as 2 menores vendas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "pegar-ranking-maiores",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "As 2 maiores vendas",
+        "dica": "As maiores estão no começo da lista. O número negativo pega do fim."
+      },
+      {
+        "texto": "As 2 menores vendas"
+      },
+      {
+        "texto": "Um erro: o número não pode ser negativo",
+        "dica": "Pode: negativo quer dizer contar a partir do fim."
+      },
+      {
+        "texto": "Todas as vendas, menos as 2 primeiras",
+        "dica": "Tirar linhas é o trabalho do DESCARTAR. O PEGAR fica com as linhas que você pede."
+      }
+    ],
+    "correta": 1
+  },
+  {
+    "id": "0e358017-40fb-560e-9805-a01e49fe99ad",
+    "slug": "teste-arrays-1",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 2,
+    "titulo": "Sul acima de R$ 300",
+    "enunciado": [
+      "Em **F2**, mostre as vendas do **Sul** acima de **R$ 300**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "filtro-condicoes-e-ou",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Ana",
+            "Sul",
+            500,
             "Pago"
           ],
           [
@@ -2887,7 +4375,184 @@
           ]
         ],
         "exigeFormula": true,
-        "solucaoReferencia": "=CLASSIFICAR(A2:D8;3;1)"
+        "solucaoReferencia": "=FILTRO(A2:D8;(B2:B8=\"Sul\")*(C2:C8>300))"
+      }
+    ]
+  },
+  {
+    "id": "818b1dbd-8ce6-5091-a83b-3efecffd54f7",
+    "slug": "teste-arrays-2",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 2,
+    "titulo": "As 2 maiores",
+    "enunciado": [
+      "Em **F2**, mostre as **2 maiores** vendas, da maior para a menor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "teste": true,
+    "revisar": "pegar-ranking-maiores",
+    "type": "formula",
+    "grade": {
+      "linhas": 10,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "B4": {
+          "entrada": "Norte"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "B5": {
+          "entrada": "Sul"
+        },
+        "C5": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Bruno"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Carla"
+        },
+        "B8": {
+          "entrada": "Norte"
+        },
+        "C8": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 84,
+        "D": 76,
+        "E": 24,
+        "F": 72,
+        "G": 64,
+        "H": 84,
+        "I": 76,
+        "J": 40
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Bruno",
+            "Sul",
+            700,
+            "Pago"
+          ],
+          [
+            "Carla",
+            "Norte",
+            600,
+            "Pago"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:D8;3;-1);2)"
       }
     ]
   },

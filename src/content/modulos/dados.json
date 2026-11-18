@@ -2799,44 +2799,853 @@
     }
   },
   {
-    "id": "38709aa3-a9e6-5a4f-9778-4e544ea48d0f",
-    "slug": "teste-dados-1",
+    "id": "6899a4a8-ac64-5ce5-8121-fcf88a88dd75",
+    "slug": "dados-filtrar-vazias",
     "trilha": "excel-ptbr",
     "modulo": "dados",
-    "ordem": 201,
+    "ordem": 4,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "Do menor para o maior",
+    "titulo": "Filtro: achar o que ficou em branco",
     "enunciado": [
-      "Organize a tabela do **menor** para o **maior** valor."
+      "Alguns processos ficaram **sem responsável**. Ligue o filtro e deixe aparecendo **só esses processos**."
     ],
-    "dicas": [],
+    "dicas": [
+      "Na seta de Responsável, a lista mostra cada nome uma vez e, no fim, um item para as células em branco.",
+      "Desmarque (Selecionar Tudo) e marque só o item das células em branco."
+    ],
     "explicacao": [
-      "Revise a lição indicada no resultado do teste."
+      "Na seta de **Responsável**, deixe marcado só **(Vazias)**: aparecem os processos 3402, 3404 e 3407.",
+      "(Vazias) é o jeito mais rápido de achar o que falta preencher numa tabela grande: cliente sem e-mail, pedido sem data, processo sem advogado."
     ],
-    "tentativasAteExplicacao": 99,
-    "revisar": "dados-classificar-maior-valor",
-    "teste": true,
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-vazias",
+    "etapa": 1,
+    "papel": "principal",
     "type": "ferramenta",
+    "intro": "Numa tabela de verdade sempre falta alguma coisa. Em vez de procurar buraco por buraco, o filtro mostra de uma vez todas as linhas em que uma coluna ficou em branco.",
     "grade": {
       "linhas": 13,
       "colunas": 6,
       "larguras": {
-        "A": 84,
-        "B": 72,
-        "C": 84,
+        "A": 64,
+        "B": 150,
+        "C": 96,
         "D": 84,
         "E": 24,
         "F": 96
       },
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Nº",
           "negrito": true
         },
         "B1": {
-          "entrada": "Região",
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3401"
+        },
+        "B2": {
+          "entrada": "Construtora Alfa"
+        },
+        "C2": {
+          "entrada": "Dra. Marina"
+        },
+        "D2": {
+          "entrada": "15/03/2026"
+        },
+        "A3": {
+          "entrada": "3402"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D3": {
+          "entrada": "18/03/2026"
+        },
+        "A4": {
+          "entrada": "3403"
+        },
+        "B4": {
+          "entrada": "Maria Souza"
+        },
+        "C4": {
+          "entrada": "Dr. Paulo"
+        },
+        "D4": {
+          "entrada": "20/03/2026"
+        },
+        "A5": {
+          "entrada": "3404"
+        },
+        "B5": {
+          "entrada": "Transportes Rota Sul"
+        },
+        "D5": {
+          "entrada": "22/03/2026"
+        },
+        "A6": {
+          "entrada": "3405"
+        },
+        "B6": {
+          "entrada": "João Pereira"
+        },
+        "C6": {
+          "entrada": "Dra. Marina"
+        },
+        "D6": {
+          "entrada": "25/03/2026"
+        },
+        "A7": {
+          "entrada": "3406"
+        },
+        "B7": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C7": {
+          "entrada": "Dr. Paulo"
+        },
+        "D7": {
+          "entrada": "27/03/2026"
+        },
+        "A8": {
+          "entrada": "3407"
+        },
+        "B8": {
+          "entrada": "Ana Lima"
+        },
+        "D8": {
+          "entrada": "30/03/2026"
+        },
+        "A9": {
+          "entrada": "3408"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Dra. Marina"
+        },
+        "D9": {
+          "entrada": "02/04/2026"
+        },
+        "A10": {
+          "entrada": "3409"
+        },
+        "B10": {
+          "entrada": "Carlos Mendes"
+        },
+        "C10": {
+          "entrada": "Dr. Paulo"
+        },
+        "D10": {
+          "entrada": "06/04/2026"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          5,
+          8
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "C": {
+              "valores": [
+                ""
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "0ace8f7e-7bfa-52a8-9ead-3fb12b99c44f",
+    "slug": "dados-filtrar-vazias-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O contrário: só os preenchidos",
+    "enunciado": [
+      "Agora mostre só os processos que **já têm** responsável."
+    ],
+    "dicas": [
+      "Na seta de Responsável, comece com tudo marcado e tire só o que você não quer ver."
+    ],
+    "explicacao": [
+      "Deixe tudo marcado e **desmarque (Vazias)**.",
+      "Marcar os dois nomes dá o mesmo resultado hoje. Desmarcar (Vazias) continua certo amanhã, quando entrar um advogado novo na equipe."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-vazias",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 64,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nº",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3401"
+        },
+        "B2": {
+          "entrada": "Construtora Alfa"
+        },
+        "C2": {
+          "entrada": "Dra. Marina"
+        },
+        "D2": {
+          "entrada": "15/03/2026"
+        },
+        "A3": {
+          "entrada": "3402"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D3": {
+          "entrada": "18/03/2026"
+        },
+        "A4": {
+          "entrada": "3403"
+        },
+        "B4": {
+          "entrada": "Maria Souza"
+        },
+        "C4": {
+          "entrada": "Dr. Paulo"
+        },
+        "D4": {
+          "entrada": "20/03/2026"
+        },
+        "A5": {
+          "entrada": "3404"
+        },
+        "B5": {
+          "entrada": "Transportes Rota Sul"
+        },
+        "D5": {
+          "entrada": "22/03/2026"
+        },
+        "A6": {
+          "entrada": "3405"
+        },
+        "B6": {
+          "entrada": "João Pereira"
+        },
+        "C6": {
+          "entrada": "Dra. Marina"
+        },
+        "D6": {
+          "entrada": "25/03/2026"
+        },
+        "A7": {
+          "entrada": "3406"
+        },
+        "B7": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C7": {
+          "entrada": "Dr. Paulo"
+        },
+        "D7": {
+          "entrada": "27/03/2026"
+        },
+        "A8": {
+          "entrada": "3407"
+        },
+        "B8": {
+          "entrada": "Ana Lima"
+        },
+        "D8": {
+          "entrada": "30/03/2026"
+        },
+        "A9": {
+          "entrada": "3408"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Dra. Marina"
+        },
+        "D9": {
+          "entrada": "02/04/2026"
+        },
+        "A10": {
+          "entrada": "3409"
+        },
+        "B10": {
+          "entrada": "Carlos Mendes"
+        },
+        "C10": {
+          "entrada": "Dr. Paulo"
+        },
+        "D10": {
+          "entrada": "06/04/2026"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          4,
+          6,
+          7,
+          9,
+          10
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "C": {
+              "valores": [
+                "Dr. Paulo",
+                "Dra. Marina"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "7ad635ff-0393-5a0c-80f5-6b9080981923",
+    "slug": "dados-filtrar-vazias-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantos estão sem responsável",
+    "enunciado": [
+      "Mostre só os processos **sem responsável** e, em **C12**, conte **quantos** são com uma fórmula que conte só as linhas que aparecem."
+    ],
+    "dicas": [
+      "Para o filtro, é o mesmo da primeira questão. Para a conta, lembre a função da lição anterior que enxerga só as linhas visíveis.",
+      "Conte por uma coluna que está sempre preenchida: justamente nessas linhas, a de Responsável está vazia."
+    ],
+    "explicacao": [
+      "Filtro em **Responsável** só com **(Vazias)** e `=SUBTOTAL(3;A2:A10)` em C12. O resultado é 3.",
+      "Cuidado com a coluna escolhida: contar a coluna Responsável daria 0, porque nas linhas que aparecem ela está em branco."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-vazias",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 64,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nº",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3401"
+        },
+        "B2": {
+          "entrada": "Construtora Alfa"
+        },
+        "C2": {
+          "entrada": "Dra. Marina"
+        },
+        "D2": {
+          "entrada": "15/03/2026"
+        },
+        "A3": {
+          "entrada": "3402"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D3": {
+          "entrada": "18/03/2026"
+        },
+        "A4": {
+          "entrada": "3403"
+        },
+        "B4": {
+          "entrada": "Maria Souza"
+        },
+        "C4": {
+          "entrada": "Dr. Paulo"
+        },
+        "D4": {
+          "entrada": "20/03/2026"
+        },
+        "A5": {
+          "entrada": "3404"
+        },
+        "B5": {
+          "entrada": "Transportes Rota Sul"
+        },
+        "D5": {
+          "entrada": "22/03/2026"
+        },
+        "A6": {
+          "entrada": "3405"
+        },
+        "B6": {
+          "entrada": "João Pereira"
+        },
+        "C6": {
+          "entrada": "Dra. Marina"
+        },
+        "D6": {
+          "entrada": "25/03/2026"
+        },
+        "A7": {
+          "entrada": "3406"
+        },
+        "B7": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C7": {
+          "entrada": "Dr. Paulo"
+        },
+        "D7": {
+          "entrada": "27/03/2026"
+        },
+        "A8": {
+          "entrada": "3407"
+        },
+        "B8": {
+          "entrada": "Ana Lima"
+        },
+        "D8": {
+          "entrada": "30/03/2026"
+        },
+        "A9": {
+          "entrada": "3408"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Dra. Marina"
+        },
+        "D9": {
+          "entrada": "02/04/2026"
+        },
+        "A10": {
+          "entrada": "3409"
+        },
+        "B10": {
+          "entrada": "Carlos Mendes"
+        },
+        "C10": {
+          "entrada": "Dr. Paulo"
+        },
+        "D10": {
+          "entrada": "06/04/2026"
+        },
+        "B12": {
+          "entrada": "Sem responsável"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          5,
+          8
+        ]
+      },
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 3,
+        "funcao": "SUBTOTAL",
+        "mensagem": "C12 ainda não mostra quantos processos estão aparecendo. Use SUBTOTAL e conte por uma coluna que esteja sempre preenchida: nessas linhas, a de Responsável está vazia."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "C": {
+              "valores": [
+                ""
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "C12": "=SUBTOTAL(3;A2:A10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "56dd9cc8-d983-5ca1-a408-d7498cf0f417",
+    "slug": "dados-filtrar-vazias-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o traço no lugar do nome",
+    "enunciado": [
+      "Nesta planilha, mostre **todos** os processos que ainda estão **sem responsável**."
+    ],
+    "dicas": [
+      "Nem todo mundo deixa a célula em branco: tem quem digite alguma coisa no lugar do nome.",
+      "Abra a seta de Responsável e leia a lista inteira antes de marcar."
+    ],
+    "explicacao": [
+      "Marque **(Vazias)** e também o **-** (traço): quem preencheu a planilha às vezes deixou em branco e às vezes digitou um traço. São 4 processos.",
+      "Para o filtro, um traço é um texto como outro qualquer. Antes de confiar só no (Vazias), passe o olho pela lista inteira da seta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-vazias",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 64,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nº",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3401"
+        },
+        "B2": {
+          "entrada": "Construtora Alfa"
+        },
+        "C2": {
+          "entrada": "Dra. Marina"
+        },
+        "D2": {
+          "entrada": "15/03/2026"
+        },
+        "A3": {
+          "entrada": "3402"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D3": {
+          "entrada": "18/03/2026"
+        },
+        "A4": {
+          "entrada": "3403"
+        },
+        "B4": {
+          "entrada": "Maria Souza"
+        },
+        "C4": {
+          "entrada": "Dr. Paulo"
+        },
+        "D4": {
+          "entrada": "20/03/2026"
+        },
+        "A5": {
+          "entrada": "3404"
+        },
+        "B5": {
+          "entrada": "Transportes Rota Sul"
+        },
+        "C5": {
+          "entrada": "-"
+        },
+        "D5": {
+          "entrada": "22/03/2026"
+        },
+        "A6": {
+          "entrada": "3405"
+        },
+        "B6": {
+          "entrada": "João Pereira"
+        },
+        "C6": {
+          "entrada": "Dra. Marina"
+        },
+        "D6": {
+          "entrada": "25/03/2026"
+        },
+        "A7": {
+          "entrada": "3406"
+        },
+        "B7": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C7": {
+          "entrada": "Dr. Paulo"
+        },
+        "D7": {
+          "entrada": "27/03/2026"
+        },
+        "A8": {
+          "entrada": "3407"
+        },
+        "B8": {
+          "entrada": "Ana Lima"
+        },
+        "D8": {
+          "entrada": "30/03/2026"
+        },
+        "A9": {
+          "entrada": "3408"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "-"
+        },
+        "D9": {
+          "entrada": "02/04/2026"
+        },
+        "A10": {
+          "entrada": "3409"
+        },
+        "B10": {
+          "entrada": "Carlos Mendes"
+        },
+        "C10": {
+          "entrada": "Dr. Paulo"
+        },
+        "D10": {
+          "entrada": "06/04/2026"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          5,
+          8,
+          9
+        ],
+        "mensagem": "Ainda não aparecem todos os processos sem responsável. Olhe de novo a lista da seta: além de (Vazias), há outro item que também quer dizer \"ninguém\"."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "C": {
+              "valores": [
+                "-",
+                ""
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "4a16711c-b33d-5006-bbba-b8ad05fbf043",
+    "slug": "dados-filtrar-vazias-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 45,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Na seta de um filtro, para que serve o item **(Vazias)**?"
+    ],
+    "dicas": [
+      "Pense no que aparece na lista quando algumas células da coluna não têm nada digitado."
+    ],
+    "explicacao": [
+      "(Vazias) representa as células **em branco** daquela coluna. Marcado sozinho, mostra só as linhas em que falta preencher essa informação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-vazias",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Mostrar só as linhas em que essa coluna está em branco"
+      },
+      {
+        "texto": "Apagar as linhas que têm células vazias",
+        "dica": "O filtro nunca apaga nada: ele só esconde e mostra linhas."
+      },
+      {
+        "texto": "Esconder a coluna inteira",
+        "dica": "O filtro trabalha com linhas. A coluna continua lá."
+      },
+      {
+        "texto": "Mostrar as células com o número zero",
+        "dica": "Zero é um valor: aparece na lista como 0, separado de (Vazias)."
+      }
+    ],
+    "correta": 0
+  },
+  {
+    "id": "8e034526-2ed0-5db8-bf06-7626a67b5777",
+    "slug": "dados-filtro-pesquisar",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtro: pesquisar parte do nome",
+    "enunciado": [
+      "Mostre só os clientes que são empresas **Ltda**."
+    ],
+    "dicas": [
+      "Numa lista comprida, marcar caixinha por caixinha cansa. O menu da seta de Cliente tem uma caixa de pesquisa.",
+      "Digite o pedaço do nome na caixa Pesquisar: só os itens que têm esse texto ficam marcados na lista. Depois é só confirmar."
+    ],
+    "explicacao": [
+      "Na seta de **Cliente**, digite **Ltda** em *Pesquisar* e clique em **OK**: ficam só os itens encontrados.",
+      "A pesquisa acha o texto em **qualquer parte** do nome, sem diferenciar maiúsculas de minúsculas. Com 500 clientes, é o único jeito razoável de filtrar por um pedaço do nome."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtro-pesquisar",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "intro": "Quando a coluna tem centenas de nomes diferentes, a lista de caixinhas não ajuda. A caixa Pesquisar do filtro acha os itens por um pedaço do texto.",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 170,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
           "negrito": true
         },
         "C1": {
@@ -2844,210 +3653,993 @@
           "negrito": true
         },
         "D1": {
-          "entrada": "Status",
+          "entrada": "Situação",
           "negrito": true
         },
         "A2": {
-          "entrada": "Carla"
+          "entrada": "Alfa Engenharia Ltda"
         },
         "B2": {
-          "entrada": "Sul"
+          "entrada": "São Paulo"
         },
         "C2": {
-          "entrada": "300",
+          "entrada": "4800",
           "formato": "moeda"
         },
         "D2": {
-          "entrada": "Pago"
+          "entrada": "Ativo"
         },
         "A3": {
-          "entrada": "Ana"
+          "entrada": "Mariana Costa"
         },
         "B3": {
-          "entrada": "Norte"
+          "entrada": "Campinas"
         },
         "C3": {
-          "entrada": "500",
+          "entrada": "1200",
           "formato": "moeda"
         },
         "D3": {
-          "entrada": "Pendente"
+          "entrada": "Ativo"
         },
         "A4": {
-          "entrada": "Bruno"
+          "entrada": "Beta Comércio Ltda"
         },
         "B4": {
-          "entrada": "Sul"
+          "entrada": "São Paulo"
         },
         "C4": {
-          "entrada": "200",
+          "entrada": "3500",
           "formato": "moeda"
         },
         "D4": {
-          "entrada": "Pago"
+          "entrada": "Encerrado"
         },
         "A5": {
-          "entrada": "Daniela"
+          "entrada": "Ana Ribeiro"
         },
         "B5": {
-          "entrada": "Leste"
+          "entrada": "Santos"
         },
         "C5": {
-          "entrada": "700",
+          "entrada": "900",
           "formato": "moeda"
         },
         "D5": {
-          "entrada": "Pago"
+          "entrada": "Ativo"
         },
         "A6": {
-          "entrada": "Eduardo"
+          "entrada": "Gama Transportes Ltda"
         },
         "B6": {
-          "entrada": "Sul"
+          "entrada": "São José dos Campos"
         },
         "C6": {
-          "entrada": "100",
+          "entrada": "6100",
           "formato": "moeda"
         },
         "D6": {
-          "entrada": "Pendente"
+          "entrada": "Ativo"
         },
         "A7": {
-          "entrada": "Fábio"
+          "entrada": "Luana Martins"
         },
         "B7": {
-          "entrada": "Norte"
+          "entrada": "São Paulo"
         },
         "C7": {
-          "entrada": "400",
+          "entrada": "1500",
           "formato": "moeda"
         },
         "D7": {
-          "entrada": "Pago"
+          "entrada": "Encerrado"
         },
         "A8": {
-          "entrada": "Gabriela"
+          "entrada": "Delta Serviços ME"
         },
         "B8": {
-          "entrada": "Leste"
+          "entrada": "Campinas"
         },
         "C8": {
-          "entrada": "650",
+          "entrada": "2200",
           "formato": "moeda"
         },
         "D8": {
-          "entrada": "Pendente"
+          "entrada": "Ativo"
         },
         "A9": {
-          "entrada": "Hugo"
+          "entrada": "Ana Paula Souza"
         },
         "B9": {
-          "entrada": "Sul"
+          "entrada": "Santos"
         },
         "C9": {
-          "entrada": "450",
+          "entrada": "1100",
           "formato": "moeda"
         },
         "D9": {
-          "entrada": "Pago"
+          "entrada": "Ativo"
         },
         "A10": {
-          "entrada": "Íris"
+          "entrada": "Ômega Alimentos Ltda"
         },
         "B10": {
-          "entrada": "Norte"
+          "entrada": "Campinas"
         },
         "C10": {
-          "entrada": "250",
+          "entrada": "5300",
           "formato": "moeda"
         },
         "D10": {
-          "entrada": "Pago"
+          "entrada": "Encerrado"
         }
       }
     },
     "verificacoes": [
       {
-        "tipo": "valores",
-        "intervalo": "A2:A10",
+        "tipo": "linhasVisiveis",
         "esperado": [
-          [
-            "Eduardo"
-          ],
-          [
-            "Bruno"
-          ],
-          [
-            "Íris"
-          ],
-          [
-            "Carla"
-          ],
-          [
-            "Fábio"
-          ],
-          [
-            "Hugo"
-          ],
-          [
-            "Ana"
-          ],
-          [
-            "Gabriela"
-          ],
-          [
-            "Daniela"
-          ]
-        ]
-      },
-      {
-        "tipo": "valores",
-        "intervalo": "C2:C10",
-        "esperado": [
-          [
-            100
-          ],
-          [
-            200
-          ],
-          [
-            250
-          ],
-          [
-            300
-          ],
-          [
-            400
-          ],
-          [
-            450
-          ],
-          [
-            500
-          ],
-          [
-            650
-          ],
-          [
-            700
-          ]
+          2,
+          4,
+          6,
+          10
         ]
       }
     ],
     "solucao": {
       "recursos": {
-        "ordenacoes": [
-          {
-            "intervalo": "A1:D10",
-            "chaves": [
-              {
-                "coluna": "C",
-                "ordem": "asc"
-              }
-            ],
-            "cabecalho": true
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "A": {
+              "valores": [
+                "Alfa Engenharia Ltda",
+                "Beta Comércio Ltda",
+                "Gama Transportes Ltda",
+                "Ômega Alimentos Ltda"
+              ]
+            }
           }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "50c9ae04-0360-5cf1-8c43-21e7b5d97860",
+    "slug": "dados-filtro-pesquisar-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Cidades com \"São\"",
+    "enunciado": [
+      "Mostre os clientes de todas as cidades que têm **São** no nome."
+    ],
+    "dicas": [
+      "A caixa Pesquisar existe na seta de qualquer coluna, não só na primeira."
+    ],
+    "explicacao": [
+      "Na seta de **Cidade**, pesquise **São** e clique em **OK**: São Paulo e São José dos Campos.",
+      "Se amanhã entrar um cliente de São Carlos, a mesma pesquisa já pega ele."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtro-pesquisar",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 170,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "São Paulo"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Ativo"
+        },
+        "A3": {
+          "entrada": "Mariana Costa"
+        },
+        "B3": {
+          "entrada": "Campinas"
+        },
+        "C3": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Ativo"
+        },
+        "A4": {
+          "entrada": "Beta Comércio Ltda"
+        },
+        "B4": {
+          "entrada": "São Paulo"
+        },
+        "C4": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "A5": {
+          "entrada": "Ana Ribeiro"
+        },
+        "B5": {
+          "entrada": "Santos"
+        },
+        "C5": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Ativo"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "São José dos Campos"
+        },
+        "C6": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Ativo"
+        },
+        "A7": {
+          "entrada": "Luana Martins"
+        },
+        "B7": {
+          "entrada": "São Paulo"
+        },
+        "C7": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Encerrado"
+        },
+        "A8": {
+          "entrada": "Delta Serviços ME"
+        },
+        "B8": {
+          "entrada": "Campinas"
+        },
+        "C8": {
+          "entrada": "2200",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Ativo"
+        },
+        "A9": {
+          "entrada": "Ana Paula Souza"
+        },
+        "B9": {
+          "entrada": "Santos"
+        },
+        "C9": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Ativo"
+        },
+        "A10": {
+          "entrada": "Ômega Alimentos Ltda"
+        },
+        "B10": {
+          "entrada": "Campinas"
+        },
+        "C10": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Encerrado"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          4,
+          6,
+          7
         ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "São José dos Campos",
+                "São Paulo"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "d220ee6d-d016-5890-ac36-0d70738a979c",
+    "slug": "dados-filtro-pesquisar-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pesquisa e mais uma coluna",
+    "enunciado": [
+      "Mostre só as empresas **Ltda** que estão com situação **Ativo**."
+    ],
+    "dicas": [
+      "São dois filtros, um em cada coluna. A pesquisa resolve o primeiro; o segundo é uma caixinha comum."
+    ],
+    "explicacao": [
+      "Na seta de **Cliente**, pesquise **Ltda**; na seta de **Situação**, deixe só **Ativo**.",
+      "Como em qualquer filtro de duas colunas, a linha precisa passar nos dois: sobram a Alfa Engenharia e a Gama Transportes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtro-pesquisar",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 170,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "São Paulo"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Ativo"
+        },
+        "A3": {
+          "entrada": "Mariana Costa"
+        },
+        "B3": {
+          "entrada": "Campinas"
+        },
+        "C3": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Ativo"
+        },
+        "A4": {
+          "entrada": "Beta Comércio Ltda"
+        },
+        "B4": {
+          "entrada": "São Paulo"
+        },
+        "C4": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "A5": {
+          "entrada": "Ana Ribeiro"
+        },
+        "B5": {
+          "entrada": "Santos"
+        },
+        "C5": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Ativo"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "São José dos Campos"
+        },
+        "C6": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Ativo"
+        },
+        "A7": {
+          "entrada": "Luana Martins"
+        },
+        "B7": {
+          "entrada": "São Paulo"
+        },
+        "C7": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Encerrado"
+        },
+        "A8": {
+          "entrada": "Delta Serviços ME"
+        },
+        "B8": {
+          "entrada": "Campinas"
+        },
+        "C8": {
+          "entrada": "2200",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Ativo"
+        },
+        "A9": {
+          "entrada": "Ana Paula Souza"
+        },
+        "B9": {
+          "entrada": "Santos"
+        },
+        "C9": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Ativo"
+        },
+        "A10": {
+          "entrada": "Ômega Alimentos Ltda"
+        },
+        "B10": {
+          "entrada": "Campinas"
+        },
+        "C10": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Encerrado"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          6
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "A": {
+              "valores": [
+                "Alfa Engenharia Ltda",
+                "Beta Comércio Ltda",
+                "Gama Transportes Ltda",
+                "Ômega Alimentos Ltda"
+              ]
+            },
+            "D": {
+              "valores": [
+                "Ativo"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "62f12e19-58a3-597c-8574-be36d49598cd",
+    "slug": "dados-filtro-pesquisar-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a Ana que virou Mariana",
+    "enunciado": [
+      "Mostre só as clientes que se chamam **Ana**."
+    ],
+    "dicas": [
+      "Depois de pesquisar, leia os nomes que ficaram marcados antes de clicar em OK.",
+      "A pesquisa acha o texto no meio das palavras também."
+    ],
+    "explicacao": [
+      "Pesquise **Ana**, mas **desmarque Mariana Costa e Luana Martins** antes do OK: ficam Ana Ribeiro e Ana Paula Souza.",
+      "A pesquisa acha \"ana\" em qualquer parte: Mari**ana**, Lu**ana**. Pesquisar ajuda a achar, mas quem decide o que fica é você, conferindo a lista."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtro-pesquisar",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 170,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "São Paulo"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Ativo"
+        },
+        "A3": {
+          "entrada": "Mariana Costa"
+        },
+        "B3": {
+          "entrada": "Campinas"
+        },
+        "C3": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Ativo"
+        },
+        "A4": {
+          "entrada": "Beta Comércio Ltda"
+        },
+        "B4": {
+          "entrada": "São Paulo"
+        },
+        "C4": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "A5": {
+          "entrada": "Ana Ribeiro"
+        },
+        "B5": {
+          "entrada": "Santos"
+        },
+        "C5": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Ativo"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "São José dos Campos"
+        },
+        "C6": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Ativo"
+        },
+        "A7": {
+          "entrada": "Luana Martins"
+        },
+        "B7": {
+          "entrada": "São Paulo"
+        },
+        "C7": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Encerrado"
+        },
+        "A8": {
+          "entrada": "Delta Serviços ME"
+        },
+        "B8": {
+          "entrada": "Campinas"
+        },
+        "C8": {
+          "entrada": "2200",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Ativo"
+        },
+        "A9": {
+          "entrada": "Ana Paula Souza"
+        },
+        "B9": {
+          "entrada": "Santos"
+        },
+        "C9": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Ativo"
+        },
+        "A10": {
+          "entrada": "Ômega Alimentos Ltda"
+        },
+        "B10": {
+          "entrada": "Campinas"
+        },
+        "C10": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Encerrado"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          5,
+          9
+        ],
+        "mensagem": "Tem gente a mais (ou a menos) na lista. A pesquisa acha o texto em qualquer parte do nome, não só no começo: confira os nomes que ficaram marcados."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "A": {
+              "valores": [
+                "Ana Paula Souza",
+                "Ana Ribeiro"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "6a0f17c5-55d7-5edf-a6f8-04787356c327",
+    "slug": "dados-filtro-pesquisar-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Você digita **sul** na caixa *Pesquisar* do filtro de Cliente. Quais nomes ficam na lista?"
+    ],
+    "dicas": [
+      "Lembre da Ana que apareceu dentro de Mariana."
+    ],
+    "explicacao": [
+      "A pesquisa acha o texto em **qualquer parte** do nome e não diferencia maiúsculas de minúsculas. Até *Consultoria Ponto Alto* aparece, por causa do \"sul\" no meio da palavra."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtro-pesquisar",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Só os nomes que começam com \"Sul\"",
+        "dica": "A pesquisa não olha só o começo: acha o texto em qualquer parte do nome."
+      },
+      {
+        "texto": "Só os nomes escritos \"sul\" em minúsculas",
+        "dica": "A pesquisa não diferencia maiúsculas de minúsculas."
+      },
+      {
+        "texto": "Todos os que têm \"sul\" em qualquer parte, até *Consultoria Ponto Alto*"
+      },
+      {
+        "texto": "Nenhum: a pesquisa só funciona com o nome completo",
+        "dica": "Não precisa do nome completo: um pedaço já basta."
+      }
+    ],
+    "correta": 2
+  },
+  {
+    "id": "38709aa3-a9e6-5a4f-9778-4e544ea48d0f",
+    "slug": "teste-dados-1",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 2,
+    "titulo": "Sem responsável",
+    "enunciado": [
+      "Deixe aparecendo só os processos **sem responsável**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-filtrar-vazias",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 64,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nº",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3401"
+        },
+        "B2": {
+          "entrada": "Construtora Alfa"
+        },
+        "D2": {
+          "entrada": "15/03/2026"
+        },
+        "A3": {
+          "entrada": "3402"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C3": {
+          "entrada": "Dra. Marina"
+        },
+        "D3": {
+          "entrada": "18/03/2026"
+        },
+        "A4": {
+          "entrada": "3403"
+        },
+        "B4": {
+          "entrada": "Maria Souza"
+        },
+        "C4": {
+          "entrada": "Dr. Paulo"
+        },
+        "D4": {
+          "entrada": "20/03/2026"
+        },
+        "A5": {
+          "entrada": "3404"
+        },
+        "B5": {
+          "entrada": "Transportes Rota Sul"
+        },
+        "C5": {
+          "entrada": "Dra. Marina"
+        },
+        "D5": {
+          "entrada": "22/03/2026"
+        },
+        "A6": {
+          "entrada": "3405"
+        },
+        "B6": {
+          "entrada": "João Pereira"
+        },
+        "C6": {
+          "entrada": "Dra. Marina"
+        },
+        "D6": {
+          "entrada": "25/03/2026"
+        },
+        "A7": {
+          "entrada": "3406"
+        },
+        "B7": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "D7": {
+          "entrada": "27/03/2026"
+        },
+        "A8": {
+          "entrada": "3407"
+        },
+        "B8": {
+          "entrada": "Ana Lima"
+        },
+        "C8": {
+          "entrada": "Dra. Marina"
+        },
+        "D8": {
+          "entrada": "30/03/2026"
+        },
+        "A9": {
+          "entrada": "3408"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Dra. Marina"
+        },
+        "D9": {
+          "entrada": "02/04/2026"
+        },
+        "A10": {
+          "entrada": "3409"
+        },
+        "B10": {
+          "entrada": "Carlos Mendes"
+        },
+        "C10": {
+          "entrada": "Dr. Paulo"
+        },
+        "D10": {
+          "entrada": "06/04/2026"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          7
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "C": {
+              "valores": [
+                ""
+              ]
+            }
+          }
+        }
       }
     },
     "ferramentas": {
@@ -3736,38 +5328,199 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "SOMA ou SUBTOTAL?",
+    "versao": 2,
+    "titulo": "Pesquisar no filtro",
     "enunciado": [
-      "Com a tabela filtrada, qual fórmula mostra o total **só das linhas visíveis**?"
+      "Mostre só as empresas **Ltda** com situação **Encerrado**."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dados-subtotal-visiveis",
+    "revisar": "dados-filtro-pesquisar",
     "teste": true,
-    "type": "multiple_choice",
-    "opcoes": [
-      {
-        "texto": "`=SOMA(C2:C10)`"
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 170,
+        "B": 150,
+        "C": 96,
+        "D": 84,
+        "E": 24,
+        "F": 64
       },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "São Paulo"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Ativo"
+        },
+        "A3": {
+          "entrada": "Mariana Costa"
+        },
+        "B3": {
+          "entrada": "Campinas"
+        },
+        "C3": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Ativo"
+        },
+        "A4": {
+          "entrada": "Beta Comércio Ltda"
+        },
+        "B4": {
+          "entrada": "São Paulo"
+        },
+        "C4": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "A5": {
+          "entrada": "Ana Ribeiro"
+        },
+        "B5": {
+          "entrada": "Santos"
+        },
+        "C5": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Ativo"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "São José dos Campos"
+        },
+        "C6": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Ativo"
+        },
+        "A7": {
+          "entrada": "Luana Martins"
+        },
+        "B7": {
+          "entrada": "São Paulo"
+        },
+        "C7": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Encerrado"
+        },
+        "A8": {
+          "entrada": "Delta Serviços ME"
+        },
+        "B8": {
+          "entrada": "Campinas"
+        },
+        "C8": {
+          "entrada": "2200",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Ativo"
+        },
+        "A9": {
+          "entrada": "Ana Paula Souza"
+        },
+        "B9": {
+          "entrada": "Santos"
+        },
+        "C9": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Ativo"
+        },
+        "A10": {
+          "entrada": "Ômega Alimentos Ltda"
+        },
+        "B10": {
+          "entrada": "Campinas"
+        },
+        "C10": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Encerrado"
+        }
+      }
+    },
+    "verificacoes": [
       {
-        "texto": "`=SUBTOTAL(9;C2:C10)`"
-      },
-      {
-        "texto": "`=SOMASE(C2:C10;\"visível\")`"
-      },
-      {
-        "texto": "`=CONT.VALORES(C2:C10)`"
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          4,
+          10
+        ]
       }
     ],
-    "correta": 1,
-    "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "A": {
+              "valores": [
+                "Alfa Engenharia Ltda",
+                "Beta Comércio Ltda",
+                "Gama Transportes Ltda",
+                "Ômega Alimentos Ltda"
+              ]
+            },
+            "D": {
+              "valores": [
+                "Encerrado"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
     }
   },
   {

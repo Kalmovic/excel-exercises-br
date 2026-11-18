@@ -47,7 +47,7 @@ describe("conteúdo", () => {
 
   it("trilha segue o roteiro: 70 exercícios, o 1º de cada módulo grátis", () => {
     const porModulo = MODULOS.map((m) => exerciciosDoModulo(m.slug).length);
-    expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 3, 3, 3, 3, 3, 3, 3, 4]);
+    expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 5, 5, 3, 3, 3, 3, 3, 4]);
     for (const m of MODULOS.slice(1)) {
       const lista = exerciciosDoModulo(m.slug);
       expect(lista[0].plano, m.slug).toBe("free");
