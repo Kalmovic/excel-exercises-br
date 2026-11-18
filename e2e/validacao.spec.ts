@@ -62,3 +62,31 @@ test("mensagem de entrada aparece ao selecionar a célula", async ({ page }) => 
   await expect(visivel(page, "mensagem-entrada")).toContainText("Digite um número de 1 a 100");
   await verificarCorreto(page);
 });
+
+test("comprimento do texto: CPF com 11 dígitos", async ({ page }) => {
+  await abrir(page, "validacao-cpf"); // abre com B2:B10 selecionado
+  await visivel(page, "botao-validacao").click();
+  const janela = visivel(page, "janela-validacao");
+  await janela.getByTestId("validacao-permitir").selectOption("comprimento");
+  await janela.getByTestId("validacao-operador").selectOption("igual");
+  await janela.getByTestId("validacao-valor1").fill("11");
+  await janela.getByTestId("validacao-ok").click();
+  await verificarCorreto(page);
+
+  await celula(page, "B3").click();
+  await page.keyboard.insertText("1234567890");
+  await page.keyboard.press("Enter");
+  await expect(page.getByText("Este valor não corresponde às restrições").filter({ visible: true }).first()).toBeVisible();
+});
+
+test("data dentro de um período", async ({ page }) => {
+  await abrir(page, "validacao-periodo"); // abre com C2:C9 selecionado
+  await visivel(page, "botao-validacao").click();
+  const janela = visivel(page, "janela-validacao");
+  await janela.getByTestId("validacao-permitir").selectOption("data");
+  await janela.getByTestId("validacao-operador").selectOption("entre");
+  await janela.getByTestId("validacao-valor1").fill("01/11/2026");
+  await janela.getByTestId("validacao-valor2").fill("30/11/2026");
+  await janela.getByTestId("validacao-ok").click();
+  await verificarCorreto(page);
+});

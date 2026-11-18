@@ -1718,6 +1718,1500 @@
     }
   },
   {
+    "id": "6e52d52c-9e4b-571c-a52e-01d6d9d117be",
+    "slug": "grafico-colunas-certas",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Só as colunas certas",
+    "enunciado": [
+      "Crie um gráfico de **colunas** comparando a **Receita** e a **Despesa** de cada mês. A **Margem** não entra no gráfico."
+    ],
+    "dicas": [
+      "Com uma célula só selecionada, o Excel leva a tabela inteira, inclusive a Margem.",
+      "Selecione antes, arrastando do cabeçalho Mês até a última despesa."
+    ],
+    "explicacao": [
+      "Selecione **A1:C7** (Mês, Receita e Despesa) e use **Inserir Gráfico → Colunas**.",
+      "A Margem é porcentagem: 21% vale 0,21. No mesmo eixo de R$ 60.000, ela vira uma coluna invisível colada no zero e só polui a legenda."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-colunas-certas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Tabela de escritório quase nunca tem só o que vai no gráfico. Escolher as colunas certas é o que separa um gráfico claro de um amontoado.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Receita",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Margem",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "52000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "41200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=(B2-C2)/B2",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "48500",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "40100",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "=(B3-C3)/B3",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "55300",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "43800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "=(B4-C4)/B4",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "61200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "47500",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=(B5-C5)/B5",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "58700",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "46900",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=(B6-C6)/B6",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "64900",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "49300",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=(B7-C7)/B7",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 96,
+        "C": 96,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Receita",
+            "valores": [
+              52000,
+              48500,
+              55300,
+              61200,
+              58700,
+              64900
+            ]
+          },
+          {
+            "nome": "Despesa",
+            "valores": [
+              41200,
+              40100,
+              43800,
+              47500,
+              46900,
+              49300
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "eed805e6-0d13-51f0-a202-08a0a5cbb005",
+    "slug": "grafico-colunas-certas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Corrigir um gráfico pronto",
+    "enunciado": [
+      "Alguém já fez o gráfico, mas incluiu a **Taxa de resolução**. Deixe no gráfico só **Atendimentos** e **Resolvidos**."
+    ],
+    "dicas": [
+      "Clique no gráfico: o painel Design do Gráfico tem o campo Dados (Selecionar Dados).",
+      "O intervalo certo vai do Mês até a coluna Resolvidos."
+    ],
+    "explicacao": [
+      "Clique no gráfico → **Dados (Selecionar Dados)**: troque **A1:D7** por **A1:C7**.",
+      "Não precisa refazer o gráfico. No Excel, também dá para arrastar a borda colorida que marca o intervalo do gráfico na planilha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-colunas-certas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 14,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Atendimentos",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resolvidos",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Taxa de resolução",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "410"
+        },
+        "C2": {
+          "entrada": "352"
+        },
+        "D2": {
+          "entrada": "=C2/B2",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "385"
+        },
+        "C3": {
+          "entrada": "340"
+        },
+        "D3": {
+          "entrada": "=C3/B3",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "452"
+        },
+        "C4": {
+          "entrada": "401"
+        },
+        "D4": {
+          "entrada": "=C4/B4",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "498"
+        },
+        "C5": {
+          "entrada": "455"
+        },
+        "D5": {
+          "entrada": "=C5/B5",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "467"
+        },
+        "C6": {
+          "entrada": "430"
+        },
+        "D6": {
+          "entrada": "=C6/B6",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "520"
+        },
+        "C7": {
+          "entrada": "489"
+        },
+        "D7": {
+          "entrada": "=C7/B7",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 104,
+        "C": 96,
+        "D": 128,
+        "E": 32
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:D7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Atendimentos",
+            "valores": [
+              410,
+              385,
+              452,
+              498,
+              467,
+              520
+            ]
+          },
+          {
+            "nome": "Resolvidos",
+            "valores": [
+              352,
+              340,
+              401,
+              455,
+              430,
+              489
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "238405f5-3ef3-5aed-af60-65e228342d9f",
+    "slug": "grafico-colunas-certas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Uma coluna só",
+    "enunciado": [
+      "Crie um gráfico de **linhas** só com o **Faturamento** de cada mês."
+    ],
+    "dicas": [
+      "Pedidos e Ticket médio são outras medidas: ficam de fora.",
+      "Selecione o Mês e o Faturamento antes de inserir o gráfico."
+    ],
+    "explicacao": [
+      "Selecione **A1:B7** e use **Inserir Gráfico → Linhas**.",
+      "Faturamento (R$ 90 mil), pedidos (600) e ticket (R$ 140) não cabem no mesmo eixo. Cada medida pede o seu gráfico."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-colunas-certas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Faturamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Pedidos",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ticket médio",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "84500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "612"
+        },
+        "D2": {
+          "entrada": "=B2/C2",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "79200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "580"
+        },
+        "D3": {
+          "entrada": "=B3/C3",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "91800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "655"
+        },
+        "D4": {
+          "entrada": "=B4/C4",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "88400",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "630"
+        },
+        "D5": {
+          "entrada": "=B5/C5",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "96300",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "688"
+        },
+        "D6": {
+          "entrada": "=B6/C6",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "102700",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "721"
+        },
+        "D7": {
+          "entrada": "=B7/C7",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 72,
+        "B": 104,
+        "C": 80,
+        "D": 104,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Faturamento",
+            "valores": [
+              84500,
+              79200,
+              91800,
+              88400,
+              96300,
+              102700
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:B7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "5bf456a1-ef02-5e60-a0f8-926542c87ff7",
+    "slug": "grafico-colunas-certas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a coluna do Total",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com as vendas de cada vendedor **por trimestre** (uma cor para cada trimestre)."
+    ],
+    "dicas": [
+      "Olhe a última coluna da tabela antes de inserir o gráfico.",
+      "Com uma célula só selecionada, o Excel leva a tabela inteira, até a última coluna preenchida."
+    ],
+    "explicacao": [
+      "Selecione **A1:E5** (sem a coluna Total) e insira o gráfico de colunas. Se já inseriu, corrija em **Selecionar Dados**.",
+      "Com o Total junto, cada vendedor ganha uma coluna quatro vezes maior que as outras. Os trimestres ficam achatados e o gráfico deixa de comparar o que importa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-colunas-certas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 16,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "T1",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "T2",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "T3",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "T4",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "32000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "35500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "30200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "41800",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "=SOMA(B2:E2)",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "28400",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "26900",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "33100",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "35600",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "=SOMA(B3:E3)",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "36700",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "38200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "34900",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "44300",
+          "formato": "moeda"
+        },
+        "F4": {
+          "entrada": "=SOMA(B4:E4)",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Rocha"
+        },
+        "B5": {
+          "entrada": "22500",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "27800",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "29400",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "31200",
+          "formato": "moeda"
+        },
+        "F5": {
+          "entrada": "=SOMA(B5:E5)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 80,
+        "C": 80,
+        "D": 80,
+        "E": 80,
+        "F": 88,
+        "G": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Ana Souza",
+          "Bruno Lima",
+          "Carla Dias",
+          "Diego Rocha"
+        ],
+        "series": [
+          {
+            "nome": "T1",
+            "valores": [
+              32000,
+              28400,
+              36700,
+              22500
+            ]
+          },
+          {
+            "nome": "T2",
+            "valores": [
+              35500,
+              26900,
+              38200,
+              27800
+            ]
+          },
+          {
+            "nome": "T3",
+            "valores": [
+              30200,
+              33100,
+              34900,
+              29400
+            ]
+          },
+          {
+            "nome": "T4",
+            "valores": [
+              41800,
+              35600,
+              44300,
+              31200
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:E5",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "474d1ed2-4ee5-5881-9db9-c1a6cbba8a0e",
+    "slug": "grafico-colunas-certas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 45,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Por que a Margem sumiu?",
+    "enunciado": [
+      "Num gráfico de colunas com a **Receita** (perto de R$ 50.000) e a **Margem** (21%), as colunas da Margem quase não aparecem. Por quê?"
+    ],
+    "dicas": [
+      "Pense em quanto vale 21% como número."
+    ],
+    "explicacao": [
+      "**21% é 0,21.** Num eixo que vai até 60.000, isso fica colado no zero. Medidas de tamanhos tão diferentes vão em gráficos separados: um de Receita e Despesa, outro só da Margem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-colunas-certas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Porque o Excel não desenha porcentagem em gráfico.",
+        "dica": "Desenha, sim. O problema é a Margem dividir o eixo com valores muito maiores."
+      },
+      {
+        "texto": "Porque faltou ligar os rótulos de dados.",
+        "dica": "Rótulos escrevem o valor, mas não mudam o tamanho da coluna."
+      },
+      {
+        "texto": "Porque 21% vale 0,21, e no mesmo eixo de R$ 50.000 isso fica colado no zero."
+      },
+      {
+        "texto": "Porque a Margem teria que vir antes da Receita na tabela.",
+        "dica": "A ordem das colunas não muda a escala do eixo."
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "18a21762-c163-5b5a-ab2f-725a1ddeaa5a",
+    "slug": "grafico-ranking",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ranking: do maior para o menor",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com as vendas de cada vendedor, **do maior para o menor** (o primeiro colocado à esquerda)."
+    ],
+    "dicas": [
+      "O gráfico desenha as colunas na ordem da tabela. Arrume a tabela primeiro.",
+      "Clique numa célula da coluna Vendas e classifique de Z a A (do maior para o menor)."
+    ],
+    "explicacao": [
+      "Clique numa venda (B2, por exemplo) → **Classificar Z→A** → **Inserir Gráfico → Colunas**.",
+      "O gráfico acompanha a tabela: classificar antes ou depois de inserir dá no mesmo. No Excel, o botão é **Dados → Classificar do Maior para o Menor**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-ranking",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Quem vendeu mais? Num ranking, a resposta salta aos olhos quando as colunas descem em escada.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "48200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "61500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Eduardo"
+        },
+        "B4": {
+          "entrada": "39800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Bruno"
+        },
+        "B5": {
+          "entrada": "72300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fernanda"
+        },
+        "B6": {
+          "entrada": "55100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Diego"
+        },
+        "B7": {
+          "entrada": "44600",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Bruno",
+          "Ana",
+          "Fernanda",
+          "Carla",
+          "Diego",
+          "Eduardo"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              72300,
+              61500,
+              55100,
+              48200,
+              44600,
+              39800
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:B7",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true,
+      "grafico": true
+    }
+  },
+  {
+    "id": "905b5b5d-07c9-5a31-a91f-42e1b8fd6594",
+    "slug": "grafico-ranking-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Do menor para o maior",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com o prazo médio de cada transportadora, da **mais rápida** (menor prazo) para a mais lenta."
+    ],
+    "dicas": [
+      "Aqui o melhor é o menor número: a ordem é a contrária da do ranking de vendas."
+    ],
+    "explicacao": [
+      "Clique num prazo → **Classificar A→Z** (do menor para o maior) → **Inserir Gráfico → Colunas**.",
+      "Ranking nem sempre é do maior para o menor: em prazo, custo e reclamações, quem lidera é o menor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-ranking",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Transportadora",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo (dias)",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Expresso Norte"
+        },
+        "B2": {
+          "entrada": "4,2"
+        },
+        "A3": {
+          "entrada": "RotaSul"
+        },
+        "B3": {
+          "entrada": "6,8"
+        },
+        "A4": {
+          "entrada": "Via Rápida"
+        },
+        "B4": {
+          "entrada": "3,5"
+        },
+        "A5": {
+          "entrada": "TransBrasil"
+        },
+        "B5": {
+          "entrada": "5,1"
+        },
+        "A6": {
+          "entrada": "Carga Leve"
+        },
+        "B6": {
+          "entrada": "7,4"
+        }
+      },
+      "larguras": {
+        "A": 112,
+        "B": 96,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Via Rápida",
+          "Expresso Norte",
+          "TransBrasil",
+          "RotaSul",
+          "Carga Leve"
+        ],
+        "series": [
+          {
+            "nome": "Prazo (dias)",
+            "valores": [
+              3.5,
+              4.2,
+              5.1,
+              6.8,
+              7.4
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:B6",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B6",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true,
+      "grafico": true
+    }
+  },
+  {
+    "id": "2ea2face-26ce-54e3-b6b3-c572bda0598e",
+    "slug": "grafico-ranking-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Ranking com os valores",
+    "enunciado": [
+      "Crie um gráfico de **colunas** com as despesas do mês, da **maior para a menor**, com os **valores escritos** em cada coluna."
+    ],
+    "dicas": [
+      "Primeiro a ordem da tabela, depois o gráfico. Os valores escritos se ligam no Design do Gráfico."
+    ],
+    "explicacao": [
+      "Classifique o Gasto de **Z→A**, insira o gráfico de **colunas** e marque **Rótulos de dados** no Design do Gráfico.",
+      "Com a ordem e os valores na tela, ninguém precisa voltar à tabela para saber que o aluguel é a maior despesa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-ranking",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Gasto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Material de escritório"
+        },
+        "B2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Aluguel"
+        },
+        "B3": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Energia"
+        },
+        "B4": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Internet e telefone"
+        },
+        "B5": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Limpeza"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Software"
+        },
+        "B7": {
+          "entrada": "2150",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 152,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Aluguel",
+          "Software",
+          "Material de escritório",
+          "Energia",
+          "Limpeza",
+          "Internet e telefone"
+        ],
+        "series": [
+          {
+            "nome": "Gasto",
+            "valores": [
+              9500,
+              2150,
+              1850,
+              1320,
+              980,
+              640
+            ]
+          }
+        ],
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:B7",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B7",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true,
+      "grafico": true
+    }
+  },
+  {
+    "id": "5bfacdfc-432b-5bf5-8486-78b4d99fc19a",
+    "slug": "grafico-ranking-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 54,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: só os 5 primeiros",
+    "enunciado": [
+      "Crie um gráfico de **colunas** só com os **5 vendedores que mais venderam**, do maior para o menor."
+    ],
+    "dicas": [
+      "Primeiro classifique. Depois, conte quantas linhas o gráfico deve ter.",
+      "Com uma célula só selecionada, o gráfico leva os 8 vendedores."
+    ],
+    "explicacao": [
+      "Classifique as Vendas de **Z→A**, selecione **A1:B6** (o cabeçalho e os 5 primeiros) e insira o gráfico de colunas. Se já inseriu, ajuste em Selecionar Dados.",
+      "A ordem importa: sem classificar, A1:B6 pega os 5 primeiros da lista, não os 5 que mais venderam."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-ranking",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "61500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "72300",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "48200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "44600",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "39800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fernanda"
+        },
+        "B7": {
+          "entrada": "55100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriel"
+        },
+        "B8": {
+          "entrada": "51900",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Helena"
+        },
+        "B9": {
+          "entrada": "67400",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 88,
+        "C": 88,
+        "D": 88,
+        "E": 32
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Bruno",
+          "Helena",
+          "Ana",
+          "Fernanda",
+          "Gabriel"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              72300,
+              67400,
+              61500,
+              55100,
+              51900
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:B9",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B6",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true,
+      "grafico": true
+    }
+  },
+  {
+    "id": "2b19c0fc-8de4-5b28-8d73-8fc0c76b17c5",
+    "slug": "grafico-ranking-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E se classificar depois?",
+    "enunciado": [
+      "Você criou o gráfico e **depois** classificou a tabela do maior para o menor. O que acontece com o gráfico?"
+    ],
+    "dicas": [
+      "De onde o gráfico tira os números?"
+    ],
+    "explicacao": [
+      "**O gráfico acompanha os dados.** Ele lê as células: classificar, corrigir um valor ou trocar um nome muda o gráfico na hora."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-ranking",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Nada: o gráfico guarda a ordem de quando foi criado.",
+        "dica": "O gráfico lê as células. Mudou a tabela, ele muda junto."
+      },
+      {
+        "texto": "As colunas mudam de ordem junto com a tabela."
+      },
+      {
+        "texto": "O gráfico é apagado e precisa ser feito de novo.",
+        "dica": "Classificar não apaga o gráfico."
+      },
+      {
+        "texto": "Só os nomes mudam de lugar; os valores ficam.",
+        "dica": "Classificar move a linha inteira: nome e valor andam juntos."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "ec2a320e-325a-5b96-93e9-a88113eac042",
     "slug": "teste-graficos-1",
     "trilha": "excel-ptbr",
@@ -2109,24 +3603,24 @@
     }
   },
   {
-    "id": "8f7aaeb5-2bdb-5a1c-9a9f-a64ad9879ec5",
+    "id": "b5b6d874-d3aa-564e-b684-0cb538dc5dfb",
     "slug": "teste-graficos-4",
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 204,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Um grupo por mês",
+    "versao": 2,
+    "titulo": "Ranking de atendimentos",
     "enunciado": [
-      "Crie um gráfico de **colunas** com **um grupo para cada mês** e uma cor para cada produto."
+      "Crie um gráfico de **colunas** com os atendimentos de cada analista, **do maior para o menor**."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "grafico-participacao-canal",
+    "revisar": "grafico-ranking",
     "teste": true,
     "type": "ferramenta",
     "grade": {
@@ -2134,61 +3628,47 @@
       "colunas": 12,
       "celulas": {
         "A1": {
-          "entrada": "Produto",
+          "entrada": "Analista",
           "negrito": true
         },
         "B1": {
-          "entrada": "Jan",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Fev",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Mar",
+          "entrada": "Atendimentos",
           "negrito": true
         },
         "A2": {
-          "entrada": "Notebook"
+          "entrada": "Paula"
         },
         "B2": {
-          "entrada": "40"
-        },
-        "C2": {
-          "entrada": "35"
-        },
-        "D2": {
-          "entrada": "52"
+          "entrada": "142"
         },
         "A3": {
-          "entrada": "Mouse"
+          "entrada": "Rafael"
         },
         "B3": {
-          "entrada": "120"
-        },
-        "C3": {
-          "entrada": "140"
-        },
-        "D3": {
-          "entrada": "110"
+          "entrada": "98"
         },
         "A4": {
-          "entrada": "Monitor"
+          "entrada": "Sônia"
         },
         "B4": {
-          "entrada": "25"
+          "entrada": "175"
         },
-        "C4": {
-          "entrada": "30"
+        "A5": {
+          "entrada": "Tiago"
         },
-        "D4": {
-          "entrada": "41"
+        "B5": {
+          "entrada": "121"
+        },
+        "A6": {
+          "entrada": "Úrsula"
+        },
+        "B6": {
+          "entrada": "160"
         }
       },
       "larguras": {
         "A": 96,
-        "B": 88,
+        "B": 104,
         "C": 88,
         "D": 88,
         "E": 32
@@ -2199,33 +3679,21 @@
         "tipo": "grafico",
         "grafico": "colunas",
         "categorias": [
-          "Jan",
-          "Fev",
-          "Mar"
+          "Sônia",
+          "Úrsula",
+          "Paula",
+          "Tiago",
+          "Rafael"
         ],
         "series": [
           {
-            "nome": "Notebook",
+            "nome": "Atendimentos",
             "valores": [
-              40,
-              35,
-              52
-            ]
-          },
-          {
-            "nome": "Mouse",
-            "valores": [
-              120,
-              140,
-              110
-            ]
-          },
-          {
-            "nome": "Monitor",
-            "valores": [
-              25,
-              30,
-              41
+              175,
+              160,
+              142,
+              121,
+              98
             ]
           }
         ]
@@ -2233,55 +3701,68 @@
     ],
     "solucao": {
       "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:B6",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
         "graficos": [
           {
             "tipo": "colunas",
-            "dados": "A1:D4",
-            "posicao": "F1",
+            "dados": "A1:B6",
+            "posicao": "H1",
             "titulo": "",
             "rotulos": false,
-            "alternar": true
+            "alternar": false
           }
         ]
       }
     },
     "ferramentas": {
+      "dados": true,
       "grafico": true
     }
   },
   {
-    "id": "539a168e-13ae-5cd1-9cbf-a51355179d90",
+    "id": "f1c42836-d507-5506-830e-03e4f8baf3cb",
     "slug": "teste-graficos-5",
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Nomes longos",
+    "versao": 2,
+    "titulo": "Qual intervalo?",
     "enunciado": [
-      "Qual gráfico é o mais indicado para comparar 12 produtos com **nomes longos**?"
+      "A tabela tem **Mês** (coluna A), **Receita** (B), **Despesa** (C) e **Margem** (D), da linha 1 à 7. Para um gráfico só com a Receita e a Despesa de cada mês, qual intervalo selecionar?"
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "grafico-participacao-canal",
+    "revisar": "grafico-colunas-certas",
     "teste": true,
     "type": "multiple_choice",
     "opcoes": [
       {
-        "texto": "Pizza"
+        "texto": "A1:D7"
       },
       {
-        "texto": "Linhas"
+        "texto": "B1:C7"
       },
       {
-        "texto": "Barras"
+        "texto": "A1:C7"
       },
       {
-        "texto": "Colunas"
+        "texto": "A2:C7"
       }
     ],
     "correta": 2,
