@@ -22,6 +22,12 @@
   --color-success-bg: #e3f4f1;
   --color-warning-bg: #fff4e0; /* dicas */
   --color-muted: #4a4e57;
+  /*
+   * Texto secundário (text-zinc-500, usado no app inteiro): o zinc-500 padrão
+   * (#71717b) dá 4,49:1 no fundo da página e 4,18:1 no cabeçalho da grade.
+   * Este passa de 4,5:1 em todos os fundos claros do app (5,24 no cabeçalho).
+   */
+  --color-zinc-500: #62626a;
 
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque Variable", "Inter Variable", ui-sans-serif, sans-serif;
@@ -30,6 +36,17 @@
 
 body {
   font-family: var(--font-sans);
+}
+
+/*
+ * Anel de foco do teclado, visível também nos botões escuros. Na camada base:
+ * quem usa outline-none com outro indicador (anel, borda) continua valendo.
+ */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-success);
+    outline-offset: 2px;
+  }
 }
 
 /* Fórmula se lê como se digita: sem ligaduras (">=" não pode virar "≥", nem "<>" virar "≠"). */
