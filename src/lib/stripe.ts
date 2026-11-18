@@ -23,6 +23,18 @@ export function clienteStripe(): Stripe {
 export const LOOKUP_PRECO = { mensal: "planilhes_pro_mensal", anual: "planilhes_pro_anual" } as const;
 export type Plano = keyof typeof LOOKUP_PRECO;
 
+/**
+ * Visual do checkout com as cores do site (tokens de globals.css). Ícone e logo
+ * vêm da marca da conta (painel do Stripe → Settings → Branding; PNGs em docs/marca/).
+ */
+export const MARCA_CHECKOUT = {
+  display_name: "Planilhês",
+  background_color: "#f7f7f2", // --color-bg
+  button_color: "#16181d", // --color-ink
+  font_family: "inter",
+  border_style: "rounded",
+} as const;
+
 /** Etiqueta dos checkouts no painel do Stripe (sufixo de 8 letras, como o Stripe recomenda). */
 export const IDENTIFICADOR_CHECKOUT = "planilhes-pro-qkvmrzta";
 

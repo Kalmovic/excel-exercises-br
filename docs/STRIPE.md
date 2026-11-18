@@ -35,12 +35,19 @@ Developers → Webhooks → Add endpoint → `https://planilhes.com.br/api/strip
 
 Copie o **Signing secret** (`whsec_…`) para `STRIPE_WEBHOOK_SECRET` na Vercel.
 
-## 4. Painel
+## 4. Marca
+- O checkout já sai com as cores do site, a fonte Inter e o nome "Planilhês" (`MARCA_CHECKOUT` em `src/lib/stripe.ts`).
+- Ícone e logo valem para a conta inteira (checkout, faturas, recibos, portal e e-mails): Settings → **Branding** →
+  Icon = `docs/marca/stripe-icone.png`, Logo = `docs/marca/stripe-logo.png`, Brand color `#16181d`, Accent color `#ffd23f`.
+  Faça nos dois modos (teste e produção).
+- Settings → Public details: nome público "Planilhês", site `https://planilhes.com.br` e o e-mail de suporte.
+
+## 5. Painel
 - Settings → Payment methods: ligar **Pix** e **Boleto** (o código não fixa os meios; o Stripe mostra o que estiver ligado).
 - Settings → Billing → **Customer portal**: ativar, permitir trocar o cartão, ver faturas e cancelar.
 - Settings → Billing → Subscriptions and emails: ligar as tentativas automáticas de cobrança (Smart Retries) e os e-mails de cartão vencendo.
 
-## 5. Testar
+## 6. Testar
 - Cartão aprovado `4242 4242 4242 4242`; recusado `4000 0000 0000 0002`. Qualquer data futura e CVC. Para alerta de fraude e contestação, use os cartões da seção "Disputes" e "Radar" em docs.stripe.com/testing.
 - Webhook local: `stripe listen --forward-to localhost:3000/api/stripe/webhook` (o CLI mostra o `whsec_` para usar no `.env.local`).
 - Depois do deploy: Developers → Webhooks → o endpoint mostra cada aviso e a resposta (tem que ser 200).

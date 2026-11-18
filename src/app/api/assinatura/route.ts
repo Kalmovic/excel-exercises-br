@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { z } from "zod";
 import { PRECO } from "@/lib/site";
-import { clienteStripe, IDENTIFICADOR_CHECKOUT, precosDoCatalogo, stripeConfigurado } from "@/lib/stripe";
+import { clienteStripe, IDENTIFICADOR_CHECKOUT, MARCA_CHECKOUT, precosDoCatalogo, stripeConfigurado } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { usuarioAtual } from "@/lib/supabase/servidor";
 
@@ -66,6 +66,7 @@ export async function POST(request: Request) {
       cancel_url: `${origem}/pro`,
       metadata: { usuario_id: usuario.id, plano },
       integration_identifier: IDENTIFICADOR_CHECKOUT,
+      branding_settings: MARCA_CHECKOUT,
     };
     const sessao = await stripe.checkout.sessions.create(
       plano === "mensal"
