@@ -6,7 +6,7 @@ import { PAYWALL_ATIVO } from "@/lib/acesso-conteudo";
 import { usuarioEhPro } from "@/lib/acesso";
 import { conferirTeste } from "@/grader/conferir-teste";
 import { lerJsonLimitado, limitar } from "@/lib/limite";
-import { respostaQuestaoSchema } from "@/lib/teste-publico";
+import { comoRespostaQuestao, respostaQuestaoSchema } from "@/lib/teste-publico";
 import { APROVACAO } from "@/lib/testes";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { usuarioAtual } from "@/lib/supabase/servidor";
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
   const existente = await certificadoDe(admin, usuario.id, modulo);
   if (existente) return NextResponse.json({ codigo: existente.codigo });
 
-  const acertos = conferirTeste(questoes, entregas).filter(Boolean).length;
+  const acertos = conferirTeste(questoes, entregas.map(comoRespostaQuestao)).filter(Boolean).length;
   if (acertos < APROVACAO) {
     console.log(JSON.stringify({ tipo: "certificado_recusado", modulo, acertos, usuario: usuario.id }));
     return erro(422, `Na conferência, suas respostas somaram ${acertos} de ${questoes.length}. Refaça o teste para emitir.`);

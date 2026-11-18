@@ -3,7 +3,7 @@ import { z } from "zod";
 import { testeDoModulo } from "@/content";
 import { conferirQuestao } from "@/grader/conferir-teste";
 import { lerJsonLimitado, limitar } from "@/lib/limite";
-import { respostaQuestaoSchema } from "@/lib/teste-publico";
+import { comoRespostaQuestao, respostaQuestaoSchema } from "@/lib/teste-publico";
 
 /** Uma questão por pedido: { modulo, indice, resposta } → { ok }. */
 const pedido = z.object({
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   const { modulo, indice, resposta } = dados.data;
   const questao = testeDoModulo(modulo)[indice];
   if (!questao) return erro(404, "Questão não encontrada.");
-  return NextResponse.json({ ok: conferirQuestao(questao, resposta) });
+  return NextResponse.json({ ok: conferirQuestao(questao, comoRespostaQuestao(resposta)) });
 }
 
 const erro = (status: number, mensagem: string) => NextResponse.json({ erro: mensagem }, { status });

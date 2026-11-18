@@ -11,7 +11,7 @@
  * corrige é o servidor, em POST /api/teste/corrigir, com o exercício original.
  */
 import { z } from "zod";
-import { recursosSchema, type Exercicio, type Verificacao } from "@/content/schema";
+import type { Exercicio, Verificacao } from "@/content/schema";
 import type { RespostaQuestao } from "@/grader/conferir-teste";
 
 /** Texto no lugar da explicação: ela só pode existir no servidor. */
@@ -76,18 +76,22 @@ function sem<T extends object, K extends keyof T>(obj: T, ...chaves: K[]): Sem<T
 }
 
 /**
- * O que o navegador manda de uma questão (o mesmo formato de RespostaQuestao).
- * Com limites: chega da internet. A correção (conferirQuestao) filtra de novo.
+ * O que o navegador manda de uma questão (o formato de RespostaQuestao).
+ * Com limites: chega da internet (300 células de até 500 caracteres, os mesmos
+ * da correção). `recursos` passa sem validar aqui: conferirQuestao valida campo
+ * por campo, e um campo ruim não deve derrubar a questão inteira.
  */
 export const respostaQuestaoSchema = z.object({
-  conteudos: z.record(z.string().max(40), z.string().max(2000)).refine((o) => Object.keys(o).length <= 1500, "Células demais."),
+  conteudos: z.record(z.string().max(40), z.string().max(500)).refine((o) => Object.keys(o).length <= 300, "Células demais."),
   formatos: z
     .record(z.string().max(20), z.enum(["moeda", "percentual", "geral"]))
     .refine((o) => Object.keys(o).length <= 300, "Formatos demais.")
     .optional(),
-  // Filtro e classificações: só configuração, com limites no próprio schema.
-  recursos: recursosSchema.optional(),
+  recursos: z.unknown().optional(),
   resposta: z.string().max(2000).optional(),
   ativa: z.string().max(20).optional(),
   selecao: z.string().max(20).optional(),
-}) satisfies z.ZodType<RespostaQuestao>;
+});
+
+/** A resposta validada, no tipo da correção (os recursos são conferidos lá dentro). */
+export const comoRespostaQuestao = (r: z.infer<typeof respostaQuestaoSchema>) => r as RespostaQuestao;

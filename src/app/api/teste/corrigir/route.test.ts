@@ -66,6 +66,15 @@ describe("corrigir uma questão do teste no servidor", () => {
     expect((await pedir({ modulo: "busca", indice: 15, resposta: { conteudos: {} } })).status).toBe(404);
   });
 
+  it("recursos com um campo ruim não derrubam a questão: a correção valida por dentro", async () => {
+    const r = await pedir({ modulo: "busca", indice: 0, resposta: { ...certa("busca", 0), recursos: { filtro: "lixo", ordenacoes: 7 } } });
+    expect(r.status).toBe(200);
+    expect(typeof (await r.json()).ok).toBe("boolean");
+    // Mais de 300 células: recusado já na entrada.
+    const muitas = Object.fromEntries(Array.from({ length: 301 }, (_, i) => [`A${i + 1}`, "1"]));
+    expect((await pedir({ modulo: "busca", indice: 0, resposta: { conteudos: muitas } })).status).toBe(400);
+  });
+
   it("corpo grande demais: 413", async () => {
     const enorme = { modulo: "busca", indice: 0, resposta: { conteudos: { A1: "x".repeat(300_000) } } };
     expect((await pedir(enorme)).status).toBe(413);
