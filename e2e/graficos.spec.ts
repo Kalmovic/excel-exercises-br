@@ -56,3 +56,24 @@ test("pizza com rótulos e Alternar Linha/Coluna", async ({ page }) => {
   await visivel(page, "painel-grafico").getByTestId("grafico-alternar").click();
   await verificarCorreto(page);
 });
+
+test("só as colunas certas: selecionar Mês, Receita e Despesa antes de inserir", async ({ page }) => {
+  await abrir(page, "grafico-colunas-certas");
+  await celula(page, "A1").click();
+  await celula(page, "C7").click({ modifiers: ["Shift"] });
+  await visivel(page, "botao-grafico").click();
+  await visivel(page, "menu-grafico").locator('[data-tipo-grafico="colunas"]').click();
+  await expect(visivel(page, "grafico-0").locator("[data-barra-grafico]")).toHaveCount(12);
+  await verificarCorreto(page);
+});
+
+test("ranking: classificar do maior para o menor e inserir o gráfico", async ({ page }) => {
+  await abrir(page, "grafico-ranking");
+  await celula(page, "B3").click();
+  await visivel(page, "classificar-desc").click();
+  await expect(celula(page, "A2")).toHaveText("Bruno");
+  await visivel(page, "botao-grafico").click();
+  await visivel(page, "menu-grafico").locator('[data-tipo-grafico="colunas"]').click();
+  await expect(visivel(page, "grafico-0").locator("[data-barra-grafico]")).toHaveCount(6);
+  await verificarCorreto(page);
+});
