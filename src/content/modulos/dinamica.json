@@ -3100,7 +3100,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.5152514427040396,
-        "tolerancia": 1e-9
+        "tolerancia": 1e-09
       }
     ],
     "solucao": {
@@ -4184,6 +4184,3108 @@
     }
   },
   {
+    "id": "d6a05e16-52bb-59f5-bc19-9178267f5555",
+    "slug": "dinamica-maior-e-menor",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Máx. e Mín.: a maior despesa de cada setor",
+    "enunciado": [
+      "A tabela lista as despesas do escritório no trimestre. Crie uma tabela dinâmica em **G1** com o **valor da maior despesa** (a mais cara) de cada **setor**."
+    ],
+    "dicas": [
+      "Comece como sempre: Setor em Linhas e Valor em Valores. Depois olhe o rótulo que aparece em Valores.",
+      "A conta de Valores não precisa ser Soma: o seletor ao lado do campo tem outras opções."
+    ],
+    "explicacao": [
+      "**Setor** em **Linhas**, **Valor** em **Valores** e troque a conta de Soma para **Máx.** (no Excel: *Configurações do Campo de Valor* → *Máx.*).",
+      "O rótulo vira *Máx. de Valor*: o Jurídico mostra R$ 3.100,00, a viagem de março. Com Soma, apareceria quanto o setor gastou no total, que é outra pergunta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-maior-e-menor",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Achar a nota mais cara de cada setor é rotina de auditoria e de prestação de contas. Com a tabela dinâmica, é trocar uma opção.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Setor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "max"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "max"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "328624c3-f014-5048-9601-334b244994aa",
+    "slug": "dinamica-maior-e-menor-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A menor despesa de cada categoria",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **valor da menor despesa** de cada **categoria** (Viagem, Material, Software)."
+    ],
+    "dicas": [
+      "Se Máx. mostra a mais cara, existe a conta oposta na mesma lista."
+    ],
+    "explicacao": [
+      "**Categoria** em **Linhas**, **Valor** em **Valores** com **Mín.**",
+      "Material fica com R$ 190,00, a menor compra do trimestre. Mín. e Máx. ignoram células vazias, como as funções MÍNIMO e MÁXIMO."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-maior-e-menor",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Categoria"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "min"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "min"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "154d38af-0ec4-5ccb-92e5-11bd336665c2",
+    "slug": "dinamica-maior-e-menor-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A maior despesa de março",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com a **maior despesa** de cada **responsável**, considerando **só o mês de março**."
+    ],
+    "dicas": [
+      "Duas coisas: a conta (não é Soma) e o recorte do mês.",
+      "O mês não precisa aparecer como linha nem como coluna: ele só escolhe quais despesas entram."
+    ],
+    "explicacao": [
+      "**Responsável** em **Linhas**, **Valor** em **Valores** com **Máx.** e **Mês** em **Filtros**, com só **Mar** marcado.",
+      "O filtro e a conta são independentes: dá para combinar qualquer conta (Soma, Média, Máx.…) com qualquer recorte."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-maior-e-menor",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Responsável"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "max"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Mar"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "max"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "A",
+                "valores": [
+                  "Mar"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "db7f9bf5-6f2b-5d3f-aea3-31073b273b8d",
+    "slug": "dinamica-maior-e-menor-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o limite é por despesa",
+    "enunciado": [
+      "Pela política do escritório, **nenhuma despesa sozinha** pode passar de **R$ 2.500**.",
+      "Crie uma tabela dinâmica em **G1** que mostre, por **setor**, o número que deve ser comparado com esse limite."
+    ],
+    "dicas": [
+      "O limite vale para cada despesa, uma por uma, não para o setor somado.",
+      "Que número de cada setor diz se alguma despesa furou o limite?"
+    ],
+    "explicacao": [
+      "**Setor** em **Linhas** e **Valor** em **Valores** com **Máx.**: se a maior despesa do setor está abaixo de R$ 2.500, todas estão.",
+      "Quem deixa em Soma compara o **total** do setor com um limite **por despesa**: o Financeiro somaria bem mais de R$ 2.500 sem nenhuma despesa irregular. Só o Jurídico tem uma acima do limite (R$ 3.100,00)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-maior-e-menor",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Setor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "max"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "max"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "78990afd-0b10-585c-9515-9b8d25a8808c",
+    "slug": "dinamica-maior-e-menor-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O Total Geral do Máx.",
+    "enunciado": [
+      "Numa tabela dinâmica com **Máx. de Valor** por setor, o que mostra a linha **Total Geral**?"
+    ],
+    "dicas": [
+      "O Total Geral faz a mesma conta das outras linhas, só que com todos os dados juntos."
+    ],
+    "explicacao": [
+      "O Total Geral repete a conta escolhida com **todas as linhas da origem**: com Máx., é a **maior despesa de todas**.",
+      "Ele só é a soma das linhas de cima quando a conta é Soma (ou Contagem). Com Média, Máx. e Mín., somar a coluna da tabela dá um número sem sentido."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-maior-e-menor",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "A soma das maiores despesas de cada setor.",
+        "dica": "O Total Geral não soma as linhas de cima: ele refaz a conta escolhida com todos os dados."
+      },
+      {
+        "texto": "A maior despesa de todas, entre todos os setores."
+      },
+      {
+        "texto": "O total gasto pelo escritório.",
+        "dica": "Isso seria com Soma. Aqui a conta é Máx."
+      },
+      {
+        "texto": "A média das maiores despesas.",
+        "dica": "A tabela não mistura contas: com Máx., todas as linhas mostram um máximo."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "7399e498-3580-5928-96d9-015e230f7804",
+    "slug": "dinamica-filtro-varios-itens",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 5,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtro com vários itens",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **total gasto** por **setor**, considerando **só janeiro e fevereiro**."
+    ],
+    "dicas": [
+      "O recorte por mês vai na área Filtros.",
+      "Na lista de itens do filtro, dá para marcar mais de um."
+    ],
+    "explicacao": [
+      "**Setor** em **Linhas**, **Valor** em **Valores** (Soma) e **Mês** em **Filtros**. Na lista do filtro, desmarque **(Tudo)** e marque **Jan** e **Fev** (no Excel: *Selecionar Vários Itens*).",
+      "Em cima da tabela aparece *(Vários itens)*. É assim que se monta o relatório do bimestre, do semestre ou de algumas lojas, sem mexer na origem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-filtro-varios-itens",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Relatório de bimestre, de duas filiais, de três clientes: quase nunca é um item só. O filtro da dinâmica aceita vários de uma vez.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Setor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Fev",
+              "Jan"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "A",
+                "valores": [
+                  "Fev",
+                  "Jan"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "40b073b3-9946-540c-9070-37b441a06011",
+    "slug": "dinamica-filtro-varios-itens-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dois filtros ao mesmo tempo",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **total gasto** por **categoria**, considerando **só o setor Jurídico** e **só o mês de março**."
+    ],
+    "dicas": [
+      "São dois recortes: cada um é um campo em Filtros.",
+      "Com dois filtros, entram só as despesas que passam nos dois."
+    ],
+    "explicacao": [
+      "**Categoria** em **Linhas**, **Valor** em **Valores**, e **Setor** (só Jurídico) e **Mês** (só Mar) em **Filtros**.",
+      "Os filtros se somam como um *E*: Jurídico **e** março. Sobram só duas despesas: a viagem de R$ 3.100,00 e o material de R$ 190,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-filtro-varios-itens",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Categoria"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Setor",
+            "valores": [
+              "Jurídico"
+            ]
+          },
+          {
+            "campo": "Mês",
+            "valores": [
+              "Mar"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "B",
+                "valores": [
+                  "Jurídico"
+                ]
+              },
+              {
+                "campo": "A",
+                "valores": [
+                  "Mar"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "d75fafdd-7fe3-572b-9f7b-f081f62b2320",
+    "slug": "dinamica-filtro-varios-itens-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 53,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Tabela cruzada com filtro",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o gasto de cada **setor** (nas linhas) em cada **mês** (nas colunas), considerando **só as despesas de Viagem**."
+    ],
+    "dicas": [
+      "Três áreas em uso: Linhas, Colunas e Filtros, além de Valores.",
+      "A categoria não aparece na tabela, mas decide o que entra nela."
+    ],
+    "explicacao": [
+      "**Setor** em **Linhas**, **Mês** em **Colunas**, **Valor** em **Valores** e **Categoria** em **Filtros**, só com **Viagem**.",
+      "É o relatório de viagens por setor e mês. Os meses aparecem em ordem alfabética (Fev, Jan, Mar), porque aqui são texto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-filtro-varios-itens",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Setor"
+        ],
+        "colunas": [
+          "Mês"
+        ],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Categoria",
+            "valores": [
+              "Viagem"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [
+              "A"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "C",
+                "valores": [
+                  "Viagem"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "9c60521d-9566-59e3-8da4-5abd189531e1",
+    "slug": "dinamica-filtro-varios-itens-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: todas, menos uma",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **total gasto** por **setor**, considerando **todas as categorias, menos Software**."
+    ],
+    "dicas": [
+      "Leia de novo: qual categoria fica de fora, e quais ficam dentro?",
+      "No filtro, o que fica marcado é o que entra na conta."
+    ],
+    "explicacao": [
+      "**Setor** em **Linhas**, **Valor** em **Valores** e **Categoria** em **Filtros** com **Material** e **Viagem** marcados (só Software desmarcado).",
+      "O erro comum é marcar só Software, a palavra que aparece na pergunta: a tabela mostraria exatamente o que era para excluir."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-filtro-varios-itens",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 56,
+        "B": 84,
+        "C": 80,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 128,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "Jurídico"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "Paula"
+        },
+        "E2": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Jan"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Software"
+        },
+        "D3": {
+          "entrada": "Marcos"
+        },
+        "E3": {
+          "entrada": "920",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "Material"
+        },
+        "D4": {
+          "entrada": "Sônia"
+        },
+        "E4": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jan"
+        },
+        "B5": {
+          "entrada": "Jurídico"
+        },
+        "C5": {
+          "entrada": "Software"
+        },
+        "D5": {
+          "entrada": "Paula"
+        },
+        "E5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Fev"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Viagem"
+        },
+        "D6": {
+          "entrada": "Marcos"
+        },
+        "E6": {
+          "entrada": "1340",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fev"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "Sônia"
+        },
+        "E7": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fev"
+        },
+        "B8": {
+          "entrada": "Jurídico"
+        },
+        "C8": {
+          "entrada": "Material"
+        },
+        "D8": {
+          "entrada": "Renato"
+        },
+        "E8": {
+          "entrada": "280",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Fev"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Material"
+        },
+        "D9": {
+          "entrada": "Marcos"
+        },
+        "E9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Mar"
+        },
+        "B10": {
+          "entrada": "Jurídico"
+        },
+        "C10": {
+          "entrada": "Viagem"
+        },
+        "D10": {
+          "entrada": "Renato"
+        },
+        "E10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Mar"
+        },
+        "B11": {
+          "entrada": "RH"
+        },
+        "C11": {
+          "entrada": "Software"
+        },
+        "D11": {
+          "entrada": "Sônia"
+        },
+        "E11": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Mar"
+        },
+        "B12": {
+          "entrada": "Financeiro"
+        },
+        "C12": {
+          "entrada": "Software"
+        },
+        "D12": {
+          "entrada": "Marcos"
+        },
+        "E12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Mar"
+        },
+        "B13": {
+          "entrada": "Jurídico"
+        },
+        "C13": {
+          "entrada": "Material"
+        },
+        "D13": {
+          "entrada": "Paula"
+        },
+        "E13": {
+          "entrada": "190",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Mar"
+        },
+        "B14": {
+          "entrada": "RH"
+        },
+        "C14": {
+          "entrada": "Material"
+        },
+        "D14": {
+          "entrada": "Sônia"
+        },
+        "E14": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Fev"
+        },
+        "B15": {
+          "entrada": "Jurídico"
+        },
+        "C15": {
+          "entrada": "Viagem"
+        },
+        "D15": {
+          "entrada": "Paula"
+        },
+        "E15": {
+          "entrada": "1620",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Jan"
+        },
+        "B16": {
+          "entrada": "Financeiro"
+        },
+        "C16": {
+          "entrada": "Viagem"
+        },
+        "D16": {
+          "entrada": "Marcos"
+        },
+        "E16": {
+          "entrada": "2050",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "Mar"
+        },
+        "B17": {
+          "entrada": "RH"
+        },
+        "C17": {
+          "entrada": "Viagem"
+        },
+        "D17": {
+          "entrada": "Renato"
+        },
+        "E17": {
+          "entrada": "830",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Setor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Categoria",
+            "valores": [
+              "Material",
+              "Viagem"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "C",
+                "valores": [
+                  "Material",
+                  "Viagem"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "be05b50b-20f1-5a56-8486-bc43e91ef249",
+    "slug": "dinamica-filtro-varios-itens-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que é (Vários itens)?",
+    "enunciado": [
+      "Você recebe um relatório em que o filtro **Região**, em cima da tabela dinâmica, mostra **(Vários itens)**. O que isso quer dizer?"
+    ],
+    "dicas": [
+      "Compare com o que o filtro mostra quando está tudo marcado, e quando há um item só."
+    ],
+    "explicacao": [
+      "*(Vários itens)* quer dizer que **mais de um item, mas não todos**, está marcado. Para saber quais, abra a lista do filtro.",
+      "Vale conferir antes de usar os números: um total que parece do Brasil inteiro pode ser só de duas regiões."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-filtro-varios-itens",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Que todas as regiões estão na conta.",
+        "dica": "Com tudo marcado, o filtro mostra (Tudo)."
+      },
+      {
+        "texto": "Que algumas regiões, mas não todas, estão na conta."
+      },
+      {
+        "texto": "Que a região foi colocada em Linhas e em Filtros ao mesmo tempo.",
+        "dica": "Um campo fica em uma área só entre Linhas, Colunas e Filtros."
+      },
+      {
+        "texto": "Que o filtro deu erro e precisa ser refeito.",
+        "dica": "Não é erro: é como o filtro avisa que há uma seleção parcial."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "6ea5a373-f02d-54b7-a228-e618391f3139",
     "slug": "teste-dinamica-1",
     "trilha": "excel-ptbr",
@@ -4849,17 +7951,17 @@
     "ordem": 203,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Vendas do Norte",
+    "versao": 2,
+    "titulo": "Duas regiões",
     "enunciado": [
-      "Crie uma tabela dinâmica em **G1** com **quantas vendas** cada **vendedor** fez, considerando **só a região Sul**."
+      "Crie uma tabela dinâmica em **G1** com o **total vendido** por **produto**, considerando **só as regiões Norte e Leste**."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dinamica-regiao-por-canal",
+    "revisar": "dinamica-filtro-varios-itens",
     "teste": true,
     "type": "ferramenta",
     "grade": {
@@ -5131,19 +8233,21 @@
         "tipo": "dinamica",
         "origem": "A1:E15",
         "linhas": [
-          "Vendedor"
+          "Produto"
         ],
         "colunas": [],
         "valores": [
           {
-            "funcao": "contagem"
+            "campo": "Valor",
+            "funcao": "soma"
           }
         ],
         "filtros": [
           {
             "campo": "Região",
             "valores": [
-              "Sul"
+              "Leste",
+              "Norte"
             ]
           }
         ]
@@ -5156,20 +8260,21 @@
             "origem": "A1:E15",
             "destino": "G1",
             "linhas": [
-              "B"
+              "D"
             ],
             "colunas": [],
             "valores": [
               {
-                "campo": "B",
-                "funcao": "contagem"
+                "campo": "E",
+                "funcao": "soma"
               }
             ],
             "filtros": [
               {
                 "campo": "C",
                 "valores": [
-                  "Sul"
+                  "Leste",
+                  "Norte"
                 ]
               }
             ]
@@ -5498,7 +8603,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.29472382522671065,
-        "tolerancia": 1e-9
+        "tolerancia": 1e-09
       }
     ],
     "solucao": {
@@ -5528,7 +8633,7 @@
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dinamica-total-por-regiao",
+    "revisar": "dinamica-maior-e-menor",
     "teste": true,
     "type": "multiple_choice",
     "opcoes": [
