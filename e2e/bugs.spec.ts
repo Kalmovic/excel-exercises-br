@@ -53,12 +53,18 @@ test("P0-3: Recomeçar no desafio não apaga as tentativas", async ({ page }) =>
 test("P0-4: fórmula com erro de sintaxe é recusada com explicação", async ({ page }) => {
   await page.goto("/exercicios/soma-total-de-vendas");
   await celula(page, "B8").click();
+  // Erro de sintaxe de verdade: recusado, com a explicação.
+  await page.keyboard.insertText("=SOMA(B2:B7)+");
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("mensagem-formula")).toContainText("termina num operador");
+  await page.keyboard.press("Escape");
+  // Parêntese que falta no fim: o Excel fecha sozinho, e o simulador também.
+  await celula(page, "B8").click();
   await page.keyboard.insertText("=SOMA(B2:B7");
   await page.keyboard.press("Enter");
-  await expect(page.getByTestId("mensagem-formula")).toContainText("Faltou fechar um parêntese");
-  await page.keyboard.insertText(")");
-  await page.keyboard.press("Enter");
   await expect(celula(page, "B8")).toHaveText(/7\.675,00/);
+  await celula(page, "B8").click();
+  await expect(page.getByTestId("barra-formulas").filter({ visible: true })).toHaveValue("=SOMA(B2:B7)");
   await expect(page.locator("[data-celula]").filter({ hasText: "#ERROR!" })).toHaveCount(0);
 });
 
