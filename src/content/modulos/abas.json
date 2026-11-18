@@ -18,7 +18,8 @@
     ],
     "explicacao": [
       "`=SOMA(Jan!B2:B6)`.",
-      "Comece a fórmula em B2, clique na aba **Jan**, selecione as vendas e aperte Enter: o Excel escreve `Jan!` sozinho e volta para o Resumo."
+      "Comece a fórmula em B2, clique na aba **Jan**, selecione as vendas e aperte Enter: o Excel escreve `Jan!` sozinho e volta para o Resumo.",
+      "No Excel, cada aba também é chamada de *planilha* (Planilha1, Planilha2…): é esse o nome nos menus e nas questões de concurso."
     ],
     "tentativasAteExplicacao": 3,
     "type": "formula",
@@ -936,7 +937,7 @@
       "No **Resumo**, em **B2:B4**, calcule o **total de cada vendedor** a partir da aba **Lançamentos**."
     ],
     "dicas": [
-      "SOMASE recebe três intervalos e critérios; os dois intervalos da soma estão na outra aba.",
+      "SOMASE recebe três partes: onde procurar, o critério e o que somar. Os dois intervalos estão na aba Lançamentos; o critério está aqui no Resumo.",
       "O critério pode ser o nome que está na coluna A do próprio Resumo."
     ],
     "explicacao": [
@@ -3419,7 +3420,7 @@
     "versao": 1,
     "titulo": "Separador da aba",
     "enunciado": [
-      "Qual destas fórmulas lê corretamente a célula B2 da aba **Vendas 2025**."
+      "Qual destas fórmulas lê corretamente a célula B2 da aba **Vendas 2025**?"
     ],
     "dicas": [],
     "explicacao": [
