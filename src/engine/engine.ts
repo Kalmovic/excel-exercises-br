@@ -81,9 +81,6 @@ const dois = (n: number) => String(n).padStart(2, "0");
 
 /** Ctrl+Z: até 200 ações e, somando todas, até tantas células guardadas (retratos contam as duas fotos). */
 const MAX_ACOES_HISTORICO = 200;
-/** O maior exercício que o schema aceita. */
-const MAX_LINHAS_GRADE = 50;
-const MAX_COLUNAS_GRADE = 26;
 const MAX_CELULAS_HISTORICO = 60_000;
 /** Classificações em intervalos diferentes, alternadas, que o progresso consegue guardar. */
 const MAX_PERMUTACOES = 20;
@@ -186,7 +183,11 @@ export class Planilha {
     this.calculo = vinculo?.calculo ?? new Calculo();
     this.aba = vinculo?.aba ?? 0;
     // Numa Pasta, quem distribui por aba é ela (cada aba tem o seu filtro).
-    if (!vinculo) this.calculo.linhaOculta = (l) => this.ocultas.has(l);
+    if (!vinculo) {
+      this.calculo.linhaOculta = (l) => this.ocultas.has(l);
+      // Até onde vão a coluna inteira (A:A) e a linha inteira (1:1): a grade do exercício.
+      this.calculo.limites = { linhas: grade.linhas, colunas: grade.colunas };
+    }
     for (const [end, cel] of Object.entries(grade.celulas)) {
       this.gravar(deEndereco(end), cel.entrada);
       if (cel.bloqueada ?? cel.entrada !== "") this.bloqueadas.add(end);
@@ -595,16 +596,14 @@ export class Planilha {
 
   /** Valida (idioma pt-BR e escrita) e grava. Não grava se a validação falhar. */
   definir(end: string | Pos, bruto: string): Validacao {
-    // A tela só digita dentro da grade; aqui o limite é o maior tamanho que um exercício pode ter
-    // (50 × 26), porque testes do motor (F2) escrevem logo além da grade. O caminho do servidor
-    // (definirVarias, restaurarProgresso, formatar) usa a grade exata.
+    // Só dentro da grade do exercício (a tela, o servidor e os testes seguem a mesma regra).
     let p: Pos;
     try {
       p = this.pos(end);
     } catch {
       return { ok: false, mensagem: "Endereço inválido." };
     }
-    if (!(p.linha >= 0 && p.coluna >= 0 && p.linha < MAX_LINHAS_GRADE && p.coluna < MAX_COLUNAS_GRADE))
+    if (!(p.linha >= 0 && p.coluna >= 0 && p.linha < this.linhas && p.coluna < this.colunas))
       return { ok: false, mensagem: "Esta célula fica fora da planilha do exercício." };
     const motivo = this.motivoBloqueio(p);
     if (motivo) return { ok: false, mensagem: motivo };
@@ -1769,6 +1768,11 @@ export class Pasta {
 
   constructor(folhas: { nome: string; grade: Grade; formatos?: Record<string, Formato | undefined> }[]) {
     this.calculo.abas = folhas.map((f) => f.nome);
+    // A:A e 1:1 vão até a maior aba (o motor ainda amplia até a última célula preenchida de cada uma).
+    this.calculo.limites = {
+      linhas: Math.max(...folhas.map((f) => f.grade.linhas)),
+      colunas: Math.max(...folhas.map((f) => f.grade.colunas)),
+    };
     this.abas = folhas.map((f, i) => new Planilha(f.grade, { formatos: f.formatos }, { calculo: this.calculo, aba: i }));
     this.calculo.linhaOculta = (l, aba) => this.abas[aba]?.linhaOculta(l) ?? false;
     for (const p of this.abas) {
