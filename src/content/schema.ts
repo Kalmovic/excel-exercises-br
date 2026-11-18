@@ -53,6 +53,12 @@ export const erroComumSchema = z.object({
   dica: z.string().min(1),
   /** Só para esta célula (exercícios com mais de um alvo). */
   celula: endereco.optional(),
+  /**
+   * A fórmula (ou resposta) casar com o padrão reprova MESMO com o valor
+   * certo, com `dica` como mensagem. Ex.: PROCV sem FALSO que acerta por sorte
+   * porque a tabela está em ordem.
+   */
+  bloqueia: z.boolean().optional(),
 });
 
 const intervalo = z
@@ -75,8 +81,24 @@ export const ordenacaoSchema = z.object({
   cabecalho: z.boolean(),
 });
 
+/**
+ * Classificação guardada pelo efeito: a permutação das linhas de dados de
+ * `intervalo` (sem o cabeçalho). `ordem[i]` é a linha (relativa ao intervalo)
+ * que estava na posição i antes das classificações; classificações seguidas
+ * no mesmo intervalo se compõem numa só.
+ */
+export const permutacaoSchema = z
+  .object({
+    intervalo,
+    ordem: z.array(z.number().int().min(0).max(49)).min(1).max(50),
+  })
+  .refine((p) => new Set(p.ordem).size === p.ordem.length && p.ordem.every((i) => i < p.ordem.length), "A ordem precisa ser uma permutação.");
+
+/** Textos de célula usados em critérios: o mesmo limite do texto que o certificado aceita. */
+const textoDeCelula = z.string().max(500);
+
 /** Critério de uma coluna do filtro: os textos (como aparecem na célula) que ficam visíveis. "" = (Vazias). */
-export const criterioFiltroSchema = z.object({ valores: z.array(z.string().max(200)).max(200) });
+export const criterioFiltroSchema = z.object({ valores: z.array(textoDeCelula).max(200) });
 
 export const funcaoValorSchema = z.enum(["soma", "contagem", "media", "max", "min"]);
 
@@ -93,7 +115,7 @@ export const dinamicaSchema = z
     colunas: z.array(letraColuna).max(1),
     valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema })).max(3),
     /** `valores: null` = (Tudo). */
-    filtros: z.array(z.object({ campo: letraColuna, valores: z.array(z.string().max(200)).max(200).nullable() })).max(2),
+    filtros: z.array(z.object({ campo: letraColuna, valores: z.array(textoDeCelula).max(200).nullable() })).max(2),
   })
   .refine((d) => d.colunas.length === 0 || d.valores.length <= 1, "Com um campo em Colunas, só um campo em Valores.");
 
@@ -152,7 +174,10 @@ export const validacaoDadosSchema = z.object({
   erro: z.object({ titulo: z.string().max(50), texto: z.string().max(255) }).optional(),
 });
 
-export const recursosSchema = z.object({
+/** Nome de aba como o Excel aceita: até 31 caracteres, sem : \\ / ? * [ ] nem ! (que separa a aba da célula), e sem ' nas pontas. */
+const nomeAba = z.string().regex(/^(?!')[^:\\/?*[\]!]{1,31}(?<!')$/, "Nome de aba inválido");
+
+const recursosDeUmaAba = z.object({
   /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. null = desligado. */
   filtro: z
     .object({ intervalo, criterios: z.record(letraColuna, criterioFiltroSchema) })
@@ -164,12 +189,22 @@ export const recursosSchema = z.object({
   graficos: z.array(graficoSchema).max(4).optional(),
   /** Validação de dados; numa célula coberta por duas, vale a mais nova. */
   validacoes: z.array(validacaoDadosSchema).max(20).optional(),
-  /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
+  /**
+   * Formato antigo das classificações: os cliques, na ordem (refeitos assim ao
+   * restaurar). Ainda aceito na leitura (progresso salvo antes e o conteúdo).
+   */
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
+  /** Classificações pelo efeito (o que o progresso grava agora). Aplicadas antes das células do aluno. */
+  permutacoes: z.array(permutacaoSchema).max(20).optional(),
 });
 
-/** Nome de aba como o Excel aceita: até 31 caracteres, sem : \\ / ? * [ ] nem ! (que separa a aba da célula). */
-const nomeAba = z.string().regex(/^[^:\\/?*[\]!']{1,31}$/, "Nome de aba inválido");
+export const recursosSchema = recursosDeUmaAba.extend({
+  /** Recursos das outras abas de uma pasta, pelo nome da aba (a primeira aba fica fora daqui). */
+  abas: z
+    .record(nomeAba, recursosDeUmaAba)
+    .refine((o) => Object.keys(o).length <= 5, "No máximo 5 abas.")
+    .optional(),
+});
 
 export const gradeSchema = z.object({
   /** Nome da aba (padrão: Planilha1). */
@@ -434,6 +469,8 @@ export type CelulaInicial = z.infer<typeof celulaInicialSchema>;
 export type Alvo = z.infer<typeof alvoSchema>;
 export type Recursos = z.infer<typeof recursosSchema>;
 export type Ordenacao = z.infer<typeof ordenacaoSchema>;
+export type Permutacao = z.infer<typeof permutacaoSchema>;
+export type RecursosDeUmaAba = z.infer<typeof recursosDeUmaAba>;
 export type Dinamica = z.infer<typeof dinamicaSchema>;
 export type RegraCondicional = z.infer<typeof regraCondicionalSchema>;
 export type Grafico = z.infer<typeof graficoSchema>;

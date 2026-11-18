@@ -32,7 +32,16 @@ export type LeitorCondicional = {
   /** Avalia a fórmula da regra para a célula `p` (já ajustada a partir da primeira célula). */
   formula: (formula: string, origem: Pos, p: Pos) => ValorCelula;
   limites: { linhas: number; colunas: number };
+  /**
+   * Trabalho máximo por atualização: cada célula custa 1, e numa regra de
+   * fórmula custa CUSTO_FORMULA (é avaliada célula a célula). A regra que não
+   * cabe no que sobrou fica sem efeito (e as mais antigas que ela também).
+   */
+  orcamento?: number;
 };
+
+/** Custo de avaliar uma regra de fórmula numa célula, em unidades do orçamento. */
+export const CUSTO_FORMULA = 20;
 
 /** O que foi digitado no valor da regra: número ("1.000", "R$ 500", "10%") ou texto. */
 function lerAlvo(t: string): number | string {
@@ -78,6 +87,7 @@ export function calcularCondicionais(regras: RegraCondicional[], ler: LeitorCond
   };
 
   // Da mais nova para a mais antiga: o primeiro destaque que encontrar vale.
+  let resta = ler.orcamento ?? Infinity;
   for (const r of [...regras].reverse()) {
     let int: Intervalo | null;
     try {
@@ -86,6 +96,10 @@ export function calcularCondicionais(regras: RegraCondicional[], ler: LeitorCond
       continue;
     }
     if (!int) continue;
+    const area = (int.fim.linha - int.inicio.linha + 1) * (int.fim.coluna - int.inicio.coluna + 1);
+    const custo = area * (r.tipo === "formula" ? CUSTO_FORMULA : 1);
+    if (custo > resta) break; // orçamento acabou: as regras mais antigas ficam sem efeito
+    resta -= custo;
     const cels = [...posicoes(int)].map((p) => ({ p, v: ler.valor(p) }));
     const numeros = cels.map((c) => c.v).filter((v): v is number => typeof v === "number");
 
