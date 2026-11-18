@@ -5,7 +5,7 @@ import type { ValidacaoDados } from "@/content/schema";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
 import { ERRO_PADRAO, NOMES_OPERADOR, NOMES_PERMITIR } from "@/engine/validacao";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
-import { navegarItens, useEscape, useFocoDentro } from "./teclado";
+import { navegarItens, useEscape, useFocoDentro, useFocoPreso } from "./teclado";
 
 type Permitir = ValidacaoDados["permitir"] | "qualquer";
 type Operador = NonNullable<ValidacaoDados["operador"]>;
@@ -108,6 +108,7 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
   const fechar = () => fecharJanela(false);
   useEscape(ref, fechar);
   useFocoDentro(ref, "[data-testid=validacao-permitir]", false);
+  useFocoPreso(ref);
 
   const paraGrade = () => {
     fecharJanela(true);

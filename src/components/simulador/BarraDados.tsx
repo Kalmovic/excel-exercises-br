@@ -7,7 +7,7 @@ import { FormatacaoCondicional } from "./MenuCondicional";
 import { InserirGrafico } from "./PainelGrafico";
 import { BotoesValidacao } from "./ValidacaoDados";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
-import { useEscape } from "./teclado";
+import { useEscape, useFocoPreso } from "./teclado";
 
 /**
  * Guia "Dados" enxuta. Com `ferramentas.dados`: Filtro (Ctrl+Shift+L),
@@ -114,6 +114,7 @@ function InserirDinamica({ fechar }: { fechar: (criou?: boolean) => void }) {
   const ref = useRef<HTMLFormElement>(null);
   const id = useId();
   useEscape(ref, () => fechar());
+  useFocoPreso(ref);
   const [inicial] = useState(() => {
     const s = store.getState();
     const sel = s.selecao();

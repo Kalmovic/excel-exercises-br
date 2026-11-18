@@ -82,3 +82,40 @@ export function navegarItens(
   itens[i].focus();
   return itens[i];
 }
+
+/** Controles visíveis e habilitados dentro de `el`, na ordem do Tab. */
+export function focaveisDentro(el: HTMLElement): HTMLElement[] {
+  return Array.from(el.querySelectorAll<HTMLElement>(FOCAVEIS)).filter(
+    (x) => x.tabIndex >= 0 && !x.closest("[inert]") && x.getClientRects().length > 0,
+  );
+}
+
+/**
+ * Prende o Tab dentro de uma janela (`role="dialog"`): do último controle, Tab volta
+ * ao primeiro; do primeiro, Shift+Tab vai ao último. Sem isso o foco escapa para a
+ * grade com a janela aberta, e um Enter age na planilha.
+ */
+export function useFocoPreso(ref: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const tab = (e: globalThis.KeyboardEvent) => {
+      if (e.key !== "Tab" || e.defaultPrevented) return;
+      const itens = focaveisDentro(el);
+      if (itens.length === 0) return;
+      const primeiro = itens[0];
+      const ultimo = itens[itens.length - 1];
+      const atual = document.activeElement;
+      const dentro = atual instanceof HTMLElement && itens.includes(atual);
+      if (e.shiftKey && (!dentro || atual === primeiro)) {
+        e.preventDefault();
+        ultimo.focus();
+      } else if (!e.shiftKey && (!dentro || atual === ultimo)) {
+        e.preventDefault();
+        primeiro.focus();
+      }
+    };
+    el.addEventListener("keydown", tab);
+    return () => el.removeEventListener("keydown", tab);
+  }, [ref]);
+}

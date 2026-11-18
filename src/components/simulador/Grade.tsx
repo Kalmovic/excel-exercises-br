@@ -65,7 +65,11 @@ const LARGURA_MENU_FILTRO = 240;
 /** Caracteres depois dos quais um clique insere uma referência na fórmula. */
 const ACEITA_REFERENCIA = /[=(;+\-*/^&<>:]\s*$/;
 
-export function Grade({ larguras }: { larguras?: Record<string, number> }) {
+/**
+ * `autoFoco` falso (demonstração da página inicial): a grade só pega o foco depois
+ * que a pessoa clica ou toca nela; antes disso o Tab anda pela página normalmente.
+ */
+export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string, number>; autoFoco?: boolean }) {
   const { planilha, store, entradaRef, alvos, formatacao, selecaoFixa, dados, nomeAba, apontarExterno, formulaExterna } = useSimulador();
   // Apontando de outra aba: arrastar sobre a grade estende o intervalo inserido na fórmula de lá.
   const inicioExterno = useRef<Pos | null>(null);
@@ -192,6 +196,8 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
 
   // Mantém o foco no input da grade (ele captura a digitação, inclusive acentos).
   const raizRef = useRef<HTMLDivElement>(null);
+  // Sem autofoco: só depois do primeiro clique, toque ou foco dentro da grade.
+  const usada = useRef(autoFoco);
   const apontandoDeFora = !!apontarExterno;
   useEffect(() => {
     // Apontando de outra aba, quem digita é a barra de fórmulas (a célula da fórmula está lá).
@@ -206,6 +212,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     // só refoca se o foco se perdeu ou ainda está dentro da grade.
     const perdido = !ativo || ativo === document.body;
     if (!perdido && !raizRef.current?.contains(ativo)) return;
+    if (perdido && !usada.current) return;
     const el = entradaRef.current;
     // Celular, fora da edição: refoca para o teclado virtual fechar (inputMode "none").
     if (semTeclado && modo === "pronto" && el && ativo === el) el.blur();
@@ -226,8 +233,9 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   }, []);
 
   /**
-   * Rola a grade por dentro até o retângulo (coordenadas do conteúdo). Maior que a
-   * área visível, mostra o canto esquerdo/de cima. `pagina`: também rola a página
+   * Rola a grade por dentro até o retângulo (coordenadas do conteúdo), sem deixá-lo
+   * por baixo do cabeçalho fixo das linhas. Maior que a área visível, mostra o canto
+   * esquerdo/de cima. `pagina`: também rola a página
    * na vertical, o mínimo para o retângulo aparecer.
    */
   const rolarPara = useCallback((x0: number, x1: number, y0: number, y1: number, pagina = false) => {
@@ -237,8 +245,11 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     let st = g.scrollTop;
     // À esquerda e em cima, mostra também um pedaço da coluna e da linha anteriores
     // (ou os cabeçalhos, na primeira coluna e na primeira linha).
+    // O cabeçalho das linhas fica fixo à esquerda: a área útil começa depois dele.
+    // Maior que a área útil (o gráfico no celular), alinha pelo começo.
+    const util = g.clientWidth - LARGURA_CABECALHO;
     if (x1 > sl + g.clientWidth) sl = x1 - g.clientWidth;
-    if (x0 - LARGURA_CABECALHO < sl || x1 - x0 > g.clientWidth) sl = Math.max(0, x0 - LARGURA_CABECALHO);
+    if (x0 - LARGURA_CABECALHO < sl || x1 - x0 > util) sl = Math.max(0, x0 - LARGURA_CABECALHO);
     if (y1 > st + g.clientHeight) st = y1 - g.clientHeight;
     if (y0 - ALTURA < st || y1 - y0 > g.clientHeight) st = Math.max(0, y0 - ALTURA);
     if (sl !== g.scrollLeft || st !== g.scrollTop) g.scrollTo({ left: sl, top: st });
@@ -547,6 +558,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
     s.setRascunho(valor);
   };
 
+  const selecionarTextoNoToque = useRef(false);
   const iniciarEdicaoNaAtiva = () => {
     if (!store.getState().iniciarEdicao("editar")) return;
     // Celular: o teclado virtual só abre aqui (toque duplo). O foco precisa acontecer
@@ -556,8 +568,20 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       el.inputMode = "text";
       el.blur();
       el.focus({ preventScroll: true });
+      // No celular, quem toca duas vezes quer reescrever a célula: o texto entra
+      // selecionado e a digitação o substitui (antes, anexava ao fim e virava
+      // "=SOMA(B2;B7)=SOMA(B2:B7)" → FALSO).
+      selecionarTextoNoToque.current = true;
     }
   };
+  useLayoutEffect(() => {
+    if (!selecionarTextoNoToque.current || modo === "pronto") return;
+    selecionarTextoNoToque.current = false;
+    const el = entradaRef.current;
+    if (!el) return;
+    el.setSelectionRange(0, el.value.length);
+    store.setState({ cursor: el.value.length });
+  }, [modo, rascunho, entradaRef, store]);
 
   // As funções que as células recebem ficam estáveis (senão o memo da Celula não serve):
   // chamam a versão mais nova guardada num ref.
@@ -604,7 +628,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
       if (a) {
         const x0 = Math.min(ax0, a[0]);
         const x1 = Math.max(ax1, a[1]);
-        if (x1 - x0 <= g.clientWidth) rolarPara(x0, x1, Math.min(ay0, a[2]), Math.max(ay1, a[3]));
+        if (x1 - x0 <= g.clientWidth - LARGURA_CABECALHO) rolarPara(x0, x1, Math.min(ay0, a[2]), Math.max(ay1, a[3]));
       }
       rolarPara(ax0, ax1, ay0, ay1);
       return;
@@ -694,11 +718,17 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter((r) => daqui(r.aba));
 
   return (
-    <div className="relative" ref={raizRef}>
+    <div
+      className="relative"
+      ref={raizRef}
+      onPointerDownCapture={() => (usada.current = true)}
+      onFocusCapture={() => (usada.current = true)}
+    >
       <div
         ref={gradeRef}
         onScroll={(e) => setRolagem({ x: e.currentTarget.scrollLeft, y: e.currentTarget.scrollTop })}
-        className="overflow-auto rounded-md border border-zinc-300 bg-white shadow-sm"
+        // isolate: os z-index de dentro (cabeçalho fixo, editor) não passam por cima do resto da página
+        className="isolate overflow-auto rounded-md border border-zinc-300 bg-white shadow-sm"
         data-testid="grade"
       >
       <div
@@ -708,11 +738,41 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           if (store.getState().arrasto === "alca") store.setState({ alca: null });
         }}
       >
-        {/* canto */}
+        {/* Números das linhas: coluna fixa à esquerda (sticky), como no Excel. No celular a
+            grade rola sozinha até a célula ativa, a tabela dinâmica ou o gráfico, e sem isso
+            os números sumiam junto. Fundo opaco e acima das células; o canto, acima de tudo. */}
         <div
-          className="absolute border-r border-b border-zinc-300 bg-header"
-          style={{ left: 0, top: 0, width: LARGURA_CABECALHO, height: ALTURA }}
-        />
+          data-testid="cabecalho-linhas"
+          className="sticky left-0 z-40"
+          style={{ width: LARGURA_CABECALHO, height: topo(planilha.linhas) }}
+        >
+          {/* canto */}
+          <div
+            className="absolute z-[1] border-r border-b border-zinc-300 bg-header"
+            style={{ left: 0, top: 0, width: LARGURA_CABECALHO, height: ALTURA }}
+          />
+          {/* linhas */}
+          {Array.from({ length: planilha.linhas }, (_, l) => {
+            if (planilha.linhaOculta(l)) return null;
+            const ativa = l >= selecao.inicio.linha && l <= selecao.fim.linha;
+            // Como no Excel: com algum critério ligado, os números das linhas da tabela ficam azuis.
+            const azul = filtrando && filtro && l > filtro.intervalo.inicio.linha && l <= filtro.intervalo.fim.linha;
+            return (
+              <div
+                key={`l${l}`}
+                data-linha-filtrada={azul || undefined}
+                className={`absolute flex items-center justify-center border-r border-b border-zinc-300 ${
+                  ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-600"
+                } ${azul ? "!text-blue-600" : ""}`}
+                style={{ left: 0, top: topo(l), width: LARGURA_CABECALHO, height: ALTURA }}
+                onMouseDown={(e) => aoPressionarCabecalho(e, "linha", l)}
+                data-cabecalho={l + 1}
+              >
+                {l + 1}
+              </div>
+            );
+          })}
+        </div>
         {/* cabeçalhos de coluna */}
         {colunas.map((w, c) => {
           const ativa = c >= selecao.inicio.coluna && c <= selecao.fim.coluna;
@@ -742,27 +802,6 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
                   ajustarAoConteudo(c);
                 }}
               />
-            </div>
-          );
-        })}
-        {/* linhas */}
-        {Array.from({ length: planilha.linhas }, (_, l) => {
-          if (planilha.linhaOculta(l)) return null;
-          const ativa = l >= selecao.inicio.linha && l <= selecao.fim.linha;
-          // Como no Excel: com algum critério ligado, os números das linhas da tabela ficam azuis.
-          const azul = filtrando && filtro && l > filtro.intervalo.inicio.linha && l <= filtro.intervalo.fim.linha;
-          return (
-            <div
-              key={`l${l}`}
-              data-linha-filtrada={azul || undefined}
-              className={`absolute flex items-center justify-center border-r border-b border-zinc-300 ${
-                ativa ? "bg-header-ativo font-semibold text-ink" : "bg-header text-zinc-600"
-              } ${azul ? "!text-blue-600" : ""}`}
-              style={{ left: 0, top: topo(l), width: LARGURA_CABECALHO, height: ALTURA }}
-              onMouseDown={(e) => aoPressionarCabecalho(e, "linha", l)}
-              data-cabecalho={l + 1}
-            >
-              {l + 1}
             </div>
           );
         })}

@@ -7,7 +7,7 @@ import { deEndereco } from "@/engine/address";
 import { NOMES_FUNCAO, rotuloValor } from "@/engine/dinamica";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 import { IconeTabelaDinamica } from "./BarraDados";
-import { useEscape, useFocoDentro } from "./teclado";
+import { useEscape, useFocoDentro, useFocoPreso } from "./teclado";
 import {
   NOMES_AREA,
   campoUsado,
@@ -294,6 +294,7 @@ function ItensFiltro({ itens, marcados, aplicar, fechar, rotulo }: NonNullable<P
   const id = useId();
   useEscape(ref, fechar);
   useFocoDentro(ref, "input", false);
+  useFocoPreso(ref);
   useEffect(() => {
     const fora = (e: MouseEvent) => ref.current && !ref.current.contains(e.target as Node) && fechar();
     window.addEventListener("mousedown", fora);

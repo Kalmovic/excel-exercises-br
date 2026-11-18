@@ -327,7 +327,7 @@ export default function Simulador({
       <Contexto.Provider value={{ ...nucleo, entradaRef }}>
         <div className="space-y-2">
           <BarraFormulas />
-          <Grade larguras={ex.grade.larguras} />
+          <Grade larguras={ex.grade.larguras} autoFoco={false} />
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <button
               type="button"

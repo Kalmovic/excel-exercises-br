@@ -69,3 +69,78 @@ test("celular: sem a linha de atalhos de teclado embaixo da grade", async ({ pag
   await expect(visivel(page, "verificar")).toBeVisible();
   await expect(page.getByTestId("atalhos")).toHaveCount(0);
 });
+
+/** O número da linha `l` aparece inteiro dentro da grade e à esquerda da célula `end`. */
+async function numeroDaLinhaAVista(page: import("@playwright/test").Page, l: number, end: string) {
+  const grade = await visivel(page, "grade").boundingBox();
+  const num = await page.locator(`[data-cabecalho="${l}"]`).filter({ visible: true }).boundingBox();
+  const c = await cel(page, end).boundingBox();
+  if (!grade || !num || !c) return false;
+  return num.x >= grade.x - 1 && num.x + num.width <= grade.x + grade.width + 1 && c.x >= num.x + num.width - 1;
+}
+
+test("celular: a grade rola até E4 e os números das linhas continuam à vista (N8, #1)", async ({ page }) => {
+  await page.goto("/exercicios/nome-da-celula");
+  await expect(visivel(page, "grade")).toBeVisible();
+  await expect.poll(() => visivel(page, "grade").evaluate((g) => g.scrollLeft)).toBeGreaterThan(0);
+  await expect.poll(() => numeroDaLinhaAVista(page, 4, "E4")).toBe(true);
+  // E4 inteira, sem ficar por baixo da coluna fixa dos números.
+  const grade = (await visivel(page, "grade").boundingBox())!;
+  const e4 = (await cel(page, "E4").boundingBox())!;
+  expect(e4.x + e4.width).toBeLessThanOrEqual(grade.x + grade.width + 1);
+});
+
+test("celular: gráfico inserido maior que a tela aparece a partir do começo, ao lado dos números das linhas (#27)", async ({ page }) => {
+  await page.goto("/exercicios/grafico-vendas-por-mes");
+  await expect(visivel(page, "verificar")).toBeVisible();
+  await cel(page, "A2").tap();
+  await visivel(page, "botao-grafico").tap();
+  await page.locator('[data-tipo-grafico="colunas"]').filter({ visible: true }).tap();
+  const grafico = visivel(page, "grafico-0");
+  await expect(grafico).toBeVisible();
+  await expect
+    .poll(async () => {
+      const g = (await visivel(page, "grade").boundingBox())!;
+      const num = (await page.locator('[data-cabecalho="1"]').filter({ visible: true }).boundingBox())!;
+      const gr = (await grafico.boundingBox())!;
+      // O começo do gráfico logo depois da coluna fixa dos números (que segue dentro da grade).
+      return num.x >= g.x - 1 && Math.abs(gr.x - (num.x + num.width)) <= 2;
+    })
+    .toBe(true);
+});
+
+test("celular: tocar em B6 na demonstração da página inicial não esconde os números das linhas (#19)", async ({ page }) => {
+  await page.goto("/");
+  const b6 = cel(page, "B6");
+  await b6.scrollIntoViewIfNeeded();
+  await b6.tap();
+  await expect(page.getByTestId("editor-celula")).toBeFocused(); // depois do toque, a grade pega o foco
+  await expect.poll(() => numeroDaLinhaAVista(page, 6, "B6")).toBe(true);
+});
+
+test("celular: toque duplo numa célula com fórmula seleciona o texto, e digitar substitui (N2)", async ({ page }) => {
+  await page.goto("/exercicios/soma-total-de-vendas-pegadinha");
+  await expect(visivel(page, "verificar")).toBeVisible();
+  await cel(page, "B8").dblclick();
+  const editor = page.getByTestId("editor-celula");
+  await expect(editor).toBeFocused();
+  await expect(editor).toHaveValue("=SOMA(B2;B7)");
+  await expect
+    .poll(() => editor.evaluate((el: HTMLInputElement) => [el.selectionStart, el.selectionEnd]))
+    .toEqual([0, "=SOMA(B2;B7)".length]);
+  await page.keyboard.insertText("=SOMA(B2:B7)");
+  await page.keyboard.press("Enter");
+  await expect(cel(page, "B8")).toHaveText(/7\.675,00/);
+  await visivel(page, "verificar").tap();
+  await expect(visivel(page, "resultado")).toContainText("Correto!");
+});
+
+test("celular: errar o intervalo explica o botão de seleção por toque, não o mouse (#18)", async ({ page }) => {
+  await page.goto("/exercicios/selecionar-intervalo");
+  await expect(page.getByText("depois em B2").filter({ visible: true })).toBeVisible();
+  await cel(page, "B2").tap();
+  await visivel(page, "verificar").tap();
+  const r = visivel(page, "resultado");
+  await expect(r).toContainText("Toque em ▦ Selecionar intervalo e depois em B2 e D5");
+  await expect(r).not.toContainText("mouse");
+});

@@ -3,7 +3,7 @@ import { Planilha } from "@/engine/engine";
 import { deEndereco } from "@/engine/address";
 import { ptBR } from "@/engine/ptBR";
 import { explicarErro } from "@/engine/erros";
-import { diagnosticarValor, diagnosticarValorFixo } from "./diagnostico";
+import { diagnosticarValor, diagnosticarValorFixo, mensagemTextoAnexado, pareceTextoAnexado } from "./diagnostico";
 import { iguais, TOLERANCIA_PADRAO, type EstadoCorrecao, type Falha, type Resultado } from "./tipos";
 import { validarClickCell } from "./validadores/click-cell";
 import { validarFormatCell } from "./validadores/format-cell";
@@ -134,6 +134,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   return [...falhas];
 }
 
+const temLogico = (v: unknown): boolean => typeof v === "boolean" || (Array.isArray(v) && v.some(temLogico));
+
 /** Correção dos exercícios de fórmula (o tipo original). */
 export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
   const falhas: Falha[] = [];
@@ -175,6 +177,12 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
     if (!conferirValores(p, alvoAgora)) {
       const esperado =
         Array.isArray(alvoAgora.esperado) || typeof alvoAgora.esperado === "object" ? null : alvoAgora.esperado;
+      // "=SOMA(B2;B7)=SOMA(B2:B7)" → FALSO: escreveu a fórmula nova depois da antiga.
+      // Só quando deu VERDADEIRO/FALSO e a resposta não é lógica (comparação de verdade passa ao largo).
+      if (typeof valor === "boolean" && !temLogico(alvoAgora.esperado) && pareceTextoAnexado(p.bruto(c))) {
+        falhas.push({ celula: c, motivo: "texto-anexado", mensagem: mensagemTextoAnexado(p.bruto(c)) });
+        continue;
+      }
       const dica = diagnosticarValor({
         formulaAluno: p.bruto(c),
         formulaReferencia: alvo.solucaoReferencia,
@@ -292,6 +300,8 @@ export function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela 
   return {
     ok: false,
     falhas: r.falhas.map((f) => {
+      // O roteiro fala do erro na fórmula; com texto anexado, a fórmula nem é a que a pessoa quis.
+      if (f.motivo === "texto-anexado") return f;
       const e = f.celula ? casa(p.bruto(f.celula), f.celula) : undefined;
       return e ? { ...f, mensagem: e.dica } : f;
     }),

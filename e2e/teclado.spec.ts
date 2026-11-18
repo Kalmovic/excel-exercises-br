@@ -60,6 +60,90 @@ test("Shift+Tab também sai, e o foco não volta sozinho para a grade", async ({
   expect(await focado(page)).toBe(fora);
 });
 
+test("página inicial: a demonstração não pega o foco ao carregar; só depois do clique (N3)", async ({ page }) => {
+  await page.goto("/");
+  await expect(visivel(page, "grade")).toBeVisible();
+  await page.waitForTimeout(400);
+  expect(await focado(page)).not.toBe("editor-celula");
+  // O Tab anda pela página (menu, links), não fica preso em B6.
+  for (let i = 0; i < 3; i++) {
+    await page.keyboard.press("Tab");
+    expect(await focado(page)).not.toBe("editor-celula");
+  }
+  await celula(page, "B6").click();
+  await expect.poll(() => focado(page)).toBe("editor-celula");
+  await page.keyboard.insertText("=SOMA(B2:B5)");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "B6")).not.toHaveText("");
+});
+
+test("exercício com ferramenta: Shift+Tab sai da barra de fórmulas para os botões acima da grade (N4)", async ({ page }) => {
+  await abrir(page, "dinamica-total-por-regiao");
+  await expect.poll(() => focado(page)).toBe("editor-celula");
+  await page.keyboard.press("Escape");
+  await page.keyboard.press("Shift+Tab");
+  expect(await focado(page)).toBe("barra-formulas");
+  await page.keyboard.press("Shift+Tab");
+  expect(await focado(page)).toBe("botao-dinamica");
+  await page.waitForTimeout(300);
+  expect(await focado(page)).toBe("botao-dinamica"); // e a grade não puxa o foco de volta
+  // Para frente, como antes: da barra de fórmulas o Tab volta para a grade.
+  await page.keyboard.press("Tab");
+  expect(await focado(page)).toBe("barra-formulas");
+  await page.keyboard.press("Tab");
+  await expect.poll(() => focado(page)).toBe("editor-celula");
+});
+
+test("janela Criar Tabela Dinâmica prende o foco: Tab e Shift+Tab em ciclo (N5)", async ({ page }) => {
+  await abrir(page, "dinamica-total-por-regiao");
+  await expect.poll(() => focado(page)).toBe("editor-celula");
+  await page.keyboard.press("ArrowDown");
+  await visivel(page, "botao-dinamica").focus();
+  await page.keyboard.press("Enter");
+  const janela = visivel(page, "inserir-dinamica");
+  await expect(visivel(page, "dinamica-origem")).toBeFocused();
+  const dentro = () => page.evaluate(() => !!document.activeElement?.closest('[data-testid="inserir-dinamica"]'));
+  for (let i = 0; i < 6; i++) {
+    await page.keyboard.press("Tab");
+    expect(await dentro()).toBe(true);
+  }
+  // Origem → Destino → OK → Cancelar → Origem: depois de 4 Tabs, de volta ao começo.
+  await visivel(page, "dinamica-origem").focus();
+  for (let i = 0; i < 4; i++) await page.keyboard.press("Tab");
+  await expect(visivel(page, "dinamica-origem")).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(janela.getByRole("button", { name: "Cancelar" })).toBeFocused();
+  for (let i = 0; i < 6; i++) {
+    await page.keyboard.press("Shift+Tab");
+    expect(await dentro()).toBe(true);
+  }
+  await page.keyboard.press("Escape");
+  await expect(janela).toHaveCount(0);
+});
+
+test("janelas da formatação condicional e da validação também prendem o foco (N5)", async ({ page }) => {
+  await abrir(page, "destaque-vendas-baixas");
+  await visivel(page, "botao-condicional").focus();
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("Enter"); // "É Menor do que…"
+  await expect(visivel(page, "regra-valor")).toBeFocused();
+  for (let i = 0; i < 12; i++) {
+    await page.keyboard.press(i % 2 ? "Tab" : "Shift+Tab");
+    await page.keyboard.press("Shift+Tab");
+    expect(await page.evaluate(() => !!document.activeElement?.closest('[data-testid="janela-regra"]'))).toBe(true);
+  }
+
+  await abrir(page, "validacao-lista-status");
+  await visivel(page, "botao-validacao").focus();
+  await page.keyboard.press("Enter");
+  await expect(visivel(page, "validacao-permitir")).toBeFocused();
+  for (let i = 0; i < 20; i++) {
+    await page.keyboard.press(i < 10 ? "Tab" : "Shift+Tab");
+    expect(await page.evaluate(() => !!document.activeElement?.closest('[data-testid="janela-validacao"]'))).toBe(true);
+  }
+});
+
 test("filtro do começo ao Verificar só com o teclado (Alt+↓ abre o menu)", async ({ page }) => {
   await abrir(page, "dados-filtrar-regiao");
   await expect.poll(() => focado(page)).toBe("editor-celula");

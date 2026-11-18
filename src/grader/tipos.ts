@@ -11,6 +11,8 @@ export type MotivoFalha =
   | "funcao-faltando"
   | "funcao-proibida"
   | "valor-fixo"
+  // fórmula nova escrita depois da antiga ("=SOMA(B2;B7)=SOMA(B2:B7)" → FALSO)
+  | "texto-anexado"
   // intro
   | "sem-resposta"
   | "resposta"

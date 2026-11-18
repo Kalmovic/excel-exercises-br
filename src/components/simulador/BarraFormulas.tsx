@@ -53,6 +53,9 @@ export function BarraFormulas() {
           type="button"
           aria-label="Cancelar"
           disabled={!editando}
+          // ✕ e ✓ são atalhos do mouse (no teclado: Esc e Enter); fora do Tab, o
+          // Shift+Tab da barra de fórmulas chega direto às ferramentas.
+          tabIndex={-1}
           onMouseDown={(e) => e.preventDefault()}
           onClick={() => {
             store.getState().cancelar();
@@ -66,6 +69,7 @@ export function BarraFormulas() {
           type="button"
           aria-label="Confirmar"
           disabled={!editando}
+          tabIndex={-1}
           onMouseDown={(e) => e.preventDefault()}
           onClick={() => {
             if (store.getState().confirmar()) voltarParaGrade();
@@ -110,6 +114,15 @@ export function BarraFormulas() {
           onKeyDown={(e) => {
             if (teclaDeFormula(e, store)) return; // autocompletar e F4
             const s = store.getState();
+            // Shift+Tab sai da barra para trás (as ferramentas acima da grade), como
+            // qualquer campo: grava o que mudou e deixa o navegador levar o foco.
+            // (Antes voltava para a grade, e as ferramentas ficavam inalcançáveis.)
+            if (e.key === "Tab" && e.shiftKey) {
+              if (s.modo === "pronto") return;
+              if (s.rascunho === planilha.bruto(s.ancora)) s.cancelar();
+              else if (!s.confirmar()) e.preventDefault();
+              return;
+            }
             if (e.key === "Enter" || e.key === "Tab") {
               e.preventDefault();
               if (s.confirmar()) {

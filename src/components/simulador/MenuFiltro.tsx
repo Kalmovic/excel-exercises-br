@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { colunaParaLetras } from "@/engine/address";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
-import { useEscape, useFocoDentro } from "./teclado";
+import { useEscape, useFocoDentro, useFocoPreso } from "./teclado";
 
 /** Funil do Excel: a coluna tem um critério de filtro. */
 export function IconeFunil() {
@@ -55,6 +55,7 @@ export function MenuFiltro({ coluna, left, top, fechar }: Props) {
   // Abre com o foco dentro (no 1º item); Esc fecha e o foco volta para quem abriu.
   useEscape(ref, fechar);
   useFocoDentro(ref);
+  useFocoPreso(ref);
 
   if (!filtro) return null;
 

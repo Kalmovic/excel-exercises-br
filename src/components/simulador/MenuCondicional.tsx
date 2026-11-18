@@ -5,7 +5,7 @@ import type { EstiloDestaque, RegraCondicional } from "@/content/schema";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
-import { navegarItens, useEscape, useFocoDentro } from "./teclado";
+import { navegarItens, useEscape, useFocoDentro, useFocoPreso } from "./teclado";
 
 type TipoForm = Exclude<RegraCondicional["tipo"], "barras" | "escala">;
 
@@ -266,6 +266,7 @@ function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }:
   useEscape(ref, () => fechar());
   // Foco no 1º campo (o valor, a quantidade, a fórmula ou o estilo, conforme a regra).
   useFocoDentro(ref, "input, select", false);
+  useFocoPreso(ref);
   const [tipo, setTipo] = useState<TipoForm>(tipoInicial);
   const [valor, setValor] = useState(tipo === "formula" ? "=" : "");
   const [valor2, setValor2] = useState("");
@@ -414,6 +415,7 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
   const id = useId();
   useEscape(ref, fechar);
   useFocoDentro(ref, "button", false);
+  useFocoPreso(ref);
   return (
     <div
       ref={ref}
