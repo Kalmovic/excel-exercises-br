@@ -627,7 +627,7 @@
     "alvos": [
       {
         "celula": "D2",
-        "esperado": 500.0,
+        "esperado": 500,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B2/C2;0)",
         "formato": "moeda"
@@ -641,7 +641,7 @@
       },
       {
         "celula": "D4",
-        "esperado": 600.0,
+        "esperado": 600,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B4/C4;0)",
         "formato": "moeda"

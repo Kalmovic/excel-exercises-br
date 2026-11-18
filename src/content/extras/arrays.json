@@ -1866,27 +1866,27 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 2880.0,
+        "esperado": 2880,
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B2>=1000;10%;5%);B2*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       },
       {
         "celula": "C3",
-        "esperado": 76.0,
+        "esperado": 76,
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B3>=1000;10%;5%);B3*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       },
       {
         "celula": "C4",
-        "esperado": 990.0,
+        "esperado": 990,
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B4>=1000;10%;5%);B4*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       },
       {
         "celula": "C5",
@@ -1894,15 +1894,15 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B5>=1000;10%;5%);B5*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       },
       {
         "celula": "C6",
-        "esperado": 1260.0,
+        "esperado": 1260,
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B6>=1000;10%;5%);B6*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       }
     ],
     "dicas": [

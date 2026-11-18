@@ -3791,7 +3791,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
         "formato": "percentual",
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "dicas": [

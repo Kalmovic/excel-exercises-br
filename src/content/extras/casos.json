@@ -796,49 +796,49 @@
       },
       {
         "celula": "D2",
-        "esperado": 3550.0,
+        "esperado": 3550,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*C2",
         "formato": "moeda"
       },
       {
         "celula": "D3",
-        "esperado": 1260.0,
+        "esperado": 1260,
         "exigeFormula": true,
         "solucaoReferencia": "=B3*C3",
         "formato": "moeda"
       },
       {
         "celula": "D4",
-        "esperado": 340.0,
+        "esperado": 340,
         "exigeFormula": true,
         "solucaoReferencia": "=B4*C4",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 1505.0,
+        "esperado": 1505,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*C5",
         "formato": "moeda"
       },
       {
         "celula": "D6",
-        "esperado": 300.0,
+        "esperado": 300,
         "exigeFormula": true,
         "solucaoReferencia": "=B6*C6",
         "formato": "moeda"
       },
       {
         "celula": "D7",
-        "esperado": 3350.0,
+        "esperado": 3350,
         "exigeFormula": true,
         "solucaoReferencia": "=B7*C7",
         "formato": "moeda"
       },
       {
         "celula": "G6",
-        "esperado": 10305.0,
+        "esperado": 10305,
         "exigeFormula": true,
         "solucaoReferencia": "=SOMA(D2:D7)",
         "formato": "moeda"
@@ -1544,7 +1544,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=TAXA(B2;-B3;B1)",
         "formato": "percentual",
-        "tolerancia": 1e-06
+        "tolerancia": 0.000001
       }
     ],
     "dicas": [

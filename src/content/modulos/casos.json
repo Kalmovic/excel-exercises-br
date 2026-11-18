@@ -110,14 +110,14 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 625.0,
+        "esperado": 625,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
         "formato": "moeda"
       },
       {
         "celula": "C3",
-        "esperado": 60.0,
+        "esperado": 60,
         "exigeFormula": true,
         "solucaoReferencia": "=B3*PROCV(B3;$E$2:$F$5;2;VERDADEIRO)",
         "formato": "moeda"
@@ -131,7 +131,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 225.0,
+        "esperado": 225,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*PROCV(B5;$E$2:$F$5;2;VERDADEIRO)",
         "formato": "moeda"
@@ -792,7 +792,7 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 60.0,
+        "esperado": 60,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
         "formato": "moeda"

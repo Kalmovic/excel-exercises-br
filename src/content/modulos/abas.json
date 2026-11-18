@@ -299,7 +299,7 @@
     "alvos": [
       {
         "celula": "B2",
-        "esperado": 1284.0,
+        "esperado": 1284,
         "exigeFormula": true,
         "solucaoReferencia": "=MÉDIA(Fev!B2:B6)",
         "formato": "moeda"
@@ -898,7 +898,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 120.0,
+        "esperado": 120,
         "exigeFormula": true,
         "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
         "formato": "moeda"
@@ -1414,7 +1414,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 120.0,
+        "esperado": 120,
         "exigeFormula": true,
         "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
         "formato": "moeda"
@@ -3017,7 +3017,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 120.0,
+        "esperado": 120,
         "exigeFormula": true,
         "solucaoReferencia": "=PROCV(A5;Preços!$A$2:$B$6;2;FALSO)",
         "formato": "moeda"
@@ -3266,7 +3266,7 @@
     "alvos": [
       {
         "celula": "B2",
-        "esperado": 1309.0,
+        "esperado": 1309,
         "exigeFormula": true,
         "solucaoReferencia": "=MÉDIA(Jan!B2:B6;Fev!B2:B6;Mar!B2:B6)",
         "formato": "moeda"

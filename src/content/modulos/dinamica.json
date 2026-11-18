@@ -3100,7 +3100,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.5152514427040396,
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "solucao": {
@@ -5498,7 +5498,7 @@
         "tipo": "celula",
         "celula": "H8",
         "esperado": 0.29472382522671065,
-        "tolerancia": 1e-09
+        "tolerancia": 1e-9
       }
     ],
     "solucao": {

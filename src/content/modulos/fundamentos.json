@@ -691,7 +691,7 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 60.0,
+        "esperado": 60,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*$F$1",
         "formato": "moeda"
@@ -712,7 +712,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 55.0,
+        "esperado": 55,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*$F$1",
         "formato": "moeda"
@@ -726,7 +726,7 @@
       },
       {
         "celula": "C7",
-        "esperado": 66.0,
+        "esperado": 66,
         "exigeFormula": true,
         "solucaoReferencia": "=B7*$F$1",
         "formato": "moeda"
@@ -2869,28 +2869,28 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 120.0,
+        "esperado": 120,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*$F$2",
         "formato": "moeda"
       },
       {
         "celula": "C3",
-        "esperado": 95.0,
+        "esperado": 95,
         "exigeFormula": true,
         "solucaoReferencia": "=B3*$F$2",
         "formato": "moeda"
       },
       {
         "celula": "C4",
-        "esperado": 143.0,
+        "esperado": 143,
         "exigeFormula": true,
         "solucaoReferencia": "=B4*$F$2",
         "formato": "moeda"
       },
       {
         "celula": "C5",
-        "esperado": 110.0,
+        "esperado": 110,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*$F$2",
         "formato": "moeda"
@@ -2904,7 +2904,7 @@
       },
       {
         "celula": "C7",
-        "esperado": 132.0,
+        "esperado": 132,
         "exigeFormula": true,
         "solucaoReferencia": "=B7*$F$2",
         "formato": "moeda"
@@ -3026,37 +3026,37 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 240.0,
+        "esperado": 240,
         "exigeFormula": true,
         "solucaoReferencia": "=B2/$F$3"
       },
       {
         "celula": "C3",
-        "esperado": 190.0,
+        "esperado": 190,
         "exigeFormula": true,
         "solucaoReferencia": "=B3/$F$3"
       },
       {
         "celula": "C4",
-        "esperado": 286.0,
+        "esperado": 286,
         "exigeFormula": true,
         "solucaoReferencia": "=B4/$F$3"
       },
       {
         "celula": "C5",
-        "esperado": 220.0,
+        "esperado": 220,
         "exigeFormula": true,
         "solucaoReferencia": "=B5/$F$3"
       },
       {
         "celula": "C6",
-        "esperado": 335.0,
+        "esperado": 335,
         "exigeFormula": true,
         "solucaoReferencia": "=B6/$F$3"
       },
       {
         "celula": "C7",
-        "esperado": 264.0,
+        "esperado": 264,
         "exigeFormula": true,
         "solucaoReferencia": "=B7/$F$3"
       }
@@ -3207,7 +3207,7 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 60.0,
+        "esperado": 60,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*$F$1",
         "formato": "moeda"
@@ -3228,7 +3228,7 @@
       },
       {
         "celula": "C5",
-        "esperado": 55.0,
+        "esperado": 55,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*$F$1",
         "formato": "moeda"
@@ -3242,7 +3242,7 @@
       },
       {
         "celula": "C7",
-        "esperado": 66.0,
+        "esperado": 66,
         "exigeFormula": true,
         "solucaoReferencia": "=B7*$F$1",
         "formato": "moeda"
@@ -4143,49 +4143,49 @@
       },
       {
         "celula": "B4",
-        "esperado": 84.0,
+        "esperado": 84,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+B$2)",
         "formato": "moeda"
       },
       {
         "celula": "C4",
-        "esperado": 88.0,
+        "esperado": 88,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+C$2)",
         "formato": "moeda"
       },
       {
         "celula": "D4",
-        "esperado": 92.0,
+        "esperado": 92,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+D$2)",
         "formato": "moeda"
       },
       {
         "celula": "B5",
-        "esperado": 126.0,
+        "esperado": 126,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+B$2)",
         "formato": "moeda"
       },
       {
         "celula": "C5",
-        "esperado": 132.0,
+        "esperado": 132,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+C$2)",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 138.0,
+        "esperado": 138,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+D$2)",
         "formato": "moeda"
       },
       {
         "celula": "B6",
-        "esperado": 210.0,
+        "esperado": 210,
         "exigeFormula": true,
         "solucaoReferencia": "=$A6*(1+B$2)",
         "formato": "moeda"
@@ -5025,7 +5025,7 @@
     "alvos": [
       {
         "celula": "D2",
-        "esperado": 24.0,
+        "esperado": 24,
         "exigeFormula": true,
         "solucaoReferencia": "=C2*$F$1",
         "formato": "moeda"
@@ -5039,21 +5039,21 @@
       },
       {
         "celula": "D4",
-        "esperado": 21.0,
+        "esperado": 21,
         "exigeFormula": true,
         "solucaoReferencia": "=C4*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 33.0,
+        "esperado": 33,
         "exigeFormula": true,
         "solucaoReferencia": "=C5*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "D6",
-        "esperado": 27.0,
+        "esperado": 27,
         "exigeFormula": true,
         "solucaoReferencia": "=C6*$F$1",
         "formato": "moeda"
