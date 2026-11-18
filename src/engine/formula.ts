@@ -133,3 +133,37 @@ export function diagnosticarSintaxe(formula: string): string {
   if (aba) return `Nome de aba com espaço vai entre aspas simples: '${aba[1]}'!`;
   return "Há um problema na escrita desta fórmula. Confira os parênteses, os ; entre os argumentos e as aspas.";
 }
+
+/**
+ * Quantos parênteses ficaram abertos no fim da fórmula (fora de textos entre
+ * aspas e de nomes de aba citados). Negativo: fechou algum sem abrir.
+ */
+function parentesesAbertos(formula: string): number {
+  let saldo = 0;
+  for (let i = 0; i < formula.length; i++) {
+    const ch = formula[i];
+    if (ch === '"' || ch === "'") {
+      // Pula até a aspa que fecha ("" e '' dentro são a própria aspa).
+      let j = i + 1;
+      while (j < formula.length && !(formula[j] === ch && formula[j + 1] !== ch)) j += formula[j] === ch ? 2 : 1;
+      i = j;
+      continue;
+    }
+    if (ch === "(") saldo++;
+    else if (ch === ")" && --saldo < 0) return -1;
+  }
+  return saldo;
+}
+
+/**
+ * Como o Excel ao confirmar `=SOMA(B2:B7`: acrescenta no fim os `)` que
+ * faltam. Devolve a fórmula fechada, ou null se não falta nenhum (ou se as
+ * aspas ficaram abertas). Quem chama confere se a fórmula fechada é lida.
+ */
+export function fecharParenteses(formula: string): string | null {
+  if (!formula.startsWith("=")) return null;
+  if ((formula.match(/"/g) ?? []).length % 2 === 1) return null;
+  const n = parentesesAbertos(formula);
+  if (n <= 0 || n > 64) return null;
+  return formula.replace(/\s+$/, "") + ")".repeat(n);
+}
