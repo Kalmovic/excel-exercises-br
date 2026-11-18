@@ -86,3 +86,19 @@ test("página Pro: destaque da tabela dinâmica abre a lição jogável na aba c
   await amostra.getByTestId("verificar").click();
   await expect(amostra.getByTestId("resultado")).toContainText("Correto!");
 });
+
+test("página Pro: as seis ferramentas, com o módulo de cada uma, e a aba de gráfico", async ({ page }) => {
+  await page.goto("/pro");
+  const lista = page.getByTestId("lista-ferramentas");
+  await expect(lista.locator("li")).toHaveCount(6);
+  for (const t of ["Gráficos", "Formatação condicional", "Validação de dados", "Várias abas"]) await expect(lista).toContainText(t);
+  await expect(lista).toContainText(/Várias abas\s*Módulo 13/);
+  await page.getByTestId("cta-grafico").click();
+  await expect(page.getByTestId("aba-amostra-grafico")).toHaveAttribute("aria-selected", "true");
+  const amostra = page.getByTestId("exercicio-embutido");
+  await amostra.locator('[data-celula="A3"]').click();
+  await amostra.getByTestId("botao-grafico").click();
+  await amostra.locator('[data-tipo-grafico="colunas"]').click();
+  await amostra.getByTestId("verificar").click();
+  await expect(amostra.getByTestId("resultado")).toContainText("Correto!");
+});

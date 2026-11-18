@@ -1,5 +1,5 @@
 import "server-only";
-import { exercicioPorSlug } from "@/content";
+import { MODULOS, exercicioPorSlug } from "@/content";
 import { paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 
@@ -30,7 +30,9 @@ export function IlustracaoDinamica() {
   return (
     <div className="relative mx-auto mb-6 w-full max-w-md lg:mb-0" aria-hidden>
       <div className="-rotate-1 rounded-2xl border border-white/10 bg-white p-4 text-ink shadow-2xl">
-        <p className="mb-3 text-xs font-semibold text-muted">Módulo 9: Tabela dinâmica</p>
+        <p className="mb-3 text-xs font-semibold text-muted">
+          Módulo {MODULOS.find((m) => m.slug === ex.modulo)?.numero}: Tabela dinâmica
+        </p>
         <div className="grid grid-cols-[7rem_1fr] gap-3 text-xs">
           <div className="space-y-1 rounded-lg border border-line p-2">
             <p className="text-[10px] text-muted">Campos</p>
