@@ -17,6 +17,22 @@ export function lerPendente(modulo: string): { entregas: RespostaQuestao[]; titu
   }
 }
 
+/** Todas as aprovações guardadas neste navegador (para /certificado/emitir sem `?modulo`). */
+export function listarPendentes(): { modulo: string; titulo: string }[] {
+  const prefixo = chavePendente("");
+  const lista: { modulo: string; titulo: string }[] = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const chave = localStorage.key(i);
+      if (!chave?.startsWith(prefixo)) continue;
+      const modulo = chave.slice(prefixo.length);
+      const p = lerPendente(modulo);
+      if (p?.titulo) lista.push({ modulo, titulo: p.titulo });
+    }
+  } catch {}
+  return lista.sort((a, b) => a.titulo.localeCompare(b.titulo, "pt-BR", { numeric: true }));
+}
+
 /**
  * Bloco "Emitir certificado" (no resultado do teste aprovado e em /certificado/emitir).
  * Quem emite é o servidor, que corrige de novo as respostas (`entregas`).
@@ -53,9 +69,28 @@ export function EmitirCertificado({
       .then(({ data }) => data?.nome && setNome((n) => n || data.nome!));
   }, [conta]);
 
-  if (conta.estado === "desligada" || conta.estado === "carregando") return null;
-
   const caixa = "space-y-3 rounded-2xl border-2 border-accent bg-accent-soft p-5";
+
+  if (conta.estado === "carregando")
+    return (
+      <div className={caixa} data-testid="emitir-certificado" aria-busy="true">
+        <p className="font-semibold">Seu certificado do {tituloModulo}</p>
+        <p className="text-sm text-muted">Carregando…</p>
+      </div>
+    );
+
+  // Sem contas neste ambiente: não há como emitir, mas a aprovação já está guardada.
+  if (conta.estado === "desligada")
+    return (
+      <div className={caixa} data-testid="certificado-em-breve">
+        <p className="font-semibold">Seu certificado do {tituloModulo} está garantido</p>
+        <p className="text-sm text-muted">
+          Os certificados chegam junto com as contas, em breve. Sua aprovação fica guardada neste navegador: quando abrirmos, você
+          emite em <Link href={`/certificado/emitir?modulo=${modulo}`} className="text-success underline underline-offset-4">Emitir certificado</Link>,
+          sem refazer o teste.
+        </p>
+      </div>
+    );
   if (codigo)
     return (
       <div className={caixa} data-testid="certificado-emitido">
