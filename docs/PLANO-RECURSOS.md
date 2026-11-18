@@ -116,10 +116,18 @@ Também entrou uma correção geral: apagar uma célula editável que o exercíc
 
 Ficou para depois: arrastar e redimensionar o gráfico com o mouse (hoje a posição é um campo), seleção não contígua (Ctrl+clique), títulos de eixo, gráfico de dispersão e combinação, e barras na ordem do Excel (o Excel desenha a primeira categoria embaixo; aqui fica em cima, que é o que a maioria espera).
 
-### Fase 5: Validação de dados
+### Fase 5: Validação de dados, feita em 18/11/2026
 
 - Lista suspensa (de intervalo ou de itens), número entre, data, e a mensagem de erro quando o valor não é aceito. A seta aparece na célula.
 - Correção: `validacao`. Pegadinha clássica: a validação não corrige o que já estava digitado.
+
+
+O que entrou: janela "Validação de Dados" com as três abas do Excel (Configurações com Lista, Número inteiro, Decimal, Data e Comprimento do texto e os oito operadores; Mensagem de entrada; Alerta de erro), aplicar na seleção substituindo a regra das células, Limpar Tudo, a janela abrindo com a regra da célula ativa, recusa da digitação inválida (estilo Parar), setinha da lista na célula ativa, o "post-it" da mensagem de entrada e Circular Dados Inválidos. Correção pelo comportamento (`validacao`: aceita/recusa valores em todas as células, itens da lista, mensagens) e `semInvalidos`. Módulo 12 com 3 lições e o teste (20 exercícios). Testes: `src/engine/validacao.test.ts`, `src/content/ferramenta.test.ts` e `e2e/validacao.spec.ts`.
+
+Diferenças conscientes e o que ficou para depois:
+- Só o estilo de alerta "Parar". "Aviso" e "Informação" pedem uma caixa de Sim/Não.
+- "Ignorar em branco" fica sempre ligado; a opção "Personalizado" (fórmula) e limites com referência de célula (`=$F$1`) ficaram de fora.
+- Colar e a alça de preenchimento passam por cima da validação, como no Excel (a lição 1 ensina isso), mas aqui não levam a regra da origem junto.
 
 ### Fase 6: Várias abas
 

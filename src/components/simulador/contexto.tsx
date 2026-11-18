@@ -20,6 +20,8 @@ export type ContextoSimulador = {
   condicional: boolean;
   /** Menu Inserir Gráfico e o painel Design do Gráfico. */
   grafico: boolean;
+  /** Botões Validação de Dados e Circular Dados Inválidos. */
+  validacao: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */

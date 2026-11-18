@@ -26,6 +26,7 @@ import { FormulaColorida } from "./FormulaColorida";
 import { IconeFunil, MenuFiltro } from "./MenuFiltro";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { GraficoSvg } from "./GraficoSvg";
+import { ListaSuspensa } from "./ValidacaoDados";
 import { ajustarLinha, larguraParaCaber } from "./transbordo";
 
 let contextoMedida: CanvasRenderingContext2D | null = null;
@@ -70,6 +71,7 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
   const arrasto = useEstado((e) => e.arrasto);
   const celebrando = useEstado((e) => e.celebrando);
   const graficoAtivo = useEstado((e) => e.graficoAtivo);
+  const circularInvalidos = useEstado((e) => e.circularInvalidos);
 
   const selecao = normalizar(ancora, foco);
   // Larguras ajustadas pelo aluno (arrastar a borda do cabeçalho ou duplo clique nela).
@@ -632,6 +634,20 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
             </div>
           );
         })}
+        {/* Circular Dados Inválidos: elipse vermelha em volta do que fura a validação */}
+        {circularInvalidos &&
+          planilha.celulasInvalidas().map((end) => {
+            const p = deEndereco(end);
+            if (planilha.linhaOculta(p.linha)) return null;
+            return (
+              <div
+                key={`inv${end}`}
+                data-circulo-invalido={end}
+                className="pointer-events-none absolute z-[3] rounded-[50%] border-2 border-red-600"
+                style={{ left: esquerda(p.coluna) - 3, top: topo(p.linha) - 2, width: colunas[p.coluna] + 6, height: ALTURA + 4 }}
+              />
+            );
+          })}
         {/* área copiada (tracejado) */}
         {copiado && (
           <div
@@ -768,6 +784,35 @@ export function Grade({ larguras }: { larguras?: Record<string, number> }) {
           }}
         />
       )}
+      {/* Validação de dados na célula ativa: a setinha da lista e a mensagem de entrada (o "post-it" do Excel) */}
+      {!editando && (() => {
+        const itens = planilha.itensDaLista(ancora);
+        const entrada = planilha.validacaoEm(ancora)?.entrada;
+        return (
+          <>
+            {itens && itens.length > 0 && (
+              <ListaSuspensa
+                key={`${ancora.linha},${ancora.coluna}`}
+                left={esquerda(ancora.coluna) - rolagem.x}
+                top={topo(ancora.linha) - rolagem.y}
+                largura={colunas[ancora.coluna]}
+                itens={itens}
+              />
+            )}
+            {entrada && (entrada.titulo.trim() || entrada.texto.trim()) && (
+              <div
+                data-testid="mensagem-entrada"
+                role="note"
+                className="pointer-events-none absolute z-[24] max-w-56 rounded-sm border border-zinc-400 bg-[#FFFFE1] px-2 py-1 text-xs text-zinc-800 shadow"
+                style={{ left: esquerda(ancora.coluna) + 12 - rolagem.x, top: topo(ancora.linha + 1) + 4 - rolagem.y }}
+              >
+                {entrada.titulo.trim() && <p className="font-bold">{entrada.titulo}</p>}
+                <p>{entrada.texto}</p>
+              </div>
+            )}
+          </>
+        );
+      })()}
       {editando && (
         <AjudaFormula
           left={Math.max(0, esquerda(ancora.coluna) - rolagem.x)}

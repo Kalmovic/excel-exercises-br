@@ -23,6 +23,7 @@ import mDados from "./modulos/dados.json";
 import mDinamica from "./modulos/dinamica.json";
 import mDestaque from "./modulos/destaque.json";
 import mGraficos from "./modulos/graficos.json";
+import mValidacao from "./modulos/validacao.json";
 import mCasos from "./modulos/casos.json";
 import xFundamentos from "./extras/fundamentos.json";
 import xLogica from "./extras/logica.json";
@@ -51,6 +52,7 @@ const brutos: unknown[] = [
   ...mDinamica,
   ...mDestaque,
   ...mGraficos,
+  ...mValidacao,
   ...mCasos,
   // prática extra (Pro): fora da trilha principal, listada no fim de cada módulo
   ...[xFundamentos, xLogica, xCondicionais, xBusca, xTexto, xDatas, xArrays, xCasos].flat(),
@@ -111,7 +113,8 @@ export const MODULOS: readonly Modulo[] = [
   modulo(9, "dinamica", "Tabela dinâmica", "Resumir uma tabela inteira arrastando campos: totais, contagens, tabelas cruzadas e filtros.", "Tabela dinâmica dominada: você resume qualquer base de dados em segundos."),
   modulo(10, "destaque", "Formatação condicional", "A planilha que aponta o problema: realçar valores, duplicados, os maiores, a linha inteira com fórmula e barras de dados.", "Formatação condicional dominada: sua planilha mostra sozinha o que importa."),
   modulo(11, "graficos", "Gráficos", "Colunas, linhas, barras e pizza: escolher o gráfico certo, título, rótulos e as pegadinhas de como o Excel lê os dados.", "Gráficos dominados: você escolhe o tipo certo e evita as armadilhas do Excel."),
-  modulo(12, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(12, "validacao", "Validação de dados", "Listas suspensas, números e datas dentro da regra, mensagens e como achar o que já estava errado.", "Validação de dados dominada: sua planilha só aceita o que faz sentido."),
+  modulo(13, "casos", "Casos reais", "Financiamento, ranking, estoque, comissão, orçamento e boletim.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {

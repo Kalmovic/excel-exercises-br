@@ -2,7 +2,7 @@ import type { Dinamica, ExercicioDoTipo, FuncaoValor, Grafico, Verificacao } fro
 import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
-import { deIntervalo, intervaloParaTexto } from "@/engine/address";
+import { deIntervalo, intervaloParaTexto, posicoes } from "@/engine/address";
 import type { Planilha } from "@/engine/engine";
 import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } from "../tipos";
 
@@ -60,6 +60,17 @@ function conferir(v: Verificacao, p: Planilha): Falha | null {
       return conferirDestacadas(v, p);
     case "grafico":
       return conferirGrafico(v, p);
+    case "validacao":
+      return conferirValidacao(v, p);
+    case "semInvalidos": {
+      const ruins = p.celulasInvalidas(deIntervalo(v.intervalo));
+      if (ruins.length === 0) return null;
+      return {
+        celula: v.intervalo.split(":")[0],
+        motivo: "valor",
+        mensagem: `Ainda há ${ruins.length} ${ruins.length === 1 ? "valor que fura" : "valores que furam"} a validação em ${v.intervalo}. Use Circular Dados Inválidos para encontrá-${ruins.length === 1 ? "lo" : "los"}.`,
+      };
+    }
     case "formatoVisual": {
       const alvo = intervaloParaTexto(deIntervalo(v.intervalo));
       const tem = p.regrasCondicionais().some((r) => r.tipo === v.visual && intervaloParaTexto(deIntervalo(r.intervalo)) === alvo);
@@ -238,5 +249,55 @@ function diferencaGrafico(v: Extract<Verificacao, { tipo: "grafico" }>, g: Grafi
     return g.titulo.trim() ? `O título do gráfico está diferente do pedido.` : "Falta o título do gráfico (no Design do Gráfico).";
   if (v.rotulos !== undefined && g.rotulos !== v.rotulos)
     return v.rotulos ? "Falta mostrar os rótulos de dados (os valores em cima de cada barra ou fatia)." : "Tire os rótulos de dados: a pergunta não pede.";
+  return null;
+}
+
+/**
+ * Validação de dados pelo comportamento, em cada célula do intervalo: aceita
+ * o que deve aceitar e recusa o que deve recusar. "Inteiro entre 1 e 100" e
+ * "Inteiro maior ou igual a 1 e menor ou igual a 100" dão o mesmo resultado.
+ */
+function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Planilha): Falha | null {
+  const celulas = [...posicoes(deIntervalo(v.intervalo))];
+  const celula = v.intervalo.split(":")[0];
+  const falha = (mensagem: string): Falha => ({ celula, motivo: "recurso", mensagem });
+  const sem = celulas.filter((c) => !p.validacaoEm(c));
+  if (sem.length === celulas.length) return falha(`Ainda não há validação em ${v.intervalo}. Selecione o intervalo e use Validação de Dados.`);
+  if (sem.length) return falha(`A validação não cobre todo o intervalo ${v.intervalo}: ${sem.length} ${sem.length === 1 ? "célula ficou" : "células ficaram"} de fora.`);
+
+  if (v.lista) {
+    const norm = (xs: string[]) => xs.map((x) => x.trim().toUpperCase());
+    for (const c of celulas) {
+      const itens = p.itensDaLista(c);
+      if (!itens) return falha("A pergunta pede uma lista suspensa: em Permitir, escolha Lista.");
+      if (norm(itens).join("|") !== norm(v.lista).join("|")) {
+        if (itens.length === 1 && /[,]/.test(itens[0]))
+          return falha(`A lista ficou com um item só: “${itens[0]}”. No Excel em português, os itens são separados por ponto e vírgula.`);
+        return falha(`A lista mostra ${itens.length} ${itens.length === 1 ? "item" : "itens"}, mas não são os pedidos. Confira a Fonte.`);
+      }
+    }
+  }
+  for (const c of celulas) {
+    const recusou = v.aceita.find((x) => !p.aceitariaNaCelula(c, x));
+    if (recusou !== undefined) return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o tipo (inteiro ou decimal) e se os limites incluem as pontas.`);
+    const aceitou = v.recusa.find((x) => p.aceitariaNaCelula(c, x));
+    if (aceitou !== undefined) return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o tipo e os limites.`);
+  }
+  // Mensagens em todas as células: quem aplicou só numa parte do intervalo não passa.
+  const igual = (a: string | undefined, b: string) => (a ?? "").trim().toUpperCase() === b.trim().toUpperCase();
+  const parte = (n: number) => (n < celulas.length ? ` (em ${celulas.length - n} de ${celulas.length} células)` : "");
+  const conta = (ok: (r: NonNullable<ReturnType<Planilha["validacaoEm"]>>) => boolean) => celulas.filter((c) => ok(p.validacaoEm(c)!)).length;
+  if (v.mensagemEntrada !== undefined) {
+    const n = conta((r) => igual(r.entrada?.texto, v.mensagemEntrada!));
+    if (n < celulas.length) return falha(`Falta a mensagem de entrada pedida (aba Mensagem de entrada)${n ? parte(n) : ""}.`);
+  }
+  if (v.alertaTitulo !== undefined) {
+    const n = conta((r) => igual(r.erro?.titulo, v.alertaTitulo!));
+    if (n < celulas.length) return falha(`O título do alerta de erro não é o pedido (aba Alerta de erro)${n ? parte(n) : ""}.`);
+  }
+  if (v.alertaTexto !== undefined) {
+    const n = conta((r) => igual(r.erro?.texto, v.alertaTexto!));
+    if (n < celulas.length) return falha(`O texto do alerta de erro não é o pedido (aba Alerta de erro)${n ? parte(n) : ""}.`);
+  }
   return null;
 }

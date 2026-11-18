@@ -5,6 +5,7 @@ import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/eng
 import { IconeFunil } from "./MenuFiltro";
 import { FormatacaoCondicional } from "./MenuCondicional";
 import { InserirGrafico } from "./PainelGrafico";
+import { BotoesValidacao } from "./ValidacaoDados";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
 
 /**
@@ -13,7 +14,7 @@ import { useSimulador, useVersaoPlanilha } from "./contexto";
  * registros encontrados"). Com `ferramentas.dinamica`: Tabela dinâmica.
  */
 export function BarraDados() {
-  const { planilha, store, dados, dinamica, condicional, grafico } = useSimulador();
+  const { planilha, store, dados, dinamica, condicional, grafico, validacao } = useSimulador();
   useVersaoPlanilha();
   const [inserindo, setInserindo] = useState(false);
   const filtro = planilha.filtroAtual();
@@ -55,6 +56,7 @@ export function BarraDados() {
         )}
         {condicional && <FormatacaoCondicional classeBotao={botao} />}
         {grafico && <InserirGrafico classeBotao={botao} />}
+        {validacao && <BotoesValidacao classeBotao={botao} />}
         {dinamica && (
           <button
             type="button"

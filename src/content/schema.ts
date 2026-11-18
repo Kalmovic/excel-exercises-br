@@ -136,6 +136,22 @@ export const graficoSchema = z.object({
   alternar: z.boolean(),
 });
 
+/**
+ * Validação de dados, como a janela do Excel: o que Permitir, o operador e os
+ * limites (escritos como na célula: "1", "30%", "01/12/2026"), a Fonte da
+ * lista ("Sim;Não" ou "=$F$2:$F$5"), a mensagem de entrada e o alerta de erro.
+ */
+export const validacaoDadosSchema = z.object({
+  intervalo,
+  permitir: z.enum(["lista", "inteiro", "decimal", "data", "comprimento"]),
+  operador: z.enum(["entre", "fora", "igual", "diferente", "maior", "menor", "maiorIgual", "menorIgual"]).optional(),
+  valor1: z.string().max(200).optional(),
+  valor2: z.string().max(200).optional(),
+  fonte: z.string().max(500).optional(),
+  entrada: z.object({ titulo: z.string().max(50), texto: z.string().max(255) }).optional(),
+  erro: z.object({ titulo: z.string().max(50), texto: z.string().max(255) }).optional(),
+});
+
 export const recursosSchema = z.object({
   /** AutoFiltro: a primeira linha do intervalo é o cabeçalho, onde ficam as setas. null = desligado. */
   filtro: z
@@ -146,6 +162,8 @@ export const recursosSchema = z.object({
   /** Regras de formatação condicional; a última criada tem prioridade (como no Excel). */
   condicionais: z.array(regraCondicionalSchema).max(20).optional(),
   graficos: z.array(graficoSchema).max(4).optional(),
+  /** Validação de dados; numa célula coberta por duas, vale a mais nova. */
+  validacoes: z.array(validacaoDadosSchema).max(20).optional(),
   /** Classificações feitas pelo aluno, na ordem (refeitas assim ao restaurar). */
   ordenacoes: z.array(ordenacaoSchema).max(30).optional(),
 });
@@ -200,6 +218,8 @@ const baseSchema = z.object({
       condicional: z.boolean().optional(),
       /** Menu Inserir Gráfico e o painel Design do Gráfico. */
       grafico: z.boolean().optional(),
+      /** Botão Validação de Dados (e Circular Dados Inválidos). */
+      validacao: z.boolean().optional(),
     })
     .optional(),
   /** Pode ser vazio só no desafio diário (que é sem dica); o teste de conteúdo exige dicas na trilha. */
@@ -344,6 +364,24 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
     rotulos: z.boolean().optional(),
     mensagem: z.string().optional(),
   }),
+  /**
+   * Validação de dados pelo comportamento: em TODAS as células do intervalo,
+   * a regra aceita `aceita` e recusa `recusa` (como o aluno digitaria). Se for
+   * lista, os itens da setinha são exatamente `lista`. Mensagens, se pedidas.
+   */
+  z.object({
+    tipo: z.literal("validacao"),
+    intervalo,
+    aceita: z.array(z.string()),
+    recusa: z.array(z.string()),
+    lista: z.array(z.string()).optional(),
+    mensagemEntrada: z.string().optional(),
+    alertaTitulo: z.string().optional(),
+    alertaTexto: z.string().optional(),
+    mensagem: z.string().optional(),
+  }),
+  /** Nenhuma célula preenchida do intervalo fura a validação (Circular Dados Inválidos fica vazio). */
+  z.object({ tipo: z.literal("semInvalidos"), intervalo, mensagem: z.string().optional() }),
   /** Resultado de uma célula, com fórmula e (opcional) usando uma função. */
   z.object({
     tipo: z.literal("celula"),
@@ -390,6 +428,7 @@ export type Ordenacao = z.infer<typeof ordenacaoSchema>;
 export type Dinamica = z.infer<typeof dinamicaSchema>;
 export type RegraCondicional = z.infer<typeof regraCondicionalSchema>;
 export type Grafico = z.infer<typeof graficoSchema>;
+export type ValidacaoDados = z.infer<typeof validacaoDadosSchema>;
 export type TipoGrafico = z.infer<typeof tipoGraficoSchema>;
 export type EstiloDestaque = z.infer<typeof estiloDestaqueSchema>;
 export type FuncaoValor = z.infer<typeof funcaoValorSchema>;

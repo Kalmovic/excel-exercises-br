@@ -1,0 +1,3031 @@
+[
+  {
+    "id": "de0f94c9-6e05-5586-b7f1-03508d7681df",
+    "slug": "validacao-lista-status",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Lista suspensa: só os status permitidos",
+    "enunciado": [
+      "Na coluna **Status** (C2:C10), crie uma **lista suspensa** com **Pago**, **Pendente** e **Cancelado**."
+    ],
+    "dicas": [
+      "Selecione C2:C10 e abra Validação de Dados.",
+      "Em Permitir, escolha a opção que mostra uma setinha na célula. A Fonte são os itens."
+    ],
+    "explicacao": [
+      "**Validação de Dados → Permitir: Lista → Fonte:** `Pago;Pendente;Cancelado`.",
+      "Agora cada célula de C2:C10 tem uma setinha, e qualquer coisa fora da lista é recusada. Acaba o \"pago\", \"PG\" e \"Pago.\" misturados no relatório."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-status",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Validação de dados evita o erro antes de ele acontecer: a planilha só aceita o que faz sentido. É a diferença entre um controle confiável e um que precisa ser revisado à mão.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Pasta"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Borracha"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "Pago",
+          "Cancelado",
+          "pendente"
+        ],
+        "recusa": [
+          "Pg",
+          "Aprovado"
+        ],
+        "lista": [
+          "Pago",
+          "Pendente",
+          "Cancelado"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "Pago;Pendente;Cancelado"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    },
+    "inicio": {
+      "selecao": "C2:C10"
+    }
+  },
+  {
+    "id": "3aba81ca-f29f-5b6a-9128-cbb066394aa4",
+    "slug": "validacao-lista-status-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "A lista vem de um intervalo",
+    "enunciado": [
+      "Na coluna **Departamento** (C2:C10), crie uma lista suspensa com os departamentos de **F2:F5**."
+    ],
+    "dicas": [
+      "A Fonte da lista também aceita um intervalo, começando com o sinal de igual."
+    ],
+    "explicacao": [
+      "**Permitir: Lista → Fonte:** `=$F$2:$F$5`.",
+      "Com a lista num intervalo, para incluir um departamento novo basta escrever na tabela de departamentos (e ajustar o intervalo, se ele crescer)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-status",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Departamento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Analista"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Analista"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Analista"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Analista"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Analista"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Analista"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Analista"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Analista"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Analista"
+        },
+        "F1": {
+          "entrada": "Departamentos",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Vendas"
+        },
+        "F3": {
+          "entrada": "RH"
+        },
+        "F4": {
+          "entrada": "TI"
+        },
+        "F5": {
+          "entrada": "Financeiro"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "Vendas",
+          "TI"
+        ],
+        "recusa": [
+          "Marketing"
+        ],
+        "lista": [
+          "Vendas",
+          "RH",
+          "TI",
+          "Financeiro"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=$F$2:$F$5"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "d6b79c67-17a2-5eec-88fc-eb77a00765d1",
+    "slug": "validacao-lista-status-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Usar a lista",
+    "enunciado": [
+      "A coluna Status já tem lista suspensa. Marque o pedido da **Ana** (C2) como **Pendente** e o do **Bruno** (C3) como **Pago**."
+    ],
+    "dicas": [
+      "Clique na célula: aparece uma setinha do lado direito."
+    ],
+    "explicacao": [
+      "Clique em C2, abra a setinha e escolha **Pendente**; depois C3 → **Pago**. Digitar também funciona, desde que seja um item da lista."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-status",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Pasta"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Borracha"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "Pago;Pendente;Cancelado"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C3",
+        "esperado": [
+          [
+            "Pendente"
+          ],
+          [
+            "Pago"
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C2": "Pendente",
+        "C3": "Pago"
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "152627f7-f872-57e5-b566-0e3907f1d014",
+    "slug": "validacao-lista-status-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: o separador da lista",
+    "enunciado": [
+      "Em **D2:D10** (Pago antecipado?), crie uma lista suspensa com **Sim** e **Não**."
+    ],
+    "dicas": [
+      "Depois de criar, clique numa célula e abra a setinha: quantos itens aparecem?",
+      "No Excel em português, a vírgula é o separador decimal. A lista usa outro separador."
+    ],
+    "explicacao": [
+      "**Fonte:** `Sim;Não`, com **ponto e vírgula**.",
+      "Com vírgula, aparece um item só, \"Sim,Não\", e ninguém consegue escolher. No Excel em inglês a vírgula funciona; no brasileiro, não."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-status",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Antecipado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Caderno"
+        },
+        "C2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Caneta"
+        },
+        "C3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Estojo"
+        },
+        "C5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Régua"
+        },
+        "C6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Agenda"
+        },
+        "C7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Lápis"
+        },
+        "C8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Pasta"
+        },
+        "C9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Borracha"
+        },
+        "C10": {
+          "entrada": "Pago"
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "D2:D10",
+        "aceita": [
+          "Sim",
+          "Não"
+        ],
+        "recusa": [
+          "Talvez"
+        ],
+        "lista": [
+          "Sim",
+          "Não"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "D2:D10",
+            "permitir": "lista",
+            "fonte": "Sim;Não"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "9b2565f2-9d96-598e-b1c1-a201ce815809",
+    "slug": "validacao-lista-status-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "E se alguém colar por cima?",
+    "enunciado": [
+      "A coluna Status tem validação de lista. Alguém **copia** uma célula de outra planilha e **cola** em C5. O que acontece no Excel?"
+    ],
+    "dicas": [
+      "A validação confere o que é digitado. Colar é outra operação."
+    ],
+    "explicacao": [
+      "Colar **passa por cima da validação** (e ainda leva junto a formatação e a regra da célula de origem). Por isso, numa planilha compartilhada, a validação ajuda mas não é garantia: use **Circular Dados Inválidos** de vez em quando."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-status",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "O Excel recusa o valor colado se não estiver na lista.",
+        "dica": "Ele só confere o que é digitado; colar não passa pela validação."
+      },
+      {
+        "texto": "O valor colado entra, mesmo fora da lista."
+      },
+      {
+        "texto": "A lista ganha o item colado.",
+        "dica": "A Fonte da lista não muda sozinha."
+      },
+      {
+        "texto": "A célula fica bloqueada.",
+        "dica": "Validação não bloqueia células; ela confere a digitação."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "99ba78d4-5eb0-5d2f-b737-bd032f85150f",
+    "slug": "validacao-quantidade",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Só números inteiros de 1 a 100",
+    "enunciado": [
+      "A **Quantidade** (B2:B9) só pode ser um **número inteiro de 1 a 100**."
+    ],
+    "dicas": [
+      "Em Permitir há uma opção para números sem casas decimais.",
+      "Escolha o operador que inclui os dois limites."
+    ],
+    "explicacao": [
+      "**Permitir: Número inteiro → Dados: está entre → Mínimo 1, Máximo 100.**",
+      "Teste: 0, 101, 2,5 e \"abc\" são recusados; 1 e 100 entram (o \"está entre\" inclui as pontas)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-quantidade",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Quantidade negativa, desconto de 300%, entrega para ontem: a validação de números e datas barra o erro de digitação que vira prejuízo.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "1",
+          "100",
+          "37"
+        ],
+        "recusa": [
+          "0",
+          "101",
+          "2,5",
+          "abc"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "c0a8015a-9028-50d5-850e-6da08ea3ee7a",
+    "slug": "validacao-quantidade-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Desconto de 0% a 30%",
+    "enunciado": [
+      "O **Desconto** (C2:C9) pode ir de **0%** a **30%**, com casas decimais."
+    ],
+    "dicas": [
+      "Porcentagem tem casas decimais: 15% é 0,15. Escolha o tipo que aceita isso.",
+      "Os limites podem ser escritos com o sinal de %."
+    ],
+    "explicacao": [
+      "**Permitir: Decimal → está entre → 0% e 30%** (ou 0 e 0,3).",
+      "Com Número inteiro, 15% (que é 0,15) seria recusado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-quantidade",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C9",
+        "aceita": [
+          "0%",
+          "15%",
+          "30%",
+          "0,25"
+        ],
+        "recusa": [
+          "31%",
+          "-5%",
+          "abc"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C9",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0%",
+            "valor2": "30%"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "4651baa9-516d-5348-a698-b7bdeb9a32f7",
+    "slug": "validacao-quantidade-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Entrega a partir de dezembro",
+    "enunciado": [
+      "A **Entrega** (D2:D9) só aceita datas **a partir de 01/12/2026**."
+    ],
+    "dicas": [
+      "Em Permitir há uma opção para datas. \"A partir de\" inclui o próprio dia."
+    ],
+    "explicacao": [
+      "**Permitir: Data → é maior ou igual a → 01/12/2026.**",
+      "Com \"é maior do que\", o próprio 1º de dezembro seria recusado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-quantidade",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "D2:D9",
+        "aceita": [
+          "01/12/2026",
+          "15/01/2027"
+        ],
+        "recusa": [
+          "30/11/2026",
+          "abc"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "D2:D9",
+            "permitir": "data",
+            "operador": "maiorIgual",
+            "valor1": "01/12/2026"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "68d98c1f-1a87-5da5-b6f3-e30a74ded3d6",
+    "slug": "validacao-quantidade-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: nota com meio ponto",
+    "enunciado": [
+      "A **Nota** (B2:B9) vai de **0 a 10** e pode ter **meio ponto** (7,5)."
+    ],
+    "dicas": [
+      "Depois de criar, teste digitando 7,5 numa célula.",
+      "\"Número inteiro\" recusa qualquer valor com vírgula."
+    ],
+    "explicacao": [
+      "**Permitir: Decimal → está entre → 0 e 10.**",
+      "Com Número inteiro, 7,5 seria recusado e o professor não conseguiria lançar a nota."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-quantidade",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "0",
+          "7,5",
+          "10"
+        ],
+        "recusa": [
+          "10,5",
+          "-1",
+          "abc"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "10"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "7a38ff19-777e-5ae6-b52f-1d8ebf7b52f0",
+    "slug": "validacao-quantidade-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E o que já estava digitado?",
+    "enunciado": [
+      "A coluna Quantidade já tinha um **150** digitado. Depois, você criou a validação \"inteiro de 1 a 100\". O que acontece com o 150?"
+    ],
+    "dicas": [
+      "A validação confere a digitação. Quando ela foi criada, o 150 já estava lá."
+    ],
+    "explicacao": [
+      "**Continua lá.** A validação só confere o que é digitado depois. Para achar os valores antigos fora da regra, use **Circular Dados Inválidos** (próxima lição)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-quantidade",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "É apagado.",
+        "dica": "A validação nunca apaga nada."
+      },
+      {
+        "texto": "Vira 100.",
+        "dica": "Ela não corrige valores; só recusa digitação nova."
+      },
+      {
+        "texto": "Continua lá, sem aviso nenhum."
+      },
+      {
+        "texto": "O Excel não deixa criar a validação.",
+        "dica": "Deixa, sim: ele não confere o que já existe."
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "e3c7798b-0893-5ba0-a354-a3427c072886",
+    "slug": "validacao-dados-antigos",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Circular Dados Inválidos",
+    "enunciado": [
+      "A validação de **1 a 100** foi criada depois que a tabela já estava preenchida. Encontre as quantidades **fora da regra** e troque cada uma por **1**."
+    ],
+    "dicas": [
+      "Não procure no olho: existe um botão que marca o que fura a regra.",
+      "Depois de corrigir, os círculos somem sozinhos."
+    ],
+    "explicacao": [
+      "**Circular Dados Inválidos** marca o 0, o 150 e o -3. Troque cada um por 1.",
+      "Use esse botão sempre que receber uma planilha de outra pessoa: a validação não protege o que foi digitado antes dela (nem o que foi colado)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-dados-antigos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "A validação protege daqui para a frente. O que já estava digitado, ou foi colado por cima, pode estar errado, e o Excel tem um botão para achar.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "12",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "0",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "45",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "150",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "B6": {
+          "entrada": "8",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "B7": {
+          "entrada": "-3",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "B8": {
+          "entrada": "60",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B9": {
+          "entrada": "100",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "Borracha"
+        },
+        "B10": {
+          "entrada": "7",
+          "bloqueada": false
+        }
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "semInvalidos",
+        "intervalo": "B2:B10"
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B10",
+        "esperado": [
+          [
+            12
+          ],
+          [
+            1
+          ],
+          [
+            45
+          ],
+          [
+            1
+          ],
+          [
+            8
+          ],
+          [
+            1
+          ],
+          [
+            60
+          ],
+          [
+            100
+          ],
+          [
+            7
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "B3": "1",
+        "B5": "1",
+        "B7": "1"
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "13fa4e46-d4fb-5acc-b2a1-4945d9afbed3",
+    "slug": "validacao-dados-antigos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Status digitados errado",
+    "enunciado": [
+      "A coluna **Status** tem lista suspensa, mas alguns status foram digitados antes dela. Corrija os que estão **fora da lista**."
+    ],
+    "dicas": [
+      "Circular Dados Inválidos mostra quais são.",
+      "Para corrigir, use a própria setinha da lista."
+    ],
+    "explicacao": [
+      "Circular Dados Inválidos marca **Pgo** (C3) e **Cancelad** (C8): troque por Pago e Cancelado.",
+      "Repare que \"pendente\" em minúsculas não foi marcado: a lista não diferencia maiúsculas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-dados-antigos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Caderno"
+        },
+        "C2": {
+          "entrada": "Pago",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Caneta"
+        },
+        "C3": {
+          "entrada": "Pgo",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Pendente",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Estojo"
+        },
+        "C5": {
+          "entrada": "Cancelado",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Régua"
+        },
+        "C6": {
+          "entrada": "pendente",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Agenda"
+        },
+        "C7": {
+          "entrada": "Pago",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Lápis"
+        },
+        "C8": {
+          "entrada": "Cancelad",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Pasta"
+        },
+        "C9": {
+          "entrada": "Pago",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Borracha"
+        },
+        "C10": {
+          "entrada": "Pendente",
+          "bloqueada": false
+        }
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "Pago;Pendente;Cancelado"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "semInvalidos",
+        "intervalo": "C2:C10"
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C3",
+        "esperado": [
+          [
+            "Pago"
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C8",
+        "esperado": [
+          [
+            "Cancelado"
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C3": "Pago",
+        "C8": "Cancelado"
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "4ccb1be5-e75f-54f9-a2c2-64305637a8ec",
+    "slug": "validacao-dados-antigos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mensagem de entrada",
+    "enunciado": [
+      "A **Quantidade** (B2:B10) deve aceitar só **inteiros de 1 a 100** e, ao clicar na célula, mostrar a mensagem **Digite um número de 1 a 100**."
+    ],
+    "dicas": [
+      "A janela de Validação de Dados tem três abas. A regra fica na primeira; a mensagem, na segunda."
+    ],
+    "explicacao": [
+      "Aba **Configurações**: inteiro entre 1 e 100. Aba **Mensagem de entrada**: o texto pedido.",
+      "A mensagem aparece num quadrinho amarelo ao selecionar a célula: avisa a regra antes do erro, não depois."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-dados-antigos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "12",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "30",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "45",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "18",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "B6": {
+          "entrada": "8",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "B7": {
+          "entrada": "33",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "B8": {
+          "entrada": "60",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B9": {
+          "entrada": "100",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "Borracha"
+        },
+        "B10": {
+          "entrada": "7",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "1",
+          "100"
+        ],
+        "recusa": [
+          "0",
+          "101"
+        ],
+        "mensagemEntrada": "Digite um número de 1 a 100"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100",
+            "entrada": {
+              "titulo": "Quantidade",
+              "texto": "Digite um número de 1 a 100"
+            }
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "ec4cfc1b-08af-5fe0-ab3e-eb56ff66548a",
+    "slug": "validacao-dados-antigos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 34,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: trocar só o alerta",
+    "enunciado": [
+      "A Quantidade (B2:B10) já tem a validação de 1 a 100. Troque o **alerta de erro** para o título **Quantidade inválida** e o texto **Use um número de 1 a 100.**, **sem perder a regra**."
+    ],
+    "dicas": [
+      "A janela abre com a regra da célula ativa já preenchida. Selecione o intervalo inteiro antes de abrir.",
+      "Quem aplica só numa célula deixa as outras com o alerta antigo."
+    ],
+    "explicacao": [
+      "Selecione **B2:B10** → Validação de Dados (já vem com inteiro de 1 a 100) → aba **Alerta de erro** → título e texto.",
+      "Se Permitir mudar para \"Qualquer valor\", a regra some junto. E se a seleção for só uma célula, as outras continuam com o alerta padrão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-dados-antigos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "12",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "30",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "45",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "18",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "B6": {
+          "entrada": "8",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "B7": {
+          "entrada": "33",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "B8": {
+          "entrada": "60",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B9": {
+          "entrada": "100",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "Borracha"
+        },
+        "B10": {
+          "entrada": "7",
+          "bloqueada": false
+        }
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "1",
+          "100"
+        ],
+        "recusa": [
+          "0",
+          "101",
+          "2,5"
+        ],
+        "alertaTitulo": "Quantidade inválida",
+        "alertaTexto": "Use um número de 1 a 100."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100",
+            "erro": {
+              "titulo": "Quantidade inválida",
+              "texto": "Use um número de 1 a 100."
+            }
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "34406be6-774b-53bd-9a21-cddc032cfdc9",
+    "slug": "validacao-dados-antigos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 35,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para que serve Circular Dados Inválidos?",
+    "enunciado": [
+      "Para que serve o botão **Circular Dados Inválidos**?"
+    ],
+    "dicas": [
+      "Pense no que a validação deixa passar."
+    ],
+    "explicacao": [
+      "Ele marca os valores que **já estavam** na planilha (ou foram colados) e furam a validação. A validação em si só confere a digitação nova."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-dados-antigos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Impedir que alguém digite um valor errado.",
+        "dica": "Isso é a própria validação; o botão olha o que já está lá."
+      },
+      {
+        "texto": "Mostrar os valores que já estavam fora da regra."
+      },
+      {
+        "texto": "Apagar os valores errados.",
+        "dica": "Ele só marca; quem corrige é você."
+      },
+      {
+        "texto": "Criar uma lista suspensa.",
+        "dica": "Lista é em Validação de Dados → Permitir: Lista."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "14c891a1-c70b-55d4-8afe-f44338ced733",
+    "slug": "teste-validacao-1",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Prioridade",
+    "enunciado": [
+      "Em **D2:D10** (Prioridade), crie uma lista suspensa com **Alta**, **Média** e **Baixa**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-lista-status",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prioridade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Caderno"
+        },
+        "C2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Caneta"
+        },
+        "C3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Mochila"
+        },
+        "C4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Estojo"
+        },
+        "C5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Régua"
+        },
+        "C6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Agenda"
+        },
+        "C7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Lápis"
+        },
+        "C8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Pasta"
+        },
+        "C9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Borracha"
+        },
+        "C10": {
+          "entrada": "Pago"
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "D2:D10",
+        "aceita": [
+          "Alta",
+          "Baixa"
+        ],
+        "recusa": [
+          "Urgente"
+        ],
+        "lista": [
+          "Alta",
+          "Média",
+          "Baixa"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "D2:D10",
+            "permitir": "lista",
+            "fonte": "Alta;Média;Baixa"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "f0b74fdc-d329-5ca2-b561-d5c72ccdc74f",
+    "slug": "teste-validacao-2",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Até 50 unidades",
+    "enunciado": [
+      "A **Quantidade** (B2:B9) só aceita **inteiros de 1 a 50**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-quantidade",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "1",
+          "50"
+        ],
+        "recusa": [
+          "0",
+          "51",
+          "3,5"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "50"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "c763e53d-708c-5c7c-8201-0ccf14de5cf8",
+    "slug": "teste-validacao-3",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Nota de 0 a 5",
+    "enunciado": [
+      "A **Nota** (B2:B9) vai de **0 a 5**, aceitando decimais (3,5)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-quantidade",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Aluno",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "0",
+          "3,5",
+          "5"
+        ],
+        "recusa": [
+          "5,5",
+          "-1"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "5"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "568ee1ae-b355-56d6-838a-80cdcf88a446",
+    "slug": "teste-validacao-4",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Corrigir o que furou",
+    "enunciado": [
+      "Troque por **1** as quantidades que estão **fora da validação** (1 a 100)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-dados-antigos",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 32,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "5",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "110",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "40",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "0",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "Régua"
+        },
+        "B6": {
+          "entrada": "99",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "Agenda"
+        },
+        "B7": {
+          "entrada": "1",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "Lápis"
+        },
+        "B8": {
+          "entrada": "250",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "Pasta"
+        },
+        "B9": {
+          "entrada": "30",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "Borracha"
+        },
+        "B10": {
+          "entrada": "64",
+          "bloqueada": false
+        }
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "inteiro",
+            "operador": "entre",
+            "valor1": "1",
+            "valor2": "100"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "semInvalidos",
+        "intervalo": "B2:B10"
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B10",
+        "esperado": [
+          [
+            5
+          ],
+          [
+            1
+          ],
+          [
+            40
+          ],
+          [
+            1
+          ],
+          [
+            99
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            30
+          ],
+          [
+            64
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "B3": "1",
+        "B5": "1",
+        "B8": "1"
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "48d3dd3b-bac1-53cf-ae3f-a1a26ad337fe",
+    "slug": "teste-validacao-5",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Separador da lista",
+    "enunciado": [
+      "No Excel em português, como escrever a Fonte de uma lista com **Sim** e **Não**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-lista-status",
+    "teste": true,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Sim,Não"
+      },
+      {
+        "texto": "Sim;Não"
+      },
+      {
+        "texto": "Sim Não"
+      },
+      {
+        "texto": "\"Sim\" e \"Não\""
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  }
+]

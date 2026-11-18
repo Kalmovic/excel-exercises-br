@@ -35,6 +35,8 @@ export type EstadoSimulador = {
   intervaloNoToque: null | "inicio" | "fim";
   /** Gráfico selecionado (clique nele): abre o painel Design do Gráfico. */
   graficoAtivo: number | null;
+  /** "Circular Dados Inválidos" ligado: as células que furam a validação ganham um círculo vermelho. */
+  circularInvalidos: boolean;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -98,6 +100,7 @@ export function criarStore(
     mudancasPeloMouse: 0,
     intervaloNoToque: null,
     graficoAtivo: null,
+    circularInvalidos: false,
     resposta,
 
     selecao: () => normalizar(get().ancora, get().foco),

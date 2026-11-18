@@ -1,4 +1,4 @@
-import type { Dinamica, Exercicio, Formato, Grafico, Ordenacao, Recursos, RegraCondicional } from "@/content/schema";
+import type { Dinamica, Exercicio, Formato, Grafico, Ordenacao, Recursos, RegraCondicional, ValidacaoDados } from "@/content/schema";
 import {
   colunaParaLetras,
   deEndereco,
@@ -20,6 +20,7 @@ import { compararParaClassificar } from "./classificar";
 import { calcularDinamica } from "./dinamica";
 import { calcularCondicionais, type EstiloCelula } from "./condicional";
 import { dadosDoGrafico, type DadosGrafico } from "./grafico";
+import { ERRO_PADRAO, itensDaFonte, lerLimite, passaNaValidacao } from "./validacao";
 
 export type Grade = Exercicio["grade"];
 
@@ -39,6 +40,7 @@ type Foto = {
   dinamicas: Dinamica[];
   condicionais: RegraCondicional[];
   graficos: Grafico[];
+  validacoes: ValidacaoDados[];
 };
 type AcaoHistorico =
   | { tipo: "celulas"; mudancas: Mudanca[] }
@@ -108,7 +110,8 @@ export class Planilha {
   private formatosDinamicas = new Map<string, Formato>();
   private negritosDinamicas = new Set<string>();
   /** O exercício já começa com filtro / tabela dinâmica: o progresso precisa gravar quando o aluno os remove. */
-  private inicial = { filtro: false, dinamicas: false, condicionais: false, graficos: false };
+  private inicial = { filtro: false, dinamicas: false, condicionais: false, graficos: false, validacoes: false };
+  private validacoesLista: ValidacaoDados[] = [];
   private graficosLista: Grafico[] = [];
   /** Células editáveis que o exercício já traz preenchidas (para gravar quando o aluno as apaga). */
   private preenchidasEditaveis = new Set<string>();
@@ -134,6 +137,7 @@ export class Planilha {
         dinamicas: !!grade.recursos.dinamicas?.length,
         condicionais: !!grade.recursos.condicionais?.length,
         graficos: !!grade.recursos.graficos?.length,
+        validacoes: !!grade.recursos.validacoes?.length,
       };
       this.aplicarRecursos(grade.recursos, { inicial: true });
     }
@@ -389,6 +393,12 @@ export class Planilha {
     }
     const p = this.pos(end);
     const antes = this.gravar(p, bruto);
+    // Validação de dados: grava, confere o resultado e desfaz se não passar (estilo "Parar" do Excel).
+    const recusa = this.recusaDaValidacao(p);
+    if (recusa) {
+      this.gravar(p, antes ?? "");
+      return { ok: false, mensagem: recusa };
+    }
     this.registrar({ tipo: "celulas", mudancas: [{ end: paraEndereco(p), antes, depois: this.textos.get(`${p.linha},${p.coluna}`) }] });
     this.notificar();
     return { ok: true };
@@ -535,6 +545,7 @@ export class Planilha {
     if (this.dinamicas.length || this.inicial.dinamicas) r.dinamicas = structuredClone(this.dinamicas);
     if (this.condicionais.length || this.inicial.condicionais) r.condicionais = structuredClone(this.condicionais);
     if (this.graficosLista.length || this.inicial.graficos) r.graficos = structuredClone(this.graficosLista);
+    if (this.validacoesLista.length || this.inicial.validacoes) r.validacoes = structuredClone(this.validacoesLista);
     return r;
   }
 
@@ -563,6 +574,7 @@ export class Planilha {
     if (r.dinamicas) this.dinamicas = structuredClone(r.dinamicas).filter((d) => this.recortar(deIntervalo(d.origem)));
     if (r.condicionais) this.condicionais = structuredClone(r.condicionais);
     if (r.graficos) this.graficosLista = structuredClone(r.graficos);
+    if (r.validacoes) this.validacoesLista = structuredClone(r.validacoes);
     this.atualizarDerivados();
     this.versao++;
     this.ouvintes.forEach((fn) => fn());
@@ -1048,6 +1060,117 @@ export class Planilha {
     });
   }
 
+  // --- validação de dados -------------------------------------------------------
+
+  validacoes(): ValidacaoDados[] {
+    return this.validacoesLista;
+  }
+
+  /** A regra que vale na célula (a mais nova que a cobre). */
+  validacaoEm(end: string | Pos): ValidacaoDados | undefined {
+    const p = this.pos(end);
+    for (let i = this.validacoesLista.length - 1; i >= 0; i--) {
+      try {
+        if (contemPos(deIntervalo(this.validacoesLista[i].intervalo), p)) return this.validacoesLista[i];
+      } catch {
+        continue;
+      }
+    }
+    return undefined;
+  }
+
+  /** Itens da setinha, se a célula tem validação de lista. */
+  itensDaLista(end: string | Pos): string[] | null {
+    const v = this.validacaoEm(end);
+    return v?.permitir === "lista" ? this.itensDe(v) : null;
+  }
+
+  private itensDe(v: ValidacaoDados): string[] {
+    return itensDaFonte(v.fonte, (t) => {
+      try {
+        const i = this.recortar(deIntervalo(t));
+        return i ? [...posicoes(i)].map((p) => this.textoParaFiltro(p)) : null;
+      } catch {
+        return null;
+      }
+    });
+  }
+
+  /** O valor que está agora na célula passa na validação dela? */
+  passaNaValidacao(end: string | Pos): boolean {
+    const v = this.validacaoEm(end);
+    return !v || passaNaValidacao(v, this.valor(end), this.textoParaFiltro(this.pos(end)), v.permitir === "lista" ? this.itensDe(v) : []);
+  }
+
+  /** Mensagem do alerta de erro se o valor atual da célula não passa (null se passa). */
+  private recusaDaValidacao(p: Pos): string | null {
+    if (this.passaNaValidacao(p)) return null;
+    const erro = this.validacaoEm(p)?.erro;
+    const titulo = erro?.titulo.trim() || ERRO_PADRAO.titulo;
+    const texto = erro?.texto.trim() || ERRO_PADRAO.texto;
+    return `${titulo}: ${texto}`;
+  }
+
+  /**
+   * A regra aceitaria esta digitação nesta célula? Testa sem deixar rastro
+   * (nem histórico): usado pela correção para conferir o comportamento.
+   */
+  aceitariaNaCelula(end: string | Pos, bruto: string): boolean {
+    const p = this.pos(end);
+    const k = `${p.linha},${p.coluna}`;
+    const antes = this.textos.get(k);
+    this.gravar(p, bruto);
+    const ok = this.passaNaValidacao(p);
+    this.gravar(p, antes ?? "");
+    return ok;
+  }
+
+  /** "Circular Dados Inválidos": células preenchidas que furam a validação (o que já estava lá antes da regra). */
+  celulasInvalidas(intervalo?: Intervalo): string[] {
+    const area = intervalo ?? { inicio: { linha: 0, coluna: 0 }, fim: { linha: this.linhas - 1, coluna: this.colunas - 1 } };
+    return [...posicoes(area)].filter((p) => this.validacaoEm(p) && !this.passaNaValidacao(p)).map(paraEndereco);
+  }
+
+  /**
+   * Aplicar a validação na seleção. Como no Excel, ela substitui a regra das
+   * células selecionadas: as regras antigas que ficam inteiramente dentro saem.
+   */
+  adicionarValidacao(v: ValidacaoDados): Validacao {
+    let alvo: Intervalo;
+    try {
+      alvo = deIntervalo(v.intervalo);
+    } catch {
+      return { ok: false, mensagem: "Intervalo inválido." };
+    }
+    if (v.permitir === "lista" && this.itensDe(v).length === 0) return { ok: false, mensagem: "A Fonte da lista está vazia. Escreva os itens separados por ponto e vírgula (Sim;Não) ou um intervalo (=$F$2:$F$5)." };
+    if (v.permitir !== "lista") {
+      const dois = (v.operador ?? "entre") === "entre" || v.operador === "fora";
+      if (lerLimite(v.valor1) === null || (dois && lerLimite(v.valor2) === null))
+        return { ok: false, mensagem: dois ? "Preencha o Mínimo e o Máximo com números (ou datas)." : "Preencha o valor com um número (ou data)." };
+    }
+    if (this.validacoesLista.length >= 20) return { ok: false, mensagem: "No máximo 20 regras de validação por planilha." };
+    this.mudarEstado(() => {
+      this.validacoesLista = this.validacoesLista.filter((x) => {
+        const i = deIntervalo(x.intervalo);
+        return !(contemPos(alvo, i.inicio) && contemPos(alvo, i.fim));
+      });
+      this.validacoesLista.push(structuredClone(v));
+    });
+    return { ok: true };
+  }
+
+  /** "Limpar Tudo" na janela: tira as regras que tocam o intervalo. */
+  limparValidacoes(intervalo: Intervalo) {
+    const toca = (x: ValidacaoDados) => {
+      const i = deIntervalo(x.intervalo);
+      return !(i.fim.linha < intervalo.inicio.linha || i.inicio.linha > intervalo.fim.linha || i.fim.coluna < intervalo.inicio.coluna || i.inicio.coluna > intervalo.fim.coluna);
+    };
+    if (!this.validacoesLista.some(toca)) return;
+    this.mudarEstado(() => {
+      this.validacoesLista = this.validacoesLista.filter((x) => !toca(x));
+    });
+  }
+
   // --- gráficos ------------------------------------------------------------------
 
   graficos(): Grafico[] {
@@ -1114,6 +1237,7 @@ export class Planilha {
       dinamicas: structuredClone(this.dinamicas),
       condicionais: structuredClone(this.condicionais),
       graficos: structuredClone(this.graficosLista),
+      validacoes: structuredClone(this.validacoesLista),
     };
   }
 
@@ -1133,6 +1257,7 @@ export class Planilha {
     this.dinamicas = structuredClone(f.dinamicas);
     this.condicionais = structuredClone(f.condicionais);
     this.graficosLista = structuredClone(f.graficos);
+    this.validacoesLista = structuredClone(f.validacoes);
   }
 
   /** Aplica uma mudança de recurso com um retrato antes e depois (para o Ctrl+Z). */

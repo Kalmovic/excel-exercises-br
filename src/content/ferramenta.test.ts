@@ -126,4 +126,34 @@ describe("exercícios de ferramenta", () => {
     it("falta o título", () =>
       expect(comGrafico("grafico-vendas-por-mes-variacao-b", "colunas", "A1:B7").falhas[0].mensagem).toContain("Falta o título"));
   });
+
+  describe("validação: a correção testa o comportamento", () => {
+    const comRegra = (slug: string, v: import("./schema").ValidacaoDados) => {
+      const ex = ferramentas.find((e) => e.slug === slug)!;
+      const p = Planilha.deExercicio(ex);
+      expect(p.adicionarValidacao(v).ok).toBe(true);
+      return corrigir(ex, p);
+    };
+    it("lista com vírgula vira um item só", () =>
+      expect(comRegra("validacao-lista-status-pegadinha", { intervalo: "D2:D10", permitir: "lista", fonte: "Sim,Não" }).falhas[0].mensagem).toContain("ponto e vírgula"));
+    it("número inteiro recusa a nota 7,5", () =>
+      expect(
+        comRegra("validacao-quantidade-pegadinha", { intervalo: "B2:B9", permitir: "inteiro", operador: "entre", valor1: "0", valor2: "10" }).falhas[0].mensagem,
+      ).toContain("“7,5”"));
+    it("operador errado (não está entre) é recusado", () =>
+      expect(comRegra("validacao-quantidade", { intervalo: "B2:B9", permitir: "inteiro", operador: "fora", valor1: "-1000", valor2: "0" }).ok).toBe(false));
+    it("cobrir só parte do intervalo", () =>
+      expect(comRegra("validacao-quantidade", { intervalo: "B2:B5", permitir: "inteiro", operador: "entre", valor1: "1", valor2: "100" }).falhas[0].mensagem).toContain("4 células ficaram de fora"));
+    it("alerta aplicado só numa célula", () =>
+      expect(
+        comRegra("validacao-dados-antigos-pegadinha", {
+          intervalo: "B2",
+          permitir: "inteiro",
+          operador: "entre",
+          valor1: "1",
+          valor2: "100",
+          erro: { titulo: "Quantidade inválida", texto: "Use um número de 1 a 100." },
+        }).falhas[0].mensagem,
+      ).toContain("em 8 de 9 células"));
+  });
 });
