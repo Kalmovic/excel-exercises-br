@@ -209,7 +209,14 @@
     "funcoesExigidas": [
       "VLOOKUP"
     ],
-    "extra": true
+    "extra": true,
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ]
   },
   {
     "id": "699df0fb-f739-5e0a-8ef4-653af98e00a6",
@@ -405,7 +412,14 @@
       "VLOOKUP",
       "IFERROR"
     ],
-    "extra": true
+    "extra": true,
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ]
   },
   {
     "id": "ed70b22d-ab51-5a81-af88-79e1a446a4b2",

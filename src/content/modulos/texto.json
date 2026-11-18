@@ -1635,8 +1635,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=SUBSTITUIR\\(A\\d;\\\" \\\";\\\"\\\"\\)$",
-        "dica": "Assim sai \"JoãoSilva\": o espaço entre as palavras também sumiu. Existe uma função que tira só os espaços sobrando."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       }
     ]
   },

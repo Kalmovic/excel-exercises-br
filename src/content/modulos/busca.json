@@ -132,8 +132,9 @@
     "tentativasAteExplicacao": 3,
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -856,8 +857,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -987,8 +989,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -1131,8 +1134,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -3004,6 +3008,13 @@
         "exigeFormula": true,
         "solucaoReferencia": "=PROCV(F2;A2:C6;3;FALSO)",
         "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       }
     ]
   },

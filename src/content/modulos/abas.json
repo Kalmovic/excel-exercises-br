@@ -913,6 +913,13 @@
     ],
     "funcoesExigidas": [
       "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
+      }
     ]
   },
   {
@@ -1428,6 +1435,11 @@
       }
     ],
     "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
+      },
       {
         "padrao": "PREÇOS!A\\d+:B\\d+",
         "dica": "A tabela de preços andou quando a fórmula foi copiada. Trave o intervalo da outra aba com $, como faria na mesma aba."
@@ -3028,6 +3040,13 @@
         "exigeFormula": true,
         "solucaoReferencia": "=PROCV(A6;Preços!$A$2:$B$6;2;FALSO)",
         "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       }
     ]
   },
