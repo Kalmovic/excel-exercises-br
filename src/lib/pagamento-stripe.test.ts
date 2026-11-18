@@ -89,4 +89,10 @@ describe("tradução dos avisos do Stripe", () => {
     expect(traduzirEvento(aviso("charge.dispute.created", { charge: "ch_1" }))).toEqual({ acao: "revogar", cliente: null, cobranca: "ch_1" });
     expect(traduzirEvento(aviso("charge.dispute.created", { charge: { id: "ch_1", customer: "cus_1" } }))).toEqual({ acao: "revogar", cliente: "cus_1", cobranca: "ch_1" });
   });
+
+  it("alerta de fraude: reembolsar quando dá para agir; ignorar quando não", () => {
+    expect(traduzirEvento(aviso("radar.early_fraud_warning.created", { charge: "ch_1", actionable: true }))).toEqual({ acao: "reembolsar", cobranca: "ch_1" });
+    expect(traduzirEvento(aviso("radar.early_fraud_warning.created", { charge: { id: "ch_2" }, actionable: true }))).toEqual({ acao: "reembolsar", cobranca: "ch_2" });
+    expect(traduzirEvento(aviso("radar.early_fraud_warning.created", { charge: "ch_1", actionable: false })).acao).toBe("ignorar");
+  });
 });

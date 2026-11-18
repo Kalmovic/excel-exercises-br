@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { z } from "zod";
 import { PRECO } from "@/lib/site";
-import { clienteStripe, stripeConfigurado } from "@/lib/stripe";
+import { clienteStripe, IDENTIFICADOR_CHECKOUT, MARCA_CHECKOUT, precosDoCatalogo, stripeConfigurado } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { usuarioAtual } from "@/lib/supabase/servidor";
 
@@ -47,6 +47,15 @@ export async function POST(request: Request) {
           { idempotencyKey: `cliente-${usuario.id}-${usuario.email ?? ""}`.slice(0, 255) },
         )
       ).id;
+    // Preço do catálogo do Stripe (produto "Planilhês Pro"); sem ele, ou se não bater
+    // com o site, o preço é montado na hora com o valor do site.
+    const catalogo = await precosDoCatalogo(stripe, {
+      mensal: { centavos: centavos(PRECO.mensal), recorrente: true },
+      anual: { centavos: centavos(PRECO.anual), recorrente: false },
+    }).catch((e) => {
+      console.error(JSON.stringify({ tipo: "erro_catalogo_stripe", mensagem: String(e) }));
+      return {} as Awaited<ReturnType<typeof precosDoCatalogo>>;
+    });
     const origem = new URL(request.url).origin;
     const comum: Stripe.Checkout.SessionCreateParams = {
       customer: cliente,
@@ -56,19 +65,29 @@ export async function POST(request: Request) {
       success_url: `${origem}/conta?pagamento=ok`,
       cancel_url: `${origem}/pro`,
       metadata: { usuario_id: usuario.id, plano },
+      integration_identifier: IDENTIFICADOR_CHECKOUT,
+      branding_settings: MARCA_CHECKOUT,
     };
     const sessao = await stripe.checkout.sessions.create(
       plano === "mensal"
         ? {
             ...comum,
             mode: "subscription",
-            line_items: [{ quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.mensal), recurring: { interval: "month" }, product_data: { name: "Planilhês Pro mensal" } } }],
+            line_items: [
+              catalogo.mensal
+                ? { quantity: 1, price: catalogo.mensal }
+                : { quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.mensal), recurring: { interval: "month" }, product_data: { name: "Planilhês Pro mensal" } } },
+            ],
             subscription_data: { metadata: { usuario_id: usuario.id } },
           }
         : {
             ...comum,
             mode: "payment",
-            line_items: [{ quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.anual), product_data: { name: "Planilhês Pro anual (12 meses de acesso)" } } }],
+            line_items: [
+              catalogo.anual
+                ? { quantity: 1, price: catalogo.anual }
+                : { quantity: 1, price_data: { currency: "brl", unit_amount: centavos(PRECO.anual), product_data: { name: "Planilhês Pro anual (12 meses de acesso)" } } },
+            ],
             payment_method_options: { card: { installments: { enabled: true } } }, // parcelado no cartão
             payment_intent_data: { metadata: { usuario_id: usuario.id } },
           },

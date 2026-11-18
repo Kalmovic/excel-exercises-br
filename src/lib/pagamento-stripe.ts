@@ -18,7 +18,13 @@ export type AcaoPagamento =
   | { acao: "liberar"; cliente: string | null; usuario?: string | null; plano: "mensal" | "anual"; acessoAte: Date; assinatura?: string | null }
   | { acao: "atrasar" | "cancelar_renovacao" | "reativar"; cliente: string | null }
   /** `cobranca`: a disputa não traz o cliente; o webhook o busca pela cobrança. */
-  | { acao: "revogar"; cliente: string | null; cobranca?: string | null };
+  | { acao: "revogar"; cliente: string | null; cobranca?: string | null }
+  /**
+   * Alerta de fraude do banco emissor: o webhook reembolsa a cobrança na hora
+   * (evita o chargeback e a taxa dele). O reembolso gera `charge.refunded`, que
+   * corta o acesso pelo caminho de sempre.
+   */
+  | { acao: "reembolsar"; cobranca: string };
 
 const TOLERANCIA_DIAS = 3;
 const DIA = 24 * 60 * 60 * 1000;
@@ -82,6 +88,13 @@ export function traduzirEvento(evento: Stripe.Event): AcaoPagamento {
       const d = evento.data.object;
       const cobranca = typeof d.charge === "string" ? null : d.charge;
       return { acao: "revogar", cliente: id(cobranca?.customer), cobranca: id(d.charge) };
+    }
+    case "radar.early_fraud_warning.created": {
+      const alerta = evento.data.object;
+      const cobranca = id(alerta.charge);
+      // `actionable` falso: já reembolsada ou já contestada; não há o que fazer.
+      if (!alerta.actionable || !cobranca) return { acao: "ignorar" };
+      return { acao: "reembolsar", cobranca };
     }
     default:
       return { acao: "ignorar" };
