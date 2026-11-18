@@ -2621,6 +2621,2940 @@
     }
   },
   {
+    "id": "4d00c8a2-9397-5836-b878-d5ba14f1d488",
+    "slug": "abas-consolidar-despesas",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Consolidar despesas por categoria",
+    "enunciado": [
+      "Na aba **Resumo**, em **B2:D4**, mostre quanto o escritório gastou em cada **categoria** (coluna A) em cada mês: **Jan** na coluna B, **Fev** na C e **Mar** na D.",
+      "Os lançamentos estão nas abas **Jan**, **Fev** e **Mar** (data, categoria e valor), fora de ordem."
+    ],
+    "dicas": [
+      "Para cada categoria, some só as linhas daquela categoria: é trabalho para o SOMASE, com os intervalos na aba do mês e o critério aqui no Resumo.",
+      "Escreva a fórmula da primeira linha de cada coluna e copie para baixo. Os intervalos da outra aba precisam do $ para não andar; o nome da categoria precisa andar."
+    ],
+    "explicacao": [
+      "B2: `=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)`, copiada até B4. Em C2 e D2, a mesma fórmula com **Fev!** e **Mar!**, copiadas para baixo.",
+      "Copiar não troca o nome da aba: cada coluna (mês) precisa da sua fórmula. Já para baixo a cópia funciona, porque só o critério (A2, A3, A4) muda."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-consolidar-despesas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Cada mês na sua aba, com os lançamentos na ordem em que aconteceram. O resumo que separa por categoria e por mês é o que a chefia pede no fim do trimestre.",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 8,
+      "colunas": 6,
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "D": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "A3": {
+          "entrada": "Material"
+        },
+        "A4": {
+          "entrada": "Transporte"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/01/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "08/01/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "185,4",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "12/01/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "96,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "15/01/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Material"
+            },
+            "C5": {
+              "entrada": "240",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "20/01/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Transporte"
+            },
+            "C6": {
+              "entrada": "142,3",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "26/01/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "58",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "30/01/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "79,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/02/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "09/02/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Transporte"
+            },
+            "C3": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "11/02/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Material"
+            },
+            "C4": {
+              "entrada": "132,6",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "18/02/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "87,4",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "22/02/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "315",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "25/02/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "64,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "27/02/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "48,5",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/03/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3350",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "06/03/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "410,2",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "10/03/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "125",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "17/03/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "98,6",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "19/03/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "66",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "24/03/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "173,4",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "31/03/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "152,8",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 505.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A3;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 296.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A4;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A2;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 496.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A3;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 362.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A4;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D2",
+        "esperado": 3350,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A2;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 629.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A3;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 397.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A4;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C2",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C3",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C4",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D2",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D3",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D4",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\([A-Z]+!B[2-9]:B\\d+;",
+        "dica": "Ao copiar para baixo, o intervalo da outra aba andou junto e deixou lançamentos de fora. Trave o intervalo com $."
+      }
+    ],
+    "video": "Abrir as três abas, mostrar os lançamentos fora de ordem e montar a tabela Categoria × Mês com SOMASE, copiando para baixo e trocando a aba em cada coluna."
+  },
+  {
+    "id": "2ff5458c-8a4a-5285-9fe0-93a1f63d02b4",
+    "slug": "abas-consolidar-despesas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total da categoria no trimestre",
+    "enunciado": [
+      "No **Resumo**, em **B2:B4**, calcule o **total do trimestre** de cada categoria: Jan, Fev e Mar somados."
+    ],
+    "dicas": [
+      "Um SOMASE por aba, somados com +.",
+      "O critério é a categoria da coluna A do Resumo; trave os intervalos das abas antes de copiar para baixo."
+    ],
+    "explicacao": [
+      "`=SOMASE(Jan!$B$2:$B$8;A2;Jan!$C$2:$C$8)+SOMASE(Fev!$B$2:$B$8;A2;Fev!$C$2:$C$8)+SOMASE(Mar!$B$2:$B$8;A2;Mar!$C$2:$C$8)` em B2, copiada até B4.",
+      "Não há SOMASE que leia várias abas de uma vez: some um por aba."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-consolidar-despesas",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 8,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Trimestre",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "A3": {
+          "entrada": "Material"
+        },
+        "A4": {
+          "entrada": "Transporte"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/01/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "08/01/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "185,4",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "12/01/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "96,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "15/01/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Material"
+            },
+            "C5": {
+              "entrada": "240",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "20/01/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Transporte"
+            },
+            "C6": {
+              "entrada": "142,3",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "26/01/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "58",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "30/01/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "79,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/02/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "09/02/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Transporte"
+            },
+            "C3": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "11/02/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Material"
+            },
+            "C4": {
+              "entrada": "132,6",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "18/02/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "87,4",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "22/02/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "315",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "25/02/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "64,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "27/02/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "48,5",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/03/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3350",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "06/03/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "410,2",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "10/03/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "125",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "17/03/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "98,6",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "19/03/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "66",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "24/03/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "173,4",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "31/03/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "152,8",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 9750,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;A2;Jan!$C$2:$C$8)+SOMASE(Fev!$B$2:$B$8;A2;Fev!$C$2:$C$8)+SOMASE(Mar!$B$2:$B$8;A2;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 1630.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;A3;Jan!$C$2:$C$8)+SOMASE(Fev!$B$2:$B$8;A3;Fev!$C$2:$C$8)+SOMASE(Mar!$B$2:$B$8;A3;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 1056.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;A4;Jan!$C$2:$C$8)+SOMASE(Fev!$B$2:$B$8;A4;Fev!$C$2:$C$8)+SOMASE(Mar!$B$2:$B$8;A4;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ]
+  },
+  {
+    "id": "b3a115a5-00fd-53fb-a68e-96904c5139d2",
+    "slug": "abas-consolidar-despesas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 43,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Reembolsos pendentes",
+    "enunciado": [
+      "Os pedidos de reembolso de despesas estão nas abas **Jan** e **Fev**, com a situação de cada um (**Pago** ou **Pendente**).",
+      "No **Resumo**, em **B2:B4**, calcule quanto ainda falta reembolsar a cada funcionário: só os **Pendentes**, somando os dois meses."
+    ],
+    "dicas": [
+      "Agora são duas condições ao mesmo tempo (o funcionário e a situação): SOMASES.",
+      "Um SOMASES por aba, somados com +. O texto \"Pendente\" pode ir entre aspas na fórmula."
+    ],
+    "explicacao": [
+      "`=SOMASES(Jan!$B$2:$B$7;Jan!$A$2:$A$7;A2;Jan!$C$2:$C$7;\"Pendente\")+SOMASES(Fev!$B$2:$B$7;Fev!$A$2:$A$7;A2;Fev!$C$2:$C$7;\"Pendente\")` em B2, copiada até B4.",
+      "No SOMASES, o intervalo que se soma vem primeiro; depois, os pares intervalo e critério."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-consolidar-despesas",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 8,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "A reembolsar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 110,
+            "B": 100,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Funcionário",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Situação",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "120",
+              "formato": "moeda"
+            },
+            "C2": {
+              "entrada": "Pago"
+            },
+            "A3": {
+              "entrada": "Bruno"
+            },
+            "B3": {
+              "entrada": "85,5",
+              "formato": "moeda"
+            },
+            "C3": {
+              "entrada": "Pendente"
+            },
+            "A4": {
+              "entrada": "Ana"
+            },
+            "B4": {
+              "entrada": "64,9",
+              "formato": "moeda"
+            },
+            "C4": {
+              "entrada": "Pendente"
+            },
+            "A5": {
+              "entrada": "Carla"
+            },
+            "B5": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "C5": {
+              "entrada": "Pago"
+            },
+            "A6": {
+              "entrada": "Bruno"
+            },
+            "B6": {
+              "entrada": "47",
+              "formato": "moeda"
+            },
+            "C6": {
+              "entrada": "Pago"
+            },
+            "A7": {
+              "entrada": "Carla"
+            },
+            "B7": {
+              "entrada": "132,4",
+              "formato": "moeda"
+            },
+            "C7": {
+              "entrada": "Pendente"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 110,
+            "B": 100,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Funcionário",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Situação",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Carla"
+            },
+            "B2": {
+              "entrada": "58",
+              "formato": "moeda"
+            },
+            "C2": {
+              "entrada": "Pendente"
+            },
+            "A3": {
+              "entrada": "Ana"
+            },
+            "B3": {
+              "entrada": "99,9",
+              "formato": "moeda"
+            },
+            "C3": {
+              "entrada": "Pendente"
+            },
+            "A4": {
+              "entrada": "Bruno"
+            },
+            "B4": {
+              "entrada": "150",
+              "formato": "moeda"
+            },
+            "C4": {
+              "entrada": "Pendente"
+            },
+            "A5": {
+              "entrada": "Ana"
+            },
+            "B5": {
+              "entrada": "36,5",
+              "formato": "moeda"
+            },
+            "C5": {
+              "entrada": "Pago"
+            },
+            "A6": {
+              "entrada": "Carla"
+            },
+            "B6": {
+              "entrada": "75",
+              "formato": "moeda"
+            },
+            "C6": {
+              "entrada": "Pago"
+            },
+            "A7": {
+              "entrada": "Bruno"
+            },
+            "B7": {
+              "entrada": "22,8",
+              "formato": "moeda"
+            },
+            "C7": {
+              "entrada": "Pendente"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 164.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(Jan!$B$2:$B$7;Jan!$A$2:$A$7;A2;Jan!$C$2:$C$7;\"Pendente\")+SOMASES(Fev!$B$2:$B$7;Fev!$A$2:$A$7;A2;Fev!$C$2:$C$7;\"Pendente\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 258.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(Jan!$B$2:$B$7;Jan!$A$2:$A$7;A3;Jan!$C$2:$C$7;\"Pendente\")+SOMASES(Fev!$B$2:$B$7;Fev!$A$2:$A$7;A3;Fev!$C$2:$C$7;\"Pendente\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 190.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(Jan!$B$2:$B$7;Jan!$A$2:$A$7;A4;Jan!$C$2:$C$7;\"Pendente\")+SOMASES(Fev!$B$2:$B$7;Fev!$A$2:$A$7;A4;Fev!$C$2:$C$7;\"Pendente\")",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMASE\\(",
+        "dica": "Com SOMASE dá para usar só uma condição. Aqui são duas: o funcionário e a situação Pendente."
+      }
+    ]
+  },
+  {
+    "id": "a86d21b6-db5c-59c9-b492-f277482c42b5",
+    "slug": "abas-consolidar-despesas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 44,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: três meses iguais",
+    "enunciado": [
+      "Alguém montou a coluna **Jan** do Resumo e **copiou para o lado**, para Fev e Mar. As três colunas deram exatamente os mesmos valores.",
+      "Corrija as fórmulas de **C2:D4** para que cada coluna leia a aba do seu mês."
+    ],
+    "dicas": [
+      "Clique em C2 e leia a fórmula na barra: de qual aba ela está tirando os valores?",
+      "Copiar para o lado anda as colunas sem $, mas nunca troca o nome da aba."
+    ],
+    "explicacao": [
+      "C2: `=SOMASE(Fev!$B$2:$B$8;$A2;Fev!$C$2:$C$8)` e D2: `=SOMASE(Mar!$B$2:$B$8;$A2;Mar!$C$2:$C$8)`, copiadas para baixo.",
+      "Três colunas com números idênticos é um sinal de alerta: num resumo mensal, confira sempre de qual aba cada coluna lê."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-consolidar-despesas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 8,
+      "colunas": 6,
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110,
+        "D": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "A3": {
+          "entrada": "Material"
+        },
+        "A4": {
+          "entrada": "Transporte"
+        },
+        "B2": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A3;Jan!$C$2:$C$8)",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A3;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A3;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A4;Jan!$C$2:$C$8)",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A4;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=SOMASE(Jan!$B$2:$B$8;$A4;Jan!$C$2:$C$8)",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Jan",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/01/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "08/01/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "185,4",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "12/01/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "96,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "15/01/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Material"
+            },
+            "C5": {
+              "entrada": "240",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "20/01/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Transporte"
+            },
+            "C6": {
+              "entrada": "142,3",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "26/01/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "58",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "30/01/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "79,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Fev",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/02/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "09/02/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Transporte"
+            },
+            "C3": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "11/02/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Material"
+            },
+            "C4": {
+              "entrada": "132,6",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "18/02/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "87,4",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "22/02/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "315",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "25/02/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "64,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "27/02/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "48,5",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      },
+      {
+        "nome": "Mar",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/03/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3350",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "06/03/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "410,2",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "10/03/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "125",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "17/03/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "98,6",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "19/03/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "66",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "24/03/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "173,4",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "31/03/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "152,8",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A2;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 496.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A3;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 362.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A4;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D2",
+        "esperado": 3350,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A2;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 629.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A3;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 397.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Mar!$B$2:$B$8;$A4;Mar!$C$2:$C$8)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C2",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C3",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "C4",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D2",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D3",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      },
+      {
+        "padrao": "SOMASE\\(JAN!\\$?B\\$?2:\\$?B\\$?8;\\$?A\\d;JAN!\\$?C\\$?2:\\$?C\\$?8\\)",
+        "celula": "D4",
+        "dica": "Esta coluna é de outro mês, mas a fórmula ainda lê a aba Jan. Copiar para o lado não troca o nome da aba: ajuste-o na fórmula desta coluna."
+      }
+    ]
+  },
+  {
+    "id": "ef7a33b1-3335-5c78-b936-7b940dc24793",
+    "slug": "abas-consolidar-despesas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Por que SOMASE no resumo?",
+    "enunciado": [
+      "Para o total de Material em janeiro, alguém escreveu `=Jan!C3+Jan!C5+Jan!C8`, somando as linhas certas uma a uma. Qual a vantagem de usar **SOMASE** no lugar?"
+    ],
+    "dicas": [
+      "Pense no que acontece quando os lançamentos mudam de lugar ou quando entra um novo."
+    ],
+    "explicacao": [
+      "O SOMASE procura a categoria em todas as linhas do intervalo: lançamentos fora de ordem, reordenados ou novos (dentro do intervalo) entram no total certo. A soma de células escolhidas à mão só vale enquanto ninguém mexe na aba."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "abas-consolidar-despesas",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "Só o SOMASE consegue ler outra aba.",
+        "dica": "Qualquer fórmula lê outra aba: =Jan!C3 também funciona."
+      },
+      {
+        "texto": "O SOMASE acha a categoria em qualquer linha: lançamento fora de ordem ou novo (dentro do intervalo) entra no total certo."
+      },
+      {
+        "texto": "A soma célula a célula não atualiza quando um valor da aba Jan muda.",
+        "dica": "Atualiza, sim: o problema dela não é o valor mudar, é a linha mudar."
+      },
+      {
+        "texto": "Nenhuma: as duas são igualmente seguras.",
+        "dica": "E se alguém classificar a aba Jan por data ou valor? Quais linhas a soma à mão estaria somando?"
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "50877ed1-4a70-5fa3-a9b0-f5041a4d80e7",
+    "slug": "abas-conferir-recebimentos",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 5,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Conferir recebimentos entre abas",
+    "enunciado": [
+      "A aba **Notas** tem as notas fiscais emitidas no mês. A aba **Extrato** tem os depósitos que caíram no banco, com o número da nota de cada um, fora de ordem.",
+      "Em **D2**, mostre **\"Recebida\"** se a nota de A2 aparece no extrato, senão **\"Em aberto\"**. Copie até **D7**."
+    ],
+    "dicas": [
+      "Contar quantas vezes a nota aparece na coluna de notas do Extrato responde à pergunta: zero vezes quer dizer que não foi paga.",
+      "Coloque essa contagem dentro de um SE. O intervalo do Extrato precisa do $ para não andar ao copiar."
+    ],
+    "explicacao": [
+      "`=SE(CONT.SE(Extrato!$A$2:$A$5;A2)>0;\"Recebida\";\"Em aberto\")` em D2, copiada até D7.",
+      "É a conciliação: cruzar o que foi faturado com o que entrou no banco. As notas 1023 e 1025 ficam em aberto e viram cobrança."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-conferir-recebimentos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Conferir uma lista contra outra (notas × extrato, processos × andamentos, cadastro × folha) é das tarefas mais comuns de escritório. Com uma fórmula, a conferência que levava a tarde leva um minuto.",
+    "grade": {
+      "nome": "Notas",
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 180,
+        "C": 100,
+        "D": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Silva & Associados"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1022"
+        },
+        "B3": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "1023"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Dourado"
+        },
+        "C4": {
+          "entrada": "680",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "1024"
+        },
+        "B5": {
+          "entrada": "Construtora Alicerce"
+        },
+        "C5": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1025"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "2150",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "1026"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C7": {
+          "entrada": "1475",
+          "formato": "moeda"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "1023"
+        ],
+        "A4": [
+          "1022"
+        ]
+      }
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 70,
+            "B": 100,
+            "C": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Nota",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor recebido",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "1024"
+            },
+            "B2": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "C2": {
+              "entrada": "9300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "1021"
+            },
+            "B3": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "C3": {
+              "entrada": "4800",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "1026"
+            },
+            "B4": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "C4": {
+              "entrada": "1475",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "1022"
+            },
+            "B5": {
+              "entrada": "12/11/2026",
+              "formato": "data"
+            },
+            "C5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A2)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A3)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A4)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A5)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A6)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE(Extrato!$A$2:$A$5;A7)>0;\"Recebida\";\"Em aberto\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "CONT\\.SE\\(EXTRATO!A[2-9]:A\\d+;",
+        "dica": "Ao copiar para baixo, o intervalo do Extrato andou junto e deixou depósitos de fora. Trave-o com $."
+      }
+    ],
+    "video": "Colocar as duas abas lado a lado, mostrar que conferir de olho é lento e falha, e resolver com SE + CONT.SE apontando para a outra aba."
+  },
+  {
+    "id": "b9baa03d-b9b1-54b3-a375-1fb012cb16bf",
+    "slug": "abas-conferir-recebimentos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 52,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O valor recebido confere?",
+    "enunciado": [
+      "Agora todas as notas aparecem no **Extrato**, mas alguns clientes pagaram **menos** do que o valor da nota.",
+      "Em **D2**, mostre **\"OK\"** se o valor recebido (coluna C do Extrato) é igual ao valor da nota (C2), senão **\"Divergente\"**. Copie até **D7**."
+    ],
+    "dicas": [
+      "Primeiro traga o valor recebido da nota: PROCV na aba Extrato, com busca exata.",
+      "Depois compare esse valor com o da nota dentro de um SE."
+    ],
+    "explicacao": [
+      "`=SE(PROCV(A2;Extrato!$A$2:$C$7;3;FALSO)=C2;\"OK\";\"Divergente\")` em D2, copiada até D7.",
+      "A nota 1026 recebeu R$ 75 a menos e a 1023, R$ 72 a menos: são as que vão para cobrança da diferença."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-conferir-recebimentos",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Notas",
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 180,
+        "C": 100,
+        "D": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Conferência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Silva & Associados"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1022"
+        },
+        "B3": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "1023"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Dourado"
+        },
+        "C4": {
+          "entrada": "680",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "1024"
+        },
+        "B5": {
+          "entrada": "Construtora Alicerce"
+        },
+        "C5": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1025"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "2150",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "1026"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C7": {
+          "entrada": "1475",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 70,
+            "B": 100,
+            "C": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Nota",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor recebido",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "1024"
+            },
+            "B2": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "C2": {
+              "entrada": "9300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "1021"
+            },
+            "B3": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "C3": {
+              "entrada": "4800",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "1026"
+            },
+            "B4": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "C4": {
+              "entrada": "1400",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "1022"
+            },
+            "B5": {
+              "entrada": "12/11/2026",
+              "formato": "data"
+            },
+            "C5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "1025"
+            },
+            "B6": {
+              "entrada": "13/11/2026",
+              "formato": "data"
+            },
+            "C6": {
+              "entrada": "2150",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "1023"
+            },
+            "B7": {
+              "entrada": "16/11/2026",
+              "formato": "data"
+            },
+            "C7": {
+              "entrada": "608",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A2;Extrato!$A$2:$C$7;3;FALSO)=C2;\"OK\";\"Divergente\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A3;Extrato!$A$2:$C$7;3;FALSO)=C3;\"OK\";\"Divergente\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A4;Extrato!$A$2:$C$7;3;FALSO)=C4;\"OK\";\"Divergente\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A5;Extrato!$A$2:$C$7;3;FALSO)=C5;\"OK\";\"Divergente\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A6;Extrato!$A$2:$C$7;3;FALSO)=C6;\"OK\";\"Divergente\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(A7;Extrato!$A$2:$C$7;3;FALSO)=C7;\"OK\";\"Divergente\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de números de nota, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar uma nota, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ]
+  },
+  {
+    "id": "1307bebf-e67c-539c-adcd-49635984035f",
+    "slug": "abas-conferir-recebimentos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Data do recebimento",
+    "enunciado": [
+      "Todas as notas aparecem no **Extrato**. Em **D2**, traga a **data** em que a nota de A2 foi paga (coluna B do Extrato). Copie até **D7**."
+    ],
+    "dicas": [
+      "PROCV com o número da nota, na tabela da aba Extrato, com busca exata.",
+      "A data está na segunda coluna da tabela do Extrato."
+    ],
+    "explicacao": [
+      "`=PROCV(A2;Extrato!$A$2:$C$7;2;FALSO)` em D2, copiada até D7.",
+      "Se a data aparecer como um número (46.329, por exemplo), é só a data sem formatação: o Excel guarda datas como números."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-conferir-recebimentos",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Notas",
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 180,
+        "C": 100,
+        "D": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Recebida em",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Silva & Associados"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1022"
+        },
+        "B3": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "1023"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Dourado"
+        },
+        "C4": {
+          "entrada": "680",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "1024"
+        },
+        "B5": {
+          "entrada": "Construtora Alicerce"
+        },
+        "C5": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1025"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "2150",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "1026"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C7": {
+          "entrada": "1475",
+          "formato": "moeda"
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 70,
+            "B": 100,
+            "C": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Nota",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor recebido",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "1024"
+            },
+            "B2": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "C2": {
+              "entrada": "9300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "1021"
+            },
+            "B3": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "C3": {
+              "entrada": "4800",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "1026"
+            },
+            "B4": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "C4": {
+              "entrada": "1400",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "1022"
+            },
+            "B5": {
+              "entrada": "12/11/2026",
+              "formato": "data"
+            },
+            "C5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "1025"
+            },
+            "B6": {
+              "entrada": "13/11/2026",
+              "formato": "data"
+            },
+            "C6": {
+              "entrada": "2150",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "1023"
+            },
+            "B7": {
+              "entrada": "16/11/2026",
+              "formato": "data"
+            },
+            "C7": {
+              "entrada": "608",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-11-05"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A2;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2026-11-12"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A3;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2026-11-16"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A4;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-03"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A5;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      },
+      {
+        "celula": "D6",
+        "esperado": {
+          "data": "2026-11-13"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A6;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      },
+      {
+        "celula": "D7",
+        "esperado": {
+          "data": "2026-11-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(A7;Extrato!$A$2:$C$7;2;FALSO)",
+        "formato": "data"
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de números de nota, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar uma nota, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ]
+  },
+  {
+    "id": "2b03d62e-cbc6-5e75-ad17-aa5b39fc7add",
+    "slug": "abas-conferir-recebimentos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 54,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o #N/D que é a resposta",
+    "enunciado": [
+      "Em **D2:D7**, a fórmula traz a data do recebimento de cada nota, mas as notas que **ainda não foram pagas** mostram **#N/D**.",
+      "Corrija as fórmulas de **D2:D7**: quem não está no extrato deve mostrar **\"Em aberto\"**, e as outras continuam com a data."
+    ],
+    "dicas": [
+      "Aqui o #N/D não é defeito da fórmula: ele quer dizer \"essa nota não está no extrato\".",
+      "Existe uma função que devolve o resultado normal quando dá certo e outro valor quando dá erro."
+    ],
+    "explicacao": [
+      "`=SEERRO(PROCV(A2;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")` em D2, copiada até D7 (ou SENÃODISP, que troca só o #N/D).",
+      "Apagar as fórmulas com erro e digitar \"Em aberto\" à mão parece resolver, mas no mês seguinte, quando a nota for paga, ninguém vai lembrar de voltar ali."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "abas-conferir-recebimentos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Notas",
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 180,
+        "C": 100,
+        "D": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Recebida em",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Silva & Associados"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1022"
+        },
+        "B3": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "1023"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Dourado"
+        },
+        "C4": {
+          "entrada": "680",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "1024"
+        },
+        "B5": {
+          "entrada": "Construtora Alicerce"
+        },
+        "C5": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1025"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "2150",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "1026"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C7": {
+          "entrada": "1475",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=PROCV(A2;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=PROCV(A3;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=PROCV(A4;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "=PROCV(A5;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "=PROCV(A6;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "=PROCV(A7;Extrato!$A$2:$C$5;2;FALSO)",
+          "formato": "data",
+          "bloqueada": false
+        }
+      }
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 70,
+            "B": 100,
+            "C": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Nota",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor recebido",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "1024"
+            },
+            "B2": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "C2": {
+              "entrada": "9300",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "1021"
+            },
+            "B3": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "C3": {
+              "entrada": "4800",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "1026"
+            },
+            "B4": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "C4": {
+              "entrada": "1475",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "1022"
+            },
+            "B5": {
+              "entrada": "12/11/2026",
+              "formato": "data"
+            },
+            "C5": {
+              "entrada": "1250",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B5"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-11-05"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A2;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2026-11-12"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A3;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A4;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-03"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A5;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A6;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      },
+      {
+        "celula": "D7",
+        "esperado": {
+          "data": "2026-11-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(A7;Extrato!$A$2:$C$5;2;FALSO);\"Em aberto\")",
+        "formato": "data"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de números de nota, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar uma nota, a busca precisa ser exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "^=PROCV\\(",
+        "dica": "O #N/D aqui quer dizer \"essa nota não está no extrato\". Que função troca um erro por um texto, sem mexer nas datas que deram certo?"
+      }
+    ]
+  },
+  {
+    "id": "f61c065b-0a9c-50ea-b9ed-d1c664caa0e2",
+    "slug": "abas-conferir-recebimentos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "abas",
+    "ordem": 55,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A nota que aparece duas vezes",
+    "enunciado": [
+      "No extrato, a nota **1021** aparece **duas vezes**. Na aba Notas, o que `=CONT.SE(Extrato!$A$2:$A$9;A2)` mostra para ela, e o que isso indica?"
+    ],
+    "dicas": [
+      "O CONT.SE conta todas as linhas que batem, não só a primeira."
+    ],
+    "explicacao": [
+      "Mostra **2**: o cliente pagou a mesma nota duas vezes (ou o depósito foi lançado em duplicidade). Com `>0` no SE, ela aparece só como \"Recebida\"; olhar a contagem crua é o jeito de achar esse caso."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "abas-conferir-recebimentos",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "1, porque o CONT.SE para na primeira que encontra.",
+        "dica": "Quem para na primeira é o PROCV. O CONT.SE conta todas."
+      },
+      {
+        "texto": "2: a nota pode ter sido paga ou lançada em duplicidade, e vale conferir."
+      },
+      {
+        "texto": "#N/D, porque o valor está repetido.",
+        "dica": "Repetição não é erro para o CONT.SE: ele só soma mais um."
+      },
+      {
+        "texto": "VERDADEIRO, porque a nota foi encontrada.",
+        "dica": "O CONT.SE devolve um número (quantas vezes), não VERDADEIRO ou FALSO."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "57b1f690-06bb-5f34-94a5-8e228dbc6ebe",
     "slug": "teste-abas-1",
     "trilha": "excel-ptbr",
@@ -3299,12 +6233,12 @@
     "trilha": "excel-ptbr",
     "modulo": "abas",
     "ordem": 204,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Aba com espaço",
+    "versao": 2,
+    "titulo": "Notas em aberto",
     "enunciado": [
-      "Em **B2**, calcule o total de vendas da aba **Vendas 2025**."
+      "Em **D2:D7**, mostre **\"Recebida\"** se a nota de A2 aparece na aba **Extrato Banco**, senão **\"Em aberto\"**."
     ],
     "dicas": [],
     "explicacao": [
@@ -3312,100 +6246,205 @@
     ],
     "tentativasAteExplicacao": 99,
     "type": "formula",
-    "revisar": "abas-total-de-outra-aba",
+    "revisar": "abas-conferir-recebimentos",
     "teste": true,
     "grade": {
-      "nome": "Resumo",
+      "nome": "Notas",
       "linhas": 10,
-      "colunas": 5,
+      "colunas": 6,
       "larguras": {
-        "A": 170,
-        "B": 110,
-        "C": 110,
-        "D": 96
+        "A": 70,
+        "B": 180,
+        "C": 100,
+        "D": 130
       },
       "celulas": {
-        "A2": {
-          "entrada": "Total de 2025",
+        "A1": {
+          "entrada": "Nota",
           "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Silva & Associados"
+        },
+        "C2": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "1022"
+        },
+        "B3": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "1023"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Dourado"
+        },
+        "C4": {
+          "entrada": "680",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "1024"
+        },
+        "B5": {
+          "entrada": "Construtora Alicerce"
+        },
+        "C5": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "1025"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "2150",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "1026"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C7": {
+          "entrada": "1475",
+          "formato": "moeda"
         }
+      },
+      "alternativas": {
+        "A2": [
+          "1024"
+        ],
+        "A3": [
+          "1021"
+        ]
       }
     },
     "abas": [
       {
-        "nome": "Vendas 2025",
+        "nome": "Extrato Banco",
         "grade": {
           "linhas": 10,
           "colunas": 4,
           "larguras": {
-            "A": 96,
-            "B": 100
+            "A": 70,
+            "B": 100,
+            "C": 120
           },
           "celulas": {
             "A1": {
-              "entrada": "Vendedor",
+              "entrada": "Nota",
               "negrito": true
             },
             "B1": {
-              "entrada": "Vendas",
+              "entrada": "Data",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor recebido",
               "negrito": true
             },
             "A2": {
-              "entrada": "Ana"
+              "entrada": "1025"
             },
             "B2": {
-              "entrada": "1410",
+              "entrada": "04/11/2026",
+              "formato": "data"
+            },
+            "C2": {
+              "entrada": "2150",
               "formato": "moeda"
             },
             "A3": {
-              "entrada": "Bruno"
+              "entrada": "1022"
             },
             "B3": {
-              "entrada": "1020",
-              "formato": "moeda"
+              "entrada": "06/11/2026",
+              "formato": "data"
             },
-            "A4": {
-              "entrada": "Carla"
-            },
-            "B4": {
-              "entrada": "1380",
-              "formato": "moeda"
-            },
-            "A5": {
-              "entrada": "Daniel"
-            },
-            "B5": {
+            "C3": {
               "entrada": "1250",
               "formato": "moeda"
             },
-            "A6": {
-              "entrada": "Eva"
+            "A4": {
+              "entrada": "1021"
             },
-            "B6": {
-              "entrada": "1800",
+            "B4": {
+              "entrada": "11/11/2026",
+              "formato": "data"
+            },
+            "C4": {
+              "entrada": "4800",
               "formato": "moeda"
             }
-          },
-          "variaveis": [
-            "B2",
-            "B3",
-            "B4",
-            "B5",
-            "B6"
-          ]
+          }
         }
       }
     ],
     "inicio": {
-      "celulaAtiva": "B2"
+      "celulaAtiva": "D2"
     },
     "alvos": [
       {
-        "celula": "B2",
-        "esperado": 6860,
+        "celula": "D2",
+        "esperado": "Recebida",
         "exigeFormula": true,
-        "solucaoReferencia": "=SOMA('Vendas 2025'!B2:B6)",
-        "formato": "moeda"
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A2)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A3)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A4)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A5)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Recebida",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A6)>0;\"Recebida\";\"Em aberto\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Em aberto",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SE('Extrato Banco'!$A$2:$A$4;A7)>0;\"Recebida\";\"Em aberto\")"
       }
     ]
   },
@@ -3417,38 +6456,332 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Separador da aba",
+    "versao": 2,
+    "titulo": "Despesas por categoria",
     "enunciado": [
-      "Qual destas fórmulas lê corretamente a célula B2 da aba **Vendas 2025**?"
+      "No **Resumo**, em **B2:C4**, o total de cada categoria em **Jan** (coluna B) e em **Fev** (coluna C)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "type": "multiple_choice",
-    "revisar": "abas-total-de-outra-aba",
+    "type": "formula",
     "teste": true,
-    "opcoes": [
+    "revisar": "abas-consolidar-despesas",
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 8,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 110,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "A3": {
+          "entrada": "Material"
+        },
+        "A4": {
+          "entrada": "Transporte"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "Material"
+        ],
+        "A3": [
+          "Transporte"
+        ]
+      }
+    },
+    "abas": [
       {
-        "texto": "=Vendas 2025!B2"
+        "nome": "Jan",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/01/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "08/01/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Material"
+            },
+            "C3": {
+              "entrada": "185,4",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "12/01/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Transporte"
+            },
+            "C4": {
+              "entrada": "96,5",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "15/01/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Material"
+            },
+            "C5": {
+              "entrada": "240",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "20/01/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Transporte"
+            },
+            "C6": {
+              "entrada": "142,3",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "26/01/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "58",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "30/01/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "79,9",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
       },
       {
-        "texto": "='Vendas 2025'!B2"
-      },
-      {
-        "texto": "=\"Vendas 2025\"!B2"
-      },
-      {
-        "texto": "=Vendas_2025.B2"
+        "nome": "Fev",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "larguras": {
+            "A": 100,
+            "B": 110,
+            "C": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Categoria",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "05/02/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Aluguel"
+            },
+            "C2": {
+              "entrada": "3200",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "09/02/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Transporte"
+            },
+            "C3": {
+              "entrada": "210",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "11/02/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Material"
+            },
+            "C4": {
+              "entrada": "132,6",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "18/02/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Transporte"
+            },
+            "C5": {
+              "entrada": "87,4",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "22/02/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Material"
+            },
+            "C6": {
+              "entrada": "315",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "25/02/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Transporte"
+            },
+            "C7": {
+              "entrada": "64,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "27/02/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Material"
+            },
+            "C8": {
+              "entrada": "48,5",
+              "formato": "moeda"
+            }
+          },
+          "variaveis": [
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
       }
     ],
-    "correta": 1,
-    "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+    "inicio": {
+      "celulaAtiva": "B2"
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A2;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B3",
+        "esperado": 505.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A3;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B4",
+        "esperado": 296.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Jan!$B$2:$B$8;$A4;Jan!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A2;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 496.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A3;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 362.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(Fev!$B$2:$B$8;$A4;Fev!$C$2:$C$8)",
+        "formato": "moeda"
+      }
+    ]
   }
 ]

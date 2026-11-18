@@ -465,7 +465,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "casos",
-    "ordem": 4,
+    "ordem": 5,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1663,7 +1663,7 @@
     "slug": "desconto-do-inss-variacao-a",
     "trilha": "excel-ptbr",
     "modulo": "casos",
-    "ordem": 42,
+    "ordem": 52,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1827,7 +1827,7 @@
     "slug": "desconto-do-inss-variacao-b",
     "trilha": "excel-ptbr",
     "modulo": "casos",
-    "ordem": 43,
+    "ordem": 53,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1991,7 +1991,7 @@
     "slug": "desconto-do-inss-pegadinha",
     "trilha": "excel-ptbr",
     "modulo": "casos",
-    "ordem": 44,
+    "ordem": 54,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -2155,7 +2155,7 @@
     "slug": "desconto-do-inss-conceito",
     "trilha": "excel-ptbr",
     "modulo": "casos",
-    "ordem": 45,
+    "ordem": 55,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -2197,6 +2197,871 @@
       }
     ],
     "correta": 1
+  },
+  {
+    "id": "de00fd29-93b2-5942-825b-c409b56a7321",
+    "slug": "boleto-em-atraso",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 4,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Boleto em atraso: multa e juros",
+    "enunciado": [
+      "Três boletos foram pagos depois do vencimento. A multa (**K1**) é de 2% e os juros (**K2**) são de 1% **ao mês**, cobrados proporcionalmente aos dias de atraso (mês de 30 dias).",
+      "Na linha 2, calcule: em **E2**, os dias de atraso (pagamento − vencimento); em **F2**, a multa (valor × multa); em **G2**, os juros (valor × juros ao mês ÷ 30 × dias de atraso); em **H2**, o total a pagar. Copie até a linha 4."
+    ],
+    "dicas": [
+      "Datas são números para o Excel: subtrair uma da outra dá a quantidade de dias.",
+      "As taxas ficam em K1 e K2 e são as mesmas para todos os boletos: trave essas células antes de copiar.",
+      "O total é o valor mais a multa mais os juros."
+    ],
+    "explicacao": [
+      "E2 `=D2-C2`, F2 `=B2*$K$1`, G2 `=B2*$K$2/30*E2` e H2 `=B2+F2+G2`, copiadas até a linha 4.",
+      "A multa é cobrada uma vez só, por ter atrasado. Os juros crescem a cada dia: 1% ao mês dá 1/30 de 1% por dia (juros simples, *pro rata die*). A mensalidade escolar, com 42 dias de atraso, fica em R$ 1.364,88."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "boleto-em-atraso",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Condomínio, mensalidade, aluguel: quem paga ou cobra conta atrasada precisa calcular multa e juros. Com o atraso em dias numa coluna, a planilha faz a conta de qualquer boleto.",
+    "grade": {
+      "linhas": 5,
+      "colunas": 11,
+      "larguras": {
+        "A": 150,
+        "B": 92,
+        "C": 100,
+        "D": 100,
+        "E": 104,
+        "F": 84,
+        "G": 84,
+        "H": 96,
+        "I": 16,
+        "J": 100,
+        "K": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Boleto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Dias de atraso",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Juros",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "2%"
+        },
+        "J2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "1%"
+        },
+        "A2": {
+          "entrada": "Condomínio"
+        },
+        "B2": {
+          "entrada": "850",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "D2": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "Mensalidade escolar"
+        },
+        "B3": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "05/10/2026",
+          "formato": "data"
+        },
+        "D3": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "01/11/2026",
+          "formato": "data"
+        },
+        "D4": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "K1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "E2"
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D2-C2"
+      },
+      {
+        "celula": "E3",
+        "esperado": 42,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D3-C3"
+      },
+      {
+        "celula": "E4",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=D4-C4"
+      },
+      {
+        "celula": "F2",
+        "esperado": 17.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*$K$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 26.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*$K$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 2.598,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*$K$1",
+        "formato": "moeda"
+      },
+      {
+        "celula": "G2",
+        "esperado": 1.9833333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*$K$2/30*E2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G3",
+        "esperado": 18.48,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*$K$2/30*E3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G4",
+        "esperado": 0.0866,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*$K$2/30*E4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H2",
+        "esperado": 868.9833333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+F2+G2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H3",
+        "esperado": 1364.88,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3+F3+G3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H4",
+        "esperado": 132.5846,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4+F4+G4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*\\$?K\\$?2\\*E\\d$",
+        "dica": "Assim você cobra 1% por dia de atraso. A taxa é ao mês: como transformar em taxa por dia?"
+      },
+      {
+        "padrao": "^=B\\d\\*K[12]$",
+        "dica": "Ao copiar para baixo, a taxa andou junto e saiu de K1/K2. Trave a célula da taxa com $."
+      }
+    ],
+    "video": "Montar a conta do condomínio atrasado: dias de atraso por subtração de datas, multa fixa de 2% e juros de 1% ao mês divididos por 30."
+  },
+  {
+    "id": "1b2d8cdf-6cee-59d2-9004-5d0929af35ce",
+    "slug": "boleto-em-atraso-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O total numa fórmula só",
+    "enunciado": [
+      "Em **E2**, calcule o **total a pagar** do boleto numa fórmula só: valor + multa (**K1**) + juros (**K2** ao mês, proporcional aos dias de atraso, mês de 30 dias)."
+    ],
+    "dicas": [
+      "Os dias de atraso podem ser calculados dentro da própria fórmula: pagamento − vencimento, entre parênteses.",
+      "Valor × multa e valor × juros ao mês ÷ 30 × dias: some as duas partes ao valor."
+    ],
+    "explicacao": [
+      "`=B2+B2*K1+B2*K2/30*(D2-C2)` → R$ 1.364,88.",
+      "Com os dias entre parênteses, a subtração é feita antes da multiplicação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "boleto-em-atraso",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 3,
+      "colunas": 11,
+      "larguras": {
+        "A": 150,
+        "B": 92,
+        "C": 100,
+        "D": 100,
+        "E": 110,
+        "F": 16,
+        "J": 100,
+        "K": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Boleto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "2%"
+        },
+        "J2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "1%"
+        },
+        "A2": {
+          "entrada": "Mensalidade escolar"
+        },
+        "B2": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "05/10/2026",
+          "formato": "data"
+        },
+        "D2": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "K1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "E2"
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 1364.88,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+B2*K1+B2*K2/30*(D2-C2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B2\\+B2\\*\\$?K\\$?1\\+B2\\*\\$?K\\$?2/30\\*D2-C2$",
+        "dica": "Sem parênteses, o Excel multiplica antes de subtrair: só a data de pagamento entra na conta dos juros. Proteja a subtração dos dias."
+      }
+    ]
+  },
+  {
+    "id": "4a8929aa-5029-556a-ab56-2eba3f695006",
+    "slug": "boleto-em-atraso-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 43,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pago em dia não paga multa",
+    "enunciado": [
+      "Desta vez, um boleto foi pago **antes** do vencimento e outro **no dia**. As colunas G e H já estão prontas.",
+      "Em **E2**, os dias de atraso, que nunca podem ser negativos (pago antes = 0). Em **F2**, a multa, só se houver atraso (senão 0). Copie até a linha 4."
+    ],
+    "dicas": [
+      "Para que o atraso não fique negativo, pegue o maior entre 0 e a diferença das datas.",
+      "A multa depende de uma condição: SE os dias de atraso forem maiores que zero."
+    ],
+    "explicacao": [
+      "E2 `=MÁXIMO(0;D2-C2)` e F2 `=SE(E2>0;B2*$K$1;0)`, copiadas até a linha 4.",
+      "Sem o MÁXIMO, o condomínio pago 4 dias antes teria atraso de −4 e juros negativos: um desconto que ninguém deu. Sem o SE, a mensalidade paga no dia levaria multa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "boleto-em-atraso",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 5,
+      "colunas": 11,
+      "larguras": {
+        "A": 150,
+        "B": 92,
+        "C": 100,
+        "D": 100,
+        "E": 104,
+        "F": 84,
+        "G": 84,
+        "H": 96,
+        "I": 16,
+        "J": 100,
+        "K": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Boleto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Dias de atraso",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Juros",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "2%"
+        },
+        "J2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "1%"
+        },
+        "A2": {
+          "entrada": "Condomínio"
+        },
+        "B2": {
+          "entrada": "850",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "D2": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "Mensalidade escolar"
+        },
+        "B3": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "D3": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "01/11/2026",
+          "formato": "data"
+        },
+        "D4": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "G2": {
+          "entrada": "=B2*$K$2/30*E2",
+          "formato": "moeda"
+        },
+        "H2": {
+          "entrada": "=B2+F2+G2",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "=B3*$K$2/30*E3",
+          "formato": "moeda"
+        },
+        "H3": {
+          "entrada": "=B3+F3+G3",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "=B4*$K$2/30*E4",
+          "formato": "moeda"
+        },
+        "H4": {
+          "entrada": "=B4+F4+G4",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "K1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "E2"
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(0;D2-C2)"
+      },
+      {
+        "celula": "E3",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(0;D3-C3)"
+      },
+      {
+        "celula": "E4",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(0;D4-C4)"
+      },
+      {
+        "celula": "F2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E2>0;B2*$K$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F3",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E3>0;B3*$K$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "F4",
+        "esperado": 2.598,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E4>0;B4*$K$1;0)",
+        "formato": "moeda"
+      }
+    ],
+    "funcoesExigidas": [
+      "MAX",
+      "IF"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=D\\d-C\\d$",
+        "dica": "Para o boleto pago antes do vencimento, a conta dá negativo, e os juros viram um desconto. O atraso precisa parar em zero."
+      },
+      {
+        "padrao": "^=B\\d\\*\\$?K\\$?1$",
+        "dica": "Assim a multa é cobrada até de quem pagou em dia ou antes. Ela só vale quando há atraso."
+      }
+    ]
+  },
+  {
+    "id": "2e93177c-8a1b-54e9-bfef-95a33895c55d",
+    "slug": "boleto-em-atraso-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: juros de 1% ao dia",
+    "enunciado": [
+      "Os juros em **G2:G4** saíram altos demais: a mensalidade escolar, com 42 dias de atraso, ficou com **R$ 554,40** de juros, quase metade do valor.",
+      "A taxa em **K2** é de 1% **ao mês**. Corrija as fórmulas de **G2:G4**."
+    ],
+    "dicas": [
+      "Clique em G3 e leia a fórmula: a taxa ao mês está sendo multiplicada por dias.",
+      "Uma taxa ao mês vira taxa ao dia dividindo pelos dias do mês (30, por convenção)."
+    ],
+    "explicacao": [
+      "G2 `=B2*$K$2/30*E2`, copiada até G4. Com 42 dias de atraso, os juros da mensalidade ficam em R$ 18,48.",
+      "Taxa e prazo precisam estar no mesmo período: juros ao mês com prazo em meses, ou juros ao dia com prazo em dias."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "boleto-em-atraso",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "linhas": 5,
+      "colunas": 11,
+      "larguras": {
+        "A": 150,
+        "B": 92,
+        "C": 100,
+        "D": 100,
+        "E": 104,
+        "F": 84,
+        "G": 84,
+        "H": 96,
+        "I": 16,
+        "J": 100,
+        "K": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Boleto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Dias de atraso",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Juros",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "2%"
+        },
+        "J2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "1%"
+        },
+        "A2": {
+          "entrada": "Condomínio"
+        },
+        "B2": {
+          "entrada": "850",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "D2": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "Mensalidade escolar"
+        },
+        "B3": {
+          "entrada": "1320",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "05/10/2026",
+          "formato": "data"
+        },
+        "D3": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "129,9",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "01/11/2026",
+          "formato": "data"
+        },
+        "D4": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "E2": {
+          "entrada": "=D2-C2"
+        },
+        "F2": {
+          "entrada": "=B2*$K$1",
+          "formato": "moeda"
+        },
+        "G2": {
+          "entrada": "=B2*$K$2*E2",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H2": {
+          "entrada": "=B2+F2+G2",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=D3-C3"
+        },
+        "F3": {
+          "entrada": "=B3*$K$1",
+          "formato": "moeda"
+        },
+        "G3": {
+          "entrada": "=B3*$K$2*E3",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H3": {
+          "entrada": "=B3+F3+G3",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=D4-C4"
+        },
+        "F4": {
+          "entrada": "=B4*$K$1",
+          "formato": "moeda"
+        },
+        "G4": {
+          "entrada": "=B4*$K$2*E4",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H4": {
+          "entrada": "=B4+F4+G4",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "K1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "G2"
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 1.9833333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2*$K$2/30*E2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G3",
+        "esperado": 18.48,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3*$K$2/30*E3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G4",
+        "esperado": 0.0866,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4*$K$2/30*E4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*\\$?K\\$?2\\*E\\d$",
+        "dica": "Assim você cobra 1% por dia de atraso. A taxa é ao mês: como transformar em taxa por dia?"
+      }
+    ]
+  },
+  {
+    "id": "2a99b698-9712-5211-a461-c4f05801f106",
+    "slug": "boleto-em-atraso-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Um boleto de **R$ 1.000,00** foi pago com **10 dias** de atraso. Multa de 2% e juros de 1% ao mês, proporcionais aos dias (mês de 30 dias). Quanto se paga?"
+    ],
+    "dicas": [
+      "A multa é cobrada uma vez; os juros são 1/30 de 1% por dia de atraso."
+    ],
+    "explicacao": [
+      "1.000 + 20 de multa + 1.000 × 1% ÷ 30 × 10 de juros (3,33) = **R$ 1.023,33**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "boleto-em-atraso",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "R$ 1.120,00",
+        "dica": "Aí os juros foram de 1% por dia (10%). A taxa é ao mês."
+      },
+      {
+        "texto": "R$ 1.030,00",
+        "dica": "Aí foi cobrado o mês inteiro de juros, mas o atraso foi de só 10 dias."
+      },
+      {
+        "texto": "R$ 1.023,33"
+      },
+      {
+        "texto": "R$ 1.020,00",
+        "dica": "Faltaram os juros: além da multa, cada dia de atraso custa um pouco."
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
   },
   {
     "id": "d7bcc94d-4107-59d0-ab5d-83dcd0c24697",
@@ -2619,38 +3484,97 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Alíquota efetiva",
+    "versao": 2,
+    "titulo": "Aluguel atrasado",
     "enunciado": [
-      "Quem ganha 5.000 paga 501,51 de INSS. A alíquota efetiva é:"
+      "Em **E2**, o total a pagar do boleto: valor + multa (**K1**) + juros (**K2** ao mês, proporcional aos dias de atraso, mês de 30 dias)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
+    "type": "formula",
     "teste": true,
-    "revisar": "desconto-do-inss",
-    "type": "multiple_choice",
+    "revisar": "boleto-em-atraso",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 3,
+      "colunas": 11,
+      "larguras": {
+        "A": 150,
+        "B": 92,
+        "C": 100,
+        "D": 100,
+        "E": 110,
+        "F": 16,
+        "J": 100,
+        "K": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Boleto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "J1": {
+          "entrada": "Multa",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "2%"
+        },
+        "J2": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "1%"
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "D2": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "K1"
+      ]
     },
-    "opcoes": [
+    "alvos": [
       {
-        "texto": "14%"
-      },
-      {
-        "texto": "Cerca de 10%"
-      },
-      {
-        "texto": "7,5%"
-      },
-      {
-        "texto": "12%"
+        "celula": "E2",
+        "esperado": 2457.6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+B2*K1+B2*K2/30*(D2-C2)",
+        "formato": "moeda",
+        "tolerancia": 0.01
       }
-    ],
-    "correta": 1
+    ]
   }
 ]

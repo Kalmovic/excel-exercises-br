@@ -104,6 +104,34 @@ describe("pegadinhas do módulo de abas", () => {
     expect(r.falhas.map((f) => f.mensagem).join(" ")).toContain("Trave o intervalo da outra aba");
   });
 
+  it("resumo copiado para o lado continua lendo Jan: recusado com a dica da aba", async () => {
+    const { exercicios } = await import("@/content");
+    const { corrigir } = await import("@/grader/corrigir");
+    const ex = exercicios.find((e) => e.slug === "abas-consolidar-despesas-pegadinha")!;
+    const p = Planilha.deExercicio(ex);
+    expect(p.valor("C2")).toBe(p.valor("B2"));
+    const r = corrigir(ex, p);
+    expect(r.ok).toBe(false);
+    expect(r.falhas.find((f) => f.celula === "D3")?.mensagem).toContain("aba Jan");
+    for (const l of [2, 3, 4]) {
+      p.definir(`C${l}`, `=SOMASE(Fev!$B$2:$B$8;$A${l};Fev!$C$2:$C$8)`);
+      p.definir(`D${l}`, `=SOMASE(Mar!$B$2:$B$8;$A${l};Mar!$C$2:$C$8)`);
+    }
+    expect(corrigir(ex, p).ok).toBe(true);
+  });
+
+  it("conferência: o #N/D das notas em aberto pede SEERRO; SENÃODISP também vale", async () => {
+    const { exercicios } = await import("@/content");
+    const { corrigir } = await import("@/grader/corrigir");
+    const ex = exercicios.find((e) => e.slug === "abas-conferir-recebimentos-pegadinha")!;
+    const p = Planilha.deExercicio(ex);
+    expect(p.valor("D4")).toEqual({ erro: "#N/D" });
+    const r = corrigir(ex, p);
+    expect(r.falhas.find((f) => f.celula === "D4")?.mensagem).toContain("troca um erro por um texto");
+    for (let l = 2; l <= 7; l++) p.definir(`D${l}`, `=SENÃODISP(PROCV(A${l};Extrato!$A$2:$C$5;2;FALSO);"Em aberto")`);
+    expect(corrigir(ex, p).ok).toBe(true);
+  });
+
   it("fevereiro com uma linha a mais: B2:B6 deixa o Fábio de fora", async () => {
     const { exercicios } = await import("@/content");
     const { corrigir } = await import("@/grader/corrigir");
