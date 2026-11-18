@@ -805,7 +805,8 @@
     ],
     "explicacao": [
       "`=DIVIDIRTEXTO(A2;\", \")`.",
-      "É o Texto para Colunas em forma de fórmula: se o endereço mudar, as colunas acompanham."
+      "É o Texto para Colunas em forma de fórmula: se o endereço mudar, as colunas acompanham.",
+      "Atenção: o que sai do DIVIDIRTEXTO é sempre texto, até o \"120\". Para fazer conta com o número, use `=VALOR(C2)` ou `--C2`."
     ],
     "tentativasAteExplicacao": 3,
     "grade": {
