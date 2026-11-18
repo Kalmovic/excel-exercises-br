@@ -1983,5 +1983,157 @@
     "funcoesExigidas": [
       "LET"
     ]
+  },
+  {
+    "id": "008d500b-57fe-48f9-8b1f-1ee16e585b1c",
+    "slug": "descartar-sem-a-linha-do-total",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 111,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DESCARTAR: a tabela sem a linha do Total",
+    "intro": "Relatório exportado quase sempre vem com uma linha de Total no fim. Para usar só os meses em outra fórmula, é preciso tirar essa linha.",
+    "enunciado": [
+      "Em **D2**, mostre os meses e as vendas de **A2:B8**, **sem a linha do Total**, com uma fórmula só."
+    ],
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": [
+          [
+            "Jan",
+            12400
+          ],
+          [
+            "Fev",
+            9800
+          ],
+          [
+            "Mar",
+            13650
+          ],
+          [
+            "Abr",
+            11200
+          ],
+          [
+            "Mai",
+            14900
+          ],
+          [
+            "Jun",
+            10750
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=DESCARTAR(A2:B8;-1)"
+      }
+    ],
+    "dicas": [
+      "DESCARTAR é o contrário de PEGAR: em vez de ficar com algumas linhas, joga fora.",
+      "Com número positivo, DESCARTAR tira linhas do começo; com negativo, do fim."
+    ],
+    "explicacao": [
+      "`=DESCARTAR(A2:B8;-1)`: o −1 tira uma linha do fim, a do Total.",
+      "Com 1, ele tiraria a primeira linha: `=DESCARTAR(A1:B8;1)` é a tabela sem o cabeçalho (e ainda com o Total). O 3º argumento faz o mesmo com as colunas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 100,
+        "C": 30,
+        "D": 70,
+        "E": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Sem o total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "13650",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "14900",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "10750",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2:B7)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "DROP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DESCARTAR\\(A2:B8;1\\)$",
+        "dica": "Com número positivo, o DESCARTAR tira do começo: sumiu janeiro e o Total ficou. Para tirar do fim, o número é negativo."
+      }
+    ]
   }
 ]
