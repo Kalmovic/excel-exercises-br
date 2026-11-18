@@ -35,15 +35,9 @@ import { preencherSolucao } from "@/components/admin/solucao";
 function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
   const salvo = restaurar ? progresso.ler(chaveProgresso(ex), ex.versao) : undefined;
-  if (salvo) {
-    // Classificações primeiro: elas movem as linhas, e o conteúdo salvo já está nas posições finais.
-    if (salvo.recursos) planilha.aplicarRecursos(salvo.recursos);
-    planilha.definirVarias(
-      Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
-    );
-    for (const [end, f] of Object.entries(salvo.formatos ?? {})) planilha.formatar(deIntervalo(end), f);
-    planilha.limparHistorico(); // Ctrl+Z não apaga o progresso restaurado
-  }
+  // Porta única de restauração (a mesma do servidor): classificações, células do aluno, formatos e o resto
+  // dos recursos, nessa ordem, e o histórico limpo (Ctrl+Z não apaga o que foi restaurado).
+  if (salvo) planilha.restaurarProgresso({ conteudos: salvo.conteudos, formatos: salvo.formatos, recursos: salvo.recursos });
   const inicio = ex.inicio?.selecao ?? ex.inicio?.celulaAtiva;
   return {
     planilha,

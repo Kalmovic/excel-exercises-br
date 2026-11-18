@@ -141,10 +141,19 @@ describe("errosComuns com bloqueia", () => {
   });
 
   it("sem bloqueia, o erro comum só troca a mensagem quando o valor está errado", () => {
-    const e = ex("procv-preco-pelo-codigo-exato");
+    // O conteúdo marca este exercício com bloqueia; uma cópia sem o campo mostra o comportamento antigo.
+    const original = ex("procv-preco-pelo-codigo-exato");
+    const e = { ...original, errosComuns: original.errosComuns?.map((x) => ({ padrao: x.padrao, dica: x.dica, celula: x.celula })) } as typeof original;
     const p = Planilha.deExercicio(e);
     p.definir("G2", "=PROCV(F2;A2:C6;3)");
     expect(corrigir(e, p).ok).toBe(true);
+  });
+
+  it("com o conteúdo de verdade, o PROCV sem FALSO é reprovado mesmo com o valor certo", () => {
+    const e = ex("procv-preco-pelo-codigo-exato");
+    const p = Planilha.deExercicio(e);
+    p.definir("G2", "=PROCV(F2;A2:C6;3)");
+    expect(corrigir(e, p).ok).toBe(false);
   });
 
   it("vale também no certificado", () => {
