@@ -211,7 +211,7 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
   }
 
   if (falhas.length === 0) {
-    for (const c of conferirComPerturbacao(ex, p.conteudos())) {
+    for (const c of conferirComPerturbacao(ex, p.conteudosDoAluno())) {
       const alvo = ex.alvos.find((a) => a.celula === c);
       const dica = alvo && diagnosticarValorFixo(p.bruto(c), alvo.solucaoReferencia);
       falhas.push({
@@ -252,13 +252,39 @@ export function corrigir(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resulta
 
 const normalizarEntrada = (s: string) => s.toUpperCase().replace(/\s+/g, "");
 
-/** Troca a mensagem genérica pela dica do roteiro quando o erro do aluno é um dos previstos. */
-function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undefined, r: Resultado): Resultado {
-  if (r.ok || !ex.errosComuns?.length) return r;
-  const casa = (entrada: string, celula?: string) =>
+/** Células cuja fórmula a correção olha (para os erros comuns que bloqueiam). */
+function celulasCorrigidas(ex: Exercicio): string[] {
+  if (ex.type === "formula" || ex.type === "type_value") return ex.alvos.map((a) => a.celula);
+  if (ex.type === "ferramenta") return ex.verificacoes.flatMap((v) => (v.tipo === "celula" ? [v.celula] : []));
+  return [];
+}
+
+/**
+ * Erros comuns: troca a mensagem genérica pela dica do roteiro quando o erro
+ * do aluno é um dos previstos. Os marcados com `bloqueia` reprovam mesmo com o
+ * valor certo (ex.: PROCV sem FALSO que acerta só porque a tabela está em ordem).
+ */
+export function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undefined, r: Resultado): Resultado {
+  if (!ex.errosComuns?.length) return r;
+  const casa = (entrada: string, celula?: string, soBloqueia = false) =>
     ex.errosComuns!.find(
-      (e) => (!e.celula || !celula || e.celula === celula) && new RegExp(e.padrao, "i").test(normalizarEntrada(entrada)),
+      (e) =>
+        (!soBloqueia || e.bloqueia) &&
+        (!e.celula || !celula || e.celula === celula) &&
+        new RegExp(e.padrao, "i").test(normalizarEntrada(entrada)),
     );
+  if (r.ok) {
+    if (ex.type === "text_answer") {
+      const e = casa(tela?.resposta ?? "", undefined, true);
+      return e ? { ok: false, falhas: [{ celula: "A1", motivo: "erro-comum", mensagem: e.dica }] } : r;
+    }
+    const falhas: Falha[] = [];
+    for (const c of celulasCorrigidas(ex)) {
+      const e = casa(p.bruto(c), c, true);
+      if (e) falhas.push({ celula: c, motivo: "erro-comum", mensagem: e.dica });
+    }
+    return falhas.length ? { ok: false, falhas } : r;
+  }
   if (ex.type === "text_answer") {
     const e = casa(tela?.resposta ?? "");
     return e ? { ok: false, falhas: [{ ...r.falhas[0], mensagem: e.dica }] } : r;

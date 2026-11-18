@@ -3,7 +3,7 @@ import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { deIntervalo, intervaloParaTexto, posicoes } from "@/engine/address";
-import type { Planilha } from "@/engine/engine";
+import { Planilha } from "@/engine/engine";
 import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } from "../tipos";
 
 /**
@@ -13,26 +13,55 @@ import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } fro
  * retrato da tela.
  */
 export function validarFerramenta(ex: ExercicioDoTipo<"ferramenta">, p: Planilha): Resultado {
-  const falhas: Falha[] = [];
+  // Só a primeira falha: as verificações costumam depender umas das outras
+  // ("regiões em ordem" e "valores em ordem dentro da região"), e duas
+  // mensagens juntas se contradizem.
+  let inicial: Planilha | null = null;
+  const estadoInicial = () => (inicial ??= Planilha.deExercicio(ex));
   for (const v of ex.verificacoes) {
-    const f = conferir(v, p);
-    if (f) falhas.push(v.mensagem ? { ...f, mensagem: v.mensagem } : f);
+    const f = conferir(v, p, estadoInicial);
+    if (f) return falhou(v.mensagem ? { ...f, mensagem: v.mensagem } : f);
   }
-  return falhas.length ? falhou(...falhas) : ok();
+  return ok();
 }
 
-function conferir(v: Verificacao, p: Planilha): Falha | null {
+/** Assinatura de uma linha do filtro: o texto das células travadas (dados do exercício), "*" nas editáveis. */
+function assinaturaDaLinha(p: Planilha, linha: number, c0: number, c1: number): string {
+  const partes: string[] = [];
+  for (let coluna = c0; coluna <= c1; coluna++) {
+    const pos = { linha, coluna };
+    partes.push(p.bloqueada(pos) ? p.exibicao(pos) : "*");
+  }
+  return JSON.stringify(partes);
+}
+
+const contagem = (xs: string[]) => {
+  const m = new Map<string, number>();
+  for (const x of xs) m.set(x, (m.get(x) ?? 0) + 1);
+  return m;
+};
+const mesmoMulticonjunto = (a: string[], b: string[]) => {
+  if (a.length !== b.length) return false;
+  const ca = contagem(a);
+  const cb = contagem(b);
+  return [...ca].every(([k, n]) => cb.get(k) === n);
+};
+
+function conferir(v: Verificacao, p: Planilha, inicial: () => Planilha): Falha | null {
   switch (v.tipo) {
     case "valores": {
       const int = deIntervalo(v.intervalo);
-      const certo = v.esperado.every((linha, dl) =>
-        linha.every((esp, dc) =>
-          iguais(p.valor({ linha: int.inicio.linha + dl, coluna: int.inicio.coluna + dc }), esp, TOLERANCIA_PADRAO),
-        ),
-      );
-      return certo
-        ? null
-        : { celula: v.intervalo.split(":")[0], motivo: "valor", mensagem: `Os dados em ${v.intervalo} ainda não estão na ordem pedida.` };
+      const obtidos = v.esperado.map((linha, dl) => linha.map((_, dc) => p.valor({ linha: int.inicio.linha + dl, coluna: int.inicio.coluna + dc })));
+      const certo = v.esperado.every((linha, dl) => linha.every((esp, dc) => iguais(obtidos[dl][dc], esp, TOLERANCIA_PADRAO)));
+      if (certo) return null;
+      // "Ordem" só quando os valores certos estão lá, fora de ordem; senão, uma mensagem neutra.
+      const casa = (o: (typeof obtidos)[number], linha: (typeof v.esperado)[number]) => linha.every((esp, dc) => iguais(o[dc], esp, TOLERANCIA_PADRAO));
+      const foraDeOrdem = v.esperado.every((linha) => obtidos.some((o) => casa(o, linha))) && obtidos.every((o) => v.esperado.some((linha) => casa(o, linha)));
+      return {
+        celula: v.intervalo.split(":")[0],
+        motivo: "valor",
+        mensagem: foraDeOrdem ? `Os dados em ${v.intervalo} ainda não estão na ordem pedida.` : `Os valores em ${v.intervalo} não são os esperados.`,
+      };
     }
     case "filtroAtivo": {
       const f = p.filtroAtual();
@@ -44,14 +73,20 @@ function conferir(v: Verificacao, p: Planilha): Falha | null {
     case "linhasVisiveis": {
       const f = p.filtroAtual();
       if (!f) return { celula: "A1", motivo: "recurso", mensagem: "Ligue o filtro primeiro (botão Filtro ou Ctrl+Shift+L)." };
-      const vistas = p.linhasVisiveis();
-      const certo = vistas.length === v.esperado.length && v.esperado.every((l) => vistas.includes(l));
-      if (certo) return null;
+      // Pelo CONTEÚDO das linhas, não pelo número: classificar antes de filtrar move as linhas.
+      // `esperado` são as linhas no estado inicial do exercício.
+      const { inicio, fim } = f.intervalo;
+      const vistas = p.linhasVisiveis().map((l) => assinaturaDaLinha(p, l - 1, inicio.coluna, fim.coluna));
+      const pedidas = v.esperado.map((l) => assinaturaDaLinha(inicial(), l - 1, inicio.coluna, fim.coluna));
+      if (mesmoMulticonjunto(vistas, pedidas)) return null;
       const n = vistas.length;
       return {
         celula: intervaloParaTexto(f.intervalo).split(":")[0],
         motivo: "recurso",
-        mensagem: `O filtro está mostrando ${n} ${n === 1 ? "linha" : "linhas"}, mas a resposta tem ${v.esperado.length}. Confira os critérios de cada coluna.`,
+        mensagem:
+          n === pedidas.length
+            ? `O filtro mostra ${n} ${n === 1 ? "linha" : "linhas"}, o número certo, mas não ${n === 1 ? "é a pedida" : "são as pedidas"}. Confira os critérios de cada coluna.`
+            : `O filtro está mostrando ${n} ${n === 1 ? "linha" : "linhas"}, mas a resposta tem ${pedidas.length}. Confira os critérios de cada coluna.`,
       };
     }
     case "dinamica":
@@ -149,7 +184,7 @@ function diferenca(v: VerificacaoDinamica, d: Dinamica, p: Planilha, i: number, 
     }
     const mesmoCampo = sobra.find((x) => pedido.campo && x.campo === pedido.campo);
     if (mesmoCampo)
-      return `Os valores estão como “${nomeFuncao(mesmoCampo.funcao)} de ${mesmoCampo.campo}”. Releia a pergunta: a conta é outra. Mude em Configurações do Campo de Valor.`;
+      return `Os valores estão como “${nomeFuncao(mesmoCampo.funcao)} de ${mesmoCampo.campo}”. Releia a pergunta: a conta é outra. Troque no seletor ao lado do campo, em Valores (Soma, Contagem, Média…).`;
     return "Os campos em Valores não respondem à pergunta. Confira qual campo e qual conta (Soma, Contagem, Média…) ela pede.";
   }
   if (sobra.length) return `Sobrou ${sobra.map((x) => `“${nomeFuncao(x.funcao)} de ${x.campo}”`).join(" e ")} em Valores: a pergunta não pede isso.`;
@@ -162,8 +197,8 @@ function diferenca(v: VerificacaoDinamica, d: Dinamica, p: Planilha, i: number, 
         const todos = letra ? p.itensDoCampo(i, letra) : [];
         const marcados = f.valores === null || todos.every((t) => f.valores!.includes(t)) ? null : [...f.valores].sort();
         return { campo: porNome ? f.campo : (nome[f.campo] ?? f.campo), marcados };
-      })
-      .filter((f) => f.marcados !== null || porNome);
+      });
+  // Um filtro "(Tudo)" pedido também precisa do campo em Filtros; um "(Tudo)" a mais não esconde nada.
   const pedidos = filtros(v.filtros, true);
   const aplicados = filtros(d.filtros, false);
   for (const f of pedidos) {

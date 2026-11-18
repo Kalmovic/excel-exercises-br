@@ -19,7 +19,9 @@ export type MotivoFalha =
   | "selecao-errada"
   | "formato"
   // ferramentas (filtro, classificar…)
-  | "recurso";
+  | "recurso"
+  // erro comum com `bloqueia`: o valor pode até estar certo, mas a fórmula não
+  | "erro-comum";
 
 export type Falha = { celula: string; motivo: MotivoFalha; mensagem: string };
 export type Resultado = { ok: boolean; falhas: Falha[] };
