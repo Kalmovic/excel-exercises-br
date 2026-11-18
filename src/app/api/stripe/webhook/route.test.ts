@@ -5,6 +5,7 @@ const SEGREDO = "whsec_teste_segredo";
 const rpc = vi.fn();
 const cancelar = vi.fn(async () => ({}));
 const buscarCobranca = vi.fn(async (id: string) => ({ id, customer: "cus_7" }));
+const reembolsar = vi.fn(async (_p: object, _o?: object) => ({ id: "re_1" }));
 vi.mock("@/lib/supabase/admin", () => ({
   supabaseAdmin: () => ({
     rpc,
@@ -14,7 +15,7 @@ vi.mock("@/lib/supabase/admin", () => ({
 vi.mock("@/lib/stripe", async () => {
   const { default: S } = await import("stripe");
   const s = new S("sk_test_x");
-  return { clienteStripe: () => ({ webhooks: s.webhooks, subscriptions: { cancel: cancelar }, charges: { retrieve: buscarCobranca } }) };
+  return { clienteStripe: () => ({ webhooks: s.webhooks, subscriptions: { cancel: cancelar }, charges: { retrieve: buscarCobranca }, refunds: { create: reembolsar } }) };
 });
 
 const stripe = new Stripe("sk_test_x");
@@ -85,5 +86,27 @@ describe("webhook do Stripe", async () => {
     rpc.mockResolvedValue({ data: null, error: { message: "caiu" } });
     vi.spyOn(console, "error").mockImplementation(() => {});
     expect((await POST(assinado(anualPago))).status).toBe(500);
+  });
+
+  it("alerta de fraude: reembolsa na hora (uma vez por aviso) e só registra o aviso", async () => {
+    rpc.mockResolvedValue({ data: "aplicado", error: null });
+    reembolsar.mockClear();
+    const alerta = { id: "evt_5", type: "radar.early_fraud_warning.created", created: anualPago.created, data: { object: { id: "issfr_1", charge: "ch_5", actionable: true } } };
+    expect((await POST(assinado(alerta))).status).toBe(200);
+    expect(reembolsar).toHaveBeenCalledWith({ charge: "ch_5", reason: "fraudulent" }, { idempotencyKey: "alerta-fraude-evt_5" });
+    expect(rpc).toHaveBeenCalledWith("registrar_pagamento", expect.objectContaining({ p_acao: "ignorar", p_cliente: null }));
+    expect(cancelar).not.toHaveBeenCalled(); // o acesso cai no charge.refunded que vem depois
+  });
+
+  it("alerta de fraude já resolvido (já reembolsada): segue normal; erro de rede: 500", async () => {
+    rpc.mockResolvedValue({ data: "aplicado", error: null });
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const alerta = (id: string) => ({ id, type: "radar.early_fraud_warning.created", created: anualPago.created, data: { object: { id: "issfr_2", charge: "ch_6", actionable: true } } });
+    reembolsar.mockRejectedValueOnce(Object.assign(new Error("já"), { code: "charge_already_refunded" }));
+    expect((await POST(assinado(alerta("evt_6")))).status).toBe(200);
+    rpc.mockClear();
+    reembolsar.mockRejectedValueOnce(new Error("rede"));
+    expect((await POST(assinado(alerta("evt_7")))).status).toBe(500);
+    expect(rpc).not.toHaveBeenCalled();
   });
 });

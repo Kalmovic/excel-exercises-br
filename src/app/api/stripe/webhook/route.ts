@@ -23,7 +23,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ erro: "assinatura inválida" }, { status: 400 });
   }
 
-  const acao = traduzirEvento(evento);
+  const traduzida = traduzirEvento(evento);
+  // Alerta de fraude: reembolsa já. A chave de idempotência evita reembolsar duas
+  // vezes se o Stripe reenviar o aviso. O acesso cai no `charge.refunded` que vem depois.
+  if (traduzida.acao === "reembolsar") {
+    try {
+      await clienteStripe().refunds.create({ charge: traduzida.cobranca, reason: "fraudulent" }, { idempotencyKey: `alerta-fraude-${evento.id}` });
+    } catch (e) {
+      const codigo = (e as { code?: string }).code;
+      if (codigo !== "charge_already_refunded" && codigo !== "charge_disputed") {
+        console.error(JSON.stringify({ tipo: "erro_webhook_stripe", evento: evento.type, id: evento.id, mensagem: String(e) }));
+        return NextResponse.json({ erro: "falha ao reembolsar" }, { status: 500 });
+      }
+    }
+  }
+  const acao = traduzida.acao === "reembolsar" ? ({ acao: "ignorar" } as const) : traduzida;
   // Disputa (chargeback): o aviso traz a cobrança, não o cliente. Busca no Stripe.
   if (acao.acao === "revogar" && !acao.cliente && acao.cobranca) {
     try {
