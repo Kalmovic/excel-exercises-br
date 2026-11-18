@@ -1321,7 +1321,7 @@
       "A parcela entra negativa (é dinheiro saindo), para o resultado sair positivo."
     ],
     "explicacao": [
-      "`=VP(B2;B3;-B1)` → cerca de R$ 27.233.",
+      "`=VP(B2;B3;-B1)` → cerca de R$ 27.234.",
       "VP traz para hoje uma série de pagamentos futuros: R$ 38.400 em parcelas valem bem menos à vista, por causa dos juros."
     ],
     "tentativasAteExplicacao": 3,
@@ -1398,7 +1398,7 @@
       "O depósito é dinheiro saindo do bolso: entra negativo."
     ],
     "explicacao": [
-      "`=VF(B2;B3;-B1)` → cerca de R$ 7.940.",
+      "`=VF(B2;B3;-B1)` → cerca de R$ 7.903.",
       "Foram R$ 7.200 depositados; o resto é rendimento. Quanto mais longo o prazo, maior essa diferença."
     ],
     "tentativasAteExplicacao": 3,
@@ -1474,7 +1474,7 @@
       "Atenção ao sinal: a dívida (que você recebeu) e o pagamento (que sai) têm sinais opostos."
     ],
     "explicacao": [
-      "`=NPER(B2;-B3;B1)` → cerca de 13,9 meses: na prática, 14 parcelas.",
+      "`=NPER(B2;-B3;B1)` → cerca de 13,7 meses: na prática, 14 parcelas (a última, menor).",
       "Para o número inteiro de parcelas, `ARREDONDAR.PARA.CIMA` em volta."
     ],
     "tentativasAteExplicacao": 3,
@@ -1552,7 +1552,7 @@
       "Parcela e valor à vista têm sinais opostos."
     ],
     "explicacao": [
-      "`=TAXA(B2;-B3;B1)` → cerca de 2,9% ao mês.",
+      "`=TAXA(B2;-B3;B1)` → cerca de 2,84% ao mês.",
       "\"12x sem juros\" que custa mais que o à vista tem juros, sim: R$ 2.388 contra R$ 2.000."
     ],
     "tentativasAteExplicacao": 3,
