@@ -1,0 +1,5826 @@
+{
+"origem": "docs/revisao/diferencial (gerado por um script; os ambíguos ficam de fora)",
+"dados": {
+"A1": "10",
+"A2": "-5",
+"A3": "0",
+"A4": "2,5",
+"A5": "1000000",
+"A7": "'7",
+"A8": "VERDADEIRO",
+"A9": "3",
+"A10": "10",
+"A11": "=1/0",
+"A12": "0,1",
+"B1": "Maçã",
+"B2": "banana",
+"B3": "  Uva  ",
+"B4": "MAÇÃ",
+"B5": "Pêra verde",
+"B7": "abc",
+"B8": "ABC",
+"B9": "a*b",
+"B11": "Ana Maria  da Silva",
+"B10": "=\"\"",
+"B12": "123",
+"C1": "15/03/2024",
+"C2": "29/02/2024",
+"C3": "31/01/2024",
+"C4": "31/12/2023",
+"C5": "01/01/2024",
+"C6": "28/02/2023",
+"C7": "30/12/2024",
+"C8": "01/01/2021",
+"C9": "25/12/2024",
+"C10": "01/01/2025",
+"C11": "31/08/2024",
+"C12": "03/01/2027",
+"D1": "1",
+"E1": "um",
+"D2": "3",
+"E2": "três",
+"D3": "5",
+"E3": "cinco",
+"D4": "7",
+"E4": "sete",
+"D5": "9",
+"E5": "nove",
+"D6": "5",
+"E6": "cinco2",
+"D7": "'x",
+"E7": "xis",
+"D8": "3",
+"E8": "três2",
+"E9": "vazio",
+"D10": "7",
+"E10": "sete2",
+"F1": "Ana",
+"G1": "100",
+"F2": "bruno",
+"G2": "200",
+"F3": "Carla",
+"G3": "300",
+"F4": "davi",
+"G4": "400",
+"F5": "Eva",
+"G5": "500",
+"F6": "Ana",
+"G6": "600",
+"F7": "Éder",
+"G7": "700",
+"F8": "carla",
+"G8": "800",
+"F9": "Zé",
+"G9": "900",
+"F10": "ana ",
+"G10": "1000",
+"H1": "VERDADEIRO",
+"H2": "FALSO",
+"H3": "1",
+"H4": "texto",
+"H6": "0",
+"H7": "'VERDADEIRO",
+"H8": "-1",
+"I1": "9",
+"I2": "7",
+"I3": "5",
+"I4": "3",
+"I5": "1",
+"K1": "10",
+"K2": "a",
+"K3": "1,5",
+"L1": "20",
+"L2": "b",
+"L3": "2,5",
+"M1": "30",
+"M2": "c",
+"M3": "3,5",
+"N1": "40",
+"N2": "d",
+"N3": "4,5",
+"O1": "50",
+"O2": "e",
+"O3": "5,5",
+"K5": "a,b,,c",
+"K6": "nome=Ana;idade=30",
+"K7": "um dois  tres"
+},
+"casos": [
+{
+"id": 1,
+"f": "=1+2*3",
+"esperado": 7.0
+},
+{
+"id": 2,
+"f": "=(1+2)*3",
+"esperado": 9.0
+},
+{
+"id": 3,
+"f": "=-2^2",
+"esperado": 4.0
+},
+{
+"id": 4,
+"f": "=2^-1",
+"esperado": 0.5
+},
+{
+"id": 5,
+"f": "=2^3^2",
+"esperado": 64,
+"bug": "B15"
+},
+{
+"id": 6,
+"f": "=-3^2",
+"esperado": 9.0
+},
+{
+"id": 7,
+"f": "=2*-3^2",
+"esperado": 18.0
+},
+{
+"id": 8,
+"f": "=10-2-3",
+"esperado": 5.0
+},
+{
+"id": 9,
+"f": "=100/10/2",
+"esperado": 5.0
+},
+{
+"id": 10,
+"f": "=50%",
+"esperado": 0.5
+},
+{
+"id": 11,
+"f": "=50%^2",
+"esperado": 0.25
+},
+{
+"id": 12,
+"f": "=A1%",
+"esperado": 0.1
+},
+{
+"id": 13,
+"f": "=10%%",
+"esperado": 0.001
+},
+{
+"id": 14,
+"f": "=-A2",
+"esperado": 5.0
+},
+{
+"id": 15,
+"f": "=--A7",
+"esperado": 7.0
+},
+{
+"id": 16,
+"f": "=\"3\"+2",
+"esperado": 5.0
+},
+{
+"id": 17,
+"f": "=\" 3 \"+2",
+"esperado": 5.0
+},
+{
+"id": 18,
+"f": "=\"1.234,5\"+0",
+"esperado": 1234.5
+},
+{
+"id": 19,
+"f": "=\"1,5\"*2",
+"esperado": 3.0
+},
+{
+"id": 20,
+"f": "=\"50%\"+0",
+"esperado": 0.5
+},
+{
+"id": 21,
+"f": "=\"R$ 10\"+1",
+"esperado": 11.0
+},
+{
+"id": 22,
+"f": "=\"abc\"+1",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 23,
+"f": "=\"\"+1",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B17"
+},
+{
+"id": 24,
+"f": "=B10+1",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B17"
+},
+{
+"id": 25,
+"f": "=A8+1",
+"esperado": 2.0
+},
+{
+"id": 26,
+"f": "=VERDADEIRO+VERDADEIRO",
+"esperado": 2.0
+},
+{
+"id": 27,
+"f": "=\"VERDADEIRO\"+0",
+"esperado": {
+"erro": "#VALOR!"
+},
+"soLibreOffice": true
+},
+{
+"id": 28,
+"f": "=A6+1",
+"esperado": 1.0
+},
+{
+"id": 29,
+"f": "=A6*2",
+"esperado": 0.0
+},
+{
+"id": 30,
+"f": "=1/A6",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 31,
+"f": "=1/A3",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 32,
+"f": "=A11+1",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 33,
+"f": "=0^0",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B28"
+},
+{
+"id": 34,
+"f": "=(-8)^(1/3)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B28"
+},
+{
+"id": 35,
+"f": "=10^309",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 36,
+"f": "=2^0,5",
+"esperado": 1.4142135623730951
+},
+{
+"id": 37,
+"f": "=A4*A12",
+"esperado": 0.25
+},
+{
+"id": 38,
+"f": "=0,1+0,2",
+"esperado": 0.30000000000000004
+},
+{
+"id": 39,
+"f": "=\"a\"&\"b\"",
+"esperado": "ab"
+},
+{
+"id": 40,
+"f": "=\"a\"&1+2",
+"esperado": "a3"
+},
+{
+"id": 41,
+"f": "=1&2",
+"esperado": "12"
+},
+{
+"id": 42,
+"f": "=\"x\"&A8",
+"esperado": "xVERDADEIRO",
+"soLibreOffice": true
+},
+{
+"id": 43,
+"f": "=\"x\"&A6&\"y\"",
+"esperado": "xy"
+},
+{
+"id": 44,
+"f": "=\"x\"&A4",
+"esperado": "x2,5"
+},
+{
+"id": 45,
+"f": "=\"x\"&1/3",
+"esperado": "x0,333333333333333",
+"bug": "B18"
+},
+{
+"id": 46,
+"f": "=\"x\"&1000000*1000000",
+"esperado": "x1000000000000"
+},
+{
+"id": 47,
+"f": "=\"x\"&A11",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 48,
+"f": "=1=1",
+"esperado": true
+},
+{
+"id": 49,
+"f": "=1<2",
+"esperado": true
+},
+{
+"id": 50,
+"f": "=\"a\"=\"A\"",
+"esperado": true
+},
+{
+"id": 51,
+"f": "=\"a\"<\"b\"",
+"esperado": true
+},
+{
+"id": 52,
+"f": "=\"B\">\"a\"",
+"esperado": true
+},
+{
+"id": 53,
+"f": "=\"10\">5",
+"esperado": true
+},
+{
+"id": 54,
+"f": "=\"10\"=10",
+"esperado": false
+},
+{
+"id": 55,
+"f": "=VERDADEIRO>1",
+"esperado": true,
+"soLibreOffice": true
+},
+{
+"id": 56,
+"f": "=FALSO<0",
+"esperado": false
+},
+{
+"id": 57,
+"f": "=A6=0",
+"esperado": true
+},
+{
+"id": 58,
+"f": "=A6=\"\"",
+"esperado": true
+},
+{
+"id": 59,
+"f": "=A6=FALSO",
+"esperado": true
+},
+{
+"id": 60,
+"f": "=B10=A6",
+"esperado": true
+},
+{
+"id": 61,
+"f": "=B10=0",
+"esperado": false
+},
+{
+"id": 62,
+"f": "=\"Maçã\"=B4",
+"esperado": true
+},
+{
+"id": 63,
+"f": "=\"abc\"<\"abd\"",
+"esperado": true
+},
+{
+"id": 64,
+"f": "=\"Z\"<\"É\"",
+"esperado": false,
+"bug": "B08"
+},
+{
+"id": 65,
+"f": "=\"É\"<\"F\"",
+"esperado": true,
+"bug": "B08"
+},
+{
+"id": 66,
+"f": "=\"e\"<\"É\"",
+"esperado": true
+},
+{
+"id": 67,
+"f": "=1<2=VERDADEIRO",
+"esperado": true
+},
+{
+"id": 68,
+"f": "=5-3=2",
+"esperado": true
+},
+{
+"id": 69,
+"f": "=\"5\"-\"3\"",
+"esperado": 2.0
+},
+{
+"id": 70,
+"f": "=A1+A2*A3-A4/A9",
+"esperado": 9.166666666666666
+},
+{
+"id": 71,
+"f": "=(A1+A2)*(A3-A4)/A9",
+"esperado": -4.166666666666667
+},
+{
+"id": 72,
+"f": "=$A$1+A$2+$A3",
+"esperado": 5.0
+},
+{
+"id": 73,
+"f": "=a1+b12",
+"esperado": 133.0
+},
+{
+"id": 74,
+"f": "= A1 + A2 ",
+"esperado": 5.0
+},
+{
+"id": 75,
+"f": "=+A1",
+"esperado": 10.0
+},
+{
+"id": 76,
+"f": "=1+-2",
+"esperado": -1.0
+},
+{
+"id": 77,
+"f": "=-(-A1)",
+"esperado": 10.0
+},
+{
+"id": 78,
+"f": "=2*(3+(4-1))",
+"esperado": 12.0
+},
+{
+"id": 79,
+"f": "=A1:A3",
+"esperado": [
+[
+10
+],
+[
+-5
+],
+[
+0
+]
+]
+},
+{
+"id": 80,
+"f": "=SOMA(A3:A1)",
+"esperado": 5.0
+},
+{
+"id": 81,
+"f": "=1E3",
+"esperado": 1000.0,
+"bug": "B29"
+},
+{
+"id": 82,
+"f": "=,5",
+"esperado": 0.5,
+"bug": "B29"
+},
+{
+"id": 83,
+"f": "=SOMA(A:A)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B03"
+},
+{
+"id": 84,
+"f": "=SOMA(1:1)",
+"esperado": 45636,
+"bug": "B03"
+},
+{
+"id": 85,
+"f": "=SOMA({1;2;3})",
+"esperado": 6.0,
+"bug": "B29"
+},
+{
+"id": 86,
+"f": "=10/3",
+"esperado": 3.3333333333333335
+},
+{
+"id": 87,
+"f": "=1-0,9",
+"esperado": 0.09999999999999998
+},
+{
+"id": 88,
+"f": "=A5*A5*A5*A5",
+"esperado": 1e+24
+},
+{
+"id": 89,
+"f": "=-0",
+"esperado": -0.0
+},
+{
+"id": 90,
+"f": "=A2^2",
+"esperado": 25.0
+},
+{
+"id": 91,
+"f": "=-A2^2",
+"esperado": 25.0
+},
+{
+"id": 92,
+"f": "=A2%",
+"esperado": -0.05
+},
+{
+"id": 93,
+"f": "=5%*A1",
+"esperado": 0.5
+},
+{
+"id": 94,
+"f": "=SOMA(A1:A5)",
+"esperado": 1000007.5
+},
+{
+"id": 95,
+"f": "=SOMA(A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 96,
+"f": "=SOMA(A1:A10)",
+"esperado": 1000020.5,
+"soLibreOffice": true
+},
+{
+"id": 97,
+"f": "=SOMA(A1;A2;A3)",
+"esperado": 5.0
+},
+{
+"id": 98,
+"f": "=SOMA(A7)",
+"esperado": 0,
+"bug": "B02"
+},
+{
+"id": 99,
+"f": "=SOMA(A8)",
+"esperado": 0,
+"bug": "B02"
+},
+{
+"id": 100,
+"f": "=SOMA(B1)",
+"esperado": 0,
+"bug": "B02"
+},
+{
+"id": 101,
+"f": "=SOMA(\"3\";2)",
+"esperado": 5,
+"soLibreOffice": true
+},
+{
+"id": 102,
+"f": "=SOMA(VERDADEIRO;1)",
+"esperado": 2.0
+},
+{
+"id": 103,
+"f": "=SOMA(\"abc\";1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 104,
+"f": "=SOMA(A6)",
+"esperado": 0.0
+},
+{
+"id": 105,
+"f": "=SOMA(A1;;A2)",
+"esperado": 5.0
+},
+{
+"id": 106,
+"f": "=SOMA(B1:B5)",
+"esperado": 0.0
+},
+{
+"id": 107,
+"f": "=SOMA(A1:A5;10)",
+"esperado": 1000017.5
+},
+{
+"id": 108,
+"f": "=SOMA(A1:A5*2)",
+"esperado": 2000015,
+"soLibreOffice": true
+},
+{
+"id": 109,
+"f": "=SOMA(A11)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 110,
+"f": "=SOMA()",
+"esperado": 0.0
+},
+{
+"id": 111,
+"f": "=MÉDIA(A1:A5)",
+"esperado": 200001.5
+},
+{
+"id": 112,
+"f": "=MÉDIA(A1:A10)",
+"esperado": 142860.07142857142,
+"soLibreOffice": true
+},
+{
+"id": 113,
+"f": "=MÉDIA(A1;A6)",
+"esperado": 10,
+"bug": "B02"
+},
+{
+"id": 114,
+"f": "=MÉDIA(A1;A7)",
+"esperado": 10.0,
+"bug": "B02"
+},
+{
+"id": 115,
+"f": "=MÉDIA(A1;A8)",
+"esperado": 10
+},
+{
+"id": 116,
+"f": "=MÉDIA(B1:B5)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 117,
+"f": "=MÉDIA(A6)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B02"
+},
+{
+"id": 118,
+"f": "=MÉDIA(A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 119,
+"f": "=MÉDIA(A1;2;3)",
+"esperado": 5.0
+},
+{
+"id": 120,
+"f": "=MÉDIA(\"4\";2)",
+"esperado": 3,
+"soLibreOffice": true
+},
+{
+"id": 121,
+"f": "=MÍNIMO(A1:A5)",
+"esperado": -5.0
+},
+{
+"id": 122,
+"f": "=MÍNIMO(A1:A10)",
+"esperado": -5.0
+},
+{
+"id": 123,
+"f": "=MÍNIMO(B1:B5)",
+"esperado": 0.0
+},
+{
+"id": 124,
+"f": "=MÍNIMO(A1;A6)",
+"esperado": 10.0,
+"bug": "B02"
+},
+{
+"id": 125,
+"f": "=MÍNIMO(A9;A6)",
+"esperado": 3,
+"bug": "B02"
+},
+{
+"id": 126,
+"f": "=MÍNIMO(A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 127,
+"f": "=MÍNIMO(A7;A9)",
+"esperado": 3.0
+},
+{
+"id": 128,
+"f": "=MÁXIMO(A1:A5)",
+"esperado": 1000000.0
+},
+{
+"id": 129,
+"f": "=MÁXIMO(A2;A6)",
+"esperado": -5,
+"bug": "B02"
+},
+{
+"id": 130,
+"f": "=MÁXIMO(A2:A3;-10)",
+"esperado": 0.0
+},
+{
+"id": 131,
+"f": "=MÁXIMO(H1:H8)",
+"esperado": 1,
+"soLibreOffice": true
+},
+{
+"id": 132,
+"f": "=MÁXIMO(A8;2)",
+"esperado": 2,
+"soLibreOffice": true
+},
+{
+"id": 133,
+"f": "=MÁXIMO(C1:C12)",
+"esperado": 46390.0
+},
+{
+"id": 134,
+"f": "=MÁXIMO(A2;A8)",
+"esperado": -5
+},
+{
+"id": 135,
+"f": "=MÍNIMO(VERDADEIRO;5)",
+"esperado": 1.0
+},
+{
+"id": 136,
+"f": "=MÁXIMO()",
+"esperado": 0,
+"soLibreOffice": true
+},
+{
+"id": 137,
+"f": "=CONT.NÚM(A1:A12)",
+"esperado": 8,
+"soLibreOffice": true
+},
+{
+"id": 138,
+"f": "=CONT.NÚM(B1:B12)",
+"esperado": 1.0
+},
+{
+"id": 139,
+"f": "=CONT.NÚM(A1;B1;A6)",
+"esperado": 1.0
+},
+{
+"id": 140,
+"f": "=CONT.NÚM(\"3\";4)",
+"esperado": 2.0,
+"bug": "B21"
+},
+{
+"id": 141,
+"f": "=CONT.NÚM(VERDADEIRO)",
+"esperado": 1.0,
+"bug": "B21"
+},
+{
+"id": 142,
+"f": "=CONT.NÚM(H1:H8)",
+"esperado": 3,
+"soLibreOffice": true
+},
+{
+"id": 143,
+"f": "=CONT.VALORES(A1:A12)",
+"esperado": 11.0
+},
+{
+"id": 144,
+"f": "=CONT.VALORES(B1:B12)",
+"esperado": 11.0,
+"bug": "B20"
+},
+{
+"id": 145,
+"f": "=CONT.VALORES(A6)",
+"esperado": 0.0
+},
+{
+"id": 146,
+"f": "=CONT.VALORES(B10)",
+"esperado": 1.0,
+"bug": "B20"
+},
+{
+"id": 147,
+"f": "=CONT.VALORES(A1;A6;\"\")",
+"esperado": 2.0,
+"bug": "B20"
+},
+{
+"id": 148,
+"f": "=CONTAR.VAZIO(A1:A12)",
+"esperado": 1.0
+},
+{
+"id": 149,
+"f": "=CONTAR.VAZIO(B1:B12)",
+"esperado": 2.0
+},
+{
+"id": 150,
+"f": "=CONTAR.VAZIO(H1:H8)",
+"esperado": 1.0
+},
+{
+"id": 151,
+"f": "=CONTAR.VAZIO(D1:D10)",
+"esperado": 1.0
+},
+{
+"id": 152,
+"f": "=ARRED(2,5;0)",
+"esperado": 3.0
+},
+{
+"id": 153,
+"f": "=ARRED(-2,5;0)",
+"esperado": -3.0
+},
+{
+"id": 154,
+"f": "=ARRED(1,005;2)",
+"esperado": 1.01
+},
+{
+"id": 155,
+"f": "=ARRED(1234,567;-2)",
+"esperado": 1200.0
+},
+{
+"id": 156,
+"f": "=ARRED(2,345;2)",
+"esperado": 2.35
+},
+{
+"id": 157,
+"f": "=ARRED(A4;0)",
+"esperado": 3.0
+},
+{
+"id": 158,
+"f": "=ARRED(\"2,6\";0)",
+"esperado": 3.0
+},
+{
+"id": 159,
+"f": "=ARRED(0,5;0)",
+"esperado": 1.0
+},
+{
+"id": 160,
+"f": "=ARRED(1,45;1)",
+"esperado": 1.5
+},
+{
+"id": 161,
+"f": "=ARRED(-1,45;1)",
+"esperado": -1.5
+},
+{
+"id": 162,
+"f": "=ARRED(123456789,123456;3)",
+"esperado": 123456789.123
+},
+{
+"id": 163,
+"f": "=ARRED(2,5;0,9)",
+"esperado": 3.0,
+"bug": "B16"
+},
+{
+"id": 164,
+"f": "=ARRED(B1;0)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 165,
+"f": "=ARRED(A11;0)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 166,
+"f": "=ARREDONDAR.PARA.CIMA(2,1;0)",
+"esperado": 3.0
+},
+{
+"id": 167,
+"f": "=ARREDONDAR.PARA.CIMA(-2,1;0)",
+"esperado": -3.0
+},
+{
+"id": 168,
+"f": "=ARREDONDAR.PARA.CIMA(3,14159;3)",
+"esperado": 3.142
+},
+{
+"id": 169,
+"f": "=ARREDONDAR.PARA.CIMA(1234;-2)",
+"esperado": 1300.0
+},
+{
+"id": 170,
+"f": "=ARREDONDAR.PARA.CIMA(2;0)",
+"esperado": 2.0
+},
+{
+"id": 171,
+"f": "=ARREDONDAR.PARA.CIMA(0,1+0,2;1)",
+"esperado": 0.3
+},
+{
+"id": 172,
+"f": "=ARREDONDAR.PARA.CIMA(\"abc\";0)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 173,
+"f": "=ARREDONDAR.PARA.BAIXO(2,9;0)",
+"esperado": 2.0
+},
+{
+"id": 174,
+"f": "=ARREDONDAR.PARA.BAIXO(-2,9;0)",
+"esperado": -2.0
+},
+{
+"id": 175,
+"f": "=ARREDONDAR.PARA.BAIXO(3,14159;2)",
+"esperado": 3.14
+},
+{
+"id": 176,
+"f": "=ARREDONDAR.PARA.BAIXO(1299;-2)",
+"esperado": 1200.0
+},
+{
+"id": 177,
+"f": "=ARREDONDAR.PARA.BAIXO(4,35*100;0)",
+"esperado": 435.0
+},
+{
+"id": 178,
+"f": "=TRUNCAR(2,7)",
+"esperado": 2.0
+},
+{
+"id": 179,
+"f": "=TRUNCAR(-2,7)",
+"esperado": -2.0
+},
+{
+"id": 180,
+"f": "=TRUNCAR(3,14159;2)",
+"esperado": 3.14
+},
+{
+"id": 181,
+"f": "=TRUNCAR(1234;-2)",
+"esperado": 1200.0
+},
+{
+"id": 182,
+"f": "=TRUNCAR(-0,5)",
+"esperado": -0.0
+},
+{
+"id": 183,
+"f": "=TRUNCAR(\"abc\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 184,
+"f": "=INT(2,7)",
+"esperado": 2.0
+},
+{
+"id": 185,
+"f": "=INT(-2,5)",
+"esperado": -3.0
+},
+{
+"id": 186,
+"f": "=INT(-2)",
+"esperado": -2.0
+},
+{
+"id": 187,
+"f": "=INT(A4)",
+"esperado": 2.0
+},
+{
+"id": 188,
+"f": "=INT(C1+0,75)",
+"esperado": 45366.0
+},
+{
+"id": 189,
+"f": "=INT(\"x\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 190,
+"f": "=ABS(-3)",
+"esperado": 3.0
+},
+{
+"id": 191,
+"f": "=ABS(A2)",
+"esperado": 5.0
+},
+{
+"id": 192,
+"f": "=ABS(A6)",
+"esperado": 0.0
+},
+{
+"id": 193,
+"f": "=ABS(\"-4\")",
+"esperado": 4.0
+},
+{
+"id": 194,
+"f": "=ABS(B1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 195,
+"f": "=MOD(10;3)",
+"esperado": 1.0
+},
+{
+"id": 196,
+"f": "=MOD(-5;3)",
+"esperado": 1.0
+},
+{
+"id": 197,
+"f": "=MOD(5;-3)",
+"esperado": -1.0
+},
+{
+"id": 198,
+"f": "=MOD(-5;-3)",
+"esperado": -2.0
+},
+{
+"id": 199,
+"f": "=MOD(5,5;2)",
+"esperado": 1.5
+},
+{
+"id": 200,
+"f": "=MOD(10;0)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 201,
+"f": "=MOD(0;5)",
+"esperado": 0.0
+},
+{
+"id": 202,
+"f": "=MOD(A1;A9)",
+"esperado": 1.0
+},
+{
+"id": 203,
+"f": "=POTÊNCIA(2;10)",
+"esperado": 1024.0
+},
+{
+"id": 204,
+"f": "=POTÊNCIA(2;0,5)",
+"esperado": 1.4142135623730951
+},
+{
+"id": 205,
+"f": "=POTÊNCIA(-8;1/3)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B28"
+},
+{
+"id": 206,
+"f": "=POTÊNCIA(0;0)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B28"
+},
+{
+"id": 207,
+"f": "=POTÊNCIA(0;-1)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 208,
+"f": "=POTÊNCIA(A2;2)",
+"esperado": 25.0
+},
+{
+"id": 209,
+"f": "=RAIZ(16)",
+"esperado": 4.0
+},
+{
+"id": 210,
+"f": "=RAIZ(-1)",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 211,
+"f": "=RAIZ(A6)",
+"esperado": 0.0
+},
+{
+"id": 212,
+"f": "=RAIZ(2)",
+"esperado": 1.4142135623730951
+},
+{
+"id": 213,
+"f": "=RAIZ(\"9\")",
+"esperado": 3.0
+},
+{
+"id": 214,
+"f": "=MARRED(10;3)",
+"esperado": 9.0
+},
+{
+"id": 215,
+"f": "=MARRED(-10;-3)",
+"esperado": -9.0
+},
+{
+"id": 216,
+"f": "=MARRED(-10;3)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 217,
+"f": "=MARRED(10;-3)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 218,
+"f": "=MARRED(1,3;0,2)",
+"esperado": 1.4000000000000001
+},
+{
+"id": 219,
+"f": "=MARRED(7,5;5)",
+"esperado": 10.0
+},
+{
+"id": 220,
+"f": "=MARRED(2,5;5)",
+"esperado": 5.0
+},
+{
+"id": 221,
+"f": "=MARRED(5;0)",
+"esperado": 0.0
+},
+{
+"id": 222,
+"f": "=MARRED(0;5)",
+"esperado": 0.0
+},
+{
+"id": 223,
+"f": "=MARRED(1,25;0,05)",
+"esperado": 1.25
+},
+{
+"id": 224,
+"f": "=MARRED(A1;A9)",
+"esperado": 9.0
+},
+{
+"id": 225,
+"f": "=MARRED(-7,5;-5)",
+"esperado": -10.0
+},
+{
+"id": 226,
+"f": "=MAIOR(A1:A5;1)",
+"esperado": 1000000.0
+},
+{
+"id": 227,
+"f": "=MAIOR(A1:A5;2)",
+"esperado": 10.0
+},
+{
+"id": 228,
+"f": "=MAIOR(A1:A10;2)",
+"esperado": 10.0
+},
+{
+"id": 229,
+"f": "=MAIOR(A1:A5;0)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 230,
+"f": "=MAIOR(A1:A5;6)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 232,
+"f": "=MAIOR(A1:A12;1)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B19"
+},
+{
+"id": 233,
+"f": "=MAIOR(B1:B5;1)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 234,
+"f": "=MAIOR(G1:G10;3)",
+"esperado": 800.0
+},
+{
+"id": 235,
+"f": "=MENOR(A1:A5;1)",
+"esperado": -5.0
+},
+{
+"id": 236,
+"f": "=MENOR(A1:A10;3)",
+"esperado": 2.5,
+"soLibreOffice": true
+},
+{
+"id": 237,
+"f": "=MENOR(D1:D10;2)",
+"esperado": 3.0
+},
+{
+"id": 238,
+"f": "=MENOR(A1:A5;-1)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 239,
+"f": "=MENOR(A1:A12;1)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B19"
+},
+{
+"id": 240,
+"f": "=MENOR(H1:H8;1)",
+"esperado": -1.0
+},
+{
+"id": 241,
+"f": "=MED(A1:A5)",
+"esperado": 2.5
+},
+{
+"id": 242,
+"f": "=MED(A1:A4)",
+"esperado": 1.25
+},
+{
+"id": 243,
+"f": "=MED(1;2;3;4)",
+"esperado": 2.5
+},
+{
+"id": 244,
+"f": "=MED(B1:B5)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 245,
+"f": "=MED(A1:A10)",
+"esperado": 3,
+"soLibreOffice": true
+},
+{
+"id": 246,
+"f": "=MED(A6)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B02"
+},
+{
+"id": 247,
+"f": "=MED(A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 248,
+"f": "=AGREGAR(9;6;A1:A12)",
+"esperado": 1000020.6,
+"soLibreOffice": true
+},
+{
+"id": 249,
+"f": "=AGREGAR(9;0;A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 250,
+"f": "=AGREGAR(14;6;A1:A12;1)",
+"esperado": 1000000.0
+},
+{
+"id": 251,
+"f": "=AGREGAR(14;6;A1:A12;2)",
+"esperado": 10.0
+},
+{
+"id": 252,
+"f": "=AGREGAR(15;6;A1:A12;1)",
+"esperado": -5.0
+},
+{
+"id": 253,
+"f": "=AGREGAR(1;6;A1:A12)",
+"esperado": 125002.575,
+"soLibreOffice": true
+},
+{
+"id": 254,
+"f": "=AGREGAR(2;6;A1:A12)",
+"esperado": 8,
+"soLibreOffice": true
+},
+{
+"id": 255,
+"f": "=AGREGAR(3;6;A1:A12)",
+"esperado": 10.0
+},
+{
+"id": 256,
+"f": "=AGREGAR(4;6;A1:A12)",
+"esperado": 1000000.0
+},
+{
+"id": 257,
+"f": "=AGREGAR(5;6;A1:A12)",
+"esperado": -5.0
+},
+{
+"id": 258,
+"f": "=AGREGAR(6;6;A1:A4)",
+"esperado": 0.0
+},
+{
+"id": 259,
+"f": "=AGREGAR(7;6;A1:A5)",
+"esperado": 447212.75700722134
+},
+{
+"id": 260,
+"f": "=AGREGAR(8;6;A1:A5)",
+"esperado": 399999.2500292969
+},
+{
+"id": 261,
+"f": "=AGREGAR(10;6;A1:A5)",
+"esperado": 199999250030.0
+},
+{
+"id": 262,
+"f": "=AGREGAR(11;6;A1:A5)",
+"esperado": 159999400024.0
+},
+{
+"id": 263,
+"f": "=AGREGAR(12;6;A1:A12)",
+"esperado": 2.75,
+"soLibreOffice": true
+},
+{
+"id": 264,
+"f": "=AGREGAR(13;6;A1:A12)",
+"esperado": 10.0
+},
+{
+"id": 265,
+"f": "=AGREGAR(13;6;D1:D10)",
+"esperado": 3.0
+},
+{
+"id": 266,
+"f": "=AGREGAR(14;6;A1:A12;20)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"soLibreOffice": true
+},
+{
+"id": 267,
+"f": "=AGREGAR(16;6;A1:A5;0,5)",
+"esperado": 2.5,
+"bug": "B24"
+},
+{
+"id": 268,
+"f": "=AGREGAR(17;6;A1:A5;1)",
+"esperado": 0.0,
+"bug": "B24"
+},
+{
+"id": 269,
+"f": "=AGREGAR(19;6;A1:A5;2)",
+"esperado": 2.5,
+"bug": "B24"
+},
+{
+"id": 270,
+"f": "=AGREGAR(9;8;A1:A5)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 271,
+"f": "=AGREGAR(9;3;A1:A12)",
+"esperado": 1000020.6,
+"soLibreOffice": true
+},
+{
+"id": 272,
+"f": "=AGREGAR(4;6;B1:B5)",
+"esperado": 0.0
+},
+{
+"id": 273,
+"f": "=AGREGAR(14;6;G1:G10/(F1:F10=\"Ana\");1)",
+"esperado": 600.0
+},
+{
+"id": 274,
+"f": "=AGREGAR(9;6;A1:A5;G1:G2)",
+"esperado": 1000307.5
+},
+{
+"id": 275,
+"f": "=SUBTOTAL(9;A1:A5)",
+"esperado": 1000007.5
+},
+{
+"id": 276,
+"f": "=SUBTOTAL(9;A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 277,
+"f": "=SUBTOTAL(1;A1:A5)",
+"esperado": 200001.5
+},
+{
+"id": 278,
+"f": "=SUBTOTAL(2;A1:A12)",
+"esperado": 8,
+"soLibreOffice": true
+},
+{
+"id": 279,
+"f": "=SUBTOTAL(3;A1:A12)",
+"esperado": 11.0
+},
+{
+"id": 280,
+"f": "=SUBTOTAL(4;A1:A5)",
+"esperado": 1000000.0
+},
+{
+"id": 281,
+"f": "=SUBTOTAL(5;A1:A5)",
+"esperado": -5.0
+},
+{
+"id": 282,
+"f": "=SUBTOTAL(6;A1:A4)",
+"esperado": 0.0
+},
+{
+"id": 283,
+"f": "=SUBTOTAL(7;A1:A5)",
+"esperado": 447212.75700722134
+},
+{
+"id": 284,
+"f": "=SUBTOTAL(8;A1:A5)",
+"esperado": 399999.2500292969
+},
+{
+"id": 285,
+"f": "=SUBTOTAL(10;A1:A5)",
+"esperado": 199999250030.0
+},
+{
+"id": 286,
+"f": "=SUBTOTAL(11;A1:A5)",
+"esperado": 159999400024.0
+},
+{
+"id": 287,
+"f": "=SUBTOTAL(109;A1:A5)",
+"esperado": 1000007.5
+},
+{
+"id": 288,
+"f": "=SUBTOTAL(9;A1:A5;G1:G3)",
+"esperado": 1000607.5
+},
+{
+"id": 289,
+"f": "=SUBTOTAL(12;A1:A5)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 290,
+"f": "=SUBTOTAL(4;B1:B5)",
+"esperado": 0.0
+},
+{
+"id": 291,
+"f": "=SUBTOTAL(1;B1:B5)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 292,
+"f": "=SE(A1>5;\"sim\";\"não\")",
+"esperado": "sim"
+},
+{
+"id": 293,
+"f": "=SE(A1>50;\"sim\";\"não\")",
+"esperado": "não"
+},
+{
+"id": 294,
+"f": "=SE(A1>50;\"sim\")",
+"esperado": false
+},
+{
+"id": 295,
+"f": "=SE(A1>5;;1)",
+"esperado": 0.0,
+"bug": "B07"
+},
+{
+"id": 296,
+"f": "=SE(A6;\"v\";\"f\")",
+"esperado": "f"
+},
+{
+"id": 297,
+"f": "=SE(A3;\"v\";\"f\")",
+"esperado": "f"
+},
+{
+"id": 298,
+"f": "=SE(A2;\"v\";\"f\")",
+"esperado": "v"
+},
+{
+"id": 299,
+"f": "=SE(B1;\"v\";\"f\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 300,
+"f": "=SE(\"VERDADEIRO\";1;2)",
+"esperado": 1,
+"bug": "B35"
+},
+{
+"id": 301,
+"f": "=SE(H7;1;2)",
+"esperado": 1.0,
+"bug": "B35"
+},
+{
+"id": 302,
+"f": "=SE(A11;1;2)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 303,
+"f": "=SE(A1>5;A11;1)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 304,
+"f": "=SE(1;2)",
+"esperado": 2.0
+},
+{
+"id": 305,
+"f": "=SE(SOMA(A1:A5)>100;\"grande\";\"pequeno\")",
+"esperado": "grande"
+},
+{
+"id": 306,
+"f": "=SE(E(A1>5;A2<0);\"ok\";\"x\")",
+"esperado": "ok"
+},
+{
+"id": 307,
+"f": "=SE(A12;\"v\";\"f\")",
+"esperado": "v"
+},
+{
+"id": 308,
+"f": "=SE(VERDADEIRO;\"\")",
+"esperado": ""
+},
+{
+"id": 309,
+"f": "=SES(A1>50;\"a\";A1>5;\"b\";VERDADEIRO;\"c\")",
+"esperado": "b"
+},
+{
+"id": 310,
+"f": "=SES(A1>50;\"a\";A1>40;\"b\")",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 311,
+"f": "=SES(A1>5;\"a\")",
+"esperado": "a"
+},
+{
+"id": 312,
+"f": "=SES(B1;1;VERDADEIRO;2)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 313,
+"f": "=SES(A3;1;A1;2)",
+"esperado": 2.0
+},
+{
+"id": 314,
+"f": "=E(VERDADEIRO;VERDADEIRO)",
+"esperado": true
+},
+{
+"id": 315,
+"f": "=E(VERDADEIRO;FALSO)",
+"esperado": false
+},
+{
+"id": 316,
+"f": "=E(A1>5;A2<0;A3=0)",
+"esperado": true
+},
+{
+"id": 317,
+"f": "=E(A1:A3)",
+"esperado": false
+},
+{
+"id": 318,
+"f": "=E(A1;A6)",
+"esperado": true,
+"bug": "B09"
+},
+{
+"id": 319,
+"f": "=E(H1:H3)",
+"esperado": false
+},
+{
+"id": 320,
+"f": "=E(H1:H6)",
+"esperado": false
+},
+{
+"id": 321,
+"f": "=E(B1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 322,
+"f": "=E(\"VERDADEIRO\";1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 323,
+"f": "=E(A11;FALSO)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 324,
+"f": "=E(FALSO;A11)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B09"
+},
+{
+"id": 325,
+"f": "=E(A6:A6)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B09"
+},
+{
+"id": 326,
+"f": "=E(B1:B2)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 327,
+"f": "=OU(FALSO;FALSO)",
+"esperado": false
+},
+{
+"id": 328,
+"f": "=OU(A1>50;A2<0)",
+"esperado": true
+},
+{
+"id": 329,
+"f": "=OU(A3;A6)",
+"esperado": false
+},
+{
+"id": 330,
+"f": "=OU(H2:H6)",
+"esperado": true
+},
+{
+"id": 331,
+"f": "=OU(B1:B5)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 332,
+"f": "=OU(A3:A3)",
+"esperado": false
+},
+{
+"id": 333,
+"f": "=OU(H1;A11)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B09"
+},
+{
+"id": 334,
+"f": "=NÃO(VERDADEIRO)",
+"esperado": false
+},
+{
+"id": 335,
+"f": "=NÃO(A3)",
+"esperado": true
+},
+{
+"id": 336,
+"f": "=NÃO(A1)",
+"esperado": false
+},
+{
+"id": 337,
+"f": "=NÃO(A6)",
+"esperado": true
+},
+{
+"id": 338,
+"f": "=NÃO(B1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 340,
+"f": "=SEERRO(1/0;\"erro\")",
+"esperado": "erro"
+},
+{
+"id": 341,
+"f": "=SEERRO(A11;0)",
+"esperado": 0.0
+},
+{
+"id": 342,
+"f": "=SEERRO(A1;0)",
+"esperado": 10.0
+},
+{
+"id": 343,
+"f": "=SEERRO(A6;0)",
+"esperado": 0.0,
+"bug": "B04"
+},
+{
+"id": 344,
+"f": "=SEERRO(PROCV(99;D1:E5;2;0);\"não achou\")",
+"esperado": "não achou"
+},
+{
+"id": 345,
+"f": "=SEERRO(\"\";1)",
+"esperado": ""
+},
+{
+"id": 346,
+"f": "=SENÃODISP(PROCV(99;D1:E5;2;0);\"nd\")",
+"esperado": "nd"
+},
+{
+"id": 347,
+"f": "=SENÃODISP(1/0;\"nd\")",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 348,
+"f": "=SENÃODISP(A1;\"nd\")",
+"esperado": 10.0
+},
+{
+"id": 349,
+"f": "=ÉERROS(A11)",
+"esperado": true
+},
+{
+"id": 350,
+"f": "=ÉERROS(A1)",
+"esperado": false
+},
+{
+"id": 351,
+"f": "=ÉERROS(1/0)",
+"esperado": true
+},
+{
+"id": 352,
+"f": "=ÉERROS(PROCV(99;D1:E5;2;0))",
+"esperado": true
+},
+{
+"id": 353,
+"f": "=ÉERROS(B1)",
+"esperado": false
+},
+{
+"id": 354,
+"f": "=ÉCÉL.VAZIA(A6)",
+"esperado": true
+},
+{
+"id": 355,
+"f": "=ÉCÉL.VAZIA(A1)",
+"esperado": false
+},
+{
+"id": 356,
+"f": "=ÉCÉL.VAZIA(B10)",
+"esperado": false
+},
+{
+"id": 357,
+"f": "=ÉCÉL.VAZIA(\"\")",
+"esperado": false
+},
+{
+"id": 358,
+"f": "=ÉCÉL.VAZIA(A3)",
+"esperado": false
+},
+{
+"id": 359,
+"f": "=ÉNÚM(A1)",
+"esperado": true
+},
+{
+"id": 360,
+"f": "=ÉNÚM(A7)",
+"esperado": false
+},
+{
+"id": 361,
+"f": "=ÉNÚM(A6)",
+"esperado": false
+},
+{
+"id": 362,
+"f": "=ÉNÚM(A8)",
+"esperado": false,
+"soLibreOffice": true
+},
+{
+"id": 363,
+"f": "=ÉNÚM(C1)",
+"esperado": true
+},
+{
+"id": 364,
+"f": "=ÉNÚM(\"3\")",
+"esperado": false
+},
+{
+"id": 365,
+"f": "=ÉNÚM(A11)",
+"esperado": false
+},
+{
+"id": 366,
+"f": "=ÉTEXTO(B1)",
+"esperado": true
+},
+{
+"id": 367,
+"f": "=ÉTEXTO(A7)",
+"esperado": true
+},
+{
+"id": 368,
+"f": "=ÉTEXTO(A6)",
+"esperado": false
+},
+{
+"id": 369,
+"f": "=ÉTEXTO(B10)",
+"esperado": true
+},
+{
+"id": 370,
+"f": "=ÉTEXTO(A1)",
+"esperado": false
+},
+{
+"id": 371,
+"f": "=ÉTEXTO(H7)",
+"esperado": true
+},
+{
+"id": 372,
+"f": "=CONT.SE(A1:A12;\">0\")",
+"esperado": 6,
+"soLibreOffice": true
+},
+{
+"id": 373,
+"f": "=CONT.SE(A1:A12;10)",
+"esperado": 2.0
+},
+{
+"id": 374,
+"f": "=CONT.SE(A1:A12;\"10\")",
+"esperado": 2.0
+},
+{
+"id": 375,
+"f": "=CONT.SE(A1:A12;\"=10\")",
+"esperado": 2.0
+},
+{
+"id": 378,
+"f": "=CONT.SE(A1:A12;\"<>10\")",
+"esperado": 10.0
+},
+{
+"id": 379,
+"f": "=CONT.SE(A1:A12;\"<>\")",
+"esperado": 11.0
+},
+{
+"id": 380,
+"f": "=CONT.SE(A1:A12;\"\")",
+"esperado": 1.0
+},
+{
+"id": 381,
+"f": "=CONT.SE(A1:A12;\"=\")",
+"esperado": 1.0
+},
+{
+"id": 382,
+"f": "=CONT.SE(A1:A12;\">=2,5\")",
+"esperado": 5.0
+},
+{
+"id": 383,
+"f": "=CONT.SE(A1:A12;\"<0\")",
+"esperado": 1.0
+},
+{
+"id": 384,
+"f": "=CONT.SE(A1:A12;VERDADEIRO)",
+"esperado": 1.0
+},
+{
+"id": 385,
+"f": "=CONT.SE(A1:A12;\"VERDADEIRO\")",
+"esperado": 1.0,
+"bug": "B33"
+},
+{
+"id": 386,
+"f": "=CONT.SE(B1:B12;\"maçã\")",
+"esperado": 2.0
+},
+{
+"id": 387,
+"f": "=CONT.SE(B1:B12;\"*a*\")",
+"esperado": 9.0
+},
+{
+"id": 388,
+"f": "=CONT.SE(B1:B12;\"?b?\")",
+"esperado": 2.0
+},
+{
+"id": 389,
+"f": "=CONT.SE(B1:B12;\"a~*b\")",
+"esperado": 1.0,
+"bug": "B05"
+},
+{
+"id": 390,
+"f": "=CONT.SE(B1:B12;\"a*b\")",
+"esperado": 1.0
+},
+{
+"id": 391,
+"f": "=CONT.SE(B1:B12;\"Uva\")",
+"esperado": 0.0
+},
+{
+"id": 392,
+"f": "=CONT.SE(B1:B12;\"*Uva*\")",
+"esperado": 1.0
+},
+{
+"id": 393,
+"f": "=CONT.SE(B1:B12;\">b\")",
+"esperado": 4.0
+},
+{
+"id": 394,
+"f": "=CONT.SE(B1:B12;\"<>abc\")",
+"esperado": 10.0
+},
+{
+"id": 395,
+"f": "=CONT.SE(B1:B12;\"*\")",
+"esperado": 10,
+"soLibreOffice": true
+},
+{
+"id": 396,
+"f": "=CONT.SE(B1:B12;\"\")",
+"esperado": 2.0
+},
+{
+"id": 398,
+"f": "=CONT.SE(F1:F10;\"ana\")",
+"esperado": 2.0
+},
+{
+"id": 399,
+"f": "=CONT.SE(F1:F10;\"ana*\")",
+"esperado": 3.0
+},
+{
+"id": 400,
+"f": "=CONT.SE(F1:F10;\"<C\")",
+"esperado": 4.0
+},
+{
+"id": 401,
+"f": "=CONT.SE(C1:C12;\">\"&DATA(2024;6;30))",
+"esperado": 5.0
+},
+{
+"id": 402,
+"f": "=CONT.SE(C1:C12;\">01/06/2024\")",
+"esperado": 5.0,
+"bug": "B12"
+},
+{
+"id": 403,
+"f": "=CONT.SE(C1:C12;C1)",
+"esperado": 1.0
+},
+{
+"id": 404,
+"f": "=CONT.SE(A1:A12;A6)",
+"esperado": 1.0
+},
+{
+"id": 405,
+"f": "=CONT.SE(A1:A12;\">\"&A9)",
+"esperado": 3.0
+},
+{
+"id": 406,
+"f": "=CONT.SE(D1:D10;5)",
+"esperado": 2.0
+},
+{
+"id": 407,
+"f": "=CONT.SE(H1:H8;1)",
+"esperado": 1,
+"soLibreOffice": true
+},
+{
+"id": 408,
+"f": "=CONT.SE(H1:H8;\"<>0\")",
+"esperado": 7,
+"soLibreOffice": true
+},
+{
+"id": 409,
+"f": "=CONT.SE(A1:A12;\"> 3\")",
+"esperado": 3.0
+},
+{
+"id": 410,
+"f": "=CONT.SE(B1:B12;123)",
+"esperado": 1.0
+},
+{
+"id": 411,
+"f": "=CONT.SE(B1:B12;\"123\")",
+"esperado": 1.0
+},
+{
+"id": 412,
+"f": "=CONT.SE(A1:A12;\"#DIV/0!\")",
+"esperado": 1.0,
+"bug": "B33"
+},
+{
+"id": 413,
+"f": "=CONT.SE(G1:G10;\">=500\")",
+"esperado": 6.0
+},
+{
+"id": 414,
+"f": "=CONT.SES(F1:F10;\"ana\";G1:G10;\">100\")",
+"esperado": 1.0
+},
+{
+"id": 415,
+"f": "=CONT.SES(D1:D10;\">2\";E1:E10;\"*2\")",
+"esperado": 3.0
+},
+{
+"id": 416,
+"f": "=CONT.SES(A1:A5;\">0\";A1:A5;\"<100\")",
+"esperado": 2.0
+},
+{
+"id": 417,
+"f": "=CONT.SES(C1:C12;\">=\"&DATA(2024;1;1);C1:C12;\"<=\"&DATA(2024;12;31))",
+"esperado": 7.0
+},
+{
+"id": 418,
+"f": "=CONT.SES(A1:A5;\">0\";B1:B4;\"*\")",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B31"
+},
+{
+"id": 419,
+"f": "=SOMASE(F1:F10;\"ana\";G1:G10)",
+"esperado": 700.0
+},
+{
+"id": 420,
+"f": "=SOMASE(G1:G10;\">500\")",
+"esperado": 4000.0
+},
+{
+"id": 421,
+"f": "=SOMASE(D1:D10;5;G1:G10)",
+"esperado": 900.0
+},
+{
+"id": 422,
+"f": "=SOMASE(D1:D10;\">=5\";G1:G10)",
+"esperado": 2800.0
+},
+{
+"id": 423,
+"f": "=SOMASE(F1:F10;\"*a*\";G1:G10)",
+"esperado": 3700.0
+},
+{
+"id": 424,
+"f": "=SOMASE(A1:A12;\"<>0\")",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B19"
+},
+{
+"id": 425,
+"f": "=SOMASE(D1:D10;\"x\";G1:G10)",
+"esperado": 700.0
+},
+{
+"id": 426,
+"f": "=SOMASE(D1:D5;\">3\";G1)",
+"esperado": 1200.0,
+"bug": "B31"
+},
+{
+"id": 427,
+"f": "=SOMASE(E1:E10;\"três*\";D1:D10)",
+"esperado": 6.0
+},
+{
+"id": 428,
+"f": "=SOMASE(F1:F10;F2;G1:G10)",
+"esperado": 200.0
+},
+{
+"id": 429,
+"f": "=SOMASE(A1:A12;\"\")",
+"esperado": 0.0
+},
+{
+"id": 430,
+"f": "=SOMASE(D1:D10;\"\";G1:G10)",
+"esperado": 900.0
+},
+{
+"id": 431,
+"f": "=SOMASES(G1:G10;F1:F10;\"ana\";D1:D10;\">2\")",
+"esperado": 600.0
+},
+{
+"id": 432,
+"f": "=SOMASES(G1:G10;D1:D10;\">=3\";D1:D10;\"<=7\")",
+"esperado": 3300.0
+},
+{
+"id": 433,
+"f": "=SOMASES(G1:G10;F1:F10;\"<>ana\")",
+"esperado": 4800.0
+},
+{
+"id": 434,
+"f": "=SOMASES(G1:G5;F1:F5;\"*\")",
+"esperado": 1500.0
+},
+{
+"id": 435,
+"f": "=SOMASES(A1:A12;A1:A12;\">0\")",
+"esperado": 1000025.6,
+"soLibreOffice": true
+},
+{
+"id": 436,
+"f": "=MÉDIASE(F1:F10;\"ana\";G1:G10)",
+"esperado": 350.0
+},
+{
+"id": 437,
+"f": "=MÉDIASE(G1:G10;\">500\")",
+"esperado": 800.0
+},
+{
+"id": 438,
+"f": "=MÉDIASE(F1:F10;\"zz\";G1:G10)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 439,
+"f": "=MÉDIASE(A1:A12;\"<>0\")",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B19"
+},
+{
+"id": 440,
+"f": "=MÉDIASE(D1:D10;3;G1:G10)",
+"esperado": 500.0
+},
+{
+"id": 441,
+"f": "=MÁXIMOSES(G1:G10;F1:F10;\"ana\")",
+"esperado": 600.0
+},
+{
+"id": 442,
+"f": "=MÁXIMOSES(G1:G10;F1:F10;\"zz\")",
+"esperado": 0.0
+},
+{
+"id": 443,
+"f": "=MÁXIMOSES(G1:G10;D1:D10;\">3\";D1:D10;\"<9\")",
+"esperado": 1000.0
+},
+{
+"id": 444,
+"f": "=MÍNIMOSES(G1:G10;F1:F10;\"ana\")",
+"esperado": 100.0
+},
+{
+"id": 445,
+"f": "=MÍNIMOSES(G1:G10;D1:D10;5)",
+"esperado": 300.0
+},
+{
+"id": 446,
+"f": "=MÍNIMOSES(A1:A5;A1:A5;\"<>0\")",
+"esperado": -5.0
+},
+{
+"id": 447,
+"f": "=MÍNIMOSES(G1:G10;F1:F10;\"zz\")",
+"esperado": 0.0
+},
+{
+"id": 448,
+"f": "=SOMARPRODUTO(D1:D5;G1:G5)",
+"esperado": 9500.0
+},
+{
+"id": 449,
+"f": "=SOMARPRODUTO((D1:D5>3)*G1:G5)",
+"esperado": 1200.0
+},
+{
+"id": 450,
+"f": "=SOMARPRODUTO(--(F1:F10=\"ana\");G1:G10)",
+"esperado": 700.0
+},
+{
+"id": 451,
+"f": "=SOMARPRODUTO(D1:D10;G1:G10)",
+"esperado": 21900.0
+},
+{
+"id": 452,
+"f": "=SOMARPRODUTO(A1:A5)",
+"esperado": 1000007.5
+},
+{
+"id": 453,
+"f": "=SOMARPRODUTO(D1:D5;G1:G4)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B31"
+},
+{
+"id": 454,
+"f": "=SOMARPRODUTO(H1:H3)",
+"esperado": 1,
+"bug": "B10"
+},
+{
+"id": 455,
+"f": "=SOMARPRODUTO((F1:F10=\"ana\")*1)",
+"esperado": 2.0
+},
+{
+"id": 456,
+"f": "=SOMARPRODUTO(F1:F10=\"ana\")",
+"esperado": 0,
+"bug": "B10"
+},
+{
+"id": 457,
+"f": "=SOMARPRODUTO(A1:A12)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 458,
+"f": "=SOMARPRODUTO(D1:D5*2)",
+"esperado": 50.0
+},
+{
+"id": 459,
+"f": "=SOMARPRODUTO(D1:D5;D1:D5;D1:D5)",
+"esperado": 1225.0
+},
+{
+"id": 460,
+"f": "=PROCV(5;D1:E5;2;0)",
+"esperado": "cinco"
+},
+{
+"id": 461,
+"f": "=PROCV(5;D1:E5;2;FALSO)",
+"esperado": "cinco"
+},
+{
+"id": 462,
+"f": "=PROCV(6;D1:E5;2;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 463,
+"f": "=PROCV(6;D1:E5;2)",
+"esperado": "cinco"
+},
+{
+"id": 464,
+"f": "=PROCV(6;D1:E5;2;1)",
+"esperado": "cinco"
+},
+{
+"id": 465,
+"f": "=PROCV(0;D1:E5;2)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 466,
+"f": "=PROCV(100;D1:E5;2)",
+"esperado": "nove"
+},
+{
+"id": 467,
+"f": "=PROCV(5;D1:E5;3;0)",
+"esperado": {
+"erro": "#REF!"
+},
+"soLibreOffice": true
+},
+{
+"id": 469,
+"f": "=PROCV(5;D1:E5;2,7;0)",
+"esperado": "cinco",
+"bug": "B16"
+},
+{
+"id": 470,
+"f": "=PROCV(\"ana\";F1:G10;2;0)",
+"esperado": 100.0
+},
+{
+"id": 471,
+"f": "=PROCV(\"ANA\";F1:G10;2;0)",
+"esperado": 100.0
+},
+{
+"id": 472,
+"f": "=PROCV(\"Car*\";F1:G10;2;0)",
+"esperado": 300.0,
+"bug": "B05"
+},
+{
+"id": 473,
+"f": "=PROCV(\"?va\";F1:G10;2;0)",
+"esperado": 500.0,
+"bug": "B05"
+},
+{
+"id": 474,
+"f": "=PROCV(\"zz\";F1:G10;2;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 475,
+"f": "=PROCV(\"5\";D1:E5;2;0)",
+"esperado": {
+"erro": "#N/D"
+},
+"soLibreOffice": true
+},
+{
+"id": 476,
+"f": "=PROCV(5;D1:E5;2;)",
+"esperado": "cinco"
+},
+{
+"id": 477,
+"f": "=PROCV(\"x\";D1:E10;2;0)",
+"esperado": "xis"
+},
+{
+"id": 478,
+"f": "=PROCV(A11;D1:E5;2;0)",
+"esperado": {
+"erro": "#DIV/0!"
+},
+"bug": "B19"
+},
+{
+"id": 479,
+"f": "=PROCV(3;D1:G5;4;0)",
+"esperado": 200.0
+},
+{
+"id": 480,
+"f": "=PROCV(3;D1:G5;3;0)",
+"esperado": "bruno"
+},
+{
+"id": 481,
+"f": "=PROCV(\"Éder\";F1:G10;2;0)",
+"esperado": 700.0
+},
+{
+"id": 482,
+"f": "=PROCV(\"eder\";F1:G10;2;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 483,
+"f": "=PROCV(5;D1:E10;2;0)",
+"esperado": "cinco"
+},
+{
+"id": 484,
+"f": "=PROCV(3;D1:E10;2;VERDADEIRO)",
+"esperado": "três"
+},
+{
+"id": 485,
+"f": "=PROCV(\"abc\";D1:E5;2;1)",
+"esperado": {
+"erro": "#N/D"
+},
+"bug": "B30"
+},
+{
+"id": 486,
+"f": "=PROCV(\"c\";F1:G5;2;1)",
+"esperado": 200.0
+},
+{
+"id": 487,
+"f": "=PROCV(A9;D1:E5;2;0)",
+"esperado": "três"
+},
+{
+"id": 488,
+"f": "=PROCV(\" Ana\";F1:G10;2;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 489,
+"f": "=PROCV(\"ana \";F1:G10;2;0)",
+"esperado": 1000.0
+},
+{
+"id": 490,
+"f": "=PROCV(9;D1:E5;2;1)",
+"esperado": "nove"
+},
+{
+"id": 491,
+"f": "=PROCV(4,99;D1:E5;2)",
+"esperado": "três"
+},
+{
+"id": 492,
+"f": "=PROCH(30;K1:O3;2;0)",
+"esperado": "c"
+},
+{
+"id": 493,
+"f": "=PROCH(30;K1:O3;3;0)",
+"esperado": 3.5
+},
+{
+"id": 494,
+"f": "=PROCH(35;K1:O3;2)",
+"esperado": "c"
+},
+{
+"id": 495,
+"f": "=PROCH(35;K1:O3;2;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 496,
+"f": "=PROCH(5;K1:O3;2)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 497,
+"f": "=PROCH(30;K1:O3;4;0)",
+"esperado": {
+"erro": "#REF!"
+},
+"soLibreOffice": true
+},
+{
+"id": 498,
+"f": "=PROCH(60;K1:O3;3;1)",
+"esperado": 5.5
+},
+{
+"id": 499,
+"f": "=PROCH(\"c\";K2:O3;2;0)",
+"esperado": 3.5
+},
+{
+"id": 500,
+"f": "=ÍNDICE(D1:E5;3;2)",
+"esperado": "cinco"
+},
+{
+"id": 501,
+"f": "=ÍNDICE(D1:D5;2)",
+"esperado": 3.0
+},
+{
+"id": 502,
+"f": "=ÍNDICE(K1:O1;3)",
+"esperado": 30.0
+},
+{
+"id": 503,
+"f": "=ÍNDICE(K1:O1;1;3)",
+"esperado": 30.0
+},
+{
+"id": 504,
+"f": "=ÍNDICE(D1:E5;6;1)",
+"esperado": {
+"erro": "#REF!"
+}
+},
+{
+"id": 505,
+"f": "=ÍNDICE(D1:E5;1;3)",
+"esperado": {
+"erro": "#REF!"
+}
+},
+{
+"id": 506,
+"f": "=ÍNDICE(A1:A12;6)",
+"esperado": 0,
+"bug": "B14"
+},
+{
+"id": 507,
+"f": "=ÍNDICE(D1:E5;2,9;1)",
+"esperado": 3.0,
+"bug": "B14"
+},
+{
+"id": 508,
+"f": "=ÍNDICE(D1:E5;0;1)",
+"esperado": [
+[
+1
+],
+[
+3
+],
+[
+5
+],
+[
+7
+],
+[
+9
+]
+],
+"bug": "B14"
+},
+{
+"id": 509,
+"f": "=SOMA(ÍNDICE(D1:E5;0;1))",
+"esperado": 25.0,
+"bug": "B14"
+},
+{
+"id": 510,
+"f": "=ÍNDICE(D1:D5;-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B14"
+},
+{
+"id": 511,
+"f": "=ÍNDICE(G1:G10;CORRESP(\"Carla\";F1:F10;0))",
+"esperado": 300.0
+},
+{
+"id": 512,
+"f": "=ÍNDICE(D1:E5;CORRESP(7;D1:D5;0);2)",
+"esperado": "sete"
+},
+{
+"id": 513,
+"f": "=ÍNDICE(K1:O3;2;2)",
+"esperado": "b"
+},
+{
+"id": 514,
+"f": "=CORRESP(5;D1:D5;0)",
+"esperado": 3.0
+},
+{
+"id": 515,
+"f": "=CORRESP(6;D1:D5;0)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 516,
+"f": "=CORRESP(6;D1:D5)",
+"esperado": 3.0
+},
+{
+"id": 517,
+"f": "=CORRESP(6;D1:D5;1)",
+"esperado": 3.0
+},
+{
+"id": 518,
+"f": "=CORRESP(0;D1:D5;1)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 519,
+"f": "=CORRESP(6;I1:I5;-1)",
+"esperado": 2.0
+},
+{
+"id": 520,
+"f": "=CORRESP(10;I1:I5;-1)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 521,
+"f": "=CORRESP(0;I1:I5;-1)",
+"esperado": 5.0
+},
+{
+"id": 522,
+"f": "=CORRESP(\"carla\";F1:F10;0)",
+"esperado": 3.0
+},
+{
+"id": 523,
+"f": "=CORRESP(\"c*\";F1:F10;0)",
+"esperado": 3.0,
+"bug": "B05"
+},
+{
+"id": 524,
+"f": "=CORRESP(\"?runo\";F1:F10;0)",
+"esperado": 2.0,
+"bug": "B05"
+},
+{
+"id": 525,
+"f": "=CORRESP(6;D1:D5;2)",
+"esperado": 3.0,
+"bug": "B30"
+},
+{
+"id": 526,
+"f": "=CORRESP(6;D1:D5;-2)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 527,
+"f": "=CORRESP(30;K1:O1;0)",
+"esperado": 3.0
+},
+{
+"id": 528,
+"f": "=CORRESP(5;D1:D10;0)",
+"esperado": 3.0
+},
+{
+"id": 529,
+"f": "=CORRESP(\"x\";D1:D10;0)",
+"esperado": 7.0
+},
+{
+"id": 530,
+"f": "=CORRESP(A6;A1:A12;0)",
+"esperado": {
+"erro": "#N/D"
+},
+"bug": "B30"
+},
+{
+"id": 531,
+"f": "=CORRESP(\"b\";F1:F5;1)",
+"esperado": 1.0
+},
+{
+"id": 532,
+"f": "=CORRESP(9;D1:D5;1)",
+"esperado": 5.0
+},
+{
+"id": 533,
+"f": "=CORRESP(VERDADEIRO;H1:H8;0)",
+"esperado": 1.0
+},
+{
+"id": 534,
+"f": "=CORRESP(1;H1:H8;0)",
+"esperado": 3,
+"soLibreOffice": true
+},
+{
+"id": 535,
+"f": "=ESCOLHER(2;\"a\";\"b\";\"c\")",
+"esperado": "b"
+},
+{
+"id": 536,
+"f": "=ESCOLHER(4;\"a\";\"b\";\"c\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 537,
+"f": "=ESCOLHER(0;\"a\";\"b\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 538,
+"f": "=ESCOLHER(2,7;\"a\";\"b\";\"c\")",
+"esperado": "b",
+"bug": "B16"
+},
+{
+"id": 539,
+"f": "=ESCOLHER(1;A1;A2)",
+"esperado": 10.0
+},
+{
+"id": 540,
+"f": "=ESCOLHER(\"2\";\"a\";\"b\")",
+"esperado": "b"
+},
+{
+"id": 541,
+"f": "=SOMA(ESCOLHER(2;A1:A2;D1:D5))",
+"esperado": 25.0
+},
+{
+"id": 542,
+"f": "=ESCOLHER(A8;\"x\";\"y\")",
+"esperado": "x"
+},
+{
+"id": 543,
+"f": "=DESLOC(A1;2;0)",
+"esperado": 0.0
+},
+{
+"id": 544,
+"f": "=DESLOC(A1;0;3)",
+"esperado": 1.0
+},
+{
+"id": 545,
+"f": "=SOMA(DESLOC(D1;0;0;3;1))",
+"esperado": 9.0
+},
+{
+"id": 546,
+"f": "=SOMA(DESLOC(D1:D2;1;0))",
+"esperado": 8.0
+},
+{
+"id": 547,
+"f": "=DESLOC(A1;-1;0)",
+"esperado": {
+"erro": "#REF!"
+},
+"soLibreOffice": true
+},
+{
+"id": 548,
+"f": "=DESLOC(A1;5;0)",
+"esperado": 0.0,
+"bug": "B04"
+},
+{
+"id": 549,
+"f": "=SOMA(DESLOC(D1;1;0;2;2))",
+"esperado": 8.0
+},
+{
+"id": 550,
+"f": "=DESLOC(D1;0;0;0;1)",
+"esperado": {
+"erro": "#REF!"
+},
+"soLibreOffice": true
+},
+{
+"id": 551,
+"f": "=DESLOC(B1;0;0)",
+"esperado": "Maçã"
+},
+{
+"id": 552,
+"f": "=SOMA(DESLOC(A1:A3;0;0;;))",
+"esperado": 5.0,
+"bug": "B07"
+},
+{
+"id": 553,
+"f": "=CONCAT(\"a\";\"b\";1)",
+"esperado": "ab1"
+},
+{
+"id": 554,
+"f": "=CONCAT(F1:F3)",
+"esperado": "AnabrunoCarla"
+},
+{
+"id": 555,
+"f": "=CONCAT(A1;A6;A8)",
+"esperado": "10VERDADEIRO",
+"soLibreOffice": true
+},
+{
+"id": 556,
+"f": "=CONCAT(A4)",
+"esperado": "2,5"
+},
+{
+"id": 557,
+"f": "=CONCAT(A11;1)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 558,
+"f": "=CONCATENAR(\"a\";\" \";B1)",
+"esperado": "a Maçã"
+},
+{
+"id": 559,
+"f": "=CONCATENAR(A1;A12)",
+"esperado": "100,1"
+},
+{
+"id": 560,
+"f": "=CONCATENAR(C1)",
+"esperado": "45366"
+},
+{
+"id": 561,
+"f": "=CONCAT(1/3)",
+"esperado": "0,333333333333333",
+"bug": "B18"
+},
+{
+"id": 562,
+"f": "=ESQUERDA(B1;2)",
+"esperado": "Ma"
+},
+{
+"id": 563,
+"f": "=ESQUERDA(B1)",
+"esperado": "M"
+},
+{
+"id": 564,
+"f": "=ESQUERDA(B1;0)",
+"esperado": ""
+},
+{
+"id": 565,
+"f": "=ESQUERDA(B1;10)",
+"esperado": "Maçã"
+},
+{
+"id": 566,
+"f": "=ESQUERDA(B1;-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 567,
+"f": "=ESQUERDA(A4;1)",
+"esperado": "2"
+},
+{
+"id": 568,
+"f": "=ESQUERDA(A5;3)",
+"esperado": "100"
+},
+{
+"id": 569,
+"f": "=ESQUERDA(A8;3)",
+"esperado": "VER",
+"soLibreOffice": true
+},
+{
+"id": 570,
+"f": "=ESQUERDA(B1;2,9)",
+"esperado": "Ma"
+},
+{
+"id": 571,
+"f": "=ESQUERDA(A6;2)",
+"esperado": ""
+},
+{
+"id": 572,
+"f": "=DIREITA(B1;2)",
+"esperado": "çã"
+},
+{
+"id": 573,
+"f": "=DIREITA(B1)",
+"esperado": "ã"
+},
+{
+"id": 574,
+"f": "=DIREITA(B1;0)",
+"esperado": ""
+},
+{
+"id": 575,
+"f": "=DIREITA(B1;10)",
+"esperado": "Maçã"
+},
+{
+"id": 576,
+"f": "=DIREITA(B1;-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 577,
+"f": "=DIREITA(A1;1)",
+"esperado": "0"
+},
+{
+"id": 578,
+"f": "=DIREITA(C1;2)",
+"esperado": "66"
+},
+{
+"id": 579,
+"f": "=EXT.TEXTO(B5;2;3)",
+"esperado": "êra"
+},
+{
+"id": 580,
+"f": "=EXT.TEXTO(B5;1;100)",
+"esperado": "Pêra verde"
+},
+{
+"id": 581,
+"f": "=EXT.TEXTO(B5;20;3)",
+"esperado": ""
+},
+{
+"id": 582,
+"f": "=EXT.TEXTO(B5;0;3)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 583,
+"f": "=EXT.TEXTO(B5;2;0)",
+"esperado": ""
+},
+{
+"id": 584,
+"f": "=EXT.TEXTO(B5;2;-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 585,
+"f": "=EXT.TEXTO(A5;2;3)",
+"esperado": "000"
+},
+{
+"id": 586,
+"f": "=NÚM.CARACT(B1)",
+"esperado": 4.0
+},
+{
+"id": 587,
+"f": "=NÚM.CARACT(B3)",
+"esperado": 7.0
+},
+{
+"id": 588,
+"f": "=NÚM.CARACT(A6)",
+"esperado": 0.0
+},
+{
+"id": 589,
+"f": "=NÚM.CARACT(A4)",
+"esperado": 3.0
+},
+{
+"id": 590,
+"f": "=NÚM.CARACT(A8)",
+"esperado": 10,
+"soLibreOffice": true
+},
+{
+"id": 591,
+"f": "=NÚM.CARACT(1/3)",
+"esperado": 17.0,
+"bug": "B18"
+},
+{
+"id": 592,
+"f": "=NÚM.CARACT(C1)",
+"esperado": 5.0
+},
+{
+"id": 593,
+"f": "=NÚM.CARACT(A11)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 594,
+"f": "=ARRUMAR(B3)",
+"esperado": "Uva"
+},
+{
+"id": 595,
+"f": "=ARRUMAR(B11)",
+"esperado": "Ana Maria da Silva"
+},
+{
+"id": 596,
+"f": "=ARRUMAR(\"  a   b  \")",
+"esperado": "a b"
+},
+{
+"id": 597,
+"f": "=NÚM.CARACT(ARRUMAR(B3))",
+"esperado": 3.0
+},
+{
+"id": 598,
+"f": "=ARRUMAR(A4)",
+"esperado": "2,5"
+},
+{
+"id": 599,
+"f": "=MAIÚSCULA(B1)",
+"esperado": "MAÇÃ"
+},
+{
+"id": 600,
+"f": "=MAIÚSCULA(B5)",
+"esperado": "PÊRA VERDE"
+},
+{
+"id": 601,
+"f": "=MAIÚSCULA(A4)",
+"esperado": "2,5"
+},
+{
+"id": 602,
+"f": "=MAIÚSCULA(A8)",
+"esperado": "VERDADEIRO",
+"soLibreOffice": true
+},
+{
+"id": 604,
+"f": "=MINÚSCULA(B4)",
+"esperado": "maçã"
+},
+{
+"id": 605,
+"f": "=MINÚSCULA(B8)",
+"esperado": "abc"
+},
+{
+"id": 606,
+"f": "=MINÚSCULA(A1)",
+"esperado": "10"
+},
+{
+"id": 607,
+"f": "=PRI.MAIÚSCULA(B5)",
+"esperado": "Pêra Verde"
+},
+{
+"id": 608,
+"f": "=PRI.MAIÚSCULA(\"joão DA silva\")",
+"esperado": "João Da Silva"
+},
+{
+"id": 609,
+"f": "=PRI.MAIÚSCULA(\"2nd o'neil d'água\")",
+"esperado": "2Nd O'Neil D'Água"
+},
+{
+"id": 610,
+"f": "=PRI.MAIÚSCULA(\"ÉDER éder\")",
+"esperado": "Éder Éder"
+},
+{
+"id": 611,
+"f": "=PRI.MAIÚSCULA(B11)",
+"esperado": "Ana Maria  Da Silva"
+},
+{
+"id": 612,
+"f": "=LOCALIZAR(\"a\";B2)",
+"esperado": 2.0
+},
+{
+"id": 613,
+"f": "=LOCALIZAR(\"A\";B2)",
+"esperado": 2.0
+},
+{
+"id": 614,
+"f": "=LOCALIZAR(\"a\";B2;3)",
+"esperado": 4.0
+},
+{
+"id": 615,
+"f": "=LOCALIZAR(\"z\";B2)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 616,
+"f": "=LOCALIZAR(\"\";B2)",
+"esperado": 1,
+"soLibreOffice": true
+},
+{
+"id": 617,
+"f": "=LOCALIZAR(\"a\";B2;0)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 618,
+"f": "=LOCALIZAR(\"a\";B2;10)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 619,
+"f": "=LOCALIZAR(\"n?n\";B2)",
+"esperado": 3.0,
+"bug": "B23"
+},
+{
+"id": 620,
+"f": "=LOCALIZAR(\"b*a\";B2)",
+"esperado": 1.0,
+"bug": "B23"
+},
+{
+"id": 621,
+"f": "=LOCALIZAR(\"ã\";\"maca\")",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B23"
+},
+{
+"id": 622,
+"f": "=LOCALIZAR(\"ç\";B1)",
+"esperado": 3.0
+},
+{
+"id": 623,
+"f": "=LOCALIZAR(\"verde\";B5)",
+"esperado": 6.0
+},
+{
+"id": 624,
+"f": "=LOCALIZAR(\"~*\";B9)",
+"esperado": 2.0,
+"bug": "B23"
+},
+{
+"id": 625,
+"f": "=LOCALIZAR(1;A1)",
+"esperado": 1.0
+},
+{
+"id": 626,
+"f": "=PROCURAR(\"a\";B2)",
+"esperado": 2.0
+},
+{
+"id": 627,
+"f": "=PROCURAR(\"A\";B2)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 628,
+"f": "=PROCURAR(\"a\";B2;3)",
+"esperado": 4.0
+},
+{
+"id": 629,
+"f": "=PROCURAR(\"\";B2)",
+"esperado": 1,
+"soLibreOffice": true
+},
+{
+"id": 630,
+"f": "=PROCURAR(\"n?n\";B2)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 631,
+"f": "=PROCURAR(\"a\";B2;0)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 632,
+"f": "=PROCURAR(\"*\";B9)",
+"esperado": 2.0
+},
+{
+"id": 633,
+"f": "=PROCURAR(\"ã\";B1)",
+"esperado": 4.0
+},
+{
+"id": 634,
+"f": "=PROCURAR(\"a\";B2;7)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 635,
+"f": "=SUBSTITUIR(B2;\"a\";\"o\")",
+"esperado": "bonono"
+},
+{
+"id": 636,
+"f": "=SUBSTITUIR(B2;\"a\";\"o\";2)",
+"esperado": "banona"
+},
+{
+"id": 637,
+"f": "=SUBSTITUIR(B2;\"a\";\"o\";5)",
+"esperado": "banana"
+},
+{
+"id": 638,
+"f": "=SUBSTITUIR(B2;\"a\";\"o\";0)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 639,
+"f": "=SUBSTITUIR(B2;\"A\";\"o\")",
+"esperado": "banana"
+},
+{
+"id": 640,
+"f": "=SUBSTITUIR(B2;\"\";\"x\")",
+"esperado": "banana"
+},
+{
+"id": 641,
+"f": "=SUBSTITUIR(B2;\"an\";\"\")",
+"esperado": "ba"
+},
+{
+"id": 642,
+"f": "=SUBSTITUIR(A5;0;9)",
+"esperado": "1999999"
+},
+{
+"id": 643,
+"f": "=SUBSTITUIR(B9;\"*\";\"+\")",
+"esperado": "a+b"
+},
+{
+"id": 644,
+"f": "=SUBSTITUIR(B11;\"  \";\" \")",
+"esperado": "Ana Maria da Silva"
+},
+{
+"id": 645,
+"f": "=SUBSTITUIR(\"a.b.c\";\".\";\",\";2)",
+"esperado": "a.b,c"
+},
+{
+"id": 646,
+"f": "=TEXTO(1234,5;\"#.##0,00\")",
+"esperado": "1.234,50"
+},
+{
+"id": 647,
+"f": "=TEXTO(1234,5;\"0\")",
+"esperado": "1235"
+},
+{
+"id": 648,
+"f": "=TEXTO(0,256;\"0%\")",
+"esperado": "26%"
+},
+{
+"id": 649,
+"f": "=TEXTO(0,256;\"0,0%\")",
+"esperado": "25,6%"
+},
+{
+"id": 650,
+"f": "=TEXTO(C1;\"dd/mm/aaaa\")",
+"esperado": "15/03/2024"
+},
+{
+"id": 651,
+"f": "=TEXTO(C1;\"d/m/aa\")",
+"esperado": "15/3/24",
+"bug": "B11"
+},
+{
+"id": 652,
+"f": "=TEXTO(C1;\"mmm\")",
+"esperado": "mar"
+},
+{
+"id": 653,
+"f": "=TEXTO(C1;\"mmmm\")",
+"esperado": "março"
+},
+{
+"id": 654,
+"f": "=TEXTO(C1;\"dddd\")",
+"esperado": "sexta-feira",
+"bug": "B11"
+},
+{
+"id": 655,
+"f": "=TEXTO(C1;\"ddd\")",
+"esperado": "sex",
+"bug": "B11"
+},
+{
+"id": 656,
+"f": "=TEXTO(C1;\"aaaa\")",
+"esperado": "2024"
+},
+{
+"id": 657,
+"f": "=TEXTO(42;\"00000\")",
+"esperado": "00042",
+"bug": "B11"
+},
+{
+"id": 658,
+"f": "=TEXTO(3,14159;\"0,00\")",
+"esperado": "3,14"
+},
+{
+"id": 659,
+"f": "=TEXTO(-1234,5;\"#.##0,00\")",
+"esperado": "-1.234,50"
+},
+{
+"id": 660,
+"f": "=TEXTO(0,5;\"hh:mm\")",
+"esperado": "12:00",
+"bug": "B11"
+},
+{
+"id": 661,
+"f": "=TEXTO(B1;\"0\")",
+"esperado": "Maçã"
+},
+{
+"id": 662,
+"f": "=TEXTO(1234567;\"#.##0\")",
+"esperado": "1.234.567"
+},
+{
+"id": 663,
+"f": "=TEXTO(2,5;\"0\")",
+"esperado": "3"
+},
+{
+"id": 664,
+"f": "=TEXTO(C1;\"dd/mm\")",
+"esperado": "15/03"
+},
+{
+"id": 665,
+"f": "=TEXTO(1234,5;\"R$ #.##0,00\")",
+"esperado": "R$ 1.234,50"
+},
+{
+"id": 666,
+"f": "=TEXTO(7;\"#\")",
+"esperado": "7"
+},
+{
+"id": 667,
+"f": "=TEXTO(0;\"#\")",
+"esperado": "",
+"bug": "B11"
+},
+{
+"id": 668,
+"f": "=TEXTO(C1;\"mmm/aaaa\")",
+"esperado": "mar/2024"
+},
+{
+"id": 670,
+"f": "=VALOR(\"123\")",
+"esperado": 123.0
+},
+{
+"id": 671,
+"f": "=VALOR(\"1.234,5\")",
+"esperado": 1234.5
+},
+{
+"id": 672,
+"f": "=VALOR(\" 12 \")",
+"esperado": 12.0
+},
+{
+"id": 673,
+"f": "=VALOR(\"abc\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 674,
+"f": "=VALOR(\"\")",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B17"
+},
+{
+"id": 675,
+"f": "=VALOR(\"50%\")",
+"esperado": 0.5
+},
+{
+"id": 676,
+"f": "=VALOR(\"R$ 10,50\")",
+"esperado": 10.5
+},
+{
+"id": 677,
+"f": "=VALOR(A7)",
+"esperado": 7.0
+},
+{
+"id": 678,
+"f": "=VALOR(\"15/03/2024\")",
+"esperado": 45366.0
+},
+{
+"id": 679,
+"f": "=VALOR(\"10:30\")",
+"esperado": 0.4375,
+"bug": "B34"
+},
+{
+"id": 680,
+"f": "=VALOR(\"1e3\")",
+"esperado": 1000.0,
+"bug": "B34"
+},
+{
+"id": 681,
+"f": "=VALOR(A1)",
+"esperado": 10.0
+},
+{
+"id": 682,
+"f": "=VALOR(\"-5\")",
+"esperado": -5.0
+},
+{
+"id": 683,
+"f": "=VALOR(A6)",
+"esperado": 0.0
+},
+{
+"id": 684,
+"f": "=VALOR(\"(5)\")",
+"esperado": -5.0,
+"bug": "B34"
+},
+{
+"id": 685,
+"f": "=REPT(\"ab\";3)",
+"esperado": "ababab"
+},
+{
+"id": 686,
+"f": "=REPT(\"ab\";0)",
+"esperado": ""
+},
+{
+"id": 687,
+"f": "=REPT(\"ab\";2,9)",
+"esperado": "abab"
+},
+{
+"id": 688,
+"f": "=REPT(\"ab\";-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B22"
+},
+{
+"id": 689,
+"f": "=REPT(A1;2)",
+"esperado": "1010"
+},
+{
+"id": 690,
+"f": "=REPT(\"*\";A9)",
+"esperado": "***"
+},
+{
+"id": 691,
+"f": "=UNIRTEXTO(\", \";VERDADEIRO;F1:F3)",
+"esperado": "Ana, bruno, Carla"
+},
+{
+"id": 692,
+"f": "=UNIRTEXTO(\", \";VERDADEIRO;A1:A6)",
+"esperado": "10, -5, 0, 2,5, 1000000"
+},
+{
+"id": 693,
+"f": "=UNIRTEXTO(\", \";FALSO;A1:A6)",
+"esperado": "10, -5, 0, 2,5, 1000000, "
+},
+{
+"id": 694,
+"f": "=UNIRTEXTO(\"-\";VERDADEIRO;\"a\";\"\";\"b\")",
+"esperado": "a-b"
+},
+{
+"id": 695,
+"f": "=UNIRTEXTO(\"-\";FALSO;\"a\";\"\";\"b\")",
+"esperado": "a--b"
+},
+{
+"id": 696,
+"f": "=UNIRTEXTO(\"\";VERDADEIRO;B1:B2)",
+"esperado": "Maçãbanana"
+},
+{
+"id": 697,
+"f": "=UNIRTEXTO(\", \";VERDADEIRO;A11;1)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 698,
+"f": "=UNIRTEXTO(\"/\";1;A8;A4)",
+"esperado": "VERDADEIRO/2,5",
+"soLibreOffice": true
+},
+{
+"id": 699,
+"f": "=UNIRTEXTO(\", \";VERDADEIRO;B9:B10)",
+"esperado": "a*b"
+},
+{
+"id": 700,
+"f": "=UNIRTEXTO(\", \";FALSO;B9:B10)",
+"esperado": "a*b, "
+},
+{
+"id": 701,
+"f": "=DATA(2024;2;29)",
+"esperado": 45351.0
+},
+{
+"id": 702,
+"f": "=DATA(2023;2;29)",
+"esperado": 44986.0
+},
+{
+"id": 703,
+"f": "=DATA(2024;13;1)",
+"esperado": 45658.0
+},
+{
+"id": 704,
+"f": "=DATA(2024;0;1)",
+"esperado": 45261.0
+},
+{
+"id": 705,
+"f": "=DATA(2024;1;0)",
+"esperado": 45291.0
+},
+{
+"id": 706,
+"f": "=DATA(2024;-1;15)",
+"esperado": 45245.0
+},
+{
+"id": 707,
+"f": "=DATA(24;1;1)",
+"esperado": 8767,
+"soLibreOffice": true
+},
+{
+"id": 708,
+"f": "=DATA(1900;1;1)",
+"esperado": 2.0
+},
+{
+"id": 709,
+"f": "=DATA(1900;3;1)",
+"esperado": 61.0
+},
+{
+"id": 710,
+"f": "=DATA(2024;1;31)+1",
+"esperado": 45323.0
+},
+{
+"id": 711,
+"f": "=DATA(2024,5;1;1)",
+"esperado": 45292.0
+},
+{
+"id": 712,
+"f": "=DATA(9999;12;31)",
+"esperado": 2958465.0
+},
+{
+"id": 713,
+"f": "=DATA(2024;1;1,9)",
+"esperado": 45292.0
+},
+{
+"id": 714,
+"f": "=ANO(C1)",
+"esperado": 2024.0
+},
+{
+"id": 715,
+"f": "=MÊS(C1)",
+"esperado": 3.0
+},
+{
+"id": 716,
+"f": "=DIA(C1)",
+"esperado": 15.0
+},
+{
+"id": 717,
+"f": "=ANO(C2)",
+"esperado": 2024.0
+},
+{
+"id": 718,
+"f": "=DIA(C2+1)",
+"esperado": 1.0
+},
+{
+"id": 719,
+"f": "=MÊS(C4+1)",
+"esperado": 1.0
+},
+{
+"id": 720,
+"f": "=ANO(0)",
+"esperado": 1899.0
+},
+{
+"id": 721,
+"f": "=DIA(0)",
+"esperado": 30.0
+},
+{
+"id": 722,
+"f": "=MÊS(A6)",
+"esperado": 12.0
+},
+{
+"id": 723,
+"f": "=ANO(\"15/03/2024\")",
+"esperado": 2024.0
+},
+{
+"id": 724,
+"f": "=DIA(\"abc\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 725,
+"f": "=ANO(-1)",
+"esperado": 1899.0
+},
+{
+"id": 726,
+"f": "=DIA(C1+0,99)",
+"esperado": 15.0
+},
+{
+"id": 727,
+"f": "=ANO(60)",
+"esperado": 1900.0
+},
+{
+"id": 728,
+"f": "=DIA(60)",
+"esperado": 28.0
+},
+{
+"id": 729,
+"f": "=MÊS(61)",
+"esperado": 3.0
+},
+{
+"id": 730,
+"f": "=DIA.DA.SEMANA(C1)",
+"esperado": 6.0
+},
+{
+"id": 731,
+"f": "=DIA.DA.SEMANA(C1;2)",
+"esperado": 5.0
+},
+{
+"id": 732,
+"f": "=DIA.DA.SEMANA(C1;3)",
+"esperado": 4.0
+},
+{
+"id": 733,
+"f": "=DIA.DA.SEMANA(C1;11)",
+"esperado": 5.0,
+"bug": "B25"
+},
+{
+"id": 734,
+"f": "=DIA.DA.SEMANA(C1;12)",
+"esperado": 4.0,
+"bug": "B25"
+},
+{
+"id": 735,
+"f": "=DIA.DA.SEMANA(C1;16)",
+"esperado": 7.0,
+"bug": "B25"
+},
+{
+"id": 736,
+"f": "=DIA.DA.SEMANA(C1;17)",
+"esperado": 6.0
+},
+{
+"id": 737,
+"f": "=DIA.DA.SEMANA(C1;4)",
+"esperado": {
+"erro": "#NÚM!"
+},
+"bug": "B25"
+},
+{
+"id": 738,
+"f": "=DIA.DA.SEMANA(C5)",
+"esperado": 2.0
+},
+{
+"id": 739,
+"f": "=DIA.DA.SEMANA(C12;2)",
+"esperado": 7.0
+},
+{
+"id": 740,
+"f": "=DIA.DA.SEMANA(\"abc\")",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 741,
+"f": "=DATADIF(C5;C1;\"D\")",
+"esperado": 74.0
+},
+{
+"id": 742,
+"f": "=DATADIF(C5;C1;\"M\")",
+"esperado": 2.0
+},
+{
+"id": 743,
+"f": "=DATADIF(C8;C1;\"Y\")",
+"esperado": 3.0
+},
+{
+"id": 744,
+"f": "=DATADIF(C8;C1;\"YM\")",
+"esperado": 2.0
+},
+{
+"id": 745,
+"f": "=DATADIF(C8;C1;\"MD\")",
+"esperado": 14.0
+},
+{
+"id": 746,
+"f": "=DATADIF(C3;C2;\"M\")",
+"esperado": 0.0
+},
+{
+"id": 747,
+"f": "=DATADIF(C3;C2;\"MD\")",
+"esperado": 29.0
+},
+{
+"id": 748,
+"f": "=DATADIF(C1;C5;\"D\")",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 749,
+"f": "=DATADIF(C5;C1;\"YD\")",
+"esperado": 74.0,
+"bug": "B26"
+},
+{
+"id": 750,
+"f": "=DATADIF(C5;C1;\"X\")",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 751,
+"f": "=DATADIF(C5;C1;\"d\")",
+"esperado": 74.0
+},
+{
+"id": 752,
+"f": "=DATADIF(C6;C2;\"Y\")",
+"esperado": 1.0
+},
+{
+"id": 753,
+"f": "=DATADIF(C2;DATA(2025;2;28);\"Y\")",
+"esperado": 0.0
+},
+{
+"id": 755,
+"f": "=DATADIF(C4;C10;\"M\")",
+"esperado": 12.0
+},
+{
+"id": 756,
+"f": "=DIATRABALHOTOTAL(C5;C1)",
+"esperado": 55.0
+},
+{
+"id": 757,
+"f": "=DIATRABALHOTOTAL(C1;C5)",
+"esperado": -55.0
+},
+{
+"id": 758,
+"f": "=DIATRABALHOTOTAL(C5;C10;C9)",
+"esperado": 262.0
+},
+{
+"id": 759,
+"f": "=DIATRABALHOTOTAL(C5;C10;C1:C12)",
+"esperado": 256.0
+},
+{
+"id": 760,
+"f": "=DIATRABALHOTOTAL(C1;C1)",
+"esperado": 1.0
+},
+{
+"id": 761,
+"f": "=DIATRABALHOTOTAL(C12;C12)",
+"esperado": 0.0
+},
+{
+"id": 762,
+"f": "=DIATRABALHOTOTAL(C5;C5+6)",
+"esperado": 5.0
+},
+{
+"id": 763,
+"f": "=DIATRABALHO(C1;1)",
+"esperado": 45369.0
+},
+{
+"id": 764,
+"f": "=DIATRABALHO(C1;5)",
+"esperado": 45373.0
+},
+{
+"id": 765,
+"f": "=DIATRABALHO(C1;-1)",
+"esperado": 45365.0
+},
+{
+"id": 766,
+"f": "=DIATRABALHO(C1;0)",
+"esperado": 45366.0
+},
+{
+"id": 767,
+"f": "=DIATRABALHO(C7;1;C10)",
+"esperado": 45657.0
+},
+{
+"id": 768,
+"f": "=DIATRABALHO(C12;1)",
+"esperado": 46391.0
+},
+{
+"id": 769,
+"f": "=DIATRABALHO(C1;2,9)",
+"esperado": 45370.0,
+"bug": "B01"
+},
+{
+"id": 770,
+"f": "=DIATRABALHO(C9-1;1;C9)",
+"esperado": 45652.0
+},
+{
+"id": 771,
+"f": "=FIMMÊS(C1;0)",
+"esperado": 45382.0
+},
+{
+"id": 772,
+"f": "=FIMMÊS(C1;1)",
+"esperado": 45412.0
+},
+{
+"id": 773,
+"f": "=FIMMÊS(C1;-1)",
+"esperado": 45351.0
+},
+{
+"id": 774,
+"f": "=FIMMÊS(C3;1)",
+"esperado": 45351.0
+},
+{
+"id": 775,
+"f": "=FIMMÊS(C6;12)",
+"esperado": 45351.0
+},
+{
+"id": 776,
+"f": "=FIMMÊS(C1;1,9)",
+"esperado": 45412.0
+},
+{
+"id": 777,
+"f": "=FIMMÊS(C1;-25)",
+"esperado": 44620.0
+},
+{
+"id": 778,
+"f": "=DATAM(C3;1)",
+"esperado": 45351.0
+},
+{
+"id": 779,
+"f": "=DATAM(C3;13)",
+"esperado": 45716.0
+},
+{
+"id": 780,
+"f": "=DATAM(C2;12)",
+"esperado": 45716.0
+},
+{
+"id": 781,
+"f": "=DATAM(C2;-12)",
+"esperado": 44985.0
+},
+{
+"id": 782,
+"f": "=DATAM(C1;-3)",
+"esperado": 45275.0
+},
+{
+"id": 783,
+"f": "=DATAM(C11;-6)",
+"esperado": 45351.0
+},
+{
+"id": 784,
+"f": "=DATAM(C1;1,9)",
+"esperado": 45397.0
+},
+{
+"id": 785,
+"f": "=DATAM(C1;0)",
+"esperado": 45366.0
+},
+{
+"id": 786,
+"f": "=NÚMSEMANA(C5)",
+"esperado": 1.0
+},
+{
+"id": 787,
+"f": "=NÚMSEMANA(C1)",
+"esperado": 11.0
+},
+{
+"id": 788,
+"f": "=NÚMSEMANA(C1;2)",
+"esperado": 11.0
+},
+{
+"id": 789,
+"f": "=NÚMSEMANA(C7)",
+"esperado": 53,
+"soLibreOffice": true
+},
+{
+"id": 790,
+"f": "=NÚMSEMANA(C7;2)",
+"esperado": 53,
+"soLibreOffice": true
+},
+{
+"id": 791,
+"f": "=NÚMSEMANA(C7;21)",
+"esperado": 1.0
+},
+{
+"id": 792,
+"f": "=NÚMSEMANA(C12;21)",
+"esperado": 53.0
+},
+{
+"id": 793,
+"f": "=NÚMSEMANA(C12)",
+"esperado": 2.0
+},
+{
+"id": 794,
+"f": "=NÚMSEMANA(C4;21)",
+"esperado": 52.0
+},
+{
+"id": 795,
+"f": "=NÚMSEMANA(C10;21)",
+"esperado": 1.0
+},
+{
+"id": 796,
+"f": "=NÚMSEMANA(C8;21)",
+"esperado": 53.0
+},
+{
+"id": 797,
+"f": "=NÚMSEMANA(C8)",
+"esperado": 1.0
+},
+{
+"id": 798,
+"f": "=NÚMSEMANA(C1;11)",
+"esperado": 11.0
+},
+{
+"id": 799,
+"f": "=NÚMSEMANA(C1;16)",
+"esperado": 11.0
+},
+{
+"id": 800,
+"f": "=NÚMSEMANA(C1;3)",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 801,
+"f": "=NÚMSEMANA(C2;17)",
+"esperado": 9.0
+},
+{
+"id": 802,
+"f": "=NÚMSEMANA(DATA(2023;1;1);2)",
+"esperado": 1.0
+},
+{
+"id": 803,
+"f": "=NÚMSEMANA(DATA(2021;1;3);21)",
+"esperado": 53.0
+},
+{
+"id": 804,
+"f": "=NÚMSEMANA(DATA(2026;12;31);21)",
+"esperado": 53.0
+},
+{
+"id": 805,
+"f": "=C2-C3",
+"esperado": 29.0
+},
+{
+"id": 806,
+"f": "=C1+30",
+"esperado": 45396.0
+},
+{
+"id": 807,
+"f": "=C1-C5+1",
+"esperado": 75.0
+},
+{
+"id": 808,
+"f": "=HOJE()-HOJE()",
+"esperado": 0.0
+},
+{
+"id": 809,
+"f": "=AGORA()>=HOJE()",
+"esperado": true
+},
+{
+"id": 810,
+"f": "=ANO(HOJE())>=2024",
+"esperado": true
+},
+{
+"id": 811,
+"f": "=INT(AGORA())=HOJE()",
+"esperado": true
+},
+{
+"id": 812,
+"f": "=PGTO(0,01;12;1000)",
+"esperado": -88.8487886783417
+},
+{
+"id": 813,
+"f": "=PGTO(0;12;1200)",
+"esperado": -100.0
+},
+{
+"id": 814,
+"f": "=PGTO(0,01;12;1000;0;1)",
+"esperado": -87.96909770132841
+},
+{
+"id": 815,
+"f": "=PGTO(0,01;12;1000;-100)",
+"esperado": -80.96390981050753
+},
+{
+"id": 816,
+"f": "=PGTO(0,05/12;360;-200000)",
+"esperado": 1073.6432460242781
+},
+{
+"id": 817,
+"f": "=PGTO(0;12;1200;100)",
+"esperado": -108.33333333333333
+},
+{
+"id": 818,
+"f": "=PGTO(0;12;1200;0;1)",
+"esperado": -100.0
+},
+{
+"id": 819,
+"f": "=PGTO(0,01;0;1000)",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 820,
+"f": "=PGTO(-0,01;12;1000)",
+"esperado": -78.01644773057606
+},
+{
+"id": 821,
+"f": "=PGTO(\"1%\";12;1000)",
+"esperado": -88.8487886783417
+},
+{
+"id": 822,
+"f": "=PGTO(1%;12;1000)",
+"esperado": -88.8487886783417
+},
+{
+"id": 823,
+"f": "=VP(0,01;12;-100)",
+"esperado": 1125.5077473484644
+},
+{
+"id": 824,
+"f": "=VP(0;12;-100)",
+"esperado": 1200.0
+},
+{
+"id": 825,
+"f": "=VP(0,01;12;-100;0;1)",
+"esperado": 1136.7628248219485
+},
+{
+"id": 826,
+"f": "=VP(0,01;12;0;1000)",
+"esperado": -887.4492252651536
+},
+{
+"id": 827,
+"f": "=VP(0;12;-100;-50)",
+"esperado": 1250.0
+},
+{
+"id": 828,
+"f": "=VP(0,01;12;-100;500;1)",
+"esperado": 693.0382121893717
+},
+{
+"id": 829,
+"f": "=VF(0,01;12;-100)",
+"esperado": 1268.2503013196979
+},
+{
+"id": 830,
+"f": "=VF(0;12;-100)",
+"esperado": 1200.0
+},
+{
+"id": 831,
+"f": "=VF(0,01;12;-100;-1000)",
+"esperado": 2395.075331451668
+},
+{
+"id": 832,
+"f": "=VF(0,01;12;-100;0;1)",
+"esperado": 1280.9328043328946
+},
+{
+"id": 833,
+"f": "=VF(0;12;-100;-1000;1)",
+"esperado": 2200.0
+},
+{
+"id": 834,
+"f": "=VF(0,005;60;0;-10000)",
+"esperado": 13488.501525493075
+},
+{
+"id": 835,
+"f": "=NPER(0,01;-100;1000)",
+"esperado": 10.588644459423241
+},
+{
+"id": 836,
+"f": "=NPER(0;-100;1000)",
+"esperado": 10.0
+},
+{
+"id": 837,
+"f": "=NPER(0,01;-100;1000;0;1)",
+"esperado": 10.478145085116825
+},
+{
+"id": 838,
+"f": "=NPER(0,01;-10;1000)",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 839,
+"f": "=NPER(0;0;1000)",
+"esperado": {
+"erro": "#NÚM!"
+}
+},
+{
+"id": 840,
+"f": "=NPER(0,01;-100;0;5000)",
+"esperado": 40.748907156094056
+},
+{
+"id": 841,
+"f": "=NPER(0,01;100;1000)",
+"esperado": -9.57859403981317
+},
+{
+"id": 842,
+"f": "=NPER(0;-100;1000;-200)",
+"esperado": 8.0
+},
+{
+"id": 843,
+"f": "=TAXA(12;-100;1000)",
+"esperado": 0.02922854076915833
+},
+{
+"id": 844,
+"f": "=TAXA(12;-100;1200)",
+"esperado": 1.7046692413652312e-10,
+"bug": "B27"
+},
+{
+"id": 845,
+"f": "=TAXA(12;-100;1000;0;1)",
+"esperado": 0.035031530362282966
+},
+{
+"id": 846,
+"f": "=TAXA(60;-500;20000)",
+"esperado": 0.014394781000914108
+},
+{
+"id": 847,
+"f": "=TAXA(10;0;-1000;2000)",
+"esperado": 0.07177346253629324
+},
+{
+"id": 848,
+"f": "=TAXA(12;-100;2000)",
+"esperado": -0.07100194684504896
+},
+{
+"id": 849,
+"f": "=TAXA(12;-100;1000;0;0;0,5)",
+"esperado": 0.0292285407691339
+},
+{
+"id": 850,
+"f": "=TAXA(360;-1073,64;200000)",
+"esperado": 0.00416664453635995
+},
+{
+"id": 851,
+"f": "=SOMA( A1 ; A2 )",
+"esperado": 5.0
+},
+{
+"id": 852,
+"f": "=soma(a1:a3)",
+"esperado": 5.0
+},
+{
+"id": 853,
+"f": "=média(A1:A5)",
+"esperado": 200001.5
+},
+{
+"id": 854,
+"f": "=Se(A1>5;1;0)",
+"esperado": 1.0
+},
+{
+"id": 855,
+"f": "=SOMA(Planilha1!A1:A3)",
+"esperado": 5.0
+},
+{
+"id": 856,
+"f": "=Planilha1!A1*2",
+"esperado": 20.0
+},
+{
+"id": 857,
+"f": "='Planilha1'!A1",
+"esperado": 10.0
+},
+{
+"id": 858,
+"f": "=SOMA(SE(A1>5;A1:A3;0))",
+"esperado": 5.0
+},
+{
+"id": 859,
+"f": "=SE(A1>5;SE(A2<0;\"a\";\"b\");\"c\")",
+"esperado": "a"
+},
+{
+"id": 860,
+"f": "=ARRED(MÉDIA(A1:A5);2)",
+"esperado": 200001.5
+},
+{
+"id": 861,
+"f": "=MAIÚSCULA(ESQUERDA(B2;1))&MINÚSCULA(EXT.TEXTO(B2;2;100))",
+"esperado": "Banana"
+},
+{
+"id": 862,
+"f": "=SOMA(A1:A3)/CONT.NÚM(A1:A3)",
+"esperado": 1.6666666666666667
+},
+{
+"id": 863,
+"f": "=CONT.SE(A1:A12;\">\"&MÉDIA(A1:A5))",
+"esperado": 1.0
+},
+{
+"id": 864,
+"f": "=\"Total: \"&TEXTO(SOMA(G1:G5);\"#.##0\")",
+"esperado": "Total: 1.500"
+},
+{
+"id": 865,
+"f": "=VERDADEIRO()",
+"esperado": true
+},
+{
+"id": 866,
+"f": "=FALSO()",
+"esperado": false
+},
+{
+"id": 867,
+"f": "=verdadeiro",
+"esperado": true
+},
+{
+"id": 868,
+"f": "=SOMA(A1:A3;)",
+"esperado": 5.0
+},
+{
+"id": 869,
+"f": "=SE(A1;\"a;b\";\"c\")",
+"esperado": "a;b"
+},
+{
+"id": 870,
+"f": "=\"a\"\"b\"",
+"esperado": "a\"b"
+},
+{
+"id": 871,
+"f": "=NÚM.CARACT(\"a\"\"b\")",
+"esperado": 3.0
+},
+{
+"id": 872,
+"f": "=SOMA((A1:A3))",
+"esperado": 5.0
+},
+{
+"id": 873,
+"f": "=(A1)",
+"esperado": 10.0
+},
+{
+"id": 874,
+"f": "=((1+2))*3",
+"esperado": 9.0
+},
+{
+"id": 875,
+"f": "=SOMA(A1:A3)*-1",
+"esperado": -5.0
+},
+{
+"id": 876,
+"f": "=-SOMA(A1:A3)",
+"esperado": -5.0
+},
+{
+"id": 877,
+"f": "=10*SOMA(A1)%",
+"esperado": 1.0
+},
+{
+"id": 878,
+"f": "=ABS(-A2)^2",
+"esperado": 25.0
+},
+{
+"id": 879,
+"f": "=A1>A2>A3",
+"esperado": true
+},
+{
+"id": 880,
+"f": "=MÍNIMO(MÁXIMO(A1;A2);5)",
+"esperado": 5.0
+},
+{
+"id": 881,
+"f": "=1/(A1-A10)",
+"esperado": {
+"erro": "#DIV/0!"
+}
+},
+{
+"id": 882,
+"f": "=#N/D",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 883,
+"f": "=ÉERROS(#N/D)",
+"esperado": true
+},
+{
+"id": 884,
+"f": "=SEERRO(#VALOR!;1)",
+"esperado": 1.0
+},
+{
+"id": 885,
+"f": "=SOMA(A1:A3)+#REF!",
+"esperado": {
+"erro": "#REF!"
+}
+},
+{
+"id": 886,
+"f": "=FILTRO(F1:G5;G1:G5>250)",
+"esperado": [
+[
+"Carla",
+300
+],
+[
+"davi",
+400
+],
+[
+"Eva",
+500
+]
+]
+},
+{
+"id": 887,
+"f": "=FILTRO(F1:F5;G1:G5>9999)",
+"esperado": {
+"erro": "#CALC!"
+}
+},
+{
+"id": 888,
+"f": "=FILTRO(F1:F5;G1:G5>9999;\"nada\")",
+"esperado": "nada"
+},
+{
+"id": 889,
+"f": "=FILTRO(F1:F5;(G1:G5>150)*(G1:G5<450))",
+"esperado": [
+[
+"bruno"
+],
+[
+"Carla"
+],
+[
+"davi"
+]
+]
+},
+{
+"id": 890,
+"f": "=FILTRO(D1:D5;D1:D3>1)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 891,
+"f": "=FILTRO(F1:F10;F1:F10=\"ana\")",
+"esperado": [
+[
+"Ana"
+],
+[
+"Ana"
+]
+]
+},
+{
+"id": 892,
+"f": "=FILTRO(K1:O2;K1:O1>30)",
+"esperado": [
+[
+40,
+50
+],
+[
+"d",
+"e"
+]
+]
+},
+{
+"id": 893,
+"f": "=SOMA(FILTRO(G1:G10;D1:D10>4))",
+"esperado": 3500
+},
+{
+"id": 894,
+"f": "=FILTRO(D1:D5;D1:D5>3;\"\")",
+"esperado": [
+[
+5
+],
+[
+7
+],
+[
+9
+]
+]
+},
+{
+"id": 895,
+"f": "=ÚNICO(F1:F10)",
+"esperado": [
+[
+"Ana"
+],
+[
+"bruno"
+],
+[
+"Carla"
+],
+[
+"davi"
+],
+[
+"Eva"
+],
+[
+"Éder"
+],
+[
+"Zé"
+],
+[
+"ana "
+]
+]
+},
+{
+"id": 896,
+"f": "=ÚNICO(D1:D8;;VERDADEIRO)",
+"esperado": [
+[
+1
+],
+[
+7
+],
+[
+9
+],
+[
+"x"
+]
+],
+"bug": "B32"
+},
+{
+"id": 897,
+"f": "=ÚNICO(K1:O1;VERDADEIRO)",
+"esperado": [
+[
+10,
+20,
+30,
+40,
+50
+]
+]
+},
+{
+"id": 898,
+"f": "=CONT.VALORES(ÚNICO(F1:F10))",
+"esperado": 8
+},
+{
+"id": 899,
+"f": "=ÚNICO(D1:D3)",
+"esperado": [
+[
+1
+],
+[
+3
+],
+[
+5
+]
+]
+},
+{
+"id": 900,
+"f": "=CLASSIFICAR(F1:F10)",
+"esperado": [
+[
+"Ana"
+],
+[
+"Ana"
+],
+[
+"ana "
+],
+[
+"bruno"
+],
+[
+"Carla"
+],
+[
+"carla"
+],
+[
+"davi"
+],
+[
+"Éder"
+],
+[
+"Eva"
+],
+[
+"Zé"
+]
+],
+"bug": "B08"
+},
+{
+"id": 901,
+"f": "=CLASSIFICAR(F1:G5;2;-1)",
+"esperado": [
+[
+"Eva",
+500
+],
+[
+"davi",
+400
+],
+[
+"Carla",
+300
+],
+[
+"bruno",
+200
+],
+[
+"Ana",
+100
+]
+]
+},
+{
+"id": 902,
+"f": "=CLASSIFICAR(D1:D5;1;-1)",
+"esperado": [
+[
+9
+],
+[
+7
+],
+[
+5
+],
+[
+3
+],
+[
+1
+]
+]
+},
+{
+"id": 903,
+"f": "=CLASSIFICAR(K1:O1;1;-1;VERDADEIRO)",
+"esperado": [
+[
+50,
+40,
+30,
+20,
+10
+]
+],
+"bug": "B32"
+},
+{
+"id": 904,
+"f": "=CLASSIFICAR(A1:A5)",
+"esperado": [
+[
+-5
+],
+[
+0
+],
+[
+2.5
+],
+[
+10
+],
+[
+1000000
+]
+]
+},
+{
+"id": 905,
+"f": "=CLASSIFICAR(D1:D8)",
+"esperado": [
+[
+1
+],
+[
+3
+],
+[
+3
+],
+[
+5
+],
+[
+5
+],
+[
+7
+],
+[
+9
+],
+[
+"x"
+]
+]
+},
+{
+"id": 906,
+"f": "=CLASSIFICAR(F1:G5;3)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B32"
+},
+{
+"id": 907,
+"f": "=SEQUÊNCIA(3)",
+"esperado": [
+[
+1
+],
+[
+2
+],
+[
+3
+]
+]
+},
+{
+"id": 908,
+"f": "=SEQUÊNCIA(2;3)",
+"esperado": [
+[
+1,
+2,
+3
+],
+[
+4,
+5,
+6
+]
+]
+},
+{
+"id": 909,
+"f": "=SEQUÊNCIA(3;1;10;-2)",
+"esperado": [
+[
+10
+],
+[
+8
+],
+[
+6
+]
+]
+},
+{
+"id": 910,
+"f": "=SEQUÊNCIA(1;3;0;0,5)",
+"esperado": [
+[
+0,
+0.5,
+1
+]
+]
+},
+{
+"id": 911,
+"f": "=SEQUÊNCIA(0)",
+"esperado": {
+"erro": "#CALC!"
+},
+"bug": "B13"
+},
+{
+"id": 912,
+"f": "=SEQUÊNCIA(2,7)",
+"esperado": [
+[
+1
+],
+[
+2
+]
+]
+},
+{
+"id": 913,
+"f": "=SOMA(SEQUÊNCIA(100))",
+"esperado": 5050
+},
+{
+"id": 914,
+"f": "=SEQUÊNCIA(2;;5)",
+"esperado": [
+[
+5
+],
+[
+6
+]
+],
+"bug": "B07"
+},
+{
+"id": 915,
+"f": "=PEGAR(D1:D5;2)",
+"esperado": [
+[
+1
+],
+[
+3
+]
+]
+},
+{
+"id": 916,
+"f": "=PEGAR(D1:D5;-2)",
+"esperado": [
+[
+7
+],
+[
+9
+]
+]
+},
+{
+"id": 917,
+"f": "=PEGAR(F1:G5;1;-1)",
+"esperado": 100
+},
+{
+"id": 918,
+"f": "=PEGAR(D1:D5;10)",
+"esperado": [
+[
+1
+],
+[
+3
+],
+[
+5
+],
+[
+7
+],
+[
+9
+]
+]
+},
+{
+"id": 919,
+"f": "=PEGAR(D1:D5;0)",
+"esperado": {
+"erro": "#CALC!"
+}
+},
+{
+"id": 920,
+"f": "=PEGAR(F1:G3;;1)",
+"esperado": [
+[
+"Ana"
+],
+[
+"bruno"
+],
+[
+"Carla"
+]
+]
+},
+{
+"id": 921,
+"f": "=DESCARTAR(D1:D5;3)",
+"esperado": [
+[
+7
+],
+[
+9
+]
+]
+},
+{
+"id": 922,
+"f": "=DESCARTAR(D1:D5;-4)",
+"esperado": 1
+},
+{
+"id": 923,
+"f": "=DESCARTAR(D1:D5;5)",
+"esperado": {
+"erro": "#CALC!"
+}
+},
+{
+"id": 924,
+"f": "=DESCARTAR(F1:G3;;1)",
+"esperado": [
+[
+100
+],
+[
+200
+],
+[
+300
+]
+]
+},
+{
+"id": 925,
+"f": "=ESCOLHERCOLS(F1:G3;2)",
+"esperado": [
+[
+100
+],
+[
+200
+],
+[
+300
+]
+]
+},
+{
+"id": 926,
+"f": "=ESCOLHERCOLS(F1:G2;-1;1)",
+"esperado": [
+[
+100,
+"Ana"
+],
+[
+200,
+"bruno"
+]
+]
+},
+{
+"id": 927,
+"f": "=ESCOLHERCOLS(F1:G2;3)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 928,
+"f": "=ESCOLHERCOLS(F1:G2;0)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 929,
+"f": "=DIVIDIRTEXTO(K5;\",\")",
+"esperado": [
+[
+"a",
+"b",
+"",
+"c"
+]
+]
+},
+{
+"id": 930,
+"f": "=DIVIDIRTEXTO(K5;\",\";;VERDADEIRO)",
+"esperado": [
+[
+"a",
+"b",
+"c"
+]
+]
+},
+{
+"id": 931,
+"f": "=DIVIDIRTEXTO(K6;\"=\";\";\")",
+"esperado": [
+[
+"nome",
+"Ana"
+],
+[
+"idade",
+"30"
+]
+]
+},
+{
+"id": 932,
+"f": "=DIVIDIRTEXTO(K7;\" \")",
+"esperado": [
+[
+"um",
+"dois",
+"",
+"tres"
+]
+]
+},
+{
+"id": 933,
+"f": "=DIVIDIRTEXTO(\"a-b\";\"x\")",
+"esperado": "a-b"
+},
+{
+"id": 934,
+"f": "=DIVIDIRTEXTO(\"a,b;c\";\",\";\";\")",
+"esperado": [
+[
+"a",
+"b"
+],
+[
+"c",
+{
+"erro": "#N/D"
+}
+]
+]
+},
+{
+"id": 935,
+"f": "=DIVIDIRTEXTO(\"aXbxc\";\"x\")",
+"esperado": [
+[
+"aXb",
+"c"
+]
+]
+},
+{
+"id": 937,
+"f": "=PROCX(5;D1:D5;E1:E5)",
+"esperado": "cinco"
+},
+{
+"id": 938,
+"f": "=PROCX(6;D1:D5;E1:E5)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 939,
+"f": "=PROCX(6;D1:D5;E1:E5;\"nada\")",
+"esperado": "nada"
+},
+{
+"id": 940,
+"f": "=PROCX(6;D1:D5;E1:E5;;-1)",
+"esperado": "cinco",
+"bug": "B06"
+},
+{
+"id": 941,
+"f": "=PROCX(6;D1:D5;E1:E5;;1)",
+"esperado": "sete",
+"bug": "B06"
+},
+{
+"id": 942,
+"f": "=PROCX(\"car*\";F1:F5;G1:G5;;2)",
+"esperado": 300,
+"bug": "B06"
+},
+{
+"id": 943,
+"f": "=PROCX(5;D1:D10;G1:G10;;0;-1)",
+"esperado": 600,
+"bug": "B06"
+},
+{
+"id": 944,
+"f": "=PROCX(\"ANA\";F1:F5;G1:G5)",
+"esperado": 100
+},
+{
+"id": 945,
+"f": "=PROCX(3;D1:D5;F1:G5)",
+"esperado": [
+[
+"bruno",
+200
+]
+]
+},
+{
+"id": 946,
+"f": "=PROCX(6;D1:D5;E1:E5;;0)",
+"esperado": {
+"erro": "#N/D"
+},
+"bug": "B07"
+},
+{
+"id": 947,
+"f": "=PROCX(5;D1:D5;E1:E4)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 948,
+"f": "=PROCX(99;D1:D5;E1:E5;0)",
+"esperado": 0
+},
+{
+"id": 949,
+"f": "=PROCX(30;K1:O1;K3:O3)",
+"esperado": 3.5
+},
+{
+"id": 950,
+"f": "=CORRESPX(5;D1:D5)",
+"esperado": 3
+},
+{
+"id": 951,
+"f": "=CORRESPX(6;D1:D5)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 952,
+"f": "=CORRESPX(6;D1:D5;-1)",
+"esperado": 3
+},
+{
+"id": 953,
+"f": "=CORRESPX(6;D1:D5;1)",
+"esperado": 4
+},
+{
+"id": 954,
+"f": "=CORRESPX(\"c*\";F1:F5;2)",
+"esperado": 3
+},
+{
+"id": 955,
+"f": "=CORRESPX(5;D1:D10;0;-1)",
+"esperado": 6
+},
+{
+"id": 956,
+"f": "=CORRESPX(10;D1:D5;-1)",
+"esperado": 5
+},
+{
+"id": 957,
+"f": "=CORRESPX(0;D1:D5;-1)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 958,
+"f": "=CORRESPX(6;D1:D5;-1;2)",
+"esperado": 3
+},
+{
+"id": 959,
+"f": "=CORRESPX(\"ana\";F1:F10)",
+"esperado": 1
+},
+{
+"id": 960,
+"f": "=CORRESPX(\"c*\";F1:F5)",
+"esperado": {
+"erro": "#N/D"
+}
+},
+{
+"id": 961,
+"f": "=CORRESPX(5;D1:D5;3)",
+"esperado": {
+"erro": "#VALOR!"
+}
+},
+{
+"id": 962,
+"f": "=LET(x;2;x*3)",
+"esperado": 6
+},
+{
+"id": 963,
+"f": "=LET(x;A1;y;x+1;x*y)",
+"esperado": 110
+},
+{
+"id": 964,
+"f": "=LET(t;D1:D5;SOMA(t))",
+"esperado": 25
+},
+{
+"id": 965,
+"f": "=LET(x;5;SE(x>3;\"alto\";\"baixo\"))",
+"esperado": "alto"
+},
+{
+"id": 966,
+"f": "=LET(x;2;y;x^2;LET(x;10;x+y))",
+"esperado": 14
+},
+{
+"id": 967,
+"f": "=LET(taxa;10%;A1*taxa)",
+"esperado": 1.0
+},
+{
+"id": 969,
+"f": "=A6",
+"esperado": 0,
+"bug": "B04"
+},
+{
+"id": 970,
+"f": "=B6",
+"esperado": 0,
+"bug": "B04"
+},
+{
+"id": 971,
+"f": "=SEERRO(A6;\"x\")",
+"esperado": 0.0,
+"bug": "B04"
+},
+{
+"id": 972,
+"f": "=ÉCÉL.VAZIA(A6)",
+"esperado": true
+},
+{
+"id": 973,
+"f": "=SEQUÊNCIA(-1)",
+"esperado": {
+"erro": "#VALOR!"
+},
+"bug": "B13"
+},
+{
+"id": 974,
+"f": "=DIATRABALHO(C1;0,5)",
+"esperado": 45366.0,
+"bug": "B01"
+},
+{
+"id": 976,
+"f": "=SOMA(A1;A6;A8;A7;B1)",
+"esperado": 10,
+"bug": "B02"
+},
+{
+"id": 977,
+"f": "=MÉDIA(A2;A6;A9)",
+"esperado": -1,
+"bug": "B02"
+},
+{
+"id": 978,
+"f": "=CONT.SE(A1:A12;\"<>\")",
+"esperado": 11.0
+},
+{
+"id": 979,
+"f": "=E(A1>0;B1)",
+"esperado": true,
+"bug": "B09"
+},
+{
+"id": 980,
+"f": "=OU(A6;VERDADEIRO)",
+"esperado": true
+}
+]
+}

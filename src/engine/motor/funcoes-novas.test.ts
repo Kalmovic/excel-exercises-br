@@ -30,7 +30,7 @@ describe("funções novas", () => {
   });
 
   it("CORRESPX: exata por padrão, próximo menor/maior, do fim para o começo, curinga", () => {
-    const p = new Planilha({ linhas: 10, colunas: 4, celulas: { A1: { entrada: "10" }, A2: { entrada: "20" }, A3: { entrada: "30" }, A4: { entrada: "20" }, B1: { entrada: "Mouse sem fio" }, B2: { entrada: "Teclado" } } });
+    const p = new Planilha({ linhas: 10, colunas: 8, celulas: { A1: { entrada: "10" }, A2: { entrada: "20" }, A3: { entrada: "30" }, A4: { entrada: "20" }, B1: { entrada: "Mouse sem fio" }, B2: { entrada: "Teclado" } } });
     expect(calc("=CORRESPX(20;A1:A4)", p)).toBe(2);
     expect(calc("=CORRESPX(20;A1:A4;0;-1)", p)).toBe(4);
     expect(calc("=CORRESPX(25;A1:A4)", p)).toEqual({ erro: "#N/D" });
