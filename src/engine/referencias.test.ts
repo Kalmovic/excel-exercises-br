@@ -15,6 +15,15 @@ describe("referências coloridas", () => {
     expect(referenciasDaFormula("=LOG10(A1)").map((x) => x.texto)).toEqual(["A1"]);
     expect(referenciasDaFormula("B2+C3")).toEqual([]);
   });
+  it("#24: aba com espaço sem aspas continua sendo de outra aba (não pinta a aba da fórmula)", () => {
+    const [r] = referenciasDaFormula("=SOMA(Vendas 2025!B2:B6)");
+    expect(r.texto).toBe("B2:B6");
+    expect(r.aba).toBe("Vendas 2025");
+    expect(referenciasDaFormula("=A1+2025!B2")[1].aba).toBe("2025");
+    // Com aspas, como antes; sem prefixo, sem aba.
+    expect(referenciasDaFormula("=SOMA('Vendas 2025'!B2:B6)")[0].aba).toBe("Vendas 2025");
+    expect(referenciasDaFormula("=SOMA(B2:B6)")[0].aba).toBeUndefined();
+  });
   it("intervalo escrito ao contrário é normalizado", () => {
     expect(referenciasDaFormula("=SOMA(B7:B2)")[0].intervalo.inicio).toEqual({ linha: 1, coluna: 1 });
   });

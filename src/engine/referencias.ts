@@ -21,6 +21,9 @@ export type ReferenciaNaFormula = {
 /** Nome de aba logo antes de uma referência: Vendas! ou 'Base 2024'! */
 const PREFIXO_ABA = /(?:'((?:[^']|'')+)'|([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*))!$/;
 
+/** O que vem antes de um "!" sem nome de aba válido, até o operador ou separador anterior (com espaços). */
+const semAspas = (antes: string) => /[^=(;,+\-*/&^<>]*$/.exec(antes)![0].trim();
+
 /** Referências de célula/intervalo de uma fórmula, fora de aspas e de nomes de função. */
 export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
   if (!formula.startsWith("=")) return [];
@@ -50,8 +53,11 @@ export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
     if (/[A-Za-z0-9_.(!]/.test(formula[fim] ?? "")) continue; // "Q1!" é nome de aba, não célula
     const [a, b = a] = m[0].replace(/\$/g, "").toUpperCase().split(":");
     const intervalo = normalizar(deEndereco(a), deEndereco(b));
-    const p = formula[inicio - 1] === "!" ? PREFIXO_ABA.exec(formula.slice(0, inicio)) : null;
-    const aba = p ? (p[1]?.replace(/''/g, "'") ?? p[2]) : undefined;
+    const comAba = formula[inicio - 1] === "!";
+    const p = comAba ? PREFIXO_ABA.exec(formula.slice(0, inicio)) : null;
+    // Com "!" mas sem um nome válido (ex.: Vendas 2025!B2 sem as aspas): a referência continua sendo
+    // de outra aba, com o texto que veio antes do "!", e não da aba da fórmula.
+    const aba = p ? (p[1]?.replace(/''/g, "'") ?? p[2]) : comAba ? semAspas(formula.slice(0, inicio - 1)) : undefined;
     const chave = `${aba ?? ""}!${a}:${b}`;
     if (!cores.has(chave)) cores.set(chave, cores.size % CORES_REFERENCIA.length);
     out.push({ inicio, fim, texto: m[0], intervalo, cor: cores.get(chave)!, ...(aba !== undefined ? { aba } : {}) });

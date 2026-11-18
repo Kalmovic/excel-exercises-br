@@ -11,7 +11,7 @@
   "titulo": "Andar pela planilha com o teclado",
   "enunciado": [
     "Leve a seleção de **A1** até **C3** usando só as **setas do teclado**.",
-    "Se as setas não responderem, clique em A1 uma vez (clicar na própria A1 não conta). Se mudar de célula com o mouse, use Recomeçar."
+    "Se as setas não responderem, clique em **Recomeçar**: a seleção volta para A1 e o teclado fica pronto. Clicar em outra célula com o mouse conta como mouse, e aí também é só usar Recomeçar."
   ],
   "grade": {
     "linhas": 8,

@@ -37,6 +37,13 @@ export type EstadoSimulador = {
   graficoAtivo: number | null;
   /** "Circular Dados Inválidos" ligado: as células que furam a validação ganham um círculo vermelho. */
   circularInvalidos: boolean;
+  /**
+   * Questão respondida (teste do módulo): a planilha só pode ser observada.
+   * Diferente da seleção fixa, ainda dá para andar pela grade; o que não dá é mudar dados.
+   */
+  travada: boolean;
+  /** Trava a planilha (e descarta uma edição ou arrasto em andamento). */
+  travar: () => void;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -101,7 +108,10 @@ export function criarStore(
     intervaloNoToque: null,
     graficoAtivo: null,
     circularInvalidos: false,
+    travada: false,
     resposta,
+
+    travar: () => set({ travada: true, modo: "pronto", rascunho: "", arrasto: null, alca: null }),
 
     selecao: () => normalizar(get().ancora, get().foco),
 
@@ -180,8 +190,8 @@ export function criarStore(
     },
 
     iniciarEdicao: (modo, texto) => {
-      const { ancora } = get();
-      if (fixa) return false;
+      const { ancora, travada } = get();
+      if (fixa || travada) return false;
       const motivo = planilha.motivoBloqueio(ancora);
       if (motivo) {
         set({ mensagem: motivo });
@@ -203,8 +213,12 @@ export function criarStore(
     setRascunho: (t) => set({ rascunho: t, mensagem: null, indiceSugestao: 0, sugestoesFechadas: false }),
 
     confirmar: () => {
-      const { modo, rascunho, ancora } = get();
+      const { modo, rascunho, ancora, travada } = get();
       if (modo === "pronto") return true;
+      if (travada) {
+        set({ modo: "pronto", rascunho: "" });
+        return true;
+      }
       const r = planilha.definir(ancora, rascunho);
       if (!r.ok) {
         set({ mensagem: r.mensagem });
@@ -225,16 +239,16 @@ export function criarStore(
     },
 
     colar: () => {
-      if (fixa) return;
+      if (fixa || get().travada) return;
       if (planilha.colar(get().selecao())) set({ copiado: null });
     },
 
     apagarSelecao: () => {
-      if (!fixa) planilha.limpar(get().selecao());
+      if (!fixa && !get().travada) planilha.limpar(get().selecao());
     },
 
     preencherSelecao: (direcao) => {
-      if (fixa) return;
+      if (fixa || get().travada) return;
       const s = get().selecao();
       // Como no Excel: seleção de uma linha só (ex.: uma célula) copia a linha de CIMA;
       // de uma coluna só, com Ctrl+R, copia a coluna da ESQUERDA.
@@ -265,7 +279,7 @@ export function criarStore(
     },
 
     iniciarAlca: () => {
-      if (!fixa) set({ arrasto: "alca", alca: null });
+      if (!fixa && !get().travada) set({ arrasto: "alca", alca: null });
     },
 
     moverAlca: (p) => {
@@ -291,8 +305,8 @@ export function criarStore(
     },
 
     terminarArrasto: () => {
-      const { arrasto, alca } = get();
-      if (arrasto === "alca" && alca) {
+      const { arrasto, alca, travada } = get();
+      if (arrasto === "alca" && alca && !travada) {
         const s = get().selecao();
         planilha.preencher(s, alca);
         set({ ancora: s.inicio, foco: alca.fim });
@@ -302,9 +316,12 @@ export function criarStore(
 
     setResposta: (t) => set({ resposta: t }),
 
-    formatarSelecao: (formato) => planilha.formatar(get().selecao(), formato),
+    formatarSelecao: (formato) => {
+      if (!get().travada) planilha.formatar(get().selecao(), formato);
+    },
 
     alternarFiltro: () => {
+      if (get().travada) return;
       if (planilha.filtroAtual()) return planilha.desligarFiltro();
       const sel = get().selecao();
       const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
@@ -317,6 +334,7 @@ export function criarStore(
     },
 
     classificar: (ordem, coluna) => {
+      if (get().travada) return;
       const { ancora } = get();
       const sel = get().selecao();
       const f = planilha.filtroAtual();

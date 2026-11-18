@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import type { EstiloDestaque, RegraCondicional } from "@/content/schema";
-import { deIntervalo, intervaloParaTexto } from "@/engine/address";
+import { deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
 import { navegarItens, useEscape, useFocoDentro } from "./teclado";
@@ -258,6 +258,16 @@ function IconeCondicional() {
   );
 }
 
+/** O endereço, se o texto de "Aplica-se a" for uma célula só (A1 ou A1:A1); senão, null. */
+function celulaUnica(texto: string): string | null {
+  try {
+    const i = deIntervalo(texto.replace(/\$/g, "").trim().toUpperCase());
+    return i.inicio.linha === i.fim.linha && i.inicio.coluna === i.fim.coluna ? paraEndereco(i.inicio) : null;
+  } catch {
+    return null;
+  }
+}
+
 /** A janela de uma regra: o valor (ou fórmula), o estilo e o intervalo "Aplica-se a". */
 function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }: { tipo: TipoForm; intervalo: string; fechar: (paraGrade?: boolean) => void }) {
   const { planilha, entradaRef } = useSimulador();
@@ -273,6 +283,8 @@ function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }:
   const [estilo, setEstilo] = useState<EstiloDestaque>("vermelho");
   const [intervalo, setIntervalo] = useState(intervaloInicial);
   const [erro, setErro] = useState<string | null>(null);
+  // "Aplica-se a" com uma célula só (a janela abriu sem um intervalo selecionado): avisar, sem adivinhar a coluna.
+  const celulaSo = celulaUnica(intervalo);
 
   const ok = (e: React.FormEvent) => {
     e.preventDefault();
@@ -369,8 +381,20 @@ function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }:
       </div>
       <label className="flex items-center gap-2 text-xs text-zinc-600">
         Aplica-se a
-        <input value={intervalo} onChange={(e) => setIntervalo(e.target.value)} className={`${campo} w-28 font-mono uppercase`} aria-label="Aplica-se a" data-testid="regra-intervalo" />
+        <input
+          value={intervalo}
+          onChange={(e) => setIntervalo(e.target.value)}
+          className={`${campo} w-28 font-mono uppercase`}
+          aria-label="Aplica-se a"
+          aria-describedby={celulaSo ? `${id}-uma-celula` : undefined}
+          data-testid="regra-intervalo"
+        />
       </label>
+      {celulaSo && (
+        <p id={`${id}-uma-celula`} className="rounded bg-warning-bg px-2 py-1.5 text-xs text-ink" data-testid="aviso-uma-celula">
+          Só a célula {celulaSo} vai receber a regra. Para a coluna inteira, selecione o intervalo antes ou digite aqui (ex.: C2:C11).
+        </p>
+      )}
       {erro && (
         <p role="alert" className="text-sm text-red-700">
           {erro}

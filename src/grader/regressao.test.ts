@@ -79,6 +79,43 @@ describe("ferramenta", () => {
     if (!r.ok && !e.verificacoes[0].mensagem) expect(r.falhas[0].mensagem).toMatch(/ordem pedida/);
   });
 
+  it("#13: classificou pela coluna errada: o retorno diz qual foi e qual é a pedida", () => {
+    const e = ferr("dados-classificar-maior-valor");
+    const p = Planilha.deExercicio(e);
+    // A1 ativa e Z→A: classificou por Vendedor, não por Valor.
+    p.classificar({ intervalo: "A1:D10", chaves: [{ coluna: "A", ordem: "desc" }], cabecalho: true });
+    const r = corrigir(e, p);
+    expect(r.ok).toBe(false);
+    expect(r.falhas[0].mensagem).toBe(
+      "Você classificou pela coluna A (Vendedor). A ordem pedida é por C (Valor): clique numa célula da coluna C antes de classificar.",
+    );
+  });
+
+  it("#13: genérico: ordem alfabética pedida, classificou por Região", () => {
+    const e = ferr("dados-classificar-maior-valor-variacao-a");
+    const p = Planilha.deExercicio(e);
+    p.classificar({ intervalo: "A1:D10", chaves: [{ coluna: "B", ordem: "asc" }], cabecalho: true });
+    const r = corrigir(e, p);
+    expect(r.falhas[0].mensagem).toMatch(/^Você classificou pela coluna B \(Região\)\. A ordem pedida é por A \(Vendedor\)/);
+  });
+
+  it("#13: sem classificar nada (ou na coluna certa, ao contrário), não acusa outra coluna", () => {
+    const e = ferr("dados-classificar-maior-valor");
+    expect(corrigir(e, Planilha.deExercicio(e)).falhas[0].mensagem).not.toMatch(/Você classificou/);
+    const p = Planilha.deExercicio(e);
+    p.classificar({ intervalo: "A1:D10", chaves: [{ coluna: "C", ordem: "asc" }], cabecalho: true });
+    expect(corrigir(e, p).falhas[0].mensagem).not.toMatch(/Você classificou/);
+  });
+
+  it("#13: duas chaves (Status e Vendedor): sem uma coluna pedida única, não acusa", () => {
+    const e = ferr("teste-dados-4");
+    const p = Planilha.deExercicio(e);
+    p.classificar({ intervalo: "A1:D10", chaves: [{ coluna: "A", ordem: "asc" }], cabecalho: true });
+    const r = corrigir(e, p);
+    expect(r.ok).toBe(false);
+    expect(r.falhas[0].mensagem).not.toMatch(/Você classificou/);
+  });
+
   it("persona: a pegadinha de classificação mostra só a primeira falha (sem mensagens contraditórias)", () => {
     const e = ferr("dados-classificar-maior-valor-pegadinha");
     const p = Planilha.deExercicio(e);

@@ -104,7 +104,6 @@ export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
   const [rodada, setRodada] = useState(0);
   const indice = indiceFixo ?? respostas.length;
   const fim = respostas.length === questoes.length && indice >= questoes.length;
-  const respondida = respostas.length > indice;
 
   const responder = (ok: boolean, entrega: RespostaQuestao) => {
     const atual = lerTentativa(lerTentativaBruta(modulo.slug), slugs);
@@ -156,18 +155,16 @@ export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
       <SimuladorCarregavel
         key={`${rodada}-${indice}`}
         exercicio={q}
-        teste={{ corrigir: (resposta) => corrigirNoServidor(modulo.slug, indice, resposta), aoResponder: responder }}
+        teste={{
+          corrigir: (resposta) => corrigirNoServidor(modulo.slug, indice, resposta),
+          aoResponder: responder,
+          // O botão fica no quadro do retorno (antes ficava embaixo da grade, fora da tela).
+          proxima: {
+            rotulo: indice + 1 < questoes.length ? "Próxima questão →" : "Ver resultado",
+            ir: () => setIndiceFixo(indice + 1),
+          },
+        }}
       />
-      {respondida && (
-        <button
-          type="button"
-          onClick={() => setIndiceFixo(indice + 1)}
-          className="rounded-lg bg-ink px-5 py-3 font-semibold text-white"
-          data-testid="proxima-teste"
-        >
-          {indice + 1 < questoes.length ? "Próxima questão →" : "Ver resultado"}
-        </button>
-      )}
     </div>
   );
 }

@@ -81,6 +81,8 @@ type Props = {
   teste?: {
     corrigir: (resposta: RespostaQuestao) => Promise<boolean>;
     aoResponder: (ok: boolean, resposta: RespostaQuestao) => void;
+    /** Próximo passo depois de responder (o botão fica no quadro do retorno). */
+    proxima?: { rotulo: string; ir: () => void };
   };
   /**
    * Simulado de vaga: sem correção na hora nem dicas. A questão entrega ao pai
@@ -89,7 +91,38 @@ type Props = {
   simulado?: { registrar: (corrigirAgora: () => boolean) => void };
   /** Fora da trilha (questão de concurso): a página cuida da navegação. */
   avulso?: boolean;
+  /**
+   * Lição embutida numa página (ex.: /pro): a grade abre rolada até as células
+   * do exercício, e o acerto não solta confete (cairia sobre o resto da página).
+   */
+  embutido?: boolean;
 };
+
+/**
+ * Rola a grade (só ela, não a página, e sem mexer no foco) até as células do
+ * exercício ficarem à vista. A grade já mostra a célula ativa e o alvo quando os
+ * dois cabem; numa grade embutida estreita, o que importa é o alvo.
+ */
+function mostrarAlvos(raiz: HTMLElement | null, alvos: Set<string>) {
+  const g = raiz?.querySelector<HTMLElement>('[data-testid="grade"]');
+  if (!g || alvos.size === 0) return;
+  const cels = [...alvos].map((a) => g.querySelector<HTMLElement>(`[data-celula="${a}"]`)).filter((c): c is HTMLElement => !!c);
+  if (cels.length === 0) return;
+  const x0 = Math.min(...cels.map((c) => c.offsetLeft));
+  const x1 = Math.max(...cels.map((c) => c.offsetLeft + c.offsetWidth));
+  const y0 = Math.min(...cels.map((c) => c.offsetTop));
+  const y1 = Math.max(...cels.map((c) => c.offsetTop + c.offsetHeight));
+  // Margem para os cabeçalhos (coluna dos números das linhas e linha das letras).
+  const [mx, my] = [44, 28];
+  const eixo = (atual: number, ini: number, fim: number, visivel: number, margem: number) => {
+    if (ini - margem >= atual && fim <= atual + visivel) return atual;
+    const ateOFim = fim - visivel + 8;
+    return Math.max(0, ateOFim <= ini - margem ? ateOFim : ini - margem);
+  };
+  const left = eixo(g.scrollLeft, x0, x1, g.clientWidth, mx);
+  const top = eixo(g.scrollTop, y0, y1, g.clientHeight, my);
+  if (left !== g.scrollLeft || top !== g.scrollTop) g.scrollTo({ left, top });
+}
 
 export default function Simulador({
   exercicio: original,
@@ -102,6 +135,7 @@ export default function Simulador({
   teste,
   simulado,
   avulso = false,
+  embutido = false,
 }: Props) {
   // Celular sem teclado: exercícios "use as setas" trocam o texto e aceitam toque.
   const semTeclado = useSemTeclado();
@@ -129,6 +163,15 @@ export default function Simulador({
   const enviando = useRef(false);
 
   const { planilha, store } = nucleo;
+  const raizRef = useRef<HTMLDivElement>(null);
+  // Embutido: depois da primeira rolagem da grade (efeitos dos filhos rodam antes), mostra o alvo.
+  useEffect(() => {
+    if (!embutido) return;
+    const id = requestAnimationFrame(() => mostrarAlvos(raizRef.current, nucleo.alvos));
+    return () => cancelAnimationFrame(id);
+  }, [embutido, nucleo.alvos]);
+  // Teste do módulo: questão respondida fica só para ver (grade, barras e campo de resposta).
+  const travada = !!teste && respondida !== null;
 
   // Dicas e tempo ativo, gravados no progresso para o nivelamento.
   const dicasVistasRef = useRef(0);
@@ -239,6 +282,8 @@ export default function Simulador({
     setFalhaEnvio(false);
     try {
       const ok = await t.corrigir(resposta);
+      // Uma resposta só: a planilha trava (o que mudasse daqui em diante não contaria).
+      store.getState().travar();
       setRespondida(ok);
       t.aoResponder(ok, resposta);
     } catch {
@@ -286,7 +331,7 @@ export default function Simulador({
   const comemorar = () => {
     store.setState({ celebrando: true });
     setTimeout(() => store.setState({ celebrando: false }), 1300);
-    void celebrarAcerto(botaoVerificarRef.current);
+    if (!embutido) void celebrarAcerto(botaoVerificarRef.current);
     // Fim do módulo: troféu, só na primeira vez.
     if (!admin && trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
       registrar({ nome: "modulo_concluido", modulo: trilha.modulo });
@@ -294,7 +339,7 @@ export default function Simulador({
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
       setTimeout(() => {
         setTrofeu({ tentativas: total });
-        void celebrarTrofeu();
+        if (!embutido) void celebrarTrofeu();
       }, 700);
     }
   };
@@ -375,9 +420,9 @@ export default function Simulador({
 
   return (
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>
-      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
-        <div className="min-w-0 space-y-2">
-          {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
+      <div ref={raizRef} className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
+        <div className="min-w-0 space-y-2" inert={travada} data-travada={travada || undefined}>
+          {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} somenteLeitura={travada} />}
           {ex.type === "multiple_choice" && (
             <div className="space-y-4">
               <div className="space-y-2 text-lg font-semibold [overflow-wrap:anywhere]" data-testid="pergunta">
@@ -427,7 +472,7 @@ export default function Simulador({
           semCorrecao={!!simulado}
           avulso={avulso}
           aviso={aviso}
-          modoTeste={teste ? { conferindo, falhaEnvio, respondida } : undefined}
+          modoTeste={teste ? { conferindo, falhaEnvio, respondida, proxima: teste.proxima } : undefined}
           onDica={() => {
             const n = Math.min(dicasVistas + 1, ex.dicas.length);
             setDicasVistas(n);
