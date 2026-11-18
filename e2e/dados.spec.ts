@@ -34,7 +34,7 @@ test("filtro: Ctrl+Shift+L, menu da seta, linhas escondidas e progresso restaura
   // seta para baixo pula a linha escondida
   await celula(page, "A2").click();
   await page.keyboard.press("ArrowDown");
-  await expect(page.locator('[data-testid="editor-celula"]').filter({ visible: true })).toHaveAttribute("aria-label", "Célula A4");
+  await expect(page.locator('[data-testid="editor-celula"]').filter({ visible: true })).toHaveAttribute("aria-label", /^Célula A4(,|$)/);
   await verificarCorreto(page);
 
   await page.reload();
