@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import SimuladorCarregavel from "@/components/simulador/SimuladorCarregavel";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
-import { exercicioDemo, exerciciosDoModulo } from "@/content";
+import { MODULOS, exercicioDemo, exerciciosDoModulo } from "@/content";
+import { numerosDoConteudo } from "@/lib/numeros";
+import { contasLigadas } from "@/lib/supabase/config";
 import { NOME_DESAFIO, NOME_SITE, PRECO, economiaAnual, reais } from "@/lib/site";
 
 const botaoEscuro = "inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft";
@@ -35,19 +37,27 @@ const PASSOS = [
 /** Primeiro exercício da trilha de cada módulo. */
 const inicioDo = (modulo: string) => `/exercicios/${exerciciosDoModulo(modulo)[0].slug}`;
 
-const MODULOS: { n: number; titulo: string; desc: string; gratis?: boolean; href: string }[] = [
-  { n: 0, titulo: "Intro", desc: "Células, intervalos, barra de fórmulas e sua primeira conta.", gratis: true, href: inicioDo("intro") },
-  { n: 1, titulo: "Fundamentos", desc: "SOMA, MÉDIA, MÍNIMO, MÁXIMO, porcentagem, ARRED e o famoso $.", href: inicioDo("fundamentos") },
-  { n: 2, titulo: "Lógica", desc: "SE, E, OU, SES e SEERRO.", href: inicioDo("logica") },
-  { n: 3, titulo: "Contar e somar com condição", desc: "CONT.SE, SOMASE, SOMASES, MÉDIASE.", href: inicioDo("condicionais") },
-  { n: 4, titulo: "Busca", desc: "PROCV, PROCH, ÍNDICE + CORRESP e PROCX.", href: inicioDo("busca") },
-  { n: 5, titulo: "Texto", desc: "Juntar, cortar e limpar textos: ESQUERDA, EXT.TEXTO, ARRUMAR.", href: inicioDo("texto") },
-  { n: 6, titulo: "Datas", desc: "HOJE, DATADIF, DIATRABALHOTOTAL e FIMMÊS.", href: inicioDo("datas") },
-  { n: 7, titulo: "Arrays dinâmicos", desc: "FILTRO, CLASSIFICAR, ÚNICO e SEQUÊNCIA.", href: inicioDo("arrays") },
-  { n: 8, titulo: "Casos reais", desc: "Comissão, estoque, parcelamento e INSS por faixa.", href: inicioDo("casos") },
-];
+/** Os módulos da trilha, direto do conteúdo: a home nunca mostra uma trilha diferente da real. */
+const MODULOS_HOME = MODULOS.map((m) => ({
+  n: m.numero,
+  slug: m.slug,
+  titulo: m.titulo,
+  desc: m.descricao,
+  gratis: m.slug === "intro",
+  href: inicioDo(m.slug),
+}));
 
-const PLANO_GRATIS = ["Módulo Intro completo", "1º exercício de cada módulo", `${NOME_DESAFIO}, todo dia`, "Ofensiva de dias seguidos", "Solução comentada do desafio de ontem", "Progresso salvo no seu navegador"];
+const NUMEROS = numerosDoConteudo();
+
+const PLANO_GRATIS = [
+  "Módulo Intro completo",
+  "1ª lição de cada módulo",
+  `${NOME_DESAFIO}, todo dia`,
+  "Ofensiva de dias seguidos",
+  "Solução comentada do desafio de ontem",
+  // Sem contas neste ambiente, o progresso só existe no navegador: a promessa acompanha.
+  contasLigadas() ? "Progresso salvo no navegador e, se quiser, na sua conta" : "Progresso salvo no seu navegador",
+];
 const PLANO_PRO = [
   "Todos os exercícios, do Fundamentos aos casos reais",
   "Pacote de exercícios novo todo mês",
@@ -69,7 +79,7 @@ const FAQ = [
   ["Serve para quem nunca usou Excel?", "Sim. O Módulo 0 (Intro) começa do zero: o que é uma célula, como selecionar, editar e escrever a primeira fórmula."],
   ["As fórmulas são em português ou em inglês?", "Em português, como no Excel brasileiro: PROCV, SOMA, SE, com ponto e vírgula separando os argumentos e vírgula nos decimais."],
   ["Funciona para concurso que cobra LibreOffice Calc?", "As fórmulas básicas são praticamente iguais no Calc em português, mas os exercícios seguem o Excel. Questões específicas de Calc estão nos planos da trilha de concurso do Pro."],
-  ["Quanto custa?", `O Intro completo, o desafio diário, a ofensiva e o 1º exercício de cada módulo são grátis. O Pro vai custar ${reais(PRECO.anualPorMes)} por mês no plano anual (${reais(PRECO.anual)}, em até ${PRECO.parcelasAnual}x no cartão) ou ${reais(PRECO.mensal)} no mensal. Há garantia de ${PRECO.garantiaDias} dias. Durante os testes, tudo está aberto e nada é cobrado.`],
+  ["Quanto custa?", `O Intro completo, o desafio diário, a ofensiva e a 1ª lição de cada módulo são grátis. O Pro vai custar ${reais(PRECO.anualPorMes)} por mês no plano anual (${reais(PRECO.anual)}, em até ${PRECO.parcelasAnual}x no cartão) ou ${reais(PRECO.mensal)} no mensal. Há garantia de ${PRECO.garantiaDias} dias. Durante os testes, tudo está aberto e nada é cobrado.`],
 ];
 
 function Check() {
@@ -158,10 +168,11 @@ export default function Landing() {
         <Rotulo>A trilha</Rotulo>
         <h2 className="mb-3 text-4xl font-extrabold tracking-tight">Do primeiro clique ao PROCV.</h2>
         <p className="mb-10 max-w-lg text-muted">
-          Nunca abriu uma planilha? Comece pelo Intro. Já sabe o básico? Pule para o módulo que precisar.
+          São {NUMEROS.modulos} módulos, do 0 ao {NUMEROS.ultimoModulo}. Nunca abriu uma planilha? Comece pelo Intro. Já sabe o
+          básico? Pule para o módulo que precisar.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="modulos-landing">
-          {MODULOS.map((m) => {
+          {MODULOS_HOME.map((m) => {
             const conteudo = (
               <>
                 <div className="mb-2 flex items-center justify-between gap-2">
@@ -169,7 +180,7 @@ export default function Landing() {
                   {m.gratis ? (
                     <span className="rounded-full bg-success-bg px-2 py-0.5 text-[11px] font-semibold text-success">Grátis</span>
                   ) : (
-                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · 1º exercício grátis</span>
+                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white">Pro · 1ª lição grátis</span>
                   )}
                 </div>
                 <p className="mb-1 font-semibold">{m.titulo}</p>
@@ -177,7 +188,7 @@ export default function Landing() {
               </>
             );
             return (
-              <Link key={m.n} href={m.href} className="rounded-xl border border-line bg-bg p-4 hover:border-ink">
+              <Link key={m.slug} href={m.href} className="rounded-xl border border-line bg-bg p-4 hover:border-ink" data-testid={`modulo-home-${m.slug}`}>
                 {conteudo}
               </Link>
             );
@@ -199,7 +210,7 @@ export default function Landing() {
             </Link>
           </div>
           <div className="max-w-md rounded-2xl bg-ink p-6 text-white shadow-xl lg:justify-self-center">
-            <p className="mb-4 font-display text-xl font-bold">{NOME_DESAFIO} #12</p>
+            <p className="mb-4 font-display text-xl font-bold">{NOME_DESAFIO}</p>
             <div className="mb-4 flex gap-1.5" aria-hidden>
               {["bg-accent", "bg-accent", "bg-success", "bg-ink-soft", "bg-ink-soft"].map((c, i) => (
                 <span key={i} className={`h-9 w-9 rounded-md ${c}`} />

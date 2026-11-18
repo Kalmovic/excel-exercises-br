@@ -7,8 +7,9 @@ import { modulosDoEspecialista } from "@/lib/especialista";
 import { ExercicioEmbutido } from "@/components/publico/ExercicioEmbutido";
 import { AbasAmostra } from "@/components/publico/AbasAmostra";
 import { IlustracaoDinamica, LICAO_DINAMICA } from "@/components/publico/IlustracaoDinamica";
-import { MODULOS, exercicios, exerciciosDoModulo, questoesDaLicao } from "@/content";
-import { QUESTOES_CONCURSO } from "@/content/concurso";
+import { MODULOS, exerciciosDoModulo, questoesDaLicao, testeDoModulo } from "@/content";
+import { numerosDoConteudo } from "@/lib/numeros";
+import { contasLigadas } from "@/lib/supabase/config";
 import { stripeConfigurado } from "@/lib/stripe";
 import { NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-/** A lição grátis de PROCV (1ª do Módulo 4), jogável na página. */
+/** A lição grátis de PROCV (1ª do módulo de Busca), jogável na página. */
 const LICAO_AMOSTRA = "procv-preco-pelo-codigo-exato";
 
 /** "Além das fórmulas": as ferramentas do Excel que o aluno usa na própria grade, com o módulo de cada uma. */
@@ -38,19 +39,6 @@ const numeroDoModulo = (slug: string) => MODULOS.find((m) => m.slug === slug)?.n
 /** Lição grátis de gráfico (1ª do módulo de Gráficos), jogável na página. */
 const LICAO_GRAFICO = "grafico-vendas-por-mes";
 
-/** Tudo contado do conteúdo de verdade: a página nunca promete um número que não existe. */
-function numeros() {
-  const naTrilha = exercicios.filter((e) => !e.extra && !e.teste);
-  return {
-    modulos: MODULOS.filter((m) => m.slug !== "intro").length,
-    questoesPro: naTrilha.filter((e) => e.plano === "pro").length,
-    // Grátis dentro dos 8 módulos (a 1ª lição de cada um); o Intro fica de fora.
-    questoesGratis: naTrilha.filter((e) => e.plano === "free" && e.modulo !== "intro").length,
-    testes: exercicios.filter((e) => e.teste && e.plano === "pro").length / 5,
-    extras: exercicios.filter((e) => e.extra).length,
-  };
-}
-
 const PERGUNTAS: [string, string][] = [
   [
     "Como funciona a garantia?",
@@ -64,7 +52,12 @@ const PERGUNTAS: [string, string][] = [
   ],
   ["Preciso ter o Excel instalado?", "Não. A planilha roda no navegador, no computador ou no celular, com as fórmulas em português como no Excel brasileiro."],
   ["Funciona no celular?", "Funciona. No celular você seleciona e edita as células com toques, e uma barrinha faz o papel do mouse e do Ctrl+D. Para estudar muito tempo seguido, o computador é mais confortável."],
-  ["E o que eu já fiz no plano grátis?", "Continua lá. O progresso fica na sua conta, e o Pro só libera o resto da trilha."],
+  [
+    "E o que eu já fiz no plano grátis?",
+    contasLigadas()
+      ? "Continua lá. O progresso fica na sua conta, e o Pro só libera o resto da trilha."
+      : "Continua lá. Por enquanto o progresso fica salvo neste navegador; quando as contas chegarem, ele vai junto para a sua. O Pro só libera o resto da trilha.",
+  ],
   ["Serve para quem está começando?", "Sim. A trilha começa no Intro (grátis) e cada lição tem dicas e explicação. Se você já sabe o básico, pode ir direto ao módulo que precisa."],
   [
     "Tem certificado?",
@@ -104,8 +97,7 @@ const NAO_E = ["Prefere só assistir aulas em vídeo"];
 export default function Pro() {
   // Variáveis do Stripe lidas no build: sem elas, os botões viram "em breve".
   const aVenda = stripeConfigurado();
-  const n = numeros();
-  const total = n.questoesPro + n.extras;
+  const n = numerosDoConteudo();
 
   return (
     <div className="space-y-24 pb-8">
@@ -115,8 +107,8 @@ export default function Pro() {
           <span className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-semibold text-ink">Planilhês Pro</span>
           <h1 className="font-display text-4xl leading-[1.05] font-extrabold tracking-tight sm:text-6xl">Pratique até o Excel virar reflexo.</h1>
           <p className="max-w-xl text-lg text-muted">
-            O grátis te mostra o caminho. O Pro libera a trilha inteira: {n.modulos} módulos, do SOMA à tabela dinâmica, com {total} exercícios corrigidos na
-            hora, numa planilha de verdade, em português.
+            O grátis te mostra o caminho. O Pro libera a trilha inteira: os {n.modulos} módulos, do Intro aos casos reais, com {n.questoesLicao} questões de lição e{" "}
+            {n.extras} exercícios de prática extra corrigidos na hora, numa planilha de verdade, em português.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Cta aVenda={aVenda} plano="anual" grande>
@@ -146,10 +138,10 @@ export default function Pro() {
       {/* Números */}
       <section aria-label="O que tem no Pro" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {[
-          [`${n.modulos}`, "módulos completos", "das fórmulas à tabela dinâmica"],
-          [`${n.questoesPro}`, "questões de lição", "com dicas e explicação"],
-          [`${n.testes}`, "testes de módulo", "para provar que aprendeu"],
-          ["3", "simulados de vaga", "teste prático com tempo, como no processo seletivo"],
+          [`${n.modulos}`, "módulos", "do Intro aos casos reais, com tabela dinâmica e gráficos"],
+          [`${n.questoesLicao}`, "questões de lição", "com dicas e explicação"],
+          [`${n.testes}`, "testes de módulo", "um no fim de cada módulo"],
+          [`${n.simulados}`, "simulados de vaga", "teste prático com tempo, como no processo seletivo"],
         ].map(([valor, rotulo, detalhe]) => (
           <div key={rotulo} className="rounded-2xl border border-line bg-surface p-5">
             <p className="font-display text-4xl font-extrabold">{valor}</p>
@@ -307,7 +299,7 @@ export default function Pro() {
                       <span className="w-5 shrink-0 text-right" aria-hidden>
                         ★
                       </span>
-                      <span className="flex-1">Teste do módulo: 5 questões, sem dicas</span>
+                      <span className="flex-1">Teste do módulo: {testeDoModulo(m.slug).length} questões, sem dicas</span>
                       <span className="shrink-0 rounded-full bg-header px-2 py-0.5 text-xs font-semibold text-muted">Pro</span>
                     </li>
                   </ol>
@@ -413,13 +405,15 @@ export default function Pro() {
                   ["Módulo Intro, do zero à primeira fórmula", true, true],
                   ["1ª lição de cada módulo", true, true],
                   [`${NOME_DESAFIO} e ofensiva`, true, true],
-                  ["Progresso salvo na conta, em qualquer aparelho", true, true],
-                  [`Todas as lições dos ${n.modulos} módulos (${n.questoesPro + n.questoesGratis} questões)`, false, true],
-                  [`Teste de cada módulo (${n.testes} testes)`, false, true],
+                  contasLigadas()
+                    ? ["Progresso salvo na conta, em qualquer aparelho", true, true]
+                    : ["Progresso salvo neste navegador (contas em breve)", true, true],
+                  [`Todas as lições dos ${n.modulos} módulos (${n.questoesLicao} questões de lição)`, "1ª lição", true],
+                  [`Teste de cada módulo (${n.testes} testes)`, n.testesPro < n.testes ? "só o do Intro" : false, true],
                   ["Tabela dinâmica, gráficos, formatação condicional, validação e abas na própria planilha", "1ª lição", true],
                   [`Prática extra (${n.extras} exercícios)`, false, true],
-                  ["Simulados de teste de vaga, com tempo (3 níveis)", false, true],
-                  [`Questões de concurso no estilo das bancas (${QUESTOES_CONCURSO.length})`, false, true],
+                  [`Simulados de teste de vaga, com tempo (${n.simulados} níveis)`, false, true],
+                  [`Questões de concurso no estilo das bancas (${n.questoesConcurso})`, false, true],
                   ["Certificado de Especialista em Excel e por módulo, com verificação para o LinkedIn", false, true],
                   ["Arquivo com todos os desafios anteriores", "só o de ontem", true],
                 ] as [string, boolean | string, boolean][]
@@ -605,7 +599,7 @@ function Ilustracao() {
   return (
     <div className="relative mx-auto w-full max-w-md" aria-hidden>
       <div className="rotate-1 rounded-2xl border border-line bg-surface p-4 shadow-2xl">
-        <p className="mb-3 text-xs font-semibold text-muted">Módulo 4: Busca · PROCV</p>
+        <p className="mb-3 text-xs font-semibold text-muted">Módulo {numeroDoModulo("busca")}: Busca · PROCV</p>
         <div className="mb-3 flex overflow-hidden rounded-lg border border-line font-mono text-sm">
           <span className="border-r border-line bg-header px-3 py-2 text-muted italic">fx</span>
           <span className="truncate px-3 py-2">=PROCV(E2;A2:C4;3;FALSO)</span>
