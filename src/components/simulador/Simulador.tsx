@@ -58,7 +58,7 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
 
 /** Linha de atalhos embaixo da grade (só com teclado). A F4 acrescenta como sair da grade com o Tab. */
 const ATALHOS =
-  "Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima · Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula";
+  "Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima · Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula · Alt+↓ abre o filtro ou a lista · Esc e depois Tab sai da planilha";
 
 type Props = {
   exercicio: Exercicio;
