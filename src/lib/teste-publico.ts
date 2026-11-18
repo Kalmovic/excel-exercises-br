@@ -20,9 +20,9 @@ export const EXPLICACAO_DO_TESTE = "A correção do teste é feita no servidor."
 export function exercicioParaTeste(ex: Exercicio): Exercicio {
   // Fora: dicas, explicação real, erros comuns (os padrões mostram a resposta certa
   // por exclusão), roteiro do vídeo e as células da checagem anti-valor-digitado.
-  const { errosComuns: _e, video: _v, toque, ...resto } = ex;
+  const { toque } = ex;
   const base = {
-    ...resto,
+    ...sem(ex, "errosComuns", "video", "toque"),
     grade: semPerturbacao(ex.grade),
     ...(ex.abas ? { abas: ex.abas.map((a) => ({ ...a, grade: semPerturbacao(a.grade) })) } : {}),
     dicas: [],
@@ -31,7 +31,7 @@ export function exercicioParaTeste(ex: Exercicio): Exercicio {
   };
   switch (base.type) {
     case "formula": {
-      const { funcoesExigidas: _f, funcoesProibidas: _p, ...q } = base;
+      const q = sem(base, "funcoesExigidas", "funcoesProibidas");
       return {
         ...q,
         // A célula fica (a tela destaca onde escrever); o resultado e a fórmula, não.
@@ -50,7 +50,7 @@ export function exercicioParaTeste(ex: Exercicio): Exercicio {
     case "select_range":
       return { ...base, intervalo: "A1" };
     case "multiple_choice": {
-      const { conferir: _c, ...q } = base;
+      const q = sem(base, "conferir");
       // Sem dica em nenhuma: a única alternativa sem dica seria a certa.
       return { ...q, correta: 0, opcoes: q.opcoes.map((o) => ({ texto: o.texto })) };
     }
@@ -63,9 +63,16 @@ export function exercicioParaTeste(ex: Exercicio): Exercicio {
 }
 
 /** Sem as células da checagem anti-valor-digitado (diriam quais células importam). */
-function semPerturbacao<G extends Exercicio["grade"]>(grade: G): Omit<G, "variaveis" | "alternativas"> {
-  const { variaveis: _v, alternativas: _a, ...resto } = grade;
-  return resto;
+function semPerturbacao<G extends Exercicio["grade"]>(grade: G) {
+  return sem(grade, "variaveis", "alternativas");
+}
+
+/** Cópia rasa sem as chaves pedidas (mantém a união de tipos de exercício separada por `type`). */
+type Sem<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
+function sem<T extends object, K extends keyof T>(obj: T, ...chaves: K[]): Sem<T, K> {
+  const copia: Partial<T> = { ...obj };
+  for (const k of chaves) delete copia[k];
+  return copia as Sem<T, K>;
 }
 
 /**

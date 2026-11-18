@@ -14,7 +14,6 @@ export function destinoSeguro(proximo: string | null | undefined, origem: string
   if (!proximo || proximo.length > 2000) return DESTINO_PADRAO;
   // Uma barra só no começo; nada de barra invertida nem caracteres de controle em lugar nenhum.
   if (!proximo.startsWith("/") || proximo.startsWith("//")) return DESTINO_PADRAO;
-  // eslint-disable-next-line no-control-regex
   if (/[\\\u0000-\u001f\u007f]/.test(proximo)) return DESTINO_PADRAO;
   let base: URL;
   let url: URL;
