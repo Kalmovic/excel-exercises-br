@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { EstiloDestaque, RegraCondicional } from "@/content/schema";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
 import { CORES_DESTAQUE } from "@/engine/condicional";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
+import { navegarItens, useEscape, useFocoDentro } from "./teclado";
 
 type TipoForm = Exclude<RegraCondicional["tipo"], "barras" | "escala">;
 
@@ -60,13 +61,15 @@ const ESTILOS = Object.entries(CORES_DESTAQUE) as [EstiloDestaque, (typeof CORES
 
 /** Botão "Formatação Condicional" e o que ele abre (menu, janela da regra ou o gerenciador). */
 export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) {
-  const { store } = useSimulador();
+  const { store, entradaRef } = useSimulador();
   const [menu, setMenu] = useState(false);
   const [form, setForm] = useState<{ tipo: TipoForm; intervalo: string } | null>(null);
   const [gerenciar, setGerenciar] = useState(false);
   const { planilha } = useSimulador();
   const [aviso, setAviso] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const botaoRef = useRef<HTMLButtonElement>(null);
+  const voltarAoBotao = () => requestAnimationFrame(() => botaoRef.current?.focus());
 
   useEffect(() => {
     if (!menu) return;
@@ -83,6 +86,7 @@ export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) 
       // Como no Excel: barras e escala se aplicam direto na seleção.
       const r = planilha.adicionarRegra({ tipo, intervalo: selecao() });
       setAviso(r.ok ? null : r.mensagem);
+      entradaRef.current?.focus({ preventScroll: true });
       return;
     }
     setForm({ tipo, intervalo: selecao() });
@@ -91,51 +95,70 @@ export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) 
   return (
     <div ref={ref} className="relative">
       <button
+        ref={botaoRef}
         type="button"
         aria-expanded={menu}
         aria-haspopup="menu"
         data-testid="botao-condicional"
-        onMouseDown={(e) => {
-          e.preventDefault();
+        // mousedown + preventDefault: não tira a seleção da grade; o click também vem do Enter e do Espaço.
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => {
           const s = store.getState();
           if (s.modo !== "pronto" && !s.confirmar()) return;
           setMenu((m) => !m);
+        }}
+        onKeyDown={(e) => {
+          // ↓ no botão abre o menu, como num menu de verdade.
+          if (e.key === "ArrowDown" && !menu) {
+            e.preventDefault();
+            setMenu(true);
+          }
         }}
         className={`${classeBotao} ${menu ? "bg-accent text-ink ring-1 ring-ink/10" : ""}`}
       >
         <IconeCondicional /> Formatação Condicional ▾
       </button>
       {menu && (
-        <div role="menu" data-testid="menu-condicional" className="absolute top-full left-0 z-50 mt-1 w-72 rounded-md border border-zinc-300 bg-white p-1 text-[13px] shadow-lg">
+        <MenuItens
+          rotulo="Formatação Condicional"
+          testid="menu-condicional"
+          fechar={() => {
+            setMenu(false);
+            voltarAoBotao();
+          }}
+        >
           {GRUPOS.map((g) => (
-            <div key={g.titulo} className="border-b border-zinc-100 py-1 last:border-0">
-              <p className="px-2 pb-0.5 text-[11px] font-semibold text-zinc-500">{g.titulo}</p>
+            <div key={g.titulo} role="group" aria-label={g.titulo} className="border-b border-zinc-100 py-1 last:border-0">
+              <p aria-hidden className="px-2 pb-0.5 text-[11px] font-semibold text-zinc-500">
+                {g.titulo}
+              </p>
               {g.itens.map((it) => (
                 <button
                   key={it.tipo}
                   type="button"
                   role="menuitem"
+                  tabIndex={-1}
                   data-regra={it.tipo}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    escolher(it.tipo);
-                  }}
-                  className="block w-full rounded px-3 py-1 text-left hover:bg-header"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => escolher(it.tipo)}
+                  className="block w-full rounded px-3 py-1 text-left hover:bg-header focus:bg-header focus:outline-none"
                 >
                   {it.rotulo}
                 </button>
               ))}
             </div>
           ))}
-          <div className="py-1">
+          <div role="group" className="py-1">
             <button
               type="button"
               role="menuitem"
-              className="block w-full rounded px-3 py-1 text-left hover:bg-header"
-              onMouseDown={(e) => {
-                e.preventDefault();
+              tabIndex={-1}
+              className="block w-full rounded px-3 py-1 text-left hover:bg-header focus:bg-header focus:outline-none"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => {
                 planilha.limparRegras(store.getState().selecao());
                 setMenu(false);
+                voltarAoBotao();
               }}
             >
               Limpar Regras das Células Selecionadas
@@ -143,10 +166,11 @@ export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) 
             <button
               type="button"
               role="menuitem"
+              tabIndex={-1}
               data-testid="gerenciar-regras"
-              className="block w-full rounded px-3 py-1 text-left hover:bg-header"
-              onMouseDown={(e) => {
-                e.preventDefault();
+              className="block w-full rounded px-3 py-1 text-left hover:bg-header focus:bg-header focus:outline-none"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => {
                 setMenu(false);
                 setForm(null);
                 setGerenciar(true);
@@ -155,15 +179,71 @@ export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) 
               Gerenciar Regras…
             </button>
           </div>
-        </div>
+        </MenuItens>
       )}
       {aviso && (
         <p role="alert" className="absolute top-full left-0 z-40 mt-1 w-72 rounded border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-800">
           {aviso}
         </p>
       )}
-      {form && <JanelaRegra {...form} fechar={() => setForm(null)} />}
-      {gerenciar && <GerenciarRegras fechar={() => setGerenciar(false)} />}
+      {form && (
+        <JanelaRegra
+          {...form}
+          fechar={(paraGrade) => {
+            setForm(null);
+            if (!paraGrade) voltarAoBotao();
+          }}
+        />
+      )}
+      {gerenciar && (
+        <GerenciarRegras
+          fechar={() => {
+            setGerenciar(false);
+            voltarAoBotao();
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+/**
+ * Lista de `role="menu"`: abre com o foco no 1º item, ↑ ↓ Home End andam,
+ * Esc e Tab fecham (o foco volta ao botão).
+ * Também usada pelo menu Inserir Gráfico.
+ */
+export function MenuItens({
+  rotulo,
+  testid,
+  fechar,
+  children,
+}: {
+  rotulo: string;
+  testid: string;
+  fechar: () => void;
+  children: React.ReactNode;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEscape(ref, fechar);
+  useFocoDentro(ref, '[role="menuitem"]', false);
+  return (
+    <div
+      ref={ref}
+      role="menu"
+      aria-label={rotulo}
+      data-testid={testid}
+      onKeyDown={(e) => {
+        if (e.key === "Tab") {
+          // Fecha e o foco volta ao botão (o próximo Tab segue adiante).
+          e.preventDefault();
+          fechar();
+          return;
+        }
+        navegarItens(e, '[role="menuitem"]');
+      }}
+      className="absolute top-full left-0 z-50 mt-1 w-72 rounded-md border border-zinc-300 bg-white p-1 text-[13px] shadow-lg"
+    >
+      {children}
     </div>
   );
 }
@@ -179,8 +259,13 @@ function IconeCondicional() {
 }
 
 /** A janela de uma regra: o valor (ou fórmula), o estilo e o intervalo "Aplica-se a". */
-function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }: { tipo: TipoForm; intervalo: string; fechar: () => void }) {
+function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }: { tipo: TipoForm; intervalo: string; fechar: (paraGrade?: boolean) => void }) {
   const { planilha, entradaRef } = useSimulador();
+  const ref = useRef<HTMLFormElement>(null);
+  const id = useId();
+  useEscape(ref, () => fechar());
+  // Foco no 1º campo (o valor, a quantidade, a fórmula ou o estilo, conforme a regra).
+  useFocoDentro(ref, "input, select", false);
   const [tipo, setTipo] = useState<TipoForm>(tipoInicial);
   const [valor, setValor] = useState(tipo === "formula" ? "=" : "");
   const [valor2, setValor2] = useState("");
@@ -226,22 +311,31 @@ function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }:
     }
     const r = planilha.adicionarRegra(regra);
     if (!r.ok) return setErro(r.mensagem);
-    fechar();
+    fechar(true);
     entradaRef.current?.focus({ preventScroll: true });
   };
 
-  const campo = "rounded border border-zinc-300 px-2 py-1 text-[13px] outline-none focus:border-success";
+  const campo = "rounded border border-zinc-300 px-2 py-1 text-[13px] outline-none focus:border-success focus:ring-2 focus:ring-success/40";
   const titulo = GRUPOS.flatMap((g) => g.itens).find((i) => i.tipo === tipo)?.rotulo.replace("…", "") ?? (tipo === "unicos" ? "Valores Duplicados" : "");
 
   return (
     <form
+      ref={ref}
       onSubmit={ok}
       data-foco-proprio
       data-testid="janela-regra"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby={`${id}-titulo`}
+      aria-describedby={`${id}-enunciado`}
       className="absolute top-full left-0 z-50 mt-1 w-[min(26rem,85vw)] space-y-3 rounded-md border border-zinc-300 bg-white p-3 text-sm shadow-lg"
     >
-      <p className="font-semibold">{titulo}</p>
-      <p className="text-xs text-zinc-600">{ENUNCIADO[tipo]}</p>
+      <p className="font-semibold" id={`${id}-titulo`}>
+        {titulo}
+      </p>
+      <p className="text-xs text-zinc-600" id={`${id}-enunciado`}>
+        {ENUNCIADO[tipo]}
+      </p>
       <div className="flex flex-wrap items-center gap-2">
         {(tipo === "maior" || tipo === "menor" || tipo === "igual" || tipo === "texto" || tipo === "entre") && (
           <input value={valor} onChange={(e) => setValor(e.target.value)} className={`${campo} w-28`} aria-label="Valor" data-testid="regra-valor" autoFocus />
@@ -286,7 +380,7 @@ function JanelaRegra({ tipo: tipoInicial, intervalo: intervaloInicial, fechar }:
         <button type="submit" className="rounded bg-success px-3 py-1 font-medium text-white" data-testid="regra-ok">
           OK
         </button>
-        <button type="button" onClick={fechar} className="rounded border border-zinc-300 px-3 py-1 hover:bg-header">
+        <button type="button" onClick={() => fechar()} className="rounded border border-zinc-300 px-3 py-1 hover:bg-header">
           Cancelar
         </button>
       </div>
@@ -316,13 +410,23 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
   const { planilha } = useSimulador();
   useVersaoPlanilha();
   const regras = planilha.regrasCondicionais();
+  const ref = useRef<HTMLDivElement>(null);
+  const id = useId();
+  useEscape(ref, fechar);
+  useFocoDentro(ref, "button", false);
   return (
     <div
+      ref={ref}
       data-foco-proprio
       data-testid="gerenciador-regras"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby={`${id}-titulo`}
       className="absolute top-full left-0 z-50 mt-1 w-[min(28rem,85vw)] rounded-md border border-zinc-300 bg-white p-3 text-sm shadow-lg"
     >
-      <p className="mb-2 font-semibold">Gerenciador de Regras de Formatação Condicional</p>
+      <p className="mb-2 font-semibold" id={`${id}-titulo`}>
+        Gerenciador de Regras de Formatação Condicional
+      </p>
       {regras.length === 0 ? (
         <p className="text-zinc-500">Nenhuma regra ainda.</p>
       ) : (
@@ -340,7 +444,12 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
               />
               <span className="min-w-0 flex-1 truncate">{DESCRICAO[r.tipo](r)}</span>
               <span className="font-mono text-xs text-zinc-500">{r.intervalo}</span>
-              <button type="button" onClick={() => planilha.removerRegra(i)} className="rounded px-1.5 text-xs text-zinc-500 hover:bg-header hover:text-red-700">
+              <button
+                type="button"
+                onClick={() => planilha.removerRegra(i)}
+                aria-label={`Excluir a regra ${DESCRICAO[r.tipo](r)} em ${r.intervalo}`}
+                className="min-h-6 rounded px-1.5 text-xs text-zinc-500 hover:bg-header hover:text-red-700"
+              >
                 Excluir
               </button>
             </li>

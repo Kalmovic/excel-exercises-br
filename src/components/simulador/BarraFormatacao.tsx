@@ -28,11 +28,10 @@ export function BarraFormatacao() {
             title={b.titulo}
             aria-pressed={ativo}
             data-testid={b.teste}
-            // mousedown + preventDefault: não tira o foco (nem a seleção) da grade
-            onMouseDown={(e) => {
-              e.preventDefault();
-              store.getState().formatarSelecao(b.formato);
-            }}
+            // mousedown + preventDefault: não tira o foco (nem a seleção) da grade;
+            // a ação no click vale também para o Enter e o Espaço.
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => store.getState().formatarSelecao(b.formato)}
             className={`min-w-9 rounded px-2 py-1 font-medium ${
               ativo ? "bg-accent text-ink ring-1 ring-ink/10" : "text-zinc-700 hover:bg-header"
             }`}

@@ -102,8 +102,8 @@ export function AjudaFormula({ left, top }: { left: number; top: number }) {
             key={f.nome}
             role="option"
             aria-selected={i === ativo}
-            onMouseDown={(e) => {
-              e.preventDefault(); // não tira o foco do campo
+            onMouseDown={(e) => e.preventDefault()} // não tira o foco do campo
+            onClick={() => {
               const el =
                 document.activeElement instanceof HTMLInputElement ? document.activeElement : entradaRef.current;
               const s = store.getState();

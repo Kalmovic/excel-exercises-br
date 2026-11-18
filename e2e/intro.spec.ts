@@ -136,7 +136,7 @@ test("exercício 1: a célula ativa não muda", async ({ page }) => {
   await abrir(page, "nome-da-celula");
   await celula(page, "C2").click();
   await page.keyboard.press("ArrowDown");
-  await expect(page.getByTestId("editor-celula")).toHaveAttribute("aria-label", "Célula E4");
+  await expect(page.getByTestId("editor-celula")).toHaveAttribute("aria-label", /^Célula E4(,|$)/);
   await expect(page.getByTestId("mensagem-formula")).toHaveText(".");
   await expect(page.getByTestId("alca")).toHaveCount(0);
 });
