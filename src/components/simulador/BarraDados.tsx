@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useRef, useState } from "react";
 import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { IconeFunil } from "./MenuFiltro";
 import { FormatacaoCondicional } from "./MenuCondicional";
 import { InserirGrafico } from "./PainelGrafico";
 import { BotoesValidacao } from "./ValidacaoDados";
 import { useSimulador, useVersaoPlanilha } from "./contexto";
+import { useEscape } from "./teclado";
 
 /**
  * Guia "Dados" enxuta. Com `ferramentas.dados`: Filtro (Ctrl+Shift+L),
@@ -19,14 +20,18 @@ export function BarraDados() {
   const [inserindo, setInserindo] = useState(false);
   const filtro = planilha.filtroAtual();
   const filtrando = !!filtro && Object.keys(filtro.criterios).length > 0;
-  const botao = "flex items-center gap-1.5 rounded px-2 py-1 font-medium text-zinc-700 hover:bg-header disabled:text-zinc-400 disabled:hover:bg-transparent";
-  // mousedown + preventDefault: não tira o foco (nem a seleção) da grade
-  const acao = (fn: () => void) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    const s = store.getState();
-    if (s.modo !== "pronto" && !s.confirmar()) return;
-    fn();
-  };
+  const botao = "flex min-h-7 items-center gap-1.5 rounded px-2 py-1 font-medium text-zinc-700 hover:bg-header disabled:text-zinc-400 disabled:hover:bg-transparent";
+  const botaoDinamicaRef = useRef<HTMLButtonElement>(null);
+  // mousedown + preventDefault: o clique não tira o foco (nem a seleção) da grade.
+  // A ação fica no click, que o Enter e o Espaço também disparam.
+  const acao = (fn: () => void) => ({
+    onMouseDown: (e: React.MouseEvent) => e.preventDefault(),
+    onClick: () => {
+      const s = store.getState();
+      if (s.modo !== "pronto" && !s.confirmar()) return;
+      fn();
+    },
+  });
 
   return (
     <div className="space-y-1">
@@ -38,18 +43,18 @@ export function BarraDados() {
               title="Filtro (Ctrl+Shift+L)"
               aria-pressed={!!filtro}
               data-testid="botao-filtro"
-              onMouseDown={acao(() => store.getState().alternarFiltro())}
+              {...acao(() => store.getState().alternarFiltro())}
               className={`${botao} ${filtro ? "bg-accent text-ink ring-1 ring-ink/10" : ""}`}
             >
               <IconeFunil /> Filtro
             </button>
-            <button type="button" title="Classificar de A a Z pela coluna da célula ativa" data-testid="classificar-asc" onMouseDown={acao(() => store.getState().classificar("asc"))} className={botao}>
+            <button type="button" title="Classificar de A a Z pela coluna da célula ativa" data-testid="classificar-asc" {...acao(() => store.getState().classificar("asc"))} className={botao}>
               A→Z
             </button>
-            <button type="button" title="Classificar de Z a A pela coluna da célula ativa" data-testid="classificar-desc" onMouseDown={acao(() => store.getState().classificar("desc"))} className={botao}>
+            <button type="button" title="Classificar de Z a A pela coluna da célula ativa" data-testid="classificar-desc" {...acao(() => store.getState().classificar("desc"))} className={botao}>
               Z→A
             </button>
-            <button type="button" title="Limpar todos os critérios do filtro" disabled={!filtrando} data-testid="limpar-filtros" onMouseDown={acao(() => planilha.limparFiltros())} className={botao}>
+            <button type="button" title="Limpar todos os critérios do filtro" disabled={!filtrando} data-testid="limpar-filtros" {...acao(() => planilha.limparFiltros())} className={botao}>
               Limpar
             </button>
           </>
@@ -59,11 +64,13 @@ export function BarraDados() {
         {validacao && <BotoesValidacao classeBotao={botao} />}
         {dinamica && (
           <button
+            ref={botaoDinamicaRef}
             type="button"
             title="Inserir uma tabela dinâmica com os dados selecionados"
             aria-expanded={inserindo}
+            aria-haspopup="dialog"
             data-testid="botao-dinamica"
-            onMouseDown={acao(() => setInserindo((x) => !x))}
+            {...acao(() => setInserindo((x) => !x))}
             className={`${botao} ${inserindo ? "bg-accent text-ink ring-1 ring-ink/10" : ""}`}
           >
             <IconeTabelaDinamica /> Tabela dinâmica
@@ -75,7 +82,15 @@ export function BarraDados() {
           </span>
         )}
       </div>
-      {inserindo && <InserirDinamica fechar={() => setInserindo(false)} />}
+      {inserindo && (
+        <InserirDinamica
+          fechar={(criou) => {
+            setInserindo(false);
+            // Cancelar ou Esc: o foco volta para o botão (criar leva para a grade).
+            if (!criou) requestAnimationFrame(() => botaoDinamicaRef.current?.focus());
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -94,8 +109,11 @@ export function IconeTabelaDinamica() {
  * A janela "Criar Tabela Dinâmica", resumida: o intervalo dos dados (vem da
  * seleção ou da região atual, como no Excel) e a célula onde ela começa.
  */
-function InserirDinamica({ fechar }: { fechar: () => void }) {
+function InserirDinamica({ fechar }: { fechar: (criou?: boolean) => void }) {
   const { planilha, store, entradaRef } = useSimulador();
+  const ref = useRef<HTMLFormElement>(null);
+  const id = useId();
+  useEscape(ref, () => fechar());
   const [inicial] = useState(() => {
     const s = store.getState();
     const sel = s.selecao();
@@ -122,20 +140,27 @@ function InserirDinamica({ fechar }: { fechar: () => void }) {
     }
     const r = planilha.inserirDinamica(o, d);
     if (!r.ok) return setErro(r.mensagem);
-    store.setState({ ancora: d, foco: d, mensagem: null });
-    fechar();
+    // Foco na grade antes de mudar a célula ativa: a grade rola até a tabela nova.
     entradaRef.current?.focus({ preventScroll: true });
+    store.setState({ ancora: d, foco: d, mensagem: null });
+    fechar(true);
   };
 
-  const campo = "w-28 rounded border border-zinc-300 px-2 py-1 font-mono text-[13px] uppercase outline-none focus:border-success";
+  const campo = "w-28 rounded border border-zinc-300 px-2 py-1 font-mono text-[13px] uppercase outline-none focus:border-success focus:ring-2 focus:ring-success/40";
   return (
     <form
+      ref={ref}
       onSubmit={criar}
       data-foco-proprio
       data-testid="inserir-dinamica"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby={`${id}-titulo`}
       className="flex flex-wrap items-end gap-3 rounded-md border border-zinc-300 bg-white p-3 text-sm shadow-sm"
     >
-      <p className="w-full font-semibold">Criar Tabela Dinâmica</p>
+      <p className="w-full font-semibold" id={`${id}-titulo`}>
+        Criar Tabela Dinâmica
+      </p>
       <label className="space-y-1">
         <span className="block text-xs text-zinc-500">Tabela/Intervalo</span>
         <input value={origem} onChange={(e) => setOrigem(e.target.value)} className={campo} data-testid="dinamica-origem" autoFocus />
@@ -148,7 +173,7 @@ function InserirDinamica({ fechar }: { fechar: () => void }) {
         <button type="submit" className="rounded bg-success px-3 py-1 font-medium text-white" data-testid="dinamica-ok">
           OK
         </button>
-        <button type="button" onClick={fechar} className="rounded border border-zinc-300 px-3 py-1 hover:bg-header">
+        <button type="button" onClick={() => fechar()} className="rounded border border-zinc-300 px-3 py-1 hover:bg-header">
           Cancelar
         </button>
       </div>

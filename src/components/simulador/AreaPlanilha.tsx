@@ -12,6 +12,7 @@ import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
 import { PainelDinamica } from "./PainelDinamica";
 import { PainelGrafico } from "./PainelGrafico";
+import { navegarItens } from "./teclado";
 import { criarStore, type StoreSimulador } from "./store";
 
 type Props = {
@@ -124,19 +125,29 @@ export function AreaPlanilha({ ex, nucleo, entradaRef, barraToque }: Props) {
       <Contexto.Provider value={ctxAba}>
         <Grade key={aba} larguras={larguras} />
         {pasta && (
-          <div role="tablist" aria-label="Abas da planilha" className="flex flex-wrap items-end gap-0.5 border-t-2 border-zinc-300 pl-2" data-testid="abas">
+          <div
+            role="tablist"
+            aria-label="Abas da planilha"
+            className="flex flex-wrap items-end gap-0.5 border-t-2 border-zinc-300 pl-2"
+            data-testid="abas"
+            onKeyDown={(e) => {
+              // ← → Home End trocam de aba (com o foco junto), como numa lista de abas.
+              const alvo = navegarItens(e, '[role="tab"]', "horizontal");
+              if (alvo) trocarAba(nomes.indexOf(alvo.dataset.aba ?? ""));
+            }}
+          >
             {nomes.map((nome, i) => (
               <button
                 key={nome}
                 type="button"
                 role="tab"
                 aria-selected={i === aba}
+                tabIndex={i === aba ? 0 : -1}
                 data-aba={nome}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                  trocarAba(i);
-                }}
-                className={`-mt-0.5 rounded-b-md border border-t-0 px-3 py-1 text-[13px] ${
+                // mousedown + preventDefault: o clique não tira o foco da grade; o click vem também do Enter e do Espaço.
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => trocarAba(i)}
+                className={`-mt-0.5 min-h-7 rounded-b-md border border-t-0 px-3 py-1 text-[13px] ${
                   i === aba ? "border-zinc-300 bg-white font-semibold text-success shadow-sm" : "border-transparent text-zinc-600 hover:bg-white/70"
                 }`}
               >
@@ -145,7 +156,7 @@ export function AreaPlanilha({ ex, nucleo, entradaRef, barraToque }: Props) {
             ))}
             {origem !== null && (
               <span className="ml-2 pb-1 text-xs text-zinc-500" data-testid="aviso-apontar">
-                Clique numa célula para usar na fórmula de {nomes[origem]} · Enter grava
+                Clique ou toque numa célula para usar na fórmula de {nomes[origem]} · Enter grava
               </span>
             )}
           </div>

@@ -16,11 +16,12 @@ export function BarraToque() {
   const { planilha, store } = useSimulador();
   const intervalo = useEstado((e) => e.intervaloNoToque);
   const botao = "rounded-md border px-2.5 py-1.5 text-sm font-medium whitespace-nowrap";
-  // mousedown + preventDefault: não tira o foco (nem a seleção) da grade
-  const acao = (f: () => void) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    f();
-  };
+  // mousedown + preventDefault: não tira o foco (nem a seleção) da grade;
+  // a ação fica no click (toque, Enter e Espaço).
+  const acao = (f: () => void) => ({
+    onMouseDown: (e: React.MouseEvent) => e.preventDefault(),
+    onClick: f,
+  });
 
   return (
     <div className="space-y-1">
@@ -28,7 +29,7 @@ export function BarraToque() {
         <button
           type="button"
           aria-pressed={intervalo !== null}
-          onMouseDown={acao(() => store.setState({ intervaloNoToque: intervalo ? null : "inicio" }))}
+          {...acao(() => store.setState({ intervaloNoToque: intervalo ? null : "inicio" }))}
           className={`${botao} ${intervalo ? "border-ink bg-accent text-ink" : "border-line bg-white text-ink"}`}
           data-testid="selecionar-intervalo"
         >
@@ -36,7 +37,7 @@ export function BarraToque() {
         </button>
         <button
           type="button"
-          onMouseDown={acao(() => store.getState().preencherSelecao("baixo"))}
+          {...acao(() => store.getState().preencherSelecao("baixo"))}
           className={`${botao} border-line bg-white text-ink`}
           data-testid="preencher-abaixo"
           title="Copia a primeira célula da seleção para as de baixo (Ctrl+D)"
@@ -45,7 +46,7 @@ export function BarraToque() {
         </button>
         <button
           type="button"
-          onMouseDown={acao(() => planilha.desfazer())}
+          {...acao(() => planilha.desfazer())}
           className={`${botao} border-line bg-white text-ink`}
           aria-label="Desfazer"
         >

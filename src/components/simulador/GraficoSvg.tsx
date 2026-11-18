@@ -48,7 +48,7 @@ export function GraficoSvg({ dados, tipo, titulo, rotulos, largura: W, altura: H
   const base = comLegenda ? 30 : 10;
 
   return (
-    <svg width={W} height={H} role="img" aria-label={`Gráfico de ${tipo}: ${tituloMostrado}`} style={{ fontFamily: fonte }} data-testid="grafico-svg">
+    <svg width={W} height={H} role="img" aria-label={`Gráfico de ${tipo}: ${tituloMostrado}. ${resumoDosDados(dados)}`} style={{ fontFamily: fonte }} data-testid="grafico-svg">
       <rect width={W} height={H} fill="#fff" />
       <text x={W / 2} y={22} textAnchor="middle" fontSize={15} fill={tituloVazio ? "#9ca3af" : "#404040"} data-titulo>
         {tituloMostrado}
@@ -61,6 +61,19 @@ export function GraficoSvg({ dados, tipo, titulo, rotulos, largura: W, altura: H
       {comLegenda && <Legenda nomes={tipo === "pizza" ? dados.categorias : dados.series.map((s) => s.nome)} W={W} y={H - 12} />}
     </svg>
   );
+}
+
+/** Os dados em texto, para o leitor de tela ("Vendas: Jan R$ 100, Fev R$ 200"). Até 12 pontos por série. */
+export function resumoDosDados(dados: DadosGrafico): string {
+  return dados.series
+    .map((s) => {
+      const pontos = s.valores
+        .slice(0, 12)
+        .map((v, i) => `${dados.categorias[i] ?? i + 1} ${v === null ? "vazio" : formatarNoGrafico(v, dados.formato)}`);
+      const resto = s.valores.length > 12 ? `, e mais ${s.valores.length - 12}` : "";
+      return `${s.nome}: ${pontos.join(", ")}${resto}`;
+    })
+    .join(". ");
 }
 
 function Legenda({ nomes, W, y }: { nomes: string[]; W: number; y: number }) {

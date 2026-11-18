@@ -5,6 +5,8 @@ import type { Grafico, TipoGrafico } from "@/content/schema";
 import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 import { GraficoSvg } from "./GraficoSvg";
+import { MenuItens } from "./MenuCondicional";
+import { navegarItens } from "./teclado";
 
 const TIPOS: { tipo: TipoGrafico; rotulo: string; dica: string }[] = [
   { tipo: "colunas", rotulo: "Colunas", dica: "Comparar valores entre categorias" },
@@ -44,10 +46,11 @@ export function IconeGrafico({ tipo }: { tipo: TipoGrafico }) {
 
 /** Botão "Inserir Gráfico" com os quatro tipos. Usa a seleção (ou a região atual, com uma célula só). */
 export function InserirGrafico({ classeBotao }: { classeBotao: string }) {
-  const { planilha, store } = useSimulador();
+  const { planilha, store, entradaRef } = useSimulador();
   const [aberto, setAberto] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const botaoRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!aberto && !erro) return;
@@ -66,41 +69,60 @@ export function InserirGrafico({ classeBotao }: { classeBotao: string }) {
     const sel = store.getState().selecao();
     const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
     const r = planilha.inserirGrafico(tipo, umaCelula ? planilha.regiaoAtual(sel.inicio) : sel);
-    if (!r.ok) return setErro(r.mensagem);
+    if (!r.ok) {
+      botaoRef.current?.focus();
+      return setErro(r.mensagem);
+    }
     setErro(null);
+    // O gráfico novo fica selecionado (abre o Design do Gráfico); o foco volta para a grade.
+    entradaRef.current?.focus({ preventScroll: true });
     store.setState({ graficoAtivo: r.indice ?? null });
   };
 
   return (
     <div ref={ref} className="relative">
       <button
+        ref={botaoRef}
         type="button"
         aria-expanded={aberto}
         aria-haspopup="menu"
         data-testid="botao-grafico"
-        onMouseDown={(e) => {
-          e.preventDefault();
+        // mousedown + preventDefault: não tira a seleção da grade; o click também vem do Enter e do Espaço.
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => {
           const s = store.getState();
           if (s.modo !== "pronto" && !s.confirmar()) return;
           setAberto((a) => !a);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown" && !aberto) {
+            e.preventDefault();
+            setAberto(true);
+          }
         }}
         className={`${classeBotao} ${aberto ? "bg-accent text-ink ring-1 ring-ink/10" : ""}`}
       >
         <IconeGrafico tipo="colunas" /> Inserir Gráfico ▾
       </button>
       {aberto && (
-        <div role="menu" data-testid="menu-grafico" className="absolute top-full left-0 z-50 mt-1 w-72 rounded-md border border-zinc-300 bg-white p-1 text-[13px] shadow-lg">
+        <MenuItens
+          rotulo="Inserir Gráfico"
+          testid="menu-grafico"
+          fechar={() => {
+            setAberto(false);
+            requestAnimationFrame(() => botaoRef.current?.focus());
+          }}
+        >
           {TIPOS.map((t) => (
             <button
               key={t.tipo}
               type="button"
               role="menuitem"
+              tabIndex={-1}
               data-tipo-grafico={t.tipo}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                inserir(t.tipo);
-              }}
-              className="flex w-full items-start gap-3 rounded px-2 py-1.5 text-left hover:bg-header"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => inserir(t.tipo)}
+              className="flex w-full items-start gap-3 rounded px-2 py-1.5 text-left hover:bg-header focus:bg-header focus:outline-none"
             >
               <span className="mt-0.5 text-[#4472C4]">
                 <IconeGrafico tipo={t.tipo} />
@@ -111,7 +133,7 @@ export function InserirGrafico({ classeBotao }: { classeBotao: string }) {
               </span>
             </button>
           ))}
-        </div>
+        </MenuItens>
       )}
       {erro && (
         <p role="alert" className="absolute top-full left-0 z-40 mt-1 w-72 rounded border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-800">
@@ -127,12 +149,22 @@ export function InserirGrafico({ classeBotao }: { classeBotao: string }) {
  * título, rótulos de dados, Alternar Linha/Coluna, intervalo e posição.
  */
 export function PainelGrafico() {
-  const { planilha, store } = useSimulador();
+  const { planilha, store, entradaRef } = useSimulador();
   useVersaoPlanilha();
   const ativo = useEstado((e) => e.graficoAtivo);
   const g = ativo !== null ? planilha.graficos()[ativo] : undefined;
   if (ativo === null || !g) return null;
-  return <Design key={`${ativo}-${planilha.graficos().length}`} indice={ativo} g={g} fechar={() => store.setState({ graficoAtivo: null })} />;
+  return (
+    <Design
+      key={`${ativo}-${planilha.graficos().length}`}
+      indice={ativo}
+      g={g}
+      fechar={() => {
+        store.setState({ graficoAtivo: null });
+        entradaRef.current?.focus({ preventScroll: true });
+      }}
+    />
+  );
 }
 
 function Design({ indice, g, fechar }: { indice: number; g: Grafico; fechar: () => void }) {
@@ -164,14 +196,14 @@ function Design({ indice, g, fechar }: { indice: number; g: Grafico; fechar: () 
       setErro("Escreva a posição como uma célula, por exemplo E2.");
     }
   };
-  const campo = "rounded border border-zinc-300 px-2 py-1 text-[13px] outline-none focus:border-success";
+  const campo = "rounded border border-zinc-300 px-2 py-1 text-[13px] outline-none focus:border-success focus:ring-2 focus:ring-success/40";
   const enter = (fn: () => void) => (e: React.KeyboardEvent) => e.key === "Enter" && (e.preventDefault(), fn());
 
   return (
     <section aria-label="Design do Gráfico" data-testid="painel-grafico" data-foco-proprio className="space-y-3 rounded-md border border-zinc-300 bg-white p-3 text-[13px] shadow-sm">
       <div className="flex flex-wrap items-center gap-2">
         <h3 className="font-semibold">Design do Gráfico</h3>
-        <button type="button" onClick={fechar} className="ml-auto rounded px-2 py-0.5 text-xs text-zinc-500 hover:bg-header">
+        <button type="button" onClick={fechar} className="ml-auto min-h-6 rounded px-2 py-0.5 text-xs text-zinc-500 hover:bg-header">
           Fechar
         </button>
       </div>
@@ -179,13 +211,23 @@ function Design({ indice, g, fechar }: { indice: number; g: Grafico; fechar: () 
       <div className="overflow-hidden rounded border border-zinc-200 sm:hidden" data-testid="previa-grafico">
         <GraficoSvg dados={planilha.dadosDoGrafico(indice)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={320} altura={210} />
       </div>
-      <div className="flex flex-wrap gap-1" role="radiogroup" aria-label="Tipo de gráfico">
+      <div
+        className="flex flex-wrap gap-1"
+        role="radiogroup"
+        aria-label="Tipo de gráfico"
+        onKeyDown={(e) => {
+          // Setas trocam o tipo (o foco anda junto), como num grupo de opções.
+          const alvo = navegarItens(e, '[role="radio"]', "ambas");
+          if (alvo) mudar({ tipo: alvo.dataset.mudarTipo as TipoGrafico });
+        }}
+      >
         {TIPOS.map((t) => (
           <button
             key={t.tipo}
             type="button"
             role="radio"
             aria-checked={g.tipo === t.tipo}
+            tabIndex={g.tipo === t.tipo ? 0 : -1}
             title={t.dica}
             data-mudar-tipo={t.tipo}
             onClick={() => mudar({ tipo: t.tipo })}
@@ -240,7 +282,7 @@ function Design({ indice, g, fechar }: { indice: number; g: Grafico; fechar: () 
           planilha.removerGrafico(indice);
           fechar();
         }}
-        className="rounded px-2 py-1 text-xs text-zinc-500 hover:bg-header hover:text-red-700"
+        className="min-h-6 rounded px-2 py-1 text-xs text-zinc-500 hover:bg-header hover:text-red-700"
         data-testid="excluir-grafico"
       >
         Excluir gráfico

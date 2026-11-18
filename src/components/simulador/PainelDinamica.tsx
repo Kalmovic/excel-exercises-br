@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type DragEvent } from "react";
+import { useEffect, useId, useRef, useState, type DragEvent } from "react";
+import { useSemTeclado } from "@/lib/toque";
 import type { Dinamica, FuncaoValor } from "@/content/schema";
 import { deEndereco } from "@/engine/address";
 import { NOMES_FUNCAO, rotuloValor } from "@/engine/dinamica";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 import { IconeTabelaDinamica } from "./BarraDados";
+import { useEscape, useFocoDentro } from "./teclado";
 import {
   NOMES_AREA,
   campoUsado,
@@ -33,6 +35,7 @@ type Arrastado = { letra: string; origem: Origem };
 export function PainelDinamica() {
   const { planilha, store } = useSimulador();
   useVersaoPlanilha();
+  const semTeclado = useSemTeclado();
   const ancora = useEstado((e) => e.ancora);
   const [erro, setErro] = useState<string | null>(null);
   const [sobre, setSobre] = useState<Area | "lista" | null>(null);
@@ -98,7 +101,7 @@ export function PainelDinamica() {
         {tabelas.length > 1 && <span className="text-xs text-zinc-500">({d.destino}; clique numa tabela para trocar)</span>}
         <button
           type="button"
-          className="ml-auto rounded px-2 py-0.5 text-xs text-zinc-500 hover:bg-header hover:text-zinc-800"
+          className="ml-auto min-h-6 rounded px-2 py-0.5 text-xs text-zinc-500 hover:bg-header hover:text-zinc-800"
           onClick={() => {
             planilha.removerDinamica(i);
             setErro(null);
@@ -122,7 +125,7 @@ export function PainelDinamica() {
                 key={c.letra}
                 draggable
                 onDragStart={arrastar({ letra: c.letra, origem: null })}
-                className="flex cursor-grab items-center gap-2 rounded px-1 py-0.5 hover:bg-header"
+                className="flex min-h-7 cursor-grab items-center gap-2 rounded px-1 py-0.5 hover:bg-header"
               >
                 <input
                   type="checkbox"
@@ -131,13 +134,15 @@ export function PainelDinamica() {
                   onChange={() => aplicar(marcarCampo(d, c.letra, c.numerico))}
                   data-campo={c.nome}
                 />
-                <label htmlFor={`campo-${c.letra}`} className="min-w-0 flex-1 cursor-pointer truncate">
+                <label htmlFor={`campo-${c.letra}`} className="min-w-0 flex-1 cursor-pointer truncate py-1">
                   {c.nome}
                 </label>
               </li>
             ))}
           </ul>
-          <p className="px-1 pt-2 text-[11px] leading-snug text-zinc-500">Arraste os campos para as áreas, ou use o ⋯ de cada um.</p>
+          <p className="px-1 pt-2 text-[11px] leading-snug text-zinc-500">
+            {semTeclado ? "Marque os campos, ou use o ⋯ de cada um para escolher a área." : "Arraste os campos para as áreas, ou use o ⋯ de cada um."}
+          </p>
         </div>
         <div className="grid grid-cols-2 gap-2">
           {AREAS.map((area) => (
@@ -180,7 +185,7 @@ export function PainelDinamica() {
       {naCelula < 0 && (
         <button
           type="button"
-          className="mt-2 text-xs text-zinc-500 underline hover:text-zinc-800"
+          className="mt-2 min-h-6 text-xs text-zinc-500 underline hover:text-zinc-800"
           onClick={() => {
             const p = deEndereco(d.destino);
             store.setState({ ancora: p, foco: p });
@@ -205,6 +210,7 @@ type PropsItem = {
 
 function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }: PropsItem) {
   const [aberto, setAberto] = useState(false);
+  const botaoFiltroRef = useRef<HTMLButtonElement>(null);
   return (
     <li
       draggable
@@ -219,7 +225,7 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
           aria-label={`Resumir ${rotulo} por`}
           value={funcao}
           onChange={(e) => mudarFuncao(e.target.value as FuncaoValor)}
-          className="rounded border border-zinc-300 bg-white px-0.5 text-xs"
+          className="min-h-6 rounded border border-zinc-300 bg-white px-0.5 text-xs"
           data-testid="funcao-valor"
         >
           {FUNCOES.map((f) => (
@@ -231,17 +237,21 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
       )}
       {filtro && (
         <button
+          ref={botaoFiltroRef}
           type="button"
           onClick={() => setAberto((a) => !a)}
-          className="rounded border border-zinc-300 px-1 text-xs hover:bg-header"
+          className="min-h-6 rounded border border-zinc-300 px-1 text-xs hover:bg-header"
           aria-expanded={aberto}
+          aria-haspopup="dialog"
+          aria-label={`Itens do filtro ${rotulo}`}
           data-testid="itens-filtro-dinamica"
         >
           {filtro.marcados === null ? "(Tudo)" : filtro.marcados.length === 1 ? filtro.marcados[0] || "(vazio)" : "(Vários itens)"} ▾
         </button>
       )}
-      {/* "⋯" visível, com o select nativo transparente por cima (funciona no celular sem arrastar). */}
-      <span className="relative ml-auto inline-flex h-5 w-6 items-center justify-center rounded border border-zinc-300 text-xs text-zinc-600 hover:bg-header">
+      {/* "⋯" visível, com o select nativo transparente por cima (funciona no celular sem arrastar).
+          O anel aparece no span, porque o select invisível não mostra o foco. */}
+      <span className="relative ml-auto inline-flex h-6 w-7 items-center justify-center rounded border border-zinc-300 text-xs text-zinc-600 focus-within:ring-2 focus-within:ring-success hover:bg-header">
         ⋯
         <select
           aria-label={`Mover ${rotulo}`}
@@ -263,15 +273,27 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
         </option>
         </select>
       </span>
-      {filtro && aberto && <ItensFiltro {...filtro} fechar={() => setAberto(false)} />}
+      {filtro && aberto && (
+        <ItensFiltro
+          {...filtro}
+          rotulo={rotulo}
+          fechar={() => {
+            setAberto(false);
+            requestAnimationFrame(() => botaoFiltroRef.current?.focus());
+          }}
+        />
+      )}
     </li>
   );
 }
 
 /** A lista de caixas do filtro da tabela dinâmica (com "Selecionar Vários Itens" implícito). */
-function ItensFiltro({ itens, marcados, aplicar, fechar }: NonNullable<PropsItem["filtro"]> & { fechar: () => void }) {
+function ItensFiltro({ itens, marcados, aplicar, fechar, rotulo }: NonNullable<PropsItem["filtro"]> & { fechar: () => void; rotulo: string }) {
   const [sel, setSel] = useState<Set<string>>(() => new Set(marcados ?? itens));
   const ref = useRef<HTMLDivElement>(null);
+  const id = useId();
+  useEscape(ref, fechar);
+  useFocoDentro(ref, "input", false);
   useEffect(() => {
     const fora = (e: MouseEvent) => ref.current && !ref.current.contains(e.target as Node) && fechar();
     window.addEventListener("mousedown", fora);
@@ -279,14 +301,22 @@ function ItensFiltro({ itens, marcados, aplicar, fechar }: NonNullable<PropsItem
   }, [fechar]);
   const todos = itens.every((x) => sel.has(x));
   return (
-    <div ref={ref} className="absolute top-full left-0 z-40 mt-1 w-52 rounded-md border border-zinc-300 bg-white p-1 shadow-lg" data-testid="menu-itens-dinamica">
+    <div
+      ref={ref}
+      role="dialog"
+      aria-modal="false"
+      aria-label={`Itens do filtro ${rotulo}`}
+      id={id}
+      className="absolute top-full left-0 z-40 mt-1 w-52 rounded-md border border-zinc-300 bg-white p-1 shadow-lg"
+      data-testid="menu-itens-dinamica"
+    >
       <div className="max-h-44 overflow-auto py-1">
-        <label className="flex items-center gap-2 px-2 py-0.5 hover:bg-header">
+        <label className="flex min-h-6 items-center gap-2 px-2 py-0.5 hover:bg-header">
           <input type="checkbox" checked={todos} onChange={() => setSel(todos ? new Set() : new Set(itens))} />
           (Tudo)
         </label>
         {itens.map((x) => (
-          <label key={x} className="flex items-center gap-2 px-2 py-0.5 hover:bg-header">
+          <label key={x} className="flex min-h-6 items-center gap-2 px-2 py-0.5 hover:bg-header">
             <input
               type="checkbox"
               checked={sel.has(x)}
