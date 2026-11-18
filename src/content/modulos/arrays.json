@@ -1170,7 +1170,7 @@
       "Uma venda nova do Sul é adicionada dentro do intervalo. O que acontece com o FILTRO?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense no que acontece com qualquer fórmula quando os dados que ela lê mudam."
     ],
     "explicacao": [
       "A fórmula é recalculada com os dados novos: a venda aparece no resultado."
@@ -1187,16 +1187,19 @@
     },
     "opcoes": [
       {
-        "texto": "Nada"
+        "texto": "Nada",
+        "dica": "O FILTRO é uma fórmula como as outras, e fórmulas não ficam paradas quando os dados mudam."
       },
       {
         "texto": "O resultado se atualiza sozinho"
       },
       {
-        "texto": "Dá erro"
+        "texto": "Dá erro",
+        "dica": "Uma linha nova dentro do intervalo não quebra a fórmula."
       },
       {
-        "texto": "É preciso refazer a fórmula"
+        "texto": "É preciso refazer a fórmula",
+        "dica": "Não precisa: a linha entrou dentro do intervalo que a fórmula já lê."
       }
     ],
     "correta": 1
@@ -1871,7 +1874,7 @@
       "Em **=CLASSIFICAR(dados;2;1)**, o 2 indica…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Lembre a ordem dos argumentos do CLASSIFICAR: o 3º é a ordem (1 crescente, −1 decrescente). E o 2º?"
     ],
     "explicacao": [
       "O 2º argumento é a coluna, dentro do intervalo, usada para ordenar."
@@ -1888,7 +1891,8 @@
     },
     "opcoes": [
       {
-        "texto": "A segunda linha"
+        "texto": "A segunda linha",
+        "dica": "Se o 2º argumento fosse uma linha, por qual coluna as linhas seriam comparadas?"
       },
       {
         "texto": "A segunda coluna do intervalo"
@@ -1898,7 +1902,8 @@
         "dica": "A ordem é o 3º argumento."
       },
       {
-        "texto": "Dois resultados"
+        "texto": "Dois resultados",
+        "dica": "O CLASSIFICAR devolve a tabela inteira; nenhum argumento limita a quantidade de resultados."
       }
     ],
     "correta": 1
@@ -2450,7 +2455,7 @@
       "O que **=ÚNICO(A2:A8)** devolve?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense num nome que aparece três vezes na lista. O que o ÚNICO faz com ele?"
     ],
     "explicacao": [
       "ÚNICO devolve cada valor uma vez, na ordem em que aparece."
@@ -2467,7 +2472,8 @@
     },
     "opcoes": [
       {
-        "texto": "A quantidade de nomes"
+        "texto": "A quantidade de nomes",
+        "dica": "Para a quantidade, você poria o ÚNICO dentro do CONT.VALORES. Sozinho, ele devolve uma lista."
       },
       {
         "texto": "Cada valor uma vez"
@@ -2477,7 +2483,8 @@
         "dica": "Isso exige o 3º argumento do ÚNICO."
       },
       {
-        "texto": "O primeiro valor"
+        "texto": "O primeiro valor",
+        "dica": "O ÚNICO derrama vários resultados, não só um."
       }
     ],
     "correta": 1
@@ -3037,7 +3044,13 @@
         "C6",
         "C7",
         "C8"
-      ]
+      ],
+      "alternativas": {
+        "D3": [
+          "Cancelado",
+          "Pendente"
+        ]
+      }
     },
     "alvos": [
       {

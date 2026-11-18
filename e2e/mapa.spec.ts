@@ -45,7 +45,7 @@ test("mapa: módulo concluído recolhe e o desafio do dia mostra se já jogou", 
   await intro.getByRole("button", { name: "Ver casas" }).click();
   await expect(page.getByTestId("casa-nome-da-celula")).toHaveAccessibleName(/\(feito\)/);
   await expect(page.getByTestId("card-desafio").filter({ visible: true })).toContainText("Jogar →");
-  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("10 de 52 exercícios");
+  await expect(page.getByTestId("progresso-geral").filter({ visible: true })).toContainText("10 de 70 exercícios");
 });
 
 test("balão: fecha ao sair e voltar, e não cobre nenhuma casa", async ({ page }) => {

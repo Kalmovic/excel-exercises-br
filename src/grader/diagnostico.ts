@@ -154,3 +154,59 @@ export function diagnosticarValorFixo(formulaAluno: string, formulaReferencia: s
     return "Sua fórmula só tem números digitados. Use as referências das células, para o resultado acompanhar os dados.";
   return dicaDeCelulaIgnorada(formulaAluno, formulaReferencia);
 }
+
+/**
+ * Fórmula que parece ter recebido uma fórmula nova escrita depois da antiga, como
+ * `=SOMA(B2;B7)=SOMA(B2:B7)` (no celular, o toque duplo abria a edição com o cursor
+ * no fim). Critério estreito, para não pegar comparações de verdade: um `=` no nível
+ * de fora (fora de aspas e de parênteses) com uma chamada de função inteira antes
+ * (`SOMA(B2;B7)`) e, logo depois, o nome de uma função abrindo parêntese. `<=` e `>=`
+ * nunca casam (o que vem antes termina em `<`/`>`). Quem chama ainda confere que o
+ * resultado é lógico e que o esperado não é.
+ */
+export function pareceTextoAnexado(formula: string): boolean {
+  if (!formula.startsWith("=")) return false;
+  const f = formula.slice(1);
+  let nivel = 0;
+  let aspas: string | null = null;
+  for (let i = 0; i < f.length; i++) {
+    const ch = f[i];
+    if (aspas) {
+      if (ch === aspas) aspas = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'") aspas = ch;
+    else if (ch === "(") nivel++;
+    else if (ch === ")") nivel--;
+    else if (ch === "=" && nivel === 0) {
+      const antes = f.slice(0, i).trim();
+      if (chamadaUnica(antes) && FUNCAO_ABRINDO.test(f.slice(i + 1))) return true;
+    }
+  }
+  return false;
+}
+
+const FUNCAO_ABRINDO = /^\s*[A-ZÀ-Ý_][A-ZÀ-Ý0-9_.]*\s*\(/i;
+
+/** `SOMA(B2;B7)`: uma chamada de função só, do nome ao último parêntese (o que já estava na célula). */
+function chamadaUnica(s: string): boolean {
+  if (!FUNCAO_ABRINDO.test(s) || !s.endsWith(")")) return false;
+  let nivel = 0;
+  let aspas: string | null = null;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (aspas) {
+      if (ch === aspas) aspas = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'") aspas = ch;
+    else if (ch === "(") nivel++;
+    else if (ch === ")" && --nivel === 0) return i === s.length - 1;
+  }
+  return false;
+}
+
+/** A mensagem para `pareceTextoAnexado` (texto puro: as falhas não passam pelo TextoRico). */
+export function mensagemTextoAnexado(formula: string): string {
+  return `Sua fórmula ficou "${formula}": parece que o texto novo foi escrito depois do que já estava na célula. Apague o conteúdo antes de digitar.`;
+}

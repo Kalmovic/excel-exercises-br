@@ -329,7 +329,13 @@
       "Repare no Boné: o lucro é negativo, porque o custo foi maior que a receita."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Calcule o lucro de cada produto: receita menos custo.",
+        "Escreva a fórmula em **D2** e depois copie para **D3:D6**: toque em **▦ Selecionar intervalo**, marque de D2 até D6 e toque em **↓ Preencher**."
+      ]
+    }
   },
   {
     "id": "47597391-8327-5317-b63c-3076062fa3a1",
@@ -561,35 +567,35 @@
     "alvos": [
       {
         "celula": "C2",
-        "esperado": 740.0,
+        "esperado": 740,
         "exigeFormula": true,
         "solucaoReferencia": "=B2*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "C3",
-        "esperado": 892.0,
+        "esperado": 892,
         "exigeFormula": true,
         "solucaoReferencia": "=B3*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "C4",
-        "esperado": 388.0,
+        "esperado": 388,
         "exigeFormula": true,
         "solucaoReferencia": "=B4*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "C5",
-        "esperado": 1240.0,
+        "esperado": 1240,
         "exigeFormula": true,
         "solucaoReferencia": "=B5*$F$1",
         "formato": "moeda"
       },
       {
         "celula": "C6",
-        "esperado": 610.0,
+        "esperado": 610,
         "exigeFormula": true,
         "solucaoReferencia": "=B6*$F$1",
         "formato": "moeda"
@@ -606,7 +612,18 @@
       "Sem o `$`, a cópia em C3 viraria `=B3*F2`, multiplicando por uma célula vazia."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Cada vendedor recebe uma comissão sobre suas vendas. A taxa está numa célula só: **F1**.",
+        "Escreva em **C2** a fórmula da comissão e copie para **C3:C6**. Todas as fórmulas devem usar a taxa de F1, para que mudar a taxa atualize a coluna inteira."
+      ],
+      "dicas": [
+        "Comissão = vendas × taxa. Onde está a venda de cada linha, e onde está a taxa?",
+        "Copie sua fórmula para baixo e olhe a de C3: para onde foi a referência à taxa?",
+        "A referência à taxa precisa ficar parada ao copiar. No celular, digite o $ à mão antes da letra e antes do número."
+      ]
+    }
   },
   {
     "id": "b1d5cb45-9c55-5a8d-a800-cb6fd851a978",
@@ -974,7 +991,7 @@
       },
       {
         "celula": "C2",
-        "esperado": 55.0,
+        "esperado": 55,
         "exigeFormula": true,
         "solucaoReferencia": "=$A2*(1+C$1)",
         "formato": "moeda"
@@ -988,63 +1005,63 @@
       },
       {
         "celula": "B3",
-        "esperado": 84.0,
+        "esperado": 84,
         "exigeFormula": true,
         "solucaoReferencia": "=$A3*(1+B$1)",
         "formato": "moeda"
       },
       {
         "celula": "C3",
-        "esperado": 88.0,
+        "esperado": 88,
         "exigeFormula": true,
         "solucaoReferencia": "=$A3*(1+C$1)",
         "formato": "moeda"
       },
       {
         "celula": "D3",
-        "esperado": 92.0,
+        "esperado": 92,
         "exigeFormula": true,
         "solucaoReferencia": "=$A3*(1+D$1)",
         "formato": "moeda"
       },
       {
         "celula": "B4",
-        "esperado": 126.0,
+        "esperado": 126,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+B$1)",
         "formato": "moeda"
       },
       {
         "celula": "C4",
-        "esperado": 132.0,
+        "esperado": 132,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+C$1)",
         "formato": "moeda"
       },
       {
         "celula": "D4",
-        "esperado": 138.0,
+        "esperado": 138,
         "exigeFormula": true,
         "solucaoReferencia": "=$A4*(1+D$1)",
         "formato": "moeda"
       },
       {
         "celula": "B5",
-        "esperado": 210.0,
+        "esperado": 210,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+B$1)",
         "formato": "moeda"
       },
       {
         "celula": "C5",
-        "esperado": 220.0,
+        "esperado": 220,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+C$1)",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 230.0,
+        "esperado": 230,
         "exigeFormula": true,
         "solucaoReferencia": "=$A5*(1+D$1)",
         "formato": "moeda"
@@ -1060,6 +1077,147 @@
       "É a referência **mista**: metade travada, metade livre. Com `$A$2` ou `$B$1` a tabela inteira repetiria um valor só."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Monte a tabela de preços reajustados: cada célula é o preço da coluna A com o reajuste da linha 1.",
+        "Escreva **uma** fórmula em **B2** que funcione copiada para todo o bloco **B2:D5**."
+      ],
+      "dicas": [
+        "O preço está sempre na coluna A, e o reajuste sempre na linha 1.",
+        "Trave só o que não pode andar: um número fica sempre na mesma coluna; o outro, sempre na mesma linha.",
+        "Monte a fórmula na primeira célula e pense, em cada referência, o que pode andar e o que fica parado. No celular, digite o $ à mão onde precisar."
+      ]
+    }
+  },
+  {
+    "id": "bc72fa2a-0838-5abc-a10a-4c39caa1d774",
+    "slug": "marred-preco-da-vitrine",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MARRED: preço de 50 em 50 centavos",
+    "enunciado": [
+      "Em **C2:C6**, arredonde cada preço para o múltiplo de **R$ 0,50** mais próximo."
+    ],
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 12.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B2;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B3;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B4;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 15.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B5;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B6;0,5)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "ARRED arredonda em casas decimais. Para arredondar \"de tanto em tanto\", existe outra função.",
+      "O segundo argumento é o múltiplo."
+    ],
+    "explicacao": [
+      "`=MARRED(B2;0,5)` em C2, copiada até C6.",
+      "Para sempre arredondar para cima, use TETO; para baixo, ARREDMULTB."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Custo + margem",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço na vitrine",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Café"
+        },
+        "A3": {
+          "entrada": "Pão de queijo"
+        },
+        "A4": {
+          "entrada": "Suco"
+        },
+        "A5": {
+          "entrada": "Bolo"
+        },
+        "A6": {
+          "entrada": "Água"
+        },
+        "B2": {
+          "entrada": "12,37",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "7,82",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "9,13",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "15,66",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "3,21",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "MROUND"
+    ]
   }
 ]

@@ -285,7 +285,8 @@
       "\"Y\" conta anos completos."
     ],
     "explicacao": [
-      "`=DATADIF(A2;B2;\"Y\")`. \"M\" dá meses completos; \"D\", dias; \"YM\", os meses que sobram depois dos anos."
+      "`=DATADIF(A2;B2;\"Y\")`. \"M\" dá meses completos; \"D\", dias; \"YM\", os meses que sobram depois dos anos.",
+      "O DATADIF não aparece na lista de sugestões nem na ajuda do Excel. É uma função \"escondida\", mas funciona: digite o nome inteiro."
     ],
     "tentativasAteExplicacao": 3,
     "errosComuns": [
@@ -712,7 +713,7 @@
       "Quando o valor de **HOJE()** muda?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense em quando o Excel refaz as contas de uma planilha."
     ],
     "explicacao": [
       "HOJE() é recalculada sempre que a planilha abre ou muda: amanhã, mostra a data de amanhã."
@@ -729,13 +730,15 @@
     },
     "opcoes": [
       {
-        "texto": "Nunca"
+        "texto": "Nunca",
+        "dica": "Se nunca mudasse, seria uma data digitada. Para gravar a data de hoje fixa, existe o atalho Ctrl+;."
       },
       {
         "texto": "Todo dia, quando a planilha recalcula"
       },
       {
-        "texto": "Só quando você redigita"
+        "texto": "Só quando você redigita",
+        "dica": "Não precisa redigitar: o HOJE() muda sem você tocar na fórmula."
       },
       {
         "texto": "A cada hora",
@@ -943,7 +946,7 @@
       "Em 2026, quanto dá **=ANO(HOJE())**?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "O ANO pega uma parte da data. Qual parte, e com quantos dígitos?"
     ],
     "explicacao": [
       "ANO pega o ano da data de hoje: 2026."
@@ -967,10 +970,12 @@
         "texto": "2026"
       },
       {
-        "texto": "A data de hoje"
+        "texto": "A data de hoje",
+        "dica": "A data de hoje é o que o HOJE() devolve. O ANO em volta pega só uma parte dela."
       },
       {
-        "texto": "Erro"
+        "texto": "Erro",
+        "dica": "O ANO aceita qualquer data, inclusive a do HOJE(); não há erro."
       }
     ],
     "correta": 1
@@ -1139,7 +1144,7 @@
       "Admissão em 01/12/2020. Em 30/11/2026, o DATADIF com \"Y\" dá 5, e não 6. Está errado?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Conte os aniversários de empresa que já passaram até 30/11/2026."
     ],
     "explicacao": [
       "DATADIF com \"Y\" conta anos **completos**: o 6º só fecha no dia 01/12/2026."
@@ -1163,10 +1168,12 @@
         "texto": "Não: o 6º ano ainda não se completou"
       },
       {
-        "texto": "Sim, faltou o \"M\""
+        "texto": "Sim, faltou o \"M\"",
+        "dica": "\"M\" contaria meses, não anos. Com \"Y\", o DATADIF já está pedindo anos."
       },
       {
-        "texto": "Depende do formato da célula"
+        "texto": "Depende do formato da célula",
+        "dica": "O formato muda só a aparência; a conta do DATADIF é a mesma."
       }
     ],
     "correta": 1
@@ -1185,7 +1192,7 @@
       "A unidade **\"M\"** no DATADIF devolve…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Cada unidade do DATADIF é uma letra: \"Y\" para anos, \"D\" para dias…"
     ],
     "explicacao": [
       "\"M\" conta meses completos entre as duas datas."
@@ -1209,7 +1216,8 @@
         "dica": "Esse é o MÊS()."
       },
       {
-        "texto": "Minutos"
+        "texto": "Minutos",
+        "dica": "O DATADIF trabalha só com datas, sem horas: minutos não entram."
       },
       {
         "texto": "Meses arredondados",
@@ -1399,7 +1407,7 @@
       "Incluir 15/11/2026 na lista de feriados não mudou o resultado do DIATRABALHOTOTAL. Por quê?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Veja em que dia da semana cai 15/11/2026."
     ],
     "explicacao": [
       "Fins de semana já ficam de fora: um feriado no domingo não muda nada."
@@ -1416,16 +1424,19 @@
     },
     "opcoes": [
       {
-        "texto": "A lista estava errada"
+        "texto": "A lista estava errada",
+        "dica": "A lista pode estar certa e mesmo assim o feriado não mudar nada. Pense no que o DIATRABALHOTOTAL já tira da conta."
       },
       {
         "texto": "Em 2026, 15/11 cai num domingo, que já não era contado"
       },
       {
-        "texto": "Feriados só valem no 3º argumento travado"
+        "texto": "Feriados só valem no 3º argumento travado",
+        "dica": "Os feriados entram no 3º argumento, travado ou não: o $ só importa ao copiar."
       },
       {
-        "texto": "O DIATRABALHOTOTAL ignora feriados"
+        "texto": "O DIATRABALHOTOTAL ignora feriados",
+        "dica": "Não ignora: o 3º argumento existe justamente para descontar feriados."
       }
     ],
     "correta": 1
@@ -1444,7 +1455,7 @@
       "O que o **DIATRABALHOTOTAL** conta?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "O nome ajuda: dias de trabalho."
     ],
     "explicacao": [
       "Conta os dias de semana entre as datas, inclusive, e desconta os feriados."
@@ -1461,16 +1472,19 @@
     },
     "opcoes": [
       {
-        "texto": "Todos os dias"
+        "texto": "Todos os dias",
+        "dica": "Todos os dias seria a diferença entre as datas mais 1. O DIATRABALHOTOTAL tira alguns dias da conta."
       },
       {
         "texto": "Segunda a sexta, menos os feriados informados"
       },
       {
-        "texto": "Segunda a sábado"
+        "texto": "Segunda a sábado",
+        "dica": "O sábado também fica de fora. Para escolher outro fim de semana, existe o DIATRABALHOTOTAL.INTL."
       },
       {
-        "texto": "Só os feriados"
+        "texto": "Só os feriados",
+        "dica": "Os feriados são descontados da contagem, não contados."
       }
     ],
     "correta": 1
@@ -1695,7 +1709,7 @@
       "**=FIMMÊS(data;0)** devolve…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "O 2º argumento do FIMMÊS diz quantos meses andar antes de ir para o fim do mês."
     ],
     "explicacao": [
       "Com 0, o FIMMÊS fica no próprio mês."
@@ -1723,7 +1737,8 @@
         "dica": "Esse é com 1."
       },
       {
-        "texto": "A própria data"
+        "texto": "A própria data",
+        "dica": "O FIMMÊS sempre vai para o último dia de um mês; só devolveria a própria data se ela já fosse fim de mês."
       }
     ],
     "correta": 1
@@ -1784,6 +1799,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "A2": [
+          "05/03/2025",
+          "18/07/2026"
+        ]
       }
     },
     "alvos": [
@@ -1851,6 +1872,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "B2": [
+          "20/05/2012",
+          "03/03/2015"
+        ]
       }
     },
     "alvos": [
@@ -1873,7 +1900,7 @@
     "versao": 1,
     "titulo": "Dias úteis de outubro",
     "enunciado": [
-      "Em **C2**, os dias úteis de 01/10/2026 a 31/10/2026, descontando o feriado de E2."
+      "Em **C2**, os dias úteis entre a data de **A2** e a de **B2** (outubro de 2026), descontando o feriado de **E2**."
     ],
     "dicas": [],
     "explicacao": [
@@ -1918,6 +1945,12 @@
         "B": 110,
         "C": 100,
         "E": 110
+      },
+      "alternativas": {
+        "A2": [
+          "05/10/2026",
+          "01/10/2026"
+        ]
       }
     },
     "alvos": [
@@ -1985,6 +2018,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "A2": [
+          "10/01/2026",
+          "18/07/2026"
+        ]
       }
     },
     "alvos": [
@@ -2036,7 +2075,7 @@
         "texto": "Uma fórmula"
       },
       {
-        "texto": "Uma imagem"
+        "texto": "Um valor de hora"
       }
     ],
     "correta": 1

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { celula, digitar, limparArmazenamento, verificarCorreto } from "./ajuda";
+import { celula, digitar, limparArmazenamento, simularCorrecao, verificarCorreto } from "./ajuda";
 
 const visivel = (page: import("@playwright/test").Page, id: string) => page.getByTestId(id).filter({ visible: true });
 
@@ -51,6 +51,8 @@ test("a lição só conta no mapa quando as 5 questões estão feitas", async ({
 });
 
 test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar", async ({ page }) => {
+  // Correção no servidor: o roteiro só vale enquanto a rota não existir neste build.
+  await simularCorrecao(page, [true, false, true, true, false, true, true, true, true, true]);
   await page.goto("/teste/condicionais");
   await expect(page.getByTestId("editor-celula").first()).toBeAttached();
   await expect(page.getByTestId("painel-admin")).toHaveCount(0); // gabarito escondido no teste
@@ -84,6 +86,7 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
 });
 
 test("teste do Módulo 0: os cinco tipos de questão", async ({ page }) => {
+  await simularCorrecao(page, [true, true, true, true, true]);
   await page.goto("/teste/intro");
   const proxima = () => visivel(page, "proxima-teste").click();
   await visivel(page, "campo-resposta").fill("F9");

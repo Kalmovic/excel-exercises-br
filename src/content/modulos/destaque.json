@@ -1,0 +1,3452 @@
+[
+  {
+    "id": "ee75d7f6-ffb6-5f4b-9940-2dc420e549e3",
+    "slug": "destaque-vendas-baixas",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Formatação condicional: destacar as vendas baixas",
+    "enunciado": [
+      "Destaque em **vermelho** as vendas **abaixo de R$ 500** (coluna Valor)."
+    ],
+    "dicas": [
+      "Selecione só os valores (sem o cabeçalho) antes de abrir o menu.",
+      "Formatação Condicional → Realçar Regras das Células tem uma opção para \"menor do que\"."
+    ],
+    "explicacao": [
+      "Selecione **C2:C11** → **Formatação Condicional → É Menor do que…** → 500, com *Preenchimento Vermelho Claro e Texto Vermelho Escuro*.",
+      "A cor não é pintada à mão: é uma regra. Se um valor mudar, a cor muda junto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-vendas-baixas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Formatação condicional faz a planilha apontar o problema sozinha: o que está abaixo da meta, atrasado, repetido. Num relatório de 500 linhas, é o que salva o seu tempo.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C3",
+          "C6",
+          "C11"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "menor",
+            "intervalo": "C2:C11",
+            "valor": "500",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    },
+    "inicio": {
+      "selecao": "C2:C11"
+    }
+  },
+  {
+    "id": "2e324675-da89-50e6-8301-b14dadbccca9",
+    "slug": "destaque-vendas-baixas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Destacar as vendas altas",
+    "enunciado": [
+      "Destaque em **verde** as vendas **acima de R$ 3.000**."
+    ],
+    "dicas": [
+      "A mesma família de regras da lição anterior; muda o sentido da comparação e a cor."
+    ],
+    "explicacao": [
+      "**É Maior do que…** → 3000, com *Preenchimento Verde e Texto Verde Escuro*.",
+      "No Excel, digite só o número (3000) na caixa da regra: é o jeito que nunca falha. O formato R$ da célula não muda a comparação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-vendas-baixas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C4",
+          "C7",
+          "C10"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "maior",
+            "intervalo": "C2:C11",
+            "valor": "3000",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "55573f79-f6c0-59f8-a5b3-a36d867adb24",
+    "slug": "destaque-vendas-baixas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Destacar um texto",
+    "enunciado": [
+      "Na coluna **Status**, destaque em **amarelo** os pedidos **Atrasados**."
+    ],
+    "dicas": [
+      "As regras também funcionam com texto, não só com números."
+    ],
+    "explicacao": [
+      "Selecione **D2:D11** → **É Igual a…** Atrasado (ou **Texto que Contém…** Atrasado), em amarelo.",
+      "*É Igual a* não diferencia maiúsculas: \"atrasado\" também serve."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-vendas-baixas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "D2:D11",
+        "esperado": [
+          "D3",
+          "D6",
+          "D9"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "igual",
+            "intervalo": "D2:D11",
+            "valor": "Atrasado",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "4268bca1-670b-50b5-ba87-6c11bccb9b18",
+    "slug": "destaque-vendas-baixas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: R$ 1.000 ou mais",
+    "enunciado": [
+      "A meta é **R$ 1.000**. Destaque em **verde** as vendas que **bateram a meta** (R$ 1.000 **ou mais**)."
+    ],
+    "dicas": [
+      "Quem vendeu exatamente R$ 1.000 bateu a meta. Confira se essas células ficaram verdes.",
+      "*É Maior do que* não inclui o próprio valor. Pense em outra regra, ou em outro número."
+    ],
+    "explicacao": [
+      "*É Maior do que 1000* deixa de fora Daniel e Hugo, que venderam exatamente R$ 1.000.",
+      "Caminhos que funcionam: **Nova Regra** com a fórmula `=C2>=1000` (o mais seguro) ou **Está Entre** 1000 e um valor bem alto (o Entre inclui as pontas). *É Maior do que 999,99* só serve se os valores não tiverem mais de duas casas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-vendas-baixas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C4",
+          "C5",
+          "C7",
+          "C9",
+          "C10"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "C2:C11",
+            "formula": "=C2>=1000",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "aac5706e-09b4-5a81-ad00-dc4efc05204b",
+    "slug": "destaque-vendas-baixas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "E quando o valor muda?",
+    "enunciado": [
+      "Uma venda de R$ 450 está em vermelho pela regra *É Menor do que 500*. Alguém corrige o valor para R$ 800. O que acontece com a cor?"
+    ],
+    "dicas": [
+      "A cor vem de uma regra, não de uma pintura feita à mão."
+    ],
+    "explicacao": [
+      "A cor **sai sozinha**: a regra é reavaliada a cada mudança. Por isso formatação condicional é melhor que pintar à mão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-vendas-baixas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Continua vermelha até alguém tirar a cor.",
+        "dica": "Isso aconteceria com uma cor pintada à mão, não com uma regra."
+      },
+      {
+        "texto": "Sai sozinha, porque a regra é reavaliada."
+      },
+      {
+        "texto": "Fica verde.",
+        "dica": "Só se houvesse outra regra pintando de verde."
+      },
+      {
+        "texto": "O Excel avisa que a regra quebrou.",
+        "dica": "Nada quebra: a regra continua valendo para os outros valores."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "a14613b5-d404-5224-80f4-759b5e5413fb",
+    "slug": "destaque-pedidos-repetidos",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duplicados: pedidos lançados duas vezes",
+    "enunciado": [
+      "Destaque em **vermelho** os **códigos de pedido repetidos** (coluna Pedido)."
+    ],
+    "dicas": [
+      "Não precisa comparar um por um: existe uma regra pronta para isso.",
+      "Ela fica em Realçar Regras das Células."
+    ],
+    "explicacao": [
+      "Selecione **A2:A9** → **Valores Duplicados…** → Duplicados, em vermelho.",
+      "As duas ocorrências ficam destacadas: P101 e P102 aparecem duas vezes cada. É o jeito mais rápido de achar lançamento em dobro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-pedidos-repetidos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Lançamento em dobro, CPF repetido, nota cadastrada duas vezes: a regra de duplicados encontra em um clique o que levaria uma tarde no olho.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 11,
+      "colunas": 5,
+      "larguras": {
+        "A": 72,
+        "B": 84,
+        "C": 96,
+        "D": 40,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P101"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P102"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P103"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P102"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P104"
+        },
+        "B6": {
+          "entrada": "Davi"
+        },
+        "C6": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P105"
+        },
+        "B7": {
+          "entrada": "ANA"
+        },
+        "C7": {
+          "entrada": "75",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P101"
+        },
+        "B8": {
+          "entrada": "Eva"
+        },
+        "C8": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P106"
+        },
+        "B9": {
+          "entrada": "Fábio"
+        },
+        "C9": {
+          "entrada": "640",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:A9",
+        "esperado": [
+          "A2",
+          "A3",
+          "A5",
+          "A8"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "duplicados",
+            "intervalo": "A2:A9",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "a20e2742-ca5b-526e-a829-8ffe12f9f08a",
+    "slug": "destaque-pedidos-repetidos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "As 3 maiores vendas",
+    "enunciado": [
+      "Destaque em **verde** as **3 maiores** vendas."
+    ],
+    "dicas": [
+      "Regras de Primeiros/Últimos começa com 10 itens. Ajuste a quantidade."
+    ],
+    "explicacao": [
+      "**10 Primeiros Itens…** → troque 10 por **3**, em verde.",
+      "Com o 10 padrão, quase a tabela inteira ficaria verde."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-pedidos-repetidos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C4",
+          "C7",
+          "C10"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "maiores",
+            "intervalo": "C2:C11",
+            "n": 3,
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "a97863aa-3848-5c59-95f4-55dc791ee516",
+    "slug": "destaque-pedidos-repetidos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Abaixo da média",
+    "enunciado": [
+      "Destaque em **amarelo** as vendas **abaixo da média** da equipe."
+    ],
+    "dicas": [
+      "Não precisa calcular a média: a regra calcula sozinha."
+    ],
+    "explicacao": [
+      "**Abaixo da Média…** em amarelo. A média é R$ 1.708,00, e a regra acompanha se os valores mudarem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-pedidos-repetidos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C3",
+          "C5",
+          "C6",
+          "C8",
+          "C9",
+          "C11"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "abaixoMedia",
+            "intervalo": "C2:C11",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "66d8f70e-623c-5015-a2cd-b73d01a0393f",
+    "slug": "destaque-pedidos-repetidos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: quem comprou uma vez só",
+    "enunciado": [
+      "Destaque em **amarelo** os **clientes que fizeram um pedido só** (coluna Cliente)."
+    ],
+    "dicas": [
+      "A janela de Valores Duplicados tem uma segunda opção no primeiro campo.",
+      "Repare em como o nome de um cliente foi digitado em uma das linhas."
+    ],
+    "explicacao": [
+      "**Valores Duplicados…** → troque *Duplicados* por **Exclusivos**.",
+      "E repare: \"ANA\" e \"Ana\" contam como o mesmo nome (a regra não diferencia maiúsculas). Por isso a Ana não é exclusiva."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-pedidos-repetidos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 11,
+      "colunas": 5,
+      "larguras": {
+        "A": 72,
+        "B": 84,
+        "C": 96,
+        "D": 40,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P101"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P102"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P103"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P102"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P104"
+        },
+        "B6": {
+          "entrada": "Davi"
+        },
+        "C6": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P105"
+        },
+        "B7": {
+          "entrada": "ANA"
+        },
+        "C7": {
+          "entrada": "75",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P101"
+        },
+        "B8": {
+          "entrada": "Eva"
+        },
+        "C8": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P106"
+        },
+        "B9": {
+          "entrada": "Fábio"
+        },
+        "C9": {
+          "entrada": "640",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B9",
+        "esperado": [
+          "B4",
+          "B6",
+          "B8",
+          "B9"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "unicos",
+            "intervalo": "B2:B9",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "d37424fb-662c-579d-8abe-368519b67aad",
+    "slug": "destaque-pedidos-repetidos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ANA e Ana são duplicados?",
+    "enunciado": [
+      "Na regra de Valores Duplicados, \"ANA\" e \"Ana\" contam como repetidos?"
+    ],
+    "dicas": [
+      "Pense em como o Excel compara textos nas outras ferramentas, como o PROCV."
+    ],
+    "explicacao": [
+      "**Sim.** A regra não diferencia maiúsculas de minúsculas, como quase tudo no Excel. Mas um espaço sobrando (\"Ana \") já torna o texto diferente."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-pedidos-repetidos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Sim, a regra não diferencia maiúsculas."
+      },
+      {
+        "texto": "Não, maiúsculas tornam o texto diferente.",
+        "dica": "Para o Excel, ANA e Ana são o mesmo texto nessa regra."
+      },
+      {
+        "texto": "Só se a célula estiver em negrito.",
+        "dica": "Formato não muda a comparação."
+      },
+      {
+        "texto": "Depende da ordem em que aparecem.",
+        "dica": "A ordem não importa: os dois ficam destacados."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "d61df864-4e6c-51a6-8a00-55ce795cc4e2",
+    "slug": "destaque-linha-inteira",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pintar a linha inteira",
+    "enunciado": [
+      "Pinte em **vermelho** a **linha inteira** (de A a D) de cada venda **Atrasada**."
+    ],
+    "dicas": [
+      "As regras prontas só olham a própria célula. Para a linha toda olhar o Status, a regra precisa ser uma fórmula.",
+      "Selecione a tabela sem o cabeçalho e escreva a fórmula pensando na primeira linha. A coluna do Status precisa ficar fixa."
+    ],
+    "explicacao": [
+      "Selecione **A2:D11** → **Nova Regra: usar uma fórmula** → `=$D2=\"Atrasado\"`, em vermelho.",
+      "O **$** antes do D trava a coluna: todas as células da linha olham o Status. O 2 sem $ deixa a linha andar: a linha 3 olha D3, a 4 olha D4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-linha-inteira",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Destacar a linha inteira deixa o relatório legível de longe. É também a pergunta preferida de quem aplica teste prático de Excel.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A6",
+          "B6",
+          "C6",
+          "D6",
+          "A9",
+          "B9",
+          "C9",
+          "D9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2=\"Atrasado\"",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "3058efb7-6e56-5760-91fe-ea33373cecf4",
+    "slug": "destaque-linha-inteira-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Linha inteira por valor",
+    "enunciado": [
+      "Pinte em **verde** a **linha inteira** das vendas **acima de R$ 3.000**."
+    ],
+    "dicas": [
+      "É a mesma estrutura da lição anterior; muda a coluna travada e a comparação."
+    ],
+    "explicacao": [
+      "**A2:D11** → fórmula `=$C2>3000`, em verde."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-linha-inteira",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$C2>3000",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "b4e42cf5-0d6d-58bb-a01d-612fe8afbf2a",
+    "slug": "destaque-linha-inteira-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 33,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Barras de dados",
+    "enunciado": [
+      "Coloque **barras de dados** nos valores de venda (só os números, sem o cabeçalho)."
+    ],
+    "dicas": [
+      "Barras de Dados ficam no mesmo menu e se aplicam direto na seleção."
+    ],
+    "explicacao": [
+      "Selecione **C2:C11** → **Formatação Condicional → Barras de Dados**.",
+      "Cada barra é proporcional ao maior valor: dá para comparar a equipe de relance, sem gráfico."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-linha-inteira",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "formatoVisual",
+        "intervalo": "C2:C11",
+        "visual": "barras"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "barras",
+            "intervalo": "C2:C11"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "a9dca886-1cf9-5ba5-8a8f-783a01e669ee",
+    "slug": "destaque-linha-inteira-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 34,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: duas condições",
+    "enunciado": [
+      "Pinte em **vermelho** a **linha inteira** das vendas **Atrasadas** de **mais de R$ 400**."
+    ],
+    "dicas": [
+      "Duas condições ao mesmo tempo: a fórmula precisa de uma função que exija as duas.",
+      "Cada condição olha uma coluna diferente, e as duas precisam do $."
+    ],
+    "explicacao": [
+      "Fórmula `=E($D2=\"Atrasado\";$C2>400)` em **A2:D11**.",
+      "A Eva está atrasada, mas com R$ 250: não entra. Quem usa só o Status pinta uma linha a mais."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-linha-inteira",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A9",
+          "B9",
+          "C9",
+          "D9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($D2=\"Atrasado\";$C2>400)",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "9e6abc9a-04ec-549d-bb74-d78510eefa10",
+    "slug": "destaque-linha-inteira-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para que serve o $?",
+    "enunciado": [
+      "Na regra `=$D2=\"Atrasado\"` aplicada em A2:D11, para que serve o **$** antes do D?"
+    ],
+    "dicas": [
+      "Imagine a regra sendo copiada para a célula B2: sem o $, para onde ela olharia?"
+    ],
+    "explicacao": [
+      "O **$** trava a coluna D: em A2, B2, C2 e D2 a regra olha o mesmo Status. Sem ele, a regra em B2 olharia E2, em C2 olharia F2, e a linha ficaria pintada pela metade."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-linha-inteira",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Para a regra olhar sempre a coluna D, em qualquer célula da linha."
+      },
+      {
+        "texto": "Para a regra valer só na linha 2.",
+        "dica": "Quem trava a linha é o $ antes do número; aqui a linha anda."
+      },
+      {
+        "texto": "É obrigatório em toda fórmula de formatação condicional.",
+        "dica": "Não é: depende do que a regra precisa olhar."
+      },
+      {
+        "texto": "Para formatar como moeda.",
+        "dica": "O $ de referência não tem relação com o formato R$."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "8cfc1046-4683-5090-858d-e92cdf64dc7b",
+    "slug": "teste-destaque-1",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Acima de mil",
+    "enunciado": [
+      "Destaque em **verde** as vendas **acima de R$ 1.000**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "destaque-vendas-baixas",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C4",
+          "C7",
+          "C10"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "maior",
+            "intervalo": "C2:C11",
+            "valor": "1000",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "ca99d129-97db-5b51-9b9c-f5bc255fbb67",
+    "slug": "teste-destaque-2",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Clientes repetidos",
+    "enunciado": [
+      "Destaque em **vermelho** os **clientes que aparecem mais de uma vez**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "destaque-pedidos-repetidos",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 11,
+      "colunas": 5,
+      "larguras": {
+        "A": 72,
+        "B": 84,
+        "C": 96,
+        "D": 40,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P101"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P102"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P103"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P102"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P104"
+        },
+        "B6": {
+          "entrada": "Davi"
+        },
+        "C6": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P105"
+        },
+        "B7": {
+          "entrada": "ANA"
+        },
+        "C7": {
+          "entrada": "75",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P101"
+        },
+        "B8": {
+          "entrada": "Eva"
+        },
+        "C8": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P106"
+        },
+        "B9": {
+          "entrada": "Fábio"
+        },
+        "C9": {
+          "entrada": "640",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B9",
+        "esperado": [
+          "B2",
+          "B3",
+          "B5",
+          "B7"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "duplicados",
+            "intervalo": "B2:B9",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "6bebe6e2-5eb9-53e0-9ce1-2bd4847bcbd3",
+    "slug": "teste-destaque-3",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pendentes na linha toda",
+    "enunciado": [
+      "Pinte em **amarelo** a **linha inteira** (A a D) das vendas **Pendentes**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "destaque-linha-inteira",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A5",
+          "B5",
+          "C5",
+          "D5",
+          "A11",
+          "B11",
+          "C11",
+          "D11"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2=\"Pendente\"",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "cca88999-1716-54f0-ba55-4202ed272bc5",
+    "slug": "teste-destaque-4",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "As duas menores",
+    "enunciado": [
+      "Destaque em **vermelho** as **2 menores** vendas."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "destaque-pedidos-repetidos",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 96,
+        "D": 88,
+        "E": 40,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Sul"
+        },
+        "C7": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Atrasado"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "A11": {
+          "entrada": "João"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C6",
+          "C11"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "menores",
+            "intervalo": "C2:C11",
+            "n": 2,
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "07bd0719-2551-5a85-b961-4a85ce14b95e",
+    "slug": "teste-destaque-5",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Meta incluída",
+    "enunciado": [
+      "Qual regra destaca as vendas de **R$ 1.000 ou mais**, incluindo quem vendeu exatamente R$ 1.000?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "destaque-vendas-baixas",
+    "teste": true,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "É Maior do que 1000"
+      },
+      {
+        "texto": "Está Entre 1000 e 1000000"
+      },
+      {
+        "texto": "É Igual a 1000"
+      },
+      {
+        "texto": "10 Primeiros Itens"
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  }
+]

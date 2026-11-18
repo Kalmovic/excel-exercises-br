@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TesteModulo } from "@/components/simulador/TesteModulo";
 import { MODULOS, exercicioPorSlug, moduloPorSlug, proximoModulo, testeDoModulo } from "@/content";
+import { exercicioParaTeste } from "@/lib/teste-publico";
+import { APROVACAO } from "@/lib/testes";
 
 export function generateStaticParams() {
   return MODULOS.filter((m) => testeDoModulo(m.slug).length > 0).map((m) => ({ modulo: m.slug }));
@@ -34,7 +36,9 @@ export default async function PaginaTeste({ params }: PageProps<"/teste/[modulo]
       </nav>
       <header className="space-y-1">
         <h1 className="text-2xl font-bold tracking-tight">Teste do Módulo {m.numero}: {m.titulo}</h1>
-        <p className="text-muted">5 questões inéditas, sem dica e com uma tentativa cada. Passa quem acerta 4.</p>
+        <p className="text-muted">
+          {questoes.length} questões inéditas, sem dica e com uma tentativa cada. Passa quem acerta {APROVACAO}.
+        </p>
       </header>
       <TesteModulo
         modulo={{ slug: m.slug, numero: m.numero, titulo: m.titulo, icone: m.trofeu.icone, conquista: m.trofeu.descricao }}
@@ -45,7 +49,9 @@ export default async function PaginaTeste({ params }: PageProps<"/teste/[modulo]
             href: `/exercicios/${seguinte.primeiro.slug}`,
           }
         }
-        questoes={questoes}
+        // Sem gabarito: tudo o que vai para o navegador fica legível no HTML e no .rsc.
+        // A correção é no servidor (POST /api/teste/corrigir).
+        questoes={questoes.map(exercicioParaTeste)}
         revisar={revisar}
       />
     </div>

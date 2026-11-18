@@ -3,6 +3,7 @@
 import { createContext, useContext, useSyncExternalStore, type RefObject } from "react";
 import { useStore } from "zustand";
 import type { Planilha } from "@/engine/engine";
+import type { Pos } from "@/engine/address";
 import type { EstadoSimulador, StoreSimulador } from "./store";
 
 export type ContextoSimulador = {
@@ -12,10 +13,26 @@ export type ContextoSimulador = {
   alvos: Set<string>;
   /** Barra de formatação (R$, %) e seus atalhos. */
   formatacao: boolean;
+  /** Barra Dados: Filtro (Ctrl+Shift+L) e Classificar. */
+  dados: boolean;
+  /** Botão Tabela dinâmica e o painel Campos da Tabela Dinâmica. */
+  dinamica: boolean;
+  /** Menu Formatação Condicional. */
+  condicional: boolean;
+  /** Menu Inserir Gráfico e o painel Design do Gráfico. */
+  grafico: boolean;
+  /** Botões Validação de Dados e Circular Dados Inválidos. */
+  validacao: boolean;
   /** Mostrar o endereço da célula ativa na Caixa de Nome. */
   caixaDeNome: boolean;
   /** Seleção travada: a grade só pode ser observada. */
   selecaoFixa: boolean;
+  /** Pasta com várias abas: o nome desta (referências de outras abas não são desenhadas aqui). */
+  nomeAba?: string;
+  /** Apontando de outra aba: clicar numa célula insere `Aba!B2` na fórmula que está sendo escrita lá. */
+  apontarExterno?: (de: Pos, ate: Pos) => void;
+  /** A fórmula sendo escrita na outra aba (para desenhar as referências que caem nesta). */
+  formulaExterna?: string;
 };
 
 export const Contexto = createContext<ContextoSimulador | null>(null);

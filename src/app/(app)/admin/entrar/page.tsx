@@ -39,7 +39,7 @@ async function Formulario({ searchParams }: { searchParams: PageProps<"/admin/en
       </label>
       {erro && (
         <p className="text-sm text-red-700" data-testid="erro-admin">
-          Senha incorreta.
+          {erro === "limite" ? "Muitas tentativas seguidas. Espere um minuto e tente de novo." : "Senha incorreta."}
         </p>
       )}
       <button type="submit" className="w-full rounded-md bg-violet-700 px-4 py-2 font-medium text-white hover:bg-violet-800">

@@ -4,10 +4,13 @@ import { criarStore } from "@/components/simulador/store";
 import { testeDoModulo } from "@/content";
 import { deIntervalo, paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
+import { zerarLimites } from "@/lib/limite";
 
 // Banco simulado: guarda o que a rota grava.
 const banco = { certificados: [] as Record<string, unknown>[], perfis: [] as Record<string, unknown>[] };
 let usuario: { id: string } | null = { id: "u1" };
+/** Simula outro pedido gravando primeiro (corrida). */
+let antesDoInsert: (() => void) | null = null;
 vi.mock("@/lib/supabase/servidor", () => ({ usuarioAtual: async () => usuario }));
 vi.mock("@/lib/acesso", () => ({ usuarioEhPro: async () => true }));
 vi.mock("@/lib/supabase/admin", () => ({
@@ -18,7 +21,14 @@ vi.mock("@/lib/supabase/admin", () => ({
         select: () => q,
         eq: (c: string, v: unknown) => (filtros.push([c, v]), q),
         maybeSingle: async () => ({ data: banco[tabela].find((l) => filtros.every(([c, v]) => l[c] === v)) ?? null }),
-        insert: async (linha: Record<string, unknown>) => (banco[tabela].push(linha), { error: null }),
+        insert: async (linha: Record<string, unknown>) => {
+          antesDoInsert?.();
+          // A regra unique (usuario_id, modulo) do banco.
+          if (banco[tabela].some((l) => l.usuario_id === linha.usuario_id && l.modulo === linha.modulo))
+            return { error: { code: "23505", message: 'duplicate key value violates unique constraint "certificados_usuario_id_modulo_key"' } };
+          banco[tabela].push(linha);
+          return { error: null };
+        },
         update: (mudanca: Record<string, unknown>) => ({
           eq: async (c: string, v: unknown) => {
             for (const l of banco[tabela]) if (l[c] === v) Object.assign(l, mudanca);
@@ -56,6 +66,8 @@ describe("emitir certificado", async () => {
     banco.certificados = [];
     banco.perfis = [{ id: "u1", nome: null }];
     usuario = { id: "u1" };
+    antesDoInsert = null;
+    zerarLimites();
     vi.spyOn(console, "log").mockImplementation(() => {});
   });
 
@@ -79,12 +91,33 @@ describe("emitir certificado", async () => {
     expect(banco.perfis[0].nome).toBe("Ana Souza");
   });
 
-  it("emitir de novo mantém o código (links já compartilhados continuam valendo)", async () => {
+  it("emitir de novo devolve o mesmo, sem trocar o nome (o link verificado continua sendo da mesma pessoa)", async () => {
     const a = await (await POST(pedir({ modulo: "busca", nome: "Ana Souza", entregas: certas("busca") }))).json();
-    const b = await (await POST(pedir({ modulo: "busca", nome: "Ana Maria Souza", entregas: certas("busca") }))).json();
-    expect(b.codigo).toBe(a.codigo);
+    const emitido = { ...banco.certificados[0] };
+    const b = await POST(pedir({ modulo: "busca", nome: "Outra Pessoa", entregas: certas("busca") }));
+    expect(b.status).toBe(200);
+    expect((await b.json()).codigo).toBe(a.codigo);
+    expect(banco.certificados).toEqual([emitido]);
+    expect(banco.certificados[0].nome).toBe("Ana Souza");
+    expect(banco.perfis[0].nome).toBe("Ana Souza");
+  });
+
+  it("dois pedidos ao mesmo tempo: o segundo recebe o certificado do primeiro, não um erro", async () => {
+    antesDoInsert = () => {
+      antesDoInsert = null;
+      banco.certificados.push({ codigo: "GANH-XY22", usuario_id: "u1", modulo: "busca", nome: "Ana Souza" });
+    };
+    // Entre a consulta e o insert, o outro pedido grava primeiro.
+    const r = await POST(pedir({ modulo: "busca", nome: "Ana Souza", entregas: certas("busca") }));
+    expect(r.status).toBe(200);
+    expect((await r.json()).codigo).toBe("GANH-XY22");
     expect(banco.certificados).toHaveLength(1);
-    expect(banco.certificados[0].nome).toBe("Ana Maria Souza");
+  });
+
+  it("muitos pedidos seguidos: 429 em português", async () => {
+    let ultimo = 0;
+    for (let i = 0; i < 11; i++) ultimo = (await POST(pedir({ modulo: "nada", nome: "Ana Souza", entregas: [] }))).status;
+    expect(ultimo).toBe(429);
   });
 
   it("módulo inexistente: 404", async () => {

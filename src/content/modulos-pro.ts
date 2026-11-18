@@ -22,6 +22,7 @@ export const MODULOS_PLANEJADOS = [
   },
   { slug: "datas", titulo: "Datas", funcoes: ["TODAY", "DATE", "YEAR", "MONTH", "DAY", "DATEDIF", "NETWORKDAYS", "EOMONTH", "WEEKDAY"] },
   { slug: "arrays", titulo: "Arrays dinâmicos", funcoes: ["FILTER", "SORT", "UNIQUE", "SEQUENCE"] },
+  { slug: "dados", titulo: "Organizar dados", funcoes: ["SUBTOTAL"] },
   { slug: "casos", titulo: "Casos reais", funcoes: ["PMT", "LARGE", "SMALL"] },
 ] as const;
 

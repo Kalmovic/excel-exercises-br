@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
+let cookie: string | undefined;
+vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => (cookie === undefined ? undefined : { value: cookie }) }) }));
 
 const importar = async () => {
   vi.resetModules();
@@ -32,5 +33,17 @@ describe("senha de admin", () => {
     const cookie = a.valorDoCookie();
     expect(cookie).toMatch(/^[0-9a-f]{64}$/);
     expect(cookie).not.toContain("senha");
+  });
+
+  it("cookie malformado (64 caracteres que não são hex): recusa, sem erro", async () => {
+    vi.stubEnv("ADMIN_TOKEN", "uma-senha-bem-longa");
+    const a = await importar();
+    for (const ruim of ["z".repeat(64), "é".repeat(64), "0".repeat(63) + "g", " ".repeat(64)]) {
+      cookie = ruim;
+      await expect(a.ehAdmin()).resolves.toBe(false);
+    }
+    cookie = a.valorDoCookie();
+    await expect(a.ehAdmin()).resolves.toBe(true);
+    cookie = undefined;
   });
 });

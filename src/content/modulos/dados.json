@@ -1,0 +1,3940 @@
+[
+  {
+    "id": "9dcfa85e-579f-5eeb-9209-0e95e819e454",
+    "slug": "dados-classificar-maior-valor",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Classificar: do maior para o menor valor",
+    "enunciado": [
+      "Organize a tabela do **maior** para o **menor** valor de venda (coluna **Valor**)."
+    ],
+    "dicas": [
+      "Clique numa célula qualquer da coluna Valor: o Excel classifica pela coluna da célula ativa.",
+      "Na barra Dados, o botão Z→A classifica do maior para o menor. A tabela inteira anda junto, não só a coluna."
+    ],
+    "explicacao": [
+      "Com uma célula da coluna **Valor** ativa, **Dados → Classificar de Z a A** (ou a seta do filtro → *Classificar do Maior para o Menor*).",
+      "O Excel percebe que a primeira linha é cabeçalho (é texto em cima de números, e costuma estar em negrito) e deixa ela no lugar. Cada linha anda inteira: o vendedor continua junto da venda dele."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-maior-valor",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Classificar é a primeira coisa que se faz com uma tabela: ver quem vendeu mais, o prazo que vence primeiro, a lista em ordem alfabética. É um clique, e a linha inteira anda junto.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Daniela"
+          ],
+          [
+            "Gabriela"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Hugo"
+          ],
+          [
+            "Fábio"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Íris"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Eduardo"
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C10",
+        "esperado": [
+          [
+            700
+          ],
+          [
+            650
+          ],
+          [
+            500
+          ],
+          [
+            450
+          ],
+          [
+            400
+          ],
+          [
+            300
+          ],
+          [
+            250
+          ],
+          [
+            200
+          ],
+          [
+            100
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "aaa1f735-c84c-5044-8257-0fd6b339987c",
+    "slug": "dados-classificar-maior-valor-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Classificar em ordem alfabética",
+    "enunciado": [
+      "Coloque os vendedores em **ordem alfabética** (de A a Z)."
+    ],
+    "dicas": [
+      "A célula ativa precisa estar na coluna dos nomes: é por ela que o Excel ordena."
+    ],
+    "explicacao": [
+      "Com uma célula da coluna **Vendedor** ativa, **Classificar de A a Z**.",
+      "Repare que o acento não atrapalha: Íris vem logo depois de Hugo, como se fosse Iris."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-maior-valor",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Ana"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Daniela"
+          ],
+          [
+            "Eduardo"
+          ],
+          [
+            "Fábio"
+          ],
+          [
+            "Gabriela"
+          ],
+          [
+            "Hugo"
+          ],
+          [
+            "Íris"
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C10",
+        "esperado": [
+          [
+            500
+          ],
+          [
+            200
+          ],
+          [
+            300
+          ],
+          [
+            700
+          ],
+          [
+            100
+          ],
+          [
+            400
+          ],
+          [
+            650
+          ],
+          [
+            450
+          ],
+          [
+            250
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "A",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "fb001046-bf02-5d2d-909c-97cb48de9e7c",
+    "slug": "dados-classificar-maior-valor-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Classificar datas: a entrega mais próxima primeiro",
+    "enunciado": [
+      "Organize os pedidos pela data de **entrega**, da **mais antiga** para a **mais recente**."
+    ],
+    "dicas": [
+      "Para o Excel, data é número: a mais antiga é a menor.",
+      "Classificar de A a Z numa coluna de datas põe a mais antiga em cima."
+    ],
+    "explicacao": [
+      "Com uma célula da coluna **Entrega** ativa, **Classificar do Mais Antigo para o Mais Novo** (A→Z).",
+      "Datas são números por baixo (dias desde 1900). Por isso a ordem crescente é a cronológica. Se a data estivesse digitada como texto, a ordem ficaria errada: 02/03 antes de 25/02."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-maior-valor",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "larguras": {
+        "A": 64,
+        "B": 140,
+        "C": 88,
+        "D": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Entrega",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1043"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "18/03/2026"
+        },
+        "A3": {
+          "entrada": "1044"
+        },
+        "B3": {
+          "entrada": "Padaria Central"
+        },
+        "C3": {
+          "entrada": "02/03/2026"
+        },
+        "A4": {
+          "entrada": "1045"
+        },
+        "B4": {
+          "entrada": "Loja Avenida"
+        },
+        "C4": {
+          "entrada": "25/02/2026"
+        },
+        "A5": {
+          "entrada": "1046"
+        },
+        "B5": {
+          "entrada": "Farmácia Vida"
+        },
+        "C5": {
+          "entrada": "11/03/2026"
+        },
+        "A6": {
+          "entrada": "1047"
+        },
+        "B6": {
+          "entrada": "Papelaria Lápis"
+        },
+        "C6": {
+          "entrada": "28/02/2026"
+        },
+        "A7": {
+          "entrada": "1048"
+        },
+        "B7": {
+          "entrada": "Açougue Real"
+        },
+        "C7": {
+          "entrada": "05/03/2026"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C7",
+        "esperado": [
+          [
+            {
+              "data": "2026-02-25"
+            }
+          ],
+          [
+            {
+              "data": "2026-02-28"
+            }
+          ],
+          [
+            {
+              "data": "2026-03-02"
+            }
+          ],
+          [
+            {
+              "data": "2026-03-05"
+            }
+          ],
+          [
+            {
+              "data": "2026-03-11"
+            }
+          ],
+          [
+            {
+              "data": "2026-03-18"
+            }
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B7",
+        "esperado": [
+          [
+            "Loja Avenida"
+          ],
+          [
+            "Papelaria Lápis"
+          ],
+          [
+            "Padaria Central"
+          ],
+          [
+            "Açougue Real"
+          ],
+          [
+            "Farmácia Vida"
+          ],
+          [
+            "Mercado Bom Preço"
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:C7",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "6527e3de-f541-52d1-8d66-2e5371da4c72",
+    "slug": "dados-classificar-maior-valor-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: duas ordens ao mesmo tempo",
+    "enunciado": [
+      "Organize por **Região** (de A a Z) e, **dentro de cada região**, do **maior** para o **menor** valor."
+    ],
+    "dicas": [
+      "Classificar de novo não desfaz a ordem anterior nos empates: quem tem a mesma região mantém a ordem que já tinha.",
+      "Classifique duas vezes: primeiro pelo critério que só desempata (Valor), depois pelo principal (Região)."
+    ],
+    "explicacao": [
+      "Classifique duas vezes: primeiro por **Valor** (Do Maior para o Menor) e depois por **Região** (A a Z).",
+      "Funciona porque a classificação do Excel é *estável*: nos empates de Região, as linhas ficam na ordem em que já estavam. No Excel de verdade, **Dados → Classificar** também faz isso numa vez só, com **Adicionar Nível**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-maior-valor",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "errosComuns": [],
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B10",
+        "esperado": [
+          [
+            "Leste"
+          ],
+          [
+            "Leste"
+          ],
+          [
+            "Norte"
+          ],
+          [
+            "Norte"
+          ],
+          [
+            "Norte"
+          ],
+          [
+            "Sul"
+          ],
+          [
+            "Sul"
+          ],
+          [
+            "Sul"
+          ],
+          [
+            "Sul"
+          ]
+        ],
+        "mensagem": "As regiões ainda não estão em ordem alfabética."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Daniela"
+          ],
+          [
+            "Gabriela"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Fábio"
+          ],
+          [
+            "Íris"
+          ],
+          [
+            "Hugo"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Eduardo"
+          ]
+        ],
+        "mensagem": "As regiões estão em ordem, mas dentro de cada uma os valores não vão do maior para o menor. A ordem dos cliques importa."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          },
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "5f9f06bc-cf05-58d5-b951-aa9ca5155fc7",
+    "slug": "dados-classificar-maior-valor-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "E se eu selecionar só uma coluna?",
+    "enunciado": [
+      "Você seleciona **só a coluna Valor** e manda classificar, escolhendo *Continuar com a seleção atual* no aviso do Excel. O que acontece?"
+    ],
+    "dicas": [
+      "Pense no que acontece com a coluna dos vendedores, que não estava selecionada."
+    ],
+    "explicacao": [
+      "Só a coluna selecionada muda de ordem. Os valores deixam de bater com os vendedores, e a tabela fica errada sem nenhum erro aparecer.",
+      "Por isso o Excel avisa e sugere **Expandir a seleção**. O jeito seguro é deixar uma célula só ativa: o Excel pega a tabela inteira sozinho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-maior-valor",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Só a coluna Valor muda de ordem e os valores ficam ao lado do vendedor errado."
+      },
+      {
+        "texto": "A tabela inteira é classificada junto, como se você tivesse selecionado tudo.",
+        "dica": "Isso acontece com **Expandir a seleção**, não com *Continuar com a seleção atual*."
+      },
+      {
+        "texto": "O Excel dá erro e não deixa classificar.",
+        "dica": "Ele deixa. O perigo é justamente esse: não aparece erro nenhum."
+      },
+      {
+        "texto": "Os valores são somados por vendedor.",
+        "dica": "Classificar só muda a ordem; não soma nada."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "f7056524-8454-5352-87da-aa650a046a4c",
+    "slug": "dados-filtrar-regiao",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtro: só as vendas do Sul",
+    "enunciado": [
+      "Ligue o **filtro** na tabela e deixe aparecendo só as vendas da região **Sul**."
+    ],
+    "dicas": [
+      "O botão Filtro (ou Ctrl+Shift+L) coloca uma setinha em cada cabeçalho.",
+      "Na seta de Região, desmarque (Selecionar Tudo) e marque só o que você quer ver."
+    ],
+    "explicacao": [
+      "**Dados → Filtro** (Ctrl+Shift+L) com uma célula da tabela ativa. Na seta de **Região**, deixe marcado só **Sul**.",
+      "As outras linhas não somem: ficam escondidas. Repare nos números das linhas em azul e nos saltos (2, 4, 6, 9): é o Excel avisando que há filtro ligado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-regiao",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Filtrar é ver só o pedaço da tabela que interessa agora, sem apagar nada. É a ferramenta mais usada do Excel no dia a dia de escritório.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          4,
+          6,
+          9
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Sul"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "4fec23b5-bcdb-575b-9235-a8e806282c43",
+    "slug": "dados-filtrar-regiao-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtro em duas colunas",
+    "enunciado": [
+      "Deixe aparecendo só as vendas do **Norte** que já estão **pagas**."
+    ],
+    "dicas": [
+      "Cada coluna tem o seu filtro, e eles se somam: a linha precisa passar em todos."
+    ],
+    "explicacao": [
+      "Na seta de **Região**, só **Norte**; na seta de **Status**, só **Pago**.",
+      "Filtros em colunas diferentes funcionam como **E**: a linha aparece se passar no primeiro **e** no segundo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-regiao",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          7,
+          10
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Norte"
+              ]
+            },
+            "D": {
+              "valores": [
+                "Pago"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "43576181-8e5e-54ac-b66f-9b398020dad2",
+    "slug": "dados-filtrar-regiao-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mais de um valor na mesma coluna",
+    "enunciado": [
+      "Deixe aparecendo as vendas do **Norte** e do **Leste**."
+    ],
+    "dicas": [
+      "Na mesma coluna, você pode marcar quantas caixas quiser."
+    ],
+    "explicacao": [
+      "Na seta de **Região**, marque **Norte** e **Leste**.",
+      "Dentro da mesma coluna, as caixas marcadas funcionam como **OU**: aparece a linha que é Norte ou Leste."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-regiao",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          5,
+          7,
+          8,
+          10
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Leste",
+                "Norte"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "d1f18edd-ea8e-5e74-92c6-8397f8bd1ec3",
+    "slug": "dados-filtrar-regiao-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o filtro que ficou ligado",
+    "enunciado": [
+      "Um colega deixou essa planilha filtrada. Mostre **todas** as vendas **pendentes**, de qualquer região."
+    ],
+    "dicas": [
+      "Olhe os números das linhas: algumas já estão escondidas antes de você mexer.",
+      "Uma coluna com filtro tem um funil na seta. Ele continua valendo enquanto você não limpar."
+    ],
+    "explicacao": [
+      "Limpe o filtro de **Região** (seta → *Limpar filtro*, ou o botão **Limpar**) e, em **Status**, deixe só **Pendente**.",
+      "Quem só filtra Status vê uma venda só, porque o filtro de Região que já estava lá continua valendo. Antes de tirar conclusões de uma planilha alheia, confira se há funis nos cabeçalhos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-regiao",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Sul"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          6,
+          8
+        ],
+        "mensagem": "Ainda não aparecem todas as pendentes. Confira se não sobrou filtro em outra coluna."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "D": {
+              "valores": [
+                "Pendente"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "acecaaa7-7476-57e1-837e-98e98c3d1368",
+    "slug": "dados-filtrar-regiao-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O filtro apaga as linhas?",
+    "enunciado": [
+      "Você filtrou só o **Sul**. O que aconteceu com as vendas do Norte e do Leste?"
+    ],
+    "dicas": [
+      "Repare que os números das linhas pulam."
+    ],
+    "explicacao": [
+      "Elas continuam na planilha, só escondidas. Limpando o filtro, voltam exatamente como estavam.",
+      "É por isso que filtrar é seguro: nada é apagado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-filtrar-regiao",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Foram apagadas; para recuperar, só com Ctrl+Z.",
+        "dica": "Nada foi apagado: limpar o filtro traz tudo de volta."
+      },
+      {
+        "texto": "Continuam na planilha, só que escondidas."
+      },
+      {
+        "texto": "Foram movidas para o fim da tabela.",
+        "dica": "Quem muda linhas de lugar é o Classificar, não o filtro."
+      },
+      {
+        "texto": "Foram copiadas para outra aba.",
+        "dica": "O filtro não cria nada novo: só esconde linhas."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "82436bf7-983b-5545-9f84-32a094133f6f",
+    "slug": "dados-subtotal-visiveis",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBTOTAL: somar só o que aparece",
+    "enunciado": [
+      "A tabela está filtrada no **Sul**. Em **C12**, some só os valores que estão **aparecendo**."
+    ],
+    "dicas": [
+      "SOMA ignora o filtro e soma tudo. Existe uma função que soma só as linhas visíveis.",
+      "SUBTOTAL recebe primeiro um número que diz a conta (9 é soma) e depois o intervalo."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(9;C2:C10)` → 1.050.",
+      "O **9** quer dizer *soma*. SUBTOTAL ignora as linhas escondidas pelo filtro: troque o filtro e o total acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-visiveis",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Com a tabela filtrada, o total também precisa ser só do que aparece. SOMA não sabe que há filtro; SUBTOTAL sabe.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Total visível",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Sul"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 1050,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C12": "=SUBTOTAL(9;C2:C10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "5ce0b48f-6c59-5b29-b914-37e2cb164482",
+    "slug": "dados-subtotal-visiveis-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtrar e totalizar",
+    "enunciado": [
+      "Filtre a região **Norte** e, em **C12**, mostre o total **só do que aparece**."
+    ],
+    "dicas": [
+      "São duas partes: o filtro e a fórmula. A fórmula pode vir antes ou depois do filtro."
+    ],
+    "explicacao": [
+      "Filtro em **Região** só com **Norte** e `=SUBTOTAL(9;C2:C10)` em C12 → 1.150.",
+      "Escreva a fórmula antes de filtrar e veja o total mudar sozinho quando o filtro muda."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-visiveis",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Total visível",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          7,
+          10
+        ]
+      },
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 1150,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Norte"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "C12": "=SUBTOTAL(9;C2:C10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "0bf0083a-0363-5893-913c-6ead7bd371ef",
+    "slug": "dados-subtotal-visiveis-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contar as linhas visíveis",
+    "enunciado": [
+      "A tabela está filtrada no **Leste**. Em **C12**, mostre **quantas vendas** estão aparecendo."
+    ],
+    "dicas": [
+      "O primeiro argumento de SUBTOTAL escolhe a conta: 9 soma, 1 faz média, 2 e 3 contam.",
+      "3 conta tudo que não está vazio (como CONT.VALORES); 2 conta só números (como CONT.NÚM)."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(3;A2:A10)` → 2 (ou `=SUBTOTAL(2;C2:C10)`, que conta os números).",
+      "Os códigos 101 a 111 fazem as mesmas contas e também ignoram linhas ocultas à mão (Ocultar linha)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-visiveis",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Vendas visíveis",
+          "negrito": true
+        }
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Leste"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 2,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C12": "=SUBTOTAL(3;A2:A10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "c8ac9f7d-60cf-5395-8dce-ca447f117c2a",
+    "slug": "dados-subtotal-visiveis-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o total que não muda",
+    "enunciado": [
+      "O total em **C12** não muda quando você filtra. Corrija **C12** para somar só o que aparece."
+    ],
+    "dicas": [
+      "Teste: mude o filtro e veja se C12 acompanha.",
+      "A função que está lá não sabe que existe filtro."
+    ],
+    "explicacao": [
+      "Troque `=SOMA(C2:C10)` por `=SUBTOTAL(9;C2:C10)` → 1.050 com o filtro do Sul.",
+      "Erro clássico de relatório: alguém filtra, olha o total de baixo e acha que é do filtro. Com SOMA, é o total da tabela inteira."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-visiveis",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "=SOMA(C2:C10)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Sul"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 1050,
+        "funcao": "SUBTOTAL",
+        "mensagem": "C12 ainda soma a tabela inteira. Use uma função que ignore as linhas escondidas pelo filtro."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C12": "=SUBTOTAL(9;C2:C10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "5e6764e6-c8d0-5171-b189-0ea755661c7b",
+    "slug": "dados-subtotal-visiveis-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 35,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que é o 9?",
+    "enunciado": [
+      "Em `=SUBTOTAL(9;C2:C10)`, o que o **9** quer dizer?"
+    ],
+    "dicas": [
+      "O primeiro argumento de SUBTOTAL escolhe a conta que ela faz."
+    ],
+    "explicacao": [
+      "**9 = soma.** Os mais usados: 1 = média, 2 = contar números, 3 = contar valores, 4 = máximo, 5 = mínimo, 9 = soma.",
+      "Com 101 a 111, as mesmas contas também ignoram linhas ocultas à mão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-visiveis",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Soma."
+      },
+      {
+        "texto": "Que são 9 linhas.",
+        "dica": "O tamanho vem do intervalo; o primeiro número escolhe a conta."
+      },
+      {
+        "texto": "Média.",
+        "dica": "Média é o 1."
+      },
+      {
+        "texto": "Contar valores.",
+        "dica": "Contar é o 2 (números) ou o 3 (tudo que não está vazio)."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "38709aa3-a9e6-5a4f-9778-4e544ea48d0f",
+    "slug": "teste-dados-1",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Do menor para o maior",
+    "enunciado": [
+      "Organize a tabela do **menor** para o **maior** valor."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-classificar-maior-valor",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Eduardo"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Íris"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Fábio"
+          ],
+          [
+            "Hugo"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Gabriela"
+          ],
+          [
+            "Daniela"
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C10",
+        "esperado": [
+          [
+            100
+          ],
+          [
+            200
+          ],
+          [
+            250
+          ],
+          [
+            300
+          ],
+          [
+            400
+          ],
+          [
+            450
+          ],
+          [
+            500
+          ],
+          [
+            650
+          ],
+          [
+            700
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "8e4e5ec2-a64e-50dc-b967-8f0167b60739",
+    "slug": "teste-dados-2",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pagas do Sul e do Leste",
+    "enunciado": [
+      "Deixe aparecendo só as vendas **pagas** das regiões **Sul** e **Leste**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-filtrar-regiao",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          4,
+          5,
+          9
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Leste",
+                "Sul"
+              ]
+            },
+            "D": {
+              "valores": [
+                "Pago"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "917b9568-fbfb-5139-b7c1-e476122a9b7b",
+    "slug": "teste-dados-3",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total do Leste",
+    "enunciado": [
+      "A tabela está filtrada no **Leste**. Em **C12**, some só o que está aparecendo."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-subtotal-visiveis",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Total visível",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D10",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Leste"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 1350,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C12": "=SUBTOTAL(9;C2:C10)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "5a39aa5f-7361-5dd1-bae0-20b2e5eb0b51",
+    "slug": "teste-dados-4",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Status e nome",
+    "enunciado": [
+      "Organize por **Status** (de A a Z) e, dentro de cada status, os vendedores em **ordem alfabética**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-classificar-maior-valor",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 72,
+        "C": 84,
+        "D": 84,
+        "E": 24,
+        "F": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carla"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Ana"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Bruno"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "Daniela"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Eduardo"
+        },
+        "B6": {
+          "entrada": "Sul"
+        },
+        "C6": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Norte"
+        },
+        "C7": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "Leste"
+        },
+        "C8": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Hugo"
+        },
+        "B9": {
+          "entrada": "Sul"
+        },
+        "C9": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Íris"
+        },
+        "B10": {
+          "entrada": "Norte"
+        },
+        "C10": {
+          "entrada": "250",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pago"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "D2:D10",
+        "esperado": [
+          [
+            "Pago"
+          ],
+          [
+            "Pago"
+          ],
+          [
+            "Pago"
+          ],
+          [
+            "Pago"
+          ],
+          [
+            "Pago"
+          ],
+          [
+            "Pago"
+          ],
+          [
+            "Pendente"
+          ],
+          [
+            "Pendente"
+          ],
+          [
+            "Pendente"
+          ]
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Bruno"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Daniela"
+          ],
+          [
+            "Fábio"
+          ],
+          [
+            "Hugo"
+          ],
+          [
+            "Íris"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Eduardo"
+          ],
+          [
+            "Gabriela"
+          ]
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "A",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          },
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "D",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "e37004c0-8891-5d69-964a-5d75c42fcf90",
+    "slug": "teste-dados-5",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMA ou SUBTOTAL?",
+    "enunciado": [
+      "Com a tabela filtrada, qual fórmula mostra o total **só das linhas visíveis**?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dados-subtotal-visiveis",
+    "teste": true,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=SOMA(C2:C10)`"
+      },
+      {
+        "texto": "`=SUBTOTAL(9;C2:C10)`"
+      },
+      {
+        "texto": "`=SOMASE(C2:C10;\"visível\")`"
+      },
+      {
+        "texto": "`=CONT.VALORES(C2:C10)`"
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "ffe580f1-e816-5ac6-bcf8-fc4f802ea246",
+    "slug": "agregar-ignorar-erro",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 101,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "AGREGAR: o máximo, ignorando o erro",
+    "enunciado": [
+      "A Mochila não vendeu e a margem dela deu **#DIV/0!**. Em **D9**, mostre a **maior margem**, ignorando o erro."
+    ],
+    "alvos": [
+      {
+        "celula": "D9",
+        "esperado": 0.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
+        "formato": "percentual",
+        "tolerancia": 1e-9
+      }
+    ],
+    "dicas": [
+      "Se houver um erro qualquer no intervalo, o MÁXIMO devolve o erro em vez do resultado.",
+      "AGREGAR faz as mesmas contas do SUBTOTAL e tem uma opção para pular os erros."
+    ],
+    "explicacao": [
+      "`=AGREGAR(4;6;D2:D7)` → 4 é MÁXIMO e 6 é \"ignorar erros\".",
+      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim). A opção 7 ignora erros **e** linhas ocultas, tanto pelo filtro quanto à mão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 100,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Receita",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Custo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Margem",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=(B2-C2)/B2",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "=(B3-C3)/B3",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "=(B4-C4)/B4",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=(B5-C5)/B5",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Agenda"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "610",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=(B6-C6)/B6",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Régua"
+        },
+        "B7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "90",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=(B7-C7)/B7",
+          "formato": "percentual"
+        },
+        "A9": {
+          "entrada": "Maior margem",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "AGGREGATE"
+    ]
+  }
+]

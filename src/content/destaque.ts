@@ -12,6 +12,9 @@ export function celulasDestacadas(ex: Exercicio): string[] {
       return ex.alvos.map((a) => a.celula);
     case "format_cell":
       return ex.alvos.flatMap((a) => [...posicoes(deIntervalo(a.intervalo))].map(paraEndereco));
+    case "ferramenta":
+      // Só as células onde o aluno escreve (SUBTOTAL…); pintar os dados entregaria a resposta.
+      return ex.verificacoes.flatMap((v) => (v.tipo === "celula" ? [v.celula] : []));
     case "text_answer":
     case "click_cell":
     case "select_range":

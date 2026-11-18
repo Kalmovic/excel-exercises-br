@@ -3,6 +3,14 @@
  * Tabela de fatos (os nomes que o Excel usa), mantida à mão a partir daqui.
  */
 export const NOMES_PT: Record<string, string> = {
+  // Funções do Excel 365 (nomes conferidos no suporte da Microsoft em português).
+  "AGGREGATE": "AGREGAR",
+  "CHOOSECOLS": "ESCOLHERCOLS",
+  "DROP": "DESCARTAR",
+  "LET": "LET",
+  "TAKE": "PEGAR",
+  "TEXTSPLIT": "DIVIDIRTEXTO",
+  "XMATCH": "CORRESPX",
   "ABS": "ABS",
   "ACOS": "ACOS",
   "ACOSH": "ACOSH",

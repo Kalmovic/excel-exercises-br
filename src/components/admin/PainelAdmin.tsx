@@ -46,6 +46,15 @@ export function PainelAdmin({ ex, onPreencher }: { ex: Exercicio; onPreencher: (
           </tbody>
         </table>
       )}
+      {ex.type === "ferramenta" && (
+        <ul className="list-disc pl-4 font-mono text-xs">
+          {ex.verificacoes.map((v, i) => (
+            <li key={i} className="break-all">
+              {JSON.stringify(v)}
+            </li>
+          ))}
+        </ul>
+      )}
       {ex.type === "format_cell" && <p>Formatos: {ex.alvos.map((a) => `${a.intervalo} → ${a.formato}`).join("; ")}</p>}
       {ex.type === "text_answer" && (
         <p>

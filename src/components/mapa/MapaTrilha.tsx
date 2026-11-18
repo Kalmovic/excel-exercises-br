@@ -142,15 +142,18 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
   // Centraliza a casa atual sempre que a trilha aparece: o Next mantém a página
   // montada e escondida entre navegações, e ao reaparecer os efeitos rodam de novo.
   // O quadro seguinte deixa o Next terminar a própria rolagem da navegação.
+  // Não rola quando a URL pede um módulo (#modulo-…) nem para quem ainda não começou
+  // (o "Começar pelo básico" do painel precisa ficar na tela).
+  const jaComecou = inicio?.tipo === "continuar";
   useEffect(() => {
-    if (atualY === undefined) return;
+    if (atualY === undefined || !jaComecou || window.location.hash) return;
     const id = requestAnimationFrame(() =>
       raiz.current
         ?.querySelector(`[data-mapa-atual="true"]`)
         ?.scrollIntoView({ block: "center", behavior: "smooth" }),
     );
     return () => cancelAnimationFrame(id);
-  }, [atualY]);
+  }, [atualY, jaComecou]);
 
   const telaLarga = useSyncExternalStore(assinarLargura, lerLargura, () => true);
 
@@ -230,13 +233,16 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
         const r = regioes.find((x) => x.slug === b.regiao)!;
         const feitos = r.itens.filter((i) => estadoDe(i) === "feito").length;
         const completa = concluida(r);
+        // O cartão inteiro abre a próxima lição que falta no módulo (ou a primeira, se já fez tudo).
+        const alvo = r.disponivel ? (r.itens.find((i) => estadoDe(i) !== "feito") ?? r.itens[0]) : undefined;
         return (
           <section
             key={b.regiao}
-            className={`absolute left-0 z-10 w-full rounded-xl border px-4 py-3 ${
+            className={`absolute left-0 z-10 w-full scroll-mt-4 rounded-xl border px-4 py-3 ${
               r.disponivel ? "border-line bg-surface" : "border-dashed border-line bg-bg"
             }`}
             style={{ top: b.y, height: b.altura }}
+            id={`modulo-${r.slug}`}
             data-testid={`regiao-${r.slug}`}
             aria-label={`Módulo ${r.numero}: ${r.titulo}`}
           >
@@ -255,7 +261,7 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
                       return n;
                     })
                   }
-                  className="text-xs font-semibold text-success underline-offset-2 hover:underline"
+                  className="relative z-10 text-xs font-semibold text-success underline-offset-2 hover:underline"
                 >
                   {recolhida(r) ? "Ver casas" : "Recolher"}
                 </button>
@@ -266,7 +272,17 @@ export function MapaTrilha({ regioes, trilha }: { regioes: RegiaoMapa[]; trilha:
               )}
             </div>
             <p className={`font-display text-lg font-bold ${r.disponivel ? "text-ink" : "text-muted"}`}>
-              {r.titulo}
+              {alvo ? (
+                <Link
+                  href={`/exercicios/${alvo.slug}`}
+                  className="underline-offset-4 after:absolute after:inset-0 after:rounded-xl hover:underline"
+                  data-testid={`abrir-modulo-${r.slug}`}
+                >
+                  {r.titulo}
+                </Link>
+              ) : (
+                r.titulo
+              )}
               {completa && <span className="ml-2 text-sm font-semibold text-success">Concluído ✓</span>}
             </p>
             <p className="line-clamp-2 text-xs text-muted">{r.descricao}</p>

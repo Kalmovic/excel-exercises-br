@@ -132,8 +132,9 @@
     "tentativasAteExplicacao": 3,
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -856,8 +857,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -987,8 +989,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -1131,8 +1134,9 @@
     ],
     "errosComuns": [
       {
-        "padrao": "^=PROCV\\(F2;\\$?A\\$?2:\\$?C\\$?6;3\\)$",
-        "dica": "Sem o último argumento, o PROCV faz busca aproximada e pode trazer o valor errado sem avisar."
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
       },
       {
         "padrao": ";4;",
@@ -1154,7 +1158,7 @@
       "Onde o PROCV procura o valor?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense em por que a tabela do PROCV costuma começar pelo código."
     ],
     "explicacao": [
       "O PROCV procura sempre na primeira coluna do intervalo e devolve a coluna pedida."
@@ -1171,13 +1175,15 @@
     },
     "opcoes": [
       {
-        "texto": "Em qualquer coluna"
+        "texto": "Em qualquer coluna",
+        "dica": "Quem procura em qualquer coluna é o PROCX. O PROCV tem um lugar fixo para procurar."
       },
       {
         "texto": "Na primeira coluna da tabela"
       },
       {
-        "texto": "Na última coluna"
+        "texto": "Na última coluna",
+        "dica": "A última coluna costuma ser o que se devolve, não onde se procura."
       },
       {
         "texto": "Na coluna indicada no 3º argumento",
@@ -1427,7 +1433,7 @@
       "A tabela de faixas foi digitada do maior para o menor (20.000 em cima) e o PROCV com VERDADEIRO passou a errar. Por quê?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense em como a busca aproximada percorre a tabela até parar."
     ],
     "explicacao": [
       "Na busca aproximada, o PROCV percorre a primeira coluna supondo que ela está em ordem crescente."
@@ -1444,7 +1450,8 @@
     },
     "opcoes": [
       {
-        "texto": "O PROCV não aceita faixas"
+        "texto": "O PROCV não aceita faixas",
+        "dica": "Aceita: é para isso que serve o VERDADEIRO. O problema está na tabela."
       },
       {
         "texto": "A busca aproximada exige a primeira coluna em ordem crescente"
@@ -1454,7 +1461,8 @@
         "dica": "O problema não está no último argumento. Releia o que a busca aproximada exige da tabela."
       },
       {
-        "texto": "A tabela precisa estar travada"
+        "texto": "A tabela precisa estar travada",
+        "dica": "Travar com $ só importa ao copiar a fórmula; não muda o resultado de uma fórmula sozinha."
       }
     ],
     "correta": 1
@@ -1473,7 +1481,7 @@
       "Com VERDADEIRO, quando o valor fica entre duas faixas, o PROCV devolve…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Imagine 9.999 numa tabela com 5.000 e 10.000: em qual faixa ele cabe?"
     ],
     "explicacao": [
       "Ele para na maior faixa que não passa do valor procurado."
@@ -1497,10 +1505,12 @@
         "dica": "Não é a mais próxima: 9.999 fica na de 5.000, e não na de 10.000."
       },
       {
-        "texto": "A primeira da tabela"
+        "texto": "A primeira da tabela",
+        "dica": "A primeira faixa só sai para valores baixos. Com 9.999, o PROCV não para no começo da tabela."
       },
       {
-        "texto": "Um erro"
+        "texto": "Um erro",
+        "dica": "Valor entre duas faixas é o caso normal da busca aproximada. Erro só aparece abaixo da primeira faixa."
       }
     ],
     "correta": 0
@@ -1948,7 +1958,7 @@
       "O PROCH procura o valor na…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "O H do PROCH vem de horizontal."
     ],
     "explicacao": [
       "O PROCH é o PROCV deitado: procura na primeira linha."
@@ -1972,10 +1982,12 @@
         "texto": "Primeira linha"
       },
       {
-        "texto": "Última linha"
+        "texto": "Última linha",
+        "dica": "Na última linha costuma estar o que se devolve, não onde se procura."
       },
       {
-        "texto": "Qualquer linha"
+        "texto": "Qualquer linha",
+        "dica": "Procurar em qualquer linha é coisa do PROCX. O PROCH tem um lugar fixo."
       }
     ],
     "correta": 1
@@ -2402,7 +2414,7 @@
       "O que o CORRESP devolve?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "No ÍNDICE + CORRESP, cada função tem um papel: uma acha, a outra devolve."
     ],
     "explicacao": [
       "O CORRESP devolve a posição dentro do intervalo, que pode ser diferente do número da linha na planilha."
@@ -2430,7 +2442,8 @@
         "dica": "A Mochila está na linha 4 da planilha, mas na posição 3 do intervalo."
       },
       {
-        "texto": "VERDADEIRO ou FALSO"
+        "texto": "VERDADEIRO ou FALSO",
+        "dica": "Quem responde VERDADEIRO ou FALSO são os testes, como o E e o É.NÚM. O CORRESP não testa nada."
       }
     ],
     "correta": 1
@@ -2850,7 +2863,7 @@
       "Diferente do PROCV, o PROCX…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Compare o que cada função recebe: o PROCV recebe uma tabela e um número de coluna. E o PROCX?"
     ],
     "explicacao": [
       "O PROCX recebe a coluna de busca e a de retorno separadas, em qualquer posição."
@@ -3005,6 +3018,13 @@
         "solucaoReferencia": "=PROCV(F2;A2:C6;3;FALSO)",
         "formato": "moeda"
       }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos, ele pode trazer a linha errada sem avisar, mesmo quando o resultado parece certo. Para buscar um código, a busca precisa ser exata.",
+        "bloqueia": true
+      }
     ]
   },
   {
@@ -3111,6 +3131,12 @@
         "C": 100,
         "F": 110,
         "G": 130
+      },
+      "alternativas": {
+        "F2": [
+          "Mochila",
+          "Caneta"
+        ]
       }
     },
     "alvos": [
@@ -3332,7 +3358,13 @@
         "C4",
         "C5",
         "C6"
-      ]
+      ],
+      "alternativas": {
+        "F2": [
+          "Mouse",
+          "Régua"
+        ]
+      }
     },
     "alvos": [
       {

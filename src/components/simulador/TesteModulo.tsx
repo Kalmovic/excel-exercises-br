@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import type { Exercicio } from "@/content/schema";
 import { registrar } from "@/lib/eventos";
 import { APROVACAO, registrarTeste } from "@/lib/testes";
@@ -23,28 +23,99 @@ type Props = {
   revisar: Record<string, { slug: string; titulo: string } | undefined>;
 };
 
-/** Teste do módulo: uma tentativa por questão, sem dica; 4 de 5 aprova. */
+/** Tentativa em andamento (ou terminada) do teste de um módulo, guardada no navegador. */
+type Tentativa = { slugs: string[]; respostas: boolean[]; entregas: RespostaQuestao[] };
+
+const chaveTentativa = (modulo: string) => `excel-br:teste-tentativa:${modulo}`;
+const EVENTO = "excel-br:teste-tentativa";
+// Cópia em memória: no modo privado (sem localStorage) o teste continua andando.
+const memoria = new Map<string, string>();
+
+function lerTentativaBruta(modulo: string): string {
+  const m = memoria.get(modulo);
+  if (m !== undefined) return m;
+  try {
+    return localStorage.getItem(chaveTentativa(modulo)) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+function gravarTentativa(modulo: string, t: Tentativa | null) {
+  const bruto = t ? JSON.stringify(t) : "";
+  memoria.set(modulo, bruto);
+  try {
+    if (t) localStorage.setItem(chaveTentativa(modulo), bruto);
+    else localStorage.removeItem(chaveTentativa(modulo));
+  } catch {}
+  window.dispatchEvent(new Event(EVENTO));
+}
+
+function assinarTentativa(f: () => void) {
+  window.addEventListener(EVENTO, f);
+  window.addEventListener("storage", f);
+  return () => {
+    window.removeEventListener(EVENTO, f);
+    window.removeEventListener("storage", f);
+  };
+}
+
+/** A tentativa guardada, se for destas mesmas questões (conteúdo trocado descarta). */
+function lerTentativa(bruto: string, slugs: string[]): Tentativa {
+  const vazia = { slugs, respostas: [], entregas: [] };
+  if (!bruto) return vazia;
+  try {
+    const t = JSON.parse(bruto) as Tentativa;
+    const mesmas = Array.isArray(t.slugs) && t.slugs.length === slugs.length && t.slugs.every((s, i) => s === slugs[i]);
+    if (!mesmas || !Array.isArray(t.respostas) || !Array.isArray(t.entregas)) return vazia;
+    return { slugs, respostas: t.respostas.slice(0, slugs.length), entregas: t.entregas.slice(0, slugs.length) };
+  } catch {
+    return vazia;
+  }
+}
+
+/**
+ * Correção no servidor: a questão do teste chega ao navegador sem gabarito.
+ * Qualquer resposta fora do contrato vira erro, e o aluno reenvia sem contar.
+ */
+async function corrigirNoServidor(modulo: string, indice: number, resposta: RespostaQuestao): Promise<boolean> {
+  const r = await fetch("/api/teste/corrigir", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ modulo, indice, resposta }),
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const json = (await r.json()) as { ok?: unknown };
+  if (typeof json.ok !== "boolean") throw new Error("Resposta inesperada");
+  return json.ok;
+}
+
+/**
+ * Teste do módulo: uma tentativa por questão, sem dica; 4 de 5 aprova.
+ * A tentativa fica no navegador: recarregar no meio continua da próxima questão
+ * (a já respondida não volta), e recarregar no fim mostra o resultado.
+ */
 export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
-  const [indice, setIndice] = useState(0);
-  const [respostas, setRespostas] = useState<boolean[]>([]);
-  // O que o aluno fez em cada questão: vai para o servidor na emissão do certificado.
-  const [entregas, setEntregas] = useState<RespostaQuestao[]>([]);
+  const slugs = questoes.map((q) => q.slug);
+  const bruto = useSyncExternalStore(assinarTentativa, () => lerTentativaBruta(modulo.slug), () => "");
+  const { respostas, entregas } = lerTentativa(bruto, slugs);
+  // Questão na tela: depois de responder, fica nela até "Próxima"; ao abrir, a primeira sem resposta.
+  const [indiceFixo, setIndiceFixo] = useState<number | null>(null);
   const [rodada, setRodada] = useState(0);
+  const indice = indiceFixo ?? respostas.length;
   const fim = respostas.length === questoes.length && indice >= questoes.length;
-  const respondida = respostas.length > indice;
 
   const responder = (ok: boolean, entrega: RespostaQuestao) => {
-    setEntregas((e) => (e.length > indice ? e : [...e, entrega]));
-    setRespostas((r) => {
-      if (r.length > indice) return r; // uma tentativa por questão
-      const novas = [...r, ok];
-      if (novas.length === questoes.length) {
-        const acertos = novas.filter(Boolean).length;
-        registrarTeste(modulo.slug, acertos, questoes.length);
-        registrar({ nome: "teste_concluido", modulo: modulo.slug, acertos, aprovado: acertos >= APROVACAO });
-      }
-      return novas;
-    });
+    const atual = lerTentativa(lerTentativaBruta(modulo.slug), slugs);
+    if (atual.respostas.length !== indice) return; // uma tentativa por questão
+    const novas = [...atual.respostas, ok];
+    gravarTentativa(modulo.slug, { slugs, respostas: novas, entregas: [...atual.entregas, entrega] });
+    setIndiceFixo(indice);
+    if (novas.length === questoes.length) {
+      const acertos = novas.filter(Boolean).length;
+      registrarTeste(modulo.slug, acertos, questoes.length);
+      registrar({ nome: "teste_concluido", modulo: modulo.slug, acertos, aprovado: acertos >= APROVACAO });
+    }
   };
 
   if (fim)
@@ -57,9 +128,8 @@ export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
         proximo={proximo}
         entregas={entregas}
         onRefazer={() => {
-          setRespostas([]);
-          setEntregas([]);
-          setIndice(0);
+          gravarTentativa(modulo.slug, null);
+          setIndiceFixo(0);
           setRodada((r) => r + 1);
         }}
       />
@@ -82,17 +152,19 @@ export function TesteModulo({ modulo, proximo, questoes, revisar }: Props) {
         </ol>
       </div>
       <h2 className="text-xl font-bold">{q.titulo}</h2>
-      <SimuladorCarregavel key={`${rodada}-${indice}`} exercicio={q} teste={{ aoResponder: responder }} />
-      {respondida && (
-        <button
-          type="button"
-          onClick={() => setIndice((i) => i + 1)}
-          className="rounded-lg bg-ink px-5 py-3 font-semibold text-white"
-          data-testid="proxima-teste"
-        >
-          {indice + 1 < questoes.length ? "Próxima questão →" : "Ver resultado"}
-        </button>
-      )}
+      <SimuladorCarregavel
+        key={`${rodada}-${indice}`}
+        exercicio={q}
+        teste={{
+          corrigir: (resposta) => corrigirNoServidor(modulo.slug, indice, resposta),
+          aoResponder: responder,
+          // O botão fica no quadro do retorno (antes ficava embaixo da grade, fora da tela).
+          proxima: {
+            rotulo: indice + 1 < questoes.length ? "Próxima questão →" : "Ver resultado",
+            ir: () => setIndiceFixo(indice + 1),
+          },
+        }}
+      />
     </div>
   );
 }
@@ -159,6 +231,9 @@ function ResultadoTeste({
       </div>
 
       <div className="space-y-6 p-6">
+        {/* Aprovou: o próximo passo é o certificado, antes da lista de questões. */}
+        {aprovado && <EmitirCertificado modulo={modulo.slug} tituloModulo={`Módulo ${modulo.numero}: ${modulo.titulo}`} entregas={entregas} />}
+
         <ol className="divide-y divide-line rounded-xl border border-line bg-white" data-testid="questoes-teste">
           {questoes.map((q, i) => {
             const certo = respostas[i];
@@ -186,8 +261,6 @@ function ResultadoTeste({
             );
           })}
         </ol>
-
-        {aprovado && <EmitirCertificado modulo={modulo.slug} tituloModulo={`Módulo ${modulo.numero}: ${modulo.titulo}`} entregas={entregas} />}
 
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           {aprovado ? (

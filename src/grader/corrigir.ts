@@ -3,7 +3,7 @@ import { Planilha } from "@/engine/engine";
 import { deEndereco } from "@/engine/address";
 import { ptBR } from "@/engine/ptBR";
 import { explicarErro } from "@/engine/erros";
-import { diagnosticarValor, diagnosticarValorFixo } from "./diagnostico";
+import { diagnosticarValor, diagnosticarValorFixo, mensagemTextoAnexado, pareceTextoAnexado } from "./diagnostico";
 import { iguais, TOLERANCIA_PADRAO, type EstadoCorrecao, type Falha, type Resultado } from "./tipos";
 import { validarClickCell } from "./validadores/click-cell";
 import { validarFormatCell } from "./validadores/format-cell";
@@ -11,6 +11,7 @@ import { validarSelectRange } from "./validadores/select-range";
 import { validarMultipleChoice } from "./validadores/multiple-choice";
 import { validarTextAnswer } from "./validadores/text-answer";
 import { validarTypeValue } from "./validadores/type-value";
+import { validarFerramenta } from "./validadores/ferramenta";
 
 export type { EstadoCorrecao, Falha, MotivoFalha, Resultado } from "./tipos";
 
@@ -56,7 +57,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   const variaveis = ex.grade.variaveis ?? [];
   const alternativas = ex.grade.alternativas ?? {};
   const comAlternativas = Object.keys(alternativas);
-  if (variaveis.length === 0 && comAlternativas.length === 0) return [];
+  const variaveisNasAbas = (ex.abas ?? []).some((a) => a.grade.variaveis?.length);
+  if (variaveis.length === 0 && comAlternativas.length === 0 && !variaveisNasAbas) return [];
   const falhas = new Set<string>();
 
   // Rodadas: números multiplicados por um fator e, em cada rodada, as células
@@ -68,8 +70,14 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   for (let r = 0; r < rodadas; r++) {
     const fator = FATORES[r % FATORES.length];
     const grade = structuredClone(ex.grade);
-    for (const [i, end] of variaveis.entries()) {
-      const cel = grade.celulas[end];
+    const abas = structuredClone(ex.abas);
+    // As variáveis de todas as abas, na mesma rodada (a fórmula do aluno pode ler qualquer uma).
+    const alvos = [
+      ...variaveis.map((end) => ({ g: grade, end })),
+      ...(abas ?? []).flatMap((a) => (a.grade.variaveis ?? []).map((end) => ({ g: a.grade, end }))),
+    ];
+    for (const [i, { g, end }] of alvos.entries()) {
+      const cel = g.celulas[end];
       if (!cel) continue;
       const n = Number(cel.entrada.replace(/\./g, "").replace(",", ".").replace("%", ""));
       if (Number.isNaN(n)) continue;
@@ -87,8 +95,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
       grade.celulas[end] = { ...(grade.celulas[end] ?? {}), entrada: lista[r % lista.length] };
     }
 
-    const aluno = new Planilha(grade);
-    const referencia = new Planilha(grade);
+    const aluno = Planilha.deGrades(grade, abas);
+    const referencia = Planilha.deGrades(grade, abas);
     try {
       aluno.definirVarias(
         Object.entries(conteudos)
@@ -125,6 +133,8 @@ function conferirComPerturbacao(ex: ExercicioFormula, conteudos: Record<string, 
   }
   return [...falhas];
 }
+
+const temLogico = (v: unknown): boolean => typeof v === "boolean" || (Array.isArray(v) && v.some(temLogico));
 
 /** Correção dos exercícios de fórmula (o tipo original). */
 export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
@@ -167,6 +177,12 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
     if (!conferirValores(p, alvoAgora)) {
       const esperado =
         Array.isArray(alvoAgora.esperado) || typeof alvoAgora.esperado === "object" ? null : alvoAgora.esperado;
+      // "=SOMA(B2;B7)=SOMA(B2:B7)" → FALSO: escreveu a fórmula nova depois da antiga.
+      // Só quando deu VERDADEIRO/FALSO e a resposta não é lógica (comparação de verdade passa ao largo).
+      if (typeof valor === "boolean" && !temLogico(alvoAgora.esperado) && pareceTextoAnexado(p.bruto(c))) {
+        falhas.push({ celula: c, motivo: "texto-anexado", mensagem: mensagemTextoAnexado(p.bruto(c)) });
+        continue;
+      }
       const dica = diagnosticarValor({
         formulaAluno: p.bruto(c),
         formulaReferencia: alvo.solucaoReferencia,
@@ -203,7 +219,7 @@ export function corrigirFormula(ex: ExercicioFormula, p: Planilha): Resultado {
   }
 
   if (falhas.length === 0) {
-    for (const c of conferirComPerturbacao(ex, p.conteudos())) {
+    for (const c of conferirComPerturbacao(ex, p.conteudosDoAluno())) {
       const alvo = ex.alvos.find((a) => a.celula === c);
       const dica = alvo && diagnosticarValorFixo(p.bruto(c), alvo.solucaoReferencia);
       falhas.push({
@@ -244,13 +260,39 @@ export function corrigir(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resulta
 
 const normalizarEntrada = (s: string) => s.toUpperCase().replace(/\s+/g, "");
 
-/** Troca a mensagem genérica pela dica do roteiro quando o erro do aluno é um dos previstos. */
-function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undefined, r: Resultado): Resultado {
-  if (r.ok || !ex.errosComuns?.length) return r;
-  const casa = (entrada: string, celula?: string) =>
+/** Células cuja fórmula a correção olha (para os erros comuns que bloqueiam). */
+function celulasCorrigidas(ex: Exercicio): string[] {
+  if (ex.type === "formula" || ex.type === "type_value") return ex.alvos.map((a) => a.celula);
+  if (ex.type === "ferramenta") return ex.verificacoes.flatMap((v) => (v.tipo === "celula" ? [v.celula] : []));
+  return [];
+}
+
+/**
+ * Erros comuns: troca a mensagem genérica pela dica do roteiro quando o erro
+ * do aluno é um dos previstos. Os marcados com `bloqueia` reprovam mesmo com o
+ * valor certo (ex.: PROCV sem FALSO que acerta só porque a tabela está em ordem).
+ */
+export function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undefined, r: Resultado): Resultado {
+  if (!ex.errosComuns?.length) return r;
+  const casa = (entrada: string, celula?: string, soBloqueia = false) =>
     ex.errosComuns!.find(
-      (e) => (!e.celula || !celula || e.celula === celula) && new RegExp(e.padrao, "i").test(normalizarEntrada(entrada)),
+      (e) =>
+        (!soBloqueia || e.bloqueia) &&
+        (!e.celula || !celula || e.celula === celula) &&
+        new RegExp(e.padrao, "i").test(normalizarEntrada(entrada)),
     );
+  if (r.ok) {
+    if (ex.type === "text_answer") {
+      const e = casa(tela?.resposta ?? "", undefined, true);
+      return e ? { ok: false, falhas: [{ celula: "A1", motivo: "erro-comum", mensagem: e.dica }] } : r;
+    }
+    const falhas: Falha[] = [];
+    for (const c of celulasCorrigidas(ex)) {
+      const e = casa(p.bruto(c), c, true);
+      if (e) falhas.push({ celula: c, motivo: "erro-comum", mensagem: e.dica });
+    }
+    return falhas.length ? { ok: false, falhas } : r;
+  }
   if (ex.type === "text_answer") {
     const e = casa(tela?.resposta ?? "");
     return e ? { ok: false, falhas: [{ ...r.falhas[0], mensagem: e.dica }] } : r;
@@ -258,6 +300,8 @@ function aplicarErrosComuns(ex: Exercicio, p: Planilha, tela: EstadoTela | undef
   return {
     ok: false,
     falhas: r.falhas.map((f) => {
+      // O roteiro fala do erro na fórmula; com texto anexado, a fórmula nem é a que a pessoa quis.
+      if (f.motivo === "texto-anexado") return f;
       const e = f.celula ? casa(p.bruto(f.celula), f.celula) : undefined;
       return e ? { ...f, mensagem: e.dica } : f;
     }),
@@ -281,5 +325,7 @@ function corrigirPorTipo(ex: Exercicio, p: Planilha, tela?: EstadoTela): Resulta
       return validarFormatCell(ex, estado());
     case "multiple_choice":
       return validarMultipleChoice(ex, estado());
+    case "ferramenta":
+      return validarFerramenta(ex, p);
   }
 }

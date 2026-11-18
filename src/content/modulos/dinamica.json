@@ -1,0 +1,5555 @@
+[
+  {
+    "id": "7ddbd3e5-6ef3-5e41-8f9f-d44f8a6c584f",
+    "slug": "dinamica-total-por-regiao",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 1,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Tabela dinâmica: total por região",
+    "enunciado": [
+      "Crie uma **tabela dinâmica** em **G1** com o **total vendido por região**."
+    ],
+    "dicas": [
+      "Comece com uma célula da tabela selecionada e o botão Tabela dinâmica: o Excel pega a tabela inteira sozinho.",
+      "No painel de campos, o que separa as linhas é a região; o que se soma é o valor."
+    ],
+    "explicacao": [
+      "**Tabela dinâmica** → OK. No painel, **Região** em **Linhas** e **Valor** em **Valores** (fica *Soma de Valor*).",
+      "Sem escrever uma fórmula, você tem o total de cada região e o Total Geral. Marcar a caixa do campo já faz isso: texto vai para Linhas, número vai para Valores com Soma."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-total-por-regiao",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Tabela dinâmica é o recurso que mais aparece em vaga de emprego: resume milhares de linhas em segundos, arrastando campos. Sem fórmula nenhuma.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Região"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "0c496bc9-ecc1-5767-9d2f-0c9c84921d6a",
+    "slug": "dinamica-total-por-regiao-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 12,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Total por vendedor",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **total vendido por vendedor**."
+    ],
+    "dicas": [
+      "É a mesma ideia da lição anterior; muda só o campo que vai nas linhas."
+    ],
+    "explicacao": [
+      "**Vendedor** em **Linhas**, **Valor** em **Valores** (Soma).",
+      "Trocar o campo das linhas muda a pergunta que a tabela responde: por região, por vendedor, por produto…"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-total-por-regiao",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Vendedor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "6e7fe2b2-f3d3-5437-a3fd-ae27d522cd78",
+    "slug": "dinamica-total-por-regiao-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 13,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Contar em vez de somar",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com **quantas vendas** cada **produto** teve."
+    ],
+    "dicas": [
+      "Em Valores, a conta pode ser Soma, Contagem, Média…",
+      "Um campo de texto arrastado para Valores já vira Contagem."
+    ],
+    "explicacao": [
+      "**Produto** em **Linhas** e um campo em **Valores** com **Contagem** (por exemplo, *Contagem de Vendedor*, ou Valor com a conta trocada para Contagem).",
+      "Contagem conta as linhas de cada item. Qualquer campo sem células vazias dá o mesmo número."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-total-por-regiao",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Produto"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "B",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "7266f456-70cb-57bf-90de-095a3d66c19d",
+    "slug": "dinamica-total-por-regiao-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 14,
+    "nivel": 2,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Pegadinha: média, não soma",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **valor médio** de uma venda de cada **produto**."
+    ],
+    "dicas": [
+      "Um número arrastado para Valores entra como Soma. Nem sempre é isso que a pergunta quer.",
+      "A conta muda no próprio campo, dentro da área Valores."
+    ],
+    "explicacao": [
+      "**Produto** em **Linhas**, **Valor** em **Valores** e troque a conta de Soma para **Média** (no Excel: *Configurações do Campo de Valor*).",
+      "Quem para na Soma entrega o total de cada produto, um número muito maior que o pedido. Leia o rótulo: ele precisa dizer *Média de Valor*."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-total-por-regiao",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Produto"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "media"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "media"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "39e0057a-f81d-5738-8126-17cd2ed61513",
+    "slug": "dinamica-total-por-regiao-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 15,
+    "nivel": 1,
+    "plano": "free",
+    "versao": 1,
+    "titulo": "Por que a tabela não mudou?",
+    "enunciado": [
+      "No Excel, você corrigiu um valor na tabela de vendas, mas a tabela dinâmica continua mostrando o total antigo. Por quê?"
+    ],
+    "dicas": [
+      "A tabela dinâmica guarda uma cópia dos dados de quando foi montada."
+    ],
+    "explicacao": [
+      "A tabela dinâmica do Excel **não se atualiza sozinha**: clique com o botão direito nela → **Atualizar** (ou Alt+F5) depois de mudar a origem.",
+      "Aqui no simulador ela acompanha a origem na hora, para facilitar. No Excel de verdade, esquecer de atualizar é um erro clássico de relatório."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-total-por-regiao",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Porque ela só muda quando você manda Atualizar."
+      },
+      {
+        "texto": "Porque a correção foi feita numa célula bloqueada.",
+        "dica": "A célula foi alterada; quem não percebeu foi a tabela dinâmica."
+      },
+      {
+        "texto": "Porque tabela dinâmica nunca muda depois de criada.",
+        "dica": "Ela muda, sim, mas não sozinha."
+      },
+      {
+        "texto": "Porque faltou usar SUBTOTAL.",
+        "dica": "SUBTOTAL é uma função de célula; a tabela dinâmica não usa fórmulas."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "d6f4f09c-cb67-539e-b306-eb5181ea301f",
+    "slug": "dinamica-regiao-por-canal",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 2,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Tabela cruzada: região por canal",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o total vendido de cada **região** (nas linhas) em cada **canal** (nas colunas)."
+    ],
+    "dicas": [
+      "Além de Linhas, a tabela dinâmica tem Colunas: um campo em cada lado vira uma tabela cruzada.",
+      "Na tabela pronta, cada célula responde: quanto esta região vendeu por este canal?"
+    ],
+    "explicacao": [
+      "**Região** em **Linhas**, **Canal** em **Colunas**, **Valor** em **Valores**.",
+      "Cada célula do meio responde a uma combinação: o Sul vendeu R$ 3.480,00 pelo Site, por exemplo. Se uma combinação nunca tivesse acontecido, a célula ficaria vazia. Os totais aparecem dos dois lados: Total Geral na última linha e na última coluna."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-regiao-por-canal",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Uma tabela cruzada responde duas perguntas de uma vez: quem vendeu, e por onde. Montar isso com SOMASES levaria uma fórmula por célula.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Região"
+        ],
+        "colunas": [
+          "Canal"
+        ],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [
+              "A"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "7596e320-9a98-58f8-9d4a-db809f7270df",
+    "slug": "dinamica-regiao-por-canal-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 22,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendedor por produto",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o total de cada **vendedor** (nas linhas) por **produto** (nas colunas)."
+    ],
+    "dicas": [
+      "Um campo em Linhas, outro em Colunas, o valor em Valores."
+    ],
+    "explicacao": [
+      "**Vendedor** em **Linhas**, **Produto** em **Colunas**, **Valor** em **Valores**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-regiao-por-canal",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Vendedor"
+        ],
+        "colunas": [
+          "Produto"
+        ],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [
+              "D"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "c8d8da0b-89f0-5df6-85b6-0076b6cd9c59",
+    "slug": "dinamica-regiao-por-canal-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 23,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtro da tabela dinâmica",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o total por **produto**, considerando **só as vendas do canal Site**."
+    ],
+    "dicas": [
+      "A área Filtros escolhe quais linhas da origem entram na conta, sem aparecer como linha ou coluna.",
+      "Depois de pôr o campo em Filtros, escolha o item no botão que aparece ao lado dele."
+    ],
+    "explicacao": [
+      "**Produto** em **Linhas**, **Valor** em **Valores** e **Canal** em **Filtros**, com só **Site** marcado.",
+      "O filtro aparece em cima da tabela (Canal: Site). Trocando o item, a tabela inteira refaz as contas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-regiao-por-canal",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Produto"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Canal",
+            "valores": [
+              "Site"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "A",
+                "valores": [
+                  "Site"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "d17bba83-958b-5130-a5af-15612ea0d4dc",
+    "slug": "dinamica-regiao-por-canal-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 24,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: linhas e colunas trocadas",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com os **canais nas linhas** e as **regiões nas colunas**, somando o valor."
+    ],
+    "dicas": [
+      "Os números são os mesmos de uma tabela com os lados invertidos, mas a pergunta diz o que vai em cada lado.",
+      "Confira o que aparece na primeira coluna da tabela pronta."
+    ],
+    "explicacao": [
+      "**Canal** em **Linhas**, **Região** em **Colunas**.",
+      "Linhas e Colunas não são intercambiáveis num relatório: quem lê espera os canais descendo pela tabela. Para trocar, arraste um campo de uma área para a outra."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-regiao-por-canal",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Canal"
+        ],
+        "colunas": [
+          "Região"
+        ],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [
+              "C"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "ebae9107-333d-50c9-a891-68dcab8deaa8",
+    "slug": "dinamica-regiao-por-canal-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 25,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para que serve Filtros?",
+    "enunciado": [
+      "Na tabela dinâmica, para que serve a área **Filtros**?"
+    ],
+    "dicas": [
+      "Pense no que acontece com as linhas da origem que não passam no filtro."
+    ],
+    "explicacao": [
+      "Filtros escolhe **quais linhas da origem entram na conta**, sem virar linha nem coluna da tabela.",
+      "É o jeito de ter o mesmo relatório para um canal, um mês ou uma loja só, trocando o item lá em cima."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-regiao-por-canal",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Esconder linhas da própria tabela dinâmica, como o AutoFiltro.",
+        "dica": "Ela não esconde linhas da grade: muda quais dados entram na conta."
+      },
+      {
+        "texto": "Escolher quais dados da origem entram na conta, sem virar linha nem coluna."
+      },
+      {
+        "texto": "Apagar da origem as linhas que não interessam.",
+        "dica": "Nada é apagado da origem."
+      },
+      {
+        "texto": "Ordenar os itens da tabela.",
+        "dica": "Ordenar é Classificar; Filtros escolhe o que entra."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "f2af9dfa-e515-56ff-aa85-e30704ec1c16",
+    "slug": "dinamica-usar-resultado",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 3,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Participação de uma região",
+    "enunciado": [
+      "A tabela dinâmica em G1 já mostra o total por região. Em **H8**, calcule a **participação do Sul** no total vendido."
+    ],
+    "dicas": [
+      "Participação é a parte dividida pelo todo.",
+      "As duas pontas da conta já estão na tabela dinâmica: o Sul e o Total Geral."
+    ],
+    "explicacao": [
+      "`=H4/H5` → cerca de 51,5%.",
+      "Fórmulas leem a tabela dinâmica como qualquer outra célula. No Excel, clicar numa célula dela enquanto escreve gera INFODADOSTABELADINÂMICA; digitar o endereço também funciona."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-usar-resultado",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "A tabela dinâmica resume; uma fórmula ao lado transforma o resumo em resposta: participação, diferença, meta.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "percentual"
+        },
+        "G8": {
+          "entrada": "Participação do Sul",
+          "negrito": true
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "H8",
+        "esperado": 0.5152514427040396,
+        "tolerancia": 1e-9
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "H8": "=H4/H5"
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "042ee907-b870-5faa-a093-c0d47820466d",
+    "slug": "dinamica-usar-resultado-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Diferença entre regiões",
+    "enunciado": [
+      "Em **H8**, calcule quanto o **Sul** vendeu **a mais** que o **Norte**, usando a tabela dinâmica."
+    ],
+    "dicas": [
+      "É uma subtração entre duas células da tabela dinâmica."
+    ],
+    "explicacao": [
+      "`=H4-H3` → R$ 5.350,00.",
+      "Se a origem mudar, a tabela dinâmica muda e a fórmula acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-usar-resultado",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "moeda"
+        },
+        "G8": {
+          "entrada": "Sul a mais",
+          "negrito": true
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "H8",
+        "esperado": 5350
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "H8": "=H4-H3"
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "52fd43fd-ea8b-5aa7-8918-fef41931dc5f",
+    "slug": "dinamica-usar-resultado-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 33,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas contas lado a lado",
+    "enunciado": [
+      "A tabela dinâmica em G1 mostra o total por região. Acrescente uma coluna com a **quantidade de vendas** de cada região."
+    ],
+    "dicas": [
+      "Valores aceita mais de um campo: cada um vira uma coluna."
+    ],
+    "explicacao": [
+      "Arraste mais um campo para **Valores** com **Contagem** (por exemplo, Vendedor).",
+      "Com soma e contagem lado a lado, dá para calcular o ticket médio de cada região dividindo uma pela outra."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-usar-resultado",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Região"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          },
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              },
+              {
+                "campo": "B",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "43ba5379-444a-56d5-a049-f38db9908e7f",
+    "slug": "dinamica-usar-resultado-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o Total Geral",
+    "enunciado": [
+      "Em **H8**, mostre o **total vendido** pelas três regiões, usando a tabela dinâmica."
+    ],
+    "dicas": [
+      "Olhe a última linha da tabela dinâmica antes de somar qualquer coisa."
+    ],
+    "explicacao": [
+      "`=H5` (o Total Geral) já é a resposta. Somar H2:H5 conta tudo **duas vezes**, porque o Total Geral entra na soma.",
+      "Erro comum: somar a coluna inteira da tabela dinâmica, com o total junto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-usar-resultado",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "moeda"
+        },
+        "G8": {
+          "entrada": "Total vendido",
+          "negrito": true
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "H8",
+        "esperado": 24260,
+        "mensagem": "O resultado não bate com o total vendido. Confira quais linhas da tabela dinâmica entraram na conta."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "H8": "=H5"
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "ad2243c4-82f4-5c1c-a491-ecf0c044e41d",
+    "slug": "dinamica-usar-resultado-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 35,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Digitar dentro da tabela dinâmica",
+    "enunciado": [
+      "O que acontece se você tentar digitar um número numa célula de valores da tabela dinâmica?"
+    ],
+    "dicas": [
+      "Teste na planilha de uma lição anterior: clique num total e comece a digitar."
+    ],
+    "explicacao": [
+      "O Excel recusa e avisa que não é possível alterar essa parte da tabela dinâmica. Ela só muda pelos campos ou pela origem.",
+      "Para um ajuste manual, copie a tabela e cole como valores em outro lugar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-usar-resultado",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "O número entra e o Total Geral se ajusta.",
+        "dica": "A tabela dinâmica não aceita digitação nas células dela."
+      },
+      {
+        "texto": "O Excel recusa: a tabela só muda pelos campos ou pela origem."
+      },
+      {
+        "texto": "O número entra e a origem é corrigida.",
+        "dica": "A ligação é só de ida: da origem para a tabela."
+      },
+      {
+        "texto": "A tabela dinâmica é apagada.",
+        "dica": "Nada é apagado; o Excel só recusa a digitação."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "6ea5a373-f02d-54b7-a228-e618391f3139",
+    "slug": "teste-dinamica-1",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total por canal",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o **total vendido por canal**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-total-por-regiao",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Canal"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "19d26718-bfa5-55db-8a2b-a61699558531",
+    "slug": "teste-dinamica-2",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 202,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Produto por região",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com o total de cada **produto** (linhas) por **região** (colunas)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-regiao-por-canal",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Produto"
+        ],
+        "colunas": [
+          "Região"
+        ],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [
+              "C"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "9dffcf73-3b10-5173-9225-3e1020cc220d",
+    "slug": "teste-dinamica-3",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendas do Norte",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **G1** com **quantas vendas** cada **vendedor** fez, considerando **só a região Sul**."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-regiao-por-canal",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E15",
+        "linhas": [
+          "Vendedor"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Região",
+            "valores": [
+              "Sul"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "B",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "C",
+                "valores": [
+                  "Sul"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "e8cc9198-48fe-5b52-9cfd-30ac4ac2bcb7",
+    "slug": "teste-dinamica-4",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 204,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Participação do Norte",
+    "enunciado": [
+      "A tabela dinâmica em G1 mostra o total por região. Em **H8**, calcule a **participação do Norte** no total."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-usar-resultado",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 12,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "C": 64,
+        "D": 80,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 110,
+        "I": 96,
+        "J": 96,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Sul"
+        },
+        "D2": {
+          "entrada": "Notebook"
+        },
+        "E2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "Norte"
+        },
+        "D3": {
+          "entrada": "Mouse"
+        },
+        "E3": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Loja"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "Sul"
+        },
+        "D4": {
+          "entrada": "Monitor"
+        },
+        "E4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Telefone"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "Leste"
+        },
+        "D5": {
+          "entrada": "Notebook"
+        },
+        "E5": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Site"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "C6": {
+          "entrada": "Sul"
+        },
+        "D6": {
+          "entrada": "Mouse"
+        },
+        "E6": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Loja"
+        },
+        "B7": {
+          "entrada": "Bruno"
+        },
+        "C7": {
+          "entrada": "Norte"
+        },
+        "D7": {
+          "entrada": "Notebook"
+        },
+        "E7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Site"
+        },
+        "B8": {
+          "entrada": "Carla"
+        },
+        "C8": {
+          "entrada": "Sul"
+        },
+        "D8": {
+          "entrada": "Notebook"
+        },
+        "E8": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Loja"
+        },
+        "B9": {
+          "entrada": "Daniel"
+        },
+        "C9": {
+          "entrada": "Leste"
+        },
+        "D9": {
+          "entrada": "Monitor"
+        },
+        "E9": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Telefone"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Sul"
+        },
+        "D10": {
+          "entrada": "Monitor"
+        },
+        "E10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Site"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Norte"
+        },
+        "D11": {
+          "entrada": "Monitor"
+        },
+        "E11": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Loja"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Sul"
+        },
+        "D12": {
+          "entrada": "Mouse"
+        },
+        "E12": {
+          "entrada": "120",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Site"
+        },
+        "B13": {
+          "entrada": "Daniel"
+        },
+        "C13": {
+          "entrada": "Leste"
+        },
+        "D13": {
+          "entrada": "Mouse"
+        },
+        "E13": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Loja"
+        },
+        "B14": {
+          "entrada": "Ana"
+        },
+        "C14": {
+          "entrada": "Sul"
+        },
+        "D14": {
+          "entrada": "Notebook"
+        },
+        "E14": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Telefone"
+        },
+        "B15": {
+          "entrada": "Bruno"
+        },
+        "C15": {
+          "entrada": "Norte"
+        },
+        "D15": {
+          "entrada": "Notebook"
+        },
+        "E15": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "percentual"
+        },
+        "G8": {
+          "entrada": "Participação do Norte",
+          "negrito": true
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E15",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "H8",
+        "esperado": 0.29472382522671065,
+        "tolerancia": 1e-9
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "H8": "=H3/H5"
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "64e242ba-81fd-5cf3-aa2c-0f9a8770e46b",
+    "slug": "teste-dinamica-5",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 205,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Maior venda",
+    "enunciado": [
+      "Na tabela dinâmica, que conta mostra a **maior venda** de cada vendedor?"
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-total-por-regiao",
+    "teste": true,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Soma"
+      },
+      {
+        "texto": "Contagem"
+      },
+      {
+        "texto": "Máx."
+      },
+      {
+        "texto": "Média"
+      }
+    ],
+    "correta": 2,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  }
+]

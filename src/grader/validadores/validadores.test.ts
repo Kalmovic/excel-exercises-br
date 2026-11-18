@@ -100,6 +100,11 @@ describe("select_range", () => {
   it("célula única explica como selecionar", () => {
     expect(validarSelectRange(e, estado({ selecao: "B2" })).falhas[0].mensagem).toContain("Shift");
   });
+  it("no celular, a explicação é a do toque (sem mouse nem Shift)", () => {
+    const m = validarSelectRange(e, estado({ selecao: "B2", semTecladoFisico: true })).falhas[0].mensagem;
+    expect(m).toBe("Só a célula B2 está selecionada. Toque em ▦ Selecionar intervalo e depois em B2 e D5.");
+    expect(m).not.toMatch(/mouse|Shift/);
+  });
 });
 
 describe("type_value", () => {

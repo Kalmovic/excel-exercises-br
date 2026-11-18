@@ -11,13 +11,19 @@ export type MotivoFalha =
   | "funcao-faltando"
   | "funcao-proibida"
   | "valor-fixo"
+  // fórmula nova escrita depois da antiga ("=SOMA(B2;B7)=SOMA(B2:B7)" → FALSO)
+  | "texto-anexado"
   // intro
   | "sem-resposta"
   | "resposta"
   | "celula-errada"
   | "usou-mouse"
   | "selecao-errada"
-  | "formato";
+  | "formato"
+  // ferramentas (filtro, classificar…)
+  | "recurso"
+  // erro comum com `bloqueia`: o valor pode até estar certo, mas a fórmula não
+  | "erro-comum";
 
 export type Falha = { celula: string; motivo: MotivoFalha; mensagem: string };
 export type Resultado = { ok: boolean; falhas: Falha[] };

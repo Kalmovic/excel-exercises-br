@@ -1108,14 +1108,14 @@
       },
       {
         "celula": "D4",
-        "esperado": 1700.0,
+        "esperado": 1700,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B4/C4;0)",
         "formato": "moeda"
       },
       {
         "celula": "D5",
-        "esperado": 196.0,
+        "esperado": 196,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B5/C5;0)",
         "formato": "moeda"
@@ -1129,14 +1129,14 @@
       },
       {
         "celula": "D7",
-        "esperado": 1700.0,
+        "esperado": 1700,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B7/C7;0)",
         "formato": "moeda"
       },
       {
         "celula": "D8",
-        "esperado": 1700.0,
+        "esperado": 1700,
         "exigeFormula": true,
         "solucaoReferencia": "=SEERRO(B8/C8;0)",
         "formato": "moeda"

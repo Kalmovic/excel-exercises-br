@@ -36,8 +36,7 @@ describe("funcoesUsadas", () => {
 
 describe("sintaxe: recusada com explicação, nunca #ERROR!", () => {
   const casos: [string, RegExp][] = [
-    ["=SOMA(B2:B7", /Faltou fechar um parêntese/],
-    ["=SE(A1>0;SOMA(B1:B2", /Faltou fechar 2 parênteses/],
+    ["=SOMA(B2:B7+", /Faltou fechar um parêntese/],
     ["=SOMA(B2:B7))", /fechando sem ter aberto/],
     ["=SOMA(B2:B7)+", /termina num operador/],
     ['=SE(A1>0;"sim;"não")', /aspas/],
@@ -50,6 +49,20 @@ describe("sintaxe: recusada com explicação, nunca #ERROR!", () => {
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.mensagem).toMatch(msg);
     expect(p.valor("C1")).toBeNull(); // nada foi gravado
+  });
+
+  it("como o Excel, fecha sozinho os parênteses que faltam no fim", async () => {
+    const { Planilha } = await import("./engine");
+    const p = new Planilha({ linhas: 9, colunas: 4, celulas: { B1: { entrada: "1" }, B2: { entrada: "2" } } });
+    expect(p.definir("C1", "=SOMA(B1:B2")).toEqual({ ok: true });
+    expect(p.bruto("C1")).toBe("=SOMA(B1:B2)");
+    expect(p.valor("C1")).toBe(3);
+    expect(p.definir("C2", "=SE(B1>0;SOMA(B1:B2")).toEqual({ ok: true });
+    expect(p.bruto("C2")).toBe("=SE(B1>0;SOMA(B1:B2))");
+    // Parêntese dentro de texto não conta; aspas abertas continuam recusadas.
+    expect(p.definir("C3", '=CONCATENAR("(";B1')).toEqual({ ok: true });
+    expect(p.bruto("C3")).toBe('=CONCATENAR("(";B1)');
+    expect(p.definir("C4", '=CONCATENAR("(;B1').ok).toBe(false);
   });
 
   it("fórmulas válidas continuam passando", async () => {

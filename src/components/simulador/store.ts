@@ -1,5 +1,5 @@
 import { createStore } from "zustand/vanilla";
-import { normalizar, type Intervalo, type Pos } from "@/engine/address";
+import { colunaParaLetras, intervaloParaTexto, normalizar, type Intervalo, type Pos } from "@/engine/address";
 import { ateABorda, ultimaUsada } from "@/engine/navegacao";
 import type { Planilha } from "@/engine/engine";
 import type { Formato } from "@/content/schema";
@@ -33,6 +33,17 @@ export type EstadoSimulador = {
    * "inicio": o próximo toque marca a primeira célula; "fim": marca a última.
    */
   intervaloNoToque: null | "inicio" | "fim";
+  /** Gráfico selecionado (clique nele): abre o painel Design do Gráfico. */
+  graficoAtivo: number | null;
+  /** "Circular Dados Inválidos" ligado: as células que furam a validação ganham um círculo vermelho. */
+  circularInvalidos: boolean;
+  /**
+   * Questão respondida (teste do módulo): a planilha só pode ser observada.
+   * Diferente da seleção fixa, ainda dá para andar pela grade; o que não dá é mudar dados.
+   */
+  travada: boolean;
+  /** Trava a planilha (e descarta uma edição ou arrasto em andamento). */
+  travar: () => void;
 
   selecao: () => Intervalo;
   selecionar: (p: Pos, estender?: boolean) => void;
@@ -62,6 +73,10 @@ export type EstadoSimulador = {
   terminarArrasto: () => void;
   setResposta: (t: string) => void;
   formatarSelecao: (formato: Formato) => void;
+  /** Botão Filtro / Ctrl+Shift+L: liga na seleção (ou na região atual) ou desliga. */
+  alternarFiltro: () => void;
+  /** Classificar pela coluna da célula ativa: a tabela do filtro, a seleção ou a região atual. */
+  classificar: (ordem: "asc" | "desc", coluna?: number) => void;
 };
 
 const clamp = (v: number, max: number) => Math.max(0, Math.min(max - 1, v));
@@ -91,7 +106,12 @@ export function criarStore(
     celebrando: false,
     mudancasPeloMouse: 0,
     intervaloNoToque: null,
+    graficoAtivo: null,
+    circularInvalidos: false,
+    travada: false,
     resposta,
+
+    travar: () => set({ travada: true, modo: "pronto", rascunho: "", arrasto: null, alca: null }),
 
     selecao: () => normalizar(get().ancora, get().foco),
 
@@ -115,10 +135,11 @@ export function criarStore(
       if (fixa) return; // seleção travada: ignora em silêncio
       const { ancora, foco } = get();
       const base = estender ? foco : ancora;
-      const p = {
-        linha: clamp(base.linha + dl, planilha.linhas),
-        coluna: clamp(base.coluna + dc, planilha.colunas),
-      };
+      let linha = clamp(base.linha + dl, planilha.linhas);
+      // Linhas escondidas pelo filtro são puladas, como no Excel.
+      while (dl !== 0 && planilha.linhaOculta(linha) && linha > 0 && linha < planilha.linhas - 1) linha += Math.sign(dl);
+      if (planilha.linhaOculta(linha)) linha = base.linha;
+      const p = { linha, coluna: clamp(base.coluna + dc, planilha.colunas) };
       set(estender ? { foco: p } : { ancora: p, foco: p, mensagem: null });
     },
 
@@ -169,10 +190,11 @@ export function criarStore(
     },
 
     iniciarEdicao: (modo, texto) => {
-      const { ancora } = get();
-      if (fixa) return false;
-      if (planilha.bloqueada(ancora)) {
-        set({ mensagem: "Esta célula faz parte dos dados do exercício e não pode ser alterada." });
+      const { ancora, travada } = get();
+      if (fixa || travada) return false;
+      const motivo = planilha.motivoBloqueio(ancora);
+      if (motivo) {
+        set({ mensagem: motivo });
         return false;
       }
       const rascunho = texto ?? planilha.bruto(ancora);
@@ -191,8 +213,12 @@ export function criarStore(
     setRascunho: (t) => set({ rascunho: t, mensagem: null, indiceSugestao: 0, sugestoesFechadas: false }),
 
     confirmar: () => {
-      const { modo, rascunho, ancora } = get();
+      const { modo, rascunho, ancora, travada } = get();
       if (modo === "pronto") return true;
+      if (travada) {
+        set({ modo: "pronto", rascunho: "" });
+        return true;
+      }
       const r = planilha.definir(ancora, rascunho);
       if (!r.ok) {
         set({ mensagem: r.mensagem });
@@ -213,16 +239,16 @@ export function criarStore(
     },
 
     colar: () => {
-      if (fixa) return;
+      if (fixa || get().travada) return;
       if (planilha.colar(get().selecao())) set({ copiado: null });
     },
 
     apagarSelecao: () => {
-      if (!fixa) planilha.limpar(get().selecao());
+      if (!fixa && !get().travada) planilha.limpar(get().selecao());
     },
 
     preencherSelecao: (direcao) => {
-      if (fixa) return;
+      if (fixa || get().travada) return;
       const s = get().selecao();
       // Como no Excel: seleção de uma linha só (ex.: uma célula) copia a linha de CIMA;
       // de uma coluna só, com Ctrl+R, copia a coluna da ESQUERDA.
@@ -253,7 +279,7 @@ export function criarStore(
     },
 
     iniciarAlca: () => {
-      if (!fixa) set({ arrasto: "alca", alca: null });
+      if (!fixa && !get().travada) set({ arrasto: "alca", alca: null });
     },
 
     moverAlca: (p) => {
@@ -279,8 +305,8 @@ export function criarStore(
     },
 
     terminarArrasto: () => {
-      const { arrasto, alca } = get();
-      if (arrasto === "alca" && alca) {
+      const { arrasto, alca, travada } = get();
+      if (arrasto === "alca" && alca && !travada) {
         const s = get().selecao();
         planilha.preencher(s, alca);
         set({ ancora: s.inicio, foco: alca.fim });
@@ -290,7 +316,47 @@ export function criarStore(
 
     setResposta: (t) => set({ resposta: t }),
 
-    formatarSelecao: (formato) => planilha.formatar(get().selecao(), formato),
+    formatarSelecao: (formato) => {
+      if (!get().travada) planilha.formatar(get().selecao(), formato);
+    },
+
+    alternarFiltro: () => {
+      if (get().travada) return;
+      if (planilha.filtroAtual()) return planilha.desligarFiltro();
+      const sel = get().selecao();
+      const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
+      const int = umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
+      if (int.inicio.linha === int.fim.linha) {
+        set({ mensagem: "Selecione uma célula dentro da tabela (com cabeçalho e dados) para ligar o filtro." });
+        return;
+      }
+      planilha.ligarFiltro(int);
+    },
+
+    classificar: (ordem, coluna) => {
+      if (get().travada) return;
+      const { ancora } = get();
+      const sel = get().selecao();
+      const f = planilha.filtroAtual();
+      const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
+      // Com filtro ligado, classifica a tabela do filtro (o cabeçalho fica no lugar).
+      const int = f ? f.intervalo : umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
+      if (int.inicio.linha === int.fim.linha) {
+        set({ mensagem: "Selecione uma célula dentro da tabela para classificar." });
+        return;
+      }
+      const col = coluna ?? ancora.coluna;
+      if (col < int.inicio.coluna || col > int.fim.coluna) {
+        set({ mensagem: "A célula ativa precisa estar numa coluna da tabela: é por ela que o Excel classifica." });
+        return;
+      }
+      const r = planilha.classificar({
+        intervalo: intervaloParaTexto(int),
+        chaves: [{ coluna: colunaParaLetras(col), ordem }],
+        cabecalho: f ? true : planilha.pareceCabecalho(int),
+      });
+      set({ mensagem: r.ok ? null : r.mensagem });
+    },
   }));
 }
 

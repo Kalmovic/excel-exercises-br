@@ -1570,5 +1570,570 @@
       "SUMIF"
     ],
     "extra": true
+  },
+  {
+    "id": "6d649358-848c-5eca-bf80-d0b493aeef1d",
+    "slug": "pegar-top-3",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PEGAR: o top 3",
+    "enunciado": [
+      "Em **D2**, mostre os **3 vendedores que mais venderam**, com as vendas, do maior para o menor."
+    ],
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": [
+          [
+            "Eva",
+            6100
+          ],
+          [
+            "Carla",
+            5800
+          ],
+          [
+            "Gabi",
+            4700
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:B8;2;-1);3)"
+      }
+    ],
+    "dicas": [
+      "Primeiro ordene a tabela do maior para o menor; depois fique só com as primeiras linhas.",
+      "PEGAR recebe uma matriz e quantas linhas manter."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(A2:B8;2;-1);3)`.",
+      "PEGAR com número negativo pega do fim: `-3` daria os três últimos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 12,
+      "colunas": 7,
+      "larguras": {
+        "A": 80,
+        "B": 100,
+        "C": 30,
+        "D": 80,
+        "E": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "A6": {
+          "entrada": "Eva"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "A8": {
+          "entrada": "Gabi"
+        },
+        "B2": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "B7": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "B8": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "Top 3",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "TAKE"
+    ]
+  },
+  {
+    "id": "12c2c986-a191-5aed-84b7-bf98f0f0c953",
+    "slug": "escolhercols-reorganizar",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 109,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ESCOLHERCOLS: só as colunas que importam",
+    "enunciado": [
+      "Em **F1**, monte uma tabela só com **Salário** e **Nome**, nessa ordem (com o cabeçalho)."
+    ],
+    "alvos": [
+      {
+        "celula": "F1",
+        "esperado": [
+          [
+            "Salário",
+            "Nome"
+          ],
+          [
+            4200,
+            "Ana"
+          ],
+          [
+            6800,
+            "Bruno"
+          ],
+          [
+            3900,
+            "Carla"
+          ],
+          [
+            7100,
+            "Daniel"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=ESCOLHERCOLS(A1:D5;4;2)"
+      }
+    ],
+    "dicas": [
+      "Não precisa copiar e colar colunas: uma função escolhe quais colunas entram e em que ordem.",
+      "As colunas são indicadas pelo número delas dentro da tabela."
+    ],
+    "explicacao": [
+      "`=ESCOLHERCOLS(A1:D5;4;2)`.",
+      "Se a tabela de origem mudar, a nova acompanha. E número negativo conta do fim: `-1` é a última coluna."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 12,
+      "colunas": 9,
+      "larguras": {
+        "A": 70,
+        "B": 80,
+        "C": 80,
+        "D": 90,
+        "E": 30,
+        "F": 90,
+        "G": 80
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "101"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Vendas"
+        },
+        "D2": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "102"
+        },
+        "B3": {
+          "entrada": "Bruno"
+        },
+        "C3": {
+          "entrada": "TI"
+        },
+        "D3": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "103"
+        },
+        "B4": {
+          "entrada": "Carla"
+        },
+        "C4": {
+          "entrada": "RH"
+        },
+        "D4": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "104"
+        },
+        "B5": {
+          "entrada": "Daniel"
+        },
+        "C5": {
+          "entrada": "TI"
+        },
+        "D5": {
+          "entrada": "7100",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "CHOOSECOLS"
+    ]
+  },
+  {
+    "id": "ad6eee60-8446-542f-a14a-885b8268c3bb",
+    "slug": "let-desconto-por-faixa",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 110,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "LET: dar nome ao desconto",
+    "enunciado": [
+      "Em **C2:C6**, calcule o preço com desconto: **10%** para preços a partir de **R$ 1.000**, **5%** para os outros. Use **LET** para dar nome ao desconto."
+    ],
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 2880,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LET(desconto;SE(B2>=1000;10%;5%);B2*(1-desconto))",
+        "formato": "moeda",
+        "tolerancia": 0.000001
+      },
+      {
+        "celula": "C3",
+        "esperado": 76,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LET(desconto;SE(B3>=1000;10%;5%);B3*(1-desconto))",
+        "formato": "moeda",
+        "tolerancia": 0.000001
+      },
+      {
+        "celula": "C4",
+        "esperado": 990,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LET(desconto;SE(B4>=1000;10%;5%);B4*(1-desconto))",
+        "formato": "moeda",
+        "tolerancia": 0.000001
+      },
+      {
+        "celula": "C5",
+        "esperado": 902.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LET(desconto;SE(B5>=1000;10%;5%);B5*(1-desconto))",
+        "formato": "moeda",
+        "tolerancia": 0.000001
+      },
+      {
+        "celula": "C6",
+        "esperado": 1260,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LET(desconto;SE(B6>=1000;10%;5%);B6*(1-desconto))",
+        "formato": "moeda",
+        "tolerancia": 0.000001
+      }
+    ],
+    "dicas": [
+      "LET recebe pares de nome e valor, e por último o cálculo que usa os nomes.",
+      "O valor do nome pode ser um SE; o cálculo usa o nome como se fosse uma célula."
+    ],
+    "explicacao": [
+      "`=LET(desconto;SE(B2>=1000;10%;5%);B2*(1-desconto))` em C2, copiada até C6.",
+      "Sem o LET, o SE apareceria dentro da conta, e uma fórmula maior repetiria o mesmo pedaço várias vezes. Com o nome, ela se lê quase como uma frase."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 90,
+        "B": 100,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Com desconto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Notebook"
+        },
+        "A3": {
+          "entrada": "Mouse"
+        },
+        "A4": {
+          "entrada": "Monitor"
+        },
+        "A5": {
+          "entrada": "Cadeira"
+        },
+        "A6": {
+          "entrada": "Mesa"
+        },
+        "B2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "80",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "1100",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "1400",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "LET"
+    ]
+  },
+  {
+    "id": "008d500b-57fe-48f9-8b1f-1ee16e585b1c",
+    "slug": "descartar-sem-a-linha-do-total",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 111,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DESCARTAR: a tabela sem a linha do Total",
+    "intro": "Relatório exportado quase sempre vem com uma linha de Total no fim. Para usar só os meses em outra fórmula, é preciso tirar essa linha.",
+    "enunciado": [
+      "Em **D2**, mostre os meses e as vendas de **A2:B8**, **sem a linha do Total**, com uma fórmula só."
+    ],
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": [
+          [
+            "Jan",
+            12400
+          ],
+          [
+            "Fev",
+            9800
+          ],
+          [
+            "Mar",
+            13650
+          ],
+          [
+            "Abr",
+            11200
+          ],
+          [
+            "Mai",
+            14900
+          ],
+          [
+            "Jun",
+            10750
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=DESCARTAR(A2:B8;-1)"
+      }
+    ],
+    "dicas": [
+      "DESCARTAR é o contrário de PEGAR: em vez de ficar com algumas linhas, joga fora.",
+      "Com número positivo, DESCARTAR tira linhas do começo; com negativo, do fim."
+    ],
+    "explicacao": [
+      "`=DESCARTAR(A2:B8;-1)`: o −1 tira uma linha do fim, a do Total.",
+      "Com 1, ele tiraria a primeira linha: `=DESCARTAR(A1:B8;1)` é a tabela sem o cabeçalho (e ainda com o Total). O 3º argumento faz o mesmo com as colunas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 70,
+        "B": 100,
+        "C": 30,
+        "D": 70,
+        "E": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Sem o total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "12400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "9800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "13650",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "14900",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "10750",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2:B7)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "DROP"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DESCARTAR\\(A2:B8;1\\)$",
+        "dica": "Com número positivo, o DESCARTAR tira do começo: sumiu janeiro e o Total ficou. Para tirar do fim, o número é negativo."
+      }
+    ]
   }
 ]

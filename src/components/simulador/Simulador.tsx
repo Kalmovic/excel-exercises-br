@@ -15,14 +15,14 @@ import { corrigir, type Resultado } from "@/grader/corrigir";
 import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
 import { registrar } from "@/lib/eventos";
 import * as progresso from "@/lib/progresso";
-import { BarraFormatacao } from "./BarraFormatacao";
+import { AreaPlanilha } from "./AreaPlanilha";
 import { BarraFormulas } from "./BarraFormulas";
 import { Alternativas } from "./Alternativas";
 import { TextoRico } from "./TextoRico";
 import { CampoResposta } from "./CampoResposta";
 import { Contexto, type ContextoSimulador } from "./contexto";
 import { Grade } from "./Grade";
-import { PainelExercicio } from "./PainelExercicio";
+import { AnuncioResultado, PainelExercicio, textoDoAnuncio } from "./PainelExercicio";
 import { criarStore } from "./store";
 import { TrofeuModal } from "./Trofeu";
 import { CompartilharDesafio } from "@/components/desafio/CompartilharDesafio";
@@ -35,13 +35,9 @@ import { preencherSolucao } from "@/components/admin/solucao";
 function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
   const salvo = restaurar ? progresso.ler(chaveProgresso(ex), ex.versao) : undefined;
-  if (salvo) {
-    planilha.definirVarias(
-      Object.entries(salvo.conteudos).map(([endereco, bruto]) => ({ endereco, bruto })),
-    );
-    for (const [end, f] of Object.entries(salvo.formatos ?? {})) planilha.formatar(deIntervalo(end), f);
-    planilha.limparHistorico(); // Ctrl+Z não apaga o progresso restaurado
-  }
+  // Porta única de restauração (a mesma do servidor): classificações, células do aluno, formatos e o resto
+  // dos recursos, nessa ordem, e o histórico limpo (Ctrl+Z não apaga o que foi restaurado).
+  if (salvo) planilha.restaurarProgresso({ conteudos: salvo.conteudos, formatos: salvo.formatos, recursos: salvo.recursos });
   const inicio = ex.inicio?.selecao ?? ex.inicio?.celulaAtiva;
   return {
     planilha,
@@ -50,10 +46,19 @@ function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entra
     }),
     alvos: new Set(celulasDestacadas(ex)),
     formatacao: ex.ferramentas?.formatacao ?? false,
+    dados: ex.ferramentas?.dados ?? false,
+    dinamica: ex.ferramentas?.dinamica ?? false,
+    condicional: ex.ferramentas?.condicional ?? false,
+    grafico: ex.ferramentas?.grafico ?? false,
+    validacao: ex.ferramentas?.validacao ?? false,
     caixaDeNome: ex.ferramentas?.caixaDeNome ?? true,
     selecaoFixa: ex.ferramentas?.selecaoFixa ?? false,
   };
 }
+
+/** Linha de atalhos embaixo da grade (só com teclado). A F4 acrescenta como sair da grade com o Tab. */
+const ATALHOS =
+  "Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima · Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula · Alt+↓ abre o filtro ou a lista · Esc e depois Tab sai da planilha";
 
 type Props = {
   exercicio: Exercicio;
@@ -68,8 +73,17 @@ type Props = {
   compacto?: boolean;
   /** Questão de uma lição de 5: ao acertar a última que faltava, a lição fica concluída. */
   licao?: LicaoDoExercicio;
-  /** Teste do módulo: uma tentativa, sem gravar progresso; avisa o resultado. */
-  teste?: { aoResponder: (ok: boolean, resposta: RespostaQuestao) => void };
+  /**
+   * Teste do módulo: uma tentativa, sem gravar progresso nem corrigir aqui (a
+   * questão chega sem gabarito). `corrigir` pergunta ao servidor; uma falha
+   * (rede, servidor) rejeita a promessa e a resposta pode ser reenviada.
+   */
+  teste?: {
+    corrigir: (resposta: RespostaQuestao) => Promise<boolean>;
+    aoResponder: (ok: boolean, resposta: RespostaQuestao) => void;
+    /** Próximo passo depois de responder (o botão fica no quadro do retorno). */
+    proxima?: { rotulo: string; ir: () => void };
+  };
   /**
    * Simulado de vaga: sem correção na hora nem dicas. A questão entrega ao pai
    * uma função que corrige o estado atual da planilha, chamada na entrega da prova.
@@ -77,7 +91,38 @@ type Props = {
   simulado?: { registrar: (corrigirAgora: () => boolean) => void };
   /** Fora da trilha (questão de concurso): a página cuida da navegação. */
   avulso?: boolean;
+  /**
+   * Lição embutida numa página (ex.: /pro): a grade abre rolada até as células
+   * do exercício, e o acerto não solta confete (cairia sobre o resto da página).
+   */
+  embutido?: boolean;
 };
+
+/**
+ * Rola a grade (só ela, não a página, e sem mexer no foco) até as células do
+ * exercício ficarem à vista. A grade já mostra a célula ativa e o alvo quando os
+ * dois cabem; numa grade embutida estreita, o que importa é o alvo.
+ */
+function mostrarAlvos(raiz: HTMLElement | null, alvos: Set<string>) {
+  const g = raiz?.querySelector<HTMLElement>('[data-testid="grade"]');
+  if (!g || alvos.size === 0) return;
+  const cels = [...alvos].map((a) => g.querySelector<HTMLElement>(`[data-celula="${a}"]`)).filter((c): c is HTMLElement => !!c);
+  if (cels.length === 0) return;
+  const x0 = Math.min(...cels.map((c) => c.offsetLeft));
+  const x1 = Math.max(...cels.map((c) => c.offsetLeft + c.offsetWidth));
+  const y0 = Math.min(...cels.map((c) => c.offsetTop));
+  const y1 = Math.max(...cels.map((c) => c.offsetTop + c.offsetHeight));
+  // Margem para os cabeçalhos (coluna dos números das linhas e linha das letras).
+  const [mx, my] = [44, 28];
+  const eixo = (atual: number, ini: number, fim: number, visivel: number, margem: number) => {
+    if (ini - margem >= atual && fim <= atual + visivel) return atual;
+    const ateOFim = fim - visivel + 8;
+    return Math.max(0, ateOFim <= ini - margem ? ateOFim : ini - margem);
+  };
+  const left = eixo(g.scrollLeft, x0, x1, g.clientWidth, mx);
+  const top = eixo(g.scrollTop, y0, y1, g.clientHeight, my);
+  if (left !== g.scrollLeft || top !== g.scrollTop) g.scrollTo({ left, top });
+}
 
 export default function Simulador({
   exercicio: original,
@@ -90,6 +135,7 @@ export default function Simulador({
   teste,
   simulado,
   avulso = false,
+  embutido = false,
 }: Props) {
   // Celular sem teclado: exercícios "use as setas" trocam o texto e aceitam toque.
   const semTeclado = useSemTeclado();
@@ -108,8 +154,24 @@ export default function Simulador({
     () => !admin && progresso.ler(chave, ex.versao)?.status === "concluido",
   );
   const [dicasVistas, setDicasVistas] = useState(0);
+  // Verificar com a célula ainda em edição e inválida: o painel avisa (antes, silêncio).
+  const [aviso, setAviso] = useState<string | null>(null);
+  // Teste do módulo: estado da conferência no servidor.
+  const [conferindo, setConferindo] = useState(false);
+  const [falhaEnvio, setFalhaEnvio] = useState(false);
+  const [respondida, setRespondida] = useState<boolean | null>(null);
+  const enviando = useRef(false);
 
   const { planilha, store } = nucleo;
+  const raizRef = useRef<HTMLDivElement>(null);
+  // Embutido: depois da primeira rolagem da grade (efeitos dos filhos rodam antes), mostra o alvo.
+  useEffect(() => {
+    if (!embutido) return;
+    const id = requestAnimationFrame(() => mostrarAlvos(raizRef.current, nucleo.alvos));
+    return () => cancelAnimationFrame(id);
+  }, [embutido, nucleo.alvos]);
+  // Teste do módulo: questão respondida fica só para ver (grade, barras e campo de resposta).
+  const travada = !!teste && respondida !== null;
 
   // Dicas e tempo ativo, gravados no progresso para o nivelamento.
   const dicasVistasRef = useRef(0);
@@ -139,10 +201,9 @@ export default function Simulador({
       versao: ex.versao,
       status: status ?? atual?.status ?? "em-andamento",
       tentativas: n ?? atual?.tentativas ?? 0,
-      conteudos: Object.fromEntries(
-        Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end)),
-      ),
+      conteudos: planilha.conteudosDoAluno(),
       formatos: planilha.formatosDoAluno(),
+      recursos: planilha.recursos(),
       resposta: store.getState().resposta,
       historico: historico ?? atual?.historico,
       dicasVistas: Math.max(atual?.dicasVistas ?? 0, dicasVistasRef.current),
@@ -187,9 +248,56 @@ export default function Simulador({
     });
   }, [simulado, ex, planilha, store, semTeclado]);
 
-  const verificar = () => {
+  /** Confirma o que estava sendo digitado; se a célula estiver inválida, avisa e devolve false. */
+  const confirmarEdicao = () => {
     const s = store.getState();
-    if (s.modo !== "pronto" && !s.confirmar()) return;
+    if (s.modo === "pronto" || s.confirmar()) {
+      setAviso(null);
+      return true;
+    }
+    setAviso("A célula ainda está em edição e tem um erro (veja o aviso perto da barra de fórmulas). Corrija ou aperte Esc antes de verificar.");
+    return false;
+  };
+
+  /** O que ficou na tela: vai para o servidor no teste do módulo e na emissão do certificado. */
+  const respostaAtual = (): RespostaQuestao => {
+    const s = store.getState();
+    return {
+      conteudos: planilha.conteudosDoAluno(),
+      formatos: planilha.formatosDoAluno(),
+      recursos: planilha.recursos(),
+      resposta: s.resposta,
+      ativa: paraEndereco(s.ancora),
+      selecao: intervaloParaTexto(s.selecao()),
+    };
+  };
+
+  /** Teste do módulo: uma resposta só, conferida pelo servidor. */
+  const verificarNoServidor = async (t: NonNullable<Props["teste"]>) => {
+    if (enviando.current || respondida !== null) return;
+    if (!confirmarEdicao()) return;
+    const resposta = respostaAtual();
+    enviando.current = true;
+    setConferindo(true);
+    setFalhaEnvio(false);
+    try {
+      const ok = await t.corrigir(resposta);
+      // Uma resposta só: a planilha trava (o que mudasse daqui em diante não contaria).
+      store.getState().travar();
+      setRespondida(ok);
+      t.aoResponder(ok, resposta);
+    } catch {
+      setFalhaEnvio(true); // não conta: o aluno pode enviar de novo
+    } finally {
+      enviando.current = false;
+      setConferindo(false);
+    }
+  };
+
+  const verificar = () => {
+    if (teste) return void verificarNoServidor(teste);
+    if (!confirmarEdicao()) return;
+    const s = store.getState();
     const r = corrigir(ex, planilha, {
       ativa: paraEndereco(s.ancora),
       selecao: intervaloParaTexto(s.selecao()),
@@ -206,18 +314,9 @@ export default function Simulador({
     const historico = concluido
       ? progresso.ler(chave, ex.versao)?.historico
       : [...(progresso.ler(chave, ex.versao)?.historico ?? []), r.ok];
-    persistir(r.ok || concluido ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento", n, historico);
-    if (teste) {
-      // O que ficou na tela vai junto: o servidor corrige de novo para emitir o certificado.
-      teste.aoResponder(r.ok, {
-        conteudos: Object.fromEntries(Object.entries(planilha.conteudos()).filter(([end]) => !planilha.bloqueada(end))),
-        formatos: planilha.formatosDoAluno(),
-        resposta: s.resposta,
-        ativa: paraEndereco(s.ancora),
-        selecao: intervaloParaTexto(s.selecao()),
-      });
-      return;
-    }
+    // Concluído continua concluído, também depois de Recomeçar e errar de novo.
+    const status = r.ok || concluido || anterior === "concluido" ? "concluido" : anterior === "pulado" ? "pulado" : "em-andamento";
+    persistir(status, n, historico);
     if (r.ok && licao && !adminProp) progresso.concluirLicaoSeCompleta(licao);
     if (!admin) {
       registrar({ nome: "verificou", slug: ex.slug, ok: r.ok, tentativa: n, motivo: r.falhas[0]?.motivo });
@@ -225,14 +324,14 @@ export default function Simulador({
         registrar({ nome: "desafio_concluido", data: desafio.data, tentativas: historico?.length ?? n });
       }
     }
+    // Errou: o foco fica onde estava (no Verificar), para o leitor de tela anunciar o resultado.
     if (r.ok) comemorar();
-    else if (ex.type !== "text_answer") entradaRef.current?.focus();
   };
 
   const comemorar = () => {
     store.setState({ celebrando: true });
     setTimeout(() => store.setState({ celebrando: false }), 1300);
-    void celebrarAcerto(botaoVerificarRef.current);
+    if (!embutido) void celebrarAcerto(botaoVerificarRef.current);
     // Fim do módulo: troféu, só na primeira vez.
     if (!admin && trilha && progresso.trilhaConcluida(trilha.itens) && progresso.registrarTrofeu(trilha.modulo)) {
       registrar({ nome: "modulo_concluido", modulo: trilha.modulo });
@@ -240,7 +339,7 @@ export default function Simulador({
       const total = trilha.itens.reduce((soma, i) => soma + (tudo[i.slug]?.tentativas ?? 0), 0);
       setTimeout(() => {
         setTrofeu({ tentativas: total });
-        void celebrarTrofeu();
+        if (!embutido) void celebrarTrofeu();
       }, 700);
     }
   };
@@ -251,22 +350,20 @@ export default function Simulador({
     router.push(proximo ? `/exercicios/${proximo.slug}` : (trilha?.proximoModulo?.href ?? "/"));
   };
 
+  // Recomeçar limpa só a planilha e a resposta. As tentativas e o histórico
+  // continuam valendo: errar, recomeçar e acertar não é "de primeira", e no
+  // desafio os quadrados do card contam tudo. Concluído continua concluído.
   const reiniciar = () => {
-    if (desafio && !admin) {
-      // No desafio, Recomeçar limpa só a planilha: as tentativas e o histórico
-      // (os quadrados do card) continuam valendo.
+    if (!admin) {
       const atual = progresso.ler(chave, ex.versao);
-      if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, resposta: "" });
-      setNucleo(montar(ex, false));
-      setResultado(null);
-      return;
+      if (atual) progresso.salvar(chave, { ...atual, conteudos: {}, formatos: {}, recursos: {}, resposta: "" });
     }
-    if (!admin) progresso.apagar(chave);
-    setNucleo(montar(ex, !admin));
+    setNucleo(montar(ex, false));
     setResultado(null);
-    setTentativas(0);
+    setAviso(null);
+    setFalhaEnvio(false);
+    if (desafio) return; // o card de compartilhar continua na tela
     setConcluido(false);
-    setDicasVistas(0);
   };
 
   if (compacto) {
@@ -275,7 +372,7 @@ export default function Simulador({
       <Contexto.Provider value={{ ...nucleo, entradaRef }}>
         <div className="space-y-2">
           <BarraFormulas />
-          <Grade larguras={ex.grade.larguras} />
+          <Grade larguras={ex.grade.larguras} autoFoco={false} />
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <button
               type="button"
@@ -294,6 +391,8 @@ export default function Simulador({
               Recomeçar
             </button>
           </div>
+          <AnuncioResultado texto={textoDoAnuncio({ resultado, tentativas, aviso })} />
+          {aviso && !resultado && <p className="rounded-lg bg-warning-bg px-3 py-2 text-sm text-ink">{aviso}</p>}
           {resultado && (
             <p
               key={tentativas}
@@ -321,9 +420,9 @@ export default function Simulador({
 
   return (
     <Contexto.Provider value={{ ...nucleo, entradaRef }}>
-      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
-        <div className="min-w-0 space-y-2">
-          {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} />}
+      <div ref={raizRef} className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-6">
+        <div className="min-w-0 space-y-2" inert={travada} data-travada={travada || undefined}>
+          {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} somenteLeitura={travada} />}
           {ex.type === "multiple_choice" && (
             <div className="space-y-4">
               <div className="space-y-2 text-lg font-semibold [overflow-wrap:anywhere]" data-testid="pergunta">
@@ -341,20 +440,23 @@ export default function Simulador({
                   <Grade larguras={ex.grade.larguras} />
                 </div>
               )}
-              <Alternativas opcoes={ex.opcoes} bloqueado={concluido} />
+              <Alternativas opcoes={ex.opcoes} bloqueado={concluido || respondida !== null || conferindo} />
             </div>
           )}
           {ex.type !== "multiple_choice" && (
             <>
-              {nucleo.formatacao && <BarraFormatacao />}
-              {semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer" && <BarraToque />}
-              <BarraFormulas />
-              <Grade larguras={ex.grade.larguras} />
-              {/* Atalhos de teclado: só para quem tem teclado (some em telas de toque). */}
-              <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
-                Enter confirma · F2 edita · setas navegam · Ctrl+C/Ctrl+V copiam · Ctrl+D copia a célula de cima ·
-                Ctrl+Z desfaz · arraste o quadradinho verde para copiar a fórmula
-              </p>
+              <AreaPlanilha
+                ex={ex}
+                nucleo={nucleo}
+                entradaRef={entradaRef}
+                barraToque={semTeclado && ex.type !== "click_cell" && ex.type !== "text_answer"}
+              />
+              {/* Atalhos de teclado: só para quem tem teclado (no celular não aparece). */}
+              {!semTeclado && (
+                <p className="text-xs text-zinc-500 pointer-coarse:hidden" data-testid="atalhos">
+                  {ATALHOS}
+                </p>
+              )}
             </>
           )}
         </div>
@@ -369,6 +471,8 @@ export default function Simulador({
           onVerificar={verificar}
           semCorrecao={!!simulado}
           avulso={avulso}
+          aviso={aviso}
+          modoTeste={teste ? { conferindo, falhaEnvio, respondida, proxima: teste.proxima } : undefined}
           onDica={() => {
             const n = Math.min(dicasVistas + 1, ex.dicas.length);
             setDicasVistas(n);

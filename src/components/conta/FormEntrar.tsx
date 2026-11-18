@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useConta } from "@/lib/conta";
+import { destinoSeguro } from "@/lib/destino";
 import { supabaseNavegador } from "@/lib/supabase/navegador";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -11,8 +12,7 @@ const ESPERA_REENVIO = 60;
 
 /** Para onde ir depois de entrar: ?proximo=/caminho (só caminhos do próprio site). */
 function destino() {
-  const p = new URLSearchParams(window.location.search).get("proximo");
-  return p && p.startsWith("/") && !p.startsWith("//") ? p : "/trilha";
+  return destinoSeguro(new URLSearchParams(window.location.search).get("proximo"), window.location.origin);
 }
 
 /**

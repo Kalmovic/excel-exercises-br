@@ -16,6 +16,7 @@ export function ExercicioEmbutido({ slug }: { slug: string }) {
         previa={<PreviaExercicio exercicio={ex} />}
         proximo={prox ? { slug: prox.slug, titulo: prox.titulo } : undefined}
         trilha={dadosDaTrilha(ex.modulo).simulador}
+        embutido
       />
     </section>
   );
