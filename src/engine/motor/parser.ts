@@ -12,6 +12,8 @@ export type No =
   | { t: "pct"; x: No }
   | { t: "bin"; op: string; a: No; b: No }
   | { t: "fn"; nome: string; args: No[] }
+  /** Nome declarado num LET (=LET(taxa; 10%; B2*taxa)). */
+  | { t: "nome"; v: string }
   | { t: "erro"; v: string };
 
 type Tok = { k: "num" | "txt" | "id" | "ref" | "aba" | "op" | "(" | ")" | ";" | "fim" | "erro"; v: string };
@@ -68,6 +70,29 @@ export function analisar(formula: string): No {
   const olha = () => ts[p];
   const pega = () => ts[p++];
   const espera = (k: Tok["k"]) => { if (olha().k !== k) throw new Error(`esperava ${k}`); return pega(); };
+  /** Nomes declarados pelos LET em volta da posição atual. */
+  const escopos: Set<string>[] = [];
+  /** LET(nome1; valor1; [nome2; valor2]…; cálculo): cada nome vale a partir do valor seguinte. */
+  function lerLet(): No {
+    const args: No[] = [];
+    const escopo = new Set<string>();
+    escopos.push(escopo);
+    for (;;) {
+      if (olha().k === "id" && ts[p + 1]?.k === ";") {
+        const nome = pega().v;
+        pega();
+        args.push({ t: "nome", v: nome }, expr(0));
+        escopo.add(nome);
+        if (olha().k === ";") { pega(); continue; }
+        break;
+      }
+      args.push(expr(0));
+      break;
+    }
+    escopos.pop();
+    espera(")");
+    return { t: "fn", nome: "LET", args };
+  }
   function prim(): No {
     const t = pega();
     if (t.k === "num") return { t: "num", v: Number(t.v.replace(",", ".")) };
@@ -86,6 +111,7 @@ export function analisar(formula: string): No {
     if (t.k === "id") {
       if (olha().k === "(") {
         pega();
+        if (t.v === "LET") return lerLet();
         const args: No[] = [];
         if (olha().k !== ")") {
           for (;;) {
@@ -97,6 +123,7 @@ export function analisar(formula: string): No {
         espera(")");
         return { t: "fn", nome: t.v, args };
       }
+      if (escopos.some((e) => e.has(t.v))) return { t: "nome", v: t.v };
       if (t.v === "VERDADEIRO") return { t: "bool", v: true };
       if (/^[A-Z]{1,3}\d+$/.test(t.v)) return { t: "erro", v: "#REF!" };
       if (t.v === "FALSO") return { t: "bool", v: false };

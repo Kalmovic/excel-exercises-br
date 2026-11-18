@@ -1061,5 +1061,135 @@
     ],
     "tentativasAteExplicacao": 3,
     "extra": true
+  },
+  {
+    "id": "bc72fa2a-0838-5abc-a10a-4c39caa1d774",
+    "slug": "marred-preco-da-vitrine",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MARRED: preço de 50 em 50 centavos",
+    "enunciado": [
+      "Em **C2:C6**, arredonde cada preço para o múltiplo de **R$ 0,50** mais próximo."
+    ],
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 12.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B2;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 8.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B3;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 9.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B4;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 15.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B5;0,5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 3.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MARRED(B6;0,5)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "ARRED arredonda em casas decimais. Para arredondar \"de tanto em tanto\", existe outra função.",
+      "O segundo argumento é o múltiplo."
+    ],
+    "explicacao": [
+      "`=MARRED(B2;0,5)` em C2, copiada até C6.",
+      "Para sempre arredondar para cima, use TETO; para baixo, ARREDMULTB."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Custo + margem",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço na vitrine",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Café"
+        },
+        "A3": {
+          "entrada": "Pão de queijo"
+        },
+        "A4": {
+          "entrada": "Suco"
+        },
+        "A5": {
+          "entrada": "Bolo"
+        },
+        "A6": {
+          "entrada": "Água"
+        },
+        "B2": {
+          "entrada": "12,37",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "7,82",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "9,13",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "15,66",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "3,21",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "MROUND"
+    ]
   }
 ]

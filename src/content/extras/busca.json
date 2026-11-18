@@ -1242,5 +1242,203 @@
       "MATCH"
     ],
     "extra": true
+  },
+  {
+    "id": "35693a94-1dd5-51ad-bdfe-771156218011",
+    "slug": "correspx-posicao-na-lista",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CORRESPX: a posição na lista",
+    "enunciado": [
+      "Em **E2**, mostre em que **posição** da lista de códigos (A2:A8) está o código digitado em **E1**."
+    ],
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CORRESPX(E1;A2:A8)"
+      }
+    ],
+    "dicas": [
+      "CORRESPX procura um valor numa lista e devolve a posição. Diferente do CORRESP, ela já é exata por padrão.",
+      "Os argumentos são: o valor procurado e onde procurar."
+    ],
+    "explicacao": [
+      "`=CORRESPX(E1;A2:A8)` → 5.",
+      "No CORRESP antigo era preciso escrever o 0 no fim para a busca ser exata; esquecer o 0 dá resultado errado sem aviso. No CORRESPX, exata é o padrão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 80,
+        "B": 40,
+        "C": 40,
+        "D": 150,
+        "E": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "A10"
+        },
+        "A3": {
+          "entrada": "B20"
+        },
+        "A4": {
+          "entrada": "C30"
+        },
+        "A5": {
+          "entrada": "D40"
+        },
+        "A6": {
+          "entrada": "E50"
+        },
+        "A7": {
+          "entrada": "F60"
+        },
+        "A8": {
+          "entrada": "G70"
+        },
+        "D1": {
+          "entrada": "Código procurado",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "E50"
+        },
+        "D2": {
+          "entrada": "Posição na lista",
+          "negrito": true
+        }
+      },
+      "alternativas": {
+        "E1": [
+          "B20",
+          "G70"
+        ]
+      }
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "XMATCH"
+    ]
+  },
+  {
+    "id": "ab3b669c-0a9b-53b6-ac32-1dd80aa8d4b3",
+    "slug": "correspx-faixa-de-frete",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 109,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CORRESPX por faixa: o frete pelo peso",
+    "enunciado": [
+      "Em **E2**, traga o **frete** do pacote cujo peso está em **E1**. A tabela diz o frete **a partir de** cada peso."
+    ],
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 35,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(B2:B6;CORRESPX(E1;A2:A6;-1))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "7,5 kg não está na tabela: vale a faixa que começa no maior peso que não passa dele.",
+      "CORRESPX tem um modo para \"exato ou o próximo menor\". Com a posição, ÍNDICE traz o frete."
+    ],
+    "explicacao": [
+      "`=ÍNDICE(B2:B6;CORRESPX(E1;A2:A6;-1))` → R$ 35,00.",
+      "O modo -1 aceita o próximo menor, como o PROCV aproximado, mas sem exigir a tabela em ordem crescente."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 6,
+      "larguras": {
+        "A": 110,
+        "B": 90,
+        "C": 30,
+        "D": 110,
+        "E": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Peso a partir de (kg)",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "1"
+        },
+        "A4": {
+          "entrada": "5"
+        },
+        "A5": {
+          "entrada": "10"
+        },
+        "A6": {
+          "entrada": "30"
+        },
+        "B2": {
+          "entrada": "15",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "22",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "35",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "50",
+          "formato": "moeda"
+        },
+        "B6": {
+          "entrada": "90",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "Peso do pacote",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "7,5"
+        },
+        "D2": {
+          "entrada": "Frete",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "E1"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "XMATCH"
+    ]
   }
 ]

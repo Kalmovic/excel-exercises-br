@@ -3769,5 +3769,172 @@
       "colunas": 1,
       "celulas": {}
     }
+  },
+  {
+    "id": "ffe580f1-e816-5ac6-bcf8-fc4f802ea246",
+    "slug": "agregar-ignorar-erro",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 101,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "AGREGAR: o máximo, ignorando o erro",
+    "enunciado": [
+      "A Mochila não vendeu e a margem dela deu **#DIV/0!**. Em **D9**, mostre a **maior margem**, ignorando o erro."
+    ],
+    "alvos": [
+      {
+        "celula": "D9",
+        "esperado": 0.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
+        "formato": "percentual",
+        "tolerancia": 1e-09
+      }
+    ],
+    "dicas": [
+      "MÁXIMO para no primeiro erro que encontra no intervalo.",
+      "AGREGAR faz as mesmas contas do SUBTOTAL e tem uma opção para pular os erros."
+    ],
+    "explicacao": [
+      "`=AGREGAR(4;6;D2:D7)` → 4 é MÁXIMO e 6 é \"ignorar erros\".",
+      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim); a opção 7 ignora erros e também as linhas escondidas pelo filtro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 100,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Receita",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Custo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Margem",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=(B2-C2)/B2",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "=(B3-C3)/B3",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "=(B4-C4)/B4",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=(B5-C5)/B5",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Agenda"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "610",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=(B6-C6)/B6",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Régua"
+        },
+        "B7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "90",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=(B7-C7)/B7",
+          "formato": "percentual"
+        },
+        "A9": {
+          "entrada": "Maior margem",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "AGGREGATE"
+    ]
   }
 ]

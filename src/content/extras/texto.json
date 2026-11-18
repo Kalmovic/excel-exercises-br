@@ -675,5 +675,178 @@
       "SEARCH"
     ],
     "extra": true
+  },
+  {
+    "id": "f016535e-75b2-54de-83df-1b0dfcde9fc9",
+    "slug": "unirtexto-lista-de-emails",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "UNIRTEXTO: a lista de e-mails",
+    "enunciado": [
+      "Em **D2**, junte os e-mails da coluna B separados por **ponto e vírgula e espaço**, **pulando os vazios**, para colar no campo Para do e-mail."
+    ],
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "ana@loja.com; bruno@loja.com; carla@loja.com; eva@loja.com",
+        "exigeFormula": true,
+        "solucaoReferencia": "=UNIRTEXTO(\"; \";VERDADEIRO;B2:B7)"
+      }
+    ],
+    "dicas": [
+      "CONCAT juntaria tudo grudado. Existe uma função que coloca um separador entre os textos.",
+      "O segundo argumento decide se as células vazias entram ou não."
+    ],
+    "explicacao": [
+      "`=UNIRTEXTO(\"; \";VERDADEIRO;B2:B7)`.",
+      "Com FALSO no segundo argumento, cada vazia viraria um \"; ;\" sobrando no meio."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 80,
+        "B": 150,
+        "C": 30,
+        "D": 330
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "A4": {
+          "entrada": "Bruno (outro)"
+        },
+        "A5": {
+          "entrada": "Carla"
+        },
+        "A6": {
+          "entrada": "Daniel"
+        },
+        "A7": {
+          "entrada": "Eva"
+        },
+        "B2": {
+          "entrada": "ana@loja.com"
+        },
+        "B4": {
+          "entrada": "bruno@loja.com"
+        },
+        "B5": {
+          "entrada": "carla@loja.com"
+        },
+        "B7": {
+          "entrada": "eva@loja.com"
+        },
+        "D1": {
+          "entrada": "Para (cole no e-mail)",
+          "negrito": true
+        }
+      },
+      "alternativas": {
+        "B2": [
+          "ana.souza@loja.com"
+        ]
+      }
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "TEXTJOIN"
+    ]
+  },
+  {
+    "id": "7949f8df-b421-53c2-814c-bc7105af001c",
+    "slug": "dividirtexto-endereco",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 109,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIVIDIRTEXTO: separar o endereço",
+    "enunciado": [
+      "Em **B2**, separe o endereço de A2 em **rua**, **número** e **bairro**, um em cada coluna."
+    ],
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": [
+          [
+            "Rua das Flores",
+            "120",
+            "Centro"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIVIDIRTEXTO(A2;\", \")"
+      }
+    ],
+    "dicas": [
+      "Uma fórmula só basta: o resultado derrama para as colunas da direita.",
+      "O separador é a vírgula seguida de espaço."
+    ],
+    "explicacao": [
+      "`=DIVIDIRTEXTO(A2;\", \")`.",
+      "É o Texto para Colunas em forma de fórmula: se o endereço mudar, as colunas acompanham."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "larguras": {
+        "A": 200,
+        "B": 120,
+        "C": 60,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Endereço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rua das Flores, 120, Centro"
+        },
+        "B1": {
+          "entrada": "Rua",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Bairro",
+          "negrito": true
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "Av. Brasil, 45, Jardim"
+        ]
+      }
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "TEXTSPLIT"
+    ]
   }
 ]

@@ -98,6 +98,8 @@ type Ctx = {
   oculta?: (l: number, aba?: string) => boolean;
   /** Célula com fórmula de SUBTOTAL (SUBTOTAL ignora, para não somar duas vezes). */
   ehSubtotal?: (l: number, c: number, aba?: string) => boolean;
+  /** Valores dos nomes declarados por LET. */
+  nomes?: Map<string, R>;
 };
 
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
@@ -156,6 +158,7 @@ function avaliar0(no: No, ctx: Ctx): R {
     case "txt": return no.v;
     case "bool": return no.v;
     case "erro": return E(no.v);
+    case "nome": return ctx.nomes?.get(no.v) ?? E("#NOME?");
     case "ref": return ctx.ler(no.l, no.c, no.aba);
     case "int": return Array.from({ length: no.b.l - no.a.l + 1 }, (_, i) => Array.from({ length: no.b.c - no.a.c + 1 }, (_, j) => ctx.ler(no.a.l + i, no.a.c + j, no.aba)));
     case "un": return mapa(avaliar(no.x, ctx), (v) => { const n = num(v); return ehErro(n) ? n : -n; });
@@ -379,6 +382,213 @@ export const FUNCOES: Record<string, F> = {
   AGORA: (_a, ctx) => ctx.agora(),
   VERDADEIRO: () => true,
   FALSO: () => false,
+  // --- funções do Excel 365 e financeiras -----------------------------------
+  /** LET(nome; valor; …; cálculo): dá nome a um valor e o usa no cálculo. */
+  LET: (args, ctx) => {
+    const nomes = new Map(ctx.nomes);
+    let i = 0;
+    for (; i + 1 < args.length; i += 2) {
+      const n = args[i];
+      if (n.t !== "nome") return E("#VALOR!");
+      nomes.set(n.v, ev(args[i + 1], { ...ctx, nomes }));
+    }
+    return i < args.length ? ev(args[i], { ...ctx, nomes }) : E("#VALOR!");
+  },
+  /**
+   * CORRESPX(valor; matriz; [modo_correspondência]; [modo_pesquisa]).
+   * Correspondência: 0 exata (padrão), -1 exata ou próximo menor, 1 exata ou
+   * próximo maior, 2 curinga. Pesquisa: 1 do primeiro ao último, -1 do último.
+   */
+  CORRESPX: (args, ctx) => {
+    const chave = esc(args[0], ctx);
+    const lista = achatar(ev(args[1], ctx));
+    const modo = args[2] ? numArg(args[2], ctx) : 0;
+    const sentido = args[3] ? numArg(args[3], ctx) : 1;
+    if (![0, -1, 1, 2].includes(modo) || ![1, -1, 2, -2].includes(sentido)) return E("#VALOR!");
+    const ordem = sentido < 0 ? [...lista.keys()].reverse() : [...lista.keys()];
+    if (modo === 2) {
+      const ok = criterio(typeof chave === "string" ? chave : (txt(chave) as string));
+      const i = ordem.find((k) => ok(lista[k]));
+      return i === undefined ? E("#N/D") : i + 1;
+    }
+    const igual = ordem.find((k) => exato(lista[k], chave));
+    if (igual !== undefined) return igual + 1;
+    if (modo === 0) return E("#N/D");
+    // Próximo menor (-1) ou maior (1): o mais perto entre os do mesmo tipo.
+    let melhor = -1;
+    for (const k of ordem) {
+      const r = comparar(lista[k], chave);
+      if (lista[k] === null || (typeof lista[k] !== typeof chave)) continue;
+      if ((modo === -1 && r < 0) || (modo === 1 && r > 0))
+        if (melhor < 0 || (modo === -1 ? comparar(lista[k], lista[melhor]) > 0 : comparar(lista[k], lista[melhor]) < 0)) melhor = k;
+    }
+    return melhor < 0 ? E("#N/D") : melhor + 1;
+  },
+  /** UNIRTEXTO(delimitador; ignorar_vazio; texto1; …). */
+  UNIRTEXTO: (args, ctx) => {
+    const d = txt(esc(args[0], ctx));
+    if (ehErro(d)) return d;
+    const ignorar = bool(esc(args[1], ctx, true));
+    if (ehErro(ignorar)) return ignorar;
+    const partes: string[] = [];
+    for (const v of args.slice(2).flatMap((a) => achatar(ev(a, ctx)))) {
+      const t = txt(v);
+      if (ehErro(t)) return t;
+      if (ignorar && t === "") continue;
+      partes.push(t);
+    }
+    return partes.join(d);
+  },
+  /** DIVIDIRTEXTO(texto; delimitador_col; [delimitador_lin]; [ignorar_vazio]): o inverso de UNIRTEXTO, derramando. */
+  DIVIDIRTEXTO: (args, ctx) => {
+    const t = txt(esc(args[0], ctx));
+    if (ehErro(t)) return t;
+    const lista = (n: No | undefined) => (n ? achatar(ev(n, ctx)).map((v) => txt(v)).filter((x): x is string => typeof x === "string" && x !== "") : []);
+    const dc = lista(args[1]), dl = lista(args[2]);
+    const ignorar = args[3] ? bool(esc(args[3], ctx)) === true : false;
+    const quebrar = (s: string, ds: string[]) => {
+      if (!ds.length) return [s];
+      const re = new RegExp(ds.map((d) => d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"));
+      const r = s.split(re);
+      return ignorar ? r.filter((x) => x !== "") : r;
+    };
+    const linhas = quebrar(t, dl).map((l) => quebrar(l, dc));
+    if (!linhas.length || !linhas[0].length) return E("#CALC!");
+    const largura = Math.max(...linhas.map((l) => l.length));
+    return linhas.map((l) => Array.from({ length: largura }, (_, j) => (j < l.length ? l[j] : E("#N/D"))));
+  },
+  /** PEGAR(matriz; linhas; [colunas]): as primeiras (ou, com negativo, as últimas) linhas e colunas. */
+  PEGAR: (args, ctx) => {
+    const m = comoM(ev(args[0], ctx));
+    const nl = args[1] && !(args[1].t === "txt" && args[1].v === "") ? numArg(args[1], ctx) : m.length;
+    const nc = args[2] ? numArg(args[2], ctx) : m[0].length;
+    if (nl === 0 || nc === 0) return E("#CALC!");
+    const corta = <T,>(xs: T[], n: number) => (n > 0 ? xs.slice(0, n) : xs.slice(n));
+    return corta(m, Math.trunc(nl)).map((l) => corta(l, Math.trunc(nc)));
+  },
+  /** DESCARTAR(matriz; linhas; [colunas]): tira as primeiras (ou últimas) linhas e colunas. */
+  DESCARTAR: (args, ctx) => {
+    const m = comoM(ev(args[0], ctx));
+    const nl = args[1] && !(args[1].t === "txt" && args[1].v === "") ? Math.trunc(numArg(args[1], ctx)) : 0;
+    const nc = args[2] ? Math.trunc(numArg(args[2], ctx)) : 0;
+    const corta = <T,>(xs: T[], n: number) => (n >= 0 ? xs.slice(n) : xs.slice(0, n));
+    const r = corta(m, nl).map((l) => corta(l, nc));
+    return r.length && r[0].length ? r : E("#CALC!");
+  },
+  /** ESCOLHERCOLS(matriz; col1; …): as colunas pedidas, na ordem pedida (negativo conta do fim). */
+  ESCOLHERCOLS: (args, ctx) => {
+    const m = comoM(ev(args[0], ctx));
+    const w = m[0].length;
+    const cols = args.slice(1).flatMap((a) => achatar(ev(a, ctx))).map((v) => num(v));
+    if (!cols.length || cols.some((c) => ehErro(c) || c === 0 || Math.abs(c as number) > w)) return E("#VALOR!");
+    const idx = cols.map((c) => ((c as number) > 0 ? (c as number) - 1 : w + (c as number)));
+    return m.map((l) => idx.map((j) => l[j]));
+  },
+  /**
+   * AGREGAR(função; opções; ref1; [k]): como SUBTOTAL, mas pode ignorar erros.
+   * Funções 1–12 (as do SUBTOTAL, MED, MODO) e 14/15 (MAIOR/MENOR com k).
+   * Opções: 0–3 ignoram SUBTOTAL/AGREGAR aninhados; 1, 3, 5, 7 ignoram linhas
+   * ocultas (filtro); 2, 3, 6, 7 ignoram erros.
+   */
+  AGREGAR: (args, ctx) => {
+    const f = numArg(args[0], ctx), op = numArg(args[1], ctx);
+    if (op < 0 || op > 7) return E("#VALOR!");
+    const ocultas = [1, 3, 5, 7].includes(op), erros = [2, 3, 6, 7].includes(op), aninhados = op <= 3;
+    const fontes = f >= 14 ? [args[2]] : args.slice(2);
+    const vals: V[] = [];
+    for (const a of fontes) {
+      if (!a) return E("#VALOR!");
+      if (a.t === "ref" || a.t === "int") {
+        const [ini, fim] = a.t === "int" ? [a.a, a.b] : [a, a];
+        for (let l = ini.l; l <= fim.l; l++) {
+          if (ocultas && ctx.oculta?.(l, a.aba)) continue;
+          for (let c = ini.c; c <= fim.c; c++) if (!(aninhados && ctx.ehSubtotal?.(l, c, a.aba))) vals.push(ctx.ler(l, c, a.aba));
+        }
+      } else vals.push(...achatar(ev(a, ctx)));
+    }
+    const limpos = erros ? vals.filter((v) => !ehErro(v)) : vals;
+    const erro = limpos.find(ehErro);
+    if (erro) return erro;
+    if (f === 14 || f === 15) {
+      const k = numArg(args[3], ctx);
+      const ns = soNumeros(limpos).sort((a, b) => (f === 14 ? b - a : a - b));
+      return ns[k - 1] ?? E("#NÚM!");
+    }
+    if (f === 12) { const ns = soNumeros(limpos).sort((a, b) => a - b); if (!ns.length) return E("#NÚM!"); const m = Math.floor(ns.length / 2); return ns.length % 2 ? ns[m] : (ns[m - 1] + ns[m]) / 2; }
+    if (f === 13) {
+      const conta = new Map<number, number>();
+      for (const n of soNumeros(limpos)) conta.set(n, (conta.get(n) ?? 0) + 1);
+      let melhor: number | null = null;
+      for (const [n, k] of conta) if (k > 1 && (melhor === null || k > conta.get(melhor)!)) melhor = n;
+      return melhor ?? E("#N/D");
+    }
+    const sub = SUBTOTAIS[f];
+    return sub ? sub(limpos) : E("#VALOR!");
+  },
+  /** VP(taxa; nper; pgto; [vf]; [tipo]): valor presente (quanto vale hoje uma série de pagamentos). */
+  VP: (args, ctx) => {
+    const i = numArg(args[0], ctx), n = numArg(args[1], ctx), p = numArg(args[2], ctx), vf = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0;
+    if (i === 0) return -(vf + p * n);
+    const f = (1 + i) ** n;
+    return -(vf + p * (1 + i * t) * ((f - 1) / i)) / f;
+  },
+  /** VF(taxa; nper; pgto; [vp]; [tipo]): valor futuro (quanto se acumula). */
+  VF: (args, ctx) => {
+    const i = numArg(args[0], ctx), n = numArg(args[1], ctx), p = numArg(args[2], ctx), vp = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0;
+    if (i === 0) return -(vp + p * n);
+    const f = (1 + i) ** n;
+    return -(vp * f + p * (1 + i * t) * ((f - 1) / i));
+  },
+  /** NPER(taxa; pgto; vp; [vf]; [tipo]): quantos períodos. */
+  NPER: (args, ctx) => {
+    const i = numArg(args[0], ctx), p = numArg(args[1], ctx), vp = numArg(args[2], ctx), vf = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0;
+    if (i === 0) return p === 0 ? E("#NÚM!") : -(vp + vf) / p;
+    const a = p * (1 + i * t) - vf * i, b = vp * i + p * (1 + i * t);
+    if (a / b <= 0) return E("#NÚM!");
+    return Math.log(a / b) / Math.log(1 + i);
+  },
+  /** TAXA(nper; pgto; vp; [vf]; [tipo]; [estimativa]): a taxa por período (Newton, como o Excel). */
+  TAXA: (args, ctx) => {
+    const n = numArg(args[0], ctx), p = numArg(args[1], ctx), vp = numArg(args[2], ctx), vf = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0;
+    let i = args[5] ? numArg(args[5], ctx) : 0.1;
+    const g = (x: number) => (Math.abs(x) < 1e-12 ? vp + p * n + vf : vp * (1 + x) ** n + p * (1 + x * t) * (((1 + x) ** n - 1) / x) + vf);
+    for (let k = 0; k < 100; k++) {
+      const h = 1e-7, y = g(i), d = (g(i + h) - y) / h;
+      if (!Number.isFinite(d) || d === 0) break;
+      const novo = i - y / d;
+      if (Math.abs(novo - i) < 1e-10) return novo;
+      i = novo;
+    }
+    return E("#NÚM!");
+  },
+  /** NÚMSEMANA(data; [tipo_retorno]): a semana do ano. 1 = começa no domingo; 2 = segunda; 21 = ISO. */
+  "NÚMSEMANA": lift((d, tipo) => {
+    const s = num(d), t = tipo === null ? 1 : num(tipo);
+    if (ehErro(s)) return s;
+    if (ehErro(t)) return t;
+    const x = partes(s);
+    if (t === 21) {
+      // ISO 8601: a semana da quinta-feira.
+      const quinta = Math.floor(s) - ((x.sem + 6) % 7) + 3;
+      const ano = partes(quinta).a;
+      return Math.floor((quinta - serial(ano, 1, 1)) / 7) + 1;
+    }
+    const inicioSemana: Record<number, number> = { 1: 0, 17: 0, 2: 1, 11: 1, 12: 2, 13: 3, 14: 4, 15: 5, 16: 6 };
+    const ini = inicioSemana[t as number];
+    if (ini === undefined) return E("#NÚM!");
+    const primeiro = serial(x.a, 1, 1);
+    const desloc = (partes(primeiro).sem - ini + 7) % 7;
+    return Math.floor((Math.floor(s) - primeiro + desloc) / 7) + 1;
+  }),
+  /** MARRED(núm; múltiplo): arredonda para o múltiplo mais próximo (sinais diferentes = #NÚM!). */
+  MARRED: lift((x, m) => {
+    const a = num(x), b = num(m);
+    if (ehErro(a)) return a;
+    if (ehErro(b)) return b;
+    if (b === 0) return 0;
+    if (a * b < 0) return E("#NÚM!");
+    return Math.sign(a) * Math.round(Math.abs(a) / Math.abs(b) + 1e-9) * Math.abs(b);
+  }),
   PGTO: (args, ctx) => { const i = numArg(args[0], ctx), n = numArg(args[1], ctx), vp = numArg(args[2], ctx), vf = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0; if (i === 0) return -(vp + vf) / n; const f = (1 + i) ** n; return (-(vp * f + vf) * i) / ((1 + i * t) * (f - 1)); },
 };
 

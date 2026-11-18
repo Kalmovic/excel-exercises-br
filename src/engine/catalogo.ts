@@ -32,6 +32,8 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("MAIOR", "matriz; k", "O k-ésimo maior valor."),
   f("MENOR", "matriz; k", "O k-ésimo menor valor."),
   f("MED", "núm1; [núm2]; ...", "Mediana: o valor do meio."),
+  f("MARRED", "núm; múltiplo", "Arredonda para o múltiplo mais próximo (ex.: de 5 em 5 centavos)."),
+  f("AGREGAR", "núm_função; opções; ref1; [k]", "Como SUBTOTAL, mas pode ignorar erros (opção 6) e linhas ocultas (opção 5 ou 7). 9 = soma, 14 = MAIOR."),
   f("SUBTOTAL", "núm_função; ref1; [ref2]; ...", "Soma, conta ou faz a média só das linhas visíveis (ignora as escondidas pelo filtro). 9 = soma, 1 = média, 3 = contar valores."),
   // lógica
   f("SE", "teste_lógico; [valor_se_verdadeiro]; [valor_se_falso]", "Devolve um valor se o teste for verdadeiro e outro se for falso."),
@@ -62,6 +64,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("CORRESP", "valor_procurado; matriz_procurada; [tipo_correspondência]", "Posição de um valor numa lista."),
   f("ESCOLHER", "núm_índice; valor1; [valor2]; ...", "Escolhe um valor da lista pela posição."),
   f("DESLOC", "ref; lins; cols; [altura]; [largura]", "Referência deslocada a partir de uma célula."),
+  f("CORRESPX", "pesquisa_valor; pesquisa_matriz; [modo_correspondência]; [modo_pesquisa]", "Posição de um valor numa lista; exata por padrão (-1 próximo menor, 1 próximo maior, 2 curinga)."),
   // texto
   f("CONCAT", "texto1; [texto2]; ...", "Junta textos."),
   f("CONCATENAR", "texto1; [texto2]; ...", "Junta textos (versão antiga do CONCAT)."),
@@ -79,6 +82,8 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("TEXTO", "valor; formato_texto", "Formata um número como texto."),
   f("VALOR", "texto", "Converte texto em número."),
   f("REPT", "texto; número_vezes", "Repete um texto."),
+  f("UNIRTEXTO", "delimitador; ignorar_vazio; texto1; [texto2]; ...", "Junta textos com um separador entre eles, podendo pular os vazios."),
+  f("DIVIDIRTEXTO", "texto; delimitador_col; [delimitador_lin]; [ignorar_vazio]", "Divide um texto em colunas (ou linhas) pelo separador. O inverso de UNIRTEXTO."),
   // datas
   f("HOJE", "", "Data de hoje."),
   f("AGORA", "", "Data e hora atuais."),
@@ -92,13 +97,22 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("DIATRABALHO", "data_inicial; dias; [feriados]", "Data depois de um número de dias úteis."),
   f("FIMMÊS", "data_inicial; meses", "Último dia do mês, andando o número de meses indicado."),
   f("DATAM", "data_inicial; meses", "Mesma data, andando o número de meses indicado."),
+  f("NÚMSEMANA", "núm_série; [tipo_retorno]", "Semana do ano. Tipo 1 começa no domingo, 2 na segunda, 21 é a semana ISO."),
   // arrays dinâmicos
   f("FILTRO", "matriz; incluir; [se_vazia]", "Linhas que atendem a uma condição."),
   f("CLASSIFICAR", "matriz; [índice_classificação]; [ordem_classificação]; [por_col]", "Ordena um intervalo."),
   f("ÚNICO", "matriz; [por_col]; [exatamente_uma_vez]", "Lista sem repetições."),
   f("SEQUÊNCIA", "linhas; [colunas]; [início]; [etapa]", "Lista de números em sequência."),
+  f("PEGAR", "matriz; linhas; [colunas]", "As primeiras linhas (ou, com número negativo, as últimas) de um intervalo."),
+  f("DESCARTAR", "matriz; linhas; [colunas]", "O intervalo sem as primeiras (ou, com negativo, as últimas) linhas."),
+  f("ESCOLHERCOLS", "matriz; núm_col1; [núm_col2]; ...", "Só as colunas pedidas, na ordem pedida."),
+  f("LET", "nome1; valor1; [nome2; valor2]; ...; cálculo", "Dá nome a valores e usa os nomes no cálculo: a fórmula fica legível e não repete contas."),
   // finanças
   f("PGTO", "taxa; nper; vp; [vf]; [tipo]", "Valor da parcela de um financiamento."),
+  f("VP", "taxa; nper; pgto; [vf]; [tipo]", "Valor presente: quanto vale hoje uma série de pagamentos (quanto dá para financiar)."),
+  f("VF", "taxa; nper; pgto; [vp]; [tipo]", "Valor futuro: quanto um investimento acumula."),
+  f("NPER", "taxa; pgto; vp; [vf]; [tipo]", "Quantos períodos (parcelas, meses) até quitar ou chegar ao valor."),
+  f("TAXA", "nper; pgto; vp; [vf]; [tipo]; [estimativa]", "Taxa de juros por período de um financiamento ou investimento."),
 ];
 
 const porNome = new Map(CATALOGO.map((x) => [x.nome, x]));

@@ -970,5 +970,118 @@
       "IF"
     ],
     "extra": true
+  },
+  {
+    "id": "b98a20db-a304-5047-8097-22fb654d75e5",
+    "slug": "numsemana-semana-do-pedido",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "NÚMSEMANA: a semana do pedido",
+    "enunciado": [
+      "Em **C2:C6**, mostre em que **semana do ano** caiu cada pedido, com a semana **começando na segunda-feira**."
+    ],
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NÚMSEMANA(B2;2)"
+      },
+      {
+        "celula": "C3",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NÚMSEMANA(B3;2)"
+      },
+      {
+        "celula": "C4",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NÚMSEMANA(B4;2)"
+      },
+      {
+        "celula": "C5",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NÚMSEMANA(B5;2)"
+      },
+      {
+        "celula": "C6",
+        "esperado": 12,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NÚMSEMANA(B6;2)"
+      }
+    ],
+    "dicas": [
+      "A função da semana tem um segundo argumento que diz em que dia a semana começa.",
+      "Sem ele, a semana começa no domingo."
+    ],
+    "explicacao": [
+      "`=NÚMSEMANA(B2;2)` em C2, copiada até C6.",
+      "Para relatório oficial (ISO 8601), use o tipo 21: a semana 1 é a que tem a primeira quinta-feira do ano."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 100,
+        "B": 90,
+        "C": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Semana",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "#1040"
+        },
+        "A3": {
+          "entrada": "#1041"
+        },
+        "A4": {
+          "entrada": "#1042"
+        },
+        "A5": {
+          "entrada": "#1043"
+        },
+        "A6": {
+          "entrada": "#1044"
+        },
+        "B2": {
+          "entrada": "05/01/2026"
+        },
+        "B3": {
+          "entrada": "14/01/2026"
+        },
+        "B4": {
+          "entrada": "02/02/2026"
+        },
+        "B5": {
+          "entrada": "27/02/2026"
+        },
+        "B6": {
+          "entrada": "16/03/2026"
+        }
+      }
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "WEEKNUM"
+    ]
   }
 ]

@@ -1290,5 +1290,314 @@
       "IF"
     ],
     "extra": true
+  },
+  {
+    "id": "28a88a74-097c-5e7c-947c-33ec664743be",
+    "slug": "vp-quanto-financiar",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 108,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "VP: quanto dá para financiar?",
+    "enunciado": [
+      "A parcela que cabe no bolso está em **B1**, com juros de **B2** ao mês, em **B3** meses.",
+      "Em **B5**, calcule o **valor máximo** que dá para financiar."
+    ],
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 27234.042916470593,
+        "exigeFormula": true,
+        "solucaoReferencia": "=VP(B2;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "dicas": [
+      "É a pergunta ao contrário do PGTO: em vez da parcela, o valor de hoje.",
+      "A parcela entra negativa (é dinheiro saindo), para o resultado sair positivo."
+    ],
+    "explicacao": [
+      "`=VP(B2;B3;-B1)` → cerca de R$ 27.233.",
+      "VP traz para hoje uma série de pagamentos futuros: R$ 38.400 em parcelas valem bem menos à vista, por causa dos juros."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 200,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Parcela que cabe no bolso"
+        },
+        "B1": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês"
+        },
+        "B2": {
+          "entrada": "1,5%"
+        },
+        "A3": {
+          "entrada": "Meses"
+        },
+        "B3": {
+          "entrada": "48"
+        },
+        "A5": {
+          "entrada": "Dá para financiar",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "PV"
+    ]
+  },
+  {
+    "id": "cbb92859-e59d-5028-b38b-8cea9b450fd2",
+    "slug": "vf-reserva-de-emergencia",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 109,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "VF: a reserva de emergência",
+    "enunciado": [
+      "Guardando **B1** por mês, rendendo **B2** ao mês, por **B3** meses.",
+      "Em **B5**, calcule quanto vai ter **no final**."
+    ],
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 7902.946533335828,
+        "exigeFormula": true,
+        "solucaoReferencia": "=VF(B2;B3;-B1)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "dicas": [
+      "VF acumula os depósitos com os juros de cada mês.",
+      "O depósito é dinheiro saindo do bolso: entra negativo."
+    ],
+    "explicacao": [
+      "`=VF(B2;B3;-B1)` → cerca de R$ 7.940.",
+      "Foram R$ 7.200 depositados; o resto é rendimento. Quanto mais longo o prazo, maior essa diferença."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 200,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Depósito mensal"
+        },
+        "B1": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Rendimento ao mês"
+        },
+        "B2": {
+          "entrada": "0,8%"
+        },
+        "A3": {
+          "entrada": "Meses"
+        },
+        "B3": {
+          "entrada": "24"
+        },
+        "A5": {
+          "entrada": "Saldo no final",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "FV"
+    ]
+  },
+  {
+    "id": "5e3cb795-5abd-5064-9664-dd2b47efb027",
+    "slug": "nper-quantos-meses",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 110,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "NPER: em quantos meses eu quito?",
+    "enunciado": [
+      "Uma dívida de **B1**, com juros de **B2** ao mês, pagando **B3** por mês.",
+      "Em **B5**, calcule em **quantos meses** ela termina."
+    ],
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 13.7322038846887,
+        "exigeFormula": true,
+        "solucaoReferencia": "=NPER(B2;-B3;B1)",
+        "tolerancia": 0.0005
+      }
+    ],
+    "dicas": [
+      "NPER devolve o número de períodos: taxa, pagamento e o valor de hoje.",
+      "Atenção ao sinal: a dívida (que você recebeu) e o pagamento (que sai) têm sinais opostos."
+    ],
+    "explicacao": [
+      "`=NPER(B2;-B3;B1)` → cerca de 13,9 meses: na prática, 14 parcelas.",
+      "Para o número inteiro de parcelas, `ARREDONDAR.PARA.CIMA` em volta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 200,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Dívida"
+        },
+        "B1": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Juros ao mês"
+        },
+        "B2": {
+          "entrada": "2%"
+        },
+        "A3": {
+          "entrada": "Pagamento por mês"
+        },
+        "B3": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Meses",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "NPER"
+    ]
+  },
+  {
+    "id": "0a966f3b-a107-5fe6-a61e-0739ea5d6411",
+    "slug": "taxa-juros-escondidos",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 111,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "TAXA: os juros escondidos no \"sem juros\"",
+    "enunciado": [
+      "A loja oferece **B1** à vista ou **B2** parcelas de **B3**.",
+      "Em **B5**, calcule a **taxa de juros ao mês** que está embutida no parcelado."
+    ],
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 0.02839167071059711,
+        "exigeFormula": true,
+        "solucaoReferencia": "=TAXA(B2;-B3;B1)",
+        "formato": "percentual",
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "TAXA faz a conta ao contrário: com o prazo, a parcela e o valor à vista, ela descobre os juros.",
+      "Parcela e valor à vista têm sinais opostos."
+    ],
+    "explicacao": [
+      "`=TAXA(B2;-B3;B1)` → cerca de 2,9% ao mês.",
+      "\"12x sem juros\" que custa mais que o à vista tem juros, sim: R$ 2.388 contra R$ 2.000."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 200,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "À vista"
+        },
+        "B1": {
+          "entrada": "2000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Parcelas"
+        },
+        "B2": {
+          "entrada": "12"
+        },
+        "A3": {
+          "entrada": "Valor da parcela"
+        },
+        "B3": {
+          "entrada": "199",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "RATE"
+    ]
   }
 ]

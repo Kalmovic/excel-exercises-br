@@ -145,9 +145,16 @@ Diferenças conscientes e o que ficou para depois:
 - O aluno não cria, renomeia nem exclui abas; as abas vêm do exercício.
 - As respostas ficam sempre na primeira aba. Filtro, tabela dinâmica, regras e gráficos funcionam em qualquer aba, mas o progresso guarda os recursos só da primeira.
 
-### Funções novas (em paralelo, baratas)
+### Funções novas, feitas em 18/11/2026
 
-`LET`, `CORRESPX`, `UNIRTEXTO`, `DIVIDIRTEXTO`, `TOMAR`, `ESCOLHERCOLS`, `AGREGAR`, `VP`, `VF`, `TAXA`, `NPER`, `NÚMSEMANA`, `ARRED.MULT`.
+No motor, no catálogo (autocompletar e ajuda de argumentos) e na tabela de nomes, que também sugere o nome em português quando o aluno digita o inglês: **LET**, **CORRESPX**, **UNIRTEXTO**, **DIVIDIRTEXTO**, **PEGAR**, **DESCARTAR**, **ESCOLHERCOLS**, **AGREGAR**, **VP**, **VF**, **NPER**, **TAXA**, **NÚMSEMANA** e **MARRED**.
+
+- Os nomes em português foram conferidos no suporte da Microsoft. Duas correções em relação à primeira versão deste plano: TAKE é **PEGAR** (não "TOMAR") e MROUND é **MARRED** (não "ARRED.MULT"). DROP (DESCARTAR) entrou junto, por ser o par de PEGAR.
+- O LET mexeu no parser: nomes como `taxa` só valem dentro do LET que os declara. Fora dele, um nome solto continua sendo erro de escrita, como antes.
+- Conteúdo: 14 exercícios de prática extra (Busca, Texto, Arrays, Casos, Fundamentos, Datas e Organizar dados), cada um exigindo a função nova.
+- Testes: `src/engine/motor/funcoes-novas.test.ts`, com os valores financeiros conferidos contra os do Excel.
+
+Ficou para depois: LAMBDA, JUNTARV/JUNTARH (o nome em português ainda precisa ser conferido), ESCOLHERLINS, AGREGAR com as funções 16 a 19 (percentis e quartis) e o modo de pesquisa binária (2 e -2) do CORRESPX, que aqui funciona como a pesquisa normal.
 
 ---
 
