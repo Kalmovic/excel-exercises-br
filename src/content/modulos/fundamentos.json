@@ -982,7 +982,17 @@
     "video": "Apertar F4 quatro vezes e mostrar os quatro estados.",
     "licao": "referencia-mista-precos-quantidades",
     "etapa": 1,
-    "papel": "principal"
+    "papel": "principal",
+    "toque": {
+      "enunciado": [
+        "As quantidades estão em **A3:A7** e os preços em **B2:E2**.",
+        "Escreva em **B3** uma fórmula que, copiada para todo o bloco **B3:E7**, calcule preço × quantidade."
+      ],
+      "dicas": [
+        "A quantidade está sempre na coluna A; o preço, sempre na linha 2.",
+        "Trave só o que não pode andar: a quantidade fica sempre na mesma coluna; o preço, sempre na mesma linha. No celular, digite o $ à mão: antes da letra trava a coluna; antes do número, a linha."
+      ]
+    }
   },
   {
     "id": "1566facf-6640-50e9-a17a-9617f81bd06f",
@@ -1348,7 +1358,7 @@
       "O que quer dizer **B2:B7** numa fórmula?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense no que os dois-pontos querem dizer entre dois endereços."
     ],
     "explicacao": [
       "Os dois-pontos querem dizer \"até\": B2:B7 é o intervalo de B2 até B7, seis células."
@@ -1584,16 +1594,6 @@
     ],
     "funcoesExigidas": [
       "AVERAGE"
-    ],
-    "errosComuns": [
-      {
-        "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
-      },
-      {
-        "padrao": "B2:B8",
-        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
-      }
     ]
   },
   {
@@ -1677,15 +1677,7 @@
     "errosComuns": [
       {
         "padrao": "^=SOMA\\(B2:B5\\)/4$",
-        "dica": "Dividindo por 4 você contou a célula vazia. A MÉDIA ignora vazias e conta o zero."
-      },
-      {
-        "padrao": "^=SOMA\\(B2:B7\\)/7$",
-        "dica": "Confira por quanto você dividiu: quantos meses existem de fato? Existe uma função que conta sozinha."
-      },
-      {
-        "padrao": "B2:B8",
-        "dica": "Seu intervalo inclui a linha do total. A média é só dos meses."
+        "dica": "Dividindo por 4 você contou a célula vazia. A MÉDIA conta sozinha só as células com número."
       }
     ]
   },
@@ -1703,7 +1695,7 @@
       "Uma célula **vazia** dentro do intervalo da MÉDIA…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Pense em por quanto a MÉDIA divide: por todas as células do intervalo ou só pelas que têm número?"
     ],
     "explicacao": [
       "A MÉDIA soma e divide só pelas células com número: a vazia não entra em nenhuma das duas contas."
@@ -1731,7 +1723,8 @@
         "dica": "A MÉDIA lida com vazias sem erro."
       },
       {
-        "texto": "Conta como 1"
+        "texto": "Conta como 1",
+        "dica": "Célula vazia não tem valor nenhum, nem 1. Pense no que a MÉDIA faz com o que não é número."
       }
     ],
     "correta": 1
@@ -2056,7 +2049,7 @@
       "Quanto dá o **MÁXIMO** de 5, −10 e 3?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "MÁXIMO devolve o maior número da lista. Lembre que um número negativo é menor que qualquer positivo."
     ],
     "explicacao": [
       "O maior dos três é 5. O sinal de menos deixa o −10 como o menor."
@@ -2084,7 +2077,8 @@
         "dica": "O sinal faz parte do número: −10 não vale 10."
       },
       {
-        "texto": "3"
+        "texto": "3",
+        "dica": "Existe um número maior que 3 na lista."
       }
     ],
     "correta": 1
@@ -2169,7 +2163,7 @@
     "errosComuns": [
       {
         "padrao": "^=A2\\*\\(B2\\+C2\\)$",
-        "dica": "Os parênteses fizeram o frete ser multiplicado pela quantidade."
+        "dica": "Os parênteses fizeram o desconto ser multiplicado pela quantidade."
       },
       {
         "padrao": "^=A2X",
@@ -2323,7 +2317,7 @@
       "Qual é o resultado de **=2+3\\*4**?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "No Excel, como na escola, multiplicação e divisão vêm antes de soma e subtração."
     ],
     "explicacao": [
       "3*4 = 12 primeiro, depois 2 + 12 = 14."
@@ -2347,10 +2341,12 @@
         "texto": "14"
       },
       {
-        "texto": "24"
+        "texto": "24",
+        "dica": "Nenhuma ordem das contas dá 24 com esses números. Confira qual operação o Excel faz primeiro."
       },
       {
-        "texto": "9"
+        "texto": "9",
+        "dica": "9 é só a soma 2+3+4, mas o * é multiplicação, não soma."
       }
     ],
     "correta": 1
@@ -2727,7 +2723,7 @@
       "As vendas foram de **200** para **300**. Qual foi a variação?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "A variação compara o quanto aumentou com o valor de partida."
     ],
     "explicacao": [
       "(300 − 200) ÷ 200 = 100 ÷ 200 = 50%."
@@ -2755,7 +2751,8 @@
         "dica": "100% seria dobrar, de 200 para 400."
       },
       {
-        "texto": "150%"
+        "texto": "150%",
+        "dica": "150% é 300 ÷ 200: compara o valor novo inteiro com o antigo. A variação mede só o aumento."
       }
     ],
     "correta": 1
@@ -3269,7 +3266,7 @@
       "Na referência **$F$1**, o cifrão antes do 1 trava o quê?"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Leia a referência da esquerda para a direita: o que vem logo depois de cada $?"
     ],
     "explicacao": [
       "Cada cifrão trava o que vem logo depois dele: `$F` trava a coluna, `$1` trava a linha."
@@ -3293,7 +3290,8 @@
         "texto": "A linha"
       },
       {
-        "texto": "A planilha"
+        "texto": "A planilha",
+        "dica": "Para apontar outra aba usa-se o nome da aba e um !, não o $."
       },
       {
         "texto": "O valor",
@@ -4578,7 +4576,7 @@
       "Com **$A3**, ao copiar a fórmula para a **direita**, a referência…"
     ],
     "dicas": [
-      "Releia a pergunta com calma: a resposta está na regra da lição."
+      "Veja onde está o cifrão e pense: ao copiar para a direita, o que muda numa referência?"
     ],
     "explicacao": [
       "`$A` trava a coluna: para a direita, continua A3. Para baixo, a linha anda (A4, A5…)."
@@ -4606,7 +4604,8 @@
         "dica": "Ao copiar para a direita, o que pode mudar numa referência: a coluna ou a linha?"
       },
       {
-        "texto": "Dá erro"
+        "texto": "Dá erro",
+        "dica": "Copiar uma referência com $ não gera erro: o $ só decide o que anda e o que fica."
       }
     ],
     "correta": 1
@@ -4938,7 +4937,7 @@
     "versao": 1,
     "titulo": "Taxa sobre cada despesa",
     "enunciado": [
-      "Em **D2**, aplique a taxa de **F1** sobre C2, numa fórmula que funcione copiada até **D6**."
+      "Em **D2**, calcule o **valor da taxa** de **F1** sobre a despesa de C2, numa fórmula que funcione copiada até **D6**."
     ],
     "dicas": [],
     "explicacao": [
@@ -5003,7 +5002,7 @@
           "entrada": "3%"
         },
         "D1": {
-          "entrada": "Com taxa",
+          "entrada": "Valor da taxa",
           "negrito": true
         }
       },

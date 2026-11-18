@@ -329,7 +329,13 @@
       "Repare no Boné: o lucro é negativo, porque o custo foi maior que a receita."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Calcule o lucro de cada produto: receita menos custo.",
+        "Escreva a fórmula em **D2** e depois copie para **D3:D6**: toque em **▦ Selecionar intervalo**, marque de D2 até D6 e toque em **↓ Preencher**."
+      ]
+    }
   },
   {
     "id": "47597391-8327-5317-b63c-3076062fa3a1",
@@ -606,7 +612,18 @@
       "Sem o `$`, a cópia em C3 viraria `=B3*F2`, multiplicando por uma célula vazia."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Cada vendedor recebe uma comissão sobre suas vendas. A taxa está numa célula só: **F1**.",
+        "Escreva em **C2** a fórmula da comissão e copie para **C3:C6**. Todas as fórmulas devem usar a taxa de F1, para que mudar a taxa atualize a coluna inteira."
+      ],
+      "dicas": [
+        "Comissão = vendas × taxa. Onde está a venda de cada linha, e onde está a taxa?",
+        "Copie sua fórmula para baixo e olhe a de C3: para onde foi a referência à taxa?",
+        "A referência à taxa precisa ficar parada ao copiar. No celular, digite o $ à mão antes da letra e antes do número."
+      ]
+    }
   },
   {
     "id": "b1d5cb45-9c55-5a8d-a800-cb6fd851a978",
@@ -1060,7 +1077,18 @@
       "É a referência **mista**: metade travada, metade livre. Com `$A$2` ou `$B$1` a tabela inteira repetiria um valor só."
     ],
     "tentativasAteExplicacao": 3,
-    "extra": true
+    "extra": true,
+    "toque": {
+      "enunciado": [
+        "Monte a tabela de preços reajustados: cada célula é o preço da coluna A com o reajuste da linha 1.",
+        "Escreva **uma** fórmula em **B2** que funcione copiada para todo o bloco **B2:D5**."
+      ],
+      "dicas": [
+        "O preço está sempre na coluna A, e o reajuste sempre na linha 1.",
+        "Trave só o que não pode andar: um número fica sempre na mesma coluna; o outro, sempre na mesma linha.",
+        "Monte a fórmula na primeira célula e pense, em cada referência, o que pode andar e o que fica parado. No celular, digite o $ à mão onde precisar."
+      ]
+    }
   },
   {
     "id": "bc72fa2a-0838-5abc-a10a-4c39caa1d774",
