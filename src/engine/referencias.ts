@@ -24,12 +24,20 @@ const PREFIXO_ABA = /(?:'((?:[^']|'')+)'|([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ
 /** Referências de célula/intervalo de uma fórmula, fora de aspas e de nomes de função. */
 export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
   if (!formula.startsWith("=")) return [];
-  // posições dentro de aspas
+  // Posições dentro de aspas: textos ("...") e nomes de aba citados ('Vendas T1'!).
   const aspas: boolean[] = [];
-  let aberto = false;
+  let aberto: '"' | "'" | null = null;
   for (let i = 0; i < formula.length; i++) {
-    if (formula[i] === '"') aberto = !aberto;
-    aspas[i] = aberto || formula[i] === '"';
+    const ch = formula[i];
+    if (aberto === null && (ch === '"' || ch === "'")) {
+      aberto = ch;
+      aspas[i] = true;
+    } else if (aberto !== null && ch === aberto) {
+      aspas[i] = true;
+      // '' e "" dentro das aspas são a própria aspa, não o fim.
+      if (formula[i + 1] === aberto) aspas[++i] = true;
+      else aberto = null;
+    } else aspas[i] = aberto !== null;
   }
   const cores = new Map<string, number>();
   const out: ReferenciaNaFormula[] = [];
