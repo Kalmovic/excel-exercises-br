@@ -77,3 +77,19 @@ export function limitar(cabecalhos: Headers, rota: keyof typeof LIMITES, usuario
   if (espera === 0) return null;
   return Response.json({ erro: MENSAGEM_LIMITE }, { status: 429, headers: { "Retry-After": String(espera) } });
 }
+
+/**
+ * Lê o corpo como JSON, recusando antes de ler tudo quando passa de `max` bytes.
+ * Devolve `{ dados }` (null se não for JSON) ou `{ grande: true }`.
+ * (O proxy do Next já corta em 10 MB, mas JSON.parse + zod de 10 MB custa CPU.)
+ */
+export async function lerJsonLimitado(request: Request, max: number): Promise<{ dados: unknown } | { grande: true }> {
+  if (Number(request.headers.get("content-length") ?? 0) > max) return { grande: true };
+  const texto = await request.text();
+  if (texto.length > max) return { grande: true };
+  try {
+    return { dados: JSON.parse(texto) };
+  } catch {
+    return { dados: null };
+  }
+}

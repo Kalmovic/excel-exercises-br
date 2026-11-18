@@ -5,6 +5,7 @@ import { MODULOS } from "@/content";
 import { PAYWALL_ATIVO } from "@/lib/acesso-conteudo";
 import { usuarioEhPro } from "@/lib/acesso";
 import { ESPECIALISTA, faltamParaEspecialista, modulosDoEspecialista } from "@/lib/especialista";
+import { lerJsonLimitado, limitar } from "@/lib/limite";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { usuarioAtual } from "@/lib/supabase/servidor";
 
@@ -19,23 +20,28 @@ const novoCodigo = () => {
  * Certificado de Especialista: a trilha inteira. Só sai para quem já tem o
  * certificado de TODOS os módulos (cada um emitido com a correção refeita no
  * servidor), conferido aqui direto no banco.
+ *
+ * Como o de módulo, não muda depois de emitido (nem o nome).
  */
 export async function POST(request: Request) {
   const usuario = await usuarioAtual();
   if (!usuario) return erro(401, "Entre na sua conta para emitir o certificado.");
   if (!process.env.SUPABASE_SECRET_KEY) return erro(503, "Certificados ainda não estão ligados.");
+  const limite = limitar(request.headers, "especialista", usuario.id);
+  if (limite) return limite;
   if (PAYWALL_ATIVO && !(await usuarioEhPro())) return erro(402, "O certificado faz parte do Pro.");
-  const dados = pedido.safeParse(await request.json().catch(() => null));
+  const corpo = await lerJsonLimitado(request, 4096);
+  if ("grande" in corpo) return erro(413, "Dados grandes demais.");
+  const dados = pedido.safeParse(corpo.dados);
   if (!dados.success) return erro(400, dados.error.issues[0]?.message ?? "Dados inválidos.");
   const nome = dados.data.nome.replace(/\s+/g, " ");
 
   const admin = supabaseAdmin();
-  const { data: certificados } = await admin
-    .from("certificados")
-    .select("codigo, modulo")
-    .eq("usuario_id", usuario.id)
-    .returns<{ codigo: string; modulo: string }[]>();
-  const lista = certificados ?? [];
+  const buscar = async () =>
+    (await admin.from("certificados").select("codigo, modulo").eq("usuario_id", usuario.id).returns<{ codigo: string; modulo: string }[]>()).data ?? [];
+  const lista = await buscar();
+  const existente = lista.find((c) => c.modulo === ESPECIALISTA);
+  if (existente) return NextResponse.json({ codigo: existente.codigo });
   const faltam = faltamParaEspecialista(lista.map((c) => c.modulo));
   if (faltam.length > 0) {
     const nomes = faltam.map((m) => MODULOS.find((x) => x.slug === m)?.titulo ?? m).join(", ");
@@ -43,11 +49,6 @@ export async function POST(request: Request) {
   }
 
   const total = modulosDoEspecialista().length;
-  const existente = lista.find((c) => c.modulo === ESPECIALISTA);
-  if (existente) {
-    await admin.from("certificados").update({ nome }).eq("codigo", existente.codigo);
-    return NextResponse.json({ codigo: existente.codigo });
-  }
   for (let tentativa = 0; tentativa < 3; tentativa++) {
     const codigo = novoCodigo();
     const { error } = await admin
@@ -59,6 +60,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ codigo });
     }
     if (error.code !== "23505") break;
+    // Outro pedido ao mesmo tempo já emitiu (regra "um por aluno"): devolve aquele.
+    const ganhou = (await buscar()).find((c) => c.modulo === ESPECIALISTA);
+    if (ganhou) return NextResponse.json({ codigo: ganhou.codigo });
   }
   return erro(500, "Não deu certo agora. Tente de novo em alguns minutos.");
 }

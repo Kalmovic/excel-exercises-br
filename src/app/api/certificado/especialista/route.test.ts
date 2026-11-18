@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { modulosDoEspecialista } from "@/lib/especialista";
+import { zerarLimites } from "@/lib/limite";
 
 const banco = { certificados: [] as Record<string, unknown>[], perfis: [{ id: "u1", nome: null }] as Record<string, unknown>[] };
 vi.mock("@/lib/supabase/servidor", () => ({ usuarioAtual: async () => ({ id: "u1" }) }));
@@ -20,7 +21,7 @@ vi.mock("@/lib/supabase/admin", () => ({
   }),
 }));
 
-const pedir = () => new Request("http://x", { method: "POST", body: JSON.stringify({ nome: "Ana Souza" }) });
+const pedir = (nome = "Ana Souza") => new Request("http://x", { method: "POST", body: JSON.stringify({ nome }) });
 const certificar = (modulos: string[]) =>
   modulos.forEach((m, i) => banco.certificados.push({ codigo: `AAAA-${2222 + i}`, usuario_id: "u1", modulo: m }));
 
@@ -29,6 +30,7 @@ describe("certificado de Especialista", async () => {
   const { POST } = await import("./route");
   beforeEach(() => {
     banco.certificados = [];
+    zerarLimites();
     vi.spyOn(console, "log").mockImplementation(() => {});
   });
 
@@ -44,8 +46,16 @@ describe("certificado de Especialista", async () => {
     certificar(modulosDoEspecialista());
     const a = await (await POST(pedir())).json();
     expect(a.codigo).toMatch(/^[A-Z2-9]{4}-[A-Z2-9]{4}$/);
-    const b = await (await POST(pedir())).json();
+    const b = await (await POST(pedir("Outra Pessoa"))).json();
     expect(b.codigo).toBe(a.codigo);
-    expect(banco.certificados.filter((c) => c.modulo === "especialista")).toHaveLength(1);
+    const especialista = banco.certificados.filter((c) => c.modulo === "especialista");
+    expect(especialista).toHaveLength(1);
+    expect(especialista[0].nome).toBe("Ana Souza"); // o nome não muda depois de emitido
+  });
+
+  it("muitos pedidos seguidos: 429", async () => {
+    let ultimo = 0;
+    for (let i = 0; i < 6; i++) ultimo = (await POST(pedir())).status;
+    expect(ultimo).toBe(429);
   });
 });
