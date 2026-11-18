@@ -18,6 +18,7 @@ import {
 } from "@/content";
 import { chaveProgresso } from "@/content/licao";
 import { PassosLicao } from "@/components/simulador/PassosLicao";
+import { APROVACAO } from "@/lib/testes";
 
 const ROTULOS = { principal: "Principal", variacao: "Variação", pegadinha: "Pegadinha", conceito: "Conceito" } as const;
 import { exercicioLiberado } from "@/lib/acesso-conteudo";
@@ -56,6 +57,11 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
             : ROTULOS[q.papel ?? "principal"],
       }))
     : [];
+  // Cada casa do módulo com as etapas da lição: a barra conta as etapas feitas.
+  const casas = trilha.itensComTitulo.map((i) => {
+    const e = exercicioPorSlug(i.slug);
+    return { ...i, partes: e ? licaoDoExercicio(e)?.partes : undefined };
+  });
   const principais = exerciciosDoModulo(ex.modulo);
   // Última questão do módulo: oferece o teste e a prática extra.
   const ultimaDoModulo =
@@ -67,7 +73,7 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
   return (
     <div className="space-y-4">
       <nav className="text-sm text-zinc-500">
-        <Link href="/" className="hover:text-zinc-800">
+        <Link href={`/trilha#modulo-${ex.modulo}`} className="hover:text-zinc-800">
           Módulo {modulo?.numero}: {modulo?.titulo}
         </Link>{" "}
         / {ex.extra ? "Prática extra" : licao ? `Lição ${exercicioPorSlug(licao.slug)?.ordem}` : `Exercício ${ex.ordem}`}
@@ -77,7 +83,7 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
           </span>
         )}
       </nav>
-      <BarraProgressoModulo itens={trilha.itensComTitulo} atual={licao?.slug ?? ex.slug} />
+      <BarraProgressoModulo itens={casas} atual={licao?.slug ?? ex.slug} />
       {passos.length > 1 && <PassosLicao passos={passos} atual={ex.slug} />}
       <h1 className="text-2xl font-bold tracking-tight">{ex.titulo}</h1>
       <SimuladorCarregavel
@@ -96,7 +102,9 @@ export default async function PaginaExercicio({ params }: PageProps<"/exercicios
         >
           <span>
             <span className="block font-semibold">Teste do Módulo {modulo?.numero}: {modulo?.titulo}</span>
-            <span className="text-sm text-muted">5 questões, sem dica. Passa quem acerta 4.</span>
+            <span className="text-sm text-muted">
+              {testeDoModulo(ex.modulo).length} questões, sem dica. Passa quem acerta {APROVACAO}.
+            </span>
           </span>
           <span className="font-semibold">Fazer o teste →</span>
         </Link>
