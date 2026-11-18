@@ -2253,7 +2253,13 @@
       "variaveis": [
         "B2",
         "C2"
-      ]
+      ],
+      "alternativas": {
+        "C2": [
+          "0",
+          "1"
+        ]
+      }
     },
     "alvos": [
       {
@@ -2401,7 +2407,13 @@
       },
       "variaveis": [
         "B2"
-      ]
+      ],
+      "alternativas": {
+        "H2": [
+          "4",
+          "5"
+        ]
+      }
     },
     "alvos": [
       {

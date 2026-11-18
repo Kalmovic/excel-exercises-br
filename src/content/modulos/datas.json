@@ -1784,6 +1784,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "A2": [
+          "05/03/2025",
+          "18/07/2026"
+        ]
       }
     },
     "alvos": [
@@ -1851,6 +1857,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "B2": [
+          "20/05/2012",
+          "03/03/2015"
+        ]
       }
     },
     "alvos": [
@@ -1873,7 +1885,7 @@
     "versao": 1,
     "titulo": "Dias úteis de outubro",
     "enunciado": [
-      "Em **C2**, os dias úteis de 01/10/2026 a 31/10/2026, descontando o feriado de E2."
+      "Em **C2**, os dias úteis entre a data de **A2** e a de **B2** (outubro de 2026), descontando o feriado de **E2**."
     ],
     "dicas": [],
     "explicacao": [
@@ -1918,6 +1930,12 @@
         "B": 110,
         "C": 100,
         "E": 110
+      },
+      "alternativas": {
+        "A2": [
+          "05/10/2026",
+          "01/10/2026"
+        ]
       }
     },
     "alvos": [
@@ -1985,6 +2003,12 @@
         "B": 110,
         "C": 110,
         "F": 120
+      },
+      "alternativas": {
+        "A2": [
+          "10/01/2026",
+          "18/07/2026"
+        ]
       }
     },
     "alvos": [

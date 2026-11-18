@@ -3111,6 +3111,12 @@
         "C": 100,
         "F": 110,
         "G": 130
+      },
+      "alternativas": {
+        "F2": [
+          "Mochila",
+          "Caneta"
+        ]
       }
     },
     "alvos": [
@@ -3332,7 +3338,13 @@
         "C4",
         "C5",
         "C6"
-      ]
+      ],
+      "alternativas": {
+        "F2": [
+          "Mouse",
+          "Régua"
+        ]
+      }
     },
     "alvos": [
       {

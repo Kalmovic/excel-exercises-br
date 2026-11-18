@@ -4529,7 +4529,13 @@
         "C6",
         "C7",
         "C8"
-      ]
+      ],
+      "alternativas": {
+        "A2": [
+          "Carla",
+          "Ana"
+        ]
+      }
     },
     "alvos": [
       {
@@ -4852,7 +4858,13 @@
         "C6",
         "C7",
         "C8"
-      ]
+      ],
+      "alternativas": {
+        "D3": [
+          "Pago",
+          "Pendente"
+        ]
+      }
     },
     "alvos": [
       {
