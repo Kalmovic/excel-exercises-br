@@ -50,7 +50,9 @@ export async function ehAdmin(): Promise<boolean> {
   if (await papelAdmin()) return true;
   const senha = senhaConfigurada();
   if (!senha) return false;
-  if (!valor || valor.length !== 64) return false;
+  // Só hex de 64 caracteres: com outro texto, Buffer.from(…, "hex") sai menor e o
+  // timingSafeEqual lança erro (a página dava 500 em vez de recusar).
+  if (!valor || !/^[0-9a-f]{64}$/i.test(valor)) return false;
   return timingSafeEqual(Buffer.from(valor, "hex"), hash(senha));
 }
 

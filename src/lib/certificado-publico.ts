@@ -7,12 +7,21 @@ export type CertificadoPublico = { codigo: string; nome: string; modulo: string;
 
 /** Busca pelo código, pela função pública de verificação (sem sessão). */
 export async function buscarCertificado(codigoBruto: string): Promise<CertificadoPublico | null> {
-  const codigo = decodeURIComponent(codigoBruto).toUpperCase();
-  if (!/^[A-Z2-9]{4}-[A-Z2-9]{4}$/.test(codigo)) return null;
+  const codigo = decodificar(codigoBruto)?.toUpperCase();
+  if (!codigo || !/^[A-Z2-9]{4}-[A-Z2-9]{4}$/.test(codigo)) return null;
   const supabase = supabasePublico();
   if (!supabase) return null;
   const { data } = await supabase.rpc("verificar_certificado", { codigo_buscado: codigo }).maybeSingle<CertificadoPublico>();
   return data ?? null;
+}
+
+/** "%E0%A4%A" (escape quebrado) faria o decodeURIComponent lançar erro e a página dar 500: vira "não existe". */
+function decodificar(s: string): string | null {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return null;
+  }
 }
 
 /** "Especialista em Excel" ou "Módulo 4: Busca". */
