@@ -332,12 +332,12 @@ export function criarStore(
         set({ mensagem: "A célula ativa precisa estar numa coluna da tabela: é por ela que o Excel classifica." });
         return;
       }
-      planilha.classificar({
+      const r = planilha.classificar({
         intervalo: intervaloParaTexto(int),
         chaves: [{ coluna: colunaParaLetras(col), ordem }],
         cabecalho: f ? true : planilha.pareceCabecalho(int),
       });
-      set({ mensagem: null });
+      set({ mensagem: r.ok ? null : r.mensagem });
     },
   }));
 }

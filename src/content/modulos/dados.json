@@ -722,11 +722,11 @@
     ],
     "dicas": [
       "Classificar de novo não desfaz a ordem anterior nos empates: quem tem a mesma região mantém a ordem que já tinha.",
-      "Na janela Classificar, cada critério é um nível. O de cima manda; o de baixo desempata."
+      "Classifique duas vezes: primeiro pelo critério que só desempata (Valor), depois pelo principal (Região)."
     ],
     "explicacao": [
-      "Use **Dados → Classificar**: primeiro nível **Região** (A a Z) e **Adicionar Nível** com **Valor** (Do Maior para o Menor).",
-      "Outro caminho é classificar duas vezes, primeiro pelo critério de desempate (Valor) e depois pelo principal (Região). Funciona porque a classificação do Excel é *estável*: nos empates de Região, as linhas ficam na ordem em que já estavam."
+      "Classifique duas vezes: primeiro por **Valor** (Do Maior para o Menor) e depois por **Região** (A a Z).",
+      "Funciona porque a classificação do Excel é *estável*: nos empates de Região, as linhas ficam na ordem em que já estavam. No Excel de verdade, **Dados → Classificar** também faz isso numa vez só, com **Adicionar Nível**."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "dados-classificar-maior-valor",

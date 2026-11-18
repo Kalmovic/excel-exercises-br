@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { exercicios } from "@/content";
+import { temPaginaDeExercicio } from "@/lib/acesso-conteudo";
 import { desafiosAnteriores, hojeNoServidor } from "@/content/desafios";
 import { URL_SITE } from "@/lib/site";
 
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     // Só exercícios grátis: os pagos não têm página pública.
     ...exercicios
-      .filter((e) => e.plano === "free")
+      .filter((e) => e.plano === "free" && temPaginaDeExercicio(e))
       .map((e) => ({
         url: `${URL_SITE}/exercicios/${e.slug}`,
         lastModified: agora,

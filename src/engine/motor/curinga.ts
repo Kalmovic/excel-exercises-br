@@ -4,6 +4,47 @@
  * mesmo com muitos * seguidos ("*a*a*a…*b"), que travavam a versão com RegExp.
  */
 
+/**
+ * O Excel recusa critérios e textos procurados com mais de 255 caracteres
+ * (#VALOR!). Além de fiel, isso limita o custo de cada comparação.
+ */
+export const MAX_PADRAO = 255;
+
+/**
+ * Prazo de tempo para a correção no servidor: quem chama `comPrazo` define até
+ * quando o casamento pode trabalhar. Passado o prazo, cada casamento aborta em
+ * poucos milhares de passos (vira #VALOR!) e `prazoEsgotado()` diz que houve
+ * estouro. No navegador não há prazo (Infinity).
+ */
+let prazo = Infinity;
+let estourou = false;
+let passos = 0;
+
+export function comPrazo<T>(ms: number, fn: () => T): { valor: T; estourou: boolean } {
+  const [antesPrazo, antesEstourou] = [prazo, estourou];
+  prazo = Date.now() + ms;
+  estourou = false;
+  try {
+    const valor = fn();
+    return { valor, estourou };
+  } finally {
+    prazo = antesPrazo;
+    estourou = antesEstourou;
+  }
+}
+
+function conferirPrazo() {
+  if ((++passos & 2047) !== 0 || prazo === Infinity) return;
+  if (Date.now() > prazo) {
+    estourou = true;
+    throw new RangeError("Tempo de cálculo esgotado.");
+  }
+}
+
+function conferirTamanho(padrao: string) {
+  if (padrao.length > MAX_PADRAO) throw new RangeError("Critério com mais de 255 caracteres.");
+}
+
 /** Pedaço do padrão: um caractere literal, QUALQUER (?) ou ESTRELA (*). */
 type Peca = string | typeof QUALQUER | typeof ESTRELA;
 const QUALQUER = 0;
@@ -26,10 +67,12 @@ export const temCuringa = (padrao: string) => /[*?~]/.test(padrao);
 
 /** O texto inteiro casa com o padrão? Sem diferenciar maiúsculas. */
 export function casaCuringa(padrao: string, texto: string): boolean {
+  conferirTamanho(padrao);
   const p = pecas(padrao.toLowerCase());
   const s = texto.toLowerCase();
   let i = 0, j = 0, estrela = -1, marca = 0;
   while (j < s.length) {
+    conferirPrazo();
     if (i < p.length && p[i] !== ESTRELA && (p[i] === QUALQUER || p[i] === s[j])) { i++; j++; }
     else if (i < p.length && p[i] === ESTRELA) { estrela = i++; marca = j; }
     else if (estrela >= 0) { i = estrela + 1; j = ++marca; }
@@ -48,6 +91,7 @@ export function casaCuringa(padrao: string, texto: string): boolean {
  * nenhuma outra). Tempo proporcional a texto × padrão.
  */
 export function localizarCuringa(padrao: string, texto: string, inicio = 0): number {
+  conferirTamanho(padrao);
   const p = pecas(padrao.toLowerCase());
   const s = texto.toLowerCase();
   if (inicio > s.length) return -1;
@@ -55,6 +99,7 @@ export function localizarCuringa(padrao: string, texto: string, inicio = 0): num
   for (const x of p) if (x === ESTRELA) segmentos.push([]); else segmentos[segmentos.length - 1].push(x);
   const achar = (seg: Peca[], de: number) => {
     for (let i = de; i + seg.length <= s.length; i++) {
+      conferirPrazo();
       let k = 0;
       while (k < seg.length && (seg[k] === QUALQUER || seg[k] === s[i + k])) k++;
       if (k === seg.length) return i;

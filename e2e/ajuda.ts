@@ -47,7 +47,9 @@ export async function simularCorrecao(
     corpos.push(route.request().postDataJSON() as CorpoCorrecao);
     if (!forcar) {
       const real = await route.fetch().catch(() => null);
-      if (real && real.status() !== 404) return route.fulfill({ response: real });
+      // Só cai no falso quando a rota não existe (404 de página, não o JSON da própria API).
+      const rotaAusente = real?.status() === 404 && !(real.headers()["content-type"] ?? "").includes("json");
+      if (real && !rotaAusente) return route.fulfill({ response: real });
     }
     if (atraso) await new Promise((r) => setTimeout(r, atraso));
     await route.fulfill({ json: { ok: fila.shift() ?? false } });

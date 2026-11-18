@@ -84,13 +84,13 @@ function sem<T extends object, K extends keyof T>(obj: T, ...chaves: K[]): Sem<T
 export const respostaQuestaoSchema = z.object({
   conteudos: z.record(z.string().max(40), z.string().max(500)).refine((o) => Object.keys(o).length <= 300, "Células demais."),
   formatos: z
-    .record(z.string().max(20), z.enum(["moeda", "percentual", "geral"]))
+    .record(z.string().max(80), z.enum(["moeda", "percentual", "geral"]))
     .refine((o) => Object.keys(o).length <= 300, "Formatos demais.")
     .optional(),
   recursos: z.unknown().optional(),
   resposta: z.string().max(2000).optional(),
-  ativa: z.string().max(20).optional(),
-  selecao: z.string().max(20).optional(),
+  ativa: z.string().max(40).optional(),
+  selecao: z.string().max(80).optional(),
 });
 
 /** A resposta validada, no tipo da correção (os recursos são conferidos lá dentro). */

@@ -13,6 +13,10 @@ import { recursosSchema, type Exercicio, type Formato, type Recursos } from "@/c
 import { deEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 import { corrigir } from "./corrigir";
+import { comPrazo } from "@/engine/motor/curinga";
+
+/** Prazo da correção de uma questão no servidor. As respostas honestas levam milissegundos. */
+const PRAZO_MS = 1500;
 
 /** O que o aluno deixou na tela em uma questão (o mesmo que o progresso guarda). */
 export type RespostaQuestao = {
@@ -85,18 +89,22 @@ export function conferirQuestao(q: Exercicio, r: RespostaQuestao | undefined): b
         .filter(([end, f]) => typeof f === "string" && FORMATOS.has(f) && dentroDaGrade(q, end, INTERVALO_COM_ABA))
         .slice(0, MAX_CELULAS),
     ) as Record<string, Formato>;
-    // O mesmo ponto único do Simulador: classificações, células, formatos e o resto dos recursos.
-    p.restaurarProgresso({ conteudos, formatos, recursos: recursosValidos(r.recursos) });
     const ativa = r.ativa && ENDERECO.test(r.ativa) ? r.ativa : "A1";
     const selecao = r.selecao && INTERVALO.test(r.selecao) ? r.selecao : ativa;
-    return corrigir(q, p, {
-      ativa,
-      selecao,
-      resposta: typeof r.resposta === "string" ? r.resposta.slice(0, MAX_TEXTO) : "",
-      mudancasPeloMouse: 0,
-      // O servidor não sabe se foi com o mouse; o exercício "só teclado" não pesa no certificado.
-      semTecladoFisico: true,
-    }).ok;
+    const { valor, estourou } = comPrazo(PRAZO_MS, () => {
+      // O mesmo ponto único do Simulador: classificações, células, formatos e o resto dos recursos.
+      p.restaurarProgresso({ conteudos, formatos, recursos: recursosValidos(r.recursos) });
+      return corrigir(q, p, {
+        ativa,
+        selecao,
+        resposta: typeof r.resposta === "string" ? r.resposta.slice(0, MAX_TEXTO) : "",
+        mudancasPeloMouse: 0,
+        // O servidor não sabe se foi com o mouse; o exercício "só teclado" não pesa no certificado.
+        semTecladoFisico: true,
+      });
+    });
+    // Resposta que fez o servidor trabalhar além do prazo não é aceita (nenhuma resposta honesta chega perto).
+    return !estourou && valor.ok;
   } catch {
     return false;
   }

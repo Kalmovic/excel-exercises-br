@@ -10,7 +10,6 @@ import extrasBusca from "./extras/busca.json";
 import abas from "./modulos/abas.json";
 import texto from "./modulos/texto.json";
 import { exercicios } from "./index";
-import { erroComumSchema } from "./schema";
 import { Planilha } from "@/engine/engine";
 import { corrigir } from "@/grader/corrigir";
 
@@ -68,9 +67,7 @@ describe("PROCV exato: erro comum que bloqueia a busca aproximada", () => {
     expect(re.test(normalizar("=PROCX(F2;A2:A6;C2:C6)"))).toBe(false);
   });
 
-  // TODO(F3): `bloqueia` entra em erroComumSchema na frente F3; quando entrar, este teste passa a rodar.
-  const temBloqueia = "bloqueia" in erroComumSchema.shape;
-  it.skipIf(!temBloqueia)("=PROCV(F2;A2:C6;3) é recusado mesmo com o valor certo", () => {
+  it("=PROCV(F2;A2:C6;3) é recusado mesmo com o valor certo", () => {
     const ex = exercicios.find((e) => e.slug === "procv-preco-pelo-codigo-exato")!;
     const p = Planilha.deExercicio(ex);
     p.definir("G2", "=PROCV(F2;A2:C6;3)");

@@ -47,8 +47,18 @@ export function consumir(chave: string, regra: Regra, agora = Date.now()): numbe
 
 function faxina(agora: number, porMs: number, capacidade: number) {
   for (const [k, b] of baldes) if (b.fichas + (agora - b.em) * porMs >= capacidade) baldes.delete(k);
-  // Ainda cheio (ataque com muitos IPs): começa do zero em vez de crescer.
-  if (baldes.size >= MAX_BALDES) baldes.clear();
+  // Ainda cheio (ataque com muitos IPs): descarta os mais antigos até sobrar folga, mas nunca
+  // zera tudo de uma vez (isso soltaria também quem já estava barrado).
+  // Primeiro saem os que ainda têm fichas; os barrados (sem ficha) só em último caso.
+  const folga = () => baldes.size < MAX_BALDES * 0.9;
+  for (const [k, b] of baldes) {
+    if (folga()) return;
+    if (b.fichas + (agora - b.em) * porMs >= 1) baldes.delete(k);
+  }
+  for (const k of baldes.keys()) {
+    if (folga()) return;
+    baldes.delete(k);
+  }
 }
 
 /** Só para os testes. */
@@ -56,10 +66,16 @@ export function zerarLimites() {
   baldes.clear();
 }
 
-/** IP de quem pediu (na Vercel, o primeiro do x-forwarded-for é o do cliente). */
+/**
+ * IP de quem pediu. Na Vercel, `x-vercel-forwarded-for` e `x-real-ip` são
+ * escritos pela própria plataforma (o cliente não consegue forjar). Só sem eles
+ * cai no primeiro do x-forwarded-for, que fora da Vercel o cliente controla:
+ * nesse caso o limite por IP é contornável (o por aluno logado continua valendo).
+ */
 export function ipDe(cabecalhos: Headers): string {
+  const daPlataforma = cabecalhos.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() || cabecalhos.get("x-real-ip")?.trim();
   const encaminhado = cabecalhos.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return encaminhado || cabecalhos.get("x-real-ip")?.trim() || "sem-ip";
+  return daPlataforma || encaminhado || "sem-ip";
 }
 
 export const MENSAGEM_LIMITE = "Muitos pedidos seguidos. Espere um pouco e tente de novo.";

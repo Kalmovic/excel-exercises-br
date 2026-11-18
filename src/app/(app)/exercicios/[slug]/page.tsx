@@ -21,16 +21,16 @@ import { PassosLicao } from "@/components/simulador/PassosLicao";
 import { APROVACAO } from "@/lib/testes";
 
 const ROTULOS = { principal: "Principal", variacao: "Variação", pegadinha: "Pegadinha", conceito: "Conceito" } as const;
-import { exercicioLiberado } from "@/lib/acesso-conteudo";
+import { temPaginaDeExercicio } from "@/lib/acesso-conteudo";
 
 export function generateStaticParams() {
-  return exercicios.filter(exercicioLiberado).map((e) => ({ slug: e.slug }));
+  return exercicios.filter(temPaginaDeExercicio).map((e) => ({ slug: e.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/exercicios/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const ex = exercicioPorSlug(slug);
-  if (!ex) return {};
+  if (!ex || !temPaginaDeExercicio(ex)) return {};
   return {
     title: ex.titulo,
     description: ex.enunciado.join(" ").replace(/[`*]/g, ""),
@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: PageProps<"/exercicios/[slug]
 export default async function PaginaExercicio({ params }: PageProps<"/exercicios/[slug]">) {
   const { slug } = await params;
   const ex = exercicioPorSlug(slug);
-  if (!ex || !exercicioLiberado(ex)) notFound();
+  // Questão do teste do módulo não tem página aqui: o gabarito dela não pode ir ao navegador.
+  if (!ex || !temPaginaDeExercicio(ex)) notFound();
   const prox = proximoExercicio(slug);
   const modulo = moduloPorSlug(ex.modulo);
   const trilha = dadosDaTrilha(ex.modulo);
