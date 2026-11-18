@@ -111,6 +111,9 @@ test("teste do módulo: correção no servidor, uma tentativa, sem dica, e o res
   // A página de emissão não fica em branco.
   await page.goto("/certificado/emitir?modulo=intro");
   await expect(page.getByTestId("certificado-em-breve")).toBeVisible();
+  // Sem contas, o topo não promete conferir o nome nem emitir agora.
+  await expect(page.getByTestId("emitir-intro-em-breve")).toContainText("em breve");
+  await expect(page.getByText("Confira o nome antes de emitir")).toHaveCount(0);
   await page.goto("/certificado/emitir");
   await expect(page.getByTestId("aprovacoes-guardadas")).toContainText("Módulo 0: Intro");
   await page.goto("/certificado/emitir?modulo=graficos");

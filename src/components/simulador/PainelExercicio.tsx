@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type ReactNode, type Ref } from "react";
+import { useEffect, useRef, useState, type ReactNode, type Ref } from "react";
 import type { Exercicio } from "@/content/schema";
 import type { Resultado } from "@/grader/corrigir";
 import { TextoRico } from "./TextoRico";
@@ -33,7 +33,13 @@ type Props = {
    * Teste do módulo: uma resposta, conferida no servidor. Sem dicas, solução,
    * explicação, número de tentativa nem navegação da trilha.
    */
-  modoTeste?: { conferindo: boolean; falhaEnvio: boolean; respondida: boolean | null };
+  modoTeste?: {
+    conferindo: boolean;
+    falhaEnvio: boolean;
+    respondida: boolean | null;
+    /** Depois de responder: o próximo passo, dentro do quadro do retorno (recebe o foco ao aparecer). */
+    proxima?: { rotulo: string; ir: () => void };
+  };
 };
 
 const FALHA_ENVIO = "Não conseguimos conferir sua resposta agora. Ela não foi contada: confira a conexão e envie de novo.";
@@ -71,6 +77,27 @@ export function AnuncioResultado({ texto }: { texto: string }) {
     <div role="status" aria-live="polite" aria-atomic="true" className="sr-only" data-testid="anuncio-resultado">
       {texto}
     </div>
+  );
+}
+
+/** "Próxima questão" do teste: junto do retorno, e com o foco nele (o Verificar acabou de sumir). */
+function BotaoProxima({ rotulo, ir }: { rotulo: string; ir: () => void }) {
+  const ref = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    // preventScroll + scrollIntoView "nearest": aparece sem pular a página.
+    ref.current?.focus({ preventScroll: true });
+    ref.current?.scrollIntoView({ block: "nearest" });
+  }, []);
+  return (
+    <button
+      ref={ref}
+      type="button"
+      onClick={ir}
+      className="mt-3 rounded-lg bg-ink px-5 py-3 font-semibold text-white hover:bg-ink-soft"
+      data-testid="proxima-teste"
+    >
+      {rotulo}
+    </button>
   );
 }
 
@@ -190,6 +217,8 @@ export function PainelExercicio({
             <>
               <p className="font-semibold">{modoTeste.respondida ? "Certo!" : "Errado."}</p>
               <p>Resposta registrada. No fim do teste você vê o que revisar.</p>
+              <p className="mt-1 text-xs text-muted">A planilha desta questão ficou travada: siga para a próxima.</p>
+              {modoTeste.proxima && <BotaoProxima {...modoTeste.proxima} />}
             </>
           )}
         </div>

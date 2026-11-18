@@ -2,7 +2,8 @@ import type { Dinamica, ExercicioDoTipo, FuncaoValor, Grafico, Verificacao } fro
 import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
-import { deIntervalo, intervaloParaTexto, posicoes } from "@/engine/address";
+import { colunaParaLetras, deIntervalo, intervaloParaTexto, posicoes, type Intervalo } from "@/engine/address";
+import { compararParaClassificar } from "@/engine/classificar";
 import { Planilha } from "@/engine/engine";
 import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } from "../tipos";
 
@@ -20,9 +21,70 @@ export function validarFerramenta(ex: ExercicioDoTipo<"ferramenta">, p: Planilha
   const estadoInicial = () => (inicial ??= Planilha.deExercicio(ex));
   for (const v of ex.verificacoes) {
     const f = conferir(v, p, estadoInicial);
-    if (f) return falhou(v.mensagem ? { ...f, mensagem: v.mensagem } : f);
+    if (!f) continue;
+    // Classificou pela coluna errada: dizer qual foi e qual é a pedida vale mais que a mensagem genérica.
+    const valores = ex.verificacoes.filter((x): x is VerificacaoValores => x.tipo === "valores");
+    const errada = v.tipo === "valores" ? colunaErrada(v, valores, p, () => Planilha.deExercicio(ex)) : null;
+    if (errada) return falhou({ ...f, mensagem: errada });
+    return falhou(v.mensagem ? { ...f, mensagem: v.mensagem } : f);
   }
   return ok();
+}
+
+type VerificacaoValores = Extract<Verificacao, { tipo: "valores" }>;
+
+/**
+ * "Você classificou pela coluna A": a verificação de valores falhou, e as
+ * linhas da tabela estão em ordem (crescente ou decrescente) por outra coluna,
+ * que não estava assim no começo. A coluna pedida é a que, classificada sozinha
+ * a partir do estado inicial, passa em todas as verificações de valores
+ * (`todas`). Sem uma coluna pedida única (ex.: duas chaves) ou sem uma coluna
+ * "culpada", devolve null.
+ */
+export function colunaErrada(v: VerificacaoValores, todas: VerificacaoValores[], p: Planilha, nova: () => Planilha): string | null {
+  const alvo = deIntervalo(v.intervalo);
+  const regiao = p.regiaoAtual(alvo.inicio);
+  // Só tabelas com cabeçalho logo acima dos dados verificados.
+  if (regiao.inicio.linha !== alvo.inicio.linha - 1 || regiao.fim.linha <= alvo.inicio.linha) return null;
+  const colunas = Array.from({ length: regiao.fim.coluna - regiao.inicio.coluna + 1 }, (_, i) => regiao.inicio.coluna + i);
+  const texto = intervaloParaTexto(regiao);
+  const dados: Intervalo = { inicio: { linha: alvo.inicio.linha, coluna: regiao.inicio.coluna }, fim: regiao.fim };
+  const coluna = (q: Planilha, c: number) =>
+    Array.from({ length: dados.fim.linha - dados.inicio.linha + 1 }, (_, i) => q.valor({ linha: dados.inicio.linha + i, coluna: c }));
+  const confere = (q: Planilha) =>
+    todas.every((x) => {
+      const i = deIntervalo(x.intervalo);
+      return x.esperado.every((linha, dl) => linha.every((esp, dc) => iguais(q.valor({ linha: i.inicio.linha + dl, coluna: i.inicio.coluna + dc }), esp, TOLERANCIA_PADRAO)));
+    });
+
+  // A coluna pedida: classificar só por ela, a partir do começo, dá o esperado.
+  const pedidas = colunas.filter((c) =>
+    (["asc", "desc"] as const).some((ordem) => {
+      const q = nova();
+      const r = q.classificar({ intervalo: texto, chaves: [{ coluna: colunaParaLetras(c), ordem }], cabecalho: true });
+      return r.ok && confere(q);
+    }),
+  );
+  if (pedidas.length !== 1) return null;
+  const pedida = pedidas[0];
+
+  const emOrdem = (vs: ReturnType<Planilha["valor"]>[], desc: boolean) => vs.every((x, i) => i === 0 || compararParaClassificar(vs[i - 1], x, desc) <= 0);
+  const variada = (vs: ReturnType<Planilha["valor"]>[]) => new Set(vs.filter((x) => x !== null && x !== "").map((x) => String(x))).size >= 2;
+  const inicio = nova();
+  const culpada = colunas.find((c) => {
+    if (c === pedida) return false;
+    const agora = coluna(p, c);
+    if (!variada(agora)) return false;
+    const antes = coluna(inicio, c);
+    return [false, true].some((desc) => emOrdem(agora, desc) && !emOrdem(antes, desc));
+  });
+  if (culpada === undefined) return null;
+  const cabecalho = (c: number) => {
+    const t = p.exibicao({ linha: regiao.inicio.linha, coluna: c }).trim();
+    return t ? `${colunaParaLetras(c)} (${t})` : colunaParaLetras(c);
+  };
+  const letra = colunaParaLetras(pedida);
+  return `Você classificou pela coluna ${cabecalho(culpada)}. A ordem pedida é por ${cabecalho(pedida)}: clique numa célula da coluna ${letra} antes de classificar.`;
 }
 
 /** Assinatura de uma linha do filtro: o texto das células travadas (dados do exercício), "*" nas editáveis. */

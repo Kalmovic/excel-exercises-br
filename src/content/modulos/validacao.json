@@ -519,7 +519,7 @@
     "versao": 1,
     "titulo": "Pegadinha: o separador da lista",
     "enunciado": [
-      "Em **D2:D10** (Pago antecipado?), crie uma lista suspensa com **Sim** e **Não**."
+      "Em **D2:D10** (coluna Antecipado), crie uma lista suspensa com **Sim** e **Não**."
     ],
     "dicas": [
       "Depois de criar, clique numa célula e abra a setinha: quantos itens aparecem?",
