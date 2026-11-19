@@ -67,6 +67,10 @@ export async function POST(request: Request) {
       metadata: { usuario_id: usuario.id, plano },
       integration_identifier: IDENTIFICADOR_CHECKOUT,
       branding_settings: MARCA_CHECKOUT,
+      // Para a nota fiscal (NFS-e): CPF/CNPJ e endereço com CEP, gravados no cliente do Stripe.
+      billing_address_collection: "required",
+      tax_id_collection: { enabled: true, required: "if_supported" },
+      customer_update: { name: "auto", address: "auto" },
     };
     const sessao = await stripe.checkout.sessions.create(
       plano === "mensal"

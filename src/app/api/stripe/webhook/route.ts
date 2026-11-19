@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
+import { cancelarNotas, emitirNota, nfseConfigurada } from "@/lib/nfse";
+import { registroSupabase } from "@/lib/nfse-registro";
 import { traduzirEvento } from "@/lib/pagamento-stripe";
 import { clienteStripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -78,6 +80,30 @@ export async function POST(request: Request) {
         .subscriptions.cancel(data.stripe_assinatura_id)
         .catch((e) => console.error(JSON.stringify({ tipo: "erro_cancelar_apos_reembolso", mensagem: String(e) })));
   }
+  // Nota fiscal (NFS-e pelo Asaas). "repetido": o Stripe reenviou o aviso, talvez
+  // porque a nota falhou da outra vez; emitirNota não emite duas vezes.
+  if (nfseConfigurada()) {
+    const registro = registroSupabase(supabaseAdmin());
+    if (acao.acao === "liberar" && (resultado === "aplicado" || resultado === "repetido")) {
+      try {
+        await emitirNota(evento, { stripe: clienteStripe(), registro });
+      } catch (e) {
+        // 500: o Stripe reenvia; o acesso já foi liberado e não é aplicado de novo.
+        console.error(JSON.stringify({ tipo: "erro_nfse", evento: evento.type, id: evento.id, mensagem: String(e) }));
+        return NextResponse.json({ erro: "falha ao emitir a nota" }, { status: 500 });
+      }
+    }
+    const pagamento = pagamentoRevogado(evento);
+    if (acao.acao === "revogar" && resultado === "aplicado" && pagamento)
+      await cancelarNotas(pagamento, registro).catch((e) => console.error(JSON.stringify({ tipo: "erro_cancelar_nfse", mensagem: String(e) })));
+  }
   console.log(JSON.stringify({ tipo: "webhook_stripe", evento: evento.type, id: evento.id, acao: acao.acao, resultado }));
   return NextResponse.json({ ok: true, resultado });
+}
+
+/** O PaymentIntent do reembolso ou da contestação: é por ele que achamos a nota a cancelar. */
+function pagamentoRevogado(evento: Stripe.Event): string | null {
+  if (evento.type !== "charge.refunded" && evento.type !== "charge.dispute.created") return null;
+  const pi = evento.data.object.payment_intent;
+  return pi == null ? null : typeof pi === "string" ? pi : pi.id;
 }
