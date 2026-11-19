@@ -87,6 +87,7 @@ describe("NFS-e pelo Asaas", () => {
     const nota = chamadas.find((c) => c.metodo === "POST" && c.caminho === "invoices")!.corpo!;
     expect(nota).toMatchObject({ customer: "cus_asaas_1", value: 238.8, externalReference: "cs_1", municipalServiceId: "429606", effectiveDate: "2026-11-19" });
     expect(nota.taxes).toMatchObject({ iss: 2, retainIss: false });
+    expect(nota.taxes).not.toHaveProperty("nbsCode"); // só vai quando NFSE_NBS existe
     expect(nota.serviceDescription).toContain("de 19/11/2026 a 19/11/2027");
     expect(chamadas.some((c) => c.caminho === "invoices/inv_1/authorize")).toBe(true);
     expect(registro.linhas.get("cs_1")).toMatchObject({ status: "emitida", asaas_nota: "inv_1", pagamento: "pi_1", usuario_id: "u1" });

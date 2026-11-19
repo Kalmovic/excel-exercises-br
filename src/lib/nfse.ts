@@ -20,6 +20,7 @@ import type Stripe from "stripe";
  * - NFSE_SERVICO_ID: id do serviço municipal no Asaas (GET /invoices/municipalServices).
  * - NFSE_SERVICO_NOME: o nome desse serviço.
  * - NFSE_ISS: alíquota de ISS em % (o contador informa).
+ * - NFSE_NBS: código NBS do serviço, se a prefeitura exigir (Emissor Nacional).
  */
 
 export const nfseConfigurada = () => Boolean(process.env.ASAAS_API_KEY && process.env.NFSE_SERVICO_ID);
@@ -30,6 +31,7 @@ const config = () => ({
   servicoId: process.env.NFSE_SERVICO_ID ?? "",
   servicoNome: process.env.NFSE_SERVICO_NOME || "Licenciamento de uso de programa de computação",
   iss: Number(process.env.NFSE_ISS || "0"),
+  nbs: process.env.NFSE_NBS || null,
 });
 
 /** Erro devolvido pelo Asaas. 4xx = dado errado (tentar de novo não resolve); 5xx = fora do ar. */
@@ -211,7 +213,7 @@ export async function emitirNota(
     // Nota já criada numa tentativa anterior? (achada pela origem)
     type Nota = { id: string; status: string };
     let nota: Nota | undefined = (await asaas<{ data: Nota[] }>(`invoices?externalReference=${encodeURIComponent(p.origem)}&limit=1`)).data[0];
-    const { servicoId, servicoNome, iss } = config();
+    const { servicoId, servicoNome, iss, nbs } = config();
     nota ??= await asaas<Nota>("invoices", {
       method: "POST",
       body: {
@@ -224,7 +226,7 @@ export async function emitirNota(
         municipalServiceId: servicoId,
         municipalServiceName: servicoNome.slice(0, 250),
         externalReference: p.origem,
-        taxes: { retainIss: false, iss, cofins: 0, csll: 0, inss: 0, ir: 0, pis: 0 },
+        taxes: { retainIss: false, iss, cofins: 0, csll: 0, inss: 0, ir: 0, pis: 0, ...(nbs ? { nbsCode: nbs } : {}) },
       },
     });
     await deps.registro.salvar({ origem: p.origem, asaas_nota: nota.id });

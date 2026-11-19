@@ -68,11 +68,15 @@ contestação cancelam a nota. Cada nota fica em `notas_fiscais` (status `emitid
    - `ASAAS_API_KEY` = chave de produção do Asaas
    - `ASAAS_URL` = `https://api.asaas.com/v3`
    - `NFSE_SERVICO_ID` = id do serviço municipal (`GET /v3/invoices/municipalServices?description=...`).
-     No Rio: `429606` = 01.05.01.001 Licenciamento de uso de programa de computação;
-     `430061` = 08.02.01.015 Instrução e treinamento à distância. **O contador escolhe.**
+     No Rio: `429606` = 01.05.01.001 Licenciamento de uso de programa de computação (item 01.05,
+     confirmado pela Contabilizei para o CNAE 6202-3/00).
    - `NFSE_SERVICO_NOME` = o nome desse serviço
-   - `NFSE_ISS` = alíquota de ISS em % (o contador informa; no Simples costuma ir no DAS)
-3. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
+   - `NFSE_ISS` = alíquota de ISS em % (no Simples, a parte do ISS na alíquota efetiva da faixa; o contador informa)
+   - `NFSE_NBS` = código NBS do serviço, se o Asaas pedir (o Rio usa o Emissor Nacional, que exige NBS)
+4. Confirmar com o suporte do Asaas que, no Rio, as notas saem pelo **Emissor Nacional**: assim a Contabilizei
+   importa sozinha. Fora dele, a importação na Contabilizei é manual até o dia 5 do mês seguinte.
+5. O certificado A1 vence em **17/03/2027**: renove antes e suba o novo no Asaas, senão a emissão para.
+6. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
 
 **Teste de ponta a ponta** (Stripe teste + sandbox do Asaas, assina, emite, espera autorizar, reembolsa e cancela):
 ```bash
