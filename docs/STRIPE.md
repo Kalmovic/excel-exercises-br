@@ -52,6 +52,29 @@ Copie o **Signing secret** (`whsec_…`) para `STRIPE_WEBHOOK_SECRET` na Vercel.
 - Webhook local: `stripe listen --forward-to localhost:3000/api/stripe/webhook` (o CLI mostra o `whsec_` para usar no `.env.local`).
 - Depois do deploy: Developers → Webhooks → o endpoint mostra cada aviso e a resposta (tem que ser 200).
 
-## Nota fiscal
-O Stripe não emite NFS-e. Para a nota de serviço use um emissor à parte (eNotas, NFE.io, Focus NFe…),
-ligado ao mesmo evento de pagamento. Combine com o contador antes de abrir as vendas.
+## Nota fiscal (NFS-e pelo Asaas)
+O Stripe não emite NFS-e. A cada pagamento confirmado, o webhook do Stripe pede a nota ao Asaas
+(`src/lib/nfse.ts`), que registra na prefeitura e manda o PDF por e-mail ao aluno. Reembolso ou
+contestação cancelam a nota. Cada nota fica em `notas_fiscais` (status `emitida`, `sem_dados`, `erro`…).
+
+- O checkout pede **CPF/CNPJ e endereço com CEP** (a prefeitura do Rio exige o endereço do tomador).
+- Dado recusado pela prefeitura (status `erro` na tabela) não é repetido: corrija e emita pelo painel do Asaas.
+  Asaas fora do ar: o webhook responde 500 e o Stripe reenvia (a nota não sai duas vezes).
+
+**Para ligar em produção:**
+1. No Asaas (produção): Minha conta → Dados fiscais: inscrição municipal, regime (Simples), série e número
+   do RPS e o **certificado digital A1** (a prefeitura do Rio autentica por certificado).
+2. Vercel → Environment Variables:
+   - `ASAAS_API_KEY` = chave de produção do Asaas
+   - `ASAAS_URL` = `https://api.asaas.com/v3`
+   - `NFSE_SERVICO_ID` = id do serviço municipal (`GET /v3/invoices/municipalServices?description=...`).
+     No Rio: `429606` = 01.05.01.001 Licenciamento de uso de programa de computação;
+     `430061` = 08.02.01.015 Instrução e treinamento à distância. **O contador escolhe.**
+   - `NFSE_SERVICO_NOME` = o nome desse serviço
+   - `NFSE_ISS` = alíquota de ISS em % (o contador informa; no Simples costuma ir no DAS)
+3. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
+
+**Teste de ponta a ponta** (Stripe teste + sandbox do Asaas, assina, emite, espera autorizar, reembolsa e cancela):
+```bash
+NFSE_INTEGRACAO=1 STRIPE_SECRET_KEY=sk_test_... ASAAS_API_KEY=... NFSE_SERVICO_ID=429606 npx vitest run src/lib/nfse.integracao.test.ts
+```

@@ -5,13 +5,16 @@ const SEGREDO = "whsec_teste_segredo";
 const rpc = vi.fn();
 const cancelar = vi.fn(async () => ({}));
 const buscarCobranca = vi.fn(async (id: string) => ({ id, customer: "cus_7" }));
-const reembolsar = vi.fn(async (_p: object, _o?: object) => ({ id: "re_1" }));
+const reembolsar = vi.fn<(p: object, o?: object) => Promise<{ id: string }>>(async () => ({ id: "re_1" }));
 vi.mock("@/lib/supabase/admin", () => ({
   supabaseAdmin: () => ({
     rpc,
     from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: { stripe_assinatura_id: "sub_1" } }) }) }) }),
   }),
 }));
+const nfse = { configurada: vi.fn(() => false), emitir: vi.fn(async () => "emitida"), cancelar: vi.fn(async () => 1) };
+vi.mock("@/lib/nfse", () => ({ nfseConfigurada: () => nfse.configurada(), emitirNota: (...a: unknown[]) => nfse.emitir(...(a as [])), cancelarNotas: (...a: unknown[]) => nfse.cancelar(...(a as [])) }));
+vi.mock("@/lib/nfse-registro", () => ({ registroSupabase: () => ({}) }));
 vi.mock("@/lib/stripe", async () => {
   const { default: S } = await import("stripe");
   const s = new S("sk_test_x");
@@ -108,5 +111,32 @@ describe("webhook do Stripe", async () => {
     reembolsar.mockRejectedValueOnce(new Error("rede"));
     expect((await POST(assinado(alerta("evt_7")))).status).toBe(500);
     expect(rpc).not.toHaveBeenCalled();
+  });
+
+  it("nota fiscal: pagamento liberado emite a nota; aviso repetido tenta de novo (sem duplicar, quem garante é emitirNota)", async () => {
+    nfse.configurada.mockReturnValue(true);
+    nfse.emitir.mockClear();
+    rpc.mockResolvedValue({ data: "aplicado", error: null });
+    expect((await POST(assinado(anualPago))).status).toBe(200);
+    rpc.mockResolvedValue({ data: "repetido", error: null });
+    expect((await POST(assinado(anualPago))).status).toBe(200);
+    expect(nfse.emitir).toHaveBeenCalledTimes(2);
+    rpc.mockResolvedValue({ data: "desconhecido", error: null }); // aluno não achado: sem nota
+    await POST(assinado(anualPago));
+    expect(nfse.emitir).toHaveBeenCalledTimes(2);
+    nfse.configurada.mockReturnValue(false);
+  });
+
+  it("nota fiscal: Asaas fora do ar responde 500 (o Stripe reenvia); reembolso cancela a nota", async () => {
+    nfse.configurada.mockReturnValue(true);
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    rpc.mockResolvedValue({ data: "aplicado", error: null });
+    nfse.emitir.mockRejectedValueOnce(new Error("Asaas 503"));
+    expect((await POST(assinado(anualPago))).status).toBe(500);
+    nfse.cancelar.mockClear();
+    const reembolso = { id: "evt_8", type: "charge.refunded", created: anualPago.created, data: { object: { id: "ch_1", refunded: true, customer: "cus_1", payment_intent: "pi_1" } } };
+    expect((await POST(assinado(reembolso))).status).toBe(200);
+    expect(nfse.cancelar).toHaveBeenCalledWith("pi_1", expect.anything());
+    nfse.configurada.mockReturnValue(false);
   });
 });
