@@ -8,7 +8,7 @@ import type { Exercicio } from "./schema";
  */
 export const MODULOS_PLANEJADOS = [
   { slug: "fundamentos", titulo: "Fundamentos", funcoes: ["SUM", "AVERAGE", "MIN", "MAX", "ROUND"] },
-  { slug: "logica", titulo: "Lógica", funcoes: ["IF", "IFS", "AND", "OR", "NOT", "IFERROR"] },
+  { slug: "logica", titulo: "Lógica", funcoes: ["IF", "IFS", "AND", "OR", "NOT", "IFERROR", "ISBLANK", "ISNUMBER"] },
   {
     slug: "condicionais",
     titulo: "Contar e somar com condição",

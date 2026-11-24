@@ -365,7 +365,7 @@
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "CONT.SES: duas condições",
@@ -1060,6 +1060,1217 @@
       "AVERAGEIF"
     ],
     "licao": "mediase-media-do-norte",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "e7028fe4-1c12-5b30-8948-8caa72d1ef24",
+    "slug": "cont-se-curinga-ltda",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.SE com curinga: o que termina com Ltda",
+    "intro": "Nem sempre o critério é a célula inteira: às vezes é \"o nome termina com Ltda\" ou \"o código começa com TRAB\". Para isso existem os curingas.",
+    "enunciado": [
+      "Carteira de clientes do escritório de contabilidade. Em **G1**, conte quantos clientes são sociedades limitadas: o nome **termina com Ltda**."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Regime",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário mensal",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente Ltda"
+        },
+        "B2": {
+          "entrada": "Simples"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Marcos Vieira MEI"
+        },
+        "B3": {
+          "entrada": "MEI"
+        },
+        "C3": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Auto Peças Silva Ltda"
+        },
+        "B4": {
+          "entrada": "Presumido"
+        },
+        "C4": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S.A."
+        },
+        "B5": {
+          "entrada": "Presumido"
+        },
+        "C5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mercado Bom Preço Ltda"
+        },
+        "B6": {
+          "entrada": "Simples"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana Souza MEI"
+        },
+        "B7": {
+          "entrada": "MEI"
+        },
+        "C7": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Construtora Alfa Ltda"
+        },
+        "B8": {
+          "entrada": "Real"
+        },
+        "C8": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Café Central ME"
+        },
+        "B9": {
+          "entrada": "Simples"
+        },
+        "C9": {
+          "entrada": "520",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Transportadora Souza Ltda"
+        },
+        "B10": {
+          "entrada": "Presumido"
+        },
+        "C10": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Silva & Filhos Comércio Ltda"
+        },
+        "B11": {
+          "entrada": "Simples"
+        },
+        "C11": {
+          "entrada": "870",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Clientes Ltda",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 230,
+        "B": 100,
+        "C": 130,
+        "F": 120,
+        "G": 90
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "A3": [
+          "Marcos Vieira Ltda",
+          "Marcos Vieira MEI"
+        ],
+        "A8": [
+          "Construtora Alfa S.A.",
+          "Construtora Alfa Ltda"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(A2:A11;\"*Ltda\")"
+      }
+    ],
+    "dicas": [
+      "No critério, o asterisco (`*`) quer dizer \"qualquer coisa, de qualquer tamanho\".",
+      "\"Termina com Ltda\" é qualquer coisa antes e Ltda no fim."
+    ],
+    "explicacao": [
+      "`=CONT.SE(A2:A11;\"*Ltda\")`. O * aceita qualquer texto antes de Ltda. Sem ele, o CONT.SE procuraria células escritas exatamente \"Ltda\".",
+      "Curingas: `*` (qualquer sequência), `?` (um caractere só). Valem em CONT.SE, CONT.SES, SOMASE, SOMASES e MÉDIASE."
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";\"LTDA\"\\)",
+        "dica": "Sem curinga, o CONT.SE procura a célula escrita exatamente \"Ltda\", e nenhum nome é só isso."
+      },
+      {
+        "padrao": ";\"LTDA\\*\"\\)",
+        "dica": "Com o * depois, o critério procura nomes que **começam** com Ltda."
+      }
+    ],
+    "video": "O asterisco no critério: contar \"tudo que termina com Ltda\" sem coluna auxiliar.",
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-curinga-ltda",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "dadfbd7d-15a5-5f75-9734-c7358dfa6364",
+    "slug": "somases-periodo-datas",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 8,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASES entre duas datas",
+    "intro": "\"Quanto faturamos em novembro?\" é a pergunta de todo fechamento. Com o período em duas células, a mesma fórmula serve para qualquer mês.",
+    "enunciado": [
+      "O período está em **G1** (início) e **G2** (fim). Em **G3**, some o valor das notas emitidas **dentro do período**, contando o primeiro e o último dia.",
+      "A fórmula precisa usar G1 e G2: trocando as datas, o total acompanha."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Paga"
+        },
+        "A3": {
+          "entrada": "31/10/2026"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Paga"
+        },
+        "A4": {
+          "entrada": "01/11/2026"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Paga"
+        },
+        "A5": {
+          "entrada": "05/11/2026"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Aberta"
+        },
+        "A6": {
+          "entrada": "12/11/2026"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Paga"
+        },
+        "A7": {
+          "entrada": "18/11/2026"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Aberta"
+        },
+        "A8": {
+          "entrada": "25/11/2026"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Aberta"
+        },
+        "A9": {
+          "entrada": "30/11/2026"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Paga"
+        },
+        "A10": {
+          "entrada": "01/12/2026"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Aberta"
+        },
+        "A11": {
+          "entrada": "03/12/2026"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Aberta"
+        },
+        "F1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "01/11/2026"
+        },
+        "F2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "30/11/2026"
+        },
+        "F3": {
+          "entrada": "Faturado",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 170,
+        "C": 100,
+        "F": 150,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "G1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "G2": [
+          "31/10/2026",
+          "15/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G3",
+        "esperado": 11080,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "São duas condições na mesma coluna de datas: a partir do início e até o fim.",
+      "O operador vai entre aspas e a célula fica de fora, presa com &: o mesmo truque do \"<\"&célula."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)` → R$ 11.080,00.",
+      "A coluna de datas aparece duas vezes, uma para cada ponta. Com >= e <=, as notas de 01/11 e 30/11 entram."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\">=G1\"|\"<=G2\"",
+        "dica": "Dentro das aspas, G1 e G2 são só texto. Junte o operador com a célula usando &."
+      },
+      {
+        "padrao": "\">\"&|\"<\"&",
+        "dica": "As pontas contam: a nota emitida no primeiro ou no último dia também é do período."
+      },
+      {
+        "padrao": "/20\\d\\d",
+        "dica": "Funciona para novembro, mas a fórmula precisa usar G1 e G2 para servir a qualquer período."
+      }
+    ],
+    "video": "Faturamento do mês com SOMASES e duas datas em células: troque o mês e o total acompanha.",
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-periodo-datas",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "1318f128-4973-50bf-9106-a9c9ef4d20eb",
+    "slug": "criterios-diferente-vazio",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Diferente de e vazio: o que está em aberto",
+    "intro": "Contas a receber: nota sem data de pagamento está em aberto, e nota cancelada não conta. Dois critérios que quase ninguém sabe escrever: o vazio e o \"diferente de\".",
+    "enunciado": [
+      "Em **H1**, some o valor das notas **sem data de pagamento** (coluna D vazia) que **não** estão canceladas.",
+      "Use as linhas **2 a 20**: as linhas vazias são para as notas do resto do mês, e a fórmula precisa continuar certa quando elas forem lançadas."
+    ],
+    "grade": {
+      "linhas": 21,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF-1201"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "05/11/2026"
+        },
+        "E2": {
+          "entrada": "Emitida"
+        },
+        "A3": {
+          "entrada": "NF-1202"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Emitida"
+        },
+        "A4": {
+          "entrada": "NF-1203"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "10/11/2026"
+        },
+        "E4": {
+          "entrada": "Emitida"
+        },
+        "A5": {
+          "entrada": "NF-1204"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Cancelada"
+        },
+        "A6": {
+          "entrada": "NF-1205"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Emitida"
+        },
+        "A7": {
+          "entrada": "NF-1206"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "18/11/2026"
+        },
+        "E7": {
+          "entrada": "Emitida"
+        },
+        "A8": {
+          "entrada": "NF-1207"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Emitida"
+        },
+        "A9": {
+          "entrada": "NF-1208"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Cancelada"
+        },
+        "A10": {
+          "entrada": "NF-1209"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Emitida"
+        },
+        "A11": {
+          "entrada": "NF-1210"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "22/11/2026"
+        },
+        "E11": {
+          "entrada": "Emitida"
+        },
+        "G1": {
+          "entrada": "Em aberto (R$)",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 170,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 190,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "E3": [
+          "Cancelada",
+          "Emitida"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H1",
+        "esperado": 8980,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C20;D2:D20;\"\";E2:E20;\"<>Cancelada\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Critério de célula vazia: aspas sem nada dentro.",
+      "Critério \"diferente de\": o sinal <> vem antes do texto, tudo dentro das mesmas aspas."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C20;D2:D20;\"\";E2:E20;\"<>Cancelada\")` → R$ 8.980,00.",
+      "\"\" casa com as células vazias; \"<>Cancelada\" casa com tudo que não é Cancelada. As linhas 12 a 20 não atrapalham a soma porque o valor delas está vazio."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\"=CANCELADA\"|;\"CANCELADA\"",
+        "dica": "Assim a soma pega só as canceladas. O critério precisa ser o contrário: diferente de Cancelada."
+      },
+      {
+        "padrao": "\"<>\"\\)$|D2:D20;\"<>\"",
+        "dica": "\"<>\" sozinho quer dizer \"não vazio\": pega as notas já pagas. Em aberto é a data de pagamento vazia."
+      },
+      {
+        "padrao": "[A-Z]2:[A-Z](1[01]|[2-9])(?!\\d)",
+        "dica": "Mantenha os intervalos até a linha 20, como pede o enunciado: as notas novas entram ali."
+      }
+    ],
+    "video": "Os dois critérios esquecidos: \"\" para vazio e \"<>\" para diferente de. Contas a receber em uma fórmula.",
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "criterios-diferente-vazio",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "4fda854e-9885-59d5-a629-01c2c0b80fe0",
+    "slug": "caso-relatorio-por-responsavel",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: relatório mensal por responsável",
+    "intro": "Fechamento do mês no escritório: quantos lançamentos cada responsável fez, quanto faturou e o valor médio, sem contar os cancelados. Tudo com fórmulas que você escreve uma vez e copia.",
+    "enunciado": [
+      "O período está em **H1** e **H2**. Para cada responsável (G5:G8), sem contar os lançamentos **Cancelados** e só dentro do período:",
+      "**H5**: quantos lançamentos. **I5**: o total faturado. **J5**: o valor médio (total ÷ lançamentos), mostrando **0** quando o responsável não tiver lançamentos.",
+      "Escreva as três fórmulas na linha 5 e copie até a linha **8**."
+    ],
+    "grade": {
+      "linhas": 20,
+      "colunas": 11,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "30/10/2026"
+        },
+        "B3": {
+          "entrada": "Daniela"
+        },
+        "C3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "03/11/2026"
+        },
+        "B4": {
+          "entrada": "Ana"
+        },
+        "C4": {
+          "entrada": "Construtora Alfa"
+        },
+        "D4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "04/11/2026"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "06/11/2026"
+        },
+        "B6": {
+          "entrada": "Carla"
+        },
+        "C6": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D6": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "10/11/2026"
+        },
+        "B7": {
+          "entrada": "Ana"
+        },
+        "C7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "Cancelado"
+        },
+        "A8": {
+          "entrada": "11/11/2026"
+        },
+        "B8": {
+          "entrada": "Bruno"
+        },
+        "C8": {
+          "entrada": "Transportadora Souza"
+        },
+        "D8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "14/11/2026"
+        },
+        "B9": {
+          "entrada": "Carla"
+        },
+        "C9": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D9": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Pendente"
+        },
+        "A10": {
+          "entrada": "17/11/2026"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "19/11/2026"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Construtora Alfa"
+        },
+        "D11": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "Pago"
+        },
+        "A12": {
+          "entrada": "21/11/2026"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E12": {
+          "entrada": "Cancelado"
+        },
+        "A13": {
+          "entrada": "24/11/2026"
+        },
+        "B13": {
+          "entrada": "Ana"
+        },
+        "C13": {
+          "entrada": "Transportadora Souza"
+        },
+        "D13": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Pago"
+        },
+        "A14": {
+          "entrada": "27/11/2026"
+        },
+        "B14": {
+          "entrada": "Bruno"
+        },
+        "C14": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D14": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E14": {
+          "entrada": "Pendente"
+        },
+        "A15": {
+          "entrada": "30/11/2026"
+        },
+        "B15": {
+          "entrada": "Carla"
+        },
+        "C15": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D15": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E15": {
+          "entrada": "Pago"
+        },
+        "A16": {
+          "entrada": "01/12/2026"
+        },
+        "B16": {
+          "entrada": "Ana"
+        },
+        "C16": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D16": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E16": {
+          "entrada": "Pendente"
+        },
+        "A17": {
+          "entrada": "02/12/2026"
+        },
+        "B17": {
+          "entrada": "Bruno"
+        },
+        "C17": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D17": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E17": {
+          "entrada": "Pago"
+        },
+        "G1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "01/11/2026"
+        },
+        "G2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "30/11/2026"
+        },
+        "G4": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "Lançamentos",
+          "negrito": true
+        },
+        "I4": {
+          "entrada": "Faturado",
+          "negrito": true
+        },
+        "J4": {
+          "entrada": "Valor médio",
+          "negrito": true
+        },
+        "G5": {
+          "entrada": "Ana"
+        },
+        "G6": {
+          "entrada": "Bruno"
+        },
+        "G7": {
+          "entrada": "Carla"
+        },
+        "G8": {
+          "entrada": "Daniela"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 170,
+        "D": 100,
+        "E": 100,
+        "G": 110,
+        "H": 120,
+        "I": 120,
+        "J": 120
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17"
+      ],
+      "alternativas": {
+        "H1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "H2": [
+          "31/10/2026",
+          "15/12/2026"
+        ],
+        "G5": [
+          "Bruno",
+          "Ana"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H5",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G5;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "I5",
+        "esperado": 8000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G5;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "J5",
+        "esperado": 2666.6666666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(I5/H5;0)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H6",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G6;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "I6",
+        "esperado": 9450,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G6;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "J6",
+        "esperado": 2362.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(I6/H6;0)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H7",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G7;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "I7",
+        "esperado": 4400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G7;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "J7",
+        "esperado": 1466.6666666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(I7/H7;0)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G8;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "I8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G8;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "J8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(I8/H8;0)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "dicas": [
+      "Cada fórmula tem três condições: o responsável, o período (duas pontas na coluna de datas) e o status diferente de Cancelado.",
+      "Antes de copiar, trave com $ tudo que não muda de linha (a base e as datas do período). Só o nome do responsável acompanha a linha.",
+      "Para o valor médio, divida o total pelos lançamentos e trate o #DIV/0! com a função de Lógica que troca erro por outro valor."
+    ],
+    "explicacao": [
+      "**H5**: `=CONT.SES($B$2:$B$17;G5;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")`.",
+      "**I5**: o mesmo, com SOMASES e $D$2:$D$17 na frente. **J5**: `=SEERRO(I5/H5;0)`.",
+      "A Daniela só lançou em outubro: 0 lançamentos no mês, e o SEERRO evita o #DIV/0! no valor médio."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "(SES|SE)\\(B2:B17|;B2:B17;|\"&H[12](?!\\d)",
+        "dica": "Ao copiar para baixo, os intervalos e as datas sem $ descem junto. Trave a base e o período com $."
+      },
+      {
+        "padrao": "\">=\\$?H\\$?1\"|\"<=\\$?H\\$?2\"",
+        "dica": "Dentro das aspas, H1 e H2 são só texto. Junte o operador com a célula usando &."
+      },
+      {
+        "padrao": "\"ANA\"",
+        "dica": "Com \"Ana\" escrito na fórmula, a cópia conta a Ana em todas as linhas. Use a célula do responsável."
+      }
+    ],
+    "video": "O relatório do mês por responsável: CONT.SES, SOMASES e SEERRO com $ no lugar certo para copiar.",
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-por-responsavel",
     "etapa": 1,
     "papel": "principal"
   },
@@ -2235,7 +3446,7 @@
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "CONT.SES: Bruno no Sul",
@@ -2408,7 +3619,7 @@
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "CONT.SES com comparação",
@@ -2581,7 +3792,7 @@
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: Ana ou Bruno",
@@ -2758,7 +3969,7 @@
     "trilha": "excel-ptbr",
     "modulo": "condicionais",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -4392,6 +5603,3554 @@
     "correta": 1
   },
   {
+    "id": "d916214c-47fe-582d-8415-a86447836a9d",
+    "slug": "cont-se-curinga-ltda-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMASE pelo começo do código",
+    "enunciado": [
+      "O código do processo começa com a área: TRAB (trabalhista), CIV (cível), TRIB (tributário). Em **G1**, some os honorários dos processos **trabalhistas**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorários",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "TRAB-2025-014"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "CIV-2024-102"
+        },
+        "B3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C3": {
+          "entrada": "6200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "TRAB-2026-003"
+        },
+        "B4": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C4": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "TRIB-2025-021"
+        },
+        "B5": {
+          "entrada": "Construtora Alfa"
+        },
+        "C5": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "TRAB-2026-019"
+        },
+        "B6": {
+          "entrada": "Café Central"
+        },
+        "C6": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "CIV-2026-007"
+        },
+        "B7": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C7": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "TRAB-2024-088"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "7300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "TRIB-2026-011"
+        },
+        "B9": {
+          "entrada": "Silva & Filhos"
+        },
+        "C9": {
+          "entrada": "8100",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Trabalhistas",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 170,
+        "C": 110,
+        "F": 120,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 18500,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(A2:A9;\"TRAB*\";C2:C9)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "\"Começa com TRAB\" é TRAB seguido de qualquer coisa.",
+      "Na SOMASE: onde procurar, o critério e, por último, o que somar."
+    ],
+    "explicacao": [
+      "`=SOMASE(A2:A9;\"TRAB*\";C2:C9)` → R$ 18.500,00.",
+      "Cuidado com \"TR*\": ele pegaria também os tributários (TRIB)."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\"TR\\*\"",
+        "dica": "\"TR*\" também pega os códigos TRIB (tributário). Seja mais específico."
+      },
+      {
+        "padrao": "\"\\*TRAB\"",
+        "dica": "Com o * antes, o critério procura códigos que **terminam** com TRAB."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-curinga-ltda",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "77c7a906-6fd7-5345-b39b-1d9ad441db07",
+    "slug": "cont-se-curinga-ltda-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Busca por um pedaço do nome",
+    "enunciado": [
+      "Em **F1** está um pedaço de nome para buscar (Silva). Em **F2**, conte quantos clientes têm esse texto **em qualquer parte** do nome.",
+      "A fórmula precisa usar F1: trocando o texto de F1, a contagem acompanha."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Regime",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário mensal",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente Ltda"
+        },
+        "B2": {
+          "entrada": "Simples"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Marcos Vieira MEI"
+        },
+        "B3": {
+          "entrada": "MEI"
+        },
+        "C3": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Auto Peças Silva Ltda"
+        },
+        "B4": {
+          "entrada": "Presumido"
+        },
+        "C4": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S.A."
+        },
+        "B5": {
+          "entrada": "Presumido"
+        },
+        "C5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mercado Bom Preço Ltda"
+        },
+        "B6": {
+          "entrada": "Simples"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana Souza MEI"
+        },
+        "B7": {
+          "entrada": "MEI"
+        },
+        "C7": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Construtora Alfa Ltda"
+        },
+        "B8": {
+          "entrada": "Real"
+        },
+        "C8": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Café Central ME"
+        },
+        "B9": {
+          "entrada": "Simples"
+        },
+        "C9": {
+          "entrada": "520",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Transportadora Souza Ltda"
+        },
+        "B10": {
+          "entrada": "Presumido"
+        },
+        "C10": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Silva & Filhos Comércio Ltda"
+        },
+        "B11": {
+          "entrada": "Simples"
+        },
+        "C11": {
+          "entrada": "870",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Buscar",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Silva"
+        },
+        "E2": {
+          "entrada": "Encontrados",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 230,
+        "B": 100,
+        "C": 130,
+        "F": 120,
+        "G": 90
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "F1": [
+          "Café",
+          "Ltda"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 2,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(A2:A11;\"*\"&F1&\"*\")"
+      }
+    ],
+    "dicas": [
+      "\"Em qualquer parte\" é qualquer coisa antes e qualquer coisa depois.",
+      "Para juntar os asteriscos com o conteúdo de uma célula, use o & (como no \"<\"&célula)."
+    ],
+    "explicacao": [
+      "`=CONT.SE(A2:A11;\"*\"&F1&\"*\")`. O & monta o critério \"*Silva*\" a partir de F1. Assim F1 vira um campo de busca.",
+      "Escrever `\"*F1*\"` não funciona: dentro das aspas, F1 é só texto."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\"\\*F1\\*\"",
+        "dica": "Dentro das aspas, F1 é só um texto, não a célula. Junte os asteriscos com a célula usando &."
+      },
+      {
+        "padrao": "\"\\*SILVA\\*\"",
+        "dica": "Funciona para Silva, mas a fórmula precisa usar a célula F1 para acompanhar a busca."
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-curinga-ltda",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "0ab70be3-be7d-520c-9d3e-1b9a601ff361",
+    "slug": "cont-se-curinga-ltda-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o Ltda que dava zero",
+    "enunciado": [
+      "A fórmula em **G1** deveria contar os clientes cujo nome termina com Ltda, mas mostra 0. Corrija-a."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Regime",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário mensal",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente Ltda"
+        },
+        "B2": {
+          "entrada": "Simples"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Marcos Vieira MEI"
+        },
+        "B3": {
+          "entrada": "MEI"
+        },
+        "C3": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Auto Peças Silva Ltda"
+        },
+        "B4": {
+          "entrada": "Presumido"
+        },
+        "C4": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S.A."
+        },
+        "B5": {
+          "entrada": "Presumido"
+        },
+        "C5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mercado Bom Preço Ltda"
+        },
+        "B6": {
+          "entrada": "Simples"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana Souza MEI"
+        },
+        "B7": {
+          "entrada": "MEI"
+        },
+        "C7": {
+          "entrada": "180",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Construtora Alfa Ltda"
+        },
+        "B8": {
+          "entrada": "Real"
+        },
+        "C8": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Café Central ME"
+        },
+        "B9": {
+          "entrada": "Simples"
+        },
+        "C9": {
+          "entrada": "520",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Transportadora Souza Ltda"
+        },
+        "B10": {
+          "entrada": "Presumido"
+        },
+        "C10": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Silva & Filhos Comércio Ltda"
+        },
+        "B11": {
+          "entrada": "Simples"
+        },
+        "C11": {
+          "entrada": "870",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Clientes Ltda",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "=CONT.SE(A2:A11;\"Ltda\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 230,
+        "B": 100,
+        "C": 130,
+        "F": 120,
+        "G": 90
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "A3": [
+          "Marcos Vieira Ltda",
+          "Marcos Vieira MEI"
+        ],
+        "A8": [
+          "Construtora Alfa S.A.",
+          "Construtora Alfa Ltda"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(A2:A11;\"*Ltda\")"
+      }
+    ],
+    "dicas": [
+      "Sem curinga, o critério compara a célula inteira. Algum cliente se chama só \"Ltda\"?",
+      "Falta dizer que pode haver qualquer coisa antes do Ltda."
+    ],
+    "explicacao": [
+      "`=CONT.SE(A2:A11;\"*Ltda\")`. O critério \"Ltda\" só conta células que sejam exatamente Ltda. É o erro mais comum ao contar por parte do texto."
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";\"LTDA\"\\)",
+        "dica": "O critério ainda compara o nome inteiro com \"Ltda\". Falta o curinga."
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-curinga-ltda",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "c8f47e4e-9f95-5a77-88fb-69dc02e78681",
+    "slug": "cont-se-curinga-ltda-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual critério conta os códigos de processo que **começam** com TRAB?"
+    ],
+    "dicas": [
+      "O * fica no lugar do pedaço que pode ser qualquer coisa."
+    ],
+    "explicacao": [
+      "\"TRAB*\": TRAB no começo e qualquer coisa depois."
+    ],
+    "opcoes": [
+      {
+        "texto": "\"*TRAB\"",
+        "dica": "Com o * antes, o código precisa terminar com TRAB."
+      },
+      {
+        "texto": "\"TRAB\"",
+        "dica": "Sem curinga, só conta a célula escrita exatamente TRAB."
+      },
+      {
+        "texto": "\"TRAB*\""
+      },
+      {
+        "texto": "\"TRAB?\"",
+        "dica": "O ? vale um caractere só: TRAB seguido de exatamente uma letra ou número."
+      }
+    ],
+    "correta": 2,
+    "tentativasAteExplicacao": 3,
+    "licao": "cont-se-curinga-ltda",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "edac3e06-7c68-5c5f-b66a-23b9899d7630",
+    "slug": "somases-periodo-datas-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 82,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantas notas no período",
+    "enunciado": [
+      "Em **G3**, conte quantas notas foram emitidas entre **G1** e **G2**, contando as duas pontas."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Paga"
+        },
+        "A3": {
+          "entrada": "31/10/2026"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Paga"
+        },
+        "A4": {
+          "entrada": "01/11/2026"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Paga"
+        },
+        "A5": {
+          "entrada": "05/11/2026"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Aberta"
+        },
+        "A6": {
+          "entrada": "12/11/2026"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Paga"
+        },
+        "A7": {
+          "entrada": "18/11/2026"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Aberta"
+        },
+        "A8": {
+          "entrada": "25/11/2026"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Aberta"
+        },
+        "A9": {
+          "entrada": "30/11/2026"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Paga"
+        },
+        "A10": {
+          "entrada": "01/12/2026"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Aberta"
+        },
+        "A11": {
+          "entrada": "03/12/2026"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Aberta"
+        },
+        "F1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "01/11/2026"
+        },
+        "F2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "30/11/2026"
+        },
+        "F3": {
+          "entrada": "Notas emitidas",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 170,
+        "C": 100,
+        "F": 150,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "G1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "G2": [
+          "31/10/2026",
+          "15/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G3",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)"
+      }
+    ],
+    "dicas": [
+      "É a mesma ideia da SOMASES, só que sem o intervalo a somar.",
+      "Cada ponta do período é um par: intervalo de datas e critério."
+    ],
+    "explicacao": [
+      "`=CONT.SES(A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)`. São 6 notas em novembro."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\">=G1\"|\"<=G2\"",
+        "dica": "Dentro das aspas, G1 e G2 são só texto. Junte o operador com a célula usando &."
+      },
+      {
+        "padrao": "\">\"&|\"<\"&",
+        "dica": "As pontas contam: a nota emitida no primeiro ou no último dia também é do período."
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-periodo-datas",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "a2184564-4900-50e1-a336-628a6a206863",
+    "slug": "somases-periodo-datas-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 83,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Em aberto no período",
+    "enunciado": [
+      "Em **G3**, some só as notas com status **Aberta** emitidas entre **G1** e **G2**."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Paga"
+        },
+        "A3": {
+          "entrada": "31/10/2026"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Paga"
+        },
+        "A4": {
+          "entrada": "01/11/2026"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Paga"
+        },
+        "A5": {
+          "entrada": "05/11/2026"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Aberta"
+        },
+        "A6": {
+          "entrada": "12/11/2026"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Paga"
+        },
+        "A7": {
+          "entrada": "18/11/2026"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Aberta"
+        },
+        "A8": {
+          "entrada": "25/11/2026"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Aberta"
+        },
+        "A9": {
+          "entrada": "30/11/2026"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Paga"
+        },
+        "A10": {
+          "entrada": "01/12/2026"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Aberta"
+        },
+        "A11": {
+          "entrada": "03/12/2026"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Aberta"
+        },
+        "F1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "01/11/2026"
+        },
+        "F2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "30/11/2026"
+        },
+        "F3": {
+          "entrada": "Em aberto",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 170,
+        "C": 100,
+        "F": 150,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "G1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "G2": [
+          "31/10/2026",
+          "15/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G3",
+        "esperado": 4000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2;D2:D11;\"Aberta\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O status é só mais um par no fim: onde procurar e o que procurar."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2;D2:D11;\"Aberta\")` → R$ 4.000,00. As notas abertas de dezembro ficam de fora."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\">=G1\"|\"<=G2\"",
+        "dica": "Dentro das aspas, G1 e G2 são só texto. Junte o operador com a célula usando &."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-periodo-datas",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "d0b0d7cd-2b0e-5af7-8f81-9098c71def2c",
+    "slug": "somases-periodo-datas-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 84,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a célula dentro das aspas",
+    "enunciado": [
+      "A fórmula em **G3** deveria somar as notas do período de G1 a G2, mas mostra **R$ 0,00**. Corrija-a."
+    ],
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Paga"
+        },
+        "A3": {
+          "entrada": "31/10/2026"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Paga"
+        },
+        "A4": {
+          "entrada": "01/11/2026"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Paga"
+        },
+        "A5": {
+          "entrada": "05/11/2026"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Aberta"
+        },
+        "A6": {
+          "entrada": "12/11/2026"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Paga"
+        },
+        "A7": {
+          "entrada": "18/11/2026"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Aberta"
+        },
+        "A8": {
+          "entrada": "25/11/2026"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Aberta"
+        },
+        "A9": {
+          "entrada": "30/11/2026"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Paga"
+        },
+        "A10": {
+          "entrada": "01/12/2026"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Aberta"
+        },
+        "A11": {
+          "entrada": "03/12/2026"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Aberta"
+        },
+        "F1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "01/11/2026"
+        },
+        "F2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "30/11/2026"
+        },
+        "F3": {
+          "entrada": "Faturado",
+          "negrito": true
+        },
+        "G3": {
+          "entrada": "=SOMASES(C2:C11;A2:A11;\">=G1\";A2:A11;\"<=G2\")",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 170,
+        "C": 100,
+        "F": 150,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "G1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "G2": [
+          "31/10/2026",
+          "15/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G3",
+        "esperado": 11080,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Tudo que está entre aspas é texto. Com G1 dentro das aspas, o critério compara as datas com as letras \"G1\", não com a data da célula.",
+      "O operador fica entre aspas; a célula, do lado de fora, presa com &."
+    ],
+    "explicacao": [
+      "`=SOMASES(C2:C11;A2:A11;\">=\"&G1;A2:A11;\"<=\"&G2)`. Com \">=G1\", o Excel compara cada data com o texto \"G1\", e nenhuma nota passa.",
+      "Esse erro não dá mensagem nenhuma, só um zero (ou um total menor) que passa despercebido no relatório."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\">=G1\"|\"<=G2\"",
+        "dica": "Ainda há uma célula dentro das aspas. O operador fica entre aspas e a célula, fora, presa com &."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-periodo-datas",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "a5a84a03-1bac-5262-9ad1-2a4e8aad0997",
+    "slug": "somases-periodo-datas-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 85,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Por que o critério se escreve **\">=\"&G1** e não **\">=G1\"**?"
+    ],
+    "dicas": [
+      "O que o Excel faz com tudo que está entre aspas?"
+    ],
+    "explicacao": [
+      "Entre aspas, G1 é só texto. O & junta o operador com o **valor** que está em G1 (a data)."
+    ],
+    "opcoes": [
+      {
+        "texto": "Tanto faz: as duas formas dão o mesmo resultado",
+        "dica": "Não dão: a pegadinha mostrou \">=G1\" somando zero."
+      },
+      {
+        "texto": "Porque dentro das aspas G1 é só texto; o & junta o operador com o valor da célula"
+      },
+      {
+        "texto": "Porque o & transforma a data em texto, e critério só aceita texto",
+        "dica": "O critério aceita datas. O & serve para tirar a referência de dentro das aspas."
+      },
+      {
+        "texto": "Porque datas sempre precisam de &",
+        "dica": "Com a data escrita no critério (\">=01/11/2026\") não há &. O & entra quando o valor vem de uma célula."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "somases-periodo-datas",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "d322bf62-f84d-5f8a-9808-59e4592efa8e",
+    "slug": "criterios-diferente-vazio-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantas notas já foram pagas",
+    "enunciado": [
+      "Em **H1**, conte quantas notas **já têm** data de pagamento (coluna D preenchida).",
+      "Use as linhas **2 a 20**: as linhas vazias são para as notas do resto do mês, e a fórmula precisa continuar certa quando elas forem lançadas."
+    ],
+    "grade": {
+      "linhas": 21,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF-1201"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "05/11/2026"
+        },
+        "E2": {
+          "entrada": "Emitida"
+        },
+        "A3": {
+          "entrada": "NF-1202"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Emitida"
+        },
+        "A4": {
+          "entrada": "NF-1203"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "10/11/2026"
+        },
+        "E4": {
+          "entrada": "Emitida"
+        },
+        "A5": {
+          "entrada": "NF-1204"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Cancelada"
+        },
+        "A6": {
+          "entrada": "NF-1205"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Emitida"
+        },
+        "A7": {
+          "entrada": "NF-1206"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "18/11/2026"
+        },
+        "E7": {
+          "entrada": "Emitida"
+        },
+        "A8": {
+          "entrada": "NF-1207"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Emitida"
+        },
+        "A9": {
+          "entrada": "NF-1208"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Cancelada"
+        },
+        "A10": {
+          "entrada": "NF-1209"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Emitida"
+        },
+        "A11": {
+          "entrada": "NF-1210"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "22/11/2026"
+        },
+        "E11": {
+          "entrada": "Emitida"
+        },
+        "G1": {
+          "entrada": "Notas pagas",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 170,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 190,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "D3": [
+          "15/11/2026",
+          ""
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H1",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SE(D2:D20;\"<>\")"
+      }
+    ],
+    "dicas": [
+      "\"Preenchida\" é o contrário de vazia: diferente de nada."
+    ],
+    "explicacao": [
+      "`=CONT.SE(D2:D20;\"<>\")`: o <> sem nada depois quer dizer \"diferente de vazio\". Funciona com datas, números e textos.",
+      "`=CONT.VALORES(D2:D20)` também resolve aqui."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\"\\*\"",
+        "dica": "O * só casa com texto, e as datas de pagamento são números. Peça as células diferentes de vazio."
+      },
+      {
+        "padrao": "D2:D20;\"\"\\)",
+        "dica": "Aspas vazias contam as células vazias: o contrário do que se pede."
+      },
+      {
+        "padrao": "[A-Z]2:[A-Z](1[01]|[2-9])(?!\\d)",
+        "dica": "Mantenha os intervalos até a linha 20, como pede o enunciado: as notas novas entram ali."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "criterios-diferente-vazio",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "dada5b2c-93ee-5464-b39d-a483cc18a2f2",
+    "slug": "criterios-diferente-vazio-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MÁXIMOSES: a maior nota em aberto",
+    "enunciado": [
+      "**MÁXIMOSES** funciona como a SOMASES (primeiro o intervalo do resultado, depois os pares de condição), mas devolve o **maior** valor em vez da soma.",
+      "Em **H1**, mostre o valor da **maior nota em aberto**: sem data de pagamento e não cancelada.",
+      "Use as linhas **2 a 20**: as linhas vazias são para as notas do resto do mês, e a fórmula precisa continuar certa quando elas forem lançadas."
+    ],
+    "grade": {
+      "linhas": 21,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF-1201"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "05/11/2026"
+        },
+        "E2": {
+          "entrada": "Emitida"
+        },
+        "A3": {
+          "entrada": "NF-1202"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Emitida"
+        },
+        "A4": {
+          "entrada": "NF-1203"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "10/11/2026"
+        },
+        "E4": {
+          "entrada": "Emitida"
+        },
+        "A5": {
+          "entrada": "NF-1204"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Cancelada"
+        },
+        "A6": {
+          "entrada": "NF-1205"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Emitida"
+        },
+        "A7": {
+          "entrada": "NF-1206"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "18/11/2026"
+        },
+        "E7": {
+          "entrada": "Emitida"
+        },
+        "A8": {
+          "entrada": "NF-1207"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Emitida"
+        },
+        "A9": {
+          "entrada": "NF-1208"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Cancelada"
+        },
+        "A10": {
+          "entrada": "NF-1209"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Emitida"
+        },
+        "A11": {
+          "entrada": "NF-1210"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "22/11/2026"
+        },
+        "E11": {
+          "entrada": "Emitida"
+        },
+        "G1": {
+          "entrada": "Maior nota em aberto",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 170,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 190,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "E3": [
+          "Cancelada",
+          "Emitida"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H1",
+        "esperado": 3800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMOSES(C2:C20;D2:D20;\"\";E2:E20;\"<>Cancelada\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Os mesmos dois critérios da lição: o vazio e o diferente de.",
+      "No MÁXIMOSES, o intervalo dos valores vem primeiro."
+    ],
+    "explicacao": [
+      "`=MÁXIMOSES(C2:C20;D2:D20;\"\";E2:E20;\"<>Cancelada\")` → R$ 3.800,00.",
+      "A NF-1208, de R$ 4.200,00, é maior, mas está cancelada. MÍNIMOSES faz o mesmo para o menor valor."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MÁXIMO\\(",
+        "dica": "MÁXIMO olha a coluna inteira, inclusive notas pagas e canceladas. Aqui o maior precisa respeitar as condições."
+      },
+      {
+        "padrao": "^=MÁXIMOSES\\([A-Z]2:[A-Z]20;\"",
+        "dica": "No MÁXIMOSES, o primeiro argumento é o intervalo dos valores, não um critério."
+      },
+      {
+        "padrao": "[A-Z]2:[A-Z](1[01]|[2-9])(?!\\d)",
+        "dica": "Mantenha os intervalos até a linha 20, como pede o enunciado: as notas novas entram ali."
+      }
+    ],
+    "funcoesExigidas": [
+      "MAXIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "criterios-diferente-vazio",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "c0b38d2f-8423-5812-bf67-edf3f35a3bd9",
+    "slug": "criterios-diferente-vazio-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: as linhas vazias também são \"diferentes\"",
+    "enunciado": [
+      "A fórmula em **H1** deveria contar as notas **não canceladas**, mas mostra 17, e só existem 10 notas. Corrija-a sem encurtar o intervalo (ele vai até a linha 20 para as próximas notas)."
+    ],
+    "grade": {
+      "linhas": 21,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF-1201"
+        },
+        "B2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "05/11/2026"
+        },
+        "E2": {
+          "entrada": "Emitida"
+        },
+        "A3": {
+          "entrada": "NF-1202"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Emitida"
+        },
+        "A4": {
+          "entrada": "NF-1203"
+        },
+        "B4": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "10/11/2026"
+        },
+        "E4": {
+          "entrada": "Emitida"
+        },
+        "A5": {
+          "entrada": "NF-1204"
+        },
+        "B5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C5": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Cancelada"
+        },
+        "A6": {
+          "entrada": "NF-1205"
+        },
+        "B6": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Emitida"
+        },
+        "A7": {
+          "entrada": "NF-1206"
+        },
+        "B7": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "C7": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "18/11/2026"
+        },
+        "E7": {
+          "entrada": "Emitida"
+        },
+        "A8": {
+          "entrada": "NF-1207"
+        },
+        "B8": {
+          "entrada": "Transportadora Souza"
+        },
+        "C8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Emitida"
+        },
+        "A9": {
+          "entrada": "NF-1208"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Cancelada"
+        },
+        "A10": {
+          "entrada": "NF-1209"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Emitida"
+        },
+        "A11": {
+          "entrada": "NF-1210"
+        },
+        "B11": {
+          "entrada": "Clínica Sorriso"
+        },
+        "C11": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "22/11/2026"
+        },
+        "E11": {
+          "entrada": "Emitida"
+        },
+        "G1": {
+          "entrada": "Notas não canceladas",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "=CONT.SE(E2:E20;\"<>Cancelada\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 170,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 190,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "alternativas": {
+        "E3": [
+          "Cancelada",
+          "Emitida"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H1",
+        "esperado": 8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES(E2:E20;\"<>Cancelada\";A2:A20;\"<>\")"
+      }
+    ],
+    "dicas": [
+      "Uma célula vazia é diferente de Cancelada? Conte quantas linhas vazias há entre a 12 e a 20.",
+      "Junte uma segunda condição que só aceite linhas com o número da nota preenchido."
+    ],
+    "explicacao": [
+      "`=CONT.SES(E2:E20;\"<>Cancelada\";A2:A20;\"<>\")`. As 9 linhas vazias são \"diferentes de Cancelada\" e entravam na contagem.",
+      "Com a segunda condição (nota preenchida), só contam as linhas de verdade, e a fórmula continua certa quando novas notas forem lançadas."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "[A-Z]2:[A-Z](1[01]|[2-9])(?!\\d)",
+        "dica": "Encurtar o intervalo resolve hoje, mas quebra quando a próxima nota for lançada. Mantenha até a linha 20 e acrescente uma condição.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "^=CONT\\.SE\\(E2:E20;\"<>CANCELADA\"\\)$",
+        "dica": "As linhas vazias também são \"diferentes de Cancelada\". Acrescente uma condição que ignore as linhas sem nota."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "criterios-diferente-vazio",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "c59d3de6-3a80-549b-b617-d1055b99184a",
+    "slug": "criterios-diferente-vazio-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual critério conta as células **preenchidas** (com qualquer coisa: texto, número ou data)?"
+    ],
+    "dicas": [
+      "Preenchida é o contrário de vazia."
+    ],
+    "explicacao": [
+      "\"<>\": diferente de vazio. Já \"\" (aspas vazias) conta as vazias."
+    ],
+    "opcoes": [
+      {
+        "texto": "\"\"",
+        "dica": "Aspas vazias contam as células vazias, o contrário."
+      },
+      {
+        "texto": "\"*\"",
+        "dica": "O * só casa com texto: números e datas ficariam de fora."
+      },
+      {
+        "texto": "\"<>\""
+      },
+      {
+        "texto": "\"<>0\"",
+        "dica": "\"<>0\" conta tudo que não é zero, inclusive as células vazias."
+      }
+    ],
+    "correta": 2,
+    "tentativasAteExplicacao": 3,
+    "licao": "criterios-diferente-vazio",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "9a7ad5c1-ba28-5998-9dd9-80a01c377a0f",
+    "slug": "caso-relatorio-por-responsavel-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pendente no mês, por responsável",
+    "enunciado": [
+      "Em **H5**, some quanto cada responsável tem **Pendente** dentro do período de H1 a H2. Copie até **H8**."
+    ],
+    "grade": {
+      "linhas": 20,
+      "colunas": 11,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "30/10/2026"
+        },
+        "B3": {
+          "entrada": "Daniela"
+        },
+        "C3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "03/11/2026"
+        },
+        "B4": {
+          "entrada": "Ana"
+        },
+        "C4": {
+          "entrada": "Construtora Alfa"
+        },
+        "D4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "04/11/2026"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "06/11/2026"
+        },
+        "B6": {
+          "entrada": "Carla"
+        },
+        "C6": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D6": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "10/11/2026"
+        },
+        "B7": {
+          "entrada": "Ana"
+        },
+        "C7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "Cancelado"
+        },
+        "A8": {
+          "entrada": "11/11/2026"
+        },
+        "B8": {
+          "entrada": "Bruno"
+        },
+        "C8": {
+          "entrada": "Transportadora Souza"
+        },
+        "D8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "14/11/2026"
+        },
+        "B9": {
+          "entrada": "Carla"
+        },
+        "C9": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D9": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Pendente"
+        },
+        "A10": {
+          "entrada": "17/11/2026"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "19/11/2026"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Construtora Alfa"
+        },
+        "D11": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "Pago"
+        },
+        "A12": {
+          "entrada": "21/11/2026"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E12": {
+          "entrada": "Cancelado"
+        },
+        "A13": {
+          "entrada": "24/11/2026"
+        },
+        "B13": {
+          "entrada": "Ana"
+        },
+        "C13": {
+          "entrada": "Transportadora Souza"
+        },
+        "D13": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Pago"
+        },
+        "A14": {
+          "entrada": "27/11/2026"
+        },
+        "B14": {
+          "entrada": "Bruno"
+        },
+        "C14": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D14": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E14": {
+          "entrada": "Pendente"
+        },
+        "A15": {
+          "entrada": "30/11/2026"
+        },
+        "B15": {
+          "entrada": "Carla"
+        },
+        "C15": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D15": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E15": {
+          "entrada": "Pago"
+        },
+        "A16": {
+          "entrada": "01/12/2026"
+        },
+        "B16": {
+          "entrada": "Ana"
+        },
+        "C16": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D16": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E16": {
+          "entrada": "Pendente"
+        },
+        "A17": {
+          "entrada": "02/12/2026"
+        },
+        "B17": {
+          "entrada": "Bruno"
+        },
+        "C17": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D17": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E17": {
+          "entrada": "Pago"
+        },
+        "G1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "01/11/2026"
+        },
+        "G2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "30/11/2026"
+        },
+        "G4": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "Pendente no mês",
+          "negrito": true
+        },
+        "G5": {
+          "entrada": "Ana"
+        },
+        "G6": {
+          "entrada": "Bruno"
+        },
+        "G7": {
+          "entrada": "Carla"
+        },
+        "G8": {
+          "entrada": "Daniela"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 170,
+        "D": 100,
+        "E": 100,
+        "G": 110,
+        "H": 120,
+        "I": 120,
+        "J": 120
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17"
+      ],
+      "alternativas": {
+        "H1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "H2": [
+          "31/10/2026",
+          "15/12/2026"
+        ],
+        "G5": [
+          "Bruno",
+          "Ana"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H5",
+        "esperado": 2300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G5;$E$2:$E$17;\"Pendente\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H6",
+        "esperado": 3750,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G6;$E$2:$E$17;\"Pendente\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H7",
+        "esperado": 650,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G7;$E$2:$E$17;\"Pendente\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASES($D$2:$D$17;$B$2:$B$17;G8;$E$2:$E$17;\"Pendente\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Três condições: responsável, status Pendente e o período (duas pontas).",
+      "Trave com $ a base e as datas do período antes de copiar."
+    ],
+    "explicacao": [
+      "`=SOMASES($D$2:$D$17;$B$2:$B$17;G5;$E$2:$E$17;\"Pendente\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)`.",
+      "A pendência da Ana de 01/12 fica fora de novembro."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "(SES|SE)\\(D2:D17|;B2:B17;|\"&H[12](?!\\d)",
+        "dica": "Ao copiar para baixo, os intervalos e as datas sem $ descem junto. Trave a base e o período com $."
+      },
+      {
+        "padrao": "\"ANA\"",
+        "dica": "Com \"Ana\" escrito na fórmula, a cópia soma a Ana em todas as linhas. Use a célula do responsável."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-por-responsavel",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "ae821022-6a1d-5224-abab-248d1e965eeb",
+    "slug": "caso-relatorio-por-responsavel-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O maior honorário pago no mês",
+    "enunciado": [
+      "Em **H5**, mostre o **maior** valor **Pago** de cada responsável dentro do período de H1 a H2 (MÁXIMOSES). Copie até **H8**."
+    ],
+    "grade": {
+      "linhas": 20,
+      "colunas": 11,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "30/10/2026"
+        },
+        "B3": {
+          "entrada": "Daniela"
+        },
+        "C3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "03/11/2026"
+        },
+        "B4": {
+          "entrada": "Ana"
+        },
+        "C4": {
+          "entrada": "Construtora Alfa"
+        },
+        "D4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "04/11/2026"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "06/11/2026"
+        },
+        "B6": {
+          "entrada": "Carla"
+        },
+        "C6": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D6": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "10/11/2026"
+        },
+        "B7": {
+          "entrada": "Ana"
+        },
+        "C7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "Cancelado"
+        },
+        "A8": {
+          "entrada": "11/11/2026"
+        },
+        "B8": {
+          "entrada": "Bruno"
+        },
+        "C8": {
+          "entrada": "Transportadora Souza"
+        },
+        "D8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "14/11/2026"
+        },
+        "B9": {
+          "entrada": "Carla"
+        },
+        "C9": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D9": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Pendente"
+        },
+        "A10": {
+          "entrada": "17/11/2026"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "19/11/2026"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Construtora Alfa"
+        },
+        "D11": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "Pago"
+        },
+        "A12": {
+          "entrada": "21/11/2026"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E12": {
+          "entrada": "Cancelado"
+        },
+        "A13": {
+          "entrada": "24/11/2026"
+        },
+        "B13": {
+          "entrada": "Ana"
+        },
+        "C13": {
+          "entrada": "Transportadora Souza"
+        },
+        "D13": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Pago"
+        },
+        "A14": {
+          "entrada": "27/11/2026"
+        },
+        "B14": {
+          "entrada": "Bruno"
+        },
+        "C14": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D14": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E14": {
+          "entrada": "Pendente"
+        },
+        "A15": {
+          "entrada": "30/11/2026"
+        },
+        "B15": {
+          "entrada": "Carla"
+        },
+        "C15": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D15": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E15": {
+          "entrada": "Pago"
+        },
+        "A16": {
+          "entrada": "01/12/2026"
+        },
+        "B16": {
+          "entrada": "Ana"
+        },
+        "C16": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D16": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E16": {
+          "entrada": "Pendente"
+        },
+        "A17": {
+          "entrada": "02/12/2026"
+        },
+        "B17": {
+          "entrada": "Bruno"
+        },
+        "C17": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D17": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E17": {
+          "entrada": "Pago"
+        },
+        "G1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "01/11/2026"
+        },
+        "G2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "30/11/2026"
+        },
+        "G4": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "Maior pago no mês",
+          "negrito": true
+        },
+        "G5": {
+          "entrada": "Ana"
+        },
+        "G6": {
+          "entrada": "Bruno"
+        },
+        "G7": {
+          "entrada": "Carla"
+        },
+        "G8": {
+          "entrada": "Daniela"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 170,
+        "D": 100,
+        "E": 100,
+        "G": 110,
+        "H": 120,
+        "I": 120,
+        "J": 120
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17"
+      ],
+      "alternativas": {
+        "H1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "H2": [
+          "31/10/2026",
+          "15/12/2026"
+        ],
+        "G5": [
+          "Bruno",
+          "Ana"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H5",
+        "esperado": 3800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMOSES($D$2:$D$17;$B$2:$B$17;G5;$E$2:$E$17;\"Pago\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H6",
+        "esperado": 3800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMOSES($D$2:$D$17;$B$2:$B$17;G6;$E$2:$E$17;\"Pago\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H7",
+        "esperado": 2300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMOSES($D$2:$D$17;$B$2:$B$17;G7;$E$2:$E$17;\"Pago\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMOSES($D$2:$D$17;$B$2:$B$17;G8;$E$2:$E$17;\"Pago\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "MÁXIMOSES tem a mesma ordem da SOMASES: primeiro os valores, depois os pares de condição.",
+      "Quem não tem nenhum valor que atenda às condições recebe 0."
+    ],
+    "explicacao": [
+      "`=MÁXIMOSES($D$2:$D$17;$B$2:$B$17;G5;$E$2:$E$17;\"Pago\";$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2)`.",
+      "A Carla recebeu R$ 2.300,00 no dia 30/11: o último dia do período entra porque o critério é <=."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "(SES|SE)\\(D2:D17|;B2:B17;|\"&H[12](?!\\d)",
+        "dica": "Ao copiar para baixo, os intervalos e as datas sem $ descem junto. Trave a base e o período com $."
+      },
+      {
+        "padrao": "\"<\"&",
+        "dica": "O último dia do período também conta: o sinal é menor ou igual."
+      }
+    ],
+    "funcoesExigidas": [
+      "MAXIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-por-responsavel",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "13d63ae0-280e-550b-bcce-085782aa9330",
+    "slug": "caso-relatorio-por-responsavel-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a fórmula que desceu sem $",
+    "enunciado": [
+      "Alguém escreveu a contagem de lançamentos (sem os cancelados, dentro do período) em **H5** e copiou até **H8** sem nenhum $. A Ana está certa, mas as outras linhas não. Corrija **H5:H8**."
+    ],
+    "grade": {
+      "linhas": 20,
+      "colunas": 11,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "28/10/2026"
+        },
+        "B2": {
+          "entrada": "Ana"
+        },
+        "C2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "30/10/2026"
+        },
+        "B3": {
+          "entrada": "Daniela"
+        },
+        "C3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "Pago"
+        },
+        "A4": {
+          "entrada": "03/11/2026"
+        },
+        "B4": {
+          "entrada": "Ana"
+        },
+        "C4": {
+          "entrada": "Construtora Alfa"
+        },
+        "D4": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "Pago"
+        },
+        "A5": {
+          "entrada": "04/11/2026"
+        },
+        "B5": {
+          "entrada": "Bruno"
+        },
+        "C5": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "06/11/2026"
+        },
+        "B6": {
+          "entrada": "Carla"
+        },
+        "C6": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D6": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "Pago"
+        },
+        "A7": {
+          "entrada": "10/11/2026"
+        },
+        "B7": {
+          "entrada": "Ana"
+        },
+        "C7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "Cancelado"
+        },
+        "A8": {
+          "entrada": "11/11/2026"
+        },
+        "B8": {
+          "entrada": "Bruno"
+        },
+        "C8": {
+          "entrada": "Transportadora Souza"
+        },
+        "D8": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "14/11/2026"
+        },
+        "B9": {
+          "entrada": "Carla"
+        },
+        "C9": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D9": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "Pendente"
+        },
+        "A10": {
+          "entrada": "17/11/2026"
+        },
+        "B10": {
+          "entrada": "Ana"
+        },
+        "C10": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "19/11/2026"
+        },
+        "B11": {
+          "entrada": "Bruno"
+        },
+        "C11": {
+          "entrada": "Construtora Alfa"
+        },
+        "D11": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "E11": {
+          "entrada": "Pago"
+        },
+        "A12": {
+          "entrada": "21/11/2026"
+        },
+        "B12": {
+          "entrada": "Carla"
+        },
+        "C12": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D12": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E12": {
+          "entrada": "Cancelado"
+        },
+        "A13": {
+          "entrada": "24/11/2026"
+        },
+        "B13": {
+          "entrada": "Ana"
+        },
+        "C13": {
+          "entrada": "Transportadora Souza"
+        },
+        "D13": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Pago"
+        },
+        "A14": {
+          "entrada": "27/11/2026"
+        },
+        "B14": {
+          "entrada": "Bruno"
+        },
+        "C14": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D14": {
+          "entrada": "1450",
+          "formato": "moeda"
+        },
+        "E14": {
+          "entrada": "Pendente"
+        },
+        "A15": {
+          "entrada": "30/11/2026"
+        },
+        "B15": {
+          "entrada": "Carla"
+        },
+        "C15": {
+          "entrada": "Clínica Sorriso"
+        },
+        "D15": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E15": {
+          "entrada": "Pago"
+        },
+        "A16": {
+          "entrada": "01/12/2026"
+        },
+        "B16": {
+          "entrada": "Ana"
+        },
+        "C16": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "D16": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "E16": {
+          "entrada": "Pendente"
+        },
+        "A17": {
+          "entrada": "02/12/2026"
+        },
+        "B17": {
+          "entrada": "Bruno"
+        },
+        "C17": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D17": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "E17": {
+          "entrada": "Pago"
+        },
+        "G1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "01/11/2026"
+        },
+        "G2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "30/11/2026"
+        },
+        "G4": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "Lançamentos",
+          "negrito": true
+        },
+        "G5": {
+          "entrada": "Ana"
+        },
+        "G6": {
+          "entrada": "Bruno"
+        },
+        "G7": {
+          "entrada": "Carla"
+        },
+        "G8": {
+          "entrada": "Daniela"
+        },
+        "H5": {
+          "entrada": "=CONT.SES(B2:B17;G5;A2:A17;\">=\"&H1;A2:A17;\"<=\"&H2;E2:E17;\"<>Cancelado\")",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "=CONT.SES(B3:B18;G6;A3:A18;\">=\"&H2;A3:A18;\"<=\"&H3;E3:E18;\"<>Cancelado\")",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "=CONT.SES(B4:B19;G7;A4:A19;\">=\"&H3;A4:A19;\"<=\"&H4;E4:E19;\"<>Cancelado\")",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "=CONT.SES(B5:B20;G8;A5:A20;\">=\"&H4;A5:A20;\"<=\"&H5;E5:E20;\"<>Cancelado\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 170,
+        "D": 100,
+        "E": 100,
+        "G": 110,
+        "H": 120,
+        "I": 120,
+        "J": 120
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17"
+      ],
+      "alternativas": {
+        "H1": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "H2": [
+          "31/10/2026",
+          "15/12/2026"
+        ],
+        "G5": [
+          "Bruno",
+          "Ana"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H5",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G5;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "H6",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G6;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "H7",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G7;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      },
+      {
+        "celula": "H8",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.SES($B$2:$B$17;G8;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")"
+      }
+    ],
+    "dicas": [
+      "Compare a fórmula de H5 com a de H6: o que mudou além do nome do responsável?",
+      "A base de dados e as datas do período são as mesmas para todo mundo: precisam ficar paradas na cópia."
+    ],
+    "explicacao": [
+      "Sem $, cada linha abaixo empurra os intervalos uma linha para baixo (B3:B18, B4:B19…) e o período passa a apontar para H2 e H3.",
+      "Certo: `=CONT.SES($B$2:$B$17;G5;$A$2:$A$17;\">=\"&$H$1;$A$2:$A$17;\"<=\"&$H$2;$E$2:$E$17;\"<>Cancelado\")`, com G5 sem $ para acompanhar o responsável."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "(SES|SE)\\(B\\d|;B\\d+:B\\d+;|\"&H\\d",
+        "dica": "Ainda há intervalo ou data do período sem $. Na cópia, eles descem junto com a fórmula."
+      },
+      {
+        "padrao": "\\$G\\$?\\d",
+        "dica": "A célula do responsável precisa mudar a cada linha: ela fica sem $."
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTIFS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-por-responsavel",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "a6de1234-9057-52c5-a601-68b181e4fcc9",
+    "slug": "caso-relatorio-por-responsavel-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "condicionais",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "No relatório, por que **$B$2:$B$17** leva $ e **G5** não?"
+    ],
+    "dicas": [
+      "Pense no que muda e no que fica igual de uma linha do relatório para a outra."
+    ],
+    "explicacao": [
+      "A base é a mesma para todos os responsáveis; o nome muda a cada linha. O $ trava o que não pode andar na cópia."
+    ],
+    "opcoes": [
+      {
+        "texto": "Porque o $ faz a fórmula calcular mais rápido",
+        "dica": "O $ não muda a velocidade: ele muda o que acontece quando a fórmula é copiada."
+      },
+      {
+        "texto": "Porque a base é a mesma para todos e o nome do responsável muda a cada linha"
+      },
+      {
+        "texto": "Porque G5 é texto, e texto não aceita $",
+        "dica": "Qualquer referência aceita $. G5 fica sem $ para descer junto com a cópia."
+      },
+      {
+        "texto": "Tanto faz: com ou sem $ o resultado copiado é o mesmo",
+        "dica": "Não é: a pegadinha mostrou a fórmula copiada sem $ contando errado."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-por-responsavel",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "e7b34ec1-9ce2-5794-abd6-952deefa99cf",
     "slug": "teste-condicionais-1",
     "trilha": "excel-ptbr",
@@ -4895,10 +9654,10 @@
     "ordem": 204,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Total pendente",
+    "versao": 2,
+    "titulo": "Faturado no período",
     "enunciado": [
-      "Em **G1**, o total ainda **pendente**."
+      "Em **G1**, some o valor das notas emitidas entre **G2** e **G3**, contando as duas datas. A fórmula precisa usar G2 e G3."
     ],
     "dicas": [],
     "explicacao": [
@@ -4906,18 +9665,18 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "somase-total-da-ana",
+    "revisar": "somases-periodo-datas",
     "type": "formula",
     "grade": {
       "linhas": 10,
       "colunas": 8,
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Emissão",
           "negrito": true
         },
         "B1": {
-          "entrada": "Região",
+          "entrada": "Cliente",
           "negrito": true
         },
         "C1": {
@@ -4929,102 +9688,131 @@
           "negrito": true
         },
         "A2": {
-          "entrada": "Ana"
+          "entrada": "29/10/2026"
         },
         "B2": {
-          "entrada": "Sul"
+          "entrada": "Padaria Pão Quente"
         },
         "C2": {
-          "entrada": "500",
+          "entrada": "720",
           "formato": "moeda"
         },
         "D2": {
-          "entrada": "Pago"
+          "entrada": "Paga"
         },
         "A3": {
-          "entrada": "Bruno"
+          "entrada": "01/11/2026"
         },
         "B3": {
-          "entrada": "Norte"
+          "entrada": "Construtora Alfa"
         },
         "C3": {
-          "entrada": "300",
+          "entrada": "3500",
           "formato": "moeda"
         },
         "D3": {
-          "entrada": "Pendente"
+          "entrada": "Paga"
         },
         "A4": {
-          "entrada": "Ana"
+          "entrada": "09/11/2026"
         },
         "B4": {
-          "entrada": "Norte"
+          "entrada": "Mercado Bom Preço"
         },
         "C4": {
-          "entrada": "450",
+          "entrada": "1100",
           "formato": "moeda"
         },
         "D4": {
-          "entrada": "Pago"
+          "entrada": "Aberta"
         },
         "A5": {
-          "entrada": "Carla"
+          "entrada": "16/11/2026"
         },
         "B5": {
-          "entrada": "Sul"
+          "entrada": "Clínica Sorriso"
         },
         "C5": {
-          "entrada": "200",
+          "entrada": "2400",
           "formato": "moeda"
         },
         "D5": {
-          "entrada": "Pago"
+          "entrada": "Paga"
         },
         "A6": {
-          "entrada": "Bruno"
+          "entrada": "23/11/2026"
         },
         "B6": {
-          "entrada": "Sul"
+          "entrada": "Auto Peças Silva"
         },
         "C6": {
-          "entrada": "700",
+          "entrada": "1300",
           "formato": "moeda"
         },
         "D6": {
-          "entrada": "Pago"
+          "entrada": "Aberta"
         },
         "A7": {
-          "entrada": "Ana"
+          "entrada": "30/11/2026"
         },
         "B7": {
-          "entrada": "Sul"
+          "entrada": "Transportadora Souza"
         },
         "C7": {
-          "entrada": "150",
+          "entrada": "1800",
           "formato": "moeda"
         },
         "D7": {
-          "entrada": "Pendente"
+          "entrada": "Paga"
         },
         "A8": {
-          "entrada": "Carla"
+          "entrada": "02/12/2026"
         },
         "B8": {
-          "entrada": "Norte"
+          "entrada": "Café Central"
         },
         "C8": {
           "entrada": "600",
           "formato": "moeda"
         },
         "D8": {
-          "entrada": "Pago"
+          "entrada": "Aberta"
+        },
+        "A9": {
+          "entrada": "07/12/2026"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "3500",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Paga"
         },
         "F1": {
-          "entrada": "Resposta",
+          "entrada": "Faturado no período",
           "negrito": true
+        },
+        "F2": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "01/11/2026"
+        },
+        "F3": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G3": {
+          "entrada": "30/11/2026"
         }
       },
       "larguras": {
+        "A": 100,
+        "B": 170,
         "C": 100,
         "F": 190,
         "G": 110
@@ -5036,15 +9824,26 @@
         "C5",
         "C6",
         "C7",
-        "C8"
-      ]
+        "C8",
+        "C9"
+      ],
+      "alternativas": {
+        "G2": [
+          "01/10/2026",
+          "15/11/2026"
+        ],
+        "G3": [
+          "31/10/2026",
+          "15/12/2026"
+        ]
+      }
     },
     "alvos": [
       {
         "celula": "G1",
-        "esperado": 450,
+        "esperado": 10100,
         "exigeFormula": true,
-        "solucaoReferencia": "=SOMASE(D2:D8;\"Pendente\";C2:C8)",
+        "solucaoReferencia": "=SOMASES(C2:C9;A2:A9;\">=\"&G2;A2:A9;\"<=\"&G3)",
         "formato": "moeda"
       }
     ]
