@@ -212,7 +212,7 @@
     "trilha": "excel-ptbr",
     "modulo": "datas",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "DATADIF: anos completos de empresa",
@@ -986,7 +986,7 @@
     "trilha": "excel-ptbr",
     "modulo": "datas",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "DATADIF: a idade",
@@ -1061,7 +1061,7 @@
     "trilha": "excel-ptbr",
     "modulo": "datas",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "DATADIF em meses",
@@ -1136,7 +1136,7 @@
     "trilha": "excel-ptbr",
     "modulo": "datas",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: 5 ou 6 anos?",
@@ -1184,7 +1184,7 @@
     "trilha": "excel-ptbr",
     "modulo": "datas",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -1744,6 +1744,3471 @@
     "correta": 1
   },
   {
+    "id": "e69a2fae-1a51-5bce-b471-73de0f0b3fec",
+    "slug": "datam-vencimento-das-parcelas",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATAM: o vencimento de cada parcela",
+    "intro": "Parcela todo dia 10, contrato de 12 meses, revisão a cada trimestre: somar meses a uma data é o dia a dia do financeiro. Somar 30 dias não é a mesma coisa.",
+    "enunciado": [
+      "O primeiro vencimento do parcelamento está em **E1**, e as parcelas vencem todo mês no mesmo dia.",
+      "Em **B2**, calcule o vencimento da parcela da linha, e copie até **B7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "1º vencimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1"
+        },
+        "A3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "3"
+        },
+        "A5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "6"
+        },
+        "E1": {
+          "entrada": "10/12/2026"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 120,
+        "D": 120,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": {
+          "data": "2026-12-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A2-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B3",
+        "esperado": {
+          "data": "2027-01-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A3-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B4",
+        "esperado": {
+          "data": "2027-02-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A4-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B5",
+        "esperado": {
+          "data": "2027-03-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A5-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B6",
+        "esperado": {
+          "data": "2027-04-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A6-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B7",
+        "esperado": {
+          "data": "2027-05-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A7-1)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "`DATAM(data;meses)` anda o número de meses que você pedir, mantendo o dia.",
+      "A parcela 1 vence no próprio primeiro vencimento: ela anda zero meses."
+    ],
+    "explicacao": [
+      "`=DATAM($E$1;A2-1)`: a parcela 1 anda 0 meses (10/12/2026), a 2 anda 1 mês (10/01/2027) e assim por diante, até 10/05/2027.",
+      "O cifrão mantém o primeiro vencimento no lugar quando a fórmula desce."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\+30|\\*30",
+        "dica": "Somar 30 dias não é somar um mês: os meses têm 28, 30 ou 31 dias, e o vencimento escorrega do dia 10."
+      },
+      {
+        "padrao": "DATAM\\(\\$?E\\$?1;\\$?A\\d\\)$",
+        "dica": "A parcela 1 vence no próprio primeiro vencimento: ela anda zero meses, não um."
+      },
+      {
+        "padrao": "DATAM\\(E\\d;",
+        "dica": "Ao copiar, a referência do primeiro vencimento desceu junto e saiu de E1. Trave essa célula com o cifrão."
+      }
+    ],
+    "video": "Carnê de 6 parcelas: o +30 que tira o vencimento do dia 10 e o DATAM que acerta.",
+    "funcoesExigidas": [
+      "EDATE"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datam-vencimento-das-parcelas",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "b8371d07-d859-5b19-a1a7-a2bfd321e7d1",
+    "slug": "datam-vencimento-das-parcelas-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O último dia do contrato",
+    "enunciado": [
+      "Em **D2**, calcule o último dia de vigência de cada contrato: ele termina na véspera de completar os meses de vigência (um contrato de 12 meses que começa em 01/12/2026 termina em 30/11/2027). Copie até **D4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vigência (meses)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "15/03/2026"
+        },
+        "C2": {
+          "entrada": "30"
+        },
+        "A3": {
+          "entrada": "Licença do sistema"
+        },
+        "B3": {
+          "entrada": "01/12/2026"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "A4": {
+          "entrada": "Manutenção"
+        },
+        "B4": {
+          "entrada": "10/07/2026"
+        },
+        "C4": {
+          "entrada": "6"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 140,
+        "D": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2028-09-14"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B2;C2)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2027-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;C3)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2027-01-09"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B4;C4)-1",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "Ande os meses da vigência a partir do início e volte um dia."
+    ],
+    "explicacao": [
+      "`=DATAM(B2;C2)-1`: 30 meses depois de 15/03/2026 é 15/09/2028; a véspera, 14/09/2028, é o último dia do aluguel."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=DATAM\\(\\$?B\\d;\\$?C\\d\\)$",
+        "dica": "Essa é a data em que o contrato completa a vigência; o último dia é a véspera. Falta tirar um dia."
+      },
+      {
+        "padrao": "\\*30",
+        "dica": "Meses não têm todos 30 dias: multiplicar por 30 tira a data do lugar. Deixe o Excel andar os meses."
+      }
+    ],
+    "funcoesExigidas": [
+      "EDATE"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datam-vencimento-das-parcelas",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "d7671e0e-6175-5edd-a269-3b64eb770542",
+    "slug": "datam-vencimento-das-parcelas-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Meses para trás: o aviso de renovação",
+    "enunciado": [
+      "O contrato exige aviso de não renovação **2 meses antes** do término. Em **C2**, calcule a data-limite do aviso, e copie até **C4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Avisar até",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Seguro da frota"
+        },
+        "B2": {
+          "entrada": "30/04/2027"
+        },
+        "A3": {
+          "entrada": "Consultoria"
+        },
+        "B3": {
+          "entrada": "15/01/2027"
+        },
+        "A4": {
+          "entrada": "Limpeza"
+        },
+        "B4": {
+          "entrada": "31/08/2027"
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 110,
+        "C": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": {
+          "data": "2027-02-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B2;-2)",
+        "formato": "data"
+      },
+      {
+        "celula": "C3",
+        "esperado": {
+          "data": "2026-11-15"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;-2)",
+        "formato": "data"
+      },
+      {
+        "celula": "C4",
+        "esperado": {
+          "data": "2027-06-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B4;-2)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "O DATAM também anda para trás: é só pedir meses negativos."
+    ],
+    "explicacao": [
+      "`=DATAM(B2;-2)`: dois meses antes de 30/04/2027 seria 30/02, que não existe; o DATAM ajusta para o último dia de fevereiro, 28/02/2027."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "-60",
+        "dica": "60 dias não são 2 meses: dependendo dos meses no caminho, a data cai 1 ou 2 dias fora. Deixe o Excel voltar os meses."
+      },
+      {
+        "padrao": "DATAM\\(\\$?B\\d;2\\)",
+        "dica": "Com 2 positivo, a data anda para a frente, depois do término. O aviso é antes."
+      }
+    ],
+    "funcoesExigidas": [
+      "EDATE"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datam-vencimento-das-parcelas",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "c174e1a0-cdfd-5e23-b7b7-be5d8db4732f",
+    "slug": "datam-vencimento-das-parcelas-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o dia 31 que virou 28",
+    "enunciado": [
+      "As parcelas vencem todo **último dia do mês**, a partir de 31/12/2026 (em **E1**). Alguém fez cada parcela andar um mês a partir da anterior, e depois de fevereiro todas passaram a vencer no dia 28.",
+      "Corrija **B3** e copie até **B7**: cada parcela tem que andar a partir do primeiro vencimento."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "1º vencimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1"
+        },
+        "A3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "3"
+        },
+        "A5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "6"
+        },
+        "E1": {
+          "entrada": "31/12/2026"
+        },
+        "B2": {
+          "entrada": "=E1",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "=DATAM(B2;1)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "=DATAM(B3;1)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "=DATAM(B4;1)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "=DATAM(B5;1)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "=DATAM(B6;1)",
+          "bloqueada": false,
+          "formato": "data"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 120,
+        "D": 120,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": {
+          "data": "2027-01-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A3-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B4",
+        "esperado": {
+          "data": "2027-02-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A4-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B5",
+        "esperado": {
+          "data": "2027-03-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A5-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B6",
+        "esperado": {
+          "data": "2027-04-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A6-1)",
+        "formato": "data"
+      },
+      {
+        "celula": "B7",
+        "esperado": {
+          "data": "2027-05-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM($E$1;A7-1)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "Quando o DATAM sai de 31/01 e anda um mês, ele para em 28/02. E a parcela seguinte sai de qual dia?"
+    ],
+    "explicacao": [
+      "Encadeando, a parcela de março sai de 28/02 e fica em 28/03; o erro passa adiante para todas as seguintes.",
+      "`=DATAM($E$1;A3-1)` sempre parte de 31/12/2026: 31/01, 28/02, 31/03, 30/04 e 31/05/2027."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "DATAM\\(\\$?B\\d;",
+        "dica": "Andando a partir da parcela anterior, o 28 de fevereiro passa adiante. Faça cada parcela andar a partir do primeiro vencimento."
+      },
+      {
+        "padrao": "DATAM\\(E\\d;",
+        "dica": "Ao copiar, a referência do primeiro vencimento desceu junto e saiu de E1. Trave essa célula com o cifrão."
+      },
+      {
+        "padrao": "FIMM",
+        "dica": "O FIMMÊS também resolveria o último dia, mas aqui a ideia é corrigir o DATAM: faça cada parcela andar a partir do primeiro vencimento."
+      }
+    ],
+    "funcoesExigidas": [
+      "EDATE"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "datam-vencimento-das-parcelas",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "afa690e9-716d-5969-802b-9c71dffcdb90",
+    "slug": "datam-vencimento-das-parcelas-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual é o resultado de `=DATAM(\"31/01/2027\";1)`?"
+    ],
+    "dicas": [
+      "Fevereiro de 2027 não tem dia 31. O DATAM avança para março ou fica em fevereiro?"
+    ],
+    "explicacao": [
+      "Quando o dia não existe no mês de chegada, o DATAM fica no último dia daquele mês: 28/02/2027."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "28/02/2027"
+      },
+      {
+        "texto": "03/03/2027",
+        "dica": "Esse é o resultado de somar o mês com DATA(ANO;MÊS+1;DIA), que transborda para março."
+      },
+      {
+        "texto": "02/03/2027",
+        "dica": "Esse é o resultado de somar 30 dias."
+      },
+      {
+        "texto": "#NÚM!",
+        "dica": "O DATAM não dá erro: ele ajusta para o último dia do mês."
+      }
+    ],
+    "correta": 0,
+    "tentativasAteExplicacao": 3,
+    "licao": "datam-vencimento-das-parcelas",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "e4c6c066-1fc0-50d9-a171-165c98853813",
+    "slug": "dia-da-semana-fim-de-semana",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIA.DA.SEMANA: caiu no fim de semana?",
+    "intro": "Boleto que vence no sábado, audiência marcada para domingo, entrega num feriado: antes de confirmar uma data, vale saber o dia da semana.",
+    "enunciado": [
+      "Em **C2**, escreva \"Fim de semana\" se o vencimento de B2 cai num sábado ou domingo, e \"Dia útil\" se não. Copie até **C6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "A3": {
+          "entrada": "Energia"
+        },
+        "B3": {
+          "entrada": "07/12/2026"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "13/12/2026"
+        },
+        "A5": {
+          "entrada": "Contador"
+        },
+        "B5": {
+          "entrada": "18/12/2026"
+        },
+        "A6": {
+          "entrada": "Fornecedor de papel"
+        },
+        "B6": {
+          "entrada": "09/01/2027"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 110,
+        "C": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B2;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Dia útil",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B3;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B4;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "Dia útil",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B5;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B6;2)>5;\"Fim de semana\";\"Dia útil\")"
+      }
+    ],
+    "dicas": [
+      "`DIA.DA.SEMANA(data;2)` numera a semana de segunda (1) a domingo (7).",
+      "Com essa numeração, sábado e domingo são os dois maiores números."
+    ],
+    "explicacao": [
+      "`=SE(DIA.DA.SEMANA(B2;2)>5;\"Fim de semana\";\"Dia útil\")`: com o tipo 2, sábado é 6 e domingo é 7, então \"maior que 5\" pega exatamente o fim de semana.",
+      "05/12/2026 é sábado, 13/12/2026 é domingo e 09/01/2027 é sábado."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "DIA\\.DA\\.SEMANA\\(\\$?B\\$?\\d(;1)?\\)>5",
+        "dica": "Sem o segundo argumento (ou com 1), a semana começa no domingo: domingo é 1 e sábado é 7. Assim, \"maior que 5\" pega sexta e sábado e deixa o domingo de fora."
+      }
+    ],
+    "video": "Os três tipos do DIA.DA.SEMANA, e por que o tipo 2 é o que o brasileiro espera.",
+    "funcoesExigidas": [
+      "WEEKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dia-da-semana-fim-de-semana",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "01c15a59-181a-56f6-a0ca-82b3b17b51e4",
+    "slug": "dia-da-semana-fim-de-semana-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O nome do dia da semana",
+    "enunciado": [
+      "Em **C2**, mostre o nome do dia da semana do vencimento (como \"sábado\" ou \"segunda-feira\"), e copie até **C6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dia da semana",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "A3": {
+          "entrada": "Energia"
+        },
+        "B3": {
+          "entrada": "07/12/2026"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "13/12/2026"
+        },
+        "A5": {
+          "entrada": "Contador"
+        },
+        "B5": {
+          "entrada": "18/12/2026"
+        },
+        "A6": {
+          "entrada": "Fornecedor de papel"
+        },
+        "B6": {
+          "entrada": "09/01/2027"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 110,
+        "C": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "sábado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B2;\"dddd\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "segunda-feira",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B3;\"dddd\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "domingo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B4;\"dddd\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "sexta-feira",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B5;\"dddd\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "sábado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B6;\"dddd\")"
+      }
+    ],
+    "dicas": [
+      "A função TEXTO mostra um número (ou uma data) com um código de formato, entre aspas.",
+      "No código de data, d é o dia, dd o dia com dois dígitos, ddd o nome abreviado e dddd o nome inteiro."
+    ],
+    "explicacao": [
+      "`=TEXTO(B2;\"dddd\")`: o código dddd escreve o nome do dia por extenso. 05/12/2026 é sábado; 07/12/2026, segunda-feira."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\\"DDD\\\"\\)",
+        "dica": "Com três d, o nome sai abreviado (sáb). Para o nome inteiro, são quatro."
+      },
+      {
+        "padrao": "^=DIA\\.DA\\.SEMANA\\(",
+        "dica": "O DIA.DA.SEMANA devolve um número, não o nome. Para o nome, formate a data como texto."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dia-da-semana-fim-de-semana",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "f4205dbe-85ff-5dd8-87e5-4a404cc3f4d0",
+    "slug": "dia-da-semana-fim-de-semana-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Venceu no fim de semana? Paga no próximo dia útil",
+    "enunciado": [
+      "Boleto que vence em fim de semana ou feriado pode ser pago no próximo dia útil. Os feriados estão em **E2:E3**.",
+      "Em **C2**, calcule a data em que dá para pagar sem multa: o próprio vencimento, se for dia útil, ou o dia útil seguinte. Copie até **C5**."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Pagar até",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "19/12/2026"
+        },
+        "A3": {
+          "entrada": "Energia"
+        },
+        "B3": {
+          "entrada": "25/12/2026"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "30/12/2026"
+        },
+        "A5": {
+          "entrada": "Contador"
+        },
+        "B5": {
+          "entrada": "01/01/2027"
+        },
+        "E1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "25/12/2026"
+        },
+        "E3": {
+          "entrada": "01/01/2027"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 110,
+        "C": 110,
+        "E": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": {
+          "data": "2026-12-21"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B2-1;1;$E$2:$E$3)",
+        "formato": "data"
+      },
+      {
+        "celula": "C3",
+        "esperado": {
+          "data": "2026-12-28"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B3-1;1;$E$2:$E$3)",
+        "formato": "data"
+      },
+      {
+        "celula": "C4",
+        "esperado": {
+          "data": "2026-12-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B4-1;1;$E$2:$E$3)",
+        "formato": "data"
+      },
+      {
+        "celula": "C5",
+        "esperado": {
+          "data": "2027-01-04"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B5-1;1;$E$2:$E$3)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "DIATRABALHO(data;1) dá o próximo dia útil DEPOIS da data. Se o vencimento já é dia útil, ele andaria um dia a mais.",
+      "Truque: comece a contar do dia anterior ao vencimento. E não esqueça os feriados."
+    ],
+    "explicacao": [
+      "`=DIATRABALHO(B2-1;1;$E$2:$E$3)`: a partir da véspera, o primeiro dia útil é o próprio vencimento, se ele for útil; senão, o seguinte.",
+      "19/12/2026 (sábado) vai para 21/12; 25/12 (Natal) vai para 28/12; 30/12 (quarta) fica; 01/01/2027 vai para 04/01."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "DIATRABALHO\\(\\$?B\\$?\\d;1",
+        "dica": "Assim um vencimento que já cai em dia útil também anda um dia. Comece a contar do dia anterior ao vencimento."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;1\\)",
+        "dica": "Faltou considerar os feriados: o Natal e o Ano-Novo também empurram o pagamento."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;1;E2:E3\\)",
+        "dica": "Ao copiar, a lista de feriados desceu junto. Trave o intervalo com o cifrão."
+      }
+    ],
+    "funcoesExigidas": [
+      "WORKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dia-da-semana-fim-de-semana",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "1d21a11f-b5d0-59e0-8dfb-6a780ed53f38",
+    "slug": "dia-da-semana-fim-de-semana-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a sexta-feira de folga",
+    "enunciado": [
+      "A conferência em **C2:C6** marcou a sexta-feira 18/12 como fim de semana e o domingo 13/12 como dia útil. Corrija a fórmula de **C2** e copie até **C6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 3,
+      "celulas": {
+        "A1": {
+          "entrada": "Conta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "A3": {
+          "entrada": "Energia"
+        },
+        "B3": {
+          "entrada": "07/12/2026"
+        },
+        "A4": {
+          "entrada": "Internet"
+        },
+        "B4": {
+          "entrada": "13/12/2026"
+        },
+        "A5": {
+          "entrada": "Contador"
+        },
+        "B5": {
+          "entrada": "18/12/2026"
+        },
+        "A6": {
+          "entrada": "Fornecedor de papel"
+        },
+        "B6": {
+          "entrada": "09/01/2027"
+        },
+        "C2": {
+          "entrada": "=SE(DIA.DA.SEMANA(B2)>5;\"Fim de semana\";\"Dia útil\")",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "=SE(DIA.DA.SEMANA(B3)>5;\"Fim de semana\";\"Dia útil\")",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "=SE(DIA.DA.SEMANA(B4)>5;\"Fim de semana\";\"Dia útil\")",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "=SE(DIA.DA.SEMANA(B5)>5;\"Fim de semana\";\"Dia útil\")",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "=SE(DIA.DA.SEMANA(B6)>5;\"Fim de semana\";\"Dia útil\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 110,
+        "C": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B2;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Dia útil",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B3;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B4;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "Dia útil",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B5;2)>5;\"Fim de semana\";\"Dia útil\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Fim de semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(DIA.DA.SEMANA(B6;2)>5;\"Fim de semana\";\"Dia útil\")"
+      }
+    ],
+    "dicas": [
+      "Sem o segundo argumento, em que dia a semana começa? Que número fica com o domingo?"
+    ],
+    "explicacao": [
+      "Sem o segundo argumento, o DIA.DA.SEMANA conta de domingo (1) a sábado (7): sexta vira 6 e passa no \"maior que 5\"; domingo vira 1 e escapa.",
+      "Com o tipo 2 (segunda = 1 … domingo = 7), `DIA.DA.SEMANA(B2;2)>5` pega só sábado e domingo."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "DIA\\.DA\\.SEMANA\\(\\$?B\\$?\\d(;1)?\\)>5",
+        "dica": "Sem o segundo argumento (ou com 1), a semana começa no domingo: domingo é 1 e sábado é 7. Assim, \"maior que 5\" pega sexta e sábado e deixa o domingo de fora."
+      }
+    ],
+    "funcoesExigidas": [
+      "WEEKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dia-da-semana-fim-de-semana",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "722b23c5-b59a-57f8-a039-4daa98e03444",
+    "slug": "dia-da-semana-fim-de-semana-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Com `DIA.DA.SEMANA(data;2)`, que números têm o sábado e o domingo?"
+    ],
+    "dicas": [
+      "No tipo 2, a semana começa na segunda-feira, que vale 1."
+    ],
+    "explicacao": [
+      "No tipo 2, segunda é 1 e domingo é 7: sábado é 6 e domingo é 7. Por isso \"maior que 5\" é o fim de semana."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "7 e 1",
+        "dica": "Isso é o tipo 1 (o padrão), que começa no domingo."
+      },
+      {
+        "texto": "6 e 7"
+      },
+      {
+        "texto": "5 e 6",
+        "dica": "O 5 é a sexta-feira."
+      },
+      {
+        "texto": "6 e 0",
+        "dica": "Zero aparece no tipo 3, que conta de 0 (segunda) a 6 (domingo)."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "dia-da-semana-fim-de-semana",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "d6cf062b-aa8a-54e6-9f03-fb29895ea0d2",
+    "slug": "diatrabalho-prazo-processual",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIATRABALHO: a data-limite do prazo",
+    "intro": "No escritório de advocacia, perder um prazo é perder a causa. Prazo em dias úteis começa no dia útil seguinte à intimação e pula fins de semana e feriados: é exatamente o que o DIATRABALHO faz.",
+    "enunciado": [
+      "Cada processo tem a data da intimação e o prazo em dias úteis. Os feriados do período estão em **G2:G6**.",
+      "Em **D2**, calcule a data-limite do prazo (a contagem começa no dia útil seguinte à intimação), e copie até **D5**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Intimação",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo (dias úteis)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Data-limite",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023/2026"
+        },
+        "B2": {
+          "entrada": "05/10/2026"
+        },
+        "C2": {
+          "entrada": "15"
+        },
+        "A3": {
+          "entrada": "1107/2026"
+        },
+        "B3": {
+          "entrada": "09/10/2026"
+        },
+        "C3": {
+          "entrada": "5"
+        },
+        "A4": {
+          "entrada": "1150/2026"
+        },
+        "B4": {
+          "entrada": "26/10/2026"
+        },
+        "C4": {
+          "entrada": "15"
+        },
+        "A5": {
+          "entrada": "1188/2026"
+        },
+        "B5": {
+          "entrada": "13/11/2026"
+        },
+        "C5": {
+          "entrada": "10"
+        },
+        "G1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "20/11/2026"
+        },
+        "G3": {
+          "entrada": "02/11/2026"
+        },
+        "G4": {
+          "entrada": "28/10/2026"
+        },
+        "G5": {
+          "entrada": "12/10/2026"
+        },
+        "G6": {
+          "entrada": "15/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 140,
+        "D": 120,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-10-27"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B2;C2;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2026-10-19"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B3;C3;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2026-11-18"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B4;C4;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B5;C5;$G$2:$G$6)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "`DIATRABALHO(início;dias;feriados)` anda os dias úteis a partir do início, sem contar o próprio início.",
+      "A lista de feriados é a mesma para todas as linhas: trave o intervalo antes de copiar."
+    ],
+    "explicacao": [
+      "`=DIATRABALHO(B2;C2;$G$2:$G$6)`: a partir de 05/10/2026, 15 dias úteis pulando os fins de semana e o feriado de 12/10 terminam em 27/10/2026.",
+      "O DIATRABALHO não conta o dia do início, como o prazo processual, que começa no dia útil seguinte."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?B\\d\\+\\$?C\\d$",
+        "dica": "Assim o prazo conta dias corridos, com sábados, domingos e feriados. O prazo aqui é em dias úteis."
+      },
+      {
+        "padrao": "^=DIATRABALHO\\([^;]*;[^;]*\\)$",
+        "dica": "Faltou considerar os feriados: sem eles, o prazo termina antes do que deveria."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;[^;]*;G[3-9]:G\\d+\\)",
+        "dica": "Ao copiar, a lista de feriados desceu junto e perdeu os primeiros feriados. Trave o intervalo com o cifrão."
+      },
+      {
+        "padrao": "DIATRABALHOTOTAL",
+        "dica": "O DIATRABALHOTOTAL conta quantos dias úteis há entre duas datas. Aqui você tem os dias e quer a data final."
+      }
+    ],
+    "video": "A agenda de prazos do escritório: intimação, prazo e feriados, e a data-limite sai sozinha.",
+    "funcoesExigidas": [
+      "WORKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalho-prazo-processual",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "5552746c-a60b-5934-a79d-f3bb98a786b1",
+    "slug": "diatrabalho-prazo-processual-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contando para trás: antes da audiência",
+    "enunciado": [
+      "A petição tem que ser protocolada até **5 dias úteis antes** da audiência. Em **C2**, calcule a data-limite do protocolo, e copie até **C3**. Os feriados estão em **G2:G6**."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Audiência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Protocolar até",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1201/2026"
+        },
+        "B2": {
+          "entrada": "23/11/2026"
+        },
+        "A3": {
+          "entrada": "1215/2026"
+        },
+        "B3": {
+          "entrada": "04/11/2026"
+        },
+        "G1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "20/11/2026"
+        },
+        "G3": {
+          "entrada": "02/11/2026"
+        },
+        "G4": {
+          "entrada": "28/10/2026"
+        },
+        "G5": {
+          "entrada": "12/10/2026"
+        },
+        "G6": {
+          "entrada": "15/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 140,
+        "D": 120,
+        "G": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": {
+          "data": "2026-11-13"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B2;-5;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "C3",
+        "esperado": {
+          "data": "2026-10-26"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B3;-5;$G$2:$G$6)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "O DIATRABALHO aceita dias negativos: ele anda para trás, pulando fins de semana e feriados do mesmo jeito."
+    ],
+    "explicacao": [
+      "`=DIATRABALHO(B2;-5;$G$2:$G$6)`: voltando de 23/11/2026, o 20/11 é feriado, então os 5 dias úteis são 19, 18, 17, 16 e 13/11."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?B\\d-5$",
+        "dica": "Assim são 5 dias corridos, com fim de semana e feriado. O pedido é em dias úteis."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;5",
+        "dica": "Com 5 positivo, a data anda para depois da audiência. Para voltar, os dias são negativos."
+      },
+      {
+        "padrao": "^=DIATRABALHO\\([^;]*;[^;]*\\)$",
+        "dica": "Faltou considerar os feriados: o 20/11 cai bem no meio da contagem."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;[^;]*;G[3-9]:G\\d+\\)",
+        "dica": "Ao copiar, a lista de feriados desceu junto e perdeu os primeiros feriados. Trave o intervalo com o cifrão."
+      }
+    ],
+    "funcoesExigidas": [
+      "WORKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalho-prazo-processual",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "65100b2b-e2ed-554a-828c-940dd1ba8327",
+    "slug": "diatrabalho-prazo-processual-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "No prazo ou fora do prazo?",
+    "enunciado": [
+      "O prazo de cada processo é de **15 dias úteis** a partir da intimação. Em **D2**, escreva \"No prazo\" se o protocolo (em C2) foi feito até a data-limite, inclusive, e \"Fora do prazo\" se não. Copie até **D4**. Os feriados estão em **G2:G6**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Intimação",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Protocolo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023/2026"
+        },
+        "B2": {
+          "entrada": "05/10/2026"
+        },
+        "C2": {
+          "entrada": "27/10/2026"
+        },
+        "A3": {
+          "entrada": "1150/2026"
+        },
+        "B3": {
+          "entrada": "26/10/2026"
+        },
+        "C3": {
+          "entrada": "17/11/2026"
+        },
+        "A4": {
+          "entrada": "1160/2026"
+        },
+        "B4": {
+          "entrada": "29/10/2026"
+        },
+        "C4": {
+          "entrada": "19/11/2026"
+        },
+        "G1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "20/11/2026"
+        },
+        "G3": {
+          "entrada": "02/11/2026"
+        },
+        "G4": {
+          "entrada": "28/10/2026"
+        },
+        "G5": {
+          "entrada": "12/10/2026"
+        },
+        "G6": {
+          "entrada": "15/11/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 140,
+        "D": 120,
+        "G": 110
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C2<=DIATRABALHO(B2;15;$G$2:$G$6);\"No prazo\";\"Fora do prazo\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C3<=DIATRABALHO(B3;15;$G$2:$G$6);\"No prazo\";\"Fora do prazo\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C4<=DIATRABALHO(B4;15;$G$2:$G$6);\"No prazo\";\"Fora do prazo\")"
+      }
+    ],
+    "dicas": [
+      "Calcule a data-limite dentro de um SE e compare com a data do protocolo.",
+      "Protocolar no próprio último dia ainda é dentro do prazo."
+    ],
+    "explicacao": [
+      "`=SE(C2<=DIATRABALHO(B2;15;$G$2:$G$6);\"No prazo\";\"Fora do prazo\")`: o processo 1023 foi protocolado no último dia (27/10) e está no prazo."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\$?C\\d<DIATRABALHO",
+        "dica": "Protocolar no último dia ainda é dentro do prazo: o próprio dia-limite também vale."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;15\\)",
+        "dica": "Faltou considerar os feriados: sem eles, o prazo termina antes do que deveria."
+      },
+      {
+        "padrao": "DIATRABALHO\\([^;]*;[^;]*;G[3-9]:G\\d+\\)",
+        "dica": "Ao copiar, a lista de feriados desceu junto e perdeu os primeiros feriados. Trave o intervalo com o cifrão."
+      }
+    ],
+    "funcoesExigidas": [
+      "WORKDAY",
+      "IF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalho-prazo-processual",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "72feafe1-eec1-5c93-91da-b940e3c86403",
+    "slug": "diatrabalho-prazo-processual-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o feriado que sumiu da lista",
+    "enunciado": [
+      "Na agenda de prazos, **D2** e **D3** estão certas, mas as datas-limite de **D4** e **D5** ficaram cedo demais. Corrija a fórmula de **D2** e copie até **D5**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Intimação",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo (dias úteis)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Data-limite",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023/2026"
+        },
+        "B2": {
+          "entrada": "05/10/2026"
+        },
+        "C2": {
+          "entrada": "15"
+        },
+        "A3": {
+          "entrada": "1107/2026"
+        },
+        "B3": {
+          "entrada": "09/10/2026"
+        },
+        "C3": {
+          "entrada": "5"
+        },
+        "A4": {
+          "entrada": "1150/2026"
+        },
+        "B4": {
+          "entrada": "26/10/2026"
+        },
+        "C4": {
+          "entrada": "15"
+        },
+        "A5": {
+          "entrada": "1188/2026"
+        },
+        "B5": {
+          "entrada": "13/11/2026"
+        },
+        "C5": {
+          "entrada": "10"
+        },
+        "G1": {
+          "entrada": "Feriados",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "20/11/2026"
+        },
+        "G3": {
+          "entrada": "02/11/2026"
+        },
+        "G4": {
+          "entrada": "28/10/2026"
+        },
+        "G5": {
+          "entrada": "12/10/2026"
+        },
+        "G6": {
+          "entrada": "15/11/2026"
+        },
+        "D2": {
+          "entrada": "=DIATRABALHO(B2;C2;G2:G6)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "D3": {
+          "entrada": "=DIATRABALHO(B3;C3;G3:G7)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "D4": {
+          "entrada": "=DIATRABALHO(B4;C4;G4:G8)",
+          "bloqueada": false,
+          "formato": "data"
+        },
+        "D5": {
+          "entrada": "=DIATRABALHO(B5;C5;G5:G9)",
+          "bloqueada": false,
+          "formato": "data"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 140,
+        "D": 120,
+        "G": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-10-27"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B2;C2;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2026-10-19"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B3;C3;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2026-11-18"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B4;C4;$G$2:$G$6)",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DIATRABALHO(B5;C5;$G$2:$G$6)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "Clique em D5 e olhe o intervalo dos feriados na barra de fórmulas. Ele ainda começa em G2?"
+    ],
+    "explicacao": [
+      "Sem o cifrão, a lista de feriados desceu a cada linha: em D5 ela virou G5:G9 e deixou de fora o 20/11 e o 02/11.",
+      "Com `$G$2:$G$6`, todas as linhas usam a lista inteira."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "DIATRABALHO\\([^;]*;[^;]*;G[3-9]:G\\d+\\)",
+        "dica": "Ao copiar, a lista de feriados desceu junto e perdeu os primeiros feriados. Trave o intervalo com o cifrão."
+      },
+      {
+        "padrao": "^=DIATRABALHO\\([^;]*;[^;]*\\)$",
+        "dica": "Faltou considerar os feriados: sem eles, o prazo termina antes do que deveria."
+      },
+      {
+        "padrao": "^=\\$?B\\d\\+\\$?C\\d$",
+        "dica": "Assim o prazo conta dias corridos, com sábados, domingos e feriados. O prazo aqui é em dias úteis."
+      }
+    ],
+    "funcoesExigidas": [
+      "WORKDAY"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalho-prazo-processual",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "e03a238d-21bf-56b0-bfca-e0141bcad426",
+    "slug": "diatrabalho-prazo-processual-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "A intimação foi numa sexta-feira e o prazo é de 1 dia útil, sem feriados. O que `DIATRABALHO(sexta;1)` devolve?"
+    ],
+    "dicas": [
+      "O DIATRABALHO conta o dia do início?"
+    ],
+    "explicacao": [
+      "O DIATRABALHO não conta o dia do início e pula o fim de semana: 1 dia útil depois de uma sexta é a segunda-feira."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "A própria sexta-feira",
+        "dica": "O dia do início não entra na contagem."
+      },
+      {
+        "texto": "O sábado",
+        "dica": "Sábado não é dia útil para o DIATRABALHO."
+      },
+      {
+        "texto": "A segunda-feira seguinte"
+      },
+      {
+        "texto": "A terça-feira seguinte",
+        "dica": "Isso seriam 2 dias úteis."
+      }
+    ],
+    "correta": 2,
+    "tentativasAteExplicacao": 3,
+    "licao": "diatrabalho-prazo-processual",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "080dcdb4-1c16-5725-9f6e-bb3b3291ecc8",
+    "slug": "horas-trabalhadas-banco-de-horas",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Horas trabalhadas: a conta do ponto",
+    "intro": "Para o Excel, hora é fração do dia: 12:00 vale 0,5. Por isso dá para subtrair horários como se subtraem datas, e é daí que saem o banco de horas e a hora extra.",
+    "enunciado": [
+      "A folha de ponto tem a entrada, a saída e a volta do almoço e a saída de cada dia.",
+      "Em **F2**, calcule as horas trabalhadas no dia (sem o almoço), e copie até **F6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Entrada",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Saída almoço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Volta almoço",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Saída",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Trabalhadas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "23/11/2026"
+        },
+        "B2": {
+          "entrada": "08:00"
+        },
+        "C2": {
+          "entrada": "12:00"
+        },
+        "D2": {
+          "entrada": "13:00"
+        },
+        "E2": {
+          "entrada": "17:00"
+        },
+        "A3": {
+          "entrada": "24/11/2026"
+        },
+        "B3": {
+          "entrada": "08:10"
+        },
+        "C3": {
+          "entrada": "12:05"
+        },
+        "D3": {
+          "entrada": "13:00"
+        },
+        "E3": {
+          "entrada": "18:30"
+        },
+        "A4": {
+          "entrada": "25/11/2026"
+        },
+        "B4": {
+          "entrada": "07:55"
+        },
+        "C4": {
+          "entrada": "12:00"
+        },
+        "D4": {
+          "entrada": "13:10"
+        },
+        "E4": {
+          "entrada": "17:45"
+        },
+        "A5": {
+          "entrada": "26/11/2026"
+        },
+        "B5": {
+          "entrada": "08:00"
+        },
+        "C5": {
+          "entrada": "12:30"
+        },
+        "D5": {
+          "entrada": "13:30"
+        },
+        "E5": {
+          "entrada": "19:00"
+        },
+        "A6": {
+          "entrada": "27/11/2026"
+        },
+        "B6": {
+          "entrada": "08:05"
+        },
+        "C6": {
+          "entrada": "12:00"
+        },
+        "D6": {
+          "entrada": "13:00"
+        },
+        "E6": {
+          "entrada": "16:30"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 80,
+        "F": 110,
+        "G": 110,
+        "H": 80
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 0.3333333333333334,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C2-B2)+(E2-D2)",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F3",
+        "esperado": 0.39236111111111116,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C3-B3)+(E3-D3)",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F4",
+        "esperado": 0.3611111111111111,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C4-B4)+(E4-D4)",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F5",
+        "esperado": 0.4166666666666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C5-B5)+(E5-D5)",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F6",
+        "esperado": 0.3090277777777778,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(C6-B6)+(E6-D6)",
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "Horários se subtraem como números: a saída menos a entrada dá o tempo entre elas.",
+      "São dois períodos: o da manhã (até o almoço) e o da tarde (depois da volta)."
+    ],
+    "explicacao": [
+      "`=(C2-B2)+(E2-D2)`: 4 horas de manhã mais 4 de tarde dão 08:00 no dia 23. No dia 24, 03:55 + 05:30 = 09:25.",
+      "O resultado aparece como hora porque é a diferença entre dois horários."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?E\\d-\\$?B\\d$",
+        "dica": "Assim o almoço entrou na conta como hora trabalhada. Tire o intervalo entre a saída e a volta do almoço."
+      },
+      {
+        "padrao": "^=\\(?\\$?B\\d-\\$?C\\d",
+        "dica": "A conta ficou ao contrário: a entrada menos a saída dá negativo. É a hora mais tarde menos a mais cedo."
+      }
+    ],
+    "video": "Folha de ponto: por que 12:00 vale 0,5 e o que isso muda nas contas.",
+    "tentativasAteExplicacao": 3,
+    "licao": "horas-trabalhadas-banco-de-horas",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "c832c69a-eccc-575e-a57b-83d38cf3d1b1",
+    "slug": "horas-trabalhadas-banco-de-horas-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Banco de horas em horas decimais",
+    "enunciado": [
+      "A jornada é de **8 horas** por dia (em **I1**). Em **G2**, calcule o saldo do banco de horas do dia **em horas decimais** (como 1,5 para uma hora e meia; negativo quando faltou), e copie até **G6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Entrada",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Saída almoço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Volta almoço",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Saída",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Trabalhadas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "23/11/2026"
+        },
+        "B2": {
+          "entrada": "08:00"
+        },
+        "C2": {
+          "entrada": "12:00"
+        },
+        "D2": {
+          "entrada": "13:00"
+        },
+        "E2": {
+          "entrada": "17:00"
+        },
+        "F2": {
+          "entrada": "08:00"
+        },
+        "A3": {
+          "entrada": "24/11/2026"
+        },
+        "B3": {
+          "entrada": "08:10"
+        },
+        "C3": {
+          "entrada": "12:05"
+        },
+        "D3": {
+          "entrada": "13:00"
+        },
+        "E3": {
+          "entrada": "18:30"
+        },
+        "F3": {
+          "entrada": "09:25"
+        },
+        "A4": {
+          "entrada": "25/11/2026"
+        },
+        "B4": {
+          "entrada": "07:55"
+        },
+        "C4": {
+          "entrada": "12:00"
+        },
+        "D4": {
+          "entrada": "13:10"
+        },
+        "E4": {
+          "entrada": "17:45"
+        },
+        "F4": {
+          "entrada": "08:40"
+        },
+        "A5": {
+          "entrada": "26/11/2026"
+        },
+        "B5": {
+          "entrada": "08:00"
+        },
+        "C5": {
+          "entrada": "12:30"
+        },
+        "D5": {
+          "entrada": "13:30"
+        },
+        "E5": {
+          "entrada": "19:00"
+        },
+        "F5": {
+          "entrada": "10:00"
+        },
+        "A6": {
+          "entrada": "27/11/2026"
+        },
+        "B6": {
+          "entrada": "08:05"
+        },
+        "C6": {
+          "entrada": "12:00"
+        },
+        "D6": {
+          "entrada": "13:00"
+        },
+        "E6": {
+          "entrada": "16:30"
+        },
+        "F6": {
+          "entrada": "07:25"
+        },
+        "G1": {
+          "entrada": "Saldo (horas)",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Jornada",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "08:00"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 80,
+        "F": 110,
+        "G": 110,
+        "H": 80
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(F2-$I$1)*24",
+        "formato": {
+          "casas": 2
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "G3",
+        "esperado": 1.416666666666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(F3-$I$1)*24",
+        "formato": {
+          "casas": 2
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "G4",
+        "esperado": 0.666666666666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(F4-$I$1)*24",
+        "formato": {
+          "casas": 2
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "G5",
+        "esperado": 2.000000000000001,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(F5-$I$1)*24",
+        "formato": {
+          "casas": 2
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "G6",
+        "esperado": -0.5833333333333326,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(F6-$I$1)*24",
+        "formato": {
+          "casas": 2
+        },
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "A diferença entre as horas trabalhadas e a jornada ainda é uma fração do dia. Um dia tem 24 horas: multiplique para virar horas.",
+      "A jornada é a mesma para todos os dias: trave a célula antes de copiar."
+    ],
+    "explicacao": [
+      "`=(F2-$I$1)*24`: no dia 24, 09:25 − 08:00 = 01:25, que vira 1,42 hora; no dia 27, 07:25 − 08:00 vira −0,58.",
+      "Em formato de hora, um saldo negativo apareceria como ########: o Excel não mostra horas negativas. Em horas decimais, o banco de horas soma e subtrai sem problema."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?F\\d-\\$?I\\$?1$",
+        "dica": "Em formato de hora, o saldo negativo aparece como ######## e o positivo fica em fração do dia. Transforme a diferença em horas decimais."
+      },
+      {
+        "padrao": "I[2-9]\\)?\\*24",
+        "dica": "Ao copiar, a referência da jornada desceu junto e saiu de I1. Trave essa célula com o cifrão."
+      },
+      {
+        "padrao": "\\*60",
+        "dica": "Vezes 60 daria minutos se o valor já estivesse em horas; mas ele está em fração do dia. Um dia tem 24 horas."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "horas-trabalhadas-banco-de-horas",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "95e63c79-5344-5c02-967e-063ea8e8c845",
+    "slug": "horas-trabalhadas-banco-de-horas-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O valor da hora extra",
+    "enunciado": [
+      "No mês, a funcionária fez **12:30** de horas extras (em **B1**). A hora normal vale R$ 28,00 (**B2**) e a hora extra tem adicional de 50% (**B3**).",
+      "Em **B4**, calcule quanto ela vai receber pelas horas extras."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 2,
+      "celulas": {
+        "A1": {
+          "entrada": "Horas extras no mês",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "A3": {
+          "entrada": "Adicional",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "A receber",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12:30"
+        },
+        "B2": {
+          "entrada": "28",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "50%"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 110
+      },
+      "variaveis": [
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B4",
+        "esperado": 525.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1*24*B2*(1+B3)",
+        "formato": "moeda",
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "Primeiro, transforme 12:30 em número de horas (12,5): hora é fração do dia, e o dia tem 24 horas.",
+      "A hora extra vale a hora normal mais o adicional."
+    ],
+    "explicacao": [
+      "`=B1*24*B2*(1+B3)`: 12:30 vezes 24 dá 12,5 horas; vezes R$ 28,00 e vezes 1,5 (a hora mais 50%) dá R$ 525,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^(?!.*24).*B1",
+        "dica": "Horas no Excel são fração do dia: 12:30 vale 0,52. Antes de multiplicar pelo valor da hora, transforme em número de horas."
+      },
+      {
+        "padrao": "\\*\\$?B\\$?3$",
+        "dica": "Multiplicar por 50% dá só o adicional. A hora extra é a hora normal mais 50%."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "horas-trabalhadas-banco-de-horas",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "d186b094-8f29-5383-8f53-920daf10d726",
+    "slug": "horas-trabalhadas-banco-de-horas-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a semana de 19 horas e meia",
+    "enunciado": [
+      "O total da semana em **F7** mostra 19:30, mas a funcionária trabalhou mais de 40 horas. Corrija **F7** para mostrar o total da semana **em horas decimais**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Entrada",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Saída almoço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Volta almoço",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Saída",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Trabalhadas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "23/11/2026"
+        },
+        "B2": {
+          "entrada": "08:00"
+        },
+        "C2": {
+          "entrada": "12:00"
+        },
+        "D2": {
+          "entrada": "13:00"
+        },
+        "E2": {
+          "entrada": "17:00"
+        },
+        "F2": {
+          "entrada": "08:00"
+        },
+        "A3": {
+          "entrada": "24/11/2026"
+        },
+        "B3": {
+          "entrada": "08:10"
+        },
+        "C3": {
+          "entrada": "12:05"
+        },
+        "D3": {
+          "entrada": "13:00"
+        },
+        "E3": {
+          "entrada": "18:30"
+        },
+        "F3": {
+          "entrada": "09:25"
+        },
+        "A4": {
+          "entrada": "25/11/2026"
+        },
+        "B4": {
+          "entrada": "07:55"
+        },
+        "C4": {
+          "entrada": "12:00"
+        },
+        "D4": {
+          "entrada": "13:10"
+        },
+        "E4": {
+          "entrada": "17:45"
+        },
+        "F4": {
+          "entrada": "08:40"
+        },
+        "A5": {
+          "entrada": "26/11/2026"
+        },
+        "B5": {
+          "entrada": "08:00"
+        },
+        "C5": {
+          "entrada": "12:30"
+        },
+        "D5": {
+          "entrada": "13:30"
+        },
+        "E5": {
+          "entrada": "19:00"
+        },
+        "F5": {
+          "entrada": "10:00"
+        },
+        "A6": {
+          "entrada": "27/11/2026"
+        },
+        "B6": {
+          "entrada": "08:05"
+        },
+        "C6": {
+          "entrada": "12:00"
+        },
+        "D6": {
+          "entrada": "13:00"
+        },
+        "E6": {
+          "entrada": "16:30"
+        },
+        "F6": {
+          "entrada": "07:25"
+        },
+        "A7": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "F7": {
+          "entrada": "=SOMA(F2:F6)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 80,
+        "C": 110,
+        "D": 110,
+        "E": 80,
+        "F": 110,
+        "G": 110,
+        "H": 80
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F7",
+        "esperado": 43.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(F2:F6)*24",
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "Quanto é 19:30 + 24 horas? Em formato de hora, o que acontece quando a soma passa de um dia?"
+    ],
+    "explicacao": [
+      "A soma dá 1 dia e 19:30, mas o formato de hora só mostra o que sobra depois do dia inteiro: 19:30.",
+      "`=SOMA(F2:F6)*24` transforma o total em horas decimais: 43,5 horas (43:30)."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(F2:F6\\)$",
+        "dica": "A soma passou de 24 horas e o formato de hora \"vira o dia\": mostra só o que sobra. Transforme o total em horas decimais."
+      },
+      {
+        "padrao": "\\*60",
+        "dica": "O total está em fração do dia, não em horas: um dia tem 24 horas."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "horas-trabalhadas-banco-de-horas",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "a9dd1af0-7098-590c-a87d-e6a7b900d570",
+    "slug": "horas-trabalhadas-banco-de-horas-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Por que se multiplica por 24 uma diferença de horas antes de usá-la numa conta de dinheiro?"
+    ],
+    "dicas": [
+      "Quanto vale 12:00 para o Excel?"
+    ],
+    "explicacao": [
+      "O Excel guarda hora como fração do dia (12:00 = 0,5; 06:00 = 0,25). Vezes 24, a fração vira número de horas: 0,5 × 24 = 12."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Porque o Excel guarda hora como fração do dia"
+      },
+      {
+        "texto": "Para arredondar os minutos",
+        "dica": "Multiplicar por 24 não arredonda nada."
+      },
+      {
+        "texto": "Porque a hora extra vale 24 vezes mais",
+        "dica": "O 24 são as horas do dia, não um adicional."
+      },
+      {
+        "texto": "Para converter em minutos",
+        "dica": "Para minutos seria vezes 1.440 (24 × 60)."
+      }
+    ],
+    "correta": 0,
+    "tentativasAteExplicacao": 3,
+    "licao": "horas-trabalhadas-banco-de-horas",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "736f8a8c-0494-595f-88a5-ee6f85bb75ca",
+    "slug": "caso-agenda-de-vencimentos",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: a agenda de vencimentos dos contratos",
+    "intro": "Contrato que renova sozinho porque ninguém avisou a tempo custa caro. A agenda calcula o término, a data do aviso e a situação de cada contrato, e aponta o que precisa de atenção hoje.",
+    "enunciado": [
+      "A data de hoje está em **I1** (fixa, para a conferência; no dia a dia, seria `=HOJE()`).",
+      "1) Em **D2:D6**, o último dia de cada contrato: a véspera de completar os meses de vigência a partir do início.",
+      "2) Em **E2:E6**, a data-limite do aviso de não renovação: **30 dias** antes do término.",
+      "3) Em **F2:F6**, \"Vencido\" se o término já passou, \"Avisar já\" se a data do aviso chegou (hoje ou antes) e \"Em dia\" nos demais."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vigência (meses)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Avisar até",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "24/11/2026"
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "01/12/2023"
+        },
+        "C2": {
+          "entrada": "36"
+        },
+        "A3": {
+          "entrada": "Licença do ERP"
+        },
+        "B3": {
+          "entrada": "15/01/2026"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "A4": {
+          "entrada": "Seguro da frota"
+        },
+        "B4": {
+          "entrada": "10/11/2025"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "Limpeza"
+        },
+        "B5": {
+          "entrada": "20/12/2025"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "A6": {
+          "entrada": "Manutenção do ar"
+        },
+        "B6": {
+          "entrada": "05/03/2026"
+        },
+        "C6": {
+          "entrada": "12"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 100,
+        "C": 130,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "H": 60,
+        "I": 100
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": {
+          "data": "2026-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B2;C2)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D3",
+        "esperado": {
+          "data": "2027-01-14"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;C3)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D4",
+        "esperado": {
+          "data": "2026-11-09"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B4;C4)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D5",
+        "esperado": {
+          "data": "2026-12-19"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B5;C5)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "D6",
+        "esperado": {
+          "data": "2027-03-04"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B6;C6)-1",
+        "formato": "data"
+      },
+      {
+        "celula": "E2",
+        "esperado": {
+          "data": "2026-10-31"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=D2-30",
+        "formato": "data"
+      },
+      {
+        "celula": "E3",
+        "esperado": {
+          "data": "2026-12-15"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=D3-30",
+        "formato": "data"
+      },
+      {
+        "celula": "E4",
+        "esperado": {
+          "data": "2026-10-10"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=D4-30",
+        "formato": "data"
+      },
+      {
+        "celula": "E5",
+        "esperado": {
+          "data": "2026-11-19"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=D5-30",
+        "formato": "data"
+      },
+      {
+        "celula": "E6",
+        "esperado": {
+          "data": "2027-02-02"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=D6-30",
+        "formato": "data"
+      },
+      {
+        "celula": "F2",
+        "esperado": "Avisar já",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D2<$I$1;\"Vencido\";E2<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Em dia",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D3<$I$1;\"Vencido\";E3<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D4<$I$1;\"Vencido\";E4<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Avisar já",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D5<$I$1;\"Vencido\";E5<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Em dia",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D6<$I$1;\"Vencido\";E6<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      }
+    ],
+    "dicas": [
+      "O término é o DATAM da vigência menos um dia; o aviso é uma conta simples com o término.",
+      "Na situação, comece pelo caso mais grave: se ele vier por último, um contrato vencido pode cair em outra categoria.",
+      "Trave a data de hoje com o cifrão antes de copiar."
+    ],
+    "explicacao": [
+      "Término: `=DATAM(B2;C2)-1`; aviso: `=D2-30`; situação: `=SES(D2<$I$1;\"Vencido\";E2<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")`.",
+      "O aluguel termina em 30/11/2026 e o aviso venceu em 31/10: \"Avisar já\". O seguro da frota terminou em 09/11/2026: \"Vencido\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(\\$?E\\d<=?\\$?I\\$?1;",
+        "dica": "A ordem das condições importa: o SES para na primeira verdadeira. Um contrato vencido também já passou da data de aviso, então ele cai em \"Avisar já\". Teste o vencido primeiro."
+      },
+      {
+        "padrao": "^=DATAM\\(\\$?B\\d;\\$?C\\d\\)$",
+        "dica": "Essa é a data em que o contrato completa a vigência; o último dia é a véspera. Falta tirar um dia."
+      },
+      {
+        "padrao": "^=\\$?B\\d\\+\\$?C\\d\\*30",
+        "dica": "Meses não têm todos 30 dias: multiplicar por 30 tira o término do lugar. Deixe o Excel andar os meses."
+      },
+      {
+        "padrao": "^=DATAM\\(\\$?D\\d;-1\\)$",
+        "dica": "Um mês antes não é o mesmo que 30 dias antes: o aviso do contrato é de 30 dias corridos."
+      },
+      {
+        "padrao": "I[2-9]",
+        "dica": "Ao copiar, a referência da data de hoje desceu junto e saiu de I1. Trave essa célula com o cifrão."
+      }
+    ],
+    "video": "A planilha de contratos que avisa sozinha: término, aviso e situação em três colunas.",
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-agenda-de-vencimentos",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "18536736-e7c7-54e8-bda7-b03bb26e351c",
+    "slug": "caso-agenda-de-vencimentos-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quantos dias faltam (zero se venceu)",
+    "enunciado": [
+      "Os términos já estão em **D2:D6** e a data de hoje, em **I1**. Em **G2**, calcule quantos dias faltam para o término; se o contrato já venceu, mostre 0. Copie até **G6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vigência (meses)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "24/11/2026"
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "01/12/2023"
+        },
+        "C2": {
+          "entrada": "36"
+        },
+        "D2": {
+          "entrada": "30/11/2026"
+        },
+        "A3": {
+          "entrada": "Licença do ERP"
+        },
+        "B3": {
+          "entrada": "15/01/2026"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "D3": {
+          "entrada": "14/01/2027"
+        },
+        "A4": {
+          "entrada": "Seguro da frota"
+        },
+        "B4": {
+          "entrada": "10/11/2025"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "D4": {
+          "entrada": "09/11/2026"
+        },
+        "A5": {
+          "entrada": "Limpeza"
+        },
+        "B5": {
+          "entrada": "20/12/2025"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "D5": {
+          "entrada": "19/12/2026"
+        },
+        "A6": {
+          "entrada": "Manutenção do ar"
+        },
+        "B6": {
+          "entrada": "05/03/2026"
+        },
+        "C6": {
+          "entrada": "12"
+        },
+        "D6": {
+          "entrada": "04/03/2027"
+        },
+        "G1": {
+          "entrada": "Dias para vencer",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 100,
+        "C": 130,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "H": 60,
+        "I": 100,
+        "G": 130
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 6,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(D2-$I$1;0)"
+      },
+      {
+        "celula": "G3",
+        "esperado": 51,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(D3-$I$1;0)"
+      },
+      {
+        "celula": "G4",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(D4-$I$1;0)"
+      },
+      {
+        "celula": "G5",
+        "esperado": 25,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(D5-$I$1;0)"
+      },
+      {
+        "celula": "G6",
+        "esperado": 100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(D6-$I$1;0)"
+      }
+    ],
+    "dicas": [
+      "A subtração das datas dá os dias que faltam, e fica negativa para quem já venceu.",
+      "Entre o resultado e zero, fique com o maior."
+    ],
+    "explicacao": [
+      "`=MÁXIMO(D2-$I$1;0)`: o aluguel termina em 30/11/2026, 6 dias depois de hoje; o seguro (09/11/2026) daria −15, e o MÁXIMO mostra 0."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?D\\d-\\$?I\\$?1$",
+        "dica": "Para o contrato que já venceu, a conta fica negativa. O pedido é mostrar 0 nesses casos."
+      },
+      {
+        "padrao": "I[2-9]",
+        "dica": "Ao copiar, a referência da data de hoje desceu junto e saiu de I1. Trave essa célula com o cifrão."
+      },
+      {
+        "padrao": "^=\\$?I\\$?1-\\$?D\\d",
+        "dica": "A conta ficou ao contrário: são os dias do hoje até o término, o término menos hoje."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-agenda-de-vencimentos",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "92466c5a-10f8-5dea-b408-dde82db343f7",
+    "slug": "caso-agenda-de-vencimentos-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Qual contrato vence primeiro?",
+    "enunciado": [
+      "Com os términos em **D2:D6** e hoje em **I1**:",
+      "1) Em **I3**, a data do **próximo término** (o menor término a partir de hoje).",
+      "2) Em **I4**, o nome do contrato com esse término."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vigência (meses)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "24/11/2026"
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "01/12/2023"
+        },
+        "C2": {
+          "entrada": "36"
+        },
+        "D2": {
+          "entrada": "30/11/2026"
+        },
+        "A3": {
+          "entrada": "Licença do ERP"
+        },
+        "B3": {
+          "entrada": "15/01/2026"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "D3": {
+          "entrada": "14/01/2027"
+        },
+        "A4": {
+          "entrada": "Seguro da frota"
+        },
+        "B4": {
+          "entrada": "10/11/2025"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "D4": {
+          "entrada": "09/11/2026"
+        },
+        "A5": {
+          "entrada": "Limpeza"
+        },
+        "B5": {
+          "entrada": "20/12/2025"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "D5": {
+          "entrada": "19/12/2026"
+        },
+        "A6": {
+          "entrada": "Manutenção do ar"
+        },
+        "B6": {
+          "entrada": "05/03/2026"
+        },
+        "C6": {
+          "entrada": "12"
+        },
+        "D6": {
+          "entrada": "04/03/2027"
+        },
+        "H3": {
+          "entrada": "Próximo",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "Contrato",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 100,
+        "C": 130,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "H": 60,
+        "I": 150
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I3",
+        "esperado": {
+          "data": "2026-11-30"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMOSES(D2:D6;D2:D6;\">=\"&I1)",
+        "formato": "data"
+      },
+      {
+        "celula": "I4",
+        "esperado": "Aluguel da sala",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(I3;D2:D6;A2:A6)"
+      }
+    ],
+    "dicas": [
+      "O menor valor com condição é trabalho do MÍNIMOSES; a condição \"a partir de hoje\" junta o operador com a célula usando &.",
+      "Com a data em I3, uma busca na coluna dos términos traz o nome."
+    ],
+    "explicacao": [
+      "`=MÍNIMOSES(D2:D6;D2:D6;\">=\"&I1)`: entre os términos a partir de 24/11/2026, o menor é 30/11/2026.",
+      "`=PROCX(I3;D2:D6;A2:A6)`: o término de 30/11/2026 é do Aluguel da sala."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=M[IÍ]NIMO\\(\\$?D\\$?2:\\$?D\\$?6\\)$",
+        "dica": "O menor término de todos é de um contrato que já venceu. A pergunta é o próximo, a partir de hoje.",
+        "celula": "I3"
+      },
+      {
+        "padrao": "\\\">=I1\\\"",
+        "dica": "Dentro das aspas, I1 vira texto e não a data da célula. Deixe o operador entre aspas e junte a célula com &.",
+        "celula": "I3"
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-agenda-de-vencimentos",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "4c784522-068f-5f62-bb4e-756cffe08eb0",
+    "slug": "caso-agenda-de-vencimentos-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o vencido que pediu aviso",
+    "enunciado": [
+      "Na agenda, o seguro da frota, que terminou em 09/11/2026, aparece como \"Avisar já\". Corrija a fórmula de **F2** e copie até **F6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vigência (meses)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Término",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Avisar até",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "24/11/2026"
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "01/12/2023"
+        },
+        "C2": {
+          "entrada": "36"
+        },
+        "D2": {
+          "entrada": "30/11/2026"
+        },
+        "A3": {
+          "entrada": "Licença do ERP"
+        },
+        "B3": {
+          "entrada": "15/01/2026"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "D3": {
+          "entrada": "14/01/2027"
+        },
+        "A4": {
+          "entrada": "Seguro da frota"
+        },
+        "B4": {
+          "entrada": "10/11/2025"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "D4": {
+          "entrada": "09/11/2026"
+        },
+        "A5": {
+          "entrada": "Limpeza"
+        },
+        "B5": {
+          "entrada": "20/12/2025"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "D5": {
+          "entrada": "19/12/2026"
+        },
+        "A6": {
+          "entrada": "Manutenção do ar"
+        },
+        "B6": {
+          "entrada": "05/03/2026"
+        },
+        "C6": {
+          "entrada": "12"
+        },
+        "D6": {
+          "entrada": "04/03/2027"
+        },
+        "E2": {
+          "entrada": "31/10/2026"
+        },
+        "E3": {
+          "entrada": "15/12/2026"
+        },
+        "E4": {
+          "entrada": "10/10/2026"
+        },
+        "E5": {
+          "entrada": "19/11/2026"
+        },
+        "E6": {
+          "entrada": "02/02/2027"
+        },
+        "F2": {
+          "entrada": "=SES(E2<=$I$1;\"Avisar já\";D2<$I$1;\"Vencido\";VERDADEIRO;\"Em dia\")",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "=SES(E3<=$I$1;\"Avisar já\";D3<$I$1;\"Vencido\";VERDADEIRO;\"Em dia\")",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "=SES(E4<=$I$1;\"Avisar já\";D4<$I$1;\"Vencido\";VERDADEIRO;\"Em dia\")",
+          "bloqueada": false
+        },
+        "F5": {
+          "entrada": "=SES(E5<=$I$1;\"Avisar já\";D5<$I$1;\"Vencido\";VERDADEIRO;\"Em dia\")",
+          "bloqueada": false
+        },
+        "F6": {
+          "entrada": "=SES(E6<=$I$1;\"Avisar já\";D6<$I$1;\"Vencido\";VERDADEIRO;\"Em dia\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 100,
+        "C": 130,
+        "D": 100,
+        "E": 100,
+        "F": 100,
+        "H": 60,
+        "I": 100
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Avisar já",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D2<$I$1;\"Vencido\";E2<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Em dia",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D3<$I$1;\"Vencido\";E3<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D4<$I$1;\"Vencido\";E4<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Avisar já",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D5<$I$1;\"Vencido\";E5<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Em dia",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D6<$I$1;\"Vencido\";E6<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")"
+      }
+    ],
+    "dicas": [
+      "O SES testa as condições na ordem e para na primeira verdadeira. Para o seguro, qual é a primeira que dá verdadeiro?"
+    ],
+    "explicacao": [
+      "Para o seguro, a data do aviso (10/10/2026) já passou, e essa era a primeira condição: o SES parou ali e nem chegou a testar o vencimento.",
+      "Testando o vencido primeiro, `=SES(D2<$I$1;\"Vencido\";E2<=$I$1;\"Avisar já\";VERDADEIRO;\"Em dia\")` coloca cada contrato no lugar."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(\\$?E\\d<=?\\$?I\\$?1;",
+        "dica": "A ordem das condições importa: o SES para na primeira verdadeira. Um contrato vencido também já passou da data de aviso, então ele cai em \"Avisar já\". Teste o vencido primeiro."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-agenda-de-vencimentos",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "df04f543-bcdd-5345-b180-c0ad43da6f94",
+    "slug": "caso-agenda-de-vencimentos-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "datas",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Um contrato de 12 meses começa em 01/03/2026. Qual é o último dia dele?"
+    ],
+    "dicas": [
+      "Ele completa 12 meses em 01/03/2027. O último dia de vigência é esse ou a véspera?"
+    ],
+    "explicacao": [
+      "`=DATAM(início;12)-1`: o contrato completa a vigência em 01/03/2027, então o último dia é a véspera, 28/02/2027."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "01/03/2027",
+        "dica": "Nessa data o contrato já completou os 12 meses: seria o primeiro dia de um novo período."
+      },
+      {
+        "texto": "28/02/2027"
+      },
+      {
+        "texto": "24/02/2027",
+        "dica": "Esse é o resultado de somar 360 dias (12 × 30)."
+      },
+      {
+        "texto": "28/02/2026",
+        "dica": "Essa data é antes do início do contrato."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-agenda-de-vencimentos",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
     "id": "652075f4-7733-5ef9-ae01-434ccdd6e979",
     "slug": "teste-datas-1",
     "trilha": "excel-ptbr",
@@ -1751,68 +5216,88 @@
     "ordem": 201,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Ano da data",
-    "enunciado": [
-      "Em **D2**, o ano da data em A2."
-    ],
+    "versao": 2,
+    "titulo": "Data-limite do prazo",
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "ano-e-mes-de-uma-venda",
+    "revisar": "diatrabalho-prazo-processual",
+    "enunciado": [
+      "Em **D2**, a data-limite de um prazo de **C2** dias úteis contado a partir da intimação de **B2**, descontando os feriados de **G2:G6**."
+    ],
     "type": "formula",
     "grade": {
       "linhas": 3,
       "colunas": 7,
       "celulas": {
         "A1": {
-          "entrada": "Data",
+          "entrada": "Processo",
           "negrito": true
         },
         "B1": {
-          "entrada": "Admissão",
+          "entrada": "Intimação",
           "negrito": true
         },
         "C1": {
-          "entrada": "Referência",
+          "entrada": "Prazo (dias úteis)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Data-limite",
           "negrito": true
         },
         "A2": {
-          "entrada": "18/07/2026"
+          "entrada": "1150/2026"
         },
         "B2": {
-          "entrada": "03/03/2015"
+          "entrada": "26/10/2026"
         },
         "C2": {
-          "entrada": "01/11/2026"
+          "entrada": "15"
         },
-        "D1": {
-          "entrada": "Ano",
+        "G1": {
+          "entrada": "Feriados",
           "negrito": true
+        },
+        "G2": {
+          "entrada": "20/11/2026"
+        },
+        "G3": {
+          "entrada": "02/11/2026"
+        },
+        "G4": {
+          "entrada": "28/10/2026"
+        },
+        "G5": {
+          "entrada": "12/10/2026"
+        },
+        "G6": {
+          "entrada": "15/11/2026"
         }
       },
       "larguras": {
-        "A": 110,
+        "A": 100,
         "B": 110,
-        "C": 110,
-        "F": 120
+        "C": 140,
+        "D": 120,
+        "G": 110
       },
-      "alternativas": {
-        "A2": [
-          "05/03/2025",
-          "18/07/2026"
-        ]
-      }
+      "variaveis": [
+        "C2"
+      ]
     },
     "alvos": [
       {
         "celula": "D2",
-        "esperado": 2026,
+        "esperado": {
+          "data": "2026-11-18"
+        },
         "exigeFormula": true,
-        "solucaoReferencia": "=ANO(A2)"
+        "solucaoReferencia": "=DIATRABALHO(B2;C2;G2:G6)",
+        "formato": "data"
       }
     ]
   },
@@ -2046,18 +5531,18 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "O que é uma data",
-    "enunciado": [
-      "Para o Excel, uma data é:"
-    ],
+    "versao": 2,
+    "titulo": "Horas em número",
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "hoje-dias-ate-o-vencimento",
+    "revisar": "horas-trabalhadas-banco-de-horas",
+    "enunciado": [
+      "F2 mostra 09:30 (horas trabalhadas). Qual fórmula dá 9,5, o número de horas?"
+    ],
     "type": "multiple_choice",
     "grade": {
       "linhas": 1,
@@ -2066,18 +5551,18 @@
     },
     "opcoes": [
       {
-        "texto": "Um texto"
+        "texto": "=F2*60"
       },
       {
-        "texto": "Um número de dias"
+        "texto": "=F2/24"
       },
       {
-        "texto": "Uma fórmula"
+        "texto": "=F2*24"
       },
       {
-        "texto": "Um valor de hora"
+        "texto": "=F2*100"
       }
     ],
-    "correta": 1
+    "correta": 2
   }
 ]

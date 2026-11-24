@@ -138,7 +138,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "SE aninhado: três respostas",
@@ -266,7 +266,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "E e OU: duas condições",
@@ -677,6 +677,1111 @@
     "papel": "principal"
   },
   {
+    "id": "fae27eb8-2845-5336-9701-a58dc082b821",
+    "slug": "se-prazo-vencido",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SE com datas: prazo vencido",
+    "intro": "No escritório, prazo perdido custa caro. Uma coluna que avisa sozinha o que já venceu vale ouro.",
+    "enunciado": [
+      "A data de hoje está em **H1**. Em **E2**, mostre \"Vencido\" se o prazo (coluna C) for **antes** de hoje; senão, \"No prazo\". Copie até **E7**.",
+      "Prazo que vence hoje ainda está no prazo."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Alerta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023"
+        },
+        "B2": {
+          "entrada": "Contestação"
+        },
+        "C2": {
+          "entrada": "20/11/2026"
+        },
+        "D2": {
+          "entrada": "Protocolado"
+        },
+        "A3": {
+          "entrada": "1047"
+        },
+        "B3": {
+          "entrada": "Recurso"
+        },
+        "C3": {
+          "entrada": "24/11/2026"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "1051"
+        },
+        "B4": {
+          "entrada": "Réplica"
+        },
+        "C4": {
+          "entrada": "18/11/2026"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "1060"
+        },
+        "B5": {
+          "entrada": "Manifestação"
+        },
+        "C5": {
+          "entrada": "02/12/2026"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "1072"
+        },
+        "B6": {
+          "entrada": "Embargos"
+        },
+        "C6": {
+          "entrada": "27/11/2026"
+        },
+        "D6": {
+          "entrada": "Protocolado"
+        },
+        "A7": {
+          "entrada": "1088"
+        },
+        "B7": {
+          "entrada": "Contrarrazões"
+        },
+        "C7": {
+          "entrada": "10/11/2026"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "24/11/2026"
+        }
+      },
+      "larguras": {
+        "B": 130,
+        "C": 100,
+        "D": 110,
+        "E": 110
+      },
+      "alternativas": {
+        "H1": [
+          "30/11/2026",
+          "15/11/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C2<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C3<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C4<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C5<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C6<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E7",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C7<$H$1;\"Vencido\";\"No prazo\")"
+      }
+    ],
+    "dicas": [
+      "Data também é número para o Excel: dá para comparar com < e >.",
+      "Compare o prazo com a célula de hoje, e trave essa célula com $ antes de copiar."
+    ],
+    "explicacao": [
+      "`=SE(C2<$H$1;\"Vencido\";\"No prazo\")`. Datas são números (dias contados desde 1900), então < quer dizer \"antes de\".",
+      "O $ em H1 mantém a data de hoje fixa quando a fórmula desce. Na sua planilha, H1 pode ter `=HOJE()` e o alerta se atualiza todo dia."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "<\"\\d",
+        "dica": "Data entre aspas é texto, não data. Compare com a célula onde está a data de hoje."
+      },
+      {
+        "padrao": "<=\\$?H\\$?1",
+        "dica": "Prazo que vence hoje ainda está no prazo: o sinal é só \"menor que\"."
+      },
+      {
+        "padrao": "<H\\d+[;)]",
+        "dica": "Ao copiar para baixo, H1 vira H2, H3… Trave a data de hoje com $."
+      }
+    ],
+    "video": "Uma coluna de alerta de prazos com SE e HOJE(): o que venceu aparece sozinho.",
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-prazo-vencido",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "5862a48d-0d8f-5da5-92df-82152fa94249",
+    "slug": "nao-despesa-reembolsavel",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "NÃO e OU: o que fica de fora do reembolso",
+    "intro": "Muitas regras de empresa são escritas pelo que NÃO vale: \"reembolsamos tudo, menos multa e despesa pessoal\".",
+    "enunciado": [
+      "A política de reembolso paga todas as despesas, **menos** as das categorias \"Multa\" e \"Pessoal\".",
+      "Em **D2**, mostre \"Sim\" se a despesa for reembolsável e \"Não\" se não for, usando a função **NÃO**. Copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Reembolsa?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Transporte"
+        },
+        "C2": {
+          "entrada": "85",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Multa"
+        },
+        "C3": {
+          "entrada": "195,23",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Alimentação"
+        },
+        "C4": {
+          "entrada": "62,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Pessoal"
+        },
+        "C5": {
+          "entrada": "140",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Hospedagem"
+        },
+        "C6": {
+          "entrada": "480",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Multa"
+        },
+        "C7": {
+          "entrada": "88,38",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 100,
+        "D": 120
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "alternativas": {
+        "B2": [
+          "Pessoal",
+          "Transporte"
+        ],
+        "B3": [
+          "Hospedagem",
+          "Multa"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B3=\"Multa\";B3=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B4=\"Multa\";B4=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B5=\"Multa\";B5=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B6=\"Multa\";B6=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B7=\"Multa\";B7=\"Pessoal\"));\"Sim\";\"Não\")"
+      }
+    ],
+    "dicas": [
+      "Primeiro escreva a condição de quem fica de fora: é Multa **ou** é Pessoal.",
+      "NÃO inverte o resultado: VERDADEIRO vira FALSO e vice-versa. Embrulhe a condição de quem fica de fora com ele."
+    ],
+    "explicacao": [
+      "`=SE(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));\"Sim\";\"Não\")`. O OU responde \"está na lista de exclusão?\" e o NÃO inverte: só quem não está é reembolsado.",
+      "Dava para escrever sem o NÃO, trocando as respostas de lugar. O NÃO deixa a fórmula falar a mesma língua da política."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\([A-Z]+\\d+<>",
+        "dica": "Com OU e \"diferente de\", toda categoria passa: Multa é diferente de Pessoal. Escreva a condição de quem fica de fora e inverta com NÃO."
+      },
+      {
+        "padrao": "^=SE\\(NÃO\\([A-Z]+\\d+=\"MULTA\"\\);",
+        "dica": "Assim só a Multa fica de fora. A despesa Pessoal também não é reembolsada."
+      }
+    ],
+    "video": "\"Tudo, menos multa e pessoal\": a regra escrita pelo que não vale, com NÃO e OU.",
+    "funcoesExigidas": [
+      "IF",
+      "NOT",
+      "OR"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "nao-despesa-reembolsavel",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "2a44729c-db28-56f2-92c2-7613b9869720",
+    "slug": "ecel-vazia-horas-extras",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÉCÉL.VAZIA: quem ainda não lançou as horas",
+    "intro": "Planilha de verdade chega incompleta. Antes de calcular, a fórmula precisa saber se o dado já foi lançado.",
+    "enunciado": [
+      "Fechamento das horas extras do mês: alguns gestores ainda não lançaram as horas (célula vazia). Quem lançou 0 não fez hora extra.",
+      "Em **D2**, mostre \"Falta lançar\" se as horas (coluna C) estiverem **vazias**; senão, calcule valor da hora × horas. Copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "A pagar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "42,5",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "38",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "55",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "0"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "6"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "47,5",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "36",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "12"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 110,
+        "D": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "C2",
+        "C4",
+        "C5",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 425.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";B2*C2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C3);\"Falta lançar\";B3*C3)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C4);\"Falta lançar\";B4*C4)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 240.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C5);\"Falta lançar\";B5*C5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C6);\"Falta lançar\";B6*C6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 432.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C7);\"Falta lançar\";B7*C7)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "ÉCÉL.VAZIA(célula) responde VERDADEIRO quando a célula não tem nada dentro.",
+      "Ela vai no teste do SE: se vazia, um texto; senão, a conta."
+    ],
+    "explicacao": [
+      "`=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";B2*C2)`. A Carla lançou 0: não é \"falta lançar\", é R$ 0,00 a pagar.",
+      "Testar `C2=0` não serve: para o Excel, célula vazia vale 0 numa comparação, e as duas situações se misturam."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "[A-Z]\\d+=0;",
+        "dica": "Célula vazia vale 0 numa comparação: assim quem lançou 0 hora extra também aparece como \"Falta lançar\"."
+      }
+    ],
+    "video": "Vazio não é zero: ÉCÉL.VAZIA separa o que falta lançar do que foi lançado como 0.",
+    "funcoesExigidas": [
+      "IF",
+      "ISBLANK"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ecel-vazia-horas-extras",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "dcdd6ef4-31fd-58cb-a696-6db4575d126f",
+    "slug": "honorarios-de-exito",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: honorários de êxito",
+    "intro": "No escritório de advocacia, o honorário de êxito depende do resultado e de o processo ter acabado de vez. Uma fórmula só resolve a tabela inteira.",
+    "enunciado": [
+      "Regras do contrato: o honorário só é cobrado depois do **trânsito em julgado** (coluna D = \"Sim\"); antes disso, mostre \"Aguardando\".",
+      "Transitado, o honorário é o valor da causa × **20%** (H1) se o resultado for \"Procedente\", × **10%** (H2) se for \"Acordo\", e **0** se for \"Improcedente\".",
+      "Em **E2**, aplique as regras e copie até **E7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Transitou?",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2101"
+        },
+        "B2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Procedente"
+        },
+        "D2": {
+          "entrada": "Sim"
+        },
+        "A3": {
+          "entrada": "2102"
+        },
+        "B3": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "Acordo"
+        },
+        "D3": {
+          "entrada": "Sim"
+        },
+        "A4": {
+          "entrada": "2103"
+        },
+        "B4": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "Procedente"
+        },
+        "D4": {
+          "entrada": "Não"
+        },
+        "A5": {
+          "entrada": "2104"
+        },
+        "B5": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "Improcedente"
+        },
+        "D5": {
+          "entrada": "Sim"
+        },
+        "A6": {
+          "entrada": "2105"
+        },
+        "B6": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "Acordo"
+        },
+        "D6": {
+          "entrada": "Não"
+        },
+        "A7": {
+          "entrada": "2106"
+        },
+        "B7": {
+          "entrada": "150000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "Procedente"
+        },
+        "D7": {
+          "entrada": "Sim"
+        },
+        "G1": {
+          "entrada": "Êxito: procedente",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "20%"
+        },
+        "G2": {
+          "entrada": "Êxito: acordo",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "10%"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 110,
+        "D": 90,
+        "E": 120,
+        "G": 150,
+        "H": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "H1",
+        "H2"
+      ],
+      "alternativas": {
+        "D2": [
+          "Não",
+          "Sim"
+        ],
+        "C3": [
+          "Procedente",
+          "Improcedente"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 17000.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D2=\"Sim\";SES(C2=\"Procedente\";B2*$H$1;C2=\"Acordo\";B2*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 4000.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D3=\"Sim\";SES(C3=\"Procedente\";B3*$H$1;C3=\"Acordo\";B3*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Aguardando",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D4=\"Sim\";SES(C4=\"Procedente\";B4*$H$1;C4=\"Acordo\";B4*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D5=\"Sim\";SES(C5=\"Procedente\";B5*$H$1;C5=\"Acordo\";B5*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": "Aguardando",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D6=\"Sim\";SES(C6=\"Procedente\";B6*$H$1;C6=\"Acordo\";B6*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 30000.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(D7=\"Sim\";SES(C7=\"Procedente\";B7*$H$1;C7=\"Acordo\";B7*$H$2;VERDADEIRO;0);\"Aguardando\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Comece pela regra que barra tudo: se não transitou, \"Aguardando\". O cálculo vai no outro lado do SE.",
+      "Para o cálculo, um SES (ou SE dentro de SE) com o resultado; os percentuais ficam em H1 e H2, travados com $."
+    ],
+    "explicacao": [
+      "`=SE(D2=\"Sim\";SES(C2=\"Procedente\";B2*$H$1;C2=\"Acordo\";B2*$H$2;VERDADEIRO;0);\"Aguardando\")`.",
+      "O processo 2103 ganhou R$ 120.000,00, mas ainda não transitou: nada a cobrar por enquanto. Percentuais em células deixam o contrato mudar sem mexer nas fórmulas."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\*H[12](?!\\d)",
+        "dica": "Ao copiar para baixo, H1 e H2 descem junto e apontam para outras células. Trave os percentuais com $."
+      },
+      {
+        "padrao": "\\*(20|10|0,2|0,1)\\b",
+        "dica": "Os percentuais estão em H1 e H2: use as células, para a fórmula acompanhar se o contrato mudar."
+      }
+    ],
+    "video": "Honorário de êxito em uma fórmula: a regra do trânsito em julgado por fora, o percentual por resultado por dentro.",
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "honorarios-de-exito",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "b3f6c985-fe48-5216-93ba-9d1e53ec3da4",
+    "slug": "caso-classificacao-clientes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: classificação de clientes",
+    "intro": "O comercial quer a carteira dividida em categorias, com regras que misturam valor, tempo de casa e atraso. É o módulo inteiro numa fórmula.",
+    "enunciado": [
+      "Regras, nesta ordem: quem tem **mais de 30 dias de atraso** é \"Bloqueado\", não importa o resto. Dos outros, quem comprou **R$ 100.000,00 ou mais** no ano (1º + 2º semestre) **e** tem **3 anos de casa ou mais** é \"Ouro\".",
+      "Quem comprou **R$ 50.000,00 ou mais** **ou** tem **5 anos de casa ou mais** é \"Prata\". O resto é \"Bronze\".",
+      "Em **F2**, classifique e copie até **F9**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1º semestre",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "2º semestre",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Anos de casa",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Dias em atraso",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "B2": {
+          "entrada": "30000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "28000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B3": {
+          "entrada": "62000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "55000",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "4"
+        },
+        "E3": {
+          "entrada": "0"
+        },
+        "A4": {
+          "entrada": "Farmácia Vida"
+        },
+        "B4": {
+          "entrada": "70000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "45000",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "1"
+        },
+        "E4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B5": {
+          "entrada": "80000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "45"
+        },
+        "A6": {
+          "entrada": "Loja da Esquina"
+        },
+        "B6": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "7"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "Construtora Alfa"
+        },
+        "B7": {
+          "entrada": "55000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "50000",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "3"
+        },
+        "E7": {
+          "entrada": "10"
+        },
+        "A8": {
+          "entrada": "Café Central"
+        },
+        "B8": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "1"
+        },
+        "E8": {
+          "entrada": "30"
+        },
+        "A9": {
+          "entrada": "Distribuidora Sul"
+        },
+        "B9": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "2"
+        },
+        "E9": {
+          "entrada": "31"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 110,
+        "D": 100,
+        "E": 110,
+        "F": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5",
+        "B6",
+        "C6",
+        "D6",
+        "E6",
+        "B7",
+        "C7",
+        "D7",
+        "E7",
+        "B8",
+        "C8",
+        "D8",
+        "E8",
+        "B9",
+        "C9",
+        "D9",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E2>30;\"Bloqueado\";E(B2+C2>=100000;D2>=3);\"Ouro\";OU(B2+C2>=50000;D2>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Ouro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E3>30;\"Bloqueado\";E(B3+C3>=100000;D3>=3);\"Ouro\";OU(B3+C3>=50000;D3>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E4>30;\"Bloqueado\";E(B4+C4>=100000;D4>=3);\"Ouro\";OU(B4+C4>=50000;D4>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Bloqueado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E5>30;\"Bloqueado\";E(B5+C5>=100000;D5>=3);\"Ouro\";OU(B5+C5>=50000;D5>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E6>30;\"Bloqueado\";E(B6+C6>=100000;D6>=3);\"Ouro\";OU(B6+C6>=50000;D6>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Ouro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E7>30;\"Bloqueado\";E(B7+C7>=100000;D7>=3);\"Ouro\";OU(B7+C7>=50000;D7>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F8",
+        "esperado": "Bronze",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E8>30;\"Bloqueado\";E(B8+C8>=100000;D8>=3);\"Ouro\";OU(B8+C8>=50000;D8>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F9",
+        "esperado": "Bloqueado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E9>30;\"Bloqueado\";E(B9+C9>=100000;D9>=3);\"Ouro\";OU(B9+C9>=50000;D9>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      }
+    ],
+    "dicas": [
+      "Quatro respostas, regras em ordem: SES é o caminho mais limpo (SE dentro de SE também serve).",
+      "O total do ano é a soma dos dois semestres, dentro da própria condição. Cada regra do meio junta duas condições com E ou OU.",
+      "O SES para na primeira regra verdadeira: o bloqueio vem primeiro, e o \"resto\" é VERDADEIRO no fim."
+    ],
+    "explicacao": [
+      "`=SES(E2>30;\"Bloqueado\";E(B2+C2>=100000;D2>=3);\"Ouro\";OU(B2+C2>=50000;D2>=5);\"Prata\";VERDADEIRO;\"Bronze\")`.",
+      "A Auto Peças Silva compra muito, mas está com 45 dias de atraso: Bloqueado. A Farmácia Vida passou de R$ 100.000,00, mas tem só 1 ano de casa: Prata. O Café Central está com 30 dias, que não é \"mais de 30\": Bronze."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "E\\d+>=30",
+        "dica": "\"Mais de 30 dias\" não inclui os 30: o sinal é só \"maior que\"."
+      },
+      {
+        "padrao": "^=SES\\((E|OU)\\(",
+        "dica": "O SES para na primeira regra verdadeira: um cliente atrasado que compra muito vira Ouro antes de o atraso ser olhado. Qual regra vem primeiro?"
+      },
+      {
+        "padrao": "100\\.000|50\\.000",
+        "dica": "Dentro da fórmula, números vão sem o ponto de milhar."
+      }
+    ],
+    "video": "Classificar a carteira de clientes com SES, E e OU: a ordem das regras é a regra mais importante.",
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-classificacao-clientes",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
     "id": "ec93d113-fb88-52da-8a51-d974de48aa71",
     "slug": "se-aprovado-variacao-a",
     "trilha": "excel-ptbr",
@@ -964,7 +2069,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Frete por peso",
@@ -1034,7 +2139,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Meta, perto ou abaixo",
@@ -1107,7 +2212,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 24,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o 9,5 que virou Bom",
@@ -1183,7 +2288,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 25,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -1231,7 +2336,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "OU: desconto para VIP ou compra grande",
@@ -1321,7 +2426,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "E: nota e frequência",
@@ -1407,7 +2512,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o E escrito como palavra",
@@ -1496,7 +2601,7 @@
     "trilha": "excel-ptbr",
     "modulo": "logica",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -2128,6 +3233,3319 @@
     "correta": 1
   },
   {
+    "id": "5e63125a-5f2c-5394-9ce4-0169a3075a0f",
+    "slug": "se-prazo-vencido-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vencido e ainda pendente",
+    "enunciado": [
+      "Prazo vencido só é problema se a providência ainda não foi protocolada. Em **E2**, mostre \"Atrasado\" se o prazo for antes de hoje (**H1**) **e** a situação for \"Pendente\"; senão, \"OK\". Copie até **E7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Alerta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023"
+        },
+        "B2": {
+          "entrada": "Contestação"
+        },
+        "C2": {
+          "entrada": "20/11/2026"
+        },
+        "D2": {
+          "entrada": "Protocolado"
+        },
+        "A3": {
+          "entrada": "1047"
+        },
+        "B3": {
+          "entrada": "Recurso"
+        },
+        "C3": {
+          "entrada": "24/11/2026"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "1051"
+        },
+        "B4": {
+          "entrada": "Réplica"
+        },
+        "C4": {
+          "entrada": "18/11/2026"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "1060"
+        },
+        "B5": {
+          "entrada": "Manifestação"
+        },
+        "C5": {
+          "entrada": "02/12/2026"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "1072"
+        },
+        "B6": {
+          "entrada": "Embargos"
+        },
+        "C6": {
+          "entrada": "27/11/2026"
+        },
+        "D6": {
+          "entrada": "Protocolado"
+        },
+        "A7": {
+          "entrada": "1088"
+        },
+        "B7": {
+          "entrada": "Contrarrazões"
+        },
+        "C7": {
+          "entrada": "10/11/2026"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "24/11/2026"
+        }
+      },
+      "larguras": {
+        "B": 130,
+        "C": 100,
+        "D": 110,
+        "E": 110
+      },
+      "alternativas": {
+        "H1": [
+          "30/11/2026",
+          "15/11/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C2<$H$1;D2=\"Pendente\");\"Atrasado\";\"OK\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C3<$H$1;D3=\"Pendente\");\"Atrasado\";\"OK\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Atrasado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C4<$H$1;D4=\"Pendente\");\"Atrasado\";\"OK\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C5<$H$1;D5=\"Pendente\");\"Atrasado\";\"OK\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C6<$H$1;D6=\"Pendente\");\"Atrasado\";\"OK\")"
+      },
+      {
+        "celula": "E7",
+        "esperado": "Atrasado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(C7<$H$1;D7=\"Pendente\");\"Atrasado\";\"OK\")"
+      }
+    ],
+    "dicas": [
+      "As duas condições precisam valer juntas: E dentro do teste do SE.",
+      "Não esqueça o $ na data de hoje."
+    ],
+    "explicacao": [
+      "`=SE(E(C2<$H$1;D2=\"Pendente\");\"Atrasado\";\"OK\")`. O processo 1023 venceu, mas já foi protocolado: fica OK."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, um prazo vencido já protocolado também viraria Atrasado. As duas condições precisam valer ao mesmo tempo?"
+      },
+      {
+        "padrao": "<H\\d+[;)]",
+        "dica": "Ao copiar para baixo, H1 vira H2, H3… Trave a data de hoje com $."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "AND"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-prazo-vencido",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "6aafde7e-cce8-513b-b21f-0de7f48685e5",
+    "slug": "se-prazo-vencido-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que vence nesta semana",
+    "enunciado": [
+      "Em **E2**, classifique cada prazo: \"Vencido\" se for antes de hoje (**H1**), \"Esta semana\" se vencer em até 7 dias a partir de hoje (hoje + 7 ainda conta) e \"Depois\" para o resto. Copie até **E7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Quando",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023"
+        },
+        "B2": {
+          "entrada": "Contestação"
+        },
+        "C2": {
+          "entrada": "20/11/2026"
+        },
+        "D2": {
+          "entrada": "Protocolado"
+        },
+        "A3": {
+          "entrada": "1047"
+        },
+        "B3": {
+          "entrada": "Recurso"
+        },
+        "C3": {
+          "entrada": "24/11/2026"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "1051"
+        },
+        "B4": {
+          "entrada": "Réplica"
+        },
+        "C4": {
+          "entrada": "18/11/2026"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "1060"
+        },
+        "B5": {
+          "entrada": "Manifestação"
+        },
+        "C5": {
+          "entrada": "02/12/2026"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "1072"
+        },
+        "B6": {
+          "entrada": "Embargos"
+        },
+        "C6": {
+          "entrada": "27/11/2026"
+        },
+        "D6": {
+          "entrada": "Protocolado"
+        },
+        "A7": {
+          "entrada": "1088"
+        },
+        "B7": {
+          "entrada": "Contrarrazões"
+        },
+        "C7": {
+          "entrada": "10/11/2026"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "24/11/2026"
+        }
+      },
+      "larguras": {
+        "B": 130,
+        "C": 100,
+        "D": 110,
+        "E": 110
+      },
+      "alternativas": {
+        "H1": [
+          "30/11/2026",
+          "15/11/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C2<$H$1;\"Vencido\";C2<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "Esta semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C3<$H$1;\"Vencido\";C3<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C4<$H$1;\"Vencido\";C4<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "Depois",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C5<$H$1;\"Vencido\";C5<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "Esta semana",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C6<$H$1;\"Vencido\";C6<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      },
+      {
+        "celula": "E7",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C7<$H$1;\"Vencido\";C7<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")"
+      }
+    ],
+    "dicas": [
+      "Somar 7 a uma data dá a data de 7 dias depois.",
+      "Com SES (ou SE dentro de SE), a ordem importa: o vencido é testado primeiro, então o segundo teste só precisa olhar o limite de 7 dias."
+    ],
+    "explicacao": [
+      "`=SES(C2<$H$1;\"Vencido\";C2<=$H$1+7;\"Esta semana\";VERDADEIRO;\"Depois\")`.",
+      "Hoje + 7 é 01/12/2026: o prazo de 02/12 fica para \"Depois\". O VERDADEIRO no fim pega todo o resto."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "<\\$?H\\$?1\\+7",
+        "dica": "Hoje + 7 ainda conta como esta semana: \"menor que\" deixa esse dia de fora."
+      },
+      {
+        "padrao": "^=SES\\((?!.*VERDADEIRO).*\\)$",
+        "dica": "Sem uma condição final que pegue o resto, o SES devolve #N/D para o prazo que não cai em nenhuma regra."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-prazo-vencido",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "33d77311-5b74-54fd-bd56-532cbb748457",
+    "slug": "se-prazo-vencido-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a data entre aspas",
+    "enunciado": [
+      "Alguém escreveu a data de hoje direto na fórmula, entre aspas, e agora **todos** os prazos aparecem como \"Vencido\". Corrija **E2:E7** para comparar com a data de hoje em **H1**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Alerta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1023"
+        },
+        "B2": {
+          "entrada": "Contestação"
+        },
+        "C2": {
+          "entrada": "20/11/2026"
+        },
+        "D2": {
+          "entrada": "Protocolado"
+        },
+        "A3": {
+          "entrada": "1047"
+        },
+        "B3": {
+          "entrada": "Recurso"
+        },
+        "C3": {
+          "entrada": "24/11/2026"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "1051"
+        },
+        "B4": {
+          "entrada": "Réplica"
+        },
+        "C4": {
+          "entrada": "18/11/2026"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "1060"
+        },
+        "B5": {
+          "entrada": "Manifestação"
+        },
+        "C5": {
+          "entrada": "02/12/2026"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "1072"
+        },
+        "B6": {
+          "entrada": "Embargos"
+        },
+        "C6": {
+          "entrada": "27/11/2026"
+        },
+        "D6": {
+          "entrada": "Protocolado"
+        },
+        "A7": {
+          "entrada": "1088"
+        },
+        "B7": {
+          "entrada": "Contrarrazões"
+        },
+        "C7": {
+          "entrada": "10/11/2026"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "24/11/2026"
+        },
+        "E2": {
+          "entrada": "=SE(C2<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        },
+        "E3": {
+          "entrada": "=SE(C3<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        },
+        "E4": {
+          "entrada": "=SE(C4<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        },
+        "E5": {
+          "entrada": "=SE(C5<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        },
+        "E6": {
+          "entrada": "=SE(C6<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        },
+        "E7": {
+          "entrada": "=SE(C7<\"24/11/2026\";\"Vencido\";\"No prazo\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "B": 130,
+        "C": 100,
+        "D": 110,
+        "E": 110
+      },
+      "alternativas": {
+        "H1": [
+          "30/11/2026",
+          "15/11/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C2<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C3<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C4<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C5<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "No prazo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C6<$H$1;\"Vencido\";\"No prazo\")"
+      },
+      {
+        "celula": "E7",
+        "esperado": "Vencido",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C7<$H$1;\"Vencido\";\"No prazo\")"
+      }
+    ],
+    "dicas": [
+      "Entre aspas, \"24/11/2026\" é um texto, não uma data. Para o Excel, qualquer número é menor que qualquer texto.",
+      "Além do erro, a data escrita na fórmula não muda amanhã. A célula H1 muda."
+    ],
+    "explicacao": [
+      "`=SE(C2<$H$1;\"Vencido\";\"No prazo\")`. Comparar uma data (número) com um texto dá sempre VERDADEIRO no \"menor que\", por isso tudo virava Vencido.",
+      "Quando precisar de uma data fixa dentro da fórmula, use DATA(2026;11;24), nunca a data entre aspas."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "<\"\\d",
+        "dica": "A data continua entre aspas, então ainda é texto. Compare com a célula da data de hoje."
+      },
+      {
+        "padrao": "DATA\\(",
+        "dica": "Com DATA() a comparação funciona, mas só hoje: amanhã a fórmula fica velha. Compare com a célula da data de hoje."
+      },
+      {
+        "padrao": "<H\\d+[;)]",
+        "dica": "Ao copiar para baixo, H1 vira H2, H3… Trave a data de hoje com $."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "se-prazo-vencido",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "60db82d6-cd0e-58e6-8007-8b8b8bd17d2a",
+    "slug": "se-prazo-vencido-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Por que dá para comparar datas com < e > numa fórmula?"
+    ],
+    "dicas": [
+      "Pense em como o Excel guarda uma data por baixo da formatação."
+    ],
+    "explicacao": [
+      "Cada data é um número: a quantidade de dias desde 1900. Data maior é data mais tarde."
+    ],
+    "opcoes": [
+      {
+        "texto": "Porque o Excel compara as datas como texto, letra por letra",
+        "dica": "Se fosse texto, \"10/12\" viria antes de \"20/11\", e a comparação daria errado."
+      },
+      {
+        "texto": "Porque o Excel guarda cada data como um número de dias"
+      },
+      {
+        "texto": "Só dá para comparar datas com a função DATADIF",
+        "dica": "DATADIF calcula a diferença entre datas. Para saber qual vem antes, < e > bastam."
+      },
+      {
+        "texto": "Porque as aspas transformam o texto em data",
+        "dica": "É o contrário: entre aspas a data vira texto. Foi o erro da pegadinha."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "se-prazo-vencido",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "a8332630-6873-524b-aa9f-d61a58cb9c18",
+    "slug": "nao-despesa-reembolsavel-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Aprovação automática",
+    "enunciado": [
+      "A aprovação é automática quando a despesa é reembolsável (não é Multa nem Pessoal) **e** custa até R$ 150,00. O resto vai para o gestor.",
+      "Em **D2**, mostre \"Automática\" ou \"Gestor\". Copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Aprovação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Transporte"
+        },
+        "C2": {
+          "entrada": "85",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Multa"
+        },
+        "C3": {
+          "entrada": "195,23",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Alimentação"
+        },
+        "C4": {
+          "entrada": "62,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Pessoal"
+        },
+        "C5": {
+          "entrada": "140",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Hospedagem"
+        },
+        "C6": {
+          "entrada": "480",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Multa"
+        },
+        "C7": {
+          "entrada": "88,38",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 100,
+        "D": 120
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "alternativas": {
+        "B2": [
+          "Pessoal",
+          "Transporte"
+        ],
+        "B3": [
+          "Hospedagem",
+          "Multa"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Automática",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));C2<=150);\"Automática\";\"Gestor\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Gestor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B3=\"Multa\";B3=\"Pessoal\"));C3<=150);\"Automática\";\"Gestor\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Automática",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B4=\"Multa\";B4=\"Pessoal\"));C4<=150);\"Automática\";\"Gestor\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Gestor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B5=\"Multa\";B5=\"Pessoal\"));C5<=150);\"Automática\";\"Gestor\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Gestor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B6=\"Multa\";B6=\"Pessoal\"));C6<=150);\"Automática\";\"Gestor\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Gestor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(NÃO(OU(B7=\"Multa\";B7=\"Pessoal\"));C7<=150);\"Automática\";\"Gestor\")"
+      }
+    ],
+    "dicas": [
+      "Reaproveite a condição da lição: NÃO com OU dentro.",
+      "Agora são duas exigências ao mesmo tempo: ser reembolsável e custar até 150. Junte-as com E."
+    ],
+    "explicacao": [
+      "`=SE(E(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));C2<=150);\"Automática\";\"Gestor\")`.",
+      "A Elisa (Hospedagem) é reembolsável, mas passa de R$ 150,00: vai para o gestor."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "C\\d+<150",
+        "dica": "\"Até R$ 150,00\" inclui os 150: o sinal é menor ou igual."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "NOT",
+      "AND"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "nao-despesa-reembolsavel",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "0632bcff-dc70-5567-bb8f-a14a9bb1a424",
+    "slug": "nao-despesa-reembolsavel-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A mesma regra com \"diferente de\"",
+    "enunciado": [
+      "Mesma política: reembolsa tudo, menos \"Multa\" e \"Pessoal\". Agora resolva **sem** a função NÃO, usando o sinal de diferente (<>).",
+      "Em **D2**, \"Sim\" ou \"Não\". Copie até **D6**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Reembolsa?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Gabi"
+        },
+        "B2": {
+          "entrada": "Hospedagem"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Hugo"
+        },
+        "B3": {
+          "entrada": "Pessoal"
+        },
+        "C3": {
+          "entrada": "54,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Íris"
+        },
+        "B4": {
+          "entrada": "Transporte"
+        },
+        "C4": {
+          "entrada": "37,6",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "João"
+        },
+        "B5": {
+          "entrada": "Multa"
+        },
+        "C5": {
+          "entrada": "130,16",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Lara"
+        },
+        "B6": {
+          "entrada": "Alimentação"
+        },
+        "C6": {
+          "entrada": "98",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 100,
+        "D": 120
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "alternativas": {
+        "B2": [
+          "Pessoal",
+          "Transporte"
+        ],
+        "B3": [
+          "Hospedagem",
+          "Multa"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B2<>\"Multa\";B2<>\"Pessoal\");\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B3<>\"Multa\";B3<>\"Pessoal\");\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B4<>\"Multa\";B4<>\"Pessoal\");\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B5<>\"Multa\";B5<>\"Pessoal\");\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B6<>\"Multa\";B6<>\"Pessoal\");\"Sim\";\"Não\")"
+      }
+    ],
+    "dicas": [
+      "Reembolsável é quem é diferente de Multa e, ao mesmo tempo, diferente de Pessoal.",
+      "As duas diferenças precisam valer juntas: E ou OU?"
+    ],
+    "explicacao": [
+      "`=SE(E(B2<>\"Multa\";B2<>\"Pessoal\");\"Sim\";\"Não\")`. NÃO(OU(a;b)) é o mesmo que E(não a; não b): \"nem Multa, nem Pessoal\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\(",
+        "dica": "Com OU, basta uma diferença valer, e toda categoria é diferente de pelo menos uma das duas. As duas diferenças precisam valer juntas."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "AND"
+    ],
+    "funcoesProibidas": [
+      "NOT"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "nao-despesa-reembolsavel",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "e0b3a299-f837-591e-a1a3-1c5e612ea16a",
+    "slug": "nao-despesa-reembolsavel-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o OU que aprova tudo",
+    "enunciado": [
+      "A fórmula em **D2:D7** deveria recusar Multa e Pessoal, mas está dando \"Sim\" para todo mundo. Corrija-a (com NÃO ou com \"diferente de\", como preferir)."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Reembolsa?",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Transporte"
+        },
+        "C2": {
+          "entrada": "85",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Multa"
+        },
+        "C3": {
+          "entrada": "195,23",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Alimentação"
+        },
+        "C4": {
+          "entrada": "62,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "Pessoal"
+        },
+        "C5": {
+          "entrada": "140",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "Hospedagem"
+        },
+        "C6": {
+          "entrada": "480",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "Multa"
+        },
+        "C7": {
+          "entrada": "88,38",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=SE(OU(B2<>\"Multa\";B2<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=SE(OU(B3<>\"Multa\";B3<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=SE(OU(B4<>\"Multa\";B4<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "=SE(OU(B5<>\"Multa\";B5<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "=SE(OU(B6<>\"Multa\";B6<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "=SE(OU(B7<>\"Multa\";B7<>\"Pessoal\");\"Sim\";\"Não\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 100,
+        "D": 120
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "alternativas": {
+        "B2": [
+          "Pessoal",
+          "Transporte"
+        ],
+        "B3": [
+          "Hospedagem",
+          "Multa"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B3=\"Multa\";B3=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B4=\"Multa\";B4=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B5=\"Multa\";B5=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Sim",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B6=\"Multa\";B6=\"Pessoal\"));\"Sim\";\"Não\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Não",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(NÃO(OU(B7=\"Multa\";B7=\"Pessoal\"));\"Sim\";\"Não\")"
+      }
+    ],
+    "dicas": [
+      "Pense na Multa: ela é diferente de \"Pessoal\"? Então uma das condições do OU já é verdadeira.",
+      "Para recusar as duas categorias, as duas diferenças precisam valer ao mesmo tempo."
+    ],
+    "explicacao": [
+      "Com OU, toda categoria é diferente de Multa **ou** diferente de Pessoal (nenhuma é as duas coisas), então tudo dava Sim.",
+      "Certo: `=SE(E(B2<>\"Multa\";B2<>\"Pessoal\");\"Sim\";\"Não\")` ou `=SE(NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"));\"Sim\";\"Não\")`. É um dos erros mais comuns com \"diferente de\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(OU\\([A-Z]+\\d+<>",
+        "dica": "Ainda com OU: a Multa é diferente de Pessoal, então passa. As duas diferenças precisam valer juntas."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "nao-despesa-reembolsavel",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "828b93d6-e2b7-5bca-aacb-fc7ee5e91f48",
+    "slug": "nao-despesa-reembolsavel-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual fórmula dá o mesmo resultado que **NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"))**?"
+    ],
+    "dicas": [
+      "\"Nem Multa, nem Pessoal\": as duas negações precisam valer juntas?"
+    ],
+    "explicacao": [
+      "NÃO(OU(a;b)) é o mesmo que E(NÃO(a);NÃO(b)): diferente de Multa **e** diferente de Pessoal."
+    ],
+    "opcoes": [
+      {
+        "texto": "OU(B2<>\"Multa\";B2<>\"Pessoal\")",
+        "dica": "Esse é o erro da pegadinha: com OU, toda categoria passa."
+      },
+      {
+        "texto": "NÃO(E(B2=\"Multa\";B2=\"Pessoal\"))",
+        "dica": "E(B2=\"Multa\";B2=\"Pessoal\") nunca é verdadeiro (a célula não tem dois valores), então essa fórmula dá VERDADEIRO sempre."
+      },
+      {
+        "texto": "E(B2<>\"Multa\";B2<>\"Pessoal\")"
+      },
+      {
+        "texto": "OU(NÃO(B2=\"Multa\");B2=\"Pessoal\")",
+        "dica": "Aqui a despesa Pessoal daria VERDADEIRO, o contrário do que a regra pede."
+      }
+    ],
+    "correta": 2,
+    "tentativasAteExplicacao": 3,
+    "licao": "nao-despesa-reembolsavel",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "876c57a0-d823-5135-8ca5-c9e12753de26",
+    "slug": "ecel-vazia-horas-extras-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÉNÚM: horas digitadas como texto",
+    "enunciado": [
+      "Alguns gestores digitaram as horas com texto (\"8h\", \"seis\") e a conta dá erro. Em **D2**, calcule valor da hora × horas **só se** as horas forem um número; senão, mostre \"Corrigir\". Copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "A pagar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "42,5",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "38",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "8h"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "55",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "5"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "seis"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "47,5",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "36",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "7"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 110,
+        "D": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "C2",
+        "C4",
+        "C6",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 425.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C2);B2*C2;\"Corrigir\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Corrigir",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C3);B3*C3;\"Corrigir\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 275.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C4);B4*C4;\"Corrigir\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Corrigir",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C5);B5*C5;\"Corrigir\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C6);B6*C6;\"Corrigir\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 252.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉNÚM(C7);B7*C7;\"Corrigir\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "ÉNÚM(célula) responde VERDADEIRO quando a célula tem um número.",
+      "Se for número, a conta; se não for, o aviso."
+    ],
+    "explicacao": [
+      "`=SE(ÉNÚM(C2);B2*C2;\"Corrigir\")`. Diferente do SEERRO, o ÉNÚM diz o motivo: o dado não é número e alguém precisa corrigir a origem."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SEERRO\\(",
+        "dica": "O SEERRO esconderia o erro sem dizer o motivo. Teste se as horas são um número."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "ISNUMBER"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ecel-vazia-horas-extras",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "bd868be3-4498-5511-acf7-8d45c7dca34c",
+    "slug": "ecel-vazia-horas-extras-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vazio, texto ou número",
+    "enunciado": [
+      "Agora a coluna tem de tudo: vazio, texto e número. Em **D2**: \"Falta lançar\" se as horas estiverem vazias; \"Corrigir\" se não forem número; senão, valor da hora × horas. Copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "A pagar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "42,5",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "38",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "55",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "8h"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "6"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "47,5",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "36",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "0"
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 110,
+        "D": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "C2",
+        "C5",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 425.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";SE(ÉNÚM(C2);B2*C2;\"Corrigir\"))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C3);\"Falta lançar\";SE(ÉNÚM(C3);B3*C3;\"Corrigir\"))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Corrigir",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C4);\"Falta lançar\";SE(ÉNÚM(C4);B4*C4;\"Corrigir\"))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 240.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C5);\"Falta lançar\";SE(ÉNÚM(C5);B5*C5;\"Corrigir\"))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C6);\"Falta lançar\";SE(ÉNÚM(C6);B6*C6;\"Corrigir\"))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C7);\"Falta lançar\";SE(ÉNÚM(C7);B7*C7;\"Corrigir\"))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "São três respostas: um SE dentro do outro (ou SES).",
+      "Teste o vazio primeiro. Depois, entre o que sobrou, se é número."
+    ],
+    "explicacao": [
+      "`=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";SE(ÉNÚM(C2);B2*C2;\"Corrigir\"))`.",
+      "A ordem importa: célula vazia também não é número, então testar o ÉNÚM primeiro mandaria quem não lançou para \"Corrigir\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(ÉNÚM\\(",
+        "dica": "Célula vazia também não é número: testando o ÉNÚM primeiro, quem não lançou cai em \"Corrigir\". Qual teste vem antes?"
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "ISBLANK",
+      "ISNUMBER"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ecel-vazia-horas-extras",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "95ebc19c-dee6-50d9-9d06-90b12dac7867",
+    "slug": "ecel-vazia-horas-extras-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o zero que não lançou",
+    "enunciado": [
+      "A fórmula em **D2:D7** testa se as horas são 0 para avisar \"Falta lançar\". A Carla lançou 0 de propósito (não fez hora extra), mas aparece como pendente. Corrija para que só a célula **vazia** mostre \"Falta lançar\"."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "A pagar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "42,5",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "38",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "55",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "0"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "40",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "6"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "47,5",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "36",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "12"
+        },
+        "D2": {
+          "entrada": "=SE(C2=0;\"Falta lançar\";B2*C2)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=SE(C3=0;\"Falta lançar\";B3*C3)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=SE(C4=0;\"Falta lançar\";B4*C4)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "=SE(C5=0;\"Falta lançar\";B5*C5)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "=SE(C6=0;\"Falta lançar\";B6*C6)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "=SE(C7=0;\"Falta lançar\";B7*C7)",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "B": 110,
+        "C": 110,
+        "D": 120
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "C2",
+        "C4",
+        "C5",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 425.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";B2*C2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C3);\"Falta lançar\";B3*C3)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C4);\"Falta lançar\";B4*C4)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 240.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C5);\"Falta lançar\";B5*C5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C6);\"Falta lançar\";B6*C6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 432.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(ÉCÉL.VAZIA(C7);\"Falta lançar\";B7*C7)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Para o Excel, célula vazia = 0 dá VERDADEIRO. Por isso o 0 e o vazio caem no mesmo lugar.",
+      "Existe uma função que pergunta exatamente \"esta célula está vazia?\"."
+    ],
+    "explicacao": [
+      "`=SE(ÉCÉL.VAZIA(C2);\"Falta lançar\";B2*C2)`. Também funciona testar `C2=\"\"` (vazio é igual a texto vazio, mas 0 não é).",
+      "Erro clássico de fechamento: o zero de verdade some no meio dos que ainda não lançaram."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "[A-Z]\\d+=0;",
+        "dica": "Ainda testando o zero: a Carla lançou 0 e continua como \"Falta lançar\". Teste se a célula está vazia."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "ecel-vazia-horas-extras",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "1c589acf-d16c-55b7-ae5d-d9a098de4e9d",
+    "slug": "ecel-vazia-horas-extras-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "A célula **C5** tem a fórmula **=SE(B5>0;B5;\"\")** e, na tela, aparece vazia. Quanto dá **ÉCÉL.VAZIA(C5)**?"
+    ],
+    "dicas": [
+      "Para o ÉCÉL.VAZIA, o que conta é o que está dentro da célula, não o que aparece na tela."
+    ],
+    "explicacao": [
+      "FALSO: a célula tem uma fórmula, então não está vazia, mesmo mostrando um texto vazio."
+    ],
+    "opcoes": [
+      {
+        "texto": "VERDADEIRO",
+        "dica": "Parece vazia, mas tem uma fórmula dentro. Para o ÉCÉL.VAZIA, só é vazia a célula sem nada."
+      },
+      {
+        "texto": "FALSO"
+      },
+      {
+        "texto": "0",
+        "dica": "ÉCÉL.VAZIA só responde VERDADEIRO ou FALSO, nunca um número."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Não há erro: ÉCÉL.VAZIA aceita qualquer célula."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "ecel-vazia-horas-extras",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "4fd18f17-abe1-566e-9386-18aeb39a70f6",
+    "slug": "honorarios-de-exito-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Honorário com piso",
+    "enunciado": [
+      "Outro contrato: com êxito (\"Procedente\" **ou** \"Acordo\"), o honorário é **15%** do valor da causa (H1), mas nunca menos que o **mínimo** de H2. Sem êxito, 0.",
+      "Em **E2**, calcule e copie até **E7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "3101"
+        },
+        "B2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Procedente"
+        },
+        "A3": {
+          "entrada": "3102"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "Acordo"
+        },
+        "A4": {
+          "entrada": "3103"
+        },
+        "B4": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "Improcedente"
+        },
+        "A5": {
+          "entrada": "3104"
+        },
+        "B5": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "Procedente"
+        },
+        "A6": {
+          "entrada": "3105"
+        },
+        "B6": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "Acordo"
+        },
+        "A7": {
+          "entrada": "3106"
+        },
+        "B7": {
+          "entrada": "150000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "Improcedente"
+        },
+        "G1": {
+          "entrada": "Êxito",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "15%"
+        },
+        "G2": {
+          "entrada": "Honorário mínimo",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "2000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 110,
+        "D": 90,
+        "E": 120,
+        "G": 150,
+        "H": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "H1",
+        "H2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 12750.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C2=\"Procedente\";C2=\"Acordo\");MÁXIMO(B2*$H$1;$H$2);0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 2000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C3=\"Procedente\";C3=\"Acordo\");MÁXIMO(B3*$H$1;$H$2);0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C4=\"Procedente\";C4=\"Acordo\");MÁXIMO(B4*$H$1;$H$2);0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 2000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C5=\"Procedente\";C5=\"Acordo\");MÁXIMO(B5*$H$1;$H$2);0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 6000.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C6=\"Procedente\";C6=\"Acordo\");MÁXIMO(B6*$H$1;$H$2);0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(OU(C7=\"Procedente\";C7=\"Acordo\");MÁXIMO(B7*$H$1;$H$2);0)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Êxito é um resultado ou o outro: OU no teste do SE.",
+      "\"Nunca menos que o mínimo\" é o maior entre a conta e o mínimo: a função MÁXIMO, de Fundamentos, faz isso."
+    ],
+    "explicacao": [
+      "`=SE(OU(C2=\"Procedente\";C2=\"Acordo\");MÁXIMO(B2*$H$1;$H$2);0)`. No processo 3102, 15% de R$ 8.000,00 dá R$ 1.200,00: vale o mínimo de R$ 2.000,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "MÍNIMO\\(",
+        "dica": "\"Nunca menos que o mínimo\" pede o maior dos dois valores, não o menor."
+      },
+      {
+        "padrao": "\\*H1(?!\\d)|;H2\\)",
+        "dica": "Ao copiar para baixo, H1 e H2 descem junto. Trave os parâmetros com $."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "OR",
+      "MAX"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "honorarios-de-exito",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "150b44d6-c31f-5f5f-aaa4-52b2dd8bdd8e",
+    "slug": "honorarios-de-exito-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Status da cobrança",
+    "enunciado": [
+      "Para o financeiro, em **E2**: \"Aguardando\" se não transitou; \"Sem honorário\" se transitou e foi \"Improcedente\"; \"Emitir nota\" para o resto. Copie até **E7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Transitou?",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Cobrança",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2101"
+        },
+        "B2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Procedente"
+        },
+        "D2": {
+          "entrada": "Sim"
+        },
+        "A3": {
+          "entrada": "2102"
+        },
+        "B3": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "Acordo"
+        },
+        "D3": {
+          "entrada": "Sim"
+        },
+        "A4": {
+          "entrada": "2103"
+        },
+        "B4": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "Procedente"
+        },
+        "D4": {
+          "entrada": "Não"
+        },
+        "A5": {
+          "entrada": "2104"
+        },
+        "B5": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "Improcedente"
+        },
+        "D5": {
+          "entrada": "Sim"
+        },
+        "A6": {
+          "entrada": "2105"
+        },
+        "B6": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "Acordo"
+        },
+        "D6": {
+          "entrada": "Não"
+        },
+        "A7": {
+          "entrada": "2106"
+        },
+        "B7": {
+          "entrada": "150000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "Procedente"
+        },
+        "D7": {
+          "entrada": "Sim"
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 110,
+        "D": 90,
+        "E": 120,
+        "G": 150,
+        "H": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "alternativas": {
+        "D2": [
+          "Não",
+          "Sim"
+        ],
+        "C3": [
+          "Procedente",
+          "Improcedente"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "Emitir nota",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D2<>\"Sim\";\"Aguardando\";C2=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "Emitir nota",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D3<>\"Sim\";\"Aguardando\";C3=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "Aguardando",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D4<>\"Sim\";\"Aguardando\";C4=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "Sem honorário",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D5<>\"Sim\";\"Aguardando\";C5=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      },
+      {
+        "celula": "E6",
+        "esperado": "Aguardando",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D6<>\"Sim\";\"Aguardando\";C6=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      },
+      {
+        "celula": "E7",
+        "esperado": "Emitir nota",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(D7<>\"Sim\";\"Aguardando\";C7=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")"
+      }
+    ],
+    "dicas": [
+      "No SES, as regras são lidas na ordem: a primeira verdadeira decide.",
+      "Pondo o \"não transitou\" primeiro, a segunda regra já sabe que o processo transitou."
+    ],
+    "explicacao": [
+      "`=SES(D2<>\"Sim\";\"Aguardando\";C2=\"Improcedente\";\"Sem honorário\";VERDADEIRO;\"Emitir nota\")`.",
+      "Como o SES para na primeira regra verdadeira, a segunda nem precisa repetir \"e transitou\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\(C\\d+=\"IMPROCEDENTE\"",
+        "dica": "Um processo improcedente que ainda não transitou deveria estar \"Aguardando\". Qual regra precisa vir primeiro?"
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "honorarios-de-exito",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "8579b475-8897-57b4-a12f-eadf360ee9f7",
+    "slug": "honorarios-de-exito-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: Procedente e Acordo ao mesmo tempo",
+    "enunciado": [
+      "Regra: com trânsito em julgado e resultado \"Procedente\" ou \"Acordo\", o honorário é 15% (H1) do valor da causa; senão, 0.",
+      "A fórmula em **E2:E7** dá 0 para todo mundo. Corrija-a."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Transitou?",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2101"
+        },
+        "B2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Procedente"
+        },
+        "D2": {
+          "entrada": "Sim"
+        },
+        "A3": {
+          "entrada": "2102"
+        },
+        "B3": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "Acordo"
+        },
+        "D3": {
+          "entrada": "Sim"
+        },
+        "A4": {
+          "entrada": "2103"
+        },
+        "B4": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "Procedente"
+        },
+        "D4": {
+          "entrada": "Não"
+        },
+        "A5": {
+          "entrada": "2104"
+        },
+        "B5": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "Improcedente"
+        },
+        "D5": {
+          "entrada": "Sim"
+        },
+        "A6": {
+          "entrada": "2105"
+        },
+        "B6": {
+          "entrada": "25000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "Acordo"
+        },
+        "D6": {
+          "entrada": "Não"
+        },
+        "A7": {
+          "entrada": "2106"
+        },
+        "B7": {
+          "entrada": "150000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "Procedente"
+        },
+        "D7": {
+          "entrada": "Sim"
+        },
+        "G1": {
+          "entrada": "Êxito",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "15%"
+        },
+        "E2": {
+          "entrada": "=SE(E(D2=\"Sim\";C2=\"Procedente\";C2=\"Acordo\");B2*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E3": {
+          "entrada": "=SE(E(D3=\"Sim\";C3=\"Procedente\";C3=\"Acordo\");B3*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E4": {
+          "entrada": "=SE(E(D4=\"Sim\";C4=\"Procedente\";C4=\"Acordo\");B4*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E5": {
+          "entrada": "=SE(E(D5=\"Sim\";C5=\"Procedente\";C5=\"Acordo\");B5*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E6": {
+          "entrada": "=SE(E(D6=\"Sim\";C6=\"Procedente\";C6=\"Acordo\");B6*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E7": {
+          "entrada": "=SE(E(D7=\"Sim\";C7=\"Procedente\";C7=\"Acordo\");B7*$H$1;0)",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "B": 120,
+        "C": 110,
+        "D": 90,
+        "E": 120,
+        "G": 150,
+        "H": 90
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "H1"
+      ],
+      "alternativas": {
+        "D2": [
+          "Não",
+          "Sim"
+        ],
+        "C3": [
+          "Procedente",
+          "Improcedente"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 12750.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D2=\"Sim\";OU(C2=\"Procedente\";C2=\"Acordo\"));B2*$H$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 6000.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D3=\"Sim\";OU(C3=\"Procedente\";C3=\"Acordo\"));B3*$H$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D4=\"Sim\";OU(C4=\"Procedente\";C4=\"Acordo\"));B4*$H$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D5=\"Sim\";OU(C5=\"Procedente\";C5=\"Acordo\"));B5*$H$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D6=\"Sim\";OU(C6=\"Procedente\";C6=\"Acordo\"));B6*$H$1;0)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 22500.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(D7=\"Sim\";OU(C7=\"Procedente\";C7=\"Acordo\"));B7*$H$1;0)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Leia o E em voz alta: transitou **e** é Procedente **e** é Acordo. Existe processo assim?",
+      "\"Procedente ou Acordo\" é uma escolha entre dois resultados: isso é um OU, que entra como uma das condições do E."
+    ],
+    "explicacao": [
+      "`=SE(E(D2=\"Sim\";OU(C2=\"Procedente\";C2=\"Acordo\"));B2*$H$1;0)`.",
+      "Dentro do E, tudo precisa valer junto, e uma célula não tem dois resultados ao mesmo tempo. Opções da mesma coluna se juntam com OU."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "C\\d+=\"PROCEDENTE\";C\\d+=\"ACORDO\"\\)[;)]",
+        "dica": "O resultado não pode ser Procedente e Acordo ao mesmo tempo. As duas opções da coluna C formam um \"ou\"."
+      },
+      {
+        "padrao": "^=SE\\(OU\\(D\\d+=\"SIM\"",
+        "dica": "Assim um processo que não transitou, mas foi procedente, seria cobrado. O trânsito é obrigatório."
+      }
+    ],
+    "funcoesExigidas": [
+      "IF",
+      "AND",
+      "OR"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "honorarios-de-exito",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "f9889f9a-5dc7-5269-a257-185c4c53690b",
+    "slug": "honorarios-de-exito-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quando **E(C2=\"Procedente\";C2=\"Acordo\")** dá VERDADEIRO?"
+    ],
+    "dicas": [
+      "O E exige que todas as condições valham ao mesmo tempo, na mesma célula."
+    ],
+    "explicacao": [
+      "Nunca: C2 tem um valor só. Para aceitar uma opção ou a outra, junte as duas com OU."
+    ],
+    "opcoes": [
+      {
+        "texto": "Quando C2 for Procedente ou Acordo",
+        "dica": "Isso seria o OU. O E pede as duas coisas ao mesmo tempo."
+      },
+      {
+        "texto": "Quando C2 for Procedente",
+        "dica": "Com Procedente, a segunda condição (C2 = Acordo) é falsa, e o E inteiro fica falso."
+      },
+      {
+        "texto": "Nunca"
+      },
+      {
+        "texto": "Sempre",
+        "dica": "Para dar VERDADEIRO, C2 teria que ter dois valores ao mesmo tempo."
+      }
+    ],
+    "correta": 2,
+    "tentativasAteExplicacao": 3,
+    "licao": "honorarios-de-exito",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
+    "id": "24345d76-3b0b-5cef-828c-9ba44d86236a",
+    "slug": "caso-classificacao-clientes-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Limite de crédito por categoria",
+    "enunciado": [
+      "Com a categoria já definida, o limite de crédito é um percentual das compras do ano: **30%** para Ouro (H1), **20%** para Prata (H2) e **10%** para Bronze (H3). Cliente \"Bloqueado\" tem limite **0**.",
+      "Em **D2**, calcule e copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Compras no ano",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Limite de crédito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B2": {
+          "entrada": "117000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Ouro"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "B3": {
+          "entrada": "58000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "Prata"
+        },
+        "A4": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B4": {
+          "entrada": "140000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "Bloqueado"
+        },
+        "A5": {
+          "entrada": "Café Central"
+        },
+        "B5": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "Bronze"
+        },
+        "A6": {
+          "entrada": "Construtora Alfa"
+        },
+        "B6": {
+          "entrada": "105000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "Ouro"
+        },
+        "A7": {
+          "entrada": "Loja da Esquina"
+        },
+        "B7": {
+          "entrada": "21500",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "Prata"
+        },
+        "G1": {
+          "entrada": "Ouro",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "30%"
+        },
+        "G2": {
+          "entrada": "Prata",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "20%"
+        },
+        "G3": {
+          "entrada": "Bronze",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "10%"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 120,
+        "C": 100,
+        "D": 130
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "H1",
+        "H2",
+        "H3"
+      ],
+      "alternativas": {
+        "C5": [
+          "Prata",
+          "Bloqueado"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 35100.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C2=\"Bloqueado\";0;B2*SES(C2=\"Ouro\";$H$1;C2=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 11600.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C3=\"Bloqueado\";0;B3*SES(C3=\"Ouro\";$H$1;C3=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C4=\"Bloqueado\";0;B4*SES(C4=\"Ouro\";$H$1;C4=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 1500.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C5=\"Bloqueado\";0;B5*SES(C5=\"Ouro\";$H$1;C5=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 31500.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C6=\"Bloqueado\";0;B6*SES(C6=\"Ouro\";$H$1;C6=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 4300.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(C7=\"Bloqueado\";0;B7*SES(C7=\"Ouro\";$H$1;C7=\"Prata\";$H$2;VERDADEIRO;$H$3))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Um SES pode devolver um percentual, e esse percentual multiplica as compras.",
+      "Trave as células dos percentuais com $ antes de copiar."
+    ],
+    "explicacao": [
+      "`=SE(C2=\"Bloqueado\";0;B2*SES(C2=\"Ouro\";$H$1;C2=\"Prata\";$H$2;VERDADEIRO;$H$3))`. Também vale um SES só, com uma conta em cada resultado.",
+      "Mercado Bom Preço: R$ 117.000,00 × 30% → R$ 35.100,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\*H[123](?!\\d)|;H[123][;)]",
+        "dica": "Ao copiar para baixo, H1, H2 e H3 descem junto. Trave os percentuais com $."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-classificacao-clientes",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "ebd5fac6-2410-5340-b109-c0233866acc4",
+    "slug": "caso-classificacao-clientes-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Régua de cobrança",
+    "enunciado": [
+      "Ação da cobrança, nesta ordem: **0 dia** de atraso, \"Em dia\"; até **30 dias**, \"Lembrete\"; com mais de 30 dias, \"Jurídico\" se o valor em aberto for de **R$ 10.000,00 ou mais**, senão \"Bloquear\".",
+      "Em **D2**, mostre a ação e copie até **D7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Em aberto",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dias de atraso",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "B2": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B3": {
+          "entrada": "3800",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "12"
+        },
+        "A4": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B4": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "45"
+        },
+        "A5": {
+          "entrada": "Café Central"
+        },
+        "B5": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "60"
+        },
+        "A6": {
+          "entrada": "Construtora Alfa"
+        },
+        "B6": {
+          "entrada": "12500",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "30"
+        },
+        "A7": {
+          "entrada": "Distribuidora Sul"
+        },
+        "B7": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "31"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 110,
+        "D": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "B3",
+        "C3",
+        "B4",
+        "C4",
+        "B5",
+        "C5",
+        "B6",
+        "C6",
+        "B7",
+        "C7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Em dia",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C2=0;\"Em dia\";C2<=30;\"Lembrete\";B2>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Lembrete",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C3=0;\"Em dia\";C3<=30;\"Lembrete\";B3>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Jurídico",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C4=0;\"Em dia\";C4<=30;\"Lembrete\";B4>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Bloquear",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C5=0;\"Em dia\";C5<=30;\"Lembrete\";B5>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Lembrete",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C6=0;\"Em dia\";C6<=30;\"Lembrete\";B6>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Jurídico",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(C7=0;\"Em dia\";C7<=30;\"Lembrete\";B7>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")"
+      }
+    ],
+    "dicas": [
+      "Na ordem certa, cada regra já sabe que as anteriores falharam: a terceira nem precisa repetir \"mais de 30 dias\".",
+      "Quatro respostas: SES com VERDADEIRO no fim, ou SE dentro de SE."
+    ],
+    "explicacao": [
+      "`=SES(C2=0;\"Em dia\";C2<=30;\"Lembrete\";B2>=10000;\"Jurídico\";VERDADEIRO;\"Bloquear\")`.",
+      "A Construtora Alfa está com exatamente 30 dias: ainda é Lembrete. A Distribuidora Sul, com 31 dias e R$ 10.000,00, vai para o Jurídico."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "C\\d+<30;",
+        "dica": "\"Até 30 dias\" inclui o dia 30: o sinal é menor ou igual."
+      },
+      {
+        "padrao": "B\\d+>10000",
+        "dica": "\"R$ 10.000,00 ou mais\" inclui os 10.000: o sinal é maior ou igual."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-classificacao-clientes",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "ea078227-4ce2-54a5-a4cb-535aa1de08c1",
+    "slug": "caso-classificacao-clientes-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o bloqueio no fim da fila",
+    "enunciado": [
+      "Mesmas regras da lição (bloqueio primeiro, depois Ouro, Prata e Bronze). Alguém escreveu o bloqueio por último no SES de **F2:F9**, e um cliente com mais de 30 dias de atraso está aparecendo como Ouro. Corrija a fórmula."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1º semestre",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "2º semestre",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Anos de casa",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Dias em atraso",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "B2": {
+          "entrada": "30000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "28000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "2"
+        },
+        "E2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B3": {
+          "entrada": "62000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "55000",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "4"
+        },
+        "E3": {
+          "entrada": "0"
+        },
+        "A4": {
+          "entrada": "Farmácia Vida"
+        },
+        "B4": {
+          "entrada": "70000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "45000",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "1"
+        },
+        "E4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B5": {
+          "entrada": "80000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "60000",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "45"
+        },
+        "A6": {
+          "entrada": "Loja da Esquina"
+        },
+        "B6": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "9500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "7"
+        },
+        "E6": {
+          "entrada": "0"
+        },
+        "A7": {
+          "entrada": "Construtora Alfa"
+        },
+        "B7": {
+          "entrada": "55000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "50000",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "3"
+        },
+        "E7": {
+          "entrada": "10"
+        },
+        "A8": {
+          "entrada": "Café Central"
+        },
+        "B8": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "1"
+        },
+        "E8": {
+          "entrada": "30"
+        },
+        "A9": {
+          "entrada": "Distribuidora Sul"
+        },
+        "B9": {
+          "entrada": "40000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "2"
+        },
+        "E9": {
+          "entrada": "31"
+        },
+        "F2": {
+          "entrada": "=SES(E(B2+C2>=100000;D2>=3);\"Ouro\";OU(B2+C2>=50000;D2>=5);\"Prata\";E2>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "=SES(E(B3+C3>=100000;D3>=3);\"Ouro\";OU(B3+C3>=50000;D3>=5);\"Prata\";E3>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "=SES(E(B4+C4>=100000;D4>=3);\"Ouro\";OU(B4+C4>=50000;D4>=5);\"Prata\";E4>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F5": {
+          "entrada": "=SES(E(B5+C5>=100000;D5>=3);\"Ouro\";OU(B5+C5>=50000;D5>=5);\"Prata\";E5>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F6": {
+          "entrada": "=SES(E(B6+C6>=100000;D6>=3);\"Ouro\";OU(B6+C6>=50000;D6>=5);\"Prata\";E6>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F7": {
+          "entrada": "=SES(E(B7+C7>=100000;D7>=3);\"Ouro\";OU(B7+C7>=50000;D7>=5);\"Prata\";E7>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F8": {
+          "entrada": "=SES(E(B8+C8>=100000;D8>=3);\"Ouro\";OU(B8+C8>=50000;D8>=5);\"Prata\";E8>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        },
+        "F9": {
+          "entrada": "=SES(E(B9+C9>=100000;D9>=3);\"Ouro\";OU(B9+C9>=50000;D9>=5);\"Prata\";E9>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 110,
+        "D": 100,
+        "E": 110,
+        "F": 100
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5",
+        "B6",
+        "C6",
+        "D6",
+        "E6",
+        "B7",
+        "C7",
+        "D7",
+        "E7",
+        "B8",
+        "C8",
+        "D8",
+        "E8",
+        "B9",
+        "C9",
+        "D9",
+        "E9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E2>30;\"Bloqueado\";E(B2+C2>=100000;D2>=3);\"Ouro\";OU(B2+C2>=50000;D2>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Ouro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E3>30;\"Bloqueado\";E(B3+C3>=100000;D3>=3);\"Ouro\";OU(B3+C3>=50000;D3>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E4>30;\"Bloqueado\";E(B4+C4>=100000;D4>=3);\"Ouro\";OU(B4+C4>=50000;D4>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Bloqueado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E5>30;\"Bloqueado\";E(B5+C5>=100000;D5>=3);\"Ouro\";OU(B5+C5>=50000;D5>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E6>30;\"Bloqueado\";E(B6+C6>=100000;D6>=3);\"Ouro\";OU(B6+C6>=50000;D6>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Ouro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E7>30;\"Bloqueado\";E(B7+C7>=100000;D7>=3);\"Ouro\";OU(B7+C7>=50000;D7>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F8",
+        "esperado": "Bronze",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E8>30;\"Bloqueado\";E(B8+C8>=100000;D8>=3);\"Ouro\";OU(B8+C8>=50000;D8>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      },
+      {
+        "celula": "F9",
+        "esperado": "Bloqueado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SES(E9>30;\"Bloqueado\";E(B9+C9>=100000;D9>=3);\"Ouro\";OU(B9+C9>=50000;D9>=5);\"Prata\";VERDADEIRO;\"Bronze\")"
+      }
+    ],
+    "dicas": [
+      "Ache o cliente com mais de 30 dias de atraso que não aparece como Bloqueado. Qual regra o pegou antes?",
+      "O SES devolve o resultado da primeira condição verdadeira e não olha as seguintes."
+    ],
+    "explicacao": [
+      "A Auto Peças Silva compra R$ 140.000,00 por ano e tem 6 anos de casa: a regra do Ouro pegou o cliente antes de o atraso ser olhado.",
+      "Regra que vale acima de tudo (exceção, bloqueio) vem sempre primeiro: `=SES(E2>30;\"Bloqueado\";E(B2+C2>=100000;D2>=3);\"Ouro\";OU(B2+C2>=50000;D2>=5);\"Prata\";VERDADEIRO;\"Bronze\")`."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SES\\((E|OU)\\(",
+        "dica": "O bloqueio ainda não está em primeiro: o SES para na primeira regra verdadeira."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-classificacao-clientes",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "76c775d9-dc30-5e2d-9fae-f646d8456ba1",
+    "slug": "caso-classificacao-clientes-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "logica",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Num SES, se duas condições forem verdadeiras ao mesmo tempo, qual resultado aparece?"
+    ],
+    "dicas": [
+      "O SES lê as condições da esquerda para a direita."
+    ],
+    "explicacao": [
+      "O da primeira condição verdadeira. Por isso a regra mais forte (a exceção) vem primeiro."
+    ],
+    "opcoes": [
+      {
+        "texto": "O da última condição verdadeira",
+        "dica": "O SES não chega a olhar as condições seguintes depois de achar uma verdadeira."
+      },
+      {
+        "texto": "O da primeira condição verdadeira"
+      },
+      {
+        "texto": "Dá erro #N/D",
+        "dica": "O #N/D aparece quando nenhuma condição é verdadeira, não quando mais de uma é."
+      },
+      {
+        "texto": "Os dois resultados juntos",
+        "dica": "O SES devolve um resultado só."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-classificacao-clientes",
+    "etapa": 5,
+    "papel": "conceito",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    }
+  },
+  {
     "id": "0fe2f0c9-b6ed-5eb6-b57f-771fe2579314",
     "slug": "teste-logica-1",
     "trilha": "excel-ptbr",
@@ -2207,10 +6625,10 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Bônus",
+    "versao": 2,
+    "titulo": "Categoria do cliente",
     "enunciado": [
-      "Em **E2**, \"Bônus\" se B2 for 8.000 ou mais **e** não houver faltas (C2), senão \"Sem bônus\"."
+      "Em **D2**: \"Bloqueado\" se o atraso (C2) for de mais de 30 dias; senão, \"Ouro\" se as compras (B2) forem de R$ 100.000,00 ou mais; senão, \"Padrão\"."
     ],
     "dicas": [],
     "explicacao": [
@@ -2218,63 +6636,56 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "e-e-ou-bonus",
+    "revisar": "caso-classificacao-clientes",
     "type": "formula",
     "grade": {
       "linhas": 3,
-      "colunas": 9,
+      "colunas": 6,
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Cliente",
           "negrito": true
         },
         "B1": {
-          "entrada": "Vendas",
+          "entrada": "Compras no ano",
           "negrito": true
         },
         "C1": {
-          "entrada": "Faltas",
+          "entrada": "Dias em atraso",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
           "negrito": true
         },
         "A2": {
-          "entrada": "Rafa"
+          "entrada": "Auto Peças Silva"
         },
         "B2": {
-          "entrada": "9000",
+          "entrada": "120000",
           "formato": "moeda"
         },
         "C2": {
-          "entrada": "1"
-        },
-        "E1": {
-          "entrada": "Bônus?",
-          "negrito": true
+          "entrada": "45"
         }
       },
       "larguras": {
-        "B": 100,
-        "D": 90,
-        "E": 100,
-        "F": 90,
-        "G": 90
+        "A": 150,
+        "B": 120,
+        "C": 110,
+        "D": 100
       },
       "variaveis": [
         "B2",
         "C2"
-      ],
-      "alternativas": {
-        "C2": [
-          "0",
-          "1"
-        ]
-      }
+      ]
     },
     "alvos": [
       {
-        "celula": "E2",
-        "esperado": "Sem bônus",
+        "celula": "D2",
+        "esperado": "Bloqueado",
         "exigeFormula": true,
-        "solucaoReferencia": "=SE(E(B2>=8000;C2=0);\"Bônus\";\"Sem bônus\")"
+        "solucaoReferencia": "=SES(C2>30;\"Bloqueado\";B2>=100000;\"Ouro\";VERDADEIRO;\"Padrão\")"
       }
     ]
   },
@@ -2440,10 +6851,10 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "E lógico",
+    "versao": 2,
+    "titulo": "Prazo atrasado",
     "enunciado": [
-      "**E(VERDADEIRO; FALSO)** resulta em:"
+      "Em **D2**, mostre \"Atrasado\" se o prazo (B2) for antes de hoje (G1) **e** a situação (C2) for \"Pendente\"; senão, \"OK\"."
     ],
     "dicas": [],
     "explicacao": [
@@ -2451,27 +6862,68 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "e-e-ou-bonus",
-    "type": "multiple_choice",
+    "revisar": "se-prazo-vencido",
+    "type": "formula",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    },
-    "opcoes": [
-      {
-        "texto": "VERDADEIRO"
+      "linhas": 3,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Alerta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1051"
+        },
+        "B2": {
+          "entrada": "18/11/2026"
+        },
+        "C2": {
+          "entrada": "Pendente"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "24/11/2026"
+        }
       },
-      {
-        "texto": "FALSO"
+      "larguras": {
+        "B": 100,
+        "C": 110,
+        "D": 100
       },
-      {
-        "texto": "Erro"
-      },
-      {
-        "texto": "0"
+      "alternativas": {
+        "C2": [
+          "Protocolado",
+          "Pendente"
+        ],
+        "G1": [
+          "24/11/2026",
+          "10/11/2026"
+        ]
       }
-    ],
-    "correta": 1
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Atrasado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E(B2<G1;C2=\"Pendente\");\"Atrasado\";\"OK\")"
+      }
+    ]
   }
 ]

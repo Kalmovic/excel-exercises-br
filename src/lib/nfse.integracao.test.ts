@@ -2,7 +2,7 @@
  * Teste de ponta a ponta contra o Stripe (modo teste) e o sandbox do Asaas.
  * Não roda na suíte normal (precisa de rede e das chaves). Para rodar:
  *
- *   NFSE_INTEGRACAO=1 STRIPE_SECRET_KEY=sk_test_... ASAAS_API_KEY=... NFSE_SERVICO_ID=429606 npx vitest run src/lib/nfse.integracao.test.ts
+ *   NFSE_INTEGRACAO=1 STRIPE_SECRET_KEY=sk_test_... ASAAS_API_KEY=... NFSE_SERVICO_CODIGO=01.05.01 NFSE_NBS=115062100 npx vitest run src/lib/nfse.integracao.test.ts
  *
  * Assina o mensal com o cartão de teste, pega o aviso invoice.paid de verdade,
  * emite a nota no Asaas, espera a prefeitura (simulada) autorizar, reembolsa e

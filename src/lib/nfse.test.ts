@@ -2,7 +2,7 @@ import type Stripe from "stripe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
-const { cancelarNotas, emitirNota, separarNumero, tomadorDoCliente } = await import("./nfse");
+const { cancelarNotas, emitirNota, formatarNbs, separarNumero, tomadorDoCliente } = await import("./nfse");
 type LinhaNota = import("./nfse").LinhaNota;
 
 vi.stubEnv("ASAAS_API_KEY", "teste");
@@ -170,5 +170,19 @@ describe("NFS-e pelo Asaas", () => {
     expect(await cancelarNotas("pi_1", registro)).toBe(1);
     expect(registro.linhas.get("cs_1")?.status).toBe("cancelada");
     expect(await cancelarNotas("pi_1", registro)).toBe(0);
+  });
+
+  it("com NFSE_SERVICO_CODIGO (Emissor Nacional): manda só o código, sem o id; NBS quando existe", async () => {
+    vi.stubEnv("NFSE_SERVICO_CODIGO", "01.05.01");
+    vi.stubEnv("NFSE_NBS", "115062100");
+    await emitirNota(anual, { stripe: stripeFalso(), registro: registroFalso() });
+    const nota = chamadas.find((c) => c.metodo === "POST" && c.caminho === "invoices")!.corpo!;
+    expect(nota.municipalServiceCode).toBe("01.05.01");
+    expect(nota).not.toHaveProperty("municipalServiceId");
+    expect(nota.taxes).toMatchObject({ nbsCode: "1.1506.21.00" });
+    expect(formatarNbs("1.1506.21.00")).toBe("1.1506.21.00");
+    expect(formatarNbs(undefined)).toBeNull();
+    vi.stubEnv("NFSE_SERVICO_CODIGO", "");
+    vi.stubEnv("NFSE_NBS", "");
   });
 });

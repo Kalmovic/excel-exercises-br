@@ -40,14 +40,14 @@ test("a lição só conta no mapa quando as 5 questões estão feitas", async ({
     localStorage.setItem("excel-br:progresso:v1", JSON.stringify(p));
   });
   await page.goto("/trilha");
-  await expect(page.getByTestId("regiao-fundamentos")).toContainText("0/7");
+  await expect(page.getByTestId("regiao-fundamentos")).toContainText("0/10");
   // a última questão (múltipla escolha) fecha a lição
   await page.goto("/exercicios/soma-total-de-vendas-conceito");
   await visivel(page, "alternativas").getByText("De B2 até B7").click();
   await visivel(page, "verificar").click();
   await expect(visivel(page, "resultado")).toContainText("Correto!");
   await page.goto("/trilha");
-  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/7");
+  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/10");
 });
 
 test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar", async ({ page }) => {
@@ -56,7 +56,7 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
   await page.goto("/teste/condicionais");
   await expect(page.getByTestId("editor-celula").first()).toBeAttached();
   await expect(page.getByTestId("painel-admin")).toHaveCount(0); // gabarito escondido no teste
-  const respostas = ['=CONT.SE(A2:A8;"Carla")', "=1", '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASE(D2:D8;"Pendente";C2:C8)'];
+  const respostas = ['=CONT.SE(A2:A8;"Carla")', "=1", '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASES(C2:C9;A2:A9;">="&G2;A2:A9;"<="&G3)'];
   for (const r of respostas) {
     await digitar(page, "G1", r);
     await visivel(page, "verificar").click();
@@ -72,7 +72,7 @@ test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar
   await expect(page.getByTestId("comecar-revisao")).toHaveAttribute("href", /somase/);
 
   await resultado.getByRole("button", { name: "Refazer o teste" }).click();
-  for (const r of ['=CONT.SE(A2:A8;"Carla")', '=SOMASE(B2:B8;"Sul";C2:C8)', '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASE(D2:D8;"Pendente";C2:C8)']) {
+  for (const r of ['=CONT.SE(A2:A8;"Carla")', '=SOMASE(B2:B8;"Sul";C2:C8)', '=CONT.SES(B2:B8;"Norte";D2:D8;"Pago")', '=SOMASES(C2:C9;A2:A9;">="&G2;A2:A9;"<="&G3)']) {
     await digitar(page, "G1", r);
     await visivel(page, "verificar").click();
     await visivel(page, "proxima-teste").click();

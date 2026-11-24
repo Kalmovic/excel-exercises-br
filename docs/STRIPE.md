@@ -62,23 +62,26 @@ contestação cancelam a nota. Cada nota fica em `notas_fiscais` (status `emitid
   Asaas fora do ar: o webhook responde 500 e o Stripe reenvia (a nota não sai duas vezes).
 
 **Para ligar em produção:**
-1. No Asaas (produção): Minha conta → Dados fiscais: inscrição municipal, regime (Simples), série e número
-   do RPS e o **certificado digital A1** (a prefeitura do Rio autentica por certificado).
-2. Vercel → Environment Variables:
-   - `ASAAS_API_KEY` = chave de produção do Asaas
-   - `ASAAS_URL` = `https://api.asaas.com/v3`
-   - `NFSE_SERVICO_ID` = id do serviço municipal (`GET /v3/invoices/municipalServices?description=...`).
-     No Rio: `429606` = 01.05.01.001 Licenciamento de uso de programa de computação (item 01.05,
-     confirmado pela Contabilizei para o CNAE 6202-3/00).
-   - `NFSE_SERVICO_NOME` = o nome desse serviço
-   - `NFSE_ISS` = alíquota de ISS em % (no Simples, a parte do ISS na alíquota efetiva da faixa; o contador informa)
-   - `NFSE_NBS` = código NBS do serviço, se o Asaas pedir (o Rio usa o Emissor Nacional, que exige NBS)
-4. Confirmar com o suporte do Asaas que, no Rio, as notas saem pelo **Emissor Nacional**: assim a Contabilizei
-   importa sozinha. Fora dele, a importação na Contabilizei é manual até o dia 5 do mês seguinte.
-5. O certificado A1 vence em **17/03/2027**: renove antes e suba o novo no Asaas, senão a emissão para.
-6. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
+1. No Asaas (produção): **Notas Fiscais → Configurações → Portal Emissor = Portal Nacional** (o Rio usa o
+   Emissor Nacional desde 2026; assim a Contabilizei importa as notas sozinha). Em Dados fiscais: inscrição
+   municipal, Simples Nacional (regime de apuração "tributos federais e municipal pelo SN"), série e número
+   inicial da DPS e o **certificado digital A1**.
+2. Vercel → Environment Variables (valores confirmados pela Contabilizei e testados no sandbox):
+
+   | Variável | Valor |
+   |---|---|
+   | `ASAAS_API_KEY` | chave de produção do Asaas |
+   | `ASAAS_URL` | `https://api.asaas.com/v3` |
+   | `NFSE_SERVICO_CODIGO` | `01.05.01` (licenciamento de uso de programa; item 01.05 do CNAE 6202-3/00) |
+   | `NFSE_SERVICO_NOME` | `Licenciamento de uso de programa de computação` |
+   | `NFSE_NBS` | `115062100` (SaaS; o código formata para `1.1506.21.00`) |
+   | `NFSE_ISS` | `2.01` (parte do ISS no DAS; confira mês a mês em Contabilizei → Minhas alíquotas) |
+
+   No Emissor Nacional vai só o código do serviço (`NFSE_SERVICO_CODIGO`), sem o `NFSE_SERVICO_ID`.
+3. O certificado A1 vence em **17/03/2027**: renove antes e suba o novo no Asaas, senão a emissão para.
+4. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
 
 **Teste de ponta a ponta** (Stripe teste + sandbox do Asaas, assina, emite, espera autorizar, reembolsa e cancela):
 ```bash
-NFSE_INTEGRACAO=1 STRIPE_SECRET_KEY=sk_test_... ASAAS_API_KEY=... NFSE_SERVICO_ID=429606 npx vitest run src/lib/nfse.integracao.test.ts
+NFSE_INTEGRACAO=1 STRIPE_SECRET_KEY=sk_test_... ASAAS_API_KEY=... NFSE_SERVICO_CODIGO=01.05.01 NFSE_NBS=115062100 NFSE_ISS=2.01 npx vitest run src/lib/nfse.integracao.test.ts
 ```

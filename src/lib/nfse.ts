@@ -17,21 +17,30 @@ import type Stripe from "stripe";
  * Variáveis de ambiente:
  * - ASAAS_API_KEY: chave da API do Asaas (sandbox ou produção).
  * - ASAAS_URL: https://api-sandbox.asaas.com/v3 (padrão) ou https://api.asaas.com/v3.
+ * - NFSE_SERVICO_CODIGO: código do serviço (ex.: 01.05.01). No Emissor Nacional (Rio) vai só
+ *   o código, sem o id. Tem prioridade sobre NFSE_SERVICO_ID.
  * - NFSE_SERVICO_ID: id do serviço municipal no Asaas (GET /invoices/municipalServices).
  * - NFSE_SERVICO_NOME: o nome desse serviço.
  * - NFSE_ISS: alíquota de ISS em % (o contador informa).
  * - NFSE_NBS: código NBS do serviço, se a prefeitura exigir (Emissor Nacional).
  */
 
-export const nfseConfigurada = () => Boolean(process.env.ASAAS_API_KEY && process.env.NFSE_SERVICO_ID);
+export const nfseConfigurada = () => Boolean(process.env.ASAAS_API_KEY && (process.env.NFSE_SERVICO_CODIGO || process.env.NFSE_SERVICO_ID));
+
+/** NBS como o Asaas espera: "115062100" (como o contador passa) vira "1.1506.21.00". */
+export function formatarNbs(nbs: string | undefined): string | null {
+  const d = (nbs ?? "").replace(/\D/g, "");
+  return d.length === 9 ? `${d[0]}.${d.slice(1, 5)}.${d.slice(5, 7)}.${d.slice(7)}` : nbs || null;
+}
 
 const config = () => ({
   url: process.env.ASAAS_URL || "https://api-sandbox.asaas.com/v3",
   chave: process.env.ASAAS_API_KEY ?? "",
+  servicoCodigo: process.env.NFSE_SERVICO_CODIGO || null,
   servicoId: process.env.NFSE_SERVICO_ID ?? "",
   servicoNome: process.env.NFSE_SERVICO_NOME || "Licenciamento de uso de programa de computação",
   iss: Number(process.env.NFSE_ISS || "0"),
-  nbs: process.env.NFSE_NBS || null,
+  nbs: formatarNbs(process.env.NFSE_NBS),
 });
 
 /** Erro devolvido pelo Asaas. 4xx = dado errado (tentar de novo não resolve); 5xx = fora do ar. */
@@ -213,7 +222,7 @@ export async function emitirNota(
     // Nota já criada numa tentativa anterior? (achada pela origem)
     type Nota = { id: string; status: string };
     let nota: Nota | undefined = (await asaas<{ data: Nota[] }>(`invoices?externalReference=${encodeURIComponent(p.origem)}&limit=1`)).data[0];
-    const { servicoId, servicoNome, iss, nbs } = config();
+    const { servicoCodigo, servicoId, servicoNome, iss, nbs } = config();
     nota ??= await asaas<Nota>("invoices", {
       method: "POST",
       body: {
@@ -223,7 +232,7 @@ export async function emitirNota(
         value: p.valor,
         deductions: 0,
         effectiveDate: hojeEmSP(deps.agora ?? new Date()),
-        municipalServiceId: servicoId,
+        ...(servicoCodigo ? { municipalServiceCode: servicoCodigo } : { municipalServiceId: servicoId }),
         municipalServiceName: servicoNome.slice(0, 250),
         externalReference: p.origem,
         taxes: { retainIss: false, iss, cofins: 0, csll: 0, inss: 0, ir: 0, pis: 0, ...(nbs ? { nbsCode: nbs } : {}) },

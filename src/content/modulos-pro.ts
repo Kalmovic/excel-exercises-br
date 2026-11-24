@@ -7,8 +7,8 @@ import type { Exercicio } from "./schema";
  * funções (ids canônicos) que cada um ensina. Usado no upsell do desafio.
  */
 export const MODULOS_PLANEJADOS = [
-  { slug: "fundamentos", titulo: "Fundamentos", funcoes: ["SUM", "AVERAGE", "MIN", "MAX", "ROUND"] },
-  { slug: "logica", titulo: "Lógica", funcoes: ["IF", "IFS", "AND", "OR", "NOT", "IFERROR"] },
+  { slug: "fundamentos", titulo: "Fundamentos", funcoes: ["SUM", "AVERAGE", "MIN", "MAX", "ROUND", "ROUNDUP"] },
+  { slug: "logica", titulo: "Lógica", funcoes: ["IF", "IFS", "AND", "OR", "NOT", "IFERROR", "ISBLANK", "ISNUMBER"] },
   {
     slug: "condicionais",
     titulo: "Contar e somar com condição",
@@ -18,7 +18,7 @@ export const MODULOS_PLANEJADOS = [
   {
     slug: "texto",
     titulo: "Texto",
-    funcoes: ["CONCAT", "CONCATENATE", "LEFT", "RIGHT", "MID", "TRIM", "PROPER", "SEARCH", "SUBSTITUTE", "TEXTJOIN", "LOWER", "UPPER", "LEN"],
+    funcoes: ["CONCAT", "CONCATENATE", "LEFT", "RIGHT", "MID", "TRIM", "PROPER", "SEARCH", "SUBSTITUTE", "TEXTJOIN", "LOWER", "UPPER", "LEN", "TEXT"],
   },
   { slug: "datas", titulo: "Datas", funcoes: ["TODAY", "DATE", "YEAR", "MONTH", "DAY", "DATEDIF", "NETWORKDAYS", "EOMONTH", "WEEKDAY"] },
   { slug: "arrays", titulo: "Arrays dinâmicos", funcoes: ["FILTER", "SORT", "UNIQUE", "SEQUENCE"] },
