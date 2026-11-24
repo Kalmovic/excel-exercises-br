@@ -40,14 +40,14 @@ test("a lição só conta no mapa quando as 5 questões estão feitas", async ({
     localStorage.setItem("excel-br:progresso:v1", JSON.stringify(p));
   });
   await page.goto("/trilha");
-  await expect(page.getByTestId("regiao-fundamentos")).toContainText("0/7");
+  await expect(page.getByTestId("regiao-fundamentos")).toContainText("0/10");
   // a última questão (múltipla escolha) fecha a lição
   await page.goto("/exercicios/soma-total-de-vendas-conceito");
   await visivel(page, "alternativas").getByText("De B2 até B7").click();
   await visivel(page, "verificar").click();
   await expect(visivel(page, "resultado")).toContainText("Correto!");
   await page.goto("/trilha");
-  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/7");
+  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/10");
 });
 
 test("teste do módulo: 4 de 5 aprova; quem erra recebe as lições para revisar", async ({ page }) => {

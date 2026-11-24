@@ -382,7 +382,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 4,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Operadores e a ordem das contas",
@@ -759,7 +759,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 7,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Referência mista: uma fórmula para a tabela toda",
@@ -2089,7 +2089,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 42,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Total com desconto",
@@ -2177,7 +2177,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 43,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Média de duas notas com parênteses",
@@ -2252,7 +2252,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 44,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: a conta que deveria dar 30",
@@ -2309,7 +2309,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 45,
-    "nivel": 1,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -3306,7 +3306,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 72,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Tabuada com uma fórmula só",
@@ -4047,7 +4047,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 73,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Preço reajustado",
@@ -4241,7 +4241,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 74,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: as travas trocadas",
@@ -4568,7 +4568,7 @@
     "trilha": "excel-ptbr",
     "modulo": "fundamentos",
     "ordem": 75,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -4609,6 +4609,1864 @@
       }
     ],
     "correta": 1
+  },
+  {
+    "id": "d752abc7-8652-5f62-ba86-c4eedf68146b",
+    "slug": "arred-parcelas-que-fecham",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRED: parcelas que fecham o total",
+    "intro": "R$ 1.000,00 em 3 vezes dá 333,333… e boleto não tem fração de centavo. Arredondar as parcelas e deixar a última absorver a diferença é o que todo sistema de cobrança faz.",
+    "enunciado": [
+      "Um serviço de **R$ 1.000,00** vai ser cobrado em **3 parcelas** (B1 e B2).",
+      "Em **B5**, calcule a parcela (valor ÷ nº de parcelas) **arredondada em centavos**, numa fórmula que funcione copiada para **B6**.",
+      "Em **B7**, a última parcela: o que falta para fechar o valor do serviço. O total em B8 tem que dar exatamente o valor de B1."
+    ],
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "larguras": {
+        "A": 130,
+        "B": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Valor do serviço",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Nº de parcelas",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A5": {
+          "entrada": "1ª"
+        },
+        "A6": {
+          "entrada": "2ª"
+        },
+        "A7": {
+          "entrada": "3ª (última)"
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B5:B7)",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 333.33,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED($B$1/$B$2;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B6",
+        "esperado": 333.33,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED($B$1/$B$2;2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B7",
+        "esperado": 333.34,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1-SOMA(B5:B6)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "`ARRED(número;casas)` arredonda: com 2 casas, o resultado fica nos centavos. O número, aqui, é a divisão do valor pelo nº de parcelas.",
+      "Na cópia para B6, o valor e o nº de parcelas não podem sair do lugar. E a última parcela não é uma divisão: é o valor do serviço menos o que as outras duas já cobraram."
+    ],
+    "explicacao": [
+      "`=ARRED($B$1/$B$2;2)` → R$ 333,33 nas duas primeiras parcelas. Os cifrões mantêm o valor e o nº de parcelas parados na cópia.",
+      "`=B1-SOMA(B5:B6)` → R$ 333,34: a última parcela absorve o centavo que sobrou, e o total fecha em R$ 1.000,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=ARRED\\(\\$?B\\$?1/\\$?B\\$?2;2\\)$",
+        "dica": "Assim a última parcela fica igual às outras e o total dá R$ 999,99: falta um centavo. A última é o valor do serviço menos o que as outras já cobraram.",
+        "celula": "B7"
+      },
+      {
+        "padrao": "^=ARRED\\(B2/B3;2\\)$",
+        "dica": "Na cópia, as referências desceram junto e a divisão ficou sem o nº de parcelas. Trave o valor e o nº de parcelas para que fiquem parados."
+      },
+      {
+        "padrao": "^=\\$?B\\$?1/\\$?B\\$?2$",
+        "dica": "A divisão está certa, mas sem arredondar a parcela fica 333,3333…, e boleto não tem fração de centavo. Arredonde em 2 casas."
+      }
+    ],
+    "video": "Mostrar 1000/3 com muitas casas, o total de R$ 999,99 quando todas as parcelas são iguais e o conserto na última.",
+    "funcoesExigidas": [
+      "ROUND"
+    ],
+    "licao": "arred-parcelas-que-fecham",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "071b08af-6c43-5963-98c4-a7196e63c164",
+    "slug": "somarproduto-total-do-pedido",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMARPRODUTO: o total do pedido numa fórmula",
+    "intro": "Quantidade × preço em cada linha e depois a soma de tudo: é o total de qualquer pedido, nota ou orçamento. Dá para fazer sem coluna auxiliar, numa fórmula só.",
+    "enunciado": [
+      "Em **B8**, calcule o total do pedido de material de escritório: a quantidade de cada produto vezes o preço dele, tudo somado.",
+      "Use uma fórmula só, sem criar coluna auxiliar."
+    ],
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "larguras": {
+        "A": 190,
+        "B": 120,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Resma de papel A4"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "C2": {
+          "entrada": "27,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Caneta azul (caixa)"
+        },
+        "B3": {
+          "entrada": "4"
+        },
+        "C3": {
+          "entrada": "32,5",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Toner para impressora"
+        },
+        "B4": {
+          "entrada": "2"
+        },
+        "C4": {
+          "entrada": "389",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Grampeador"
+        },
+        "B5": {
+          "entrada": "3"
+        },
+        "C5": {
+          "entrada": "45,8",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Pasta suspensa (caixa)"
+        },
+        "B6": {
+          "entrada": "5"
+        },
+        "C6": {
+          "entrada": "68,4",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Total do pedido",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B8",
+        "esperado": 1666.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMARPRODUTO(B2:B6;C2:C6)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "`SOMARPRODUTO(intervalo1;intervalo2)` multiplica os pares da mesma linha e soma os resultados.",
+      "Um intervalo é o das quantidades e o outro, o dos preços, os dois do mesmo tamanho."
+    ],
+    "explicacao": [
+      "`=SOMARPRODUTO(B2:B6;C2:C6)` → R$ 1.666,40: faz 10 × 27,90 + 4 × 32,50 + … numa conta só.",
+      "Os dois intervalos precisam ter o mesmo tamanho e começar na mesma linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B\\d:B\\d\\)\\*SOMA\\(C\\d:C\\d\\)$",
+        "dica": "Somar todas as quantidades e multiplicar pela soma dos preços não dá o total: cada quantidade tem que multiplicar o preço da própria linha."
+      },
+      {
+        "padrao": "^=B2\\*C2\\+",
+        "dica": "A conta está certa, mas o exercício pede SOMARPRODUTO: com 200 produtos, essa fórmula ficaria enorme."
+      },
+      {
+        "padrao": "SOMARPRODUTO\\(B2:B6;C2:C[^6]|SOMARPRODUTO\\(B2:B[^6];C2:C6",
+        "dica": "Os dois intervalos precisam cobrir as mesmas linhas: quantidades e preços, do primeiro ao último produto."
+      }
+    ],
+    "video": "Fazer a coluna auxiliar de qtd × preço, somar, e mostrar que o SOMARPRODUTO dá o mesmo numa célula só.",
+    "funcoesExigidas": [
+      "SUMPRODUCT"
+    ],
+    "licao": "somarproduto-total-do-pedido",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "6f87a60b-c3a4-574a-b12d-06deb21816a1",
+    "slug": "orcamento-do-departamento",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso completo: o orçamento do departamento",
+    "intro": "Fechamento do mês: quanto foi orçado, quanto se gastou, a diferença de cada linha e quanto cada despesa pesa no total. Tudo o que você viu no módulo, numa planilha de verdade.",
+    "enunciado": [
+      "Feche o orçamento de novembro do departamento, em três partes:",
+      "1) Em **B7**, o total orçado; copie para **C7**, o total realizado.",
+      "2) Em **D2**, a diferença entre o realizado e o orçado (positiva quando gastou mais); copie até **D7**.",
+      "3) Em **E2**, quanto a despesa pesa no total orçado, numa fórmula que, copiada para todo o bloco **E2:F6**, também calcule na coluna F o peso de cada despesa realizada no total realizado."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "larguras": {
+        "A": 180,
+        "B": 110,
+        "C": 110,
+        "D": 110,
+        "E": 110,
+        "F": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Diferença",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "% do orçado",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "% do realizado",
+          "negrito": true
+        },
+        "A7": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel"
+        },
+        "B2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Salários e encargos"
+        },
+        "B3": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "43260",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Energia"
+        },
+        "B4": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "2645",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Internet e telefone"
+        },
+        "B5": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "1180",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Material de escritório"
+        },
+        "B6": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "1115",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B7",
+        "esperado": 54900,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(B2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 56700,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(C2:C6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2-B2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 1260,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3-B3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 345,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4-B4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": -20,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5-B5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 215,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6-B6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": 1800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C7-B7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E2",
+        "esperado": 0.15482695810564662,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2/B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F2",
+        "esperado": 0.14991181657848324,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2/C$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "E3",
+        "esperado": 0.7650273224043715,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3/B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F3",
+        "esperado": 0.762962962962963,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3/C$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "E4",
+        "esperado": 0.04189435336976321,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4/B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F4",
+        "esperado": 0.04664902998236332,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4/C$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "E5",
+        "esperado": 0.02185792349726776,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5/B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F5",
+        "esperado": 0.020811287477954146,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5/C$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "E6",
+        "esperado": 0.01639344262295082,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6/B$7",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F6",
+        "esperado": 0.019664902998236332,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6/C$7",
+        "formato": "percentual"
+      }
+    ],
+    "dicas": [
+      "Os totais e a diferença você já sabe fazer: SOMA e uma subtração, copiadas.",
+      "No peso, a despesa anda para os lados e para baixo. O total anda para os lados (da coluna B para a C), mas fica sempre na linha 7: trave só a linha dele."
+    ],
+    "explicacao": [
+      "`=SOMA(B2:B6)` → R$ 54.900,00 e, copiada, R$ 56.700,00 em C7. `=C2-B2` copiada até D7 mostra que o mês fechou R$ 1.800,00 acima do orçado.",
+      "`=B2/B$7`: o $ só antes do 7 deixa a coluna andar (B vira C na cópia para a direita) e prende a linha do total. Com `$B$7`, a coluna F dividiria pelo total orçado; sem nenhum $, a cópia para baixo dividiria por células vazias."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=[BC]\\d/\\$B\\$7$",
+        "dica": "Com a coluna do total travada, a cópia para a coluna F continua dividindo pelo total orçado. A coluna precisa andar junto (B → C); só a linha 7 fica parada."
+      },
+      {
+        "padrao": "^=[BC]\\d/[BC]\\d$",
+        "dica": "Na cópia para baixo, o total desceu junto e a divisão foi parar em células vazias. Trave a linha do total."
+      },
+      {
+        "padrao": "^=\\$B\\d/",
+        "dica": "O $ antes do B prende a despesa na coluna B, e a coluna F repete a E. A despesa precisa andar livre."
+      },
+      {
+        "padrao": "^=B\\d-C\\d$",
+        "dica": "A diferença está com o sinal trocado: o enunciado pede realizado menos orçado, positiva quando gastou mais."
+      }
+    ],
+    "video": "Montar o fechamento do zero e mostrar o que cada $ faz na cópia para a direita e para baixo.",
+    "licao": "orcamento-do-departamento",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "e4d98a51-d8fb-5d05-b60a-844534b273e4",
+    "slug": "arred-parcelas-que-fecham-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRED: o valor da hora",
+    "enunciado": [
+      "A bolsa do estagiário está em **B1** e as horas do mês, em **B2**.",
+      "Em **B3**, calcule o valor da hora (bolsa ÷ horas), arredondado em centavos."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 3,
+      "larguras": {
+        "A": 130,
+        "B": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Bolsa mensal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1850",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Horas no mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "132"
+        },
+        "A3": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": 14.02,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B1/B2;2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Divida e arredonde o resultado com ARRED, em 2 casas."
+    ],
+    "explicacao": [
+      "`=ARRED(B1/B2;2)` → R$ 14,02. Sem o ARRED, a célula guardaria 14,0151…, mesmo mostrando R$ 14,02."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=B1/B2$",
+        "dica": "A divisão está certa, mas falta arredondar em centavos."
+      }
+    ],
+    "funcoesExigidas": [
+      "ROUND"
+    ],
+    "licao": "arred-parcelas-que-fecham",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "2def8da1-9a0b-587e-94e4-c43b303e2da6",
+    "slug": "arred-parcelas-que-fecham-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARREDONDAR.PARA.CIMA: quantas caixas",
+    "enunciado": [
+      "O almoxarifado vai despachar **437 unidades** (B1) em caixas de **24** (B2).",
+      "Em **B3**, calcule quantas caixas são necessárias. Caixa pela metade também conta como uma caixa."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 3,
+      "larguras": {
+        "A": 150,
+        "B": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Unidades do pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "437"
+        },
+        "A2": {
+          "entrada": "Unidades por caixa",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "24"
+        },
+        "A3": {
+          "entrada": "Caixas necessárias",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": 19,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARREDONDAR.PARA.CIMA(B1/B2;0)"
+      }
+    ],
+    "dicas": [
+      "ARRED arredonda para o mais perto, e aqui isso deixaria unidades fora da caixa. Existe a ARREDONDAR.PARA.CIMA, com os mesmos argumentos.",
+      "Com 0 casas, o resultado é um número inteiro."
+    ],
+    "explicacao": [
+      "437 ÷ 24 dá 18,2. `=ARREDONDAR.PARA.CIMA(B1/B2;0)` dá 19 caixas; com ARRED, daria 18, e 5 unidades ficariam sem caixa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=ARRED\\(",
+        "dica": "ARRED arredonda para o mais perto: 18,2 vira 18, e 5 unidades ficam sem caixa. Aqui o arredondamento é sempre para cima."
+      },
+      {
+        "padrao": "^=B1/B2$",
+        "dica": "Deu 18,2 caixas, e não existe caixa quebrada. Arredonde para um número inteiro de caixas, sempre para cima."
+      }
+    ],
+    "funcoesExigidas": [
+      "ROUNDUP"
+    ],
+    "licao": "arred-parcelas-que-fecham",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "414517b8-907b-5bb3-b322-67412c160bba",
+    "slug": "arred-parcelas-que-fecham-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a nota que não fecha por um centavo",
+    "enunciado": [
+      "Os itens com desconto em **C2:C4** aparecem como R$ 18,41, R$ 27,66 e R$ 9,16, que na calculadora somam R$ 55,23. Mas o total em C5 mostra **R$ 55,22**.",
+      "O cliente vai pagar o que está escrito em cada linha. Corrija **C2** para que o total feche com os valores que aparecem, e copie até **C4**."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "larguras": {
+        "A": 170,
+        "B": 100,
+        "C": 120,
+        "E": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Com desconto",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "7,5%"
+        },
+        "A2": {
+          "entrada": "Agenda 2027"
+        },
+        "B2": {
+          "entrada": "19,9",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "=B2*(1-$F$1)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Caderno universitário"
+        },
+        "B3": {
+          "entrada": "29,9",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "=B3*(1-$F$1)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marca-texto (kit)"
+        },
+        "B4": {
+          "entrada": "9,9",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "=B4*(1-$F$1)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "C5": {
+          "entrada": "=SOMA(C2:C4)",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "F1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 18.41,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B2*(1-$F$1);2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 27.66,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B3*(1-$F$1);2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 9.16,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B4*(1-$F$1);2)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O formato de moeda mostra só 2 casas, mas a célula guarda o valor com todas as casas. É esse valor guardado que a SOMA usa.",
+      "Arredonde cada valor com desconto em centavos, dentro da própria fórmula."
+    ],
+    "explicacao": [
+      "C2 mostra R$ 18,41, mas guarda 18,4075. Somando os valores guardados, o total dá 55,2225, que aparece como R$ 55,22.",
+      "`=ARRED(B2*(1-$F$1);2)` guarda 18,41 de verdade. Copiada até C4, o total fecha em R$ 55,23, igual à soma do que está na tela."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*\\(1-\\$F\\$1\\)$",
+        "dica": "Essa é a fórmula original: a célula mostra 2 casas, mas guarda mais, e a SOMA usa o valor guardado. Arredonde dentro da fórmula."
+      },
+      {
+        "padrao": "^=ARRED\\(B\\d;2\\)",
+        "dica": "Arredondar o preço não muda nada: ele já tem 2 casas. O que precisa ser arredondado é o resultado com desconto."
+      },
+      {
+        "padrao": "\\(1-F[2-9]\\)",
+        "dica": "Na cópia, a referência ao desconto desceu junto. Mantenha o desconto travado, como estava na fórmula original."
+      }
+    ],
+    "funcoesExigidas": [
+      "ROUND"
+    ],
+    "licao": "arred-parcelas-que-fecham",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "ff77557e-72a4-5070-afa0-6326379b28d0",
+    "slug": "arred-parcelas-que-fecham-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Uma célula com formato de moeda mostra **R$ 18,41**, mas a fórmula dela dá 18,4075. Que valor entra numa SOMA que usa essa célula?"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "18,41",
+        "dica": "Essa é só a aparência. O formato arredonda o que aparece na tela, não o que fica guardado."
+      },
+      {
+        "texto": "18,4075"
+      },
+      {
+        "texto": "18",
+        "dica": "Nada arredonda para inteiro aqui: a SOMA usa o valor guardado, com todas as casas."
+      },
+      {
+        "texto": "Depende da largura da coluna",
+        "dica": "A largura muda só como o número aparece. O valor guardado é sempre o mesmo."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "O formato muda a aparência; o ARRED muda o valor."
+    ],
+    "explicacao": [
+      "A SOMA usa o valor guardado, 18,4075. Para que ela use 18,41, o arredondamento tem que estar na fórmula, com ARRED."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "arred-parcelas-que-fecham",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "55ed3921-b8f1-584d-992b-d971fe749fa4",
+    "slug": "somarproduto-total-do-pedido-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMARPRODUTO: os honorários do mês",
+    "enunciado": [
+      "O escritório cobra do cliente as horas de cada profissional pelo valor da hora dele.",
+      "Em **B6**, calcule o total de honorários do mês."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 4,
+      "larguras": {
+        "A": 170,
+        "B": 120,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Profissional",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Sócia"
+        },
+        "B2": {
+          "entrada": "12,5"
+        },
+        "C2": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Advogado associado"
+        },
+        "B3": {
+          "entrada": "31"
+        },
+        "C3": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Estagiária"
+        },
+        "B4": {
+          "entrada": "18"
+        },
+        "C4": {
+          "entrada": "95",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Honorários do mês",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 21615,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMARPRODUTO(B2:B4;C2:C4)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Horas × valor da hora em cada linha, tudo somado: é o mesmo caso do pedido."
+    ],
+    "explicacao": [
+      "`=SOMARPRODUTO(B2:B4;C2:C4)` → R$ 21.615,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B\\d:B\\d\\)\\*SOMA\\(C\\d:C\\d\\)$",
+        "dica": "Somar todas as horas e multiplicar pela soma dos valores não dá o total: cada profissional tem o próprio valor da hora."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMPRODUCT"
+    ],
+    "licao": "somarproduto-total-do-pedido",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "e04564c1-0f3e-5e4a-b370-984bfcfce88a",
+    "slug": "somarproduto-total-do-pedido-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SOMARPRODUTO: o custo médio do estoque",
+    "enunciado": [
+      "O estoque recebeu três compras do mesmo produto, com custos diferentes.",
+      "Em **B6**, calcule o custo médio por unidade: o valor total gasto dividido pelo total de unidades."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 4,
+      "larguras": {
+        "A": 150,
+        "B": 90,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Compra",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Unidades",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Custo unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Compra de 03/11"
+        },
+        "B2": {
+          "entrada": "100"
+        },
+        "C2": {
+          "entrada": "12",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Compra de 12/11"
+        },
+        "B3": {
+          "entrada": "250"
+        },
+        "C3": {
+          "entrada": "11,4",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Compra de 21/11"
+        },
+        "B4": {
+          "entrada": "150"
+        },
+        "C4": {
+          "entrada": "12,8",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Custo médio",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 11.94,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMARPRODUTO(B2:B4;C2:C4)/SOMA(B2:B4)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O valor total gasto é unidades × custo de cada compra, somado. Depois, divida pela soma das unidades."
+    ],
+    "explicacao": [
+      "`=SOMARPRODUTO(B2:B4;C2:C4)/SOMA(B2:B4)` → R$ 11,94. É uma média ponderada: a compra de 250 unidades pesa mais que as outras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=MÉDIA\\(C2:C4\\)$",
+        "dica": "A média simples trata as três compras como se tivessem o mesmo tamanho. A compra de 250 unidades tem que pesar mais: divida o total gasto pelo total de unidades."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMPRODUCT"
+    ],
+    "licao": "somarproduto-total-do-pedido",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "84184b45-471e-5626-b80d-241660e2a8a5",
+    "slug": "somarproduto-total-do-pedido-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o total que veio torto",
+    "enunciado": [
+      "O total do pedido de limpeza em **B7** deu R$ 829,00, mas na calculadora a conta dá outro valor.",
+      "Descubra o que está errado na fórmula de **B7** e corrija."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "larguras": {
+        "A": 170,
+        "B": 110,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Detergente (caixa)"
+        },
+        "B2": {
+          "entrada": "6"
+        },
+        "C2": {
+          "entrada": "38,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Papel toalha (fardo)"
+        },
+        "B3": {
+          "entrada": "4"
+        },
+        "C3": {
+          "entrada": "52",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Saco de lixo 100 L"
+        },
+        "B4": {
+          "entrada": "10"
+        },
+        "C4": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Álcool 70% (5 L)"
+        },
+        "B5": {
+          "entrada": "3"
+        },
+        "C5": {
+          "entrada": "41,9",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B7": {
+          "entrada": "=SOMARPRODUTO(B2:B5;C3:C6)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B7",
+        "esperado": 812.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMARPRODUTO(B2:B5;C2:C5)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Clique em B7 e olhe os intervalos coloridos na planilha: cada quantidade está sendo multiplicada pelo preço da mesma linha?"
+    ],
+    "explicacao": [
+      "O intervalo dos preços começava uma linha abaixo: a quantidade de detergente foi multiplicada pelo preço do papel toalha, e assim por diante.",
+      "`=SOMARPRODUTO(B2:B5;C2:C5)` → R$ 812,10. O SOMARPRODUTO não avisa quando os intervalos estão desalinhados; ele só dá #VALOR! quando os tamanhos são diferentes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "C3:C6",
+        "dica": "Os preços ainda começam na linha 3, uma abaixo das quantidades. Os dois intervalos precisam começar e terminar nas mesmas linhas."
+      },
+      {
+        "padrao": "SOMARPRODUTO\\(B2:B5;C2:C6\\)|SOMARPRODUTO\\(B2:B6;C2:C5\\)",
+        "dica": "Agora os intervalos têm tamanhos diferentes, e o SOMARPRODUTO dá #VALOR!. Os dois precisam cobrir exatamente as mesmas linhas."
+      }
+    ],
+    "funcoesExigidas": [
+      "SUMPRODUCT"
+    ],
+    "licao": "somarproduto-total-do-pedido",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "91b8e805-37ec-5cf5-bdac-0cece1398e2b",
+    "slug": "somarproduto-total-do-pedido-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Com **B2:B4** = 2, 3 e 1 e **C2:C4** = 10, 20 e 5, quanto dá **=SOMARPRODUTO(B2:B4;C2:C4)**?"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "210",
+        "dica": "Esse é o resultado de somar cada coluna e multiplicar as somas (6 × 35). O SOMARPRODUTO multiplica linha a linha antes de somar."
+      },
+      {
+        "texto": "85"
+      },
+      {
+        "texto": "41",
+        "dica": "41 é a soma de todos os números. O SOMARPRODUTO multiplica os pares da mesma linha."
+      },
+      {
+        "texto": "6000",
+        "dica": "Isso seria multiplicar todos os números entre si. O SOMARPRODUTO multiplica só os pares da mesma linha e depois soma."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "Ele multiplica cada par da mesma linha e só depois soma."
+    ],
+    "explicacao": [
+      "2 × 10 + 3 × 20 + 1 × 5 = 20 + 60 + 5 = 85."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "somarproduto-total-do-pedido",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "a6549443-0d99-56ca-acad-241081d58f9f",
+    "slug": "orcamento-do-departamento-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendas acumuladas no ano",
+    "enunciado": [
+      "Em **C2**, calcule as vendas acumuladas até o mês, numa fórmula que, copiada até **C7**, some sempre de janeiro até a linha da própria fórmula."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 3,
+      "larguras": {
+        "A": 70,
+        "B": 120,
+        "C": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Acumulado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "18400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "21150",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "19870",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "23500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "22300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "25680",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 18400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 39550,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B3)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 59420,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B4)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 82920,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 105220,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 130900,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Use SOMA com um intervalo que começa sempre em janeiro e termina na linha atual.",
+      "O começo do intervalo fica parado; o fim anda na cópia. O $ pode travar só uma das pontas do intervalo."
+    ],
+    "explicacao": [
+      "`=SOMA($B$2:B2)`: o começo travado fica em janeiro, e o fim vira B3, B4… na cópia. Em junho → R$ 130.900,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B\\d:B\\d\\)$",
+        "dica": "Na cópia, o começo do intervalo desceu junto, e cada linha somou só o próprio mês. Trave o começo em janeiro."
+      },
+      {
+        "padrao": "^=SOMA\\(\\$B\\$2:\\$B\\$\\d\\)$",
+        "dica": "Com o fim travado também, toda linha soma o mesmo intervalo. Só o começo fica parado; o fim anda."
+      }
+    ],
+    "licao": "orcamento-do-departamento",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "9a3ca137-c931-5851-be1e-5377144a6610",
+    "slug": "orcamento-do-departamento-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Curva ABC: o percentual acumulado",
+    "enunciado": [
+      "Os clientes estão do maior para o menor faturamento, e o total está em **B8**.",
+      "Em **C2**, calcule o percentual acumulado: quanto os clientes, do primeiro até o da linha, representam do total. Copie até **C7**."
+    ],
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "larguras": {
+        "A": 200,
+        "B": 120,
+        "C": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Faturamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "% acumulado",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B8": {
+          "entrada": "=SOMA(B2:B7)",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "B2": {
+          "entrada": "96000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Rede Bom Preço"
+        },
+        "B3": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Hospital Santa Clara"
+        },
+        "B4": {
+          "entrada": "48000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Colégio Aprender"
+        },
+        "B5": {
+          "entrada": "32000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Transportadora Rota Sul"
+        },
+        "B6": {
+          "entrada": "16000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Auto Peças Pereira"
+        },
+        "B7": {
+          "entrada": "8000",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.36363636363636365,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B2)/$B$8",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C3",
+        "esperado": 0.6060606060606061,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B3)/$B$8",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C4",
+        "esperado": 0.7878787878787878,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B4)/$B$8",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C5",
+        "esperado": 0.9090909090909091,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B5)/$B$8",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C6",
+        "esperado": 0.9696969696969697,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B6)/$B$8",
+        "formato": "percentual"
+      },
+      {
+        "celula": "C7",
+        "esperado": 1.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B7)/$B$8",
+        "formato": "percentual"
+      }
+    ],
+    "dicas": [
+      "É o acumulado da questão anterior dividido pelo total.",
+      "São duas travas: o começo do acumulado e o total."
+    ],
+    "explicacao": [
+      "`=SOMA($B$2:B2)/$B$8`. Os 3 maiores clientes já fazem → 78,8% do faturamento: é a curva ABC, que mostra onde concentrar o atendimento."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B\\d:B\\d\\)$",
+        "dica": "Na cópia, o começo do intervalo desceu junto, e cada linha somou só o próprio mês. Trave o começo em janeiro."
+      },
+      {
+        "padrao": "^=SOMA\\(\\$B\\$2:\\$B\\$\\d\\)$",
+        "dica": "Com o fim travado também, toda linha soma o mesmo intervalo. Só o começo fica parado; o fim anda."
+      },
+      {
+        "padrao": "/B(9|1\\d)$",
+        "dica": "Na cópia, o total desceu junto e saiu da linha 8. Trave a referência ao total."
+      }
+    ],
+    "licao": "orcamento-do-departamento",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "c76daba0-127b-5df1-8c3a-6d0ee1f1d612",
+    "slug": "orcamento-do-departamento-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o acumulado que não acumula",
+    "enunciado": [
+      "Alguém escreveu `=SOMA(B2:B2)` em **C2** e copiou até C7. O \"acumulado\" ficou igual ao gasto de cada mês.",
+      "Corrija **C2** e copie de novo até **C7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 3,
+      "larguras": {
+        "A": 70,
+        "B": 120,
+        "C": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Frete",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Acumulado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "=SOMA(B2:B2)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "2850",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "=SOMA(B3:B3)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "=SOMA(B4:B4)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "3780",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "=SOMA(B5:B5)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "2990",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "=SOMA(B6:B6)",
+          "bloqueada": false,
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "3650",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "=SOMA(B7:B7)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 3200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B2)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 6050,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B3)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": 10150,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B4)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 13930,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B5)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 16920,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": 20570,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA($B$2:B7)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Clique em C4 e veja o intervalo colorido: ele começa onde deveria?"
+    ],
+    "explicacao": [
+      "Sem $, o começo do intervalo também desce na cópia: em C4, a fórmula virou a soma de B4 até B4. Com `=SOMA($B$2:B2)`, o começo fica em janeiro, e o acumulado de junho → R$ 20.570,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(B\\d:B\\d\\)$",
+        "dica": "Na cópia, o começo do intervalo desceu junto, e cada linha somou só o próprio mês. Trave o começo em janeiro."
+      },
+      {
+        "padrao": "^=SOMA\\(\\$B\\$2:\\$B\\$\\d\\)$",
+        "dica": "Com o fim travado também, toda linha soma o mesmo intervalo. Só o começo fica parado; o fim anda."
+      }
+    ],
+    "licao": "orcamento-do-departamento",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "f48bf805-8ea7-5d44-b2ff-92b5fbda7c6a",
+    "slug": "orcamento-do-departamento-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "fundamentos",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em **C2** está **=SOMA($B$2:B2)**. Copiada para **C5**, ela vira:"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "=SOMA($B$5:B5)",
+        "dica": "O $B$2 está travado inteiro, coluna e linha: ele não muda na cópia."
+      },
+      {
+        "texto": "=SOMA($B$2:B5)"
+      },
+      {
+        "texto": "=SOMA(B5:B5)",
+        "dica": "Essa seria a cópia sem nenhum $. Com $B$2, o começo fica parado."
+      },
+      {
+        "texto": "=SOMA($B$2:B2)",
+        "dica": "Só a parte com $ fica parada. O B2 sem $ desce junto: três linhas abaixo, vira B5."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "Só anda o que não tem $."
+    ],
+    "explicacao": [
+      "A parte com $ fica parada e a sem $ anda: de C2 para C5 são três linhas, então B2 vira B5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "orcamento-do-departamento",
+    "etapa": 5,
+    "papel": "conceito"
   },
   {
     "id": "72d0d490-cef2-5c36-a8a8-5ead47a34f58",
@@ -4723,10 +6581,10 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Média mensal",
+    "versao": 2,
+    "titulo": "Total do pedido",
     "enunciado": [
-      "Em **C8**, a média mensal das despesas de **C2:C6**."
+      "Em **B6**, calcule o total do pedido (a quantidade de cada produto vezes o preço dele, tudo somado) numa fórmula só."
     ],
     "dicas": [],
     "explicacao": [
@@ -4734,88 +6592,79 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "media-mensal-de-vendas",
+    "revisar": "somarproduto-total-do-pedido",
     "type": "formula",
     "grade": {
-      "linhas": 9,
-      "colunas": 7,
+      "linhas": 7,
+      "colunas": 4,
+      "larguras": {
+        "A": 190,
+        "B": 120,
+        "C": 120
+      },
       "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
         "B1": {
-          "entrada": "Mês",
+          "entrada": "Qtd",
           "negrito": true
         },
         "C1": {
-          "entrada": "Despesa",
+          "entrada": "Preço unitário",
           "negrito": true
+        },
+        "A2": {
+          "entrada": "Cartucho de tinta"
         },
         "B2": {
-          "entrada": "Jan"
+          "entrada": "3"
         },
         "C2": {
-          "entrada": "800",
+          "entrada": "89,9",
           "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bloco de notas"
         },
         "B3": {
-          "entrada": "Fev"
+          "entrada": "12"
         },
         "C3": {
-          "entrada": "950",
+          "entrada": "6,5",
           "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Envelope pardo (pacote)"
         },
         "B4": {
-          "entrada": "Mar"
+          "entrada": "4"
         },
         "C4": {
-          "entrada": "700",
+          "entrada": "18,75",
           "formato": "moeda"
         },
-        "B5": {
-          "entrada": "Abr"
-        },
-        "C5": {
-          "entrada": "1100",
-          "formato": "moeda"
-        },
-        "B6": {
-          "entrada": "Mai"
-        },
-        "C6": {
-          "entrada": "900",
-          "formato": "moeda"
-        },
-        "E1": {
-          "entrada": "Taxa",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "3%"
-        },
-        "B8": {
-          "entrada": "Média",
+        "A6": {
+          "entrada": "Total",
           "negrito": true
         }
       },
-      "larguras": {
-        "B": 80,
-        "C": 110,
-        "D": 110,
-        "E": 110
-      },
       "variaveis": [
+        "B2",
+        "B3",
+        "B4",
         "C2",
         "C3",
-        "C4",
-        "C5",
-        "C6",
-        "F1"
+        "C4"
       ]
     },
     "alvos": [
       {
-        "celula": "C8",
-        "esperado": 890,
+        "celula": "B6",
+        "esperado": 422.70000000000005,
         "exigeFormula": true,
-        "solucaoReferencia": "=MÉDIA(C2:C6)",
+        "solucaoReferencia": "=SOMARPRODUTO(B2:B4;C2:C4)",
         "formato": "moeda"
       }
     ]
@@ -5067,10 +6916,10 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Ordem das contas",
+    "versao": 2,
+    "titulo": "Acumulado",
     "enunciado": [
-      "Quanto dá **=(2+3)\\*4**?"
+      "As vendas de janeiro a junho estão em **B2:B7**. Qual fórmula vai em **C2** para mostrar o acumulado do ano e funcionar copiada até C7?"
     ],
     "dicas": [],
     "explicacao": [
@@ -5078,7 +6927,7 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "ordem-das-contas",
+    "revisar": "orcamento-do-departamento",
     "type": "multiple_choice",
     "grade": {
       "linhas": 1,
@@ -5087,16 +6936,16 @@
     },
     "opcoes": [
       {
-        "texto": "14"
+        "texto": "=SOMA(B2:B2)"
       },
       {
-        "texto": "20"
+        "texto": "=SOMA($B$2:B2)"
       },
       {
-        "texto": "24"
+        "texto": "=SOMA($B$2:$B$7)"
       },
       {
-        "texto": "9"
+        "texto": "=SOMA(B2:$B$7)"
       }
     ],
     "correta": 1

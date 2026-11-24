@@ -31,7 +31,7 @@ test("quem já tinha progresso em Fundamentos não é mandado para o Intro", asy
   );
   await page.goto("/trilha");
   await expect(page.getByTestId("cta")).toContainText("Continuar: MÉDIA: a venda de um mês típico");
-  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/7");
+  await expect(page.getByTestId("regiao-fundamentos")).toContainText("1/10");
   // o pino fica no próximo exercício de Fundamentos, não no Intro
   await expect(page.getByTestId("casa-media-mensal-de-vendas")).toHaveAttribute("data-mapa-atual", "true");
 });
