@@ -156,7 +156,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "PROCV por faixa: a taxa de comissão",
@@ -320,7 +320,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "PROCH: busca numa tabela deitada",
@@ -1198,7 +1198,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Faixa: venda de 4.000",
@@ -1313,7 +1313,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Faixa: exatamente no limite",
@@ -1425,7 +1425,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 24,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: a tabela de cabeça para baixo",
@@ -1473,7 +1473,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 25,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -1521,7 +1521,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "PROCH: a meta de junho",
@@ -1653,7 +1653,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "PROCH: o realizado de abril",
@@ -1813,7 +1813,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: a meta errada de março",
@@ -1950,7 +1950,7 @@
     "trilha": "excel-ptbr",
     "modulo": "busca",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -2898,6 +2898,4251 @@
     "correta": 2
   },
   {
+    "id": "87ffa87d-d726-5604-b6c0-d95545826161",
+    "slug": "procv-coluna-variavel-corresp",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCV + CORRESP: a coluna pelo cabeçalho",
+    "intro": "Numa tabela com uma coluna por mês, contar colunas à mão é pedir para errar. O CORRESP acha a posição do mês e entrega o número da coluna para o PROCV.",
+    "enunciado": [
+      "A tabela tem as vendas de cada vendedor por mês. O vendedor está em **G2** e o mês, em **H2**.",
+      "Em **I2**, traga as vendas desse vendedor nesse mês com PROCV, sem digitar o número da coluna: ele tem que sair do mês escrito em H2."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "19850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14700",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "16300",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "22950",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "25400",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "27100",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "23800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "12300",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "12750",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "15600",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "19700",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "21450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "22900",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Carla"
+        },
+        "H2": {
+          "entrada": "Mar"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 100,
+        "H": 70,
+        "I": 120
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5",
+        "B6",
+        "C6",
+        "D6",
+        "E6"
+      ],
+      "alternativas": {
+        "G2": [
+          "Ana",
+          "Elisa"
+        ],
+        "H2": [
+          "Jan",
+          "Abr"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 27100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G2;A2:E6;CORRESP(H2;A1:E1;0);FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "No lugar do número da coluna, coloque `CORRESP(o mês;a linha do cabeçalho;0)`.",
+      "O cabeçalho do CORRESP tem que começar na mesma coluna da tabela do PROCV."
+    ],
+    "explicacao": [
+      "`=PROCV(G2;A2:E6;CORRESP(H2;A1:E1;0);FALSO)`: o CORRESP acha \"Mar\" na posição 4 do cabeçalho (Vendedor, Jan, Fev, Mar) e o PROCV devolve a 4ª coluna da linha da Carla: R$ 27.100,00.",
+      "Troque o mês em H2 e o resultado acompanha sozinho."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "CORRESP\\([^;()]*;[^;()]*\\)",
+        "dica": "Sem o 0 no fim, o CORRESP faz busca aproximada e, com os meses fora da ordem alfabética, pode devolver a coluna errada. Peça a correspondência exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "PROCV\\(.*CORRESP\\(\\$?H\\$?\\d;\\$?B\\$?1:",
+        "dica": "O CORRESP conta a posição a partir da primeira coluna do intervalo que você deu. Para servir de número de coluna do PROCV, o cabeçalho tem que começar na mesma coluna da tabela: a coluna do Vendedor também conta."
+      },
+      {
+        "padrao": "PROCV\\([^;]*;[^;]*;\\d+;",
+        "dica": "Um número de coluna digitado só serve para um mês: se o mês pedido mudar, a fórmula continua olhando a mesma coluna. Faça o número da coluna sair do próprio cabeçalho."
+      }
+    ],
+    "video": "Relatório mensal: o chefe pede \"e em abril?\" e só a célula do mês muda.",
+    "funcoesExigidas": [
+      "VLOOKUP",
+      "MATCH"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-coluna-variavel-corresp",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "ed1c41a9-932e-54bb-9b36-140fa177ae3a",
+    "slug": "procv-coluna-variavel-corresp-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Coluna variável copiada para baixo",
+    "enunciado": [
+      "Agora são três consultas, em **G2:H4**. Em **I2**, traga as vendas do vendedor e do mês da linha, e copie até **I4**."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "19850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14700",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "16300",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "22950",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "25400",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "27100",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "23800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "12300",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "12750",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "15600",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "19700",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "21450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "22900",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Ana"
+        },
+        "H2": {
+          "entrada": "Fev"
+        },
+        "G3": {
+          "entrada": "Diego"
+        },
+        "H3": {
+          "entrada": "Abr"
+        },
+        "G4": {
+          "entrada": "Elisa"
+        },
+        "H4": {
+          "entrada": "Jan"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 100,
+        "H": 70,
+        "I": 120
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5",
+        "B6",
+        "C6",
+        "D6",
+        "E6"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 21300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G2;$A$2:$E$6;CORRESP(H2;$A$1:$E$1;0);FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "I3",
+        "esperado": 15600,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G3;$A$2:$E$6;CORRESP(H3;$A$1:$E$1;0);FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "I4",
+        "esperado": 19700,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G4;$A$2:$E$6;CORRESP(H4;$A$1:$E$1;0);FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "A tabela e a linha do cabeçalho não podem andar quando a fórmula desce: trave as duas com o cifrão.",
+      "O vendedor e o mês, ao contrário, têm que mudar de linha."
+    ],
+    "explicacao": [
+      "`=PROCV(G2;$A$2:$E$6;CORRESP(H2;$A$1:$E$1;0);FALSO)`: com os intervalos travados, a cópia só muda G2 e H2 para G3/H3 e G4/H4.",
+      "Ana em fevereiro: R$ 21.300,00; Diego em abril: R$ 15.600,00; Elisa em janeiro: R$ 19.700,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "CORRESP\\([^;()]*;[^;()]*\\)",
+        "dica": "Sem o 0 no fim, o CORRESP faz busca aproximada e, com os meses fora da ordem alfabética, pode devolver a coluna errada. Peça a correspondência exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "PROCV\\(.*CORRESP\\(\\$?H\\$?\\d;\\$?B\\$?1:",
+        "dica": "O CORRESP conta a posição a partir da primeira coluna do intervalo que você deu. Para servir de número de coluna do PROCV, o cabeçalho tem que começar na mesma coluna da tabela: a coluna do Vendedor também conta."
+      },
+      {
+        "padrao": "CORRESP\\(\\$?H\\d;A[2-9]:",
+        "dica": "Ao copiar a fórmula para baixo, a linha do cabeçalho desceu junto e o mês não é mais encontrado. Trave o cabeçalho (e a tabela) com o cifrão."
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP",
+      "MATCH"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-coluna-variavel-corresp",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "bc1042e9-765a-5d78-b0ba-d1aae8b655ed",
+    "slug": "procv-coluna-variavel-corresp-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A ficha do funcionário",
+    "enunciado": [
+      "No cadastro do RH, a matrícula está em **G2** e o nome da informação que você quer (Nome, Cargo, Setor…) está em **H2**.",
+      "Em **I2**, traga essa informação do funcionário com PROCV e CORRESP."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Marina Souza"
+        },
+        "C2": {
+          "entrada": "Analista Financeira"
+        },
+        "D2": {
+          "entrada": "Financeiro"
+        },
+        "E2": {
+          "entrada": "03/02/2021"
+        },
+        "A3": {
+          "entrada": "1034"
+        },
+        "B3": {
+          "entrada": "Rafael Lima"
+        },
+        "C3": {
+          "entrada": "Assistente de RH"
+        },
+        "D3": {
+          "entrada": "RH"
+        },
+        "E3": {
+          "entrada": "15/08/2022"
+        },
+        "A4": {
+          "entrada": "1047"
+        },
+        "B4": {
+          "entrada": "Júlia Mendes"
+        },
+        "C4": {
+          "entrada": "Coordenadora Comercial"
+        },
+        "D4": {
+          "entrada": "Comercial"
+        },
+        "E4": {
+          "entrada": "10/01/2019"
+        },
+        "A5": {
+          "entrada": "1052"
+        },
+        "B5": {
+          "entrada": "Pedro Alves"
+        },
+        "C5": {
+          "entrada": "Analista de Sistemas"
+        },
+        "D5": {
+          "entrada": "TI"
+        },
+        "E5": {
+          "entrada": "22/05/2023"
+        },
+        "A6": {
+          "entrada": "1068"
+        },
+        "B6": {
+          "entrada": "Carla Nogueira"
+        },
+        "C6": {
+          "entrada": "Advogada"
+        },
+        "D6": {
+          "entrada": "Jurídico"
+        },
+        "E6": {
+          "entrada": "01/09/2020"
+        },
+        "G1": {
+          "entrada": "Matrícula",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Campo",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "1047"
+        },
+        "H2": {
+          "entrada": "Setor"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 120,
+        "C": 170,
+        "D": 100,
+        "E": 100,
+        "G": 90,
+        "H": 80,
+        "I": 170
+      },
+      "alternativas": {
+        "H2": [
+          "Cargo",
+          "Nome"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": "Comercial",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G2;A2:E6;CORRESP(H2;A1:E1;0);FALSO)"
+      }
+    ],
+    "dicas": [
+      "É a mesma ideia da tabela de vendas: o CORRESP acha a posição do campo no cabeçalho."
+    ],
+    "explicacao": [
+      "`=PROCV(G2;A2:E6;CORRESP(H2;A1:E1;0);FALSO)`: \"Setor\" é a 4ª coluna do cabeçalho, então o PROCV devolve o setor da Júlia: Comercial.",
+      "Escreva Cargo em H2 e a mesma fórmula traz \"Coordenadora Comercial\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "CORRESP\\([^;()]*;[^;()]*\\)",
+        "dica": "Sem o 0 no fim, o CORRESP faz busca aproximada e, com os meses fora da ordem alfabética, pode devolver a coluna errada. Peça a correspondência exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "PROCV\\(.*CORRESP\\(\\$?H\\$?\\d;\\$?B\\$?1:",
+        "dica": "O CORRESP conta a posição a partir da primeira coluna do intervalo que você deu. O cabeçalho tem que começar na mesma coluna da tabela do PROCV: a coluna da Matrícula também conta."
+      },
+      {
+        "padrao": "PROCV\\([^;]*;[^;]*;\\d+;",
+        "dica": "Um número de coluna digitado só serve para um campo: se H2 mudar para Cargo, a fórmula continua na mesma coluna. Faça o número sair do cabeçalho."
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP",
+      "MATCH"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-coluna-variavel-corresp",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "17f9ed52-ff8c-5014-bb47-814343ef6335",
+    "slug": "procv-coluna-variavel-corresp-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o mês anterior",
+    "enunciado": [
+      "A fórmula em **I2** deveria trazer as vendas da Carla em março, mas traz as de fevereiro. Corrija a fórmula."
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Abr",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21300",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "19850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14700",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "16300",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "22950",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "25400",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "27100",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "23800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego"
+        },
+        "B5": {
+          "entrada": "12300",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "12750",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "15600",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa"
+        },
+        "B6": {
+          "entrada": "19700",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "21450",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "22900",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Carla"
+        },
+        "H2": {
+          "entrada": "Mar"
+        },
+        "I2": {
+          "entrada": "=PROCV(G2;A2:E6;CORRESP(H2;B1:E1;0);FALSO)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "E": 100,
+        "G": 100,
+        "H": 70,
+        "I": 120
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "B4",
+        "C4",
+        "D4",
+        "E4",
+        "B5",
+        "C5",
+        "D5",
+        "E5",
+        "B6",
+        "C6",
+        "D6",
+        "E6"
+      ],
+      "alternativas": {
+        "G2": [
+          "Ana",
+          "Elisa"
+        ],
+        "H2": [
+          "Jan",
+          "Abr"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 27100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(G2;A2:E6;CORRESP(H2;A1:E1;0);FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Em que posição o CORRESP encontra \"Mar\"? E qual é essa coluna dentro da tabela do PROCV?",
+      "Compare a primeira coluna dos dois intervalos."
+    ],
+    "explicacao": [
+      "O CORRESP procurava em B1:E1, onde \"Mar\" é a 3ª posição. Mas na tabela A2:E6 a 3ª coluna é fevereiro, porque a tabela começa na coluna A.",
+      "Com o cabeçalho começando na mesma coluna da tabela, `CORRESP(H2;A1:E1;0)` dá 4 e o PROCV traz março: R$ 27.100,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "CORRESP\\([^;()]*;[^;()]*\\)",
+        "dica": "Sem o 0 no fim, o CORRESP faz busca aproximada e, com os meses fora da ordem alfabética, pode devolver a coluna errada. Peça a correspondência exata.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "PROCV\\(.*CORRESP\\(\\$?H\\$?\\d;\\$?B\\$?1:",
+        "dica": "O CORRESP conta a posição a partir da primeira coluna do intervalo que você deu. Para servir de número de coluna do PROCV, o cabeçalho tem que começar na mesma coluna da tabela: a coluna do Vendedor também conta."
+      },
+      {
+        "padrao": "PROCV\\([^;]*;[^;]*;\\d+;",
+        "dica": "Um número de coluna digitado só serve para um mês: se o mês pedido mudar, a fórmula continua olhando a mesma coluna. Faça o número da coluna sair do próprio cabeçalho."
+      }
+    ],
+    "funcoesExigidas": [
+      "VLOOKUP",
+      "MATCH"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-coluna-variavel-corresp",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "1af22f86-6647-5daa-88a3-4823c2bfbd3d",
+    "slug": "procv-coluna-variavel-corresp-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual é a vantagem de usar CORRESP no número da coluna do PROCV?"
+    ],
+    "dicas": [
+      "Pense no que acontece quando o mês pedido muda ou quando alguém insere uma coluna na tabela."
+    ],
+    "explicacao": [
+      "Com o CORRESP, o número da coluna é calculado pelo nome do cabeçalho: a fórmula acompanha a troca do mês e até a inserção de colunas."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Deixa o PROCV mais rápido",
+        "dica": "A velocidade é a mesma; a vantagem é outra."
+      },
+      {
+        "texto": "A coluna é escolhida pelo nome do cabeçalho, sem contar colunas à mão"
+      },
+      {
+        "texto": "Dispensa o FALSO no fim",
+        "dica": "A busca exata continua necessária."
+      },
+      {
+        "texto": "Permite buscar à esquerda",
+        "dica": "O PROCV continua só olhando para a direita da primeira coluna."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "procv-coluna-variavel-corresp",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "a1b0e572-03e9-50c9-9949-6bbd03d45851",
+    "slug": "procx-faixa-modo-correspondencia",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX por faixa: a categoria do cliente",
+    "intro": "Faixa de comissão, de desconto, de frete: quase toda tabela de escritório é \"a partir de\". O PROCX resolve com o modo de correspondência, sem depender da ordem da tabela.",
+    "enunciado": [
+      "A tabela em **A1:B5** diz a categoria do cliente **a partir de** cada faturamento anual.",
+      "Em **F2**, traga a categoria do cliente da linha com PROCX, e copie até **F5**."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Faturamento a partir de",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "Bronze"
+        },
+        "A3": {
+          "entrada": "50000",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Prata"
+        },
+        "A4": {
+          "entrada": "200000",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Ouro"
+        },
+        "A5": {
+          "entrada": "1000000",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Diamante"
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faturamento anual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "Padaria Bom Pão"
+        },
+        "D3": {
+          "entrada": "Clínica Vida"
+        },
+        "D4": {
+          "entrada": "Mercado Central"
+        },
+        "D5": {
+          "entrada": "Construtora Alfa"
+        },
+        "E2": {
+          "entrada": "38000",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "75500",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "200000",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "1250000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "D": 150,
+        "E": 150,
+        "F": 100
+      },
+      "variaveis": [
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Bronze",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E2;$A$2:$A$5;$B$2:$B$5;;-1)"
+      },
+      {
+        "celula": "F3",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E3;$A$2:$A$5;$B$2:$B$5;;-1)"
+      },
+      {
+        "celula": "F4",
+        "esperado": "Ouro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E4;$A$2:$A$5;$B$2:$B$5;;-1)"
+      },
+      {
+        "celula": "F5",
+        "esperado": "Diamante",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E5;$A$2:$A$5;$B$2:$B$5;;-1)"
+      }
+    ],
+    "dicas": [
+      "O 5º argumento do PROCX é o modo de correspondência: 0 é exato, -1 aceita o próximo menor, 1 o próximo maior.",
+      "O 4º argumento (se não encontrado) pode ficar vazio: dois ponto e vírgula seguidos."
+    ],
+    "explicacao": [
+      "`=PROCX(E2;$A$2:$A$5;$B$2:$B$5;;-1)`: com -1, se o faturamento não estiver na tabela, o PROCX pega a faixa logo abaixo. R$ 75.500,00 cai na faixa que começa em R$ 50.000,00: Prata.",
+      "Valor exatamente no limite (R$ 200.000,00) já é da faixa de cima: Ouro."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;0)?\\)$",
+        "dica": "Sem o 5º argumento (ou com 0), o PROCX só aceita o valor exato, e um faturamento como 75.500 não está na tabela. Diga ao PROCX para aceitar o próximo valor menor."
+      },
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*;[^;]*;1\\)$",
+        "dica": "Com 1, o PROCX pega o próximo valor MAIOR e o cliente sobe de categoria antes da hora. Numa tabela \"a partir de\", vale o próximo menor."
+      }
+    ],
+    "video": "A tabela de comissão do RH, sem PROCV aproximado e sem medo de classificar errado.",
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-faixa-modo-correspondencia",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "dc6f5570-fd75-50de-8876-443756575761",
+    "slug": "procx-faixa-modo-correspondencia-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Faixa com a tabela fora de ordem",
+    "enunciado": [
+      "A tabela de bônus por nota da avaliação foi digitada fora de ordem. Em **E2**, traga o bônus da nota de **E1** com PROCX: a tabela diz o bônus **a partir de** cada nota."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota a partir de",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Bônus",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "7"
+        },
+        "B2": {
+          "entrada": "10%"
+        },
+        "A3": {
+          "entrada": "0"
+        },
+        "B3": {
+          "entrada": "0%"
+        },
+        "A4": {
+          "entrada": "9"
+        },
+        "B4": {
+          "entrada": "20%"
+        },
+        "A5": {
+          "entrada": "5"
+        },
+        "B5": {
+          "entrada": "5%"
+        },
+        "D1": {
+          "entrada": "Nota da avaliação",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "Bônus",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "8,4"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 80,
+        "D": 140,
+        "E": 90
+      },
+      "variaveis": [
+        "E1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 0.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E1;A2:A5;B2:B5;;-1)",
+        "formato": "percentual"
+      }
+    ],
+    "dicas": [
+      "O PROCX com modo de correspondência procura a melhor faixa em toda a lista: não precisa classificar."
+    ],
+    "explicacao": [
+      "`=PROCX(E1;A2:A5;B2:B5;;-1)`: entre as notas da tabela, a maior que não passa de 8,4 é 7, e o bônus dela é 10%.",
+      "O PROCV aproximado exige a tabela em ordem crescente; com ela bagunçada, ele pode devolver a faixa errada sem dar erro."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;0)?\\)$",
+        "dica": "Sem o 5º argumento (ou com 0), o PROCX só aceita o valor exato, e a nota 8,4 não está na tabela. Diga ao PROCX para aceitar o próximo valor menor."
+      },
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*;[^;]*;1\\)$",
+        "dica": "Com 1, o PROCX pega a próxima nota MAIOR, e a pessoa ganha o bônus de uma faixa que ainda não alcançou."
+      },
+      {
+        "padrao": "PROCV\\(",
+        "dica": "Com a tabela fora de ordem, a busca aproximada do PROCV se perde. Use o PROCX com o modo de correspondência, que não depende da ordem."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-faixa-modo-correspondencia",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "6898ed1f-291e-5d25-8081-617431dc7ad0",
+    "slug": "procx-faixa-modo-correspondencia-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A caixa que serve: o próximo maior",
+    "enunciado": [
+      "No estoque há caixas de 10, 25, 50 e 100 litros. Em **E2**, traga a **menor caixa em que o pedido de E1 cabe**. Se nenhuma servir, mostre \"Não cabe\"."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Caixa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Capacidade (litros)",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "A3": {
+          "entrada": "M"
+        },
+        "B3": {
+          "entrada": "25"
+        },
+        "A4": {
+          "entrada": "G"
+        },
+        "B4": {
+          "entrada": "50"
+        },
+        "A5": {
+          "entrada": "GG"
+        },
+        "B5": {
+          "entrada": "100"
+        },
+        "D1": {
+          "entrada": "Volume do pedido (litros)",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "Caixa",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "32"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 150,
+        "D": 190,
+        "E": 90
+      },
+      "variaveis": [
+        "E1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": "G",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E1;B2:B5;A2:A5;\"Não cabe\";1)"
+      }
+    ],
+    "dicas": [
+      "Agora a direção é outra: não serve uma caixa menor que o pedido. Qual modo pega o próximo valor maior?",
+      "O 4º argumento é o que mostrar quando nenhuma caixa serve."
+    ],
+    "explicacao": [
+      "`=PROCX(E1;B2:B5;A2:A5;\"Não cabe\";1)`: com 1, o PROCX aceita o valor exato ou o próximo maior. 32 litros não cabem na M (25), então vai a G (50).",
+      "Um pedido de 120 litros não tem caixa maior: aparece \"Não cabe\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";-1\\)$",
+        "dica": "Com -1, o PROCX pega a caixa MENOR que o pedido, e o pedido não cabe nela. Aqui você precisa do próximo valor maior."
+      },
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;0)?\\)$",
+        "dica": "Sem o 5º argumento (ou com 0), o PROCX só aceita uma caixa de exatamente 32 litros. Diga a ele para aceitar o próximo valor maior."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-faixa-modo-correspondencia",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "fe4d8ecb-6b7d-583f-81fe-e6fff46e552e",
+    "slug": "procx-faixa-modo-correspondencia-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o #N/D da faixa",
+    "enunciado": [
+      "A fórmula em **F2** dá #N/D, mas a Clínica Vida tem categoria. Corrija a fórmula para trazer a categoria pela tabela de faixas."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Faturamento a partir de",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "Bronze"
+        },
+        "A3": {
+          "entrada": "50000",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "Prata"
+        },
+        "A4": {
+          "entrada": "200000",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "Ouro"
+        },
+        "A5": {
+          "entrada": "1000000",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "Diamante"
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Faturamento anual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "Clínica Vida"
+        },
+        "E2": {
+          "entrada": "75500",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "=PROCX(E2;A2:A5;B2:B5)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "D": 150,
+        "E": 150,
+        "F": 100
+      },
+      "variaveis": [
+        "E2"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": "Prata",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(E2;A2:A5;B2:B5;;-1)"
+      }
+    ],
+    "dicas": [
+      "O PROCX, por padrão, procura o valor exato. R$ 75.500,00 está na tabela?"
+    ],
+    "explicacao": [
+      "Sem o modo de correspondência, o PROCX procura exatamente 75.500, que não existe na tabela: #N/D.",
+      "`=PROCX(E2;A2:A5;B2:B5;;-1)` aceita o próximo menor (50.000) e traz Prata."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;0)?\\)$",
+        "dica": "Sem o 5º argumento (ou com 0), o PROCX só aceita o valor exato, e um faturamento como 75.500 não está na tabela. Diga ao PROCX para aceitar o próximo valor menor."
+      },
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*;[^;]*;1\\)$",
+        "dica": "Com 1, o PROCX pega o próximo valor MAIOR e o cliente sobe de categoria antes da hora. Numa tabela \"a partir de\", vale o próximo menor."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-faixa-modo-correspondencia",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "0898261c-90a9-5a23-84a9-9340876e1cfa",
+    "slug": "procx-faixa-modo-correspondencia-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Numa tabela de faixas \"a partir de\" (comissão, desconto, categoria), qual modo de correspondência do PROCX usar?"
+    ],
+    "dicas": [
+      "\"A partir de 50.000\" quer dizer: quem tem 75.500 fica na faixa de qual limite, o de baixo ou o de cima?"
+    ],
+    "explicacao": [
+      "-1 aceita o valor exato ou o próximo menor: quem tem 75.500 fica na faixa que começa em 50.000."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "0 (exato)",
+        "dica": "Com 0, só valores que estão na tabela funcionam; o resto dá #N/D."
+      },
+      {
+        "texto": "-1 (exato ou o próximo menor)"
+      },
+      {
+        "texto": "1 (exato ou o próximo maior)",
+        "dica": "Com 1, o valor sobe para a faixa de cima antes de alcançá-la."
+      },
+      {
+        "texto": "2 (curinga)",
+        "dica": "O curinga serve para textos com * e ?, não para faixas de números."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-faixa-modo-correspondencia",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "4bfd17a5-5858-5a94-8ca8-1f04e490c040",
+    "slug": "procx-duas-condicoes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Busca com duas condições: cargo e nível",
+    "intro": "No plano de cargos e salários, o cargo se repete (Analista I, II, III). Para achar o salário certo, a busca precisa olhar duas colunas ao mesmo tempo.",
+    "enunciado": [
+      "A tabela em **A1:C9** tem o salário de cada cargo e nível. Em **H2**, traga o salário do funcionário da linha (cargo em F, nível em G), e copie até **H4**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Assistente"
+        },
+        "B2": {
+          "entrada": "I"
+        },
+        "C2": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Assistente"
+        },
+        "B3": {
+          "entrada": "II"
+        },
+        "C3": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Assistente"
+        },
+        "B4": {
+          "entrada": "III"
+        },
+        "C4": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Analista"
+        },
+        "B5": {
+          "entrada": "I"
+        },
+        "C5": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Analista"
+        },
+        "B6": {
+          "entrada": "II"
+        },
+        "C6": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Analista"
+        },
+        "B7": {
+          "entrada": "III"
+        },
+        "C7": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Coordenador"
+        },
+        "B8": {
+          "entrada": "I"
+        },
+        "C8": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Coordenador"
+        },
+        "B9": {
+          "entrada": "II"
+        },
+        "C9": {
+          "entrada": "10200",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Marina"
+        },
+        "F2": {
+          "entrada": "Analista"
+        },
+        "G2": {
+          "entrada": "II"
+        },
+        "E3": {
+          "entrada": "Rafael"
+        },
+        "F3": {
+          "entrada": "Assistente"
+        },
+        "G3": {
+          "entrada": "III"
+        },
+        "E4": {
+          "entrada": "Júlia"
+        },
+        "F4": {
+          "entrada": "Coordenador"
+        },
+        "G4": {
+          "entrada": "II"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 60,
+        "C": 100,
+        "E": 100,
+        "F": 110,
+        "G": 60,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "H2",
+        "esperado": 5300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2&G2;$A$2:$A$9&$B$2:$B$9;$C$2:$C$9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H3",
+        "esperado": 3400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F3&G3;$A$2:$A$9&$B$2:$B$9;$C$2:$C$9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "H4",
+        "esperado": 10200,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F4&G4;$A$2:$A$9&$B$2:$B$9;$C$2:$C$9)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O operador & junta textos: dá para juntar o cargo e o nível num texto só, dos dois lados da busca.",
+      "Junte também as duas colunas da tabela, na mesma ordem, e trave os intervalos antes de copiar."
+    ],
+    "explicacao": [
+      "`=PROCX(F2&G2;$A$2:$A$9&$B$2:$B$9;$C$2:$C$9)`: procura \"AnalistaII\" na lista \"AssistenteI\", \"AssistenteII\"… e devolve o salário dessa linha: R$ 5.300,00.",
+      "Em versões sem PROCX, a mesma ideia funciona com `ÍNDICE` e `CORRESP`, como na próxima questão."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\(\\$?[FG]\\$?\\d;",
+        "dica": "Buscando só por uma informação, o PROCX para na primeira linha que bate: para o cargo, é sempre o nível I. É preciso procurar o cargo e o nível juntos."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "video": "Plano de cargos e salários: o PROCV traz sempre o nível I, e o & resolve.",
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-duas-condicoes",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "536d5fe9-9fc7-5b6c-82d5-fc6a678c3bd7",
+    "slug": "procx-duas-condicoes-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas condições sem PROCX",
+    "enunciado": [
+      "No Excel 2016 e 2019 não existe PROCX. Em **H2**, traga o salário da Marina (cargo em F2, nível em G2) usando **ÍNDICE** e **CORRESP**."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Assistente"
+        },
+        "B2": {
+          "entrada": "I"
+        },
+        "C2": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Assistente"
+        },
+        "B3": {
+          "entrada": "II"
+        },
+        "C3": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Assistente"
+        },
+        "B4": {
+          "entrada": "III"
+        },
+        "C4": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Analista"
+        },
+        "B5": {
+          "entrada": "I"
+        },
+        "C5": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Analista"
+        },
+        "B6": {
+          "entrada": "II"
+        },
+        "C6": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Analista"
+        },
+        "B7": {
+          "entrada": "III"
+        },
+        "C7": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Coordenador"
+        },
+        "B8": {
+          "entrada": "I"
+        },
+        "C8": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Coordenador"
+        },
+        "B9": {
+          "entrada": "II"
+        },
+        "C9": {
+          "entrada": "10200",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Marina"
+        },
+        "F2": {
+          "entrada": "Analista"
+        },
+        "G2": {
+          "entrada": "II"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 60,
+        "C": 100,
+        "E": 100,
+        "F": 110,
+        "G": 60,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "H2",
+        "esperado": 5300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(C2:C9;CORRESP(1;(A2:A9=F2)*(B2:B9=G2);0))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Cada comparação de uma coluna com a célula vira uma lista de VERDADEIRO e FALSO. Multiplicando as duas listas, só a linha que atende às duas condições vira 1.",
+      "Então é só pedir ao CORRESP a posição do 1, com correspondência exata."
+    ],
+    "explicacao": [
+      "`=ÍNDICE(C2:C9;CORRESP(1;(A2:A9=F2)*(B2:B9=G2);0))`: a multiplicação dá 1 só na linha do Analista II (a 5ª), e o ÍNDICE devolve o 5º salário: R$ 5.300,00.",
+      "No Excel 2019 ou anterior, confirme essa fórmula com Ctrl+Shift+Enter. No 365 basta o Enter."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "CORRESP\\(\\$?F\\$?2;",
+        "dica": "Procurando só o cargo, o CORRESP para na primeira linha de Analista, que é o nível I. Faça a busca considerar o cargo e o nível juntos."
+      },
+      {
+        "padrao": "CORRESP\\(1;\\([^)]*\\)\\+\\(",
+        "dica": "Com +, basta UMA das condições ser verdadeira: a primeira linha de Analista já conta. Para exigir as duas ao mesmo tempo, multiplique."
+      }
+    ],
+    "funcoesExigidas": [
+      "INDEX",
+      "MATCH"
+    ],
+    "funcoesProibidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-duas-condicoes",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "d2b2c20c-b42b-5901-9cb3-f63afd7d0937",
+    "slug": "procx-duas-condicoes-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX dentro de PROCX: tabela cruzada",
+    "enunciado": [
+      "Agora a tabela é cruzada: cargos nas linhas e níveis nas colunas. Em **H2**, traga o salário do cargo de **F2** no nível de **G2**, com um PROCX dentro do outro."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cargo \\ Nível",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "I",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "II",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "III",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Assistente",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Analista",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Coordenador",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "10200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Analista"
+        },
+        "G2": {
+          "entrada": "III"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 90,
+        "C": 90,
+        "D": 90,
+        "F": 110,
+        "G": 60,
+        "H": 110
+      },
+      "variaveis": [
+        "B2",
+        "C2",
+        "D2",
+        "B3",
+        "C3",
+        "D3",
+        "B4",
+        "C4",
+        "D4"
+      ],
+      "alternativas": {
+        "F2": [
+          "Assistente",
+          "Coordenador"
+        ],
+        "G2": [
+          "I",
+          "II"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "H2",
+        "esperado": 6600,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;A2:A4;PROCX(G2;B1:D1;B2:D4))",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Um PROCX procurando o nível na linha do cabeçalho, com a tabela inteira de valores como retorno, devolve a coluna inteira daquele nível.",
+      "Use essa coluna como o retorno de um segundo PROCX, que procura o cargo."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;A2:A4;PROCX(G2;B1:D1;B2:D4))`: o PROCX de dentro acha \"III\" no cabeçalho e devolve a coluna D2:D4. O de fora acha \"Analista\" e pega o valor dessa coluna: R$ 6.600,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCX\\(\\$?F\\$?2;\\$?B\\$?1:",
+        "dica": "O cargo está na coluna A, não no cabeçalho. Quem se procura na linha do cabeçalho é o nível."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-duas-condicoes",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "e3eeb6da-bf69-5e3d-b9f5-9a5ee6d00a22",
+    "slug": "procx-duas-condicoes-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o salário do nível errado",
+    "enunciado": [
+      "A Marina é Analista II, mas a fórmula em **H2** traz R$ 4.200,00, o salário do Analista I. Corrija a fórmula."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Assistente"
+        },
+        "B2": {
+          "entrada": "I"
+        },
+        "C2": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Assistente"
+        },
+        "B3": {
+          "entrada": "II"
+        },
+        "C3": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Assistente"
+        },
+        "B4": {
+          "entrada": "III"
+        },
+        "C4": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Analista"
+        },
+        "B5": {
+          "entrada": "I"
+        },
+        "C5": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Analista"
+        },
+        "B6": {
+          "entrada": "II"
+        },
+        "C6": {
+          "entrada": "5300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Analista"
+        },
+        "B7": {
+          "entrada": "III"
+        },
+        "C7": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Coordenador"
+        },
+        "B8": {
+          "entrada": "I"
+        },
+        "C8": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Coordenador"
+        },
+        "B9": {
+          "entrada": "II"
+        },
+        "C9": {
+          "entrada": "10200",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Marina"
+        },
+        "F2": {
+          "entrada": "Analista"
+        },
+        "G2": {
+          "entrada": "II"
+        },
+        "H2": {
+          "entrada": "=PROCX(F2;A2:A9;C2:C9)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 60,
+        "C": 100,
+        "E": 100,
+        "F": 110,
+        "G": 60,
+        "H": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "H2",
+        "esperado": 5300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2&G2;A2:A9&B2:B9;C2:C9)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Quantas linhas de Analista existem na tabela? Em qual delas o PROCX para?"
+    ],
+    "explicacao": [
+      "O PROCX procurava só o cargo e parou na primeira linha de Analista, a do nível I.",
+      "`=PROCX(F2&G2;A2:A9&B2:B9;C2:C9)` procura cargo e nível juntos e acha a linha do Analista II: R$ 5.300,00."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\(\\$?[FG]\\$?\\d;",
+        "dica": "Buscando só por uma informação, o PROCX para na primeira linha que bate: para o cargo, é sempre o nível I. É preciso procurar o cargo e o nível juntos."
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-duas-condicoes",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "6e4e8773-a1b2-575f-932d-8e978070faed",
+    "slug": "procx-duas-condicoes-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Em `=PROCX(F2&G2;A2:A9&B2:B9;C2:C9)`, o que o & faz?"
+    ],
+    "dicas": [
+      "O & é o operador que junta textos, como em \"Ana\"&\"Paula\"."
+    ],
+    "explicacao": [
+      "O & junta cargo e nível num texto só (\"AnalistaII\"), tanto no que se procura quanto nas linhas da tabela; aí a busca acha a única linha que tem os dois."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Soma o cargo com o nível",
+        "dica": "Cargo e nível são textos; o & junta, não soma."
+      },
+      {
+        "texto": "Junta cargo e nível num texto só, dos dois lados, e procura esse texto"
+      },
+      {
+        "texto": "Procura o cargo e, se não achar, procura o nível",
+        "dica": "Não há segunda tentativa: as duas partes precisam bater juntas."
+      },
+      {
+        "texto": "Só funciona com a tabela em ordem",
+        "dica": "A busca é exata: a ordem não importa."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-duas-condicoes",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "a298510f-8592-5373-81b3-ddc3b92570bb",
+    "slug": "procx-ultima-ocorrencia",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCX de baixo para cima: o último preço",
+    "intro": "Num histórico (compras, reajustes, atendimentos), o mesmo item aparece várias vezes. Para saber o valor mais recente, a busca tem que começar pelo fim.",
+    "enunciado": [
+      "O histórico de compras está em ordem de data, da mais antiga para a mais recente. Em **G2**, traga o **último preço pago** pelo item de **F2**.",
+      "Se o item nunca foi comprado, mostre \"Sem compra\"."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "05/08/2026"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "Papel A4"
+        },
+        "D2": {
+          "entrada": "24,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "12/08/2026"
+        },
+        "B3": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C3": {
+          "entrada": "Toner HP"
+        },
+        "D3": {
+          "entrada": "289",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "02/09/2026"
+        },
+        "B4": {
+          "entrada": "Papelaria Central"
+        },
+        "C4": {
+          "entrada": "Papel A4"
+        },
+        "D4": {
+          "entrada": "26,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "18/09/2026"
+        },
+        "B5": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C5": {
+          "entrada": "Café 1 kg"
+        },
+        "D5": {
+          "entrada": "42",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "07/10/2026"
+        },
+        "B6": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Papel A4"
+        },
+        "D6": {
+          "entrada": "25,8",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "21/10/2026"
+        },
+        "B7": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C7": {
+          "entrada": "Toner HP"
+        },
+        "D7": {
+          "entrada": "305",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "04/11/2026"
+        },
+        "B8": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C8": {
+          "entrada": "Café 1 kg"
+        },
+        "D8": {
+          "entrada": "45,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "16/11/2026"
+        },
+        "B9": {
+          "entrada": "Papelaria Central"
+        },
+        "C9": {
+          "entrada": "Papel A4"
+        },
+        "D9": {
+          "entrada": "27,3",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Último preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Papel A4"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 150,
+        "C": 100,
+        "D": 120,
+        "F": 100,
+        "G": 130
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "F2": [
+          "Toner HP",
+          "Café 1 kg"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 27.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;C2:C9;D2:D9;\"Sem compra\";0;-1)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "O 6º argumento do PROCX é o modo de pesquisa: 1 vai do primeiro ao último, -1 do último ao primeiro.",
+      "Para chegar ao 6º, o 5º (correspondência) precisa estar lá: 0 é a busca exata."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;C2:C9;D2:D9;\"Sem compra\";0;-1)`: com -1, o PROCX começa da última linha e para na compra de 16/11: R$ 27,30.",
+      "Sem o -1, ele pararia em 05/08 e traria R$ 24,90, o preço mais antigo."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?(;1)?\\)$",
+        "dica": "Sem o 6º argumento (ou com 1), o PROCX lê a tabela de cima para baixo e para na PRIMEIRA compra, a mais antiga. Peça para ele pesquisar de baixo para cima."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "video": "\"Quanto pagamos da última vez?\": o histórico de compras respondendo em um segundo.",
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-ultima-ocorrencia",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "61fc4647-5235-5c6b-b5d0-65a587d555c6",
+    "slug": "procx-ultima-ocorrencia-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A data da última compra",
+    "enunciado": [
+      "Em **G2**, traga a **data da última compra** do item de **F2**. Se nunca foi comprado, mostre \"Sem compra\"."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "05/08/2026"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "Papel A4"
+        },
+        "D2": {
+          "entrada": "24,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "12/08/2026"
+        },
+        "B3": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C3": {
+          "entrada": "Toner HP"
+        },
+        "D3": {
+          "entrada": "289",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "02/09/2026"
+        },
+        "B4": {
+          "entrada": "Papelaria Central"
+        },
+        "C4": {
+          "entrada": "Papel A4"
+        },
+        "D4": {
+          "entrada": "26,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "18/09/2026"
+        },
+        "B5": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C5": {
+          "entrada": "Café 1 kg"
+        },
+        "D5": {
+          "entrada": "42",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "07/10/2026"
+        },
+        "B6": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Papel A4"
+        },
+        "D6": {
+          "entrada": "25,8",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "21/10/2026"
+        },
+        "B7": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C7": {
+          "entrada": "Toner HP"
+        },
+        "D7": {
+          "entrada": "305",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "04/11/2026"
+        },
+        "B8": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C8": {
+          "entrada": "Café 1 kg"
+        },
+        "D8": {
+          "entrada": "45,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "16/11/2026"
+        },
+        "B9": {
+          "entrada": "Papelaria Central"
+        },
+        "C9": {
+          "entrada": "Papel A4"
+        },
+        "D9": {
+          "entrada": "27,3",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Última compra",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Papel A4"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 150,
+        "C": 100,
+        "D": 120,
+        "F": 100,
+        "G": 130
+      },
+      "alternativas": {
+        "F2": [
+          "Toner HP",
+          "Café 1 kg"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": {
+          "data": "2026-11-16"
+        },
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;C2:C9;A2:A9;\"Sem compra\";0;-1)",
+        "formato": "data"
+      }
+    ],
+    "dicas": [
+      "É a mesma busca de trás para frente; só muda a coluna que volta."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;C2:C9;A2:A9;\"Sem compra\";0;-1)`: a última linha de Papel A4 é a de 16/11/2026."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?(;1)?\\)$",
+        "dica": "Sem o 6º argumento (ou com 1), o PROCX lê a tabela de cima para baixo e para na PRIMEIRA compra, a mais antiga. Peça para ele pesquisar de baixo para cima."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-ultima-ocorrencia",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "8641d6cc-4881-59a8-833e-432264d5ea52",
+    "slug": "procx-ultima-ocorrencia-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quanto o preço subiu",
+    "enunciado": [
+      "Em **G2**, calcule quanto o preço do item de **F2** subiu entre a **primeira** e a **última** compra (último preço menos o primeiro)."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "05/08/2026"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "Papel A4"
+        },
+        "D2": {
+          "entrada": "24,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "12/08/2026"
+        },
+        "B3": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C3": {
+          "entrada": "Toner HP"
+        },
+        "D3": {
+          "entrada": "289",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "02/09/2026"
+        },
+        "B4": {
+          "entrada": "Papelaria Central"
+        },
+        "C4": {
+          "entrada": "Papel A4"
+        },
+        "D4": {
+          "entrada": "26,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "18/09/2026"
+        },
+        "B5": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C5": {
+          "entrada": "Café 1 kg"
+        },
+        "D5": {
+          "entrada": "42",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "07/10/2026"
+        },
+        "B6": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Papel A4"
+        },
+        "D6": {
+          "entrada": "25,8",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "21/10/2026"
+        },
+        "B7": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C7": {
+          "entrada": "Toner HP"
+        },
+        "D7": {
+          "entrada": "305",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "04/11/2026"
+        },
+        "B8": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C8": {
+          "entrada": "Café 1 kg"
+        },
+        "D8": {
+          "entrada": "45,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "16/11/2026"
+        },
+        "B9": {
+          "entrada": "Papelaria Central"
+        },
+        "C9": {
+          "entrada": "Papel A4"
+        },
+        "D9": {
+          "entrada": "27,3",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Aumento",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Papel A4"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 150,
+        "C": 100,
+        "D": 120,
+        "F": 100,
+        "G": 130
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "F2": [
+          "Toner HP",
+          "Café 1 kg"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 2.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;C2:C9;D2:D9;;0;-1)-PROCX(F2;C2:C9;D2:D9)",
+        "formato": "moeda",
+        "tolerancia": 1e-06
+      }
+    ],
+    "dicas": [
+      "Dois PROCX na mesma fórmula: um que pesquisa do fim (o último preço) e um normal (o primeiro)."
+    ],
+    "explicacao": [
+      "`=PROCX(F2;C2:C9;D2:D9;;0;-1)-PROCX(F2;C2:C9;D2:D9)`: R$ 27,30 da última compra menos R$ 24,90 da primeira: R$ 2,40."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?\\)-PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?\\)$",
+        "dica": "Os dois PROCX pesquisam de cima para baixo e acham a mesma compra, a primeira: a diferença dá zero. Um deles precisa pesquisar do fim."
+      },
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?\\)-PROCX\\([^;]*;[^;]*;[^;]*;[^;]*;[^;]*;-1\\)$",
+        "dica": "A conta ficou ao contrário: o primeiro preço menos o último dá negativo. O aumento é o último menos o primeiro."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-ultima-ocorrencia",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "e868aef7-aaee-5473-8b2c-da1c0ee69052",
+    "slug": "procx-ultima-ocorrencia-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o preço antigo",
+    "enunciado": [
+      "O comprador diz que pagou R$ 27,30 da última vez, mas a fórmula em **G2** mostra R$ 24,90. Corrija a fórmula para trazer o último preço do item de F2."
+    ],
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Preço unitário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "05/08/2026"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "Papel A4"
+        },
+        "D2": {
+          "entrada": "24,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "12/08/2026"
+        },
+        "B3": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C3": {
+          "entrada": "Toner HP"
+        },
+        "D3": {
+          "entrada": "289",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "02/09/2026"
+        },
+        "B4": {
+          "entrada": "Papelaria Central"
+        },
+        "C4": {
+          "entrada": "Papel A4"
+        },
+        "D4": {
+          "entrada": "26,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "18/09/2026"
+        },
+        "B5": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C5": {
+          "entrada": "Café 1 kg"
+        },
+        "D5": {
+          "entrada": "42",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "07/10/2026"
+        },
+        "B6": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Papel A4"
+        },
+        "D6": {
+          "entrada": "25,8",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "21/10/2026"
+        },
+        "B7": {
+          "entrada": "Distribuidora Sul"
+        },
+        "C7": {
+          "entrada": "Toner HP"
+        },
+        "D7": {
+          "entrada": "305",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "04/11/2026"
+        },
+        "B8": {
+          "entrada": "Atacado Bom Preço"
+        },
+        "C8": {
+          "entrada": "Café 1 kg"
+        },
+        "D8": {
+          "entrada": "45,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "16/11/2026"
+        },
+        "B9": {
+          "entrada": "Papelaria Central"
+        },
+        "C9": {
+          "entrada": "Papel A4"
+        },
+        "D9": {
+          "entrada": "27,3",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Último preço",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Papel A4"
+        },
+        "G2": {
+          "entrada": "=PROCX(F2;C2:C9;D2:D9)",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 150,
+        "C": 100,
+        "D": 120,
+        "F": 100,
+        "G": 130
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "F2": [
+          "Toner HP",
+          "Café 1 kg"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G2",
+        "esperado": 27.3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCX(F2;C2:C9;D2:D9;;0;-1)",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Por onde o PROCX começa a ler a tabela? Qual compra de Papel A4 ele encontra primeiro?"
+    ],
+    "explicacao": [
+      "Por padrão, o PROCX pesquisa de cima para baixo e devolve a primeira compra: R$ 24,90, de agosto.",
+      "Com o modo de pesquisa -1, `=PROCX(F2;C2:C9;D2:D9;;0;-1)` começa do fim e traz R$ 27,30."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=PROCX\\([^;]*;[^;]*;[^;]*(;[^;]*)?(;[^;]*)?(;1)?\\)$",
+        "dica": "Sem o 6º argumento (ou com 1), o PROCX lê a tabela de cima para baixo e para na PRIMEIRA compra, a mais antiga. Peça para ele pesquisar de baixo para cima."
+      }
+    ],
+    "funcoesExigidas": [
+      "XLOOKUP"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-ultima-ocorrencia",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "4bb70103-3237-5c43-8891-db64ef308cb2",
+    "slug": "procx-ultima-ocorrencia-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "No PROCX, o 6º argumento (modo de pesquisa) igual a -1 faz o quê?"
+    ],
+    "dicas": [
+      "O 5º argumento é sobre COMO comparar; o 6º é sobre por ONDE começar."
+    ],
+    "explicacao": [
+      "Com -1, o PROCX pesquisa do último para o primeiro e devolve a última ocorrência: num histórico em ordem de data, a mais recente."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Aceita o próximo valor menor",
+        "dica": "Isso é o -1 no 5º argumento (correspondência)."
+      },
+      {
+        "texto": "Pesquisa de baixo para cima e devolve a última ocorrência"
+      },
+      {
+        "texto": "Devolve um valor negativo",
+        "dica": "O sinal não muda o resultado, só a direção da pesquisa."
+      },
+      {
+        "texto": "Ignora a diferença entre maiúsculas e minúsculas",
+        "dica": "O PROCX já não diferencia maiúsculas; o -1 é sobre a direção."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "procx-ultima-ocorrencia",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "f7be33db-efe1-533e-968a-0544c4ad1bd5",
+    "slug": "caso-conferencia-de-cadastro",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: conferir os pagamentos com o cadastro",
+    "intro": "Antes de liberar os pagamentos, o financeiro confere cada um com o cadastro de fornecedores: o fornecedor existe? O valor bate com o contrato? Uma fórmula faz a conferência da lista inteira.",
+    "enunciado": [
+      "Os pagamentos estão em **A1:B7** e o cadastro de fornecedores, em **E1:G7**.",
+      "Em **C2**, escreva \"OK\" se o valor pago é igual ao valor do contrato, \"Valor divergente\" se é diferente e \"Não cadastrado\" se o código não está no cadastro. Copie até **C7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor pago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conferência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "F-102"
+        },
+        "B2": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "F-108"
+        },
+        "B3": {
+          "entrada": "6290",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "F-107"
+        },
+        "B4": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "F-101"
+        },
+        "B5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "F-113"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "F-120"
+        },
+        "B7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Valor do contrato",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "F-101"
+        },
+        "F2": {
+          "entrada": "Limpeza Brilho Ltda"
+        },
+        "G2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "F-102"
+        },
+        "F3": {
+          "entrada": "Segurança Atenta S.A."
+        },
+        "G3": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "F-105"
+        },
+        "F4": {
+          "entrada": "Contabilidade Exata"
+        },
+        "G4": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "F-108"
+        },
+        "F5": {
+          "entrada": "TI Suporte Já"
+        },
+        "G5": {
+          "entrada": "5990",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "F-110"
+        },
+        "F6": {
+          "entrada": "Jardinagem Verde"
+        },
+        "G6": {
+          "entrada": "1150",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "F-113"
+        },
+        "F7": {
+          "entrada": "Copa & Café Serviços"
+        },
+        "G7": {
+          "entrada": "890",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 110,
+        "C": 150,
+        "E": 80,
+        "F": 180,
+        "G": 140
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A2;$E$2:$G$7;3;FALSO)=B2;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A3;$E$2:$G$7;3;FALSO)=B3;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A4;$E$2:$G$7;3;FALSO)=B4;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A5;$E$2:$G$7;3;FALSO)=B5;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A6;$E$2:$G$7;3;FALSO)=B6;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C7",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A7;$E$2:$G$7;3;FALSO)=B7;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      }
+    ],
+    "dicas": [
+      "Comece pela comparação: o valor do contrato (buscado pelo código) é igual ao valor pago? Um SE escolhe entre \"OK\" e \"Valor divergente\".",
+      "Código que não existe faz a busca dar #N/D. Pense em qual parte da fórmula esse erro precisa ser tratado."
+    ],
+    "explicacao": [
+      "`=SEERRO(SE(PROCV(A2;$E$2:$G$7;3;FALSO)=B2;\"OK\";\"Valor divergente\");\"Não cadastrado\")`: o SE compara o contrato com o pago; se o código não existe, o PROCV dá #N/D, o SE inteiro dá erro, e o SEERRO de fora troca por \"Não cadastrado\".",
+      "Com PROCX também dá: `=SE(PROCX(A2;$E$2:$E$7;$G$2:$G$7;\"\")=\"\";\"Não cadastrado\";SE(...))`."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\((SEERRO\\(PROCV|PROCX\\([^;]*;[^;]*;[^;]*;\\\"NÃOCADASTRADO\\\"\\)=)",
+        "dica": "O \"Não cadastrado\" ficou dentro da comparação: ele é comparado com o valor pago, não bate e vira \"Valor divergente\". O tratamento do erro precisa abraçar a conta inteira, por fora do SE."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "video": "A conferência de fim de mês do contas a pagar, feita numa coluna.",
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-conferencia-de-cadastro",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "2e0072c9-16b8-50d7-b47b-71c772b9681f",
+    "slug": "caso-conferencia-de-cadastro-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A diferença de cada pagamento",
+    "enunciado": [
+      "Em **C2**, calcule a diferença entre o valor pago e o valor do contrato (pago menos contrato). Se o código não está no cadastro, mostre \"Não cadastrado\". Copie até **C7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor pago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Diferença",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "F-102"
+        },
+        "B2": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "F-108"
+        },
+        "B3": {
+          "entrada": "6290",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "F-107"
+        },
+        "B4": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "F-101"
+        },
+        "B5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "F-113"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "F-120"
+        },
+        "B7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Valor do contrato",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "F-101"
+        },
+        "F2": {
+          "entrada": "Limpeza Brilho Ltda"
+        },
+        "G2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "F-102"
+        },
+        "F3": {
+          "entrada": "Segurança Atenta S.A."
+        },
+        "G3": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "F-105"
+        },
+        "F4": {
+          "entrada": "Contabilidade Exata"
+        },
+        "G4": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "F-108"
+        },
+        "F5": {
+          "entrada": "TI Suporte Já"
+        },
+        "G5": {
+          "entrada": "5990",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "F-110"
+        },
+        "F6": {
+          "entrada": "Jardinagem Verde"
+        },
+        "G6": {
+          "entrada": "1150",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "F-113"
+        },
+        "F7": {
+          "entrada": "Copa & Café Serviços"
+        },
+        "G7": {
+          "entrada": "890",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 110,
+        "C": 150,
+        "E": 80,
+        "F": 180,
+        "G": 140
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B2-PROCV(A2;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C3",
+        "esperado": 300.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B3-PROCV(A3;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B4-PROCV(A4;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C5",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B5-PROCV(A5;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C6",
+        "esperado": 90.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B6-PROCV(A6;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      },
+      {
+        "celula": "C7",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(B7-PROCV(A7;$E$2:$G$7;3;FALSO);\"Não cadastrado\")",
+        "formato": "moeda"
+      }
+    ],
+    "dicas": [
+      "Primeiro a conta (o pago menos o contrato buscado); depois, em volta de tudo, o tratamento do código que não existe."
+    ],
+    "explicacao": [
+      "`=SEERRO(B2-PROCV(A2;$E$2:$G$7;3;FALSO);\"Não cadastrado\")`: R$ 0,00 quando bate, R$ 300,00 a mais para a TI Suporte Já e R$ 90,00 a mais para a Copa & Café."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\$?B\\d-SEERRO\\(",
+        "dica": "O \"Não cadastrado\" ficou dentro da conta: um número menos um texto dá #VALOR!. O tratamento do erro tem que abraçar a conta inteira."
+      },
+      {
+        "padrao": "^=SEERRO\\(PROCV\\([^)]*\\)-\\$?B\\d;",
+        "dica": "A conta ficou ao contrário: o pedido é o valor pago menos o valor do contrato."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-conferencia-de-cadastro",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "96efdb58-a8f7-5f8e-923c-aeca4695a281",
+    "slug": "caso-conferencia-de-cadastro-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Conferência com tolerância de centavos",
+    "enunciado": [
+      "Diferenças de **até R$ 1,00** (para mais ou para menos) são arredondamento e contam como \"OK\".",
+      "Em **C2**, escreva \"OK\", \"Valor divergente\" ou \"Não cadastrado\" com essa regra, e copie até **C7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor pago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conferência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "F-102"
+        },
+        "B2": {
+          "entrada": "8750,4",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "F-108"
+        },
+        "B3": {
+          "entrada": "6290",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "F-107"
+        },
+        "B4": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "F-101"
+        },
+        "B5": {
+          "entrada": "3199,1",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "F-105"
+        },
+        "B6": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "F-110"
+        },
+        "B7": {
+          "entrada": "1151",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Valor do contrato",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "F-101"
+        },
+        "F2": {
+          "entrada": "Limpeza Brilho Ltda"
+        },
+        "G2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "F-102"
+        },
+        "F3": {
+          "entrada": "Segurança Atenta S.A."
+        },
+        "G3": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "F-105"
+        },
+        "F4": {
+          "entrada": "Contabilidade Exata"
+        },
+        "G4": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "F-108"
+        },
+        "F5": {
+          "entrada": "TI Suporte Já"
+        },
+        "G5": {
+          "entrada": "5990",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "F-110"
+        },
+        "F6": {
+          "entrada": "Jardinagem Verde"
+        },
+        "G6": {
+          "entrada": "1150",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "F-113"
+        },
+        "F7": {
+          "entrada": "Copa & Café Serviços"
+        },
+        "G7": {
+          "entrada": "890",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 110,
+        "C": 150,
+        "E": 80,
+        "F": 180,
+        "G": 140
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B2-PROCV(A2;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B3-PROCV(A3;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B4-PROCV(A4;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B5-PROCV(A5;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B6-PROCV(A6;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C7",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(ABS(B7-PROCV(A7;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      }
+    ],
+    "dicas": [
+      "Em vez de perguntar se os valores são iguais, pergunte se a diferença entre eles é pequena.",
+      "A função ABS tira o sinal: pagar R$ 0,90 a menos vira uma diferença de 0,90."
+    ],
+    "explicacao": [
+      "`=SEERRO(SE(ABS(B2-PROCV(A2;$E$2:$G$7;3;FALSO))<=1;\"OK\";\"Valor divergente\");\"Não cadastrado\")`: R$ 0,40 a mais, R$ 0,90 a menos e exatamente R$ 1,00 a mais passam; os R$ 300,00 a menos da Contabilidade Exata, não."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SE\\(\\$?B\\d-PROCV",
+        "dica": "Pagar a menos também é divergência: sem tirar o sinal, uma diferença negativa grande (R$ 300,00 a menos) passa como OK. Compare a diferença sem o sinal."
+      },
+      {
+        "padrao": "\\)\\)<1;",
+        "dica": "Diferença de exatamente R$ 1,00 também é aceita: \"até\" inclui o próprio limite."
+      },
+      {
+        "padrao": "^=SE\\((SEERRO\\(PROCV|PROCX\\([^;]*;[^;]*;[^;]*;\\\"NÃOCADASTRADO\\\"\\)=)",
+        "dica": "O \"Não cadastrado\" ficou dentro da comparação: ele é comparado com o valor pago, não bate e vira \"Valor divergente\". O tratamento do erro precisa abraçar a conta inteira, por fora do SE."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "funcoesExigidas": [
+      "ABS"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-conferencia-de-cadastro",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "1b06a82e-d6df-54c6-bfe5-22fac74bf625",
+    "slug": "caso-conferencia-de-cadastro-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o fornecedor fantasma",
+    "enunciado": [
+      "A conferência em **C2:C7** marca o código F-107 como \"Valor divergente\", mas ele nem está no cadastro. Corrija a fórmula de **C2** e copie até **C7**."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor pago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conferência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "F-102"
+        },
+        "B2": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "F-108"
+        },
+        "B3": {
+          "entrada": "6290",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "F-107"
+        },
+        "B4": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "F-101"
+        },
+        "B5": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "F-113"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "F-120"
+        },
+        "B7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Valor do contrato",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "F-101"
+        },
+        "F2": {
+          "entrada": "Limpeza Brilho Ltda"
+        },
+        "G2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "F-102"
+        },
+        "F3": {
+          "entrada": "Segurança Atenta S.A."
+        },
+        "G3": {
+          "entrada": "8750",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "F-105"
+        },
+        "F4": {
+          "entrada": "Contabilidade Exata"
+        },
+        "G4": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "F-108"
+        },
+        "F5": {
+          "entrada": "TI Suporte Já"
+        },
+        "G5": {
+          "entrada": "5990",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "F-110"
+        },
+        "F6": {
+          "entrada": "Jardinagem Verde"
+        },
+        "G6": {
+          "entrada": "1150",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "F-113"
+        },
+        "F7": {
+          "entrada": "Copa & Café Serviços"
+        },
+        "G7": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "=SE(SEERRO(PROCV(A2;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B2;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "=SE(SEERRO(PROCV(A3;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B3;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "=SE(SEERRO(PROCV(A4;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B4;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "=SE(SEERRO(PROCV(A5;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B5;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "=SE(SEERRO(PROCV(A6;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B6;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "=SE(SEERRO(PROCV(A7;$E$2:$G$7;3;FALSO);\"Não cadastrado\")=B7;\"OK\";\"Valor divergente\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 110,
+        "C": 150,
+        "E": 80,
+        "F": 180,
+        "G": 140
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A2;$E$2:$G$7;3;FALSO)=B2;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A3;$E$2:$G$7;3;FALSO)=B3;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A4;$E$2:$G$7;3;FALSO)=B4;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A5;$E$2:$G$7;3;FALSO)=B5;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C6",
+        "esperado": "Valor divergente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A6;$E$2:$G$7;3;FALSO)=B6;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      },
+      {
+        "celula": "C7",
+        "esperado": "Não cadastrado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(SE(PROCV(A7;$E$2:$G$7;3;FALSO)=B7;\"OK\";\"Valor divergente\");\"Não cadastrado\")"
+      }
+    ],
+    "dicas": [
+      "Siga a fórmula com o F-107: o que o SEERRO devolve? E o que o SE faz com esse resultado?"
+    ],
+    "explicacao": [
+      "Com o SEERRO só em volta do PROCV, o código inexistente vira o texto \"Não cadastrado\", que o SE compara com R$ 1.980,00: não é igual, então sai \"Valor divergente\".",
+      "Com o SEERRO por fora, `=SEERRO(SE(PROCV(A2;$E$2:$G$7;3;FALSO)=B2;\"OK\";\"Valor divergente\");\"Não cadastrado\")`, o erro chega até o fim e vira \"Não cadastrado\"."
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\((SEERRO\\(PROCV|PROCX\\([^;]*;[^;]*;[^;]*;\\\"NÃOCADASTRADO\\\"\\)=)",
+        "dica": "O \"Não cadastrado\" ficou dentro da comparação: ele é comparado com o valor pago, não bate e vira \"Valor divergente\". O tratamento do erro precisa abraçar a conta inteira, por fora do SE."
+      },
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: numa lista de códigos ou nomes, ele pode trazer a linha errada sem avisar. Para buscar um código ou um nome, a busca precisa ser exata.",
+        "bloqueia": true
+      }
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-conferencia-de-cadastro",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "c124d614-8e80-5e2c-b72f-81ed35f68082",
+    "slug": "caso-conferencia-de-cadastro-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "busca",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Qual é o risco de embrulhar uma fórmula de busca com SEERRO?"
+    ],
+    "dicas": [
+      "O SEERRO não sabe POR QUE a fórmula deu erro."
+    ],
+    "explicacao": [
+      "O SEERRO troca QUALQUER erro pelo valor que você deu: um intervalo errado ou um nome de função digitado errado também viram \"Não cadastrado\". Confira a fórmula antes de embrulhar."
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Ele deixa a planilha mais lenta",
+        "dica": "O custo é desprezível; o risco é outro."
+      },
+      {
+        "texto": "Ele esconde qualquer erro, inclusive um erro na própria fórmula"
+      },
+      {
+        "texto": "Ele só funciona com PROCV",
+        "dica": "O SEERRO funciona com qualquer fórmula."
+      },
+      {
+        "texto": "Ele muda o resultado das linhas que não dão erro",
+        "dica": "Quando não há erro, o resultado passa intacto."
+      }
+    ],
+    "correta": 1,
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-conferencia-de-cadastro",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
     "id": "c8404ad8-59b1-529a-b5de-a75b4809d159",
     "slug": "teste-busca-1",
     "trilha": "excel-ptbr",
@@ -3035,116 +7280,168 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Código da caneta",
-    "enunciado": [
-      "Em **G2**, traga o código do produto de **F2**."
-    ],
+    "versao": 2,
+    "titulo": "Salário por cargo e nível",
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "indice-corresp-codigo-da-mochila",
+    "revisar": "procx-duas-condicoes",
+    "enunciado": [
+      "Em **H2**, traga o salário do cargo de **F2** no nível de **G2** pela tabela A1:C9."
+    ],
     "type": "formula",
     "grade": {
-      "linhas": 7,
+      "linhas": 10,
       "colunas": 8,
       "celulas": {
         "A1": {
-          "entrada": "Código",
+          "entrada": "Cargo",
           "negrito": true
         },
         "B1": {
-          "entrada": "Produto",
+          "entrada": "Nível",
           "negrito": true
         },
         "C1": {
-          "entrada": "Preço",
+          "entrada": "Salário",
           "negrito": true
         },
         "A2": {
-          "entrada": "P01"
+          "entrada": "Assistente"
         },
         "B2": {
-          "entrada": "Caneta"
+          "entrada": "I"
         },
         "C2": {
-          "entrada": "2,5",
+          "entrada": "2400",
           "formato": "moeda"
         },
         "A3": {
-          "entrada": "P02"
+          "entrada": "Assistente"
         },
         "B3": {
-          "entrada": "Caderno"
+          "entrada": "II"
         },
         "C3": {
-          "entrada": "29,9",
+          "entrada": "2900",
           "formato": "moeda"
         },
         "A4": {
-          "entrada": "P03"
+          "entrada": "Assistente"
         },
         "B4": {
-          "entrada": "Mochila"
+          "entrada": "III"
         },
         "C4": {
-          "entrada": "149",
+          "entrada": "3400",
           "formato": "moeda"
         },
         "A5": {
-          "entrada": "P04"
+          "entrada": "Analista"
         },
         "B5": {
-          "entrada": "Notebook"
+          "entrada": "I"
         },
         "C5": {
-          "entrada": "3200",
+          "entrada": "4200",
           "formato": "moeda"
         },
         "A6": {
-          "entrada": "P05"
+          "entrada": "Analista"
         },
         "B6": {
-          "entrada": "Mouse"
+          "entrada": "II"
         },
         "C6": {
-          "entrada": "59,9",
+          "entrada": "5300",
           "formato": "moeda"
         },
+        "A7": {
+          "entrada": "Analista"
+        },
+        "B7": {
+          "entrada": "III"
+        },
+        "C7": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Coordenador"
+        },
+        "B8": {
+          "entrada": "I"
+        },
+        "C8": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Coordenador"
+        },
+        "B9": {
+          "entrada": "II"
+        },
+        "C9": {
+          "entrada": "10200",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
         "F1": {
-          "entrada": "Produto",
+          "entrada": "Cargo",
           "negrito": true
         },
         "G1": {
-          "entrada": "Código",
+          "entrada": "Nível",
           "negrito": true
         },
+        "H1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Rafael"
+        },
         "F2": {
-          "entrada": "Caneta"
+          "entrada": "Analista"
+        },
+        "G2": {
+          "entrada": "III"
         }
       },
       "larguras": {
-        "B": 110,
+        "A": 110,
+        "B": 60,
         "C": 100,
+        "E": 100,
         "F": 110,
-        "G": 130
+        "G": 60,
+        "H": 110
       },
-      "alternativas": {
-        "F2": [
-          "Mochila",
-          "Caneta"
-        ]
-      }
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
     },
     "alvos": [
       {
-        "celula": "G2",
-        "esperado": "P01",
+        "celula": "H2",
+        "esperado": 6600,
         "exigeFormula": true,
-        "solucaoReferencia": "=PROCX(F2;B2:B6;A2:A6)"
+        "solucaoReferencia": "=PROCX(F2&G2;A2:A9&B2:B9;C2:C9)",
+        "formato": "moeda"
       }
     ]
   },
@@ -3383,18 +7680,18 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Busca exata",
-    "enunciado": [
-      "Para busca exata no PROCV, o 4º argumento deve ser:"
-    ],
+    "versao": 2,
+    "titulo": "Faixa no PROCX",
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "procv-preco-pelo-codigo-exato",
+    "revisar": "procx-faixa-modo-correspondencia",
+    "enunciado": [
+      "Numa tabela de faixas \"a partir de\", o 5º argumento do PROCX (modo de correspondência) deve ser:"
+    ],
     "type": "multiple_choice",
     "grade": {
       "linhas": 1,
@@ -3403,16 +7700,16 @@
     },
     "opcoes": [
       {
-        "texto": "VERDADEIRO"
+        "texto": "0"
       },
       {
-        "texto": "FALSO"
+        "texto": "-1"
       },
       {
         "texto": "1"
       },
       {
-        "texto": "Vazio"
+        "texto": "2"
       }
     ],
     "correta": 1
