@@ -155,3 +155,21 @@ test("Verificar com a célula em edição inválida avisa em vez de ficar em sil
   await expect(page.getByTestId("aviso-verificar")).toBeVisible();
   await expect(anuncio(page)).toContainText("ainda está em edição");
 });
+
+test("termos e privacidade: textos publicados, com empresa, contato e links entre si", async ({ page }) => {
+  for (const [rota, titulo, outra] of [
+    ["/termos", "Termos de uso", "/privacidade"],
+    ["/privacidade", "Política de privacidade", "/termos"],
+  ] as const) {
+    await page.goto(rota);
+    const doc = page.getByTestId("documento-legal");
+    await expect(doc.getByRole("heading", { level: 1 })).toHaveText(titulo);
+    await expect(doc).toContainText("CNPJ 45.509.152/0001-52");
+    await expect(doc.getByRole("link", { name: "contato@planilhes.com.br" }).first()).toHaveAttribute("href", "mailto:contato@planilhes.com.br");
+    await expect(doc.locator(`a[href="${outra}"]`).first()).toBeVisible();
+    await expect(page.getByTestId("em-breve")).toHaveCount(0);
+    // Índice leva à seção.
+    await doc.getByRole("navigation", { name: "Índice" }).getByRole("link").nth(1).click();
+    await expect(page).toHaveURL(/#/);
+  }
+});
