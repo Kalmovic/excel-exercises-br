@@ -216,7 +216,7 @@
     "trilha": "excel-ptbr",
     "modulo": "texto",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "EXT.TEXTO: a informação do meio",
@@ -1180,7 +1180,7 @@
     "trilha": "excel-ptbr",
     "modulo": "texto",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "EXT.TEXTO: outro ano",
@@ -1242,7 +1242,7 @@
     "trilha": "excel-ptbr",
     "modulo": "texto",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "EXT.TEXTO: a categoria",
@@ -1304,7 +1304,7 @@
     "trilha": "excel-ptbr",
     "modulo": "texto",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o ano que veio com o resto",
@@ -1370,7 +1370,7 @@
     "trilha": "excel-ptbr",
     "modulo": "texto",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -2429,6 +2429,1644 @@
     "correta": 1
   },
   {
+    "id": "6cf2b9e7-ed73-561b-9d84-e0e5cb16802d",
+    "slug": "texto-data-e-valor-na-frase",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "TEXTO: data e valor dentro de uma frase",
+    "intro": "Junte uma data com um texto e aparece 46361 no lugar de 05/12/2026. A função TEXTO resolve: ela escreve o número do jeito que você mandar.",
+    "enunciado": [
+      "Em **D2**, monte o lembrete de cobrança exatamente assim: **Valor de R$ 1.250,00 com vencimento em 05/12/2026**, usando o valor de B2 e a data de C2.",
+      "Copie até **D4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 4,
+      "larguras": {
+        "A": 180,
+        "B": 110,
+        "C": 110,
+        "D": 390
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Lembrete",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Padaria Pão Quente"
+        },
+        "B2": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "05/12/2026"
+        },
+        "A3": {
+          "entrada": "Lima & Souza Advogados"
+        },
+        "B3": {
+          "entrada": "3480,5",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "10/12/2026"
+        },
+        "A4": {
+          "entrada": "Clínica Bem-Estar"
+        },
+        "B4": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "15/12/2026"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "alternativas": {
+        "C2": [
+          "20/01/2027",
+          "03/02/2027"
+        ],
+        "C3": [
+          "28/02/2027",
+          "11/01/2027"
+        ],
+        "C4": [
+          "31/03/2027",
+          "07/01/2027"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Valor de R$ 1.250,00 com vencimento em 05/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"Valor de R$ \"&TEXTO(B2;\"#.##0,00\")&\" com vencimento em \"&TEXTO(C2;\"dd/mm/aaaa\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Valor de R$ 3.480,50 com vencimento em 10/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"Valor de R$ \"&TEXTO(B3;\"#.##0,00\")&\" com vencimento em \"&TEXTO(C3;\"dd/mm/aaaa\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Valor de R$ 890,00 com vencimento em 15/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"Valor de R$ \"&TEXTO(B4;\"#.##0,00\")&\" com vencimento em \"&TEXTO(C4;\"dd/mm/aaaa\")"
+      }
+    ],
+    "dicas": [
+      "Juntar com & usa o valor guardado na célula, não o que aparece na tela, e por dentro uma data é um número. A função `TEXTO(valor;\"formato\")` devolve o valor já escrito no formato que você pedir.",
+      "O formato da data é \"dd/mm/aaaa\". No do valor, # e 0 marcam os dígitos, o ponto separa o milhar e a vírgula separa os centavos."
+    ],
+    "explicacao": [
+      "`=\"Valor de R$ \"&TEXTO(B2;\"#.##0,00\")&\" com vencimento em \"&TEXTO(C2;\"dd/mm/aaaa\")`.",
+      "Sem o TEXTO, a mesma frase sairia \"Valor de R$ 1250 com vencimento em 46361\": o & pega o número guardado e ignora o formato da célula."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "&C\\d(&|$)",
+        "dica": "A data entrou como número (46361…): o & usa o valor guardado, não o formato da célula. Transforme a data em texto com TEXTO e o formato dia/mês/ano."
+      },
+      {
+        "padrao": "&B\\d(&|$)",
+        "dica": "O valor entrou sem o ponto de milhar e sem os centavos: o & ignora o formato de moeda da célula. Transforme o valor em texto com TEXTO."
+      },
+      {
+        "padrao": "TEXTO\\(B\\d;\"0,00\"\\)",
+        "dica": "Faltou o ponto de milhar: o enunciado pede R$ 1.250,00, e não R$ 1250,00. Inclua o separador de milhar no formato."
+      },
+      {
+        "padrao": "\"MM/DD",
+        "dica": "Esse é o formato americano, com o mês antes do dia. No Brasil, o dia vem primeiro."
+      },
+      {
+        "padrao": "\\d{2}/\\d{2}/\\d{4}",
+        "dica": "A data foi digitada dentro da fórmula: se o vencimento em C2 mudar, o lembrete não acompanha. Use a data da célula."
+      }
+    ],
+    "video": "Juntar a data com & e mostrar o 46361; depois consertar com TEXTO.",
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "texto-data-e-valor-na-frase",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "c1b5f439-2fe4-5607-8835-4266cdb6c48f",
+    "slug": "localizar-entre-dois-hifens",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "LOCALIZAR duas vezes: o pedaço entre os hífens",
+    "intro": "Quando o pedaço que você quer muda de tamanho e fica entre dois separadores iguais, o segredo é achar o segundo separador: o LOCALIZAR aceita dizer de onde começar a procurar.",
+    "enunciado": [
+      "Os códigos de lançamento seguem o padrão SETOR-NÚMERO-UF, e tanto o setor quanto o número mudam de tamanho.",
+      "Em **B2**, ache a posição do 1º hífen. Em **C2**, a posição do 2º hífen. Em **D2**, extraia o número que fica entre os dois (ex.: \"1050\").",
+      "Copie as três fórmulas até a linha 5."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 4,
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "C": 90,
+        "D": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Lançamento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1º hífen",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "2º hífen",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "ADM-1050-SP"
+        },
+        "A3": {
+          "entrada": "COMERCIAL-220-RJ"
+        },
+        "A4": {
+          "entrada": "TI-31877-MG"
+        },
+        "A5": {
+          "entrada": "RH-7-BA"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "FINANCEIRO-88-PR",
+          "JUR-4410-SC"
+        ],
+        "A3": [
+          "MKT-9-RS",
+          "LOGISTICA-60321-GO"
+        ],
+        "A4": [
+          "COMPRAS-512-PE",
+          "TI-1-AM"
+        ],
+        "A5": [
+          "DIRETORIA-3030-DF",
+          "SAC-44-CE"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A2)"
+      },
+      {
+        "celula": "B3",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A3)"
+      },
+      {
+        "celula": "B4",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A4)"
+      },
+      {
+        "celula": "B5",
+        "esperado": 3,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A5)"
+      },
+      {
+        "celula": "C2",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A2;B2+1)"
+      },
+      {
+        "celula": "C3",
+        "esperado": 14,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A3;B3+1)"
+      },
+      {
+        "celula": "C4",
+        "esperado": 9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A4;B4+1)"
+      },
+      {
+        "celula": "C5",
+        "esperado": 5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A5;B5+1)"
+      },
+      {
+        "celula": "D2",
+        "esperado": "1050",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;B2+1;C2-B2-1)"
+      },
+      {
+        "celula": "D3",
+        "esperado": "220",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A3;B3+1;C3-B3-1)"
+      },
+      {
+        "celula": "D4",
+        "esperado": "31877",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A4;B4+1;C4-B4-1)"
+      },
+      {
+        "celula": "D5",
+        "esperado": "7",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A5;B5+1;C5-B5-1)"
+      }
+    ],
+    "dicas": [
+      "O LOCALIZAR tem um 3º argumento opcional: a posição a partir da qual ele começa a procurar. Para achar o 2º hífen, comece logo depois do 1º.",
+      "O número começa uma posição depois do 1º hífen, e o tamanho dele é a distância entre os dois hífens menos 1."
+    ],
+    "explicacao": [
+      "`=LOCALIZAR(\"-\";A2)` → 4, `=LOCALIZAR(\"-\";A2;B2+1)` → 9 e `=EXT.TEXTO(A2;B2+1;C2-B2-1)` → \"1050\".",
+      "Começando a busca em B2+1, o LOCALIZAR pula o 1º hífen e acha o próximo. A posição que ele devolve conta sempre desde o começo do texto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=LOCALIZAR\\(\"-\";A\\d\\)$",
+        "dica": "Sem dizer de onde começar, o LOCALIZAR acha de novo o 1º hífen. Use o 3º argumento para começar a procurar logo depois dele."
+      },
+      {
+        "padrao": "^=EXT\\.TEXTO\\(A\\d;B\\d;",
+        "dica": "Começando na posição do 1º hífen, ele vem junto. O número começa uma posição depois."
+      },
+      {
+        "padrao": ";C\\d-B\\d\\)$",
+        "dica": "Assim o 2º hífen vem junto: o tamanho é a distância entre os hífens menos 1."
+      },
+      {
+        "padrao": "^=EXT\\.TEXTO\\(A\\d;\\d+;\\d+\\)$",
+        "dica": "Com números fixos, só funciona no primeiro código: nos outros, setor e número têm tamanhos diferentes. Use as posições das colunas B e C."
+      }
+    ],
+    "video": "Mostrar o 3º argumento do LOCALIZAR pulando o primeiro hífen, com os códigos de tamanhos diferentes.",
+    "funcoesExigidas": [
+      "SEARCH",
+      "MID"
+    ],
+    "licao": "localizar-entre-dois-hifens",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "810a5f10-caf8-5742-b2b4-2043a1c27dca",
+    "slug": "caso-lista-de-clientes",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso completo: padronizar a lista de clientes",
+    "intro": "A lista veio do sistema antigo: nomes com espaços e maiúsculas aleatórias, CPF sem o zero da frente e UF em minúsculas. Antes de importar no sistema novo, tudo precisa ficar no padrão.",
+    "enunciado": [
+      "Padronize a lista nas colunas D, E e F, a partir das colunas A, B e C:",
+      "**D2**: o nome sem espaços sobrando e com só a primeira letra de cada palavra em maiúscula (\"João Pereira\").",
+      "**E2**: o CPF sempre com 11 dígitos, devolvendo os zeros da frente que se perderam (\"09876543210\").",
+      "**F2**: a UF sem espaços e em maiúsculas (\"SP\").",
+      "Copie as três fórmulas até a linha 5."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "larguras": {
+        "A": 190,
+        "B": 130,
+        "C": 110,
+        "D": 170,
+        "E": 120,
+        "F": 60
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nome (como veio)",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF (como veio)",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "UF (como veio)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "CPF",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "UF",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "  joão   PEREIRA "
+        },
+        "B2": {
+          "entrada": "12345678909"
+        },
+        "C2": {
+          "entrada": "sp"
+        },
+        "A3": {
+          "entrada": "MARIANA  costa"
+        },
+        "B3": {
+          "entrada": "9876543210"
+        },
+        "C3": {
+          "entrada": " rj"
+        },
+        "A4": {
+          "entrada": "carlos eduardo   lima"
+        },
+        "B4": {
+          "entrada": "345678901"
+        },
+        "C4": {
+          "entrada": "mg "
+        },
+        "A5": {
+          "entrada": "  ANA PAULA SOUZA"
+        },
+        "B5": {
+          "entrada": "11122233344"
+        },
+        "C5": {
+          "entrada": "Ba"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "alternativas": {
+        "A2": [
+          "  pedro  ALVES",
+          "lúcia   santos "
+        ],
+        "A3": [
+          "RENATA   dias ",
+          " bruno  MOTA"
+        ],
+        "A4": [
+          " fábio   ribeiro",
+          "IRIS lopes  "
+        ],
+        "A5": [
+          "  TOMÁS   leal",
+          "vera  NOGUEIRA "
+        ],
+        "C2": [
+          " rs",
+          "pe  "
+        ],
+        "C3": [
+          "Go ",
+          " am"
+        ],
+        "C4": [
+          "  df",
+          "Sc"
+        ],
+        "C5": [
+          "ce ",
+          " PR "
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "João Pereira",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A2))"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Mariana Costa",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A3))"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Carlos Eduardo Lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A4))"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Ana Paula Souza",
+        "exigeFormula": true,
+        "solucaoReferencia": "=PRI.MAIÚSCULA(ARRUMAR(A5))"
+      },
+      {
+        "celula": "E2",
+        "esperado": "12345678909",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B2;\"00000000000\")"
+      },
+      {
+        "celula": "E3",
+        "esperado": "09876543210",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B3;\"00000000000\")"
+      },
+      {
+        "celula": "E4",
+        "esperado": "00345678901",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B4;\"00000000000\")"
+      },
+      {
+        "celula": "E5",
+        "esperado": "11122233344",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(B5;\"00000000000\")"
+      },
+      {
+        "celula": "F2",
+        "esperado": "SP",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ARRUMAR(C2))"
+      },
+      {
+        "celula": "F3",
+        "esperado": "RJ",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ARRUMAR(C3))"
+      },
+      {
+        "celula": "F4",
+        "esperado": "MG",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ARRUMAR(C4))"
+      },
+      {
+        "celula": "F5",
+        "esperado": "BA",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ARRUMAR(C5))"
+      }
+    ],
+    "dicas": [
+      "Nome e UF levam duas funções, uma dentro da outra: primeiro tire os espaços, depois acerte as maiúsculas.",
+      "Para o CPF, o TEXTO com um formato de 11 zeros completa com zeros à esquerda o que faltar, e não mexe no que já tem 11 dígitos."
+    ],
+    "explicacao": [
+      "`=PRI.MAIÚSCULA(ARRUMAR(A2))`, `=TEXTO(B2;\"00000000000\")` e `=MAIÚSCULA(ARRUMAR(C2))`.",
+      "O CPF virou número quando a lista foi exportada, e número não guarda zero à esquerda. Cada 0 no formato do TEXTO é um dígito obrigatório: com 11 zeros, todo CPF sai com 11 dígitos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=\"0\"&B\\d$",
+        "dica": "Pôr um zero na frente só funciona no CPF que perdeu exatamente um zero: o de 11 dígitos fica com 12, e o que perdeu dois continua curto. O TEXTO completa só o que falta."
+      },
+      {
+        "padrao": "^=PRI\\.MAIÚSCULA\\(A\\d\\)$",
+        "dica": "As maiúsculas ficaram certas, mas os espaços sobrando continuam lá. Tire os espaços também."
+      },
+      {
+        "padrao": "^=ARRUMAR\\(A\\d\\)$",
+        "dica": "Os espaços saíram, mas as maiúsculas continuam bagunçadas. Falta deixar maiúscula só a primeira letra de cada palavra."
+      },
+      {
+        "padrao": "^=MAIÚSCULA\\(C\\d\\)$",
+        "dica": "Ficou em maiúsculas, mas o espaço sobrando veio junto. Tire os espaços também."
+      },
+      {
+        "padrao": "TEXTO\\(B\\d;\"0+\"\\)",
+        "dica": "Confira quantos zeros tem o formato: cada 0 é um dígito obrigatório, e o CPF tem 11."
+      }
+    ],
+    "video": "Limpar a lista inteira com três fórmulas e mostrar o CPF recuperando o zero da frente.",
+    "funcoesExigidas": [
+      "TRIM",
+      "PROPER",
+      "TEXT",
+      "UPPER"
+    ],
+    "licao": "caso-lista-de-clientes",
+    "etapa": 1,
+    "papel": "principal"
+  },
+  {
+    "id": "82d129b2-2366-5e09-954b-a974c100253b",
+    "slug": "texto-data-e-valor-na-frase-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "TEXTO: o mês por extenso",
+    "enunciado": [
+      "Em **B3**, monte o título **Folha de pagamento de novembro/2026** a partir da data de B1, com o mês por extenso."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 3,
+      "larguras": {
+        "A": 150,
+        "B": 300
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Competência",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "30/11/2026"
+        },
+        "A3": {
+          "entrada": "Título do relatório",
+          "negrito": true
+        }
+      },
+      "alternativas": {
+        "B1": [
+          "15/03/2027",
+          "01/08/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": "Folha de pagamento de novembro/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"Folha de pagamento de \"&TEXTO(B1;\"mmmm/aaaa\")"
+      }
+    ],
+    "dicas": [
+      "No formato do TEXTO, \"mmmm\" escreve o nome do mês inteiro, e \"aaaa\", o ano com 4 dígitos."
+    ],
+    "explicacao": [
+      "`=\"Folha de pagamento de \"&TEXTO(B1;\"mmmm/aaaa\")`. Com \"mmm\", sairia só \"nov\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "NOVEMBRO",
+        "dica": "O nome do mês foi digitado à mão: na folha de dezembro, o título continuaria dizendo novembro. Tire o mês da data com TEXTO."
+      },
+      {
+        "padrao": "\"MMM/",
+        "dica": "Com três m, sai só a abreviação (nov). Para o nome inteiro do mês, são quatro."
+      },
+      {
+        "padrao": "&B1$",
+        "dica": "A data entrou como número: o & usa o valor guardado. Transforme a data em texto com TEXTO."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "texto-data-e-valor-na-frase",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "a985b545-7474-5891-978b-40108cda925c",
+    "slug": "texto-data-e-valor-na-frase-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "TEXTO: o dia da semana no convite",
+    "enunciado": [
+      "Em **C2**, monte o convite no formato **Fechamento contábil: sexta-feira, 04/12/2026**, com o nome da reunião, o dia da semana por extenso e a data. Copie para **C3**."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 3,
+      "larguras": {
+        "A": 170,
+        "B": 100,
+        "C": 380
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Reunião",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Convite",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Fechamento contábil"
+        },
+        "B2": {
+          "entrada": "04/12/2026"
+        },
+        "A3": {
+          "entrada": "Revisão de contratos"
+        },
+        "B3": {
+          "entrada": "09/12/2026"
+        }
+      },
+      "alternativas": {
+        "B2": [
+          "11/01/2027",
+          "20/02/2027"
+        ],
+        "B3": [
+          "16/03/2027",
+          "05/01/2027"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "Fechamento contábil: sexta-feira, 04/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A2&\": \"&TEXTO(B2;\"dddd, dd/mm/aaaa\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "Revisão de contratos: quarta-feira, 09/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=A3&\": \"&TEXTO(B3;\"dddd, dd/mm/aaaa\")"
+      }
+    ],
+    "dicas": [
+      "No formato do TEXTO, \"dddd\" escreve o dia da semana por extenso. Dá para pôr a vírgula e a data no mesmo formato."
+    ],
+    "explicacao": [
+      "`=A2&\": \"&TEXTO(B2;\"dddd, dd/mm/aaaa\")`. Também vale juntar dois TEXTO, um com \"dddd\" e outro com \"dd/mm/aaaa\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "\"DDD[,\" ]",
+        "dica": "Com três d, sai só a abreviação (sex). Para o dia da semana inteiro, são quatro."
+      },
+      {
+        "padrao": "&B\\d(&|$)",
+        "dica": "A data entrou como número: o & usa o valor guardado. Transforme a data em texto com TEXTO."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "texto-data-e-valor-na-frase",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "a2775602-429a-5ba3-9831-952a75518812",
+    "slug": "texto-data-e-valor-na-frase-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o reajuste de 0,125",
+    "enunciado": [
+      "O aviso em **B3** deveria dizer **O aluguel será reajustado em 12,5%**, mas está mostrando 0,125, embora o índice em **B1** apareça como 12,5%.",
+      "Corrija a fórmula de **B3**."
+    ],
+    "grade": {
+      "linhas": 4,
+      "colunas": 3,
+      "larguras": {
+        "A": 150,
+        "B": 330
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Índice de reajuste",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12,5%"
+        },
+        "A3": {
+          "entrada": "Aviso ao inquilino",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "=\"O aluguel será reajustado em \"&B1",
+          "bloqueada": false
+        }
+      },
+      "variaveis": [
+        "B1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B3",
+        "esperado": "O aluguel será reajustado em 12,5%",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"O aluguel será reajustado em \"&TEXTO(B1;\"0,0%\")"
+      }
+    ],
+    "dicas": [
+      "B1 mostra 12,5% por causa do formato, mas o valor guardado é 0,125. Ao juntar textos, a porcentagem também precisa do TEXTO, com o % no formato."
+    ],
+    "explicacao": [
+      "`=\"O aluguel será reajustado em \"&TEXTO(B1;\"0,0%\")`. O % no formato multiplica por 100 e põe o sinal; o \"0,0\" mostra uma casa decimal."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "&B1$",
+        "dica": "Essa é a fórmula original: o & usa o valor guardado (0,125), e não o que a célula mostra. Converta a porcentagem em texto com TEXTO."
+      },
+      {
+        "padrao": "\"0%\"",
+        "dica": "Com \"0%\", o 12,5% vira 13%: faltou uma casa decimal no formato."
+      },
+      {
+        "padrao": "B1\\*100",
+        "dica": "Multiplicar por 100 funciona com este número, mas o exercício pede TEXTO: com ele, o formato cuida da casa decimal e do sinal de %."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "texto-data-e-valor-na-frase",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "53122f48-4220-58c6-907b-e68f9c038756",
+    "slug": "texto-data-e-valor-na-frase-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "A célula B2 tem a data 05/12/2026. O que aparece com **=\"Vence em \"&B2**?"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Vence em 05/12/2026",
+        "dica": "É o que a gente espera, mas o & usa o número que a data guarda por dentro, não o formato."
+      },
+      {
+        "texto": "Vence em 46361"
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Não dá erro: o Excel junta sem reclamar. Só que junta o número da data."
+      },
+      {
+        "texto": "Vence em 5/12/26",
+        "dica": "O & não aplica formato de data nenhum: ele usa o número guardado."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "Por dentro, uma data é o número de dias contados desde 1900."
+    ],
+    "explicacao": [
+      "05/12/2026 é guardada como 46361. O & junta esse número; para ver a data, use TEXTO(B2;\"dd/mm/aaaa\")."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "texto-data-e-valor-na-frase",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "7b8747e8-13d3-5895-a45b-4cc1a51ffe27",
+    "slug": "localizar-entre-dois-hifens-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O sobrenome no e-mail",
+    "enunciado": [
+      "Os e-mails da empresa seguem o padrão nome.sobrenome@empresa.com.br.",
+      "Em **B2**, extraia o sobrenome (ex.: \"lima\") numa fórmula só, e copie até **B4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "larguras": {
+        "A": 230,
+        "B": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Sobrenome",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "ana.lima@empresa.com.br"
+        },
+        "A3": {
+          "entrada": "joao.pereira@empresa.com.br"
+        },
+        "A4": {
+          "entrada": "bia.carvalho@empresa.com.br"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "carla.mendes@empresa.com.br",
+          "rui.sa@empresa.com.br"
+        ],
+        "A3": [
+          "leo.fontes@empresa.com.br",
+          "maria.albuquerque@empresa.com.br"
+        ],
+        "A4": [
+          "tais.rocha@empresa.com.br",
+          "gil.nunes@empresa.com.br"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "lima",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;LOCALIZAR(\".\";A2)+1;LOCALIZAR(\"@\";A2)-LOCALIZAR(\".\";A2)-1)"
+      },
+      {
+        "celula": "B3",
+        "esperado": "pereira",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A3;LOCALIZAR(\".\";A3)+1;LOCALIZAR(\"@\";A3)-LOCALIZAR(\".\";A3)-1)"
+      },
+      {
+        "celula": "B4",
+        "esperado": "carvalho",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A4;LOCALIZAR(\".\";A4)+1;LOCALIZAR(\"@\";A4)-LOCALIZAR(\".\";A4)-1)"
+      }
+    ],
+    "dicas": [
+      "O sobrenome começa uma posição depois do ponto e termina uma antes do @. Os dois separadores são diferentes, então basta um LOCALIZAR para cada um."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;LOCALIZAR(\".\";A2)+1;LOCALIZAR(\"@\";A2)-LOCALIZAR(\".\";A2)-1)`: é a mesma conta das colunas auxiliares, só que dentro de uma fórmula."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "LOCALIZAR\\(\"@\";A\\d\\)-LOCALIZAR\\(\"\\.\";A\\d\\)\\)$",
+        "dica": "Assim o @ vem junto: o tamanho é a distância entre o ponto e o @ menos 1."
+      },
+      {
+        "padrao": "^=EXT\\.TEXTO\\(A\\d;LOCALIZAR\\(\"\\.\";A\\d\\);",
+        "dica": "Começando na posição do ponto, ele vem junto. O sobrenome começa uma posição depois."
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH",
+      "MID"
+    ],
+    "licao": "localizar-entre-dois-hifens",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "e17be670-df29-5534-a999-f6a3972b7f75",
+    "slug": "localizar-entre-dois-hifens-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A cidade no meio do endereço",
+    "enunciado": [
+      "Em **B2**, extraia a cidade do endereço (ex.: \"Campinas\"). Ela fica entre o \" - \" (espaço, hífen, espaço) e a barra. Copie até **B4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "larguras": {
+        "A": 300,
+        "B": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Endereço",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Rua das Flores, 120 - Campinas/SP"
+        },
+        "A3": {
+          "entrada": "Av. Brasil, 1500 - Rio de Janeiro/RJ"
+        },
+        "A4": {
+          "entrada": "Rua XV de Novembro, 88 - Curitiba/PR"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "Rua Bahia, 45 - Belo Horizonte/MG",
+          "Rua Sete, 9 - Natal/RN"
+        ],
+        "A3": [
+          "Av. Paulista, 900 - São Paulo/SP",
+          "Rua do Sol, 12 - Recife/PE"
+        ],
+        "A4": [
+          "Rua Goiás, 300 - Porto Alegre/RS",
+          "Av. Atlântica, 77 - Fortaleza/CE"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Campinas",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A2;LOCALIZAR(\" - \";A2)+3;LOCALIZAR(\"/\";A2)-LOCALIZAR(\" - \";A2)-3)"
+      },
+      {
+        "celula": "B3",
+        "esperado": "Rio de Janeiro",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A3;LOCALIZAR(\" - \";A3)+3;LOCALIZAR(\"/\";A3)-LOCALIZAR(\" - \";A3)-3)"
+      },
+      {
+        "celula": "B4",
+        "esperado": "Curitiba",
+        "exigeFormula": true,
+        "solucaoReferencia": "=EXT.TEXTO(A4;LOCALIZAR(\" - \";A4)+3;LOCALIZAR(\"/\";A4)-LOCALIZAR(\" - \";A4)-3)"
+      }
+    ],
+    "dicas": [
+      "O separador da esquerda tem 3 caracteres: a cidade começa 3 posições depois de onde ele começa. Ela termina logo antes da barra."
+    ],
+    "explicacao": [
+      "`=EXT.TEXTO(A2;LOCALIZAR(\" - \";A2)+3;LOCALIZAR(\"/\";A2)-LOCALIZAR(\" - \";A2)-3)`.",
+      "Procurar só o hífen também funciona, desde que você some e desconte 2 (o hífen e o espaço depois dele)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "\\)\\+1;",
+        "dica": "Começando só uma posição depois, pedaços do separador vêm junto no começo da cidade. Conte quantos caracteres tem o separador."
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH",
+      "MID"
+    ],
+    "licao": "localizar-entre-dois-hifens",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "1ffab5c3-5607-5230-a8f7-36d120c28628",
+    "slug": "localizar-entre-dois-hifens-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o 2º hífen que era o 1º",
+    "enunciado": [
+      "A coluna D, que extrai o número do protocolo, está dando #VALOR!. A fórmula de D está certa: o problema está na coluna **C**, que deveria achar o 2º hífen.",
+      "Corrija **C2** e copie até **C4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 4,
+      "larguras": {
+        "A": 180,
+        "B": 90,
+        "C": 90,
+        "D": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Protocolo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "1º hífen",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "2º hífen",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "SAC-48213-2026"
+        },
+        "B2": {
+          "entrada": "=LOCALIZAR(\"-\";A2)"
+        },
+        "C2": {
+          "entrada": "=LOCALIZAR(\"-\";A2)",
+          "bloqueada": false
+        },
+        "D2": {
+          "entrada": "=EXT.TEXTO(A2;B2+1;C2-B2-1)"
+        },
+        "A3": {
+          "entrada": "OUVIDORIA-907-2026"
+        },
+        "B3": {
+          "entrada": "=LOCALIZAR(\"-\";A3)"
+        },
+        "C3": {
+          "entrada": "=LOCALIZAR(\"-\";A3)",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=EXT.TEXTO(A3;B3+1;C3-B3-1)"
+        },
+        "A4": {
+          "entrada": "SAC-15-2026"
+        },
+        "B4": {
+          "entrada": "=LOCALIZAR(\"-\";A4)"
+        },
+        "C4": {
+          "entrada": "=LOCALIZAR(\"-\";A4)",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=EXT.TEXTO(A4;B4+1;C4-B4-1)"
+        }
+      },
+      "alternativas": {
+        "A2": [
+          "SAC-7-2027",
+          "RECLAMA-1234-2026"
+        ],
+        "A3": [
+          "OUVIDORIA-55555-2027",
+          "SAC-310-2026"
+        ],
+        "A4": [
+          "JURIDICO-8-2026",
+          "SAC-90210-2027"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 10,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A2;B2+1)"
+      },
+      {
+        "celula": "C3",
+        "esperado": 14,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A3;B3+1)"
+      },
+      {
+        "celula": "C4",
+        "esperado": 7,
+        "exigeFormula": true,
+        "solucaoReferencia": "=LOCALIZAR(\"-\";A4;B4+1)"
+      }
+    ],
+    "dicas": [
+      "Compare as colunas B e C: os números são iguais. Por que o LOCALIZAR achou o mesmo hífen duas vezes?"
+    ],
+    "explicacao": [
+      "Sem o 3º argumento, o LOCALIZAR sempre começa do início e acha o 1º hífen. Com `=LOCALIZAR(\"-\";A2;B2+1)`, ele começa a procurar depois do 1º e acha o 2º.",
+      "Com C igual a B, o tamanho em D ficava C − B − 1 = −1, e EXT.TEXTO com tamanho negativo dá #VALOR!."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=LOCALIZAR\\(\"-\";A\\d\\)$",
+        "dica": "Essa é a fórmula original: sem dizer de onde começar, o LOCALIZAR acha de novo o 1º hífen. Use o 3º argumento."
+      },
+      {
+        "padrao": "^=LOCALIZAR\\(\"-\";A\\d;B\\d\\)$",
+        "dica": "Começando a busca em cima do 1º hífen, ele acha o 1º hífen de novo. Comece uma posição depois."
+      }
+    ],
+    "funcoesExigidas": [
+      "SEARCH"
+    ],
+    "licao": "localizar-entre-dois-hifens",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "dd25be0e-fb1e-5ce4-bb43-7c6e2effbf2f",
+    "slug": "localizar-entre-dois-hifens-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá **=LOCALIZAR(\"-\";\"RH-7-BA\";4)**?"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "3",
+        "dica": "3 é a posição do 1º hífen, mas a busca começa na posição 4, depois dele."
+      },
+      {
+        "texto": "5"
+      },
+      {
+        "texto": "2",
+        "dica": "A posição conta desde o começo do texto, não desde onde a busca começou."
+      },
+      {
+        "texto": "4",
+        "dica": "Na posição 4 está o 7, não um hífen."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "O 3º argumento diz de onde começar a procurar, mas a resposta conta desde a primeira letra do texto."
+    ],
+    "explicacao": [
+      "A busca começa na posição 4 (o 7) e acha o hífen seguinte, que está na posição 5 do texto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "localizar-entre-dois-hifens",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
+    "id": "d10d96ec-8944-50ef-8d69-84a7eabb89b0",
+    "slug": "caso-lista-de-clientes-variacao-a",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CPF com pontos e traço",
+    "enunciado": [
+      "Em **B2**, escreva o CPF de A2 com pontos e traço e com os zeros da frente (ex.: \"098.765.432-10\"). Copie até **B4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "larguras": {
+        "A": 140,
+        "B": 150
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "CPF (como veio)",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF formatado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "12345678909"
+        },
+        "A3": {
+          "entrada": "9876543210"
+        },
+        "A4": {
+          "entrada": "345678901"
+        }
+      },
+      "variaveis": [
+        "A2",
+        "A3",
+        "A4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "123.456.789-09",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A2;\"000\\.000\\.000-00\")"
+      },
+      {
+        "celula": "B3",
+        "esperado": "098.765.432-10",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A3;\"000\\.000\\.000-00\")"
+      },
+      {
+        "celula": "B4",
+        "esperado": "003.456.789-01",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A4;\"000\\.000\\.000-00\")"
+      }
+    ],
+    "dicas": [
+      "No formato do TEXTO, cada 0 é um dígito. No Excel em português, o ponto do formato é o separador de milhar: para ele sair como um ponto comum, ponha uma barra invertida antes de cada um. O traço não precisa."
+    ],
+    "explicacao": [
+      "`=TEXTO(A2;\"000\\.000\\.000-00\")`: os zeros completam os dígitos que faltam, e a barra invertida faz o ponto sair como ponto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "\"000\\.000\\.000-00\"",
+        "dica": "No Excel em português, o ponto do formato é o separador de milhar, e os pontos saem no lugar errado. Ponha uma barra invertida antes de cada ponto."
+      },
+      {
+        "padrao": "TEXTO\\(A\\d;\"0+\"\\)",
+        "dica": "Os zeros estão certos, mas faltam os pontos e o traço no formato."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "caso-lista-de-clientes",
+    "etapa": 2,
+    "papel": "variacao"
+  },
+  {
+    "id": "fe6935c5-acbf-5df8-8f24-4a679f14d6a6",
+    "slug": "caso-lista-de-clientes-variacao-b",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O código do cliente padronizado",
+    "enunciado": [
+      "O sistema novo usa um código de cliente com as 3 primeiras letras do nome em maiúsculas, um hífen e o nº do cadastro com 4 dígitos (ex.: \"PAD-0007\").",
+      "Em **C2**, monte o código e copie até **C4**. Cuidado: alguns nomes vieram com espaços na frente."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "larguras": {
+        "A": 200,
+        "B": 120,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nº do cadastro",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": " padaria Pão Quente"
+        },
+        "B2": {
+          "entrada": "7"
+        },
+        "A3": {
+          "entrada": "Lima & Souza Advogados"
+        },
+        "B3": {
+          "entrada": "152"
+        },
+        "A4": {
+          "entrada": "  contabilidade Nunes"
+        },
+        "B4": {
+          "entrada": "1093"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "alternativas": {
+        "A2": [
+          "  mercado Bom Dia",
+          "Ótica Visão"
+        ],
+        "A3": [
+          " farmácia Vida",
+          "Gráfica Rápida  "
+        ],
+        "A4": [
+          "oficina do Beto",
+          "  escola Saber"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": "PAD-0007",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ESQUERDA(ARRUMAR(A2);3))&\"-\"&TEXTO(B2;\"0000\")"
+      },
+      {
+        "celula": "C3",
+        "esperado": "LIM-0152",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ESQUERDA(ARRUMAR(A3);3))&\"-\"&TEXTO(B3;\"0000\")"
+      },
+      {
+        "celula": "C4",
+        "esperado": "CON-1093",
+        "exigeFormula": true,
+        "solucaoReferencia": "=MAIÚSCULA(ESQUERDA(ARRUMAR(A4);3))&\"-\"&TEXTO(B4;\"0000\")"
+      }
+    ],
+    "dicas": [
+      "São três peças juntadas com &: as letras, o hífen e o número.",
+      "Nas letras: tire os espaços, pegue as 3 primeiras e passe para maiúsculas. No número, TEXTO com 4 zeros."
+    ],
+    "explicacao": [
+      "`=MAIÚSCULA(ESQUERDA(ARRUMAR(A2);3))&\"-\"&TEXTO(B2;\"0000\")`. Sem o ARRUMAR, o espaço da frente entraria como uma das 3 letras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=MAIÚSCULA\\(ESQUERDA\\(A\\d;3\\)\\)",
+        "dica": "Sem tirar os espaços, o espaço da frente conta como uma das 3 letras. Limpe o nome antes de cortar."
+      },
+      {
+        "padrao": "&B\\d$",
+        "dica": "O número entrou sem os zeros da frente, e o código pede 4 dígitos. Use TEXTO com um formato de 4 zeros."
+      }
+    ],
+    "funcoesExigidas": [
+      "TRIM",
+      "LEFT",
+      "UPPER",
+      "TEXT"
+    ],
+    "licao": "caso-lista-de-clientes",
+    "etapa": 3,
+    "papel": "variacao"
+  },
+  {
+    "id": "3516e260-338a-5495-95a0-5894b05f5a2b",
+    "slug": "caso-lista-de-clientes-pegadinha",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o zero que sobrou",
+    "enunciado": [
+      "Para devolver o zero que o CPF perdeu, alguém usou `=\"0\"&A2` e copiou até B4. Na primeira linha deu certo; nas outras, não.",
+      "Corrija **B2** para que todo CPF fique com exatamente 11 dígitos, e copie até **B4**."
+    ],
+    "grade": {
+      "linhas": 5,
+      "colunas": 3,
+      "larguras": {
+        "A": 140,
+        "B": 160
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "CPF (como veio)",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF com 11 dígitos",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "9876543210"
+        },
+        "B2": {
+          "entrada": "=\"0\"&A2",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "12345678909"
+        },
+        "B3": {
+          "entrada": "=\"0\"&A3",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "345678901"
+        },
+        "B4": {
+          "entrada": "=\"0\"&A4",
+          "bloqueada": false
+        }
+      },
+      "variaveis": [
+        "A2",
+        "A3",
+        "A4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "09876543210",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A2;\"00000000000\")"
+      },
+      {
+        "celula": "B3",
+        "esperado": "12345678909",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A3;\"00000000000\")"
+      },
+      {
+        "celula": "B4",
+        "esperado": "00345678901",
+        "exigeFormula": true,
+        "solucaoReferencia": "=TEXTO(A4;\"00000000000\")"
+      }
+    ],
+    "dicas": [
+      "Conte os dígitos de cada resultado. Pôr sempre um zero na frente não serve para o CPF que não perdeu zero nenhum, nem para o que perdeu dois."
+    ],
+    "explicacao": [
+      "`=TEXTO(A2;\"00000000000\")` completa só os zeros que faltam: o CPF de 11 dígitos fica igual, e o de 9 ganha dois zeros."
+    ],
+    "tentativasAteExplicacao": 3,
+    "errosComuns": [
+      {
+        "padrao": "^=\"0\"&A\\d$",
+        "dica": "Essa é a fórmula original: ela põe sempre um zero, então o CPF de 11 dígitos fica com 12, e o de 9 continua com 10. Use TEXTO com 11 zeros no formato."
+      },
+      {
+        "padrao": "^=\"0+\"&A\\d$",
+        "dica": "Zeros fixos na frente nunca servem para todos: cada CPF perdeu um número diferente de zeros. O TEXTO completa só o que falta."
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXT"
+    ],
+    "licao": "caso-lista-de-clientes",
+    "etapa": 4,
+    "papel": "pegadinha"
+  },
+  {
+    "id": "7387e9fb-5eab-5625-9749-c549d29483cf",
+    "slug": "caso-lista-de-clientes-conceito",
+    "type": "multiple_choice",
+    "trilha": "excel-ptbr",
+    "modulo": "texto",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Para fixar",
+    "enunciado": [
+      "Quanto dá **=TEXTO(42;\"00000\")**?"
+    ],
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "42",
+        "dica": "Cada 0 do formato é um dígito obrigatório: o que faltar vira zero à esquerda."
+      },
+      {
+        "texto": "00042"
+      },
+      {
+        "texto": "42000",
+        "dica": "Os zeros entram à esquerda, completando os dígitos que faltam."
+      },
+      {
+        "texto": "0,0042",
+        "dica": "Sem vírgula no formato, não há casas decimais: o 42 continua inteiro."
+      }
+    ],
+    "correta": 1,
+    "dicas": [
+      "Cada 0 no formato é um dígito que tem que aparecer."
+    ],
+    "explicacao": [
+      "O formato tem 5 dígitos obrigatórios e o 42 tem 2: o TEXTO completa com 3 zeros à esquerda. O resultado é o texto \"00042\"."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-lista-de-clientes",
+    "etapa": 5,
+    "papel": "conceito"
+  },
+  {
     "id": "9112376f-d8ab-577e-bb93-eed2a754dc82",
     "slug": "teste-texto-1",
     "trilha": "excel-ptbr",
@@ -2760,10 +4398,10 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Posição de um caractere",
+    "versao": 2,
+    "titulo": "Data no aviso",
     "enunciado": [
-      "Qual função encontra a posição de um caractere num texto?"
+      "Em **B2**, monte o aviso **Vence em 05/12/2026** a partir da data em A2."
     ],
     "dicas": [],
     "explicacao": [
@@ -2771,27 +4409,42 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "localizar-arroba",
-    "type": "multiple_choice",
+    "revisar": "texto-data-e-valor-na-frase",
+    "type": "formula",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    },
-    "opcoes": [
-      {
-        "texto": "EXT.TEXTO"
+      "linhas": 3,
+      "colunas": 3,
+      "larguras": {
+        "A": 110,
+        "B": 200
       },
-      {
-        "texto": "LOCALIZAR"
+      "celulas": {
+        "A1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Aviso",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "05/12/2026"
+        }
       },
-      {
-        "texto": "SUBSTITUIR"
-      },
-      {
-        "texto": "ARRUMAR"
+      "alternativas": {
+        "A2": [
+          "20/01/2027",
+          "05/12/2026"
+        ]
       }
-    ],
-    "correta": 1
+    },
+    "alvos": [
+      {
+        "celula": "B2",
+        "esperado": "Vence em 05/12/2026",
+        "exigeFormula": true,
+        "solucaoReferencia": "=\"Vence em \"&TEXTO(A2;\"dd/mm/aaaa\")"
+      }
+    ]
   }
 ]

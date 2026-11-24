@@ -16,9 +16,9 @@ describe("retrocompatibilidade do schema", () => {
     expect(resto).toEqual(legado);
   });
 
-  it("os 7 exercícios de Fundamentos (fora a prática extra) são de fórmula", () => {
+  it("os 10 exercícios de Fundamentos (fora a prática extra) são de fórmula", () => {
     const f = exerciciosDoModulo("fundamentos");
-    expect(f).toHaveLength(7);
+    expect(f).toHaveLength(10);
     expect(f.every((e) => e.type === "formula")).toBe(true);
   });
 
@@ -47,7 +47,7 @@ describe("conteúdo", () => {
 
   it("trilha segue o roteiro: o 1º de cada módulo grátis", () => {
     const porModulo = MODULOS.map((m) => exerciciosDoModulo(m.slug).length);
-    expect(porModulo).toEqual([10, 7, 5, 6, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
+    expect(porModulo).toEqual([10, 10, 5, 6, 5, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
     for (const m of MODULOS.slice(1)) {
       const lista = exerciciosDoModulo(m.slug);
       expect(lista[0].plano, m.slug).toBe("free");
@@ -103,7 +103,8 @@ describe("navegação", () => {
   it("'Próximo' de Fundamentos segue o roteiro", () => {
     expect(proximoExercicio("soma-total-de-vendas")?.slug).toBe("soma-total-de-vendas-variacao-a");
     expect(proximoExercicio("soma-total-de-vendas-conceito")?.slug).toBe("media-mensal-de-vendas");
-    expect(proximoExercicio("referencia-mista-precos-quantidades-conceito")).toBeUndefined();
+    expect(proximoExercicio("referencia-mista-precos-quantidades-conceito")?.slug).toBe("arred-parcelas-que-fecham");
+    expect(proximoExercicio("orcamento-do-departamento-conceito")).toBeUndefined();
   });
 
   it("a prática extra tem o próprio 'próximo' e não entra na trilha", () => {
