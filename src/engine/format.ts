@@ -36,6 +36,17 @@ function formatarData(serial: number) {
   return `${dd}/${mm}/${d.getUTCFullYear()}`;
 }
 
+/**
+ * Hora como o formato h:mm do Excel: a parte fracionária do dia (passou de
+ * 24 horas, "vira o dia", como no Excel sem [h]). Negativa: ########.
+ */
+function formatarHora(serial: number) {
+  if (serial < 0) return "########";
+  const s = Math.round((serial - Math.floor(serial)) * 86400) % 86400;
+  const dois = (n: number) => String(n).padStart(2, "0");
+  return `${dois(Math.floor(s / 3600))}:${dois(Math.floor((s % 3600) / 60))}`;
+}
+
 export function formatarValor(valor: ValorCelula, tipo: TipoDetalhado, formato?: Formato): string {
   if (valor === null) return "";
   if (typeof valor === "object") return valor.erro;
@@ -52,6 +63,7 @@ export function formatarValor(valor: ValorCelula, tipo: TipoDetalhado, formato?:
   if (f === "moeda" || (f === "geral" && tipo === "NUMBER_CURRENCY")) return fmtMoeda.format(valor);
   if (f === "percentual" || (f === "geral" && tipo === "NUMBER_PERCENT")) return fmtPct.format(valor);
   if (f === "data" || (f === "geral" && tipo === "NUMBER_DATE")) return formatarData(valor);
+  if (f === "geral" && tipo === "NUMBER_TIME") return formatarHora(valor);
   // Excel mostra no máximo ~11 caracteres em "Geral"; arredondamos ruído de ponto flutuante.
   return fmtGeral.format(Number(valor.toPrecision(12)));
 }
