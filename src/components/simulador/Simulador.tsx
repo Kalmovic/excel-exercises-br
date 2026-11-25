@@ -31,6 +31,7 @@ import type { Upsell } from "@/content/modulos-pro";
 import { PainelAdmin } from "@/components/admin/PainelAdmin";
 import type { RespostaQuestao } from "@/grader/conferir-teste";
 import { preencherSolucao } from "@/components/admin/solucao";
+import { planilhaSoConsulta } from "./so-consulta";
 
 function montar(ex: Exercicio, restaurar = true): Omit<ContextoSimulador, "entradaRef"> {
   const planilha = Planilha.deExercicio(ex);
@@ -172,6 +173,12 @@ export default function Simulador({
   }, [embutido, nucleo.alvos]);
   // Teste do módulo: questão respondida fica só para ver (grade, barras e campo de resposta).
   const travada = !!teste && respondida !== null;
+  // Fórmula no enunciado ou nas alternativas: a planilha ao lado é só para consultar os dados
+  // (colar a fórmula daria a resposta pronta).
+  const soConsulta = planilhaSoConsulta(ex);
+  useEffect(() => {
+    if (soConsulta) store.getState().travar();
+  }, [soConsulta, store]);
 
   // Dicas e tempo ativo, gravados no progresso para o nivelamento.
   const dicasVistasRef = useRef(0);
@@ -425,6 +432,18 @@ export default function Simulador({
           {ex.type === "text_answer" && <CampoResposta rotulo={ex.rotulo} onEnviar={verificar} somenteLeitura={travada} />}
           {ex.type === "multiple_choice" && (
             <div className="space-y-4">
+              {ex.referencia && (
+                <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-sm text-ink" data-testid="referencia-prova">
+                  <span className="font-semibold">Caiu muito parecido:</span>
+                  {ex.referencia.url ? (
+                    <a href={ex.referencia.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                      {ex.referencia.prova}
+                    </a>
+                  ) : (
+                    <span>{ex.referencia.prova}</span>
+                  )}
+                </p>
+              )}
               <div className="space-y-2 text-lg font-semibold [overflow-wrap:anywhere]" data-testid="pergunta">
                 {ex.enunciado.map((p, i) => (
                   <p key={i}>
@@ -433,11 +452,22 @@ export default function Simulador({
                 ))}
               </div>
               {ex.comPlanilha && (
-                <div className="space-y-2" data-testid="planilha-de-teste">
-                  <p className="text-xs text-muted">Planilha para testar as alternativas: o que você digita aqui não conta como resposta.</p>
-                  {semTeclado && <BarraToque />}
-                  <BarraFormulas />
-                  <Grade larguras={ex.grade.larguras} />
+                <div className="space-y-2" data-testid="planilha-de-teste" data-so-consulta={soConsulta || undefined}>
+                  <p className="text-xs text-muted">
+                    {soConsulta
+                      ? "Planilha só para consulta: confira os dados e resolva a fórmula de cabeça, como na prova."
+                      : "Planilha para testar as alternativas: o que você digita aqui não conta como resposta."}
+                  </p>
+                  {ex.abas?.length ? (
+                    // Questão sobre outras abas (3D, INDIRETO...): mostra as abas, para o aluno ver os dados delas.
+                    <AreaPlanilha ex={ex} nucleo={nucleo} entradaRef={entradaRef} barraToque={semTeclado && !soConsulta} somenteLeitura={soConsulta} />
+                  ) : (
+                    <>
+                      {semTeclado && !soConsulta && <BarraToque />}
+                      {!soConsulta && <BarraFormulas />}
+                      <Grade larguras={ex.grade.larguras} />
+                    </>
+                  )}
                 </div>
               )}
               <Alternativas opcoes={ex.opcoes} bloqueado={concluido || respondida !== null || conferindo} />

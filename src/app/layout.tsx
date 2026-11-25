@@ -5,7 +5,7 @@ import { Logo } from "@/components/marca/Logo";
 import { MenuCelular } from "@/components/marca/MenuCelular";
 import { BotaoConta } from "@/components/conta/BotaoConta";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
-import { Analytics } from "@vercel/analytics/next";
+import { AnalyticsFiltrado } from "@/components/site/AnalyticsFiltrado";
 import { INDEXAR_SITE, NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -86,8 +86,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </p>
           </div>
         </footer>
-        {/* Visitas e eventos (src/lib/eventos.ts). Ativar em Vercel → Analytics. */}
-        <Analytics />
+        {/* Visitas e eventos (src/lib/eventos.ts). Ativar em Vercel → Analytics. ?interno=1 tira o seu navegador da conta. */}
+        <AnalyticsFiltrado />
       </body>
     </html>
   );

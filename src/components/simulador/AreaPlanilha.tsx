@@ -20,6 +20,8 @@ type Props = {
   nucleo: Omit<ContextoSimulador, "entradaRef">;
   entradaRef: RefObject<HTMLInputElement | null>;
   barraToque: boolean;
+  /** Só para consulta (questão com a fórmula no enunciado): nenhuma aba aceita digitação e a barra de fórmulas some. */
+  somenteLeitura?: boolean;
 };
 
 /** Nome de aba como vai na fórmula: com aspas simples quando tem espaço ou começa com número. */
@@ -32,12 +34,16 @@ export const prefixoDaAba = (nome: string) => (/^[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-z
  * edição, clicar em outra aba e numa célula insere `Vendas!B2` na fórmula; o
  * Enter grava e volta para a aba de origem.
  */
-export function AreaPlanilha({ ex, nucleo, entradaRef, barraToque }: Props) {
+export function AreaPlanilha({ ex, nucleo, entradaRef, barraToque, somenteLeitura = false }: Props) {
   const pasta = nucleo.planilha.pasta;
   const abas = useMemo(() => pasta?.abas ?? [nucleo.planilha], [pasta, nucleo.planilha]);
   const nomes = pasta?.nomes() ?? [];
   // A primeira aba usa o store do exercício (correção, progresso); as outras ganham o seu.
-  const stores = useMemo<StoreSimulador[]>(() => abas.map((p, i) => (i === 0 ? nucleo.store : criarStore(p))), [abas, nucleo.store]);
+  const stores = useMemo<StoreSimulador[]>(() => {
+    const lista = abas.map((p, i) => (i === 0 ? nucleo.store : criarStore(p)));
+    if (somenteLeitura) for (const s of lista) s.getState().travar();
+    return lista;
+  }, [abas, nucleo.store, somenteLeitura]);
   const [ativa, setAtiva] = useState(0);
   const [origem, setOrigem] = useState<number | null>(null);
   const aba = Math.min(ativa, abas.length - 1);
@@ -119,9 +125,11 @@ export function AreaPlanilha({ ex, nucleo, entradaRef, barraToque }: Props) {
         {barraToque && <BarraToque />}
       </Contexto.Provider>
       {/* Apontando de outra aba: a barra de fórmulas é a da célula de origem. */}
-      <Contexto.Provider value={origem !== null ? contextoDa(origem) : ctxAba}>
-        <BarraFormulas />
-      </Contexto.Provider>
+      {!somenteLeitura && (
+        <Contexto.Provider value={origem !== null ? contextoDa(origem) : ctxAba}>
+          <BarraFormulas />
+        </Contexto.Provider>
+      )}
       <Contexto.Provider value={ctxAba}>
         <Grade key={aba} larguras={larguras} />
         {pasta && (

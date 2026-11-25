@@ -3,6 +3,7 @@ import { exercicios } from "@/content";
 import { temPaginaDeExercicio } from "@/lib/acesso-conteudo";
 import { desafiosAnteriores, hojeNoServidor } from "@/content/desafios";
 import { URL_SITE } from "@/lib/site";
+import { FUNCOES } from "@/content/funcoes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const agora = new Date();
@@ -10,6 +11,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: URL_SITE, lastModified: agora, changeFrequency: "weekly", priority: 1 },
     { url: `${URL_SITE}/excel-basico-para-iniciantes`, lastModified: agora, changeFrequency: "monthly", priority: 0.9 },
     { url: `${URL_SITE}/desafio`, lastModified: agora, changeFrequency: "daily", priority: 0.8 },
+    // Guia de funções: o índice e uma página por função.
+    { url: `${URL_SITE}/funcoes`, lastModified: agora, changeFrequency: "monthly", priority: 0.8 },
+    ...FUNCOES.map((f) => ({
+      url: `${URL_SITE}/funcoes/${f.slug}`,
+      lastModified: agora,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     // Páginas por público
     ...["/teste-de-excel", "/excel-para-concurso", "/empresas", "/universidades"].map((p) => ({
       url: `${URL_SITE}${p}`,

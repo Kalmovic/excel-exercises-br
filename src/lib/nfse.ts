@@ -120,16 +120,31 @@ export async function pagamentoDoEvento(evento: Stripe.Event, stripe: Stripe): P
     const f = evento.data.object;
     const cliente = id(f.customer);
     if (!f.id || !cliente || !f.amount_paid) return null;
+    // O PaymentIntent da fatura: é por ele que o reembolso acha a nota para cancelar.
+    const pagamentoDaFatura = async () => id((await stripe.invoicePayments.list({ invoice: f.id!, limit: 1 }).catch(() => null))?.data[0]?.payment?.payment_intent ?? null);
+    // Licença de empresa (fatura avulsa do admin): a nota vai para o CNPJ do cliente.
+    if (f.metadata?.organizacao_id && !f.parent?.subscription_details?.subscription) {
+      const licencas = Number(f.metadata.assentos) || f.lines.data.reduce((s, l) => s + (l.quantity ?? 0), 0);
+      const pago = f.status_transitions?.paid_at ?? evento.created;
+      const ate = new Date(pago * 1000);
+      ate.setFullYear(ate.getFullYear() + 1);
+      return {
+        origem: f.id,
+        usuario: null,
+        cliente,
+        valor: f.amount_paid / 100,
+        pagamento: await pagamentoDaFatura(),
+        descricao: `Planilhês Pro para empresas: ${licencas} licenças, de ${data(pago)} a ${data(ate.getTime() / 1000)}. ${RODAPE}`,
+      };
+    }
     const inicio = Math.min(...f.lines.data.map((l) => l.period?.start ?? Infinity));
     const fim = Math.max(0, ...f.lines.data.map((l) => l.period?.end ?? 0));
-    // O PaymentIntent da fatura: é por ele que o reembolso acha a nota para cancelar.
-    const pagamentos = await stripe.invoicePayments.list({ invoice: f.id, limit: 1 }).catch(() => null);
     return {
       origem: f.id,
       usuario: f.parent?.subscription_details?.metadata?.usuario_id ?? null,
       cliente,
       valor: f.amount_paid / 100,
-      pagamento: id(pagamentos?.data[0]?.payment?.payment_intent ?? null),
+      pagamento: await pagamentoDaFatura(),
       descricao: `Assinatura Planilhês Pro mensal, de ${data(Number.isFinite(inicio) ? inicio : evento.created)} a ${data(fim || evento.created)}. ${RODAPE}`,
     };
   }
@@ -156,14 +171,17 @@ export function separarNumero(linha: string): { endereco: string; numero: string
   return m && m[1] ? { endereco: m[1].trim(), numero: m[2] } : { endereco: linha.trim(), numero: "S/N" };
 }
 
-/** CPF/CNPJ (o checkout do Stripe pede) e endereço com CEP (a prefeitura exige). Null se faltar algo. */
+/**
+ * CPF/CNPJ (o checkout do Stripe pede) e endereço com CEP (a prefeitura exige). Null se faltar algo.
+ * O bairro só vem nos metadados (cliente de empresa, criado no admin): o endereço do Stripe não tem esse campo.
+ */
 export function tomadorDoCliente(c: Stripe.Customer): Tomador | null {
   const doc = c.tax_ids?.data.find((t) => t.type === "br_cpf" || t.type === "br_cnpj")?.value.replace(/\D/g, "");
   const a = c.address;
   const cep = a?.postal_code?.replace(/\D/g, "");
   if (!doc || !a?.line1 || !cep || cep.length !== 8) return null;
   const { endereco, numero } = separarNumero(a.line1);
-  return { nome: c.name || c.email || "Aluno Planilhês", cpfCnpj: doc, email: c.email, cep, endereco, numero, complemento: a.line2 || null, bairro: null };
+  return { nome: c.name || c.email || "Aluno Planilhês", cpfCnpj: doc, email: c.email, cep, endereco, numero, complemento: a.line2 || null, bairro: c.metadata?.bairro || null };
 }
 
 async function clienteNoAsaas(t: Tomador, referencia: string): Promise<string> {
@@ -189,7 +207,10 @@ async function clienteNoAsaas(t: Tomador, referencia: string): Promise<string> {
 
 const hojeEmSP = (agora: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(agora);
 
-export type ResultadoNota = "emitida" | "ja_emitida" | "sem_dados" | "erro" | "ignorada";
+export type ResultadoNota = "emitida" | "ja_emitida" | "sem_dados" | "erro" | "ignorada" | "modo_misturado";
+
+/** Asaas de produção? (o sandbox tem "sandbox" no endereço) */
+export const asaasDeProducao = () => !config().url.includes("sandbox");
 
 /**
  * Emite a nota do pagamento deste aviso. Lança erro só quando vale tentar de
@@ -201,6 +222,14 @@ export async function emitirNota(
   evento: Stripe.Event,
   deps: { stripe: Stripe; registro: RegistroNotas; agora?: Date },
 ): Promise<ResultadoNota> {
+  // Trava: pagamento de teste nunca vira nota real, e pagamento real nunca vira nota de mentira.
+  // (Stripe de teste + Asaas de produção emitiria NFS-e de verdade para compras com o cartão 4242.)
+  if (Boolean(evento.livemode) !== asaasDeProducao()) {
+    console.error(
+      JSON.stringify({ tipo: "nfse_modo_misturado", evento: evento.id, stripe: evento.livemode ? "producao" : "teste", asaas: asaasDeProducao() ? "producao" : "sandbox" }),
+    );
+    return "modo_misturado";
+  }
   const p = await pagamentoDoEvento(evento, deps.stripe);
   if (!p) return "ignorada";
   const atual = await deps.registro.buscar(p.origem);

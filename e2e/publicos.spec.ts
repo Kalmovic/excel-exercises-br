@@ -4,7 +4,7 @@ test("páginas por público: texto no HTML, sem JavaScript", async ({ request })
   for (const [url, trecho] of [
     ["/teste-de-excel", "Passe no teste de Excel da entrevista"],
     ["/excel-para-concurso", "Excel para concurso, praticando de verdade"],
-    ["/empresas", "Piloto de 30 dias"],
+    ["/empresas", "Como funciona a contratação"],
     ["/universidades", "Piloto de um semestre"],
   ]) {
     const r = await request.get(url);
@@ -19,17 +19,19 @@ test("páginas por público: texto no HTML, sem JavaScript", async ({ request })
 
 test("formulário de empresa: valida, envia e agradece", async ({ page }) => {
   await page.goto("/empresas");
+  // O CTA do topo leva ao formulário de proposta.
+  await expect(page.getByRole("link", { name: "Pedir proposta" }).first()).toHaveAttribute("href", "#contato");
   const form = page.getByTestId("form-contato");
-  await form.getByRole("button", { name: "Falar com a gente" }).click();
+  await form.getByRole("button", { name: "Pedir proposta" }).click();
   await expect(form.getByRole("alert")).toContainText("Escreva seu nome");
   await form.getByLabel("Seu nome").fill("Maria Teste");
   await form.getByLabel("E-mail de trabalho").fill("maria@empresa.com.br");
   await form.getByLabel("Empresa").fill("Empresa Teste");
-  await form.getByRole("button", { name: "Falar com a gente" }).click();
+  await form.getByRole("button", { name: "Pedir proposta" }).click();
   await expect(form.getByRole("alert")).toContainText("autorização");
   await form.getByRole("checkbox").check();
   const resposta = page.waitForResponse("**/api/contato");
-  await form.getByRole("button", { name: "Falar com a gente" }).click();
+  await form.getByRole("button", { name: "Pedir proposta" }).click();
   expect((await resposta).status()).toBe(204);
   await expect(page.getByTestId("form-enviado")).toContainText("Recebemos sua mensagem");
 });

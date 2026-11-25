@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Documento, Email, type Secao } from "@/components/site/Documento";
 import { EMPRESA } from "@/lib/empresa";
-import { NOME_SITE, PRECO, reais } from "@/lib/site";
+import { NOME_SITE, PRECO, PRECO_EMPRESAS, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Termos de uso",
@@ -66,7 +66,7 @@ const secoes: Secao[] = [
     titulo: "Sua conta",
     conteudo: (
       <ul>
-        <li>A conta é pessoal: entre com o seu e-mail, pelo código que enviamos. Não compartilhe o acesso.</li>
+        <li>A conta é pessoal: entre com o seu e-mail, pelo código que enviamos. Não compartilhe o acesso (inclusive a vaga de uma licença de empresa).</li>
         <li>Você responde pelo que é feito na sua conta. Se suspeitar de uso indevido, avise pelo e-mail.</li>
         <li>O nome que você informa para o certificado deve ser o seu nome real.</li>
       </ul>
@@ -95,6 +95,48 @@ const secoes: Secao[] = [
         </p>
         <p>
           Mudanças de preço valem só para novas assinaturas ou renovações, e avisamos com pelo menos 30 dias de antecedência quem tem o mensal.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "empresas",
+    titulo: "Licenças para empresas",
+    conteudo: (
+      <>
+        <p>
+          Empresas contratam o Pro para a equipe por proposta, em contrato anual por pessoa (a partir de {reais(PRECO_EMPRESAS.porPessoaDesde)} por pessoa
+          por mês, mínimo de {PRECO_EMPRESAS.minimoPessoas} pessoas). A fatura vai ao e-mail financeiro informado, com boleto, Pix ou cartão, e a nota
+          fiscal sai para o CNPJ da empresa.
+        </p>
+        <ul>
+          <li>
+            <strong>Vagas:</strong> o contrato tem um número de vagas. Cada pessoa que entra pelo link de convite, com a própria conta, ocupa uma vaga.
+            Com todas ocupadas, o convite avisa que a equipe está lotada.
+          </li>
+          <li>
+            <strong>Troca de membro:</strong> o gestor da equipe pode remover uma pessoa no painel a qualquer momento; a vaga fica livre para outra,
+            sem custo. Quem sai perde o Pro da empresa, mas mantém a conta e o progresso.
+          </li>
+          <li>
+            <strong>Validade:</strong> as vagas valem por 12 meses a partir da confirmação do pagamento (mais 3 dias de tolerância). Cada pessoa pode
+            estar em uma equipe com contrato em vigor por vez.
+          </li>
+          <li>
+            <strong>Renovação:</strong> o contrato não renova sozinho. Perto do fim, mandamos a fatura da renovação; paga antes do vencimento, os 12
+            meses novos contam a partir do fim do contrato atual. Sem renovação, o Pro da equipe termina na data de validade.
+          </li>
+          <li>
+            <strong>Reembolso e contestação:</strong> o reembolso da fatura ou a contestação do pagamento encerra o contrato e o Pro de toda a equipe, e a
+            nota fiscal é cancelada. Condições especiais combinadas na proposta valem sobre estas.
+          </li>
+        </ul>
+        <p>
+          A empresa responde pelo uso das vagas por quem ela convida. O gestor vê o nome, o e-mail e o progresso de cada pessoa da equipe, como explica a{" "}
+          <Link href="/privacidade#empresas" className="underline">
+            Política de privacidade
+          </Link>
+          .
         </p>
       </>
     ),

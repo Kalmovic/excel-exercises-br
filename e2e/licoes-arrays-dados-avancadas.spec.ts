@@ -134,10 +134,13 @@ test("caso: a pauta de audiências da base de processos", async ({ page }) => {
   await verificarCorreto(page);
 });
 
-test("etapa 5 vira questão de concurso, com a planilha para testar a fórmula", async ({ page }) => {
+test("etapa 5 vira questão de concurso; com a fórmula no enunciado, a planilha é só para consulta", async ({ page }) => {
   await abrir(page, "sequencia-cronograma-conceito");
-  await digitar(page, "A1", "=SOMA(SEQUÊNCIA(4;1;10;5))");
-  await expect(celula(page, "A1")).toHaveText("70");
+  await expect(visivel(page, "planilha-de-teste")).toHaveAttribute("data-so-consulta", "true");
+  await celula(page, "A1").click();
+  await page.keyboard.type("=SOMA(SEQUÊNCIA(4;1;10;5))");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "A1")).not.toHaveText("70"); // colar a fórmula não entrega a resposta
   const alternativas = visivel(page, "alternativas");
   await alternativas.locator("label").nth(2).click(); // (c) 85
   await page.getByTestId("verificar").click();

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
-import { celula, digitar, limparArmazenamento } from "./ajuda";
+import { celula, limparArmazenamento } from "./ajuda";
 
 /** Quantas questões a lista deve ter: as avulsas + as etapas de lição com banca (lidas do conteúdo). */
 type Q = { banca?: string; tema?: string; teste?: boolean; type: string };
@@ -23,10 +23,17 @@ test("concurso: filtro por banca, planilha para testar, alternativa errada expli
 
   await page.getByRole("link", { name: /SOMA com intervalo e célula/ }).click();
   await expect(page.getByTestId("banca-questao")).toHaveText("Estilo Vunesp");
-  // A planilha está lá para testar a fórmula da questão
-  await expect(visivel(page, "planilha-de-teste")).toBeVisible();
-  await digitar(page, "C1", "=SOMA(A1:A3;B2)");
-  await expect(celula(page, "C1")).toHaveText("62");
+  // A fórmula está no enunciado: a planilha fica só para consulta (colar a fórmula daria a resposta).
+  const planilha = visivel(page, "planilha-de-teste");
+  await expect(planilha).toBeVisible();
+  await expect(planilha).toHaveAttribute("data-so-consulta", "true");
+  await expect(planilha).toContainText("só para consulta");
+  await expect(planilha.getByTestId("barra-formulas")).toHaveCount(0);
+  await expect(celula(page, "A1")).toHaveText("10"); // os dados continuam à vista
+  await celula(page, "C1").click();
+  await page.keyboard.type("=SOMA(A1:A3;B2)");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "C1")).toHaveText("");
 
   const alternativas = visivel(page, "alternativas");
   await alternativas.getByText("63").click();
@@ -40,4 +47,20 @@ test("concurso: filtro por banca, planilha para testar, alternativa errada expli
   await page.getByRole("link", { name: "← Todas as questões" }).click();
   await expect(page.getByTestId("lista-concurso")).toContainText("SOMA com intervalo e célula");
   await expect(page.getByText(new RegExp(`você já acertou 1 de ${todas.length}`))).toBeVisible();
+});
+
+test("questão sobre outras abas: as abas aparecem para consulta, sem aceitar digitação", async ({ page }) => {
+  await limparArmazenamento(page);
+  await page.goto("/concurso/abas-referencia-3d-conceito");
+  const planilha = visivel(page, "planilha-de-teste");
+  await expect(planilha).toHaveAttribute("data-so-consulta", "true");
+  const abas = planilha.getByTestId("abas");
+  await expect(abas.getByRole("tab")).toHaveCount(5); // Resumo + Jan, Fev, Mar, Abr
+  await abas.getByRole("tab", { name: "Fev" }).click();
+  await expect(abas.getByRole("tab", { name: "Fev" })).toHaveAttribute("aria-selected", "true");
+  await expect(planilha.getByTestId("barra-formulas")).toHaveCount(0);
+  await celula(page, "D5").click();
+  await page.keyboard.type("=Jan!B2");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "D5")).toHaveText("");
 });

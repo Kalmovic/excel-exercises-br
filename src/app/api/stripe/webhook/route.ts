@@ -7,7 +7,8 @@ import { clienteStripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 /**
- * Avisos do Stripe (pagamento, renovação, cancelamento, reembolso).
+ * Avisos do Stripe (pagamento, renovação, cancelamento, reembolso), do aluno
+ * individual e da licença de empresa (fatura avulsa com metadata.organizacao_id).
  *
  * Segurança: o Stripe assina cada aviso com o segredo do endpoint
  * (STRIPE_WEBHOOK_SECRET). `constructEvent` recalcula a assinatura sobre o
@@ -51,17 +52,48 @@ export async function POST(request: Request) {
       return NextResponse.json({ erro: "falha ao buscar a cobrança" }, { status: 500 });
     }
   }
-  const { data: resultado, error } = await supabaseAdmin().rpc("registrar_pagamento", {
-    p_evento_id: evento.id,
-    p_tipo: evento.type,
-    p_payload: evento.data.object,
-    p_acao: acao.acao,
-    p_cliente: acao.acao === "ignorar" ? null : acao.cliente,
-    p_usuario: acao.acao === "liberar" ? (acao.usuario ?? null) : null,
-    p_plano: acao.acao === "liberar" ? acao.plano : null,
-    p_acesso_ate: acao.acao === "liberar" ? acao.acessoAte.toISOString() : null,
-    p_assinatura: acao.acao === "liberar" ? (acao.assinatura ?? null) : null,
-  });
+  const banco = supabaseAdmin();
+  let resultado: string | null = null;
+  let error: { message: string } | null = null;
+  // Empresa (licença por proposta): fatura paga ativa a organização; reembolso ou
+  // contestação do cliente da empresa cancela. Cliente que não é de empresa
+  // ("nao_empresa", sem registrar nada) segue o caminho do aluno individual.
+  let empresa = false;
+  if (acao.acao === "liberar_empresa") {
+    empresa = true;
+    ({ data: resultado, error } = await banco.rpc("registrar_pagamento_empresa", {
+      p_evento_id: evento.id,
+      p_tipo: evento.type,
+      p_payload: evento.data.object,
+      p_acao: "liberar",
+      p_organizacao: acao.organizacao,
+      p_cliente: acao.cliente,
+      p_fatura: acao.fatura,
+      p_pago_em: acao.pagoEm.toISOString(),
+    }));
+  } else if (acao.acao === "revogar" && acao.cliente) {
+    ({ data: resultado, error } = await banco.rpc("registrar_pagamento_empresa", {
+      p_evento_id: evento.id,
+      p_tipo: evento.type,
+      p_payload: evento.data.object,
+      p_acao: "cancelar",
+      p_cliente: acao.cliente,
+    }));
+    empresa = !error && resultado !== "nao_empresa";
+  }
+  if (!empresa && !error) {
+    ({ data: resultado, error } = await banco.rpc("registrar_pagamento", {
+      p_evento_id: evento.id,
+      p_tipo: evento.type,
+      p_payload: evento.data.object,
+      p_acao: acao.acao,
+      p_cliente: acao.acao === "ignorar" || acao.acao === "liberar_empresa" ? null : acao.cliente,
+      p_usuario: acao.acao === "liberar" ? (acao.usuario ?? null) : null,
+      p_plano: acao.acao === "liberar" ? acao.plano : null,
+      p_acesso_ate: acao.acao === "liberar" ? acao.acessoAte.toISOString() : null,
+      p_assinatura: acao.acao === "liberar" ? (acao.assinatura ?? null) : null,
+    }));
+  }
   if (error) {
     // Erro 500 faz o Stripe tentar de novo; a função não aplica nada duas vezes.
     console.error(JSON.stringify({ tipo: "erro_webhook_stripe", evento: evento.type, id: evento.id, mensagem: error.message }));
@@ -69,7 +101,7 @@ export async function POST(request: Request) {
   }
 
   // Reembolso ou disputa: além de cortar o acesso (no banco), para de cobrar o cartão.
-  if (resultado === "aplicado" && acao.acao === "revogar" && acao.cliente) {
+  if (resultado === "aplicado" && !empresa && acao.acao === "revogar" && acao.cliente) {
     const { data } = await supabaseAdmin()
       .from("assinaturas")
       .select("stripe_assinatura_id")
@@ -84,7 +116,7 @@ export async function POST(request: Request) {
   // porque a nota falhou da outra vez; emitirNota não emite duas vezes.
   if (nfseConfigurada()) {
     const registro = registroSupabase(supabaseAdmin());
-    if (acao.acao === "liberar" && (resultado === "aplicado" || resultado === "repetido")) {
+    if ((acao.acao === "liberar" || acao.acao === "liberar_empresa") && (resultado === "aplicado" || resultado === "repetido")) {
       try {
         await emitirNota(evento, { stripe: clienteStripe(), registro });
       } catch (e) {
@@ -97,7 +129,7 @@ export async function POST(request: Request) {
     if (acao.acao === "revogar" && resultado === "aplicado" && pagamento)
       await cancelarNotas(pagamento, registro).catch((e) => console.error(JSON.stringify({ tipo: "erro_cancelar_nfse", mensagem: String(e) })));
   }
-  console.log(JSON.stringify({ tipo: "webhook_stripe", evento: evento.type, id: evento.id, acao: acao.acao, resultado }));
+  console.log(JSON.stringify({ tipo: "webhook_stripe", evento: evento.type, id: evento.id, acao: acao.acao, empresa, resultado }));
   return NextResponse.json({ ok: true, resultado });
 }
 

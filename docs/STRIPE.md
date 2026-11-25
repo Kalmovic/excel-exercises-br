@@ -25,12 +25,12 @@ Developers → Webhooks → Add endpoint → `https://planilhes.com.br/api/strip
 |---|---|
 | `checkout.session.completed` | anual pago no cartão: libera 1 ano |
 | `checkout.session.async_payment_succeeded` | anual pago no Pix/boleto: libera 1 ano |
-| `invoice.paid` | mensal: libera até o fim do período |
-| `invoice.payment_failed` | mensal: marca como atrasado |
+| `invoice.paid` | mensal: libera até o fim do período. Empresa (fatura com `metadata.organizacao_id`): ativa a licença por 12 meses (docs/EMPRESAS.md) |
+| `invoice.payment_failed` | mensal: marca como atrasado (fatura de empresa: ignora) |
 | `customer.subscription.updated` | cancelou ou desistiu de cancelar a renovação |
 | `customer.subscription.deleted` | assinatura encerrada |
-| `charge.refunded` | reembolso total: corta o acesso e para de cobrar |
-| `charge.dispute.created` | contestação: corta o acesso e para de cobrar |
+| `charge.refunded` | reembolso total: corta o acesso e para de cobrar (cliente de empresa: cancela a licença) |
+| `charge.dispute.created` | contestação: corta o acesso e para de cobrar (cliente de empresa: cancela a licença) |
 | `radar.early_fraud_warning.created` | alerta de fraude: reembolsa na hora (evita a contestação) |
 
 Copie o **Signing secret** (`whsec_…`) para `STRIPE_WEBHOOK_SECRET` na Vercel.
@@ -78,8 +78,11 @@ contestação cancelam a nota. Cada nota fica em `notas_fiscais` (status `emitid
    | `NFSE_ISS` | `2.01` (parte do ISS no DAS; confira mês a mês em Contabilizei → Minhas alíquotas) |
 
    No Emissor Nacional vai só o código do serviço (`NFSE_SERVICO_CODIGO`), sem o `NFSE_SERVICO_ID`.
-3. O certificado A1 vence em **17/03/2027**: renove antes e suba o novo no Asaas, senão a emissão para.
-4. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
+3. **Os dois no mesmo modo:** Stripe de teste com o sandbox do Asaas, Stripe live com o Asaas de produção. O código
+   confere (`livemode` do aviso × `ASAAS_URL`) e, se estiverem misturados, não emite nada e registra
+   `nfse_modo_misturado` no log.
+4. O certificado A1 vence em **17/03/2027**: renove antes e suba o novo no Asaas, senão a emissão para.
+5. Sem essas variáveis, nada muda: o site cobra normalmente e não emite nota.
 
 **Teste de ponta a ponta** (Stripe teste + sandbox do Asaas, assina, emite, espera autorizar, reembolsa e cancela):
 ```bash

@@ -185,4 +185,49 @@ describe("NFS-e pelo Asaas", () => {
     vi.stubEnv("NFSE_SERVICO_CODIGO", "");
     vi.stubEnv("NFSE_NBS", "");
   });
+
+  it("trava de modo: Stripe de teste com Asaas de produção (e o contrário) não emite nada", async () => {
+    vi.stubEnv("ASAAS_URL", "https://api.asaas.com/v3");
+    expect(await emitirNota({ ...anual, livemode: false } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("modo_misturado");
+    expect(await emitirNota({ ...anual, livemode: true } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("emitida");
+    vi.stubEnv("ASAAS_URL", "");
+    chamadas = [];
+    expect(await emitirNota({ ...anual, livemode: true } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("modo_misturado");
+    expect(chamadas).toEqual([]); // nem chegou a chamar o Asaas
+  });
+
+  it("licença de empresa: nota para o CNPJ da empresa, com bairro, licenças e período de 12 meses", async () => {
+    const empresa = {
+      id: "cus_org",
+      name: "Empresa Teste Ltda",
+      email: "financeiro@empresa.com.br",
+      address: { line1: "Av. Rio Branco, 1", line2: "sala 1001", postal_code: "20090003", city: "Rio de Janeiro", state: "RJ", country: "BR" },
+      metadata: { organizacao_id: "org-1", bairro: "Centro" },
+      tax_ids: { data: [{ type: "br_cnpj", value: "11.222.333/0001-81" }] },
+    };
+    const paga = {
+      id: "evt_org",
+      type: "invoice.paid",
+      created: Date.UTC(2026, 10, 25, 18) / 1000,
+      data: {
+        object: {
+          id: "in_org_1",
+          customer: "cus_org",
+          amount_paid: 90000,
+          status_transitions: { paid_at: Date.UTC(2026, 10, 25, 15) / 1000 },
+          lines: { data: [{ quantity: 5, period: { start: 1, end: 1 } }] },
+          metadata: { organizacao_id: "org-1", assentos: "5" },
+          parent: null,
+        },
+      },
+    } as unknown as Stripe.Event;
+    const registro = registroFalso();
+    expect(await emitirNota(paga, { stripe: stripeFalso(empresa), registro })).toBe("emitida");
+    const cliente = chamadas.find((c) => c.caminho === "customers" && c.metodo === "POST")!.corpo!;
+    expect(cliente).toMatchObject({ name: "Empresa Teste Ltda", cpfCnpj: "11222333000181", address: "Av. Rio Branco", addressNumber: "1", province: "Centro", externalReference: "cus_org" });
+    const nota = chamadas.find((c) => c.caminho === "invoices" && c.metodo === "POST")!.corpo!;
+    expect(nota).toMatchObject({ value: 900, externalReference: "in_org_1" });
+    expect(nota.serviceDescription).toContain("Planilhês Pro para empresas: 5 licenças, de 25/11/2026 a 25/11/2027");
+    expect(registro.linhas.get("in_org_1")).toMatchObject({ usuario_id: null, pagamento: "pi_mensal", status: "emitida" });
+  });
 });
