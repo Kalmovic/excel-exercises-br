@@ -102,6 +102,9 @@ export const criterioFiltroSchema = z.object({ valores: z.array(textoDeCelula).m
 
 export const funcaoValorSchema = z.enum(["soma", "contagem", "media", "max", "min"]);
 
+/** "Mostrar Valores como": omitido = Sem Cálculo; "totalGeral" = % do Total Geral. */
+export const mostrarValorSchema = z.enum(["totalGeral"]);
+
 /**
  * Tabela dinâmica: a configuração das quatro áreas, como no painel do Excel.
  * Campos pela letra da coluna na origem. Por ora: até 1 campo em Linhas, 1 em
@@ -113,7 +116,7 @@ export const dinamicaSchema = z
     destino: endereco,
     linhas: z.array(letraColuna).max(1),
     colunas: z.array(letraColuna).max(1),
-    valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema })).max(3),
+    valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema, mostrar: mostrarValorSchema.optional() })).max(3),
     /** `valores: null` = (Tudo). */
     filtros: z.array(z.object({ campo: letraColuna, valores: z.array(textoDeCelula).max(200).nullable() })).max(2),
   })
@@ -377,7 +380,7 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
     origem: intervalo,
     linhas: z.array(z.string()).default([]),
     colunas: z.array(z.string()).default([]),
-    valores: z.array(z.object({ campo: z.string().optional(), funcao: funcaoValorSchema })).default([]),
+    valores: z.array(z.object({ campo: z.string().optional(), funcao: funcaoValorSchema, mostrar: mostrarValorSchema.optional() })).default([]),
     filtros: z.array(z.object({ campo: z.string(), valores: z.array(z.string()).nullable() })).default([]),
     mensagem: z.string().optional(),
   }),
@@ -478,6 +481,7 @@ export type ValidacaoDados = z.infer<typeof validacaoDadosSchema>;
 export type TipoGrafico = z.infer<typeof tipoGraficoSchema>;
 export type EstiloDestaque = z.infer<typeof estiloDestaqueSchema>;
 export type FuncaoValor = z.infer<typeof funcaoValorSchema>;
+export type MostrarValor = z.infer<typeof mostrarValorSchema>;
 export type Verificacao = z.infer<typeof verificacaoSchema>;
 export type Exercicio = z.infer<typeof exercicioSchema>;
 export type TipoExercicio = Exercicio["type"];

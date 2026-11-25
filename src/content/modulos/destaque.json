@@ -914,7 +914,7 @@
     "trilha": "excel-ptbr",
     "modulo": "destaque",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Duplicados: pedidos lançados duas vezes",
@@ -1709,7 +1709,7 @@
     "trilha": "excel-ptbr",
     "modulo": "destaque",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pintar a linha inteira",
@@ -4461,6 +4461,5664 @@
     }
   },
   {
+    "id": "e4312ccb-b823-5ad2-a5ae-0a158592278f",
+    "slug": "destaque-escala-de-cor",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Escala de cor: o mapa de calor das vendas",
+    "enunciado": [
+      "Transforme as vendas mensais de cada vendedor (**agosto a outubro**, sem a coluna e a linha de **Total**) num **mapa de calor**: os valores mais altos em verde, os mais baixos em vermelho."
+    ],
+    "dicas": [
+      "Esse visual é uma Escala de Cor: ele se aplica direto na seleção, sem janela.",
+      "Selecione só os números dos meses. Total junto entra na comparação."
+    ],
+    "explicacao": [
+      "Selecione **B2:D9** → **Formatação Condicional → Escalas de Cor**.",
+      "A escala pinta cada célula conforme a posição dela entre a menor e a maior do intervalo: dá para ver de relance que a Carla é constante no alto e o Daniel, embaixo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-escala-de-cor",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Uma tabela de 24 números ninguém lê numa reunião. Com uma escala de cor, quem está bem e quem está mal salta aos olhos, sem gráfico nenhum.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 104,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Set",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Out",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "23400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "16100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "24800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "26300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "25900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "12100",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13500",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "11800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "19800",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "22700",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "16400",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "15300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "21600",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "22800",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Heitor"
+        },
+        "B9": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "12600",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "=SOMA(B2:D2)",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=SOMA(B3:D3)",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=SOMA(B4:D4)",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=SOMA(B5:D5)",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=SOMA(B6:D6)",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=SOMA(B7:D7)",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=SOMA(B8:D8)",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=SOMA(B9:D9)",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B10": {
+          "entrada": "=SOMA(B2:B9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "C10": {
+          "entrada": "=SOMA(C2:C9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "D10": {
+          "entrada": "=SOMA(D2:D9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "E10": {
+          "entrada": "=SOMA(E2:E9)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "formatoVisual",
+        "intervalo": "B2:D9",
+        "visual": "escala"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "escala",
+            "intervalo": "B2:D9"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "1fce30ea-6f58-54f3-99e9-ef22b04782c4",
+    "slug": "destaque-escala-de-cor-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Barras no total do trimestre",
+    "enunciado": [
+      "Coloque **barras de dados** no **Total** de cada vendedor (coluna E), sem a linha de Total geral."
+    ],
+    "dicas": [
+      "Barras de Dados ficam no mesmo menu da escala e também se aplicam direto na seleção."
+    ],
+    "explicacao": [
+      "Selecione **E2:E9** → **Formatação Condicional → Barras de Dados**.",
+      "A barra mostra o tamanho; a escala mostra a posição. Para comparar totais, barra costuma ler melhor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-escala-de-cor",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 104,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Set",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Out",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "23400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "16100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "24800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "26300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "25900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "12100",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13500",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "11800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "19800",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "22700",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "16400",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "15300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "21600",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "22800",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Heitor"
+        },
+        "B9": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "12600",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "=SOMA(B2:D2)",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=SOMA(B3:D3)",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=SOMA(B4:D4)",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=SOMA(B5:D5)",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=SOMA(B6:D6)",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=SOMA(B7:D7)",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=SOMA(B8:D8)",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=SOMA(B9:D9)",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B10": {
+          "entrada": "=SOMA(B2:B9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "C10": {
+          "entrada": "=SOMA(C2:C9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "D10": {
+          "entrada": "=SOMA(D2:D9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "E10": {
+          "entrada": "=SOMA(E2:E9)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "formatoVisual",
+        "intervalo": "E2:E9",
+        "visual": "barras"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "barras",
+            "intervalo": "E2:E9"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "e9d2ea73-7b04-56d2-b6cc-9cc3660bc320",
+    "slug": "destaque-escala-de-cor-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mapa de calor com alerta",
+    "enunciado": [
+      "Aplique a **escala de cor** nas vendas mensais (**B2:D9**).",
+      "Por cima dela, destaque em **vermelho** os meses com venda **abaixo de R$ 14.000** (a meta mínima)."
+    ],
+    "dicas": [
+      "São duas regras no mesmo intervalo. O destaque em cor sólida aparece por cima da escala."
+    ],
+    "explicacao": [
+      "**B2:D9** → **Escalas de Cor**; depois, com a mesma seleção, **É Menor do que…** → **14000**, em vermelho.",
+      "A escala dá o panorama; a regra de vermelho aponta quem ficou abaixo do mínimo. Daniel e Heitor ficaram abaixo em 5 meses no total."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-escala-de-cor",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 104,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Set",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Out",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "23400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "16100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "24800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "26300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "25900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "12100",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13500",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "11800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "19800",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "22700",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "16400",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "15300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "21600",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "22800",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Heitor"
+        },
+        "B9": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "12600",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "=SOMA(B2:D2)",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=SOMA(B3:D3)",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=SOMA(B4:D4)",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=SOMA(B5:D5)",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=SOMA(B6:D6)",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=SOMA(B7:D7)",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=SOMA(B8:D8)",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=SOMA(B9:D9)",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B10": {
+          "entrada": "=SOMA(B2:B9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "C10": {
+          "entrada": "=SOMA(C2:C9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "D10": {
+          "entrada": "=SOMA(D2:D9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "E10": {
+          "entrada": "=SOMA(E2:E9)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "formatoVisual",
+        "intervalo": "B2:D9",
+        "visual": "escala"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:D9",
+        "esperado": [
+          "B5",
+          "C5",
+          "D5",
+          "B9",
+          "C9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "escala",
+            "intervalo": "B2:D9"
+          },
+          {
+            "tipo": "menor",
+            "intervalo": "B2:D9",
+            "valor": "14000",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "070289e1-5b49-510c-b992-40f710901ecc",
+    "slug": "destaque-escala-de-cor-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o Total no mapa de calor",
+    "enunciado": [
+      "O diretor quer um mapa de calor (**escala de cor**) para comparar os **vendedores mês a mês**. Aplique na planilha."
+    ],
+    "dicas": [
+      "A tabela tem uma coluna e uma linha de Total. Elas também são números…"
+    ],
+    "explicacao": [
+      "Só **B2:D9** (os meses de cada vendedor) → **Escalas de Cor**.",
+      "Com os totais na seleção, eles viram os maiores valores, ficam verdes e empurram todos os meses para o vermelho: o mapa deixa de comparar vendedores. Erro comum: selecionar a tabela inteira."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-escala-de-cor",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 84,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 104,
+        "F": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Ago",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Set",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Out",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "18500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "21000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "23400",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "14800",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "16100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "24800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "26300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "25900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "12100",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "13500",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "11800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "19800",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "18200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "22700",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "16400",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "17900",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "15300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela"
+        },
+        "B8": {
+          "entrada": "21600",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "22800",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "24100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Heitor"
+        },
+        "B9": {
+          "entrada": "13900",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "12600",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "14200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "=SOMA(B2:D2)",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "=SOMA(B3:D3)",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=SOMA(B4:D4)",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=SOMA(B5:D5)",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=SOMA(B6:D6)",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=SOMA(B7:D7)",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=SOMA(B8:D8)",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=SOMA(B9:D9)",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B10": {
+          "entrada": "=SOMA(B2:B9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "C10": {
+          "entrada": "=SOMA(C2:C9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "D10": {
+          "entrada": "=SOMA(D2:D9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "E10": {
+          "entrada": "=SOMA(E2:E9)",
+          "formato": "moeda",
+          "negrito": true
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "formatoVisual",
+        "intervalo": "B2:D9",
+        "visual": "escala"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "escala",
+            "intervalo": "B2:D9"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "dacd5e13-0088-5274-b08d-2e5e9b998fc2",
+    "slug": "destaque-escala-de-cor-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 65,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a escala de cor é relativa",
+    "enunciado": [
+      "Julgue o item: ao aplicar uma Escala de Cores de três cores (verde, amarelo e vermelho) ao intervalo B2:D9 de uma planilha do Excel, a cor de cada célula é definida pela comparação do seu valor com o menor valor, o valor central (percentil 50) e o maior valor do próprio intervalo selecionado."
+    ],
+    "dicas": [
+      "Pense no que acontece com as cores quando você inclui uma linha de Total na seleção."
+    ],
+    "explicacao": [
+      "**Certo.** A escala é relativa ao intervalo: o menor fica numa ponta, o maior na outra, e o percentil 50 no meio.",
+      "Por isso, incluir os totais na seleção empurra todos os outros valores para a ponta dos menores."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-escala-de-cor",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "A escala não usa limites fixos: ela compara cada célula com os extremos e o meio do próprio intervalo."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Formatação condicional"
+  },
+  {
+    "id": "a06d4bb6-9116-59f6-befa-76e3e057a368",
+    "slug": "destaque-formula-e",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fórmula com E: vencida e ainda pendente",
+    "enunciado": [
+      "A data de hoje está em **G1**. Pinte de **vermelho** a **linha inteira** (A a D) das contas que estão **vencidas** (vencimento antes de hoje) **e** ainda **Pendentes**.",
+      "Conta paga não entra, mesmo vencida."
+    ],
+    "dicas": [
+      "São duas condições ao mesmo tempo: a regra precisa de uma fórmula com a função E.",
+      "Cada condição olha uma coluna (Vencimento e Status) com $ antes da letra; a data de hoje é uma célula só, com $ nas duas partes."
+    ],
+    "explicacao": [
+      "Selecione **A2:D11** → **Nova Regra: usar uma fórmula** → `=E($B2<$G$1;$D2=\"Pendente\")`, em vermelho.",
+      "Aluguel, Internet e Seguro estão vencidos e pendentes. A conta da Contabilidade vence hoje: ainda não venceu."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-formula-e",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "No contas a pagar, o que importa não é uma condição, é a combinação: vencida E não paga. Uma fórmula com E na regra faz a planilha apontar exatamente essas.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 136,
+        "B": 88,
+        "C": 88,
+        "D": 76,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Energia Sul"
+        },
+        "B2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Aluguel Sala 302"
+        },
+        "B3": {
+          "entrada": "15/11/2026",
+          "formato": "data"
+        },
+        "C3": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "C5": {
+          "entrada": "249",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Contabilidade Silva"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "C6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C7": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Software Gestão"
+        },
+        "B8": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "C8": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Água e Esgoto"
+        },
+        "B9": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "C9": {
+          "entrada": "215",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "08/11/2026",
+          "formato": "data"
+        },
+        "C10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Café & Cia"
+        },
+        "B11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C11": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A5",
+          "B5",
+          "C5",
+          "D5",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($B2<$G$1;$D2=\"Pendente\")",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "2d694198-961f-5dc8-8c5a-60734d02a438",
+    "slug": "destaque-formula-e-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fórmula com OU: o que precisa de atenção",
+    "enunciado": [
+      "A diretoria quer ver em **amarelo** a **linha inteira** de toda conta que ainda está **Pendente** **ou** que passa de **R$ 5.000** (mesmo paga)."
+    ],
+    "dicas": [
+      "Basta uma das duas condições: a função é outra."
+    ],
+    "explicacao": [
+      "**A2:D11** → fórmula `=OU($D2=\"Pendente\";$C2>5000)`, em amarelo.",
+      "A Limpeza Brilho já foi paga, mas entra por ser acima de R$ 5.000. Com OU, qualquer condição verdadeira pinta a linha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-formula-e",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 136,
+        "B": 88,
+        "C": 88,
+        "D": 76,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Energia Sul"
+        },
+        "B2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Aluguel Sala 302"
+        },
+        "B3": {
+          "entrada": "15/11/2026",
+          "formato": "data"
+        },
+        "C3": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "C5": {
+          "entrada": "249",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Contabilidade Silva"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "C6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C7": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Software Gestão"
+        },
+        "B8": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "C8": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Água e Esgoto"
+        },
+        "B9": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "C9": {
+          "entrada": "215",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "08/11/2026",
+          "formato": "data"
+        },
+        "C10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Café & Cia"
+        },
+        "B11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C11": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "A5",
+          "B5",
+          "C5",
+          "D5",
+          "A6",
+          "B6",
+          "C6",
+          "D6",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "A8",
+          "B8",
+          "C8",
+          "D8",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=OU($D2=\"Pendente\";$C2>5000)",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "450b9d6a-2fca-58d8-a120-27f6fb1d61f6",
+    "slug": "destaque-formula-e-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vence nos próximos 7 dias",
+    "enunciado": [
+      "Pinte de **amarelo** a **linha inteira** das contas **Pendentes** que vencem **de hoje até daqui a 7 dias** (as duas pontas incluídas)."
+    ],
+    "dicas": [
+      "Três condições: depois (ou no dia) de hoje, até hoje + 7, e pendente.",
+      "Hoje + 7 dias é $G$1+7: data é número."
+    ],
+    "explicacao": [
+      "**A2:D11** → `=E($B2>=$G$1;$B2<=$G$1+7;$D2=\"Pendente\")`, em amarelo.",
+      "Contabilidade (vence hoje) e Papelaria (dia 25) entram. O Café vence dia 20, mas já está pago."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-formula-e",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 136,
+        "B": 88,
+        "C": 88,
+        "D": 76,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Energia Sul"
+        },
+        "B2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Aluguel Sala 302"
+        },
+        "B3": {
+          "entrada": "15/11/2026",
+          "formato": "data"
+        },
+        "C3": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "C5": {
+          "entrada": "249",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Contabilidade Silva"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "C6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C7": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Software Gestão"
+        },
+        "B8": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "C8": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Água e Esgoto"
+        },
+        "B9": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "C9": {
+          "entrada": "215",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "08/11/2026",
+          "formato": "data"
+        },
+        "C10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Café & Cia"
+        },
+        "B11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C11": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "A6",
+          "B6",
+          "C6",
+          "D6"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($B2>=$G$1;$B2<=$G$1+7;$D2=\"Pendente\")",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "d10f1752-24eb-59d2-a21f-6e1b656b0ab7",
+    "slug": "destaque-formula-e-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: duas regras não fazem um E",
+    "enunciado": [
+      "Para marcar as contas **vencidas e pendentes**, um colega criou **duas regras vermelhas** na linha inteira: uma para *vencida*, outra para *Pendente*. Agora a planilha está quase toda vermelha.",
+      "Corrija: só a linha das contas **vencidas** que ainda estão **Pendentes** deve ficar vermelha."
+    ],
+    "dicas": [
+      "Abra o Gerenciador de Regras e veja o que cada uma pinta sozinha.",
+      "Cada regra pinta por conta própria. As duas condições precisam estar na mesma fórmula."
+    ],
+    "explicacao": [
+      "**Gerenciar Regras…** → **Excluir** as duas. Depois, em **A2:D11**, `=E($B2<$G$1;$D2=\"Pendente\")`, em vermelho.",
+      "Duas regras com a mesma cor funcionam como um **OU**: pinta o que é vencido (mesmo pago) e o que é pendente (mesmo no prazo)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-formula-e",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 136,
+        "B": 88,
+        "C": 88,
+        "D": 76,
+        "E": 24,
+        "F": 48,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Energia Sul"
+        },
+        "B2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Aluguel Sala 302"
+        },
+        "B3": {
+          "entrada": "15/11/2026",
+          "formato": "data"
+        },
+        "C3": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "C5": {
+          "entrada": "249",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Contabilidade Silva"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "C6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C7": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Software Gestão"
+        },
+        "B8": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "C8": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Água e Esgoto"
+        },
+        "B9": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "C9": {
+          "entrada": "215",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "08/11/2026",
+          "formato": "data"
+        },
+        "C10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Café & Cia"
+        },
+        "B11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C11": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$B2<$G$1",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2=\"Pendente\"",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A5",
+          "B5",
+          "C5",
+          "D5",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($B2<$G$1;$D2=\"Pendente\")",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "f098adf9-a0c0-5364-ae38-fc7e3d8ee5d0",
+    "slug": "destaque-formula-e-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a fórmula da regra com E",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, as contas a pagar estão em A2:D11, com o vencimento na coluna B e o status (Pago ou Pendente) na coluna D. A data de hoje está em G1.",
+      "Para pintar a linha inteira das contas vencidas e ainda pendentes, um técnico selecionou A2:D11 e criou uma regra do tipo *usar uma fórmula*. A fórmula correta é:"
+    ],
+    "dicas": [
+      "A fórmula é escrita para a primeira linha e conferida em todas as células do intervalo, inclusive nas colunas A, C e D."
+    ],
+    "explicacao": [
+      "`=E($B2<$G$1;$D2=\"Pendente\")`: o $ antes de B e D mantém as colunas ao andar para o lado; a linha (2) fica livre para descer; G1 é travado inteiro.",
+      "Na planilha, a fórmula dá VERDADEIRO para a linha 2 (vencida em 10/11 e pendente)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-formula-e",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 6,
+      "colunas": 8,
+      "larguras": {
+        "A": 104,
+        "B": 84,
+        "C": 72,
+        "D": 76,
+        "F": 40,
+        "G": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Gráfica Norte"
+        },
+        "B2": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "850",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "Telefonia"
+        },
+        "B3": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "C3": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "Aluguel"
+        },
+        "B4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C4": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "=E($B2<$G$1;$D2=\"Pendente\")"
+      },
+      {
+        "texto": "=E(B2<G1;D2=\"Pendente\")",
+        "dica": "Sem $, nas colunas C e D a fórmula se desloca (vira D2<H1…) e compara as colunas erradas."
+      },
+      {
+        "texto": "=OU($B2<$G$1;$D2=\"Pendente\")",
+        "dica": "OU pinta o que atender a qualquer condição: contas pagas vencidas e pendentes no prazo também."
+      },
+      {
+        "texto": "=E($B$2<$G$1;$D$2=\"Pendente\")",
+        "dica": "Com $ antes do 2, todas as linhas olham a linha 2: ou pinta tudo, ou nada."
+      },
+      {
+        "texto": "=E($B2<=$G$1;$D2=\"Pendente\")",
+        "dica": "Com <=, a conta que vence hoje entra como vencida, mas ela ainda pode ser paga hoje."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Formatação condicional",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=E($B2<$G$1;$D2=\"Pendente\")",
+        "esperado": true
+      }
+    ]
+  },
+  {
+    "id": "0da870ab-1e71-5f2e-9b76-fff43c56635e",
+    "slug": "destaque-ordem-das-regras",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quando duas regras brigam: a ordem das regras",
+    "enunciado": [
+      "Na planilha de estoque já há duas regras na coluna **Estoque**: *vermelho* para o produto **zerado** e *amarelo* para o **abaixo do mínimo**.",
+      "Os produtos zerados deveriam estar em **vermelho**, mas aparecem em amarelo. **Sem apagar nenhuma regra**, arrume a ordem para o vermelho valer nos zerados."
+    ],
+    "dicas": [
+      "Um produto zerado também está abaixo do mínimo: as duas regras querem pintar a mesma célula.",
+      "No Gerenciador de Regras, a regra de cima vence. Há botões para subir e descer cada regra."
+    ],
+    "explicacao": [
+      "**Gerenciar Regras…** → na regra *Valor da célula = 0*, clique em **▲ (Mover para Cima)**.",
+      "Quando duas regras pintam a mesma célula, vale a que está **mais acima** no Gerenciador. A amarela, criada depois, estava em cima e cobria a vermelha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-ordem-das-regras",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Em planilha de verdade, as regras se acumulam e uma passa por cima da outra. Saber quem vence (e mudar a ordem) é o que separa a planilha que avisa da que confunde.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 136,
+        "B": 72,
+        "C": 72,
+        "D": 40,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Toner preto"
+        },
+        "B2": {
+          "entrada": "0"
+        },
+        "C2": {
+          "entrada": "4"
+        },
+        "A3": {
+          "entrada": "Envelope pardo"
+        },
+        "B3": {
+          "entrada": "0"
+        },
+        "C3": {
+          "entrada": "100"
+        },
+        "A4": {
+          "entrada": "Fita adesiva"
+        },
+        "B4": {
+          "entrada": "0"
+        },
+        "C4": {
+          "entrada": "6"
+        },
+        "A5": {
+          "entrada": "Cartucho colorido"
+        },
+        "B5": {
+          "entrada": "2"
+        },
+        "C5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "Grampeador"
+        },
+        "B6": {
+          "entrada": "6"
+        },
+        "C6": {
+          "entrada": "3"
+        },
+        "A7": {
+          "entrada": "Clips (caixa)"
+        },
+        "B7": {
+          "entrada": "8"
+        },
+        "C7": {
+          "entrada": "10"
+        },
+        "A8": {
+          "entrada": "Papel A4 (caixa)"
+        },
+        "B8": {
+          "entrada": "12"
+        },
+        "C8": {
+          "entrada": "10"
+        },
+        "A9": {
+          "entrada": "Post-it"
+        },
+        "B9": {
+          "entrada": "25"
+        },
+        "C9": {
+          "entrada": "20"
+        },
+        "A10": {
+          "entrada": "Caneta azul"
+        },
+        "B10": {
+          "entrada": "35"
+        },
+        "C10": {
+          "entrada": "50"
+        },
+        "A11": {
+          "entrada": "Pasta suspensa"
+        },
+        "B11": {
+          "entrada": "40"
+        },
+        "C11": {
+          "entrada": "30"
+        }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "0",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B11",
+            "formula": "=B2<C2",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B11",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B7",
+          "B10"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B4",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B5:B11",
+        "esperado": [
+          "B5",
+          "B7",
+          "B10"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B11",
+            "formula": "=B2<C2",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "0",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "08a39cc3-b6bb-5af4-8aaa-91b22d0fa4d0",
+    "slug": "destaque-ordem-das-regras-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Crie as duas regras na ordem certa",
+    "enunciado": [
+      "Na coluna **Estoque** (B2:B11), crie duas regras: **amarelo** para o estoque **abaixo do mínimo** (coluna C) e **vermelho** para o estoque **zerado**.",
+      "O zerado também está abaixo do mínimo, mas tem que aparecer em **vermelho**."
+    ],
+    "dicas": [
+      "A de abaixo do mínimo compara com a coluna C: é uma regra de fórmula, escrita para a primeira célula (B2).",
+      "A regra criada por último fica em cima. Se errar a ordem, conserte no Gerenciador."
+    ],
+    "explicacao": [
+      "**B2:B11** → fórmula `=B2<C2`, em amarelo; depois **É Igual a… 0**, em vermelho (ou crie na outra ordem e use **▲** no Gerenciador).",
+      "Sem o $, a fórmula se ajusta em cada linha: B5 é comparada com C5."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-ordem-das-regras",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 136,
+        "B": 72,
+        "C": 72,
+        "D": 40,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Mínimo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Toner preto"
+        },
+        "B2": {
+          "entrada": "0"
+        },
+        "C2": {
+          "entrada": "4"
+        },
+        "A3": {
+          "entrada": "Envelope pardo"
+        },
+        "B3": {
+          "entrada": "0"
+        },
+        "C3": {
+          "entrada": "100"
+        },
+        "A4": {
+          "entrada": "Fita adesiva"
+        },
+        "B4": {
+          "entrada": "0"
+        },
+        "C4": {
+          "entrada": "6"
+        },
+        "A5": {
+          "entrada": "Cartucho colorido"
+        },
+        "B5": {
+          "entrada": "2"
+        },
+        "C5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "Grampeador"
+        },
+        "B6": {
+          "entrada": "6"
+        },
+        "C6": {
+          "entrada": "3"
+        },
+        "A7": {
+          "entrada": "Clips (caixa)"
+        },
+        "B7": {
+          "entrada": "8"
+        },
+        "C7": {
+          "entrada": "10"
+        },
+        "A8": {
+          "entrada": "Papel A4 (caixa)"
+        },
+        "B8": {
+          "entrada": "12"
+        },
+        "C8": {
+          "entrada": "10"
+        },
+        "A9": {
+          "entrada": "Post-it"
+        },
+        "B9": {
+          "entrada": "25"
+        },
+        "C9": {
+          "entrada": "20"
+        },
+        "A10": {
+          "entrada": "Caneta azul"
+        },
+        "B10": {
+          "entrada": "35"
+        },
+        "C10": {
+          "entrada": "50"
+        },
+        "A11": {
+          "entrada": "Pasta suspensa"
+        },
+        "B11": {
+          "entrada": "40"
+        },
+        "C11": {
+          "entrada": "30"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B11",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B7",
+          "B10"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B4",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B5:B11",
+        "esperado": [
+          "B5",
+          "B7",
+          "B10"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B11",
+            "formula": "=B2<C2",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "0",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "4443b81c-e0dd-5575-96dc-66b5015a500d",
+    "slug": "destaque-ordem-das-regras-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Três faixas de nota",
+    "enunciado": [
+      "As notas da avaliação de treinamento já têm três regras: **verde** para 7 ou mais, **amarelo** para menos de 7 e **vermelho** para menos de 5.",
+      "Quem tirou menos de 5 está aparecendo em amarelo. Arrume a **ordem** das regras para cada faixa ficar com a sua cor."
+    ],
+    "dicas": [
+      "Uma nota menor que 5 também é menor que 7. Qual das duas regras precisa vencer?"
+    ],
+    "explicacao": [
+      "**Gerenciar Regras…** → suba a regra *menor que 5* (vermelho) para **acima** da *menor que 7* (amarelo).",
+      "A regra verde não briga com ninguém (7 ou mais não é menor que 7): a posição dela tanto faz. Juliana, com 5,0, fica amarela: *menor que 5* é estrito."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-ordem-das-regras",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 11,
+      "colunas": 4,
+      "larguras": {
+        "A": 96,
+        "B": 64,
+        "C": 40,
+        "D": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Lucas"
+        },
+        "B2": {
+          "entrada": "9,5"
+        },
+        "A3": {
+          "entrada": "Fernanda"
+        },
+        "B3": {
+          "entrada": "8"
+        },
+        "A4": {
+          "entrada": "Rafael"
+        },
+        "B4": {
+          "entrada": "7"
+        },
+        "A5": {
+          "entrada": "Beatriz"
+        },
+        "B5": {
+          "entrada": "6,5"
+        },
+        "A6": {
+          "entrada": "Thiago"
+        },
+        "B6": {
+          "entrada": "5,5"
+        },
+        "A7": {
+          "entrada": "Juliana"
+        },
+        "B7": {
+          "entrada": "5"
+        },
+        "A8": {
+          "entrada": "Marcos"
+        },
+        "B8": {
+          "entrada": "4,5"
+        },
+        "A9": {
+          "entrada": "Patrícia"
+        },
+        "B9": {
+          "entrada": "3"
+        }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "menor",
+            "intervalo": "B2:B9",
+            "valor": "5",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "menor",
+            "intervalo": "B2:B9",
+            "valor": "7",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B9",
+            "formula": "=B2>=7",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B4",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B5:B7",
+        "esperado": [
+          "B5",
+          "B6",
+          "B7"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B8:B9",
+        "esperado": [
+          "B8",
+          "B9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "menor",
+            "intervalo": "B2:B9",
+            "valor": "7",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "menor",
+            "intervalo": "B2:B9",
+            "valor": "5",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B9",
+            "formula": "=B2>=7",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "afbd4188-a560-5160-9275-771a602962cb",
+    "slug": "destaque-ordem-das-regras-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a regra da linha cobre a da coluna",
+    "enunciado": [
+      "Nos pedidos, há uma regra que pinta de **vermelho** os **valores acima de R$ 5.000** (coluna C) e outra que pinta de **amarelo** a **linha inteira** dos pedidos **Pendentes**.",
+      "Nos pedidos pendentes acima de R$ 5.000, o valor tem que aparecer em **vermelho**, e o resto da linha continua amarelo. Hoje está tudo amarelo. Arrume, sem apagar regra."
+    ],
+    "dicas": [
+      "As regras valem em intervalos diferentes, mas se encontram na coluna C das linhas pendentes.",
+      "Mesmo com intervalos diferentes, quem vence é a regra de cima no Gerenciador."
+    ],
+    "explicacao": [
+      "**Gerenciar Regras…** → **▲** na regra *Valor da célula > 5000* (C2:C11), para ela ficar acima da regra da linha inteira.",
+      "Erro comum: achar que uma regra só de uma coluna não pode brigar com uma da linha inteira. Onde os intervalos se cruzam, vale a ordem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-ordem-das-regras",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 64,
+        "B": 136,
+        "C": 88,
+        "D": 76,
+        "E": 40
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "PV-501"
+        },
+        "B2": {
+          "entrada": "Clínica Vida"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Entregue"
+        },
+        "A3": {
+          "entrada": "PV-502"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "8900",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "PV-503"
+        },
+        "B4": {
+          "entrada": "Padaria Trigo"
+        },
+        "C4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "PV-504"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Entregue"
+        },
+        "A6": {
+          "entrada": "PV-505"
+        },
+        "B6": {
+          "entrada": "Transportes Rápido"
+        },
+        "C6": {
+          "entrada": "1750",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Entregue"
+        },
+        "A7": {
+          "entrada": "PV-506"
+        },
+        "B7": {
+          "entrada": "Clínica Vida"
+        },
+        "C7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "PV-507"
+        },
+        "B8": {
+          "entrada": "Marta Lima"
+        },
+        "C8": {
+          "entrada": "12400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "PV-508"
+        },
+        "B9": {
+          "entrada": "João Ferreira"
+        },
+        "C9": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Entregue"
+        },
+        "A10": {
+          "entrada": "PV-509"
+        },
+        "B10": {
+          "entrada": "Construtora Alfa"
+        },
+        "C10": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Entregue"
+        },
+        "A11": {
+          "entrada": "PV-510"
+        },
+        "B11": {
+          "entrada": "Ana Souza"
+        },
+        "C11": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pendente"
+        }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "maior",
+            "intervalo": "C2:C11",
+            "valor": "5000",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2=\"Pendente\"",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:D11",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "C5",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "A8",
+          "B8",
+          "C8",
+          "D8",
+          "C10",
+          "A11",
+          "B11",
+          "C11",
+          "D11"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "C3",
+        "esperado": [
+          "C3"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "C8",
+        "esperado": [
+          "C8"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A3:B3",
+        "esperado": [
+          "A3",
+          "B3"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=$D2=\"Pendente\"",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "maior",
+            "intervalo": "C2:C11",
+            "valor": "5000",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "4efb1448-5ad4-5e62-acaa-f97a01bed624",
+    "slug": "destaque-ordem-das-regras-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 85,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: quem vence no Gerenciador",
+    "enunciado": [
+      "No Gerenciador de Regras de Formatação Condicional de uma planilha de estoque, há duas regras aplicadas a B2:B20, nesta ordem (de cima para baixo):",
+      "1ª) Valor da célula < 10 → preenchimento amarelo; 2ª) Valor da célula = 0 → preenchimento vermelho. Nenhuma tem *Parar se Verdadeiro* marcado.",
+      "A célula B7, que contém 0, será exibida com preenchimento:"
+    ],
+    "dicas": [
+      "As duas regras são verdadeiras para o zero. Quando os formatos conflitam, a ordem decide."
+    ],
+    "explicacao": [
+      "**Amarelo.** As duas regras valem para o 0, e as duas definem o preenchimento: vence a que está **mais acima** no Gerenciador.",
+      "Para o zero ficar vermelho, a regra *= 0* precisa subir (Mover para Cima)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-ordem-das-regras",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "amarelo."
+      },
+      {
+        "texto": "vermelho.",
+        "dica": "A regra do vermelho é verdadeira, mas está abaixo: no conflito de preenchimento, vence a de cima."
+      },
+      {
+        "texto": "laranja, pela combinação das duas cores.",
+        "dica": "O Excel não mistura preenchimentos: aplica o da regra com prioridade."
+      },
+      {
+        "texto": "nenhum, porque as regras se anulam.",
+        "dica": "Regras verdadeiras não se anulam: uma delas é aplicada."
+      },
+      {
+        "texto": "da regra criada por último, qualquer que seja a posição.",
+        "dica": "Quem decide é a posição na lista; a regra nova só entra no topo ao ser criada."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Formatação condicional"
+  },
+  {
+    "id": "f97c8a2d-1b32-5052-8e11-7b4fc9bba83b",
+    "slug": "destaque-orcado-realizado",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Orçado × realizado: quem estourou",
+    "enunciado": [
+      "Destaque em **vermelho** o **Realizado** (coluna C) de cada centro de custo que **gastou mais do que o próprio orçado** (coluna B, na mesma linha)."
+    ],
+    "dicas": [
+      "Cada linha tem o seu limite: o valor da regra não é um número fixo, é a célula ao lado. Use uma regra de fórmula.",
+      "Escreva a fórmula para a primeira célula (C2). Sem $, ela se ajusta sozinha nas outras linhas."
+    ],
+    "explicacao": [
+      "Selecione **C2:C11** → fórmula `=C2>B2`, em vermelho.",
+      "Marketing, TI, Comercial, Financeiro e Manutenção estouraram. Administrativo gastou exatamente o orçado: não estourou."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-orcado-realizado",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Fechamento de mês em controladoria: o orçamento de cada área é diferente. Uma regra que compara cada linha com o seu próprio orçado mostra na hora quem estourou.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 116,
+        "B": 96,
+        "C": 96,
+        "D": 24,
+        "E": 80,
+        "F": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Centro de custo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marketing"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "13800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "RH"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "7650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "TI"
+        },
+        "B4": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "15900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jurídico"
+        },
+        "B5": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Comercial"
+        },
+        "B6": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "23500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Financeiro"
+        },
+        "B7": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "5050",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Logística"
+        },
+        "B8": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "17200",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Manutenção"
+        },
+        "B9": {
+          "entrada": "4000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Compras"
+        },
+        "B10": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "C10": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Administrativo"
+        },
+        "B11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "C11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C4",
+          "C6",
+          "C7",
+          "C9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "C2:C11",
+            "formula": "=C2>B2",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "de51868a-4e70-5bb3-864f-71949c4c6134",
+    "slug": "destaque-orcado-realizado-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A linha inteira de quem estourou",
+    "enunciado": [
+      "Agora pinte de **vermelho** a **linha inteira** (A a C) dos centros de custo que **gastaram mais do que o orçado**."
+    ],
+    "dicas": [
+      "Na linha inteira, a fórmula é conferida também nas colunas A e B. O que precisa ficar fixo quando ela anda para o lado?"
+    ],
+    "explicacao": [
+      "**A2:C11** → `=$C2>$B2`, em vermelho.",
+      "Sem o $ antes das letras, na coluna A a fórmula viraria `=A2>…` e compararia outras colunas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-orcado-realizado",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 116,
+        "B": 96,
+        "C": 96,
+        "D": 24,
+        "E": 80,
+        "F": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Centro de custo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marketing"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "13800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "RH"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "7650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "TI"
+        },
+        "B4": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "15900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jurídico"
+        },
+        "B5": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Comercial"
+        },
+        "B6": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "23500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Financeiro"
+        },
+        "B7": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "5050",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Logística"
+        },
+        "B8": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "17200",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Manutenção"
+        },
+        "B9": {
+          "entrada": "4000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Compras"
+        },
+        "B10": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "C10": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Administrativo"
+        },
+        "B11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "C11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:C11",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "A4",
+          "B4",
+          "C4",
+          "A6",
+          "B6",
+          "C6",
+          "A7",
+          "B7",
+          "C7",
+          "A9",
+          "B9",
+          "C9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:C11",
+            "formula": "=$C2>$B2",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "07e12759-0c46-5d91-b97d-d45acd7ccd15",
+    "slug": "destaque-orcado-realizado-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Estouro de mais de R$ 1.000",
+    "enunciado": [
+      "Destaque em **amarelo** o **Realizado** dos centros de custo que passaram do orçado em **mais de R$ 1.000**."
+    ],
+    "dicas": [
+      "O estouro é a diferença entre o realizado e o orçado."
+    ],
+    "explicacao": [
+      "**C2:C11** → `=C2-B2>1000`, em amarelo.",
+      "Só Marketing (R$ 1.800) e Comercial (R$ 3.500). TI estourou R$ 900: abaixo do corte."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-orcado-realizado",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 116,
+        "B": 96,
+        "C": 96,
+        "D": 24,
+        "E": 80,
+        "F": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Centro de custo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marketing"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "13800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "RH"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "7650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "TI"
+        },
+        "B4": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "15900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jurídico"
+        },
+        "B5": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Comercial"
+        },
+        "B6": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "23500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Financeiro"
+        },
+        "B7": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "5050",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Logística"
+        },
+        "B8": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "17200",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Manutenção"
+        },
+        "B9": {
+          "entrada": "4000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Compras"
+        },
+        "B10": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "C10": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Administrativo"
+        },
+        "B11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "C11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C6"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "C2:C11",
+            "formula": "=C2-B2>1000",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "f9aa8871-2ddc-5fbc-98ed-2bda500fadc5",
+    "slug": "destaque-orcado-realizado-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: 10% a mais não é +10%",
+    "enunciado": [
+      "A diretoria tolera um estouro de até **10%** (a tolerância está em **F1**). Destaque em **vermelho** o **Realizado** de quem passou do orçado **em mais de 10%**."
+    ],
+    "dicas": [
+      "10% a mais de R$ 12.000 é R$ 13.200. Que conta leva de 12.000 a 13.200?",
+      "Somar 10% a um valor em reais soma 0,10 real. Multiplique pelo fator."
+    ],
+    "explicacao": [
+      "**C2:C11** → `=C2>B2*(1+$F$1)`, em vermelho (ou `=C2/B2-1>$F$1`).",
+      "Erro comum: `=C2>B2+10%`. Para o Excel, 10% é 0,1: a fórmula compara com o orçado mais 10 centavos e pinta TI e Financeiro, que estouraram só 6% e 1%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-orcado-realizado",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 6,
+      "larguras": {
+        "A": 116,
+        "B": 96,
+        "C": 96,
+        "D": 24,
+        "E": 80,
+        "F": 56
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Centro de custo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marketing"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "13800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "RH"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "7650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "TI"
+        },
+        "B4": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "15900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Jurídico"
+        },
+        "B5": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Comercial"
+        },
+        "B6": {
+          "entrada": "20000",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "23500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Financeiro"
+        },
+        "B7": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "5050",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Logística"
+        },
+        "B8": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "17200",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Manutenção"
+        },
+        "B9": {
+          "entrada": "4000",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Compras"
+        },
+        "B10": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "C10": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Administrativo"
+        },
+        "B11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "C11": {
+          "entrada": "7000",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Tolerância",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "10%",
+          "formato": "percentual"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "C2:C11",
+        "esperado": [
+          "C2",
+          "C6",
+          "C9"
+        ],
+        "estilo": "vermelho"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "C2:C11",
+            "formula": "=C2>B2*(1+$F$1)",
+            "estilo": "vermelho"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "470ad693-e4b5-516d-a0cc-8da88807334e",
+    "slug": "destaque-orcado-realizado-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 95,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: tolerância em porcentagem",
+    "enunciado": [
+      "Em uma planilha de controle orçamentário, a coluna B traz o valor orçado e a coluna C o realizado de cada área (linhas 2 a 11). A célula F1 contém a tolerância de 10%.",
+      "Para destacar em C2:C11 apenas as áreas que gastaram **mais de 10% acima** do próprio orçado, a fórmula da regra deve ser:"
+    ],
+    "dicas": [
+      "Teste as alternativas na planilha: em C2, o realizado (R$ 13.000) passou do orçado (R$ 12.000), mas em menos de 10%."
+    ],
+    "explicacao": [
+      "`=C2>B2*(1+$F$1)`: o limite é o orçado vezes 1,1 (R$ 13.200). Os R$ 13.000 da linha 2 não passam.",
+      "`=C2>B2+$F$1` soma 0,1 real ao orçado e destacaria a linha 2."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-orcado-realizado",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 6,
+      "colunas": 7,
+      "larguras": {
+        "A": 96,
+        "B": 84,
+        "C": 84,
+        "E": 72,
+        "F": 48
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Orçado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Obras"
+        },
+        "B2": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "13000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Saúde"
+        },
+        "B3": {
+          "entrada": "8000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "9200",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Tolerância",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "10%",
+          "formato": "percentual"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "=C2>B2+$F$1",
+        "dica": "10% vale 0,1: a fórmula compara com o orçado mais 10 centavos."
+      },
+      {
+        "texto": "=C2>B2*$F$1",
+        "dica": "B2*10% é só um décimo do orçado: quase todo realizado passaria."
+      },
+      {
+        "texto": "=C2>B2*(1+$F$1)"
+      },
+      {
+        "texto": "=C2>$B$2*(1+$F$1)",
+        "dica": "Com $B$2, todas as áreas seriam comparadas com o orçado da primeira."
+      },
+      {
+        "texto": "=C2>B2*(1+F1)",
+        "dica": "Sem $ em F1, a referência desce junto: na linha 3 vira F2, que está vazia."
+      }
+    ],
+    "correta": 2,
+    "banca": "Vunesp",
+    "tema": "Formatação condicional",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=C2>B2*(1+$F$1)",
+        "esperado": false
+      },
+      {
+        "formula": "=C2>B2+$F$1",
+        "esperado": true
+      }
+    ]
+  },
+  {
+    "id": "6f884df9-602c-5206-9c06-300b83ac76b7",
+    "slug": "destaque-caso-painel-prazos",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso completo: o painel de prazos",
+    "enunciado": [
+      "Monte o painel de prazos do escritório, pintando a **linha inteira** (A a E) de cada processo. A data de hoje está em **H1**.",
+      "**Vermelho**: prazo **vencido** (antes de hoje) e ainda **Pendente**. **Amarelo**: **Pendente** que vence **de hoje até daqui a 3 dias**. **Verde**: já **Protocolado** (qualquer prazo)."
+    ],
+    "dicas": [
+      "Três regras de fórmula na linha inteira, todas com $ antes das letras e $H$1 travado.",
+      "Se duas regras puderem pintar a mesma linha, confira no Gerenciador quem fica em cima. Escrever cada condição completa (com E) evita a briga."
+    ],
+    "explicacao": [
+      "Em **A2:E13**: vermelho `=E($D2<$H$1;$E2=\"Pendente\")`; amarelo `=E($D2>=$H$1;$D2<=$H$1+3;$E2=\"Pendente\")`; verde `=$E2=\"Protocolado\"`.",
+      "O P-303 venceu, mas já foi protocolado: verde. O P-309 vence dia 22, quatro dias depois de hoje: sem cor. Com as condições completas, nenhuma regra briga com a outra e a ordem deixa de importar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-caso-painel-prazos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O caso que todo escritório monta: um painel que mostra, ao abrir o arquivo, o que venceu, o que vence nos próximos dias e o que já foi resolvido. Três regras, uma ordem e nenhuma surpresa.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "larguras": {
+        "A": 56,
+        "B": 128,
+        "C": 104,
+        "D": 84,
+        "E": 88,
+        "F": 24,
+        "G": 56,
+        "H": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-301"
+        },
+        "B2": {
+          "entrada": "Clínica Vida"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "P-302"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "E3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "P-303"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Réplica"
+        },
+        "D4": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "E4": {
+          "entrada": "Protocolado"
+        },
+        "A5": {
+          "entrada": "P-304"
+        },
+        "B5": {
+          "entrada": "Padaria Trigo"
+        },
+        "C5": {
+          "entrada": "Embargos"
+        },
+        "D5": {
+          "entrada": "27/11/2026",
+          "formato": "data"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "P-305"
+        },
+        "B6": {
+          "entrada": "Marta Lima"
+        },
+        "C6": {
+          "entrada": "Petição inicial"
+        },
+        "D6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "E6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "P-306"
+        },
+        "B7": {
+          "entrada": "Transportes Rápido"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "P-307"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Recurso"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "P-308"
+        },
+        "B9": {
+          "entrada": "Pedro Alves"
+        },
+        "C9": {
+          "entrada": "Réplica"
+        },
+        "D9": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "E9": {
+          "entrada": "Protocolado"
+        },
+        "A10": {
+          "entrada": "P-309"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Embargos"
+        },
+        "D10": {
+          "entrada": "22/11/2026",
+          "formato": "data"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "P-310"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Contestação"
+        },
+        "D11": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "E11": {
+          "entrada": "Protocolado"
+        },
+        "A12": {
+          "entrada": "P-311"
+        },
+        "B12": {
+          "entrada": "Clínica Vida"
+        },
+        "C12": {
+          "entrada": "Petição inicial"
+        },
+        "D12": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "E12": {
+          "entrada": "Pendente"
+        },
+        "A13": {
+          "entrada": "P-312"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Recurso"
+        },
+        "D13": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "E13": {
+          "entrada": "Protocolado"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:E13",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "E2",
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "E3",
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "E4",
+          "A6",
+          "B6",
+          "C6",
+          "D6",
+          "E6",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "E7",
+          "A8",
+          "B8",
+          "C8",
+          "D8",
+          "E8",
+          "A9",
+          "B9",
+          "C9",
+          "D9",
+          "E9",
+          "A11",
+          "B11",
+          "C11",
+          "D11",
+          "E11",
+          "A12",
+          "B12",
+          "C12",
+          "D12",
+          "E12",
+          "A13",
+          "B13",
+          "C13",
+          "D13",
+          "E13"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:E2",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "E2"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A3:E3",
+        "esperado": [
+          "A3",
+          "B3",
+          "C3",
+          "D3",
+          "E3"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A4:E4",
+        "esperado": [
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "E4"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A6:E6",
+        "esperado": [
+          "A6",
+          "B6",
+          "C6",
+          "D6",
+          "E6"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A7:E7",
+        "esperado": [
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "E7"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A8:E8",
+        "esperado": [
+          "A8",
+          "B8",
+          "C8",
+          "D8",
+          "E8"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A9:E9",
+        "esperado": [
+          "A9",
+          "B9",
+          "C9",
+          "D9",
+          "E9"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A11:E11",
+        "esperado": [
+          "A11",
+          "B11",
+          "C11",
+          "D11",
+          "E11"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A12:E12",
+        "esperado": [
+          "A12",
+          "B12",
+          "C12",
+          "D12",
+          "E12"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A13:E13",
+        "esperado": [
+          "A13",
+          "B13",
+          "C13",
+          "D13",
+          "E13"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=E($D2<$H$1;$E2=\"Pendente\")",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=E($D2>=$H$1;$D2<=$H$1+3;$E2=\"Pendente\")",
+            "estilo": "amarelo"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=$E2=\"Protocolado\"",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "20c763fd-1f59-5878-8f59-5cd76f791eb5",
+    "slug": "destaque-caso-painel-prazos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Só a coluna do prazo",
+    "enunciado": [
+      "Só na coluna **Prazo** (D2:D13), sem olhar o status: **vermelho** para prazo **antes de hoje** e **amarelo** para prazo **de hoje até daqui a 3 dias**."
+    ],
+    "dicas": [
+      "Duas regras na mesma coluna. Datas antes de hoje também são menores que hoje + 3: escreva as condições para não brigarem, ou acerte a ordem."
+    ],
+    "explicacao": [
+      "**D2:D13** → vermelho `=D2<$H$1` e amarelo `=E(D2>=$H$1;D2<=$H$1+3)`.",
+      "Outra saída: amarelo `=D2<=$H$1+3` com o vermelho **acima** dele no Gerenciador."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-caso-painel-prazos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "larguras": {
+        "A": 56,
+        "B": 128,
+        "C": 104,
+        "D": 84,
+        "E": 88,
+        "F": 24,
+        "G": 56,
+        "H": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-301"
+        },
+        "B2": {
+          "entrada": "Clínica Vida"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "P-302"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "E3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "P-303"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Réplica"
+        },
+        "D4": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "E4": {
+          "entrada": "Protocolado"
+        },
+        "A5": {
+          "entrada": "P-304"
+        },
+        "B5": {
+          "entrada": "Padaria Trigo"
+        },
+        "C5": {
+          "entrada": "Embargos"
+        },
+        "D5": {
+          "entrada": "27/11/2026",
+          "formato": "data"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "P-305"
+        },
+        "B6": {
+          "entrada": "Marta Lima"
+        },
+        "C6": {
+          "entrada": "Petição inicial"
+        },
+        "D6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "E6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "P-306"
+        },
+        "B7": {
+          "entrada": "Transportes Rápido"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "P-307"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Recurso"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "P-308"
+        },
+        "B9": {
+          "entrada": "Pedro Alves"
+        },
+        "C9": {
+          "entrada": "Réplica"
+        },
+        "D9": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "E9": {
+          "entrada": "Protocolado"
+        },
+        "A10": {
+          "entrada": "P-309"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Embargos"
+        },
+        "D10": {
+          "entrada": "22/11/2026",
+          "formato": "data"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "P-310"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Contestação"
+        },
+        "D11": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "E11": {
+          "entrada": "Protocolado"
+        },
+        "A12": {
+          "entrada": "P-311"
+        },
+        "B12": {
+          "entrada": "Clínica Vida"
+        },
+        "C12": {
+          "entrada": "Petição inicial"
+        },
+        "D12": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "E12": {
+          "entrada": "Pendente"
+        },
+        "A13": {
+          "entrada": "P-312"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Recurso"
+        },
+        "D13": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "E13": {
+          "entrada": "Protocolado"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "D2:D13",
+        "esperado": [
+          "D2",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D8",
+          "D11",
+          "D12",
+          "D13"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D2:D2",
+        "esperado": [
+          "D2"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D3:D3",
+        "esperado": [
+          "D3"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D4:D4",
+        "esperado": [
+          "D4"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D6:D6",
+        "esperado": [
+          "D6"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D7:D7",
+        "esperado": [
+          "D7"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D8:D8",
+        "esperado": [
+          "D8"
+        ],
+        "estilo": "amarelo"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D11:D11",
+        "esperado": [
+          "D11"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D12:D12",
+        "esperado": [
+          "D12"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "D13:D13",
+        "esperado": [
+          "D13"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "D2:D13",
+            "formula": "=D2<$H$1",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "D2:D13",
+            "formula": "=E(D2>=$H$1;D2<=$H$1+3)",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "3054cf4d-ced9-5dd3-b305-e9d0a9dd65a4",
+    "slug": "destaque-caso-painel-prazos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Os pendentes do cliente escolhido",
+    "enunciado": [
+      "O cliente que vem à reunião está em **H2**. Pinte de **amarelo** a **linha inteira** dos processos **desse cliente** que ainda estão **Pendentes**."
+    ],
+    "dicas": [
+      "O cliente vem de uma célula, não de um texto escrito na regra. Travou o H2?"
+    ],
+    "explicacao": [
+      "**A2:E13** → `=E($B2=$H$2;$E2=\"Pendente\")`, em amarelo.",
+      "Com o cliente numa célula, basta trocar H2 para preparar a próxima reunião."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-caso-painel-prazos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "larguras": {
+        "A": 56,
+        "B": 128,
+        "C": 104,
+        "D": 84,
+        "E": 88,
+        "F": 24,
+        "G": 56,
+        "H": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-301"
+        },
+        "B2": {
+          "entrada": "Clínica Vida"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "P-302"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "E3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "P-303"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Réplica"
+        },
+        "D4": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "E4": {
+          "entrada": "Protocolado"
+        },
+        "A5": {
+          "entrada": "P-304"
+        },
+        "B5": {
+          "entrada": "Padaria Trigo"
+        },
+        "C5": {
+          "entrada": "Embargos"
+        },
+        "D5": {
+          "entrada": "27/11/2026",
+          "formato": "data"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "P-305"
+        },
+        "B6": {
+          "entrada": "Marta Lima"
+        },
+        "C6": {
+          "entrada": "Petição inicial"
+        },
+        "D6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "E6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "P-306"
+        },
+        "B7": {
+          "entrada": "Transportes Rápido"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "P-307"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Recurso"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "P-308"
+        },
+        "B9": {
+          "entrada": "Pedro Alves"
+        },
+        "C9": {
+          "entrada": "Réplica"
+        },
+        "D9": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "E9": {
+          "entrada": "Protocolado"
+        },
+        "A10": {
+          "entrada": "P-309"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Embargos"
+        },
+        "D10": {
+          "entrada": "22/11/2026",
+          "formato": "data"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "P-310"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Contestação"
+        },
+        "D11": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "E11": {
+          "entrada": "Protocolado"
+        },
+        "A12": {
+          "entrada": "P-311"
+        },
+        "B12": {
+          "entrada": "Clínica Vida"
+        },
+        "C12": {
+          "entrada": "Petição inicial"
+        },
+        "D12": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "E12": {
+          "entrada": "Pendente"
+        },
+        "A13": {
+          "entrada": "P-312"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Recurso"
+        },
+        "D13": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "E13": {
+          "entrada": "Protocolado"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "G2": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Clínica Vida"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:E13",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "E2",
+          "A12",
+          "B12",
+          "C12",
+          "D12",
+          "E12"
+        ],
+        "estilo": "amarelo"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=E($B2=$H$2;$E2=\"Pendente\")",
+            "estilo": "amarelo"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "178274ba-d9b8-5736-b04e-e5e8db6cd688",
+    "slug": "destaque-caso-painel-prazos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o protocolado que venceu",
+    "enunciado": [
+      "Pinte a **linha inteira** (A a E): **vermelho** para os prazos **vencidos** (antes de hoje, em H1) e **verde** para os processos já **Protocolados**.",
+      "Processo protocolado já foi cumprido: fica **verde**, mesmo com o prazo vencido."
+    ],
+    "dicas": [
+      "Há processos protocolados com prazo antes de hoje: as duas regras querem pintar essas linhas.",
+      "Ou o vermelho também exige Pendente, ou o verde fica acima dele no Gerenciador."
+    ],
+    "explicacao": [
+      "**A2:E13** → verde `=$E2=\"Protocolado\"` e vermelho `=E($D2<$H$1;$E2=\"Pendente\")` (ou vermelho `=$D2<$H$1` com o verde **acima** no Gerenciador).",
+      "Quem cria o vermelho só com a data, depois do verde, pinta de vermelho o P-303 e o P-310, que já foram protocolados."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-caso-painel-prazos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "larguras": {
+        "A": 56,
+        "B": 128,
+        "C": 104,
+        "D": 84,
+        "E": 88,
+        "F": 24,
+        "G": 56,
+        "H": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Providência",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-301"
+        },
+        "B2": {
+          "entrada": "Clínica Vida"
+        },
+        "C2": {
+          "entrada": "Contestação"
+        },
+        "D2": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "P-302"
+        },
+        "B3": {
+          "entrada": "Construtora Alfa"
+        },
+        "C3": {
+          "entrada": "Recurso"
+        },
+        "D3": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "E3": {
+          "entrada": "Pendente"
+        },
+        "A4": {
+          "entrada": "P-303"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Réplica"
+        },
+        "D4": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "E4": {
+          "entrada": "Protocolado"
+        },
+        "A5": {
+          "entrada": "P-304"
+        },
+        "B5": {
+          "entrada": "Padaria Trigo"
+        },
+        "C5": {
+          "entrada": "Embargos"
+        },
+        "D5": {
+          "entrada": "27/11/2026",
+          "formato": "data"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "P-305"
+        },
+        "B6": {
+          "entrada": "Marta Lima"
+        },
+        "C6": {
+          "entrada": "Petição inicial"
+        },
+        "D6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "E6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "P-306"
+        },
+        "B7": {
+          "entrada": "Transportes Rápido"
+        },
+        "C7": {
+          "entrada": "Contestação"
+        },
+        "D7": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "P-307"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Recurso"
+        },
+        "D8": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "P-308"
+        },
+        "B9": {
+          "entrada": "Pedro Alves"
+        },
+        "C9": {
+          "entrada": "Réplica"
+        },
+        "D9": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "E9": {
+          "entrada": "Protocolado"
+        },
+        "A10": {
+          "entrada": "P-309"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Embargos"
+        },
+        "D10": {
+          "entrada": "22/11/2026",
+          "formato": "data"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "P-310"
+        },
+        "B11": {
+          "entrada": "Carlos Dias"
+        },
+        "C11": {
+          "entrada": "Contestação"
+        },
+        "D11": {
+          "entrada": "14/11/2026",
+          "formato": "data"
+        },
+        "E11": {
+          "entrada": "Protocolado"
+        },
+        "A12": {
+          "entrada": "P-311"
+        },
+        "B12": {
+          "entrada": "Clínica Vida"
+        },
+        "C12": {
+          "entrada": "Petição inicial"
+        },
+        "D12": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "E12": {
+          "entrada": "Pendente"
+        },
+        "A13": {
+          "entrada": "P-312"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Recurso"
+        },
+        "D13": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "E13": {
+          "entrada": "Protocolado"
+        },
+        "G1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:E13",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "E2",
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "E4",
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "E7",
+          "A9",
+          "B9",
+          "C9",
+          "D9",
+          "E9",
+          "A11",
+          "B11",
+          "C11",
+          "D11",
+          "E11",
+          "A12",
+          "B12",
+          "C12",
+          "D12",
+          "E12",
+          "A13",
+          "B13",
+          "C13",
+          "D13",
+          "E13"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A2:E2",
+        "esperado": [
+          "A2",
+          "B2",
+          "C2",
+          "D2",
+          "E2"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A4:E4",
+        "esperado": [
+          "A4",
+          "B4",
+          "C4",
+          "D4",
+          "E4"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A7:E7",
+        "esperado": [
+          "A7",
+          "B7",
+          "C7",
+          "D7",
+          "E7"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A9:E9",
+        "esperado": [
+          "A9",
+          "B9",
+          "C9",
+          "D9",
+          "E9"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A11:E11",
+        "esperado": [
+          "A11",
+          "B11",
+          "C11",
+          "D11",
+          "E11"
+        ],
+        "estilo": "verde"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A12:E12",
+        "esperado": [
+          "A12",
+          "B12",
+          "C12",
+          "D12",
+          "E12"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "A13:E13",
+        "esperado": [
+          "A13",
+          "B13",
+          "C13",
+          "D13",
+          "E13"
+        ],
+        "estilo": "verde"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=$D2<$H$1",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "A2:E13",
+            "formula": "=$E2=\"Protocolado\"",
+            "estilo": "verde"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "condicional": true
+    }
+  },
+  {
+    "id": "b7e7cff0-693f-50ec-8c27-3dd734e5f4ff",
+    "slug": "destaque-caso-painel-prazos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "destaque",
+    "ordem": 105,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o painel com três regras",
+    "enunciado": [
+      "Um painel de prazos tem a data de hoje (18/11/2026) em H1, o prazo na coluna D e o status na coluna E. No intervalo A2:E13, há três regras de fórmula, nesta ordem no Gerenciador (de cima para baixo):",
+      "1ª) `=$E2=\"Protocolado\"` → verde; 2ª) `=$D2<$H$1` → vermelho; 3ª) `=$D2<=$H$1+3` → amarelo.",
+      "Uma linha com prazo 10/11/2026 e status Pendente será exibida em:"
+    ],
+    "dicas": [
+      "Confira, de cima para baixo, quais regras são verdadeiras para essa linha."
+    ],
+    "explicacao": [
+      "**Vermelho.** A 1ª regra é falsa (não está protocolado). A 2ª e a 3ª são verdadeiras (10/11 é antes de hoje e também antes de hoje + 3), e no conflito vence a de cima: vermelho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "destaque-caso-painel-prazos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "verde.",
+        "dica": "A regra do verde exige status Protocolado, e a linha está Pendente."
+      },
+      {
+        "texto": "vermelho."
+      },
+      {
+        "texto": "amarelo.",
+        "dica": "A 3ª regra também é verdadeira, mas está abaixo da vermelha."
+      },
+      {
+        "texto": "sem cor, pois duas regras verdadeiras se anulam.",
+        "dica": "Regras verdadeiras não se anulam: vale a de maior prioridade."
+      },
+      {
+        "texto": "vermelho e amarelo, em faixas.",
+        "dica": "O preenchimento é um só: o da regra que vence."
+      }
+    ],
+    "correta": 1,
+    "banca": "FGV",
+    "tema": "Formatação condicional"
+  },
+  {
     "id": "8cfc1046-4683-5090-858d-e92cdf64dc7b",
     "slug": "teste-destaque-1",
     "trilha": "excel-ptbr",
@@ -4676,135 +10334,213 @@
     "trilha": "excel-ptbr",
     "modulo": "destaque",
     "ordem": 202,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Clientes repetidos",
+    "versao": 2,
+    "titulo": "Vencidas e pendentes",
     "enunciado": [
-      "Destaque em **vermelho** os **clientes que aparecem mais de uma vez**."
+      "Hoje (em **G1**) é 13/11/2026. Pinte de **vermelho** a **linha inteira** (A a D) das contas **vencidas** (antes de hoje) que ainda estão **Pendentes**."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "destaque-pedidos-repetidos",
+    "revisar": "destaque-formula-e",
     "teste": true,
     "type": "ferramenta",
     "grade": {
-      "linhas": 11,
-      "colunas": 5,
+      "linhas": 13,
+      "colunas": 7,
       "larguras": {
-        "A": 72,
-        "B": 84,
-        "C": 96,
-        "D": 40,
-        "E": 40
+        "A": 136,
+        "B": 88,
+        "C": 88,
+        "D": 76,
+        "E": 24,
+        "F": 48,
+        "G": 84
       },
       "celulas": {
         "A1": {
-          "entrada": "Pedido",
+          "entrada": "Fornecedor",
           "negrito": true
         },
         "B1": {
-          "entrada": "Cliente",
+          "entrada": "Vencimento",
           "negrito": true
         },
         "C1": {
           "entrada": "Valor",
           "negrito": true
         },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
         "A2": {
-          "entrada": "P101"
+          "entrada": "Energia Sul"
         },
         "B2": {
-          "entrada": "Ana"
+          "entrada": "10/11/2026",
+          "formato": "data"
         },
         "C2": {
-          "entrada": "320",
+          "entrada": "1840",
           "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Pago"
         },
         "A3": {
-          "entrada": "P102"
+          "entrada": "Aluguel Sala 302"
         },
         "B3": {
-          "entrada": "Bruno"
+          "entrada": "15/11/2026",
+          "formato": "data"
         },
         "C3": {
-          "entrada": "150",
+          "entrada": "6500",
           "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Pendente"
         },
         "A4": {
-          "entrada": "P103"
+          "entrada": "Papelaria Central"
         },
         "B4": {
-          "entrada": "Carla"
+          "entrada": "25/11/2026",
+          "formato": "data"
         },
         "C4": {
-          "entrada": "980",
-          "formato": "moeda"
-        },
-        "A5": {
-          "entrada": "P102"
-        },
-        "B5": {
-          "entrada": "Bruno"
-        },
-        "C5": {
-          "entrada": "150",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "P104"
-        },
-        "B6": {
-          "entrada": "Davi"
-        },
-        "C6": {
-          "entrada": "410",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "P105"
-        },
-        "B7": {
-          "entrada": "ANA"
-        },
-        "C7": {
-          "entrada": "75",
-          "formato": "moeda"
-        },
-        "A8": {
-          "entrada": "P101"
-        },
-        "B8": {
-          "entrada": "Eva"
-        },
-        "C8": {
           "entrada": "320",
           "formato": "moeda"
         },
+        "D4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "C5": {
+          "entrada": "249",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Contabilidade Silva"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "C6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Pendente"
+        },
+        "A7": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "C7": {
+          "entrada": "5800",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Pago"
+        },
+        "A8": {
+          "entrada": "Software Gestão"
+        },
+        "B8": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "C8": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Pendente"
+        },
         "A9": {
-          "entrada": "P106"
+          "entrada": "Água e Esgoto"
         },
         "B9": {
-          "entrada": "Fábio"
+          "entrada": "14/11/2026",
+          "formato": "data"
         },
         "C9": {
-          "entrada": "640",
+          "entrada": "215",
           "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Pago"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "08/11/2026",
+          "formato": "data"
+        },
+        "C10": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Café & Cia"
+        },
+        "B11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C11": {
+          "entrada": "160",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Pago"
+        },
+        "F1": {
+          "entrada": "Hoje",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "13/11/2026",
+          "formato": "data"
         }
       }
     },
     "verificacoes": [
       {
         "tipo": "destacadas",
-        "intervalo": "B2:B9",
+        "intervalo": "A2:D11",
         "esperado": [
-          "B2",
-          "B3",
+          "A5",
           "B5",
-          "B7"
+          "C5",
+          "D5",
+          "A10",
+          "B10",
+          "C10",
+          "D10"
         ],
         "estilo": "vermelho"
       }
@@ -4813,8 +10549,9 @@
       "recursos": {
         "condicionais": [
           {
-            "tipo": "duplicados",
-            "intervalo": "B2:B9",
+            "tipo": "formula",
+            "intervalo": "A2:D11",
+            "formula": "=E($B2<$G$1;$D2=\"Pendente\")",
             "estilo": "vermelho"
           }
         ]
@@ -5044,198 +10781,182 @@
     "trilha": "excel-ptbr",
     "modulo": "destaque",
     "ordem": 204,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
     "versao": 2,
-    "titulo": "Próximos dias",
+    "titulo": "O zerado em vermelho",
     "enunciado": [
-      "Destaque em **amarelo** os prazos que vencem **de 19/11/2026 a 25/11/2026**, incluindo os dois dias."
+      "Na coluna **Estoque**, o produto **zerado** tem que aparecer em **vermelho** e o **abaixo do mínimo**, em **amarelo**. As duas regras já existem. Faça os zerados ficarem vermelhos, sem apagar regra."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "destaque-prazos-vencidos",
+    "revisar": "destaque-ordem-das-regras",
     "teste": true,
     "type": "ferramenta",
     "grade": {
       "linhas": 13,
-      "colunas": 7,
+      "colunas": 5,
       "larguras": {
-        "A": 64,
-        "B": 128,
-        "C": 112,
-        "D": 84,
-        "E": 24,
-        "F": 48,
-        "G": 84
+        "A": 136,
+        "B": 72,
+        "C": 72,
+        "D": 40,
+        "E": 40
       },
       "celulas": {
         "A1": {
-          "entrada": "Processo",
+          "entrada": "Produto",
           "negrito": true
         },
         "B1": {
-          "entrada": "Cliente",
+          "entrada": "Estoque",
           "negrito": true
         },
         "C1": {
-          "entrada": "Providência",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Prazo",
+          "entrada": "Mínimo",
           "negrito": true
         },
         "A2": {
-          "entrada": "P-101"
+          "entrada": "Toner preto"
         },
         "B2": {
-          "entrada": "Mercado Bom Preço"
+          "entrada": "0"
         },
         "C2": {
-          "entrada": "Contestação"
-        },
-        "D2": {
-          "entrada": "10/11/2026",
-          "formato": "data"
+          "entrada": "4"
         },
         "A3": {
-          "entrada": "P-102"
+          "entrada": "Envelope pardo"
         },
         "B3": {
-          "entrada": "João Ferreira"
+          "entrada": "0"
         },
         "C3": {
-          "entrada": "Recurso"
-        },
-        "D3": {
-          "entrada": "25/11/2026",
-          "formato": "data"
+          "entrada": "100"
         },
         "A4": {
-          "entrada": "P-103"
+          "entrada": "Fita adesiva"
         },
         "B4": {
-          "entrada": "Clínica Vida"
+          "entrada": "0"
         },
         "C4": {
-          "entrada": "Petição inicial"
-        },
-        "D4": {
-          "entrada": "17/11/2026",
-          "formato": "data"
+          "entrada": "6"
         },
         "A5": {
-          "entrada": "P-104"
+          "entrada": "Cartucho colorido"
         },
         "B5": {
-          "entrada": "Ana Souza"
+          "entrada": "2"
         },
         "C5": {
-          "entrada": "Réplica"
-        },
-        "D5": {
-          "entrada": "18/11/2026",
-          "formato": "data"
+          "entrada": "4"
         },
         "A6": {
-          "entrada": "P-105"
+          "entrada": "Grampeador"
         },
         "B6": {
-          "entrada": "Transportes Rápido"
+          "entrada": "6"
         },
         "C6": {
-          "entrada": "Recurso"
-        },
-        "D6": {
-          "entrada": "02/12/2026",
-          "formato": "data"
+          "entrada": "3"
         },
         "A7": {
-          "entrada": "P-106"
+          "entrada": "Clips (caixa)"
         },
         "B7": {
-          "entrada": "Pedro Alves"
+          "entrada": "8"
         },
         "C7": {
-          "entrada": "Contestação"
-        },
-        "D7": {
-          "entrada": "05/11/2026",
-          "formato": "data"
+          "entrada": "10"
         },
         "A8": {
-          "entrada": "P-107"
+          "entrada": "Papel A4 (caixa)"
         },
         "B8": {
-          "entrada": "Padaria Trigo"
+          "entrada": "12"
         },
         "C8": {
-          "entrada": "Embargos"
-        },
-        "D8": {
-          "entrada": "21/11/2026",
-          "formato": "data"
+          "entrada": "10"
         },
         "A9": {
-          "entrada": "P-108"
+          "entrada": "Post-it"
         },
         "B9": {
-          "entrada": "Marta Lima"
+          "entrada": "25"
         },
         "C9": {
-          "entrada": "Petição inicial"
-        },
-        "D9": {
-          "entrada": "30/11/2026",
-          "formato": "data"
+          "entrada": "20"
         },
         "A10": {
-          "entrada": "P-109"
+          "entrada": "Caneta azul"
         },
         "B10": {
-          "entrada": "Construtora Alfa"
+          "entrada": "35"
         },
         "C10": {
-          "entrada": "Réplica"
-        },
-        "D10": {
-          "entrada": "12/11/2026",
-          "formato": "data"
+          "entrada": "50"
         },
         "A11": {
-          "entrada": "P-110"
+          "entrada": "Pasta suspensa"
         },
         "B11": {
-          "entrada": "Carlos Dias"
+          "entrada": "40"
         },
         "C11": {
-          "entrada": "Recurso"
-        },
-        "D11": {
-          "entrada": "19/11/2026",
-          "formato": "data"
-        },
-        "F1": {
-          "entrada": "Hoje",
-          "negrito": true
-        },
-        "G1": {
-          "entrada": "18/11/2026",
-          "formato": "data"
+          "entrada": "30"
         }
+      },
+      "recursos": {
+        "condicionais": [
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "0",
+            "estilo": "vermelho"
+          },
+          {
+            "tipo": "formula",
+            "intervalo": "B2:B11",
+            "formula": "=B2<C2",
+            "estilo": "amarelo"
+          }
+        ]
       }
     },
     "verificacoes": [
       {
         "tipo": "destacadas",
-        "intervalo": "D2:D11",
+        "intervalo": "B2:B11",
         "esperado": [
-          "D3",
-          "D8",
-          "D11"
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B7",
+          "B10"
+        ]
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B2:B4",
+        "esperado": [
+          "B2",
+          "B3",
+          "B4"
+        ],
+        "estilo": "vermelho"
+      },
+      {
+        "tipo": "destacadas",
+        "intervalo": "B5:B11",
+        "esperado": [
+          "B5",
+          "B7",
+          "B10"
         ],
         "estilo": "amarelo"
       }
@@ -5244,11 +10965,16 @@
       "recursos": {
         "condicionais": [
           {
-            "tipo": "entre",
-            "intervalo": "D2:D11",
-            "valor": "19/11/2026",
-            "valor2": "25/11/2026",
+            "tipo": "formula",
+            "intervalo": "B2:B11",
+            "formula": "=B2<C2",
             "estilo": "amarelo"
+          },
+          {
+            "tipo": "igual",
+            "intervalo": "B2:B11",
+            "valor": "0",
+            "estilo": "vermelho"
           }
         ]
       }

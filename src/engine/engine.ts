@@ -1321,6 +1321,18 @@ export class Planilha {
     });
   }
 
+  /**
+   * "Mover para Cima" (`+1`, mais prioridade) ou "Mover para Baixo" (`-1`) no
+   * Gerenciador. A prioridade é a posição: a última da lista vale primeiro.
+   */
+  moverRegra(i: number, sentido: 1 | -1) {
+    const j = i + sentido;
+    if (!this.condicionais[i] || !this.condicionais[j]) return;
+    this.mudarEstado(() => {
+      [this.condicionais[i], this.condicionais[j]] = [this.condicionais[j], this.condicionais[i]];
+    });
+  }
+
   /** Limpar Regras: das que tocam o intervalo, ou da planilha inteira (`null`). */
   limparRegras(intervalo: Intervalo | null) {
     const toca = (r: RegraCondicional) => {
@@ -1374,7 +1386,8 @@ export class Planilha {
         const tipo = typeof x.valor === "number" ? "NUMBER_RAW" : typeof x.valor === "string" ? "STRING" : typeof x.valor === "boolean" ? "BOOLEAN" : "ERROR";
         this.calculo.definir(p.linha, p.coluna, { valor: x.valor, tipo }, this.aba);
         if (x.negrito) this.negritosDinamicas.add(end);
-        if (x.formatoDe) {
+        if (x.formato) this.formatosDinamicas.set(end, x.formato);
+        else if (x.formatoDe) {
           const f = this.formatoDoCampo(origem, x.formatoDe);
           if (f) this.formatosDinamicas.set(end, f);
         }
