@@ -428,3 +428,15 @@ Variações a escrever: `"<>Pago"` contando linhas em branco; SOMASE copiado sem
 | Para que serve INDIRETO | IBADE | 2024 ([QConcursos c5de82ca-34](https://www.qconcursos.com/questoes-de-concursos/questoes/c5de82ca-34)) |
 | Enunciado com premissa falsa ("o Excel não permite referência entre planilhas") | Banca não mostrada | [QConcursos 7ead928a-88](https://www.qconcursos.com/questoes-de-concursos/questoes/7ead928a-88) |
 | Aba movida para fora do intervalo 3D; INDIRETO montando o nome da aba | **Proposta inédita** | Nenhuma questão real localizada |
+
+## Publicadas no site (25/11/2026)
+
+Com o critério "Tema já cobrado" (qualquer banca, mesmo tema), foram para o site **as 9 anteriores + 16 candidatas** que tinham
+banca, órgão, ano **e link direto**: concurso-15, 20, 22, 24, 25, 28, nao-despesa-reembolsavel, ecel-vazia-horas-extras,
+caso-classificacao-clientes, cont-se-curinga-ltda, caso-relatorio-por-responsavel, caso-conferencia-de-cadastro,
+diatrabalho-prazo-processual, dinamica-contagem-status, grafico-resumo-formulas e abas-parametros-config. **Continuam a conferir**
+pelo dono: se alguma não bater, é só marcar aqui que eu tiro do site.
+
+Ficaram fora (link "provável", sem link, link de listagem ou ano tirado de pista antiga): concurso-23, concurso-29,
+somarproduto-total-do-pedido, procx-faixa-modo-correspondencia, procx-duas-condicoes, somases-periodo-datas, conciliacao-bancaria,
+dados-subtotal-outras-contas, dados-relatorio-contas, validacao-alerta-aviso, validacao-cadastro-clientes, abas-painel-processos.

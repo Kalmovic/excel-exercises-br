@@ -1088,6 +1088,10 @@
     "correta": 0,
     "banca": "Vunesp",
     "tema": "Erros",
+    "referencia": {
+      "prova": "Vunesp · Câmara Municipal de Campinas · Analista Legislativo · 2024",
+      "url": "https://opengabarito.com.br/questoes/5315589"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1479,6 +1483,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "PROCV",
+    "referencia": {
+      "prova": "FGV · Polícia Civil (RN) · Agente e Escrivão de Polícia Civil · 2021",
+      "url": "https://www.quizinho.com.br/questao/fgv-pc-rn-2021-agente-e-escrivao-de-policia-civil-substituto-2021-q32"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1608,6 +1616,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "Datas",
+    "referencia": {
+      "prova": "Cebraspe · AgSUS · Assistente de Projeto · 2026",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/provas/cespe-cebraspe-2026-agsus-assistente-de-projeto-perfil-3-uaps/questoes"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1782,6 +1794,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "ÍNDICE e CORRESP",
+    "referencia": {
+      "prova": "FGV · PMESP · Soldado PM 2ª Classe · 2024",
+      "url": "https://semperconcursos.com.br/questao/7473-informatica-pmesp-2024"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1840,6 +1856,10 @@
     "correta": 1,
     "banca": "Cebraspe",
     "tema": "MÉDIA",
+    "referencia": {
+      "prova": "Cebraspe · ARSAL · Analista de Regulação · 2026",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/ff06d5c9-9d"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1990,6 +2010,10 @@
     "correta": 1,
     "banca": "Cebraspe",
     "tema": "Arredondamento",
+    "referencia": {
+      "prova": "Quadrix · CAU-GO · Analista Fiscal · 2023",
+      "url": "https://arquivos.qconcursos.com/prova/arquivo_prova/96548/quadrix-2023-cau-go-analista-fiscal-prova.pdf"
+    },
     "comPlanilha": true,
     "conferir": [
       {
