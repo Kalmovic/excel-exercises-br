@@ -1,0 +1,4998 @@
+[
+  {
+    "slug": "soma",
+    "nome": "SOMA",
+    "ingles": "SUM",
+    "categoria": "fundamentos",
+    "paraQueServe": "Soma números, células ou intervalos inteiros de uma vez. É a função mais usada do Excel: total de vendas do mês, soma das despesas do cartão corporativo, total de horas da semana. Se um valor da lista mudar, o total se atualiza sozinho.",
+    "argumentos": [
+      {
+        "nome": "núm1",
+        "explicacao": "O primeiro número, célula ou intervalo a somar, como B2:B5."
+      },
+      {
+        "nome": "núm2",
+        "opcional": true,
+        "explicacao": "Outros números, células ou intervalos (até 255), separados por ponto e vírgula. Ex.: =SOMA(B2:B5;D2:D5)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quanto a loja vendeu no quadrimestre?",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ]
+      ],
+      "celula": "B6",
+      "formula": "=SOMA(B2:B5)",
+      "formato": "moeda",
+      "resultado": "R$ 4.760,00",
+      "explicacao": "1.200 + 950 + 1.480 + 1.130 = 4.760. Células vazias e textos dentro do intervalo são ignorados."
+    },
+    "cuidados": [
+      "Número digitado como texto (alinhado à esquerda, às vezes com um triângulo verde) não entra na soma. Converta com VALOR ou com Dados > Texto para Colunas.",
+      "Não coloque o total dentro do próprio intervalo (=SOMA(B2:B6) em B6): isso vira referência circular."
+    ],
+    "relacionadas": [
+      "somase",
+      "somases",
+      "subtotal",
+      "media"
+    ]
+  },
+  {
+    "slug": "media",
+    "nome": "MÉDIA",
+    "ingles": "AVERAGE",
+    "categoria": "fundamentos",
+    "paraQueServe": "Calcula a média aritmética: soma os números e divide pela quantidade. Serve para o ticket médio, a nota média de uma avaliação ou o gasto médio por mês com combustível.",
+    "argumentos": [
+      {
+        "nome": "núm1",
+        "explicacao": "O primeiro número, célula ou intervalo."
+      },
+      {
+        "nome": "núm2",
+        "opcional": true,
+        "explicacao": "Outros números ou intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual foi a venda média por mês?",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ]
+      ],
+      "celula": "B6",
+      "formula": "=MÉDIA(B2:B5)",
+      "formato": "moeda",
+      "resultado": "R$ 1.190,00",
+      "explicacao": "A soma (4.760) dividida pelos 4 meses dá 1.190."
+    },
+    "cuidados": [
+      "Células vazias ficam de fora, mas células com 0 entram e puxam a média para baixo. Se um mês sem dado foi preenchido com 0, a média muda.",
+      "Para ignorar zeros ou fazer média só de um grupo, use MÉDIASE."
+    ],
+    "relacionadas": [
+      "mediase",
+      "med",
+      "soma",
+      "arred"
+    ]
+  },
+  {
+    "slug": "minimo",
+    "nome": "MÍNIMO",
+    "ingles": "MIN",
+    "categoria": "fundamentos",
+    "paraQueServe": "Mostra o menor número de uma lista. Útil para achar o menor preço entre fornecedores, o mês mais fraco de vendas ou o menor saldo do extrato.",
+    "argumentos": [
+      {
+        "nome": "núm1",
+        "explicacao": "O primeiro número, célula ou intervalo."
+      },
+      {
+        "nome": "núm2",
+        "opcional": true,
+        "explicacao": "Outros números ou intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual foi o pior mês de vendas?",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ]
+      ],
+      "celula": "B6",
+      "formula": "=MÍNIMO(B2:B5)",
+      "formato": "moeda",
+      "resultado": "R$ 950,00",
+      "explicacao": "O menor valor da coluna é o de fevereiro."
+    },
+    "cuidados": [
+      "MÍNIMO devolve o valor, não o mês. Para saber qual mês foi, combine com ÍNDICE e CORRESP: =ÍNDICE(A2:A5;CORRESP(MÍNIMO(B2:B5);B2:B5;0)).",
+      "Células vazias são ignoradas, mas um 0 digitado vira o mínimo."
+    ],
+    "relacionadas": [
+      "maximo",
+      "menor",
+      "minimoses",
+      "media"
+    ]
+  },
+  {
+    "slug": "maximo",
+    "nome": "MÁXIMO",
+    "ingles": "MAX",
+    "categoria": "fundamentos",
+    "paraQueServe": "Mostra o maior número de uma lista: a maior venda do mês, o maior atraso de pagamento ou o pico de chamados no suporte.",
+    "argumentos": [
+      {
+        "nome": "núm1",
+        "explicacao": "O primeiro número, célula ou intervalo."
+      },
+      {
+        "nome": "núm2",
+        "opcional": true,
+        "explicacao": "Outros números ou intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual foi o melhor mês de vendas?",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ]
+      ],
+      "celula": "B6",
+      "formula": "=MÁXIMO(B2:B5)",
+      "formato": "moeda",
+      "resultado": "R$ 1.480,00",
+      "explicacao": "O maior valor da coluna é o de março."
+    },
+    "cuidados": [
+      "Para o segundo ou terceiro maior, use MAIOR(intervalo;2). MÁXIMO só devolve o primeiro.",
+      "Para o maior de um grupo (só da região Sul, por exemplo), use MÁXIMOSES."
+    ],
+    "relacionadas": [
+      "minimo",
+      "maior",
+      "maximoses",
+      "soma"
+    ]
+  },
+  {
+    "slug": "cont-num",
+    "nome": "CONT.NÚM",
+    "ingles": "COUNT",
+    "categoria": "fundamentos",
+    "paraQueServe": "Conta quantas células têm números. Serve para saber quantos pedidos já têm valor lançado, quantos alunos têm nota ou quantos dias tiveram venda registrada.",
+    "argumentos": [
+      {
+        "nome": "valor1",
+        "explicacao": "A primeira célula ou intervalo a examinar."
+      },
+      {
+        "nome": "valor2",
+        "opcional": true,
+        "explicacao": "Outros intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos pedidos já têm valor lançado?",
+      "dados": [
+        [
+          "Pedido",
+          "Valor"
+        ],
+        [
+          "1001",
+          "R$ 300,00"
+        ],
+        [
+          "1002",
+          "a confirmar"
+        ],
+        [
+          "1003",
+          "R$ 120,00"
+        ],
+        [
+          "1004",
+          ""
+        ],
+        [
+          "1005",
+          "R$ 80,00"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=CONT.NÚM(B2:B6)",
+      "resultado": "3",
+      "explicacao": "Conta só os três valores numéricos. O texto \"a confirmar\" e a célula vazia ficam de fora."
+    },
+    "cuidados": [
+      "Números guardados como texto (vindos de sistema ou com apóstrofo) não são contados.",
+      "Para contar qualquer célula preenchida, inclusive texto, use CONT.VALORES."
+    ],
+    "relacionadas": [
+      "cont-valores",
+      "contar-vazio",
+      "cont-se"
+    ]
+  },
+  {
+    "slug": "cont-valores",
+    "nome": "CONT.VALORES",
+    "ingles": "COUNTA",
+    "categoria": "fundamentos",
+    "paraQueServe": "Conta as células que não estão vazias, seja número, texto ou data. É o jeito rápido de saber quantas linhas uma lista tem: quantos clientes, quantos funcionários, quantas vendas registradas.",
+    "argumentos": [
+      {
+        "nome": "valor1",
+        "explicacao": "A primeira célula ou intervalo a examinar."
+      },
+      {
+        "nome": "valor2",
+        "opcional": true,
+        "explicacao": "Outros intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos funcionários estão na lista?",
+      "dados": [
+        [
+          "Funcionário",
+          "Setor"
+        ],
+        [
+          "Ana",
+          "RH"
+        ],
+        [
+          "Bruno",
+          "Financeiro"
+        ],
+        [
+          "",
+          ""
+        ],
+        [
+          "Carla",
+          "Vendas"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=CONT.VALORES(A2:A5)",
+      "resultado": "3",
+      "explicacao": "A linha 4 está vazia; as outras três têm nome."
+    },
+    "cuidados": [
+      "Uma célula com um espaço digitado, ou com fórmula que devolve \"\", parece vazia mas é contada.",
+      "Para contar só números, use CONT.NÚM; para contar com condição, CONT.SE."
+    ],
+    "relacionadas": [
+      "cont-num",
+      "contar-vazio",
+      "cont-se"
+    ]
+  },
+  {
+    "slug": "contar-vazio",
+    "nome": "CONTAR.VAZIO",
+    "ingles": "COUNTBLANK",
+    "categoria": "fundamentos",
+    "paraQueServe": "Conta as células vazias de um intervalo. Ajuda a ver quantos campos de um cadastro ainda faltam preencher ou quantos pedidos estão sem data de entrega.",
+    "argumentos": [
+      {
+        "nome": "intervalo",
+        "explicacao": "O intervalo a examinar, como C2:C10."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos pedidos ainda estão sem data de entrega?",
+      "dados": [
+        [
+          "Pedido",
+          "Entrega"
+        ],
+        [
+          "1001",
+          "05/03/2026"
+        ],
+        [
+          "1002",
+          ""
+        ],
+        [
+          "1003",
+          "08/03/2026"
+        ],
+        [
+          "1004",
+          ""
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=CONTAR.VAZIO(B2:B5)",
+      "resultado": "2",
+      "explicacao": "B3 e B5 estão vazias."
+    },
+    "cuidados": [
+      "Uma fórmula que devolve \"\" (texto vazio) conta como vazia aqui, mas conta como preenchida em CONT.VALORES. Os dois podem não somar o total de linhas."
+    ],
+    "relacionadas": [
+      "cont-valores",
+      "cont-num",
+      "ecel-vazia"
+    ]
+  },
+  {
+    "slug": "arred",
+    "nome": "ARRED",
+    "ingles": "ROUND",
+    "categoria": "fundamentos",
+    "paraQueServe": "Arredonda um número para a quantidade de casas decimais que você escolher, pela regra da escola (5 para cima). É o que se usa em valores em reais, para evitar centavos \"fantasmas\" em rateios e cálculos de imposto.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número (ou a conta) a arredondar."
+      },
+      {
+        "nome": "núm_dígitos",
+        "explicacao": "Quantas casas decimais manter: 2 para centavos, 0 para inteiro, -1 para dezenas, -2 para centenas."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Uma conta de R$ 100,00 dividida entre 3 pessoas: quanto cada uma paga?",
+      "dados": [
+        [
+          "Conta",
+          "Pessoas"
+        ],
+        [
+          "100",
+          "3"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=ARRED(A2/B2;2)",
+      "resultado": "33,33",
+      "explicacao": "100/3 dá 33,3333…; com 2 casas, fica 33,33."
+    },
+    "cuidados": [
+      "Formatar a célula com 2 casas só muda a aparência: o valor guardado continua 33,3333… e as somas podem não bater. ARRED muda o valor de verdade.",
+      "Arredondar cada linha e depois somar pode dar diferente de somar e depois arredondar. Decida onde arredondar (em nota fiscal, normalmente por item)."
+    ],
+    "relacionadas": [
+      "arredondar-para-cima",
+      "arredondar-para-baixo",
+      "truncar",
+      "marred"
+    ]
+  },
+  {
+    "slug": "arredondar-para-cima",
+    "nome": "ARREDONDAR.PARA.CIMA",
+    "ingles": "ROUNDUP",
+    "categoria": "fundamentos",
+    "paraQueServe": "Arredonda sempre para cima, mesmo que a sobra seja pequena. Serve quando faltar não é opção: quantas caixas comprar, quantos ônibus contratar, quantas horas cobrar.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a arredondar."
+      },
+      {
+        "nome": "núm_dígitos",
+        "explicacao": "Quantas casas decimais manter (0 para chegar a um inteiro)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Cada caixa leva 12 garrafas. Quantas caixas para 50 garrafas?",
+      "dados": [
+        [
+          "Garrafas",
+          "Por caixa"
+        ],
+        [
+          "50",
+          "12"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=ARREDONDAR.PARA.CIMA(A2/B2;0)",
+      "resultado": "5",
+      "explicacao": "50/12 dá 4,17. Quatro caixas não bastam, então são 5."
+    },
+    "cuidados": [
+      "Não esqueça o segundo argumento: no Excel ele é obrigatório.",
+      "Com número negativo, \"para cima\" afasta do zero: -4,2 vira -5."
+    ],
+    "relacionadas": [
+      "arredondar-para-baixo",
+      "arred",
+      "int"
+    ]
+  },
+  {
+    "slug": "arredondar-para-baixo",
+    "nome": "ARREDONDAR.PARA.BAIXO",
+    "ingles": "ROUNDDOWN",
+    "categoria": "fundamentos",
+    "paraQueServe": "Arredonda sempre para baixo, cortando a sobra. Útil para saber quantos kits completos dá para montar com o estoque ou quantos anos completos alguém tem de casa.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a arredondar."
+      },
+      {
+        "nome": "núm_dígitos",
+        "explicacao": "Quantas casas decimais manter (0 para chegar a um inteiro)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Cada kit usa 4 canetas. Quantos kits completos dá para montar com 23 canetas?",
+      "dados": [
+        [
+          "Canetas",
+          "Por kit"
+        ],
+        [
+          "23",
+          "4"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=ARREDONDAR.PARA.BAIXO(A2/B2;0)",
+      "resultado": "5",
+      "explicacao": "23/4 dá 5,75: dá para montar 5 kits inteiros (sobram 3 canetas)."
+    },
+    "cuidados": [
+      "Com número positivo dá o mesmo que TRUNCAR. Com negativo, ARREDONDAR.PARA.BAIXO vai em direção ao zero (-4,7 vira -4), ao contrário de INT (que dá -5)."
+    ],
+    "relacionadas": [
+      "arredondar-para-cima",
+      "truncar",
+      "int",
+      "mod"
+    ]
+  },
+  {
+    "slug": "truncar",
+    "nome": "TRUNCAR",
+    "ingles": "TRUNC",
+    "categoria": "fundamentos",
+    "paraQueServe": "Corta as casas decimais sem arredondar. Serve para mostrar só a parte inteira de um valor ou para seguir regras que mandam desprezar centavos.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a cortar."
+      },
+      {
+        "nome": "núm_dígitos",
+        "opcional": true,
+        "explicacao": "Quantas casas decimais manter. Se omitir, fica 0 (só a parte inteira)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o valor sem os centavos?",
+      "dados": [
+        [
+          "Valor"
+        ],
+        [
+          "R$ 1.234,99"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=TRUNCAR(A2)",
+      "formato": "moeda",
+      "resultado": "R$ 1.234,00",
+      "explicacao": "Os 99 centavos são simplesmente descartados; nada é arredondado."
+    },
+    "cuidados": [
+      "TRUNCAR(1234,99) dá 1.234, não 1.235. Se a regra é arredondar, use ARRED."
+    ],
+    "relacionadas": [
+      "int",
+      "arred",
+      "arredondar-para-baixo"
+    ]
+  },
+  {
+    "slug": "int",
+    "nome": "INT",
+    "ingles": "INT",
+    "categoria": "fundamentos",
+    "paraQueServe": "Arredonda para baixo até o número inteiro. É muito usada com datas e horas: separa o dia (parte inteira) da hora (parte decimal), ou calcula idade em anos completos.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a arredondar para baixo."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantas semanas completas tem um prazo de 45 dias?",
+      "dados": [
+        [
+          "Dias"
+        ],
+        [
+          "45"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=INT(A2/7)",
+      "resultado": "6",
+      "explicacao": "45/7 dá 6,43: são 6 semanas completas."
+    },
+    "cuidados": [
+      "Com negativo, INT vai para o número menor: INT(-2,5) dá -3. Para só cortar a parte decimal, use TRUNCAR."
+    ],
+    "relacionadas": [
+      "truncar",
+      "mod",
+      "arredondar-para-baixo"
+    ]
+  },
+  {
+    "slug": "abs",
+    "nome": "ABS",
+    "ingles": "ABS",
+    "categoria": "fundamentos",
+    "paraQueServe": "Devolve o número sem sinal (o valor absoluto). Serve para medir a diferença entre o previsto e o realizado sem se importar se foi para mais ou para menos, como na conciliação bancária.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número (ou a conta) do qual tirar o sinal."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual a diferença, em valor, entre o orçado e o gasto?",
+      "dados": [
+        [
+          "Orçado",
+          "Gasto"
+        ],
+        [
+          "R$ 5.000,00",
+          "R$ 5.430,00"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=ABS(A2-B2)",
+      "formato": "moeda",
+      "resultado": "R$ 430,00",
+      "explicacao": "A conta A2-B2 dá -430; ABS tira o sinal e mostra 430."
+    },
+    "cuidados": [
+      "ABS esconde se o gasto ficou acima ou abaixo. Quando o sentido importa, mostre a diferença com sinal ou use SE para escrever \"acima\"/\"abaixo\"."
+    ],
+    "relacionadas": [
+      "se",
+      "soma"
+    ]
+  },
+  {
+    "slug": "mod",
+    "nome": "MOD",
+    "ingles": "MOD",
+    "categoria": "fundamentos",
+    "paraQueServe": "Devolve o resto de uma divisão. Serve para descobrir quantas unidades sobram ao encaixotar, saber se um número é par (resto 0 na divisão por 2) ou intercalar cores a cada linha.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a dividir."
+      },
+      {
+        "nome": "divisor",
+        "explicacao": "O número pelo qual dividir."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Embalando 50 garrafas em caixas de 12, quantas sobram?",
+      "dados": [
+        [
+          "Garrafas",
+          "Por caixa"
+        ],
+        [
+          "50",
+          "12"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=MOD(A2;B2)",
+      "resultado": "2",
+      "explicacao": "Cabem 4 caixas (48 garrafas) e sobram 2."
+    },
+    "cuidados": [
+      "Dividir por zero dá #DIV/0!.",
+      "MOD com número negativo segue o sinal do divisor: MOD(-3;2) dá 1, não -1."
+    ],
+    "relacionadas": [
+      "int",
+      "arredondar-para-baixo"
+    ]
+  },
+  {
+    "slug": "potencia",
+    "nome": "POTÊNCIA",
+    "ingles": "POWER",
+    "categoria": "fundamentos",
+    "paraQueServe": "Eleva um número a uma potência. No escritório, aparece em juros compostos: quanto um valor vira depois de vários meses rendendo a uma taxa fixa.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "A base: o número que será multiplicado por ele mesmo."
+      },
+      {
+        "nome": "potência",
+        "explicacao": "O expoente: quantas vezes multiplicar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "R$ 1.000,00 rendendo 1% ao mês por 12 meses: quanto vira?",
+      "dados": [
+        [
+          "Capital",
+          "Taxa",
+          "Meses"
+        ],
+        [
+          "R$ 1.000,00",
+          "1%",
+          "12"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=A2*POTÊNCIA(1+B2;C2)",
+      "formato": "moeda",
+      "resultado": "R$ 1.126,83",
+      "explicacao": "1,01 elevado a 12 dá 1,1268…; vezes 1.000, cerca de R$ 1.126,83."
+    },
+    "cuidados": [
+      "O operador ^ faz a mesma coisa: =A2*(1+B2)^C2.",
+      "A taxa entra como 1% (ou 0,01), não como 1. Com 1, o valor dobra a cada mês."
+    ],
+    "relacionadas": [
+      "raiz",
+      "vf",
+      "taxa"
+    ]
+  },
+  {
+    "slug": "raiz",
+    "nome": "RAIZ",
+    "ingles": "SQRT",
+    "categoria": "fundamentos",
+    "paraQueServe": "Calcula a raiz quadrada de um número. Aparece em contas de área (o lado de uma sala quadrada) e em fórmulas de estatística, como o desvio padrão.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número do qual tirar a raiz (não pode ser negativo)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Uma sala quadrada tem 36 m². Quanto mede cada lado?",
+      "dados": [
+        [
+          "Área (m²)"
+        ],
+        [
+          "36"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=RAIZ(A2)",
+      "resultado": "6",
+      "explicacao": "6 × 6 = 36, então cada lado mede 6 m."
+    },
+    "cuidados": [
+      "Número negativo dá #NÚM!. Use ABS antes se o sinal não importar.",
+      "Para outras raízes, use potência fracionária: a raiz cúbica de 27 é =27^(1/3)."
+    ],
+    "relacionadas": [
+      "potencia",
+      "abs"
+    ]
+  },
+  {
+    "slug": "maior",
+    "nome": "MAIOR",
+    "ingles": "LARGE",
+    "categoria": "fundamentos",
+    "paraQueServe": "Devolve o k-ésimo maior valor de uma lista: o 1º, o 2º, o 3º maior… Serve para montar o pódio de vendedores ou listar as três maiores despesas do mês.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo com os números."
+      },
+      {
+        "nome": "k",
+        "explicacao": "A posição desejada: 1 para o maior, 2 para o segundo maior, e assim por diante."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual foi a segunda maior venda?",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ]
+      ],
+      "celula": "B6",
+      "formula": "=MAIOR(B2:B5;2)",
+      "formato": "moeda",
+      "resultado": "R$ 1.200,00",
+      "explicacao": "Em ordem: 1.480, 1.200, 1.130, 950. A segunda é 1.200."
+    },
+    "cuidados": [
+      "Valores repetidos ocupam posições diferentes: em 10, 10, 8, o MAIOR(…;2) é 10 de novo.",
+      "Se k for maior que a quantidade de números, dá #NÚM!."
+    ],
+    "relacionadas": [
+      "menor",
+      "maximo",
+      "classificar"
+    ]
+  },
+  {
+    "slug": "menor",
+    "nome": "MENOR",
+    "ingles": "SMALL",
+    "categoria": "fundamentos",
+    "paraQueServe": "Devolve o k-ésimo menor valor de uma lista. Útil para os três menores orçamentos de uma cotação ou os prazos mais curtos de entrega.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo com os números."
+      },
+      {
+        "nome": "k",
+        "explicacao": "A posição desejada: 1 para o menor, 2 para o segundo menor, e assim por diante."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o segundo menor orçamento?",
+      "dados": [
+        [
+          "Fornecedor",
+          "Orçamento"
+        ],
+        [
+          "Alfa",
+          "R$ 2.300,00"
+        ],
+        [
+          "Beta",
+          "R$ 1.980,00"
+        ],
+        [
+          "Gama",
+          "R$ 2.150,00"
+        ]
+      ],
+      "celula": "B5",
+      "formula": "=MENOR(B2:B4;2)",
+      "formato": "moeda",
+      "resultado": "R$ 2.150,00",
+      "explicacao": "Em ordem: 1.980, 2.150, 2.300. O segundo menor é o da Gama."
+    },
+    "cuidados": [
+      "Células vazias e textos são ignorados, mas zeros contam e viram o menor valor."
+    ],
+    "relacionadas": [
+      "maior",
+      "minimo",
+      "classificar"
+    ]
+  },
+  {
+    "slug": "med",
+    "nome": "MED",
+    "ingles": "MEDIAN",
+    "categoria": "fundamentos",
+    "paraQueServe": "Calcula a mediana: o valor do meio quando a lista está em ordem. Diferente da média, não é puxada por um valor fora da curva, por isso é melhor para salários, prazos ou valores de imóveis.",
+    "argumentos": [
+      {
+        "nome": "núm1",
+        "explicacao": "O primeiro número, célula ou intervalo."
+      },
+      {
+        "nome": "núm2",
+        "opcional": true,
+        "explicacao": "Outros números ou intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o salário \"do meio\" da equipe?",
+      "dados": [
+        [
+          "Funcionário",
+          "Salário"
+        ],
+        [
+          "Ana",
+          "R$ 3.000,00"
+        ],
+        [
+          "Bruno",
+          "R$ 3.200,00"
+        ],
+        [
+          "Carla",
+          "R$ 3.500,00"
+        ],
+        [
+          "Diretor",
+          "R$ 25.000,00"
+        ],
+        [
+          "Eva",
+          "R$ 3.100,00"
+        ]
+      ],
+      "celula": "B7",
+      "formula": "=MED(B2:B6)",
+      "formato": "moeda",
+      "resultado": "R$ 3.200,00",
+      "explicacao": "Em ordem: 3.000, 3.100, 3.200, 3.500, 25.000. O do meio é 3.200. A média daria 7.560, puxada pelo salário do diretor."
+    },
+    "cuidados": [
+      "Com quantidade par de valores, a mediana é a média dos dois do meio."
+    ],
+    "relacionadas": [
+      "media",
+      "maior",
+      "menor"
+    ]
+  },
+  {
+    "slug": "marred",
+    "nome": "MARRED",
+    "ingles": "MROUND",
+    "categoria": "fundamentos",
+    "paraQueServe": "Arredonda para o múltiplo mais próximo que você indicar. Serve para preço que termina em 0,05, horas lançadas de 15 em 15 minutos ou pedidos em lotes de 10 unidades.",
+    "argumentos": [
+      {
+        "nome": "núm",
+        "explicacao": "O número a arredondar."
+      },
+      {
+        "nome": "múltiplo",
+        "explicacao": "O múltiplo: 0,05 para cinco centavos, 10 para dezenas, 0,5 para meias horas."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Arredondar o preço para o múltiplo de 5 centavos mais próximo.",
+      "dados": [
+        [
+          "Preço calculado"
+        ],
+        [
+          "R$ 12,37"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=MARRED(A2;0,05)",
+      "formato": "moeda",
+      "resultado": "R$ 12,35",
+      "explicacao": "Os múltiplos vizinhos são 12,35 e 12,40; o mais perto de 12,37 é 12,35."
+    },
+    "cuidados": [
+      "O número e o múltiplo precisam ter o mesmo sinal; senão dá #NÚM!.",
+      "MARRED arredonda para o mais próximo. Para sempre subir até o múltiplo, o Excel tem TETO."
+    ],
+    "relacionadas": [
+      "arred",
+      "arredondar-para-cima"
+    ]
+  },
+  {
+    "slug": "agregar",
+    "nome": "AGREGAR",
+    "ingles": "AGGREGATE",
+    "categoria": "fundamentos",
+    "paraQueServe": "Faz soma, média, maior valor e outras contas podendo ignorar células com erro e linhas ocultas. Resolve o caso clássico da coluna com um #N/D no meio, que faz a SOMA comum dar erro.",
+    "argumentos": [
+      {
+        "nome": "núm_função",
+        "explicacao": "Qual conta fazer, por número: 9 = soma, 1 = média, 4 = máximo, 5 = mínimo, 14 = MAIOR (k-ésimo maior)."
+      },
+      {
+        "nome": "opções",
+        "explicacao": "O que ignorar: 6 ignora erros; 5 ignora linhas ocultas; 7 ignora os dois."
+      },
+      {
+        "nome": "ref1",
+        "explicacao": "O intervalo com os valores."
+      },
+      {
+        "nome": "k",
+        "opcional": true,
+        "explicacao": "Só para funções como MAIOR e MENOR (14, 15): a posição k."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Somar as vendas, ignorando o #N/D de um PROCV que não achou o produto.",
+      "dados": [
+        [
+          "Produto",
+          "Vendas"
+        ],
+        [
+          "Caneta",
+          "R$ 120,00"
+        ],
+        [
+          "Lápis",
+          "=NÃO.DISP()"
+        ],
+        [
+          "Borracha",
+          "R$ 45,00"
+        ]
+      ],
+      "celula": "B5",
+      "formula": "=AGREGAR(9;6;B2:B4)",
+      "formato": "moeda",
+      "resultado": "R$ 165,00",
+      "explicacao": "A soma comum daria #N/D. Com a opção 6, o erro é ignorado e o total é 120 + 45."
+    },
+    "cuidados": [
+      "AGREGAR esconde o erro, mas não o corrige: vale investigar por que aquele #N/D apareceu.",
+      "Os números das funções e das opções são fáceis de trocar. 9 é soma; 6 é ignorar erros."
+    ],
+    "relacionadas": [
+      "subtotal",
+      "soma",
+      "seerro"
+    ]
+  },
+  {
+    "slug": "subtotal",
+    "nome": "SUBTOTAL",
+    "ingles": "SUBTOTAL",
+    "categoria": "fundamentos",
+    "paraQueServe": "Soma, conta ou faz a média só das linhas visíveis. Com o filtro ligado, o total acompanha o que está na tela: filtre a região Sul e o SUBTOTAL mostra só o total do Sul.",
+    "argumentos": [
+      {
+        "nome": "núm_função",
+        "explicacao": "Qual conta fazer: 9 = soma, 1 = média, 3 = contar valores, 2 = contar números. Somando 100 (109, 101…), ignora também as linhas ocultas à mão."
+      },
+      {
+        "nome": "ref1",
+        "explicacao": "O intervalo com os valores."
+      },
+      {
+        "nome": "ref2",
+        "opcional": true,
+        "explicacao": "Outros intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Total das vendas (sem filtro, todas as linhas aparecem).",
+      "dados": [
+        [
+          "Região",
+          "Vendas"
+        ],
+        [
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Sul",
+          "R$ 200,00"
+        ]
+      ],
+      "celula": "B5",
+      "formula": "=SUBTOTAL(9;B2:B4)",
+      "formato": "moeda",
+      "resultado": "R$ 1.000,00",
+      "explicacao": "Sem filtro, soma tudo. Filtrando só \"Sul\", a mesma fórmula passaria a mostrar R$ 700,00."
+    },
+    "cuidados": [
+      "SOMA continua somando as linhas escondidas pelo filtro; por isso o total \"não muda\" quando você filtra. Use SUBTOTAL(9;…).",
+      "SUBTOTAL ignora outros SUBTOTAL do intervalo, então dá para ter subtotais por grupo e um total geral sem contar em dobro."
+    ],
+    "relacionadas": [
+      "agregar",
+      "soma",
+      "somase"
+    ]
+  },
+  {
+    "slug": "se",
+    "nome": "SE",
+    "ingles": "IF",
+    "categoria": "logica",
+    "paraQueServe": "Faz a planilha tomar uma decisão: se uma condição for verdadeira, mostra uma coisa; se for falsa, mostra outra. Serve para marcar \"Atrasado\" quando o vencimento passou, aprovar reembolsos até um limite ou dar bônus a quem bateu a meta.",
+    "argumentos": [
+      {
+        "nome": "teste_lógico",
+        "explicacao": "A condição a testar, como B2>=1000 ou C2=\"Pago\"."
+      },
+      {
+        "nome": "valor_se_verdadeiro",
+        "opcional": true,
+        "explicacao": "O que mostrar se a condição for verdadeira (um texto entre aspas, um número ou outra fórmula)."
+      },
+      {
+        "nome": "valor_se_falso",
+        "opcional": true,
+        "explicacao": "O que mostrar se for falsa. Se omitir, aparece FALSO."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O vendedor bateu a meta de R$ 1.000,00?",
+      "dados": [
+        [
+          "Vendedor",
+          "Vendas"
+        ],
+        [
+          "Ana",
+          "R$ 1.250,00"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=SE(B2>=1000;\"Bateu\";\"Não bateu\")",
+      "resultado": "Bateu",
+      "explicacao": "1.250 é maior ou igual a 1.000, então vale o segundo argumento."
+    },
+    "cuidados": [
+      "Textos vão entre aspas (\"Bateu\"); números não. =SE(B2>=\"1000\";…) compara com um texto e dá resultado errado.",
+      "No Excel em português, os argumentos são separados por ponto e vírgula (;), não por vírgula.",
+      "Muitos SE aninhados ficam difíceis de ler. Para várias faixas, prefira SES ou uma tabela com PROCV aproximado."
+    ],
+    "relacionadas": [
+      "ses",
+      "e",
+      "ou",
+      "seerro"
+    ]
+  },
+  {
+    "slug": "ses",
+    "nome": "SES",
+    "ingles": "IFS",
+    "categoria": "logica",
+    "paraQueServe": "Testa várias condições em ordem e devolve o valor da primeira que for verdadeira. Substitui aqueles SE dentro de SE para faixas: classificar clientes em ouro, prata e bronze, ou notas em A, B e C.",
+    "argumentos": [
+      {
+        "nome": "teste_lógico1",
+        "explicacao": "A primeira condição a testar."
+      },
+      {
+        "nome": "valor_se_verdadeiro1",
+        "explicacao": "O que mostrar se a primeira condição for verdadeira. Depois vêm mais pares de condição e valor."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Classificar o cliente pela compra anual: a partir de 10 mil é Ouro, de 5 mil é Prata, abaixo disso Bronze.",
+      "dados": [
+        [
+          "Cliente",
+          "Compras no ano"
+        ],
+        [
+          "Mercado Sol",
+          "R$ 7.400,00"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=SES(B2>=10000;\"Ouro\";B2>=5000;\"Prata\";VERDADEIRO;\"Bronze\")",
+      "resultado": "Prata",
+      "explicacao": "A primeira condição é falsa; a segunda (7.400 ≥ 5.000) é verdadeira, então para ali e mostra Prata."
+    },
+    "cuidados": [
+      "A ordem importa: teste da faixa mais alta para a mais baixa. Se B2>=5000 viesse primeiro, quem compra 12 mil cairia em Prata.",
+      "Se nenhuma condição for verdadeira, dá #N/D. Termine com VERDADEIRO;\"valor padrão\" para cobrir o resto."
+    ],
+    "relacionadas": [
+      "se",
+      "procv",
+      "e"
+    ]
+  },
+  {
+    "slug": "e",
+    "nome": "E",
+    "ingles": "AND",
+    "categoria": "logica",
+    "paraQueServe": "Confere se todas as condições são verdadeiras ao mesmo tempo. Quase sempre vai dentro de um SE: aprovar o reembolso só se tiver nota fiscal E o valor for até o limite.",
+    "argumentos": [
+      {
+        "nome": "lógico1",
+        "explicacao": "A primeira condição."
+      },
+      {
+        "nome": "lógico2",
+        "opcional": true,
+        "explicacao": "Outras condições, opcionais (até 255)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O reembolso pode ser aprovado? Precisa ter nota e valor até R$ 500,00.",
+      "dados": [
+        [
+          "Valor",
+          "Tem nota?"
+        ],
+        [
+          "R$ 320,00",
+          "Sim"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=E(A2<=500;B2=\"Sim\")",
+      "resultado": "VERDADEIRO",
+      "explicacao": "As duas condições são verdadeiras, então E devolve VERDADEIRO."
+    },
+    "cuidados": [
+      "No Excel não se escreve 100<A2<500. O certo é =E(A2>100;A2<500).",
+      "Basta uma condição falsa para o resultado ser FALSO. Se você quer \"pelo menos uma\", é OU."
+    ],
+    "relacionadas": [
+      "ou",
+      "se",
+      "nao"
+    ]
+  },
+  {
+    "slug": "ou",
+    "nome": "OU",
+    "ingles": "OR",
+    "categoria": "logica",
+    "paraQueServe": "Confere se pelo menos uma das condições é verdadeira. Serve para regras do tipo \"frete grátis se o cliente for VIP OU a compra passar de R$ 300\".",
+    "argumentos": [
+      {
+        "nome": "lógico1",
+        "explicacao": "A primeira condição."
+      },
+      {
+        "nome": "lógico2",
+        "opcional": true,
+        "explicacao": "Outras condições, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O pedido tem frete grátis? Vale para cliente VIP ou compra acima de R$ 300,00.",
+      "dados": [
+        [
+          "Cliente",
+          "Compra"
+        ],
+        [
+          "VIP",
+          "R$ 150,00"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=OU(A2=\"VIP\";B2>300)",
+      "resultado": "VERDADEIRO",
+      "explicacao": "A compra é pequena, mas o cliente é VIP: uma condição verdadeira já basta."
+    },
+    "cuidados": [
+      "Para comparar a mesma célula com vários valores, repita a célula em cada teste: =OU(A2=\"SP\";A2=\"RJ\"), não =OU(A2=\"SP\";\"RJ\")."
+    ],
+    "relacionadas": [
+      "e",
+      "se",
+      "nao"
+    ]
+  },
+  {
+    "slug": "nao",
+    "nome": "NÃO",
+    "ingles": "NOT",
+    "categoria": "logica",
+    "paraQueServe": "Inverte um teste: o que era VERDADEIRO vira FALSO, e vice-versa. Ajuda a escrever regras pelo lado negativo, como \"cobrar multa se NÃO estiver pago\".",
+    "argumentos": [
+      {
+        "nome": "lógico",
+        "explicacao": "A condição a inverter."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O boleto está em aberto (ou seja, não está pago)?",
+      "dados": [
+        [
+          "Status"
+        ],
+        [
+          "Pendente"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=NÃO(A2=\"Pago\")",
+      "resultado": "VERDADEIRO",
+      "explicacao": "A2=\"Pago\" é FALSO; NÃO inverte para VERDADEIRO."
+    },
+    "cuidados": [
+      "Muitas vezes o operador <> resolve de forma mais simples: =A2<>\"Pago\" dá o mesmo resultado."
+    ],
+    "relacionadas": [
+      "e",
+      "ou",
+      "se"
+    ]
+  },
+  {
+    "slug": "seerro",
+    "nome": "SEERRO",
+    "ingles": "IFERROR",
+    "categoria": "logica",
+    "paraQueServe": "Troca um erro (#N/D, #DIV/0!, #VALOR!…) por um valor que você escolher. Deixa o relatório limpo: em vez de #N/D quando o PROCV não acha o código, aparece \"Não cadastrado\".",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "A fórmula que pode dar erro."
+      },
+      {
+        "nome": "valor_se_erro",
+        "explicacao": "O que mostrar no lugar do erro (texto, 0 ou outra fórmula)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Calcular o preço médio por unidade sem mostrar #DIV/0! quando não houve venda.",
+      "dados": [
+        [
+          "Faturamento",
+          "Unidades"
+        ],
+        [
+          "R$ 0,00",
+          "0"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=SEERRO(A2/B2;0)",
+      "formato": "moeda",
+      "resultado": "R$ 0,00",
+      "explicacao": "0/0 dá #DIV/0!; o SEERRO troca o erro por 0 (a célula está formatada como moeda)."
+    },
+    "cuidados": [
+      "SEERRO esconde todos os erros, inclusive os de digitação na fórmula. Use só depois de conferir que a fórmula está certa.",
+      "Para tratar só o \"não encontrado\" de uma busca, SENÃODISP é mais seguro: outros erros continuam aparecendo."
+    ],
+    "relacionadas": [
+      "senaodisp",
+      "eerros",
+      "procv"
+    ]
+  },
+  {
+    "slug": "senaodisp",
+    "nome": "SENÃODISP",
+    "ingles": "IFNA",
+    "categoria": "logica",
+    "paraQueServe": "Troca só o erro #N/D (\"não disponível\") por outro valor. É o par ideal do PROCV: mostra \"Não encontrado\" quando o código não existe, mas deixa aparecer outros erros que indicam problema de verdade.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "A fórmula que pode dar #N/D."
+      },
+      {
+        "nome": "valor_se_nd",
+        "explicacao": "O que mostrar no lugar do #N/D."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Buscar o preço do código P-09, que não está na tabela.",
+      "dados": [
+        [
+          "Código",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "R$ 10,00"
+        ],
+        [
+          "P-02",
+          "R$ 15,00"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=SENÃODISP(PROCV(\"P-09\";A2:B3;2;FALSO);\"Não encontrado\")",
+      "resultado": "Não encontrado",
+      "explicacao": "O PROCV não acha P-09 e devolve #N/D; SENÃODISP troca pela mensagem."
+    },
+    "cuidados": [
+      "Um #DIV/0! ou #VALOR! continua aparecendo: isso é bom, porque avisa de outro problema. Se quiser esconder tudo, aí é SEERRO."
+    ],
+    "relacionadas": [
+      "seerro",
+      "procv",
+      "procx"
+    ]
+  },
+  {
+    "slug": "eerros",
+    "nome": "ÉERROS",
+    "ingles": "ISERROR",
+    "categoria": "logica",
+    "paraQueServe": "Diz se um valor é um erro (VERDADEIRO) ou não (FALSO). Serve para contar quantas linhas de uma importação deram erro ou para marcar as que precisam de conferência.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "A célula ou fórmula a testar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "A conta da linha deu erro?",
+      "dados": [
+        [
+          "Total",
+          "Qtd",
+          "Preço unitário"
+        ],
+        [
+          "R$ 300,00",
+          "0",
+          "=A2/B2"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=ÉERROS(C2)",
+      "resultado": "VERDADEIRO",
+      "explicacao": "C2 divide por zero e mostra #DIV/0!, então o teste dá VERDADEIRO."
+    },
+    "cuidados": [
+      "Para trocar o erro por outro valor, SEERRO é mais curto que =SE(ÉERROS(x);…;x)."
+    ],
+    "relacionadas": [
+      "seerro",
+      "enum",
+      "se"
+    ]
+  },
+  {
+    "slug": "ecel-vazia",
+    "nome": "ÉCÉL.VAZIA",
+    "ingles": "ISBLANK",
+    "categoria": "logica",
+    "paraQueServe": "Diz se uma célula está vazia. Ajuda a montar avisos como \"Falta a data\" no cadastro e a não calcular nada enquanto o campo não foi preenchido.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "A célula a testar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Avisar quando a data de entrega não foi preenchida.",
+      "dados": [
+        [
+          "Pedido",
+          "Entrega"
+        ],
+        [
+          "1002",
+          ""
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=SE(ÉCÉL.VAZIA(B2);\"Falta a data\";\"OK\")",
+      "resultado": "Falta a data",
+      "explicacao": "B2 está vazia, então ÉCÉL.VAZIA dá VERDADEIRO e o SE mostra o aviso."
+    },
+    "cuidados": [
+      "Uma célula com fórmula que devolve \"\" não está vazia para ÉCÉL.VAZIA (dá FALSO). Nesse caso, teste B2=\"\"."
+    ],
+    "relacionadas": [
+      "contar-vazio",
+      "se",
+      "etexto"
+    ]
+  },
+  {
+    "slug": "enum",
+    "nome": "ÉNÚM",
+    "ingles": "ISNUMBER",
+    "categoria": "logica",
+    "paraQueServe": "Diz se um valor é número. É útil para conferir dados importados (número que veio como texto) e, junto com LOCALIZAR, para saber se uma palavra aparece dentro de um texto.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "O valor ou a célula a testar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "A descrição contém a palavra \"urgente\"?",
+      "dados": [
+        [
+          "Descrição"
+        ],
+        [
+          "Pedido URGENTE para hoje"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=ÉNÚM(LOCALIZAR(\"urgente\";A2))",
+      "resultado": "VERDADEIRO",
+      "explicacao": "LOCALIZAR devolve a posição (8), que é um número; se não achasse, daria erro e ÉNÚM seria FALSO."
+    },
+    "cuidados": [
+      "\"123\" digitado como texto dá FALSO. Isso ajuda a descobrir por que a soma não bate."
+    ],
+    "relacionadas": [
+      "etexto",
+      "localizar",
+      "valor"
+    ]
+  },
+  {
+    "slug": "etexto",
+    "nome": "ÉTEXTO",
+    "ingles": "ISTEXT",
+    "categoria": "logica",
+    "paraQueServe": "Diz se um valor é texto. Ajuda a achar números que vieram como texto de um sistema (e por isso ficam fora da SOMA) e a validar campos que deveriam ter nome, não número.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "O valor ou a célula a testar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O código do pedido veio como texto?",
+      "dados": [
+        [
+          "Código"
+        ],
+        [
+          "'1050"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=ÉTEXTO(A2)",
+      "resultado": "VERDADEIRO",
+      "explicacao": "O apóstrofo antes do número faz o Excel guardar 1050 como texto."
+    },
+    "cuidados": [
+      "Célula vazia não é texto: ÉTEXTO dá FALSO."
+    ],
+    "relacionadas": [
+      "enum",
+      "valor",
+      "ecel-vazia"
+    ]
+  },
+  {
+    "slug": "cont-se",
+    "nome": "CONT.SE",
+    "ingles": "COUNTIF",
+    "categoria": "condicionais",
+    "paraQueServe": "Conta quantas células atendem a uma condição. Responde perguntas como \"quantas vendas foram do Sul?\", \"quantos boletos estão pendentes?\" ou \"quantos pedidos passaram de R$ 1.000?\".",
+    "argumentos": [
+      {
+        "nome": "intervalo",
+        "explicacao": "Onde procurar: o intervalo que será examinado, como B2:B6."
+      },
+      {
+        "nome": "critério",
+        "explicacao": "A condição, entre aspas: \"Sul\", \">1000\", \"<>Pago\", \"Ana*\" (começa com Ana). Também pode ser uma célula."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantas vendas foram da região Sul?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CONT.SE(B2:B6;\"Sul\")",
+      "resultado": "3",
+      "explicacao": "B2, B5 e B6 têm \"Sul\". A comparação não diferencia maiúsculas."
+    },
+    "cuidados": [
+      "Condição com operador vai inteira entre aspas: \">1000\". Para usar uma célula, junte com &: \">\"&F1.",
+      "Espaços sobrando (\"Sul \") fazem a célula não bater. Se a conta parecer baixa, limpe os dados com ARRUMAR."
+    ],
+    "relacionadas": [
+      "cont-ses",
+      "somase",
+      "cont-valores"
+    ]
+  },
+  {
+    "slug": "cont-ses",
+    "nome": "CONT.SES",
+    "ingles": "COUNTIFS",
+    "categoria": "condicionais",
+    "paraQueServe": "Conta as linhas que atendem a todas as condições ao mesmo tempo. Ex.: quantas vendas da Ana foram no Sul, ou quantos chamados estão abertos e com prioridade alta.",
+    "argumentos": [
+      {
+        "nome": "intervalo_critérios1",
+        "explicacao": "O intervalo onde testar a primeira condição."
+      },
+      {
+        "nome": "critério1",
+        "explicacao": "A primeira condição. Depois vêm mais pares de intervalo e condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantas vendas do Sul passaram de R$ 400,00?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CONT.SES(B2:B6;\"Sul\";C2:C6;\">400\")",
+      "resultado": "2",
+      "explicacao": "No Sul há 500, 200 e 700; acima de 400, só 500 e 700."
+    },
+    "cuidados": [
+      "Todos os intervalos precisam ter o mesmo tamanho (B2:B6 e C2:C6); senão dá #VALOR!.",
+      "As condições são do tipo E. Para \"Sul OU Norte\", some dois CONT.SES ou use dois CONT.SE."
+    ],
+    "relacionadas": [
+      "cont-se",
+      "somases",
+      "somarproduto"
+    ]
+  },
+  {
+    "slug": "somase",
+    "nome": "SOMASE",
+    "ingles": "SUMIF",
+    "categoria": "condicionais",
+    "paraQueServe": "Soma só os valores das linhas que atendem a uma condição. É o \"total por categoria\": quanto vendeu cada vendedor, quanto se gastou com transporte, quanto falta receber dos boletos pendentes.",
+    "argumentos": [
+      {
+        "nome": "intervalo",
+        "explicacao": "Onde testar a condição (ex.: a coluna dos vendedores)."
+      },
+      {
+        "nome": "critério",
+        "explicacao": "A condição: \"Ana\", \">500\", \"<>Cancelado\" ou uma célula."
+      },
+      {
+        "nome": "intervalo_soma",
+        "opcional": true,
+        "explicacao": "O que somar (ex.: a coluna dos valores). Se omitir, soma o próprio intervalo da condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quanto a Ana vendeu no total?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=SOMASE(A2:A6;\"Ana\";C2:C6)",
+      "formato": "moeda",
+      "resultado": "R$ 950,00",
+      "explicacao": "As linhas da Ana têm 500 e 450: total de 950."
+    },
+    "cuidados": [
+      "A ordem dos argumentos é condição primeiro, soma por último. Em SOMASES é o contrário (o intervalo da soma vem primeiro).",
+      "Ao arrastar a fórmula para outros vendedores, trave os intervalos com $: =SOMASE($A$2:$A$6;E1;$C$2:$C$6)."
+    ],
+    "relacionadas": [
+      "somases",
+      "cont-se",
+      "mediase",
+      "soma"
+    ]
+  },
+  {
+    "slug": "somases",
+    "nome": "SOMASES",
+    "ingles": "SUMIFS",
+    "categoria": "condicionais",
+    "paraQueServe": "Soma os valores das linhas que atendem a várias condições ao mesmo tempo: vendas da Ana no Sul, despesas de transporte em março, horas extras de um setor num período.",
+    "argumentos": [
+      {
+        "nome": "intervalo_soma",
+        "explicacao": "O que somar (a coluna dos valores). Aqui ele vem primeiro."
+      },
+      {
+        "nome": "intervalo_critérios1",
+        "explicacao": "O intervalo da primeira condição."
+      },
+      {
+        "nome": "critério1",
+        "explicacao": "A primeira condição. Depois vêm mais pares de intervalo e condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quanto a Ana vendeu no Norte?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=SOMASES(C2:C6;A2:A6;\"Ana\";B2:B6;\"Norte\")",
+      "formato": "moeda",
+      "resultado": "R$ 450,00",
+      "explicacao": "Só a linha 4 é da Ana e do Norte ao mesmo tempo."
+    },
+    "cuidados": [
+      "O intervalo da soma vem primeiro (diferente do SOMASE). Trocar a ordem é o erro mais comum.",
+      "Para um período de datas, use duas condições na mesma coluna: \">=\"&F1 e \"<=\"&G1."
+    ],
+    "relacionadas": [
+      "somase",
+      "cont-ses",
+      "maximoses",
+      "somarproduto"
+    ]
+  },
+  {
+    "slug": "mediase",
+    "nome": "MÉDIASE",
+    "ingles": "AVERAGEIF",
+    "categoria": "condicionais",
+    "paraQueServe": "Calcula a média só das linhas que atendem a uma condição: ticket médio de uma região, nota média de uma turma, prazo médio de entrega de um fornecedor.",
+    "argumentos": [
+      {
+        "nome": "intervalo",
+        "explicacao": "Onde testar a condição."
+      },
+      {
+        "nome": "critério",
+        "explicacao": "A condição: \"Sul\", \">0\" ou uma célula."
+      },
+      {
+        "nome": "intervalo_média",
+        "opcional": true,
+        "explicacao": "Os valores para a média. Se omitir, usa o próprio intervalo da condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual a venda média na região Sul?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=MÉDIASE(B2:B6;\"Sul\";C2:C6)",
+      "formato": "moeda",
+      "resultado": "R$ 466,67",
+      "explicacao": "No Sul: 500 + 200 + 700 = 1.400, dividido por 3 vendas."
+    },
+    "cuidados": [
+      "Se nenhuma linha atender à condição, dá #DIV/0!. Use SEERRO para mostrar 0 ou um aviso.",
+      "Truque útil: =MÉDIASE(C2:C6;\">0\") faz a média ignorando os zeros."
+    ],
+    "relacionadas": [
+      "media",
+      "somase",
+      "cont-se"
+    ]
+  },
+  {
+    "slug": "maximoses",
+    "nome": "MÁXIMOSES",
+    "ingles": "MAXIFS",
+    "categoria": "condicionais",
+    "paraQueServe": "Mostra o maior valor entre as linhas que atendem às condições: a maior venda do Sul, o último pedido de um cliente (a maior data), o maior atraso de um fornecedor.",
+    "argumentos": [
+      {
+        "nome": "intervalo_máximo",
+        "explicacao": "Os valores dos quais pegar o maior."
+      },
+      {
+        "nome": "intervalo_critérios1",
+        "explicacao": "O intervalo da primeira condição."
+      },
+      {
+        "nome": "critério1",
+        "explicacao": "A primeira condição. Depois vêm mais pares de intervalo e condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual a maior venda do Bruno?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=MÁXIMOSES(C2:C6;A2:A6;\"Bruno\")",
+      "formato": "moeda",
+      "resultado": "R$ 700,00",
+      "explicacao": "O Bruno tem 300 e 700; o maior é 700."
+    },
+    "cuidados": [
+      "Se nenhuma linha atender, o resultado é 0, não um erro. Confira com CONT.SES se há linhas no grupo.",
+      "O intervalo dos valores vem primeiro, como em SOMASES."
+    ],
+    "relacionadas": [
+      "minimoses",
+      "maximo",
+      "somases"
+    ]
+  },
+  {
+    "slug": "minimoses",
+    "nome": "MÍNIMOSES",
+    "ingles": "MINIFS",
+    "categoria": "condicionais",
+    "paraQueServe": "Mostra o menor valor entre as linhas que atendem às condições: o menor preço cotado para um item, a primeira data de compra de um cliente, a menor nota de uma turma.",
+    "argumentos": [
+      {
+        "nome": "intervalo_mínimo",
+        "explicacao": "Os valores dos quais pegar o menor."
+      },
+      {
+        "nome": "intervalo_critérios1",
+        "explicacao": "O intervalo da primeira condição."
+      },
+      {
+        "nome": "critério1",
+        "explicacao": "A primeira condição. Depois vêm mais pares de intervalo e condição."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual a menor venda da região Sul?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "R$ 500,00"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "R$ 300,00"
+        ],
+        [
+          "Ana",
+          "Norte",
+          "R$ 450,00"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "R$ 200,00"
+        ],
+        [
+          "Bruno",
+          "Sul",
+          "R$ 700,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=MÍNIMOSES(C2:C6;B2:B6;\"Sul\")",
+      "formato": "moeda",
+      "resultado": "R$ 200,00",
+      "explicacao": "No Sul há 500, 200 e 700; o menor é 200."
+    },
+    "cuidados": [
+      "Se nenhuma linha atender, o resultado é 0, que pode ser confundido com um valor real."
+    ],
+    "relacionadas": [
+      "maximoses",
+      "minimo",
+      "somases"
+    ]
+  },
+  {
+    "slug": "somarproduto",
+    "nome": "SOMARPRODUTO",
+    "ingles": "SUMPRODUCT",
+    "categoria": "condicionais",
+    "paraQueServe": "Multiplica as colunas linha a linha e soma tudo numa fórmula só. O uso clássico é o total de um pedido (quantidade × preço de cada item) sem criar a coluna auxiliar de subtotal.",
+    "argumentos": [
+      {
+        "nome": "matriz1",
+        "explicacao": "O primeiro intervalo (ex.: as quantidades)."
+      },
+      {
+        "nome": "matriz2",
+        "opcional": true,
+        "explicacao": "Os outros intervalos, do mesmo tamanho (ex.: os preços)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o valor total do pedido?",
+      "dados": [
+        [
+          "Item",
+          "Qtd",
+          "Preço"
+        ],
+        [
+          "Caneta",
+          "10",
+          "R$ 2,50"
+        ],
+        [
+          "Caderno",
+          "4",
+          "R$ 18,00"
+        ],
+        [
+          "Pasta",
+          "2",
+          "R$ 9,90"
+        ]
+      ],
+      "celula": "D5",
+      "formula": "=SOMARPRODUTO(B2:B4;C2:C4)",
+      "formato": "moeda",
+      "resultado": "R$ 116,80",
+      "explicacao": "10 × 2,50 + 4 × 18 + 2 × 9,90 = 25 + 72 + 19,80 = 116,80."
+    },
+    "cuidados": [
+      "Os intervalos precisam ter o mesmo tamanho; senão dá #VALOR!.",
+      "Também serve para somar com condição: =SOMARPRODUTO((B2:B4>3)*C2:C4). Nesse caso, os testes vão entre parênteses e multiplicados."
+    ],
+    "relacionadas": [
+      "soma",
+      "somases",
+      "cont-ses"
+    ]
+  },
+  {
+    "slug": "procv",
+    "nome": "PROCV",
+    "ingles": "VLOOKUP",
+    "categoria": "busca",
+    "paraQueServe": "Procura um valor na primeira coluna de uma tabela e devolve o que está em outra coluna da mesma linha. É a função de busca mais famosa: achar o preço pelo código do produto, o nome pelo CPF, o setor pela matrícula.",
+    "argumentos": [
+      {
+        "nome": "valor_procurado",
+        "explicacao": "O que procurar (o código, o CPF, a matrícula). Pode ser uma célula."
+      },
+      {
+        "nome": "matriz_tabela",
+        "explicacao": "A tabela onde procurar. A coluna do valor procurado tem que ser a primeira da tabela."
+      },
+      {
+        "nome": "núm_índice_coluna",
+        "explicacao": "O número da coluna a devolver, contando a partir da primeira da tabela (1, 2, 3…)."
+      },
+      {
+        "nome": "procurar_intervalo",
+        "opcional": true,
+        "explicacao": "FALSO para busca exata (o que você quer quase sempre). VERDADEIRO ou omitido faz busca aproximada, para faixas."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o preço do produto P-03?",
+      "dados": [
+        [
+          "Código",
+          "Produto",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "Caneta",
+          "R$ 2,50"
+        ],
+        [
+          "P-02",
+          "Caderno",
+          "R$ 18,00"
+        ],
+        [
+          "P-03",
+          "Pasta",
+          "R$ 9,90"
+        ],
+        [
+          "P-04",
+          "Grampeador",
+          "R$ 32,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=PROCV(\"P-03\";A2:C5;3;FALSO)",
+      "formato": "moeda",
+      "resultado": "R$ 9,90",
+      "explicacao": "Acha P-03 na linha 4 da planilha e devolve a 3ª coluna da tabela (Preço)."
+    },
+    "cuidados": [
+      "Sem o FALSO no fim, o PROCV faz busca aproximada e pode devolver o preço de outro produto sem avisar. Para códigos, nomes e CPFs, sempre FALSO.",
+      "O PROCV só olha para a direita: a coluna procurada precisa ser a primeira da tabela. Para buscar à esquerda, use PROCX ou ÍNDICE + CORRESP.",
+      "Ao arrastar a fórmula, trave a tabela com $ ($A$2:$C$5); senão ela escorrega junto e começa a dar #N/D."
+    ],
+    "relacionadas": [
+      "procx",
+      "indice",
+      "corresp",
+      "senaodisp",
+      "proch"
+    ]
+  },
+  {
+    "slug": "proch",
+    "nome": "PROCH",
+    "ingles": "HLOOKUP",
+    "categoria": "busca",
+    "paraQueServe": "É o PROCV deitado: procura um valor na primeira linha de uma tabela e devolve o que está em outra linha da mesma coluna. Serve para tabelas com os meses ou as filiais no cabeçalho.",
+    "argumentos": [
+      {
+        "nome": "valor_procurado",
+        "explicacao": "O que procurar na primeira linha (ex.: o mês)."
+      },
+      {
+        "nome": "matriz_tabela",
+        "explicacao": "A tabela onde procurar, com o cabeçalho na primeira linha."
+      },
+      {
+        "nome": "núm_índice_lin",
+        "explicacao": "O número da linha a devolver, contando a partir da primeira da tabela."
+      },
+      {
+        "nome": "procurar_intervalo",
+        "opcional": true,
+        "explicacao": "FALSO para busca exata; VERDADEIRO ou omitido para aproximada."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual a meta de março?",
+      "dados": [
+        [
+          "Mês",
+          "Jan",
+          "Fev",
+          "Mar"
+        ],
+        [
+          "Meta",
+          "R$ 10.000,00",
+          "R$ 12.000,00",
+          "R$ 15.000,00"
+        ]
+      ],
+      "celula": "B4",
+      "formula": "=PROCH(\"Mar\";B1:D2;2;FALSO)",
+      "formato": "moeda",
+      "resultado": "R$ 15.000,00",
+      "explicacao": "Acha \"Mar\" na primeira linha e devolve a 2ª linha da tabela, na mesma coluna."
+    },
+    "cuidados": [
+      "Como no PROCV, esquecer o FALSO faz uma busca aproximada que pode devolver o valor errado.",
+      "O PROCX faz busca horizontal e vertical e costuma ser mais simples de ler."
+    ],
+    "relacionadas": [
+      "procv",
+      "procx",
+      "indice"
+    ]
+  },
+  {
+    "slug": "procx",
+    "nome": "PROCX",
+    "ingles": "XLOOKUP",
+    "categoria": "busca",
+    "paraQueServe": "A busca moderna do Excel: procura um valor numa coluna e devolve o da mesma posição em outra, para a direita ou para a esquerda. Já é exata por padrão e permite dizer o que mostrar quando não acha.",
+    "argumentos": [
+      {
+        "nome": "pesquisa_valor",
+        "explicacao": "O que procurar."
+      },
+      {
+        "nome": "pesquisa_matriz",
+        "explicacao": "A coluna (ou linha) onde procurar."
+      },
+      {
+        "nome": "matriz_retorno",
+        "explicacao": "A coluna (ou linha) com o resultado a devolver."
+      },
+      {
+        "nome": "se_não_encontrada",
+        "opcional": true,
+        "explicacao": "O que mostrar se não encontrar (ex.: \"Não cadastrado\"). Sem isso, dá #N/D."
+      },
+      {
+        "nome": "modo_correspondência",
+        "opcional": true,
+        "explicacao": "0 (padrão) busca exata; -1 pega o próximo menor; 1, o próximo maior; 2 aceita curingas."
+      },
+      {
+        "nome": "modo_pesquisa",
+        "opcional": true,
+        "explicacao": "1 (padrão) procura de cima para baixo; -1, de baixo para cima (o registro mais recente)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o código do Grampeador? (O código está à esquerda do nome.)",
+      "dados": [
+        [
+          "Código",
+          "Produto",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "Caneta",
+          "R$ 2,50"
+        ],
+        [
+          "P-02",
+          "Caderno",
+          "R$ 18,00"
+        ],
+        [
+          "P-03",
+          "Pasta",
+          "R$ 9,90"
+        ],
+        [
+          "P-04",
+          "Grampeador",
+          "R$ 32,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=PROCX(\"Grampeador\";B2:B5;A2:A5;\"Não cadastrado\")",
+      "resultado": "P-04",
+      "explicacao": "Procura na coluna B e devolve da coluna A, que está à esquerda: o PROCV não faria isso."
+    },
+    "cuidados": [
+      "A coluna de busca e a de retorno precisam ter o mesmo número de linhas (B2:B5 e A2:A5).",
+      "O PROCX só existe no Excel 365 e 2021 em diante. Se a planilha vai para alguém com Excel 2016, use PROCV ou ÍNDICE + CORRESP."
+    ],
+    "relacionadas": [
+      "procv",
+      "indice",
+      "corresp",
+      "correspx"
+    ]
+  },
+  {
+    "slug": "indice",
+    "nome": "ÍNDICE",
+    "ingles": "INDEX",
+    "categoria": "busca",
+    "paraQueServe": "Devolve o valor que está numa posição de um intervalo: a 3ª linha, a 2ª coluna. Sozinha parece simples; junto com CORRESP, vira uma busca que funciona em qualquer direção.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo de onde tirar o valor."
+      },
+      {
+        "nome": "núm_linha",
+        "explicacao": "O número da linha dentro do intervalo (1 = a primeira)."
+      },
+      {
+        "nome": "núm_coluna",
+        "opcional": true,
+        "explicacao": "O número da coluna dentro do intervalo. Pode omitir se o intervalo tem uma coluna só."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o preço do Caderno? (ÍNDICE + CORRESP)",
+      "dados": [
+        [
+          "Código",
+          "Produto",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "Caneta",
+          "R$ 2,50"
+        ],
+        [
+          "P-02",
+          "Caderno",
+          "R$ 18,00"
+        ],
+        [
+          "P-03",
+          "Pasta",
+          "R$ 9,90"
+        ],
+        [
+          "P-04",
+          "Grampeador",
+          "R$ 32,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=ÍNDICE(C2:C5;CORRESP(\"Caderno\";B2:B5;0))",
+      "formato": "moeda",
+      "resultado": "R$ 18,00",
+      "explicacao": "CORRESP diz que Caderno é o 2º item; ÍNDICE pega o 2º preço."
+    },
+    "cuidados": [
+      "A posição é contada dentro do intervalo, não na planilha: em C2:C5, a linha 1 é a C2.",
+      "Os intervalos do ÍNDICE e do CORRESP precisam começar na mesma linha; senão a resposta sai deslocada."
+    ],
+    "relacionadas": [
+      "corresp",
+      "procv",
+      "procx",
+      "desloc"
+    ]
+  },
+  {
+    "slug": "corresp",
+    "nome": "CORRESP",
+    "ingles": "MATCH",
+    "categoria": "busca",
+    "paraQueServe": "Diz em que posição um valor está numa lista. Raramente é usada sozinha: é a metade \"procura\" da dupla ÍNDICE + CORRESP, e também ajuda a descobrir em que coluna está um mês ou uma filial.",
+    "argumentos": [
+      {
+        "nome": "valor_procurado",
+        "explicacao": "O valor a procurar."
+      },
+      {
+        "nome": "matriz_procurada",
+        "explicacao": "A lista (uma coluna ou uma linha) onde procurar."
+      },
+      {
+        "nome": "tipo_correspondência",
+        "opcional": true,
+        "explicacao": "0 para busca exata (o mais comum). 1 ou omitido é aproximado e exige a lista em ordem crescente."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que posição da lista está o produto Pasta?",
+      "dados": [
+        [
+          "Código",
+          "Produto",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "Caneta",
+          "R$ 2,50"
+        ],
+        [
+          "P-02",
+          "Caderno",
+          "R$ 18,00"
+        ],
+        [
+          "P-03",
+          "Pasta",
+          "R$ 9,90"
+        ],
+        [
+          "P-04",
+          "Grampeador",
+          "R$ 32,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CORRESP(\"Pasta\";B2:B5;0)",
+      "resultado": "3",
+      "explicacao": "Caneta é o 1º, Caderno o 2º, Pasta o 3º."
+    },
+    "cuidados": [
+      "Sem o 0 no fim, a busca é aproximada: numa lista fora de ordem, a posição devolvida pode estar errada sem nenhum aviso."
+    ],
+    "relacionadas": [
+      "indice",
+      "correspx",
+      "procv"
+    ]
+  },
+  {
+    "slug": "escolher",
+    "nome": "ESCOLHER",
+    "ingles": "CHOOSE",
+    "categoria": "busca",
+    "paraQueServe": "Escolhe um valor de uma lista pela posição: 1 devolve o primeiro, 2 o segundo… Útil para transformar códigos numéricos em texto, como 1 = \"Pix\", 2 = \"Boleto\", 3 = \"Cartão\".",
+    "argumentos": [
+      {
+        "nome": "núm_índice",
+        "explicacao": "A posição do valor a devolver (1, 2, 3…)."
+      },
+      {
+        "nome": "valor1",
+        "explicacao": "O primeiro valor da lista."
+      },
+      {
+        "nome": "valor2",
+        "opcional": true,
+        "explicacao": "Os outros valores, opcionais (até 254)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Mostrar a forma de pagamento pelo código do sistema.",
+      "dados": [
+        [
+          "Pedido",
+          "Cód. pagamento"
+        ],
+        [
+          "1001",
+          "2"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=ESCOLHER(B2;\"Pix\";\"Boleto\";\"Cartão\")",
+      "resultado": "Boleto",
+      "explicacao": "O código 2 escolhe o segundo valor da lista."
+    },
+    "cuidados": [
+      "Se a posição for 0 ou maior que a quantidade de valores, dá #VALOR!.",
+      "Para listas que mudam com frequência, uma tabela com PROCV é mais fácil de manter."
+    ],
+    "relacionadas": [
+      "indice",
+      "procv",
+      "ses"
+    ]
+  },
+  {
+    "slug": "desloc",
+    "nome": "DESLOC",
+    "ingles": "OFFSET",
+    "categoria": "busca",
+    "paraQueServe": "Devolve uma referência que começa a algumas linhas e colunas de uma célula de partida, com o tamanho que você quiser. Serve para \"os últimos 3 meses\", totais acumulados e intervalos que crescem com os dados.",
+    "argumentos": [
+      {
+        "nome": "ref",
+        "explicacao": "A célula de partida."
+      },
+      {
+        "nome": "lins",
+        "explicacao": "Quantas linhas andar (para baixo; negativo sobe)."
+      },
+      {
+        "nome": "cols",
+        "explicacao": "Quantas colunas andar (para a direita; negativo vai para a esquerda)."
+      },
+      {
+        "nome": "altura",
+        "opcional": true,
+        "explicacao": "A altura do intervalo resultante, em linhas. Opcional."
+      },
+      {
+        "nome": "largura",
+        "opcional": true,
+        "explicacao": "A largura do intervalo resultante, em colunas. Opcional."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Somar as vendas dos últimos 3 meses da lista.",
+      "dados": [
+        [
+          "Mês",
+          "Vendas"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ],
+        [
+          "Mar",
+          "R$ 1.480,00"
+        ],
+        [
+          "Abr",
+          "R$ 1.130,00"
+        ],
+        [
+          "Mai",
+          "R$ 1.300,00"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=SOMA(DESLOC(B1;CONT.VALORES(B2:B6)-2;0;3;1))",
+      "formato": "moeda",
+      "resultado": "R$ 3.910,00",
+      "explicacao": "São 5 meses; anda 3 linhas a partir de B1 (chega em B4) e pega 3 linhas: Mar, Abr e Mai. Ao incluir junho, a soma se ajusta."
+    },
+    "cuidados": [
+      "DESLOC recalcula a cada mudança na planilha (é \"volátil\"); em planilhas grandes, pode deixar tudo lento.",
+      "É fácil errar a conta das linhas. Confira a resposta somando à mão na primeira vez."
+    ],
+    "relacionadas": [
+      "indice",
+      "indireto",
+      "soma"
+    ]
+  },
+  {
+    "slug": "indireto",
+    "nome": "INDIRETO",
+    "ingles": "INDIRECT",
+    "categoria": "busca",
+    "paraQueServe": "Transforma um texto em referência: se A2 contém \"Março\", =INDIRETO(A2&\"!B2\") lê a célula B2 da aba Março. Serve para painéis que mudam de mês ou de filial só trocando um nome.",
+    "argumentos": [
+      {
+        "nome": "texto_ref",
+        "explicacao": "O endereço escrito como texto, como \"B3\" ou \"Março!B2\" (montado com & a partir de outras células)."
+      },
+      {
+        "nome": "a1",
+        "opcional": true,
+        "explicacao": "VERDADEIRO ou omitido para endereços no estilo A1 (o normal)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Ler o valor da célula cujo endereço está escrito em D2.",
+      "dados": [
+        [
+          "Mês",
+          "Vendas",
+          "",
+          "Endereço"
+        ],
+        [
+          "Jan",
+          "R$ 1.200,00",
+          "",
+          "B3"
+        ],
+        [
+          "Fev",
+          "R$ 950,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=INDIRETO(D2)",
+      "formato": "moeda",
+      "resultado": "R$ 950,00",
+      "explicacao": "D2 contém o texto \"B3\"; INDIRETO lê a célula B3."
+    },
+    "cuidados": [
+      "Se a aba tiver espaço no nome, o texto precisa de apóstrofos: \"'Filial Sul'!B2\".",
+      "Renomear uma aba não atualiza o texto: o INDIRETO passa a dar #REF!."
+    ],
+    "relacionadas": [
+      "desloc",
+      "indice",
+      "concat"
+    ]
+  },
+  {
+    "slug": "correspx",
+    "nome": "CORRESPX",
+    "ingles": "XMATCH",
+    "categoria": "busca",
+    "paraQueServe": "A versão moderna do CORRESP: diz a posição de um valor numa lista, já com busca exata por padrão, e pode procurar de baixo para cima ou pegar o próximo menor ou maior.",
+    "argumentos": [
+      {
+        "nome": "pesquisa_valor",
+        "explicacao": "O valor a procurar."
+      },
+      {
+        "nome": "pesquisa_matriz",
+        "explicacao": "A lista onde procurar."
+      },
+      {
+        "nome": "modo_correspondência",
+        "opcional": true,
+        "explicacao": "0 (padrão) exata; -1 exata ou próximo menor; 1 exata ou próximo maior; 2 com curingas (* e ?)."
+      },
+      {
+        "nome": "modo_pesquisa",
+        "opcional": true,
+        "explicacao": "1 (padrão) do primeiro ao último; -1 do último ao primeiro."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que posição está o Grampeador?",
+      "dados": [
+        [
+          "Código",
+          "Produto",
+          "Preço"
+        ],
+        [
+          "P-01",
+          "Caneta",
+          "R$ 2,50"
+        ],
+        [
+          "P-02",
+          "Caderno",
+          "R$ 18,00"
+        ],
+        [
+          "P-03",
+          "Pasta",
+          "R$ 9,90"
+        ],
+        [
+          "P-04",
+          "Grampeador",
+          "R$ 32,00"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CORRESPX(\"Grampeador\";B2:B5)",
+      "resultado": "4",
+      "explicacao": "É o 4º item da lista. Não precisou do 0 no fim, como no CORRESP."
+    },
+    "cuidados": [
+      "Só existe no Excel 365 e 2021 em diante.",
+      "O modo -1 (próximo menor) não exige lista em ordem, ao contrário do CORRESP aproximado."
+    ],
+    "relacionadas": [
+      "corresp",
+      "indice",
+      "procx"
+    ]
+  },
+  {
+    "slug": "concat",
+    "nome": "CONCAT",
+    "ingles": "CONCAT",
+    "categoria": "texto",
+    "paraQueServe": "Junta vários textos (ou células) num só. Serve para montar o nome completo a partir de nome e sobrenome, criar um código como \"SP-1001\" ou escrever frases como \"Vencimento: 10/03\".",
+    "argumentos": [
+      {
+        "nome": "texto1",
+        "explicacao": "O primeiro texto, célula ou intervalo a juntar."
+      },
+      {
+        "nome": "texto2",
+        "opcional": true,
+        "explicacao": "Os outros textos, opcionais. Espaços e separadores entram como texto entre aspas: \" \"."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Montar o nome completo.",
+      "dados": [
+        [
+          "Nome",
+          "Sobrenome"
+        ],
+        [
+          "Maria",
+          "Souza"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=CONCAT(A2;\" \";B2)",
+      "resultado": "Maria Souza",
+      "explicacao": "Junta A2, um espaço e B2. Sem o \" \", ficaria \"MariaSouza\"."
+    },
+    "cuidados": [
+      "Esquecer o espaço entre as partes é o erro mais comum.",
+      "Datas e valores perdem o formato ao juntar (a data vira um número como 46091). Use TEXTO: TEXTO(B2;\"dd/mm/aaaa\")."
+    ],
+    "relacionadas": [
+      "concatenar",
+      "unirtexto",
+      "texto"
+    ]
+  },
+  {
+    "slug": "concatenar",
+    "nome": "CONCATENAR",
+    "ingles": "CONCATENATE",
+    "categoria": "texto",
+    "paraQueServe": "Junta textos, como o CONCAT. É a versão antiga, que continua funcionando e aparece muito em planilhas herdadas. A diferença: não aceita intervalos (A2:C2), só células uma a uma.",
+    "argumentos": [
+      {
+        "nome": "texto1",
+        "explicacao": "O primeiro texto ou célula."
+      },
+      {
+        "nome": "texto2",
+        "opcional": true,
+        "explicacao": "Os outros textos ou células, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Criar o código do pedido juntando o estado e o número.",
+      "dados": [
+        [
+          "UF",
+          "Número"
+        ],
+        [
+          "SP",
+          "1001"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=CONCATENAR(A2;\"-\";B2)",
+      "resultado": "SP-1001",
+      "explicacao": "Junta SP, o hífen e 1001."
+    },
+    "cuidados": [
+      "O operador & faz o mesmo e é mais curto: =A2&\"-\"&B2.",
+      "Para juntar um intervalo inteiro com separador, use UNIRTEXTO."
+    ],
+    "relacionadas": [
+      "concat",
+      "unirtexto",
+      "texto"
+    ]
+  },
+  {
+    "slug": "esquerda",
+    "nome": "ESQUERDA",
+    "ingles": "LEFT",
+    "categoria": "texto",
+    "paraQueServe": "Pega os primeiros caracteres de um texto. Serve para tirar o DDD de um telefone, o prefixo de um código de produto ou a sigla do estado no começo de uma referência.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      },
+      {
+        "nome": "núm_caract",
+        "opcional": true,
+        "explicacao": "Quantos caracteres pegar. Se omitir, pega 1."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o DDD do telefone?",
+      "dados": [
+        [
+          "Telefone"
+        ],
+        [
+          "11987654321"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=ESQUERDA(A2;2)",
+      "resultado": "11",
+      "explicacao": "Os dois primeiros caracteres."
+    },
+    "cuidados": [
+      "O resultado é texto, mesmo quando parece número: \"11\" não entra numa SOMA. Converta com VALOR se precisar.",
+      "Se o tamanho do pedaço varia, combine com LOCALIZAR: =ESQUERDA(A2;LOCALIZAR(\" \";A2)-1) pega o primeiro nome."
+    ],
+    "relacionadas": [
+      "direita",
+      "ext-texto",
+      "localizar",
+      "valor"
+    ]
+  },
+  {
+    "slug": "direita",
+    "nome": "DIREITA",
+    "ingles": "RIGHT",
+    "categoria": "texto",
+    "paraQueServe": "Pega os últimos caracteres de um texto: os 4 últimos dígitos do cartão, o ano no fim de um código, a extensão de um arquivo.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      },
+      {
+        "nome": "núm_caract",
+        "opcional": true,
+        "explicacao": "Quantos caracteres pegar do fim. Se omitir, pega 1."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Mostrar só os 4 últimos dígitos do cartão.",
+      "dados": [
+        [
+          "Cartão"
+        ],
+        [
+          "5502 0911 2233 4455"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=DIREITA(A2;4)",
+      "resultado": "4455",
+      "explicacao": "Os quatro últimos caracteres."
+    },
+    "cuidados": [
+      "Espaços no fim do texto contam como caracteres. Se vier um pedaço estranho, limpe antes com ARRUMAR."
+    ],
+    "relacionadas": [
+      "esquerda",
+      "ext-texto",
+      "num-caract"
+    ]
+  },
+  {
+    "slug": "ext-texto",
+    "nome": "EXT.TEXTO",
+    "ingles": "MID",
+    "categoria": "texto",
+    "paraQueServe": "Pega um pedaço do meio de um texto, a partir de uma posição. Serve para extrair o mês de um código como \"NF-2026-03-0451\" ou um trecho fixo de uma linha importada.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      },
+      {
+        "nome": "núm_inicial",
+        "explicacao": "A posição do primeiro caractere a pegar (1 = o primeiro)."
+      },
+      {
+        "nome": "núm_caract",
+        "explicacao": "Quantos caracteres pegar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o ano no código da nota fiscal?",
+      "dados": [
+        [
+          "Nota"
+        ],
+        [
+          "NF-2026-0451"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=EXT.TEXTO(A2;4;4)",
+      "resultado": "2026",
+      "explicacao": "A partir do 4º caractere (depois de \"NF-\"), pega 4 caracteres."
+    },
+    "cuidados": [
+      "Espaços e hífens contam como caracteres na hora de contar a posição.",
+      "O resultado é texto. Para usar como número, envolva com VALOR."
+    ],
+    "relacionadas": [
+      "esquerda",
+      "direita",
+      "localizar"
+    ]
+  },
+  {
+    "slug": "num-caract",
+    "nome": "NÚM.CARACT",
+    "ingles": "LEN",
+    "categoria": "texto",
+    "paraQueServe": "Conta quantos caracteres um texto tem, contando espaços. Ajuda a conferir CPF e CEP com o tamanho certo e a respeitar limites de campos (como 40 caracteres na descrição do produto).",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O CPF tem os 11 dígitos?",
+      "dados": [
+        [
+          "CPF"
+        ],
+        [
+          "1234567890"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=NÚM.CARACT(A2)",
+      "resultado": "10",
+      "explicacao": "Só 10 dígitos: falta um. Provavelmente um zero à esquerda se perdeu."
+    },
+    "cuidados": [
+      "Espaços invisíveis no começo ou no fim também contam. Compare com =NÚM.CARACT(ARRUMAR(A2)).",
+      "Número digitado como número perde os zeros à esquerda (01234 vira 1234). Guarde CPF e CEP como texto."
+    ],
+    "relacionadas": [
+      "arrumar",
+      "esquerda",
+      "direita"
+    ]
+  },
+  {
+    "slug": "arrumar",
+    "nome": "ARRUMAR",
+    "ingles": "TRIM",
+    "categoria": "texto",
+    "paraQueServe": "Remove os espaços sobrando: no começo, no fim e os duplicados no meio. É a primeira limpeza de dados copiados de sistemas e e-mails, que fazem PROCV e CONT.SE falharem sem motivo aparente.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula) a limpar."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Limpar o nome do cliente que veio com espaços a mais.",
+      "dados": [
+        [
+          "Cliente"
+        ],
+        [
+          "  Maria   Souza "
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=ARRUMAR(A2)",
+      "resultado": "Maria Souza",
+      "explicacao": "Tira os espaços das pontas e deixa só um entre as palavras."
+    },
+    "cuidados": [
+      "O espaço \"duro\" de páginas da web (caractere 160) não é removido pelo ARRUMAR. Troque antes com SUBSTITUIR(A2;CARACT(160);\" \")."
+    ],
+    "relacionadas": [
+      "substituir",
+      "pri-maiuscula",
+      "num-caract"
+    ]
+  },
+  {
+    "slug": "maiuscula",
+    "nome": "MAIÚSCULA",
+    "ingles": "UPPER",
+    "categoria": "texto",
+    "paraQueServe": "Converte o texto para letras maiúsculas. Útil para padronizar siglas, placas, códigos e estados (sp vira SP).",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Padronizar a sigla do estado.",
+      "dados": [
+        [
+          "UF"
+        ],
+        [
+          "sp"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=MAIÚSCULA(A2)",
+      "resultado": "SP",
+      "explicacao": "Todas as letras viram maiúsculas."
+    },
+    "cuidados": [
+      "Para comparar textos, não precisa converter: o Excel já não diferencia maiúsculas em =, PROCV e CONT.SE."
+    ],
+    "relacionadas": [
+      "minuscula",
+      "pri-maiuscula",
+      "arrumar"
+    ]
+  },
+  {
+    "slug": "minuscula",
+    "nome": "MINÚSCULA",
+    "ingles": "LOWER",
+    "categoria": "texto",
+    "paraQueServe": "Converte o texto para letras minúsculas. Serve para padronizar e-mails e logins antes de comparar ou importar para outro sistema.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Padronizar o e-mail digitado.",
+      "dados": [
+        [
+          "E-mail"
+        ],
+        [
+          "Maria.Souza@Empresa.com"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=MINÚSCULA(A2)",
+      "resultado": "maria.souza@empresa.com",
+      "explicacao": "Todas as letras viram minúsculas."
+    },
+    "cuidados": [
+      "Números e símbolos não mudam. Espaços também não: combine com ARRUMAR para limpar de vez."
+    ],
+    "relacionadas": [
+      "maiuscula",
+      "pri-maiuscula",
+      "arrumar"
+    ]
+  },
+  {
+    "slug": "pri-maiuscula",
+    "nome": "PRI.MAIÚSCULA",
+    "ingles": "PROPER",
+    "categoria": "texto",
+    "paraQueServe": "Deixa a primeira letra de cada palavra em maiúscula e o resto em minúscula. É o jeito rápido de arrumar uma lista de nomes que veio TODA EM CAIXA ALTA.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Arrumar o nome do cliente.",
+      "dados": [
+        [
+          "Cliente"
+        ],
+        [
+          "MARIA DE SOUZA"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=PRI.MAIÚSCULA(A2)",
+      "resultado": "Maria De Souza",
+      "explicacao": "Cada palavra começa com maiúscula, inclusive o \"De\"."
+    },
+    "cuidados": [
+      "Preposições também ganham maiúscula (\"De\", \"Da\"). Se precisar de \"de\", corrija com SUBSTITUIR.",
+      "Siglas viram palavras: \"LTDA\" vira \"Ltda\"."
+    ],
+    "relacionadas": [
+      "maiuscula",
+      "minuscula",
+      "arrumar"
+    ]
+  },
+  {
+    "slug": "localizar",
+    "nome": "LOCALIZAR",
+    "ingles": "SEARCH",
+    "categoria": "texto",
+    "paraQueServe": "Diz em que posição um texto aparece dentro de outro, sem diferenciar maiúsculas. Serve para achar onde está o espaço (e separar nome e sobrenome) ou para saber se uma palavra aparece na descrição.",
+    "argumentos": [
+      {
+        "nome": "texto_procurado",
+        "explicacao": "O texto a procurar. Aceita curingas: ? (um caractere) e * (vários)."
+      },
+      {
+        "nome": "no_texto",
+        "explicacao": "O texto onde procurar."
+      },
+      {
+        "nome": "núm_inicial",
+        "opcional": true,
+        "explicacao": "A partir de qual posição começar. Se omitir, começa do 1º caractere."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que posição está o espaço entre nome e sobrenome?",
+      "dados": [
+        [
+          "Nome"
+        ],
+        [
+          "Maria Souza"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=LOCALIZAR(\" \";A2)",
+      "resultado": "6",
+      "explicacao": "\"Maria\" tem 5 letras; o espaço é o 6º caractere. Com isso, =ESQUERDA(A2;B2-1) pega o primeiro nome."
+    },
+    "cuidados": [
+      "Se não achar, dá #VALOR!. Para um teste de sim ou não, use =ÉNÚM(LOCALIZAR(…)).",
+      "Para diferenciar maiúsculas de minúsculas, use PROCURAR."
+    ],
+    "relacionadas": [
+      "procurar",
+      "esquerda",
+      "ext-texto",
+      "enum"
+    ]
+  },
+  {
+    "slug": "procurar",
+    "nome": "PROCURAR",
+    "ingles": "FIND",
+    "categoria": "texto",
+    "paraQueServe": "Diz em que posição um texto aparece dentro de outro, diferenciando maiúsculas de minúsculas. Útil quando \"A\" e \"a\" significam coisas diferentes num código.",
+    "argumentos": [
+      {
+        "nome": "texto_procurado",
+        "explicacao": "O texto a procurar (sem curingas)."
+      },
+      {
+        "nome": "no_texto",
+        "explicacao": "O texto onde procurar."
+      },
+      {
+        "nome": "núm_inicial",
+        "opcional": true,
+        "explicacao": "A partir de qual posição começar. Se omitir, começa do 1º caractere."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que posição aparece o \"B\" maiúsculo no código?",
+      "dados": [
+        [
+          "Código"
+        ],
+        [
+          "ab-AB-01"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=PROCURAR(\"B\";A2)",
+      "resultado": "5",
+      "explicacao": "O \"b\" minúsculo (2º caractere) é ignorado; o \"B\" maiúsculo é o 5º."
+    },
+    "cuidados": [
+      "Na maioria dos casos de escritório, LOCALIZAR é o que você quer: ele não se importa com maiúsculas e aceita curingas."
+    ],
+    "relacionadas": [
+      "localizar",
+      "ext-texto",
+      "substituir"
+    ]
+  },
+  {
+    "slug": "substituir",
+    "nome": "SUBSTITUIR",
+    "ingles": "SUBSTITUTE",
+    "categoria": "texto",
+    "paraQueServe": "Troca um trecho do texto por outro. Serve para tirar pontos e traços do CPF, trocar ponto por vírgula em números importados ou corrigir um nome que mudou em toda a lista.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto (ou a célula)."
+      },
+      {
+        "nome": "texto_antigo",
+        "explicacao": "O trecho que será trocado."
+      },
+      {
+        "nome": "novo_texto",
+        "explicacao": "O que vai no lugar (\"\" para apagar)."
+      },
+      {
+        "nome": "núm_da_ocorrência",
+        "opcional": true,
+        "explicacao": "Qual ocorrência trocar (1 = só a primeira). Se omitir, troca todas."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Deixar o CPF só com números.",
+      "dados": [
+        [
+          "CPF"
+        ],
+        [
+          "123.456.789-09"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=SUBSTITUIR(SUBSTITUIR(A2;\".\";\"\");\"-\";\"\")",
+      "resultado": "12345678909",
+      "explicacao": "O SUBSTITUIR de dentro apaga os pontos; o de fora apaga o traço."
+    },
+    "cuidados": [
+      "Diferencia maiúsculas: trocar \"sul\" não pega \"Sul\".",
+      "O resultado continua sendo texto, mesmo que só tenha dígitos. Para virar número, use VALOR."
+    ],
+    "relacionadas": [
+      "arrumar",
+      "valor",
+      "localizar"
+    ]
+  },
+  {
+    "slug": "texto",
+    "nome": "TEXTO",
+    "ingles": "TEXT",
+    "categoria": "texto",
+    "paraQueServe": "Transforma um número ou data em texto com o formato que você escolher. É o que faz uma data aparecer certa dentro de uma frase (\"Vence em 10/03/2026\") ou um valor aparecer com casas decimais fixas.",
+    "argumentos": [
+      {
+        "nome": "valor",
+        "explicacao": "O número ou a data a formatar."
+      },
+      {
+        "nome": "formato_texto",
+        "explicacao": "O formato entre aspas, como \"dd/mm/aaaa\", \"0,00\" ou \"mmmm\" (nome do mês)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Escrever a frase de vencimento com a data formatada.",
+      "dados": [
+        [
+          "Vencimento"
+        ],
+        [
+          "10/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=\"Vence em \"&TEXTO(A2;\"dd/mm/aaaa\")",
+      "resultado": "Vence em 10/03/2026",
+      "explicacao": "Sem o TEXTO, a frase sairia \"Vence em 46091\" (o número que o Excel usa para a data)."
+    },
+    "cuidados": [
+      "O resultado é texto: não dá para somar nem fazer conta de datas com ele. Use TEXTO só para exibir.",
+      "No Excel em português, os códigos de data são em português: \"aaaa\" para ano (não \"yyyy\")."
+    ],
+    "relacionadas": [
+      "concat",
+      "valor",
+      "data"
+    ]
+  },
+  {
+    "slug": "valor",
+    "nome": "VALOR",
+    "ingles": "VALUE",
+    "categoria": "texto",
+    "paraQueServe": "Converte em número um texto que parece número. Resolve o problema clássico do relatório exportado de sistema em que os valores ficam alinhados à esquerda e a SOMA dá zero.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto a converter, como \"1.250,50\"."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Converter o valor que veio como texto do sistema.",
+      "dados": [
+        [
+          "Valor (texto)"
+        ],
+        [
+          "'1.250,50"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=VALOR(A2)",
+      "resultado": "1250,5",
+      "explicacao": "O texto \"1.250,50\" vira o número 1.250,5, que agora entra em somas e contas."
+    },
+    "cuidados": [
+      "O texto precisa estar no padrão brasileiro (vírgula decimal). \"1,250.50\" no padrão americano dá #VALOR!: troque os separadores com SUBSTITUIR antes."
+    ],
+    "relacionadas": [
+      "texto",
+      "substituir",
+      "etexto"
+    ]
+  },
+  {
+    "slug": "rept",
+    "nome": "REPT",
+    "ingles": "REPT",
+    "categoria": "texto",
+    "paraQueServe": "Repete um texto um número de vezes. Serve para completar códigos com zeros à esquerda ou desenhar uma barrinha de progresso dentro da célula.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto a repetir."
+      },
+      {
+        "nome": "número_vezes",
+        "explicacao": "Quantas vezes repetir."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Completar o código com zeros à esquerda até ter 6 dígitos.",
+      "dados": [
+        [
+          "Código"
+        ],
+        [
+          "'451"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=REPT(\"0\";6-NÚM.CARACT(A2))&A2",
+      "resultado": "000451",
+      "explicacao": "O código tem 3 dígitos; REPT põe 3 zeros na frente."
+    },
+    "cuidados": [
+      "Se o número de vezes ficar negativo (código maior que 6 dígitos), dá #VALOR!."
+    ],
+    "relacionadas": [
+      "num-caract",
+      "texto",
+      "concat"
+    ]
+  },
+  {
+    "slug": "unirtexto",
+    "nome": "UNIRTEXTO",
+    "ingles": "TEXTJOIN",
+    "categoria": "texto",
+    "paraQueServe": "Junta textos de um intervalo com um separador entre eles, podendo pular as células vazias. Serve para listar numa célula só os e-mails de uma equipe, separados por \"; \", ou os itens de um pedido.",
+    "argumentos": [
+      {
+        "nome": "delimitador",
+        "explicacao": "O separador entre os textos, entre aspas: \", \", \"; \", \" / \"."
+      },
+      {
+        "nome": "ignorar_vazio",
+        "explicacao": "VERDADEIRO para pular as células vazias (o mais comum); FALSO para mantê-las."
+      },
+      {
+        "nome": "texto1",
+        "explicacao": "O primeiro texto ou intervalo."
+      },
+      {
+        "nome": "texto2",
+        "opcional": true,
+        "explicacao": "Os outros textos ou intervalos, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Montar a lista de e-mails para copiar no campo \"Para\".",
+      "dados": [
+        [
+          "E-mail"
+        ],
+        [
+          "ana@empresa.com"
+        ],
+        [
+          ""
+        ],
+        [
+          "bruno@empresa.com"
+        ],
+        [
+          "carla@empresa.com"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=UNIRTEXTO(\"; \";VERDADEIRO;A2:A5)",
+      "resultado": "ana@empresa.com; bruno@empresa.com; carla@empresa.com",
+      "explicacao": "Os três e-mails, separados por \"; \". A célula vazia foi pulada."
+    },
+    "cuidados": [
+      "Com FALSO no segundo argumento, as vazias viram separadores repetidos (\"; ; \").",
+      "Só existe no Excel 2019 em diante e no 365."
+    ],
+    "relacionadas": [
+      "concat",
+      "dividirtexto",
+      "concatenar"
+    ]
+  },
+  {
+    "slug": "dividirtexto",
+    "nome": "DIVIDIRTEXTO",
+    "ingles": "TEXTSPLIT",
+    "categoria": "texto",
+    "paraQueServe": "Divide um texto em pedaços pelo separador, espalhando o resultado em colunas (ou linhas). É o contrário do UNIRTEXTO: separa nome e sobrenome, ou \"Cidade - UF\", numa fórmula só.",
+    "argumentos": [
+      {
+        "nome": "texto",
+        "explicacao": "O texto a dividir."
+      },
+      {
+        "nome": "delimitador_col",
+        "explicacao": "O separador que divide em colunas, como \" \", \";\" ou \" - \"."
+      },
+      {
+        "nome": "delimitador_lin",
+        "opcional": true,
+        "explicacao": "O separador que divide em linhas. Opcional."
+      },
+      {
+        "nome": "ignorar_vazio",
+        "opcional": true,
+        "explicacao": "VERDADEIRO para ignorar pedaços vazios (dois separadores seguidos)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Separar cidade e UF em duas colunas.",
+      "dados": [
+        [
+          "Local"
+        ],
+        [
+          "Campinas - SP"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=DIVIDIRTEXTO(A2;\" - \")",
+      "resultado": [
+        [
+          "Campinas",
+          "SP"
+        ]
+      ],
+      "explicacao": "O resultado \"derrama\" para a direita: Campinas em B2 e SP em C2."
+    },
+    "cuidados": [
+      "As células à direita precisam estar vazias; se houver algo no caminho, dá #DESPEJAR!.",
+      "Só existe no Excel 365. Em versões antigas, use Dados > Texto para Colunas."
+    ],
+    "relacionadas": [
+      "unirtexto",
+      "esquerda",
+      "localizar"
+    ]
+  },
+  {
+    "slug": "hoje",
+    "nome": "HOJE",
+    "ingles": "TODAY",
+    "categoria": "datas",
+    "paraQueServe": "Mostra a data de hoje e se atualiza sozinha todo dia. É a base de qualquer controle de prazos: quantos dias faltam para o vencimento, quantos dias um boleto está atrasado, a idade de um cliente.",
+    "argumentos": [],
+    "exemplo": {
+      "situacao": "Quantos dias faltam para o vencimento? (Supondo que hoje é 10/03/2026.)",
+      "dados": [
+        [
+          "Vencimento"
+        ],
+        [
+          "20/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=A2-HOJE()",
+      "formato": "geral",
+      "hoje": "2026-03-10T09:00:00",
+      "resultado": "10",
+      "explicacao": "Subtrair datas dá a diferença em dias. Amanhã, a mesma fórmula mostrará 9."
+    },
+    "cuidados": [
+      "Os parênteses vazios são obrigatórios: =HOJE(), não =HOJE.",
+      "O resultado de uma conta com datas às vezes aparece como data (ex.: 10/01/1900). Mude o formato da célula para Geral ou Número.",
+      "Para registrar a data de um fato (o dia em que o pedido chegou), não use HOJE: ela muda amanhã. Digite a data ou use Ctrl+; para fixá-la."
+    ],
+    "relacionadas": [
+      "agora",
+      "datadif",
+      "diatrabalhototal"
+    ]
+  },
+  {
+    "slug": "agora",
+    "nome": "AGORA",
+    "ingles": "NOW",
+    "categoria": "datas",
+    "paraQueServe": "Mostra a data e a hora atuais, atualizadas a cada recálculo da planilha. Serve para carimbar um relatório com \"atualizado em\" ou calcular quantas horas faltam para um prazo.",
+    "argumentos": [],
+    "exemplo": {
+      "situacao": "Que horas são agora? (Supondo 10/03/2026, 14:30.)",
+      "dados": [
+        [
+          "Relatório"
+        ],
+        [
+          "Vendas do dia"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=TEXTO(AGORA();\"hh:mm\")",
+      "hoje": "2026-03-10T14:30:00",
+      "resultado": "14:30",
+      "explicacao": "AGORA guarda data e hora juntas; o TEXTO mostra só a hora."
+    },
+    "cuidados": [
+      "AGORA muda a cada alteração na planilha. Para registrar um horário fixo, use Ctrl+Shift+; (hora) em vez da fórmula.",
+      "Sem formatar, aparece um número com casas decimais: a parte inteira é o dia, a decimal é a hora."
+    ],
+    "relacionadas": [
+      "hoje",
+      "texto",
+      "int"
+    ]
+  },
+  {
+    "slug": "data",
+    "nome": "DATA",
+    "ingles": "DATE",
+    "categoria": "datas",
+    "paraQueServe": "Monta uma data a partir do ano, do mês e do dia em células separadas. Serve para juntar dados que vieram em colunas separadas e para montar datas em fórmulas, como \"dia 10 do mês que vem\".",
+    "argumentos": [
+      {
+        "nome": "ano",
+        "explicacao": "O ano, com 4 dígitos."
+      },
+      {
+        "nome": "mês",
+        "explicacao": "O mês (1 a 12). Valores fora disso avançam ou voltam o ano."
+      },
+      {
+        "nome": "dia",
+        "explicacao": "O dia."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Montar a data de vencimento a partir de três colunas.",
+      "dados": [
+        [
+          "Ano",
+          "Mês",
+          "Dia"
+        ],
+        [
+          "2026",
+          "3",
+          "10"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=DATA(A2;B2;C2)",
+      "resultado": "10/03/2026",
+      "explicacao": "Os três números viram uma data de verdade, que pode entrar em contas."
+    },
+    "cuidados": [
+      "A ordem é ano; mês; dia (não dia; mês; ano, como escrevemos no Brasil).",
+      "DATA(2026;13;1) não dá erro: vira 01/01/2027. Isso é útil para somar meses, mas pode esconder um erro de digitação."
+    ],
+    "relacionadas": [
+      "ano",
+      "mes",
+      "dia",
+      "datam"
+    ]
+  },
+  {
+    "slug": "ano",
+    "nome": "ANO",
+    "ingles": "YEAR",
+    "categoria": "datas",
+    "paraQueServe": "Tira o ano de uma data. Serve para agrupar vendas por ano, calcular a idade aproximada ou filtrar contratos de um exercício fiscal.",
+    "argumentos": [
+      {
+        "nome": "núm_série",
+        "explicacao": "A data (ou a célula com a data)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que ano foi a venda?",
+      "dados": [
+        [
+          "Data da venda"
+        ],
+        [
+          "15/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=ANO(A2)",
+      "resultado": "2026",
+      "explicacao": "Pega só o ano da data."
+    },
+    "cuidados": [
+      "Se a data veio como texto (alinhada à esquerda), ANO pode dar #VALOR!. Converta antes, por exemplo com Dados > Texto para Colunas.",
+      "Para a idade exata em anos, use DATADIF; ANO(HOJE())-ANO(nascimento) erra antes do aniversário."
+    ],
+    "relacionadas": [
+      "mes",
+      "dia",
+      "data",
+      "datadif"
+    ]
+  },
+  {
+    "slug": "mes",
+    "nome": "MÊS",
+    "ingles": "MONTH",
+    "categoria": "datas",
+    "paraQueServe": "Tira o mês (1 a 12) de uma data. Serve para somar vendas por mês, achar os aniversariantes do mês ou agrupar despesas.",
+    "argumentos": [
+      {
+        "nome": "núm_série",
+        "explicacao": "A data (ou a célula com a data)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que mês foi a venda?",
+      "dados": [
+        [
+          "Data da venda"
+        ],
+        [
+          "15/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=MÊS(A2)",
+      "resultado": "3",
+      "explicacao": "Março é o mês 3."
+    },
+    "cuidados": [
+      "MÊS devolve o número, não o nome. Para \"março\", use =TEXTO(A2;\"mmmm\").",
+      "Ao agrupar por mês, lembre do ano: março de 2025 e de 2026 dão os dois 3."
+    ],
+    "relacionadas": [
+      "ano",
+      "dia",
+      "texto",
+      "fimmes"
+    ]
+  },
+  {
+    "slug": "dia",
+    "nome": "DIA",
+    "ingles": "DAY",
+    "categoria": "datas",
+    "paraQueServe": "Tira o dia do mês (1 a 31) de uma data. Útil para separar vencimentos da primeira e da segunda quinzena ou conferir o dia de pagamento.",
+    "argumentos": [
+      {
+        "nome": "núm_série",
+        "explicacao": "A data (ou a célula com a data)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que dia do mês vence a conta?",
+      "dados": [
+        [
+          "Vencimento"
+        ],
+        [
+          "15/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=DIA(A2)",
+      "resultado": "15",
+      "explicacao": "Pega só o dia da data."
+    },
+    "cuidados": [
+      "Não confunda com DIA.DA.SEMANA, que diz se é segunda, terça…"
+    ],
+    "relacionadas": [
+      "mes",
+      "ano",
+      "dia-da-semana"
+    ]
+  },
+  {
+    "slug": "dia-da-semana",
+    "nome": "DIA.DA.SEMANA",
+    "ingles": "WEEKDAY",
+    "categoria": "datas",
+    "paraQueServe": "Diz o dia da semana de uma data, em número. Serve para marcar entregas que caem no fim de semana ou calcular a escala de plantão.",
+    "argumentos": [
+      {
+        "nome": "núm_série",
+        "explicacao": "A data."
+      },
+      {
+        "nome": "retornar_tipo",
+        "opcional": true,
+        "explicacao": "Como numerar: 1 ou omitido, domingo = 1; 2, segunda = 1 (e domingo = 7), o mais prático para dias úteis."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que dia da semana cai 10/03/2026? (Com tipo 2: segunda = 1.)",
+      "dados": [
+        [
+          "Data"
+        ],
+        [
+          "10/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=DIA.DA.SEMANA(A2;2)",
+      "resultado": "2",
+      "explicacao": "2 é terça-feira. Com tipo 2, fim de semana é 6 ou 7: =DIA.DA.SEMANA(A2;2)>5 marca sábado e domingo."
+    },
+    "cuidados": [
+      "Sem o segundo argumento, domingo é 1 e segunda é 2: é fácil errar a conta.",
+      "Para o nome do dia, use =TEXTO(A2;\"dddd\")."
+    ],
+    "relacionadas": [
+      "diatrabalho",
+      "texto",
+      "numsemana"
+    ]
+  },
+  {
+    "slug": "datadif",
+    "nome": "DATADIF",
+    "ingles": "DATEDIF",
+    "categoria": "datas",
+    "paraQueServe": "Calcula a diferença entre duas datas em anos, meses ou dias completos. É a função para tempo de casa, idade exata e duração de contratos.",
+    "argumentos": [
+      {
+        "nome": "data_inicial",
+        "explicacao": "A data mais antiga (início, admissão, nascimento)."
+      },
+      {
+        "nome": "data_final",
+        "explicacao": "A data mais recente (fim, ou HOJE())."
+      },
+      {
+        "nome": "unidade",
+        "explicacao": "A unidade, entre aspas: \"Y\" anos completos, \"M\" meses completos, \"D\" dias."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos anos completos de casa a funcionária tem?",
+      "dados": [
+        [
+          "Admissão",
+          "Referência"
+        ],
+        [
+          "15/03/2020",
+          "10/03/2026"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=DATADIF(A2;B2;\"Y\")",
+      "resultado": "5",
+      "explicacao": "Faltam 5 dias para completar 6 anos, então são 5 anos completos."
+    },
+    "cuidados": [
+      "A data inicial vem primeiro. Se ela for maior que a final, dá #NÚM!.",
+      "DATADIF não aparece na lista de sugestões do Excel, mas funciona: digite o nome inteiro."
+    ],
+    "relacionadas": [
+      "hoje",
+      "ano",
+      "diatrabalhototal"
+    ]
+  },
+  {
+    "slug": "diatrabalhototal",
+    "nome": "DIATRABALHOTOTAL",
+    "ingles": "NETWORKDAYS",
+    "categoria": "datas",
+    "paraQueServe": "Conta os dias úteis entre duas datas, sem sábados, domingos e os feriados que você listar. Serve para prazos em dias úteis, cálculo de dias trabalhados e SLAs.",
+    "argumentos": [
+      {
+        "nome": "data_inicial",
+        "explicacao": "A data inicial (entra na conta)."
+      },
+      {
+        "nome": "data_final",
+        "explicacao": "A data final (também entra)."
+      },
+      {
+        "nome": "feriados",
+        "opcional": true,
+        "explicacao": "Um intervalo com as datas dos feriados. Opcional, mas sem ele os feriados contam como dia útil."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos dias úteis tem abril de 2026, com Sexta-feira Santa e Tiradentes?",
+      "dados": [
+        [
+          "Início",
+          "Fim",
+          "Feriados"
+        ],
+        [
+          "01/04/2026",
+          "30/04/2026",
+          "03/04/2026"
+        ],
+        [
+          "",
+          "",
+          "21/04/2026"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=DIATRABALHOTOTAL(A2;B2;C2:C3)",
+      "resultado": "20",
+      "explicacao": "Abril tem 22 dias de segunda a sexta; tirando os 2 feriados, sobram 20."
+    },
+    "cuidados": [
+      "A data inicial e a final contam. De segunda a sexta da mesma semana dá 5, não 4.",
+      "Feriados estaduais e municipais não são automáticos: inclua na lista."
+    ],
+    "relacionadas": [
+      "diatrabalho",
+      "datadif",
+      "hoje"
+    ]
+  },
+  {
+    "slug": "diatrabalho",
+    "nome": "DIATRABALHO",
+    "ingles": "WORKDAY",
+    "categoria": "datas",
+    "paraQueServe": "Calcula a data depois de um número de dias úteis, pulando fins de semana e feriados. Serve para prazo de entrega (\"em 5 dias úteis\"), vencimento de contrato e prazos processuais.",
+    "argumentos": [
+      {
+        "nome": "data_inicial",
+        "explicacao": "A data de partida (não conta como dia)."
+      },
+      {
+        "nome": "dias",
+        "explicacao": "Quantos dias úteis andar (negativo volta no tempo)."
+      },
+      {
+        "nome": "feriados",
+        "opcional": true,
+        "explicacao": "Um intervalo com as datas dos feriados. Opcional."
+      }
+    ],
+    "exemplo": {
+      "situacao": "O pedido de 01/04/2026 tem entrega em 5 dias úteis. Qual a data?",
+      "dados": [
+        [
+          "Início",
+          "Fim",
+          "Feriados"
+        ],
+        [
+          "01/04/2026",
+          "30/04/2026",
+          "03/04/2026"
+        ],
+        [
+          "",
+          "",
+          "21/04/2026"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=DIATRABALHO(A2;5;C2:C3)",
+      "formato": "data",
+      "resultado": "09/04/2026",
+      "explicacao": "Conta 02/04, pula a Sexta-feira Santa (03/04) e o fim de semana, e segue 06, 07, 08 e 09/04."
+    },
+    "cuidados": [
+      "O resultado é um número de série: formate a célula como Data, senão aparece algo como 46121.",
+      "A data de partida não conta. Se o prazo começa a contar no mesmo dia, ajuste com -1."
+    ],
+    "relacionadas": [
+      "diatrabalhototal",
+      "datam",
+      "dia-da-semana"
+    ]
+  },
+  {
+    "slug": "fimmes",
+    "nome": "FIMMÊS",
+    "ingles": "EOMONTH",
+    "categoria": "datas",
+    "paraQueServe": "Devolve o último dia do mês, andando quantos meses você quiser. Serve para vencimentos \"no último dia do mês\", fechamento de competência e prazo de 30/60/90 dias contado em fim de mês.",
+    "argumentos": [
+      {
+        "nome": "data_inicial",
+        "explicacao": "Uma data qualquer do mês de partida."
+      },
+      {
+        "nome": "meses",
+        "explicacao": "Quantos meses andar: 0 é o próprio mês, 1 o mês seguinte, -1 o anterior."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Qual o último dia do mês da compra?",
+      "dados": [
+        [
+          "Compra"
+        ],
+        [
+          "15/02/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=FIMMÊS(A2;0)",
+      "formato": "data",
+      "resultado": "28/02/2026",
+      "explicacao": "Fevereiro de 2026 tem 28 dias. FIMMÊS já sabe quantos dias tem cada mês, inclusive em ano bissexto."
+    },
+    "cuidados": [
+      "Formate a célula como Data; senão aparece o número de série.",
+      "O primeiro dia do mês seguinte é =FIMMÊS(A2;0)+1."
+    ],
+    "relacionadas": [
+      "datam",
+      "data",
+      "mes"
+    ]
+  },
+  {
+    "slug": "datam",
+    "nome": "DATAM",
+    "ingles": "EDATE",
+    "categoria": "datas",
+    "paraQueServe": "Devolve a mesma data alguns meses depois (ou antes). Serve para vencimento de parcelas mensais, renovação de contrato e fim do período de experiência.",
+    "argumentos": [
+      {
+        "nome": "data_inicial",
+        "explicacao": "A data de partida."
+      },
+      {
+        "nome": "meses",
+        "explicacao": "Quantos meses andar (negativo volta)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Uma assinatura começou em 31/01/2026. Quando vence a primeira mensalidade?",
+      "dados": [
+        [
+          "Início"
+        ],
+        [
+          "31/01/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=DATAM(A2;1)",
+      "formato": "data",
+      "resultado": "28/02/2026",
+      "explicacao": "Não existe 31 de fevereiro, então DATAM para no último dia do mês. Somar 30 dias daria 02/03."
+    },
+    "cuidados": [
+      "Somar 30 à data não é o mesmo que somar 1 mês: os meses têm tamanhos diferentes.",
+      "Formate a célula como Data."
+    ],
+    "relacionadas": [
+      "fimmes",
+      "data",
+      "diatrabalho"
+    ]
+  },
+  {
+    "slug": "numsemana",
+    "nome": "NÚMSEMANA",
+    "ingles": "WEEKNUM",
+    "categoria": "datas",
+    "paraQueServe": "Diz em que semana do ano cai uma data. Serve para relatórios semanais, metas por semana e planejamento de produção.",
+    "argumentos": [
+      {
+        "nome": "núm_série",
+        "explicacao": "A data."
+      },
+      {
+        "nome": "tipo_retorno",
+        "opcional": true,
+        "explicacao": "Como contar: 1 ou omitido, a semana começa no domingo; 2, na segunda; 21, semana ISO (padrão europeu, a semana 1 é a que tem a primeira quinta-feira do ano)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Em que semana ISO do ano cai 10/03/2026?",
+      "dados": [
+        [
+          "Data"
+        ],
+        [
+          "10/03/2026"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=NÚMSEMANA(A2;21)",
+      "resultado": "11",
+      "explicacao": "Pela regra ISO, 10/03/2026 está na 11ª semana do ano."
+    },
+    "cuidados": [
+      "Os tipos 1 e 21 podem dar semanas diferentes para a mesma data, principalmente no começo e no fim do ano. Combine com a equipe qual usar."
+    ],
+    "relacionadas": [
+      "dia-da-semana",
+      "ano",
+      "data"
+    ]
+  },
+  {
+    "slug": "filtro",
+    "nome": "FILTRO",
+    "ingles": "FILTER",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve só as linhas que atendem a uma condição, numa lista que se atualiza sozinha. Serve para montar a lista de boletos pendentes, os pedidos de um cliente ou as vendas de uma região sem copiar e colar.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo com os dados a filtrar (pode ter várias colunas)."
+      },
+      {
+        "nome": "incluir",
+        "explicacao": "A condição, linha a linha, como B2:B5=\"Sul\". Precisa ter a mesma altura dos dados."
+      },
+      {
+        "nome": "se_vazia",
+        "opcional": true,
+        "explicacao": "O que mostrar se nada atender. Sem isso, dá #CALC!."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Listar os vendedores e valores da região Sul.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=FILTRO(A2:C5;B2:B5=\"Sul\";\"Nenhuma venda\")",
+      "resultado": [
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ]
+      ],
+      "explicacao": "Só as linhas do Sul aparecem, a partir de E2. Mudando uma região na tabela, a lista muda junto."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Para duas condições ao mesmo tempo, multiplique os testes: (B2:B5=\"Sul\")*(C2:C5>300). Para uma OU outra, some.",
+      "Só existe no Excel 365 e 2021 em diante."
+    ],
+    "relacionadas": [
+      "classificar",
+      "unico",
+      "classificarpor",
+      "pegar"
+    ]
+  },
+  {
+    "slug": "classificar",
+    "nome": "CLASSIFICAR",
+    "ingles": "SORT",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve uma cópia de um intervalo em ordem, sem mexer nos dados originais. Serve para um ranking de vendedores que se reorganiza sozinho quando os números mudam.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo a ordenar."
+      },
+      {
+        "nome": "índice_classificação",
+        "opcional": true,
+        "explicacao": "Por qual coluna ordenar, contando dentro do intervalo (1 = a primeira). Padrão: 1."
+      },
+      {
+        "nome": "ordem_classificação",
+        "opcional": true,
+        "explicacao": "1 (padrão) para crescente, -1 para decrescente."
+      },
+      {
+        "nome": "por_col",
+        "opcional": true,
+        "explicacao": "FALSO (padrão) ordena as linhas; VERDADEIRO ordena colunas."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Ranking das vendas, da maior para a menor.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CLASSIFICAR(A2:C5;3;-1)",
+      "resultado": [
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ]
+      ],
+      "explicacao": "Ordena pela 3ª coluna (Valor), em ordem decrescente."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Não inclua o cabeçalho no intervalo; senão ele entra na ordenação como se fosse um dado."
+    ],
+    "relacionadas": [
+      "classificarpor",
+      "filtro",
+      "pegar",
+      "maior"
+    ]
+  },
+  {
+    "slug": "classificarpor",
+    "nome": "CLASSIFICARPOR",
+    "ingles": "SORTBY",
+    "categoria": "arrays",
+    "paraQueServe": "Ordena um intervalo pelos valores de outra coluna, que nem precisa aparecer no resultado. Serve para listar só os nomes em ordem de venda, ou ordenar por região e depois por valor.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo a devolver ordenado."
+      },
+      {
+        "nome": "por_matriz1",
+        "explicacao": "A coluna que decide a ordem (mesma altura do intervalo)."
+      },
+      {
+        "nome": "ordem_classificação1",
+        "opcional": true,
+        "explicacao": "1 crescente (padrão) ou -1 decrescente."
+      },
+      {
+        "nome": "por_matriz2",
+        "opcional": true,
+        "explicacao": "Uma segunda coluna para desempatar. Opcional."
+      },
+      {
+        "nome": "ordem_classificação2",
+        "opcional": true,
+        "explicacao": "A ordem da segunda coluna."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Listar só os nomes, do maior para o menor valor vendido.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=CLASSIFICARPOR(A2:A5;C2:C5;-1)",
+      "resultado": [
+        [
+          "Davi"
+        ],
+        [
+          "Ana"
+        ],
+        [
+          "Bruno"
+        ],
+        [
+          "Carla"
+        ]
+      ],
+      "explicacao": "A ordem vem da coluna Valor, mas o resultado mostra só os nomes."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "A coluna de ordenação precisa ter exatamente a mesma altura do intervalo; senão dá #VALOR!."
+    ],
+    "relacionadas": [
+      "classificar",
+      "filtro",
+      "pegar"
+    ]
+  },
+  {
+    "slug": "unico",
+    "nome": "ÚNICO",
+    "ingles": "UNIQUE",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve a lista sem repetições. Serve para tirar a lista de clientes de uma base de vendas, as regiões atendidas ou os produtos vendidos no mês, sem precisar remover duplicadas à mão.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo com os valores (pode ter várias colunas)."
+      },
+      {
+        "nome": "por_col",
+        "opcional": true,
+        "explicacao": "FALSO (padrão) compara linhas; VERDADEIRO compara colunas."
+      },
+      {
+        "nome": "exatamente_uma_vez",
+        "opcional": true,
+        "explicacao": "VERDADEIRO devolve só o que aparece exatamente uma vez; FALSO (padrão), todos sem repetir."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quais regiões aparecem nas vendas?",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=ÚNICO(B2:B5)",
+      "resultado": [
+        [
+          "Sul"
+        ],
+        [
+          "Norte"
+        ]
+      ],
+      "explicacao": "Cada região aparece uma vez, na ordem em que surge na tabela."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "\"Sul\" e \"Sul \" (com espaço) são valores diferentes. Limpe com ARRUMAR antes.",
+      "Para a lista em ordem alfabética: =CLASSIFICAR(ÚNICO(B2:B5))."
+    ],
+    "relacionadas": [
+      "classificar",
+      "filtro",
+      "cont-se"
+    ]
+  },
+  {
+    "slug": "sequencia",
+    "nome": "SEQUÊNCIA",
+    "ingles": "SEQUENCE",
+    "categoria": "arrays",
+    "paraQueServe": "Gera uma lista de números em sequência: 1, 2, 3… ou de 5 em 5, em linhas e colunas. Serve para numerar parcelas, montar um calendário ou criar as linhas de um cronograma.",
+    "argumentos": [
+      {
+        "nome": "linhas",
+        "explicacao": "Quantas linhas gerar."
+      },
+      {
+        "nome": "colunas",
+        "opcional": true,
+        "explicacao": "Quantas colunas. Padrão: 1."
+      },
+      {
+        "nome": "início",
+        "opcional": true,
+        "explicacao": "O primeiro número. Padrão: 1."
+      },
+      {
+        "nome": "etapa",
+        "opcional": true,
+        "explicacao": "De quanto em quanto aumentar. Padrão: 1."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Numerar as 4 parcelas de um contrato.",
+      "dados": [
+        [
+          "Parcela"
+        ]
+      ],
+      "celula": "A2",
+      "formula": "=SEQUÊNCIA(4)",
+      "resultado": [
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ]
+      ],
+      "explicacao": "Quatro linhas, começando em 1 e subindo de 1 em 1."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Com datas, some a sequência: =A1+SEQUÊNCIA(7;1;0) gera a semana a partir da data em A1."
+    ],
+    "relacionadas": [
+      "indice",
+      "datam",
+      "filtro"
+    ]
+  },
+  {
+    "slug": "pegar",
+    "nome": "PEGAR",
+    "ingles": "TAKE",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve as primeiras linhas (ou, com número negativo, as últimas) de um intervalo. Serve para o \"top 3\" de um ranking ou para mostrar os últimos lançamentos do extrato.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo."
+      },
+      {
+        "nome": "linhas",
+        "explicacao": "Quantas linhas pegar: positivo do começo, negativo do fim."
+      },
+      {
+        "nome": "colunas",
+        "opcional": true,
+        "explicacao": "Quantas colunas pegar. Opcional."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Os 2 maiores vendedores do ranking.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=PEGAR(CLASSIFICAR(A2:C5;3;-1);2)",
+      "resultado": [
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ]
+      ],
+      "explicacao": "CLASSIFICAR monta o ranking; PEGAR fica com as 2 primeiras linhas."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Só existe no Excel 365."
+    ],
+    "relacionadas": [
+      "descartar",
+      "classificar",
+      "filtro"
+    ]
+  },
+  {
+    "slug": "descartar",
+    "nome": "DESCARTAR",
+    "ingles": "DROP",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve o intervalo sem as primeiras linhas (ou, com número negativo, sem as últimas). Serve para tirar o cabeçalho ou a linha de total de um relatório importado.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo."
+      },
+      {
+        "nome": "linhas",
+        "explicacao": "Quantas linhas tirar: positivo do começo, negativo do fim."
+      },
+      {
+        "nome": "colunas",
+        "opcional": true,
+        "explicacao": "Quantas colunas tirar. Opcional."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Os nomes, sem o cabeçalho.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=DESCARTAR(A1:A5;1)",
+      "resultado": [
+        [
+          "Ana"
+        ],
+        [
+          "Bruno"
+        ],
+        [
+          "Carla"
+        ],
+        [
+          "Davi"
+        ]
+      ],
+      "explicacao": "Tira a 1ª linha (o cabeçalho \"Vendedor\") e devolve o resto."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Só existe no Excel 365."
+    ],
+    "relacionadas": [
+      "pegar",
+      "escolhercols",
+      "filtro"
+    ]
+  },
+  {
+    "slug": "escolhercols",
+    "nome": "ESCOLHERCOLS",
+    "ingles": "CHOOSECOLS",
+    "categoria": "arrays",
+    "paraQueServe": "Devolve só as colunas que você pedir, na ordem que quiser. Serve para montar um relatório com 3 das 15 colunas de uma base exportada, sem copiar e colar.",
+    "argumentos": [
+      {
+        "nome": "matriz",
+        "explicacao": "O intervalo."
+      },
+      {
+        "nome": "núm_col1",
+        "explicacao": "O número da primeira coluna a devolver (1 = a primeira; negativo conta do fim)."
+      },
+      {
+        "nome": "núm_col2",
+        "opcional": true,
+        "explicacao": "Os números das outras colunas, opcionais."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Mostrar só Valor e Vendedor, nessa ordem.",
+      "dados": [
+        [
+          "Vendedor",
+          "Região",
+          "Valor"
+        ],
+        [
+          "Ana",
+          "Sul",
+          "500"
+        ],
+        [
+          "Bruno",
+          "Norte",
+          "300"
+        ],
+        [
+          "Carla",
+          "Sul",
+          "200"
+        ],
+        [
+          "Davi",
+          "Norte",
+          "700"
+        ]
+      ],
+      "celula": "E2",
+      "formula": "=ESCOLHERCOLS(A2:C5;3;1)",
+      "resultado": [
+        [
+          "500",
+          "Ana"
+        ],
+        [
+          "300",
+          "Bruno"
+        ],
+        [
+          "200",
+          "Carla"
+        ],
+        [
+          "700",
+          "Davi"
+        ]
+      ],
+      "explicacao": "A 3ª coluna (Valor) vem primeiro, depois a 1ª (Vendedor)."
+    },
+    "cuidados": [
+      "As células onde o resultado vai \"derramar\" precisam estar vazias; senão aparece #DESPEJAR!.",
+      "Combine com FILTRO para filtrar e escolher colunas de uma vez: =ESCOLHERCOLS(FILTRO(…);1;3)."
+    ],
+    "relacionadas": [
+      "filtro",
+      "pegar",
+      "descartar"
+    ]
+  },
+  {
+    "slug": "let",
+    "nome": "LET",
+    "ingles": "LET",
+    "categoria": "arrays",
+    "paraQueServe": "Dá nomes a valores dentro da fórmula e usa esses nomes no cálculo. A fórmula fica legível (\"total\", \"desconto\") e não repete a mesma conta várias vezes.",
+    "argumentos": [
+      {
+        "nome": "nome1",
+        "explicacao": "O primeiro nome (ex.: total)."
+      },
+      {
+        "nome": "valor1",
+        "explicacao": "O valor ou a conta que esse nome representa."
+      },
+      {
+        "nome": "nome2",
+        "opcional": true,
+        "explicacao": "Um segundo nome. Opcional; dá para criar vários."
+      },
+      {
+        "nome": "valor2",
+        "opcional": true,
+        "explicacao": "O valor do segundo nome."
+      },
+      {
+        "nome": "cálculo",
+        "explicacao": "O cálculo final, usando os nomes. É sempre o último argumento."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Aplicar 10% de desconto em compras a partir de R$ 1.000,00.",
+      "dados": [
+        [
+          "Total"
+        ],
+        [
+          "1200"
+        ]
+      ],
+      "celula": "B2",
+      "formula": "=LET(total;A2;desconto;SE(total>=1000;10%;0);total*(1-desconto))",
+      "resultado": "1080",
+      "explicacao": "total vale 1.200 e desconto vale 10%; o cálculo final dá 1.200 × 0,9."
+    },
+    "cuidados": [
+      "Os nomes não podem parecer endereço de célula (como A1 ou ABC1) nem ter espaços.",
+      "O último argumento é sempre o cálculo. Se terminar num par nome; valor, a fórmula não funciona."
+    ],
+    "relacionadas": [
+      "se",
+      "filtro",
+      "soma"
+    ]
+  },
+  {
+    "slug": "pgto",
+    "nome": "PGTO",
+    "ingles": "PMT",
+    "categoria": "financas",
+    "paraQueServe": "Calcula o valor da parcela fixa de um financiamento ou empréstimo (tabela Price). Serve para comparar propostas de financiamento de um veículo, de um equipamento ou do capital de giro.",
+    "argumentos": [
+      {
+        "nome": "taxa",
+        "explicacao": "A taxa de juros por período (ao mês, para parcelas mensais)."
+      },
+      {
+        "nome": "nper",
+        "explicacao": "O número de parcelas."
+      },
+      {
+        "nome": "vp",
+        "explicacao": "O valor financiado hoje (valor presente)."
+      },
+      {
+        "nome": "vf",
+        "opcional": true,
+        "explicacao": "Quanto deve sobrar no fim. Padrão: 0 (quitado)."
+      },
+      {
+        "nome": "tipo",
+        "opcional": true,
+        "explicacao": "0 (padrão) para parcela no fim do mês; 1 para a primeira parcela no ato."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Parcela de um empréstimo de R$ 10.000,00 em 12 vezes a 2% ao mês.",
+      "dados": [
+        [
+          "Valor",
+          "Taxa",
+          "Parcelas"
+        ],
+        [
+          "R$ 10.000,00",
+          "2%",
+          "12"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=PGTO(B2;C2;-A2)",
+      "formato": "moeda",
+      "resultado": "R$ 945,60",
+      "explicacao": "Doze parcelas de R$ 945,60 pagam os R$ 10.000,00 com os juros (total de cerca de R$ 11.347)."
+    },
+    "cuidados": [
+      "Os sinais importam: dinheiro que entra é positivo e dinheiro que sai é negativo. Por isso o resultado costuma aparecer negativo; ponha um - na frente do valor financiado se quiser a parcela positiva.",
+      "A taxa e o número de períodos precisam estar na mesma unidade: parcelas mensais pedem taxa ao mês. Uma taxa de 12% ao ano não é 1% ao mês exato, mas é o que o banco costuma informar."
+    ],
+    "relacionadas": [
+      "vp",
+      "taxa",
+      "nper",
+      "vf"
+    ]
+  },
+  {
+    "slug": "vp",
+    "nome": "VP",
+    "ingles": "PV",
+    "categoria": "financas",
+    "paraQueServe": "Calcula o valor presente: quanto vale hoje uma série de pagamentos. Na prática, responde \"quanto posso financiar se consigo pagar R$ 800 por mês?\".",
+    "argumentos": [
+      {
+        "nome": "taxa",
+        "explicacao": "A taxa de juros por período."
+      },
+      {
+        "nome": "nper",
+        "explicacao": "O número de períodos (parcelas)."
+      },
+      {
+        "nome": "pgto",
+        "explicacao": "O valor de cada parcela."
+      },
+      {
+        "nome": "vf",
+        "opcional": true,
+        "explicacao": "Um valor que sobra no fim. Padrão: 0."
+      },
+      {
+        "nome": "tipo",
+        "opcional": true,
+        "explicacao": "0 (padrão) parcela no fim do período; 1 no começo."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Posso pagar R$ 800,00 por mês, em 24 meses, a 1,5% ao mês. Quanto consigo financiar?",
+      "dados": [
+        [
+          "Parcela",
+          "Taxa",
+          "Meses"
+        ],
+        [
+          "R$ 800,00",
+          "1,5%",
+          "24"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=VP(B2;C2;-A2)",
+      "formato": "moeda",
+      "resultado": "R$ 16.024,32",
+      "explicacao": "Com essa parcela, dá para financiar cerca de R$ 16 mil."
+    },
+    "cuidados": [
+      "Os sinais importam: dinheiro que entra é positivo e dinheiro que sai é negativo. Por isso o resultado costuma aparecer negativo; ponha um - na frente do valor financiado se quiser a parcela positiva.",
+      "A taxa e o número de períodos precisam estar na mesma unidade: parcelas mensais pedem taxa ao mês. Uma taxa de 12% ao ano não é 1% ao mês exato, mas é o que o banco costuma informar."
+    ],
+    "relacionadas": [
+      "pgto",
+      "vf",
+      "taxa"
+    ]
+  },
+  {
+    "slug": "vf",
+    "nome": "VF",
+    "ingles": "FV",
+    "categoria": "financas",
+    "paraQueServe": "Calcula o valor futuro: quanto um investimento acumula com depósitos fixos e juros compostos. Serve para planejar uma reserva de emergência ou o fundo para trocar os equipamentos.",
+    "argumentos": [
+      {
+        "nome": "taxa",
+        "explicacao": "A taxa de juros por período."
+      },
+      {
+        "nome": "nper",
+        "explicacao": "O número de períodos."
+      },
+      {
+        "nome": "pgto",
+        "explicacao": "O depósito de cada período."
+      },
+      {
+        "nome": "vp",
+        "opcional": true,
+        "explicacao": "Quanto já existe aplicado hoje. Padrão: 0."
+      },
+      {
+        "nome": "tipo",
+        "opcional": true,
+        "explicacao": "0 (padrão) depósito no fim do período; 1 no começo."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Guardando R$ 500,00 por mês durante 12 meses a 1% ao mês, quanto terei?",
+      "dados": [
+        [
+          "Depósito",
+          "Taxa",
+          "Meses"
+        ],
+        [
+          "R$ 500,00",
+          "1%",
+          "12"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=VF(B2;C2;-A2)",
+      "formato": "moeda",
+      "resultado": "R$ 6.341,25",
+      "explicacao": "Os 12 depósitos somam R$ 6.000,00; os juros acrescentam cerca de R$ 341."
+    },
+    "cuidados": [
+      "Os sinais importam: dinheiro que entra é positivo e dinheiro que sai é negativo. Por isso o resultado costuma aparecer negativo; ponha um - na frente do valor financiado se quiser a parcela positiva.",
+      "A taxa e o número de períodos precisam estar na mesma unidade: parcelas mensais pedem taxa ao mês. Uma taxa de 12% ao ano não é 1% ao mês exato, mas é o que o banco costuma informar."
+    ],
+    "relacionadas": [
+      "vp",
+      "pgto",
+      "potencia"
+    ]
+  },
+  {
+    "slug": "nper",
+    "nome": "NPER",
+    "ingles": "NPER",
+    "categoria": "financas",
+    "paraQueServe": "Calcula quantos períodos (parcelas, meses) são necessários para quitar uma dívida ou chegar a um valor. Responde \"pagando R$ 1.000 por mês, em quantos meses eu quito?\".",
+    "argumentos": [
+      {
+        "nome": "taxa",
+        "explicacao": "A taxa de juros por período."
+      },
+      {
+        "nome": "pgto",
+        "explicacao": "O valor de cada pagamento."
+      },
+      {
+        "nome": "vp",
+        "explicacao": "O valor da dívida hoje (valor presente)."
+      },
+      {
+        "nome": "vf",
+        "opcional": true,
+        "explicacao": "Um valor que sobra no fim. Padrão: 0."
+      },
+      {
+        "nome": "tipo",
+        "opcional": true,
+        "explicacao": "0 (padrão) pagamento no fim do período; 1 no começo."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Uma dívida de R$ 10.000,00 a 2% ao mês, pagando R$ 1.000,00 por mês: quantos meses?",
+      "dados": [
+        [
+          "Dívida",
+          "Taxa",
+          "Pagamento"
+        ],
+        [
+          "R$ 10.000,00",
+          "2%",
+          "R$ 1.000,00"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=ARREDONDAR.PARA.CIMA(NPER(B2;-C2;A2);0)",
+      "resultado": "12",
+      "explicacao": "NPER dá 11,3 meses; como não existe parcela quebrada, são 12 pagamentos (o último menor)."
+    },
+    "cuidados": [
+      "O pagamento e a dívida precisam ter sinais opostos. Com os dois positivos, dá #NÚM!.",
+      "Se a parcela não cobre nem os juros do mês, a dívida nunca acaba e dá #NÚM!."
+    ],
+    "relacionadas": [
+      "pgto",
+      "taxa",
+      "arredondar-para-cima"
+    ]
+  },
+  {
+    "slug": "taxa",
+    "nome": "TAXA",
+    "ingles": "RATE",
+    "categoria": "financas",
+    "paraQueServe": "Descobre a taxa de juros por período escondida num parcelamento. Serve para saber quanto a loja está cobrando de juros no \"12x de R$ 99,00\" de um produto que custa R$ 1.000 à vista.",
+    "argumentos": [
+      {
+        "nome": "nper",
+        "explicacao": "O número de parcelas."
+      },
+      {
+        "nome": "pgto",
+        "explicacao": "O valor de cada parcela."
+      },
+      {
+        "nome": "vp",
+        "explicacao": "O valor à vista (o que está sendo financiado)."
+      },
+      {
+        "nome": "vf",
+        "opcional": true,
+        "explicacao": "Um valor que sobra no fim. Padrão: 0."
+      },
+      {
+        "nome": "tipo",
+        "opcional": true,
+        "explicacao": "0 (padrão) parcela no fim do período; 1 com a primeira no ato."
+      },
+      {
+        "nome": "estimativa",
+        "opcional": true,
+        "explicacao": "Um chute inicial para a taxa. Raramente precisa."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Um produto de R$ 1.000,00 à vista sai em 12x de R$ 99,00. Qual a taxa ao mês?",
+      "dados": [
+        [
+          "À vista",
+          "Parcela",
+          "Vezes"
+        ],
+        [
+          "R$ 1.000,00",
+          "R$ 99,00",
+          "12"
+        ]
+      ],
+      "celula": "D2",
+      "formula": "=TAXA(C2;-B2;A2)",
+      "formato": "percentual",
+      "resultado": "2,76%",
+      "explicacao": "O \"sem entrada\" de R$ 99,00 esconde cerca de 2,76% de juros ao mês (quase 39% ao ano)."
+    },
+    "cuidados": [
+      "A parcela e o valor à vista precisam ter sinais opostos (por isso o -B2).",
+      "O resultado é a taxa por período: ao mês, se as parcelas são mensais. Formate como porcentagem."
+    ],
+    "relacionadas": [
+      "pgto",
+      "nper",
+      "vp"
+    ]
+  }
+]
