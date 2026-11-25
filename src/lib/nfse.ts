@@ -189,7 +189,10 @@ async function clienteNoAsaas(t: Tomador, referencia: string): Promise<string> {
 
 const hojeEmSP = (agora: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(agora);
 
-export type ResultadoNota = "emitida" | "ja_emitida" | "sem_dados" | "erro" | "ignorada";
+export type ResultadoNota = "emitida" | "ja_emitida" | "sem_dados" | "erro" | "ignorada" | "modo_misturado";
+
+/** Asaas de produção? (o sandbox tem "sandbox" no endereço) */
+export const asaasDeProducao = () => !config().url.includes("sandbox");
 
 /**
  * Emite a nota do pagamento deste aviso. Lança erro só quando vale tentar de
@@ -201,6 +204,14 @@ export async function emitirNota(
   evento: Stripe.Event,
   deps: { stripe: Stripe; registro: RegistroNotas; agora?: Date },
 ): Promise<ResultadoNota> {
+  // Trava: pagamento de teste nunca vira nota real, e pagamento real nunca vira nota de mentira.
+  // (Stripe de teste + Asaas de produção emitiria NFS-e de verdade para compras com o cartão 4242.)
+  if (Boolean(evento.livemode) !== asaasDeProducao()) {
+    console.error(
+      JSON.stringify({ tipo: "nfse_modo_misturado", evento: evento.id, stripe: evento.livemode ? "producao" : "teste", asaas: asaasDeProducao() ? "producao" : "sandbox" }),
+    );
+    return "modo_misturado";
+  }
   const p = await pagamentoDoEvento(evento, deps.stripe);
   if (!p) return "ignorada";
   const atual = await deps.registro.buscar(p.origem);

@@ -185,4 +185,14 @@ describe("NFS-e pelo Asaas", () => {
     vi.stubEnv("NFSE_SERVICO_CODIGO", "");
     vi.stubEnv("NFSE_NBS", "");
   });
+
+  it("trava de modo: Stripe de teste com Asaas de produção (e o contrário) não emite nada", async () => {
+    vi.stubEnv("ASAAS_URL", "https://api.asaas.com/v3");
+    expect(await emitirNota({ ...anual, livemode: false } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("modo_misturado");
+    expect(await emitirNota({ ...anual, livemode: true } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("emitida");
+    vi.stubEnv("ASAAS_URL", "");
+    chamadas = [];
+    expect(await emitirNota({ ...anual, livemode: true } as Stripe.Event, { stripe: stripeFalso(), registro: registroFalso() })).toBe("modo_misturado");
+    expect(chamadas).toEqual([]); // nem chegou a chamar o Asaas
+  });
 });
