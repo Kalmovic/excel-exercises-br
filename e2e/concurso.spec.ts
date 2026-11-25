@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
-import { celula, digitar, limparArmazenamento } from "./ajuda";
+import { celula, limparArmazenamento } from "./ajuda";
 
 /** Quantas questões a lista deve ter: as avulsas + as etapas de lição com banca (lidas do conteúdo). */
 type Q = { banca?: string; tema?: string; teste?: boolean; type: string };
@@ -23,10 +23,17 @@ test("concurso: filtro por banca, planilha para testar, alternativa errada expli
 
   await page.getByRole("link", { name: /SOMA com intervalo e célula/ }).click();
   await expect(page.getByTestId("banca-questao")).toHaveText("Estilo Vunesp");
-  // A planilha está lá para testar a fórmula da questão
-  await expect(visivel(page, "planilha-de-teste")).toBeVisible();
-  await digitar(page, "C1", "=SOMA(A1:A3;B2)");
-  await expect(celula(page, "C1")).toHaveText("62");
+  // A fórmula está no enunciado: a planilha fica só para consulta (colar a fórmula daria a resposta).
+  const planilha = visivel(page, "planilha-de-teste");
+  await expect(planilha).toBeVisible();
+  await expect(planilha).toHaveAttribute("data-so-consulta", "true");
+  await expect(planilha).toContainText("só para consulta");
+  await expect(planilha.getByTestId("barra-formulas")).toHaveCount(0);
+  await expect(celula(page, "A1")).toHaveText("10"); // os dados continuam à vista
+  await celula(page, "C1").click();
+  await page.keyboard.type("=SOMA(A1:A3;B2)");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "C1")).toHaveText("");
 
   const alternativas = visivel(page, "alternativas");
   await alternativas.getByText("63").click();
