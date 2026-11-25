@@ -12,7 +12,7 @@
  *   Leste           …     …     …
  *   Total Geral     …     …     …
  */
-import type { Dinamica, FuncaoValor } from "@/content/schema";
+import type { Dinamica, Formato, FuncaoValor } from "@/content/schema";
 import { letrasParaColuna, type Intervalo } from "./address";
 import { compararParaClassificar } from "./classificar";
 import type { ValorCelula } from "./format";
@@ -24,6 +24,8 @@ export type CelulaDinamica = {
   negrito?: boolean;
   /** Letra do campo de origem cujo formato (R$, %, data) a célula herda. */
   formatoDe?: string;
+  /** Formato próprio (ex.: % em "Mostrar Valores como % do Total Geral"); vale mais que `formatoDe`. */
+  formato?: Formato;
 };
 
 export type SaidaDinamica = { celulas: CelulaDinamica[]; altura: number; largura: number; vazia: boolean };
@@ -109,17 +111,30 @@ export function calcularDinamica(d: Dinamica, origem: Intervalo, nomes: Record<s
   }
 
   const valoresDe = (ls: number[], letra: string) => ls.map((l) => ler.valor(l, col(letra)));
-  const conta = (ls: number[], v: Dinamica["valores"][number]) => agregar(v.funcao, valoresDe(ls, v.campo));
-  const formatoDoValor = (v: Dinamica["valores"][number]) => (v.funcao === "contagem" ? undefined : v.campo);
+  type V = Dinamica["valores"][number];
+  // "% do Total Geral": cada célula dividida pelo Total Geral do campo (das linhas que passam nos filtros).
+  const conta = (ls: number[], v: V): ValorCelula => {
+    const x = agregar(v.funcao, valoresDe(ls, v.campo));
+    if (v.mostrar !== "totalGeral") return x;
+    const total = agregar(v.funcao, valoresDe(linhas, v.campo));
+    return typeof x === "number" && typeof total === "number" && total !== 0 ? x / total : { erro: "#DIV/0!" };
+  };
+  const fmt = (v: V): Partial<CelulaDinamica> =>
+    v.mostrar === "totalGeral" ? { formato: "percentual" } : { formatoDe: v.funcao === "contagem" ? undefined : v.campo };
   const doItem = (letra: string, item: Item) => (l: number) => chaveDe(l, letra) === (item.valor === VAZIO ? "" : item.chave);
 
   if (!colunaCampo) {
     // Uma coluna por campo em Valores; uma linha por item do campo em Linhas.
-    const rot = d.valores.map((v) => rotuloValor(v.funcao, nomes[v.campo] ?? v.campo));
+    // Mesmo rótulo duas vezes (Valor em R$ e em %): o Excel numera o segundo ("Soma de Valor2").
+    const rot = d.valores.map((v, j) => {
+      const r = rotuloValor(v.funcao, nomes[v.campo] ?? v.campo);
+      const antes = d.valores.slice(0, j).filter((w) => rotuloValor(w.funcao, nomes[w.campo] ?? w.campo) === r).length;
+      return antes ? `${r}${antes + 1}` : r;
+    });
     if (!linhaCampo) {
       rot.forEach((r, j) => {
         por(topo, j, r, { negrito: true });
-        por(topo + 1, j, conta(linhas, d.valores[j]), { formatoDe: formatoDoValor(d.valores[j]) });
+        por(topo + 1, j, conta(linhas, d.valores[j]), { ...fmt(d.valores[j]) });
       });
       return { celulas, altura: topo + 2, largura: Math.max(rot.length, d.filtros.length ? 2 : 0), vazia: false };
     }
@@ -129,12 +144,12 @@ export function calcularDinamica(d: Dinamica, origem: Intervalo, nomes: Record<s
     lista.forEach((item, i) => {
       por(topo + 1 + i, 0, item.valor, { formatoDe: linhaCampo });
       const ls = linhas.filter(doItem(linhaCampo, item));
-      d.valores.forEach((v, j) => por(topo + 1 + i, j + 1, conta(ls, v), { formatoDe: formatoDoValor(v) }));
+      d.valores.forEach((v, j) => por(topo + 1 + i, j + 1, conta(ls, v), { ...fmt(v) }));
     });
     let altura = topo + 1 + lista.length;
     if (d.valores.length) {
       por(altura, 0, TOTAL_GERAL, { negrito: true });
-      d.valores.forEach((v, j) => por(altura, j + 1, conta(linhas, v), { negrito: true, formatoDe: formatoDoValor(v) }));
+      d.valores.forEach((v, j) => por(altura, j + 1, conta(linhas, v), { negrito: true, ...fmt(v) }));
       altura++;
     }
     return { celulas, altura, largura: Math.max(1 + d.valores.length, d.filtros.length ? 2 : 0), vazia: false };
@@ -155,8 +170,8 @@ export function calcularDinamica(d: Dinamica, origem: Intervalo, nomes: Record<s
   if (!linhaCampo) {
     if (v) {
       por(topo + 2, 0, rotuloValor(v.funcao, nomes[v.campo] ?? v.campo), { negrito: true });
-      daColuna.forEach((ls, j) => por(topo + 2, 1 + j, celula(ls), { formatoDe: formatoDoValor(v) }));
-      por(topo + 2, largura - 1, celula(linhas), { negrito: true, formatoDe: formatoDoValor(v) });
+      daColuna.forEach((ls, j) => por(topo + 2, 1 + j, celula(ls), { ...fmt(v) }));
+      por(topo + 2, largura - 1, celula(linhas), { negrito: true, ...fmt(v) });
     }
     return { celulas, altura: topo + (v ? 3 : 2), largura, vazia: false };
   }
@@ -166,12 +181,12 @@ export function calcularDinamica(d: Dinamica, origem: Intervalo, nomes: Record<s
     const r = topo + 2 + i;
     const daLinha = linhas.filter(doItem(linhaCampo, item));
     por(r, 0, item.valor, { formatoDe: linhaCampo });
-    daColuna.forEach((ls, j) => por(r, 1 + j, celula(ls.filter((l) => daLinha.includes(l))), { formatoDe: v && formatoDoValor(v) }));
-    por(r, largura - 1, celula(daLinha), { negrito: true, formatoDe: v && formatoDoValor(v) });
+    daColuna.forEach((ls, j) => por(r, 1 + j, celula(ls.filter((l) => daLinha.includes(l))), { ...(v ? fmt(v) : {}) }));
+    por(r, largura - 1, celula(daLinha), { negrito: true, ...(v ? fmt(v) : {}) });
   });
   const ultima = topo + 2 + lista.length;
   por(ultima, 0, TOTAL_GERAL, { negrito: true });
-  daColuna.forEach((ls, j) => por(ultima, 1 + j, celula(ls), { negrito: true, formatoDe: v && formatoDoValor(v) }));
-  por(ultima, largura - 1, celula(linhas), { negrito: true, formatoDe: v && formatoDoValor(v) });
+  daColuna.forEach((ls, j) => por(ultima, 1 + j, celula(ls), { negrito: true, ...(v ? fmt(v) : {}) }));
+  por(ultima, largura - 1, celula(linhas), { negrito: true, ...(v ? fmt(v) : {}) });
   return { celulas, altura: ultima + 1, largura, vazia: false };
 }

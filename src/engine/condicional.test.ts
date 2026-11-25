@@ -106,4 +106,19 @@ describe("formatação condicional", () => {
     p.limparRegras(null);
     expect(p.regrasCondicionais()).toEqual([]);
   });
+
+  it("mover regra no Gerenciador muda quem pinta primeiro (a última da lista vale)", () => {
+    const amarelo: RegraCondicional = { tipo: "maior", intervalo: "C2:C7", valor: "500", estilo: "amarelo" };
+    const vermelho: RegraCondicional = { tipo: "maior", intervalo: "C2:C7", valor: "2000", estilo: "vermelho" };
+    const p = com(vermelho, amarelo); // a amarela, mais nova, cobre a vermelha
+    expect(p.estiloCondicional("C5")?.destaque).toBe("amarelo");
+    p.moverRegra(0, 1); // a vermelha sobe
+    expect(p.regrasCondicionais().map((r) => ("estilo" in r ? r.estilo : null))).toEqual(["amarelo", "vermelho"]);
+    expect(p.estiloCondicional("C5")?.destaque).toBe("vermelho");
+    expect(p.estiloCondicional("C2")?.destaque).toBe("amarelo");
+    p.moverRegra(1, 1); // já é a primeira: nada muda
+    expect(p.regrasCondicionais().map((r) => ("estilo" in r ? r.estilo : null))).toEqual(["amarelo", "vermelho"]);
+    p.desfazer();
+    expect(p.estiloCondicional("C5")?.destaque).toBe("amarelo");
+  });
 });

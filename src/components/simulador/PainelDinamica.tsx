@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type DragEvent } from "react";
 import { useSemTeclado } from "@/lib/toque";
-import type { Dinamica, FuncaoValor } from "@/content/schema";
+import type { Dinamica, FuncaoValor, MostrarValor } from "@/content/schema";
 import { deEndereco } from "@/engine/address";
 import { NOMES_FUNCAO, rotuloValor } from "@/engine/dinamica";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
@@ -15,6 +15,7 @@ import {
   marcarCampo,
   moverCampo,
   mudarFuncao,
+  mudarMostrar,
   removerDaArea,
   type Area,
   type Origem,
@@ -53,7 +54,9 @@ export function PainelDinamica() {
     setErro(null);
     planilha.configurarDinamica(i, r.config);
   };
-  const mover = (letra: string, para: Area | "lista", origem: Origem) => {
+  const mover = (letra: string, para: Area | "lista" | "duplicar", origem: Origem) => {
+    // O mesmo campo mais uma vez em Valores (no Excel, arrastando-o de novo da lista): "Soma de Valor2".
+    if (para === "duplicar") return aplicar(moverCampo(d, letra, "valores", numerico(letra)));
     if (para === "lista") {
       if (origem) aplicar({ config: removerDaArea(d, origem.area, origem.indice) });
       return;
@@ -163,6 +166,8 @@ export function PainelDinamica() {
                     area={area}
                     rotulo={area === "valores" ? rotuloValor(d.valores[indice].funcao, nome(letra)) : nome(letra)}
                     funcao={area === "valores" ? d.valores[indice].funcao : undefined}
+                    mostrar={area === "valores" ? (d.valores[indice].mostrar ?? null) : undefined}
+                    mudarMostrar={(m) => aplicar({ config: mudarMostrar(d, indice, m) })}
                     arrastar={arrastar({ letra, origem: { area, indice } })}
                     mover={(para) => mover(letra, para, { area, indice })}
                     mudarFuncao={(f) => aplicar({ config: mudarFuncao(d, indice, f) })}
@@ -203,12 +208,15 @@ type PropsItem = {
   rotulo: string;
   funcao?: FuncaoValor;
   arrastar: (e: DragEvent) => void;
-  mover: (para: Area | "lista") => void;
+  mover: (para: Area | "lista" | "duplicar") => void;
   mudarFuncao: (f: FuncaoValor) => void;
+  /** "Mostrar Valores como" (só em Valores; `null` = Sem Cálculo). */
+  mostrar?: MostrarValor | null;
+  mudarMostrar: (m: MostrarValor | null) => void;
   filtro?: { itens: string[]; marcados: string[] | null; aplicar: (v: string[] | null) => void };
 };
 
-function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }: PropsItem) {
+function ItemArea({ area, rotulo, funcao, mostrar, mudarMostrar, arrastar, mover, mudarFuncao, filtro }: PropsItem) {
   const [aberto, setAberto] = useState(false);
   const botaoFiltroRef = useRef<HTMLButtonElement>(null);
   return (
@@ -235,6 +243,19 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
           ))}
         </select>
       )}
+      {funcao && (
+        <select
+          aria-label={`Mostrar ${rotulo} como`}
+          title="Mostrar Valores como"
+          value={mostrar ?? ""}
+          onChange={(e) => mudarMostrar((e.target.value || null) as MostrarValor | null)}
+          className="min-h-6 min-w-0 rounded border border-zinc-300 bg-white px-0.5 text-xs"
+          data-testid="mostrar-valor"
+        >
+          <option value="">Sem Cálculo</option>
+          <option value="totalGeral">% do Total Geral</option>
+        </select>
+      )}
       {filtro && (
         <button
           ref={botaoFiltroRef}
@@ -256,7 +277,7 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
         <select
           aria-label={`Mover ${rotulo}`}
           value=""
-          onChange={(e) => mover(e.target.value as Area | "lista")}
+          onChange={(e) => mover(e.target.value as Area | "lista" | "duplicar")}
           className="absolute inset-0 cursor-pointer opacity-0"
           title="Mover para…"
         >
@@ -268,6 +289,11 @@ function ItemArea({ area, rotulo, funcao, arrastar, mover, mudarFuncao, filtro }
             {NOMES_AREA[a]}
           </option>
         ))}
+        {area === "valores" && (
+          <option value="duplicar" className="text-zinc-900">
+            Mais uma vez em Valores
+          </option>
+        )}
         <option value="lista" className="text-zinc-900">
           Remover campo
         </option>

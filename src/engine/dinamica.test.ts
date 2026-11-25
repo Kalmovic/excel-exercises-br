@@ -161,4 +161,29 @@ describe("tabela dinâmica", () => {
     d.aplicarRecursos(JSON.parse(JSON.stringify(c.recursos())));
     expect(matriz(d)).toEqual(matriz(c));
   });
+
+  it("% do Total Geral: cada linha dividida pelo total (dos filtrados), em %, e o rótulo repetido ganha número", () => {
+    const valores = [{ campo: "D", funcao: "soma" as const }, { campo: "D", funcao: "soma" as const, mostrar: "totalGeral" as const }];
+    const p = new Planilha(base({ dinamicas: [cfg({ linhas: ["C"], valores })] }));
+    expect(matriz(p)).toEqual([
+      ["Rótulos de Linha", "Soma de Valor", "Soma de Valor2"],
+      ["Leste", 700, 700 / 2200],
+      ["Norte", 600, 600 / 2200],
+      ["Sul", 900, 900 / 2200],
+      ["Total Geral", 2200, 1],
+    ]);
+    expect(p.exibicao("H2")).toMatch(/%$/);
+    expect(p.exibicao("H5")).toBe("100%");
+    // Com filtro, o 100% é o total do que sobrou.
+    p.configurarDinamica(0, cfg({ linhas: ["C"], valores: [valores[1]], filtros: [{ campo: "A", valores: ["Loja"] }] }));
+    expect(matriz(p).slice(2)).toEqual([
+      ["Rótulos de Linha", "Soma de Valor"],
+      ["Norte", 100 / 600],
+      ["Sul", 500 / 600],
+      ["Total Geral", 1],
+    ]);
+    // Tabela cruzada: tudo sobre o total geral do canto.
+    p.configurarDinamica(0, cfg({ linhas: ["C"], colunas: ["A"], valores: [valores[1]] }));
+    expect(matriz(p).at(-1)).toEqual(["Total Geral", 600 / 2200, 1600 / 2200, 1]);
+  });
 });

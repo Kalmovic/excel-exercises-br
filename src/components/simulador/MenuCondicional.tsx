@@ -453,11 +453,12 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
       <p className="mb-2 font-semibold" id={`${id}-titulo`}>
         Gerenciador de Regras de Formatação Condicional
       </p>
+      {regras.length > 1 && <p className="mb-2 text-xs text-zinc-600">Quando duas regras pintam a mesma célula, vale a de cima. Use ▲ e ▼ para mudar a ordem.</p>}
       {regras.length === 0 ? (
         <p className="text-zinc-500">Nenhuma regra ainda.</p>
       ) : (
         <ul className="divide-y divide-zinc-100 rounded border border-zinc-200">
-          {[...regras.entries()].reverse().map(([i, r]) => (
+          {[...regras.entries()].reverse().map(([i, r], pos) => (
             <li key={i} className="flex items-center gap-2 px-2 py-1.5">
               <span
                 className="h-4 w-8 shrink-0 rounded-sm border border-zinc-300"
@@ -470,6 +471,29 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
               />
               <span className="min-w-0 flex-1 truncate">{DESCRICAO[r.tipo](r)}</span>
               <span className="font-mono text-xs text-zinc-500">{r.intervalo}</span>
+              {/* A de cima vale primeiro: subir dá mais prioridade (como o ▲ do Excel). */}
+              <button
+                type="button"
+                disabled={pos === 0}
+                onClick={() => planilha.moverRegra(i, 1)}
+                aria-label={`Mover para Cima a regra ${DESCRICAO[r.tipo](r)} em ${r.intervalo}`}
+                title="Mover para Cima"
+                data-testid="regra-subir"
+                className="min-h-6 rounded px-1 text-xs text-zinc-600 hover:bg-header disabled:opacity-30"
+              >
+                ▲
+              </button>
+              <button
+                type="button"
+                disabled={pos === regras.length - 1}
+                onClick={() => planilha.moverRegra(i, -1)}
+                aria-label={`Mover para Baixo a regra ${DESCRICAO[r.tipo](r)} em ${r.intervalo}`}
+                title="Mover para Baixo"
+                data-testid="regra-descer"
+                className="min-h-6 rounded px-1 text-xs text-zinc-600 hover:bg-header disabled:opacity-30"
+              >
+                ▼
+              </button>
               <button
                 type="button"
                 onClick={() => planilha.removerRegra(i)}

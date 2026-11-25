@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Dinamica } from "@/content/schema";
-import { marcarCampo, moverCampo } from "./dinamica-acoes";
+import { marcarCampo, moverCampo, mudarMostrar } from "./dinamica-acoes";
 
 const vazia: Dinamica = { origem: "A1:D7", destino: "F1", linhas: [], colunas: [], valores: [], filtros: [] };
 const ok = (r: ReturnType<typeof moverCampo>) => {
@@ -32,5 +32,12 @@ describe("painel de campos", () => {
   it("limites: Colunas com mais de um valor é recusado", () => {
     const d = ok(moverCampo(ok(moverCampo(vazia, "D", "valores", true)), "B", "valores", false));
     expect("erro" in moverCampo(d, "A", "colunas", false)).toBe(true);
+  });
+
+  it("Mostrar Valores como: liga e desliga % do Total Geral só no campo escolhido", () => {
+    const d = ok(moverCampo(ok(moverCampo(vazia, "D", "valores", true)), "D", "valores", true));
+    const com = mudarMostrar(d, 1, "totalGeral");
+    expect(com.valores).toEqual([{ campo: "D", funcao: "soma" }, { campo: "D", funcao: "soma", mostrar: "totalGeral" }]);
+    expect(mudarMostrar(com, 1, null).valores).toEqual(d.valores);
   });
 });

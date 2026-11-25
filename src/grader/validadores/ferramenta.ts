@@ -2,7 +2,7 @@ import type { Dinamica, ExercicioDoTipo, FuncaoValor, Grafico, Verificacao } fro
 import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
-import { colunaParaLetras, deIntervalo, intervaloParaTexto, paraEndereco, posicoes, type Intervalo } from "@/engine/address";
+import { colunaParaLetras, deIntervalo, intervaloParaTexto, letrasParaColuna, paraEndereco, posicoes, type Intervalo } from "@/engine/address";
 import { NOMES_ESTILO } from "@/engine/validacao";
 import { compararParaClassificar } from "@/engine/classificar";
 import { Planilha } from "@/engine/engine";
@@ -236,21 +236,49 @@ function diferenca(v: VerificacaoDinamica, d: Dinamica, p: Planilha, i: number, 
     return `Em ${area} está ${lista(tem)}, mas não é esse o campo que a pergunta pede ${area === "Linhas" ? "nas linhas" : "nas colunas"}.`;
   }
 
-  const tem = d.valores.map((x) => ({ campo: nome[x.campo] ?? x.campo, funcao: x.funcao }));
+  // Contagem sem campo pedido ("quantos"): qualquer campo serve, menos um com células em branco (elas não entram na conta).
+  const origem = deIntervalo(d.origem);
+  const temVazio = (letra: string) => {
+    const c = letrasParaColuna(letra);
+    for (let l = origem.inicio.linha + 1; l <= origem.fim.linha; l++) {
+      const x = p.valor({ linha: l, coluna: c });
+      if (x === null || x === "") return true;
+    }
+    return false;
+  };
+  const tem = d.valores.map((x) => ({
+    campo: nome[x.campo] ?? x.campo,
+    funcao: x.funcao,
+    mostrar: x.mostrar ?? null,
+    comVazio: x.funcao === "contagem" && temVazio(x.campo),
+  }));
   if (tem.length === 0 && v.valores.length) return "Falta um campo em Valores: é ele que a tabela soma (ou conta).";
   const sobra = [...tem];
   for (const pedido of v.valores) {
-    const j = sobra.findIndex((x) => x.funcao === pedido.funcao && (!pedido.campo || x.campo === pedido.campo));
+    const mesmaConta = (x: (typeof tem)[number]) => x.funcao === pedido.funcao && (pedido.campo ? x.campo === pedido.campo : !x.comVazio);
+    const j = sobra.findIndex((x) => mesmaConta(x) && x.mostrar === (pedido.mostrar ?? null));
     if (j >= 0) {
       sobra.splice(j, 1);
       continue;
     }
+    const outroMostrar = sobra.find(mesmaConta);
+    const pedeOsDois = v.valores.some((w) => w !== pedido && w.funcao === pedido.funcao && w.campo === pedido.campo && (w.mostrar ?? null) !== (pedido.mostrar ?? null));
+    if (outroMostrar && pedeOsDois)
+      return `A pergunta pede o valor e a participação lado a lado: coloque ${outroMostrar.campo} duas vezes em Valores e deixe só um deles em % do Total Geral.`;
+    if (outroMostrar)
+      return pedido.mostrar
+        ? `“${nomeFuncao(outroMostrar.funcao)} de ${outroMostrar.campo}” está mostrando os valores em si. A pergunta pede a participação: em Valores, mude Mostrar Valores como para % do Total Geral.`
+        : `“${nomeFuncao(outroMostrar.funcao)} de ${outroMostrar.campo}” está em % do Total Geral, mas a pergunta pede o valor em si. Volte Mostrar Valores como para Sem Cálculo.`;
+    const contaVazios = !pedido.campo && pedido.funcao === "contagem" && sobra.find((x) => x.comVazio);
+    if (contaVazios)
+      return `“Contagem de ${contaVazios.campo}” conta só as células preenchidas, e há linhas com ${contaVazios.campo} em branco: elas ficaram fora da conta. Conte um campo que nunca fica vazio.`;
     const mesmoCampo = sobra.find((x) => pedido.campo && x.campo === pedido.campo);
     if (mesmoCampo)
       return `Os valores estão como “${nomeFuncao(mesmoCampo.funcao)} de ${mesmoCampo.campo}”. Releia a pergunta: a conta é outra. Troque no seletor ao lado do campo, em Valores (Soma, Contagem, Média…).`;
     return "Os campos em Valores não respondem à pergunta. Confira qual campo e qual conta (Soma, Contagem, Média…) ela pede.";
   }
-  if (sobra.length) return `Sobrou ${sobra.map((x) => `“${nomeFuncao(x.funcao)} de ${x.campo}”`).join(" e ")} em Valores: a pergunta não pede isso.`;
+  if (sobra.length)
+    return `Sobrou ${sobra.map((x) => `“${nomeFuncao(x.funcao)} de ${x.campo}”${x.mostrar ? " (em % do Total Geral)" : ""}`).join(" e ")} em Valores: a pergunta não pede isso.`;
 
   // Filtros: (Tudo) e "todos os itens marcados" são a mesma coisa.
   const filtros = (fs: { campo: string; valores: string[] | null }[], porNome: boolean) =>
