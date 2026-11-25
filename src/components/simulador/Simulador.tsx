@@ -434,7 +434,7 @@ export default function Simulador({
             <div className="space-y-4">
               {ex.referencia && (
                 <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-sm text-ink" data-testid="referencia-prova">
-                  <span className="font-semibold">Caiu muito parecido:</span>
+                  <span className="font-semibold">Tema já cobrado:</span>
                   {ex.referencia.url ? (
                     <a href={ex.referencia.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
                       {ex.referencia.prova}

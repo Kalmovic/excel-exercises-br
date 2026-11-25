@@ -64,3 +64,9 @@ test("questão sobre outras abas: as abas aparecem para consulta, sem aceitar di
   await page.keyboard.press("Enter");
   await expect(celula(page, "D5")).toHaveText("");
 });
+
+test("questão com referência mostra o selo \"Tema já cobrado\" ao lado de \"Questão inédita\"", async ({ page }) => {
+  await page.goto("/concurso/concurso-01-ordem-das-operacoes");
+  await expect(page.getByTestId("referencia-prova")).toContainText("Tema já cobrado:");
+  await expect(page.getByText("Questão inédita")).toBeVisible();
+});
