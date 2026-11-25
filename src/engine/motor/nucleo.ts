@@ -647,6 +647,42 @@ export const FUNCOES: Record<string, F> = {
     const r = [...m].map((l, k) => ({ l, k })).sort((a, b) => o * comparar(a.l[i - 1], b.l[i - 1]) || a.k - b.k).map((x) => x.l);
     return porCol ? transpor(r) : r;
   },
+  /**
+   * CLASSIFICARPOR(matriz; por_matriz1; [ordem1]; [por_matriz2; ordem2]…): ordena
+   * pelas listas dadas (que não precisam aparecer no resultado). Coluna do mesmo
+   * número de linhas ordena as linhas; linha do mesmo número de colunas, as colunas.
+   */
+  CLASSIFICARPOR: (args, ctx) => {
+    const m0 = comoM(ev(args[0], ctx));
+    if (args.length < 2) return E("#VALOR!");
+    const chaves: { vs: V[]; o: number }[] = [];
+    let porCol: boolean | null = null;
+    for (let k = 1; k < args.length; k += 2) {
+      const pm = comoM(ev(args[k], ctx));
+      const o = args[k + 1] ? intArg(args[k + 1], ctx) : 1;
+      if (o !== 1 && o !== -1) return E("#VALOR!");
+      const coluna = pm[0].length === 1 && pm.length === m0.length;
+      const linha = pm.length === 1 && pm[0].length === m0[0].length;
+      const col = coluna ? false : linha ? true : null;
+      if (col === null || (porCol !== null && porCol !== col)) return E("#VALOR!");
+      porCol = col;
+      chaves.push({ vs: col ? pm[0] : pm.map((l) => l[0]), o });
+    }
+    const m = porCol ? transpor(m0) : m0;
+    const erro = chaves.flatMap((c) => c.vs).find(ehErro);
+    if (erro) return erro;
+    const r = m
+      .map((l, i) => ({ l, i }))
+      .sort((a, b) => {
+        for (const c of chaves) {
+          const x = c.o * comparar(c.vs[a.i], c.vs[b.i]);
+          if (x) return x;
+        }
+        return a.i - b.i;
+      })
+      .map((x) => x.l);
+    return porCol ? transpor(r) : r;
+  },
   /** ÚNICO(matriz; [por_col]; [exatamente_uma_vez]). */
   "ÚNICO": (args, ctx) => {
     const m0 = comoM(ev(args[0], ctx));

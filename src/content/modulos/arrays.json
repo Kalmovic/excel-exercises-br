@@ -205,7 +205,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "CLASSIFICAR: do maior para o menor",
@@ -431,7 +431,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "ÚNICO: a lista sem repetidos",
@@ -1210,7 +1210,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "CLASSIFICAR por vendedor",
@@ -1433,7 +1433,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "FILTRO e CLASSIFICAR juntos",
@@ -1639,7 +1639,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 24,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: começou pela menor",
@@ -1866,7 +1866,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 25,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -1914,7 +1914,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "ÚNICO: as regiões",
@@ -2091,7 +2091,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Quantos vendedores diferentes",
@@ -2262,7 +2262,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: a Ana em dobro",
@@ -2447,7 +2447,7 @@
     "trilha": "excel-ptbr",
     "modulo": "arrays",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Para fixar",
@@ -4203,6 +4203,5556 @@
     "correta": 1
   },
   {
+    "id": "dc1b91f6-2e13-5c73-9e5c-878a6500789c",
+    "slug": "classificarpor-salario",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CLASSIFICARPOR: ordenar por uma coluna que não aparece",
+    "enunciado": [
+      "Em **F2**, mostre só os **nomes** dos funcionários, do **maior salário** para o **menor**. A lista não deve mostrar o salário."
+    ],
+    "dicas": [
+      "Você quer uma coluna (os nomes) na ordem de outra (o salário). CLASSIFICARPOR recebe primeiro o que vai aparecer e depois por onde ordenar.",
+      "A ordem vem depois da coluna de ordenação: 1 é do menor para o maior, -1 é do maior para o menor."
+    ],
+    "explicacao": [
+      "`=CLASSIFICARPOR(A2:A9;D2:D9;-1)`: aparece só a coluna dos nomes, na ordem dos salários (Diego, Gabriela, Bruno…).",
+      "É a diferença para o CLASSIFICAR: lá você só escolhe uma coluna que está dentro do resultado. No CLASSIFICARPOR, a coluna que decide a ordem pode ficar de fora. Mude um salário e a lista se reorganiza sozinha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificarpor-salario",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "Financeiro"
+        },
+        "C2": {
+          "entrada": "03/02/2019"
+        },
+        "D2": {
+          "entrada": "6200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "TI"
+        },
+        "C3": {
+          "entrada": "15/08/2021"
+        },
+        "D3": {
+          "entrada": "8900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "10/05/2017"
+        },
+        "D4": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "01/03/2016"
+        },
+        "D5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa Rocha"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "20/09/2022"
+        },
+        "D6": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "12/01/2020"
+        },
+        "D7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela Melo"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "07/11/2015"
+        },
+        "D8": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo Prado"
+        },
+        "B9": {
+          "entrada": "TI"
+        },
+        "C9": {
+          "entrada": "25/06/2023"
+        },
+        "D9": {
+          "entrada": "7100",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 84,
+        "C": 90,
+        "D": 96,
+        "E": 24,
+        "F": 110,
+        "G": 84,
+        "H": 90,
+        "I": 96,
+        "J": 40
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "D2": [
+          "12000",
+          "1000"
+        ]
+      }
+    },
+    "intro": "O RH pede a lista de nomes por faixa salarial, o financeiro quer os clientes pelo valor em aberto, sem mostrar o valor. CLASSIFICARPOR ordena uma lista pelos valores de outra coluna.",
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Diego Alves"
+          ],
+          [
+            "Gabriela Melo"
+          ],
+          [
+            "Bruno Lima"
+          ],
+          [
+            "Hugo Prado"
+          ],
+          [
+            "Ana Souza"
+          ],
+          [
+            "Carla Dias"
+          ],
+          [
+            "Elisa Rocha"
+          ],
+          [
+            "Fábio Nunes"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICARPOR(A2:A9;D2:D9;-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORTBY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:A9",
+        "dica": "O CLASSIFICAR só ordena por uma coluna que está dentro da matriz, e aqui a matriz é só a dos nomes. Para ordenar por outra coluna, use CLASSIFICARPOR."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:D9",
+        "dica": "Assim vêm as quatro colunas. O pedido é só a lista de nomes, e quem decide a ordem é o salário."
+      },
+      {
+        "padrao": "^=CLASSIFICARPOR\\(A2:A9;D2:D9(;1)?\\)$",
+        "dica": "Sem o -1 (ou com 1), a ordem é crescente: o menor salário aparece primeiro."
+      }
+    ]
+  },
+  {
+    "id": "5919bb80-2795-5e96-8c04-c91a0c4d2793",
+    "slug": "classificarpor-salario-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Por tempo de casa",
+    "enunciado": [
+      "Em **F2**, mostre só os **nomes**, de quem tem **mais tempo de casa** (admissão mais antiga) para quem tem menos."
+    ],
+    "dicas": [
+      "Datas também são números: a mais antiga é a menor. Qual ordem põe a menor primeiro?"
+    ],
+    "explicacao": [
+      "`=CLASSIFICARPOR(A2:A9;C2:C9;1)` (ou sem o último argumento, que já é 1): Gabriela, admitida em 2015, vem primeiro.",
+      "Para o Excel, uma data é o número de dias desde 1900. Por isso a ordem crescente vai da data mais antiga para a mais nova."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificarpor-salario",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "Financeiro"
+        },
+        "C2": {
+          "entrada": "03/02/2019"
+        },
+        "D2": {
+          "entrada": "6200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "TI"
+        },
+        "C3": {
+          "entrada": "15/08/2021"
+        },
+        "D3": {
+          "entrada": "8900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "10/05/2017"
+        },
+        "D4": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "01/03/2016"
+        },
+        "D5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa Rocha"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "20/09/2022"
+        },
+        "D6": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "12/01/2020"
+        },
+        "D7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela Melo"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "07/11/2015"
+        },
+        "D8": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo Prado"
+        },
+        "B9": {
+          "entrada": "TI"
+        },
+        "C9": {
+          "entrada": "25/06/2023"
+        },
+        "D9": {
+          "entrada": "7100",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 84,
+        "C": 90,
+        "D": 96,
+        "E": 24,
+        "F": 110,
+        "G": 84,
+        "H": 90,
+        "I": 96,
+        "J": 40
+      },
+      "variaveis": [],
+      "alternativas": {
+        "C2": [
+          "01/01/2010",
+          "01/01/2024"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Gabriela Melo"
+          ],
+          [
+            "Diego Alves"
+          ],
+          [
+            "Carla Dias"
+          ],
+          [
+            "Ana Souza"
+          ],
+          [
+            "Fábio Nunes"
+          ],
+          [
+            "Bruno Lima"
+          ],
+          [
+            "Elisa Rocha"
+          ],
+          [
+            "Hugo Prado"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICARPOR(A2:A9;C2:C9;1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORTBY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICAR\\(A2:A9",
+        "dica": "O CLASSIFICAR só ordena por uma coluna que está dentro da matriz, e aqui a matriz é só a dos nomes. Para ordenar por outra coluna, use CLASSIFICARPOR."
+      },
+      {
+        "padrao": "^=CLASSIFICARPOR\\(A2:A9;C2:C9;-1\\)$",
+        "dica": "Com -1, a data mais nova vem primeiro: é quem acabou de chegar. Tempo de casa maior é a admissão mais antiga."
+      }
+    ]
+  },
+  {
+    "id": "bd477d41-c521-515c-a1bb-a6ea2882ba28",
+    "slug": "classificarpor-salario-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas chaves: setor e salário",
+    "enunciado": [
+      "Em **F2**, mostre a **tabela inteira** (as quatro colunas) organizada por **Setor** (de A a Z) e, dentro de cada setor, do **maior** para o **menor salário**."
+    ],
+    "dicas": [
+      "Depois do primeiro par (coluna e ordem), o CLASSIFICARPOR aceita outro par: ele só desempata quem ficou igual no primeiro.",
+      "Cada par tem a sua ordem: o setor vai de A a Z e o salário, do maior para o menor."
+    ],
+    "explicacao": [
+      "`=CLASSIFICARPOR(A2:D9;B2:B9;1;D2:D9;-1)`: primeiro o setor (Financeiro, RH, TI) e, dentro de cada um, o maior salário em cima.",
+      "O segundo critério só age nos empates do primeiro. É o mesmo que **Adicionar Nível** na janela Classificar do Excel, mas numa fórmula que se atualiza sozinha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificarpor-salario",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "Financeiro"
+        },
+        "C2": {
+          "entrada": "03/02/2019"
+        },
+        "D2": {
+          "entrada": "6200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "TI"
+        },
+        "C3": {
+          "entrada": "15/08/2021"
+        },
+        "D3": {
+          "entrada": "8900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "10/05/2017"
+        },
+        "D4": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "01/03/2016"
+        },
+        "D5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa Rocha"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "20/09/2022"
+        },
+        "D6": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "12/01/2020"
+        },
+        "D7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela Melo"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "07/11/2015"
+        },
+        "D8": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo Prado"
+        },
+        "B9": {
+          "entrada": "TI"
+        },
+        "C9": {
+          "entrada": "25/06/2023"
+        },
+        "D9": {
+          "entrada": "7100",
+          "formato": "moeda"
+        },
+        "H2": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H3": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "H9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "I9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 84,
+        "C": 90,
+        "D": 96,
+        "E": 24,
+        "F": 110,
+        "G": 84,
+        "H": 90,
+        "I": 96,
+        "J": 40
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "D2": [
+          "12000",
+          "1000"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Gabriela Melo",
+            "Financeiro",
+            {
+              "data": "2015-11-07"
+            },
+            9300
+          ],
+          [
+            "Ana Souza",
+            "Financeiro",
+            {
+              "data": "2019-02-03"
+            },
+            6200
+          ],
+          [
+            "Elisa Rocha",
+            "Financeiro",
+            {
+              "data": "2022-09-20"
+            },
+            4800
+          ],
+          [
+            "Carla Dias",
+            "RH",
+            {
+              "data": "2017-05-10"
+            },
+            5400
+          ],
+          [
+            "Fábio Nunes",
+            "RH",
+            {
+              "data": "2020-01-12"
+            },
+            4500
+          ],
+          [
+            "Diego Alves",
+            "TI",
+            {
+              "data": "2016-03-01"
+            },
+            11200
+          ],
+          [
+            "Bruno Lima",
+            "TI",
+            {
+              "data": "2021-08-15"
+            },
+            8900
+          ],
+          [
+            "Hugo Prado",
+            "TI",
+            {
+              "data": "2023-06-25"
+            },
+            7100
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICARPOR(A2:D9;B2:B9;1;D2:D9;-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORTBY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CLASSIFICARPOR\\(A2:D9;D2:D9;-1;B2:B9",
+        "dica": "A ordem dos pares importa: o primeiro manda e o segundo só desempata. Assim a lista fica por salário, com os setores misturados."
+      },
+      {
+        "padrao": "^=CLASSIFICARPOR\\(A2:D9;B2:B9(;1)?\\)$",
+        "dica": "Os setores estão em ordem, mas dentro de cada um os salários não. Falta o segundo par: a coluna e a ordem do desempate."
+      }
+    ]
+  },
+  {
+    "id": "e889ed35-19ee-5c0c-b585-a466077d3fdc",
+    "slug": "classificarpor-salario-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o #VALOR! da linha do total",
+    "enunciado": [
+      "A fórmula em **F2** devia listar os nomes do maior para o menor salário, mas dá **#VALOR!**. Corrija-a."
+    ],
+    "dicas": [
+      "Conte as linhas de cada intervalo da fórmula. Eles têm o mesmo tamanho?",
+      "A coluna que decide a ordem precisa ter uma linha para cada nome, nem mais nem menos."
+    ],
+    "explicacao": [
+      "`=CLASSIFICARPOR(A2:A9;D2:D9;-1)`: a coluna de ordenação ia até a linha 10, a do **Total**, e ficou com uma linha a mais que a dos nomes.",
+      "O CLASSIFICARPOR dá #VALOR! sempre que os tamanhos não batem. Acontece muito quando se seleciona a coluna com o mouse e a linha do total vai junto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificarpor-salario",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 10,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Admissão",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "Financeiro"
+        },
+        "C2": {
+          "entrada": "03/02/2019"
+        },
+        "D2": {
+          "entrada": "6200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "TI"
+        },
+        "C3": {
+          "entrada": "15/08/2021"
+        },
+        "D3": {
+          "entrada": "8900",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "RH"
+        },
+        "C4": {
+          "entrada": "10/05/2017"
+        },
+        "D4": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "01/03/2016"
+        },
+        "D5": {
+          "entrada": "11200",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa Rocha"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "20/09/2022"
+        },
+        "D6": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "RH"
+        },
+        "C7": {
+          "entrada": "12/01/2020"
+        },
+        "D7": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela Melo"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "07/11/2015"
+        },
+        "D8": {
+          "entrada": "9300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo Prado"
+        },
+        "B9": {
+          "entrada": "TI"
+        },
+        "C9": {
+          "entrada": "25/06/2023"
+        },
+        "D9": {
+          "entrada": "7100",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "D10": {
+          "entrada": "=SOMA(D2:D9)",
+          "formato": "moeda",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "=CLASSIFICARPOR(A2:A9;D2:D10;-1)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 84,
+        "C": 90,
+        "D": 96,
+        "E": 24,
+        "F": 110,
+        "G": 84,
+        "H": 90,
+        "I": 96,
+        "J": 40
+      },
+      "variaveis": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "alternativas": {
+        "D2": [
+          "12000",
+          "1000"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": [
+          [
+            "Diego Alves"
+          ],
+          [
+            "Gabriela Melo"
+          ],
+          [
+            "Bruno Lima"
+          ],
+          [
+            "Hugo Prado"
+          ],
+          [
+            "Ana Souza"
+          ],
+          [
+            "Carla Dias"
+          ],
+          [
+            "Elisa Rocha"
+          ],
+          [
+            "Fábio Nunes"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICARPOR(A2:A9;D2:D9;-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORTBY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "D2:D10",
+        "dica": "A coluna do salário ainda vai até a linha 10, a do Total: ela tem uma linha a mais que a lista de nomes."
+      },
+      {
+        "padrao": "A2:A10",
+        "dica": "Agora a linha do Total entrou na lista de nomes, e o próprio total virou um \"funcionário\". As duas colunas devem parar na última pessoa."
+      }
+    ]
+  },
+  {
+    "id": "309576d4-8780-5f07-9e1e-37f6357b9f50",
+    "slug": "classificarpor-salario-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o primeiro da lista ordenada",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, um técnico tem os nomes em A2:A5 (Lia, Davi, Rui e Bia) e os salários em B2:B5 (R$ 3.200, R$ 4.100, R$ 2.800 e R$ 3.900, nessa ordem).",
+      "O resultado de `=ÍNDICE(CLASSIFICARPOR(A2:A5;B2:B5;-1);1)` é:"
+    ],
+    "dicas": [
+      "O CLASSIFICARPOR ordena os nomes pelos salários; o ÍNDICE fica com a primeira linha do resultado."
+    ],
+    "explicacao": [
+      "Com -1, os nomes ficam do maior para o menor salário: Davi (R$ 4.100), Bia, Lia e Rui. O ÍNDICE(…;1) devolve o primeiro: **Davi**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "classificarpor-salario",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Lia"
+        },
+        "B2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Davi"
+        },
+        "B3": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Rui"
+        },
+        "B4": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Bia"
+        },
+        "B5": {
+          "entrada": "3900",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 100
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "Davi"
+      },
+      {
+        "texto": "Lia",
+        "dica": "Lia é o primeiro nome da tabela original; o CLASSIFICARPOR muda a ordem antes do ÍNDICE."
+      },
+      {
+        "texto": "Rui",
+        "dica": "Rui tem o menor salário: ele seria o primeiro com a ordem 1, não com -1."
+      },
+      {
+        "texto": "Bia",
+        "dica": "Bia tem o segundo maior salário. O ÍNDICE pede a linha 1."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Os dois intervalos têm 4 linhas: o CLASSIFICARPOR funciona normalmente."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "CLASSIFICARPOR",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ÍNDICE(CLASSIFICARPOR(A2:A5;B2:B5;-1);1)",
+        "esperado": "Davi"
+      }
+    ]
+  },
+  {
+    "id": "d3cfe064-7d50-52eb-bb7e-bbb92268f428",
+    "slug": "filtro-texto-parcial",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "FILTRO por um pedaço do texto",
+    "enunciado": [
+      "Em **E2**, mostre a tabela só dos clientes que são **Ltda**: o nome tem \"Ltda\" em qualquer parte, escrito com maiúsculas ou minúsculas."
+    ],
+    "dicas": [
+      "O igual só acha o texto inteiro. Para saber se um pedaço está dentro do nome, a função LOCALIZAR diz em que posição ele aparece.",
+      "Quando não acha, LOCALIZAR dá erro. ÉNÚM em volta transforma \"achou\" em VERDADEIRO e \"não achou\" em FALSO, que é o que o FILTRO precisa."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9)))`: Alfa, Beta, Gama e Ômega, mesmo escritos como LTDA ou ltda.",
+      "LOCALIZAR não diferencia maiúsculas de minúsculas, e o ÉNÚM troca a posição (número) por VERDADEIRO e o erro por FALSO. Serve para qualquer \"contém\": e-mails de um domínio, produtos de uma marca, processos de uma vara."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-texto-parcial",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "Campinas"
+        },
+        "C2": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Quente ME"
+        },
+        "B3": {
+          "entrada": "São Paulo"
+        },
+        "C3": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Beta Comércio LTDA"
+        },
+        "B4": {
+          "entrada": "Santos"
+        },
+        "C4": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S/A"
+        },
+        "B5": {
+          "entrada": "São Paulo"
+        },
+        "C5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "Campinas"
+        },
+        "C6": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "João Pereira MEI"
+        },
+        "B7": {
+          "entrada": "Santos"
+        },
+        "C7": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ômega Alimentos ltda"
+        },
+        "B8": {
+          "entrada": "São Paulo"
+        },
+        "C8": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Delta Serviços S/A"
+        },
+        "B9": {
+          "entrada": "Campinas"
+        },
+        "C9": {
+          "entrada": "3200",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 170,
+        "F": 90,
+        "G": 96,
+        "H": 64,
+        "I": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "intro": "\"Contém\" é um dos filtros mais pedidos: os clientes Ltda, os e-mails da empresa, os produtos de uma marca. O FILTRO não entende curinga, mas LOCALIZAR com ÉNÚM resolve.",
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Alfa Engenharia Ltda",
+            "Campinas",
+            1800
+          ],
+          [
+            "Beta Comércio LTDA",
+            "Santos",
+            1200
+          ],
+          [
+            "Gama Transportes Ltda",
+            "Campinas",
+            2100
+          ],
+          [
+            "Ômega Alimentos ltda",
+            "São Paulo",
+            950
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9)))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER",
+      "SEARCH",
+      "ISNUMBER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "=\"\\*",
+        "dica": "O igual compara o texto inteiro, e o asterisco não vira curinga dentro do FILTRO: ele procura um cliente chamado, literalmente, com asteriscos. Para achar um pedaço do texto, procure-o com LOCALIZAR."
+      },
+      {
+        "padrao": "PROCURAR\\(",
+        "dica": "PROCURAR diferencia maiúsculas de minúsculas: \"LTDA\" e \"ltda\" ficam de fora. Existe uma função irmã que não diferencia."
+      },
+      {
+        "padrao": "^=FILTRO\\([^;]+;LOCALIZAR\\(",
+        "bloqueia": true,
+        "dica": "Quase: LOCALIZAR sozinho devolve a posição do texto ou o erro #VALOR! quando não acha, e no Excel um erro dentro do FILTRO estraga o resultado inteiro. Transforme a resposta do LOCALIZAR em VERDADEIRO ou FALSO com ÉNÚM."
+      }
+    ]
+  },
+  {
+    "id": "797520d6-7006-50f2-b47e-e4cb196fd70a",
+    "slug": "filtro-texto-parcial-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Uma caixa de busca",
+    "enunciado": [
+      "Em **I1** fica o que a pessoa quer procurar (hoje, *comércio*). Em **E2**, mostre os clientes cujo nome contém o texto de **I1**, de um jeito que a lista mude quando alguém trocar o texto de I1."
+    ],
+    "dicas": [
+      "É a mesma fórmula da questão anterior, com uma diferença: o pedaço procurado vem de uma célula, em vez de estar escrito entre aspas."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(I1;A2:A9)))`: com *comércio*, aparece a Beta Comércio LTDA. Com *ltda* em I1, apareceriam as quatro Ltda.",
+      "É uma caixa de busca feita só com fórmula, como as de um sistema. Com o texto numa célula, ninguém precisa mexer na fórmula."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-texto-parcial",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "Campinas"
+        },
+        "C2": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Quente ME"
+        },
+        "B3": {
+          "entrada": "São Paulo"
+        },
+        "C3": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Beta Comércio LTDA"
+        },
+        "B4": {
+          "entrada": "Santos"
+        },
+        "C4": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S/A"
+        },
+        "B5": {
+          "entrada": "São Paulo"
+        },
+        "C5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "Campinas"
+        },
+        "C6": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "João Pereira MEI"
+        },
+        "B7": {
+          "entrada": "Santos"
+        },
+        "C7": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ômega Alimentos ltda"
+        },
+        "B8": {
+          "entrada": "São Paulo"
+        },
+        "C8": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Delta Serviços S/A"
+        },
+        "B9": {
+          "entrada": "Campinas"
+        },
+        "C9": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Buscar:",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "comércio"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 170,
+        "F": 90,
+        "G": 96,
+        "H": 64,
+        "I": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "alternativas": {
+        "I1": [
+          "alimentos",
+          "ltda"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Beta Comércio LTDA",
+            "Santos",
+            1200
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(I1;A2:A9)))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER",
+      "SEARCH",
+      "ISNUMBER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "LOCALIZAR\\(\"",
+        "dica": "Com o texto entre aspas, a busca não acompanha a célula I1: troque o que está em I1 e a lista não muda."
+      },
+      {
+        "padrao": "PROCURAR\\(",
+        "dica": "PROCURAR diferencia maiúsculas de minúsculas: \"LTDA\" e \"ltda\" ficam de fora. Existe uma função irmã que não diferencia."
+      },
+      {
+        "padrao": "^=FILTRO\\([^;]+;LOCALIZAR\\(",
+        "bloqueia": true,
+        "dica": "Quase: LOCALIZAR sozinho devolve a posição do texto ou o erro #VALOR! quando não acha, e no Excel um erro dentro do FILTRO estraga o resultado inteiro. Transforme a resposta do LOCALIZAR em VERDADEIRO ou FALSO com ÉNÚM."
+      }
+    ]
+  },
+  {
+    "id": "43d3ea6b-2609-510b-83a2-aad166a6138b",
+    "slug": "filtro-texto-parcial-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contém e mais uma condição",
+    "enunciado": [
+      "Em **E2**, mostre só os clientes **Ltda** com honorário **acima de R$ 1.000**."
+    ],
+    "dicas": [
+      "São duas condições ao mesmo tempo. No FILTRO, o E entre condições é feito multiplicando os testes, cada um entre parênteses."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9))*(C2:C9>1000))`: Alfa, Beta e Gama. A Ômega é Ltda, mas paga R$ 950.",
+      "O ÉNÚM(LOCALIZAR(...)) vira um teste como qualquer outro, e entra na multiplicação junto com o do valor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-texto-parcial",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "Campinas"
+        },
+        "C2": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Quente ME"
+        },
+        "B3": {
+          "entrada": "São Paulo"
+        },
+        "C3": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Beta Comércio LTDA"
+        },
+        "B4": {
+          "entrada": "Santos"
+        },
+        "C4": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S/A"
+        },
+        "B5": {
+          "entrada": "São Paulo"
+        },
+        "C5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "Campinas"
+        },
+        "C6": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "João Pereira MEI"
+        },
+        "B7": {
+          "entrada": "Santos"
+        },
+        "C7": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ômega Alimentos ltda"
+        },
+        "B8": {
+          "entrada": "São Paulo"
+        },
+        "C8": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Delta Serviços S/A"
+        },
+        "B9": {
+          "entrada": "Campinas"
+        },
+        "C9": {
+          "entrada": "3200",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 170,
+        "F": 90,
+        "G": 96,
+        "H": 64,
+        "I": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Alfa Engenharia Ltda",
+            "Campinas",
+            1800
+          ],
+          [
+            "Beta Comércio LTDA",
+            "Santos",
+            1200
+          ],
+          [
+            "Gama Transportes Ltda",
+            "Campinas",
+            2100
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9))*(C2:C9>1000))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER",
+      "SEARCH",
+      "ISNUMBER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(A2:C9;E\\(",
+        "dica": "A função E junta tudo num VERDADEIRO ou FALSO só, e o FILTRO precisa de uma resposta por linha. Multiplique os testes."
+      },
+      {
+        "padrao": ">=1000",
+        "dica": "\"Acima de R$ 1.000\" não inclui os R$ 1.000 exatos."
+      },
+      {
+        "padrao": "=\"\\*",
+        "dica": "O igual compara o texto inteiro, e o asterisco não vira curinga dentro do FILTRO: ele procura um cliente chamado, literalmente, com asteriscos. Para achar um pedaço do texto, procure-o com LOCALIZAR."
+      },
+      {
+        "padrao": "PROCURAR\\(",
+        "dica": "PROCURAR diferencia maiúsculas de minúsculas: \"LTDA\" e \"ltda\" ficam de fora. Existe uma função irmã que não diferencia."
+      },
+      {
+        "padrao": "^=FILTRO\\([^;]+;LOCALIZAR\\(",
+        "bloqueia": true,
+        "dica": "Quase: LOCALIZAR sozinho devolve a posição do texto ou o erro #VALOR! quando não acha, e no Excel um erro dentro do FILTRO estraga o resultado inteiro. Transforme a resposta do LOCALIZAR em VERDADEIRO ou FALSO com ÉNÚM."
+      }
+    ]
+  },
+  {
+    "id": "d9ec5515-ce51-51be-8109-3a1ed77e19b5",
+    "slug": "filtro-texto-parcial-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o asterisco que não funciona",
+    "enunciado": [
+      "Uma colega quis listar os clientes **Ltda** em **E2** e usou o asterisco, como faz no CONT.SE. Deu **#CALC!**. Corrija a fórmula."
+    ],
+    "dicas": [
+      "No CONT.SE e no PROCV o asterisco é curinga. Dentro do FILTRO, o igual é uma comparação comum, de texto inteiro.",
+      "Quem acha um pedaço dentro de um texto é o LOCALIZAR, e o FILTRO precisa de VERDADEIRO ou FALSO para cada linha."
+    ],
+    "explicacao": [
+      "`=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9)))`.",
+      "O #CALC! quer dizer que nenhuma linha passou: o FILTRO procurou um cliente chamado exatamente `\"*Ltda*\"`. Curinga só funciona nas funções que aceitam critério em texto (CONT.SE, SOMASE, PROCV…), não numa comparação com igual."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-texto-parcial",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Honorário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Engenharia Ltda"
+        },
+        "B2": {
+          "entrada": "Campinas"
+        },
+        "C2": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Quente ME"
+        },
+        "B3": {
+          "entrada": "São Paulo"
+        },
+        "C3": {
+          "entrada": "650",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Beta Comércio LTDA"
+        },
+        "B4": {
+          "entrada": "Santos"
+        },
+        "C4": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Clínica Sorriso S/A"
+        },
+        "B5": {
+          "entrada": "São Paulo"
+        },
+        "C5": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Gama Transportes Ltda"
+        },
+        "B6": {
+          "entrada": "Campinas"
+        },
+        "C6": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "João Pereira MEI"
+        },
+        "B7": {
+          "entrada": "Santos"
+        },
+        "C7": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Ômega Alimentos ltda"
+        },
+        "B8": {
+          "entrada": "São Paulo"
+        },
+        "C8": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Delta Serviços S/A"
+        },
+        "B9": {
+          "entrada": "Campinas"
+        },
+        "C9": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "=FILTRO(A2:C9;A2:A9=\"*Ltda*\")",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 170,
+        "F": 90,
+        "G": 96,
+        "H": 64,
+        "I": 110
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": [
+          [
+            "Alfa Engenharia Ltda",
+            "Campinas",
+            1800
+          ],
+          [
+            "Beta Comércio LTDA",
+            "Santos",
+            1200
+          ],
+          [
+            "Gama Transportes Ltda",
+            "Campinas",
+            2100
+          ],
+          [
+            "Ômega Alimentos ltda",
+            "São Paulo",
+            950
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=FILTRO(A2:C9;ÉNÚM(LOCALIZAR(\"Ltda\";A2:A9)))"
+      }
+    ],
+    "funcoesExigidas": [
+      "FILTER",
+      "SEARCH",
+      "ISNUMBER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "=\"\\*",
+        "dica": "O igual compara o texto inteiro, e o asterisco não vira curinga dentro do FILTRO: ele procura um cliente chamado, literalmente, com asteriscos. Para achar um pedaço do texto, procure-o com LOCALIZAR."
+      },
+      {
+        "padrao": "PROCURAR\\(",
+        "dica": "PROCURAR diferencia maiúsculas de minúsculas: \"LTDA\" e \"ltda\" ficam de fora. Existe uma função irmã que não diferencia."
+      },
+      {
+        "padrao": "^=FILTRO\\([^;]+;LOCALIZAR\\(",
+        "bloqueia": true,
+        "dica": "Quase: LOCALIZAR sozinho devolve a posição do texto ou o erro #VALOR! quando não acha, e no Excel um erro dentro do FILTRO estraga o resultado inteiro. Transforme a resposta do LOCALIZAR em VERDADEIRO ou FALSO com ÉNÚM."
+      }
+    ]
+  },
+  {
+    "id": "8414cbaa-5cae-571c-91a5-95d2046cc6a6",
+    "slug": "filtro-texto-parcial-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: quantos nomes contêm o texto",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, as células A2:A6 contêm: Ana Silva, SILVANA Costa, Bruno Souza, Carla da Silva e Davi Lima.",
+      "Qual é o resultado da fórmula `=CONT.VALORES(FILTRO(A2:A6;ÉNÚM(LOCALIZAR(\"silva\";A2:A6))))`?"
+    ],
+    "dicas": [
+      "LOCALIZAR acha o texto em qualquer parte da célula e não diferencia maiúsculas de minúsculas."
+    ],
+    "explicacao": [
+      "O LOCALIZAR acha \"silva\" em Ana Silva, Carla da Silva e também em **SILVANA** Costa (o pedaço está dentro do nome, e maiúsculas não importam). O FILTRO devolve 3 nomes e o CONT.VALORES conta **3**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-texto-parcial",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Silva"
+        },
+        "A3": {
+          "entrada": "SILVANA Costa"
+        },
+        "A4": {
+          "entrada": "Bruno Souza"
+        },
+        "A5": {
+          "entrada": "Carla da Silva"
+        },
+        "A6": {
+          "entrada": "Davi Lima"
+        }
+      },
+      "larguras": {
+        "A": 140
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "2",
+        "dica": "SILVANA também contém \"silva\": o LOCALIZAR acha o pedaço em qualquer parte do texto."
+      },
+      {
+        "texto": "1",
+        "dica": "LOCALIZAR não diferencia maiúsculas de minúsculas: Silva, SILVA e silva são iguais para ele."
+      },
+      {
+        "texto": "0",
+        "dica": "O ÉNÚM transforma a posição encontrada em VERDADEIRO; os nomes que contêm o texto passam no FILTRO."
+      },
+      {
+        "texto": "#CALC!",
+        "dica": "O #CALC! só aparece quando nenhuma linha passa no FILTRO, e aqui três passam."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "FILTRO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(FILTRO(A2:A6;ÉNÚM(LOCALIZAR(\"silva\";A2:A6))))",
+        "esperado": 3
+      }
+    ]
+  },
+  {
+    "id": "9239035f-052a-5ca4-8e1a-186e71933199",
+    "slug": "sequencia-cronograma",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SEQUÊNCIA: o cronograma inteiro numa fórmula",
+    "enunciado": [
+      "O parcelamento tem o número de parcelas em **B2** e o 1º vencimento em **B3**, e as parcelas vencem todo mês no mesmo dia.",
+      "Em **B6**, com **uma fórmula só**, mostre o vencimento de todas as parcelas, uma embaixo da outra."
+    ],
+    "dicas": [
+      "SEQUÊNCIA(B2) gera 1, 2, 3… até o número de parcelas. Cada número pode virar \"quantos meses andar\" dentro do DATAM.",
+      "A 1ª parcela vence no próprio 1º vencimento: ela anda zero meses, não um."
+    ],
+    "explicacao": [
+      "`=DATAM(B3;SEQUÊNCIA(B2)-1)`: SEQUÊNCIA(B2)-1 dá 0, 1, 2… 5, e o DATAM anda esses meses a partir de 10/02/2027, até 10/07/2027.",
+      "Troque B2 para 12 e o cronograma cresce sozinho, sem arrastar nada. No Excel de verdade, formate o resultado como **Data Abreviada**: sem isso aparecem números como 46428."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "sequencia-cronograma",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "grade": {
+      "linhas": 19,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor financiado",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "1º vencimento",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "10/02/2027"
+        },
+        "A5": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "B6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B14": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B15": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B16": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B17": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B18": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110,
+        "C": 90,
+        "D": 64
+      },
+      "variaveis": [
+        "B2",
+        "B3"
+      ]
+    },
+    "intro": "Carnê, contrato de aluguel, plano de pagamento: o cronograma muda sempre que muda o número de parcelas. Com SEQUÊNCIA, uma fórmula monta a lista inteira e cresce sozinha.",
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": [
+          [
+            {
+              "data": "2027-02-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-04-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-05-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-06-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-07-10"
+            }
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;SEQUÊNCIA(B2)-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "EDATE",
+      "SEQUENCE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SEQUÊNCIA\\(B2\\)\\)$",
+        "dica": "Com SEQUÊNCIA(B2), os meses andados são 1, 2, 3…: a primeira parcela já cai um mês depois do 1º vencimento. Ela precisa andar zero meses."
+      },
+      {
+        "padrao": "\\*30|SEQUÊNCIA\\(B2;1;0;30\\)",
+        "dica": "Somar 30 dias não é somar um mês: os meses têm 28, 30 ou 31 dias, e o vencimento escorrega do dia 10."
+      }
+    ]
+  },
+  {
+    "id": "2fdb8f88-7699-53f8-a77e-71d8726c6dcf",
+    "slug": "sequencia-cronograma-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vencimentos a cada 15 dias",
+    "enunciado": [
+      "Agora o boleto vence **a cada 15 dias**, a partir do 1º vencimento em **B3**. Em **B6**, com uma fórmula só, mostre as datas de todas as parcelas (a quantidade está em **B2**)."
+    ],
+    "dicas": [
+      "SEQUÊNCIA tem mais dois argumentos depois de linhas e colunas: o número de partida e o tamanho do passo.",
+      "A conta é a data inicial mais 0, 15, 30, 45… dias. Que SEQUÊNCIA gera esses números?"
+    ],
+    "explicacao": [
+      "`=B3+SEQUÊNCIA(B2;1;0;15)`: a SEQUÊNCIA começa em 0 e anda de 15 em 15, e cada número é somado ao 1º vencimento.",
+      "Aqui somar dias é o certo, porque o prazo é em dias. Com prazo em meses, o DATAM é que mantém o dia do mês."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "sequencia-cronograma",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 19,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor financiado",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "1º vencimento",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "10/02/2027"
+        },
+        "A5": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "B6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B14": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B15": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B16": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B17": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B18": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110,
+        "C": 90,
+        "D": 64
+      },
+      "variaveis": [
+        "B2",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": [
+          [
+            {
+              "data": "2027-02-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-02-25"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-12"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-27"
+            }
+          ],
+          [
+            {
+              "data": "2027-04-11"
+            }
+          ],
+          [
+            {
+              "data": "2027-04-26"
+            }
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3+SEQUÊNCIA(B2;1;0;15)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SEQUENCE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SEQUÊNCIA\\(B2;1;15;15\\)|SEQUÊNCIA\\(B2;1;1;15\\)",
+        "dica": "A primeira parcela é o próprio 1º vencimento: a sequência de dias precisa começar em 0."
+      },
+      {
+        "padrao": "DATAM",
+        "dica": "O prazo agora é em dias, não em meses. Some os dias direto na data."
+      }
+    ]
+  },
+  {
+    "id": "c246a0e0-90a7-5356-ac4e-5e5bb5263a69",
+    "slug": "sequencia-cronograma-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O calendário do mês em grade",
+    "enunciado": [
+      "Em **B1** está o primeiro dia do mês. Em **A4**, monte o calendário: **6 semanas** (linhas) de **7 dias** (colunas), começando no **domingo** da semana de B1, como nas colunas de Dom a Sáb."
+    ],
+    "dicas": [
+      "SEQUÊNCIA aceita linhas e colunas: 6 linhas por 7 colunas, e o terceiro argumento é a data de partida.",
+      "A partida é o domingo da semana de B1. DIA.DA.SEMANA diz quantos dias B1 está depois do domingo (domingo é 1)."
+    ],
+    "explicacao": [
+      "`=SEQUÊNCIA(6;7;B1-DIA.DA.SEMANA(B1)+1)`: 01/03/2027 é uma segunda (DIA.DA.SEMANA = 2), então o calendário começa no domingo 28/02/2027 e vai até 10/04/2027.",
+      "Troque B1 para outro mês e o calendário inteiro se refaz. É a base de escalas de plantão e agendas de audiência."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "sequencia-cronograma",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "01/03/2027"
+        },
+        "A3": {
+          "entrada": "Dom",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "Seg",
+          "negrito": true
+        },
+        "C3": {
+          "entrada": "Ter",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Qua",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Qui",
+          "negrito": true
+        },
+        "F3": {
+          "entrada": "Sex",
+          "negrito": true
+        },
+        "G3": {
+          "entrada": "Sáb",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "E10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "F10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 96,
+        "B": 96,
+        "C": 96,
+        "D": 96,
+        "E": 96,
+        "F": 96,
+        "G": 96
+      },
+      "variaveis": [
+        "B1"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "A4",
+        "esperado": [
+          [
+            {
+              "data": "2027-02-28"
+            },
+            {
+              "data": "2027-03-01"
+            },
+            {
+              "data": "2027-03-02"
+            },
+            {
+              "data": "2027-03-03"
+            },
+            {
+              "data": "2027-03-04"
+            },
+            {
+              "data": "2027-03-05"
+            },
+            {
+              "data": "2027-03-06"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-07"
+            },
+            {
+              "data": "2027-03-08"
+            },
+            {
+              "data": "2027-03-09"
+            },
+            {
+              "data": "2027-03-10"
+            },
+            {
+              "data": "2027-03-11"
+            },
+            {
+              "data": "2027-03-12"
+            },
+            {
+              "data": "2027-03-13"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-14"
+            },
+            {
+              "data": "2027-03-15"
+            },
+            {
+              "data": "2027-03-16"
+            },
+            {
+              "data": "2027-03-17"
+            },
+            {
+              "data": "2027-03-18"
+            },
+            {
+              "data": "2027-03-19"
+            },
+            {
+              "data": "2027-03-20"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-21"
+            },
+            {
+              "data": "2027-03-22"
+            },
+            {
+              "data": "2027-03-23"
+            },
+            {
+              "data": "2027-03-24"
+            },
+            {
+              "data": "2027-03-25"
+            },
+            {
+              "data": "2027-03-26"
+            },
+            {
+              "data": "2027-03-27"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-28"
+            },
+            {
+              "data": "2027-03-29"
+            },
+            {
+              "data": "2027-03-30"
+            },
+            {
+              "data": "2027-03-31"
+            },
+            {
+              "data": "2027-04-01"
+            },
+            {
+              "data": "2027-04-02"
+            },
+            {
+              "data": "2027-04-03"
+            }
+          ],
+          [
+            {
+              "data": "2027-04-04"
+            },
+            {
+              "data": "2027-04-05"
+            },
+            {
+              "data": "2027-04-06"
+            },
+            {
+              "data": "2027-04-07"
+            },
+            {
+              "data": "2027-04-08"
+            },
+            {
+              "data": "2027-04-09"
+            },
+            {
+              "data": "2027-04-10"
+            }
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEQUÊNCIA(6;7;B1-DIA.DA.SEMANA(B1)+1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SEQUENCE",
+      "WEEKDAY"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SEQUÊNCIA\\(6;7;B1\\)$",
+        "dica": "Assim o calendário começa no próprio dia 1, que nem sempre é domingo, e os dias ficam embaixo dos nomes errados."
+      },
+      {
+        "padrao": "^=SEQUÊNCIA\\(7;6",
+        "dica": "Linhas vêm primeiro: são 6 semanas (linhas) de 7 dias (colunas)."
+      }
+    ]
+  },
+  {
+    "id": "64b8fd35-f2ef-58e7-86d8-52a3cc6c5f6b",
+    "slug": "sequencia-cronograma-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o carnê que começa um mês depois",
+    "enunciado": [
+      "O número de parcelas está em **B2** e o 1º vencimento, **10/02/2027**, em **B3**. Mas o cronograma em **B6** começa em **10/03/2027**. Corrija a fórmula."
+    ],
+    "dicas": [
+      "Que números a SEQUÊNCIA está gerando? E quantos meses a 1ª parcela precisa andar?"
+    ],
+    "explicacao": [
+      "`=DATAM(B3;SEQUÊNCIA(B2)-1)`.",
+      "SEQUÊNCIA começa em 1, e a 1ª parcela andava um mês. O -1 faz a lista de meses começar em 0, e a última parcela continua sendo a 6ª. No cliente, esse erro vira um boleto a menos no carnê e uma parcela a mais no fim."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "sequencia-cronograma",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 19,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Valor financiado",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "18000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "1º vencimento",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "10/02/2027"
+        },
+        "A5": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "B6": {
+          "entrada": "=DATAM(B3;SEQUÊNCIA(B2))",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B14": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B15": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B16": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B17": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B18": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 110,
+        "C": 90,
+        "D": 64
+      },
+      "variaveis": [
+        "B2",
+        "B3"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": [
+          [
+            {
+              "data": "2027-02-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-03-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-04-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-05-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-06-10"
+            }
+          ],
+          [
+            {
+              "data": "2027-07-10"
+            }
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=DATAM(B3;SEQUÊNCIA(B2)-1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "EDATE",
+      "SEQUENCE"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SEQUÊNCIA\\(B2\\)\\)$",
+        "dica": "Com SEQUÊNCIA(B2), os meses andados são 1, 2, 3…: a primeira parcela já cai um mês depois do 1º vencimento. Ela precisa andar zero meses."
+      },
+      {
+        "padrao": "\\*30|SEQUÊNCIA\\(B2;1;0;30\\)",
+        "dica": "Somar 30 dias não é somar um mês: os meses têm 28, 30 ou 31 dias, e o vencimento escorrega do dia 10."
+      }
+    ]
+  },
+  {
+    "id": "d6480661-6584-5cc8-a102-f55d75dcee5f",
+    "slug": "sequencia-cronograma-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a soma da sequência",
+    "enunciado": [
+      "No Excel 365 em português, um auxiliar digitou em uma célula vazia a fórmula `=SOMA(SEQUÊNCIA(4;1;10;5))`.",
+      "Assinale a alternativa que apresenta o resultado exibido."
+    ],
+    "dicas": [
+      "Os argumentos da SEQUÊNCIA são: linhas, colunas, início e etapa."
+    ],
+    "explicacao": [
+      "A SEQUÊNCIA gera 4 números, começando em 10 e andando de 5 em 5: 10, 15, 20 e 25. A SOMA dá **70**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "sequencia-cronograma",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "70"
+      },
+      {
+        "texto": "50",
+        "dica": "Isso seria 10+15+25 ou outra conta incompleta: são 4 números, 10, 15, 20 e 25."
+      },
+      {
+        "texto": "85",
+        "dica": "A sequência começa no próprio 10, não em 15: o terceiro argumento é o primeiro número."
+      },
+      {
+        "texto": "40",
+        "dica": "40 seria somar só 10+5+…: o 5 é o tamanho do passo, não um dos números."
+      },
+      {
+        "texto": "4",
+        "dica": "4 é a quantidade de linhas. A SOMA soma os números gerados."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "SEQUÊNCIA",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMA(SEQUÊNCIA(4;1;10;5))",
+        "esperado": 70
+      }
+    ]
+  },
+  {
+    "id": "c2f54ec0-711f-5c3d-a79d-63c926188e0d",
+    "slug": "filtro-dentro-de-funcoes",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A lista de cobrança numa célula",
+    "enunciado": [
+      "A situação que interessa está em **G1** (hoje, *Atrasado*). Em **G4**, numa **célula só**, escreva os clientes com essa situação, separados por **vírgula e espaço** (\"Auto Peças Silva, Escola…\")."
+    ],
+    "dicas": [
+      "O FILTRO acha os clientes; falta uma função que junte uma lista de textos numa célula só, com um separador entre eles.",
+      "UNIRTEXTO recebe o separador, VERDADEIRO (para pular vazios) e a lista. A lista pode ser o resultado do FILTRO."
+    ],
+    "explicacao": [
+      "`=UNIRTEXTO(\", \";VERDADEIRO;FILTRO(A2:A9;D2:D9=G1))`: o FILTRO devolve os quatro clientes atrasados e o UNIRTEXTO junta tudo numa frase.",
+      "É a linha pronta para colar no e-mail de cobrança. O resultado de uma função de matriz pode entrar em qualquer função que aceite uma lista: UNIRTEXTO, SOMA, CONT.VALORES, MÉDIA…"
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-dentro-de-funcoes",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B2": {
+          "entrada": "Paula"
+        },
+        "C2": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Em dia"
+        },
+        "A3": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B3": {
+          "entrada": "Rafael"
+        },
+        "C3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Clínica Vida"
+        },
+        "B4": {
+          "entrada": "Paula"
+        },
+        "C4": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Em dia"
+        },
+        "A5": {
+          "entrada": "Escola Aprender"
+        },
+        "B5": {
+          "entrada": "Rafael"
+        },
+        "C5": {
+          "entrada": "1700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Atrasado"
+        },
+        "A6": {
+          "entrada": "Farmácia Central"
+        },
+        "B6": {
+          "entrada": "Paula"
+        },
+        "C6": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "B7": {
+          "entrada": "Rafael"
+        },
+        "C7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Em dia"
+        },
+        "A8": {
+          "entrada": "Lanchonete Sabor"
+        },
+        "B8": {
+          "entrada": "Paula"
+        },
+        "C8": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Atrasado"
+        },
+        "A9": {
+          "entrada": "Oficina do Zé"
+        },
+        "B9": {
+          "entrada": "Rafael"
+        },
+        "C9": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Em dia"
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Atrasado"
+        },
+        "F2": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Paula"
+        },
+        "F4": {
+          "entrada": "Clientes",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 96,
+        "C": 90,
+        "D": 76,
+        "E": 24,
+        "F": 120,
+        "G": 380
+      },
+      "alternativas": {
+        "G1": [
+          "Em dia"
+        ],
+        "G2": [
+          "Rafael"
+        ]
+      }
+    },
+    "intro": "O e-mail de cobrança, a ata com os presentes, a lista de quem falta entregar: muitas vezes a resposta cabe numa célula só. O FILTRO acha as linhas e outra função faz o resumo.",
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": "Auto Peças Silva, Escola Aprender, Farmácia Central, Lanchonete Sabor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=UNIRTEXTO(\", \";VERDADEIRO;FILTRO(A2:A9;D2:D9=G1))"
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXTJOIN",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(",
+        "dica": "Sozinho, o FILTRO derrama um nome em cada célula. Para juntar tudo numa célula só, ele precisa ir dentro de uma função que une textos."
+      },
+      {
+        "padrao": "=\"ATRASADO\"",
+        "dica": "Com \"Atrasado\" escrito na fórmula, o painel não obedece à célula G1: troque a situação lá e o resultado não muda."
+      },
+      {
+        "padrao": "^=UNIRTEXTO\\(\",\";",
+        "dica": "O separador ficou sem o espaço depois da vírgula: os nomes saem grudados (\"Silva,Escola\")."
+      }
+    ]
+  },
+  {
+    "id": "cb4c8147-96d6-592e-b01f-f6cc03be4454",
+    "slug": "filtro-dentro-de-funcoes-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Situação e responsável",
+    "enunciado": [
+      "Em **G4**, junte numa célula só (separados por vírgula e espaço) os clientes com a situação de **G1** que são do responsável de **G2**."
+    ],
+    "dicas": [
+      "São duas condições no FILTRO: multiplique os dois testes, cada um entre parênteses.",
+      "O UNIRTEXTO continua por fora, do mesmo jeito."
+    ],
+    "explicacao": [
+      "`=UNIRTEXTO(\", \";VERDADEIRO;FILTRO(A2:A9;(D2:D9=G1)*(B2:B9=G2)))`: atrasados da Paula, Farmácia Central e Lanchonete Sabor.",
+      "Troque G2 para Rafael e a lista vira a cobrança dele. Um painel assim, com as escolhas em células, serve para o time inteiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-dentro-de-funcoes",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 11,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B2": {
+          "entrada": "Paula"
+        },
+        "C2": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Em dia"
+        },
+        "A3": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B3": {
+          "entrada": "Rafael"
+        },
+        "C3": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Atrasado"
+        },
+        "A4": {
+          "entrada": "Clínica Vida"
+        },
+        "B4": {
+          "entrada": "Paula"
+        },
+        "C4": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Em dia"
+        },
+        "A5": {
+          "entrada": "Escola Aprender"
+        },
+        "B5": {
+          "entrada": "Rafael"
+        },
+        "C5": {
+          "entrada": "1700",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Atrasado"
+        },
+        "A6": {
+          "entrada": "Farmácia Central"
+        },
+        "B6": {
+          "entrada": "Paula"
+        },
+        "C6": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "B7": {
+          "entrada": "Rafael"
+        },
+        "C7": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Em dia"
+        },
+        "A8": {
+          "entrada": "Lanchonete Sabor"
+        },
+        "B8": {
+          "entrada": "Paula"
+        },
+        "C8": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Atrasado"
+        },
+        "A9": {
+          "entrada": "Oficina do Zé"
+        },
+        "B9": {
+          "entrada": "Rafael"
+        },
+        "C9": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Em dia"
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Atrasado"
+        },
+        "F2": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Paula"
+        },
+        "F4": {
+          "entrada": "Clientes",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 96,
+        "C": 90,
+        "D": 76,
+        "E": 24,
+        "F": 120,
+        "G": 380
+      },
+      "alternativas": {
+        "G1": [
+          "Em dia"
+        ],
+        "G2": [
+          "Rafael"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": "Farmácia Central, Lanchonete Sabor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=UNIRTEXTO(\", \";VERDADEIRO;FILTRO(A2:A9;(D2:D9=G1)*(B2:B9=G2)))"
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXTJOIN",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(",
+        "dica": "Sozinho, o FILTRO derrama um nome em cada célula. Para juntar tudo numa célula só, ele precisa ir dentro de uma função que une textos."
+      },
+      {
+        "padrao": "=\"ATRASADO\"",
+        "dica": "Com \"Atrasado\" escrito na fórmula, o painel não obedece à célula G1: troque a situação lá e o resultado não muda."
+      },
+      {
+        "padrao": "FILTRO\\(A2:A9;E\\(",
+        "dica": "A função E devolve um VERDADEIRO ou FALSO só, e o FILTRO precisa de um por linha. Multiplique os testes."
+      },
+      {
+        "padrao": "\\)\\+\\(",
+        "dica": "Com +, basta UMA condição: entra quem está atrasado OU é da Paula. Para as duas ao mesmo tempo, multiplique."
+      }
+    ]
+  },
+  {
+    "id": "d0ea3fa6-536d-5e03-ac0b-8f82c35a4950",
+    "slug": "filtro-dentro-de-funcoes-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Cada cliente uma vez, em ordem",
+    "enunciado": [
+      "Nesta tabela, cada linha é uma **fatura**, e um cliente pode ter mais de uma. Em **G4**, junte numa célula só os clientes com a situação de **G1**, **cada um uma vez**, em **ordem alfabética**, separados por vírgula e espaço."
+    ],
+    "dicas": [
+      "Monte de dentro para fora: primeiro o FILTRO acha as faturas, depois uma função tira os nomes repetidos e outra põe em ordem.",
+      "O UNIRTEXTO fica por último, por fora de todas."
+    ],
+    "explicacao": [
+      "`=UNIRTEXTO(\", \";VERDADEIRO;CLASSIFICAR(ÚNICO(FILTRO(A2:A10;D2:D10=G1))))`: Auto Peças Silva e Farmácia Central têm duas faturas atrasadas, mas aparecem uma vez só.",
+      "Leia de dentro para fora: FILTRO (as faturas), ÚNICO (sem repetir), CLASSIFICAR (A a Z) e UNIRTEXTO (numa frase)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-dentro-de-funcoes",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B2": {
+          "entrada": "Rafael"
+        },
+        "C2": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Atrasado"
+        },
+        "A3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B3": {
+          "entrada": "Paula"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Em dia"
+        },
+        "A4": {
+          "entrada": "Farmácia Central"
+        },
+        "B4": {
+          "entrada": "Paula"
+        },
+        "C4": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Atrasado"
+        },
+        "A5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B5": {
+          "entrada": "Rafael"
+        },
+        "C5": {
+          "entrada": "1120",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Atrasado"
+        },
+        "A6": {
+          "entrada": "Escola Aprender"
+        },
+        "B6": {
+          "entrada": "Rafael"
+        },
+        "C6": {
+          "entrada": "1700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Clínica Vida"
+        },
+        "B7": {
+          "entrada": "Paula"
+        },
+        "C7": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Em dia"
+        },
+        "A8": {
+          "entrada": "Farmácia Central"
+        },
+        "B8": {
+          "entrada": "Paula"
+        },
+        "C8": {
+          "entrada": "590",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Atrasado"
+        },
+        "A9": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "B9": {
+          "entrada": "Rafael"
+        },
+        "C9": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Em dia"
+        },
+        "A10": {
+          "entrada": "Lanchonete Sabor"
+        },
+        "B10": {
+          "entrada": "Paula"
+        },
+        "C10": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Atrasado"
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Atrasado"
+        },
+        "F2": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Paula"
+        },
+        "F4": {
+          "entrada": "Clientes",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 96,
+        "C": 90,
+        "D": 76,
+        "E": 24,
+        "F": 120,
+        "G": 380
+      },
+      "alternativas": {
+        "G1": [
+          "Em dia"
+        ],
+        "G2": [
+          "Rafael"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": "Auto Peças Silva, Escola Aprender, Farmácia Central, Lanchonete Sabor",
+        "exigeFormula": true,
+        "solucaoReferencia": "=UNIRTEXTO(\", \";VERDADEIRO;CLASSIFICAR(ÚNICO(FILTRO(A2:A10;D2:D10=G1))))"
+      }
+    ],
+    "funcoesExigidas": [
+      "TEXTJOIN",
+      "FILTER",
+      "UNIQUE",
+      "SORT"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(",
+        "dica": "Sozinho, o FILTRO derrama um nome em cada célula. Para juntar tudo numa célula só, ele precisa ir dentro de uma função que une textos."
+      },
+      {
+        "padrao": "=\"ATRASADO\"",
+        "dica": "Com \"Atrasado\" escrito na fórmula, o painel não obedece à célula G1: troque a situação lá e o resultado não muda."
+      }
+    ]
+  },
+  {
+    "id": "9b7d55b0-42f8-5fe2-89c7-9c0dd7135d5d",
+    "slug": "filtro-dentro-de-funcoes-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: clientes ou faturas?",
+    "enunciado": [
+      "A pergunta do gerente é: **quantos clientes diferentes** estão com a situação de **G1**? A fórmula em **G4** responde 6, mas são 4 clientes. Corrija-a."
+    ],
+    "dicas": [
+      "O que exatamente o FILTRO devolve: clientes ou faturas? Algum nome aparece duas vezes?"
+    ],
+    "explicacao": [
+      "`=CONT.VALORES(ÚNICO(FILTRO(A2:A10;D2:D10=G1)))` → 4.",
+      "Cada linha é uma fatura: Auto Peças Silva e Farmácia Central têm duas atrasadas cada, e eram contadas duas vezes. Quantas faturas e quantos clientes são perguntas diferentes, e a diferença é o ÚNICO."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-dentro-de-funcoes",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 12,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B2": {
+          "entrada": "Rafael"
+        },
+        "C2": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Atrasado"
+        },
+        "A3": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B3": {
+          "entrada": "Paula"
+        },
+        "C3": {
+          "entrada": "1250",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Em dia"
+        },
+        "A4": {
+          "entrada": "Farmácia Central"
+        },
+        "B4": {
+          "entrada": "Paula"
+        },
+        "C4": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Atrasado"
+        },
+        "A5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B5": {
+          "entrada": "Rafael"
+        },
+        "C5": {
+          "entrada": "1120",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Atrasado"
+        },
+        "A6": {
+          "entrada": "Escola Aprender"
+        },
+        "B6": {
+          "entrada": "Rafael"
+        },
+        "C6": {
+          "entrada": "1700",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Clínica Vida"
+        },
+        "B7": {
+          "entrada": "Paula"
+        },
+        "C7": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Em dia"
+        },
+        "A8": {
+          "entrada": "Farmácia Central"
+        },
+        "B8": {
+          "entrada": "Paula"
+        },
+        "C8": {
+          "entrada": "590",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Atrasado"
+        },
+        "A9": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "B9": {
+          "entrada": "Rafael"
+        },
+        "C9": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Em dia"
+        },
+        "A10": {
+          "entrada": "Lanchonete Sabor"
+        },
+        "B10": {
+          "entrada": "Paula"
+        },
+        "C10": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Atrasado"
+        },
+        "F1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Atrasado"
+        },
+        "F2": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Paula"
+        },
+        "F4": {
+          "entrada": "Clientes diferentes",
+          "negrito": true
+        },
+        "G4": {
+          "entrada": "=CONT.VALORES(FILTRO(A2:A10;D2:D10=G1))",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 140,
+        "B": 96,
+        "C": 90,
+        "D": 76,
+        "E": 24,
+        "F": 120,
+        "G": 380
+      },
+      "alternativas": {
+        "G1": [
+          "Em dia"
+        ],
+        "G2": [
+          "Rafael"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": 4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=CONT.VALORES(ÚNICO(FILTRO(A2:A10;D2:D10=G1)))"
+      }
+    ],
+    "funcoesExigidas": [
+      "COUNTA",
+      "UNIQUE",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.VALORES\\(FILTRO",
+        "dica": "Isso conta as faturas. Cliente com duas faturas atrasadas entra duas vezes: tire os repetidos antes de contar."
+      },
+      {
+        "padrao": "^=CONT\\.SE\\(",
+        "dica": "CONT.SE também conta faturas, uma por linha. A pergunta é de clientes diferentes."
+      }
+    ]
+  },
+  {
+    "id": "8805c05b-c615-5ba4-9084-1545d8875a6d",
+    "slug": "filtro-dentro-de-funcoes-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: clientes diferentes em atraso",
+    "enunciado": [
+      "Uma planilha do Excel 365 em português lista faturas: em A2:A7 os clientes (Alfa, Beta, Alfa, Gama, Beta e Delta) e em B2:B7 a situação (Atrasado, Em dia, Atrasado, Atrasado, Atrasado e Em dia, nessa ordem).",
+      "O valor de `=CONT.VALORES(ÚNICO(FILTRO(A2:A7;B2:B7=\"Atrasado\")))` é:"
+    ],
+    "dicas": [
+      "Leia de dentro para fora: quais faturas o FILTRO devolve, e o que o ÚNICO faz com elas?"
+    ],
+    "explicacao": [
+      "O FILTRO devolve as faturas atrasadas: Alfa, Alfa, Gama e Beta. O ÚNICO tira o Alfa repetido (Alfa, Gama, Beta) e o CONT.VALORES conta **3** clientes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "filtro-dentro-de-funcoes",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa"
+        },
+        "B2": {
+          "entrada": "Atrasado"
+        },
+        "A3": {
+          "entrada": "Beta"
+        },
+        "B3": {
+          "entrada": "Em dia"
+        },
+        "A4": {
+          "entrada": "Alfa"
+        },
+        "B4": {
+          "entrada": "Atrasado"
+        },
+        "A5": {
+          "entrada": "Gama"
+        },
+        "B5": {
+          "entrada": "Atrasado"
+        },
+        "A6": {
+          "entrada": "Beta"
+        },
+        "B6": {
+          "entrada": "Atrasado"
+        },
+        "A7": {
+          "entrada": "Delta"
+        },
+        "B7": {
+          "entrada": "Em dia"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 90
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "4",
+        "dica": "4 é o número de faturas atrasadas. O ÚNICO tira o Alfa repetido antes da contagem."
+      },
+      {
+        "texto": "6",
+        "dica": "6 é o total de faturas; o FILTRO só deixa passar as atrasadas."
+      },
+      {
+        "texto": "2",
+        "dica": "Beta tem uma fatura em dia e outra atrasada: pela atrasada, ele entra na lista."
+      },
+      {
+        "texto": "5",
+        "dica": "Confira a coluna B: só quatro faturas estão atrasadas, de três clientes."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "ÚNICO e FILTRO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(ÚNICO(FILTRO(A2:A7;B2:B7=\"Atrasado\")))",
+        "esperado": 3
+      }
+    ]
+  },
+  {
+    "id": "37845363-e825-59b2-8557-f718ead1d300",
+    "slug": "caso-relatorio-pendencias",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: o relatório de prazos que se atualiza sozinho",
+    "enunciado": [
+      "O escritório quer um relatório dos prazos **Pendentes**. Em **G4**, mostre **Processo, Prazo e Cliente** (as colunas A a C) só das linhas pendentes, do **prazo mais próximo** para o mais distante."
+    ],
+    "dicas": [
+      "São duas etapas numa fórmula: primeiro separe as linhas pendentes, depois ponha o resultado em ordem.",
+      "O CLASSIFICAR pode receber o resultado do FILTRO. O número da coluna é contado dentro do que o FILTRO devolveu."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(FILTRO(A2:C11;E2:E11=\"Pendente\");2;1)`: o FILTRO separa os 7 pendentes e o CLASSIFICAR ordena pela 2ª coluna do resultado, o Prazo. O Proc. 078, de 27/11/2026, vem primeiro.",
+      "Quando alguém marca um prazo como **Cumprido**, a linha sai do relatório na hora. Ninguém precisa refiltrar nem reclassificar nada."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-pendencias",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 012"
+        },
+        "B2": {
+          "entrada": "12/12/2026"
+        },
+        "C2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "D2": {
+          "entrada": "Dra. Marina"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "Proc. 031"
+        },
+        "B3": {
+          "entrada": "02/12/2026"
+        },
+        "C3": {
+          "entrada": "Maria Oliveira"
+        },
+        "D3": {
+          "entrada": "Dr. Paulo"
+        },
+        "E3": {
+          "entrada": "Cumprido"
+        },
+        "A4": {
+          "entrada": "Proc. 045"
+        },
+        "B4": {
+          "entrada": "30/11/2026"
+        },
+        "C4": {
+          "entrada": "Transportes Rápido"
+        },
+        "D4": {
+          "entrada": "Dra. Marina"
+        },
+        "E4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Proc. 052"
+        },
+        "B5": {
+          "entrada": "09/12/2026"
+        },
+        "C5": {
+          "entrada": "José Santos"
+        },
+        "D5": {
+          "entrada": "Dr. Paulo"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Proc. 067"
+        },
+        "B6": {
+          "entrada": "04/12/2026"
+        },
+        "C6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D6": {
+          "entrada": "Dra. Marina"
+        },
+        "E6": {
+          "entrada": "Cumprido"
+        },
+        "A7": {
+          "entrada": "Proc. 078"
+        },
+        "B7": {
+          "entrada": "27/11/2026"
+        },
+        "C7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "D7": {
+          "entrada": "Dr. Paulo"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Proc. 083"
+        },
+        "B8": {
+          "entrada": "18/12/2026"
+        },
+        "C8": {
+          "entrada": "Clínica Vida"
+        },
+        "D8": {
+          "entrada": "Dra. Marina"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Proc. 091"
+        },
+        "B9": {
+          "entrada": "15/12/2026"
+        },
+        "C9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "D9": {
+          "entrada": "Dr. Paulo"
+        },
+        "E9": {
+          "entrada": "Cumprido"
+        },
+        "A10": {
+          "entrada": "Proc. 104"
+        },
+        "B10": {
+          "entrada": "07/12/2026"
+        },
+        "C10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D10": {
+          "entrada": "Dra. Marina"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Proc. 112"
+        },
+        "B11": {
+          "entrada": "11/12/2026"
+        },
+        "C11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "D11": {
+          "entrada": "Dr. Paulo"
+        },
+        "E11": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Dra. Marina"
+        },
+        "G3": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "I3": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 90,
+        "C": 160,
+        "D": 100,
+        "E": 84,
+        "F": 24,
+        "G": 100,
+        "H": 110,
+        "I": 160
+      },
+      "variaveis": [],
+      "alternativas": {
+        "H1": [
+          "Dr. Paulo"
+        ],
+        "B2": [
+          "26/11/2026",
+          "31/12/2026"
+        ]
+      }
+    },
+    "intro": "Todo escritório tem a planilha de prazos e alguém que refaz o filtro toda manhã. Com FILTRO e CLASSIFICAR juntos, o relatório se monta sozinho e nunca fica velho.",
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": [
+          [
+            "Proc. 078",
+            {
+              "data": "2026-11-27"
+            },
+            "Ana Beatriz Lima"
+          ],
+          [
+            "Proc. 045",
+            {
+              "data": "2026-11-30"
+            },
+            "Transportes Rápido"
+          ],
+          [
+            "Proc. 104",
+            {
+              "data": "2026-12-07"
+            },
+            "Auto Peças Silva"
+          ],
+          [
+            "Proc. 052",
+            {
+              "data": "2026-12-09"
+            },
+            "José Santos"
+          ],
+          [
+            "Proc. 112",
+            {
+              "data": "2026-12-11"
+            },
+            "Hotel Mar Azul"
+          ],
+          [
+            "Proc. 012",
+            {
+              "data": "2026-12-12"
+            },
+            "Construtora Horizonte"
+          ],
+          [
+            "Proc. 083",
+            {
+              "data": "2026-12-18"
+            },
+            "Clínica Vida"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(FILTRO(A2:C11;E2:E11=\"Pendente\");2;1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(CLASSIFICAR",
+        "dica": "Classificando antes, o teste de Pendente continua na ordem antiga da tabela e as linhas se desencontram. Filtre primeiro e classifique o resultado."
+      },
+      {
+        "padrao": "CLASSIFICAR\\(FILTRO\\([^)]*\\)\\)?;(1|3)(;|\\))",
+        "dica": "O número do CLASSIFICAR é a coluna dentro do resultado do FILTRO: Processo é a 1, Prazo é a 2, Cliente é a 3."
+      },
+      {
+        "padrao": ";2;-1\\)$",
+        "dica": "Com -1, o prazo mais distante vem primeiro. O relatório começa pelo que vence antes."
+      },
+      {
+        "padrao": "^=FILTRO\\(A2:C11;E2:E11=\"PENDENTE\"\\)$",
+        "dica": "As linhas pendentes estão certas, mas na ordem da tabela. Falta colocar o resultado em ordem de prazo."
+      }
+    ]
+  },
+  {
+    "id": "7f7eb365-2217-5260-b9f2-08628b01f896",
+    "slug": "caso-relatorio-pendencias-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O relatório de cada advogado",
+    "enunciado": [
+      "Em **H1** está o responsável (hoje, *Dra. Marina*). Em **G4**, mostre Processo, Prazo e Cliente dos prazos **Pendentes** desse responsável, do prazo mais próximo para o mais distante."
+    ],
+    "dicas": [
+      "Agora o FILTRO tem duas condições: a situação e o responsável. Multiplique os testes.",
+      "O responsável vem da célula H1, para o relatório mudar quando alguém trocar o nome lá."
+    ],
+    "explicacao": [
+      "`=CLASSIFICAR(FILTRO(A2:C11;(E2:E11=\"Pendente\")*(D2:D11=H1));2;1)`: os 4 pendentes da Dra. Marina, a partir de 30/11/2026.",
+      "Troque H1 para Dr. Paulo e aparece a pauta dele. Uma fórmula, um relatório por pessoa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-pendencias",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 012"
+        },
+        "B2": {
+          "entrada": "12/12/2026"
+        },
+        "C2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "D2": {
+          "entrada": "Dra. Marina"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "Proc. 031"
+        },
+        "B3": {
+          "entrada": "02/12/2026"
+        },
+        "C3": {
+          "entrada": "Maria Oliveira"
+        },
+        "D3": {
+          "entrada": "Dr. Paulo"
+        },
+        "E3": {
+          "entrada": "Cumprido"
+        },
+        "A4": {
+          "entrada": "Proc. 045"
+        },
+        "B4": {
+          "entrada": "30/11/2026"
+        },
+        "C4": {
+          "entrada": "Transportes Rápido"
+        },
+        "D4": {
+          "entrada": "Dra. Marina"
+        },
+        "E4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Proc. 052"
+        },
+        "B5": {
+          "entrada": "09/12/2026"
+        },
+        "C5": {
+          "entrada": "José Santos"
+        },
+        "D5": {
+          "entrada": "Dr. Paulo"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Proc. 067"
+        },
+        "B6": {
+          "entrada": "04/12/2026"
+        },
+        "C6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D6": {
+          "entrada": "Dra. Marina"
+        },
+        "E6": {
+          "entrada": "Cumprido"
+        },
+        "A7": {
+          "entrada": "Proc. 078"
+        },
+        "B7": {
+          "entrada": "27/11/2026"
+        },
+        "C7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "D7": {
+          "entrada": "Dr. Paulo"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Proc. 083"
+        },
+        "B8": {
+          "entrada": "18/12/2026"
+        },
+        "C8": {
+          "entrada": "Clínica Vida"
+        },
+        "D8": {
+          "entrada": "Dra. Marina"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Proc. 091"
+        },
+        "B9": {
+          "entrada": "15/12/2026"
+        },
+        "C9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "D9": {
+          "entrada": "Dr. Paulo"
+        },
+        "E9": {
+          "entrada": "Cumprido"
+        },
+        "A10": {
+          "entrada": "Proc. 104"
+        },
+        "B10": {
+          "entrada": "07/12/2026"
+        },
+        "C10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D10": {
+          "entrada": "Dra. Marina"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Proc. 112"
+        },
+        "B11": {
+          "entrada": "11/12/2026"
+        },
+        "C11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "D11": {
+          "entrada": "Dr. Paulo"
+        },
+        "E11": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Dra. Marina"
+        },
+        "G3": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "I3": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 90,
+        "C": 160,
+        "D": 100,
+        "E": 84,
+        "F": 24,
+        "G": 100,
+        "H": 110,
+        "I": 160
+      },
+      "variaveis": [],
+      "alternativas": {
+        "H1": [
+          "Dr. Paulo"
+        ],
+        "B2": [
+          "26/11/2026",
+          "31/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": [
+          [
+            "Proc. 045",
+            {
+              "data": "2026-11-30"
+            },
+            "Transportes Rápido"
+          ],
+          [
+            "Proc. 104",
+            {
+              "data": "2026-12-07"
+            },
+            "Auto Peças Silva"
+          ],
+          [
+            "Proc. 012",
+            {
+              "data": "2026-12-12"
+            },
+            "Construtora Horizonte"
+          ],
+          [
+            "Proc. 083",
+            {
+              "data": "2026-12-18"
+            },
+            "Clínica Vida"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=CLASSIFICAR(FILTRO(A2:C11;(E2:E11=\"Pendente\")*(D2:D11=H1));2;1)"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(CLASSIFICAR",
+        "dica": "Classificando antes, o teste de Pendente continua na ordem antiga da tabela e as linhas se desencontram. Filtre primeiro e classifique o resultado."
+      },
+      {
+        "padrao": "CLASSIFICAR\\(FILTRO\\([^)]*\\)\\)?;(1|3)(;|\\))",
+        "dica": "O número do CLASSIFICAR é a coluna dentro do resultado do FILTRO: Processo é a 1, Prazo é a 2, Cliente é a 3."
+      },
+      {
+        "padrao": "=\"DRA\\.MARINA\"",
+        "dica": "Com o nome escrito na fórmula, o relatório não obedece a H1: troque o responsável lá e nada muda."
+      }
+    ]
+  },
+  {
+    "id": "3dd0fb16-8588-565a-b8d9-f46dd2340471",
+    "slug": "caso-relatorio-pendencias-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Os 3 mais urgentes",
+    "enunciado": [
+      "Para o quadro da recepção, em **G4**, mostre só os **3 prazos pendentes mais urgentes** (Processo, Prazo e Cliente), do mais próximo para o mais distante."
+    ],
+    "dicas": [
+      "Monte o relatório de pendentes em ordem de prazo e depois fique só com o começo da lista.",
+      "PEGAR fica com as primeiras linhas de uma lista: ele vai por fora de tudo."
+    ],
+    "explicacao": [
+      "`=PEGAR(CLASSIFICAR(FILTRO(A2:C11;E2:E11=\"Pendente\");2;1);3)`: Proc. 078, 045 e 104.",
+      "De dentro para fora: FILTRO (pendentes), CLASSIFICAR (por prazo) e PEGAR (os 3 primeiros). Quando um deles for cumprido, o 4º sobe para o quadro sozinho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-pendencias",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 012"
+        },
+        "B2": {
+          "entrada": "12/12/2026"
+        },
+        "C2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "D2": {
+          "entrada": "Dra. Marina"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "Proc. 031"
+        },
+        "B3": {
+          "entrada": "02/12/2026"
+        },
+        "C3": {
+          "entrada": "Maria Oliveira"
+        },
+        "D3": {
+          "entrada": "Dr. Paulo"
+        },
+        "E3": {
+          "entrada": "Cumprido"
+        },
+        "A4": {
+          "entrada": "Proc. 045"
+        },
+        "B4": {
+          "entrada": "30/11/2026"
+        },
+        "C4": {
+          "entrada": "Transportes Rápido"
+        },
+        "D4": {
+          "entrada": "Dra. Marina"
+        },
+        "E4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Proc. 052"
+        },
+        "B5": {
+          "entrada": "09/12/2026"
+        },
+        "C5": {
+          "entrada": "José Santos"
+        },
+        "D5": {
+          "entrada": "Dr. Paulo"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Proc. 067"
+        },
+        "B6": {
+          "entrada": "04/12/2026"
+        },
+        "C6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D6": {
+          "entrada": "Dra. Marina"
+        },
+        "E6": {
+          "entrada": "Cumprido"
+        },
+        "A7": {
+          "entrada": "Proc. 078"
+        },
+        "B7": {
+          "entrada": "27/11/2026"
+        },
+        "C7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "D7": {
+          "entrada": "Dr. Paulo"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Proc. 083"
+        },
+        "B8": {
+          "entrada": "18/12/2026"
+        },
+        "C8": {
+          "entrada": "Clínica Vida"
+        },
+        "D8": {
+          "entrada": "Dra. Marina"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Proc. 091"
+        },
+        "B9": {
+          "entrada": "15/12/2026"
+        },
+        "C9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "D9": {
+          "entrada": "Dr. Paulo"
+        },
+        "E9": {
+          "entrada": "Cumprido"
+        },
+        "A10": {
+          "entrada": "Proc. 104"
+        },
+        "B10": {
+          "entrada": "07/12/2026"
+        },
+        "C10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D10": {
+          "entrada": "Dra. Marina"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Proc. 112"
+        },
+        "B11": {
+          "entrada": "11/12/2026"
+        },
+        "C11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "D11": {
+          "entrada": "Dr. Paulo"
+        },
+        "E11": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Dra. Marina"
+        },
+        "G3": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "I3": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 90,
+        "C": 160,
+        "D": 100,
+        "E": 84,
+        "F": 24,
+        "G": 100,
+        "H": 110,
+        "I": 160
+      },
+      "variaveis": [],
+      "alternativas": {
+        "H1": [
+          "Dr. Paulo"
+        ],
+        "B2": [
+          "26/11/2026",
+          "31/12/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": [
+          [
+            "Proc. 078",
+            {
+              "data": "2026-11-27"
+            },
+            "Ana Beatriz Lima"
+          ],
+          [
+            "Proc. 045",
+            {
+              "data": "2026-11-30"
+            },
+            "Transportes Rápido"
+          ],
+          [
+            "Proc. 104",
+            {
+              "data": "2026-12-07"
+            },
+            "Auto Peças Silva"
+          ]
+        ],
+        "exigeFormula": true,
+        "solucaoReferencia": "=PEGAR(CLASSIFICAR(FILTRO(A2:C11;E2:E11=\"Pendente\");2;1);3)"
+      }
+    ],
+    "funcoesExigidas": [
+      "TAKE",
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=FILTRO\\(CLASSIFICAR",
+        "dica": "Classificando antes, o teste de Pendente continua na ordem antiga da tabela e as linhas se desencontram. Filtre primeiro e classifique o resultado."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(PEGAR",
+        "dica": "Pegando antes de classificar, você fica com os 3 primeiros da tabela, não com os 3 mais urgentes. Classifique primeiro e pegue depois."
+      },
+      {
+        "padrao": "^=PEGAR\\(FILTRO",
+        "dica": "Sem classificar, os 3 primeiros pendentes são os de cima da tabela, não os que vencem antes."
+      }
+    ]
+  },
+  {
+    "id": "affad696-2c5d-58b1-aa41-18f2a0b70695",
+    "slug": "caso-relatorio-pendencias-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o #CALC! do advogado novo",
+    "enunciado": [
+      "O Dr. Ricardo acabou de chegar e ainda não tem prazos, e o relatório dele mostra **#CALC!**. Corrija a fórmula em **G4** para que, quando o responsável não tiver pendências, apareça **Nenhuma pendência**. Para os outros, o relatório continua igual."
+    ],
+    "dicas": [
+      "O #CALC! nasce no FILTRO, quando nenhuma linha passa. Mas cuidado: o CLASSIFICAR em volta também mexe no resultado.",
+      "Se o aviso entrar dentro do FILTRO, o CLASSIFICAR tenta ordenar a frase pela 2ª coluna, que não existe. O aviso tem que vir pela função mais de fora."
+    ],
+    "explicacao": [
+      "`=SEERRO(CLASSIFICAR(FILTRO(A2:C11;(E2:E11=\"Pendente\")*(D2:D11=H1));2;1);\"Nenhuma pendência\")`.",
+      "O jeito que todo mundo tenta primeiro, pôr \"Nenhuma pendência\" como 3º argumento do FILTRO, troca o #CALC! por um #VALOR!: a frase vira uma lista de uma coluna e o CLASSIFICAR não acha a coluna 2. Com o SEERRO por fora, o aviso aparece só quando a conta inteira dá erro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-pendencias",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 13,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 012"
+        },
+        "B2": {
+          "entrada": "12/12/2026"
+        },
+        "C2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "D2": {
+          "entrada": "Dra. Marina"
+        },
+        "E2": {
+          "entrada": "Pendente"
+        },
+        "A3": {
+          "entrada": "Proc. 031"
+        },
+        "B3": {
+          "entrada": "02/12/2026"
+        },
+        "C3": {
+          "entrada": "Maria Oliveira"
+        },
+        "D3": {
+          "entrada": "Dr. Paulo"
+        },
+        "E3": {
+          "entrada": "Cumprido"
+        },
+        "A4": {
+          "entrada": "Proc. 045"
+        },
+        "B4": {
+          "entrada": "30/11/2026"
+        },
+        "C4": {
+          "entrada": "Transportes Rápido"
+        },
+        "D4": {
+          "entrada": "Dra. Marina"
+        },
+        "E4": {
+          "entrada": "Pendente"
+        },
+        "A5": {
+          "entrada": "Proc. 052"
+        },
+        "B5": {
+          "entrada": "09/12/2026"
+        },
+        "C5": {
+          "entrada": "José Santos"
+        },
+        "D5": {
+          "entrada": "Dr. Paulo"
+        },
+        "E5": {
+          "entrada": "Pendente"
+        },
+        "A6": {
+          "entrada": "Proc. 067"
+        },
+        "B6": {
+          "entrada": "04/12/2026"
+        },
+        "C6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "D6": {
+          "entrada": "Dra. Marina"
+        },
+        "E6": {
+          "entrada": "Cumprido"
+        },
+        "A7": {
+          "entrada": "Proc. 078"
+        },
+        "B7": {
+          "entrada": "27/11/2026"
+        },
+        "C7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "D7": {
+          "entrada": "Dr. Paulo"
+        },
+        "E7": {
+          "entrada": "Pendente"
+        },
+        "A8": {
+          "entrada": "Proc. 083"
+        },
+        "B8": {
+          "entrada": "18/12/2026"
+        },
+        "C8": {
+          "entrada": "Clínica Vida"
+        },
+        "D8": {
+          "entrada": "Dra. Marina"
+        },
+        "E8": {
+          "entrada": "Pendente"
+        },
+        "A9": {
+          "entrada": "Proc. 091"
+        },
+        "B9": {
+          "entrada": "15/12/2026"
+        },
+        "C9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "D9": {
+          "entrada": "Dr. Paulo"
+        },
+        "E9": {
+          "entrada": "Cumprido"
+        },
+        "A10": {
+          "entrada": "Proc. 104"
+        },
+        "B10": {
+          "entrada": "07/12/2026"
+        },
+        "C10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "D10": {
+          "entrada": "Dra. Marina"
+        },
+        "E10": {
+          "entrada": "Pendente"
+        },
+        "A11": {
+          "entrada": "Proc. 112"
+        },
+        "B11": {
+          "entrada": "11/12/2026"
+        },
+        "C11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "D11": {
+          "entrada": "Dr. Paulo"
+        },
+        "E11": {
+          "entrada": "Pendente"
+        },
+        "G1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Dr. Ricardo"
+        },
+        "G3": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "H3": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "I3": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "H4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "H11": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "G4": {
+          "entrada": "=CLASSIFICAR(FILTRO(A2:C11;(E2:E11=\"Pendente\")*(D2:D11=H1));2;1)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 90,
+        "C": 160,
+        "D": 100,
+        "E": 84,
+        "F": 24,
+        "G": 100,
+        "H": 110,
+        "I": 160
+      },
+      "variaveis": [],
+      "alternativas": {
+        "H1": [
+          "Dra. Marina"
+        ],
+        "B2": [
+          "26/11/2026"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "G4",
+        "esperado": "Nenhuma pendência",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(CLASSIFICAR(FILTRO(A2:C11;(E2:E11=\"Pendente\")*(D2:D11=H1));2;1);\"Nenhuma pendência\")"
+      }
+    ],
+    "funcoesExigidas": [
+      "SORT",
+      "FILTER"
+    ],
+    "errosComuns": [
+      {
+        "padrao": ";\"NENHUMAPENDÊNCIA\"\\);2;1\\)$",
+        "dica": "O aviso entrou no FILTRO, mas o CLASSIFICAR em volta tenta ordenar a frase pela 2ª coluna, que ela não tem: #VALOR!. Troque o erro pelo aviso na função mais de fora."
+      },
+      {
+        "padrao": "^=CLASSIFICAR\\(FILTRO\\(A2:C11;\\(E2:E11=\"PENDENTE\"\\)\\*\\(D2:D11=H1\\)\\);2;1\\)$",
+        "dica": "A fórmula ainda é a original: para o Dr. Ricardo, o FILTRO não acha linha nenhuma e dá #CALC!."
+      }
+    ]
+  },
+  {
+    "id": "f670bcc8-41fb-5f98-91e7-5fe65edb1e13",
+    "slug": "caso-relatorio-pendencias-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "arrays",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o aviso do FILTRO vazio",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, A2:A5 contém números de processos e B2:B5 os valores 40, 75, 90 e 60. Em uma célula vazia, foi digitada a fórmula `=CLASSIFICAR(FILTRO(A2:B5;B2:B5>100;\"Nada\");2;1)`.",
+      "Julgue o item: como nenhum valor passa de 100, a célula exibe o texto Nada."
+    ],
+    "dicas": [
+      "O FILTRO devolve \"Nada\", mas ainda falta o CLASSIFICAR agir sobre esse resultado. Ele tem uma 2ª coluna?"
+    ],
+    "explicacao": [
+      "**Errado.** O FILTRO devolve o texto \"Nada\", que é uma lista de uma coluna só. O CLASSIFICAR em volta pede para ordenar pela 2ª coluna, que não existe, e o resultado é **#VALOR!**. Para ver o aviso, ele tem que vir na função mais de fora (por exemplo, com SEERRO)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "caso-relatorio-pendencias",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 1"
+        },
+        "B2": {
+          "entrada": "40"
+        },
+        "A3": {
+          "entrada": "Proc. 2"
+        },
+        "B3": {
+          "entrada": "75"
+        },
+        "A4": {
+          "entrada": "Proc. 3"
+        },
+        "B4": {
+          "entrada": "90"
+        },
+        "A5": {
+          "entrada": "Proc. 4"
+        },
+        "B5": {
+          "entrada": "60"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "O \"Nada\" sai do FILTRO, mas o CLASSIFICAR em volta tenta ordenar pela 2ª coluna, que o texto não tem: dá #VALOR!."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "FILTRO e CLASSIFICAR",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CLASSIFICAR(FILTRO(A2:B5;B2:B5>100;\"Nada\");2;1)",
+        "esperado": "#VALOR!"
+      }
+    ]
+  },
+  {
     "id": "0e358017-40fb-560e-9805-a01e49fe99ad",
     "slug": "teste-arrays-1",
     "trilha": "excel-ptbr",
@@ -4387,10 +9937,10 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 2,
-    "titulo": "As 2 maiores",
+    "versao": 3,
+    "titulo": "Só os nomes, pelo valor",
     "enunciado": [
-      "Em **F2**, mostre as **2 maiores** vendas, da maior para a menor."
+      "Em **F2**, mostre só a coluna **Vendedor**, da maior para a menor venda (sem mostrar o valor)."
     ],
     "dicas": [],
     "explicacao": [
@@ -4398,7 +9948,7 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "pegar-ranking-maiores",
+    "revisar": "classificarpor-salario",
     "type": "formula",
     "grade": {
       "linhas": 10,
@@ -4518,7 +10068,7 @@
         "C": 84,
         "D": 76,
         "E": 24,
-        "F": 72,
+        "F": 160,
         "G": 64,
         "H": 84,
         "I": 76,
@@ -4532,27 +10082,42 @@
         "C6",
         "C7",
         "C8"
-      ]
+      ],
+      "alternativas": {
+        "C2": [
+          "800",
+          "100"
+        ]
+      }
     },
     "alvos": [
       {
         "celula": "F2",
         "esperado": [
           [
-            "Bruno",
-            "Sul",
-            700,
-            "Pago"
+            "Bruno"
           ],
           [
-            "Carla",
-            "Norte",
-            600,
-            "Pago"
+            "Carla"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Ana"
+          ],
+          [
+            "Bruno"
+          ],
+          [
+            "Carla"
+          ],
+          [
+            "Ana"
           ]
         ],
         "exigeFormula": true,
-        "solucaoReferencia": "=PEGAR(CLASSIFICAR(A2:D8;3;-1);2)"
+        "solucaoReferencia": "=CLASSIFICARPOR(A2:A8;C2:C8;-1)"
       }
     ]
   },
@@ -4741,10 +10306,10 @@
     "ordem": 204,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Norte, do maior para o menor",
+    "versao": 2,
+    "titulo": "Quem vendeu acima de R$ 400",
     "enunciado": [
-      "Em **F2**, mostre as vendas do **Norte**, da maior para a menor."
+      "Em **F2**, numa célula só, escreva os vendedores que têm alguma venda **acima de R$ 400**, cada um **uma vez**, separados por vírgula e espaço."
     ],
     "dicas": [],
     "explicacao": [
@@ -4752,7 +10317,7 @@
     ],
     "tentativasAteExplicacao": 99,
     "teste": true,
-    "revisar": "classificar-maior-valor",
+    "revisar": "filtro-dentro-de-funcoes",
     "type": "formula",
     "grade": {
       "linhas": 10,
@@ -4872,7 +10437,7 @@
         "C": 84,
         "D": 76,
         "E": 24,
-        "F": 72,
+        "F": 160,
         "G": 64,
         "H": 84,
         "I": 76,
@@ -4886,33 +10451,20 @@
         "C6",
         "C7",
         "C8"
-      ]
+      ],
+      "alternativas": {
+        "C2": [
+          "800",
+          "100"
+        ]
+      }
     },
     "alvos": [
       {
         "celula": "F2",
-        "esperado": [
-          [
-            "Carla",
-            "Norte",
-            600,
-            "Pago"
-          ],
-          [
-            "Ana",
-            "Norte",
-            450,
-            "Pago"
-          ],
-          [
-            "Bruno",
-            "Norte",
-            300,
-            "Pendente"
-          ]
-        ],
+        "esperado": "Ana, Bruno, Carla",
         "exigeFormula": true,
-        "solucaoReferencia": "=CLASSIFICAR(FILTRO(A2:D8;B2:B8=\"Norte\");3;-1)"
+        "solucaoReferencia": "=UNIRTEXTO(\", \";VERDADEIRO;ÚNICO(FILTRO(A2:A8;C2:C8>400)))"
       }
     ]
   },

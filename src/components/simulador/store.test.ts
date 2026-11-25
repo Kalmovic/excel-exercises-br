@@ -57,4 +57,30 @@ describe("store", () => {
     r.getState().preencherSelecao("direita");
     expect(p.bruto("B1")).toBe("=1+1");
   });
+  it("Classificar com níveis: a tabela da região atual, o 1º nível manda e o 2º desempata", () => {
+    const p = new Planilha({
+      linhas: 6,
+      colunas: 3,
+      celulas: {
+        A1: { entrada: "Nome", negrito: true }, B1: { entrada: "Setor", negrito: true }, C1: { entrada: "Salário", negrito: true },
+        A2: { entrada: "Ana" }, B2: { entrada: "TI" }, C2: { entrada: "3000" },
+        A3: { entrada: "Bia" }, B3: { entrada: "RH" }, C3: { entrada: "2000" },
+        A4: { entrada: "Caio" }, B4: { entrada: "TI" }, C4: { entrada: "5000" },
+        A5: { entrada: "Dani" }, B5: { entrada: "RH" }, C5: { entrada: "4000" },
+      },
+    });
+    const s = criarStore(p, deIntervalo("B3"));
+    const t = s.getState().tabelaParaClassificar();
+    expect(t).toEqual({ intervalo: deIntervalo("A1:C5"), cabecalho: true });
+    s.getState().classificarNiveis([{ coluna: 1, ordem: "asc" }, { coluna: 2, ordem: "desc" }], true);
+    expect(["A2", "A3", "A4", "A5"].map((e) => p.valor(e))).toEqual(["Dani", "Bia", "Caio", "Ana"]);
+    expect(p.valor("A1")).toBe("Nome");
+  });
+
+  it("Classificar com níveis fora de uma tabela avisa, sem classificar", () => {
+    const p = new Planilha(grade);
+    const s = criarStore(p, deIntervalo("C3"));
+    expect(s.getState().tabelaParaClassificar()).toBeNull();
+    expect(s.getState().mensagem).toContain("Selecione uma célula dentro da tabela");
+  });
 });

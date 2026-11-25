@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
+import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco, type Intervalo } from "@/engine/address";
+import { ClassificarNiveis } from "./ClassificarNiveis";
 import { IconeFunil } from "./MenuFiltro";
 import { FormatacaoCondicional } from "./MenuCondicional";
 import { InserirGrafico } from "./PainelGrafico";
@@ -11,13 +12,15 @@ import { useEscape, useFocoPreso } from "./teclado";
 
 /**
  * Guia "Dados" enxuta. Com `ferramentas.dados`: Filtro (Ctrl+Shift+L),
- * Classificar e Limpar, e a contagem da barra de status do Excel ("4 de 12
+ * A→Z, Z→A, Classificar (a janela com vários níveis) e Limpar, e a contagem da barra de status do Excel ("4 de 12
  * registros encontrados"). Com `ferramentas.dinamica`: Tabela dinâmica.
  */
 export function BarraDados() {
   const { planilha, store, dados, dinamica, condicional, grafico, validacao } = useSimulador();
   useVersaoPlanilha();
   const [inserindo, setInserindo] = useState(false);
+  const [classificando, setClassificando] = useState<{ tabela: Intervalo; cabecalho: boolean } | null>(null);
+  const botaoClassificarRef = useRef<HTMLButtonElement>(null);
   const filtro = planilha.filtroAtual();
   const filtrando = !!filtro && Object.keys(filtro.criterios).length > 0;
   const botao = "flex min-h-7 items-center gap-1.5 rounded px-2 py-1 font-medium text-zinc-700 hover:bg-header disabled:text-zinc-400 disabled:hover:bg-transparent";
@@ -54,6 +57,22 @@ export function BarraDados() {
             <button type="button" title="Classificar de Z a A pela coluna da célula ativa" data-testid="classificar-desc" {...acao(() => store.getState().classificar("desc"))} className={botao}>
               Z→A
             </button>
+            <button
+              ref={botaoClassificarRef}
+              type="button"
+              title="Classificar por mais de uma coluna (Adicionar Nível)"
+              aria-expanded={!!classificando}
+              aria-haspopup="dialog"
+              data-testid="classificar-niveis"
+              {...acao(() => {
+                if (classificando) return setClassificando(null);
+                const t = store.getState().tabelaParaClassificar();
+                if (t) setClassificando({ tabela: t.intervalo, cabecalho: t.cabecalho });
+              })}
+              className={`${botao} ${classificando ? "bg-accent text-ink ring-1 ring-ink/10" : ""}`}
+            >
+              Classificar…
+            </button>
             <button type="button" title="Limpar todos os critérios do filtro" disabled={!filtrando} data-testid="limpar-filtros" {...acao(() => planilha.limparFiltros())} className={botao}>
               Limpar
             </button>
@@ -82,6 +101,16 @@ export function BarraDados() {
           </span>
         )}
       </div>
+      {classificando && (
+        <ClassificarNiveis
+          tabela={classificando.tabela}
+          cabecalhoInicial={classificando.cabecalho}
+          fechar={(classificou) => {
+            setClassificando(null);
+            if (!classificou) requestAnimationFrame(() => botaoClassificarRef.current?.focus());
+          }}
+        />
+      )}
       {inserindo && (
         <InserirDinamica
           fechar={(criou) => {
