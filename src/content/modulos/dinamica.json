@@ -13160,6 +13160,10 @@
     "correta": 2,
     "banca": "FGV",
     "tema": "PROCV",
+    "referencia": {
+      "prova": "FGV · Polícia Civil (RN) · Agente de Polícia Civil · 2021",
+      "url": "https://www.tecconcursos.com.br/questoes/1656032"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -14884,7 +14888,11 @@
     ],
     "correta": 1,
     "banca": "Cebraspe",
-    "tema": "Tabela dinâmica"
+    "tema": "Tabela dinâmica",
+    "referencia": {
+      "prova": "Cebraspe · ANP · Regulador de Novas Atribuições III · 2022",
+      "url": "https://qconcursos.com/questoes-de-concursos/provas/cespe-cebraspe-2022-anp-regulador-de-novas-atribuicoes-iii-cargo-6/questoes?page=6"
+    }
   },
   {
     "id": "6ea5a373-f02d-54b7-a228-e618391f3139",

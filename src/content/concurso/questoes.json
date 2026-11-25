@@ -48,6 +48,10 @@
     "correta": 0,
     "banca": "FCC",
     "tema": "Operadores",
+    "referencia": {
+      "prova": "FCC · TRT 21ª Região · Analista Judiciário · 2003",
+      "url": "https://www.tecconcursos.com.br/questoes/578608"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -118,6 +122,10 @@
     "correta": 0,
     "banca": "FCC",
     "tema": "Funções de contagem",
+    "referencia": {
+      "prova": "FCC · ARTESP · 2017",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/cb35b221-b0"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -471,6 +479,10 @@
     "correta": 0,
     "banca": "Cesgranrio",
     "tema": "Referências",
+    "referencia": {
+      "prova": "Cesgranrio · Petrobras Distribuidora · Técnico de Administração e Controle Júnior · 2015",
+      "url": "https://www.tecconcursos.com.br/questoes/601011"
+    },
     "comPlanilha": true
   },
   {
@@ -602,6 +614,10 @@
     "correta": 0,
     "banca": "Cesgranrio",
     "tema": "CONT.SE",
+    "referencia": {
+      "prova": "Cesgranrio · Banco do Brasil · Escriturário (Agente Comercial) · 2023",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/8264e086-e2"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1212,6 +1228,10 @@
     "correta": 0,
     "banca": "Vunesp",
     "tema": "MAIOR",
+    "referencia": {
+      "prova": "Vunesp · Câmara Municipal de Serrana (SP) · Técnico Legislativo · 2019",
+      "url": "https://olhonavaga.com.br/questoes/questoes?id=897109&tc=1"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1276,6 +1296,10 @@
     "correta": 0,
     "banca": "Vunesp",
     "tema": "SEERRO",
+    "referencia": {
+      "prova": "Vunesp · Câmara Municipal de Campinas · Analista Legislativo · 2024",
+      "url": "https://www.tecconcursos.com.br/questoes/2894525"
+    },
     "comPlanilha": true,
     "conferir": [
       {
