@@ -8,6 +8,7 @@ export const NOMES_PT: Record<string, string> = {
   "CHOOSECOLS": "ESCOLHERCOLS",
   "DROP": "DESCARTAR",
   "LET": "LET",
+  "SORTBY": "CLASSIFICARPOR",
   "TAKE": "PEGAR",
   "TEXTSPLIT": "DIVIDIRTEXTO",
   "XMATCH": "CORRESPX",

@@ -5,7 +5,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 101,
+    "ordem": 301,
     "nivel": 1,
     "plano": "pro",
     "versao": 1,
@@ -82,7 +82,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 102,
+    "ordem": 302,
     "nivel": 1,
     "plano": "pro",
     "versao": 1,
@@ -299,7 +299,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 103,
+    "ordem": 303,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
@@ -511,7 +511,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 104,
+    "ordem": 304,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
@@ -757,7 +757,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 105,
+    "ordem": 305,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1005,7 +1005,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 106,
+    "ordem": 306,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
@@ -1266,7 +1266,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 107,
+    "ordem": 307,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1577,7 +1577,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 108,
+    "ordem": 308,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
@@ -1709,7 +1709,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 109,
+    "ordem": 309,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
@@ -1855,7 +1855,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 110,
+    "ordem": 310,
     "nivel": 3,
     "plano": "pro",
     "versao": 1,
@@ -1870,7 +1870,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B2>=1000;10%;5%);B2*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 0.000001
+        "tolerancia": 1e-06
       },
       {
         "celula": "C3",
@@ -1878,7 +1878,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B3>=1000;10%;5%);B3*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 0.000001
+        "tolerancia": 1e-06
       },
       {
         "celula": "C4",
@@ -1886,7 +1886,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B4>=1000;10%;5%);B4*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 0.000001
+        "tolerancia": 1e-06
       },
       {
         "celula": "C5",
@@ -1894,7 +1894,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B5>=1000;10%;5%);B5*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 0.000001
+        "tolerancia": 1e-06
       },
       {
         "celula": "C6",
@@ -1902,7 +1902,7 @@
         "exigeFormula": true,
         "solucaoReferencia": "=LET(desconto;SE(B6>=1000;10%;5%);B6*(1-desconto))",
         "formato": "moeda",
-        "tolerancia": 0.000001
+        "tolerancia": 1e-06
       }
     ],
     "dicas": [
@@ -1990,7 +1990,7 @@
     "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "arrays",
-    "ordem": 111,
+    "ordem": 311,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,

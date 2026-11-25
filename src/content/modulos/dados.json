@@ -1036,7 +1036,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Filtro: só as vendas do Sul",
@@ -1239,7 +1239,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Filtro em duas colunas",
@@ -1443,7 +1443,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Mais de um valor na mesma coluna",
@@ -1646,7 +1646,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 24,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o filtro que ficou ligado",
@@ -1909,7 +1909,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "SUBTOTAL: somar só o que aparece",
@@ -2120,7 +2120,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Filtrar e totalizar",
@@ -2337,7 +2337,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Contar as linhas visíveis",
@@ -2543,7 +2543,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dados",
     "ordem": 34,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o total que não muda",
@@ -4467,6 +4467,6385 @@
     "correta": 2
   },
   {
+    "id": "ffe580f1-e816-5ac6-bcf8-fc4f802ea246",
+    "slug": "agregar-ignorar-erro",
+    "type": "formula",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 301,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "AGREGAR: o máximo, ignorando o erro",
+    "enunciado": [
+      "A Mochila não vendeu e a margem dela deu **#DIV/0!**. Em **D9**, mostre a **maior margem**, ignorando o erro."
+    ],
+    "alvos": [
+      {
+        "celula": "D9",
+        "esperado": 0.4,
+        "exigeFormula": true,
+        "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
+        "formato": "percentual",
+        "tolerancia": 1e-09
+      }
+    ],
+    "dicas": [
+      "Se houver um erro qualquer no intervalo, o MÁXIMO devolve o erro em vez do resultado.",
+      "AGREGAR faz as mesmas contas do SUBTOTAL e tem uma opção para pular os erros."
+    ],
+    "explicacao": [
+      "`=AGREGAR(4;6;D2:D7)` → 4 é MÁXIMO e 6 é \"ignorar erros\".",
+      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim). A opção 7 ignora erros **e** linhas ocultas, tanto pelo filtro quanto à mão."
+    ],
+    "tentativasAteExplicacao": 3,
+    "grade": {
+      "linhas": 10,
+      "colunas": 5,
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 100,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Receita",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Custo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Margem",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caderno"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=(B2-C2)/B2",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Caneta"
+        },
+        "B3": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "=(B3-C3)/B3",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mochila"
+        },
+        "B4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "=(B4-C4)/B4",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Estojo"
+        },
+        "B5": {
+          "entrada": "600",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "420",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=(B5-C5)/B5",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Agenda"
+        },
+        "B6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "610",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=(B6-C6)/B6",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Régua"
+        },
+        "B7": {
+          "entrada": "150",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "90",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=(B7-C7)/B7",
+          "formato": "percentual"
+        },
+        "A9": {
+          "entrada": "Maior margem",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    "extra": true,
+    "funcoesExigidas": [
+      "AGGREGATE"
+    ]
+  },
+  {
+    "id": "3f5f468a-14c3-5925-beb4-d341c4c18cd0",
+    "slug": "dados-classificar-niveis",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Classificar com vários níveis",
+    "enunciado": [
+      "Organize a folha por **Setor** (de A a Z) e, **dentro de cada setor**, do **maior** para o **menor salário**, numa classificação só: use o botão **Classificar…** da barra Dados."
+    ],
+    "dicas": [
+      "Na janela Classificar, cada linha é um nível. O primeiro (Classificar por) decide a ordem; o de baixo (E depois por) só desempata.",
+      "Escolha a coluna e a ordem do primeiro nível, clique em Adicionar Nível e escolha a coluna e a ordem do desempate."
+    ],
+    "explicacao": [
+      "**Classificar…** → *Classificar por* **Setor**, *De A a Z*; **Adicionar Nível** → *E depois por* **Salário**, *Do Maior para o Menor*; **OK**.",
+      "O segundo nível só age nas linhas que empataram no primeiro: os quatro do Comercial, os três do Financeiro e os três de TI. É o mesmo resultado de classificar duas vezes (primeiro pelo desempate, depois pelo principal), mas num passo só e sem pensar na ordem dos cliques."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-niveis",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Renata Campos"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Analista"
+        },
+        "D2": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Tiago Moreira"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Assistente"
+        },
+        "D3": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Juliana Reis"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Assistente"
+        },
+        "D4": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Marcos Vieira"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Analista"
+        },
+        "D5": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Patrícia Gomes"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Analista"
+        },
+        "D6": {
+          "entrada": "5900",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Coordenador"
+        },
+        "D7": {
+          "entrada": "11500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fernanda Costa"
+        },
+        "B8": {
+          "entrada": "Comercial"
+        },
+        "C8": {
+          "entrada": "Coordenador"
+        },
+        "D8": {
+          "entrada": "9800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "André Batista"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Assistente"
+        },
+        "D9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Camila Rocha"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Assistente"
+        },
+        "D10": {
+          "entrada": "3700",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Rodrigo Teles"
+        },
+        "B11": {
+          "entrada": "Comercial"
+        },
+        "C11": {
+          "entrada": "Analista"
+        },
+        "D11": {
+          "entrada": "4800",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 96,
+        "C": 100,
+        "D": 100,
+        "E": 40
+      }
+    },
+    "intro": "Folha por setor e salário, contas por vencimento e valor, alunos por turma e nome: quase toda lista organizada tem dois critérios. A janela Classificar faz isso num passo, com um nível para cada critério.",
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B11",
+        "esperado": [
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ]
+        ],
+        "mensagem": "Os setores ainda não estão em ordem de A a Z. O primeiro nível (Classificar por) é o que manda."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Fernanda Costa"
+          ],
+          [
+            "Renata Campos"
+          ],
+          [
+            "Rodrigo Teles"
+          ],
+          [
+            "Juliana Reis"
+          ],
+          [
+            "Patrícia Gomes"
+          ],
+          [
+            "André Batista"
+          ],
+          [
+            "Tiago Moreira"
+          ],
+          [
+            "Lucas Ferreira"
+          ],
+          [
+            "Marcos Vieira"
+          ],
+          [
+            "Camila Rocha"
+          ]
+        ],
+        "mensagem": "Os setores estão em ordem, mas dentro de cada um os salários não vão do maior para o menor. Confira o nível \"E depois por\"."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D11",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "D",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "2e41f0d5-ccdf-531d-b88f-99b084778558",
+    "slug": "dados-classificar-niveis-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Três níveis",
+    "enunciado": [
+      "Organize por **Setor** (A a Z), depois por **Cargo** (A a Z) e, por último, por **Funcionário** (A a Z)."
+    ],
+    "dicas": [
+      "Cada critério novo é mais um nível, na ordem em que eles importam: o mais geral em cima, o mais detalhado embaixo."
+    ],
+    "explicacao": [
+      "**Classificar…** → Setor (A a Z); **Adicionar Nível** → Cargo (A a Z); **Adicionar Nível** → Funcionário (A a Z).",
+      "Fica como um organograma: em cada setor, os cargos juntos e, em cada cargo, as pessoas em ordem alfabética. O Excel aceita até 64 níveis; na prática, dois ou três resolvem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-niveis",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Renata Campos"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Analista"
+        },
+        "D2": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Tiago Moreira"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Assistente"
+        },
+        "D3": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Juliana Reis"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Assistente"
+        },
+        "D4": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Marcos Vieira"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Analista"
+        },
+        "D5": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Patrícia Gomes"
+        },
+        "B6": {
+          "entrada": "Financeiro"
+        },
+        "C6": {
+          "entrada": "Analista"
+        },
+        "D6": {
+          "entrada": "5900",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Coordenador"
+        },
+        "D7": {
+          "entrada": "11500",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Fernanda Costa"
+        },
+        "B8": {
+          "entrada": "Comercial"
+        },
+        "C8": {
+          "entrada": "Coordenador"
+        },
+        "D8": {
+          "entrada": "9800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "André Batista"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Assistente"
+        },
+        "D9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Camila Rocha"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Assistente"
+        },
+        "D10": {
+          "entrada": "3700",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Rodrigo Teles"
+        },
+        "B11": {
+          "entrada": "Comercial"
+        },
+        "C11": {
+          "entrada": "Analista"
+        },
+        "D11": {
+          "entrada": "4800",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 96,
+        "C": 100,
+        "D": 100,
+        "E": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B11",
+        "esperado": [
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ]
+        ],
+        "mensagem": "Os setores ainda não estão em ordem de A a Z. O primeiro nível (Classificar por) é o que manda."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C11",
+        "esperado": [
+          [
+            "Analista"
+          ],
+          [
+            "Analista"
+          ],
+          [
+            "Assistente"
+          ],
+          [
+            "Coordenador"
+          ],
+          [
+            "Analista"
+          ],
+          [
+            "Assistente"
+          ],
+          [
+            "Assistente"
+          ],
+          [
+            "Analista"
+          ],
+          [
+            "Assistente"
+          ],
+          [
+            "Coordenador"
+          ]
+        ],
+        "mensagem": "Os setores estão em ordem, mas dentro de cada um os cargos não. Falta o nível do Cargo."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Renata Campos"
+          ],
+          [
+            "Rodrigo Teles"
+          ],
+          [
+            "Juliana Reis"
+          ],
+          [
+            "Fernanda Costa"
+          ],
+          [
+            "Patrícia Gomes"
+          ],
+          [
+            "André Batista"
+          ],
+          [
+            "Tiago Moreira"
+          ],
+          [
+            "Marcos Vieira"
+          ],
+          [
+            "Camila Rocha"
+          ],
+          [
+            "Lucas Ferreira"
+          ]
+        ],
+        "mensagem": "Setor e Cargo estão em ordem, mas no mesmo cargo os nomes não. Falta o terceiro nível."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D11",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "C",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "A",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "f060e156-2033-5612-b847-6ecaf85ec519",
+    "slug": "dados-classificar-niveis-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vencimento e valor",
+    "enunciado": [
+      "Organize as contas a pagar do **vencimento mais próximo** para o mais distante e, **no mesmo dia**, do **maior** para o **menor valor** (para pagar primeiro o que pesa mais)."
+    ],
+    "dicas": [
+      "Datas e valores são números: em cada nível, a ordem aparece como \"Do Menor para o Maior\" ou \"Do Maior para o Menor\".",
+      "O vencimento mais próximo é a data menor."
+    ],
+    "explicacao": [
+      "**Classificar…** → *Classificar por* **Vencimento**, *Do Menor para o Maior*; **Adicionar Nível** → **Valor**, *Do Maior para o Menor*.",
+      "No dia 05/12, o aluguel de R$ 4.500 vem antes da internet de R$ 259. Com só o vencimento, os empates ficariam na ordem em que foram lançados."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-niveis",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Energia Elétrica"
+        },
+        "B2": {
+          "entrada": "10/12/2026"
+        },
+        "C2": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Utilidades"
+        },
+        "A3": {
+          "entrada": "Aluguel Sala 12"
+        },
+        "B3": {
+          "entrada": "05/12/2026"
+        },
+        "C3": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Imóvel"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "10/12/2026"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "05/12/2026"
+        },
+        "C5": {
+          "entrada": "259",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Utilidades"
+        },
+        "A6": {
+          "entrada": "Contabilidade Souza"
+        },
+        "B6": {
+          "entrada": "15/12/2026"
+        },
+        "C6": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Serviços"
+        },
+        "A7": {
+          "entrada": "Água e Esgoto"
+        },
+        "B7": {
+          "entrada": "10/12/2026"
+        },
+        "C7": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Utilidades"
+        },
+        "A8": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B8": {
+          "entrada": "05/12/2026"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Serviços"
+        },
+        "A9": {
+          "entrada": "Software ERP"
+        },
+        "B9": {
+          "entrada": "15/12/2026"
+        },
+        "C9": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Serviços"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "20/12/2026"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Imóvel"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 96,
+        "C": 100,
+        "D": 96,
+        "E": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B10",
+        "esperado": [
+          [
+            {
+              "data": "2026-12-05"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-05"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-05"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-10"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-10"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-10"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-15"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-15"
+            }
+          ],
+          [
+            {
+              "data": "2026-12-20"
+            }
+          ]
+        ],
+        "mensagem": "Os vencimentos ainda não vão do mais próximo para o mais distante."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A10",
+        "esperado": [
+          [
+            "Aluguel Sala 12"
+          ],
+          [
+            "Limpeza Brilho"
+          ],
+          [
+            "Internet Fibra"
+          ],
+          [
+            "Energia Elétrica"
+          ],
+          [
+            "Água e Esgoto"
+          ],
+          [
+            "Papelaria Central"
+          ],
+          [
+            "Contabilidade Souza"
+          ],
+          [
+            "Software ERP"
+          ],
+          [
+            "Seguro Empresarial"
+          ]
+        ],
+        "mensagem": "Os vencimentos estão em ordem, mas no mesmo dia os valores não vão do maior para o menor."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "C",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "1d2c404d-23c8-558b-898a-480ab8771451",
+    "slug": "dados-classificar-niveis-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: os níveis de cabeça para baixo",
+    "enunciado": [
+      "Um colega abriu a janela Classificar, pôs **Salário** em *Classificar por* e **Setor** em *E depois por*. A folha ficou por salário, com os setores misturados.",
+      "Deixe a folha por **Setor** (A a Z) e, dentro de cada setor, do **maior** para o **menor salário**."
+    ],
+    "dicas": [
+      "Qual dos dois critérios separa a lista em grupos, e qual só ordena dentro de cada grupo?",
+      "O nível de cima é o que manda. Os de baixo só desempatam."
+    ],
+    "explicacao": [
+      "**Classificar…** → *Classificar por* **Setor** (A a Z); *E depois por* **Salário** (Do Maior para o Menor).",
+      "Com o salário em cima, o setor quase nunca é usado: só desempataria dois salários iguais. Na janela, os botões de seta mudam a ordem dos níveis; aqui, basta escolher de novo as colunas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-niveis",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Setor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B2": {
+          "entrada": "TI"
+        },
+        "C2": {
+          "entrada": "Coordenador"
+        },
+        "D2": {
+          "entrada": "11500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fernanda Costa"
+        },
+        "B3": {
+          "entrada": "Comercial"
+        },
+        "C3": {
+          "entrada": "Coordenador"
+        },
+        "D3": {
+          "entrada": "9800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marcos Vieira"
+        },
+        "B4": {
+          "entrada": "TI"
+        },
+        "C4": {
+          "entrada": "Analista"
+        },
+        "D4": {
+          "entrada": "6800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Patrícia Gomes"
+        },
+        "B5": {
+          "entrada": "Financeiro"
+        },
+        "C5": {
+          "entrada": "Analista"
+        },
+        "D5": {
+          "entrada": "5900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Renata Campos"
+        },
+        "B6": {
+          "entrada": "Comercial"
+        },
+        "C6": {
+          "entrada": "Analista"
+        },
+        "D6": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Rodrigo Teles"
+        },
+        "B7": {
+          "entrada": "Comercial"
+        },
+        "C7": {
+          "entrada": "Analista"
+        },
+        "D7": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Camila Rocha"
+        },
+        "B8": {
+          "entrada": "TI"
+        },
+        "C8": {
+          "entrada": "Assistente"
+        },
+        "D8": {
+          "entrada": "3700",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "André Batista"
+        },
+        "B9": {
+          "entrada": "Financeiro"
+        },
+        "C9": {
+          "entrada": "Assistente"
+        },
+        "D9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Tiago Moreira"
+        },
+        "B10": {
+          "entrada": "Financeiro"
+        },
+        "C10": {
+          "entrada": "Assistente"
+        },
+        "D10": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Juliana Reis"
+        },
+        "B11": {
+          "entrada": "Comercial"
+        },
+        "C11": {
+          "entrada": "Assistente"
+        },
+        "D11": {
+          "entrada": "2900",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 96,
+        "C": 100,
+        "D": 100,
+        "E": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "B2:B11",
+        "esperado": [
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Comercial"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "Financeiro"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ],
+          [
+            "TI"
+          ]
+        ],
+        "mensagem": "Os setores ainda não estão em ordem de A a Z. O primeiro nível (Classificar por) é o que manda."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Fernanda Costa"
+          ],
+          [
+            "Renata Campos"
+          ],
+          [
+            "Rodrigo Teles"
+          ],
+          [
+            "Juliana Reis"
+          ],
+          [
+            "Patrícia Gomes"
+          ],
+          [
+            "André Batista"
+          ],
+          [
+            "Tiago Moreira"
+          ],
+          [
+            "Lucas Ferreira"
+          ],
+          [
+            "Marcos Vieira"
+          ],
+          [
+            "Camila Rocha"
+          ]
+        ],
+        "mensagem": "Os setores estão em ordem, mas dentro de cada um os salários não vão do maior para o menor. Confira o nível \"E depois por\"."
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D11",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "D",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "24813c29-7f5a-5e9d-8c38-e6d98a5e06b6",
+    "slug": "dados-classificar-niveis-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: dois níveis de classificação",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, uma tabela com cabeçalho tem as linhas: (Campinas; 300), (Bauru; 200), (Campinas; 900) e (Bauru; 700), com as colunas Cidade e Valor.",
+      "Na janela Classificar, o técnico definiu *Classificar por* Cidade, *De A a Z*, e *E depois por* Valor, *Do Maior para o Menor*. Após clicar em OK, a primeira linha de dados será:"
+    ],
+    "dicas": [
+      "O primeiro nível forma os grupos; o segundo só ordena dentro de cada grupo."
+    ],
+    "explicacao": [
+      "Primeiro a cidade de A a Z: Bauru vem antes de Campinas. Dentro de Bauru, o maior valor primeiro: **(Bauru; 700)**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-classificar-niveis",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "(Bauru; 700)"
+      },
+      {
+        "texto": "(Bauru; 200)",
+        "dica": "Dentro de Bauru, o segundo nível pede do maior para o menor valor."
+      },
+      {
+        "texto": "(Campinas; 900)",
+        "dica": "O maior valor só desempata dentro da cidade; o primeiro nível, Cidade de A a Z, põe Bauru antes."
+      },
+      {
+        "texto": "(Campinas; 300)",
+        "dica": "Essa é a primeira linha da tabela original; a classificação muda a ordem."
+      },
+      {
+        "texto": "(Campinas; 300) continua em primeiro, pois só o primeiro nível é aplicado",
+        "dica": "Os dois níveis são aplicados juntos: o segundo desempata o primeiro."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Classificar"
+  },
+  {
+    "id": "f4817f5d-3e38-53a2-8fc1-622a7946ebff",
+    "slug": "dados-subtotal-outras-contas",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBTOTAL além da soma: a média do filtro",
+    "enunciado": [
+      "A tabela está filtrada nos reembolsos de **Viagem**. Em **D13**, calcule a **média** só dos valores que estão aparecendo."
+    ],
+    "dicas": [
+      "MÉDIA, como SOMA, não sabe que existe filtro e usa a tabela inteira.",
+      "O primeiro número do SUBTOTAL escolhe a conta. Você já usou o 9 para somar; a média tem o seu próprio número."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(1;D2:D11)` → R$ 1.564,00, a média das 5 viagens.",
+      "Os números mais usados: 1 média, 2 contar números, 3 contar o que não está vazio, 4 maior, 5 menor, 9 soma. Troque o filtro para Alimentação e a média acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-outras-contas",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Departamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carlos Mendes"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "1350",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Beatriz Araújo"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Alimentação"
+        },
+        "D3": {
+          "entrada": "86",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Rafael Souza"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Viagem"
+        },
+        "D4": {
+          "entrada": "2140",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Larissa Prado"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Combustível"
+        },
+        "D5": {
+          "entrada": "230",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduardo Lins"
+        },
+        "B6": {
+          "entrada": "Comercial"
+        },
+        "C6": {
+          "entrada": "Alimentação"
+        },
+        "D6": {
+          "entrada": "124",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Sofia Ramos"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gustavo Pires"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "Combustível"
+        },
+        "D8": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Helena Duarte"
+        },
+        "B9": {
+          "entrada": "Comercial"
+        },
+        "C9": {
+          "entrada": "Viagem"
+        },
+        "D9": {
+          "entrada": "1630",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Vítor Assis"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Alimentação"
+        },
+        "D10": {
+          "entrada": "58",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Marina Teixeira"
+        },
+        "B11": {
+          "entrada": "Financeiro"
+        },
+        "C11": {
+          "entrada": "Viagem"
+        },
+        "D11": {
+          "entrada": "1720",
+          "formato": "moeda"
+        },
+        "C13": {
+          "entrada": "Média",
+          "negrito": true
+        },
+        "D13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 100,
+        "C": 120,
+        "D": 100,
+        "E": 40
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "C": {
+              "valores": [
+                "Viagem"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intro": "Com a tabela filtrada, o chefe não pergunta só o total: quer a média, o maior valor, quantos são. O SUBTOTAL faz todas essas contas só com o que aparece.",
+    "errosComuns": [
+      {
+        "padrao": "^=MÉDIA\\(",
+        "dica": "MÉDIA usa a tabela inteira, inclusive as linhas escondidas pelo filtro."
+      },
+      {
+        "padrao": "^=SUBTOTAL\\(9;",
+        "dica": "O 9 soma. Para a média, o primeiro número é outro."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "D13",
+        "esperado": 1564,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "D13": "=SUBTOTAL(1;D2:D11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "23ebd5bc-183c-5158-bda0-dd32a2cb2c07",
+    "slug": "dados-subtotal-outras-contas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O maior valor do filtro",
+    "enunciado": [
+      "A tabela está filtrada no departamento de **TI**. Em **D13**, mostre o **maior** reembolso que está aparecendo."
+    ],
+    "dicas": [
+      "MÁXIMO olha a tabela inteira. Dentro do SUBTOTAL, o maior valor também tem um número."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(4;D2:D11)` → R$ 980,00. Com MÁXIMO, daria R$ 2.140,00, a viagem do Rafael, que é do Comercial e está escondida.",
+      "Erro clássico de relatório: o maior valor \"do filtro\" que na verdade é da tabela toda."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-outras-contas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Departamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carlos Mendes"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "1350",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Beatriz Araújo"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Alimentação"
+        },
+        "D3": {
+          "entrada": "86",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Rafael Souza"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Viagem"
+        },
+        "D4": {
+          "entrada": "2140",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Larissa Prado"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Combustível"
+        },
+        "D5": {
+          "entrada": "230",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduardo Lins"
+        },
+        "B6": {
+          "entrada": "Comercial"
+        },
+        "C6": {
+          "entrada": "Alimentação"
+        },
+        "D6": {
+          "entrada": "124",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Sofia Ramos"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gustavo Pires"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "Combustível"
+        },
+        "D8": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Helena Duarte"
+        },
+        "B9": {
+          "entrada": "Comercial"
+        },
+        "C9": {
+          "entrada": "Viagem"
+        },
+        "D9": {
+          "entrada": "1630",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Vítor Assis"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Alimentação"
+        },
+        "D10": {
+          "entrada": "58",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Marina Teixeira"
+        },
+        "B11": {
+          "entrada": "Financeiro"
+        },
+        "C11": {
+          "entrada": "Viagem"
+        },
+        "D11": {
+          "entrada": "1720",
+          "formato": "moeda"
+        },
+        "C13": {
+          "entrada": "Maior",
+          "negrito": true
+        },
+        "D13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 100,
+        "C": 120,
+        "D": 100,
+        "E": 40
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "B": {
+              "valores": [
+                "TI"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "errosComuns": [
+      {
+        "padrao": "^=MÁXIMO\\(",
+        "dica": "MÁXIMO usa a tabela inteira: o maior valor é de uma linha escondida pelo filtro."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "D13",
+        "esperado": 980,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "D13": "=SUBTOTAL(4;D2:D11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "21ef3749-1138-5342-93c7-86279caa73a3",
+    "slug": "dados-subtotal-outras-contas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Filtrar, contar e somar",
+    "enunciado": [
+      "Filtre só o departamento **Comercial**. Depois, em **D13**, mostre **quantos** reembolsos aparecem e, em **D14**, o **total** deles."
+    ],
+    "dicas": [
+      "Primeiro o filtro, na seta de Departamento. Depois, duas contas com SUBTOTAL: uma que conta e outra que soma.",
+      "Para contar, use uma coluna em que todas as linhas estão preenchidas."
+    ],
+    "explicacao": [
+      "Na seta de **Departamento**, só **Comercial**. Em D13, `=SUBTOTAL(3;A2:A11)` → 4 (ou `=SUBTOTAL(2;D2:D11)`); em D14, `=SUBTOTAL(9;D2:D11)` → R$ 5.244,00.",
+      "É o resumo que fica embaixo de toda tabela filtrada: quantos e quanto. Troque o filtro e as duas linhas acompanham."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-outras-contas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Departamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carlos Mendes"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "1350",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Beatriz Araújo"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Alimentação"
+        },
+        "D3": {
+          "entrada": "86",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Rafael Souza"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Viagem"
+        },
+        "D4": {
+          "entrada": "2140",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Larissa Prado"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Combustível"
+        },
+        "D5": {
+          "entrada": "230",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduardo Lins"
+        },
+        "B6": {
+          "entrada": "Comercial"
+        },
+        "C6": {
+          "entrada": "Alimentação"
+        },
+        "D6": {
+          "entrada": "124",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Sofia Ramos"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gustavo Pires"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "Combustível"
+        },
+        "D8": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Helena Duarte"
+        },
+        "B9": {
+          "entrada": "Comercial"
+        },
+        "C9": {
+          "entrada": "Viagem"
+        },
+        "D9": {
+          "entrada": "1630",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Vítor Assis"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Alimentação"
+        },
+        "D10": {
+          "entrada": "58",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Marina Teixeira"
+        },
+        "B11": {
+          "entrada": "Financeiro"
+        },
+        "C11": {
+          "entrada": "Viagem"
+        },
+        "D11": {
+          "entrada": "1720",
+          "formato": "moeda"
+        },
+        "C13": {
+          "entrada": "Quantos",
+          "negrito": true
+        },
+        "D13": {
+          "entrada": "",
+          "formato": "geral",
+          "bloqueada": false
+        },
+        "C14": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "D14": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 100,
+        "C": 120,
+        "D": 100,
+        "E": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          4,
+          6,
+          9
+        ]
+      },
+      {
+        "tipo": "celula",
+        "celula": "D13",
+        "esperado": 4,
+        "funcao": "SUBTOTAL"
+      },
+      {
+        "tipo": "celula",
+        "celula": "D14",
+        "esperado": 5244,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "B": {
+              "valores": [
+                "Comercial"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "D13": "=SUBTOTAL(3;A2:A11)",
+        "D14": "=SUBTOTAL(9;D2:D11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "eb32ceb1-46f8-5ce4-8ece-972a7240fd56",
+    "slug": "dados-subtotal-outras-contas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a contagem que deu zero",
+    "enunciado": [
+      "A tabela está filtrada nas **Viagens**, e a contagem em **D13** mostra **0**, com 5 linhas aparecendo. Corrija **D13** para contar os reembolsos visíveis."
+    ],
+    "dicas": [
+      "Olhe o primeiro número do SUBTOTAL e o tipo de dado da coluna contada: são números ou textos?",
+      "Há dois números de contagem: um conta só números, o outro conta tudo que não está vazio."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(3;A2:A11)` → 5 (ou `=SUBTOTAL(2;D2:D11)`, contando os valores).",
+      "O 2 conta só **números**, como CONT.NÚM, e a coluna dos nomes só tem texto. Contar nomes é com o 3, que funciona como CONT.VALORES."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-outras-contas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Departamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Carlos Mendes"
+        },
+        "B2": {
+          "entrada": "Comercial"
+        },
+        "C2": {
+          "entrada": "Viagem"
+        },
+        "D2": {
+          "entrada": "1350",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Beatriz Araújo"
+        },
+        "B3": {
+          "entrada": "Financeiro"
+        },
+        "C3": {
+          "entrada": "Alimentação"
+        },
+        "D3": {
+          "entrada": "86",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Rafael Souza"
+        },
+        "B4": {
+          "entrada": "Comercial"
+        },
+        "C4": {
+          "entrada": "Viagem"
+        },
+        "D4": {
+          "entrada": "2140",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Larissa Prado"
+        },
+        "B5": {
+          "entrada": "TI"
+        },
+        "C5": {
+          "entrada": "Combustível"
+        },
+        "D5": {
+          "entrada": "230",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduardo Lins"
+        },
+        "B6": {
+          "entrada": "Comercial"
+        },
+        "C6": {
+          "entrada": "Alimentação"
+        },
+        "D6": {
+          "entrada": "124",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Sofia Ramos"
+        },
+        "B7": {
+          "entrada": "TI"
+        },
+        "C7": {
+          "entrada": "Viagem"
+        },
+        "D7": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gustavo Pires"
+        },
+        "B8": {
+          "entrada": "Financeiro"
+        },
+        "C8": {
+          "entrada": "Combustível"
+        },
+        "D8": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Helena Duarte"
+        },
+        "B9": {
+          "entrada": "Comercial"
+        },
+        "C9": {
+          "entrada": "Viagem"
+        },
+        "D9": {
+          "entrada": "1630",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Vítor Assis"
+        },
+        "B10": {
+          "entrada": "TI"
+        },
+        "C10": {
+          "entrada": "Alimentação"
+        },
+        "D10": {
+          "entrada": "58",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Marina Teixeira"
+        },
+        "B11": {
+          "entrada": "Financeiro"
+        },
+        "C11": {
+          "entrada": "Viagem"
+        },
+        "D11": {
+          "entrada": "1720",
+          "formato": "moeda"
+        },
+        "C13": {
+          "entrada": "Quantos",
+          "negrito": true
+        },
+        "D13": {
+          "entrada": "=SUBTOTAL(2;A2:A11)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 100,
+        "C": 120,
+        "D": 100,
+        "E": 40
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "C": {
+              "valores": [
+                "Viagem"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "D13",
+        "esperado": 5,
+        "funcao": "SUBTOTAL",
+        "mensagem": "D13 ainda não conta as 5 viagens que aparecem. Confira se o número do SUBTOTAL combina com o tipo de dado da coluna."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "D13": "=SUBTOTAL(3;A2:A11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "2e8b943f-a416-5d3c-b758-217c43375916",
+    "slug": "dados-subtotal-outras-contas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: duas contagens do SUBTOTAL",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, sem filtro nem linhas ocultas, as células A2:A6 contêm, nessa ordem: Ana, 10, (vazia), 30 e Bia.",
+      "Qual é o resultado de `=SUBTOTAL(2;A2:A6)+SUBTOTAL(3;A2:A6)`?"
+    ],
+    "dicas": [
+      "O 2 conta como CONT.NÚM e o 3 como CONT.VALORES."
+    ],
+    "explicacao": [
+      "SUBTOTAL(2) conta só números: 10 e 30, que dão 2. SUBTOTAL(3) conta tudo que não está vazio: Ana, 10, 30 e Bia, que dão 4. A soma é **6**."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-subtotal-outras-contas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Dados",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "10"
+        },
+        "A5": {
+          "entrada": "30"
+        },
+        "A6": {
+          "entrada": "Bia"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "6"
+      },
+      {
+        "texto": "4",
+        "dica": "Essa é só a parte do SUBTOTAL(3). Some também os números contados pelo SUBTOTAL(2)."
+      },
+      {
+        "texto": "5",
+        "dica": "A célula vazia não é contada por nenhum dos dois."
+      },
+      {
+        "texto": "8",
+        "dica": "O SUBTOTAL(2) não conta os textos Ana e Bia: ele conta só números."
+      },
+      {
+        "texto": "40",
+        "dica": "Os códigos 2 e 3 contam; quem soma é o 9."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "SUBTOTAL",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SUBTOTAL(2;A2:A6)+SUBTOTAL(3;A2:A6)",
+        "esperado": 6
+      }
+    ]
+  },
+  {
+    "id": "81ef7b3c-ab9c-5d2f-96fa-80b609f7284d",
+    "slug": "dados-relatorio-contas",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: o relatório de contas a pagar",
+    "enunciado": [
+      "Monte o relatório da semana: deixe aparecendo só as contas **A pagar**, organizadas do **vencimento mais próximo** para o mais distante, e em **C13** o **total** do que está aparecendo."
+    ],
+    "dicas": [
+      "São três ferramentas: o filtro (Situação), a classificação (Vencimento) e o SUBTOTAL. A ordem entre filtrar e classificar não importa.",
+      "O total precisa acompanhar o filtro, então não pode ser SOMA."
+    ],
+    "explicacao": [
+      "Na seta de **Situação**. só **A pagar**; com uma célula de **Vencimento** ativa. **A→Z** (Do Menor para o Maior); em C13. `=SUBTOTAL(9;C2:C11)` → R$ 6.995,00.",
+      "É o relatório que o financeiro monta toda segunda-feira. Com o SUBTOTAL, dá para trocar o filtro para Pago e ver o que já saiu, sem mexer na fórmula."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-relatorio-contas",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel Sala 12"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "C2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Imóvel"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Energia Elétrica"
+        },
+        "B3": {
+          "entrada": "10/12/2026"
+        },
+        "C3": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Utilidades"
+        },
+        "E3": {
+          "entrada": "A pagar"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "08/12/2026"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "E4": {
+          "entrada": "A pagar"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "04/12/2026"
+        },
+        "C5": {
+          "entrada": "259",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Utilidades"
+        },
+        "E5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Contabilidade Souza"
+        },
+        "B6": {
+          "entrada": "15/12/2026"
+        },
+        "C6": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Serviços"
+        },
+        "E6": {
+          "entrada": "A pagar"
+        },
+        "A7": {
+          "entrada": "Água e Esgoto"
+        },
+        "B7": {
+          "entrada": "12/12/2026"
+        },
+        "C7": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Utilidades"
+        },
+        "E7": {
+          "entrada": "A pagar"
+        },
+        "A8": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B8": {
+          "entrada": "03/12/2026"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Serviços"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Software ERP"
+        },
+        "B9": {
+          "entrada": "18/12/2026"
+        },
+        "C9": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Serviços"
+        },
+        "E9": {
+          "entrada": "A pagar"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "20/12/2026"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Imóvel"
+        },
+        "E10": {
+          "entrada": "A pagar"
+        },
+        "A11": {
+          "entrada": "Café e Copa"
+        },
+        "B11": {
+          "entrada": "09/12/2026"
+        },
+        "C11": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Material"
+        },
+        "E11": {
+          "entrada": "A pagar"
+        },
+        "B13": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "C13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 100,
+        "D": 96,
+        "E": 84,
+        "F": 40
+      }
+    },
+    "intro": "Na vida real, ninguém usa uma ferramenta só: filtra o que interessa, põe em ordem e fecha com o total. Este é o relatório de contas a pagar que todo financeiro monta.",
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(",
+        "dica": "SOMA soma também as contas escondidas pelo filtro (as já pagas)."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          4,
+          6,
+          7,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Limpeza Brilho"
+          ],
+          [
+            "Internet Fibra"
+          ],
+          [
+            "Aluguel Sala 12"
+          ],
+          [
+            "Papelaria Central"
+          ],
+          [
+            "Café e Copa"
+          ],
+          [
+            "Energia Elétrica"
+          ],
+          [
+            "Água e Esgoto"
+          ],
+          [
+            "Contabilidade Souza"
+          ],
+          [
+            "Software ERP"
+          ],
+          [
+            "Seguro Empresarial"
+          ]
+        ],
+        "mensagem": "As contas ainda não estão do vencimento mais próximo para o mais distante."
+      },
+      {
+        "tipo": "celula",
+        "celula": "C13",
+        "esperado": 6995,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:E11",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "filtro": {
+          "intervalo": "A1:E11",
+          "criterios": {
+            "E": {
+              "valores": [
+                "A pagar"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "C13": "=SUBTOTAL(9;C2:C11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "07f45803-cd2f-5559-baa1-ae974fde0718",
+    "slug": "dados-relatorio-contas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas categorias e a contagem",
+    "enunciado": [
+      "Deixe aparecendo só as contas **A pagar** das categorias **Utilidades** e **Serviços**, do vencimento mais próximo para o mais distante, e em **C13** mostre **quantas** são."
+    ],
+    "dicas": [
+      "Na seta de Categoria, dá para marcar mais de um item. Os filtros de colunas diferentes se somam: a linha precisa passar nos dois.",
+      "Para contar, o SUBTOTAL tem um número que conta e você escolhe uma coluna sem vazios."
+    ],
+    "explicacao": [
+      "Na seta de **Situação**, só **A pagar**; na de **Categoria**, **Serviços** e **Utilidades**; classifique por **Vencimento**; em C13, `=SUBTOTAL(3;A2:A11)` → 4.",
+      "Dentro da mesma coluna, os itens marcados funcionam como OU (Serviços ou Utilidades); entre colunas, como E (e A pagar)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-relatorio-contas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel Sala 12"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "C2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Imóvel"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Energia Elétrica"
+        },
+        "B3": {
+          "entrada": "10/12/2026"
+        },
+        "C3": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Utilidades"
+        },
+        "E3": {
+          "entrada": "A pagar"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "08/12/2026"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "E4": {
+          "entrada": "A pagar"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "04/12/2026"
+        },
+        "C5": {
+          "entrada": "259",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Utilidades"
+        },
+        "E5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Contabilidade Souza"
+        },
+        "B6": {
+          "entrada": "15/12/2026"
+        },
+        "C6": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Serviços"
+        },
+        "E6": {
+          "entrada": "A pagar"
+        },
+        "A7": {
+          "entrada": "Água e Esgoto"
+        },
+        "B7": {
+          "entrada": "12/12/2026"
+        },
+        "C7": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Utilidades"
+        },
+        "E7": {
+          "entrada": "A pagar"
+        },
+        "A8": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B8": {
+          "entrada": "03/12/2026"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Serviços"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Software ERP"
+        },
+        "B9": {
+          "entrada": "18/12/2026"
+        },
+        "C9": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Serviços"
+        },
+        "E9": {
+          "entrada": "A pagar"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "20/12/2026"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Imóvel"
+        },
+        "E10": {
+          "entrada": "A pagar"
+        },
+        "A11": {
+          "entrada": "Café e Copa"
+        },
+        "B11": {
+          "entrada": "09/12/2026"
+        },
+        "C11": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Material"
+        },
+        "E11": {
+          "entrada": "A pagar"
+        },
+        "B13": {
+          "entrada": "Quantas",
+          "negrito": true
+        },
+        "C13": {
+          "entrada": "",
+          "formato": "geral",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 100,
+        "D": 96,
+        "E": 84,
+        "F": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          6,
+          7,
+          9
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Limpeza Brilho"
+          ],
+          [
+            "Internet Fibra"
+          ],
+          [
+            "Aluguel Sala 12"
+          ],
+          [
+            "Papelaria Central"
+          ],
+          [
+            "Café e Copa"
+          ],
+          [
+            "Energia Elétrica"
+          ],
+          [
+            "Água e Esgoto"
+          ],
+          [
+            "Contabilidade Souza"
+          ],
+          [
+            "Software ERP"
+          ],
+          [
+            "Seguro Empresarial"
+          ]
+        ],
+        "mensagem": "As contas ainda não estão do vencimento mais próximo para o mais distante."
+      },
+      {
+        "tipo": "celula",
+        "celula": "C13",
+        "esperado": 4,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:E11",
+            "chaves": [
+              {
+                "coluna": "B",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "filtro": {
+          "intervalo": "A1:E11",
+          "criterios": {
+            "E": {
+              "valores": [
+                "A pagar"
+              ]
+            },
+            "D": {
+              "valores": [
+                "Serviços",
+                "Utilidades"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "C13": "=SUBTOTAL(3;A2:A11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "a3d14a8b-ee20-5e82-bf1b-6623597c47b7",
+    "slug": "dados-relatorio-contas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Por categoria, e o maior valor",
+    "enunciado": [
+      "Organize por **Categoria** (A a Z) e, dentro de cada categoria, do **maior** para o **menor valor**. Deixe aparecendo só as contas **A pagar** e, em **C13**, mostre a **maior** conta que está aparecendo."
+    ],
+    "dicas": [
+      "Dois critérios de ordem pedem a janela Classificar, com um nível para cada um.",
+      "O maior valor também precisa ignorar as contas escondidas pelo filtro."
+    ],
+    "explicacao": [
+      "**Classificar…** → Categoria (A a Z) e, em *E depois por*, Valor (Do Maior para o Menor); na seta de **Situação**, só **A pagar**; em C13, `=SUBTOTAL(4;C2:C11)` → R$ 2.350,00.",
+      "Com MÁXIMO, daria R$ 4.500,00: o aluguel, que já foi pago e está escondido."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-relatorio-contas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel Sala 12"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "C2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Imóvel"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Energia Elétrica"
+        },
+        "B3": {
+          "entrada": "10/12/2026"
+        },
+        "C3": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Utilidades"
+        },
+        "E3": {
+          "entrada": "A pagar"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "08/12/2026"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "E4": {
+          "entrada": "A pagar"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "04/12/2026"
+        },
+        "C5": {
+          "entrada": "259",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Utilidades"
+        },
+        "E5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Contabilidade Souza"
+        },
+        "B6": {
+          "entrada": "15/12/2026"
+        },
+        "C6": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Serviços"
+        },
+        "E6": {
+          "entrada": "A pagar"
+        },
+        "A7": {
+          "entrada": "Água e Esgoto"
+        },
+        "B7": {
+          "entrada": "12/12/2026"
+        },
+        "C7": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Utilidades"
+        },
+        "E7": {
+          "entrada": "A pagar"
+        },
+        "A8": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B8": {
+          "entrada": "03/12/2026"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Serviços"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Software ERP"
+        },
+        "B9": {
+          "entrada": "18/12/2026"
+        },
+        "C9": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Serviços"
+        },
+        "E9": {
+          "entrada": "A pagar"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "20/12/2026"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Imóvel"
+        },
+        "E10": {
+          "entrada": "A pagar"
+        },
+        "A11": {
+          "entrada": "Café e Copa"
+        },
+        "B11": {
+          "entrada": "09/12/2026"
+        },
+        "C11": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Material"
+        },
+        "E11": {
+          "entrada": "A pagar"
+        },
+        "B13": {
+          "entrada": "Maior",
+          "negrito": true
+        },
+        "C13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 100,
+        "D": 96,
+        "E": 84,
+        "F": 40
+      }
+    },
+    "errosComuns": [
+      {
+        "padrao": "^=MÁXIMO\\(",
+        "dica": "MÁXIMO olha a tabela inteira: o maior valor é de uma conta já paga, escondida pelo filtro."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          3,
+          4,
+          6,
+          7,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "D2:D11",
+        "esperado": [
+          [
+            "Imóvel"
+          ],
+          [
+            "Imóvel"
+          ],
+          [
+            "Material"
+          ],
+          [
+            "Material"
+          ],
+          [
+            "Serviços"
+          ],
+          [
+            "Serviços"
+          ],
+          [
+            "Serviços"
+          ],
+          [
+            "Utilidades"
+          ],
+          [
+            "Utilidades"
+          ],
+          [
+            "Utilidades"
+          ]
+        ],
+        "mensagem": "As categorias ainda não estão em ordem de A a Z."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Aluguel Sala 12"
+          ],
+          [
+            "Seguro Empresarial"
+          ],
+          [
+            "Papelaria Central"
+          ],
+          [
+            "Café e Copa"
+          ],
+          [
+            "Contabilidade Souza"
+          ],
+          [
+            "Limpeza Brilho"
+          ],
+          [
+            "Software ERP"
+          ],
+          [
+            "Energia Elétrica"
+          ],
+          [
+            "Água e Esgoto"
+          ],
+          [
+            "Internet Fibra"
+          ]
+        ],
+        "mensagem": "As categorias estão em ordem, mas dentro de cada uma os valores não vão do maior para o menor."
+      },
+      {
+        "tipo": "celula",
+        "celula": "C13",
+        "esperado": 2350,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:E11",
+            "chaves": [
+              {
+                "coluna": "D",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "C",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "filtro": {
+          "intervalo": "A1:E11",
+          "criterios": {
+            "E": {
+              "valores": [
+                "A pagar"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "C13": "=SUBTOTAL(4;C2:C11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "4b19b2f8-3ee3-54ef-9864-33bd4dee728b",
+    "slug": "dados-relatorio-contas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a conta que ficou fora do total",
+    "enunciado": [
+      "O relatório já está filtrado nas contas **A pagar**, mas a conta do **Café e Copa**, lançada por último, não entra no total de **C13**. Corrija **C13** para somar todas as contas que aparecem."
+    ],
+    "dicas": [
+      "O total usa SUBTOTAL, então o problema não é o filtro. Confira até que linha vai o intervalo da fórmula.",
+      "Quando uma linha nova entra no fim da tabela, as fórmulas antigas não crescem sozinhas."
+    ],
+    "explicacao": [
+      "`=SUBTOTAL(9;C2:C11)` → R$ 6.995,00. A fórmula antiga ia até C10 e deixava a linha 11 de fora.",
+      "Sempre que acrescentar linhas embaixo, confira os totais. No Excel de verdade, formatar como Tabela (Ctrl+Alt+T) faz o intervalo crescer sozinho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-relatorio-contas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel Sala 12"
+        },
+        "B2": {
+          "entrada": "05/12/2026"
+        },
+        "C2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "Imóvel"
+        },
+        "E2": {
+          "entrada": "Pago"
+        },
+        "A3": {
+          "entrada": "Energia Elétrica"
+        },
+        "B3": {
+          "entrada": "10/12/2026"
+        },
+        "C3": {
+          "entrada": "1840",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "Utilidades"
+        },
+        "E3": {
+          "entrada": "A pagar"
+        },
+        "A4": {
+          "entrada": "Papelaria Central"
+        },
+        "B4": {
+          "entrada": "08/12/2026"
+        },
+        "C4": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "E4": {
+          "entrada": "A pagar"
+        },
+        "A5": {
+          "entrada": "Internet Fibra"
+        },
+        "B5": {
+          "entrada": "04/12/2026"
+        },
+        "C5": {
+          "entrada": "259",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "Utilidades"
+        },
+        "E5": {
+          "entrada": "Pago"
+        },
+        "A6": {
+          "entrada": "Contabilidade Souza"
+        },
+        "B6": {
+          "entrada": "15/12/2026"
+        },
+        "C6": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "Serviços"
+        },
+        "E6": {
+          "entrada": "A pagar"
+        },
+        "A7": {
+          "entrada": "Água e Esgoto"
+        },
+        "B7": {
+          "entrada": "12/12/2026"
+        },
+        "C7": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "Utilidades"
+        },
+        "E7": {
+          "entrada": "A pagar"
+        },
+        "A8": {
+          "entrada": "Limpeza Brilho"
+        },
+        "B8": {
+          "entrada": "03/12/2026"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "Serviços"
+        },
+        "E8": {
+          "entrada": "Pago"
+        },
+        "A9": {
+          "entrada": "Software ERP"
+        },
+        "B9": {
+          "entrada": "18/12/2026"
+        },
+        "C9": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "Serviços"
+        },
+        "E9": {
+          "entrada": "A pagar"
+        },
+        "A10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "B10": {
+          "entrada": "20/12/2026"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "D10": {
+          "entrada": "Imóvel"
+        },
+        "E10": {
+          "entrada": "A pagar"
+        },
+        "A11": {
+          "entrada": "Café e Copa"
+        },
+        "B11": {
+          "entrada": "09/12/2026"
+        },
+        "C11": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "D11": {
+          "entrada": "Material"
+        },
+        "E11": {
+          "entrada": "A pagar"
+        },
+        "B13": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "C13": {
+          "entrada": "=SUBTOTAL(9;C2:C10)",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 100,
+        "D": 96,
+        "E": 84,
+        "F": 40
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:E11",
+          "criterios": {
+            "E": {
+              "valores": [
+                "A pagar"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C13",
+        "esperado": 6995,
+        "funcao": "SUBTOTAL",
+        "mensagem": "C13 ainda deixa de fora uma conta que está aparecendo. Confira até onde vai o intervalo da fórmula."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C13": "=SUBTOTAL(9;C2:C11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "9865b617-b0b3-57d7-a0a6-f8038ab04658",
+    "slug": "dados-relatorio-contas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: filtrar, classificar e totalizar",
+    "enunciado": [
+      "Um assistente administrativo aplicou, no Excel 365 em português, o AutoFiltro numa tabela de contas, deixando visíveis só as contas com situação \"A pagar\". Em seguida, classificou a tabela pelo vencimento e, abaixo dela, digitou `=SUBTOTAL(9;C2:C11)`.",
+      "Assinale a alternativa correta."
+    ],
+    "dicas": [
+      "Pense no que o filtro faz com as linhas que não aparecem, e em quais linhas o SUBTOTAL soma."
+    ],
+    "explicacao": [
+      "As linhas das contas pagas só ficam **ocultas**: continuam na planilha e voltam ao limpar o filtro. O SUBTOTAL(9) soma só as linhas visíveis, ou seja, só as contas a pagar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-relatorio-contas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "O SUBTOTAL soma só as contas visíveis, e as contas ocultas voltam a aparecer ao limpar o filtro"
+      },
+      {
+        "texto": "O filtro apagou as contas pagas, que só voltam com Desfazer",
+        "dica": "O filtro não apaga nada: as linhas ficam ocultas e voltam ao limpar o filtro."
+      },
+      {
+        "texto": "O SUBTOTAL soma também as contas ocultas pelo filtro",
+        "dica": "Quem soma as ocultas é a SOMA. O SUBTOTAL ignora as linhas escondidas pelo filtro."
+      },
+      {
+        "texto": "Classificar a tabela desligou o filtro",
+        "dica": "O filtro continua ligado depois de classificar."
+      },
+      {
+        "texto": "Com o filtro ligado, o SUBTOTAL só funciona com o código 109",
+        "dica": "O 9 já ignora as linhas filtradas; o 109 também ignora as ocultadas à mão."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Filtro e SUBTOTAL"
+  },
+  {
+    "id": "a716c325-dba4-5610-80ae-c40fad0d22f2",
+    "slug": "dados-achar-duplicados",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duplicados: os lançamentos repetidos",
+    "enunciado": [
+      "Algumas notas fiscais foram lançadas mais de uma vez. Em **D2:D11** (Ocorrência), mostre quantas vezes a nota da linha já apareceu **até aquela linha**: 1 na primeira vez, 2 na segunda…",
+      "Depois, filtre a coluna **Ocorrência** para mostrar só as linhas **repetidas** (as que não são a primeira vez)."
+    ],
+    "dicas": [
+      "CONT.SE conta quantas vezes um valor aparece num intervalo. O truque é o intervalo começar fixo na primeira nota e terminar na linha atual.",
+      "Com o cifrão só no começo do intervalo, ele cresce quando a fórmula desce. Depois de preencher, ligue o filtro: a coluna Ocorrência entra nele."
+    ],
+    "explicacao": [
+      "Em D2, `=CONT.SE($A$2:A2;A2)`, copiada até D11. Depois, na seta de **Ocorrência**, desmarque o **1**: ficam as linhas 5, 8 e 11, as cópias.",
+      "A primeira vez de cada nota fica com 1 e só as cópias passam de 1. No Excel de verdade existe **Dados → Remover Duplicatas**, que apaga sem mostrar o que apagou; com esta coluna, você confere antes de apagar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-achar-duplicados",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ocorrência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "4521"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "4522"
+        },
+        "B3": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C3": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "4523"
+        },
+        "B4": {
+          "entrada": "Café e Copa"
+        },
+        "C4": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "4521"
+        },
+        "B5": {
+          "entrada": "Papelaria Central"
+        },
+        "C5": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "4524"
+        },
+        "B6": {
+          "entrada": "Limpeza Brilho"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "4525"
+        },
+        "B7": {
+          "entrada": "Software ERP"
+        },
+        "C7": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "4522"
+        },
+        "B8": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C8": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "4526"
+        },
+        "B9": {
+          "entrada": "Água e Esgoto"
+        },
+        "C9": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "4527"
+        },
+        "B10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "4521"
+        },
+        "B11": {
+          "entrada": "Papelaria Central"
+        },
+        "C11": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "D11": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 150,
+        "C": 100,
+        "D": 96,
+        "E": 24,
+        "F": 150,
+        "G": 100,
+        "H": 40
+      }
+    },
+    "intro": "Nota lançada duas vezes é pagamento em dobro. Antes de remover duplicados, a pergunta é: quais são as cópias? Uma coluna com CONT.SE e o filtro mostram exatamente isso.",
+    "errosComuns": [
+      {
+        "padrao": "CONT\\.SE\\(\\$A\\$2:\\$A\\$11;",
+        "dica": "Com o intervalo inteiro travado, toda nota repetida ganha o mesmo número, inclusive a primeira vez. O intervalo tem que terminar na linha da fórmula."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "D2:D11",
+        "esperado": [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            3
+          ]
+        ],
+        "mensagem": "A coluna Ocorrência ainda não está certa: a primeira vez que uma nota aparece tem que ficar com 1, a segunda com 2, e assim por diante."
+      },
+      {
+        "tipo": "celula",
+        "celula": "D11",
+        "esperado": 3,
+        "funcao": "COUNTIF",
+        "mensagem": "D11 precisa de uma fórmula com CONT.SE que conte a nota da linha desde a primeira nota até ela."
+      },
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          5,
+          8,
+          11
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "D2": "=CONT.SE($A$2:A2;A2)",
+        "D3": "=CONT.SE($A$2:A3;A3)",
+        "D4": "=CONT.SE($A$2:A4;A4)",
+        "D5": "=CONT.SE($A$2:A5;A5)",
+        "D6": "=CONT.SE($A$2:A6;A6)",
+        "D7": "=CONT.SE($A$2:A7;A7)",
+        "D8": "=CONT.SE($A$2:A8;A8)",
+        "D9": "=CONT.SE($A$2:A9;A9)",
+        "D10": "=CONT.SE($A$2:A10;A10)",
+        "D11": "=CONT.SE($A$2:A11;A11)"
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "D": {
+              "valores": [
+                "2",
+                "3"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "dfe70eda-f108-5fa8-926b-f9fe299eafca",
+    "slug": "dados-achar-duplicados-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mostrar só as cópias",
+    "enunciado": [
+      "A coluna **Ocorrência** já está pronta. Filtre a tabela para mostrar só as notas lançadas **pela segunda vez ou mais**: são essas que precisam ser apagadas."
+    ],
+    "dicas": [
+      "Ligue o filtro e use a seta da coluna Ocorrência.",
+      "Ficam as linhas cuja ocorrência não é 1."
+    ],
+    "explicacao": [
+      "Na seta de **Ocorrência**, desmarque o **1** (ficam o 2 e o 3): linhas 5, 8 e 11.",
+      "A nota 4521 foi lançada três vezes: a linha 2 é a original e as linhas 5 e 11 são cópias. Filtrar o 1 em vez disso mostraria as originais, as que devem ficar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-achar-duplicados",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ocorrência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "4521"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "4522"
+        },
+        "B3": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C3": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "4523"
+        },
+        "B4": {
+          "entrada": "Café e Copa"
+        },
+        "C4": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "4521"
+        },
+        "B5": {
+          "entrada": "Papelaria Central"
+        },
+        "C5": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "4524"
+        },
+        "B6": {
+          "entrada": "Limpeza Brilho"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "4525"
+        },
+        "B7": {
+          "entrada": "Software ERP"
+        },
+        "C7": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "4522"
+        },
+        "B8": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C8": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "4526"
+        },
+        "B9": {
+          "entrada": "Água e Esgoto"
+        },
+        "C9": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "4527"
+        },
+        "B10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "4521"
+        },
+        "B11": {
+          "entrada": "Papelaria Central"
+        },
+        "C11": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=CONT.SE($A$2:A2;A2)",
+          "bloqueada": true
+        },
+        "D3": {
+          "entrada": "=CONT.SE($A$2:A3;A3)",
+          "bloqueada": true
+        },
+        "D4": {
+          "entrada": "=CONT.SE($A$2:A4;A4)",
+          "bloqueada": true
+        },
+        "D5": {
+          "entrada": "=CONT.SE($A$2:A5;A5)",
+          "bloqueada": true
+        },
+        "D6": {
+          "entrada": "=CONT.SE($A$2:A6;A6)",
+          "bloqueada": true
+        },
+        "D7": {
+          "entrada": "=CONT.SE($A$2:A7;A7)",
+          "bloqueada": true
+        },
+        "D8": {
+          "entrada": "=CONT.SE($A$2:A8;A8)",
+          "bloqueada": true
+        },
+        "D9": {
+          "entrada": "=CONT.SE($A$2:A9;A9)",
+          "bloqueada": true
+        },
+        "D10": {
+          "entrada": "=CONT.SE($A$2:A10;A10)",
+          "bloqueada": true
+        },
+        "D11": {
+          "entrada": "=CONT.SE($A$2:A11;A11)",
+          "bloqueada": true
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 150,
+        "C": 100,
+        "D": 96,
+        "E": 24,
+        "F": 150,
+        "G": 100,
+        "H": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          5,
+          8,
+          11
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:D11",
+          "criterios": {
+            "D": {
+              "valores": [
+                "2",
+                "3"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "6fb77690-b207-5116-a940-eb267f0d1f6b",
+    "slug": "dados-achar-duplicados-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quanto foi lançado a mais",
+    "enunciado": [
+      "Com a coluna **Ocorrência** pronta, mostre em **G1** quantos lançamentos são **cópias** (ocorrência maior que 1) e, em **G2**, quanto dinheiro foi lançado **a mais** por causa delas."
+    ],
+    "dicas": [
+      "Para contar com condição, CONT.SE; para somar com condição, SOMASE. O critério é \"maior que 1\" na coluna Ocorrência.",
+      "No SOMASE, o primeiro intervalo é onde está o critério e o último é o que se soma."
+    ],
+    "explicacao": [
+      "Em G1, `=CONT.SE(D2:D11;\">1\")` → 3; em G2, `=SOMASE(D2:D11;\">1\";C2:C11)` → R$ 1.420,00.",
+      "É o número que interessa ao financeiro: R$ 1.420,00 que seriam pagos em dobro. A coluna auxiliar de Ocorrência serve de critério para qualquer conta."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-achar-duplicados",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ocorrência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "4521"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "4522"
+        },
+        "B3": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C3": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "4523"
+        },
+        "B4": {
+          "entrada": "Café e Copa"
+        },
+        "C4": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "4521"
+        },
+        "B5": {
+          "entrada": "Papelaria Central"
+        },
+        "C5": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "4524"
+        },
+        "B6": {
+          "entrada": "Limpeza Brilho"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "4525"
+        },
+        "B7": {
+          "entrada": "Software ERP"
+        },
+        "C7": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "4522"
+        },
+        "B8": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C8": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "4526"
+        },
+        "B9": {
+          "entrada": "Água e Esgoto"
+        },
+        "C9": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "4527"
+        },
+        "B10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "4521"
+        },
+        "B11": {
+          "entrada": "Papelaria Central"
+        },
+        "C11": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=CONT.SE($A$2:A2;A2)",
+          "bloqueada": true
+        },
+        "D3": {
+          "entrada": "=CONT.SE($A$2:A3;A3)",
+          "bloqueada": true
+        },
+        "D4": {
+          "entrada": "=CONT.SE($A$2:A4;A4)",
+          "bloqueada": true
+        },
+        "D5": {
+          "entrada": "=CONT.SE($A$2:A5;A5)",
+          "bloqueada": true
+        },
+        "D6": {
+          "entrada": "=CONT.SE($A$2:A6;A6)",
+          "bloqueada": true
+        },
+        "D7": {
+          "entrada": "=CONT.SE($A$2:A7;A7)",
+          "bloqueada": true
+        },
+        "D8": {
+          "entrada": "=CONT.SE($A$2:A8;A8)",
+          "bloqueada": true
+        },
+        "D9": {
+          "entrada": "=CONT.SE($A$2:A9;A9)",
+          "bloqueada": true
+        },
+        "D10": {
+          "entrada": "=CONT.SE($A$2:A10;A10)",
+          "bloqueada": true
+        },
+        "D11": {
+          "entrada": "=CONT.SE($A$2:A11;A11)",
+          "bloqueada": true
+        },
+        "F1": {
+          "entrada": "Lançamentos a apagar",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "F2": {
+          "entrada": "Valor lançado a mais",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 150,
+        "C": 100,
+        "D": 96,
+        "E": 24,
+        "F": 150,
+        "G": 100,
+        "H": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "G1",
+        "esperado": 3,
+        "funcao": "COUNTIF",
+        "mensagem": "G1 precisa contar, com CONT.SE, as ocorrências maiores que 1."
+      },
+      {
+        "tipo": "celula",
+        "celula": "G2",
+        "esperado": 1420,
+        "funcao": "SUMIF",
+        "mensagem": "G2 precisa somar, com SOMASE, o valor das linhas com ocorrência maior que 1."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "G1": "=CONT.SE(D2:D11;\">1\")",
+        "G2": "=SOMASE(D2:D11;\">1\";C2:C11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "299e103b-d0a7-59f7-9fbb-11e37dfe8658",
+    "slug": "dados-achar-duplicados-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a original marcada como cópia",
+    "enunciado": [
+      "Um colega preencheu a coluna **Ocorrência** e a primeira nota 4521, a **original**, ficou com **3**. Filtrando o que não é 1, ela seria apagada junto com as cópias.",
+      "Corrija **D2:D11** para que a primeira vez de cada nota fique com 1, a segunda com 2, e assim por diante."
+    ],
+    "dicas": [
+      "O intervalo do CONT.SE está travado inteiro: cada linha conta a tabela toda, de cima a baixo.",
+      "Cada linha deveria contar só da primeira nota até ela mesma. Qual ponta do intervalo precisa andar quando a fórmula desce?"
+    ],
+    "explicacao": [
+      "Em D2, `=CONT.SE($A$2:A2;A2)`, copiada até D11.",
+      "Com `$A$2:$A$11`, a fórmula responde \"quantas vezes a nota aparece na tabela\": 3 para as três 4521, inclusive a original. Com `$A$2:A2`, ela responde \"quantas vezes apareceu até aqui\", e só as cópias passam de 1. Erro comum, e caro: apaga o lançamento certo junto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-achar-duplicados",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Ocorrência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "4521"
+        },
+        "B2": {
+          "entrada": "Papelaria Central"
+        },
+        "C2": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "4522"
+        },
+        "B3": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C3": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "4523"
+        },
+        "B4": {
+          "entrada": "Café e Copa"
+        },
+        "C4": {
+          "entrada": "185",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "4521"
+        },
+        "B5": {
+          "entrada": "Papelaria Central"
+        },
+        "C5": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "4524"
+        },
+        "B6": {
+          "entrada": "Limpeza Brilho"
+        },
+        "C6": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "4525"
+        },
+        "B7": {
+          "entrada": "Software ERP"
+        },
+        "C7": {
+          "entrada": "690",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "4522"
+        },
+        "B8": {
+          "entrada": "Gráfica Rápida"
+        },
+        "C8": {
+          "entrada": "780",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "4526"
+        },
+        "B9": {
+          "entrada": "Água e Esgoto"
+        },
+        "C9": {
+          "entrada": "410",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "4527"
+        },
+        "B10": {
+          "entrada": "Seguro Empresarial"
+        },
+        "C10": {
+          "entrada": "2350",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "4521"
+        },
+        "B11": {
+          "entrada": "Papelaria Central"
+        },
+        "C11": {
+          "entrada": "320",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "=CONT.SE($A$2:$A$11;A2)",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "=CONT.SE($A$2:$A$11;A3)",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "=CONT.SE($A$2:$A$11;A4)",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "=CONT.SE($A$2:$A$11;A5)",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "=CONT.SE($A$2:$A$11;A6)",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "=CONT.SE($A$2:$A$11;A7)",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "=CONT.SE($A$2:$A$11;A8)",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "=CONT.SE($A$2:$A$11;A9)",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "=CONT.SE($A$2:$A$11;A10)",
+          "bloqueada": false
+        },
+        "D11": {
+          "entrada": "=CONT.SE($A$2:$A$11;A11)",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 150,
+        "C": 100,
+        "D": 96,
+        "E": 24,
+        "F": 150,
+        "G": 100,
+        "H": 40
+      }
+    },
+    "errosComuns": [
+      {
+        "padrao": "CONT\\.SE\\(\\$A\\$2:\\$A\\$11;",
+        "dica": "O intervalo ainda está travado inteiro, até a linha 11: cada linha conta a tabela toda."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "D2:D11",
+        "esperado": [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            3
+          ]
+        ],
+        "mensagem": "A coluna Ocorrência ainda não está certa: a primeira vez que uma nota aparece tem que ficar com 1, a segunda com 2, e assim por diante."
+      },
+      {
+        "tipo": "celula",
+        "celula": "D2",
+        "esperado": 1,
+        "funcao": "COUNTIF",
+        "mensagem": "D2 precisa de uma fórmula com CONT.SE: a primeira nota da lista aparece pela primeira vez, então fica com 1."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "D2": "=CONT.SE($A$2:A2;A2)",
+        "D3": "=CONT.SE($A$2:A3;A3)",
+        "D4": "=CONT.SE($A$2:A4;A4)",
+        "D5": "=CONT.SE($A$2:A5;A5)",
+        "D6": "=CONT.SE($A$2:A6;A6)",
+        "D7": "=CONT.SE($A$2:A7;A7)",
+        "D8": "=CONT.SE($A$2:A8;A8)",
+        "D9": "=CONT.SE($A$2:A9;A9)",
+        "D10": "=CONT.SE($A$2:A10;A10)",
+        "D11": "=CONT.SE($A$2:A11;A11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "195cd0d6-a8e6-57fd-973b-1c4f22541a5a",
+    "slug": "dados-achar-duplicados-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a coluna de ocorrência",
+    "enunciado": [
+      "Na planilha do Excel 365 em português, A2:A7 contém os números de notas 101, 102, 101, 103, 101 e 102. Em B2 foi digitada `=CONT.SE($A$2:A2;A2)`, copiada até B7.",
+      "O valor exibido em B6 é:"
+    ],
+    "dicas": [
+      "Copiada para a linha 6, a fórmula conta a nota de A6 no intervalo que vai de A2 até A6."
+    ],
+    "explicacao": [
+      "Em B6, a fórmula vira `=CONT.SE($A$2:A6;A6)`. A nota 101 aparece em A2, A4 e A6: **3**. É a terceira vez que ela aparece."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-achar-duplicados",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "101"
+        },
+        "A3": {
+          "entrada": "102"
+        },
+        "A4": {
+          "entrada": "101"
+        },
+        "A5": {
+          "entrada": "103"
+        },
+        "A6": {
+          "entrada": "101"
+        },
+        "A7": {
+          "entrada": "102"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "2",
+        "dica": "O intervalo vai até a própria linha 6, então a ocorrência de A6 também é contada."
+      },
+      {
+        "texto": "1",
+        "dica": "O CONT.SE não diz só se a nota é nova: ele conta quantas vezes ela apareceu até ali."
+      },
+      {
+        "texto": "5",
+        "dica": "5 é o número de linhas até ali. O CONT.SE conta só as que são iguais a A6."
+      },
+      {
+        "texto": "6",
+        "dica": "O intervalo cresce linha a linha e, em B6, ainda não chegou a A7."
+      }
+    ],
+    "correta": 0,
+    "banca": "FGV",
+    "tema": "CONT.SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE($A$2:A6;A6)",
+        "esperado": 3
+      }
+    ]
+  },
+  {
+    "id": "122c1e0d-1a02-50b3-aede-71eaf5b67842",
+    "slug": "dados-caso-base-processos",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: a pauta de audiências",
+    "enunciado": [
+      "A base de processos do escritório precisa virar a **pauta da semana**: deixe aparecendo só os processos na fase **Audiência**, do **prazo mais próximo** para o mais distante, e em **F13** mostre **quantos** são."
+    ],
+    "dicas": [
+      "Filtro na Fase, classificação no Prazo e uma contagem que acompanha o filtro.",
+      "Para contar, escolha uma coluna sem vazios e o número do SUBTOTAL que conta o que não está vazio."
+    ],
+    "explicacao": [
+      "Na seta de **Fase**, só **Audiência**; classifique por **Prazo** (Do Menor para o Maior); em F13, `=SUBTOTAL(3;A2:A11)` → 5.",
+      "A pauta começa pelo Proc. 104, em 01/12/2026. Quando alguém lançar uma audiência nova na base, basta reaplicar o filtro e a contagem acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-caso-base-processos",
+    "etapa": 1,
+    "papel": "principal",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fase",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 101"
+        },
+        "B2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "C2": {
+          "entrada": "Cível"
+        },
+        "D2": {
+          "entrada": "Audiência"
+        },
+        "E2": {
+          "entrada": "03/12/2026"
+        },
+        "F2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Proc. 102"
+        },
+        "B3": {
+          "entrada": "Maria Oliveira"
+        },
+        "C3": {
+          "entrada": "Trabalhista"
+        },
+        "D3": {
+          "entrada": "Recurso"
+        },
+        "E3": {
+          "entrada": "10/12/2026"
+        },
+        "F3": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Proc. 103"
+        },
+        "B4": {
+          "entrada": "Transportes Rápido"
+        },
+        "C4": {
+          "entrada": "Tributário"
+        },
+        "D4": {
+          "entrada": "Petição inicial"
+        },
+        "E4": {
+          "entrada": "15/12/2026"
+        },
+        "F4": {
+          "entrada": "310000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Proc. 104"
+        },
+        "B5": {
+          "entrada": "José Santos"
+        },
+        "C5": {
+          "entrada": "Trabalhista"
+        },
+        "D5": {
+          "entrada": "Audiência"
+        },
+        "E5": {
+          "entrada": "01/12/2026"
+        },
+        "F5": {
+          "entrada": "27500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Proc. 105"
+        },
+        "B6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Cível"
+        },
+        "D6": {
+          "entrada": "Sentença"
+        },
+        "E6": {
+          "entrada": "18/12/2026"
+        },
+        "F6": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Proc. 106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "C7": {
+          "entrada": "Família"
+        },
+        "D7": {
+          "entrada": "Audiência"
+        },
+        "E7": {
+          "entrada": "07/12/2026"
+        },
+        "F7": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Proc. 107"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Recurso"
+        },
+        "E8": {
+          "entrada": "11/12/2026"
+        },
+        "F8": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Proc. 108"
+        },
+        "B9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "C9": {
+          "entrada": "Trabalhista"
+        },
+        "D9": {
+          "entrada": "Audiência"
+        },
+        "E9": {
+          "entrada": "04/12/2026"
+        },
+        "F9": {
+          "entrada": "38000",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Proc. 109"
+        },
+        "B10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C10": {
+          "entrada": "Tributário"
+        },
+        "D10": {
+          "entrada": "Recurso"
+        },
+        "E10": {
+          "entrada": "21/12/2026"
+        },
+        "F10": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Proc. 110"
+        },
+        "B11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "C11": {
+          "entrada": "Cível"
+        },
+        "D11": {
+          "entrada": "Audiência"
+        },
+        "E11": {
+          "entrada": "09/12/2026"
+        },
+        "F11": {
+          "entrada": "230000",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Audiências",
+          "negrito": true
+        },
+        "F13": {
+          "entrada": "",
+          "formato": "geral",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 160,
+        "C": 96,
+        "D": 110,
+        "E": 96,
+        "F": 120,
+        "G": 96,
+        "H": 40
+      }
+    },
+    "intro": "A base de processos de um escritório junta tudo: áreas, fases, prazos, valores, e os erros de quem lançou. Este caso usa o módulo inteiro para transformá-la em pauta, relatório e conferência.",
+    "errosComuns": [
+      {
+        "padrao": "^=CONT\\.VALORES\\(|^=CONT\\.SE\\(",
+        "dica": "Essa contagem usa a tabela inteira, inclusive as linhas escondidas pelo filtro."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          5,
+          7,
+          9,
+          11
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Proc. 104"
+          ],
+          [
+            "Proc. 101"
+          ],
+          [
+            "Proc. 108"
+          ],
+          [
+            "Proc. 106"
+          ],
+          [
+            "Proc. 110"
+          ],
+          [
+            "Proc. 102"
+          ],
+          [
+            "Proc. 107"
+          ],
+          [
+            "Proc. 103"
+          ],
+          [
+            "Proc. 105"
+          ],
+          [
+            "Proc. 109"
+          ]
+        ],
+        "mensagem": "Os processos ainda não estão do prazo mais próximo para o mais distante."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F13",
+        "esperado": 5,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:F11",
+            "chaves": [
+              {
+                "coluna": "E",
+                "ordem": "asc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "filtro": {
+          "intervalo": "A1:F11",
+          "criterios": {
+            "D": {
+              "valores": [
+                "Audiência"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "F13": "=SUBTOTAL(3;A2:A11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "7fc3170a-9d6a-5549-b633-a3f55831b052",
+    "slug": "dados-caso-base-processos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O relatório para o sócio",
+    "enunciado": [
+      "Organize a base por **Área** (A a Z) e, dentro de cada área, do **maior** para o **menor valor da causa**. Depois, deixe aparecendo só a área **Cível** e, em **F13**, o **total** do valor da causa que aparece."
+    ],
+    "dicas": [
+      "Dois critérios de ordem: a janela Classificar, com um nível para cada.",
+      "O total precisa ignorar as áreas escondidas pelo filtro."
+    ],
+    "explicacao": [
+      "**Classificar…** → Área (A a Z) e Valor da causa (Do Maior para o Menor); na seta de **Área**. só **Cível**; em F13. `=SUBTOTAL(9;F2:F11)` → R$ 499.000,00.",
+      "Troque o filtro para Trabalhista e o sócio vê a carteira daquela área, já em ordem de valor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-caso-base-processos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fase",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 101"
+        },
+        "B2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "C2": {
+          "entrada": "Cível"
+        },
+        "D2": {
+          "entrada": "Audiência"
+        },
+        "E2": {
+          "entrada": "03/12/2026"
+        },
+        "F2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Proc. 102"
+        },
+        "B3": {
+          "entrada": "Maria Oliveira"
+        },
+        "C3": {
+          "entrada": "Trabalhista"
+        },
+        "D3": {
+          "entrada": "Recurso"
+        },
+        "E3": {
+          "entrada": "10/12/2026"
+        },
+        "F3": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Proc. 103"
+        },
+        "B4": {
+          "entrada": "Transportes Rápido"
+        },
+        "C4": {
+          "entrada": "Tributário"
+        },
+        "D4": {
+          "entrada": "Petição inicial"
+        },
+        "E4": {
+          "entrada": "15/12/2026"
+        },
+        "F4": {
+          "entrada": "310000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Proc. 104"
+        },
+        "B5": {
+          "entrada": "José Santos"
+        },
+        "C5": {
+          "entrada": "Trabalhista"
+        },
+        "D5": {
+          "entrada": "Audiência"
+        },
+        "E5": {
+          "entrada": "01/12/2026"
+        },
+        "F5": {
+          "entrada": "27500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Proc. 105"
+        },
+        "B6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Cível"
+        },
+        "D6": {
+          "entrada": "Sentença"
+        },
+        "E6": {
+          "entrada": "18/12/2026"
+        },
+        "F6": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Proc. 106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "C7": {
+          "entrada": "Família"
+        },
+        "D7": {
+          "entrada": "Audiência"
+        },
+        "E7": {
+          "entrada": "07/12/2026"
+        },
+        "F7": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Proc. 107"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Recurso"
+        },
+        "E8": {
+          "entrada": "11/12/2026"
+        },
+        "F8": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Proc. 108"
+        },
+        "B9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "C9": {
+          "entrada": "Trabalhista"
+        },
+        "D9": {
+          "entrada": "Audiência"
+        },
+        "E9": {
+          "entrada": "04/12/2026"
+        },
+        "F9": {
+          "entrada": "38000",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Proc. 109"
+        },
+        "B10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C10": {
+          "entrada": "Tributário"
+        },
+        "D10": {
+          "entrada": "Recurso"
+        },
+        "E10": {
+          "entrada": "21/12/2026"
+        },
+        "F10": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Proc. 110"
+        },
+        "B11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "C11": {
+          "entrada": "Cível"
+        },
+        "D11": {
+          "entrada": "Audiência"
+        },
+        "E11": {
+          "entrada": "09/12/2026"
+        },
+        "F11": {
+          "entrada": "230000",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Total da causa",
+          "negrito": true
+        },
+        "F13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 160,
+        "C": 96,
+        "D": 110,
+        "E": 96,
+        "F": 120,
+        "G": 96,
+        "H": 40
+      }
+    },
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(",
+        "dica": "SOMA soma também as áreas escondidas pelo filtro."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          6,
+          8,
+          11
+        ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C11",
+        "esperado": [
+          [
+            "Cível"
+          ],
+          [
+            "Cível"
+          ],
+          [
+            "Cível"
+          ],
+          [
+            "Cível"
+          ],
+          [
+            "Família"
+          ],
+          [
+            "Trabalhista"
+          ],
+          [
+            "Trabalhista"
+          ],
+          [
+            "Trabalhista"
+          ],
+          [
+            "Tributário"
+          ],
+          [
+            "Tributário"
+          ]
+        ],
+        "mensagem": "As áreas ainda não estão em ordem de A a Z."
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "A2:A11",
+        "esperado": [
+          [
+            "Proc. 110"
+          ],
+          [
+            "Proc. 107"
+          ],
+          [
+            "Proc. 101"
+          ],
+          [
+            "Proc. 105"
+          ],
+          [
+            "Proc. 106"
+          ],
+          [
+            "Proc. 102"
+          ],
+          [
+            "Proc. 108"
+          ],
+          [
+            "Proc. 104"
+          ],
+          [
+            "Proc. 103"
+          ],
+          [
+            "Proc. 109"
+          ]
+        ],
+        "mensagem": "As áreas estão em ordem, mas dentro de cada uma o valor da causa não vai do maior para o menor."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F13",
+        "esperado": 499000,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:F11",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "asc"
+              },
+              {
+                "coluna": "F",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
+        "filtro": {
+          "intervalo": "A1:F11",
+          "criterios": {
+            "C": {
+              "valores": [
+                "Cível"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "F13": "=SUBTOTAL(9;F2:F11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "20f65f01-df18-51d9-b838-2a01d31e2390",
+    "slug": "dados-caso-base-processos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O processo lançado duas vezes",
+    "enunciado": [
+      "Desconfiam que algum processo foi lançado duas vezes. Em **G2:G12** (Ocorrência), mostre quantas vezes o processo da linha já apareceu até ali e depois filtre para mostrar só a **cópia**."
+    ],
+    "dicas": [
+      "É a mesma técnica da coluna de ocorrência: CONT.SE com um intervalo que começa fixo na primeira linha e cresce até a linha atual.",
+      "Depois de preencher, ligue o filtro: a coluna Ocorrência entra nele."
+    ],
+    "explicacao": [
+      "Em G2, `=CONT.SE($A$2:A2;A2)`, copiada até G12; na seta de **Ocorrência**, desmarque o **1**: sobra a linha 9, a segunda vez do Proc. 104.",
+      "Sem essa conferência, o valor da causa do Proc. 104 entraria duas vezes em qualquer total da carteira."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-caso-base-processos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fase",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 101"
+        },
+        "B2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "C2": {
+          "entrada": "Cível"
+        },
+        "D2": {
+          "entrada": "Audiência"
+        },
+        "E2": {
+          "entrada": "03/12/2026"
+        },
+        "F2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Proc. 102"
+        },
+        "B3": {
+          "entrada": "Maria Oliveira"
+        },
+        "C3": {
+          "entrada": "Trabalhista"
+        },
+        "D3": {
+          "entrada": "Recurso"
+        },
+        "E3": {
+          "entrada": "10/12/2026"
+        },
+        "F3": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Proc. 103"
+        },
+        "B4": {
+          "entrada": "Transportes Rápido"
+        },
+        "C4": {
+          "entrada": "Tributário"
+        },
+        "D4": {
+          "entrada": "Petição inicial"
+        },
+        "E4": {
+          "entrada": "15/12/2026"
+        },
+        "F4": {
+          "entrada": "310000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Proc. 104"
+        },
+        "B5": {
+          "entrada": "José Santos"
+        },
+        "C5": {
+          "entrada": "Trabalhista"
+        },
+        "D5": {
+          "entrada": "Audiência"
+        },
+        "E5": {
+          "entrada": "01/12/2026"
+        },
+        "F5": {
+          "entrada": "27500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Proc. 105"
+        },
+        "B6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Cível"
+        },
+        "D6": {
+          "entrada": "Sentença"
+        },
+        "E6": {
+          "entrada": "18/12/2026"
+        },
+        "F6": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Proc. 106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "C7": {
+          "entrada": "Família"
+        },
+        "D7": {
+          "entrada": "Audiência"
+        },
+        "E7": {
+          "entrada": "07/12/2026"
+        },
+        "F7": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Proc. 107"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Recurso"
+        },
+        "E8": {
+          "entrada": "11/12/2026"
+        },
+        "F8": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Proc. 104"
+        },
+        "B9": {
+          "entrada": "José Santos"
+        },
+        "C9": {
+          "entrada": "Trabalhista"
+        },
+        "D9": {
+          "entrada": "Audiência"
+        },
+        "E9": {
+          "entrada": "01/12/2026"
+        },
+        "F9": {
+          "entrada": "27500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Proc. 108"
+        },
+        "B10": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "C10": {
+          "entrada": "Trabalhista"
+        },
+        "D10": {
+          "entrada": "Audiência"
+        },
+        "E10": {
+          "entrada": "04/12/2026"
+        },
+        "F10": {
+          "entrada": "38000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Proc. 109"
+        },
+        "B11": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C11": {
+          "entrada": "Tributário"
+        },
+        "D11": {
+          "entrada": "Recurso"
+        },
+        "E11": {
+          "entrada": "21/12/2026"
+        },
+        "F11": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Proc. 110"
+        },
+        "B12": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "C12": {
+          "entrada": "Cível"
+        },
+        "D12": {
+          "entrada": "Audiência"
+        },
+        "E12": {
+          "entrada": "09/12/2026"
+        },
+        "F12": {
+          "entrada": "230000",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Ocorrência",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "G12": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 160,
+        "C": 96,
+        "D": 110,
+        "E": 96,
+        "F": 120,
+        "G": 96,
+        "H": 40
+      }
+    },
+    "errosComuns": [
+      {
+        "padrao": "CONT\\.SE\\(\\$A\\$2:\\$A\\$12;",
+        "dica": "Com o intervalo inteiro travado, a primeira vez do processo também ganha 2. O intervalo tem que terminar na linha da fórmula."
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "G2:G12",
+        "esperado": [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ]
+        ],
+        "mensagem": "A coluna Ocorrência ainda não está certa: a primeira vez de cada processo fica com 1 e a segunda com 2."
+      },
+      {
+        "tipo": "celula",
+        "celula": "G9",
+        "esperado": 2,
+        "funcao": "COUNTIF",
+        "mensagem": "G9 precisa de uma fórmula com CONT.SE que conte o processo da linha desde a primeira linha até ela."
+      },
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          9
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "G2": "=CONT.SE($A$2:A2;A2)",
+        "G3": "=CONT.SE($A$2:A3;A3)",
+        "G4": "=CONT.SE($A$2:A4;A4)",
+        "G5": "=CONT.SE($A$2:A5;A5)",
+        "G6": "=CONT.SE($A$2:A6;A6)",
+        "G7": "=CONT.SE($A$2:A7;A7)",
+        "G8": "=CONT.SE($A$2:A8;A8)",
+        "G9": "=CONT.SE($A$2:A9;A9)",
+        "G10": "=CONT.SE($A$2:A10;A10)",
+        "G11": "=CONT.SE($A$2:A11;A11)",
+        "G12": "=CONT.SE($A$2:A12;A12)"
+      },
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:G12",
+          "criterios": {
+            "G": {
+              "valores": [
+                "2"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "168c0b72-cf21-5581-b5e6-6bad8aa3ad57",
+    "slug": "dados-caso-base-processos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a audiência sem acento",
+    "enunciado": [
+      "Monte de novo a pauta: deixe aparecendo só os processos na fase **Audiência** e, em **F13**, mostre quantos são. Cuidado: na base, alguém digitou uma das audiências **de outro jeito**."
+    ],
+    "dicas": [
+      "Abra a seta de Fase e leia a lista inteira de itens antes de marcar.",
+      "O filtro trata cada jeito de escrever como um item separado. Quem digitou sem acento criou um item novo."
+    ],
+    "explicacao": [
+      "Na seta de **Fase**, marque **Audiência** e também **audiencia** (o Proc. 106, digitado sem acento); em F13, `=SUBTOTAL(3;A2:A11)` → 5.",
+      "Base suja é a regra, não a exceção. Marcando só *Audiência*, a pauta perde a audiência da Ana Beatriz Lima. Depois, vale corrigir o texto na base para o erro não voltar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-caso-base-processos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 14,
+      "colunas": 7,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Fase",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Prazo",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Proc. 101"
+        },
+        "B2": {
+          "entrada": "Construtora Horizonte"
+        },
+        "C2": {
+          "entrada": "Cível"
+        },
+        "D2": {
+          "entrada": "Audiência"
+        },
+        "E2": {
+          "entrada": "03/12/2026"
+        },
+        "F2": {
+          "entrada": "85000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Proc. 102"
+        },
+        "B3": {
+          "entrada": "Maria Oliveira"
+        },
+        "C3": {
+          "entrada": "Trabalhista"
+        },
+        "D3": {
+          "entrada": "Recurso"
+        },
+        "E3": {
+          "entrada": "10/12/2026"
+        },
+        "F3": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Proc. 103"
+        },
+        "B4": {
+          "entrada": "Transportes Rápido"
+        },
+        "C4": {
+          "entrada": "Tributário"
+        },
+        "D4": {
+          "entrada": "Petição inicial"
+        },
+        "E4": {
+          "entrada": "15/12/2026"
+        },
+        "F4": {
+          "entrada": "310000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Proc. 104"
+        },
+        "B5": {
+          "entrada": "José Santos"
+        },
+        "C5": {
+          "entrada": "Trabalhista"
+        },
+        "D5": {
+          "entrada": "Audiência"
+        },
+        "E5": {
+          "entrada": "01/12/2026"
+        },
+        "F5": {
+          "entrada": "27500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Proc. 105"
+        },
+        "B6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C6": {
+          "entrada": "Cível"
+        },
+        "D6": {
+          "entrada": "Sentença"
+        },
+        "E6": {
+          "entrada": "18/12/2026"
+        },
+        "F6": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Proc. 106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Lima"
+        },
+        "C7": {
+          "entrada": "Família"
+        },
+        "D7": {
+          "entrada": "audiencia"
+        },
+        "E7": {
+          "entrada": "07/12/2026"
+        },
+        "F7": {
+          "entrada": "15000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Proc. 107"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Recurso"
+        },
+        "E8": {
+          "entrada": "11/12/2026"
+        },
+        "F8": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Proc. 108"
+        },
+        "B9": {
+          "entrada": "Pedro Henrique Costa"
+        },
+        "C9": {
+          "entrada": "Trabalhista"
+        },
+        "D9": {
+          "entrada": "Audiência"
+        },
+        "E9": {
+          "entrada": "04/12/2026"
+        },
+        "F9": {
+          "entrada": "38000",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Proc. 109"
+        },
+        "B10": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C10": {
+          "entrada": "Tributário"
+        },
+        "D10": {
+          "entrada": "Recurso"
+        },
+        "E10": {
+          "entrada": "21/12/2026"
+        },
+        "F10": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Proc. 110"
+        },
+        "B11": {
+          "entrada": "Hotel Mar Azul"
+        },
+        "C11": {
+          "entrada": "Cível"
+        },
+        "D11": {
+          "entrada": "Audiência"
+        },
+        "E11": {
+          "entrada": "09/12/2026"
+        },
+        "F11": {
+          "entrada": "230000",
+          "formato": "moeda"
+        },
+        "E13": {
+          "entrada": "Audiências",
+          "negrito": true
+        },
+        "F13": {
+          "entrada": "",
+          "formato": "geral",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 84,
+        "B": 160,
+        "C": 96,
+        "D": 110,
+        "E": 96,
+        "F": 120,
+        "G": 96,
+        "H": 40
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "linhasVisiveis",
+        "esperado": [
+          2,
+          5,
+          7,
+          9,
+          11
+        ],
+        "mensagem": "Falta audiência na pauta: role a lista da seta de Fase e veja se alguma não foi digitada de outro jeito."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F13",
+        "esperado": 5,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "filtro": {
+          "intervalo": "A1:F11",
+          "criterios": {
+            "D": {
+              "valores": [
+                "Audiência",
+                "audiencia"
+              ]
+            }
+          }
+        }
+      },
+      "celulas": {
+        "F13": "=SUBTOTAL(3;A2:A11)"
+      }
+    },
+    "ferramentas": {
+      "dados": true
+    }
+  },
+  {
+    "id": "42701338-3b07-5089-943d-c331ddb0f105",
+    "slug": "dados-caso-base-processos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dados",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a fase digitada sem acento",
+    "enunciado": [
+      "Numa base de processos do Excel 365 em português, a coluna Fase tem várias células com \"Audiência\" e uma com \"audiencia\", digitada sem acento.",
+      "Julgue o item: ao abrir a seta do AutoFiltro dessa coluna e marcar apenas o item \"Audiência\", a linha com \"audiencia\" também fica visível, pois o filtro não diferencia acentos."
+    ],
+    "dicas": [
+      "Na lista de caixas da seta do filtro, cada jeito diferente de escrever vira um item?"
+    ],
+    "explicacao": [
+      "**Errado.** \"Audiência\" e \"audiencia\" são textos diferentes e aparecem como itens separados na lista do filtro. Marcando só \"Audiência\", a linha digitada sem acento fica oculta, e é por isso que é preciso ler a lista toda (ou corrigir a base) antes de montar o relatório."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dados-caso-base-processos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "Com o acento diferente, são dois itens na lista do filtro: só o marcado fica visível."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Filtro"
+  },
+  {
     "id": "38709aa3-a9e6-5a4f-9778-4e544ea48d0f",
     "slug": "teste-dados-1",
     "trilha": "excel-ptbr",
@@ -4654,17 +11033,17 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Pagas do Sul e do Leste",
+    "versao": 2,
+    "titulo": "A maior do Sul",
     "enunciado": [
-      "Deixe aparecendo só as vendas **pagas** das regiões **Sul** e **Leste**."
+      "A tabela está filtrada no **Sul**. Em **C12**, mostre a **maior** venda que está aparecendo."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dados-filtrar-regiao",
+    "revisar": "dados-subtotal-outras-contas",
     "teste": true,
     "type": "ferramenta",
     "grade": {
@@ -4811,38 +11190,41 @@
         },
         "D10": {
           "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Maior visível",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
         }
-      }
-    },
-    "verificacoes": [
-      {
-        "tipo": "linhasVisiveis",
-        "esperado": [
-          2,
-          4,
-          5,
-          9
-        ]
-      }
-    ],
-    "solucao": {
+      },
       "recursos": {
         "filtro": {
           "intervalo": "A1:D10",
           "criterios": {
             "B": {
               "valores": [
-                "Leste",
                 "Sul"
-              ]
-            },
-            "D": {
-              "valores": [
-                "Pago"
               ]
             }
           }
         }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 450,
+        "funcao": "SUBTOTAL"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C12": "=SUBTOTAL(4;C2:C10)"
       }
     },
     "ferramentas": {
@@ -5328,37 +11710,37 @@
     "ordem": 205,
     "nivel": 2,
     "plano": "pro",
-    "versao": 2,
-    "titulo": "Pesquisar no filtro",
+    "versao": 3,
+    "titulo": "Pendentes, maior primeiro",
     "enunciado": [
-      "Mostre só as empresas **Ltda** com situação **Encerrado**."
+      "Deixe aparecendo só as vendas **Pendentes**, organizadas da **maior** para a **menor**, e em **C12** o **total** do que aparece."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dados-filtro-pesquisar",
+    "revisar": "dados-relatorio-contas",
     "teste": true,
     "type": "ferramenta",
     "grade": {
       "linhas": 13,
       "colunas": 6,
       "larguras": {
-        "A": 170,
-        "B": 150,
-        "C": 96,
+        "A": 84,
+        "B": 72,
+        "C": 84,
         "D": 84,
         "E": 24,
-        "F": 64
+        "F": 96
       },
       "celulas": {
         "A1": {
-          "entrada": "Cliente",
+          "entrada": "Vendedor",
           "negrito": true
         },
         "B1": {
-          "entrada": "Cidade",
+          "entrada": "Região",
           "negrito": true
         },
         "C1": {
@@ -5366,125 +11748,134 @@
           "negrito": true
         },
         "D1": {
-          "entrada": "Situação",
+          "entrada": "Status",
           "negrito": true
         },
         "A2": {
-          "entrada": "Alfa Engenharia Ltda"
+          "entrada": "Carla"
         },
         "B2": {
-          "entrada": "São Paulo"
+          "entrada": "Sul"
         },
         "C2": {
-          "entrada": "4800",
+          "entrada": "300",
           "formato": "moeda"
         },
         "D2": {
-          "entrada": "Ativo"
+          "entrada": "Pago"
         },
         "A3": {
-          "entrada": "Mariana Costa"
+          "entrada": "Ana"
         },
         "B3": {
-          "entrada": "Campinas"
+          "entrada": "Norte"
         },
         "C3": {
-          "entrada": "1200",
+          "entrada": "500",
           "formato": "moeda"
         },
         "D3": {
-          "entrada": "Ativo"
+          "entrada": "Pendente"
         },
         "A4": {
-          "entrada": "Beta Comércio Ltda"
+          "entrada": "Bruno"
         },
         "B4": {
-          "entrada": "São Paulo"
+          "entrada": "Sul"
         },
         "C4": {
-          "entrada": "3500",
+          "entrada": "200",
           "formato": "moeda"
         },
         "D4": {
-          "entrada": "Encerrado"
+          "entrada": "Pago"
         },
         "A5": {
-          "entrada": "Ana Ribeiro"
+          "entrada": "Daniela"
         },
         "B5": {
-          "entrada": "Santos"
+          "entrada": "Leste"
         },
         "C5": {
-          "entrada": "900",
+          "entrada": "700",
           "formato": "moeda"
         },
         "D5": {
-          "entrada": "Ativo"
+          "entrada": "Pago"
         },
         "A6": {
-          "entrada": "Gama Transportes Ltda"
+          "entrada": "Eduardo"
         },
         "B6": {
-          "entrada": "São José dos Campos"
+          "entrada": "Sul"
         },
         "C6": {
-          "entrada": "6100",
+          "entrada": "100",
           "formato": "moeda"
         },
         "D6": {
-          "entrada": "Ativo"
+          "entrada": "Pendente"
         },
         "A7": {
-          "entrada": "Luana Martins"
+          "entrada": "Fábio"
         },
         "B7": {
-          "entrada": "São Paulo"
+          "entrada": "Norte"
         },
         "C7": {
-          "entrada": "1500",
+          "entrada": "400",
           "formato": "moeda"
         },
         "D7": {
-          "entrada": "Encerrado"
+          "entrada": "Pago"
         },
         "A8": {
-          "entrada": "Delta Serviços ME"
+          "entrada": "Gabriela"
         },
         "B8": {
-          "entrada": "Campinas"
+          "entrada": "Leste"
         },
         "C8": {
-          "entrada": "2200",
+          "entrada": "650",
           "formato": "moeda"
         },
         "D8": {
-          "entrada": "Ativo"
+          "entrada": "Pendente"
         },
         "A9": {
-          "entrada": "Ana Paula Souza"
+          "entrada": "Hugo"
         },
         "B9": {
-          "entrada": "Santos"
+          "entrada": "Sul"
         },
         "C9": {
-          "entrada": "1100",
+          "entrada": "450",
           "formato": "moeda"
         },
         "D9": {
-          "entrada": "Ativo"
+          "entrada": "Pago"
         },
         "A10": {
-          "entrada": "Ômega Alimentos Ltda"
+          "entrada": "Íris"
         },
         "B10": {
-          "entrada": "Campinas"
+          "entrada": "Norte"
         },
         "C10": {
-          "entrada": "5300",
+          "entrada": "250",
           "formato": "moeda"
         },
         "D10": {
-          "entrada": "Encerrado"
+          "entrada": "Pago"
+        },
+        "B12": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
         }
       }
     },
@@ -5492,202 +11883,82 @@
       {
         "tipo": "linhasVisiveis",
         "esperado": [
-          4,
-          10
+          3,
+          6,
+          8
         ]
+      },
+      {
+        "tipo": "valores",
+        "intervalo": "C2:C10",
+        "esperado": [
+          [
+            700
+          ],
+          [
+            650
+          ],
+          [
+            500
+          ],
+          [
+            450
+          ],
+          [
+            400
+          ],
+          [
+            300
+          ],
+          [
+            250
+          ],
+          [
+            200
+          ],
+          [
+            100
+          ]
+        ]
+      },
+      {
+        "tipo": "celula",
+        "celula": "C12",
+        "esperado": 1250,
+        "funcao": "SUBTOTAL"
       }
     ],
     "solucao": {
       "recursos": {
+        "ordenacoes": [
+          {
+            "intervalo": "A1:D10",
+            "chaves": [
+              {
+                "coluna": "C",
+                "ordem": "desc"
+              }
+            ],
+            "cabecalho": true
+          }
+        ],
         "filtro": {
           "intervalo": "A1:D10",
           "criterios": {
-            "A": {
-              "valores": [
-                "Alfa Engenharia Ltda",
-                "Beta Comércio Ltda",
-                "Gama Transportes Ltda",
-                "Ômega Alimentos Ltda"
-              ]
-            },
             "D": {
               "valores": [
-                "Encerrado"
+                "Pendente"
               ]
             }
           }
         }
+      },
+      "celulas": {
+        "C12": "=SUBTOTAL(9;C2:C10)"
       }
     },
     "ferramentas": {
       "dados": true
     }
-  },
-  {
-    "id": "ffe580f1-e816-5ac6-bcf8-fc4f802ea246",
-    "slug": "agregar-ignorar-erro",
-    "type": "formula",
-    "trilha": "excel-ptbr",
-    "modulo": "dados",
-    "ordem": 101,
-    "nivel": 3,
-    "plano": "pro",
-    "versao": 1,
-    "titulo": "AGREGAR: o máximo, ignorando o erro",
-    "enunciado": [
-      "A Mochila não vendeu e a margem dela deu **#DIV/0!**. Em **D9**, mostre a **maior margem**, ignorando o erro."
-    ],
-    "alvos": [
-      {
-        "celula": "D9",
-        "esperado": 0.4,
-        "exigeFormula": true,
-        "solucaoReferencia": "=AGREGAR(4;6;D2:D7)",
-        "formato": "percentual",
-        "tolerancia": 1e-9
-      }
-    ],
-    "dicas": [
-      "Se houver um erro qualquer no intervalo, o MÁXIMO devolve o erro em vez do resultado.",
-      "AGREGAR faz as mesmas contas do SUBTOTAL e tem uma opção para pular os erros."
-    ],
-    "explicacao": [
-      "`=AGREGAR(4;6;D2:D7)` → 4 é MÁXIMO e 6 é \"ignorar erros\".",
-      "Outras combinações úteis: 9 (soma) e 14 (MAIOR, com o k no fim). A opção 7 ignora erros **e** linhas ocultas, tanto pelo filtro quanto à mão."
-    ],
-    "tentativasAteExplicacao": 3,
-    "grade": {
-      "linhas": 10,
-      "colunas": 5,
-      "larguras": {
-        "A": 110,
-        "B": 100,
-        "C": 100,
-        "D": 90
-      },
-      "celulas": {
-        "A1": {
-          "entrada": "Produto",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Receita",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Custo",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Margem",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Caderno"
-        },
-        "B2": {
-          "entrada": "1200",
-          "formato": "moeda"
-        },
-        "C2": {
-          "entrada": "780",
-          "formato": "moeda"
-        },
-        "D2": {
-          "entrada": "=(B2-C2)/B2",
-          "formato": "percentual"
-        },
-        "A3": {
-          "entrada": "Caneta"
-        },
-        "B3": {
-          "entrada": "450",
-          "formato": "moeda"
-        },
-        "C3": {
-          "entrada": "300",
-          "formato": "moeda"
-        },
-        "D3": {
-          "entrada": "=(B3-C3)/B3",
-          "formato": "percentual"
-        },
-        "A4": {
-          "entrada": "Mochila"
-        },
-        "B4": {
-          "entrada": "0",
-          "formato": "moeda"
-        },
-        "C4": {
-          "entrada": "0",
-          "formato": "moeda"
-        },
-        "D4": {
-          "entrada": "=(B4-C4)/B4",
-          "formato": "percentual"
-        },
-        "A5": {
-          "entrada": "Estojo"
-        },
-        "B5": {
-          "entrada": "600",
-          "formato": "moeda"
-        },
-        "C5": {
-          "entrada": "420",
-          "formato": "moeda"
-        },
-        "D5": {
-          "entrada": "=(B5-C5)/B5",
-          "formato": "percentual"
-        },
-        "A6": {
-          "entrada": "Agenda"
-        },
-        "B6": {
-          "entrada": "980",
-          "formato": "moeda"
-        },
-        "C6": {
-          "entrada": "610",
-          "formato": "moeda"
-        },
-        "D6": {
-          "entrada": "=(B6-C6)/B6",
-          "formato": "percentual"
-        },
-        "A7": {
-          "entrada": "Régua"
-        },
-        "B7": {
-          "entrada": "150",
-          "formato": "moeda"
-        },
-        "C7": {
-          "entrada": "90",
-          "formato": "moeda"
-        },
-        "D7": {
-          "entrada": "=(B7-C7)/B7",
-          "formato": "percentual"
-        },
-        "A9": {
-          "entrada": "Maior margem",
-          "negrito": true
-        }
-      },
-      "variaveis": [
-        "B2",
-        "B3",
-        "B5",
-        "B6",
-        "B7"
-      ]
-    },
-    "extra": true,
-    "funcoesExigidas": [
-      "AGGREGATE"
-    ]
   }
 ]

@@ -101,6 +101,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   // arrays dinâmicos
   f("FILTRO", "matriz; incluir; [se_vazia]", "Linhas que atendem a uma condição."),
   f("CLASSIFICAR", "matriz; [índice_classificação]; [ordem_classificação]; [por_col]", "Ordena um intervalo."),
+  f("CLASSIFICARPOR", "matriz; por_matriz1; [ordem_classificação1]; [por_matriz2; ordem_classificação2]; ...", "Ordena um intervalo pelos valores de outra coluna (que pode nem aparecer no resultado), com quantos critérios precisar."),
   f("ÚNICO", "matriz; [por_col]; [exatamente_uma_vez]", "Lista sem repetições."),
   f("SEQUÊNCIA", "linhas; [colunas]; [início]; [etapa]", "Lista de números em sequência."),
   f("PEGAR", "matriz; linhas; [colunas]", "As primeiras linhas (ou, com número negativo, as últimas) de um intervalo."),
