@@ -6180,44 +6180,94 @@
     "ordem": 75,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: CONT.SE com curinga no começo",
     "enunciado": [
-      "Qual critério conta os códigos de processo que **começam** com TRAB?"
+      "Um analista de crédito de um banco mantém, em uma planilha do Excel 365 em português, a lista de empresas clientes no intervalo A2:A9, conforme a planilha.",
+      "O resultado da fórmula `=CONT.SE(A2:A9;\"*Ltda\")` é:"
     ],
     "dicas": [
-      "O * fica no lugar do pedaço que pode ser qualquer coisa."
+      "O asterisco fica no lugar do pedaço que pode ser qualquer coisa. Onde ele está, aqui?"
     ],
     "explicacao": [
-      "\"TRAB*\": TRAB no começo e qualquer coisa depois."
+      "Com o curinga no começo, o nome tem que terminar com Ltda, sem diferenciar maiúsculas: Alfa Ltda, Delta LTDA e Ômega Ltda. Total: 3."
     ],
     "opcoes": [
       {
-        "texto": "\"*TRAB\"",
-        "dica": "Com o * antes, o código precisa terminar com TRAB."
+        "texto": "2",
+        "dica": "O CONT.SE não diferencia maiúsculas de minúsculas: LTDA também termina com Ltda."
       },
       {
-        "texto": "\"TRAB\"",
-        "dica": "Sem curinga, só conta a célula escrita exatamente TRAB."
+        "texto": "3"
       },
       {
-        "texto": "\"TRAB*\""
+        "texto": "4",
+        "dica": "Épsilon Ltda. termina com um ponto, então não termina com Ltda."
       },
       {
-        "texto": "\"TRAB?\"",
-        "dica": "O ? vale um caractere só: TRAB seguido de exatamente uma letra ou número."
+        "texto": "5",
+        "dica": "Essa seria a contagem de quem contém Ltda em qualquer lugar. Com o curinga só no começo, o texto precisa terminar com Ltda."
+      },
+      {
+        "texto": "0",
+        "dica": "O asterisco é um curinga, não um caractere procurado: vale qualquer sequência de caracteres."
       }
     ],
-    "correta": 2,
+    "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "cont-se-curinga-ltda",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 170
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Empresa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa Ltda"
+        },
+        "A3": {
+          "entrada": "Beta S.A."
+        },
+        "A4": {
+          "entrada": "Ltda Gama Serviços"
+        },
+        "A5": {
+          "entrada": "Delta LTDA"
+        },
+        "A6": {
+          "entrada": "Épsilon Ltda."
+        },
+        "A7": {
+          "entrada": "Zeta ME"
+        },
+        "A8": {
+          "entrada": "Ômega Ltda"
+        },
+        "A9": {
+          "entrada": "Sigma Comércio"
+        }
+      }
+    },
+    "banca": "Cesgranrio",
+    "tema": "CONT.SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE(A2:A9;\"*Ltda\")",
+        "esperado": 3
+      },
+      {
+        "formula": "=CONT.SE(A2:A9;\"*Ltda*\")",
+        "esperado": 5
+      }
+    ]
   },
   {
     "id": "edac3e06-7c68-5c5f-b66a-23b9899d7630",
@@ -6965,44 +7015,125 @@
     "ordem": 85,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: SOMASES com o período sem as pontas",
     "enunciado": [
-      "Por que o critério se escreve **\">=\"&G1** e não **\">=G1\"**?"
+      "Em uma planilha do Microsoft Excel 365, em sua configuração padrão, as datas de emissão de notas fiscais estão em A2:A7 e os valores, em B2:B7. A célula G1 contém 01/03/2027 e a célula G2 contém 31/03/2027.",
+      "Assinale a alternativa que apresenta o resultado da fórmula `=SOMASES(B2:B7;A2:A7;\">\"&G1;A2:A7;\"<\"&G2)`."
     ],
     "dicas": [
-      "O que o Excel faz com tudo que está entre aspas?"
+      "Os sinais > e < não incluem a data igual. Quais notas ficam estritamente entre as duas datas?"
     ],
     "explicacao": [
-      "Entre aspas, G1 é só texto. O & junta o operador com o **valor** que está em G1 (a data)."
+      "Só entram as notas depois de 01/03 e antes de 31/03: 10/03 (300) e 15/03 (150), total 450. Para incluir as pontas, os critérios seriam com >= e <=."
     ],
     "opcoes": [
       {
-        "texto": "Tanto faz: as duas formas dão o mesmo resultado",
-        "dica": "Não dão: a pegadinha mostrou \">=G1\" somando zero."
+        "texto": "1150",
+        "dica": "Esse seria o total com >= e <=. Os sinais > e < deixam de fora as notas do primeiro e do último dia."
       },
       {
-        "texto": "Porque dentro das aspas G1 é só texto; o & junta o operador com o valor da célula"
+        "texto": "950",
+        "dica": "Esse total inclui a nota de 01/03. Com o sinal >, a data igual a G1 não entra."
       },
       {
-        "texto": "Porque o & transforma a data em texto, e critério só aceita texto",
-        "dica": "O critério aceita datas. O & serve para tirar a referência de dentro das aspas."
+        "texto": "450"
       },
       {
-        "texto": "Porque datas sempre precisam de &",
-        "dica": "Com a data escrita no critério (\">=01/11/2026\") não há &. O & entra quando o valor vem de uma célula."
+        "texto": "650",
+        "dica": "Esse total inclui a nota de 31/03. Com o sinal <, a data igual a G2 não entra."
+      },
+      {
+        "texto": "0",
+        "dica": "O & tira G1 e G2 de dentro das aspas, então o critério usa as datas das células."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "tentativasAteExplicacao": 3,
     "licao": "somases-periodo-datas",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 8,
+      "colunas": 7,
+      "larguras": {
+        "A": 100,
+        "G": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Início",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "01/03/2027"
+        },
+        "F2": {
+          "entrada": "Fim",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "31/03/2027"
+        },
+        "A2": {
+          "entrada": "01/03/2027"
+        },
+        "B2": {
+          "entrada": "500"
+        },
+        "A3": {
+          "entrada": "10/03/2027"
+        },
+        "B3": {
+          "entrada": "300"
+        },
+        "A4": {
+          "entrada": "31/03/2027"
+        },
+        "B4": {
+          "entrada": "200"
+        },
+        "A5": {
+          "entrada": "28/02/2027"
+        },
+        "B5": {
+          "entrada": "400"
+        },
+        "A6": {
+          "entrada": "15/03/2027"
+        },
+        "B6": {
+          "entrada": "150"
+        },
+        "A7": {
+          "entrada": "01/04/2027"
+        },
+        "B7": {
+          "entrada": "250"
+        }
+      }
+    },
+    "banca": "Vunesp",
+    "tema": "SOMASE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMASES(B2:B7;A2:A7;\">\"&G1;A2:A7;\"<\"&G2)",
+        "esperado": 450
+      },
+      {
+        "formula": "=SOMASES(B2:B7;A2:A7;\">=\"&G1;A2:A7;\"<=\"&G2)",
+        "esperado": 1150
+      }
+    ]
   },
   {
     "id": "d322bf62-f84d-5f8a-9808-59e4592efa8e",
@@ -7764,44 +7895,152 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: CONT.SES com vazio e diferente de",
     "enunciado": [
-      "Qual critério conta as células **preenchidas** (com qualquer coisa: texto, número ou data)?"
+      "Em uma planilha do Excel 365 em português, a coluna D registra a data de pagamento de cada nota fiscal (vazia quando a nota ainda não foi paga) e a coluna E, a situação da nota, conforme a planilha.",
+      "Assinale a opção que indica o resultado da fórmula `=CONT.SES(D2:D8;\"\";E2:E8;\"<>Cancelada\")`."
     ],
     "dicas": [
-      "Preenchida é o contrário de vazia."
+      "\"\" conta as células vazias. E uma célula vazia é igual ou diferente de Cancelada?"
     ],
     "explicacao": [
-      "\"<>\": diferente de vazio. Já \"\" (aspas vazias) conta as vazias."
+      "Sem pagamento: NF 102, 103, 104 e 106. Tirando a cancelada (103), sobram 3; a NF 104, sem situação, entra porque vazio também é diferente de Cancelada."
     ],
     "opcoes": [
       {
-        "texto": "\"\"",
-        "dica": "Aspas vazias contam as células vazias, o contrário."
+        "texto": "2",
+        "dica": "A NF 104 está sem situação, e uma célula vazia também é diferente de Cancelada."
       },
       {
-        "texto": "\"*\"",
-        "dica": "O * só casa com texto: números e datas ficariam de fora."
+        "texto": "3"
       },
       {
-        "texto": "\"<>\""
+        "texto": "4",
+        "dica": "Essa é a contagem só das notas sem pagamento. O segundo critério tira a NF 103, cancelada."
       },
       {
-        "texto": "\"<>0\"",
-        "dica": "\"<>0\" conta tudo que não é zero, inclusive as células vazias."
+        "texto": "5",
+        "dica": "Essa é a contagem de quem não está cancelado, com ou sem pagamento. O primeiro critério exige D vazia."
+      },
+      {
+        "texto": "0",
+        "dica": "As aspas vazias não procuram um texto: elas contam as células vazias."
       }
     ],
-    "correta": 2,
+    "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "criterios-diferente-vazio",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 9,
+      "colunas": 6,
+      "larguras": {
+        "D": 100,
+        "E": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF 101"
+        },
+        "C2": {
+          "entrada": "820"
+        },
+        "D2": {
+          "entrada": "05/03/2027"
+        },
+        "E2": {
+          "entrada": "Emitida"
+        },
+        "A3": {
+          "entrada": "NF 102"
+        },
+        "C3": {
+          "entrada": "450"
+        },
+        "E3": {
+          "entrada": "Emitida"
+        },
+        "A4": {
+          "entrada": "NF 103"
+        },
+        "C4": {
+          "entrada": "1300"
+        },
+        "E4": {
+          "entrada": "Cancelada"
+        },
+        "A5": {
+          "entrada": "NF 104"
+        },
+        "C5": {
+          "entrada": "610"
+        },
+        "A6": {
+          "entrada": "NF 105"
+        },
+        "C6": {
+          "entrada": "990"
+        },
+        "D6": {
+          "entrada": "10/03/2027"
+        },
+        "E6": {
+          "entrada": "Cancelada"
+        },
+        "A7": {
+          "entrada": "NF 106"
+        },
+        "C7": {
+          "entrada": "275"
+        },
+        "E7": {
+          "entrada": "Emitida"
+        },
+        "A8": {
+          "entrada": "NF 107"
+        },
+        "C8": {
+          "entrada": "530"
+        },
+        "D8": {
+          "entrada": "12/03/2027"
+        },
+        "E8": {
+          "entrada": "Emitida"
+        }
+      }
+    },
+    "banca": "FGV",
+    "tema": "CONT.SES",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SES(D2:D8;\"\";E2:E8;\"<>Cancelada\")",
+        "esperado": 3
+      },
+      {
+        "formula": "=CONT.SES(D2:D8;\"\")",
+        "esperado": 4
+      }
+    ]
   },
   {
     "id": "9a7ad5c1-ba28-5998-9dd9-80a01c377a0f",
@@ -9111,44 +9350,127 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: SOMASE copiado no relatório",
     "enunciado": [
-      "No relatório, por que **$B$2:$B$17** leva $ e **G5** não?"
+      "Em uma planilha do Excel 365 em português, os lançamentos de um setor estão em A1:D7: responsável na coluna B e valor na coluna D. O relatório lista os responsáveis em G2 (Rui) e G3 (Lia). Na célula H2 foi digitada a fórmula `=SOMASE($B$2:$B$7;G2;$D$2:$D$7)`, que foi copiada para H3.",
+      "Julgue o item a seguir: em H3, a fórmula passa a usar G3 e mantém os intervalos, retornando 1.700, o total de Lia."
     ],
     "dicas": [
-      "Pense no que muda e no que fica igual de uma linha do relatório para a outra."
+      "Na cópia, o que tem $ fica parado e o que não tem anda junto."
     ],
     "explicacao": [
-      "A base é a mesma para todos os responsáveis; o nome muda a cada linha. O $ trava o que não pode andar na cópia."
+      "Certo. Copiada uma linha abaixo, G2 vira G3 (Lia) e os intervalos travados com $ continuam os mesmos. Lia tem 900 + 800 = 1.700."
     ],
     "opcoes": [
       {
-        "texto": "Porque o $ faz a fórmula calcular mais rápido",
-        "dica": "O $ não muda a velocidade: ele muda o que acontece quando a fórmula é copiada."
+        "texto": "Certo"
       },
       {
-        "texto": "Porque a base é a mesma para todos e o nome do responsável muda a cada linha"
-      },
-      {
-        "texto": "Porque G5 é texto, e texto não aceita $",
-        "dica": "Qualquer referência aceita $. G5 fica sem $ para descer junto com a cópia."
-      },
-      {
-        "texto": "Tanto faz: com ou sem $ o resultado copiado é o mesmo",
-        "dica": "Não é: a pegadinha mostrou a fórmula copiada sem $ contando errado."
+        "texto": "Errado",
+        "dica": "Na cópia, só G2 anda (vira G3); os intervalos com $ ficam parados. Some os valores de Lia."
       }
     ],
-    "correta": 1,
+    "correta": 0,
     "tentativasAteExplicacao": 3,
     "licao": "caso-relatorio-por-responsavel",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 8,
+      "colunas": 9,
+      "celulas": {
+        "A1": {
+          "entrada": "Lançamento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "L-01"
+        },
+        "B2": {
+          "entrada": "Rui"
+        },
+        "D2": {
+          "entrada": "500"
+        },
+        "A3": {
+          "entrada": "L-02"
+        },
+        "B3": {
+          "entrada": "Lia"
+        },
+        "D3": {
+          "entrada": "900"
+        },
+        "A4": {
+          "entrada": "L-03"
+        },
+        "B4": {
+          "entrada": "Rui"
+        },
+        "D4": {
+          "entrada": "300"
+        },
+        "A5": {
+          "entrada": "L-04"
+        },
+        "B5": {
+          "entrada": "Lia"
+        },
+        "D5": {
+          "entrada": "800"
+        },
+        "A6": {
+          "entrada": "L-05"
+        },
+        "B6": {
+          "entrada": "Ana"
+        },
+        "D6": {
+          "entrada": "400"
+        },
+        "A7": {
+          "entrada": "L-06"
+        },
+        "B7": {
+          "entrada": "Rui"
+        },
+        "D7": {
+          "entrada": "250"
+        },
+        "G2": {
+          "entrada": "Rui"
+        },
+        "G3": {
+          "entrada": "Lia"
+        }
+      }
+    },
+    "banca": "Cebraspe",
+    "tema": "SOMASE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMASE($B$2:$B$7;G3;$D$2:$D$7)",
+        "esperado": 1700
+      }
+    ]
   },
   {
     "id": "e7b34ec1-9ce2-5794-abd6-952deefa99cf",
