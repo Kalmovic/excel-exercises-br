@@ -16,7 +16,12 @@ export type ReferenciaNaFormula = {
   cor: number;
   /** Aba da referência (`Vendas!B2`); ausente = a aba da própria fórmula. `inicio` aponta para depois do "!". */
   aba?: string;
+  /** Referência 3D (`Jan:Mar!B2`): `aba` é a primeira e `ateAba` a última do intervalo de abas. */
+  ateAba?: string;
 };
+
+/** Intervalo de abas logo antes de uma referência: Jan:Mar! ou 'Jan 1:Mar 1'! */
+const PREFIXO_3D = /(?:'((?:[^':]|'')+):((?:[^':]|'')+)'|([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*):([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*))!$/;
 
 /** Nome de aba logo antes de uma referência: Vendas! ou 'Base 2024'! */
 const PREFIXO_ABA = /(?:'((?:[^']|'')+)'|([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*))!$/;
@@ -54,13 +59,17 @@ export function referenciasDaFormula(formula: string): ReferenciaNaFormula[] {
     const [a, b = a] = m[0].replace(/\$/g, "").toUpperCase().split(":");
     const intervalo = normalizar(deEndereco(a), deEndereco(b));
     const comAba = formula[inicio - 1] === "!";
-    const p = comAba ? PREFIXO_ABA.exec(formula.slice(0, inicio)) : null;
+    const p3 = comAba ? PREFIXO_3D.exec(formula.slice(0, inicio)) : null;
+    const p = comAba && !p3 ? PREFIXO_ABA.exec(formula.slice(0, inicio)) : null;
     // Com "!" mas sem um nome válido (ex.: Vendas 2025!B2 sem as aspas): a referência continua sendo
     // de outra aba, com o texto que veio antes do "!", e não da aba da fórmula.
-    const aba = p ? (p[1]?.replace(/''/g, "'") ?? p[2]) : comAba ? semAspas(formula.slice(0, inicio - 1)) : undefined;
-    const chave = `${aba ?? ""}!${a}:${b}`;
+    const aba = p3
+      ? (p3[1]?.replace(/''/g, "'") ?? p3[3])
+      : p ? (p[1]?.replace(/''/g, "'") ?? p[2]) : comAba ? semAspas(formula.slice(0, inicio - 1)) : undefined;
+    const ateAba = p3 ? (p3[2]?.replace(/''/g, "'") ?? p3[4]) : undefined;
+    const chave = `${aba ?? ""}${ateAba ? `:${ateAba}` : ""}!${a}:${b}`;
     if (!cores.has(chave)) cores.set(chave, cores.size % CORES_REFERENCIA.length);
-    out.push({ inicio, fim, texto: m[0], intervalo, cor: cores.get(chave)!, ...(aba !== undefined ? { aba } : {}) });
+    out.push({ inicio, fim, texto: m[0], intervalo, cor: cores.get(chave)!, ...(aba !== undefined ? { aba } : {}), ...(ateAba !== undefined ? { ateAba } : {}) });
   }
   return out;
 }

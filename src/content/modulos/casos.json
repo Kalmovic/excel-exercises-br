@@ -3066,194 +3066,201 @@
   {
     "id": "d7bcc94d-4107-59d0-ab5d-83dcd0c24697",
     "slug": "teste-casos-1",
+    "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "casos",
     "ordem": 201,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Comissão de 15.000",
+    "versao": 2,
+    "titulo": "Preço com imposto por dentro",
     "enunciado": [
-      "Em **C2**, a comissão da venda de B2."
+      "Em **B5**, o preço da nota: o custo (B1) com a margem (B2), e o imposto (B3) cobrado sobre a própria nota."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
+    "revisar": "proposta-de-honorarios",
     "teste": true,
-    "revisar": "comissao-por-faixa-valor",
-    "type": "formula",
     "grade": {
       "linhas": 6,
-      "colunas": 7,
+      "colunas": 4,
+      "larguras": {
+        "A": 190,
+        "B": 110
+      },
       "celulas": {
         "A1": {
-          "entrada": "Vendedor",
+          "entrada": "Custo do serviço",
           "negrito": true
         },
         "B1": {
-          "entrada": "Venda",
-          "negrito": true
-        },
-        "C1": {
-          "entrada": "Comissão",
-          "negrito": true
+          "entrada": "1800",
+          "formato": "moeda"
         },
         "A2": {
-          "entrada": "Ana"
+          "entrada": "Margem",
+          "negrito": true
         },
         "B2": {
-          "entrada": "15000",
-          "formato": "moeda"
+          "entrada": "25%",
+          "formato": "percentual"
         },
-        "E1": {
-          "entrada": "A partir de",
+        "A3": {
+          "entrada": "Imposto sobre a nota",
           "negrito": true
         },
-        "F1": {
-          "entrada": "Taxa",
+        "B3": {
+          "entrada": "10%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Preço da nota",
           "negrito": true
-        },
-        "E2": {
-          "entrada": "0",
-          "formato": "moeda"
-        },
-        "F2": {
-          "entrada": "2%"
-        },
-        "E3": {
-          "entrada": "5000",
-          "formato": "moeda"
-        },
-        "F3": {
-          "entrada": "3%"
-        },
-        "E4": {
-          "entrada": "10000",
-          "formato": "moeda"
-        },
-        "F4": {
-          "entrada": "5%"
-        },
-        "E5": {
-          "entrada": "20000",
-          "formato": "moeda"
-        },
-        "F5": {
-          "entrada": "7%"
         }
       },
-      "larguras": {
-        "B": 100,
-        "C": 110,
-        "E": 110
-      },
       "variaveis": [
+        "B1",
         "B2"
       ]
     },
+    "inicio": {
+      "celulaAtiva": "B5"
+    },
     "alvos": [
       {
-        "celula": "C2",
-        "esperado": 750,
+        "celula": "B5",
+        "esperado": 2500,
         "exigeFormula": true,
-        "solucaoReferencia": "=B2*PROCV(B2;$E$2:$F$5;2;VERDADEIRO)",
-        "formato": "moeda"
+        "solucaoReferencia": "=B1*(1+B2)/(1-B3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
       }
     ]
   },
   {
     "id": "81d7e8d1-ab77-5721-8ee1-9f29ec003524",
     "slug": "teste-casos-2",
+    "type": "formula",
     "trilha": "excel-ptbr",
     "modulo": "casos",
     "ordem": 202,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Repor ou OK",
+    "versao": 2,
+    "titulo": "Reajuste por índice acumulado",
     "enunciado": [
-      "Em **E2**, o estoque atual. Em **G2**, \"Repor\" ou \"OK\"."
+      "Em **F2**, o valor de **F1** reajustado pelo índice **acumulado** dos 6 meses de B2:B7 (a coluna C está livre para contas)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
+    "revisar": "reajuste-ipca",
     "teste": true,
-    "revisar": "controle-de-estoque",
-    "type": "formula",
     "grade": {
-      "linhas": 3,
-      "colunas": 8,
+      "linhas": 9,
+      "colunas": 7,
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 110,
+        "D": 16,
+        "E": 130,
+        "F": 110
+      },
       "celulas": {
         "A1": {
-          "entrada": "Produto",
+          "entrada": "Mês",
           "negrito": true
         },
         "B1": {
-          "entrada": "Inicial",
+          "entrada": "Índice",
           "negrito": true
         },
         "C1": {
-          "entrada": "Entradas",
-          "negrito": true
-        },
-        "D1": {
-          "entrada": "Saídas",
-          "negrito": true
-        },
-        "E1": {
-          "entrada": "Atual",
-          "negrito": true
-        },
-        "F1": {
-          "entrada": "Mínimo",
-          "negrito": true
-        },
-        "G1": {
-          "entrada": "Situação",
+          "entrada": "Fator",
           "negrito": true
         },
         "A2": {
-          "entrada": "Lápis"
+          "entrada": "jun/26"
+        },
+        "A3": {
+          "entrada": "jul/26"
+        },
+        "A4": {
+          "entrada": "ago/26"
+        },
+        "A5": {
+          "entrada": "set/26"
+        },
+        "A6": {
+          "entrada": "out/26"
+        },
+        "A7": {
+          "entrada": "nov/26"
         },
         "B2": {
-          "entrada": "80"
+          "entrada": "0,42%",
+          "formato": "percentual"
         },
-        "C2": {
-          "entrada": "10"
+        "B3": {
+          "entrada": "0,31%",
+          "formato": "percentual"
         },
-        "D2": {
-          "entrada": "60"
+        "B4": {
+          "entrada": "0,55%",
+          "formato": "percentual"
         },
-        "F2": {
-          "entrada": "25"
+        "B5": {
+          "entrada": "0,18%",
+          "formato": "percentual"
+        },
+        "B6": {
+          "entrada": "0,26%",
+          "formato": "percentual"
+        },
+        "B7": {
+          "entrada": "0,39%",
+          "formato": "percentual"
+        },
+        "E1": {
+          "entrada": "Valor atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "2750",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "Valor reajustado",
+          "negrito": true
         }
-      },
-      "larguras": {
-        "G": 140
       },
       "variaveis": [
         "B2",
-        "C2",
-        "D2",
-        "F2"
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "F1"
       ]
+    },
+    "inicio": {
+      "celulaAtiva": "F2"
     },
     "alvos": [
       {
-        "celula": "E2",
-        "esperado": 30,
+        "celula": "F2",
+        "esperado": 2808.525672,
         "exigeFormula": true,
-        "solucaoReferencia": "=B2+C2-D2"
-      },
-      {
-        "celula": "G2",
-        "esperado": "OK",
-        "exigeFormula": true,
-        "solucaoReferencia": "=SE(E2<=F2;\"Repor\";\"OK\")"
+        "solucaoReferencia": "=F1*(1+B2)*(1+B3)*(1+B4)*(1+B5)*(1+B6)*(1+B7)",
+        "formato": "moeda",
+        "tolerancia": 0.005
       }
     ]
   },
@@ -3574,6 +3581,5542 @@
         "solucaoReferencia": "=B2+B2*K1+B2*K2/30*(D2-C2)",
         "formato": "moeda",
         "tolerancia": 0.01
+      }
+    ]
+  },
+  {
+    "id": "b164a4ea-04ed-59c3-a7b0-6ce596b19913",
+    "slug": "folha-horas-extras",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Folha de pagamento: horas extras e faltas",
+    "enunciado": [
+      "A jornada é de **220 horas** por mês (**K1**) e a hora extra tem adicional de **50%** (**K2**). Falta desconta um dia de salário (salário ÷ 30).",
+      "Na linha 2, calcule: em **E2**, o valor da hora (salário ÷ horas do mês); em **F2**, o valor das horas extras (horas × valor da hora × (1 + adicional)); em **G2**, o desconto das faltas; em **H2**, o salário bruto (salário + horas extras − faltas). Copie até a linha 5."
+    ],
+    "dicas": [
+      "As horas do mês e o adicional ficam em K1 e K2 e valem para todos: trave essas células antes de copiar.",
+      "Hora extra com 50% vale uma vez e meia a hora normal.",
+      "O desconto da falta é pelo dia: salário dividido por 30, vezes os dias."
+    ],
+    "explicacao": [
+      "E2 `=B2/$K$1`, F2 `=C2*E2*(1+$K$2)`, G2 `=B2/30*D2` e H2 `=B2+F2-G2`, copiadas até a linha 5.",
+      "A Ana ganha R$ 15,00 por hora; 10 horas extras a 50% dão R$ 225,00. O Bruno faltou 2 dias e perde R$ 161,33."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "folha-horas-extras",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Todo mês, o RH (ou o contador) transforma salário, horas extras e faltas no valor bruto de cada funcionário. Com a regra montada uma vez na planilha, a folha do mês seguinte é só trocar os números.",
+    "grade": {
+      "linhas": 7,
+      "colunas": 11,
+      "larguras": {
+        "A": 120,
+        "B": 96,
+        "C": 100,
+        "D": 96,
+        "E": 100,
+        "F": 110,
+        "G": 110,
+        "H": 110,
+        "I": 16,
+        "J": 110,
+        "K": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Faltas (dias)",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Horas extras (R$)",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Desconto faltas",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "Salário bruto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10"
+        },
+        "D2": {
+          "entrada": "0"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "2420",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "0"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "4180",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "6"
+        },
+        "D4": {
+          "entrada": "1"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "15"
+        },
+        "D5": {
+          "entrada": "0"
+        },
+        "J1": {
+          "entrada": "Horas/mês",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "220"
+        },
+        "J2": {
+          "entrada": "Adicional HE",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "50%",
+          "formato": "percentual"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "K2"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "E2"
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 15.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2/$K$1",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E3",
+        "esperado": 11.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3/$K$1",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E4",
+        "esperado": 19.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4/$K$1",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E5",
+        "esperado": 9.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5/$K$1",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F2",
+        "esperado": 225.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*E2*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F3",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*E3*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F4",
+        "esperado": 171.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*E4*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F5",
+        "esperado": 202.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*E5*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G2",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2/30*D2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G3",
+        "esperado": 161.333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3/30*D3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G4",
+        "esperado": 139.333333,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4/30*D4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G5",
+        "esperado": 0.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5/30*D5",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H2",
+        "esperado": 3525.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B2+F2-G2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H3",
+        "esperado": 2258.666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B3+F3-G3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H4",
+        "esperado": 4211.666667,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4+F4-G4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "H5",
+        "esperado": 2182.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5+F5-G5",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=C\\d\\*E\\d$|^=E\\d\\*C\\d$",
+        "dica": "Faltou o adicional: assim a hora extra vale o mesmo que a hora normal. Com 50%, ela vale uma vez e meia."
+      },
+      {
+        "padrao": "^=C\\d\\*E\\d\\*\\$?K\\$?2$",
+        "dica": "Assim você paga só os 50% do adicional. A hora extra é a hora normal mais o adicional."
+      },
+      {
+        "padrao": "^=B\\d/30$",
+        "dica": "Esse é o valor do dia. O valor da hora divide o salário pelas horas do mês (K1)."
+      },
+      {
+        "padrao": "^=B\\d/K1$|K2\\)$",
+        "dica": "Na cópia para baixo, a célula do parâmetro andou junto e saiu de K1/K2. Trave-a com $."
+      }
+    ],
+    "video": "Folha do mês: valor da hora = salário ÷ 220, hora extra com 50% e falta descontando um dia. Quatro fórmulas e a folha inteira sai sozinha."
+  },
+  {
+    "id": "6c5283a0-b333-553a-8157-9f8a1f6be289",
+    "slug": "folha-horas-extras-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vale-transporte com teto",
+    "enunciado": [
+      "A empresa pode descontar até **6% do salário** (**K1**) pelo vale-transporte, mas nunca mais do que o VT custa no mês (coluna C).",
+      "Em **D2**, calcule o desconto do VT de cada funcionário. Copie até a linha 5."
+    ],
+    "dicas": [
+      "São dois limites: 6% do salário e o custo do VT. O desconto é o menor dos dois."
+    ],
+    "explicacao": [
+      "D2 `=MÍNIMO(B2*$K$1;C2)`, copiada até a linha 5.",
+      "Para o Bruno, 6% do salário dá R$ 145,20, mas o VT dele custa R$ 132,00: a empresa desconta só os R$ 132,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "folha-horas-extras",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 7,
+      "colunas": 11,
+      "larguras": {
+        "A": 120,
+        "B": 96,
+        "C": 100,
+        "D": 96,
+        "E": 100,
+        "F": 110,
+        "G": 110,
+        "H": 110,
+        "I": 16,
+        "J": 110,
+        "K": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Custo do VT",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Desconto do VT",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "286",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "2420",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "132",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "4180",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "352",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "220",
+          "formato": "moeda"
+        },
+        "J1": {
+          "entrada": "Desconto VT",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "6%",
+          "formato": "percentual"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 198.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B2*$K$1;C2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D3",
+        "esperado": 132,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B3*$K$1;C3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D4",
+        "esperado": 250.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B4*$K$1;C4)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D5",
+        "esperado": 118.8,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(B5*$K$1;C5)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d\\*\\$?K\\$?1$",
+        "dica": "Para o Bruno, o desconto passou do que o VT custa: a empresa não pode descontar mais do que gasta. O desconto tem um teto."
+      },
+      {
+        "padrao": "MÁXIMO\\(",
+        "dica": "Com MÁXIMO, vale o maior dos dois limites. O desconto fica no menor."
+      },
+      {
+        "padrao": "6%|0,06",
+        "bloqueia": true,
+        "dica": "O percentual foi escrito na fórmula. Leia de K1, para a folha acompanhar se a regra mudar."
+      }
+    ]
+  },
+  {
+    "id": "aaff6922-9217-5727-ad63-f210dbf7cdae",
+    "slug": "folha-horas-extras-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Hora extra a 50% e a 100%",
+    "enunciado": [
+      "Hora extra em dia útil tem adicional de **50%** (**K2**); em domingo ou feriado, de **100%** (**K3**). O valor da hora já está na coluna E.",
+      "Em **F2**, calcule o total de horas extras do funcionário: as de dia útil (coluna C) e as de domingo e feriado (coluna D), cada uma com o seu adicional. Copie até a linha 5."
+    ],
+    "dicas": [
+      "Calcule cada tipo de hora extra separado e some os dois.",
+      "Com 100%, a hora vale o dobro da hora normal."
+    ],
+    "explicacao": [
+      "F2 `=C2*E2*(1+$K$2)+D2*E2*(1+$K$3)`, copiada até a linha 5.",
+      "A Ana fez 8 horas a 50% (R$ 180,00) e 4 horas num feriado a 100% (R$ 120,00): R$ 300,00 de horas extras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "folha-horas-extras",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 7,
+      "colunas": 11,
+      "larguras": {
+        "A": 120,
+        "B": 96,
+        "C": 100,
+        "D": 96,
+        "E": 100,
+        "F": 110,
+        "G": 110,
+        "H": 110,
+        "I": 16,
+        "J": 110,
+        "K": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "HE 50% (h)",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "HE 100% (h)",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Horas extras (R$)",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "8"
+        },
+        "D2": {
+          "entrada": "4"
+        },
+        "E2": {
+          "entrada": "=B2/$K$1",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "2420",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "0"
+        },
+        "D3": {
+          "entrada": "6"
+        },
+        "E3": {
+          "entrada": "=B3/$K$1",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "4180",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "5"
+        },
+        "D4": {
+          "entrada": "0"
+        },
+        "E4": {
+          "entrada": "=B4/$K$1",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "12"
+        },
+        "D5": {
+          "entrada": "8"
+        },
+        "E5": {
+          "entrada": "=B5/$K$1",
+          "formato": "moeda"
+        },
+        "J1": {
+          "entrada": "Horas/mês",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "220"
+        },
+        "J2": {
+          "entrada": "Adicional 50%",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "50%",
+          "formato": "percentual"
+        },
+        "J3": {
+          "entrada": "Adicional 100%",
+          "negrito": true
+        },
+        "K3": {
+          "entrada": "100%",
+          "formato": "percentual"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C2",
+        "C5",
+        "D2",
+        "D3"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "F2"
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 300.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*E2*(1+$K$2)+D2*E2*(1+$K$3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F3",
+        "esperado": 132.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*E3*(1+$K$2)+D3*E3*(1+$K$3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F4",
+        "esperado": 142.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*E4*(1+$K$2)+D4*E4*(1+$K$3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "F5",
+        "esperado": 306.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*E5*(1+$K$2)+D5*E5*(1+$K$3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=\\(C\\d\\+D\\d\\)\\*E\\d\\*\\(1\\+\\$?K\\$?2\\)$",
+        "dica": "Assim as horas de domingo e feriado também ficaram com 50%. Cada tipo de hora extra tem o seu adicional."
+      },
+      {
+        "padrao": "1,5|\\*2(?!\\d)",
+        "bloqueia": true,
+        "dica": "O adicional foi escrito na fórmula. Leia de K2 e K3, para a folha acompanhar se a convenção coletiva mudar."
+      }
+    ]
+  },
+  {
+    "id": "b2988465-39c3-5f4d-8802-f4fafb32c23a",
+    "slug": "folha-horas-extras-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 64,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: horas extras como horário",
+    "enunciado": [
+      "O ponto eletrônico exportou as horas extras como **horário** (10:30 quer dizer 10 horas e meia). O valor da hora já está na coluna D e o adicional de 50% em **K2**.",
+      "Em **E2**, calcule o valor das horas extras (horas × valor da hora × (1 + adicional)). Copie até a linha 5."
+    ],
+    "dicas": [
+      "Faça a conta da Ana de cabeça (10,5 horas a R$ 15,00 com 50%) e compare com o que a fórmula mostra.",
+      "Para o Excel, um horário é uma fração do dia: 12:00 é 0,5."
+    ],
+    "explicacao": [
+      "E2 `=C2*24*D2*(1+$K$2)`, copiada até a linha 5.",
+      "10:30 fica guardado como 0,4375 (a fração do dia). Vezes 24, vira 10,5 horas. Sem isso, as horas extras da Ana sairiam em centavos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "folha-horas-extras",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "linhas": 7,
+      "colunas": 11,
+      "larguras": {
+        "A": 120,
+        "B": 96,
+        "C": 100,
+        "D": 96,
+        "E": 100,
+        "F": 110,
+        "G": 110,
+        "H": 110,
+        "I": 16,
+        "J": 110,
+        "K": 64
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Horas extras (R$)",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "10:30"
+        },
+        "D2": {
+          "entrada": "=B2/220",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "2420",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "4:15"
+        },
+        "D3": {
+          "entrada": "=B3/220",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "4180",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "7:45"
+        },
+        "D4": {
+          "entrada": "=B4/220",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Alves"
+        },
+        "B5": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "12:20"
+        },
+        "D5": {
+          "entrada": "=B5/220",
+          "formato": "moeda"
+        },
+        "J1": {
+          "entrada": "Horas/mês",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "220"
+        },
+        "J2": {
+          "entrada": "Adicional HE",
+          "negrito": true
+        },
+        "K2": {
+          "entrada": "50%",
+          "formato": "percentual"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "K2"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "E2"
+    },
+    "alvos": [
+      {
+        "celula": "E2",
+        "esperado": 236.25,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*24*D2*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E3",
+        "esperado": 70.125,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*24*D3*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E4",
+        "esperado": 220.875,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*24*D4*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "E5",
+        "esperado": 166.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*24*D5*(1+$K$2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^(?!.*24).*C\\d",
+        "dica": "O valor saiu em centavos: as horas extras estão como horário, e o Excel guarda horário como fração do dia (10:30 é 0,4375 de um dia). Multiplique por 24 para virar horas."
+      }
+    ]
+  },
+  {
+    "id": "4ca15635-a624-5ebf-aa36-9b0402da26c2",
+    "slug": "folha-horas-extras-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: horas extras lançadas como horário",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, a célula B2 contém o horário 8:30, que representa as horas extras de um funcionário no mês, e C2 contém o valor da hora, 20.",
+      "Com adicional de 50%, a fórmula que calcula corretamente o valor das horas extras (R$ 255,00) é:"
+    ],
+    "dicas": [
+      "Lembre como o Excel guarda um horário: como fração de um dia."
+    ],
+    "explicacao": [
+      "8:30 é guardado como 0,354 (fração do dia). Vezes 24, vira 8,5 horas: `=B2*24*C2*1,5` = 8,5 × 20 × 1,5 = 255."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "folha-horas-extras",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "`=B2*C2*1,5`",
+        "dica": "Sem converter, 8:30 vale 0,354 e o resultado sai em torno de R$ 10,63."
+      },
+      {
+        "texto": "`=B2*24*C2*1,5`"
+      },
+      {
+        "texto": "`=B2*60*C2*1,5`",
+        "dica": "Multiplicar por 60 daria minutos de um dia, e não horas."
+      },
+      {
+        "texto": "`=B2/24*C2*1,5`",
+        "dica": "Dividir por 24 deixa o número ainda menor. O horário precisa ser multiplicado por 24."
+      },
+      {
+        "texto": "`=B2*24*C2*50%`",
+        "dica": "Assim sai só o adicional; a hora extra é a hora normal mais 50%."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 6,
+      "colunas": 5,
+      "larguras": {
+        "A": 100,
+        "B": 110,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "8:30"
+        },
+        "C2": {
+          "entrada": "20"
+        }
+      }
+    },
+    "banca": "FGV",
+    "tema": "Datas e horas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B2*24*C2*1,5",
+        "esperado": 255
+      }
+    ]
+  },
+  {
+    "id": "72b824d8-8b18-5a36-9eda-8f135e924f28",
+    "slug": "fluxo-de-caixa",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Fluxo de caixa com saldo acumulado",
+    "enunciado": [
+      "O caixa do escritório começou o ano com o saldo de **B1**.",
+      "Em **D4**, calcule o resultado de janeiro (entradas − saídas). Em **E4**, o saldo acumulado: o saldo inicial mais o resultado de janeiro. De **E5** em diante, o saldo é o do mês anterior mais o resultado do mês. Preencha até a linha 9 (junho)."
+    ],
+    "dicas": [
+      "O resultado do mês é uma subtração simples, copiada para baixo.",
+      "Só janeiro usa o saldo inicial; fevereiro parte do saldo de janeiro, e assim por diante."
+    ],
+    "explicacao": [
+      "D4 `=B4-C4` (copiada até D9), E4 `=B1+D4` e E5 `=E4+D5` (copiada até E9).",
+      "Janeiro, fevereiro e abril fecharam no vermelho, mas o saldo nunca ficou negativo: em abril, o caixa desceu a R$ 1.950,00. É isso que o saldo acumulado mostra e o resultado do mês esconde."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "fluxo-de-caixa",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O fluxo de caixa responde à pergunta que tira o sono de quem tem empresa: vai sobrar dinheiro no fim do mês? Entradas, saídas e o saldo que vai passando de um mês para o outro.",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "larguras": {
+        "A": 130,
+        "B": 110,
+        "C": 110,
+        "D": 130,
+        "E": 130,
+        "F": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Saldo inicial",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "C3": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Resultado do mês",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Saldo acumulado",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "38500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "41200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Fev"
+        },
+        "B5": {
+          "entrada": "35900",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "39800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mar"
+        },
+        "B6": {
+          "entrada": "42300",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "37650",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Abr"
+        },
+        "B7": {
+          "entrada": "36800",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "44900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Mai"
+        },
+        "B8": {
+          "entrada": "47200",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "38100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Jun"
+        },
+        "B9": {
+          "entrada": "39600",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "36300",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "D4"
+    },
+    "alvos": [
+      {
+        "celula": "D4",
+        "esperado": -2700,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4-C4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": -3900,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5-C5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 4650,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6-C6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": -8100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7-C7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D8",
+        "esperado": 9100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B8-C8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D9",
+        "esperado": 3300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B9-C9",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 9300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1+D4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 5400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E4+D5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 10050,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E5+D6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 1950,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E6+D7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E8",
+        "esperado": 11050,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E7+D8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E9",
+        "esperado": 14350,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E8+D9",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(\\$?D\\$?4:D\\d\\)$|^=D4$",
+        "dica": "O acumulado esqueceu o saldo inicial de B1: o caixa não começou o ano do zero."
+      },
+      {
+        "padrao": "^=E\\d\\+B\\d$",
+        "dica": "Assim só as entradas entraram no saldo. O saldo novo é o anterior mais o resultado do mês (entradas − saídas)."
+      },
+      {
+        "padrao": "^=B\\d\\+D\\d$",
+        "dica": "Na cópia, o saldo inicial andou e saiu de B1. A partir de fevereiro, o ponto de partida é o saldo do mês anterior."
+      },
+      {
+        "padrao": "^=C\\d-B\\d$",
+        "dica": "Sinal trocado: o resultado é o que entrou menos o que saiu."
+      }
+    ],
+    "video": "Fluxo de caixa: resultado do mês e saldo acumulado (saldo anterior + resultado). O mês que fecha no vermelho nem sempre deixa o caixa negativo."
+  },
+  {
+    "id": "9c11bf98-925f-5c7d-8f88-7bf297184dea",
+    "slug": "fluxo-de-caixa-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Alerta de caixa baixo",
+    "enunciado": [
+      "O fluxo já está calculado. O escritório quer manter pelo menos o saldo mínimo de **B2** em caixa.",
+      "Em **F4**, mostre **\"Abaixo do mínimo\"** se o saldo acumulado ficou menor que o mínimo, senão **\"OK\"**. Copie até a linha 9."
+    ],
+    "dicas": [
+      "Compare o saldo acumulado da linha com o mínimo de B2, que é o mesmo para todos os meses."
+    ],
+    "explicacao": [
+      "F4 `=SE(E4<$B$2;\"Abaixo do mínimo\";\"OK\")`, copiada até a linha 9.",
+      "Só abril fica abaixo dos R$ 5.000,00 de reserva: hora de segurar despesas ou antecipar recebimentos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "fluxo-de-caixa",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "larguras": {
+        "A": 130,
+        "B": 110,
+        "C": 110,
+        "D": 130,
+        "E": 130,
+        "F": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Saldo inicial",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "C3": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Resultado do mês",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Saldo acumulado",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "38500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "41200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Fev"
+        },
+        "B5": {
+          "entrada": "35900",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "39800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mar"
+        },
+        "B6": {
+          "entrada": "42300",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "37650",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Abr"
+        },
+        "B7": {
+          "entrada": "36800",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "44900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Mai"
+        },
+        "B8": {
+          "entrada": "47200",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "38100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Jun"
+        },
+        "B9": {
+          "entrada": "39600",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "36300",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Saldo mínimo",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "F3": {
+          "entrada": "Alerta",
+          "negrito": true
+        },
+        "D4": {
+          "entrada": "=B4-C4",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=B5-C5",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=B6-C6",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=B7-C7",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "=B8-C8",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "=B9-C9",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=B1+D4",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=E4+D5",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=E5+D6",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=E6+D7",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=E7+D8",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=E8+D9",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "F4"
+    },
+    "alvos": [
+      {
+        "celula": "F4",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E4<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      },
+      {
+        "celula": "F5",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E5<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      },
+      {
+        "celula": "F6",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E6<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      },
+      {
+        "celula": "F7",
+        "esperado": "Abaixo do mínimo",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E7<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      },
+      {
+        "celula": "F8",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E8<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      },
+      {
+        "celula": "F9",
+        "esperado": "OK",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(E9<$B$2;\"Abaixo do mínimo\";\"OK\")"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "5000|5\\.000",
+        "bloqueia": true,
+        "dica": "O mínimo foi escrito na fórmula. Leia de B2, para o alerta acompanhar quando a reserva mudar."
+      },
+      {
+        "padrao": "SE\\(E\\d<B\\d",
+        "dica": "Na cópia para baixo, a célula do mínimo andou junto e saiu de B2. Trave-a com $."
+      },
+      {
+        "padrao": "SE\\(D\\d<",
+        "dica": "A coluna D é o resultado do mês. O alerta é sobre o dinheiro que há em caixa: o saldo acumulado."
+      }
+    ]
+  },
+  {
+    "id": "0e6e376d-f61a-51e9-a78a-82e35940dcbe",
+    "slug": "fluxo-de-caixa-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O mês do aperto",
+    "enunciado": [
+      "O fluxo já está calculado. Em **B11**, mostre o **menor saldo acumulado** do semestre e, em **B12**, **o mês** em que ele aconteceu."
+    ],
+    "dicas": [
+      "O menor valor de uma lista sai com uma função de estatística simples.",
+      "Para achar o mês: a posição do menor saldo na coluna E, e o mês nessa mesma posição na coluna A."
+    ],
+    "explicacao": [
+      "B11 `=MÍNIMO(E4:E9)` e B12 `=ÍNDICE(A4:A9;CORRESP(B11;E4:E9;0))`.",
+      "O caixa chega ao ponto mais baixo em abril (R$ 1.950,00). Com o mês na mão, dá para planejar: o que vence em abril pode ser negociado antes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "fluxo-de-caixa",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 13,
+      "colunas": 7,
+      "larguras": {
+        "A": 130,
+        "B": 110,
+        "C": 110,
+        "D": 130,
+        "E": 130,
+        "F": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Saldo inicial",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "C3": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Resultado do mês",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Saldo acumulado",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "Jan"
+        },
+        "B4": {
+          "entrada": "38500",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "41200",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Fev"
+        },
+        "B5": {
+          "entrada": "35900",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "39800",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mar"
+        },
+        "B6": {
+          "entrada": "42300",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "37650",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Abr"
+        },
+        "B7": {
+          "entrada": "36800",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "44900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Mai"
+        },
+        "B8": {
+          "entrada": "47200",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "38100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Jun"
+        },
+        "B9": {
+          "entrada": "39600",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "36300",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Menor saldo",
+          "negrito": true
+        },
+        "A12": {
+          "entrada": "Mês do aperto",
+          "negrito": true
+        },
+        "D4": {
+          "entrada": "=B4-C4",
+          "formato": "moeda"
+        },
+        "D5": {
+          "entrada": "=B5-C5",
+          "formato": "moeda"
+        },
+        "D6": {
+          "entrada": "=B6-C6",
+          "formato": "moeda"
+        },
+        "D7": {
+          "entrada": "=B7-C7",
+          "formato": "moeda"
+        },
+        "D8": {
+          "entrada": "=B8-C8",
+          "formato": "moeda"
+        },
+        "D9": {
+          "entrada": "=B9-C9",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "=B1+D4",
+          "formato": "moeda"
+        },
+        "E5": {
+          "entrada": "=E4+D5",
+          "formato": "moeda"
+        },
+        "E6": {
+          "entrada": "=E5+D6",
+          "formato": "moeda"
+        },
+        "E7": {
+          "entrada": "=E6+D7",
+          "formato": "moeda"
+        },
+        "E8": {
+          "entrada": "=E7+D8",
+          "formato": "moeda"
+        },
+        "E9": {
+          "entrada": "=E8+D9",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "B11"
+    },
+    "alvos": [
+      {
+        "celula": "B11",
+        "esperado": 1950,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÍNIMO(E4:E9)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B12",
+        "esperado": "Abr",
+        "exigeFormula": true,
+        "solucaoReferencia": "=ÍNDICE(A4:A9;CORRESP(B11;E4:E9;0))"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "MÍNIMO\\(D",
+        "dica": "Esse é o pior resultado de um mês, e não o menor saldo em caixa. O saldo está na coluna E."
+      },
+      {
+        "padrao": "PROCV\\(",
+        "dica": "O PROCV procura na primeira coluna da tabela e devolve o que está à direita. Aqui o saldo está à direita do mês: a busca precisa ir para a esquerda."
+      }
+    ]
+  },
+  {
+    "id": "571ac107-3cc9-540b-8664-ed98c3931dc2",
+    "slug": "fluxo-de-caixa-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 74,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: saídas com sinal de menos",
+    "enunciado": [
+      "O segundo semestre veio exportado do sistema do banco, que traz as **saídas já negativas** (coluna C). O saldo inicial de julho está em **B1**.",
+      "Em **D4:D9**, o resultado de cada mês e, em **E4:E9**, o saldo acumulado (como no primeiro semestre)."
+    ],
+    "dicas": [
+      "Olhe o sinal dos números da coluna C antes de escrever a conta.",
+      "Subtrair um número negativo é o mesmo que somar."
+    ],
+    "explicacao": [
+      "D4 `=B4+C4` (copiada até D9), E4 `=B1+D4` e E5 `=E4+D5` (copiada até E9).",
+      "Com `=B4-C4`, as saídas negativas viram receita: julho apareceria com R$ 84.900,00 de resultado. Sempre confira o sinal de dados exportados."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "fluxo-de-caixa",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "linhas": 10,
+      "colunas": 7,
+      "larguras": {
+        "A": 130,
+        "B": 110,
+        "C": 110,
+        "D": 130,
+        "E": 130,
+        "F": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Saldo inicial",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "14350",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "Entradas",
+          "negrito": true
+        },
+        "C3": {
+          "entrada": "Saídas",
+          "negrito": true
+        },
+        "D3": {
+          "entrada": "Resultado do mês",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Saldo acumulado",
+          "negrito": true
+        },
+        "A4": {
+          "entrada": "Jul"
+        },
+        "B4": {
+          "entrada": "41800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "-43100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Ago"
+        },
+        "B5": {
+          "entrada": "39200",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "-38700",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "44100",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "-40250",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "37500",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "-42800",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Nov"
+        },
+        "B8": {
+          "entrada": "46300",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "-39900",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Dez"
+        },
+        "B9": {
+          "entrada": "52900",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "-47600",
+          "formato": "moeda"
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "D4"
+    },
+    "alvos": [
+      {
+        "celula": "D4",
+        "esperado": -1300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B4+C4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 500,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5+C5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 3850,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6+C6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D7",
+        "esperado": -5300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7+C7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D8",
+        "esperado": 6400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B8+C8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D9",
+        "esperado": 5300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B9+C9",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 13050,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1+D4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 13550,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E4+D5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 17400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E5+D6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E7",
+        "esperado": 12100,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E6+D7",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E8",
+        "esperado": 18500,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E7+D8",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E9",
+        "esperado": 23800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=E8+D9",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=B\\d-C\\d$",
+        "dica": "As saídas já vieram com sinal de menos. Subtrair um número negativo é somar: as despesas viraram receita."
+      },
+      {
+        "padrao": "^=SOMA\\(\\$?D\\$?4:D\\d\\)$|^=D4$",
+        "dica": "O acumulado esqueceu o saldo inicial de B1."
+      }
+    ]
+  },
+  {
+    "id": "b7f69dbb-d22a-5f33-bc5a-561ac0d2d400",
+    "slug": "fluxo-de-caixa-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: julgue o item (saldo acumulado)",
+    "enunciado": [
+      "Em uma planilha de fluxo de caixa do Excel 365 em português, B1 contém o saldo inicial e D4:D9, o resultado de cada mês. A célula E4 contém `=B1+D4` e a célula E5 contém `=E4+D5`.",
+      "Julgue o item: copiando E5 até E9 com a alça de preenchimento, E9 mostrará o mesmo valor de `=B1+SOMA(D4:D9)`."
+    ],
+    "dicas": [
+      "Escreva como fica a fórmula em E6, E7… e o que cada uma carrega da anterior."
+    ],
+    "explicacao": [
+      "**Certo.** E9 fica `=E8+D9`; cada saldo carrega o anterior, que começa em B1+D4. No fim, é o saldo inicial mais todos os resultados."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "fluxo-de-caixa",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "Cada linha soma o saldo da linha de cima com o resultado do mês: o acumulado chega a B1 mais a soma de todos os resultados."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "Cebraspe",
+    "tema": "Referências relativas"
+  },
+  {
+    "id": "0f386ab8-23b5-57d3-86b1-491724c8269e",
+    "slug": "reajuste-ipca",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Reajuste do aluguel pelo IPCA acumulado",
+    "enunciado": [
+      "O aluguel da sala (**F1**) faz aniversário em dezembro e é reajustado pelo IPCA acumulado dos 12 meses anteriores (B2:B13).",
+      "Em **C2**, o fator de dezembro (1 + o índice). De **C3** a **C13**, o fator acumulado: o fator do mês anterior vezes (1 + o índice do mês). Em **F2**, o IPCA acumulado (último fator − 1). Em **F3**, o novo aluguel, arredondado em 2 casas."
+    ],
+    "dicas": [
+      "Cada mês corrige o valor que já foi corrigido no mês anterior: por isso os fatores se multiplicam.",
+      "O último fator tem os 12 meses dentro dele. Tirando 1, sobra a taxa acumulada.",
+      "Novo aluguel: o aluguel vezes (1 + a taxa acumulada), com ARRED de 2 casas."
+    ],
+    "explicacao": [
+      "C2 `=1+B2`, C3 `=C2*(1+B3)` (copiada até C13), F2 `=C13-1` e F3 `=ARRED(F1*(1+F2);2)`.",
+      "Somando os índices, daria 3,81%; compondo, dá 3,88%. A diferença parece pequena, mas é dinheiro que fica para trás todo ano, num contrato que dura vários."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "reajuste-ipca",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Contrato de aluguel, honorários mensais, mensalidade: no aniversário, o valor é reajustado pelo índice acumulado de 12 meses. E índice acumulado não é a soma dos índices do mês.",
+    "grade": {
+      "linhas": 15,
+      "colunas": 7,
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 120,
+        "D": 16,
+        "E": 150,
+        "F": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "IPCA",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fator acumulado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "dez/25"
+        },
+        "B2": {
+          "entrada": "0,52%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "jan/26"
+        },
+        "B3": {
+          "entrada": "0,16%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "fev/26"
+        },
+        "B4": {
+          "entrada": "0,43%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "mar/26"
+        },
+        "B5": {
+          "entrada": "0,38%",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "abr/26"
+        },
+        "B6": {
+          "entrada": "0,46%",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "mai/26"
+        },
+        "B7": {
+          "entrada": "0,21%",
+          "formato": "percentual"
+        },
+        "A8": {
+          "entrada": "jun/26"
+        },
+        "B8": {
+          "entrada": "0,26%",
+          "formato": "percentual"
+        },
+        "A9": {
+          "entrada": "jul/26"
+        },
+        "B9": {
+          "entrada": "-0,02%",
+          "formato": "percentual"
+        },
+        "A10": {
+          "entrada": "ago/26"
+        },
+        "B10": {
+          "entrada": "0,23%",
+          "formato": "percentual"
+        },
+        "A11": {
+          "entrada": "set/26"
+        },
+        "B11": {
+          "entrada": "0,48%",
+          "formato": "percentual"
+        },
+        "A12": {
+          "entrada": "out/26"
+        },
+        "B12": {
+          "entrada": "0,39%",
+          "formato": "percentual"
+        },
+        "A13": {
+          "entrada": "nov/26"
+        },
+        "B13": {
+          "entrada": "0,31%",
+          "formato": "percentual"
+        },
+        "E1": {
+          "entrada": "Aluguel atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "IPCA acumulado",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Novo aluguel",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "F1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 1.0052,
+        "exigeFormula": true,
+        "solucaoReferencia": "=1+B2",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C3",
+        "esperado": 1.0068083200000002,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*(1+B3)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C4",
+        "esperado": 1.0111375957760003,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*(1+B4)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C5",
+        "esperado": 1.014979918639949,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*(1+B5)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C6",
+        "esperado": 1.0196488262656929,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*(1+B6)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C7",
+        "esperado": 1.0217900888008509,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6*(1+B7)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C8",
+        "esperado": 1.024446743031733,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C7*(1+B8)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C9",
+        "esperado": 1.0242418536831266,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C8*(1+B9)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C10",
+        "esperado": 1.0265976099465977,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C9*(1+B10)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C11",
+        "esperado": 1.0315252784743412,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C10*(1+B11)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C12",
+        "esperado": 1.035548227060391,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C11*(1+B12)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "C13",
+        "esperado": 1.0387584265642784,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C12*(1+B13)",
+        "formato": {
+          "casas": 6
+        },
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F2",
+        "esperado": 0.038758426564278414,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C13-1",
+        "formato": "percentual",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F3",
+        "esperado": 3999.22,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(F1*(1+F2);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "SOMA\\(B",
+        "dica": "Somar os índices ignora a correção sobre a correção: cada mês reajusta o valor que já foi reajustado. Multiplique os fatores."
+      },
+      {
+        "padrao": "^=C\\d\\+B\\d$",
+        "dica": "Somar o índice ao fator acumulado não compõe os meses. O fator novo é o anterior vezes (1 + o índice)."
+      },
+      {
+        "padrao": "^=1\\+B\\d+$",
+        "celula": "C3",
+        "dica": "Assim a linha tem só o índice do próprio mês. O acumulado multiplica o fator do mês anterior."
+      }
+    ],
+    "video": "Reajuste pelo IPCA: fator acumulado mês a mês (anterior × (1 + índice)), acumulado = último fator − 1. Somar os índices dá menos."
+  },
+  {
+    "id": "68e648ad-bdae-5f47-9785-743a59d65410",
+    "slug": "reajuste-ipca-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Índice negativo não reduz o aluguel",
+    "enunciado": [
+      "Este contrato usa o **IGP-M**, que no período ficou negativo. A cláusula diz: **se o índice acumulado for negativo, o valor fica como está**. Os fatores acumulados já estão na coluna C.",
+      "Em **F2**, o IGP-M acumulado. Em **F3**, o reajuste aplicado (o acumulado, mas nunca menor que zero). Em **F4**, o novo aluguel, arredondado em 2 casas."
+    ],
+    "dicas": [
+      "O acumulado sai do último fator, como no exercício anterior.",
+      "Para não deixar o reajuste negativo, pegue o maior entre 0 e o acumulado."
+    ],
+    "explicacao": [
+      "F2 `=C13-1`, F3 `=MÁXIMO(0;F2)` e F4 `=ARRED(F1*(1+F3);2)`.",
+      "O IGP-M acumulou cerca de −1,6%. Sem a cláusula, o aluguel cairia; com ela, fica em R$ 3.850,00. É a regra mais comum nos contratos de locação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "reajuste-ipca",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 15,
+      "colunas": 7,
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 120,
+        "D": 16,
+        "E": 150,
+        "F": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "IGP-M",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fator acumulado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "dez/25"
+        },
+        "B2": {
+          "entrada": "-0,46%",
+          "formato": "percentual"
+        },
+        "C2": {
+          "entrada": "=1+B2",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A3": {
+          "entrada": "jan/26"
+        },
+        "B3": {
+          "entrada": "0,12%",
+          "formato": "percentual"
+        },
+        "C3": {
+          "entrada": "=C2*(1+B3)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A4": {
+          "entrada": "fev/26"
+        },
+        "B4": {
+          "entrada": "-0,34%",
+          "formato": "percentual"
+        },
+        "C4": {
+          "entrada": "=C3*(1+B4)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A5": {
+          "entrada": "mar/26"
+        },
+        "B5": {
+          "entrada": "-0,51%",
+          "formato": "percentual"
+        },
+        "C5": {
+          "entrada": "=C4*(1+B5)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A6": {
+          "entrada": "abr/26"
+        },
+        "B6": {
+          "entrada": "0,28%",
+          "formato": "percentual"
+        },
+        "C6": {
+          "entrada": "=C5*(1+B6)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A7": {
+          "entrada": "mai/26"
+        },
+        "B7": {
+          "entrada": "-0,19%",
+          "formato": "percentual"
+        },
+        "C7": {
+          "entrada": "=C6*(1+B7)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A8": {
+          "entrada": "jun/26"
+        },
+        "B8": {
+          "entrada": "-0,63%",
+          "formato": "percentual"
+        },
+        "C8": {
+          "entrada": "=C7*(1+B8)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A9": {
+          "entrada": "jul/26"
+        },
+        "B9": {
+          "entrada": "0,41%",
+          "formato": "percentual"
+        },
+        "C9": {
+          "entrada": "=C8*(1+B9)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A10": {
+          "entrada": "ago/26"
+        },
+        "B10": {
+          "entrada": "-0,27%",
+          "formato": "percentual"
+        },
+        "C10": {
+          "entrada": "=C9*(1+B10)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A11": {
+          "entrada": "set/26"
+        },
+        "B11": {
+          "entrada": "0,15%",
+          "formato": "percentual"
+        },
+        "C11": {
+          "entrada": "=C10*(1+B11)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A12": {
+          "entrada": "out/26"
+        },
+        "B12": {
+          "entrada": "-0,38%",
+          "formato": "percentual"
+        },
+        "C12": {
+          "entrada": "=C11*(1+B12)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A13": {
+          "entrada": "nov/26"
+        },
+        "B13": {
+          "entrada": "0,21%",
+          "formato": "percentual"
+        },
+        "C13": {
+          "entrada": "=C12*(1+B13)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "E1": {
+          "entrada": "Aluguel atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "IGP-M acumulado",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Reajuste aplicado",
+          "negrito": true
+        },
+        "E4": {
+          "entrada": "Novo aluguel",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "F1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "F2"
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": -0.016048253305529392,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C13-1",
+        "formato": "percentual",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F3",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=MÁXIMO(0;F2)",
+        "formato": "percentual"
+      },
+      {
+        "celula": "F4",
+        "esperado": 3850,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(F1*(1+F3);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=MÍNIMO\\(0",
+        "dica": "Com MÍNIMO, o reajuste fica sempre no menor valor: negativo quando o índice cai e zero quando ele sobe. A cláusula pede o contrário."
+      },
+      {
+        "padrao": "F2\\);2\\)$",
+        "celula": "F4",
+        "dica": "O aluguel caiu: aí entrou o índice negativo. O novo valor usa o reajuste aplicado (F3), que já respeita a cláusula."
+      }
+    ]
+  },
+  {
+    "id": "8ec4f52c-098a-50a8-842a-0b4a89d00592",
+    "slug": "reajuste-ipca-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 83,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O mesmo índice em vários contratos",
+    "enunciado": [
+      "O IPCA acumulado do ano está em **F1**. Em **C2**, calcule o novo valor de cada contrato do escritório (arredondado em 2 casas) e, em **D2**, o aumento mensal (novo − atual). Copie até a linha 5. Em **D6**, o aumento total por mês."
+    ],
+    "dicas": [
+      "O índice é o mesmo para todos os contratos: trave F1 antes de copiar.",
+      "ARRED(valor; 2) arredonda em centavos, como aparece no boleto."
+    ],
+    "explicacao": [
+      "C2 `=ARRED(B2*(1+$F$1);2)`, D2 `=C2-B2` (copiadas até a linha 5) e D6 `=SOMA(D2:D5)`.",
+      "Com o índice numa célula só, o reajuste do ano que vem é trocar F1. O aumento total mostra quanto a mais sai do caixa por mês."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "reajuste-ipca",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 8,
+      "colunas": 7,
+      "larguras": {
+        "A": 150,
+        "B": 110,
+        "C": 110,
+        "D": 100,
+        "E": 120,
+        "F": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor atual",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Novo valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Aumento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Aluguel da sala"
+        },
+        "B2": {
+          "entrada": "3850",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Software jurídico"
+        },
+        "B3": {
+          "entrada": "689,9",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Limpeza"
+        },
+        "B4": {
+          "entrada": "1420",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Contabilidade"
+        },
+        "B5": {
+          "entrada": "1980",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "IPCA acumulado",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3,88%",
+          "formato": "percentual"
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "F1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "C2"
+    },
+    "alvos": [
+      {
+        "celula": "C2",
+        "esperado": 3999.38,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B2*(1+$F$1);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "C3",
+        "esperado": 716.67,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B3*(1+$F$1);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "C4",
+        "esperado": 1475.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B4*(1+$F$1);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "C5",
+        "esperado": 2056.82,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(B5*(1+$F$1);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D2",
+        "esperado": 149.38,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2-B2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D3",
+        "esperado": 26.77,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3-B3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D4",
+        "esperado": 55.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4-B4",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D5",
+        "esperado": 76.82,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5-B5",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "D6",
+        "esperado": 308.07,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(D2:D5)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=ARRED\\(B\\d\\*\\(1\\+F\\d\\);2\\)$|^=B\\d\\*\\(1\\+F\\d\\)$",
+        "dica": "Na cópia para baixo, o índice andou e saiu de F1. Trave-o com $."
+      },
+      {
+        "padrao": "^=ARRED\\(B\\d\\*\\$?F\\$?1;2\\)$",
+        "dica": "Assim sai só o aumento, e não o novo valor. O novo valor é o atual vezes (1 + o índice)."
+      }
+    ]
+  },
+  {
+    "id": "75772393-afe4-5749-ba58-d2fe2f6f3cc6",
+    "slug": "reajuste-ipca-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a janela de 12 meses",
+    "enunciado": [
+      "O contrato faz aniversário em **dezembro de 2026** e o reajuste usa o IPCA acumulado dos **12 meses anteriores**: de dezembro de 2025 a novembro de 2026. A tabela baixada da internet começa em **outubro de 2025**, e os fatores acumulados já estão na coluna C.",
+      "Em **F2**, o IPCA acumulado dos 12 meses do reajuste. Em **F3**, o novo aluguel (F1), arredondado em 2 casas."
+    ],
+    "dicas": [
+      "Conte quantos meses a tabela tem. Todos entram no reajuste?",
+      "O fator de um mês tem dentro dele todos os meses desde o começo da tabela. Dividindo um fator por outro, os meses do começo se cancelam."
+    ],
+    "explicacao": [
+      "F2 `=C15/C3-1` e F3 `=ARRED(F1*(1+F2);2)`.",
+      "C15 acumula de outubro de 2025 a novembro de 2026 (14 meses); C3 acumula outubro e novembro de 2025. A divisão deixa só os 12 meses de dezembro a novembro. Com `=C15-1`, o inquilino pagaria dois meses de inflação a mais."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "reajuste-ipca",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "linhas": 17,
+      "colunas": 7,
+      "larguras": {
+        "A": 80,
+        "B": 80,
+        "C": 120,
+        "D": 16,
+        "E": 150,
+        "F": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "IPCA",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fator acumulado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "out/25"
+        },
+        "B2": {
+          "entrada": "0,09%",
+          "formato": "percentual"
+        },
+        "C2": {
+          "entrada": "=1+B2",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A3": {
+          "entrada": "nov/25"
+        },
+        "B3": {
+          "entrada": "0,18%",
+          "formato": "percentual"
+        },
+        "C3": {
+          "entrada": "=C2*(1+B3)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A4": {
+          "entrada": "dez/25"
+        },
+        "B4": {
+          "entrada": "0,52%",
+          "formato": "percentual"
+        },
+        "C4": {
+          "entrada": "=C3*(1+B4)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A5": {
+          "entrada": "jan/26"
+        },
+        "B5": {
+          "entrada": "0,16%",
+          "formato": "percentual"
+        },
+        "C5": {
+          "entrada": "=C4*(1+B5)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A6": {
+          "entrada": "fev/26"
+        },
+        "B6": {
+          "entrada": "0,43%",
+          "formato": "percentual"
+        },
+        "C6": {
+          "entrada": "=C5*(1+B6)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A7": {
+          "entrada": "mar/26"
+        },
+        "B7": {
+          "entrada": "0,38%",
+          "formato": "percentual"
+        },
+        "C7": {
+          "entrada": "=C6*(1+B7)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A8": {
+          "entrada": "abr/26"
+        },
+        "B8": {
+          "entrada": "0,46%",
+          "formato": "percentual"
+        },
+        "C8": {
+          "entrada": "=C7*(1+B8)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A9": {
+          "entrada": "mai/26"
+        },
+        "B9": {
+          "entrada": "0,21%",
+          "formato": "percentual"
+        },
+        "C9": {
+          "entrada": "=C8*(1+B9)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A10": {
+          "entrada": "jun/26"
+        },
+        "B10": {
+          "entrada": "0,26%",
+          "formato": "percentual"
+        },
+        "C10": {
+          "entrada": "=C9*(1+B10)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A11": {
+          "entrada": "jul/26"
+        },
+        "B11": {
+          "entrada": "-0,02%",
+          "formato": "percentual"
+        },
+        "C11": {
+          "entrada": "=C10*(1+B11)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A12": {
+          "entrada": "ago/26"
+        },
+        "B12": {
+          "entrada": "0,23%",
+          "formato": "percentual"
+        },
+        "C12": {
+          "entrada": "=C11*(1+B12)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A13": {
+          "entrada": "set/26"
+        },
+        "B13": {
+          "entrada": "0,48%",
+          "formato": "percentual"
+        },
+        "C13": {
+          "entrada": "=C12*(1+B13)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A14": {
+          "entrada": "out/26"
+        },
+        "B14": {
+          "entrada": "0,39%",
+          "formato": "percentual"
+        },
+        "C14": {
+          "entrada": "=C13*(1+B14)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "A15": {
+          "entrada": "nov/26"
+        },
+        "B15": {
+          "entrada": "0,31%",
+          "formato": "percentual"
+        },
+        "C15": {
+          "entrada": "=C14*(1+B15)",
+          "formato": {
+            "casas": 6
+          }
+        },
+        "E1": {
+          "entrada": "Aluguel atual",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "3850",
+          "formato": "moeda"
+        },
+        "E2": {
+          "entrada": "IPCA de 12 meses",
+          "negrito": true
+        },
+        "E3": {
+          "entrada": "Novo aluguel",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "F1"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "F2"
+    },
+    "alvos": [
+      {
+        "celula": "F2",
+        "esperado": 0.038758426564278414,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C15/C3-1",
+        "formato": "percentual",
+        "tolerancia": 1e-06
+      },
+      {
+        "celula": "F3",
+        "esperado": 3999.22,
+        "exigeFormula": true,
+        "solucaoReferencia": "=ARRED(F1*(1+F2);2)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=C15-1$",
+        "dica": "Assim entram os 14 meses da tabela, desde outubro de 2025. O reajuste usa só os 12 meses antes do aniversário."
+      },
+      {
+        "padrao": "^=C15/C4-1$",
+        "dica": "Dividindo pelo fator de dezembro de 2025, o próprio dezembro fica de fora. Divida pelo fator do mês anterior ao período."
+      },
+      {
+        "padrao": "^=C15-C\\d",
+        "dica": "A diferença entre dois fatores não é a taxa do período. Os fatores se dividem."
+      }
+    ]
+  },
+  {
+    "id": "611e5af7-3273-5455-be53-aa639a0a94cc",
+    "slug": "reajuste-ipca-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 85,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: índice acumulado",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, B2, B3 e B4 contêm os índices mensais 1%, 2% e 3%.",
+      "A fórmula `=(1+B2)*(1+B3)*(1+B4)-1`, com a célula formatada como porcentagem com duas casas, exibe:"
+    ],
+    "dicas": [
+      "Os fatores se multiplicam; depois, tira-se 1."
+    ],
+    "explicacao": [
+      "1,01 × 1,02 × 1,03 = 1,061106; menos 1, 6,11%. É mais que a soma (6%), porque cada mês corrige o que já foi corrigido."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "reajuste-ipca",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "6,00%",
+        "dica": "Essa é a soma dos índices; a fórmula multiplica os fatores."
+      },
+      {
+        "texto": "6,11%"
+      },
+      {
+        "texto": "106,11%",
+        "dica": "O −1 no fim tira o valor original e deixa só a variação."
+      },
+      {
+        "texto": "2,00%",
+        "dica": "Essa é a média dos índices."
+      },
+      {
+        "texto": "0,06%",
+        "dica": "Confira a escala: 0,0611 em porcentagem é 6,11%."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 6,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Índice",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "1%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "2%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "3%",
+          "formato": "percentual"
+        }
+      }
+    },
+    "banca": "FCC",
+    "tema": "Porcentagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=(1+B2)*(1+B3)*(1+B4)-1",
+        "esperado": 0.061106
+      }
+    ]
+  },
+  {
+    "id": "60105203-f547-5099-b079-1c93821d36ad",
+    "slug": "conciliacao-bancaria",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Conciliação bancária: sistema × extrato",
+    "enunciado": [
+      "Na aba **Sistema** estão os lançamentos do financeiro; na aba **Extrato**, o que o banco registrou (data na coluna A, valor na C).",
+      "Em **D2**, mostre **\"Conciliado\"** se existe no extrato um lançamento com a **mesma data e o mesmo valor**, senão **\"Pendente\"**. Copie até a linha 9. Em **G2**, some o valor dos lançamentos pendentes."
+    ],
+    "dicas": [
+      "Contar quantas linhas do extrato têm a mesma data E o mesmo valor: CONT.SES com dois pares. Se a contagem passar de zero, está conciliado.",
+      "Os intervalos da aba Extrato não podem andar na cópia.",
+      "Para o total pendente, SOMASE com o critério na coluna Situação."
+    ],
+    "explicacao": [
+      "D2 `=SE(CONT.SES(Extrato!$A$2:$A$9;A2;Extrato!$C$2:$C$9;C2)>0;\"Conciliado\";\"Pendente\")`, copiada até D9, e G2 `=SOMASE(D2:D9;\"Pendente\";C2:C9)`.",
+      "Só o cheque 231 está pendente: foi emitido, mas o fornecedor ainda não depositou. Ele explica parte da diferença entre o saldo do sistema e o do banco."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "conciliacao-bancaria",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Conciliar é conferir o que o financeiro lançou com o que de fato passou pelo banco. É trabalho de todo mês em escritório de contabilidade, e a planilha faz o grosso: marca o que bate e mostra o que sobrou.",
+    "grade": {
+      "nome": "Sistema",
+      "linhas": 11,
+      "colunas": 7,
+      "larguras": {
+        "A": 96,
+        "B": 240,
+        "C": 110,
+        "D": 120,
+        "E": 16,
+        "F": 160,
+        "G": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Histórico",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Honorários – Silva & Filhos"
+        },
+        "C2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Aluguel da sala"
+        },
+        "C3": {
+          "entrada": "-4200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Honorários – Construtora Alicerce"
+        },
+        "C4": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Energia elétrica"
+        },
+        "C5": {
+          "entrada": "-637,45",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Folha de pagamento"
+        },
+        "C6": {
+          "entrada": "-15800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Cheque 231 – Papelaria Central"
+        },
+        "C7": {
+          "entrada": "-389,9",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Honorários – Clínica Bem-Estar"
+        },
+        "C8": {
+          "entrada": "3750",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Internet e telefone"
+        },
+        "C9": {
+          "entrada": "-289,9",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "Total pendente",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 11,
+          "colunas": 7,
+          "larguras": {
+            "A": 96,
+            "B": 240,
+            "C": 110,
+            "D": 120,
+            "E": 16,
+            "F": 160,
+            "G": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Descrição",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "02/11/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "TED RECEBIDA SILVA FILHOS"
+            },
+            "C2": {
+              "entrada": "8500",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "PIX ENVIADO IMOB CENTRO"
+            },
+            "C3": {
+              "entrada": "-4200",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "TED RECEBIDA CONSTRUTORA"
+            },
+            "C4": {
+              "entrada": "12000",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "06/11/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "PAGTO CONTA ENERGIA"
+            },
+            "C5": {
+              "entrada": "-637,45",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "PAGTO FOLHA"
+            },
+            "C6": {
+              "entrada": "-15800",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "16/11/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "PIX RECEBIDO CLINICA BE"
+            },
+            "C7": {
+              "entrada": "3750",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "18/11/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "DEB AUTOM TELEFONIA"
+            },
+            "C8": {
+              "entrada": "-289,9",
+              "formato": "moeda"
+            },
+            "A9": {
+              "entrada": "20/11/2026",
+              "formato": "data"
+            },
+            "B9": {
+              "entrada": "TARIFA PACOTE SERVICOS"
+            },
+            "C9": {
+              "entrada": "-89,9",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A2;Extrato!$C$2:$C$9;C2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A3;Extrato!$C$2:$C$9;C3)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A4;Extrato!$C$2:$C$9;C4)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A5;Extrato!$C$2:$C$9;C5)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A6;Extrato!$C$2:$C$9;C6)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Pendente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A7;Extrato!$C$2:$C$9;C7)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D8",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A8;Extrato!$C$2:$C$9;C8)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D9",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$A$2:$A$9;A9;Extrato!$C$2:$C$9;C9)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "G2",
+        "esperado": -389.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(D2:D9;\"Pendente\";C2:C9)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(CONT\\.SE\\(",
+        "bloqueia": true,
+        "dica": "Conferir só uma coluna não basta: dois lançamentos de mesmo valor em dias diferentes (duas parcelas iguais, por exemplo) seriam dados como conciliados. Confira data e valor juntos."
+      },
+      {
+        "padrao": "EXTRATO!A\\d|EXTRATO!C\\d",
+        "dica": "Os intervalos da aba Extrato desceram junto com a cópia e deixaram lançamentos de fora. Trave-os com $."
+      },
+      {
+        "padrao": "\"PENDENTE\";\"CONCILIADO\"\\)$",
+        "dica": "Os textos estão trocados: com contagem maior que zero, o lançamento foi achado no extrato."
+      }
+    ],
+    "video": "Conciliação bancária: CONT.SES com data e valor contra a aba Extrato. O que sobra como pendente explica a diferença de saldo."
+  },
+  {
+    "id": "9d2cd64c-cb41-55cf-9a1c-db41d99caa23",
+    "slug": "conciliacao-bancaria-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que falta lançar no sistema",
+    "enunciado": [
+      "Agora o caminho inverso: na aba **Extrato**, em **D2**, mostre **\"Lançado\"** se o lançamento do banco existe na aba **Sistema** (mesma data e valor), senão **\"Falta lançar\"**. Copie até a linha 9. Em **G2**, some o que falta lançar."
+    ],
+    "dicas": [
+      "É a mesma fórmula da conciliação, procurando na outra aba."
+    ],
+    "explicacao": [
+      "D2 `=SE(CONT.SES(Sistema!$A$2:$A$9;A2;Sistema!$C$2:$C$9;C2)>0;\"Lançado\";\"Falta lançar\")`, copiada até D9, e G2 `=SOMASE(D2:D9;\"Falta lançar\";C2:C9)`.",
+      "A tarifa do pacote de serviços foi debitada pelo banco e ninguém lançou no sistema. Tarifas, juros e IOF são os campeões desse lado da conciliação."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "conciliacao-bancaria",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Extrato",
+      "linhas": 11,
+      "colunas": 7,
+      "larguras": {
+        "A": 96,
+        "B": 240,
+        "C": 110,
+        "D": 120,
+        "E": 16,
+        "F": 160,
+        "G": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Descrição",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "TED RECEBIDA SILVA FILHOS"
+        },
+        "C2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "PIX ENVIADO IMOB CENTRO"
+        },
+        "C3": {
+          "entrada": "-4200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "TED RECEBIDA CONSTRUTORA"
+        },
+        "C4": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "PAGTO CONTA ENERGIA"
+        },
+        "C5": {
+          "entrada": "-637,45",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "PAGTO FOLHA"
+        },
+        "C6": {
+          "entrada": "-15800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "PIX RECEBIDO CLINICA BE"
+        },
+        "C7": {
+          "entrada": "3750",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "DEB AUTOM TELEFONIA"
+        },
+        "C8": {
+          "entrada": "-289,9",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "TARIFA PACOTE SERVICOS"
+        },
+        "C9": {
+          "entrada": "-89,9",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "Falta lançar (total)",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Sistema",
+        "grade": {
+          "linhas": 11,
+          "colunas": 7,
+          "larguras": {
+            "A": 96,
+            "B": 240,
+            "C": 110,
+            "D": 120,
+            "E": 16,
+            "F": 160,
+            "G": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Histórico",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "02/11/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "Honorários – Silva & Filhos"
+            },
+            "C2": {
+              "entrada": "8500",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "Aluguel da sala"
+            },
+            "C3": {
+              "entrada": "-4200",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "Honorários – Construtora Alicerce"
+            },
+            "C4": {
+              "entrada": "12000",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "06/11/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "Energia elétrica"
+            },
+            "C5": {
+              "entrada": "-637,45",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "Folha de pagamento"
+            },
+            "C6": {
+              "entrada": "-15800",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "12/11/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "Cheque 231 – Papelaria Central"
+            },
+            "C7": {
+              "entrada": "-389,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "16/11/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "Honorários – Clínica Bem-Estar"
+            },
+            "C8": {
+              "entrada": "3750",
+              "formato": "moeda"
+            },
+            "A9": {
+              "entrada": "18/11/2026",
+              "formato": "data"
+            },
+            "B9": {
+              "entrada": "Internet e telefone"
+            },
+            "C9": {
+              "entrada": "-289,9",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A2;Sistema!$C$2:$C$9;C2)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A3;Sistema!$C$2:$C$9;C3)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A4;Sistema!$C$2:$C$9;C4)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A5;Sistema!$C$2:$C$9;C5)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A6;Sistema!$C$2:$C$9;C6)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A7;Sistema!$C$2:$C$9;C7)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D8",
+        "esperado": "Lançado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A8;Sistema!$C$2:$C$9;C8)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "D9",
+        "esperado": "Falta lançar",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Sistema!$A$2:$A$9;A9;Sistema!$C$2:$C$9;C9)>0;\"Lançado\";\"Falta lançar\")"
+      },
+      {
+        "celula": "G2",
+        "esperado": -89.9,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(D2:D9;\"Falta lançar\";C2:C9)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SE\\(CONT\\.SE\\(",
+        "bloqueia": true,
+        "dica": "Conferir só uma coluna não basta: confira data e valor juntos."
+      },
+      {
+        "padrao": "SISTEMA!A\\d|SISTEMA!C\\d",
+        "dica": "Os intervalos da aba Sistema desceram junto com a cópia. Trave-os com $."
+      }
+    ]
+  },
+  {
+    "id": "4f97b086-32c5-5cca-9b69-dbe121351d9f",
+    "slug": "conciliacao-bancaria-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A diferença de saldo",
+    "enunciado": [
+      "Na aba **Sistema**, calcule em **G1** o movimento do mês pelo sistema (soma de C2:C9), em **G2** o movimento pelo banco (soma dos valores da aba **Extrato**) e, em **G3**, a diferença (sistema − banco)."
+    ],
+    "dicas": [
+      "Para somar a coluna de outra aba, o nome da aba vem antes do intervalo."
+    ],
+    "explicacao": [
+      "G1 `=SOMA(C2:C9)`, G2 `=SOMA(Extrato!C2:C9)` e G3 `=G1-G2`.",
+      "A diferença de −R$ 300,00 é o cheque pendente (−R$ 389,90) menos a tarifa que falta lançar (−R$ 89,90). Quando as pendências explicam a diferença inteira, a conciliação fechou."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "conciliacao-bancaria",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "nome": "Sistema",
+      "linhas": 11,
+      "colunas": 7,
+      "larguras": {
+        "A": 96,
+        "B": 240,
+        "C": 110,
+        "D": 120,
+        "E": 16,
+        "F": 160,
+        "G": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Histórico",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Honorários – Silva & Filhos"
+        },
+        "C2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Aluguel da sala"
+        },
+        "C3": {
+          "entrada": "-4200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Honorários – Construtora Alicerce"
+        },
+        "C4": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Energia elétrica"
+        },
+        "C5": {
+          "entrada": "-637,45",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Folha de pagamento"
+        },
+        "C6": {
+          "entrada": "-15800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Cheque 231 – Papelaria Central"
+        },
+        "C7": {
+          "entrada": "-389,9",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Honorários – Clínica Bem-Estar"
+        },
+        "C8": {
+          "entrada": "3750",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Internet e telefone"
+        },
+        "C9": {
+          "entrada": "-289,9",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Movimento no sistema",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "Movimento no banco",
+          "negrito": true
+        },
+        "F3": {
+          "entrada": "Diferença",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 11,
+          "colunas": 7,
+          "larguras": {
+            "A": 96,
+            "B": 240,
+            "C": 110,
+            "D": 120,
+            "E": 16,
+            "F": 160,
+            "G": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Descrição",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "02/11/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "TED RECEBIDA SILVA FILHOS"
+            },
+            "C2": {
+              "entrada": "8500",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "PIX ENVIADO IMOB CENTRO"
+            },
+            "C3": {
+              "entrada": "-4200",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "05/11/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "TED RECEBIDA CONSTRUTORA"
+            },
+            "C4": {
+              "entrada": "12000",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "06/11/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "PAGTO CONTA ENERGIA"
+            },
+            "C5": {
+              "entrada": "-637,45",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "PAGTO FOLHA"
+            },
+            "C6": {
+              "entrada": "-15800",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "16/11/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "PIX RECEBIDO CLINICA BE"
+            },
+            "C7": {
+              "entrada": "3750",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "18/11/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "DEB AUTOM TELEFONIA"
+            },
+            "C8": {
+              "entrada": "-289,9",
+              "formato": "moeda"
+            },
+            "A9": {
+              "entrada": "20/11/2026",
+              "formato": "data"
+            },
+            "B9": {
+              "entrada": "TARIFA PACOTE SERVICOS"
+            },
+            "C9": {
+              "entrada": "-89,9",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "G1"
+    },
+    "alvos": [
+      {
+        "celula": "G1",
+        "esperado": 2932.75,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(C2:C9)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G2",
+        "esperado": 3232.75,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(Extrato!C2:C9)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "G3",
+        "esperado": -300.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=G1-G2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "^=SOMA\\(\\$?C\\$?2:\\$?C\\$?9\\)$",
+        "celula": "G2",
+        "dica": "Essa é a soma do sistema de novo. O movimento do banco está na aba Extrato."
+      },
+      {
+        "padrao": "^=G2-G1$",
+        "dica": "Sinal trocado: a diferença pedida é sistema menos banco."
+      }
+    ]
+  },
+  {
+    "id": "10cafbf3-7a01-514e-9dca-5ab668681d7d",
+    "slug": "conciliacao-bancaria-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o banco lança depois",
+    "enunciado": [
+      "O banco pode registrar um lançamento **até 2 dias depois** da data do sistema (compensação de cheque, TED de outro banco).",
+      "Em **D2**, mostre **\"Conciliado\"** se o extrato tem o mesmo valor com data **entre a data do sistema e 2 dias depois**, senão **\"Pendente\"**. Copie até a linha 9. Em **G2**, o total pendente."
+    ],
+    "dicas": [
+      "Confira as datas do extrato da Construtora e do cheque 231: batem com o sistema?",
+      "A data vira um intervalo: maior ou igual à data do sistema e menor ou igual a ela mais 2. São dois critérios na mesma coluna de datas."
+    ],
+    "explicacao": [
+      "D2 `=SE(CONT.SES(Extrato!$C$2:$C$9;C2;Extrato!$A$2:$A$9;\">=\"&A2;Extrato!$A$2:$A$9;\"<=\"&A2+2)>0;\"Conciliado\";\"Pendente\")`, copiada até D9, e G2 `=SOMASE(D2:D9;\"Pendente\";C2:C9)`.",
+      "A TED da Construtora entrou 2 dias depois e o cheque, 1 dia depois: são conciliados. O PIX da Clínica de 23/11 tem o mesmo valor, mas 7 dias depois não é o mesmo lançamento; e a conta de internet não passou pelo banco."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "conciliacao-bancaria",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "nome": "Sistema",
+      "linhas": 11,
+      "colunas": 7,
+      "larguras": {
+        "A": 96,
+        "B": 240,
+        "C": 110,
+        "D": 120,
+        "E": 16,
+        "F": 160,
+        "G": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Histórico",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Honorários – Silva & Filhos"
+        },
+        "C2": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Aluguel da sala"
+        },
+        "C3": {
+          "entrada": "-4200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Honorários – Construtora Alicerce"
+        },
+        "C4": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Energia elétrica"
+        },
+        "C5": {
+          "entrada": "-637,45",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Folha de pagamento"
+        },
+        "C6": {
+          "entrada": "-15800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Cheque 231 – Papelaria Central"
+        },
+        "C7": {
+          "entrada": "-389,9",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Honorários – Clínica Bem-Estar"
+        },
+        "C8": {
+          "entrada": "3750",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Internet e telefone"
+        },
+        "C9": {
+          "entrada": "-289,9",
+          "formato": "moeda"
+        },
+        "F2": {
+          "entrada": "Total pendente",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Extrato",
+        "grade": {
+          "linhas": 11,
+          "colunas": 7,
+          "larguras": {
+            "A": 96,
+            "B": 240,
+            "C": 110,
+            "D": 120,
+            "E": 16,
+            "F": 160,
+            "G": 120
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Data",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Descrição",
+              "negrito": true
+            },
+            "C1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "02/11/2026",
+              "formato": "data"
+            },
+            "B2": {
+              "entrada": "TED RECEBIDA SILVA FILHOS"
+            },
+            "C2": {
+              "entrada": "8500",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "03/11/2026",
+              "formato": "data"
+            },
+            "B3": {
+              "entrada": "PIX ENVIADO IMOB CENTRO"
+            },
+            "C3": {
+              "entrada": "-4200",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "07/11/2026",
+              "formato": "data"
+            },
+            "B4": {
+              "entrada": "TED RECEBIDA CONSTRUTORA"
+            },
+            "C4": {
+              "entrada": "12000",
+              "formato": "moeda"
+            },
+            "A5": {
+              "entrada": "06/11/2026",
+              "formato": "data"
+            },
+            "B5": {
+              "entrada": "PAGTO CONTA ENERGIA"
+            },
+            "C5": {
+              "entrada": "-637,45",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "10/11/2026",
+              "formato": "data"
+            },
+            "B6": {
+              "entrada": "PAGTO FOLHA"
+            },
+            "C6": {
+              "entrada": "-15800",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "13/11/2026",
+              "formato": "data"
+            },
+            "B7": {
+              "entrada": "CHEQUE COMPENSADO 231"
+            },
+            "C7": {
+              "entrada": "-389,9",
+              "formato": "moeda"
+            },
+            "A8": {
+              "entrada": "23/11/2026",
+              "formato": "data"
+            },
+            "B8": {
+              "entrada": "PIX RECEBIDO CLINICA BE"
+            },
+            "C8": {
+              "entrada": "3750",
+              "formato": "moeda"
+            },
+            "A9": {
+              "entrada": "20/11/2026",
+              "formato": "data"
+            },
+            "B9": {
+              "entrada": "TARIFA PACOTE SERVICOS"
+            },
+            "C9": {
+              "entrada": "-89,9",
+              "formato": "moeda"
+            }
+          }
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C2;Extrato!$A$2:$A$9;\">=\"&A2;Extrato!$A$2:$A$9;\"<=\"&A2+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D3",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C3;Extrato!$A$2:$A$9;\">=\"&A3;Extrato!$A$2:$A$9;\"<=\"&A3+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D4",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C4;Extrato!$A$2:$A$9;\">=\"&A4;Extrato!$A$2:$A$9;\"<=\"&A4+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D5",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C5;Extrato!$A$2:$A$9;\">=\"&A5;Extrato!$A$2:$A$9;\"<=\"&A5+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D6",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C6;Extrato!$A$2:$A$9;\">=\"&A6;Extrato!$A$2:$A$9;\"<=\"&A6+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D7",
+        "esperado": "Conciliado",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C7;Extrato!$A$2:$A$9;\">=\"&A7;Extrato!$A$2:$A$9;\"<=\"&A7+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D8",
+        "esperado": "Pendente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C8;Extrato!$A$2:$A$9;\">=\"&A8;Extrato!$A$2:$A$9;\"<=\"&A8+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "D9",
+        "esperado": "Pendente",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(CONT.SES(Extrato!$C$2:$C$9;C9;Extrato!$A$2:$A$9;\">=\"&A9;Extrato!$A$2:$A$9;\"<=\"&A9+2)>0;\"Conciliado\";\"Pendente\")"
+      },
+      {
+        "celula": "G2",
+        "esperado": 3460.1,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMASE(D2:D9;\"Pendente\";C2:C9)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "EXTRATO!\\$?A\\$?2:\\$?A\\$?9;A\\d[;)]",
+        "dica": "Com a data exata, o que o banco lançou um ou dois dias depois aparece como pendente. A data do extrato precisa caber numa janela de 2 dias."
+      },
+      {
+        "padrao": "\"<\"&",
+        "dica": "Com o menor estrito, o lançamento de exatamente 2 dias depois fica de fora. A janela inclui o segundo dia."
+      },
+      {
+        "padrao": "^=SE\\(CONT\\.SE\\(",
+        "dica": "Só pelo valor, o PIX da Clínica de 7 dias depois seria dado como o mesmo lançamento. Confira o valor e a janela de datas."
+      }
+    ]
+  },
+  {
+    "id": "15fddabc-d0f4-5c58-9b9d-bf18a42b5336",
+    "slug": "conciliacao-bancaria-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 95,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: CONT.SES com janela de datas",
+    "enunciado": [
+      "Na planilha ao lado, A2:A5 contém datas de lançamentos de um extrato e B2:B5, os valores. A célula D1 contém a data 10/11/2026.",
+      "O resultado de `=CONT.SES(B2:B5;350;A2:A5;\">=\"&D1;A2:A5;\"<=\"&D1+2)` é:"
+    ],
+    "dicas": [
+      "Procure as linhas com valor 350 e data entre 10/11 e 12/11, inclusive."
+    ],
+    "explicacao": [
+      "Valor 350 aparece em 09/11, 12/11 e 13/11. Só 12/11 cabe na janela de 10/11 a 12/11: o resultado é 1."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "conciliacao-bancaria",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "0",
+        "dica": "O <= inclui o próprio dia 12/11."
+      },
+      {
+        "texto": "1"
+      },
+      {
+        "texto": "2",
+        "dica": "13/11 passa da janela de 2 dias."
+      },
+      {
+        "texto": "3",
+        "dica": "Assim seria só pelo valor. Os critérios de data também precisam valer."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Juntar o sinal com a data usando & é um critério válido."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "larguras": {
+        "A": 100,
+        "B": 80,
+        "D": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Base",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A2": {
+          "entrada": "09/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "350"
+        },
+        "A3": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "120"
+        },
+        "A4": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "350"
+        },
+        "A5": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "350"
+        }
+      }
+    },
+    "banca": "Cesgranrio",
+    "tema": "Funções de contagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SES(B2:B5;350;A2:A5;\">=\"&D1;A2:A5;\"<=\"&D1+2)",
+        "esperado": 1
+      }
+    ]
+  },
+  {
+    "id": "c6c623d3-a4d2-55ce-b36e-cbd62c1ccabf",
+    "slug": "proposta-de-honorarios",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso final: a proposta de honorários",
+    "enunciado": [
+      "A proposta lista as etapas do trabalho, o profissional de cada uma e as horas. A aba **Tabela** tem o valor-hora de cada profissional (A2:B4) e as regras: desconto de **5%** (B7) para propostas a partir de **R$ 20.000** (B6) e **15%** de impostos sobre a nota (B8).",
+      "Em **D2**, busque o valor-hora do profissional na Tabela; em **E2**, o valor da etapa (horas × valor-hora). Copie até a linha 6. Em **B8**, o subtotal; em **B9**, o desconto (ou 0); em **B10**, o total da nota, de modo que, **depois de pagar os 15% de impostos sobre ela**, sobre o subtotal menos o desconto."
+    ],
+    "dicas": [
+      "O valor-hora sai de uma busca exata pelo nome do profissional, com a tabela da outra aba travada.",
+      "O desconto depende de uma condição: SE o subtotal chegar ao mínimo da Tabela.",
+      "Se o imposto é 15% da nota, sobram 85% dela. A nota é o valor que, vezes 85%, dá o que você quer receber."
+    ],
+    "explicacao": [
+      "D2 `=PROCV(B2;Tabela!$A$2:$B$4;2;FALSO)` e E2 `=C2*D2` (copiadas até a linha 6), B8 `=SOMA(E2:E6)`, B9 `=SE(B8>=Tabela!$B$6;B8*Tabela!$B$7;0)` e B10 `=(B8-B9)/(1-Tabela!$B$8)`.",
+      "O subtotal é R$ 23.140,00 e o desconto, R$ 1.157,00. Para sobrarem R$ 21.983,00 depois de 15% de impostos, a nota precisa ser de R$ 25.862,35. Somar 15% por cima daria R$ 25.280,45, e o escritório perderia dinheiro."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "proposta-de-honorarios",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O caso que fecha a trilha: montar a proposta de um trabalho por horas, como um escritório faz de verdade. Busca do valor-hora em outra aba, conta por etapa, desconto com SE e o imposto calculado do jeito certo.",
+    "grade": {
+      "nome": "Proposta",
+      "linhas": 12,
+      "colunas": 6,
+      "larguras": {
+        "A": 200,
+        "B": 110,
+        "C": 70,
+        "D": 100,
+        "E": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Etapa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Profissional",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor-hora",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "Subtotal",
+          "negrito": true
+        },
+        "A9": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "A10": {
+          "entrada": "Total com impostos",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Análise de documentos"
+        },
+        "B2": {
+          "entrada": "Associado"
+        },
+        "C2": {
+          "entrada": "18"
+        },
+        "A3": {
+          "entrada": "Reunião com o cliente"
+        },
+        "B3": {
+          "entrada": "Sócio"
+        },
+        "C3": {
+          "entrada": "4"
+        },
+        "A4": {
+          "entrada": "Pesquisa de jurisprudência"
+        },
+        "B4": {
+          "entrada": "Estagiário"
+        },
+        "C4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "Elaboração do parecer"
+        },
+        "B5": {
+          "entrada": "Associado"
+        },
+        "C5": {
+          "entrada": "22"
+        },
+        "A6": {
+          "entrada": "Revisão final"
+        },
+        "B6": {
+          "entrada": "Sócio"
+        },
+        "C6": {
+          "entrada": "6"
+        }
+      },
+      "variaveis": [
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ]
+    },
+    "abas": [
+      {
+        "nome": "Tabela",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "larguras": {
+            "A": 170,
+            "B": 100
+          },
+          "celulas": {
+            "A1": {
+              "entrada": "Profissional",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor-hora",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Sócio"
+            },
+            "B2": {
+              "entrada": "650",
+              "formato": "moeda"
+            },
+            "A3": {
+              "entrada": "Associado"
+            },
+            "B3": {
+              "entrada": "380",
+              "formato": "moeda"
+            },
+            "A4": {
+              "entrada": "Estagiário"
+            },
+            "B4": {
+              "entrada": "120",
+              "formato": "moeda"
+            },
+            "A6": {
+              "entrada": "Desconto a partir de",
+              "negrito": true
+            },
+            "B6": {
+              "entrada": "20000",
+              "formato": "moeda"
+            },
+            "A7": {
+              "entrada": "Desconto",
+              "negrito": true
+            },
+            "B7": {
+              "entrada": "5%",
+              "formato": "percentual"
+            },
+            "A8": {
+              "entrada": "Impostos sobre a nota",
+              "negrito": true
+            },
+            "B8": {
+              "entrada": "15%",
+              "formato": "percentual"
+            }
+          },
+          "variaveis": [
+            "B2",
+            "B3",
+            "B4",
+            "B8"
+          ]
+        }
+      }
+    ],
+    "inicio": {
+      "celulaAtiva": "D2"
+    },
+    "alvos": [
+      {
+        "celula": "D2",
+        "esperado": 380,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B2;Tabela!$A$2:$B$4;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D3",
+        "esperado": 650,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B3;Tabela!$A$2:$B$4;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D4",
+        "esperado": 120,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B4;Tabela!$A$2:$B$4;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D5",
+        "esperado": 380,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B5;Tabela!$A$2:$B$4;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "D6",
+        "esperado": 650,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(B6;Tabela!$A$2:$B$4;2;FALSO)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E2",
+        "esperado": 6840,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C2*D2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E3",
+        "esperado": 2600,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C3*D3",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E4",
+        "esperado": 1440,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C4*D4",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E5",
+        "esperado": 8360,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C5*D5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "E6",
+        "esperado": 3900,
+        "exigeFormula": true,
+        "solucaoReferencia": "=C6*D6",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B8",
+        "esperado": 23140,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SOMA(E2:E6)",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B9",
+        "esperado": 1157.0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(B8>=Tabela!$B$6;B8*Tabela!$B$7;0)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B10",
+        "esperado": 25862.352941,
+        "exigeFormula": true,
+        "solucaoReferencia": "=(B8-B9)/(1-Tabela!$B$8)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\(.*;2(;(VERDADEIRO|1))?\\)$",
+        "bloqueia": true,
+        "dica": "Sem FALSO no fim, o PROCV faz busca aproximada, e a tabela de profissionais não está em ordem. Para achar o nome exato, termine com FALSO."
+      },
+      {
+        "padrao": "TABELA!A2:B4|TABELA!A\\d:B\\d",
+        "dica": "A tabela da outra aba desceu junto com a cópia. Trave-a com $."
+      },
+      {
+        "padrao": "\\*\\(1\\+TABELA!\\$?B\\$?8\\)|\\*1,15",
+        "dica": "Somar 15% por cima não basta: o imposto é cobrado sobre a nota inteira, que já inclui o próprio imposto. Depois de pagar, sobraria menos do que o combinado. Divida por (1 − imposto)."
+      },
+      {
+        "padrao": "^=\\(?B8-B9\\)?\\*\\(1-TABELA",
+        "dica": "Assim o imposto foi tirado do valor, e a nota ficou menor que o combinado. O imposto vem por dentro: a nota é maior que o valor líquido."
+      }
+    ],
+    "video": "Proposta de honorários: PROCV do valor-hora em outra aba, desconto com SE e o imposto por dentro, dividindo por (1 − 15%)."
+  },
+  {
+    "id": "f75d296d-1955-595e-9df8-d004f4aaf57a",
+    "slug": "proposta-de-honorarios-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quanto cobrar por um serviço",
+    "enunciado": [
+      "O escritório tem **custos fixos** de B1 por mês e **horas faturáveis** de B2. Quer **margem** de B3 e paga **impostos** de B4 sobre a nota. Um serviço leva as horas de B5.",
+      "Em **B7**, o custo da hora (custos ÷ horas faturáveis). Em **B8**, o custo do serviço (custo da hora × horas). Em **B9**, o preço: o custo com a margem, com o imposto por dentro (dividido por 1 − impostos)."
+    ],
+    "dicas": [
+      "Custo com margem: o custo vezes (1 + margem).",
+      "O imposto vem depois e por dentro: divida pelo que sobra da nota depois dele."
+    ],
+    "explicacao": [
+      "B7 `=B1/B2`, B8 `=B7*B5` e B9 `=B8*(1+B3)/(1-B4)`.",
+      "A hora custa R$ 87,50 e o serviço, R$ 700,00. Com 30% de margem são R$ 910,00 líquidos; com o imposto por dentro, a nota fica em R$ 1.070,59."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "proposta-de-honorarios",
+    "etapa": 2,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 11,
+      "colunas": 4,
+      "larguras": {
+        "A": 190,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Custos fixos do mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "42000",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Horas faturáveis no mês",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "480"
+        },
+        "A3": {
+          "entrada": "Margem de lucro",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "30%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Impostos sobre a nota",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "15%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Horas do serviço",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "8"
+        },
+        "A7": {
+          "entrada": "Custo da hora",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "Custo do serviço",
+          "negrito": true
+        },
+        "A9": {
+          "entrada": "Preço",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "B7"
+    },
+    "alvos": [
+      {
+        "celula": "B7",
+        "esperado": 87.5,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1/B2",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B8",
+        "esperado": 700,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B7*B5",
+        "formato": "moeda"
+      },
+      {
+        "celula": "B9",
+        "esperado": 1070.588235,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B8*(1+B3)/(1-B4)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\*\\(1\\+B4\\)",
+        "dica": "Somar o imposto por cima não basta: ele é cobrado sobre a nota inteira. Depois de pagar, sobraria menos que o custo com a margem."
+      },
+      {
+        "padrao": "\\(1\\+B3\\+B4\\)",
+        "dica": "Somar margem e imposto como se fossem uma porcentagem só deixa o preço baixo. Primeiro a margem; depois o imposto, por dentro."
+      }
+    ]
+  },
+  {
+    "id": "52301356-8849-5239-8e45-cabb30f1e012",
+    "slug": "proposta-de-honorarios-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Entrada e parcelas da proposta",
+    "enunciado": [
+      "O cliente aceitou a proposta de **B1** e quer pagar uma **entrada** (B2) e o resto em **B3** parcelas com juros de **B4** ao mês.",
+      "Em **B6**, o valor da entrada; em **B7**, o saldo a parcelar; em **B8**, a parcela (com PGTO); em **B9**, o total que o cliente vai pagar (entrada + todas as parcelas)."
+    ],
+    "dicas": [
+      "Só o saldo, depois da entrada, é financiado.",
+      "No PGTO, o valor presente entra com sinal de menos para a parcela sair positiva."
+    ],
+    "explicacao": [
+      "B6 `=B1*B2`, B7 `=B1-B6`, B8 `=PGTO(B4;B3;-B7)` e B9 `=B6+B3*B8`.",
+      "A entrada é de R$ 5.172,47 e as 5 parcelas, de R$ 4.326,03. O cliente paga R$ 26.802,64 no total: a diferença para a proposta são os juros do parcelamento."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "proposta-de-honorarios",
+    "etapa": 3,
+    "papel": "variacao",
+    "grade": {
+      "linhas": 11,
+      "colunas": 4,
+      "larguras": {
+        "A": 170,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Total da proposta",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "25862,35",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Entrada",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "20%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "5"
+        },
+        "A4": {
+          "entrada": "Juros ao mês",
+          "negrito": true
+        },
+        "B4": {
+          "entrada": "1,5%",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Valor da entrada",
+          "negrito": true
+        },
+        "A7": {
+          "entrada": "Saldo a parcelar",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "Parcela",
+          "negrito": true
+        },
+        "A9": {
+          "entrada": "Total pago",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "B6"
+    },
+    "alvos": [
+      {
+        "celula": "B6",
+        "esperado": 5172.47,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1*B2",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B7",
+        "esperado": 20689.88,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1-B6",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B8",
+        "esperado": 4326.0330041195675,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PGTO(B4;B3;-B7)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B9",
+        "esperado": 26802.635021,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B6+B3*B8",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PGTO\\([^;]*;[^;]*;-?B1\\)",
+        "dica": "Assim a proposta inteira foi parcelada, inclusive a entrada que o cliente já pagou. Só o saldo é financiado."
+      },
+      {
+        "padrao": "PGTO\\([^;]*;[^;]*;\\+?B7\\)",
+        "dica": "A parcela saiu negativa: o PGTO mostra o pagamento como saída de dinheiro. Ponha o sinal de menos antes do valor financiado."
+      },
+      {
+        "padrao": "^=B1$",
+        "celula": "B9",
+        "dica": "O cliente paga mais que a proposta: as parcelas têm juros. Some a entrada com todas as parcelas."
+      }
+    ]
+  },
+  {
+    "id": "4c629898-2cb2-56b2-b5bd-141a246cb690",
+    "slug": "proposta-de-honorarios-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o imposto por fora",
+    "enunciado": [
+      "O serviço custa **B1** e o escritório quer margem de **B2**. O imposto sobre a nota é de **B3**.",
+      "Em **B5**, o preço da nota. Em **B6**, o imposto pago (nota × imposto). Em **B7**, o que sobra depois do imposto (nota − imposto), que tem que ser exatamente o custo com a margem."
+    ],
+    "dicas": [
+      "Calcule primeiro o custo com a margem: é o que precisa sobrar no fim.",
+      "Use a linha 7 para conferir: se sobrar menos que o custo com a margem, o imposto entrou do jeito errado."
+    ],
+    "explicacao": [
+      "B5 `=B1*(1+B2)/(1-B3)`, B6 `=B5*B3` e B7 `=B5-B6`.",
+      "Custo com margem: R$ 3.000,00. Com `=B1*(1+B2)*(1+B3)`, a nota seria R$ 3.420,00 e, depois de 14% de imposto, sobrariam R$ 2.941,20. Com o imposto por dentro, a nota é R$ 3.488,37 e sobram os R$ 3.000,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "formula",
+    "licao": "proposta-de-honorarios",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "grade": {
+      "linhas": 9,
+      "colunas": 4,
+      "larguras": {
+        "A": 190,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Custo do serviço",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Margem",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "25%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Imposto sobre a nota",
+          "negrito": true
+        },
+        "B3": {
+          "entrada": "14%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Preço da nota",
+          "negrito": true
+        },
+        "A6": {
+          "entrada": "Imposto pago",
+          "negrito": true
+        },
+        "A7": {
+          "entrada": "Sobra depois do imposto",
+          "negrito": true
+        }
+      },
+      "variaveis": [
+        "B1",
+        "B2",
+        "B3"
+      ]
+    },
+    "inicio": {
+      "celulaAtiva": "B5"
+    },
+    "alvos": [
+      {
+        "celula": "B5",
+        "esperado": 3488.372093,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B1*(1+B2)/(1-B3)",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B6",
+        "esperado": 488.372093,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5*B3",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      },
+      {
+        "celula": "B7",
+        "esperado": 3000,
+        "exigeFormula": true,
+        "solucaoReferencia": "=B5-B6",
+        "formato": "moeda",
+        "tolerancia": 0.005
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "\\*\\(1\\+B3\\)|\\*1,14",
+        "dica": "Confira a linha 7: depois de pagar 14% sobre a nota, sobra menos que o custo com a margem. O imposto é cobrado sobre a nota inteira, que já inclui ele mesmo: divida por (1 − imposto)."
+      },
+      {
+        "padrao": "\\(1\\+B2\\+B3\\)",
+        "dica": "Somar margem e imposto numa porcentagem só deixa o preço baixo. Primeiro a margem; depois o imposto, por dentro."
+      }
+    ]
+  },
+  {
+    "id": "be351de6-048c-5b96-bc54-f8aa0a5e8117",
+    "slug": "proposta-de-honorarios-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "casos",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o imposto por dentro",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, B1 contém 2700 (o valor que o escritório quer receber) e B2 contém 10% (imposto cobrado sobre o valor da nota).",
+      "Para que, pago o imposto, sobrem exatamente os 2700, o valor da nota deve ser calculado por:"
+    ],
+    "dicas": [
+      "Se o imposto leva 10% da nota, sobram 90% dela."
+    ],
+    "explicacao": [
+      "`=B1/(1-B2)` = 2700 ÷ 0,9 = 3000. Conferindo: 10% de 3000 são 300, e sobram 2700."
+    ],
+    "tentativasAteExplicacao": 3,
+    "type": "multiple_choice",
+    "licao": "proposta-de-honorarios",
+    "etapa": 5,
+    "papel": "conceito",
+    "opcoes": [
+      {
+        "texto": "`=B1*(1+B2)`",
+        "dica": "Dá 2970: o imposto de 10% sobre 2970 é 297, e sobram só 2673."
+      },
+      {
+        "texto": "`=B1/(1-B2)`"
+      },
+      {
+        "texto": "`=B1*(1-B2)`",
+        "dica": "Assim o imposto é descontado do valor, e a nota fica menor que o desejado."
+      },
+      {
+        "texto": "`=B1+B2`",
+        "dica": "Soma 2700 com 0,1: a porcentagem precisa entrar numa multiplicação ou divisão."
+      },
+      {
+        "texto": "`=B1/B2`",
+        "dica": "Dividir por 10% dá 27000, dez vezes o valor."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 6,
+      "colunas": 4,
+      "larguras": {
+        "A": 120,
+        "B": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Valor líquido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Imposto",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "10%",
+          "formato": "percentual"
+        }
+      }
+    },
+    "banca": "Vunesp",
+    "tema": "Porcentagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B1/(1-B2)",
+        "esperado": 3000
       }
     ]
   }

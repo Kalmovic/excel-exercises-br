@@ -64,6 +64,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("CORRESP", "valor_procurado; matriz_procurada; [tipo_correspondência]", "Posição de um valor numa lista."),
   f("ESCOLHER", "núm_índice; valor1; [valor2]; ...", "Escolhe um valor da lista pela posição."),
   f("DESLOC", "ref; lins; cols; [altura]; [largura]", "Referência deslocada a partir de uma célula."),
+  f("INDIRETO", "texto_ref; [a1]", "A referência escrita num texto: =INDIRETO(A2&\"!B2\") lê B2 da aba cujo nome está em A2."),
   f("CORRESPX", "pesquisa_valor; pesquisa_matriz; [modo_correspondência]; [modo_pesquisa]", "Posição de um valor numa lista; exata por padrão (-1 próximo menor, 1 próximo maior, 2 curinga)."),
   // texto
   f("CONCAT", "texto1; [texto2]; ...", "Junta textos."),

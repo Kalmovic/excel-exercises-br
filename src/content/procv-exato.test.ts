@@ -27,6 +27,7 @@ const EXATOS = [
   "abas-conferir-recebimentos-variacao-a",
   "abas-conferir-recebimentos-variacao-b",
   "abas-conferir-recebimentos-pegadinha",
+  "abas-indireto-mes-variacao-a",
   "arrumar-espacos-sobrando-pegadinha",
 ];
 

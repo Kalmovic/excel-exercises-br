@@ -716,8 +716,15 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
   // Referências da fórmula: todas colorem o texto; na grade, só as que caem nesta aba.
   const daqui = (aba?: string) => (aba === undefined ? !formulaExterna : !!nomeAba && aba.toUpperCase() === nomeAba.toUpperCase());
+  // Referência 3D (Jan:Mar!B2): pinta em todas as abas do intervalo, pela ordem das abas.
+  const nesta = (r: { aba?: string; ateAba?: string }) => {
+    if (r.ateAba === undefined || !nomeAba) return daqui(r.aba);
+    const ordem = (planilha.pasta?.nomes() ?? []).map((n) => n.toUpperCase());
+    const i = ordem.indexOf(r.aba!.toUpperCase()), j = ordem.indexOf(r.ateAba.toUpperCase()), k = ordem.indexOf(nomeAba.toUpperCase());
+    return i >= 0 && j >= 0 && k >= Math.min(i, j) && k <= Math.max(i, j);
+  };
   const refsTexto = editando ? referenciasDaFormula(rascunho) : [];
-  const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter((r) => daqui(r.aba));
+  const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter(nesta);
 
   return (
     <div

@@ -116,8 +116,8 @@ export const MODULOS: readonly Modulo[] = [
   modulo(10, "destaque", "Formatação condicional", "A planilha que aponta o problema: realçar valores, duplicados, a linha inteira com fórmula (E, OU), escala de cor, barras e a ordem das regras.", "Formatação condicional dominada: sua planilha mostra sozinha o que importa."),
   modulo(11, "graficos", "Gráficos", "Colunas, linhas, barras, pizza, empilhadas e colunas com linha de meta: escolher o gráfico pela pergunta, resumir com fórmulas antes de desenhar e montar o painel do trimestre.", "Gráficos dominados: você escolhe o tipo certo e evita as armadilhas do Excel."),
   modulo(12, "validacao", "Validação de dados", "Listas suspensas (inclusive de outra aba), números e datas dentro da regra, alertas de Parar, Aviso e Informação, regras com fórmula (sem repetir, até 10% do pedido) e o cadastro à prova de erros.", "Validação de dados dominada: sua planilha só aceita o que faz sentido."),
-  modulo(13, "abas", "Várias abas", "Fórmulas que leem outras abas: somar, buscar com PROCV e SOMASE, montar o resumo do trimestre, consolidar por categoria e conferir uma lista contra a outra.", "Várias abas dominadas: sua planilha cresce sem virar bagunça."),
-  modulo(14, "casos", "Casos reais", "Comissão por faixa, controle de estoque, parcelamento com PGTO, multa e juros de boleto atrasado e o desconto do INSS.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(13, "abas", "Várias abas", "Fórmulas que leem outras abas: somar, buscar com PROCV e SOMASE, resumo do trimestre, consolidar e conferir listas, aba de parâmetros, referência 3D, painel com CONT.SES, INDIRETO e o fechamento do mês.", "Várias abas dominadas: sua planilha cresce sem virar bagunça."),
+  modulo(14, "casos", "Casos reais", "Comissão por faixa, estoque, PGTO, boleto atrasado, INSS, folha com horas extras, fluxo de caixa, reajuste pelo IPCA, conciliação bancária e proposta de honorários.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {
