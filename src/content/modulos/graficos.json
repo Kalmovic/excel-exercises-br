@@ -593,7 +593,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pizza: a participação de cada canal",
@@ -709,7 +709,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Barras: nomes longos",
@@ -826,7 +826,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Rótulos de dados",
@@ -1136,7 +1136,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Duas séries: comparar os anos",
@@ -1282,7 +1282,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Duas linhas",
@@ -1426,7 +1426,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Ranking pronto para apresentar",
@@ -1546,7 +1546,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 34,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: o ano que virou série",
@@ -1675,7 +1675,7 @@
     "trilha": "excel-ptbr",
     "modulo": "graficos",
     "ordem": 35,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Por que o ano virou linha?",
@@ -3212,25 +3212,31 @@
     }
   },
   {
-    "id": "ec2a320e-325a-5b96-93e9-a88113eac042",
-    "slug": "teste-graficos-1",
+    "id": "4048c686-cd9f-5d7e-9cad-96ffe453627e",
+    "slug": "grafico-escolher-tipo",
     "trilha": "excel-ptbr",
     "modulo": "graficos",
-    "ordem": 201,
+    "ordem": 6,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "Evolução das vendas",
+    "titulo": "Escolher o gráfico pela pergunta",
     "enunciado": [
-      "Crie um gráfico que mostre a **evolução das vendas** ao longo dos meses (sem a linha do Total)."
+      "A sócia do escritório perguntou: **a inadimplência dos clientes está melhorando ou piorando ao longo do ano?**",
+      "Crie o gráfico que responde a essa pergunta. O tipo é você quem escolhe."
     ],
-    "dicas": [],
+    "dicas": [
+      "\"Ao longo do ano\" é uma pergunta sobre o tempo. Qual tipo de gráfico liga um mês ao outro e mostra a inclinação?"
+    ],
     "explicacao": [
-      "Revise a lição indicada no resultado do teste."
+      "Selecione **A1:B13** → Inserir Gráfico → **Linhas**.",
+      "Evolução no tempo pede **linhas**: o olho segue a inclinação e vê a tendência (aqui, piora até abril e melhora desde então). Pizza não faz sentido, porque os meses não são partes de um todo."
     ],
-    "tentativasAteExplicacao": 99,
-    "revisar": "grafico-vendas-por-mes",
-    "teste": true,
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-escolher-tipo",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Na reunião ninguém pede \"um gráfico de linhas\": perguntam \"a inadimplência está piorando?\". Escolher o tipo pela pergunta é o que faz o gráfico responder sozinho.",
     "type": "ferramenta",
     "grade": {
       "linhas": 16,
@@ -3241,67 +3247,1751 @@
           "negrito": true
         },
         "B1": {
-          "entrada": "Vendas",
+          "entrada": "Inadimplência",
           "negrito": true
         },
         "A2": {
           "entrada": "Jan"
         },
         "B2": {
-          "entrada": "12000",
+          "entrada": "8,2%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "7,9%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "8,6%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "9,1%",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "8,8%",
+          "formato": "percentual"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "7,4%",
+          "formato": "percentual"
+        },
+        "A8": {
+          "entrada": "Jul"
+        },
+        "B8": {
+          "entrada": "6,9%",
+          "formato": "percentual"
+        },
+        "A9": {
+          "entrada": "Ago"
+        },
+        "B9": {
+          "entrada": "6,5%",
+          "formato": "percentual"
+        },
+        "A10": {
+          "entrada": "Set"
+        },
+        "B10": {
+          "entrada": "6,8%",
+          "formato": "percentual"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "6,1%",
+          "formato": "percentual"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "5,7%",
+          "formato": "percentual"
+        },
+        "A13": {
+          "entrada": "Dez"
+        },
+        "B13": {
+          "entrada": "5,2%",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 80,
+        "B": 110
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "linhas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "series": [
+          {
+            "nome": "Inadimplência",
+            "valores": [
+              0.082,
+              0.079,
+              0.086,
+              0.091,
+              0.088,
+              0.074,
+              0.069,
+              0.065,
+              0.068,
+              0.061,
+              0.057,
+              0.052
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "linhas",
+            "dados": "A1:B13",
+            "posicao": "D1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "febab3e3-80df-50f0-acf8-09ce96fa822c",
+    "slug": "grafico-escolher-tipo-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Partes de um todo",
+    "enunciado": [
+      "O financeiro quer saber **quanto cada forma de pagamento representa do total recebido** em outubro. Crie o gráfico que mostra isso."
+    ],
+    "dicas": [
+      "\"Quanto representa do total\" é uma pergunta de partes de um todo."
+    ],
+    "explicacao": [
+      "Selecione **A1:B5** → Inserir Gráfico → **Pizza**.",
+      "Cada fatia é uma forma de pagamento e o círculo inteiro é o total recebido: dá para ver de relance que o Pix trouxe quase metade."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-escolher-tipo",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Forma de pagamento",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Recebido",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Pix"
+        },
+        "B2": {
+          "entrada": "48200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Boleto"
+        },
+        "B3": {
+          "entrada": "31500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Cartão de crédito"
+        },
+        "B4": {
+          "entrada": "22800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Transferência"
+        },
+        "B5": {
+          "entrada": "9700",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 110
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Pix",
+          "Boleto",
+          "Cartão de crédito",
+          "Transferência"
+        ],
+        "series": [
+          {
+            "nome": "Recebido",
+            "valores": [
+              48200.0,
+              31500.0,
+              22800.0,
+              9700.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "A1:B5",
+            "posicao": "D1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "40a507d6-62dd-5af9-b8b2-6e205f1640e4",
+    "slug": "grafico-escolher-tipo-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Comparar áreas e anos",
+    "enunciado": [
+      "O sócio pergunta: **em quais áreas os honorários cresceram de 2025 para 2026?**",
+      "Crie um gráfico que compare os dois anos, área por área."
+    ],
+    "dicas": [
+      "As áreas não têm ordem no tempo: a pergunta é de comparação entre categorias.",
+      "Duas séries (2025 e 2026) lado a lado em cada área."
+    ],
+    "explicacao": [
+      "Selecione **A1:C5** → Inserir Gráfico → **Colunas** (barras também respondem).",
+      "Cada área ganha duas colunas, uma por ano: a do Cível é a única que encolheu. Linhas ligariam Trabalhista a Cível como se fossem meses, e a pizza só mostraria um dos anos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-escolher-tipo",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "'2025",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "'2026",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Trabalhista"
+        },
+        "B2": {
+          "entrada": "182000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "205000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Cível"
+        },
+        "B3": {
+          "entrada": "143000",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "138500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Tributário"
+        },
+        "B4": {
+          "entrada": "96000",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "121000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Família"
+        },
+        "B5": {
+          "entrada": "64000",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "71500",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Trabalhista",
+          "Cível",
+          "Tributário",
+          "Família"
+        ],
+        "series": [
+          {
+            "nome": "2025",
+            "valores": [
+              182000.0,
+              143000.0,
+              96000.0,
+              64000.0
+            ]
+          },
+          {
+            "nome": "2026",
+            "valores": [
+              205000.0,
+              138500.0,
+              121000.0,
+              71500.0
+            ]
+          }
+        ],
+        "aceitaTambem": [
+          "barras"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C5",
+            "posicao": "E1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "a228e09b-6b9c-540a-9023-5bf892cf1ab9",
+    "slug": "grafico-escolher-tipo-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 64,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: porcentagem não é pizza",
+    "enunciado": [
+      "Monte um gráfico com a **taxa de êxito** de cada área (processos ganhos ÷ processos encerrados na área), para comparar as áreas entre si."
+    ],
+    "dicas": [
+      "Antes de escolher pizza, pergunte: essas porcentagens são pedaços de um mesmo total?",
+      "Some as taxas: dá 344%. Uma pizza dividiria um círculo que não existe."
+    ],
+    "explicacao": [
+      "Selecione **A1:B6** → Inserir Gráfico → **Colunas** (ou Barras).",
+      "Cada taxa é calculada sobre os processos da **própria área**: elas não somam 100% e não são fatias de nada. Na pizza, Família pareceria \"um quarto do escritório\", o que é falso. Para comparar taxas, médias ou prazos, use colunas ou barras."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-escolher-tipo",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Taxa de êxito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Trabalhista"
+        },
+        "B2": {
+          "entrada": "72%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "Cível"
+        },
+        "B3": {
+          "entrada": "58%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "Tributário"
+        },
+        "B4": {
+          "entrada": "64%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "Família"
+        },
+        "B5": {
+          "entrada": "81%",
+          "formato": "percentual"
+        },
+        "A6": {
+          "entrada": "Previdenciário"
+        },
+        "B6": {
+          "entrada": "69%",
+          "formato": "percentual"
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Trabalhista",
+          "Cível",
+          "Tributário",
+          "Família",
+          "Previdenciário"
+        ],
+        "series": [
+          {
+            "nome": "Taxa de êxito",
+            "valores": [
+              0.72,
+              0.58,
+              0.64,
+              0.81,
+              0.69
+            ]
+          }
+        ],
+        "aceitaTambem": [
+          "barras"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:B6",
+            "posicao": "D1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "9bcfd2a2-d479-5476-a9d7-6c539ddf44e9",
+    "slug": "grafico-escolher-tipo-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o gráfico para comparar taxas",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, um analista registrou a taxa de aprovação de cinco setores (72%, 58%, 64%, 81% e 69%), cada uma calculada sobre os processos do próprio setor.",
+      "Para comparar as taxas entre os setores, o tipo de gráfico mais adequado, dentre os seguintes, é:"
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "Taxas de grupos diferentes não somam um total, então pizza e rosca não se aplicam. Para comparar valores entre categorias, use **colunas** (ou barras)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-escolher-tipo",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Pizza, pois as porcentagens representam partes de um todo.",
+        "dica": "As taxas somam 344%: não são fatias de um mesmo total."
+      },
+      {
+        "texto": "Colunas agrupadas, com uma coluna para cada setor."
+      },
+      {
+        "texto": "Linhas, pois as taxas variam de um setor para outro.",
+        "dica": "Linhas ligam pontos em sequência, como meses; setores não têm ordem."
+      },
+      {
+        "texto": "Pizza 3D, para destacar o setor com a maior taxa.",
+        "dica": "O efeito 3D distorce as fatias, e a pizza já é inadequada aqui."
+      },
+      {
+        "texto": "Rosca, pois exibe porcentagens no centro.",
+        "dica": "A rosca é uma pizza com furo: tem o mesmo problema."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "FCC",
+    "tema": "Gráficos"
+  },
+  {
+    "id": "41ab3389-eab7-5d57-8384-ea9276a51a63",
+    "slug": "grafico-empilhadas",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Colunas empilhadas: o total e as partes",
+    "enunciado": [
+      "Crie um gráfico com **uma coluna por mês**, mostrando o **total de horas faturadas** e **quanto veio de cada área** (Trabalhista, Cível e Tributário)."
+    ],
+    "dicas": [
+      "Uma coluna por mês com pedaços dentro: no menu Inserir Gráfico, procure o tipo que empilha as séries."
+    ],
+    "explicacao": [
+      "Selecione **A1:D7** → Inserir Gráfico → **Colunas Empilhadas**.",
+      "Cada mês vira uma coluna só, dividida em três cores. A altura é a soma das áreas, e o tamanho de cada pedaço mostra quanto cada área contribuiu. Nas colunas agrupadas (lado a lado) dá para comparar as áreas, mas o total do mês não aparece."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-empilhadas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Quando a pergunta é \"quanto deu no total e de onde veio\", colunas lado a lado espalham a resposta. Empilhar junta as duas coisas numa coluna só.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Trabalhista",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cível",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Tributário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "320"
+        },
+        "C2": {
+          "entrada": "210"
+        },
+        "D2": {
+          "entrada": "140"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "290"
+        },
+        "C3": {
+          "entrada": "230"
+        },
+        "D3": {
+          "entrada": "150"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "350"
+        },
+        "C4": {
+          "entrada": "240"
+        },
+        "D4": {
+          "entrada": "170"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "330"
+        },
+        "C5": {
+          "entrada": "260"
+        },
+        "D5": {
+          "entrada": "160"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "380"
+        },
+        "C6": {
+          "entrada": "250"
+        },
+        "D6": {
+          "entrada": "190"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "360"
+        },
+        "C7": {
+          "entrada": "270"
+        },
+        "D7": {
+          "entrada": "200"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 96,
+        "C": 80,
+        "D": 90
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "empilhadas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Trabalhista",
+            "valores": [
+              320.0,
+              290.0,
+              350.0,
+              330.0,
+              380.0,
+              360.0
+            ]
+          },
+          {
+            "nome": "Cível",
+            "valores": [
+              210.0,
+              230.0,
+              240.0,
+              260.0,
+              250.0,
+              270.0
+            ]
+          },
+          {
+            "nome": "Tributário",
+            "valores": [
+              140.0,
+              150.0,
+              170.0,
+              160.0,
+              190.0,
+              200.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "empilhadas",
+            "dados": "A1:D7",
+            "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "45772276-2421-5275-bb51-6e0344c6da04",
+    "slug": "grafico-empilhadas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Empilhadas com os valores",
+    "enunciado": [
+      "Crie o gráfico de **colunas empilhadas** das horas por área, com o título **Horas faturadas por área** e os **valores escritos** em cada pedaço."
+    ],
+    "dicas": [
+      "Título e rótulos ficam no Design do Gráfico, que abre quando o gráfico está selecionado."
+    ],
+    "explicacao": [
+      "Inserir Gráfico → **Colunas Empilhadas** com **A1:D7** → no Design do Gráfico, escreva o título e marque **Rótulos de dados**.",
+      "Nas empilhadas, cada rótulo fica no meio do seu pedaço: quem lê vê as horas de cada área sem precisar estimar pela altura."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-empilhadas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Trabalhista",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cível",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Tributário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "320"
+        },
+        "C2": {
+          "entrada": "210"
+        },
+        "D2": {
+          "entrada": "140"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "290"
+        },
+        "C3": {
+          "entrada": "230"
+        },
+        "D3": {
+          "entrada": "150"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "350"
+        },
+        "C4": {
+          "entrada": "240"
+        },
+        "D4": {
+          "entrada": "170"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "330"
+        },
+        "C5": {
+          "entrada": "260"
+        },
+        "D5": {
+          "entrada": "160"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "380"
+        },
+        "C6": {
+          "entrada": "250"
+        },
+        "D6": {
+          "entrada": "190"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "360"
+        },
+        "C7": {
+          "entrada": "270"
+        },
+        "D7": {
+          "entrada": "200"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 96,
+        "C": 80,
+        "D": 90
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "empilhadas",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Trabalhista",
+            "valores": [
+              320.0,
+              290.0,
+              350.0,
+              330.0,
+              380.0,
+              360.0
+            ]
+          },
+          {
+            "nome": "Cível",
+            "valores": [
+              210.0,
+              230.0,
+              240.0,
+              260.0,
+              250.0,
+              270.0
+            ]
+          },
+          {
+            "nome": "Tributário",
+            "valores": [
+              140.0,
+              150.0,
+              170.0,
+              160.0,
+              190.0,
+              200.0
+            ]
+          }
+        ],
+        "titulo": "Horas faturadas por área",
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "empilhadas",
+            "dados": "A1:D7",
+            "posicao": "F1",
+            "titulo": "Horas faturadas por área",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "af24341a-4a4d-5e16-b10e-5dc65dcce5fa",
+    "slug": "grafico-empilhadas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Despesa de cada filial",
+    "enunciado": [
+      "Crie um gráfico com **uma coluna por filial**, mostrando a **despesa total** dividida em **fixas** e **variáveis**."
+    ],
+    "dicas": [
+      "Uma coluna por filial, com as duas partes empilhadas."
+    ],
+    "explicacao": [
+      "Selecione **A1:C5** → Inserir Gráfico → **Colunas Empilhadas**.",
+      "Campinas gasta mais no total, mas Santos tem a maior parte variável: as duas leituras aparecem no mesmo gráfico."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-empilhadas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Filial",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fixas",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Variáveis",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Campinas"
+        },
+        "B2": {
+          "entrada": "18500",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "9200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Santos"
+        },
+        "B3": {
+          "entrada": "15200",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "11400",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Ribeirão Preto"
+        },
+        "B4": {
+          "entrada": "12800",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "7600",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Sorocaba"
+        },
+        "B5": {
+          "entrada": "10900",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "8300",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 96,
+        "C": 96
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "empilhadas",
+        "categorias": [
+          "Campinas",
+          "Santos",
+          "Ribeirão Preto",
+          "Sorocaba"
+        ],
+        "series": [
+          {
+            "nome": "Fixas",
+            "valores": [
+              18500.0,
+              15200.0,
+              12800.0,
+              10900.0
+            ]
+          },
+          {
+            "nome": "Variáveis",
+            "valores": [
+              9200.0,
+              11400.0,
+              7600.0,
+              8300.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "empilhadas",
+            "dados": "A1:C5",
+            "posicao": "E1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "34edf4ea-aa43-582c-aaeb-e2521a662c68",
+    "slug": "grafico-empilhadas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 74,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o Total empilhado",
+    "enunciado": [
+      "Crie um gráfico de **colunas empilhadas** com as horas de cada área, **uma coluna por mês**."
+    ],
+    "dicas": [
+      "Depois de inserir, olhe a legenda: quantas cores aparecem? A tabela tem uma coluna que já é a soma das outras.",
+      "Se o Total entrar, cada coluna fica com o dobro da altura. Selecione só até a coluna D."
+    ],
+    "explicacao": [
+      "Selecione **A1:D7** (sem a coluna Total) → Inserir Gráfico → **Colunas Empilhadas**. Se já inseriu com o Total, corrija em **Dados** no Design do Gráfico.",
+      "A coluna empilhada já é a soma das partes. Empilhar o Total por cima conta tudo duas vezes: a coluna de julho mostraria 1.560 horas em vez de 780."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-empilhadas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Trabalhista",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Cível",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Tributário",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jul"
+        },
+        "B2": {
+          "entrada": "340"
+        },
+        "C2": {
+          "entrada": "260"
+        },
+        "D2": {
+          "entrada": "180"
+        },
+        "A3": {
+          "entrada": "Ago"
+        },
+        "B3": {
+          "entrada": "365"
+        },
+        "C3": {
+          "entrada": "245"
+        },
+        "D3": {
+          "entrada": "175"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "310"
+        },
+        "C4": {
+          "entrada": "280"
+        },
+        "D4": {
+          "entrada": "195"
+        },
+        "A5": {
+          "entrada": "Out"
+        },
+        "B5": {
+          "entrada": "390"
+        },
+        "C5": {
+          "entrada": "270"
+        },
+        "D5": {
+          "entrada": "205"
+        },
+        "A6": {
+          "entrada": "Nov"
+        },
+        "B6": {
+          "entrada": "375"
+        },
+        "C6": {
+          "entrada": "290"
+        },
+        "D6": {
+          "entrada": "210"
+        },
+        "A7": {
+          "entrada": "Dez"
+        },
+        "B7": {
+          "entrada": "280"
+        },
+        "C7": {
+          "entrada": "220"
+        },
+        "D7": {
+          "entrada": "150"
+        },
+        "E2": {
+          "entrada": "=SOMA(B2:D2)"
+        },
+        "E3": {
+          "entrada": "=SOMA(B3:D3)"
+        },
+        "E4": {
+          "entrada": "=SOMA(B4:D4)"
+        },
+        "E5": {
+          "entrada": "=SOMA(B5:D5)"
+        },
+        "E6": {
+          "entrada": "=SOMA(B6:D6)"
+        },
+        "E7": {
+          "entrada": "=SOMA(B7:D7)"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 96,
+        "C": 80,
+        "D": 90,
+        "E": 70
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "empilhadas",
+        "categorias": [
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "series": [
+          {
+            "nome": "Trabalhista",
+            "valores": [
+              340.0,
+              365.0,
+              310.0,
+              390.0,
+              375.0,
+              280.0
+            ]
+          },
+          {
+            "nome": "Cível",
+            "valores": [
+              260.0,
+              245.0,
+              280.0,
+              270.0,
+              290.0,
+              220.0
+            ]
+          },
+          {
+            "nome": "Tributário",
+            "valores": [
+              180.0,
+              175.0,
+              195.0,
+              205.0,
+              210.0,
+              150.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "empilhadas",
+            "dados": "A1:D7",
+            "posicao": "G1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "3fdb17cf-2b6f-5715-b2c4-96435b9361bd",
+    "slug": "grafico-empilhadas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o total e as partes",
+    "enunciado": [
+      "Um gerente registrou no Excel as vendas mensais de três lojas, de janeiro a junho, uma loja por coluna.",
+      "Ele quer um único gráfico em que a **altura** de cada coluna represente o total vendido no mês pelas três lojas e as **cores** mostrem a contribuição de cada loja. O tipo de gráfico que atende a essa necessidade é o de:"
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "Nas **colunas empilhadas**, cada série é um pedaço da coluna e a altura é a soma. No **100% empilhadas**, as alturas são iguais e o que se vê é só a proporção."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-empilhadas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "colunas agrupadas",
+        "dica": "Agrupadas põem as lojas lado a lado; o total do mês não aparece."
+      },
+      {
+        "texto": "colunas empilhadas"
+      },
+      {
+        "texto": "colunas 100% empilhadas",
+        "dica": "No 100% todas as colunas têm a mesma altura: o total some."
+      },
+      {
+        "texto": "pizza",
+        "dica": "A pizza mostra um único mês (uma série)."
+      },
+      {
+        "texto": "linhas com marcadores",
+        "dica": "Linhas mostram a tendência de cada loja, não o total do mês."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "Cesgranrio",
+    "tema": "Gráficos"
+  },
+  {
+    "id": "e8f7a444-0ebc-56cf-bf8c-73e721e4b0c1",
+    "slug": "grafico-realizado-meta",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Realizado em colunas, meta em linha",
+    "enunciado": [
+      "Crie um gráfico com o **faturamento realizado em colunas** e a **meta como uma linha** por cima, mês a mês."
+    ],
+    "dicas": [
+      "Colunas e linha no mesmo gráfico: no menu Inserir Gráfico há um tipo que combina os dois.",
+      "A primeira série (Realizado) vira colunas, e a seguinte (Meta), linha."
+    ],
+    "explicacao": [
+      "Selecione **A1:C13** → Inserir Gráfico → **Colunas e Linha**.",
+      "No Excel, o caminho é **Inserir → Gráfico de Combinação → Coluna Agrupada - Linha** (ou, num gráfico pronto, **Alterar Tipo de Gráfico** só da série Meta). Os meses em que a coluna não alcança a linha saltam aos olhos: o 1º semestre ficou quase todo abaixo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-realizado-meta",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "\"Batemos a meta?\" é a pergunta de todo fechamento. Colunas para o que aconteceu e uma linha para a meta: quem olha vê na hora onde ficou abaixo.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "78400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A3": {
           "entrada": "Fev"
         },
         "B3": {
-          "entrada": "9500",
+          "entrada": "82100",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A4": {
           "entrada": "Mar"
         },
         "B4": {
-          "entrada": "14200",
+          "entrada": "88900",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A5": {
           "entrada": "Abr"
         },
         "B5": {
-          "entrada": "13100",
+          "entrada": "86300",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A6": {
           "entrada": "Mai"
         },
         "B6": {
-          "entrada": "16800",
+          "entrada": "91200",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A7": {
           "entrada": "Jun"
         },
         "B7": {
-          "entrada": "15400",
+          "entrada": "84700",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "85000",
           "formato": "moeda"
         },
         "A8": {
-          "entrada": "Total",
-          "negrito": true
+          "entrada": "Jul"
         },
         "B8": {
-          "entrada": "=SOMA(B2:B7)",
-          "negrito": true,
+          "entrada": "93500",
+          "formato": "moeda"
+        },
+        "C8": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Ago"
+        },
+        "B9": {
+          "entrada": "97800",
+          "formato": "moeda"
+        },
+        "C9": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Set"
+        },
+        "B10": {
+          "entrada": "92100",
+          "formato": "moeda"
+        },
+        "C10": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "99400",
+          "formato": "moeda"
+        },
+        "C11": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "103600",
+          "formato": "moeda"
+        },
+        "C12": {
+          "entrada": "95000",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Dez"
+        },
+        "B13": {
+          "entrada": "108200",
+          "formato": "moeda"
+        },
+        "C13": {
+          "entrada": "95000",
           "formato": "moeda"
         }
       },
       "larguras": {
-        "A": 96,
-        "B": 88,
-        "C": 88,
-        "D": 88,
-        "E": 32
+        "A": 70,
+        "B": 110,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "series": [
+          {
+            "nome": "Realizado",
+            "valores": [
+              78400.0,
+              82100.0,
+              88900.0,
+              86300.0,
+              91200.0,
+              84700.0,
+              93500.0,
+              97800.0,
+              92100.0,
+              99400.0,
+              103600.0,
+              108200.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              85000.0,
+              85000.0,
+              85000.0,
+              85000.0,
+              85000.0,
+              85000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C13",
+            "posicao": "E1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "390d1937-7040-53a9-afc4-1f35d960194c",
+    "slug": "grafico-realizado-meta-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Duas linhas: a tendência e a meta",
+    "enunciado": [
+      "Crie um gráfico de **linhas** com os **novos clientes** e a **meta** de cada mês, para ver a tendência das duas."
+    ],
+    "dicas": [
+      "Selecione a tabela inteira: cada coluna de números vira uma linha."
+    ],
+    "explicacao": [
+      "Selecione **A1:C7** → Inserir Gráfico → **Linhas**.",
+      "Com duas linhas, a distância entre elas é o que importa: em fevereiro a captação ficou 7 abaixo da meta; em junho, 6 acima."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-realizado-meta",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Novos clientes",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "42"
+        },
+        "C2": {
+          "entrada": "45"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "38"
+        },
+        "C3": {
+          "entrada": "45"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "51"
+        },
+        "C4": {
+          "entrada": "50"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "47"
+        },
+        "C5": {
+          "entrada": "50"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "55"
+        },
+        "C6": {
+          "entrada": "55"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "61"
+        },
+        "C7": {
+          "entrada": "55"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 110,
+        "C": 70
       }
     },
     "verificacoes": [
@@ -3318,14 +5008,25 @@
         ],
         "series": [
           {
-            "nome": "Vendas",
+            "nome": "Novos clientes",
             "valores": [
-              12000,
-              9500,
-              14200,
-              13100,
-              16800,
-              15400
+              42.0,
+              38.0,
+              51.0,
+              47.0,
+              55.0,
+              61.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              45.0,
+              45.0,
+              50.0,
+              50.0,
+              55.0,
+              55.0
             ]
           }
         ]
@@ -3336,8 +5037,2746 @@
         "graficos": [
           {
             "tipo": "linhas",
-            "dados": "A1:B7",
+            "dados": "A1:C7",
+            "posicao": "E1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "c0a629d7-21b6-5be7-97ab-50f86aa78c7f",
+    "slug": "grafico-realizado-meta-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Produção x meta, com título",
+    "enunciado": [
+      "Crie o gráfico **Colunas e Linha** com as **petições protocoladas** em colunas e a **meta** em linha, com o título **Produção x meta**."
+    ],
+    "dicas": [
+      "Depois de inserir, o título fica no Design do Gráfico."
+    ],
+    "explicacao": [
+      "Selecione **A1:C7** → Inserir Gráfico → **Colunas e Linha** → título **Produção x meta**.",
+      "Um título que diz o que se compara poupa a primeira pergunta da reunião (\"o que é a linha?\")."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-realizado-meta",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Petições",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jul"
+        },
+        "B2": {
+          "entrada": "142"
+        },
+        "C2": {
+          "entrada": "160"
+        },
+        "A3": {
+          "entrada": "Ago"
+        },
+        "B3": {
+          "entrada": "156"
+        },
+        "C3": {
+          "entrada": "160"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "149"
+        },
+        "C4": {
+          "entrada": "160"
+        },
+        "A5": {
+          "entrada": "Out"
+        },
+        "B5": {
+          "entrada": "171"
+        },
+        "C5": {
+          "entrada": "160"
+        },
+        "A6": {
+          "entrada": "Nov"
+        },
+        "B6": {
+          "entrada": "165"
+        },
+        "C6": {
+          "entrada": "160"
+        },
+        "A7": {
+          "entrada": "Dez"
+        },
+        "B7": {
+          "entrada": "180"
+        },
+        "C7": {
+          "entrada": "160"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 80,
+        "C": 70
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "series": [
+          {
+            "nome": "Petições",
+            "valores": [
+              142.0,
+              156.0,
+              149.0,
+              171.0,
+              165.0,
+              180.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              160.0,
+              160.0,
+              160.0,
+              160.0,
+              160.0,
+              160.0
+            ]
+          }
+        ],
+        "titulo": "Produção x meta"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C7",
+            "posicao": "E1",
+            "titulo": "Produção x meta",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "c44f3f92-0606-504e-b722-75df08aaab95",
+    "slug": "grafico-realizado-meta-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a meta numa célula só",
+    "enunciado": [
+      "A meta mensal é a mesma o ano todo e está numa célula só, **F2**.",
+      "Crie o gráfico **Colunas e Linha** com o realizado em colunas e a **meta como uma linha reta** atravessando todos os meses."
+    ],
+    "dicas": [
+      "O gráfico só desenha o que está na tabela: para a linha existir, a meta precisa de um valor em cada mês (coluna C).",
+      "Em C2, puxe a meta de F2 travando a célula com $, e copie até C13."
+    ],
+    "explicacao": [
+      "Em **C2**, digite **=$F$2** e copie até **C13** → selecione **A1:C13** → Inserir Gráfico → **Colunas e Linha**.",
+      "Sem o **$**, a fórmula copiada viraria =F3, =F4… (células vazias) e a linha despencaria para zero. Com a meta em F2, quando ela mudar, a linha do gráfico muda junto."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-realizado-meta",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "88200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "91500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "97300",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "89900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "102400",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "96800",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Jul"
+        },
+        "B8": {
+          "entrada": "99100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Ago"
+        },
+        "B9": {
+          "entrada": "104700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Set"
+        },
+        "B10": {
+          "entrada": "93600",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "101200",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "98500",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Dez"
+        },
+        "B13": {
+          "entrada": "112300",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C11": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F1": {
+          "entrada": "Meta mensal",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "95000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 110,
+        "C": 100,
+        "D": 30,
+        "E": 30,
+        "F": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "C2",
+        "esperado": 95000,
+        "mensagem": "Em C2, puxe a meta de F2 com uma fórmula (=$F$2)."
+      },
+      {
+        "tipo": "celula",
+        "celula": "C13",
+        "esperado": 95000,
+        "mensagem": "A meta precisa estar em todos os meses, até C13. Se a fórmula copiada deu zero, faltou o $ para travar F2."
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "series": [
+          {
+            "nome": "Realizado",
+            "valores": [
+              88200.0,
+              91500.0,
+              97300.0,
+              89900.0,
+              102400.0,
+              96800.0,
+              99100.0,
+              104700.0,
+              93600.0,
+              101200.0,
+              98500.0,
+              112300.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0,
+              95000.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C2": "=$F$2",
+        "C3": "=$F$2",
+        "C4": "=$F$2",
+        "C5": "=$F$2",
+        "C6": "=$F$2",
+        "C7": "=$F$2",
+        "C8": "=$F$2",
+        "C9": "=$F$2",
+        "C10": "=$F$2",
+        "C11": "=$F$2",
+        "C12": "=$F$2",
+        "C13": "=$F$2"
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C13",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "f754c244-4456-54da-8b37-042a85a91cbd",
+    "slug": "grafico-realizado-meta-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 85,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a meta numa célula só",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, a coluna B (B2:B13) traz o faturamento de cada mês e a célula F2 contém a meta mensal, igual para todos os meses.",
+      "Para desenhar a meta como uma linha num gráfico de combinação, um assistente digitou uma fórmula em C2 e a copiou até C13. Para que todas as células de C2:C13 exibam o valor de F2, a fórmula digitada em C2 deve ser:"
+    ],
+    "dicas": [
+      "Use a planilha ao lado para testar as fórmulas das alternativas."
+    ],
+    "explicacao": [
+      "Com **=$F$2**, linha e coluna ficam travadas: copiada até C13, a fórmula continua apontando para F2. Teste na planilha: digite em C2 e copie para C3 e C4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-realizado-meta",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "=F2",
+        "dica": "Copiada para baixo, vira =F3, =F4… (células vazias)."
+      },
+      {
+        "texto": "=$F$2"
+      },
+      {
+        "texto": "=$F2",
+        "dica": "O $ antes do F trava a coluna, mas a linha continua andando."
+      },
+      {
+        "texto": "=F2*12",
+        "dica": "Multiplicar por 12 não repete a meta, e a referência continua relativa."
+      },
+      {
+        "texto": "=SOMA(F2)",
+        "dica": "A referência continua relativa: copiada, vira SOMA(F3)."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 8,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Faturamento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "88200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "91500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "97300",
+          "formato": "moeda"
+        },
+        "F1": {
+          "entrada": "Meta mensal",
+          "negrito": true
+        },
+        "F2": {
+          "entrada": "95000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 110,
+        "C": 100,
+        "F": 100
+      }
+    },
+    "banca": "Vunesp",
+    "tema": "Gráficos",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=$F$2",
+        "esperado": 95000
+      }
+    ]
+  },
+  {
+    "id": "a3d4dce1-5048-5990-8419-10bea68ae701",
+    "slug": "grafico-resumo-formulas",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Do lançamento ao gráfico",
+    "enunciado": [
+      "Os lançamentos de despesas de novembro estão em **A1:C15**.",
+      "1) Em **F2:F5**, calcule o **total de cada categoria** com **SOMASE**.",
+      "2) Crie um gráfico de **colunas** com o resumo (**E1:F5**)."
+    ],
+    "dicas": [
+      "Em F2: =SOMASE(intervalo das categorias; a categoria em E2; intervalo dos valores). Trave os dois intervalos com $ antes de copiar.",
+      "O gráfico é do resumo: selecione E1:F5, não os lançamentos."
+    ],
+    "explicacao": [
+      "Em **F2**: **=SOMASE($B$2:$B$15;E2;$C$2:$C$15)** e copie até F5 → selecione **E1:F5** → Inserir Gráfico → **Colunas**.",
+      "Um gráfico dos 14 lançamentos mostraria 14 colunas soltas. O resumo agrupa primeiro, e o gráfico responde \"onde foi o dinheiro\". Como o resumo é fórmula, um lançamento novo dentro de A2:C15 atualiza o total e o gráfico sozinhos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-resumo-formulas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Na vida real o gráfico quase nunca sai da tabela bruta: primeiro se resume (com SOMASE), depois se desenha. E quando entra um lançamento novo, o gráfico se atualiza sozinho.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 18,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Aluguel"
+        },
+        "C2": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Software"
+        },
+        "C3": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Material"
+        },
+        "C4": {
+          "entrada": "312,4",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Viagens"
+        },
+        "C5": {
+          "entrada": "1240",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "09/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Software"
+        },
+        "C6": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Material"
+        },
+        "C7": {
+          "entrada": "185,9",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Viagens"
+        },
+        "C8": {
+          "entrada": "2180",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Material"
+        },
+        "C9": {
+          "entrada": "96,5",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Software"
+        },
+        "C10": {
+          "entrada": "1120",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Viagens"
+        },
+        "C11": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Material"
+        },
+        "C12": {
+          "entrada": "241,3",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Software"
+        },
+        "C13": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "26/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Viagens"
+        },
+        "C14": {
+          "entrada": "1480",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "30/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Material"
+        },
+        "C15": {
+          "entrada": "128",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Aluguel"
+        },
+        "E3": {
+          "entrada": "Software"
+        },
+        "E4": {
+          "entrada": "Material"
+        },
+        "E5": {
+          "entrada": "Viagens"
+        },
+        "F2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 90,
+        "F": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "F2",
+        "esperado": 6500,
+        "funcao": "SUMIF",
+        "mensagem": "Calcule o total de cada categoria com SOMASE, travando os intervalos com $ (eles não podem andar quando a fórmula é copiada)."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F3",
+        "esperado": 2760,
+        "funcao": "SUMIF",
+        "mensagem": "Calcule o total de cada categoria com SOMASE, travando os intervalos com $ (eles não podem andar quando a fórmula é copiada)."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F4",
+        "esperado": 964.1,
+        "funcao": "SUMIF",
+        "mensagem": "Calcule o total de cada categoria com SOMASE, travando os intervalos com $ (eles não podem andar quando a fórmula é copiada)."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F5",
+        "esperado": 5660,
+        "funcao": "SUMIF",
+        "mensagem": "Calcule o total de cada categoria com SOMASE, travando os intervalos com $ (eles não podem andar quando a fórmula é copiada)."
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Aluguel",
+          "Software",
+          "Material",
+          "Viagens"
+        ],
+        "series": [
+          {
+            "nome": "Total",
+            "valores": [
+              6500,
+              2760,
+              964.1,
+              5660
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "F2": "=SOMASE($B$2:$B$15;E2;$C$2:$C$15)",
+        "F3": "=SOMASE($B$2:$B$15;E3;$C$2:$C$15)",
+        "F4": "=SOMASE($B$2:$B$15;E4;$C$2:$C$15)",
+        "F5": "=SOMASE($B$2:$B$15;E5;$C$2:$C$15)"
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "E1:F5",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "88a49121-268a-587f-92a0-48c977aee5cf",
+    "slug": "grafico-resumo-formulas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Contar por status e desenhar",
+    "enunciado": [
+      "1) Em **F2:F4**, conte quantos processos há em cada status com **CONT.SE**.",
+      "2) Crie um gráfico de **pizza** com o resumo (**E1:F4**)."
+    ],
+    "dicas": [
+      "CONT.SE(intervalo dos status; o status em E2). Trave o intervalo com $."
+    ],
+    "explicacao": [
+      "Em **F2**: **=CONT.SE($C$2:$C$13;E2)** e copie até F4 → selecione **E1:F4** → Inserir Gráfico → **Pizza**.",
+      "Aqui a pizza faz sentido: os três status somam todos os processos da carteira."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-resumo-formulas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Advogado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0012345-11.2026.5.02.0001"
+        },
+        "B2": {
+          "entrada": "Dra. Helena"
+        },
+        "C2": {
+          "entrada": "Em andamento"
+        },
+        "A3": {
+          "entrada": "0023456-22.2026.5.02.0003"
+        },
+        "B3": {
+          "entrada": "Dr. Marcos"
+        },
+        "C3": {
+          "entrada": "Encerrado"
+        },
+        "A4": {
+          "entrada": "0034567-33.2025.8.26.0100"
+        },
+        "B4": {
+          "entrada": "Dra. Helena"
+        },
+        "C4": {
+          "entrada": "Aguardando audiência"
+        },
+        "A5": {
+          "entrada": "0045678-44.2025.8.26.0100"
+        },
+        "B5": {
+          "entrada": "Dra. Júlia"
+        },
+        "C5": {
+          "entrada": "Em andamento"
+        },
+        "A6": {
+          "entrada": "0056789-55.2026.5.02.0001"
+        },
+        "B6": {
+          "entrada": "Dr. Marcos"
+        },
+        "C6": {
+          "entrada": "Em andamento"
+        },
+        "A7": {
+          "entrada": "0067890-66.2024.8.26.0050"
+        },
+        "B7": {
+          "entrada": "Dra. Júlia"
+        },
+        "C7": {
+          "entrada": "Encerrado"
+        },
+        "A8": {
+          "entrada": "0078901-77.2026.5.02.0007"
+        },
+        "B8": {
+          "entrada": "Dra. Helena"
+        },
+        "C8": {
+          "entrada": "Aguardando audiência"
+        },
+        "A9": {
+          "entrada": "0089012-88.2025.8.26.0100"
+        },
+        "B9": {
+          "entrada": "Dr. Marcos"
+        },
+        "C9": {
+          "entrada": "Em andamento"
+        },
+        "A10": {
+          "entrada": "0090123-99.2024.5.02.0003"
+        },
+        "B10": {
+          "entrada": "Dra. Júlia"
+        },
+        "C10": {
+          "entrada": "Encerrado"
+        },
+        "A11": {
+          "entrada": "0101234-10.2026.8.26.0050"
+        },
+        "B11": {
+          "entrada": "Dra. Helena"
+        },
+        "C11": {
+          "entrada": "Aguardando audiência"
+        },
+        "A12": {
+          "entrada": "0112345-21.2025.5.02.0001"
+        },
+        "B12": {
+          "entrada": "Dr. Marcos"
+        },
+        "C12": {
+          "entrada": "Encerrado"
+        },
+        "A13": {
+          "entrada": "0123456-32.2026.8.26.0100"
+        },
+        "B13": {
+          "entrada": "Dra. Júlia"
+        },
+        "C13": {
+          "entrada": "Em andamento"
+        },
+        "E1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Em andamento"
+        },
+        "E3": {
+          "entrada": "Aguardando audiência"
+        },
+        "E4": {
+          "entrada": "Encerrado"
+        },
+        "F2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 190,
+        "B": 96,
+        "C": 150,
+        "D": 24,
+        "E": 150,
+        "F": 90
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "F2",
+        "esperado": 5,
+        "funcao": "COUNTIF",
+        "mensagem": "Conte cada status com CONT.SE, travando o intervalo com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F3",
+        "esperado": 3,
+        "funcao": "COUNTIF",
+        "mensagem": "Conte cada status com CONT.SE, travando o intervalo com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F4",
+        "esperado": 4,
+        "funcao": "COUNTIF",
+        "mensagem": "Conte cada status com CONT.SE, travando o intervalo com $."
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Em andamento",
+          "Aguardando audiência",
+          "Encerrado"
+        ],
+        "series": [
+          {
+            "nome": "Quantidade",
+            "valores": [
+              5.0,
+              3.0,
+              4.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "F2": "=CONT.SE($C$2:$C$13;E2)",
+        "F3": "=CONT.SE($C$2:$C$13;E3)",
+        "F4": "=CONT.SE($C$2:$C$13;E4)"
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "E1:F4",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "cb9b0637-b5f9-59a2-8e94-ad0e02ee0981",
+    "slug": "grafico-resumo-formulas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média por transportadora",
+    "enunciado": [
+      "1) Em **F2:F4**, calcule o **prazo médio** (em dias) de cada transportadora com **MÉDIASE**.",
+      "2) Crie um gráfico de **colunas** com o resumo (**E1:F4**)."
+    ],
+    "dicas": [
+      "MÉDIASE tem os mesmos argumentos da SOMASE: onde procurar, o que procurar, o que calcular."
+    ],
+    "explicacao": [
+      "Em **F2**: **=MÉDIASE($B$2:$B$13;E2;$C$2:$C$13)** e copie até F4 → selecione **E1:F4** → Inserir Gráfico → **Colunas**.",
+      "A Via Rápida entrega em 4 dias, metade do prazo da RotaSul: o gráfico de médias mostra a diferença que a lista de 12 pedidos esconde."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-resumo-formulas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Transportadora",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Dias",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "4501"
+        },
+        "B2": {
+          "entrada": "Via Rápida"
+        },
+        "C2": {
+          "entrada": "3"
+        },
+        "A3": {
+          "entrada": "4502"
+        },
+        "B3": {
+          "entrada": "Expresso Norte"
+        },
+        "C3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "4503"
+        },
+        "B4": {
+          "entrada": "RotaSul"
+        },
+        "C4": {
+          "entrada": "8"
+        },
+        "A5": {
+          "entrada": "4504"
+        },
+        "B5": {
+          "entrada": "Via Rápida"
+        },
+        "C5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "4505"
+        },
+        "B6": {
+          "entrada": "RotaSul"
+        },
+        "C6": {
+          "entrada": "9"
+        },
+        "A7": {
+          "entrada": "4506"
+        },
+        "B7": {
+          "entrada": "Expresso Norte"
+        },
+        "C7": {
+          "entrada": "7"
+        },
+        "A8": {
+          "entrada": "4507"
+        },
+        "B8": {
+          "entrada": "Via Rápida"
+        },
+        "C8": {
+          "entrada": "5"
+        },
+        "A9": {
+          "entrada": "4508"
+        },
+        "B9": {
+          "entrada": "RotaSul"
+        },
+        "C9": {
+          "entrada": "7"
+        },
+        "A10": {
+          "entrada": "4509"
+        },
+        "B10": {
+          "entrada": "Expresso Norte"
+        },
+        "C10": {
+          "entrada": "5"
+        },
+        "A11": {
+          "entrada": "4510"
+        },
+        "B11": {
+          "entrada": "Via Rápida"
+        },
+        "C11": {
+          "entrada": "4"
+        },
+        "A12": {
+          "entrada": "4511"
+        },
+        "B12": {
+          "entrada": "Expresso Norte"
+        },
+        "C12": {
+          "entrada": "6"
+        },
+        "A13": {
+          "entrada": "4512"
+        },
+        "B13": {
+          "entrada": "RotaSul"
+        },
+        "C13": {
+          "entrada": "8"
+        },
+        "E1": {
+          "entrada": "Transportadora",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Prazo médio",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Via Rápida"
+        },
+        "E3": {
+          "entrada": "Expresso Norte"
+        },
+        "E4": {
+          "entrada": "RotaSul"
+        },
+        "F2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 120,
+        "C": 60,
+        "D": 24,
+        "E": 120,
+        "F": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "F2",
+        "esperado": 4,
+        "funcao": "AVERAGEIF",
+        "mensagem": "Calcule a média de cada transportadora com MÉDIASE, travando os intervalos com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F3",
+        "esperado": 6,
+        "funcao": "AVERAGEIF",
+        "mensagem": "Calcule a média de cada transportadora com MÉDIASE, travando os intervalos com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F4",
+        "esperado": 8,
+        "funcao": "AVERAGEIF",
+        "mensagem": "Calcule a média de cada transportadora com MÉDIASE, travando os intervalos com $."
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Via Rápida",
+          "Expresso Norte",
+          "RotaSul"
+        ],
+        "series": [
+          {
+            "nome": "Prazo médio",
+            "valores": [
+              4.0,
+              6.0,
+              8.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "F2": "=MÉDIASE($B$2:$B$13;E2;$C$2:$C$13)",
+        "F3": "=MÉDIASE($B$2:$B$13;E3;$C$2:$C$13)",
+        "F4": "=MÉDIASE($B$2:$B$13;E4;$C$2:$C$13)"
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "E1:F4",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "0090cfb9-024e-576f-b5be-1f6eff1e1a66",
+    "slug": "grafico-resumo-formulas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o resumo que não fecha",
+    "enunciado": [
+      "O resumo de dezembro (F2:F5) já tem fórmulas, mas a **Diferença** (F7) entre o resumo e os lançamentos não dá zero.",
+      "Corrija as fórmulas para o resumo bater com os lançamentos e crie um gráfico de **colunas** com o resumo (**E1:F5**)."
+    ],
+    "dicas": [
+      "Clique em F3 e olhe a fórmula: os intervalos ainda começam na linha 2?",
+      "Alguém escreveu a primeira fórmula sem $ e copiou para baixo."
+    ],
+    "explicacao": [
+      "Em **F2**: **=SOMASE($B$2:$B$15;E2;$C$2:$C$15)**, copie até F5 (F7 vira R$ 0) → selecione **E1:F5** → Inserir Gráfico → **Colunas**.",
+      "Sem $, cada linha copiada desceu os intervalos: F3 passou a somar de B3:B16 e perdeu o Software do dia 02/12 (R$ 890). O gráfico teria saído bonito e errado. Uma célula de conferência (total do resumo menos total dos lançamentos) pega esse erro antes da reunião."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-resumo-formulas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 18,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/12/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Software"
+        },
+        "C2": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/12/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Aluguel"
+        },
+        "C3": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "04/12/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Material"
+        },
+        "C4": {
+          "entrada": "210",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "05/12/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Viagens"
+        },
+        "C5": {
+          "entrada": "1350",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "08/12/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Software"
+        },
+        "C6": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "10/12/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Material"
+        },
+        "C7": {
+          "entrada": "132,5",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "11/12/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Viagens"
+        },
+        "C8": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "15/12/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Software"
+        },
+        "C9": {
+          "entrada": "1120",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "16/12/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Material"
+        },
+        "C10": {
+          "entrada": "88,9",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "18/12/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Viagens"
+        },
+        "C11": {
+          "entrada": "2040",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "21/12/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Material"
+        },
+        "C12": {
+          "entrada": "175,6",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "22/12/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Software"
+        },
+        "C13": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "28/12/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Viagens"
+        },
+        "C14": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "29/12/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Material"
+        },
+        "C15": {
+          "entrada": "98",
+          "formato": "moeda"
+        },
+        "E1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "Aluguel"
+        },
+        "E3": {
+          "entrada": "Software"
+        },
+        "E4": {
+          "entrada": "Material"
+        },
+        "E5": {
+          "entrada": "Viagens"
+        },
+        "F2": {
+          "entrada": "=SOMASE(B2:B15;E2;C2:C15)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F3": {
+          "entrada": "=SOMASE(B3:B16;E3;C3:C16)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F4": {
+          "entrada": "=SOMASE(B4:B17;E4;C4:C17)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "F5": {
+          "entrada": "=SOMASE(B5:B18;E5;C5:C18)",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "E7": {
+          "entrada": "Diferença",
+          "negrito": true
+        },
+        "F7": {
+          "entrada": "=SOMA(F2:F5)-SOMA(C2:C15)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 90,
+        "C": 96,
+        "D": 24,
+        "E": 90,
+        "F": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "celula",
+        "celula": "F2",
+        "esperado": 6500,
+        "mensagem": "O resumo ainda não bate com os lançamentos (olhe a Diferença em F7). Confira se os intervalos da SOMASE estão travados com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F3",
+        "esperado": 2760,
+        "mensagem": "O resumo ainda não bate com os lançamentos (olhe a Diferença em F7). Confira se os intervalos da SOMASE estão travados com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F4",
+        "esperado": 705,
+        "mensagem": "O resumo ainda não bate com os lançamentos (olhe a Diferença em F7). Confira se os intervalos da SOMASE estão travados com $."
+      },
+      {
+        "tipo": "celula",
+        "celula": "F5",
+        "esperado": 5010,
+        "mensagem": "O resumo ainda não bate com os lançamentos (olhe a Diferença em F7). Confira se os intervalos da SOMASE estão travados com $."
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "colunas",
+        "categorias": [
+          "Aluguel",
+          "Software",
+          "Material",
+          "Viagens"
+        ],
+        "series": [
+          {
+            "nome": "Total",
+            "valores": [
+              6500,
+              2760,
+              705,
+              5010
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "F2": "=SOMASE($B$2:$B$15;E2;$C$2:$C$15)",
+        "F3": "=SOMASE($B$2:$B$15;E3;$C$2:$C$15)",
+        "F4": "=SOMASE($B$2:$B$15;E4;$C$2:$C$15)",
+        "F5": "=SOMASE($B$2:$B$15;E5;$C$2:$C$15)"
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "E1:F5",
+            "posicao": "H1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "725ab4b0-7ad2-531c-8198-4d54cb725293",
+    "slug": "grafico-resumo-formulas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 95,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o resumo antes do gráfico",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, A2:A9 contém categorias de despesa e B2:B9, os valores. Em D2:D5 estão as categorias do resumo (D2 = Viagens).",
+      "Um analista quer, em E2, o total da categoria de D2, e depois copiar a fórmula até E5 para montar o gráfico do resumo. A fórmula que deve ser digitada em E2 é:"
+    ],
+    "dicas": [
+      "Use a planilha ao lado para testar as fórmulas das alternativas."
+    ],
+    "explicacao": [
+      "Os intervalos (onde procurar e o que somar) são os mesmos para todas as categorias: ficam travados com $. O critério (D2) anda junto: em E3 vira D3. O total de Viagens é R$ 4.180,00."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-resumo-formulas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "=SOMASE(A2:A9;D2;B2:B9)",
+        "dica": "Copiada para baixo, os intervalos descem e perdem as primeiras linhas."
+      },
+      {
+        "texto": "=SOMASE($A$2:$A$9;D2;$B$2:$B$9)"
+      },
+      {
+        "texto": "=SOMASE($A$2:$A$9;$D$2;$B$2:$B$9)",
+        "dica": "Com $D$2, todas as linhas somariam Viagens."
+      },
+      {
+        "texto": "=SOMA($B$2:$B$9;D2)",
+        "dica": "SOMA não filtra por categoria."
+      },
+      {
+        "texto": "=CONT.SE($A$2:$A$9;D2)",
+        "dica": "CONT.SE conta os lançamentos, não soma os valores."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Viagens"
+        },
+        "B2": {
+          "entrada": "1240",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Software"
+        },
+        "B3": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Viagens"
+        },
+        "B4": {
+          "entrada": "2180",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Material"
+        },
+        "B5": {
+          "entrada": "312",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Aluguel"
+        },
+        "B6": {
+          "entrada": "6500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Software"
+        },
+        "B7": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Viagens"
+        },
+        "B8": {
+          "entrada": "760",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Material"
+        },
+        "B9": {
+          "entrada": "186",
+          "formato": "moeda"
+        },
+        "D1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "D2": {
+          "entrada": "Viagens"
+        },
+        "D3": {
+          "entrada": "Software"
+        },
+        "D4": {
+          "entrada": "Material"
+        },
+        "D5": {
+          "entrada": "Aluguel"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100,
+        "D": 100,
+        "E": 100
+      }
+    },
+    "banca": "FGV",
+    "tema": "SOMASE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMASE($A$2:$A$9;D2;$B$2:$B$9)",
+        "esperado": 4180
+      },
+      {
+        "formula": "=CONT.SE($A$2:$A$9;D2)",
+        "esperado": 3
+      }
+    ]
+  },
+  {
+    "id": "2eb87beb-6c12-5567-8d62-ca38e9048b61",
+    "slug": "grafico-painel-trimestre",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: painel de vendas do trimestre",
+    "enunciado": [
+      "Monte o painel do 3º trimestre para a diretoria, com **dois gráficos**:",
+      "1) **Colunas e Linha** com o realizado e a meta de cada mês (A1:C4), título **Realizado x Meta**.",
+      "2) **Pizza** com as vendas por canal (A7:B11), com os **valores escritos** nas fatias e o título **Vendas por canal**."
+    ],
+    "dicas": [
+      "Faça um gráfico de cada vez: selecione a tabela, insira, ajuste no Design do Gráfico.",
+      "Se o segundo gráfico cair em cima do primeiro, mude a Posição dele no Design do Gráfico (por exemplo, E12)."
+    ],
+    "explicacao": [
+      "Selecione **A1:C4** → **Colunas e Linha** → título **Realizado x Meta**. Depois selecione **A7:B11** → **Pizza** → marque **Rótulos de dados** → título **Vendas por canal** (e mude a Posição, se precisar).",
+      "Cada gráfico responde uma pergunta da diretoria: \"batemos a meta?\" (julho não, agosto e setembro sim) e \"de onde vêm as vendas?\" (quase metade da loja). Um título que diz o assunto deixa o painel claro até para quem só passa os olhos."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-painel-trimestre",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O painel do trimestre é o que vai para a diretoria: poucos gráficos, cada um respondendo uma pergunta, com um título que diz o assunto.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 14,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jul"
+        },
+        "B2": {
+          "entrada": "285400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "300000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Ago"
+        },
+        "B3": {
+          "entrada": "312900",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "300000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "336200",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "320000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B7": {
+          "entrada": "Vendas",
+          "negrito": true
+        },
+        "A8": {
+          "entrada": "Loja"
+        },
+        "B8": {
+          "entrada": "412300",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Site"
+        },
+        "B9": {
+          "entrada": "286700",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Marketplace"
+        },
+        "B10": {
+          "entrada": "158900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Representantes"
+        },
+        "B11": {
+          "entrada": "76600",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Jul",
+          "Ago",
+          "Set"
+        ],
+        "series": [
+          {
+            "nome": "Realizado",
+            "valores": [
+              285400.0,
+              312900.0,
+              336200.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              300000.0,
+              300000.0,
+              320000.0
+            ]
+          }
+        ],
+        "titulo": "Realizado x Meta"
+      },
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Loja",
+          "Site",
+          "Marketplace",
+          "Representantes"
+        ],
+        "series": [
+          {
+            "nome": "Vendas",
+            "valores": [
+              412300.0,
+              286700.0,
+              158900.0,
+              76600.0
+            ]
+          }
+        ],
+        "titulo": "Vendas por canal",
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C4",
+            "posicao": "E1",
+            "titulo": "Realizado x Meta",
+            "rotulos": false,
+            "alternar": false
+          },
+          {
+            "tipo": "pizza",
+            "dados": "A7:B11",
+            "posicao": "E12",
+            "titulo": "Vendas por canal",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "06fd40ea-ab04-5a64-b68a-a0905bae967a",
+    "slug": "grafico-painel-trimestre-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Uma coluna por mês, dividida por canal",
+    "enunciado": [
+      "A tabela tem os canais nas linhas e os meses nas colunas.",
+      "Crie um gráfico de **colunas empilhadas** com **uma coluna para cada mês**, dividida pelos **canais**."
+    ],
+    "dicas": [
+      "Insira e olhe o eixo de baixo: aparecem os meses ou os canais?",
+      "Para trocar o que vai no eixo e o que vira cor, há um botão no Design do Gráfico."
+    ],
+    "explicacao": [
+      "Selecione **A1:D4** → **Colunas Empilhadas** → **Alternar Linha/Coluna**.",
+      "O Excel pôs os canais no eixo porque eles estão na primeira coluna. Alternar faz cada mês virar uma coluna, e cada canal, um pedaço dela: o total do mês aparece na altura."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-painel-trimestre",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Canal",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jul",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Ago",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Set",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Loja"
+        },
+        "B2": {
+          "entrada": "128400",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "139800",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "144100",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Site"
+        },
+        "B3": {
+          "entrada": "86900",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "95300",
+          "formato": "moeda"
+        },
+        "D3": {
+          "entrada": "104500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marketplace"
+        },
+        "B4": {
+          "entrada": "52100",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "49700",
+          "formato": "moeda"
+        },
+        "D4": {
+          "entrada": "57100",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 100,
+        "C": 100,
+        "D": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "empilhadas",
+        "categorias": [
+          "Jul",
+          "Ago",
+          "Set"
+        ],
+        "series": [
+          {
+            "nome": "Loja",
+            "valores": [
+              128400.0,
+              139800.0,
+              144100.0
+            ]
+          },
+          {
+            "nome": "Site",
+            "valores": [
+              86900.0,
+              95300.0,
+              104500.0
+            ]
+          },
+          {
+            "nome": "Marketplace",
+            "valores": [
+              52100.0,
+              49700.0,
+              57100.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "empilhadas",
+            "dados": "A1:D4",
             "posicao": "F1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": true
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "b1a48350-29e1-58d8-b204-b29620b22dd9",
+    "slug": "grafico-painel-trimestre-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Despesas do trimestre, prontas para o painel",
+    "enunciado": [
+      "Crie uma **pizza** com as despesas do trimestre por categoria, com os **valores escritos** nas fatias e o título **Despesas do trimestre**."
+    ],
+    "dicas": [
+      "A linha do Total não é uma categoria: se ela entrar, vira metade da pizza."
+    ],
+    "explicacao": [
+      "Selecione **A1:B6** (sem o Total) → **Pizza** → marque **Rótulos de dados** → título **Despesas do trimestre**.",
+      "Com o Total junto, a pizza teria uma fatia do tamanho de todas as outras somadas, e cada categoria pareceria ter a metade do peso que tem."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-painel-trimestre",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Pessoal"
+        },
+        "B2": {
+          "entrada": "184500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Aluguel e condomínio"
+        },
+        "B3": {
+          "entrada": "45600",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Marketing"
+        },
+        "B4": {
+          "entrada": "28900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Tecnologia"
+        },
+        "B5": {
+          "entrada": "21300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Outras"
+        },
+        "B6": {
+          "entrada": "12700",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B7": {
+          "entrada": "=SOMA(B2:B6)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 110
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "pizza",
+        "categorias": [
+          "Pessoal",
+          "Aluguel e condomínio",
+          "Marketing",
+          "Tecnologia",
+          "Outras"
+        ],
+        "series": [
+          {
+            "nome": "Despesa",
+            "valores": [
+              184500.0,
+              45600.0,
+              28900.0,
+              21300.0,
+              12700.0
+            ]
+          }
+        ],
+        "titulo": "Despesas do trimestre",
+        "rotulos": true
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "pizza",
+            "dados": "A1:B6",
+            "posicao": "D1",
+            "titulo": "Despesas do trimestre",
+            "rotulos": true,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "35655dea-c672-5005-839a-fd573a78038b",
+    "slug": "grafico-painel-trimestre-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: consertar o gráfico do painel",
+    "enunciado": [
+      "Um colega deixou pronto o gráfico do 2º trimestre, mas ele está em colunas, inclui a linha do **Total** e não tem título.",
+      "Deixe o gráfico com o **realizado em colunas** e a **meta em linha**, **só com os três meses**, e o título **Realizado x Meta**."
+    ],
+    "dicas": [
+      "Clique no gráfico para abrir o Design do Gráfico: o tipo, os Dados e o título ficam lá.",
+      "Os meses vão até a linha 4."
+    ],
+    "explicacao": [
+      "Clique no gráfico → tipo **Colunas e Linha** → Dados: **A1:C4** → título **Realizado x Meta**.",
+      "Com o Total, as colunas dos meses ficavam achatadas perto do zero (o Total é três vezes maior), e a meta de \"Total\" virava um pico na linha. Consertar o gráfico pronto é tão comum quanto fazer um novo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-painel-trimestre",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Abr"
+        },
+        "B2": {
+          "entrada": "248700",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "260000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mai"
+        },
+        "B3": {
+          "entrada": "271300",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "260000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Jun"
+        },
+        "B4": {
+          "entrada": "266900",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "270000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "B5": {
+          "entrada": "=SOMA(B2:B4)",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "=SOMA(C2:C4)",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 100,
+        "C": 100
+      },
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "colunas",
+            "dados": "A1:C5",
+            "posicao": "E1",
+            "titulo": "",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Realizado",
+            "valores": [
+              248700.0,
+              271300.0,
+              266900.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              260000.0,
+              260000.0,
+              270000.0
+            ]
+          }
+        ],
+        "titulo": "Realizado x Meta"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C4",
+            "posicao": "E1",
+            "titulo": "Realizado x Meta",
+            "rotulos": false,
+            "alternar": false
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "grafico": true
+    }
+  },
+  {
+    "id": "d5bc7511-38d2-5f47-a57f-0307dea10189",
+    "slug": "grafico-painel-trimestre-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: duas escalas no mesmo gráfico",
+    "enunciado": [
+      "Julgue o item: em um gráfico de combinação do Excel, ao exibir na mesma escala o faturamento mensal, da ordem de R$ 300.000, em colunas e a taxa de conversão, entre 2% e 4%, em linha, a linha ficará visualmente próxima de zero, sendo recomendável exibir a taxa no eixo secundário ou em outro gráfico."
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "Certo. Com um eixo só, a escala vai até R$ 300.000 e a taxa (0,02 a 0,04) some no zero. O **eixo secundário** dá à linha uma escala própria; um gráfico separado também resolve."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "grafico-painel-trimestre",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "No eixo que vai até 300.000, o valor 0,04 fica colado no zero."
+      }
+    ],
+    "correta": 0,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "Cebraspe",
+    "tema": "Gráficos"
+  },
+  {
+    "id": "ec2a320e-325a-5b96-93e9-a88113eac042",
+    "slug": "teste-graficos-1",
+    "trilha": "excel-ptbr",
+    "modulo": "graficos",
+    "ordem": 201,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 2,
+    "titulo": "Realizado x meta",
+    "enunciado": [
+      "Crie um gráfico com o **realizado em colunas** e a **meta em linha**, mês a mês."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "grafico-realizado-meta",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 16,
+      "colunas": 12,
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Realizado",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Jan"
+        },
+        "B2": {
+          "entrada": "64200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "70000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Fev"
+        },
+        "B3": {
+          "entrada": "71800",
+          "formato": "moeda"
+        },
+        "C3": {
+          "entrada": "70000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Mar"
+        },
+        "B4": {
+          "entrada": "68300",
+          "formato": "moeda"
+        },
+        "C4": {
+          "entrada": "72000",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Abr"
+        },
+        "B5": {
+          "entrada": "75900",
+          "formato": "moeda"
+        },
+        "C5": {
+          "entrada": "72000",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mai"
+        },
+        "B6": {
+          "entrada": "79400",
+          "formato": "moeda"
+        },
+        "C6": {
+          "entrada": "75000",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Jun"
+        },
+        "B7": {
+          "entrada": "73100",
+          "formato": "moeda"
+        },
+        "C7": {
+          "entrada": "75000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "A": 70,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "grafico",
+        "grafico": "combinado",
+        "categorias": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun"
+        ],
+        "series": [
+          {
+            "nome": "Realizado",
+            "valores": [
+              64200.0,
+              71800.0,
+              68300.0,
+              75900.0,
+              79400.0,
+              73100.0
+            ]
+          },
+          {
+            "nome": "Meta",
+            "valores": [
+              70000.0,
+              70000.0,
+              72000.0,
+              72000.0,
+              75000.0,
+              75000.0
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "graficos": [
+          {
+            "tipo": "combinado",
+            "dados": "A1:C7",
+            "posicao": "E1",
             "titulo": "",
             "rotulos": false,
             "alternar": false
@@ -3610,17 +8049,17 @@
     "ordem": 204,
     "nivel": 2,
     "plano": "pro",
-    "versao": 2,
-    "titulo": "Ranking de atendimentos",
+    "versao": 3,
+    "titulo": "Atendimentos por canal",
     "enunciado": [
-      "Crie um gráfico de **colunas** com os atendimentos de cada analista, **do maior para o menor**."
+      "Crie um gráfico com **uma coluna por mês**, mostrando o **total de atendimentos** e quanto veio de cada canal (Telefone, WhatsApp e E-mail)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "grafico-ranking",
+    "revisar": "grafico-empilhadas",
     "teste": true,
     "type": "ferramenta",
     "grade": {
@@ -3628,72 +8067,113 @@
       "colunas": 12,
       "celulas": {
         "A1": {
-          "entrada": "Analista",
+          "entrada": "Mês",
           "negrito": true
         },
         "B1": {
-          "entrada": "Atendimentos",
+          "entrada": "Telefone",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "WhatsApp",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "E-mail",
           "negrito": true
         },
         "A2": {
-          "entrada": "Paula"
+          "entrada": "Jan"
         },
         "B2": {
-          "entrada": "142"
+          "entrada": "210"
+        },
+        "C2": {
+          "entrada": "340"
+        },
+        "D2": {
+          "entrada": "95"
         },
         "A3": {
-          "entrada": "Rafael"
+          "entrada": "Fev"
         },
         "B3": {
-          "entrada": "98"
+          "entrada": "195"
+        },
+        "C3": {
+          "entrada": "372"
+        },
+        "D3": {
+          "entrada": "88"
         },
         "A4": {
-          "entrada": "Sônia"
+          "entrada": "Mar"
         },
         "B4": {
-          "entrada": "175"
+          "entrada": "188"
+        },
+        "C4": {
+          "entrada": "405"
+        },
+        "D4": {
+          "entrada": "102"
         },
         "A5": {
-          "entrada": "Tiago"
+          "entrada": "Abr"
         },
         "B5": {
-          "entrada": "121"
+          "entrada": "176"
         },
-        "A6": {
-          "entrada": "Úrsula"
+        "C5": {
+          "entrada": "431"
         },
-        "B6": {
-          "entrada": "160"
+        "D5": {
+          "entrada": "97"
         }
       },
       "larguras": {
-        "A": 96,
-        "B": 104,
-        "C": 88,
-        "D": 88,
-        "E": 32
+        "A": 70,
+        "B": 90,
+        "C": 96,
+        "D": 80
       }
     },
     "verificacoes": [
       {
         "tipo": "grafico",
-        "grafico": "colunas",
+        "grafico": "empilhadas",
         "categorias": [
-          "Sônia",
-          "Úrsula",
-          "Paula",
-          "Tiago",
-          "Rafael"
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr"
         ],
         "series": [
           {
-            "nome": "Atendimentos",
+            "nome": "Telefone",
             "valores": [
-              175,
-              160,
-              142,
-              121,
-              98
+              210.0,
+              195.0,
+              188.0,
+              176.0
+            ]
+          },
+          {
+            "nome": "WhatsApp",
+            "valores": [
+              340.0,
+              372.0,
+              405.0,
+              431.0
+            ]
+          },
+          {
+            "nome": "E-mail",
+            "valores": [
+              95.0,
+              88.0,
+              102.0,
+              97.0
             ]
           }
         ]
@@ -3701,23 +8181,11 @@
     ],
     "solucao": {
       "recursos": {
-        "ordenacoes": [
-          {
-            "intervalo": "A1:B6",
-            "chaves": [
-              {
-                "coluna": "B",
-                "ordem": "desc"
-              }
-            ],
-            "cabecalho": true
-          }
-        ],
         "graficos": [
           {
-            "tipo": "colunas",
-            "dados": "A1:B6",
-            "posicao": "H1",
+            "tipo": "empilhadas",
+            "dados": "A1:D5",
+            "posicao": "F1",
             "titulo": "",
             "rotulos": false,
             "alternar": false
@@ -3726,7 +8194,6 @@
       }
     },
     "ferramentas": {
-      "dados": true,
       "grafico": true
     }
   },

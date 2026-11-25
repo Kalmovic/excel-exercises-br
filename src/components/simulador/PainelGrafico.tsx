@@ -13,6 +13,8 @@ const TIPOS: { tipo: TipoGrafico; rotulo: string; dica: string }[] = [
   { tipo: "barras", rotulo: "Barras", dica: "Comparar, com nomes longos ou muitas categorias" },
   { tipo: "linhas", rotulo: "Linhas", dica: "Mostrar a evolução ao longo do tempo" },
   { tipo: "pizza", rotulo: "Pizza", dica: "Mostrar partes de um todo (uma série só)" },
+  { tipo: "empilhadas", rotulo: "Colunas Empilhadas", dica: "O total de cada categoria dividido em partes" },
+  { tipo: "combinado", rotulo: "Colunas e Linha", dica: "Realizado em colunas e a meta (ou outra série) em linha" },
 ];
 
 export function IconeGrafico({ tipo }: { tipo: TipoGrafico }) {
@@ -34,6 +36,26 @@ export function IconeGrafico({ tipo }: { tipo: TipoGrafico }) {
         </g>
       )}
       {tipo === "linhas" && <path d="M1.5 12 L5.5 7 L9 9.5 L14.5 3" fill="none" stroke={c} strokeWidth="1.8" strokeLinejoin="round" />}
+      {tipo === "empilhadas" && (
+        <g fill={c}>
+          <rect x="2" y="9" width="3" height="5" />
+          <rect x="2" y="5" width="3" height="4" opacity="0.5" />
+          <rect x="6.5" y="7" width="3" height="7" />
+          <rect x="6.5" y="2" width="3" height="5" opacity="0.5" />
+          <rect x="11" y="10" width="3" height="4" />
+          <rect x="11" y="6" width="3" height="4" opacity="0.5" />
+        </g>
+      )}
+      {tipo === "combinado" && (
+        <g>
+          <g fill={c} opacity="0.55">
+            <rect x="2" y="8" width="3" height="6" />
+            <rect x="6.5" y="6" width="3" height="8" />
+            <rect x="11" y="9" width="3" height="5" />
+          </g>
+          <path d="M1.5 6 L8 3.5 L14.5 4.5" fill="none" stroke={c} strokeWidth="1.8" strokeLinejoin="round" />
+        </g>
+      )}
       {tipo === "pizza" && (
         <g>
           <circle cx="8" cy="8" r="6.2" fill="none" stroke={c} strokeWidth="1.4" />
@@ -44,7 +66,7 @@ export function IconeGrafico({ tipo }: { tipo: TipoGrafico }) {
   );
 }
 
-/** Botão "Inserir Gráfico" com os quatro tipos. Usa a seleção (ou a região atual, com uma célula só). */
+/** Botão "Inserir Gráfico" com os tipos. Usa a seleção (ou a região atual, com uma célula só). */
 export function InserirGrafico({ classeBotao }: { classeBotao: string }) {
   const { planilha, store, entradaRef } = useSimulador();
   const [aberto, setAberto] = useState(false);
@@ -209,7 +231,7 @@ function Design({ indice, g, fechar }: { indice: number; g: Grafico; fechar: () 
       </div>
       {/* Celular: a grade é estreita e o gráfico fica ao lado dos dados; a prévia mostra o que mudou. */}
       <div className="overflow-hidden rounded border border-zinc-200 sm:hidden" data-testid="previa-grafico">
-        <GraficoSvg dados={planilha.dadosDoGrafico(indice)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={320} altura={210} />
+        <GraficoSvg dados={planilha.dadosDoGrafico(indice)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={320} altura={210} ajustar />
       </div>
       <div
         className="flex flex-wrap gap-1"

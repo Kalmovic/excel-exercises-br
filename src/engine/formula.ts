@@ -68,7 +68,8 @@ const PT_SEM_ACENTO: Record<string, string> = Object.fromEntries(
   Object.values(ptBR.functions as Record<string, string>).map((pt) => [semAcento(pt), pt]),
 );
 
-export type Validacao = { ok: true } | { ok: false; mensagem: string };
+/** `alerta`: recusa da validação de dados com estilo Aviso ou Informação (a tela pergunta se grava assim mesmo). */
+export type Validacao = { ok: true } | { ok: false; mensagem: string; alerta?: "aviso" | "informacao" };
 
 /** Valida nomes de função e separadores no padrão do Excel pt-BR. */
 export function validarIdioma(formula: string): Validacao {

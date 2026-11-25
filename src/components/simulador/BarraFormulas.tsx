@@ -16,8 +16,11 @@ export function BarraFormulas() {
   const modo = useEstado((e) => e.modo);
   const rascunho = useEstado((e) => e.rascunho);
   const mensagem = useEstado((e) => e.mensagem);
+  const alerta = useEstado((e) => e.alerta);
 
   const editando = modo !== "pronto";
+  // Aviso/Informação da validação de dados esperando a resposta (Sim, Não, OK, Cancelar).
+  const alertaAtivo = editando && alerta !== null && alerta.mensagem === mensagem;
   // Célula de dados ou seleção travada: a barra serve só para ler, sem aviso de erro ao clicar.
   const somenteLeitura = !editando && (selecaoFixa || planilha.bloqueada(ancora));
 
@@ -140,6 +143,34 @@ export function BarraFormulas() {
         />
         </div>
       </div>
+      {alertaAtivo ? (
+        <div role="alertdialog" aria-label={alerta.estilo === "aviso" ? "Aviso da validação de dados" : "Informação da validação de dados"} data-testid="alerta-validacao" data-foco-proprio className="flex flex-wrap items-center gap-2 rounded border border-amber-300 bg-amber-50 px-2 py-1 text-sm text-ink">
+          <span aria-hidden>{alerta.estilo === "aviso" ? "⚠" : "ℹ"}</span>
+          <span data-testid="mensagem-formula">
+            {alerta.mensagem} {alerta.estilo === "aviso" ? "Deseja continuar?" : ""}
+          </span>
+          <span className="ml-auto flex gap-1">
+            {(alerta.estilo === "aviso" ? ([["Sim", "sim"], ["Não", "nao"], ["Cancelar", "cancelar"]] as const) : ([["OK", "sim"], ["Cancelar", "cancelar"]] as const)).map(([rotulo, acao]) => (
+              <button
+                key={acao}
+                type="button"
+                data-testid={`alerta-${acao}`}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => {
+                  const s = store.getState();
+                  if (acao === "sim") s.aceitarAlerta();
+                  else if (acao === "nao") s.recusarAlerta();
+                  else s.cancelar();
+                  voltarParaGrade();
+                }}
+                className="min-h-6 rounded border border-zinc-300 bg-white px-2 py-0.5 text-xs hover:bg-header"
+              >
+                {rotulo}
+              </button>
+            ))}
+          </span>
+        </div>
+      ) : (
       <p
         role="alert"
         data-testid="mensagem-formula"
@@ -147,6 +178,7 @@ export function BarraFormulas() {
       >
         {aviso?.texto ?? "."}
       </p>
+      )}
     </div>
   );
 }

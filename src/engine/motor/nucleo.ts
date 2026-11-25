@@ -945,6 +945,14 @@ export class Calculo {
   private pilha = new Set<string>();
   /** Fórmulas ainda não calculadas desde a última mudança (null: ainda não levantadas). */
   private pendentes: Set<string> | null = null;
+  /**
+   * Cálculo antecipado (procurando quem derrama numa célula vazia): ele pode
+   * tropeçar numa fórmula que ainda está na pilha, sem haver ciclo de verdade
+   * (ex.: F2 =SOMA(C2:C15) lê uma vazia e antecipa F7 =SOMA(F2:F5)). Esse
+   * #CIRC! falso não fica no cache: a fórmula é calculada de novo quando lida.
+   */
+  private antecipando = 0;
+  private circFalso = false;
   /** Última linha e coluna preenchidas de cada aba (para cortar A:A e 1:1). */
   private extensao = new Map<number, { linhas: number; colunas: number }>();
   /** Nomes das abas, na ordem (o índice é a aba). */
@@ -1034,7 +1042,10 @@ export class Calculo {
 
   private calcular(k: string): V {
     if (this.cache.has(k)) return this.cache.get(k)!;
-    if (this.pilha.has(k)) return E("#CIRC!");
+    if (this.pilha.has(k)) {
+      if (this.antecipando) this.circFalso = true;
+      return E("#CIRC!");
+    }
     const no = (this.conteudos.get(k) as { formula: No }).formula;
     this.pilha.add(k);
     const [s, resto] = k.split(":");
@@ -1068,7 +1079,21 @@ export class Calculo {
         this.pendentes = new Set();
         for (const [kk, y] of this.conteudos) if ("formula" in y && !this.cache.has(kk)) this.pendentes.add(kk);
       }
-      for (const kk of [...this.pendentes]) if (!this.pilha.has(kk)) this.calcular(kk);
+      for (const kk of [...this.pendentes]) {
+        if (this.pilha.has(kk)) continue;
+        const antes = this.circFalso;
+        this.circFalso = false;
+        this.antecipando++;
+        try {
+          this.calcular(kk);
+        } finally {
+          this.antecipando--;
+        }
+        if (this.circFalso)
+          for (const [ck, v] of [...this.cache])
+            if (v !== null && typeof v === "object" && !Array.isArray(v) && (v as { erro?: string }).erro === "#CIRC!") this.cache.delete(ck);
+        this.circFalso = antes || this.circFalso;
+      }
     }
     return this.derramado.get(k) ?? null;
   }

@@ -22,17 +22,22 @@ type Props = {
   rotulos: boolean;
   largura: number;
   altura: number;
+  /** Encolhe junto com o espaço disponível (até `largura`), mantendo a proporção. */
+  ajustar?: boolean;
 };
 
 /**
  * O gráfico desenhado em SVG, no estilo do Excel: título em cima, eixo de
  * valores com linhas de grade, legenda embaixo. Sem biblioteca.
  */
-export function GraficoSvg({ dados, tipo, titulo, rotulos, largura: W, altura: H }: Props) {
+export function GraficoSvg({ dados, tipo, titulo, rotulos, largura: W, altura: H, ajustar }: Props) {
   const fonte = "Calibri, Carlito, Arial, sans-serif";
+  const tamanho = ajustar
+    ? { width: "100%", viewBox: `0 0 ${W} ${H}`, style: { fontFamily: fonte, maxWidth: W, height: "auto", display: "block" } }
+    : { width: W, height: H, style: { fontFamily: fonte } };
   if (dados.erro)
     return (
-      <svg width={W} height={H} role="img" aria-label="Gráfico sem dados" style={{ fontFamily: fonte }}>
+      <svg {...tamanho} role="img" aria-label="Gráfico sem dados">
         <rect width={W} height={H} fill="#fff" />
         <text x={W / 2} y={H / 2} textAnchor="middle" fontSize={12} fill="#888">
           {dados.erro}
@@ -48,7 +53,7 @@ export function GraficoSvg({ dados, tipo, titulo, rotulos, largura: W, altura: H
   const base = comLegenda ? 30 : 10;
 
   return (
-    <svg width={W} height={H} role="img" aria-label={`Gráfico de ${tipo}: ${tituloMostrado}. ${resumoDosDados(dados)}`} style={{ fontFamily: fonte }} data-testid="grafico-svg">
+    <svg {...tamanho} role="img" aria-label={`Gráfico de ${tipo}: ${tituloMostrado}. ${resumoDosDados(dados)}`} data-testid="grafico-svg">
       <rect width={W} height={H} fill="#fff" />
       <text x={W / 2} y={22} textAnchor="middle" fontSize={15} fill={tituloVazio ? "#9ca3af" : "#404040"} data-titulo>
         {tituloMostrado}
@@ -99,7 +104,11 @@ function Legenda({ nomes, W, y }: { nomes: string[]; W: number; y: number }) {
 }
 
 function Eixos({ dados, tipo, rotulos, x0, y0, w, h }: { dados: DadosGrafico; tipo: TipoGrafico; rotulos: boolean; x0: number; y0: number; w: number; h: number }) {
-  const valores = dados.series.flatMap((s) => s.valores).filter((v): v is number => v !== null);
+  // Empilhadas: o eixo vai até a soma de cada coluna (positivos para cima, negativos para baixo).
+  const somas = (sinal: 1 | -1) =>
+    dados.categorias.map((_, i) => dados.series.reduce((t, s) => t + (s.valores[i] !== null && s.valores[i]! * sinal > 0 ? s.valores[i]! : 0), 0));
+  const valores =
+    tipo === "empilhadas" ? [...somas(1), ...somas(-1)] : dados.series.flatMap((s) => s.valores).filter((v): v is number => v !== null);
   const max = Math.max(0, ...valores);
   const min = Math.min(0, ...valores);
   const { topo, passo } = eixo(Math.max(max, -min));
@@ -176,11 +185,37 @@ function Eixos({ dados, tipo, rotulos, x0, y0, w, h }: { dados: DadosGrafico; ti
           </text>
         ) : null,
       )}
-      {tipo === "colunas" &&
-        dados.series.map((s, k) =>
+      {tipo === "empilhadas" &&
+        dados.categorias.map((_, i) => {
+          // Cada série é um pedaço da coluna, na ordem das séries (a primeira embaixo), como no Excel.
+          let cima = 0, baixoAcum = 0;
+          const larg = faixa * 0.65;
+          const x = px + faixa * i + faixa * 0.175;
+          return dados.series.map((s, k) => {
+            const v = s.valores[i];
+            if (v === null || v === 0) return null;
+            const de = v > 0 ? cima : baixoAcum;
+            const ate = de + v;
+            if (v > 0) cima = ate;
+            else baixoAcum = ate;
+            const a = Y(Math.max(de, ate)), b = Y(Math.min(de, ate));
+            return (
+              <g key={`${k}-${i}`}>
+                <rect x={x} y={a} width={larg} height={Math.max(0.5, b - a)} fill={CORES_SERIE[k % CORES_SERIE.length]} stroke="#fff" strokeWidth={0.5} data-barra-grafico />
+                {rotulos && b - a >= 11 && (
+                  <text x={x + larg / 2} y={(a + b) / 2 + 3} textAnchor="middle" fontSize={9} fill="#fff" data-rotulo-grafico>
+                    {fmt(v)}
+                  </text>
+                )}
+              </g>
+            );
+          });
+        })}
+      {(tipo === "colunas" || tipo === "combinado") &&
+        (tipo === "combinado" ? dados.series.slice(0, 1) : dados.series).map((s, k, emColunas) =>
           s.valores.map((v, i) => {
             if (v === null) return null;
-            const larg = (faixa * 0.65) / nSer;
+            const larg = (faixa * 0.65) / emColunas.length;
             const x = px + faixa * i + faixa * 0.175 + larg * k;
             const a = Y(Math.max(0, v)), b = Y(Math.min(0, v));
             return (
@@ -195,8 +230,10 @@ function Eixos({ dados, tipo, rotulos, x0, y0, w, h }: { dados: DadosGrafico; ti
             );
           }),
         )}
-      {tipo === "linhas" &&
+      {(tipo === "linhas" || tipo === "combinado") &&
         dados.series.map((s, k) => {
+          // Colunas e Linha: a primeira série já foi desenhada em colunas.
+          if (tipo === "combinado" && k === 0) return null;
           const cor = CORES_SERIE[k % CORES_SERIE.length];
           // Célula vazia: a linha se interrompe, como no Excel.
           const trechos: string[] = [];

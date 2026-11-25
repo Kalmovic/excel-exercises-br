@@ -12,6 +12,13 @@ export const NOMES_PERMITIR: Record<ValidacaoDados["permitir"], string> = {
   decimal: "Decimal",
   data: "Data",
   comprimento: "Comprimento do texto",
+  personalizado: "Personalizado",
+};
+
+export const NOMES_ESTILO: Record<NonNullable<ValidacaoDados["estilo"]>, string> = {
+  parar: "Parar",
+  aviso: "Aviso",
+  informacao: "Informação",
 };
 
 export const NOMES_OPERADOR: Record<NonNullable<ValidacaoDados["operador"]>, string> = {
@@ -69,8 +76,12 @@ function compara(op: NonNullable<ValidacaoDados["operador"]>, x: number, a: numb
   }
 }
 
-/** O valor passa na regra? Vazio sempre passa ("Ignorar em branco", o padrão do Excel). */
-export function passaNaValidacao(v: ValidacaoDados, valor: ValorCelula, texto: string, itens: string[]): boolean {
+/**
+ * O valor passa na regra? Vazio sempre passa ("Ignorar em branco", o padrão do Excel).
+ * Personalizado: `formula` dá o resultado da fórmula para esta célula (já com o valor novo);
+ * passa com VERDADEIRO ou número diferente de zero, como no Excel.
+ */
+export function passaNaValidacao(v: ValidacaoDados, valor: ValorCelula, texto: string, itens: string[], formula?: () => ValorCelula): boolean {
   if (valor === null || valor === "") return true;
   if (typeof valor === "object") return false; // erro de fórmula nunca é válido
   const op = v.operador ?? "entre";
@@ -86,12 +97,17 @@ export function passaNaValidacao(v: ValidacaoDados, valor: ValorCelula, texto: s
       return typeof valor === "number" && compara(op, valor, a, b);
     case "comprimento":
       return compara(op, texto.length, a, b);
+    case "personalizado": {
+      const r = formula?.() ?? null;
+      return r === true || (typeof r === "number" && r !== 0);
+    }
   }
 }
 
 /** Frase da regra ("Número inteiro que está entre 1 e 100"), para o gerenciador e as mensagens. */
 export function descreverValidacao(v: ValidacaoDados): string {
   if (v.permitir === "lista") return `Lista: ${v.fonte ?? ""}`;
+  if (v.permitir === "personalizado") return `Personalizado: ${v.formula ?? ""}`;
   const op = v.operador ?? "entre";
   const limites = op === "entre" || op === "fora" ? `${v.valor1 ?? "?"} e ${v.valor2 ?? "?"}` : (v.valor1 ?? "?");
   return `${NOMES_PERMITIR[v.permitir]} que ${NOMES_OPERADOR[op]} ${limites}`;
