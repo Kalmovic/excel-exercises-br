@@ -5,7 +5,7 @@ test("índice de funções: busca, filtro por categoria, página da função e P
   await page.goto("/funcoes");
   await expect(page.getByRole("heading", { level: 1, name: "Funções de A a Z" })).toBeVisible();
   const itens = page.getByTestId("item-funcao");
-  await expect(page.getByTestId("contagem-funcoes")).toHaveText("95 funções");
+  await expect(page.getByTestId("contagem-funcoes")).toHaveText(`${funcoes.length} funções`);
 
   // Busca pelo nome em inglês.
   await page.getByTestId("busca-funcoes").fill("vlookup");

@@ -3722,6 +3722,49 @@
     ]
   },
   {
+    "slug": "dias",
+    "nome": "DIAS",
+    "ingles": "DAYS",
+    "categoria": "datas",
+    "paraQueServe": "Conta quantos dias há entre duas datas. Serve para prazo de pagamento, dias de atraso de um boleto ou duração de um contrato em dias.",
+    "argumentos": [
+      {
+        "nome": "data_final",
+        "explicacao": "A data mais recente (vencimento, fim do contrato, HOJE())."
+      },
+      {
+        "nome": "data_inicial",
+        "explicacao": "A data mais antiga (emissão, início)."
+      }
+    ],
+    "exemplo": {
+      "situacao": "Quantos dias de prazo a nota fiscal deu para pagar?",
+      "dados": [
+        [
+          "Emissão",
+          "Vencimento"
+        ],
+        [
+          "01/12/2026",
+          "25/12/2026"
+        ]
+      ],
+      "celula": "C2",
+      "formula": "=DIAS(B2;A2)",
+      "resultado": "24",
+      "explicacao": "Do dia 1º ao dia 25 de dezembro são 24 dias."
+    },
+    "cuidados": [
+      "A data FINAL vem primeiro: é o contrário do DATADIF. Com a ordem trocada, o resultado sai negativo (-24).",
+      "É o mesmo que subtrair as datas (=B2-A2); a função só deixa a intenção mais clara."
+    ],
+    "relacionadas": [
+      "datadif",
+      "diatrabalhototal",
+      "hoje"
+    ]
+  },
+  {
     "slug": "datadif",
     "nome": "DATADIF",
     "ingles": "DATEDIF",

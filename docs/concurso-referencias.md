@@ -9,6 +9,7 @@ Esta é uma versão de trabalho, não uma lista de 95 referências confirmadas. 
 - Preenchida a coluna "Explicação, pegadinha e questões encontradas" nas 76 linhas que estavam vazias (do concurso-15 até o fim, módulo por módulo), no padrão das primeiras: **Explicação**, **Pegadinha** e **Questões achadas** (1 a 3 por linha, de qualquer banca).
 - Acrescentadas na coluna "Referência" 26 candidatas por tema, no formato `Candidata (tema): Banca · Órgão · Cargo · Ano · [fonte](url)`. Onde não houve candidata, a busca sugerida foi mantida.
 - Acrescentada no fim a seção **"Ideias de questões novas e variações"**, com formatos de cobrança por tema, para escrever variações inéditas.
+- **50 questões novas inéditas** (concurso-31 a concurso-80, avulsas em `src/content/concurso/questoes.json`), escritas a partir da seção "Ideias de questões novas e variações": 10 por banca, 2 ou 3 por tema, em formatos ainda não usados no site. 10 delas levam "Tema já cobrado" (só onde esta seção traz banca, órgão, ano e link direto do mesmo tema); as outras 40 ficam sem referência.
 - A pesquisa foi feita só por buscador: nenhuma página de questão foi aberta. Quando o resultado não mostrou banca, órgão, cargo, ano ou o link exato, está escrito assim ("sem ano no resultado", "link provável", "link não isolado"). **Nenhuma candidata está conferida.**
 
 **Regra nova (decisão do dono):** vale questão real de **qualquer banca**. O critério é **o mesmo tema** (mesma função ou recurso, cobrado de forma parecida), não a mesma banca nem o mesmo enunciado. O selo do site passa a ser **"Tema já cobrado: Banca · Órgão · Cargo · Ano"**. A regra antiga ("só da mesma banca", selo "Caiu muito parecido em …"), que aparece mais abaixo no documento original, fica só como histórico.
@@ -54,7 +55,7 @@ a questão ganha o selo **"Caiu muito parecido em …"** (campo `referencia` no 
 
 Regra: só entra o que for **da mesma banca** e cobrar **a mesma coisa** (mesma função e mesmo tipo de pergunta). *(Regra antiga, substituída em 25/11/2026: agora vale qualquer banca com o mesmo tema; selo "Tema já cobrado". Ver o topo.)*
 
-**Total:** 95 questões (FCC 19, Cesgranrio 19, Vunesp 19, FGV 19, Cebraspe 19). Com referência: 9. Sem: 86.
+**Total:** 145 questões (FCC 29, Cesgranrio 29, Vunesp 29, FGV 29, Cebraspe 29), das quais 50 novas (concurso-31 a 80). Com referência no site: 35 (as 25 publicadas antes + 10 das novas). Sem: 110.
 
 ## A conferir (já aparecem no site)
 
@@ -428,3 +429,15 @@ Variações a escrever: `"<>Pago"` contando linhas em branco; SOMASE copiado sem
 | Para que serve INDIRETO | IBADE | 2024 ([QConcursos c5de82ca-34](https://www.qconcursos.com/questoes-de-concursos/questoes/c5de82ca-34)) |
 | Enunciado com premissa falsa ("o Excel não permite referência entre planilhas") | Banca não mostrada | [QConcursos 7ead928a-88](https://www.qconcursos.com/questoes-de-concursos/questoes/7ead928a-88) |
 | Aba movida para fora do intervalo 3D; INDIRETO montando o nome da aba | **Proposta inédita** | Nenhuma questão real localizada |
+
+## Publicadas no site (25/11/2026)
+
+Com o critério "Tema já cobrado" (qualquer banca, mesmo tema), foram para o site **as 9 anteriores + 16 candidatas** que tinham
+banca, órgão, ano **e link direto**: concurso-15, 20, 22, 24, 25, 28, nao-despesa-reembolsavel, ecel-vazia-horas-extras,
+caso-classificacao-clientes, cont-se-curinga-ltda, caso-relatorio-por-responsavel, caso-conferencia-de-cadastro,
+diatrabalho-prazo-processual, dinamica-contagem-status, grafico-resumo-formulas e abas-parametros-config. **Continuam a conferir**
+pelo dono: se alguma não bater, é só marcar aqui que eu tiro do site.
+
+Ficaram fora (link "provável", sem link, link de listagem ou ano tirado de pista antiga): concurso-23, concurso-29,
+somarproduto-total-do-pedido, procx-faixa-modo-correspondencia, procx-duas-condicoes, somases-periodo-datas, conciliacao-bancaria,
+dados-subtotal-outras-contas, dados-relatorio-contas, validacao-alerta-aviso, validacao-cadastro-clientes, abas-painel-processos.

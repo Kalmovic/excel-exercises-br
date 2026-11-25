@@ -1088,6 +1088,10 @@
     "correta": 0,
     "banca": "Vunesp",
     "tema": "Erros",
+    "referencia": {
+      "prova": "Vunesp · Câmara Municipal de Campinas · Analista Legislativo · 2024",
+      "url": "https://opengabarito.com.br/questoes/5315589"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1479,6 +1483,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "PROCV",
+    "referencia": {
+      "prova": "FGV · Polícia Civil (RN) · Agente e Escrivão de Polícia Civil · 2021",
+      "url": "https://www.quizinho.com.br/questao/fgv-pc-rn-2021-agente-e-escrivao-de-policia-civil-substituto-2021-q32"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1608,6 +1616,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "Datas",
+    "referencia": {
+      "prova": "Cebraspe · AgSUS · Assistente de Projeto · 2026",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/provas/cespe-cebraspe-2026-agsus-assistente-de-projeto-perfil-3-uaps/questoes"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1782,6 +1794,10 @@
     "correta": 0,
     "banca": "FGV",
     "tema": "ÍNDICE e CORRESP",
+    "referencia": {
+      "prova": "FGV · PMESP · Soldado PM 2ª Classe · 2024",
+      "url": "https://semperconcursos.com.br/questao/7473-informatica-pmesp-2024"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1840,6 +1856,10 @@
     "correta": 1,
     "banca": "Cebraspe",
     "tema": "MÉDIA",
+    "referencia": {
+      "prova": "Cebraspe · ARSAL · Analista de Regulação · 2026",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/ff06d5c9-9d"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -1990,6 +2010,10 @@
     "correta": 1,
     "banca": "Cebraspe",
     "tema": "Arredondamento",
+    "referencia": {
+      "prova": "Quadrix · CAU-GO · Analista Fiscal · 2023",
+      "url": "https://arquivos.qconcursos.com/prova/arquivo_prova/96548/quadrix-2023-cau-go-analista-fiscal-prova.pdf"
+    },
     "comPlanilha": true,
     "conferir": [
       {
@@ -2105,6 +2129,3876 @@
       {
         "formula": "=MÍNIMO(A1:A5)",
         "esperado": 0
+      }
+    ]
+  },
+  {
+    "id": "e73b360e-cedf-55b7-8d38-63942c7f7b2f",
+    "slug": "concurso-31-o-espaco-que-ninguem-ve",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 31,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O espaço que ninguém vê",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. Os códigos da coluna A foram importados de outro sistema, e a célula A3 contém o texto **AL-22** seguido de um espaço em branco, que não aparece na tela. A célula E1 contém AL-22, digitado sem espaço.",
+      "O resultado de `=PROCV(E1;A2:C4;3;0)` e o motivo são:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Código"
+        },
+        "B1": {
+          "entrada": "Produto"
+        },
+        "C1": {
+          "entrada": "Preço"
+        },
+        "A2": {
+          "entrada": "MT-10"
+        },
+        "B2": {
+          "entrada": "Martelo"
+        },
+        "C2": {
+          "entrada": "35"
+        },
+        "A3": {
+          "entrada": "AL-22 "
+        },
+        "B3": {
+          "entrada": "Alicate"
+        },
+        "C3": {
+          "entrada": "28"
+        },
+        "A4": {
+          "entrada": "CH-05"
+        },
+        "B4": {
+          "entrada": "Chave"
+        },
+        "C4": {
+          "entrada": "19"
+        },
+        "D1": {
+          "entrada": "Busca:"
+        },
+        "E1": {
+          "entrada": "AL-22"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Com 0 (FALSO) no 4º argumento, o PROCV só aceita um texto idêntico. \"AL-22 \" tem 6 caracteres (`=NÚM.CARACT(A3)` dá 6) e não é igual a \"AL-22\": o resultado é #N/D.",
+      "A saída é limpar os códigos com ARRUMAR, que tira os espaços do começo e do fim."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "#N/D, porque, na busca exata, AL-22 e AL-22 com espaço no fim são textos diferentes"
+      },
+      {
+        "texto": "28, porque o PROCV desconsidera espaços no fim do texto",
+        "dica": "O PROCV compara o texto inteiro: o espaço faz parte do conteúdo de A3."
+      },
+      {
+        "texto": "#REF!, porque a coluna 3 não existe no intervalo",
+        "dica": "A2:C4 tem três colunas; #REF! apareceria com um número de coluna maior que 3."
+      },
+      {
+        "texto": "#VALOR!, porque E1 contém texto",
+        "dica": "O PROCV procura texto normalmente; o problema não é o tipo do dado."
+      },
+      {
+        "texto": "19, porque, sem o valor exato, o PROCV devolve o item seguinte",
+        "dica": "Com 0 no último argumento, a busca é exata: não há aproximação."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "PROCV",
+    "referencia": {
+      "prova": "FGV · PC-RN · Agente e Escrivão de Polícia Civil Substituto · 2021",
+      "url": "https://www.quizinho.com.br/questao/fgv-pc-rn-2021-agente-e-escrivao-de-policia-civil-substituto-2021-q32"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(E1;A2:C4;3;0)",
+        "esperado": "#N/D"
+      },
+      {
+        "formula": "=NÚM.CARACT(A3)",
+        "esperado": 6
+      },
+      {
+        "formula": "=PROCV(\"MT-10\";A2:C4;3;0)",
+        "esperado": 35
+      }
+    ]
+  },
+  {
+    "id": "e51fb3af-17a3-5b20-9b35-fe803477caab",
+    "slug": "concurso-32-coluna-alem-da-tabela",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 32,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Coluna além da tabela",
+    "enunciado": [
+      "Considere a planilha abaixo, elaborada no Microsoft Excel 365, em português, com a matrícula, o nome e a lotação de servidores.",
+      "Ao digitar `=PROCV(1034;A2:C4;4;FALSO)` em uma célula vazia, o resultado exibido será:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Matrícula"
+        },
+        "B1": {
+          "entrada": "Servidor"
+        },
+        "C1": {
+          "entrada": "Lotação"
+        },
+        "A2": {
+          "entrada": "1021"
+        },
+        "B2": {
+          "entrada": "Paula"
+        },
+        "C2": {
+          "entrada": "DRH"
+        },
+        "A3": {
+          "entrada": "1034"
+        },
+        "B3": {
+          "entrada": "Rogério"
+        },
+        "C3": {
+          "entrada": "DAF"
+        },
+        "A4": {
+          "entrada": "1047"
+        },
+        "B4": {
+          "entrada": "Sílvia"
+        },
+        "C4": {
+          "entrada": "GAB"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "O intervalo A2:C4 tem só três colunas. Pedir a coluna 4 aponta para fora da tabela, e o PROCV retorna #REF!, mesmo com a matrícula 1034 encontrada."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Rogério",
+        "dica": "Rogério está na 2ª coluna do intervalo; a fórmula pede a 4ª."
+      },
+      {
+        "texto": "DAF",
+        "dica": "DAF está na 3ª coluna, a última de A2:C4; a fórmula pede a 4ª."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "1034 existe na primeira coluna; #N/D seria o caso de um valor não encontrado."
+      },
+      {
+        "texto": "#REF!"
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "#VALOR! aparece quando o número da coluna é menor que 1, não maior que a largura da tabela."
+      }
+    ],
+    "correta": 3,
+    "banca": "FCC",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(1034;A2:C4;4;FALSO)",
+        "esperado": "#REF!"
+      },
+      {
+        "formula": "=PROCV(1034;A2:C4;3;FALSO)",
+        "esperado": "DAF"
+      }
+    ]
+  },
+  {
+    "id": "b486eb0d-5bea-5b01-8f03-609930aa47ab",
+    "slug": "concurso-33-o-nome-da-unidade-com-mais-atendimentos",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 33,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O nome da unidade com mais atendimentos",
+    "enunciado": [
+      "Uma analista registrou em A2:A5 o nome de quatro unidades de atendimento e em B2:B5 o número de atendimentos de cada uma no mês.",
+      "Ela digitou `=ÍNDICE(A2:A5;CORRESP(MÁXIMO(B2:B5);B2:B5;0))`. O resultado é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Unidade"
+        },
+        "B1": {
+          "entrada": "Atendimentos"
+        },
+        "A2": {
+          "entrada": "Centro"
+        },
+        "B2": {
+          "entrada": "412"
+        },
+        "A3": {
+          "entrada": "Norte"
+        },
+        "B3": {
+          "entrada": "389"
+        },
+        "A4": {
+          "entrada": "Sul"
+        },
+        "B4": {
+          "entrada": "455"
+        },
+        "A5": {
+          "entrada": "Leste"
+        },
+        "B5": {
+          "entrada": "401"
+        }
+      },
+      "larguras": {
+        "B": 110
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "De dentro para fora: MÁXIMO(B2:B5) = 455; CORRESP(455;B2:B5;0) = 3 (terceira linha); ÍNDICE(A2:A5;3) = Sul."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "455",
+        "dica": "455 é o valor de MÁXIMO; o ÍNDICE devolve o item de A2:A5 naquela posição."
+      },
+      {
+        "texto": "Sul"
+      },
+      {
+        "texto": "3",
+        "dica": "3 é a posição devolvida pelo CORRESP; o ÍNDICE transforma essa posição no nome."
+      },
+      {
+        "texto": "Norte",
+        "dica": "Norte tem o menor número; MÁXIMO procura o maior."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "O maior valor está em B2:B5, então o CORRESP o encontra."
+      }
+    ],
+    "correta": 1,
+    "banca": "FGV",
+    "tema": "ÍNDICE e CORRESP",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ÍNDICE(A2:A5;CORRESP(MÁXIMO(B2:B5);B2:B5;0))",
+        "esperado": "Sul"
+      },
+      {
+        "formula": "=CORRESP(MÁXIMO(B2:B5);B2:B5;0)",
+        "esperado": 3
+      }
+    ]
+  },
+  {
+    "id": "85c5eb50-179f-5261-b7d8-83ec2ab1fc6a",
+    "slug": "concurso-34-trocar-e-por-ou",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 34,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Trocar E por OU",
+    "enunciado": [
+      "Um gerente de agência bancária usa a planilha ao lado para pré-aprovar crédito. Em D2 digitou `=SE(E(B2>=3000;C2>=700);\"Aprova\";\"Analisa\")` e copiou a fórmula até D5.",
+      "Depois, trocou a função E pela função OU em D2 e copiou de novo até D5. Após a troca, quantas células de D2:D5 passam a exibir **Aprova**?"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente"
+        },
+        "B1": {
+          "entrada": "Renda"
+        },
+        "C1": {
+          "entrada": "Score"
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "4200"
+        },
+        "C2": {
+          "entrada": "710"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "2800"
+        },
+        "C3": {
+          "entrada": "760"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "5100"
+        },
+        "C4": {
+          "entrada": "640"
+        },
+        "A5": {
+          "entrada": "Davi"
+        },
+        "B5": {
+          "entrada": "2500"
+        },
+        "C5": {
+          "entrada": "590"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Com E, só Ana cumpre as duas condições. Com OU, basta uma: Ana (as duas), Bruno (score 760) e Carla (renda 5.100). Davi não cumpre nenhuma. Total: 3."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "1",
+        "dica": "1 é o total com o E; o OU aprova quem cumpre pelo menos uma das condições."
+      },
+      {
+        "texto": "2",
+        "dica": "2 é quantas células mudam; somando Ana, que já era aprovada, são mais."
+      },
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "4",
+        "dica": "Davi não atinge nenhuma das duas condições: renda abaixo de 3.000 e score abaixo de 700."
+      },
+      {
+        "texto": "0",
+        "dica": "O OU é menos exigente que o E: não reduz as aprovações."
+      }
+    ],
+    "correta": 2,
+    "banca": "Cesgranrio",
+    "tema": "Funções lógicas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(E(B3>=3000;C3>=700);\"Aprova\";\"Analisa\")",
+        "esperado": "Analisa"
+      },
+      {
+        "formula": "=SE(OU(B3>=3000;C3>=700);\"Aprova\";\"Analisa\")",
+        "esperado": "Aprova"
+      },
+      {
+        "formula": "=SE(OU(B4>=3000;C4>=700);\"Aprova\";\"Analisa\")",
+        "esperado": "Aprova"
+      },
+      {
+        "formula": "=SE(OU(B5>=3000;C5>=700);\"Aprova\";\"Analisa\")",
+        "esperado": "Analisa"
+      }
+    ]
+  },
+  {
+    "id": "5d2efd35-2973-52aa-8b61-25380f3cae1f",
+    "slug": "concurso-35-bonus-no-limite",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 35,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Bônus no limite",
+    "enunciado": [
+      "Na planilha abaixo, elaborada no Microsoft Excel 365, em português, a coluna B traz a assiduidade (formato Porcentagem) e a coluna C a nota de avaliação de cada servidor.",
+      "Em D2 foi digitada a fórmula `=SE(E(B2>0,95;C2>=8);\"Bônus\";\"Sem bônus\")`, copiada para D3 e D4. Os resultados em D2, D3 e D4 são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Servidor"
+        },
+        "B1": {
+          "entrada": "Assiduidade"
+        },
+        "C1": {
+          "entrada": "Nota"
+        },
+        "A2": {
+          "entrada": "Marta"
+        },
+        "B2": {
+          "entrada": "0,95",
+          "formato": "percentual"
+        },
+        "C2": {
+          "entrada": "9"
+        },
+        "A3": {
+          "entrada": "Nelson"
+        },
+        "B3": {
+          "entrada": "0,98",
+          "formato": "percentual"
+        },
+        "C3": {
+          "entrada": "8"
+        },
+        "A4": {
+          "entrada": "Olga"
+        },
+        "B4": {
+          "entrada": "1",
+          "formato": "percentual"
+        },
+        "C4": {
+          "entrada": "7,5"
+        }
+      },
+      "larguras": {
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Marta: 95% > 95% é falso, então Sem bônus. Nelson: 98% > 95% e 8 >= 8, Bônus. Olga: 100% > 95%, mas 7,5 >= 8 é falso, Sem bônus.",
+      "A pegadinha está nos limites: > exclui o valor igual; >= inclui."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Bônus, Bônus e Sem bônus",
+        "dica": "Em D2, 95% não é maior que 0,95: o > não inclui o próprio limite."
+      },
+      {
+        "texto": "Bônus, Bônus e Bônus",
+        "dica": "Olga tem nota 7,5, abaixo de 8; com E, basta uma condição falsa."
+      },
+      {
+        "texto": "Sem bônus, Bônus e Sem bônus"
+      },
+      {
+        "texto": "Sem bônus, Bônus e Bônus",
+        "dica": "Olga tem 100% de assiduidade, mas a nota 7,5 não atinge 8."
+      },
+      {
+        "texto": "Sem bônus, Sem bônus e Sem bônus",
+        "dica": "Em D3, 98% > 95% e 8 >= 8: as duas condições são verdadeiras."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(E(B2>0,95;C2>=8);\"Bônus\";\"Sem bônus\")",
+        "esperado": "Sem bônus"
+      },
+      {
+        "formula": "=SE(E(B3>0,95;C3>=8);\"Bônus\";\"Sem bônus\")",
+        "esperado": "Bônus"
+      },
+      {
+        "formula": "=SE(E(B4>0,95;C4>=8);\"Bônus\";\"Sem bônus\")",
+        "esperado": "Sem bônus"
+      }
+    ]
+  },
+  {
+    "id": "86732616-dcae-573e-a291-79800d22430e",
+    "slug": "concurso-36-se-aninhado-com-calculo",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 36,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SE aninhado com cálculo",
+    "enunciado": [
+      "A célula A1 de uma planilha do Excel 365 contém o valor 6.500.",
+      "Julgue o item: a fórmula `=SE(A1<=2000;0;SE(A1<=5000;A1*5%;A1*8%-150))` retorna 325."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "6500"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. 6.500 não é <= 2.000 nem <= 5.000, então vale o último ramo: 6.500 × 8% − 150 = 520 − 150 = 370."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "325 é 5% de 6.500, mas esse ramo só vale até 5.000; acima disso, a fórmula calcula 8% menos 150."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "SE",
+    "referencia": {
+      "prova": "Vunesp · TJ-SP · 2024",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/3062856"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(A1<=2000;0;SE(A1<=5000;A1*5%;A1*8%-150))",
+        "esperado": 370
+      }
+    ]
+  },
+  {
+    "id": "b5bd675a-7e1c-5063-9014-41a45e4a5333",
+    "slug": "concurso-37-qual-soma-nao-confere",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 37,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Qual soma não confere",
+    "enunciado": [
+      "Um escriturário registrou na planilha ao lado a agência (A2:A6), o produto (B2:B6) e o valor (C2:C6) das vendas do dia. O total da agência Centro é 4.400.",
+      "Qual das fórmulas a seguir **NÃO** retorna esse total?"
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Agência"
+        },
+        "B1": {
+          "entrada": "Produto"
+        },
+        "C1": {
+          "entrada": "Valor"
+        },
+        "A2": {
+          "entrada": "Centro"
+        },
+        "B2": {
+          "entrada": "Seguro"
+        },
+        "C2": {
+          "entrada": "1200"
+        },
+        "A3": {
+          "entrada": "Norte"
+        },
+        "B3": {
+          "entrada": "Crédito"
+        },
+        "C3": {
+          "entrada": "3000"
+        },
+        "A4": {
+          "entrada": "Centro"
+        },
+        "B4": {
+          "entrada": "Crédito"
+        },
+        "C4": {
+          "entrada": "2500"
+        },
+        "A5": {
+          "entrada": "Sul"
+        },
+        "B5": {
+          "entrada": "Seguro"
+        },
+        "C5": {
+          "entrada": "800"
+        },
+        "A6": {
+          "entrada": "Centro"
+        },
+        "B6": {
+          "entrada": "Seguro"
+        },
+        "C6": {
+          "entrada": "700"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A SOMASE procura o critério no 1º argumento e soma o 3º. Na alternativa C, ela procura \"Centro\" entre os valores (C2:C6), não acha nenhum e retorna 0.",
+      "As outras chegam a 4.400 por caminhos diferentes; a SOMASES tem a ordem invertida: primeiro o intervalo da soma, depois os pares intervalo e critério."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=SOMASE(A2:A6;\"Centro\";C2:C6)`",
+        "dica": "Esta retorna 4.400: na SOMASE, o intervalo do critério vem primeiro e o da soma por último."
+      },
+      {
+        "texto": "`=SOMASES(C2:C6;A2:A6;\"Centro\")`",
+        "dica": "Esta retorna 4.400: na SOMASES, o intervalo da soma vem primeiro."
+      },
+      {
+        "texto": "`=SOMASE(C2:C6;\"Centro\";A2:A6)`"
+      },
+      {
+        "texto": "`=C2+C4+C6`",
+        "dica": "Esta retorna 4.400: são exatamente as três vendas da Centro."
+      },
+      {
+        "texto": "`=SOMA(C2:C6)-SOMASE(A2:A6;\"<>Centro\";C2:C6)`",
+        "dica": "Esta retorna 4.400: o total geral (8.200) menos as outras agências (3.800)."
+      }
+    ],
+    "correta": 2,
+    "banca": "Cesgranrio",
+    "tema": "SOMASE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMASE(A2:A6;\"Centro\";C2:C6)",
+        "esperado": 4400
+      },
+      {
+        "formula": "=SOMASES(C2:C6;A2:A6;\"Centro\")",
+        "esperado": 4400
+      },
+      {
+        "formula": "=SOMASE(C2:C6;\"Centro\";A2:A6)",
+        "esperado": 0
+      },
+      {
+        "formula": "=C2+C4+C6",
+        "esperado": 4400
+      },
+      {
+        "formula": "=SOMA(C2:C6)-SOMASE(A2:A6;\"<>Centro\";C2:C6)",
+        "esperado": 4400
+      }
+    ]
+  },
+  {
+    "id": "4ba62cd2-c73b-515a-8b71-6a5c1592542f",
+    "slug": "concurso-38-o-limite-na-celula",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 38,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O limite na célula",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. A coluna B traz o valor de seis processos de compra, e a célula E1 guarda o limite de 3.200.",
+      "Os resultados de `=CONT.SE(B2:B7;\">=\"&E1)` e de `=CONT.SE(B2:B7;\">=E1\")` são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo"
+        },
+        "B1": {
+          "entrada": "Valor"
+        },
+        "A2": {
+          "entrada": "P-101"
+        },
+        "B2": {
+          "entrada": "1500"
+        },
+        "A3": {
+          "entrada": "P-102"
+        },
+        "B3": {
+          "entrada": "3200"
+        },
+        "A4": {
+          "entrada": "P-103"
+        },
+        "B4": {
+          "entrada": "980"
+        },
+        "A5": {
+          "entrada": "P-104"
+        },
+        "B5": {
+          "entrada": "3200"
+        },
+        "A6": {
+          "entrada": "P-105"
+        },
+        "B6": {
+          "entrada": "4100"
+        },
+        "A7": {
+          "entrada": "P-106"
+        },
+        "B7": {
+          "entrada": "2750"
+        },
+        "D1": {
+          "entrada": "Limite"
+        },
+        "E1": {
+          "entrada": "3200"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Com `\">=\"&E1`, o critério vira \">=3200\": contam 3.200, 3.200 e 4.100, total 3.",
+      "Com `\">=E1\"`, o Excel compara os valores com o texto E1, e nenhum número atende: o resultado é 0."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "3 e 3",
+        "dica": "Entre aspas, E1 é só um texto: o segundo critério não lê a célula."
+      },
+      {
+        "texto": "3 e 0"
+      },
+      {
+        "texto": "1 e 0",
+        "dica": "O >= inclui os valores iguais ao limite: as duas linhas com 3.200 contam."
+      },
+      {
+        "texto": "0 e 3",
+        "dica": "Inverteu: é o & que junta o operador ao valor de E1."
+      },
+      {
+        "texto": "#VALOR! e 0",
+        "dica": "O & junta o operador e o número num critério válido; não há erro."
+      }
+    ],
+    "correta": 1,
+    "banca": "Vunesp",
+    "tema": "CONT.SE",
+    "referencia": {
+      "prova": "Cesgranrio · Banco do Brasil · Escriturário (Agente Comercial) · 2023",
+      "url": "https://www.questoes.indagacao.com/2023/05/sejam-os-seguintes-dados-de-uma.html"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE(B2:B7;\">=\"&E1)",
+        "esperado": 3
+      },
+      {
+        "formula": "=CONT.SE(B2:B7;\">=E1\")",
+        "esperado": 0
+      },
+      {
+        "formula": "=CONT.SE(B2:B7;\">\"&E1)",
+        "esperado": 1
+      }
+    ]
+  },
+  {
+    "id": "5fa8d217-0f3d-5c5d-af39-8bd425e98d18",
+    "slug": "concurso-39-comeca-com-termina-com",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 39,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Começa com, termina com",
+    "enunciado": [
+      "Pedro mantém em A2:A7 a razão social de seis clientes.",
+      "Os resultados de `=CONT.SE(A2:A7;\"Ana*\")` e de `=CONT.SE(A2:A7;\"*Ana\")` são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente"
+        },
+        "A2": {
+          "entrada": "Mariana Têxtil"
+        },
+        "A3": {
+          "entrada": "Ana Doces"
+        },
+        "A4": {
+          "entrada": "Bom Preço Ana"
+        },
+        "A5": {
+          "entrada": "Anagrama Editora"
+        },
+        "A6": {
+          "entrada": "Loja Diana"
+        },
+        "A7": {
+          "entrada": "Casa da Ana"
+        }
+      },
+      "larguras": {
+        "A": 150
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "\"Ana*\": começa com Ana, sem diferenciar maiúsculas: Ana Doces e Anagrama Editora (2).",
+      "\"*Ana\": termina com ana: Bom Preço Ana, Loja Diana e Casa da Ana (3). Mariana Têxtil só contém ana no meio."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "1 e 2",
+        "dica": "O curinga não exige palavra inteira: Anagrama também começa com Ana, e Loja Diana termina com ana."
+      },
+      {
+        "texto": "2 e 2",
+        "dica": "Loja Diana termina com ana; o CONT.SE não diferencia maiúsculas de minúsculas."
+      },
+      {
+        "texto": "6 e 3",
+        "dica": "6 seria com * dos dois lados, ou seja, \"contém Ana\"."
+      },
+      {
+        "texto": "2 e 3"
+      },
+      {
+        "texto": "0 e 0",
+        "dica": "O * vale qualquer sequência de caracteres, inclusive nenhuma."
+      }
+    ],
+    "correta": 3,
+    "banca": "FGV",
+    "tema": "CONT.SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE(A2:A7;\"Ana*\")",
+        "esperado": 2
+      },
+      {
+        "formula": "=CONT.SE(A2:A7;\"*Ana\")",
+        "esperado": 3
+      },
+      {
+        "formula": "=CONT.SE(A2:A7;\"*Ana*\")",
+        "esperado": 6
+      }
+    ]
+  },
+  {
+    "id": "dd04b348-5609-575b-add4-9916d79c5fff",
+    "slug": "concurso-40-copia-na-diagonal",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 40,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Cópia na diagonal",
+    "enunciado": [
+      "Na planilha ao lado, a célula A1 contém a fórmula `=B$2+$C3`. Lucas copiou A1 e colou em C4.",
+      "O valor exibido em C4 será:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "=B$2+$C3"
+        },
+        "B2": {
+          "entrada": "10"
+        },
+        "D2": {
+          "entrada": "30"
+        },
+        "C3": {
+          "entrada": "4"
+        },
+        "C6": {
+          "entrada": "7"
+        },
+        "D5": {
+          "entrada": "12"
+        },
+        "E6": {
+          "entrada": "9"
+        },
+        "B5": {
+          "entrada": "15"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "De A1 para C4 são duas colunas para a direita e três linhas para baixo. B$2: a coluna anda e a linha fica, vira D$2 (30). $C3: a coluna fica e a linha anda, vira $C6 (7).",
+      "Em C4 fica `=D$2+$C6` = 30 + 7 = 37."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "21",
+        "dica": "Esse seria `=D$5+$E6`: o $ antes do 2 trava a linha, e o $ antes do C trava a coluna."
+      },
+      {
+        "texto": "14",
+        "dica": "14 é o valor de A1; ao colar, as partes sem $ andam."
+      },
+      {
+        "texto": "39",
+        "dica": "Esse seria `=D$2+$E6`: em $C3, o $ trava a coluna C."
+      },
+      {
+        "texto": "22",
+        "dica": "Esse seria `=B$5+$C6`: em B$2, a coluna anda (B vira D) e a linha fica."
+      },
+      {
+        "texto": "37"
+      }
+    ],
+    "correta": 4,
+    "banca": "FGV",
+    "tema": "Referências",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=D$2+$C6",
+        "esperado": 37
+      },
+      {
+        "formula": "=B$2+$C3",
+        "esperado": 14
+      },
+      {
+        "formula": "=D$5+$E6",
+        "esperado": 21
+      },
+      {
+        "formula": "=D$2+$E6",
+        "esperado": 39
+      },
+      {
+        "formula": "=B$5+$C6",
+        "esperado": 22
+      }
+    ]
+  },
+  {
+    "id": "c4d79316-eeb2-5c9e-bff6-2a58d2a0de6f",
+    "slug": "concurso-41-copia-para-um-bloco",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 41,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Cópia para um bloco",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. A célula C2 contém a fórmula `=$A2*B$1`, que foi copiada para o intervalo C2:D3.",
+      "As fórmulas resultantes em D2 e em C3 são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "B1": {
+          "entrada": "10"
+        },
+        "C1": {
+          "entrada": "20"
+        },
+        "D1": {
+          "entrada": "30"
+        },
+        "A2": {
+          "entrada": "2"
+        },
+        "A3": {
+          "entrada": "5"
+        },
+        "C2": {
+          "entrada": "=$A2*B$1"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Para D2 (uma coluna à direita): $A2 fica, B$1 vira C$1. Para C3 (uma linha abaixo): $A2 vira $A3, B$1 fica.",
+      "Cada $ trava só a parte que vem logo depois dele."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=$A2*C$1` e `=$A3*B$1`"
+      },
+      {
+        "texto": "`=$B2*C$1` e `=$A3*B$2`",
+        "dica": "O $ trava a coluna A e a linha 1: elas não mudam na cópia."
+      },
+      {
+        "texto": "`=$A2*C$1` e `=$A3*B$2`",
+        "dica": "Em B$1 a linha está travada: na cópia para baixo, continua 1."
+      },
+      {
+        "texto": "`=$A2*B$1` e `=$A3*B$1`",
+        "dica": "Na cópia para a direita, B$1 vira C$1: a coluna não tem $."
+      },
+      {
+        "texto": "`=$A3*C$2` e `=$A2*B$1`",
+        "dica": "Para a direita muda só a coluna; para baixo, só a linha."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Referências",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=$A2*C$1",
+        "esperado": 40
+      },
+      {
+        "formula": "=$A3*B$1",
+        "esperado": 50
+      }
+    ]
+  },
+  {
+    "id": "d048b72f-a708-5676-80e0-37e03c428b34",
+    "slug": "concurso-42-arrastar-pela-alca",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 42,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Arrastar pela alça",
+    "enunciado": [
+      "Na planilha ao lado, A1:A5 contém 3, 5, 2, 8 e 6, e B1 contém 10. Na célula C1 foi digitada a fórmula `=A1*B$1`, que foi arrastada pela alça de preenchimento até C5.",
+      "Julgue o item: o valor exibido em C5 será 60."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "3"
+        },
+        "A2": {
+          "entrada": "5"
+        },
+        "A3": {
+          "entrada": "2"
+        },
+        "A4": {
+          "entrada": "8"
+        },
+        "A5": {
+          "entrada": "6"
+        },
+        "B1": {
+          "entrada": "10"
+        },
+        "C1": {
+          "entrada": "=A1*B$1"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. Arrastando para baixo, A1 vira A5, mas B$1 continua apontando para a linha 1. C5 = A5 × B1 = 6 × 10 = 60.",
+      "Sem o $, a fórmula viraria `=A5*B5` e daria 0, porque B5 está vazia."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "Em B$1, o $ trava a linha: C5 fica com `=A5*B$1` = 6 × 10 = 60."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Referências",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=A5*B$1",
+        "esperado": 60
+      },
+      {
+        "formula": "=A5*B5",
+        "esperado": 0
+      }
+    ]
+  },
+  {
+    "id": "5b96baba-e73c-57bb-905e-46e138ecac06",
+    "slug": "concurso-43-datadif-com-as-datas-trocadas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 43,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DATADIF com as datas trocadas",
+    "enunciado": [
+      "Na planilha ao lado, A1 contém a data de protocolo 02/03/2026 e B1 a data de resposta 13/03/2026.",
+      "Julgue o item: a fórmula `=DATADIF(B1;A1;\"d\")` retorna 11, que é o número de dias entre o protocolo e a resposta."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "02/03/2026"
+        },
+        "B1": {
+          "entrada": "13/03/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. O DATADIF exige a data inicial antes da final. Com B1 (a data maior) no primeiro argumento, a fórmula retorna #NÚM!.",
+      "O certo seria `=DATADIF(A1;B1;\"d\")`, que dá 11, o mesmo que `=B1-A1`."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "No DATADIF a data inicial vem primeiro. Com a data maior no 1º argumento, o resultado é o erro #NÚM!."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DATADIF(B1;A1;\"d\")",
+        "esperado": "#NÚM!"
+      },
+      {
+        "formula": "=DATADIF(A1;B1;\"d\")",
+        "esperado": 11
+      }
+    ]
+  },
+  {
+    "id": "0607194f-9f60-5495-b57e-0e3510165482",
+    "slug": "concurso-44-dias-uteis-com-ponto-facultativo",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 44,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dias úteis com ponto facultativo",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. A2 contém 02/03/2026 (segunda-feira), B2 contém 13/03/2026 (sexta-feira) e C2 contém 06/03/2026, um ponto facultativo numa sexta-feira.",
+      "O resultado de `=DIATRABALHOTOTAL(A2;B2;C2)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Início"
+        },
+        "B1": {
+          "entrada": "Fim"
+        },
+        "C1": {
+          "entrada": "Feriado"
+        },
+        "A2": {
+          "entrada": "02/03/2026"
+        },
+        "B2": {
+          "entrada": "13/03/2026"
+        },
+        "C2": {
+          "entrada": "06/03/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "De 02/03 a 13/03/2026 há duas semanas completas de segunda a sexta: 10 dias úteis, contando o primeiro e o último dia.",
+      "O 3º argumento traz os feriados a descontar: 06/03 é sexta-feira, então sobra 9."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "9"
+      },
+      {
+        "texto": "10",
+        "dica": "10 são os dias úteis do período; a data de C2 também é descontada."
+      },
+      {
+        "texto": "11",
+        "dica": "11 é a diferença B2−A2; a função conta dias úteis, incluindo as duas pontas."
+      },
+      {
+        "texto": "12",
+        "dica": "Sábados e domingos não entram na contagem."
+      },
+      {
+        "texto": "8",
+        "dica": "As datas inicial e final entram na contagem quando são dias úteis."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Datas",
+    "referencia": {
+      "prova": "Vunesp · TJ-SP · 2024",
+      "url": "https://questoes.grancursosonline.com.br/questoes-de-concursos/informatica-405030/3560089"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DIATRABALHOTOTAL(A2;B2;C2)",
+        "esperado": 9
+      },
+      {
+        "formula": "=DIATRABALHOTOTAL(A2;B2)",
+        "esperado": 10
+      }
+    ]
+  },
+  {
+    "id": "f68c0932-08c7-56d6-821f-a07d96624d84",
+    "slug": "concurso-45-jornada-sem-o-almoco",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 45,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Jornada sem o almoço",
+    "enunciado": [
+      "Considere a planilha abaixo, elaborada no Microsoft Excel 365, em português, com os horários de um dia de trabalho: entrada (A2), saída para o almoço (B2), volta (C2) e saída (D2).",
+      "Em E2, com formato de hora h:mm, foi digitada a fórmula `=(D2-A2)-(C2-B2)`. A célula E2 exibe:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Entrada"
+        },
+        "B1": {
+          "entrada": "Almoço"
+        },
+        "C1": {
+          "entrada": "Volta"
+        },
+        "D1": {
+          "entrada": "Saída"
+        },
+        "A2": {
+          "entrada": "08:00"
+        },
+        "B2": {
+          "entrada": "12:00"
+        },
+        "C2": {
+          "entrada": "13:15"
+        },
+        "D2": {
+          "entrada": "17:30"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "D2−A2 = 17:30 − 08:00 = 9:30. C2−B2 = 13:15 − 12:00 = 1:15. 9:30 − 1:15 = 8:15.",
+      "O Excel guarda horas como fração do dia (8:15 = 0,34375); é o formato h:mm que exibe 8:15."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "9:30",
+        "dica": "9:30 é o tempo entre a entrada e a saída; falta descontar o almoço."
+      },
+      {
+        "texto": "1:15",
+        "dica": "1:15 é só o intervalo do almoço."
+      },
+      {
+        "texto": "8:15"
+      },
+      {
+        "texto": "8:25",
+        "dica": "8,25 é a jornada em horas decimais; no formato h:mm, um quarto de hora aparece como :15."
+      },
+      {
+        "texto": "0,34",
+        "dica": "Esse é o valor guardado (fração do dia); o formato h:mm o mostra como hora."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "Datas e horas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TEXTO((D2-A2)-(C2-B2);\"h:mm\")",
+        "esperado": "8:15"
+      },
+      {
+        "formula": "=(D2-A2)-(C2-B2)",
+        "esperado": 0.34375
+      }
+    ]
+  },
+  {
+    "id": "ca7a48d8-49ac-578e-aaf7-c459ba675088",
+    "slug": "concurso-46-a-formula-que-nao-equivale",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 46,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A fórmula que não equivale",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. A célula A2 contém o código **PRT-0081**, e a fórmula `=ESQUERDA(A2;3)` retorna PRT.",
+      "Assinale a alternativa com a fórmula que **NÃO** retorna o mesmo resultado."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Código"
+        },
+        "A2": {
+          "entrada": "PRT-0081"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "No EXT.TEXTO, a contagem começa no caractere 1. Com posição inicial 0, a função retorna #VALOR!.",
+      "As outras quatro fórmulas chegam a PRT."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=EXT.TEXTO(A2;1;3)`",
+        "dica": "Esta retorna PRT: três caracteres a partir do 1º."
+      },
+      {
+        "texto": "`=ESQUERDA(A2;PROCURAR(\"-\";A2)-1)`",
+        "dica": "Esta retorna PRT: o hífen está na posição 4, e 4 − 1 = 3 caracteres."
+      },
+      {
+        "texto": "`=MAIÚSCULA(ESQUERDA(A2;3))`",
+        "dica": "Esta retorna PRT: o texto já está em maiúsculas."
+      },
+      {
+        "texto": "`=EXT.TEXTO(A2;0;3)`"
+      },
+      {
+        "texto": "`=ESQUERDA(EXT.TEXTO(A2;1;5);3)`",
+        "dica": "Esta retorna PRT: tira PRT-0 e, dele, os três primeiros."
+      }
+    ],
+    "correta": 3,
+    "banca": "Vunesp",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=EXT.TEXTO(A2;0;3)",
+        "esperado": "#VALOR!"
+      },
+      {
+        "formula": "=EXT.TEXTO(A2;1;3)",
+        "esperado": "PRT"
+      },
+      {
+        "formula": "=ESQUERDA(A2;PROCURAR(\"-\";A2)-1)",
+        "esperado": "PRT"
+      },
+      {
+        "formula": "=MAIÚSCULA(ESQUERDA(A2;3))",
+        "esperado": "PRT"
+      },
+      {
+        "formula": "=ESQUERDA(EXT.TEXTO(A2;1;5);3)",
+        "esperado": "PRT"
+      }
+    ]
+  },
+  {
+    "id": "4fddd0a1-470d-5bfc-9ae2-bf3f9b1d54ba",
+    "slug": "concurso-47-o-setor-depois-do-hifen",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 47,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O setor depois do hífen",
+    "enunciado": [
+      "Joana tem, em A2, o texto **Souza-Financeiro** (sobrenome e setor separados por hífen) e quer extrair só o setor, de modo que a fórmula funcione para sobrenomes de qualquer tamanho.",
+      "A fórmula que retorna **Financeiro** é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Registro"
+        },
+        "A2": {
+          "entrada": "Souza-Financeiro"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "O texto tem 16 caracteres e o hífen está na posição 6. Depois dele sobram 16 − 6 = 10 caracteres, e DIREITA(A2;10) = Financeiro."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=DIREITA(A2;PROCURAR(\"-\";A2))`",
+        "dica": "PROCURAR dá a posição do hífen contada da esquerda (6); DIREITA(…;6) pega só os 6 últimos caracteres."
+      },
+      {
+        "texto": "`=EXT.TEXTO(A2;PROCURAR(\"-\";A2);20)`",
+        "dica": "Começa no próprio hífen: falta somar 1 à posição."
+      },
+      {
+        "texto": "`=DIREITA(A2;NÚM.CARACT(A2)-PROCURAR(\"-\";A2))`"
+      },
+      {
+        "texto": "`=DIREITA(A2;NÚM.CARACT(A2)-PROCURAR(\"-\";A2)+1)`",
+        "dica": "O +1 traz o hífen junto."
+      },
+      {
+        "texto": "`=ESQUERDA(A2;PROCURAR(\"-\";A2)-1)`",
+        "dica": "ESQUERDA pega o começo do texto: Souza."
+      }
+    ],
+    "correta": 2,
+    "banca": "FGV",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DIREITA(A2;NÚM.CARACT(A2)-PROCURAR(\"-\";A2))",
+        "esperado": "Financeiro"
+      },
+      {
+        "formula": "=DIREITA(A2;PROCURAR(\"-\";A2))",
+        "esperado": "nceiro"
+      },
+      {
+        "formula": "=EXT.TEXTO(A2;PROCURAR(\"-\";A2);20)",
+        "esperado": "-Financeiro"
+      },
+      {
+        "formula": "=DIREITA(A2;NÚM.CARACT(A2)-PROCURAR(\"-\";A2)+1)",
+        "esperado": "-Financeiro"
+      },
+      {
+        "formula": "=ESQUERDA(A2;PROCURAR(\"-\";A2)-1)",
+        "esperado": "Souza"
+      }
+    ]
+  },
+  {
+    "id": "227f7650-a0a3-5beb-84da-7cdc48668c72",
+    "slug": "concurso-48-procurar-ou-localizar",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 48,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "PROCURAR ou LOCALIZAR",
+    "enunciado": [
+      "A célula A1 de uma planilha do Excel 365 contém o texto **Ana Paula**.",
+      "Julgue o item: as fórmulas `=PROCURAR(\"a\";A1)` e `=LOCALIZAR(\"a\";A1)` retornam o mesmo valor."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Ana Paula"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. `=PROCURAR(\"a\";A1)` retorna 3, porque o \"A\" maiúsculo do início não serve. `=LOCALIZAR(\"a\";A1)` retorna 1, porque não diferencia maiúsculas de minúsculas."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "PROCURAR diferencia maiúsculas: acha o primeiro \"a\" minúsculo, na posição 3. LOCALIZAR não diferencia e acha o \"A\" da posição 1."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCURAR(\"a\";A1)",
+        "esperado": 3
+      },
+      {
+        "formula": "=LOCALIZAR(\"a\";A1)",
+        "esperado": 1
+      }
+    ]
+  },
+  {
+    "id": "3cfb8280-f184-5f78-8ee9-4589c08b23da",
+    "slug": "concurso-49-a-funcao-que-corta-as-casas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 49,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A função que corta as casas",
+    "enunciado": [
+      "Na célula A1 de uma planilha do Microsoft Excel 365, em português, está o valor 7,689. Um técnico precisa manter apenas uma casa decimal, **sem arredondar**, obtendo 7,6.",
+      "A fórmula adequada é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "7,689"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "TRUNCAR corta o número na quantidade de casas indicada, sem olhar os dígitos seguintes: TRUNCAR(7,689;1) = 7,6."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=ARRED(A1;1)`",
+        "dica": "ARRED arredonda: 7,689 vira 7,7."
+      },
+      {
+        "texto": "`=INT(A1)`",
+        "dica": "INT elimina todas as casas decimais: 7."
+      },
+      {
+        "texto": "`=TRUNCAR(A1;1)`"
+      },
+      {
+        "texto": "`=ARREDONDAR.PARA.CIMA(A1;1)`",
+        "dica": "Arredondar para cima dá 7,7."
+      },
+      {
+        "texto": "`=TRUNCAR(A1)`",
+        "dica": "Sem o 2º argumento, TRUNCAR corta todas as casas: 7."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "Arredondamento",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TRUNCAR(A1;1)",
+        "esperado": 7.6
+      },
+      {
+        "formula": "=ARRED(A1;1)",
+        "esperado": 7.7
+      },
+      {
+        "formula": "=INT(A1)",
+        "esperado": 7
+      },
+      {
+        "formula": "=ARREDONDAR.PARA.CIMA(A1;1)",
+        "esperado": 7.7
+      },
+      {
+        "formula": "=TRUNCAR(A1)",
+        "esperado": 7
+      }
+    ]
+  },
+  {
+    "id": "3b44eeb6-8c91-5a5c-be48-7a345d4588c0",
+    "slug": "concurso-50-truncar-sobre-a-media",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 50,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "TRUNCAR sobre a média",
+    "enunciado": [
+      "Um analista de uma instituição financeira registrou em B2:B5 as taxas de quatro operações: 7,6; 8,4; 6,9 e 9,0.",
+      "O resultado de `=TRUNCAR(MÉDIA(B2:B5);1)` é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Operação"
+        },
+        "B1": {
+          "entrada": "Taxa"
+        },
+        "A2": {
+          "entrada": "Op. 1"
+        },
+        "B2": {
+          "entrada": "7,6"
+        },
+        "A3": {
+          "entrada": "Op. 2"
+        },
+        "B3": {
+          "entrada": "8,4"
+        },
+        "A4": {
+          "entrada": "Op. 3"
+        },
+        "B4": {
+          "entrada": "6,9"
+        },
+        "A5": {
+          "entrada": "Op. 4"
+        },
+        "B5": {
+          "entrada": "9"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A média é 31,9 / 4 = 7,975. TRUNCAR com 1 casa corta o que vem depois da primeira casa: 7,9.",
+      "ARRED(7,975;1) daria 8, e é aí que as duas funções se separam."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "8",
+        "dica": "Isso seria arredondar a média 7,975; TRUNCAR só corta."
+      },
+      {
+        "texto": "7,9"
+      },
+      {
+        "texto": "7,97",
+        "dica": "TRUNCAR com 1 deixa só uma casa decimal."
+      },
+      {
+        "texto": "7",
+        "dica": "Sem casas decimais seria TRUNCAR(…;0)."
+      },
+      {
+        "texto": "31,9",
+        "dica": "31,9 é o total; a fórmula trunca a média."
+      }
+    ],
+    "correta": 1,
+    "banca": "Cesgranrio",
+    "tema": "Arredondamento",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TRUNCAR(MÉDIA(B2:B5);1)",
+        "esperado": 7.9
+      },
+      {
+        "formula": "=ARRED(MÉDIA(B2:B5);1)",
+        "esperado": 8
+      }
+    ]
+  },
+  {
+    "id": "8fd47320-4f86-543d-b148-cee92f18d26c",
+    "slug": "concurso-51-arred-com-casas-negativas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 51,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ARRED com casas negativas",
+    "enunciado": [
+      "A célula A1 de uma planilha do Excel 365 contém o valor 2.371,48.",
+      "Julgue o item: a fórmula `=ARRED(A1;-2)` retorna 2.400."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "2371,48"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. Um número negativo de casas arredonda à esquerda da vírgula: −1 para a dezena, −2 para a centena. 2.371,48 está mais perto de 2.400."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "Com −2, o ARRED arredonda para a centena mais próxima: 2.371,48 fica mais perto de 2.400 que de 2.300."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Arredondamento",
+    "referencia": {
+      "prova": "Quadrix · CAU-GO · Analista Fiscal · 2023",
+      "url": "https://arquivos.qconcursos.com/prova/arquivo_prova/96548/quadrix-2023-cau-go-analista-fiscal-prova.pdf"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ARRED(A1;-2)",
+        "esperado": 2400
+      }
+    ]
+  },
+  {
+    "id": "f8961406-41b5-581e-b9ea-acce59667a44",
+    "slug": "concurso-52-percentual-da-meta-ja-formatado",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 52,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Percentual da meta já formatado",
+    "enunciado": [
+      "Renata tem a meta de atendimentos em B2 (80) e o realizado em C2 (92). A célula D2 está formatada como **Porcentagem**, sem casas decimais, e deve exibir o percentual da meta atingido: 115%.",
+      "A fórmula que ela deve digitar em D2 é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Indicador"
+        },
+        "B1": {
+          "entrada": "Meta"
+        },
+        "C1": {
+          "entrada": "Realizado"
+        },
+        "A2": {
+          "entrada": "Atendimentos"
+        },
+        "B2": {
+          "entrada": "80"
+        },
+        "C2": {
+          "entrada": "92"
+        }
+      },
+      "larguras": {
+        "A": 110
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "92 / 80 = 1,15. Com o formato Porcentagem, 1,15 é exibido como 115%. Multiplicar por 100 na fórmula faria a célula mostrar 11500%."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=C2/B2*100`",
+        "dica": "Com o formato Porcentagem, o Excel já multiplica a exibição por 100: apareceria 11500%."
+      },
+      {
+        "texto": "`=B2/C2`",
+        "dica": "Invertido: 80/92 mostra cerca de 87%."
+      },
+      {
+        "texto": "`=(C2-B2)/B2`",
+        "dica": "Essa é a variação acima da meta (15%), não o percentual atingido."
+      },
+      {
+        "texto": "`=C2%/B2`",
+        "dica": "C2% divide C2 por 100: apareceria 1%."
+      },
+      {
+        "texto": "`=C2/B2`"
+      }
+    ],
+    "correta": 4,
+    "banca": "FGV",
+    "tema": "Porcentagem",
+    "referencia": {
+      "prova": "UPENET · SEFAZ-PE · 2022",
+      "url": "https://www.qconcursos.com/questoes-de-concursos/questoes/7b235a57-9b"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=C2/B2",
+        "esperado": 1.15
+      },
+      {
+        "formula": "=C2/B2*100",
+        "esperado": 115
+      },
+      {
+        "formula": "=B2/C2",
+        "esperado": 0.8695652173913043
+      },
+      {
+        "formula": "=(C2-B2)/B2",
+        "esperado": 0.15
+      },
+      {
+        "formula": "=C2%/B2",
+        "esperado": 0.0115
+      }
+    ]
+  },
+  {
+    "id": "bcd8910c-0828-506f-bbb6-50733a26b815",
+    "slug": "concurso-53-reajuste-por-faixa",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 53,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Reajuste por faixa",
+    "enunciado": [
+      "Considere a planilha abaixo, elaborada no Microsoft Excel 365, em português. Os salários até R$ 3.000,00 recebem reajuste de 8%; os demais, de 5%. Em C2 foi digitada a fórmula `=SE(B2<=3000;B2*1,08;B2*1,05)`, copiada para C3.",
+      "Os valores em C2 e C3 são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Servidor"
+        },
+        "B1": {
+          "entrada": "Salário"
+        },
+        "C1": {
+          "entrada": "Reajustado"
+        },
+        "A2": {
+          "entrada": "Lúcia"
+        },
+        "B2": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Mário"
+        },
+        "B3": {
+          "entrada": "4000",
+          "formato": "moeda"
+        }
+      },
+      "larguras": {
+        "B": 100,
+        "C": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "B2 = 3.000 atende B2<=3000: 3.000 × 1,08 = 3.240. B3 = 4.000 não atende: 4.000 × 1,05 = 4.200.",
+      "Multiplicar por 1,08 é o mesmo que somar 8% ao valor."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "3.150,00 e 4.200,00",
+        "dica": "3.000 satisfaz B2<=3000: recebe o fator 1,08."
+      },
+      {
+        "texto": "3.240,00 e 4.320,00",
+        "dica": "Acima de 3.000 vale o fator 1,05."
+      },
+      {
+        "texto": "240,00 e 200,00",
+        "dica": "O fator 1,08 já soma o reajuste ao salário; 240 seria só o aumento (B2*8%)."
+      },
+      {
+        "texto": "3.240,00 e 4.200,00"
+      },
+      {
+        "texto": "3.000,08 e 4.000,05",
+        "dica": "Somar 8% acrescenta só 0,08; o reajuste é a multiplicação pelo fator."
+      }
+    ],
+    "correta": 3,
+    "banca": "FCC",
+    "tema": "Porcentagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(B2<=3000;B2*1,08;B2*1,05)",
+        "esperado": 3240
+      },
+      {
+        "formula": "=SE(B3<=3000;B3*1,08;B3*1,05)",
+        "esperado": 4200
+      }
+    ]
+  },
+  {
+    "id": "34b441bb-1a9b-5367-9dda-0874f94cc32b",
+    "slug": "concurso-54-dois-descontos-seguidos",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 54,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dois descontos seguidos",
+    "enunciado": [
+      "Na planilha ao lado, A1 contém o preço de um produto (R$ 500,00), B1 o primeiro desconto (10%) e C1 o segundo desconto (10%), aplicado sobre o preço já descontado. O preço final é R$ 405,00.",
+      "Qual das fórmulas a seguir **NÃO** retorna o preço final?"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "B1": {
+          "entrada": "10%"
+        },
+        "C1": {
+          "entrada": "10%"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Descontos sucessivos se multiplicam: 0,9 × 0,9 = 0,81, ou seja, 19% no total. A fórmula `=A1*(1-B1-C1)` soma os descontos (20%) e dá 400."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=A1*(1-B1)*(1-C1)`",
+        "dica": "Esta retorna 405: aplica um desconto depois do outro."
+      },
+      {
+        "texto": "`=A1*0,9*0,9`",
+        "dica": "Esta retorna 405: cada desconto de 10% é multiplicar por 0,9."
+      },
+      {
+        "texto": "`=A1*0,81`",
+        "dica": "Esta retorna 405: 0,9 × 0,9 = 0,81."
+      },
+      {
+        "texto": "`=A1*(1-B1-C1)`"
+      },
+      {
+        "texto": "`=A1-A1*B1-(A1-A1*B1)*C1`",
+        "dica": "Esta retorna 405: 500 − 50 − 45."
+      }
+    ],
+    "correta": 3,
+    "banca": "Cesgranrio",
+    "tema": "Porcentagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=A1*(1-B1)*(1-C1)",
+        "esperado": 405
+      },
+      {
+        "formula": "=A1*0,9*0,9",
+        "esperado": 405
+      },
+      {
+        "formula": "=A1*0,81",
+        "esperado": 405
+      },
+      {
+        "formula": "=A1*(1-B1-C1)",
+        "esperado": 400
+      },
+      {
+        "formula": "=A1-A1*B1-(A1-A1*B1)*C1",
+        "esperado": 405
+      }
+    ]
+  },
+  {
+    "id": "71e2014a-a0b5-5d49-a84d-38ee7de276cb",
+    "slug": "concurso-55-o-erro-nome",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 55,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O erro #NOME?",
+    "enunciado": [
+      "Um escriturário digitou, numa planilha do Excel 365 em português, a fórmula `=SOMAR(B2:B9)`, e a célula exibiu **#NOME?**.",
+      "A causa desse erro é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "#NOME? aparece quando o Excel não reconhece um nome usado na fórmula: função escrita errada, função em inglês na versão em português ou texto sem aspas.",
+      "SOMAR não existe; a função é SOMA."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "o Excel não reconhece o nome da função; em português, a função de soma é SOMA"
+      },
+      {
+        "texto": "há uma divisão por zero em alguma célula de B2:B9",
+        "dica": "Divisão por zero gera #DIV/0!."
+      },
+      {
+        "texto": "alguma célula de B2:B9 contém texto",
+        "dica": "A SOMA ignora texto; e texto numa conta com + ou * daria #VALOR!, não #NOME?."
+      },
+      {
+        "texto": "o intervalo B2:B9 foi excluído da planilha",
+        "dica": "Referência a células excluídas gera #REF!."
+      },
+      {
+        "texto": "o resultado não cabe na largura da coluna",
+        "dica": "Coluna estreita mostra ####, que não é erro de fórmula."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Erros",
+    "comPlanilha": false
+  },
+  {
+    "id": "2327e4de-bb86-5352-8da1-de4dbe8b346a",
+    "slug": "concurso-56-texto-no-meio-da-conta",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 56,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Texto no meio da conta",
+    "enunciado": [
+      "Carlos importou uma lista em que a quantidade veio como texto: B2 contém **12 un**. O preço unitário, em C2, é 4,50.",
+      "Ao digitar `=B2*C2` em D2, a célula exibe:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Item"
+        },
+        "B1": {
+          "entrada": "Qtde"
+        },
+        "C1": {
+          "entrada": "Preço"
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "B2": {
+          "entrada": "12 un"
+        },
+        "C2": {
+          "entrada": "4,5"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Operadores como * exigem números. \"12 un\" é texto que não pode ser convertido em número, então a conta retorna #VALOR!.",
+      "Funções como SOMA ignoram texto; os operadores, não."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "0",
+        "dica": "Numa conta com *, o texto não vira zero: o Excel acusa o tipo de dado errado."
+      },
+      {
+        "texto": "54",
+        "dica": "O texto 12 un não é convertido em número por causa do \" un\"."
+      },
+      {
+        "texto": "#NOME?",
+        "dica": "#NOME? é para nome de função ou intervalo desconhecido; aqui as referências existem."
+      },
+      {
+        "texto": "#VALOR!"
+      },
+      {
+        "texto": "#N/D",
+        "dica": "#N/D é de busca que não encontrou o valor."
+      }
+    ],
+    "correta": 3,
+    "banca": "FGV",
+    "tema": "Erros",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B2*C2",
+        "esperado": "#VALOR!"
+      }
+    ]
+  },
+  {
+    "id": "bb481019-d731-57c2-b150-b7f7b5adb72a",
+    "slug": "concurso-57-seerro-copiado-na-coluna",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 57,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SEERRO copiado na coluna",
+    "enunciado": [
+      "Observe a planilha a seguir, elaborada no MS-Excel 365, em sua configuração padrão. A célula C1 contém a fórmula `=SEERRO(A1/B1;0)`, que foi copiada para C2:C5.",
+      "Após a cópia, quantas células do intervalo C1:C5 exibem o valor 0?"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "20"
+        },
+        "A2": {
+          "entrada": "15"
+        },
+        "A3": {
+          "entrada": "0"
+        },
+        "A4": {
+          "entrada": "9"
+        },
+        "A5": {
+          "entrada": "12"
+        },
+        "B1": {
+          "entrada": "4"
+        },
+        "B2": {
+          "entrada": "0"
+        },
+        "B3": {
+          "entrada": "5"
+        },
+        "B4": {
+          "entrada": "3"
+        },
+        "B5": {
+          "entrada": "0"
+        },
+        "C1": {
+          "entrada": "=SEERRO(A1/B1;0)"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "C1 = 20/4 = 5. C2 = 15/0, erro trocado por 0. C3 = 0/5 = 0, um zero de verdade. C4 = 9/3 = 3. C5 = 12/0, erro trocado por 0.",
+      "Três células exibem 0: duas por causa do SEERRO e uma porque a conta dá zero."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "2",
+        "dica": "C3 também mostra 0: 0 dividido por 5 é 0, sem erro."
+      },
+      {
+        "texto": "3"
+      },
+      {
+        "texto": "1",
+        "dica": "Há dois divisores zero (B2 e B5), e cada um vira 0 pelo SEERRO."
+      },
+      {
+        "texto": "0",
+        "dica": "O SEERRO troca os erros por 0, então há zeros na coluna."
+      },
+      {
+        "texto": "5",
+        "dica": "C1 e C4 têm divisões válidas: 5 e 3."
+      }
+    ],
+    "correta": 1,
+    "banca": "Vunesp",
+    "tema": "SEERRO",
+    "referencia": {
+      "prova": "Vunesp · Câmara de Campinas · Analista Legislativo · 2024",
+      "url": "https://opengabarito.com.br/questoes/5315589"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SEERRO(A2/B2;0)",
+        "esperado": 0
+      },
+      {
+        "formula": "=SEERRO(A3/B3;0)",
+        "esperado": 0
+      },
+      {
+        "formula": "=SEERRO(A4/B4;0)",
+        "esperado": 3
+      },
+      {
+        "formula": "=SEERRO(A5/B5;0)",
+        "esperado": 0
+      }
+    ]
+  },
+  {
+    "id": "8bca3019-4aca-5cbd-9047-1fe5cd3d4e84",
+    "slug": "concurso-58-dois-pontos-ou-ponto-e-virgula",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 58,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Dois-pontos ou ponto e vírgula",
+    "enunciado": [
+      "Na planilha ao lado, A1:A4 contém os valores 12, 30, 18 e 4.",
+      "Os resultados de `=MÉDIA(A1;A4)` e de `=MÉDIA(A1:A4)` são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "12"
+        },
+        "A2": {
+          "entrada": "30"
+        },
+        "A3": {
+          "entrada": "18"
+        },
+        "A4": {
+          "entrada": "4"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "`MÉDIA(A1;A4)` usa só A1 e A4: (12 + 4) / 2 = 8. `MÉDIA(A1:A4)` usa o intervalo inteiro: 64 / 4 = 16."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "16 e 8",
+        "dica": "Inverteu: o ; separa células avulsas (só A1 e A4); o : indica o intervalo inteiro."
+      },
+      {
+        "texto": "16 e 16",
+        "dica": "Com ;, só A1 e A4 entram na média."
+      },
+      {
+        "texto": "8 e 16"
+      },
+      {
+        "texto": "8 e 8",
+        "dica": "Com :, entram as quatro células de A1 a A4."
+      },
+      {
+        "texto": "#VALOR! e 16",
+        "dica": "O ; é um separador de argumentos válido: não há erro."
+      }
+    ],
+    "correta": 2,
+    "banca": "Cesgranrio",
+    "tema": "MÉDIA",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MÉDIA(A1;A4)",
+        "esperado": 8
+      },
+      {
+        "formula": "=MÉDIA(A1:A4)",
+        "esperado": 16
+      }
+    ]
+  },
+  {
+    "id": "0c4ce014-96b0-59ad-a805-41d8b174efb9",
+    "slug": "concurso-59-maior-e-menor-com-repetidos",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 59,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "MAIOR e MENOR com repetidos",
+    "enunciado": [
+      "Considere que o intervalo A1:A7 de uma planilha do Microsoft Excel 365, em português, contém os valores 18, 25, 25, 12, 30, 18 e 9.",
+      "O resultado de `=MAIOR(A1:A7;3)+MENOR(A1:A7;2)` é:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "18"
+        },
+        "A2": {
+          "entrada": "25"
+        },
+        "A3": {
+          "entrada": "25"
+        },
+        "A4": {
+          "entrada": "12"
+        },
+        "A5": {
+          "entrada": "30"
+        },
+        "A6": {
+          "entrada": "18"
+        },
+        "A7": {
+          "entrada": "9"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Em ordem decrescente: 30, 25, 25, 18, 18, 12, 9. O 3º maior é 25, porque o 25 repetido ocupa duas posições. O 2º menor é 12. Soma: 37."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "30",
+        "dica": "Valores repetidos ocupam posições: o 3º maior é 25 (30, 25, 25), não 18."
+      },
+      {
+        "texto": "34",
+        "dica": "MENOR(…;2) é o 2º menor, 12; o 9 é o 1º."
+      },
+      {
+        "texto": "37"
+      },
+      {
+        "texto": "42",
+        "dica": "MAIOR(…;3) não é o maior: 30 é o 1º."
+      },
+      {
+        "texto": "27",
+        "dica": "Os repetidos contam nas duas pontas: o 3º maior é 25, e o 2º menor é 12."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "MAIOR",
+    "referencia": {
+      "prova": "Vunesp · Câmara de Serrana · Técnico Legislativo · 2019",
+      "url": "https://questoes.grancursosonline.com.br/questoes-de-concursos/informatica-405030/1040147"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MAIOR(A1:A7;3)+MENOR(A1:A7;2)",
+        "esperado": 37
+      },
+      {
+        "formula": "=MAIOR(A1:A7;3)",
+        "esperado": 25
+      },
+      {
+        "formula": "=MENOR(A1:A7;2)",
+        "esperado": 12
+      }
+    ]
+  },
+  {
+    "id": "d78f1538-23c9-561c-b63e-48a3b146317a",
+    "slug": "concurso-60-cont-num-e-a-data",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 60,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "CONT.NÚM e a data",
+    "enunciado": [
+      "Na planilha ao lado, A1 contém a data 10/02/2026, A2 o texto pendente, A3 o número 350, A4 o valor lógico VERDADEIRO (digitado na célula) e A5 está vazia.",
+      "Julgue o item: a fórmula `=CONT.NÚM(A1:A5)` retorna 2, pois a data em A1 é armazenada como número."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "10/02/2026"
+        },
+        "A2": {
+          "entrada": "pendente"
+        },
+        "A3": {
+          "entrada": "350"
+        },
+        "A4": {
+          "entrada": "VERDADEIRO"
+        }
+      },
+      "larguras": {
+        "A": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. O Excel guarda datas como números de série, e CONT.NÚM as conta. Contam A1 (data) e A3 (350): total 2.",
+      "Texto, célula vazia e valor lógico digitado na célula ficam de fora."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "A data é um número de série: conta. VERDADEIRO digitado na célula é valor lógico e não conta; o texto e a vazia também não."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Funções de contagem",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.NÚM(A1:A5)",
+        "esperado": 2
+      }
+    ]
+  },
+  {
+    "id": "3c1d04ed-3272-50c0-a07e-f6c30f8adaca",
+    "slug": "concurso-61-as-areas-da-tabela-dinamica",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 61,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "As áreas da tabela dinâmica",
+    "enunciado": [
+      "Julgue o item a seguir, a respeito do Excel 365.",
+      "No painel Campos da Tabela Dinâmica, os campos podem ser arrastados para as áreas Filtros, Colunas, Linhas e Valores; um campo só com números colocado em Valores é resumido, por padrão, pela Soma."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Certo. As quatro áreas são Filtros, Colunas, Linhas e Valores. Em Valores, um campo só com números é somado por padrão; um campo com texto ou vazios é contado."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo"
+      },
+      {
+        "texto": "Errado",
+        "dica": "São essas as quatro áreas do painel, e um campo numérico em Valores aparece como Soma de… por padrão."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cebraspe",
+    "tema": "Tabela dinâmica",
+    "referencia": {
+      "prova": "Cebraspe · PC-RO · 2022",
+      "url": "https://questoes.grancursosonline.com.br/questoes-de-concursos/informatica-405030/2608133"
+    },
+    "comPlanilha": false
+  },
+  {
+    "id": "8503f0f6-b62e-5881-a928-bb0f38468132",
+    "slug": "concurso-62-mostrar-valores-como",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mostrar Valores Como",
+    "enunciado": [
+      "Em uma tabela dinâmica do Microsoft Excel 365, em português, o campo Valor está na área Valores. Ao clicar com o botão direito sobre ele e abrir **Mostrar Valores Como**, o usuário encontra várias opções de cálculo.",
+      "**NÃO** é uma dessas opções:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Mostrar Valores Como traz cálculos sobre o resumo: % do Total Geral, % do Total da Linha, % do Total da Coluna, Diferença de, Soma Acumulada em, classificações, entre outros.",
+      "Mediana não está nessa lista e também não é uma das funções de Resumir Valores Por."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "% do Total Geral",
+        "dica": "Existe: mostra cada valor como parte do total geral."
+      },
+      {
+        "texto": "% do Total da Linha",
+        "dica": "Existe: mostra cada valor como parte do total da sua linha."
+      },
+      {
+        "texto": "% do Total da Coluna",
+        "dica": "Existe: mostra cada valor como parte do total da sua coluna."
+      },
+      {
+        "texto": "Diferença de",
+        "dica": "Existe: mostra a diferença em relação a um item de base."
+      },
+      {
+        "texto": "Mediana"
+      }
+    ],
+    "correta": 4,
+    "banca": "FCC",
+    "tema": "Tabela dinâmica",
+    "comPlanilha": false
+  },
+  {
+    "id": "0ef3f4f4-9621-5408-a290-c9c42d686ab0",
+    "slug": "concurso-63-texto-na-area-valores",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Texto na área Valores",
+    "enunciado": [
+      "Uma tabela dinâmica do MS-Excel 365, em sua configuração padrão, é criada a partir de uma lista de processos com as colunas Número, Vara e Situação. O Número está como texto (por exemplo, 0012345-67.2026).",
+      "O usuário arrasta Vara para a área Linhas e Número para a área Valores. Na área Valores aparece, por padrão:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Campo com texto (ou com células vazias) colocado em Valores é resumido por Contagem. O resultado mostra quantos processos há em cada vara."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Contagem de Número"
+      },
+      {
+        "texto": "Soma de Número",
+        "dica": "Soma é o padrão só para campos inteiramente numéricos; o Número está como texto."
+      },
+      {
+        "texto": "Média de Número",
+        "dica": "Média nunca é o resumo padrão; seria preciso escolher em Configurações do Campo de Valor."
+      },
+      {
+        "texto": "Máximo de Número",
+        "dica": "Máximo também precisa ser escolhido manualmente."
+      },
+      {
+        "texto": "a lista dos números de cada vara",
+        "dica": "A área Valores resume os dados; não lista os textos."
+      }
+    ],
+    "correta": 0,
+    "banca": "Vunesp",
+    "tema": "Tabela dinâmica",
+    "comPlanilha": false
+  },
+  {
+    "id": "433d80c9-7cf9-55b8-97a7-34ad2154243b",
+    "slug": "concurso-64-partes-do-todo-num-mes",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 64,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Partes do todo num mês",
+    "enunciado": [
+      "Maria registrou em A2:A6 cinco tipos de despesa e em B2:B6 quanto cada uma custou em março. Ela quer um gráfico que mostre quanto cada despesa representa do total do mês.",
+      "O tipo de gráfico mais adequado é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Uma série só, com as partes de um total: é o caso típico do gráfico de pizza, em que cada fatia é a fração do total."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Linhas",
+        "dica": "Linhas mostram a evolução ao longo do tempo; aqui há um mês só."
+      },
+      {
+        "texto": "Dispersão (XY)",
+        "dica": "Dispersão relaciona duas variáveis numéricas."
+      },
+      {
+        "texto": "Pizza"
+      },
+      {
+        "texto": "Radar",
+        "dica": "Radar compara várias variáveis em eixos que saem do centro."
+      },
+      {
+        "texto": "Histograma",
+        "dica": "Histograma mostra a distribuição de frequência de uma variável."
+      }
+    ],
+    "correta": 2,
+    "banca": "FGV",
+    "tema": "Gráficos",
+    "comPlanilha": false
+  },
+  {
+    "id": "1fa290c7-0157-5922-8dfc-17117ee18d95",
+    "slug": "concurso-65-colunas-100-empilhadas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Colunas 100% empilhadas",
+    "enunciado": [
+      "Um gráfico de **Colunas 100% Empilhadas** do MS-Excel 365 mostra as vendas de três produtos em quatro trimestres, uma coluna por trimestre.",
+      "Assinale a alternativa correta sobre esse gráfico."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "No 100% empilhado, cada coluna representa o total do trimestre como 100%, e os segmentos mostram a fatia de cada produto. Compara participações, não totais."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "A altura de cada coluna mostra o total vendido no trimestre.",
+        "dica": "Isso vale para as colunas empilhadas comuns; na versão 100%, toda coluna chega a 100%."
+      },
+      {
+        "texto": "Cada produto aparece numa coluna separada, lado a lado.",
+        "dica": "Lado a lado é o gráfico de colunas agrupadas."
+      },
+      {
+        "texto": "O eixo vertical mostra os valores em reais.",
+        "dica": "No 100% empilhado, o eixo vai de 0% a 100%."
+      },
+      {
+        "texto": "Todas as colunas têm a mesma altura, e cada segmento mostra a participação do produto no total do trimestre."
+      },
+      {
+        "texto": "O gráfico só pode ser feito com uma série de dados.",
+        "dica": "Com uma série só, todas as colunas seriam 100% iguais; o gráfico serve para várias séries."
+      }
+    ],
+    "correta": 3,
+    "banca": "Vunesp",
+    "tema": "Gráficos",
+    "comPlanilha": false
+  },
+  {
+    "id": "71b92965-317e-5519-972e-0ccfb0eb9da5",
+    "slug": "concurso-66-o-grafico-e-os-dados-de-origem",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 66,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O gráfico e os dados de origem",
+    "enunciado": [
+      "Julgue o item a seguir, a respeito do Excel 365.",
+      "Depois de criado um gráfico de colunas a partir do intervalo A1:B6, se o valor da célula B3 for alterado, o gráfico só mostrará a mudança se for excluído e criado novamente."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. O gráfico é ligado ao intervalo de origem e se atualiza sozinho quando os valores mudam. Não é preciso recriá-lo."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "O gráfico fica vinculado às células de origem: alterar B3 atualiza a coluna correspondente na hora."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Gráficos",
+    "comPlanilha": false
+  },
+  {
+    "id": "65bf916d-3fd0-51d2-9b3e-bea24e67422c",
+    "slug": "concurso-67-a-lista-suspensa",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 67,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A lista suspensa",
+    "enunciado": [
+      "Um analista quer que as células C2:C50 aceitem apenas Aprovado, Pendente ou Recusado, escolhidos numa lista suspensa.",
+      "No Excel 365 em português, depois de selecionar o intervalo, ele deve usar:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "A lista suspensa é criada em Dados > Validação de Dados: em Permitir, Lista; em Fonte, os itens separados por ponto e vírgula (ou um intervalo com eles)."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "a guia Página Inicial > Formatação Condicional > Nova Regra, com os três itens em Formatar valores",
+        "dica": "Formatação condicional muda a aparência; não restringe a digitação nem cria lista."
+      },
+      {
+        "texto": "a guia Dados > Validação de Dados, escolhendo Lista em Permitir e digitando Aprovado;Pendente;Recusado em Fonte"
+      },
+      {
+        "texto": "a guia Dados > Validação de Dados, escolhendo Comprimento do texto em Permitir",
+        "dica": "Comprimento do texto limita a quantidade de caracteres; a lista suspensa vem da opção Lista."
+      },
+      {
+        "texto": "a guia Fórmulas > Definir Nome, com o nome Lista",
+        "dica": "Definir Nome só dá nome a um intervalo; quem cria a lista suspensa é a Validação de Dados."
+      },
+      {
+        "texto": "a guia Dados > Filtro, marcando os três valores",
+        "dica": "O filtro mostra e oculta linhas; não controla o que se digita."
+      }
+    ],
+    "correta": 1,
+    "banca": "Cesgranrio",
+    "tema": "Validação de dados",
+    "comPlanilha": false
+  },
+  {
+    "id": "90e408df-6c95-534f-8cb5-8e23907e33b8",
+    "slug": "concurso-68-mensagem-de-entrada-e-alerta-de-erro",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 68,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Mensagem de entrada e alerta de erro",
+    "enunciado": [
+      "Sobre a Validação de Dados do Excel 365, analise as afirmativas a seguir.",
+      "I. A Mensagem de Entrada aparece quando a célula é selecionada, antes de qualquer digitação.",
+      "II. O Alerta de Erro no estilo Parar não deixa o valor inválido ficar na célula.",
+      "III. O Alerta de Erro no estilo Informações também impede que o valor inválido fique na célula.",
+      "Está correto o que se afirma em:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "I: certo, a Mensagem de Entrada é uma orientação que surge ao selecionar a célula. II: certo, Parar só deixa repetir ou cancelar.",
+      "III: errado, os estilos Aviso e Informações avisam, mas permitem manter o valor."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "I, apenas.",
+        "dica": "A II também está certa: o estilo Parar só oferece Repetir ou Cancelar."
+      },
+      {
+        "texto": "I e II, apenas."
+      },
+      {
+        "texto": "II e III, apenas.",
+        "dica": "A I está certa, e a III não: Informações aceita o valor se o usuário clicar em OK."
+      },
+      {
+        "texto": "I, II e III.",
+        "dica": "No estilo Informações, basta clicar em OK para o valor inválido ficar."
+      },
+      {
+        "texto": "III, apenas.",
+        "dica": "A III é justamente a falsa: Informações só avisa."
+      }
+    ],
+    "correta": 1,
+    "banca": "FGV",
+    "tema": "Validação de dados",
+    "comPlanilha": false
+  },
+  {
+    "id": "f2a364eb-8910-5930-a6f4-504d1eeba2fa",
+    "slug": "concurso-69-a-regra-nova-e-os-dados-antigos",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 69,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A regra nova e os dados antigos",
+    "enunciado": [
+      "Julgue o item a seguir, a respeito do Excel 365.",
+      "Ao criar uma regra de Validação de Dados de Número inteiro entre 1 e 10 num intervalo que já contém o valor 15, o Excel apaga esse valor automaticamente."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. A validação não mexe no que já estava digitado. O 15 permanece, e Circular Dados Inválidos mostra quais células estão fora da regra."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "A regra vale para as próximas digitações; o 15 continua na célula, e o comando Circular Dados Inválidos o destaca."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Validação de dados",
+    "comPlanilha": false
+  },
+  {
+    "id": "36ecf7df-5642-523e-bcf8-a1b2622ba225",
+    "slug": "concurso-70-a-soma-das-celulas-pintadas",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 70,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A soma das células pintadas",
+    "enunciado": [
+      "Carlos aplicou em B2:B10 uma regra de formatação condicional que pinta de vermelho os valores menores que zero. Em seguida, digitou `=SOMA(B2:B10)` em B11.",
+      "Sobre essa situação, é correto afirmar que:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "A formatação condicional muda só a aparência da célula, e é reavaliada sempre que o valor muda. As fórmulas continuam usando os valores, com ou sem destaque."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "a soma ignora as células pintadas de vermelho",
+        "dica": "A regra muda só a aparência; a SOMA usa todos os valores."
+      },
+      {
+        "texto": "os valores negativos passam a ser exibidos como positivos",
+        "dica": "A regra muda cor, fonte ou borda; não muda o número."
+      },
+      {
+        "texto": "a formatação condicional impede a digitação de valores negativos",
+        "dica": "Quem restringe a digitação é a Validação de Dados."
+      },
+      {
+        "texto": "ao mudar um valor para positivo, a célula continua vermelha até a regra ser reaplicada",
+        "dica": "A regra é reavaliada automaticamente a cada mudança."
+      },
+      {
+        "texto": "a soma considera todas as células, pintadas ou não, pois a formatação condicional não altera os valores"
+      }
+    ],
+    "correta": 4,
+    "banca": "FGV",
+    "tema": "Formatação condicional",
+    "comPlanilha": false
+  },
+  {
+    "id": "d39ce404-6fcc-55a6-9f77-648e1d6137ff",
+    "slug": "concurso-71-valores-duplicados",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 71,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Valores duplicados",
+    "enunciado": [
+      "No MS-Excel 365, em sua configuração padrão, um usuário selecionou A2:A20 e aplicou a regra **Realçar Regras das Células > Valores Duplicados**.",
+      "Assinale a alternativa correta."
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Valores Duplicados destaca todas as células cujo valor aparece mais de uma vez no intervalo. Nada é apagado: é só formatação."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Apenas a segunda ocorrência de cada valor é destacada.",
+        "dica": "Todas as ocorrências de um valor repetido são destacadas, inclusive a primeira."
+      },
+      {
+        "texto": "Os valores repetidos são excluídos, ficando só a primeira ocorrência.",
+        "dica": "Excluir é Remover Duplicatas, na guia Dados."
+      },
+      {
+        "texto": "As células com valores repetidos ficam destacadas, e nenhuma é excluída."
+      },
+      {
+        "texto": "A regra fica na guia Dados, no grupo Ferramentas de Dados.",
+        "dica": "A Formatação Condicional fica na guia Página Inicial, grupo Estilos."
+      },
+      {
+        "texto": "A regra funciona apenas com números.",
+        "dica": "A regra também destaca textos repetidos."
+      }
+    ],
+    "correta": 2,
+    "banca": "Vunesp",
+    "tema": "Formatação condicional",
+    "comPlanilha": false
+  },
+  {
+    "id": "19bb8e9a-fd20-5cf8-b515-e3a5798656e0",
+    "slug": "concurso-72-o-que-nao-e-formatacao-condicional",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 72,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O que não é formatação condicional",
+    "enunciado": [
+      "No Excel 365 em português, o botão **Formatação Condicional**, da guia Página Inicial, oferece vários tipos de regra.",
+      "**NÃO** é um desses tipos:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Minigráficos ficam na guia Inserir; são pequenos gráficos dentro de uma célula, não regras de formatação condicional."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Barras de Dados",
+        "dica": "Existe: barras proporcionais ao valor dentro da célula."
+      },
+      {
+        "texto": "Escalas de Cor",
+        "dica": "Existe: cores em gradiente conforme o valor."
+      },
+      {
+        "texto": "Minigráficos de Linha"
+      },
+      {
+        "texto": "Conjuntos de Ícones",
+        "dica": "Existe: setas, sinais e outros ícones conforme o valor."
+      },
+      {
+        "texto": "Realçar Regras das Células",
+        "dica": "Existe: maior que, menor que, entre, texto que contém, duplicados…"
+      }
+    ],
+    "correta": 2,
+    "banca": "Cesgranrio",
+    "tema": "Formatação condicional",
+    "comPlanilha": false
+  },
+  {
+    "id": "2c3a81d9-7d3b-5ac3-a039-bfee209b57f9",
+    "slug": "concurso-73-subtotal-sobre-subtotais",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 73,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "SUBTOTAL sobre subtotais",
+    "enunciado": [
+      "Ana montou o relatório ao lado. As células B4 e B7 contêm `=SUBTOTAL(9;B2:B3)` e `=SUBTOTAL(9;B5:B6)`, com os subtotais de cada setor.",
+      "Os resultados de `=SUBTOTAL(9;B2:B7)` e de `=SOMA(B2:B7)` são, respectivamente:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Setor"
+        },
+        "B1": {
+          "entrada": "Valor"
+        },
+        "A2": {
+          "entrada": "Compras"
+        },
+        "B2": {
+          "entrada": "300"
+        },
+        "A3": {
+          "entrada": "Compras"
+        },
+        "B3": {
+          "entrada": "200"
+        },
+        "A4": {
+          "entrada": "Subtotal Compras"
+        },
+        "B4": {
+          "entrada": "=SUBTOTAL(9;B2:B3)"
+        },
+        "A5": {
+          "entrada": "TI"
+        },
+        "B5": {
+          "entrada": "450"
+        },
+        "A6": {
+          "entrada": "TI"
+        },
+        "B6": {
+          "entrada": "150"
+        },
+        "A7": {
+          "entrada": "Subtotal TI"
+        },
+        "B7": {
+          "entrada": "=SUBTOTAL(9;B5:B6)"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "A SUBTOTAL desconsidera outras SUBTOTAL no intervalo: soma 300 + 200 + 450 + 150 = 1.100.",
+      "A SOMA pega tudo, inclusive B4 (500) e B7 (600): 2.200, o dobro."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "2.200 e 2.200",
+        "dica": "A SUBTOTAL ignora as células que já contêm SUBTOTAL: não conta os subtotais duas vezes."
+      },
+      {
+        "texto": "1.100 e 1.100",
+        "dica": "A SOMA não tem essa regra: soma também os subtotais de B4 e B7."
+      },
+      {
+        "texto": "500 e 600",
+        "dica": "Esses são os subtotais de cada setor; a fórmula abrange B2:B7 inteiro."
+      },
+      {
+        "texto": "2.200 e 1.100",
+        "dica": "Inverteu: quem ignora os subtotais é a SUBTOTAL."
+      },
+      {
+        "texto": "1.100 e 2.200"
+      }
+    ],
+    "correta": 4,
+    "banca": "FGV",
+    "tema": "SUBTOTAL",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SUBTOTAL(9;B2:B7)",
+        "esperado": 1100
+      },
+      {
+        "formula": "=SOMA(B2:B7)",
+        "esperado": 2200
+      }
+    ]
+  },
+  {
+    "id": "882e2b5f-52dc-514b-b0e2-9b3ac58616bf",
+    "slug": "concurso-74-remover-duplicatas-por-uma-coluna",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Remover duplicatas por uma coluna",
+    "enunciado": [
+      "Uma lista de clientes ocupa A1:C8, com cabeçalho na linha 1 e as colunas CPF, Nome e Cidade. O mesmo CPF aparece nas linhas 3 e 6, com cidades diferentes.",
+      "O analista usa **Dados > Remover Duplicatas** e deixa marcada apenas a coluna CPF. O resultado é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {}
+    },
+    "dicas": [],
+    "explicacao": [
+      "Remover Duplicatas compara só as colunas marcadas. Com o CPF repetido, mantém a primeira ocorrência (linha 3) e apaga as seguintes (linha 6), mesmo com a cidade diferente."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "a linha 3, primeira ocorrência, é mantida, e a linha 6 é excluída"
+      },
+      {
+        "texto": "as linhas 3 e 6 são excluídas",
+        "dica": "Remover Duplicatas mantém a primeira ocorrência de cada valor."
+      },
+      {
+        "texto": "a linha 6, última ocorrência, é mantida, e a linha 3 é excluída",
+        "dica": "Fica a primeira ocorrência, de cima para baixo."
+      },
+      {
+        "texto": "nenhuma linha é excluída, pois as cidades são diferentes",
+        "dica": "Só as colunas marcadas são comparadas; Cidade ficou desmarcada."
+      },
+      {
+        "texto": "as duas linhas ficam destacadas, sem exclusão",
+        "dica": "Destacar é formatação condicional; Remover Duplicatas apaga as repetições."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Remover duplicatas",
+    "comPlanilha": false
+  },
+  {
+    "id": "90331ab6-d5cd-5982-ad76-43d9953c07f0",
+    "slug": "concurso-75-curinga-no-autofiltro",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Curinga no AutoFiltro",
+    "enunciado": [
+      "Considere a lista de servidores em A2:A6 de uma planilha do Microsoft Excel 365, em português, com AutoFiltro. Em **Filtros de Texto > Personalizar Filtro**, foi definida a condição \"é igual a\" com o valor `?arcos*`.",
+      "Quantos nomes continuam visíveis após o filtro?"
+    ],
+    "grade": {
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Servidor"
+        },
+        "A2": {
+          "entrada": "Marcos Souza"
+        },
+        "A3": {
+          "entrada": "Marcia Lopes"
+        },
+        "A4": {
+          "entrada": "Arcos Neto"
+        },
+        "A5": {
+          "entrada": "Marcos"
+        },
+        "A6": {
+          "entrada": "Tarcísio Dias"
+        }
+      },
+      "larguras": {
+        "A": 130
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "? vale exatamente um caractere e * vale qualquer sequência, inclusive vazia. Atendem Marcos Souza e Marcos (M + arcos + o resto). Arcos Neto não tem caractere antes de arcos.",
+      "O CONT.SE usa os mesmos curingas: `=CONT.SE(A2:A6;\"?arcos*\")` também dá 2."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "3",
+        "dica": "Arcos Neto não tem um caractere antes de arcos: o ? exige exatamente um."
+      },
+      {
+        "texto": "1",
+        "dica": "O * aceita nada depois: Marcos, sozinho, também atende."
+      },
+      {
+        "texto": "2"
+      },
+      {
+        "texto": "4",
+        "dica": "Marcia Lopes e Tarcísio Dias não têm a sequência arcos depois do 1º caractere."
+      },
+      {
+        "texto": "0",
+        "dica": "No filtro, ? e * funcionam como curingas, e não como caracteres literais."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "Filtro",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE(A2:A6;\"?arcos*\")",
+        "esperado": 2
+      }
+    ]
+  },
+  {
+    "id": "e4df28cf-237e-53ff-b128-1e740f047f85",
+    "slug": "concurso-76-unico-com-exatamente-uma-vez",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 76,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "ÚNICO com exatamente uma vez",
+    "enunciado": [
+      "Na planilha ao lado, A2:A7 contém os nomes Ana, Bia, Ana, Caio, Bia e Duda.",
+      "Julgue o item: a fórmula `=CONT.VALORES(ÚNICO(A2:A7;;VERDADEIRO))` retorna 4, que é a quantidade de nomes distintos da lista."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome"
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "A5": {
+          "entrada": "Caio"
+        },
+        "A6": {
+          "entrada": "Bia"
+        },
+        "A7": {
+          "entrada": "Duda"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. O 3º argumento do ÚNICO (exatamente_uma_vez) = VERDADEIRO devolve apenas os itens que aparecem uma só vez: Caio e Duda. O resultado é 2.",
+      "Os 4 nomes distintos viriam de `=CONT.VALORES(ÚNICO(A2:A7))`."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "Com VERDADEIRO no 3º argumento, o ÚNICO devolve só quem aparece uma única vez: Caio e Duda."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "ÚNICO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(ÚNICO(A2:A7;;VERDADEIRO))",
+        "esperado": 2
+      },
+      {
+        "formula": "=CONT.VALORES(ÚNICO(A2:A7))",
+        "esperado": 4
+      }
+    ]
+  },
+  {
+    "id": "df689138-4323-58b0-9160-a2c5e951a365",
+    "slug": "concurso-77-caminho-bloqueado",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 77,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caminho bloqueado",
+    "enunciado": [
+      "Considere a planilha ao lado, elaborada no Microsoft Excel 365, em português. A2:A7 contém Ana, Bia, Ana, Caio, Bia e Duda, e a célula C4 já contém o texto ver.",
+      "Se for digitada em C2 a fórmula `=ÚNICO(A2:A7)`, a célula C2 exibirá:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome"
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "A5": {
+          "entrada": "Caio"
+        },
+        "A6": {
+          "entrada": "Bia"
+        },
+        "A7": {
+          "entrada": "Duda"
+        },
+        "C4": {
+          "entrada": "ver"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "O ÚNICO devolve 4 nomes (Ana, Bia, Caio e Duda), que se espalhariam por C2:C5. Como C4 está ocupada, a fórmula mostra #DESPEJAR! em C2. Ao apagar C4, o resultado aparece."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Ana, e as células C3 a C5 mostrarão Bia, ver e Duda",
+        "dica": "A matriz dinâmica não se espalha pela metade nem pula células: ou ocupa toda a área, ou dá erro."
+      },
+      {
+        "texto": "#VALOR!, porque A2:A7 tem nomes repetidos",
+        "dica": "O ÚNICO existe justamente para listas com repetidos."
+      },
+      {
+        "texto": "#DESPEJAR!, porque a área onde o resultado se espalharia não está vazia"
+      },
+      {
+        "texto": "apenas Ana, e o restante do resultado é descartado",
+        "dica": "O Excel não corta o resultado: mostra um erro em C2."
+      },
+      {
+        "texto": "Ana, e o texto de C4 é substituído por Caio",
+        "dica": "O Excel não sobrescreve um valor digitado: mostra o erro em C2."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "ÚNICO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(ÚNICO(A2:A7))",
+        "esperado": 4
+      }
+    ]
+  },
+  {
+    "id": "5941c8e6-e6a9-500b-a536-25fb3a7d303b",
+    "slug": "concurso-78-o-segundo-da-lista-ordenada",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 78,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O segundo da lista ordenada",
+    "enunciado": [
+      "Um supervisor registrou em A2:A7 o nome de seis gerentes e em B2:B7 a captação de cada um, em milhares de reais.",
+      "O resultado de `=ÍNDICE(CLASSIFICAR(A2:B7;2;-1);2;1)` é:"
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Gerente"
+        },
+        "B1": {
+          "entrada": "Captação"
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "30"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "B3": {
+          "entrada": "50"
+        },
+        "A4": {
+          "entrada": "Caio"
+        },
+        "B4": {
+          "entrada": "19"
+        },
+        "A5": {
+          "entrada": "Duda"
+        },
+        "B5": {
+          "entrada": "22"
+        },
+        "A6": {
+          "entrada": "Elias"
+        },
+        "B6": {
+          "entrada": "41"
+        },
+        "A7": {
+          "entrada": "Fábio"
+        },
+        "B7": {
+          "entrada": "25"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "CLASSIFICAR(A2:B7;2;-1) ordena a tabela pela coluna 2 (captação), do maior para o menor: Bia 50, Elias 41, Ana 30, Fábio 25, Duda 22, Caio 19.",
+      "ÍNDICE(…;2;1) pega a linha 2, coluna 1: Elias."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Bia",
+        "dica": "Bia é a 1ª na ordem decrescente; a fórmula pede a linha 2."
+      },
+      {
+        "texto": "41",
+        "dica": "A coluna 1 do resultado é a dos nomes; 41 está na coluna 2."
+      },
+      {
+        "texto": "Duda",
+        "dica": "Duda seria a 2ª na ordem crescente; o −1 classifica do maior para o menor."
+      },
+      {
+        "texto": "Elias"
+      },
+      {
+        "texto": "Caio",
+        "dica": "Caio seria o 1º na ordem crescente."
+      }
+    ],
+    "correta": 3,
+    "banca": "Cesgranrio",
+    "tema": "CLASSIFICAR",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ÍNDICE(CLASSIFICAR(A2:B7;2;-1);2;1)",
+        "esperado": "Elias"
+      },
+      {
+        "formula": "=ÍNDICE(CLASSIFICAR(A2:B7;2;-1);1;1)",
+        "esperado": "Bia"
+      },
+      {
+        "formula": "=ÍNDICE(CLASSIFICAR(A2:B7;2);2;1)",
+        "esperado": "Duda"
+      }
+    ]
+  },
+  {
+    "id": "8bd7de0e-fad8-5372-aac7-4982733b5a0c",
+    "slug": "concurso-79-a-celula-de-outra-planilha",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 79,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A célula de outra planilha",
+    "enunciado": [
+      "Em uma pasta de trabalho do Microsoft Excel 365, em português, há as planilhas Resumo e Vendas.",
+      "Para exibir, na planilha Resumo, o conteúdo da célula B2 da planilha Vendas, digita-se:"
+    ],
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Total de vendas",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120
+      }
+    },
+    "abas": [
+      {
+        "nome": "Vendas",
+        "grade": {
+          "linhas": 6,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Item",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Total"
+            },
+            "B2": {
+              "entrada": "1840"
+            }
+          }
+        }
+      }
+    ],
+    "dicas": [],
+    "explicacao": [
+      "No Excel, a referência a outra planilha da mesma pasta é Nome!Célula: `=Vendas!B2`. No LibreOffice Calc seria `=$Vendas.B2`."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=Vendas.B2`",
+        "dica": "O ponto é a sintaxe do LibreOffice Calc; no Excel, o separador é !."
+      },
+      {
+        "texto": "`=B2!Vendas`",
+        "dica": "A ordem é: nome da planilha, !, célula."
+      },
+      {
+        "texto": "`=Vendas!B2`"
+      },
+      {
+        "texto": "`=Vendas:B2`",
+        "dica": "Os dois-pontos indicam intervalo, não planilha."
+      },
+      {
+        "texto": "`=[Vendas]B2`",
+        "dica": "Colchetes indicam o nome de outro arquivo (pasta de trabalho), não de uma planilha."
+      }
+    ],
+    "correta": 2,
+    "banca": "FCC",
+    "tema": "Referências entre abas",
+    "referencia": {
+      "prova": "INDEPAC · Câmara de Guarujá · Oficial de Contabilidade · 2018",
+      "url": "https://questoes.grancursosonline.com.br/prova/camara-de-guaruja-sp-2018-indepac-oficial-de-contabilidade/33"
+    },
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=Vendas!B2",
+        "esperado": 1840
+      }
+    ]
+  },
+  {
+    "id": "c37b810b-600b-5738-b08e-27ac5707b422",
+    "slug": "concurso-80-nome-de-planilha-com-espaco",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 80,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Nome de planilha com espaço",
+    "enunciado": [
+      "No MS-Excel 365, em sua configuração padrão, uma pasta de trabalho tem as planilhas Resumo e Folha Março.",
+      "Para somar, na planilha Resumo, as células B2:B4 da planilha Folha Março, a fórmula correta é:"
+    ],
+    "grade": {
+      "nome": "Resumo",
+      "linhas": 6,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Total da folha",
+          "negrito": true
+        }
+      },
+      "larguras": {
+        "A": 120
+      }
+    },
+    "abas": [
+      {
+        "nome": "Folha Março",
+        "grade": {
+          "linhas": 6,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Servidor",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Valor",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Ana"
+            },
+            "B2": {
+              "entrada": "70"
+            },
+            "A3": {
+              "entrada": "Rui"
+            },
+            "B3": {
+              "entrada": "30"
+            },
+            "A4": {
+              "entrada": "Lia"
+            },
+            "B4": {
+              "entrada": "15"
+            }
+          }
+        }
+      }
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Quando o nome da planilha tem espaço (ou outros caracteres especiais), ele vai entre aspas simples, seguido de ! e do intervalo: `'Folha Março'!B2:B4`."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "`=SOMA(Folha Março!B2:B4)`",
+        "dica": "Nome de planilha com espaço precisa de aspas simples."
+      },
+      {
+        "texto": "`=SOMA(\"Folha Março\"!B2:B4)`",
+        "dica": "As aspas são simples ('), não duplas: aspas duplas indicam texto."
+      },
+      {
+        "texto": "`=SOMA('Folha Março!B2:B4')`",
+        "dica": "As aspas envolvem só o nome da planilha; o ! e as células ficam fora."
+      },
+      {
+        "texto": "`=SOMA('Folha Março'!B2:B4)`"
+      },
+      {
+        "texto": "`=SOMA('Folha Março'.B2:B4)`",
+        "dica": "No Excel o separador é !, não ponto."
+      }
+    ],
+    "correta": 3,
+    "banca": "Vunesp",
+    "tema": "Referências entre abas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMA('Folha Março'!B2:B4)",
+        "esperado": 115
       }
     ]
   }
