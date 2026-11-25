@@ -24,6 +24,9 @@ async function Painel() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-bold tracking-tight">Exercícios ({itens.length})</h1>
+        <Link href="/admin/empresas" className="text-sm font-medium text-violet-800 underline" data-testid="admin-empresas">
+          Empresas (licenças)
+        </Link>
         <form action={sair}>
           <button type="submit" className="text-sm text-zinc-600 underline">
             Sair do admin

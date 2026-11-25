@@ -5,7 +5,7 @@ import { contatoSchema } from "@/lib/contato";
 import { registrar } from "@/lib/eventos";
 
 type Props =
-  | { formulario: "contato"; publico: "empresa" | "universidade" }
+  | { formulario: "contato"; publico: "empresa" | "universidade"; rotuloBotao?: string }
   | { formulario: "indicacao"; publico?: undefined };
 
 const campo = "w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none focus:border-ink";
@@ -123,7 +123,7 @@ export function FormContato(props: Props) {
         disabled={estado === "enviando"}
         className="rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft disabled:opacity-60"
       >
-        {estado === "enviando" ? "Enviando…" : indicacao ? "Enviar indicação" : "Falar com a gente"}
+        {estado === "enviando" ? "Enviando…" : indicacao ? "Enviar indicação" : (props.rotuloBotao ?? "Falar com a gente")}
       </button>
     </form>
   );

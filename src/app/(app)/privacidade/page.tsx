@@ -20,6 +20,8 @@ const DADOS: [string, string, string][] = [
   ["Dados do pagamento (plano, status, datas; nunca o número do cartão)", "Liberar e manter o acesso Pro, reembolsos e contestações", "Execução do contrato"],
   ["Código de afiliado ou cupom de quem te indicou", "Atribuir a indicação e aplicar o desconto", "Legítimo interesse"],
   ["Formulário de empresas e universidades (nome, e-mail, empresa, mensagem)", "Responder ao seu contato", "Procedimentos preliminares de contrato"],
+  ["Licença de empresa: razão social, CNPJ, endereço e e-mails do financeiro e do gestor", "Cobrar a fatura, emitir a nota fiscal e dar acesso ao painel da equipe", "Execução do contrato com a empresa e obrigação legal"],
+  ["Membro de equipe de empresa: nome, e-mail e progresso mostrados ao gestor", "Permitir que a empresa acompanhe o treinamento que contratou", "Execução do contrato com a empresa e legítimo interesse"],
   ["Endereço IP e registros técnicos de acesso", "Segurança, limite de tentativas e investigação de erros", "Legítimo interesse e obrigação legal (Marco Civil)"],
 ];
 
@@ -95,6 +97,36 @@ const secoes: Secao[] = [
         Cada certificado tem um código para qualquer pessoa conferir se ele é verdadeiro. Quem tiver o código vê o nome impresso, o módulo, a nota e a
         data. Só compartilhe o código com quem você quiser.
       </p>
+    ),
+  },
+  {
+    id: "empresas",
+    titulo: "Licenças para empresas: o que o gestor vê",
+    conteudo: (
+      <>
+        <p>
+          Quando a sua empresa contrata o {NOME_SITE} Pro para a equipe e você entra pelo link de convite, o <strong>gestor da equipe</strong> (a pessoa
+          indicada pela empresa) passa a ver no painel:
+        </p>
+        <ul>
+          <li>o seu nome e o seu e-mail;</li>
+          <li>o seu progresso: quantas lições da trilha você concluiu, os certificados e a data do seu último acesso.</li>
+        </ul>
+        <p>
+          O gestor <strong>não</strong> vê as suas respostas, as fórmulas que você escreveu, os resultados detalhados dos testes nem o que você faz fora
+          da trilha. A base legal é a execução do contrato com a empresa e o legítimo interesse dela em acompanhar o treinamento que pagou (art. 7º,
+          V e IX, da LGPD).
+        </p>
+        <p>
+          Você é avisado disso na tela do convite, antes de entrar na equipe: entrar é uma escolha sua. Se o gestor remover você, ou o contrato acabar, a
+          empresa deixa de ver o seu progresso, e a sua conta e o seu progresso continuam seus. Para sair de uma equipe, peça ao gestor ou escreva para{" "}
+          <Email />.
+        </p>
+        <p>
+          Da empresa contratante guardamos razão social, CNPJ, endereço e os e-mails do financeiro e do gestor, para a cobrança, a nota fiscal e o acesso
+          ao painel. Esses dados vão para a Stripe (cobrança) e para o Asaas (nota fiscal).
+        </p>
+      </>
     ),
   },
   {

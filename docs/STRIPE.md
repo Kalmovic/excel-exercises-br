@@ -25,12 +25,12 @@ Developers → Webhooks → Add endpoint → `https://planilhes.com.br/api/strip
 |---|---|
 | `checkout.session.completed` | anual pago no cartão: libera 1 ano |
 | `checkout.session.async_payment_succeeded` | anual pago no Pix/boleto: libera 1 ano |
-| `invoice.paid` | mensal: libera até o fim do período |
-| `invoice.payment_failed` | mensal: marca como atrasado |
+| `invoice.paid` | mensal: libera até o fim do período. Empresa (fatura com `metadata.organizacao_id`): ativa a licença por 12 meses (docs/EMPRESAS.md) |
+| `invoice.payment_failed` | mensal: marca como atrasado (fatura de empresa: ignora) |
 | `customer.subscription.updated` | cancelou ou desistiu de cancelar a renovação |
 | `customer.subscription.deleted` | assinatura encerrada |
-| `charge.refunded` | reembolso total: corta o acesso e para de cobrar |
-| `charge.dispute.created` | contestação: corta o acesso e para de cobrar |
+| `charge.refunded` | reembolso total: corta o acesso e para de cobrar (cliente de empresa: cancela a licença) |
+| `charge.dispute.created` | contestação: corta o acesso e para de cobrar (cliente de empresa: cancela a licença) |
 | `radar.early_fraud_warning.created` | alerta de fraude: reembolsa na hora (evita a contestação) |
 
 Copie o **Signing secret** (`whsec_…`) para `STRIPE_WEBHOOK_SECRET` na Vercel.

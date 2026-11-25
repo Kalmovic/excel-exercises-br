@@ -20,6 +20,9 @@ type Assinatura = {
   stripe_assinatura_id: string | null;
 };
 
+/** Licença de empresa (função minha_organizacao): de qual equipe é membro e se é gestor. */
+type Organizacao = { membro: { nome: string; acesso_ate: string | null; vigente: boolean } | null; gestor: { nome: string } | null };
+
 const data = (iso: string) => new Date(iso).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
 const cartao = "rounded-2xl border border-line bg-surface p-5 sm:p-6";
 
@@ -38,15 +41,19 @@ export function PainelConta({
   const conta = useConta();
   const router = useRouter();
   const [assinatura, setAssinatura] = useState<Assinatura | null | undefined>(undefined);
+  const [org, setOrg] = useState<Organizacao | null>(null);
   const [versao, setVersao] = useState(0);
 
   useEffect(() => {
     if (conta.estado !== "logado") return;
-    void supabaseNavegador()!
+    const supabase = supabaseNavegador()!;
+    void supabase
       .from("assinaturas")
       .select("plano, status, acesso_ate, fatura_url, stripe_assinatura_id")
       .maybeSingle<Assinatura>()
       .then(({ data }) => setAssinatura(data));
+    // Sem a função no banco (ou com erro), a conta funciona como antes, sem a parte da empresa.
+    void supabase.rpc("minha_organizacao").then(({ data }) => setOrg((data as Organizacao | null) ?? null));
   }, [conta, versao]);
 
   // Pagamento pendente: confere de 5 em 5 segundos até o aviso do Stripe chegar.
@@ -68,7 +75,9 @@ export function PainelConta({
       </div>
     );
 
-  const pro = !!assinatura?.acesso_ate && new Date(assinatura.acesso_ate) > new Date();
+  const proPropria = !!assinatura?.acesso_ate && new Date(assinatura.acesso_ate) > new Date();
+  const proEmpresa = !!org?.membro?.vigente;
+  const pro = proPropria || proEmpresa;
   return (
     <div className="space-y-6" data-testid="painel-conta">
       <header className="flex items-center gap-4">
@@ -89,7 +98,22 @@ export function PainelConta({
       </header>
 
       <section className={cartao} data-testid="plano-conta" aria-label="Plano">
-        {assinatura === undefined ? <div className="h-16" aria-hidden /> : <Plano assinatura={assinatura} aoMudar={() => setVersao((v) => v + 1)} />}
+        {assinatura === undefined ? (
+          <div className="h-16" aria-hidden />
+        ) : (
+          <div className="space-y-4">
+            {org?.membro && <PlanoEmpresa membro={org.membro} />}
+            {!(proEmpresa && !proPropria && assinatura?.status !== "pendente") && <Plano assinatura={assinatura} aoMudar={() => setVersao((v) => v + 1)} />}
+          </div>
+        )}
+        {org?.gestor && (
+          <p className="mt-4 border-t border-line pt-4 text-sm">
+            Você é o gestor da equipe <strong>{org.gestor.nome}</strong>.{" "}
+            <Link href="/empresa" className="font-semibold text-success underline-offset-4 hover:underline" data-testid="link-painel-empresa">
+              Abrir o painel da equipe →
+            </Link>
+          </p>
+        )}
       </section>
 
       <Progresso trilha={trilha} modulos={modulos} />
@@ -110,6 +134,28 @@ export function PainelConta({
           Sair
         </button>
       </div>
+    </div>
+  );
+}
+
+/** Pro pela licença da empresa (a vaga é da empresa: quem cuida da renovação é o gestor). */
+function PlanoEmpresa({ membro }: { membro: NonNullable<Organizacao["membro"]> }) {
+  if (!membro.vigente)
+    return (
+      <div>
+        <p className="text-sm text-muted">Equipe {membro.nome}</p>
+        <p className="text-lg font-semibold">O contrato da empresa venceu</p>
+        <p className="text-sm text-muted">Fale com o gestor da equipe para renovar. O seu progresso continua salvo.</p>
+      </div>
+    );
+  return (
+    <div>
+      <p className="text-sm text-muted">Licença da empresa</p>
+      <p className="text-lg font-semibold" data-testid="plano-empresa">
+        Pro pela empresa {membro.nome}
+        {membro.acesso_ate && ` (até ${new Date(membro.acesso_ate).toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" })})`}
+      </p>
+      <p className="text-sm text-muted">A renovação é com o gestor da equipe. Se você sair da empresa, o progresso continua na sua conta.</p>
     </div>
   );
 }

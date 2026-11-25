@@ -95,4 +95,41 @@ describe("tradução dos avisos do Stripe", () => {
     expect(traduzirEvento(aviso("radar.early_fraud_warning.created", { charge: { id: "ch_2" }, actionable: true }))).toEqual({ acao: "reembolsar", cobranca: "ch_2" });
     expect(traduzirEvento(aviso("radar.early_fraud_warning.created", { charge: "ch_1", actionable: false })).acao).toBe("ignorar");
   });
+
+  describe("licença de empresa (fatura avulsa do admin)", () => {
+    const FATURA = {
+      id: "in_org_1",
+      customer: "cus_org",
+      currency: "brl",
+      amount_paid: 90000,
+      status_transitions: { paid_at: Date.UTC(2026, 10, 25, 15) / 1000 },
+      lines: { data: [{ quantity: 5, period: { start: 1, end: 1 } }] },
+      metadata: { organizacao_id: "org-1", assentos: "5" },
+      parent: null,
+    };
+
+    it("paga: ativa a organização (com a data do pagamento), não mexe em aluno", () => {
+      const r = traduzirEvento(aviso("invoice.paid", FATURA));
+      expect(r).toMatchObject({ acao: "liberar_empresa", organizacao: "org-1", cliente: "cus_org", fatura: "in_org_1" });
+      expect(r.acao === "liberar_empresa" && r.pagoEm.toISOString()).toBe("2026-11-25T15:00:00.000Z");
+    });
+
+    it("sem paid_at: usa a hora do aviso; em outra moeda: ignora", () => {
+      const r = traduzirEvento(aviso("invoice.paid", { ...FATURA, status_transitions: null }));
+      expect(r.acao === "liberar_empresa" && r.pagoEm.toISOString()).toBe("2026-11-17T12:00:00.000Z");
+      expect(traduzirEvento(aviso("invoice.paid", { ...FATURA, currency: "usd" })).acao).toBe("ignorar");
+    });
+
+    it("fatura de assinatura com organizacao_id nos metadados: segue a regra do aluno", () => {
+      const r = traduzirEvento(
+        aviso("invoice.paid", { ...FATURA, lines: { data: [{ period: { start: 1, end: 2e9 } }] }, parent: { subscription_details: { subscription: "sub_1", metadata: { usuario_id: "u1" } } } }),
+      );
+      expect(r).toMatchObject({ acao: "liberar", usuario: "u1" });
+    });
+
+    it("boleto da empresa falhou: ignora (não existe assinatura de aluno para atrasar)", () => {
+      expect(traduzirEvento(aviso("invoice.payment_failed", FATURA)).acao).toBe("ignorar");
+      expect(traduzirEvento(aviso("invoice.payment_failed", { customer: "cus_1" })).acao).toBe("atrasar");
+    });
+  });
 });
