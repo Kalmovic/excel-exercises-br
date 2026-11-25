@@ -7,7 +7,11 @@ import questoesBrutas from "./concurso/questoes.json";
 
 describe("questões de concurso", () => {
   it("todas carregadas, com banca e tema, slugs únicos", () => {
-    expect(QUESTOES_CONCURSO).toHaveLength(questoesBrutas.length);
+    // As avulsas + as etapas de lição que são questão de concurso.
+    expect(QUESTOES_CONCURSO.length).toBeGreaterThanOrEqual(questoesBrutas.length);
+    expect(QUESTOES_CONCURSO.slice(0, questoesBrutas.length).map((q) => q.slug)).toEqual(
+      [...questoesBrutas].sort((a, b) => a.ordem - b.ordem).map((q) => q.slug),
+    );
     expect(new Set(QUESTOES_CONCURSO.map((q) => q.slug)).size).toBe(QUESTOES_CONCURSO.length);
     expect(BANCAS.length).toBeGreaterThanOrEqual(5);
   });
