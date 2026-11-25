@@ -231,6 +231,8 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+  // Celular: o gráfico não pode ser mais largo que a área visível da grade (senão o último mês fica cortado).
+  const larguraGrafico = larguraVisivel ? Math.max(220, Math.min(LARGURA_GRAFICO, larguraVisivel - LARGURA_CABECALHO)) : LARGURA_GRAFICO;
 
   /**
    * Rola a grade por dentro até o retângulo (coordenadas do conteúdo), sem deixá-lo
@@ -667,7 +669,7 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
         const p = deEndereco(posGrafico);
         const x = esquerda(Math.min(p.coluna, planilha.colunas - 1));
         const y = topo(Math.min(p.linha, planilha.linhas - 1));
-        return [x, x + LARGURA_GRAFICO, y, y + ALTURA_GRAFICO];
+        return [x, x + larguraGrafico, y, y + ALTURA_GRAFICO];
       })()
     : null;
   const retGraficoRef = useRef(retGrafico);
@@ -908,9 +910,9 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
                 store.setState({ graficoAtivo: i });
               }}
               className={`absolute z-[6] cursor-pointer overflow-hidden rounded-sm bg-white shadow-md ${ativo ? "ring-2 ring-success" : "ring-1 ring-zinc-300"}`}
-              style={{ left: esquerda(Math.min(p.coluna, planilha.colunas - 1)), top: topo(Math.min(p.linha, planilha.linhas - 1)), width: LARGURA_GRAFICO, height: ALTURA_GRAFICO }}
+              style={{ left: esquerda(Math.min(p.coluna, planilha.colunas - 1)), top: topo(Math.min(p.linha, planilha.linhas - 1)), width: larguraGrafico, height: ALTURA_GRAFICO }}
             >
-              <GraficoSvg dados={planilha.dadosDoGrafico(i)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={LARGURA_GRAFICO} altura={ALTURA_GRAFICO} />
+              <GraficoSvg dados={planilha.dadosDoGrafico(i)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={larguraGrafico} altura={ALTURA_GRAFICO} />
               {/* Botão vazio por cima: focável, Enter/Espaço abre o Design do Gráfico (o nome não disputa com o texto do SVG). */}
               <button
                 type="button"

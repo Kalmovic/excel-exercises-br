@@ -18,6 +18,15 @@ export type EstadoSimulador = {
   /** Esc fecha a lista até o próximo caractere digitado. */
   sugestoesFechadas: boolean;
   mensagem: string | null;
+  /**
+   * Validação de dados com alerta Aviso ou Informação: a digitação recusada
+   * espera a resposta (Sim/OK grava assim mesmo). Vale enquanto `mensagem` for esta.
+   */
+  alerta: { estilo: "aviso" | "informacao"; mensagem: string } | null;
+  /** Sim (Aviso) ou OK (Informação): grava o rascunho mesmo fora da regra. */
+  aceitarAlerta: () => boolean;
+  /** Não (Aviso): fecha o alerta e continua editando. */
+  recusarAlerta: () => void;
   /** "apontar": arrastando sobre a grade para inserir um intervalo na fórmula. */
   arrasto: null | "selecao" | "alca" | "apontar";
   alca: Intervalo | null; // área de destino da alça de preenchimento
@@ -100,6 +109,7 @@ export function criarStore(
     indiceSugestao: 0,
     sugestoesFechadas: false,
     mensagem: null,
+    alerta: null,
     arrasto: null,
     alca: null,
     copiado: null,
@@ -221,14 +231,28 @@ export function criarStore(
       }
       const r = planilha.definir(ancora, rascunho);
       if (!r.ok) {
-        set({ mensagem: r.mensagem });
+        set({ mensagem: r.mensagem, alerta: r.alerta ? { estilo: r.alerta, mensagem: r.mensagem } : null });
         return false;
       }
-      set({ modo: "pronto", rascunho: "", mensagem: null });
+      set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null });
       return true;
     },
 
-    cancelar: () => set({ modo: "pronto", rascunho: "", mensagem: null }),
+    aceitarAlerta: () => {
+      const { modo, rascunho, ancora, alerta, mensagem } = get();
+      if (modo === "pronto" || !alerta || alerta.mensagem !== mensagem) return false;
+      const r = planilha.definir(ancora, rascunho, { aceitarAlerta: true });
+      if (!r.ok) {
+        set({ mensagem: r.mensagem, alerta: null });
+        return false;
+      }
+      set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null });
+      return true;
+    },
+
+    recusarAlerta: () => set({ mensagem: null, alerta: null }),
+
+    cancelar: () => set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null }),
 
     limparMensagem: () => set({ mensagem: null }),
 

@@ -3,12 +3,13 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { ValidacaoDados } from "@/content/schema";
 import { deIntervalo, intervaloParaTexto } from "@/engine/address";
-import { ERRO_PADRAO, NOMES_OPERADOR, NOMES_PERMITIR } from "@/engine/validacao";
+import { ERRO_PADRAO, NOMES_ESTILO, NOMES_OPERADOR, NOMES_PERMITIR } from "@/engine/validacao";
 import { useEstado, useSimulador, useVersaoPlanilha } from "./contexto";
 import { navegarItens, useEscape, useFocoDentro, useFocoPreso } from "./teclado";
 
 type Permitir = ValidacaoDados["permitir"] | "qualquer";
 type Operador = NonNullable<ValidacaoDados["operador"]>;
+type Estilo = NonNullable<ValidacaoDados["estilo"]>;
 type Aba = "config" | "entrada" | "erro";
 
 function IconeValidacao() {
@@ -97,6 +98,8 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
   const [valor1, setValor1] = useState(r?.valor1 ?? "");
   const [valor2, setValor2] = useState(r?.valor2 ?? "");
   const [fonte, setFonte] = useState(r?.fonte ?? "");
+  const [formula, setFormula] = useState(r?.formula ?? "");
+  const [estilo, setEstilo] = useState<Estilo>(r?.estilo ?? "parar");
   const [entradaTitulo, setEntradaTitulo] = useState(r?.entrada?.titulo ?? "");
   const [entradaTexto, setEntradaTexto] = useState(r?.entrada?.texto ?? "");
   const [erroTitulo, setErroTitulo] = useState(r?.erro?.titulo ?? "");
@@ -135,6 +138,7 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
     }
     const v: ValidacaoDados = { intervalo: intervaloParaTexto(int), permitir };
     if (permitir === "lista") v.fonte = fonte;
+    else if (permitir === "personalizado") v.formula = formula.trim();
     else {
       v.operador = operador;
       v.valor1 = valor1;
@@ -142,6 +146,7 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
     }
     if (entradaTitulo.trim() || entradaTexto.trim()) v.entrada = { titulo: entradaTitulo.slice(0, 50), texto: entradaTexto.slice(0, 255) };
     if (erroTitulo.trim() || erroTexto.trim()) v.erro = { titulo: erroTitulo.slice(0, 50), texto: erroTexto.slice(0, 255) };
+    if (estilo !== "parar") v.estilo = estilo;
     const res = planilha.adicionarValidacao(v);
     if (!res.ok) {
       setAba("config");
@@ -215,11 +220,17 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
           </label>
           {permitir === "lista" && (
             <label className="block space-y-1">
-              <span className="block text-xs text-zinc-500">Fonte (itens separados por ponto e vírgula, ou um intervalo como =$F$2:$F$5)</span>
+              <span className="block text-xs text-zinc-500">Fonte (itens separados por ponto e vírgula, um intervalo como =$F$2:$F$5 ou de outra aba: =Listas!$A$2:$A$9)</span>
               <input value={fonte} onChange={(e) => setFonte(e.target.value)} className={`${campo} w-full`} data-testid="validacao-fonte" autoFocus spellCheck={false} />
             </label>
           )}
-          {permitir !== "lista" && permitir !== "qualquer" && (
+          {permitir === "personalizado" && (
+            <label className="block space-y-1">
+              <span className="block text-xs text-zinc-500">Fórmula (escrita para a primeira célula do intervalo; o valor é aceito quando ela dá VERDADEIRO)</span>
+              <input value={formula} onChange={(e) => setFormula(e.target.value)} placeholder="=B2<=C2" className={`${campo} w-full font-mono`} data-testid="validacao-formula" autoFocus spellCheck={false} />
+            </label>
+          )}
+          {permitir !== "lista" && permitir !== "qualquer" && permitir !== "personalizado" && (
             <>
               <label className="block space-y-1">
                 <span className="block text-xs text-zinc-500">Dados</span>
@@ -256,7 +267,24 @@ function JanelaValidacao({ fechar: fecharJanela }: { fechar: (paraGrade?: boolea
       )}
       {aba === "erro" && (
         <div className="space-y-2" {...painel}>
-          <p className="text-xs text-zinc-500">Estilo: Parar (não deixa gravar). Sem texto, aparece a mensagem padrão.</p>
+          <label className="flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+            Estilo
+            <select value={estilo} onChange={(e) => setEstilo(e.target.value as Estilo)} className={campo} data-testid="validacao-estilo">
+              {(Object.keys(NOMES_ESTILO) as Estilo[]).map((k) => (
+                <option key={k} value={k}>
+                  {NOMES_ESTILO[k]}
+                </option>
+              ))}
+            </select>
+          </label>
+          <p className="text-xs text-zinc-500">
+            {estilo === "parar"
+              ? "Parar: não deixa gravar o valor fora da regra."
+              : estilo === "aviso"
+                ? "Aviso: pergunta \"Deseja continuar?\"; com Sim, o valor fica."
+                : "Informação: só avisa; com OK, o valor fica."}{" "}
+            Sem texto, aparece a mensagem padrão.
+          </p>
           <input value={erroTitulo} onChange={(e) => setErroTitulo(e.target.value)} placeholder={ERRO_PADRAO.titulo} aria-label="Título do alerta de erro" className={`${campo} w-full`} data-testid="validacao-erro-titulo" />
           <textarea value={erroTexto} onChange={(e) => setErroTexto(e.target.value)} placeholder={ERRO_PADRAO.texto} aria-label="Mensagem de erro" rows={3} className={`${campo} w-full`} data-testid="validacao-erro-texto" />
         </div>
