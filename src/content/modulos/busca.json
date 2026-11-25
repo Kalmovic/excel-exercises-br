@@ -3847,44 +3847,127 @@
     "ordem": 65,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: PROCV com CORRESP fora do lugar",
     "enunciado": [
-      "Qual é a vantagem de usar CORRESP no número da coluna do PROCV?"
+      "Um analista de uma instituição financeira registrou, em uma planilha do Excel 365 em português, a quantidade de contas abertas por agência nos meses de janeiro a março, conforme a planilha.",
+      "Ele digitou a fórmula `=PROCV(\"AG-03\";A1:D5;CORRESP(\"Fev\";B1:D1;0);FALSO)`. O resultado obtido é:"
     ],
     "dicas": [
-      "Pense no que acontece quando o mês pedido muda ou quando alguém insere uma coluna na tabela."
+      "O número da coluna do PROCV conta a partir da primeira coluna da tabela. O CORRESP conta a partir do começo do intervalo dele."
     ],
     "explicacao": [
-      "Com o CORRESP, o número da coluna é calculado pelo nome do cabeçalho: a fórmula acompanha a troca do mês e até a inserção de colunas."
+      "CORRESP(\"Fev\";B1:D1;0) dá 2, porque o intervalo começa em B. Mas na tabela A1:D5 a coluna 2 é a de janeiro: o PROCV traz 143. Para pegar fevereiro, o CORRESP teria que olhar A1:D1."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 7,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Agência",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Jan",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Fev",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Mar",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "AG-01"
+        },
+        "B2": {
+          "entrada": "120"
+        },
+        "C2": {
+          "entrada": "135"
+        },
+        "D2": {
+          "entrada": "150"
+        },
+        "A3": {
+          "entrada": "AG-02"
+        },
+        "B3": {
+          "entrada": "98"
+        },
+        "C3": {
+          "entrada": "110"
+        },
+        "D3": {
+          "entrada": "104"
+        },
+        "A4": {
+          "entrada": "AG-03"
+        },
+        "B4": {
+          "entrada": "143"
+        },
+        "C4": {
+          "entrada": "128"
+        },
+        "D4": {
+          "entrada": "161"
+        },
+        "A5": {
+          "entrada": "AG-04"
+        },
+        "B5": {
+          "entrada": "87"
+        },
+        "C5": {
+          "entrada": "95"
+        },
+        "D5": {
+          "entrada": "102"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Deixa o PROCV mais rápido",
-        "dica": "A velocidade é a mesma; a vantagem é outra."
+        "texto": "128",
+        "dica": "É o valor de fevereiro, mas o CORRESP procurou em B1:D1, onde Fev é a 2ª coluna. Para o PROCV, a 2ª coluna de A1:D5 é a de janeiro."
       },
       {
-        "texto": "A coluna é escolhida pelo nome do cabeçalho, sem contar colunas à mão"
+        "texto": "161",
+        "dica": "Março seria a 4ª coluna da tabela; o CORRESP devolveu outro número."
       },
       {
-        "texto": "Dispensa o FALSO no fim",
-        "dica": "A busca exata continua necessária."
+        "texto": "143"
       },
       {
-        "texto": "Permite buscar à esquerda",
-        "dica": "O PROCV continua só olhando para a direita da primeira coluna."
+        "texto": "2",
+        "dica": "Esse é o resultado do CORRESP, que vira o número da coluna. O PROCV devolve o valor dessa coluna."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "AG-03 existe na primeira coluna e Fev existe no cabeçalho: não há valor não encontrado."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "tentativasAteExplicacao": 3,
     "licao": "procv-coluna-variavel-corresp",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cesgranrio",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(\"AG-03\";A1:D5;CORRESP(\"Fev\";B1:D1;0);FALSO)",
+        "esperado": 143
+      },
+      {
+        "formula": "=PROCV(\"AG-03\";A1:D5;CORRESP(\"Fev\";A1:D1;0);FALSO)",
+        "esperado": 128
+      }
+    ]
   },
   {
     "id": "a1b0e572-03e9-50c9-9949-6bbd03d45851",
@@ -4397,44 +4480,106 @@
     "ordem": 75,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: PROCX com o próximo item maior",
     "enunciado": [
-      "Numa tabela de faixas \"a partir de\" (comissão, desconto, categoria), qual modo de correspondência do PROCX usar?"
+      "Em uma planilha do Microsoft Excel 365, em sua configuração padrão, a tabela A1:B5 traz o desconto concedido a partir de cada valor de compra.",
+      "Assinale a alternativa que apresenta o resultado da fórmula `=PROCX(7200;A2:A5;B2:B5;\"-\";1)`."
     ],
     "dicas": [
-      "\"A partir de 50.000\" quer dizer: quem tem 75.500 fica na faixa de qual limite, o de baixo ou o de cima?"
+      "O 5º argumento do PROCX diz o que fazer quando o valor exato não existe: 1 procura o próximo maior; -1, o próximo menor."
     ],
     "explicacao": [
-      "-1 aceita o valor exato ou o próximo menor: quem tem 75.500 fica na faixa que começa em 50.000."
+      "7.200 não está na tabela. Com o modo 1, o PROCX pega o próximo valor maior, 10.000, e devolve 8%. Para a faixa \"a partir de\", o certo seria -1, que daria 5%."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 6,
+      "colunas": 4,
+      "larguras": {
+        "A": 150
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Compra a partir de",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "0%",
+          "formato": "percentual"
+        },
+        "A3": {
+          "entrada": "1000",
+          "formato": "moeda"
+        },
+        "B3": {
+          "entrada": "3%",
+          "formato": "percentual"
+        },
+        "A4": {
+          "entrada": "5000",
+          "formato": "moeda"
+        },
+        "B4": {
+          "entrada": "5%",
+          "formato": "percentual"
+        },
+        "A5": {
+          "entrada": "10000",
+          "formato": "moeda"
+        },
+        "B5": {
+          "entrada": "8%",
+          "formato": "percentual"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "0 (exato)",
-        "dica": "Com 0, só valores que estão na tabela funcionam; o resto dá #N/D."
+        "texto": "5%",
+        "dica": "Esse seria o resultado com -1 (exato ou o próximo menor). Com 1, o PROCX vai para o próximo valor maior."
       },
       {
-        "texto": "-1 (exato ou o próximo menor)"
+        "texto": "3%",
+        "dica": "7.200 já passou de 5.000; e o modo 1 procura para cima, não para baixo."
       },
       {
-        "texto": "1 (exato ou o próximo maior)",
-        "dica": "Com 1, o valor sobe para a faixa de cima antes de alcançá-la."
+        "texto": "-",
+        "dica": "O \"-\" só aparece quando nada é encontrado. Com o modo 1, não é preciso achar o valor exato."
       },
       {
-        "texto": "2 (curinga)",
-        "dica": "O curinga serve para textos com * e ?, não para faixas de números."
+        "texto": "#N/D",
+        "dica": "Com o 4º argumento preenchido, o PROCX mostra o texto dele em vez do #N/D; e aqui ele encontra um valor."
+      },
+      {
+        "texto": "8%"
       }
     ],
-    "correta": 1,
+    "correta": 4,
     "tentativasAteExplicacao": 3,
     "licao": "procx-faixa-modo-correspondencia",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Vunesp",
+    "tema": "PROCX",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCX(7200;A2:A5;B2:B5;\"-\";1)",
+        "esperado": 0.08
+      },
+      {
+        "formula": "=PROCX(7200;A2:A5;B2:B5;\"-\";-1)",
+        "esperado": 0.05
+      }
+    ]
   },
   {
     "id": "4bfd17a5-5858-5a94-8ca8-1f04e490c040",
@@ -5213,44 +5358,124 @@
     "ordem": 85,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: PROCX com dois critérios",
     "enunciado": [
-      "Em `=PROCX(F2&G2;A2:A9&B2:B9;C2:C9)`, o que o & faz?"
+      "Em uma planilha do Excel 365 em português, a tabela A1:C6 apresenta o salário de cada cargo e nível de um órgão público.",
+      "Um servidor digitou a fórmula `=PROCX(\"Analista\"&\"II\";A2:A6&B2:B6;C2:C6)`. Assinale a opção que indica o resultado."
     ],
     "dicas": [
-      "O & é o operador que junta textos, como em \"Ana\"&\"Paula\"."
+      "O & junta textos dos dois lados: o que se procura vira um texto só, e cada linha da tabela também."
     ],
     "explicacao": [
-      "O & junta cargo e nível num texto só (\"AnalistaII\"), tanto no que se procura quanto nas linhas da tabela; aí a busca acha a única linha que tem os dois."
+      "\"Analista\"&\"II\" vira \"AnalistaII\", e A2:A6&B2:B6 vira a lista TécnicoI, AnalistaI, TécnicoII, AnalistaII, AnalistaIII. A 4ª posição bate: R$ 6.600,00."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 8,
+      "colunas": 5,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cargo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nível",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Salário",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Técnico"
+        },
+        "B2": {
+          "entrada": "I"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Analista"
+        },
+        "B3": {
+          "entrada": "I"
+        },
+        "C3": {
+          "entrada": "5400",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Técnico"
+        },
+        "B4": {
+          "entrada": "II"
+        },
+        "C4": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Analista"
+        },
+        "B5": {
+          "entrada": "II"
+        },
+        "C5": {
+          "entrada": "6600",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Analista"
+        },
+        "B6": {
+          "entrada": "III"
+        },
+        "C6": {
+          "entrada": "7800",
+          "formato": "moeda"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Soma o cargo com o nível",
-        "dica": "Cargo e nível são textos; o & junta, não soma."
+        "texto": "5.400",
+        "dica": "Esse é o primeiro Analista da tabela. O & junta cargo e nível, e a busca exige os dois."
       },
       {
-        "texto": "Junta cargo e nível num texto só, dos dois lados, e procura esse texto"
+        "texto": "3.900",
+        "dica": "Esse é o salário de Técnico II: o nível bate, mas o cargo não."
       },
       {
-        "texto": "Procura o cargo e, se não achar, procura o nível",
-        "dica": "Não há segunda tentativa: as duas partes precisam bater juntas."
+        "texto": "6.600"
       },
       {
-        "texto": "Só funciona com a tabela em ordem",
-        "dica": "A busca é exata: a ordem não importa."
+        "texto": "#N/D",
+        "dica": "As duas pontas foram juntadas do mesmo jeito: AnalistaII existe na linha 5."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "No Excel 365, A2:A6&B2:B6 é uma matriz válida: junta cada cargo com o nível da mesma linha."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "tentativasAteExplicacao": 3,
     "licao": "procx-duas-condicoes",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FGV",
+    "tema": "PROCX",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCX(\"Analista\"&\"II\";A2:A6&B2:B6;C2:C6)",
+        "esperado": 6600
+      }
+    ]
   },
   {
     "id": "a298510f-8592-5373-81b3-ddc3b92570bb",
@@ -6090,44 +6315,127 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: PROCX de baixo para cima",
     "enunciado": [
-      "No PROCX, o 6º argumento (modo de pesquisa) igual a -1 faz o quê?"
+      "Em uma planilha do Excel 365 em português, um setor de compras registra o histórico de aquisições em ordem cronológica, da mais antiga para a mais recente: data na coluna A, item na coluna B e preço unitário na coluna C. O item Papel A4 foi comprado três vezes, por R$ 22,90, R$ 24,50 e R$ 26,10, nessa ordem.",
+      "Julgue o item a seguir: a fórmula `=PROCX(\"Papel A4\";B2:B7;C2:C7;\"Sem compra\";0;-1)` retorna 22,90, o preço pago na compra mais antiga do item."
     ],
     "dicas": [
-      "O 5º argumento é sobre COMO comparar; o 6º é sobre por ONDE começar."
+      "No PROCX, o 5º argumento diz como comparar; o 6º diz por onde começar a pesquisar."
     ],
     "explicacao": [
-      "Com -1, o PROCX pesquisa do último para o primeiro e devolve a última ocorrência: num histórico em ordem de data, a mais recente."
+      "Errado. Com o modo de pesquisa -1, o PROCX pesquisa do último para o primeiro registro e devolve a última ocorrência: R$ 26,10, a compra mais recente."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 8,
+      "colunas": 5,
+      "larguras": {
+        "A": 100,
+        "B": 120
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Preço",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "04/01/2027"
+        },
+        "B2": {
+          "entrada": "Papel A4"
+        },
+        "C2": {
+          "entrada": "22,9",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "11/01/2027"
+        },
+        "B3": {
+          "entrada": "Toner"
+        },
+        "C3": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "02/02/2027"
+        },
+        "B4": {
+          "entrada": "Papel A4"
+        },
+        "C4": {
+          "entrada": "24,5",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "15/02/2027"
+        },
+        "B5": {
+          "entrada": "Grampo"
+        },
+        "C5": {
+          "entrada": "7,8",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "03/03/2027"
+        },
+        "B6": {
+          "entrada": "Papel A4"
+        },
+        "C6": {
+          "entrada": "26,1",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "20/03/2027"
+        },
+        "B7": {
+          "entrada": "Toner"
+        },
+        "C7": {
+          "entrada": "325",
+          "formato": "moeda"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Aceita o próximo valor menor",
-        "dica": "Isso é o -1 no 5º argumento (correspondência)."
+        "texto": "Certo",
+        "dica": "O 6º argumento igual a -1 muda a direção da pesquisa. Por qual ponta da lista ela começa?"
       },
       {
-        "texto": "Pesquisa de baixo para cima e devolve a última ocorrência"
-      },
-      {
-        "texto": "Devolve um valor negativo",
-        "dica": "O sinal não muda o resultado, só a direção da pesquisa."
-      },
-      {
-        "texto": "Ignora a diferença entre maiúsculas e minúsculas",
-        "dica": "O PROCX já não diferencia maiúsculas; o -1 é sobre a direção."
+        "texto": "Errado"
       }
     ],
     "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "procx-ultima-ocorrencia",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cebraspe",
+    "tema": "PROCX",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCX(\"Papel A4\";B2:B7;C2:C7;\"Sem compra\";0;-1)",
+        "esperado": 26.1
+      },
+      {
+        "formula": "=PROCX(\"Papel A4\";B2:B7;C2:C7;\"Sem compra\")",
+        "esperado": 22.9
+      }
+    ]
   },
   {
     "id": "f7be33db-efe1-533e-968a-0544c4ad1bd5",
@@ -7103,44 +7411,111 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: o erro que o SEERRO escondeu",
     "enunciado": [
-      "Qual é o risco de embrulhar uma fórmula de busca com SEERRO?"
+      "Em uma planilha do Excel 365 em português, o cadastro de fornecedores ocupa o intervalo E1:F4 (código e valor do contrato). A célula A2 contém o código **F-102**, que consta do cadastro.",
+      "Um analista digitou em C2 a fórmula `=SEERRO(PROCV(A2;E2:F4;3;FALSO);\"Não cadastrado\")`. O resultado exibido em C2 é:"
     ],
     "dicas": [
-      "O SEERRO não sabe POR QUE a fórmula deu erro."
+      "Confira quantas colunas o intervalo da busca tem e lembre que o SEERRO não sabe por que a fórmula deu erro."
     ],
     "explicacao": [
-      "O SEERRO troca QUALQUER erro pelo valor que você deu: um intervalo errado ou um nome de função digitado errado também viram \"Não cadastrado\". Confira a fórmula antes de embrulhar."
+      "E2:F4 tem duas colunas, e o PROCV pede a 3ª: o resultado é #REF!. O SEERRO troca esse erro por \"Não cadastrado\", mesmo com o código cadastrado. Por isso se confere a fórmula antes de embrulhá-la no SEERRO."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 6,
+      "colunas": 7,
+      "larguras": {
+        "C": 130,
+        "F": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Conferência",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "F-102"
+        },
+        "E1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Contrato",
+          "negrito": true
+        },
+        "E2": {
+          "entrada": "F-101"
+        },
+        "F2": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "E3": {
+          "entrada": "F-102"
+        },
+        "F3": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "E4": {
+          "entrada": "F-103"
+        },
+        "F4": {
+          "entrada": "4100",
+          "formato": "moeda"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Ele deixa a planilha mais lenta",
-        "dica": "O custo é desprezível; o risco é outro."
+        "texto": "1.500",
+        "dica": "Esse seria o resultado com a coluna 2. O intervalo E2:F4 tem só duas colunas, e a fórmula pede a 3ª."
       },
       {
-        "texto": "Ele esconde qualquer erro, inclusive um erro na própria fórmula"
+        "texto": "Não cadastrado"
       },
       {
-        "texto": "Ele só funciona com PROCV",
-        "dica": "O SEERRO funciona com qualquer fórmula."
+        "texto": "#REF!",
+        "dica": "O PROCV dá #REF!, sim, mas o SEERRO troca qualquer erro pelo texto do 2º argumento."
       },
       {
-        "texto": "Ele muda o resultado das linhas que não dão erro",
-        "dica": "Quando não há erro, o resultado passa intacto."
+        "texto": "#N/D",
+        "dica": "O código F-102 existe no cadastro: o problema da fórmula é outro."
+      },
+      {
+        "texto": "0",
+        "dica": "O SEERRO não devolve zero sozinho: ele usa o valor que recebeu no 2º argumento."
       }
     ],
     "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "caso-conferencia-de-cadastro",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FCC",
+    "tema": "SEERRO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SEERRO(PROCV(A2;E2:F4;3;FALSO);\"Não cadastrado\")",
+        "esperado": "Não cadastrado"
+      },
+      {
+        "formula": "=PROCV(A2;E2:F4;3;FALSO)",
+        "esperado": "#REF!"
+      },
+      {
+        "formula": "=PROCV(A2;E2:F4;2;FALSO)",
+        "esperado": 1500
+      }
+    ]
   },
   {
     "id": "c8404ad8-59b1-529a-b5de-a75b4809d159",
