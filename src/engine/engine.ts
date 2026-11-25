@@ -247,8 +247,12 @@ export class Planilha {
     const nomes = this.calculo.abas;
     if (nomes.length < 2) return formula;
     // O nome simples não pode vir colado a "#" (é um erro: #REF!, #VALOR!) nem a outro identificador.
-    return formula.replace(/("(?:[^"]|"")*")|'((?:[^']|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!/g, (m, texto, citado, simples) => {
+    const grafia = (nome: string) => { const i = this.calculo.indiceDaAba(nome); return i < 0 ? nome : nomes[i]; };
+    return formula.replace(/("(?:[^"]|"")*")|'((?:[^':]|'')+):((?:[^':]|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*):([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!|'((?:[^']|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!/g, (m, texto, ci1, ci2, si1, si2, citado, simples) => {
       if (texto) return texto;
+      // Referência 3D: Jan:Mar! e 'Jan 1:Mar 1'!
+      if (ci1 !== undefined) return `'${grafia(ci1.replace(/''/g, "'")).replace(/'/g, "''")}:${grafia(ci2.replace(/''/g, "'")).replace(/'/g, "''")}'!`;
+      if (si1 !== undefined) return `${grafia(si1)}:${grafia(si2)}!`;
       const nome = (citado ?? simples).replace(/''/g, "'");
       const i = this.calculo.indiceDaAba(nome);
       if (i < 0) return m;

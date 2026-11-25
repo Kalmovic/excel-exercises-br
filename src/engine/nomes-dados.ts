@@ -225,6 +225,7 @@ export const NOMES_PT: Record<string, string> = {
   "IMSUM": "IMSOMA",
   "IMTAN": "IMTAN",
   "INDEX": "ÍNDICE",
+  "INDIRECT": "INDIRETO",
   "INT": "INT",
   "INTERVAL": "INTERVAL",
   "IPMT": "IPGTO",

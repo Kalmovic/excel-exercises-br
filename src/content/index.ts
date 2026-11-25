@@ -116,8 +116,8 @@ export const MODULOS: readonly Modulo[] = [
   modulo(10, "destaque", "Formatação condicional", "A planilha que aponta o problema: realçar valores, duplicados, os maiores, a linha inteira com fórmula e barras de dados.", "Formatação condicional dominada: sua planilha mostra sozinha o que importa."),
   modulo(11, "graficos", "Gráficos", "Colunas, linhas, barras e pizza: escolher o gráfico certo, título, rótulos e as pegadinhas de como o Excel lê os dados.", "Gráficos dominados: você escolhe o tipo certo e evita as armadilhas do Excel."),
   modulo(12, "validacao", "Validação de dados", "Listas suspensas, números e datas dentro da regra, mensagens e como achar o que já estava errado.", "Validação de dados dominada: sua planilha só aceita o que faz sentido."),
-  modulo(13, "abas", "Várias abas", "Fórmulas que leem outras abas: somar, buscar com PROCV e SOMASE, montar o resumo do trimestre, consolidar por categoria e conferir uma lista contra a outra.", "Várias abas dominadas: sua planilha cresce sem virar bagunça."),
-  modulo(14, "casos", "Casos reais", "Comissão por faixa, controle de estoque, parcelamento com PGTO, multa e juros de boleto atrasado e o desconto do INSS.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
+  modulo(13, "abas", "Várias abas", "Fórmulas que leem outras abas: somar, buscar com PROCV e SOMASE, resumo do trimestre, consolidar e conferir listas, aba de parâmetros, referência 3D, painel com CONT.SES, INDIRETO e o fechamento do mês.", "Várias abas dominadas: sua planilha cresce sem virar bagunça."),
+  modulo(14, "casos", "Casos reais", "Comissão por faixa, estoque, PGTO, boleto atrasado, INSS, folha com horas extras, fluxo de caixa, reajuste pelo IPCA, conciliação bancária e proposta de honorários.", "Trilha completa! Você resolve problemas reais de planilha do começo ao fim."),
 ];
 
 const posicaoModulo = (slug: string) => {
