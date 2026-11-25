@@ -7,6 +7,8 @@ export type No =
   | { t: "txt"; v: string }
   | { t: "bool"; v: boolean }
   | { t: "ref"; l: number; c: number; aba?: string }
+  /** Referência ao resultado que derrama (`D2#`): o intervalo inteiro que a fórmula de D2 despejou. */
+  | { t: "derrame"; l: number; c: number; aba?: string }
   /**
    * Intervalo. Coluna inteira (A:A) vai até `ULTIMA_LINHA` e linha inteira
    * (1:1) até `ULTIMA_COLUNA`; o cálculo corta no tamanho da aba.
@@ -72,7 +74,13 @@ function tokens(s: string): Tok[] {
     if ((m = /^#(N\/D|DIV\/0!|VALOR!|REF!|NOME\?|NÚM!|NULO!|CALC!|DESPEJAR!)/.exec(r))) { out.push({ k: "erro", v: m[0] }); i += m[0].length; continue; }
     if ((m = FAIXA.exec(r.toUpperCase()))) { out.push({ k: "faixa", v: m[0].toUpperCase().replace(/\$/g, "") }); i += m[0].length; continue; }
     if ((m = /^(?:\d+(?:,\d+)?|,\d+)(?:[eE][+-]?\d+)?/.exec(r)) && !/^[A-Za-z]/.test(r.slice(m[0].length))) { out.push({ k: "num", v: m[0] }); i += m[0].length; continue; }
-    if ((m = REF.exec(r.toUpperCase())) && !/^[A-Za-z0-9_.(]/.test(r.slice(m[0].length))) { out.push({ k: "ref", v: m[0].toUpperCase() }); i += m[0].length; continue; }
+    if ((m = REF.exec(r.toUpperCase())) && !/^[A-Za-z0-9_.(]/.test(r.slice(m[0].length))) {
+      // D2#: o resultado inteiro que a fórmula de D2 derramou.
+      const derrame = r[m[0].length] === "#" && !/^#(N\/D|DIV\/0!|VALOR!|REF!|NOME\?|NÚM!|NULO!|CALC!|DESPEJAR!)/.test(r.slice(m[0].length));
+      out.push({ k: "ref", v: m[0].toUpperCase(), ...(derrame ? { v2: "#" } : {}) });
+      i += m[0].length + (derrame ? 1 : 0);
+      continue;
+    }
     if ((m = ID.exec(r))) { out.push({ k: "id", v: m[0].toUpperCase() }); i += m[0].length; continue; }
     const dois = s.slice(i, i + 2);
     if (["<=", ">=", "<>"].includes(dois)) { out.push({ k: "op", v: dois }); i += 2; continue; }
@@ -177,6 +185,7 @@ export function analisar(formula: string): No {
       if (r.k === "faixa") return comAba({ t: "int" as const, ...posFaixa(r.v) });
       if (r.k !== "ref") throw new Error("esperava ref");
       const a = posRef(r.v);
+      if (r.v2 === "#") return comAba({ t: "derrame" as const, ...a });
       if (olha().k === "op" && olha().v === ":") { pega(); const b = posRef(espera("ref").v); return comAba({ t: "int" as const, a: { l: Math.min(a.l, b.l), c: Math.min(a.c, b.c) }, b: { l: Math.max(a.l, b.l), c: Math.max(a.c, b.c) } }); }
       return comAba({ t: "ref" as const, ...a });
     }

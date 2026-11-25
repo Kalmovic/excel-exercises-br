@@ -93,6 +93,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("MÊS", "núm_série", "Mês de uma data (1 a 12)."),
   f("DIA", "núm_série", "Dia de uma data."),
   f("DIA.DA.SEMANA", "núm_série; [retornar_tipo]", "Dia da semana em número. Com tipo 2, segunda = 1."),
+  f("DIAS", "data_final; data_inicial", "Número de dias entre duas datas (a data final vem primeiro)."),
   f("DATADIF", "data_inicial; data_final; unidade", "Diferença entre datas em anos (\"Y\"), meses (\"M\") ou dias (\"D\")."),
   f("DIATRABALHOTOTAL", "data_inicial; data_final; [feriados]", "Dias úteis entre duas datas."),
   f("DIATRABALHO", "data_inicial; dias; [feriados]", "Data depois de um número de dias úteis."),

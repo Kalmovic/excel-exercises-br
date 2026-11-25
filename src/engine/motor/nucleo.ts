@@ -148,6 +148,8 @@ type Ctx = {
   abasEntre?: (ini: string, fim: string) => string[] | null;
   /** Argumento direto de uma função que aceita referência 3D (SOMA, MÉDIA…). Fora delas, 3D dá #VALOR!. */
   em3d?: boolean;
+  /** Tamanho do resultado que a fórmula da célula derramou (para `D2#`); null se ela não derrama. */
+  derrame?: (l: number, c: number, aba?: string) => { linhas: number; colunas: number } | null;
 };
 
 /** Funções que aceitam referência 3D (Jan:Mar!B2), como no Excel. */
@@ -194,6 +196,8 @@ function resolver(no: No | undefined, ctx: Ctx): No | undefined {
   for (let k = 0; n && n.t === "nome" && ctx.refs?.has(n.v) && k < 100; k++) n = ctx.refs.get(n.v);
   // INDIRETO("Fev!B2") é a referência que o texto descreve (SOMASE, DESLOC… a recebem como referência).
   if (n && n.t === "fn" && n.nome === "INDIRETO") { const r = refIndireta(n.args, ctx); if (!ehErro(r)) return r; }
+  // D2#: as funções que pedem referência recebem o intervalo que a fórmula de D2 derramou.
+  if (n && n.t === "derrame") { const i = intervaloDerramado(n, ctx); if (i) return i; }
   return n;
 }
 /**
@@ -213,10 +217,16 @@ function refIndireta(args: (No | undefined)[], ctx: Ctx): No | Erro {
     return E("#REF!");
   }
 }
+/** O intervalo que `D2#` descreve, ou null se D2 não tem uma fórmula que derrama (#REF!, como no Excel). */
+function intervaloDerramado(no: Extract<No, { t: "derrame" }>, ctx: Ctx): Extract<No, { t: "int" }> | null {
+  const t = ctx.derrame?.(no.l, no.c, no.aba);
+  if (!t) return null;
+  return { t: "int", a: { l: no.l, c: no.c }, b: { l: no.l + t.linhas - 1, c: no.c + t.colunas - 1 }, ...(no.aba === undefined ? {} : { aba: no.aba }) };
+}
 /** O argumento chega como referência (célula, intervalo, DESLOC, ÍNDICE), e não como valor digitado? */
 function ehReferencia(no: No | undefined, ctx: Ctx): boolean {
   const n = resolver(no, ctx);
-  return !!n && (n.t === "ref" || n.t === "int" || n.t === "ref3d" || (n.t === "fn" && (n.nome === "DESLOC" || n.nome === "ÍNDICE" || n.nome === "INDIRETO")));
+  return !!n && (n.t === "ref" || n.t === "int" || n.t === "ref3d" || n.t === "derrame" || (n.t === "fn" && (n.nome === "DESLOC" || n.nome === "ÍNDICE" || n.nome === "INDIRETO")));
 }
 /** Cantos de um intervalo, com a coluna/linha inteira (ou um intervalo enorme) cortada no tamanho da aba. */
 function faixa(no: Extract<No, { t: "int" }>, ctx: Ctx) {
@@ -250,6 +260,7 @@ function avaliar0(no: No, ctx: Ctx): R {
     case "matriz": return no.v.map((l) => l.map((x) => { const r = avaliar(x, ctx); return ehM(r) ? r[0][0] : r; }));
     case "nome": return ctx.nomes?.get(no.v) ?? E("#NOME?");
     case "ref": return ctx.ler(no.l, no.c, no.aba);
+    case "derrame": { const i = intervaloDerramado(no, ctx); return i ? avaliar(i, ctx) : E("#REF!"); }
     case "int": { const { a, b } = faixa(no, ctx); return bloco(ctx, a.l, a.c, b.l - a.l + 1, b.c - a.c + 1, no.aba); }
     case "ref3d": {
       // Os valores de cada aba numa coluna só: SOMA, MÉDIA… só olham os valores.
@@ -648,6 +659,8 @@ export const FUNCOES: Record<string, F> = {
     if (t >= 11 && t <= 17) { const inicio = (t - 10) % 7; return ((w - inicio + 7) % 7) + 1; }
     return E("#NÚM!");
   }),
+  /** DIAS(data_final; data_inicial): dias entre as datas (a final vem primeiro, ao contrário do DATADIF). */
+  DIAS: (args, ctx) => Math.floor(numArg(args[0], ctx)) - Math.floor(numArg(args[1], ctx)),
   DATADIF: (args, ctx) => {
     const a = Math.floor(numArg(args[0], ctx)), b = Math.floor(numArg(args[1], ctx)), u = String(esc(args[2], ctx)).toUpperCase();
     if (a > b) return E("#NÚM!");
@@ -1027,6 +1040,8 @@ export class Calculo {
   private cache = new Map<string, V>();
   private tipos = new Map<string, Tipo>();
   private derramado = new Map<string, V>();
+  /** Tamanho de cada resultado que derramou, pela célula da fórmula (para `D2#`). */
+  private tamanhos = new Map<string, { linhas: number; colunas: number }>();
   private pilha = new Set<string>();
   /** Fórmulas ainda não calculadas desde a última mudança (null: ainda não levantadas). */
   private pendentes: Set<string> | null = null;
@@ -1071,6 +1086,7 @@ export class Calculo {
     this.cache.clear();
     this.tipos.clear();
     this.derramado.clear();
+    this.tamanhos.clear();
     this.pendentes = null;
     this.extensao.clear();
   }
@@ -1111,6 +1127,15 @@ export class Calculo {
     const aba = (nome?: string) => (nome === undefined ? s : this.indiceDaAba(nome));
     return {
       ler: (a, b, nome) => { const t = aba(nome); return t < 0 ? E("#REF!") : this.ler(a, b, t); },
+      derrame: (a, b, nome) => {
+        const t = aba(nome);
+        if (t < 0) return null;
+        const k = `${t}:${a},${b}`;
+        const x = this.conteudos.get(k);
+        if (!x || !("formula" in x)) return null;
+        this.calcular(k);
+        return this.tamanhos.get(k) ?? null;
+      },
       hoje: this.hoje,
       agora,
       oculta: (x, nome) => { const t = aba(nome); return t >= 0 && this.linhaOculta(x, t); },
@@ -1149,6 +1174,7 @@ export class Calculo {
       else if (r.some((linha, i) => linha.some((_, j) => (i || j) && (this.conteudos.has(chave(i, j)) || this.derramado.has(chave(i, j)))))) v = E("#DESPEJAR!");
       else {
         r.forEach((linha, i) => linha.forEach((x, j) => { if (i || j) this.derramado.set(chave(i, j), x ?? null); }));
+        this.tamanhos.set(k, { linhas: r.length, colunas: r[0].length });
         v = r[0][0] ?? null;
       }
     } else v = r ?? 0; // fórmula que aponta para uma célula vazia mostra 0, como no Excel
