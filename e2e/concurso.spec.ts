@@ -48,3 +48,19 @@ test("concurso: filtro por banca, planilha para testar, alternativa errada expli
   await expect(page.getByTestId("lista-concurso")).toContainText("SOMA com intervalo e célula");
   await expect(page.getByText(new RegExp(`você já acertou 1 de ${todas.length}`))).toBeVisible();
 });
+
+test("questão sobre outras abas: as abas aparecem para consulta, sem aceitar digitação", async ({ page }) => {
+  await limparArmazenamento(page);
+  await page.goto("/concurso/abas-referencia-3d-conceito");
+  const planilha = visivel(page, "planilha-de-teste");
+  await expect(planilha).toHaveAttribute("data-so-consulta", "true");
+  const abas = planilha.getByTestId("abas");
+  await expect(abas.getByRole("tab")).toHaveCount(5); // Resumo + Jan, Fev, Mar, Abr
+  await abas.getByRole("tab", { name: "Fev" }).click();
+  await expect(abas.getByRole("tab", { name: "Fev" })).toHaveAttribute("aria-selected", "true");
+  await expect(planilha.getByTestId("barra-formulas")).toHaveCount(0);
+  await celula(page, "D5").click();
+  await page.keyboard.type("=Jan!B2");
+  await page.keyboard.press("Enter");
+  await expect(celula(page, "D5")).toHaveText("");
+});

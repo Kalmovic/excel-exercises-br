@@ -458,9 +458,16 @@ export default function Simulador({
                       ? "Planilha só para consulta: confira os dados e resolva a fórmula de cabeça, como na prova."
                       : "Planilha para testar as alternativas: o que você digita aqui não conta como resposta."}
                   </p>
-                  {semTeclado && !soConsulta && <BarraToque />}
-                  {!soConsulta && <BarraFormulas />}
-                  <Grade larguras={ex.grade.larguras} />
+                  {ex.abas?.length ? (
+                    // Questão sobre outras abas (3D, INDIRETO...): mostra as abas, para o aluno ver os dados delas.
+                    <AreaPlanilha ex={ex} nucleo={nucleo} entradaRef={entradaRef} barraToque={semTeclado && !soConsulta} somenteLeitura={soConsulta} />
+                  ) : (
+                    <>
+                      {semTeclado && !soConsulta && <BarraToque />}
+                      {!soConsulta && <BarraFormulas />}
+                      <Grade larguras={ex.grade.larguras} />
+                    </>
+                  )}
                 </div>
               )}
               <Alternativas opcoes={ex.opcoes} bloqueado={concluido || respondida !== null || conferindo} />
