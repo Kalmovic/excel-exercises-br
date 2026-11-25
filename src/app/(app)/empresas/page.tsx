@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cartoes, Passos, Perguntas, Secao, Topo } from "@/components/publico/blocos";
+import { botaoClaro, botaoEscuro, Cartoes, Passos, Perguntas, Secao, Topo } from "@/components/publico/blocos";
 import { FormContato } from "@/components/publico/FormContato";
 import { NOME_SITE, PRECO_EMPRESAS, reais } from "@/lib/site";
 
 const TITULO = "Treinamento de Excel para equipes: nivelamento com resultado medido";
 const DESCRICAO =
-  "Nivele o Excel da sua equipe com exercícios práticos em português. Piloto de 30 dias, relatório de resultado e contrato anual por pessoa, com nota fiscal e boleto.";
+  "Nivele o Excel da sua equipe com exercícios práticos em português. Contrato anual por pessoa, com nota fiscal, boleto ou Pix, link de convite e painel do gestor.";
 
 export const metadata: Metadata = {
   title: { absolute: `${TITULO} | ${NOME_SITE}` },
@@ -20,38 +20,57 @@ const DORES = [
   { titulo: "Onboarding lento", texto: "Gente nova que demora semanas para dominar as planilhas da área." },
 ];
 
-const PILOTO: [string, string][] = [
-  ["Conversa", "Entendemos onde o Excel trava a equipe e quais funções importam para a área."],
-  ["Nível de partida", "Medimos o nível de cada pessoa antes de começar."],
-  ["30 dias de prática", "De 5 a 10 pessoas na trilha, alguns minutos por dia, com o desafio diário para manter o ritmo."],
-  ["Relatório", "O nível antes e depois, por pessoa, para quem aprova o investimento."],
+const COMO_FUNCIONA: [string, string][] = [
+  ["Proposta", "Você conta quantas pessoas e para quem vai a cobrança. Mandamos a proposta com o valor fechado do ano."],
+  ["Fatura", "Aprovada a proposta, a fatura chega no e-mail do financeiro: boleto, Pix ou cartão, com nota fiscal para o CNPJ."],
+  ["Link de convite", "Com o pagamento confirmado, o gestor recebe o link. Cada pessoa entra com o próprio e-mail e ganha o Pro na hora."],
+  ["Painel do gestor", "Vagas usadas, lições concluídas, certificados e último acesso de cada pessoa. Trocou alguém? Remove e a vaga fica livre."],
 ];
 
 const FAQ: [string, string][] = [
-  ["Quanto custa?", `A partir de ${reais(PRECO_EMPRESAS.porPessoaDesde)} por pessoa por mês, com mínimo de ${PRECO_EMPRESAS.minimoPessoas} pessoas e contrato anual. O piloto de 30 dias vem antes de qualquer contrato.`],
-  ["Emitem nota fiscal?", "Sim, com pagamento por boleto ou Pix."],
+  [
+    "Quanto custa?",
+    `A partir de ${reais(PRECO_EMPRESAS.porPessoaDesde)} por pessoa por mês, com mínimo de ${PRECO_EMPRESAS.minimoPessoas} pessoas e contrato anual (${reais(PRECO_EMPRESAS.porPessoaDesde * 12)} por pessoa no ano, pago de uma vez).`,
+  ],
+  ["Emitem nota fiscal?", "Sim, NFS-e para o CNPJ da empresa, com pagamento por boleto, Pix ou cartão."],
   ["Precisa instalar alguma coisa?", "Não. Tudo roda no navegador, sem instalar nada e sem licença de Excel."],
-  ["Como acompanho o progresso da equipe?", "No piloto, enviamos o relatório de progresso. O painel do gestor, com convites e exportação, está em construção."],
+  ["Como acompanho o progresso da equipe?", "No painel do gestor: quem entrou, quantas lições cada pessoa concluiu, os certificados e o último acesso."],
+  ["E se alguém sair da empresa?", "O gestor remove a pessoa no painel e a vaga fica livre para outra, sem custo. O progresso da pessoa continua na conta dela."],
+  ["O que o gestor vê dos funcionários?", "Nome, e-mail e progresso (lições, certificados, último acesso). Não vê as respostas. A pessoa é avisada disso antes de entrar na equipe."],
 ];
 
 export default function Empresas() {
   return (
     <div className="space-y-14">
-      <Topo selo="Para empresas" titulo="Sua equipe fluente em Excel, com o resultado medido.">
+      <Topo
+        selo="Para empresas"
+        titulo="Sua equipe fluente em Excel, com o resultado medido."
+        cta={
+          <>
+            <a href="#contato" className={botaoEscuro}>
+              Pedir proposta
+            </a>
+            <a href="#como-funciona" className={botaoClaro}>
+              Como funciona
+            </a>
+          </>
+        }
+      >
         <p>
-          Exercícios práticos em português, no navegador, com correção na hora. Começa com um piloto de 30 dias e termina
-          com um relatório de antes e depois.
+          Exercícios práticos em português, no navegador, com correção na hora. A partir de {reais(PRECO_EMPRESAS.porPessoaDesde)} por pessoa por mês
+          (contrato anual, mínimo de {PRECO_EMPRESAS.minimoPessoas} pessoas), com painel para o gestor acompanhar cada pessoa.
         </p>
       </Topo>
       <Secao rotulo="O problema" titulo="Quanto custa o time não saber Excel?">
         <Cartoes itens={DORES} />
       </Secao>
-      <Secao rotulo="Como funciona" titulo="Piloto de 30 dias">
-        <Passos itens={PILOTO} />
+      <Secao id="como-funciona" rotulo="Como funciona a contratação" titulo="Da proposta ao painel, em quatro passos">
+        <Passos itens={COMO_FUNCIONA} />
       </Secao>
-      <Secao id="contato" rotulo="Fale com a gente" titulo="Vamos montar o piloto da sua equipe">
+      <Secao id="contato" rotulo="Pedir proposta" titulo="Vamos montar a proposta da sua equipe">
+        <p className="max-w-2xl text-muted">Conte quantas pessoas e o que a equipe faz no Excel. Respondemos com a proposta em até 2 dias úteis.</p>
         <div className="max-w-2xl rounded-2xl border border-line bg-surface p-6">
-          <FormContato formulario="contato" publico="empresa" />
+          <FormContato formulario="contato" publico="empresa" rotuloBotao="Pedir proposta" />
         </div>
       </Secao>
       <Secao rotulo="Perguntas frequentes" titulo="Sobre o Planilhês para empresas">

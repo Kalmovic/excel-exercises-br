@@ -70,7 +70,7 @@ const PLANO_PRO = [
 const PUBLICOS = [
   { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE e referência absoluta.", link: "Preparar para o teste", href: "/teste-de-excel" },
   { titulo: "Concurso público", texto: "As funções em português que as bancas cobram, testadas numa planilha de verdade.", link: "Excel para concurso", href: "/excel-para-concurso" },
-  { titulo: "Empresas", texto: "Nivele a equipe com um piloto de 30 dias e o resultado medido antes e depois.", link: "Falar com a gente", href: "/empresas", escuro: true },
+  { titulo: "Empresas", texto: "Licenças anuais para a equipe, com painel do gestor para acompanhar cada pessoa.", link: "Pedir proposta", href: "/empresas", escuro: true },
   { titulo: "Universidades", texto: "Trilha prática de Excel como atividade complementar, com piloto grátis para uma turma.", link: "Montar um piloto", href: "/universidades", escuro: true },
 ];
 

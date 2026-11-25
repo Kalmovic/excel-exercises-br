@@ -3,12 +3,14 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const SEGREDO = "whsec_teste_segredo";
 const rpc = vi.fn();
+// Licença de empresa: por padrão o cliente não é de empresa (o fluxo do aluno segue igual).
+const rpcEmpresa = vi.fn<(args: object) => Promise<{ data: string | null; error: { message: string } | null }>>(async () => ({ data: "nao_empresa", error: null }));
 const cancelar = vi.fn(async () => ({}));
 const buscarCobranca = vi.fn(async (id: string) => ({ id, customer: "cus_7" }));
 const reembolsar = vi.fn<(p: object, o?: object) => Promise<{ id: string }>>(async () => ({ id: "re_1" }));
 vi.mock("@/lib/supabase/admin", () => ({
   supabaseAdmin: () => ({
-    rpc,
+    rpc: (nome: string, args: object) => (nome === "registrar_pagamento_empresa" ? rpcEmpresa(args) : rpc(nome, args)),
     from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: { stripe_assinatura_id: "sub_1" } }) }) }) }),
   }),
 }));
@@ -138,5 +140,76 @@ describe("webhook do Stripe", async () => {
     expect((await POST(assinado(reembolso))).status).toBe(200);
     expect(nfse.cancelar).toHaveBeenCalledWith("pi_1", expect.anything());
     nfse.configurada.mockReturnValue(false);
+  });
+
+  describe("licença de empresa", () => {
+    const faturaPaga = {
+      id: "evt_org_1",
+      type: "invoice.paid",
+      created: anualPago.created,
+      data: {
+        object: {
+          id: "in_org_1",
+          customer: "cus_org",
+          currency: "brl",
+          amount_paid: 90000,
+          status_transitions: { paid_at: anualPago.created },
+          lines: { data: [{ quantity: 5, period: { start: 1, end: 1 } }] },
+          metadata: { organizacao_id: "org-1", assentos: "5" },
+          parent: null,
+        },
+      },
+    };
+    beforeEach(() => {
+      rpcEmpresa.mockReset();
+      rpcEmpresa.mockResolvedValue({ data: "nao_empresa", error: null });
+    });
+
+    it("fatura paga: ativa a organização (sem passar pela função do aluno) e emite a nota", async () => {
+      nfse.configurada.mockReturnValue(true);
+      nfse.emitir.mockClear();
+      rpcEmpresa.mockResolvedValue({ data: "aplicado", error: null });
+      const r = await POST(assinado(faturaPaga));
+      expect(r.status).toBe(200);
+      expect(rpcEmpresa).toHaveBeenCalledWith(
+        expect.objectContaining({ p_evento_id: "evt_org_1", p_acao: "liberar", p_organizacao: "org-1", p_cliente: "cus_org", p_fatura: "in_org_1", p_pago_em: new Date(anualPago.created * 1000).toISOString() }),
+      );
+      expect(rpc).not.toHaveBeenCalled();
+      expect(nfse.emitir).toHaveBeenCalledTimes(1);
+      // Organização desconhecida: sem nota.
+      rpcEmpresa.mockResolvedValue({ data: "desconhecido", error: null });
+      await POST(assinado({ ...faturaPaga, id: "evt_org_2" }));
+      expect(nfse.emitir).toHaveBeenCalledTimes(1);
+      nfse.configurada.mockReturnValue(false);
+    });
+
+    it("reembolso da fatura da empresa: cancela a organização e a nota, sem mexer em assinatura de aluno", async () => {
+      nfse.configurada.mockReturnValue(true);
+      nfse.cancelar.mockClear();
+      rpcEmpresa.mockResolvedValue({ data: "aplicado", error: null });
+      const reembolso = { id: "evt_org_3", type: "charge.refunded", created: anualPago.created, data: { object: { id: "ch_org", refunded: true, customer: "cus_org", payment_intent: "pi_org" } } };
+      expect((await POST(assinado(reembolso))).status).toBe(200);
+      expect(rpcEmpresa).toHaveBeenCalledWith(expect.objectContaining({ p_acao: "cancelar", p_cliente: "cus_org" }));
+      expect(rpc).not.toHaveBeenCalled();
+      expect(cancelar).not.toHaveBeenCalled();
+      expect(nfse.cancelar).toHaveBeenCalledWith("pi_org", expect.anything());
+      nfse.configurada.mockReturnValue(false);
+    });
+
+    it("reembolso de aluno: a função da empresa responde nao_empresa e o fluxo do aluno segue igual", async () => {
+      rpc.mockResolvedValue({ data: "aplicado", error: null });
+      await POST(assinado({ id: "evt_org_4", type: "charge.refunded", created: anualPago.created, data: { object: { customer: "cus_1", refunded: true } } }));
+      expect(rpcEmpresa).toHaveBeenCalledTimes(1);
+      expect(rpc).toHaveBeenCalledWith("registrar_pagamento", expect.objectContaining({ p_acao: "revogar", p_cliente: "cus_1" }));
+      expect(cancelar).toHaveBeenCalledWith("sub_1");
+    });
+
+    it("erro no banco na função da empresa: 500 (o Stripe reenvia)", async () => {
+      vi.spyOn(console, "error").mockImplementation(() => {});
+      rpcEmpresa.mockResolvedValue({ data: null, error: { message: "caiu" } });
+      expect((await POST(assinado(faturaPaga))).status).toBe(500);
+      expect((await POST(assinado({ id: "evt_org_5", type: "charge.refunded", created: anualPago.created, data: { object: { customer: "cus_org", refunded: true } } }))).status).toBe(500);
+      expect(rpc).not.toHaveBeenCalled();
+    });
   });
 });

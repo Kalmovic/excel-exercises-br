@@ -16,6 +16,11 @@ import type Stripe from "stripe";
 export type AcaoPagamento =
   | { acao: "ignorar" }
   | { acao: "liberar"; cliente: string | null; usuario?: string | null; plano: "mensal" | "anual"; acessoAte: Date; assinatura?: string | null }
+  /**
+   * Fatura avulsa da licença de empresa (gerada no admin, src/lib/fatura-empresa.ts),
+   * paga: ativa a organização (função registrar_pagamento_empresa, que calcula a validade).
+   */
+  | { acao: "liberar_empresa"; organizacao: string; cliente: string | null; fatura: string; pagoEm: Date }
   | { acao: "atrasar" | "cancelar_renovacao" | "reativar"; cliente: string | null }
   /** `cobranca`: a disputa não traz o cliente; o webhook o busca pela cobrança. */
   | { acao: "revogar"; cliente: string | null; cobranca?: string | null }
@@ -53,6 +58,13 @@ export function traduzirEvento(evento: Stripe.Event): AcaoPagamento {
     // Mensal: cada fatura paga (inclusive a primeira) libera até o fim do período dela.
     case "invoice.paid": {
       const f = evento.data.object;
+      // Empresa: fatura avulsa (sem assinatura) com a organização nos metadados, que só o nosso admin grava.
+      const organizacao = f.metadata?.organizacao_id;
+      if (organizacao && !f.parent?.subscription_details?.subscription) {
+        if (!f.id || f.currency !== "brl") return { acao: "ignorar" };
+        const pago = f.status_transitions?.paid_at ?? evento.created;
+        return { acao: "liberar_empresa", organizacao, cliente: id(f.customer), fatura: f.id, pagoEm: new Date(pago * 1000) };
+      }
       const fim = Math.max(0, ...f.lines.data.map((l) => l.period?.end ?? 0));
       if (!fim) return { acao: "ignorar" };
       const detalhes = f.parent?.subscription_details;
@@ -66,6 +78,8 @@ export function traduzirEvento(evento: Stripe.Event): AcaoPagamento {
       return { acao: "liberar", cliente: id(f.customer), usuario, plano: "mensal", acessoAte: new Date(fim * 1000 + TOLERANCIA_DIAS * DIA), assinatura };
     }
     case "invoice.payment_failed":
+      // Fatura de empresa (boleto/Pix): não há assinatura de aluno para atrasar.
+      if (evento.data.object.metadata?.organizacao_id) return { acao: "ignorar" };
       return { acao: "atrasar", cliente: id(evento.data.object.customer) };
     case "customer.subscription.updated": {
       const a = evento.data.object;
