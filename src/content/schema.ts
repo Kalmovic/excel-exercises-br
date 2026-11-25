@@ -291,6 +291,18 @@ const baseSchema = z.object({
   banca: z.string().optional(),
   tema: z.string().optional(),
   /**
+   * Questão REAL de prova que cobrou a mesma coisa do mesmo jeito (a nossa é inédita, inspirada nela).
+   * Só preencher com fonte conferida: aparece para o aluno como "Caiu parecido em ...".
+   */
+  referencia: z
+    .object({
+      /** Ex.: "FCC · TRT 2ª Região · Analista Judiciário · 2023". */
+      prova: z.string().min(5).max(140),
+      /** Página da questão original (QConcursos, TEC, Gran...). */
+      url: z.url().optional(),
+    })
+    .optional(),
+  /**
    * Textos para aparelhos sem teclado físico (celular, tablet), quando o
    * exercício pede teclado. Com isto, a correção também deixa de exigir as setas.
    */
