@@ -61,7 +61,7 @@ const PLANO_GRATIS = [
 const PLANO_PRO = [
   "Todos os exercícios, do Fundamentos aos casos reais",
   "Pacote de exercícios novo todo mês",
-  "Questões de concurso com planilha para testar",
+  "Questões de concurso no formato das bancas, com a planilha ao lado",
   "Simulados de teste de Excel para vagas",
   "Arquivo de desafios antigos",
   "Certificado de conclusão",

@@ -291,8 +291,8 @@ const baseSchema = z.object({
   banca: z.string().optional(),
   tema: z.string().optional(),
   /**
-   * Questão REAL de prova que cobrou a mesma coisa do mesmo jeito (a nossa é inédita, inspirada nela).
-   * Só preencher com fonte conferida: aparece para o aluno como "Caiu parecido em ...".
+   * Prova REAL em que o mesmo tema já caiu (a nossa questão é inédita).
+   * Só preencher com fonte conferida: aparece para o aluno como "Tema já cobrado: ...". Pode ser de outra banca.
    */
   referencia: z
     .object({

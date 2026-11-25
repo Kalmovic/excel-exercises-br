@@ -21,7 +21,7 @@ const COBRA = [
   { titulo: "CONT.SE, SOMASE, MÉDIA", texto: <>Contar e somar com critério, com o critério entre aspas. <LinkExercicio slug="cont-valores-vendas">Treinar</LinkExercicio></> },
   { titulo: "PROCV", texto: <>Os quatro argumentos e o famoso FALSO no fim. <LinkExercicio slug="procv-preco-pelo-codigo-exato">Treinar PROCV</LinkExercicio></> },
   { titulo: "Operadores e ordem das contas", texto: "Multiplicação antes da soma, parênteses, & para juntar textos." },
-  { titulo: "Questões no estilo das bancas", texto: "Enunciado de prova com a planilha ao lado para testar cada alternativa.", selo: "Em breve no Pro" },
+  { titulo: "Questões no estilo das bancas", texto: "Questões inéditas no formato da prova, com a planilha ao lado e o concurso em que o tema já caiu.", selo: "No Pro" },
 ];
 
 const FAQ: [string, string][] = [
@@ -47,7 +47,7 @@ export default function ExcelParaConcurso() {
         <div className="space-y-2">
           <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-ink">Pro</span>
           <p className="font-display text-2xl font-extrabold">Questões no estilo das bancas, com a planilha ao lado</p>
-          <p className="text-white/70">FCC, Cesgranrio, Vunesp, FGV e Cebraspe. Teste cada alternativa antes de responder.</p>
+          <p className="text-white/70">FCC, Cesgranrio, Vunesp, FGV e Cebraspe. Questões inéditas, com a planilha ao lado e a prova em que o tema já caiu.</p>
         </div>
         <Link href="/concurso" className="shrink-0 rounded-lg bg-accent px-5 py-3 font-semibold text-ink hover:brightness-95">
           Ver as questões
