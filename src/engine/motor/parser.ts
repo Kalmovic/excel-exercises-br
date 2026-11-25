@@ -12,6 +12,11 @@ export type No =
    * (1:1) até `ULTIMA_COLUNA`; o cálculo corta no tamanho da aba.
    */
   | { t: "int"; a: { l: number; c: number }; b: { l: number; c: number }; aba?: string }
+  /**
+   * Referência 3D (`Jan:Mar!B2`, `'Jan 1:Mar 1'!B2:B6`): a mesma célula ou
+   * intervalo em todas as abas de `ini` até `fim`, pela ordem das abas.
+   */
+  | { t: "ref3d"; ini: string; fim: string; a: { l: number; c: number }; b: { l: number; c: number } }
   | { t: "un"; op: string; x: No }
   | { t: "pct"; x: No }
   | { t: "bin"; op: string; a: No; b: No }
@@ -28,7 +33,7 @@ export type No =
 export const ULTIMA_LINHA = 1_048_575;
 export const ULTIMA_COLUNA = 16_383;
 
-type Tok = { k: "num" | "txt" | "id" | "ref" | "faixa" | "aba" | "op" | "(" | ")" | ";" | "{" | "}" | "\\" | "fim" | "erro"; v: string };
+type Tok = { k: "num" | "txt" | "id" | "ref" | "faixa" | "aba" | "aba3d" | "op" | "(" | ")" | ";" | "{" | "}" | "\\" | "fim" | "erro"; v: string; v2?: string };
 
 const REF = /^\$?([A-Z]{1,3})\$?(\d+)/;
 const ID = /^[A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*/;
@@ -52,6 +57,12 @@ function tokens(s: string): Tok[] {
       out.push({ k: "txt", v }); i = j + 1; continue;
     }
     let m;
+    // Intervalo de abas antes de uma referência (3D): Jan:Mar!B2 ou 'Jan 1:Mar 1'!B2.
+    if ((m = /^'((?:[^':]|'')+):((?:[^':]|'')+)'!/.exec(r)) || (m = /^([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*):([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*)!/.exec(r))) {
+      out.push({ k: "aba3d", v: m[1].replace(/''/g, "'"), v2: m[2].replace(/''/g, "'") });
+      i += m[0].length;
+      continue;
+    }
     // Nome de aba antes de uma referência: Vendas!A1 ou 'Base 2024'!A1 (aspas simples quando tem espaço).
     if ((m = /^'((?:[^']|'')+)'!/.exec(r)) || (m = /^([A-Za-zÀ-ÖØ-öø-ÿ_][A-Za-zÀ-ÖØ-öø-ÿ0-9_.]*)!/.exec(r))) {
       out.push({ k: "aba", v: m[1].replace(/''/g, "'") });
@@ -149,6 +160,16 @@ export function analisar(formula: string): No {
     if (t.k === "{") return lerMatriz();
     if (t.k === "op" && (t.v === "-" || t.v === "+")) { const x = expr(6); return t.v === "-" ? { t: "un", op: "-", x } : x; }
     if (t.k === "(") { const x = expr(0); espera(")"); return x; }
+    if (t.k === "aba3d") {
+      const r = pega();
+      const lados = r.k === "faixa" ? posFaixa(r.v) : null;
+      if (lados) return { t: "ref3d", ini: t.v, fim: t.v2!, ...lados };
+      if (r.k !== "ref") throw new Error("esperava ref");
+      const a = posRef(r.v);
+      let b = a;
+      if (olha().k === "op" && olha().v === ":") { pega(); b = posRef(espera("ref").v); }
+      return { t: "ref3d", ini: t.v, fim: t.v2!, a: { l: Math.min(a.l, b.l), c: Math.min(a.c, b.c) }, b: { l: Math.max(a.l, b.l), c: Math.max(a.c, b.c) } };
+    }
     if (t.k === "aba" || t.k === "ref" || t.k === "faixa") {
       const aba = t.k === "aba" ? t.v : undefined;
       const r = t.k === "aba" ? pega() : t;

@@ -5482,44 +5482,82 @@
     "ordem": 85,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: a última parcela que fecha o total",
     "enunciado": [
-      "Uma célula com formato de moeda mostra **R$ 18,41**, mas a fórmula dela dá 18,4075. Que valor entra numa SOMA que usa essa célula?"
+      "Em uma planilha do Excel 365 em português, um técnico da área financeira precisa dividir o valor de um contrato (B1) pelo número de parcelas (B2). As seis primeiras parcelas são arredondadas em centavos, e a última parcela deve fechar exatamente o valor do contrato.",
+      "Com B1 = 2.500 e B2 = 7, ele digitou na célula B9 a fórmula `=B1-6*ARRED(B1/B2;2)`. O valor exibido em B9 é:"
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 10,
+      "colunas": 4,
+      "larguras": {
+        "A": 150,
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Valor do contrato",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "2500",
+          "formato": "moeda"
+        },
+        "A2": {
+          "entrada": "Parcelas",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "7"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "18,41",
-        "dica": "Essa é só a aparência. O formato arredonda o que aparece na tela, não o que fica guardado."
+        "texto": "357,14",
+        "dica": "Esse é o valor de cada uma das seis primeiras parcelas. A última recebe a sobra do arredondamento."
       },
       {
-        "texto": "18,4075"
+        "texto": "2.142,84",
+        "dica": "Esse é o total das seis parcelas arredondadas. A fórmula ainda subtrai esse total de B1."
       },
       {
-        "texto": "18",
-        "dica": "Nada arredonda para inteiro aqui: a SOMA usa o valor guardado, com todas as casas."
+        "texto": "357,16"
       },
       {
-        "texto": "Depende da largura da coluna",
-        "dica": "A largura muda só como o número aparece. O valor guardado é sempre o mesmo."
+        "texto": "357,142857",
+        "dica": "O ARRED com 2 casas já cortou a dízima das seis parcelas; a última fecha a conta com a diferença."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Não há erro: a fórmula só usa números e a função ARRED."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "dicas": [
-      "O formato muda a aparência; o ARRED muda o valor."
+      "Calcule primeiro a parcela arredondada, multiplique por 6 e veja quanto falta para o valor do contrato."
     ],
     "explicacao": [
-      "A SOMA usa o valor guardado, 18,4075. Para que ela use 18,41, o arredondamento tem que estar na fórmula, com ARRED."
+      "2.500 ÷ 7 = 357,142857…, que o ARRED deixa em 357,14. Seis parcelas somam 2.142,84; a última é 2.500 − 2.142,84 = 357,16, e o total fecha em 2.500,00."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "arred-parcelas-que-fecham",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FCC",
+    "tema": "Arredondamento",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B1-6*ARRED(B1/B2;2)",
+        "esperado": 357.16
+      },
+      {
+        "formula": "=6*ARRED(B1/B2;2)",
+        "esperado": 2142.84
+      }
+    ]
   },
   {
     "id": "55ed3921-b8f1-584d-992b-d971fe749fa4",
@@ -5879,44 +5917,126 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: o total das tarifas do mês",
     "enunciado": [
-      "Com **B2:B4** = 2, 3 e 1 e **C2:C4** = 10, 20 e 5, quanto dá **=SOMARPRODUTO(B2:B4;C2:C4)**?"
+      "Um escriturário de uma agência bancária controla, em uma planilha do Excel 365 em português, as tarifas cobradas de um cliente no mês: a quantidade de cada serviço está em B2:B5 e o valor unitário da tarifa, em C2:C5.",
+      "Qual fórmula calcula corretamente o total cobrado no mês (quantidade × tarifa de cada serviço, somados)?"
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 7,
+      "colunas": 5,
+      "larguras": {
+        "A": 140
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Quantidade",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Tarifa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Transferência"
+        },
+        "B2": {
+          "entrada": "12"
+        },
+        "C2": {
+          "entrada": "8,5",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Saque extra"
+        },
+        "B3": {
+          "entrada": "5"
+        },
+        "C3": {
+          "entrada": "2,5",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Extrato impresso"
+        },
+        "B4": {
+          "entrada": "3"
+        },
+        "C4": {
+          "entrada": "4",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Cheque avulso"
+        },
+        "B5": {
+          "entrada": "2"
+        },
+        "C5": {
+          "entrada": "15",
+          "formato": "moeda"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "210",
-        "dica": "Esse é o resultado de somar cada coluna e multiplicar as somas (6 × 35). O SOMARPRODUTO multiplica linha a linha antes de somar."
+        "texto": "=SOMA(B2:B5)*SOMA(C2:C5)",
+        "dica": "Multiplicar o total de quantidades pelo total de tarifas mistura serviços diferentes: dá 660, e não o total cobrado."
       },
       {
-        "texto": "85"
+        "texto": "=SOMARPRODUTO(B2:C5)",
+        "dica": "Com um intervalo só, o SOMARPRODUTO não tem com o que multiplicar: ele apenas soma as quantidades e as tarifas juntas."
       },
       {
-        "texto": "41",
-        "dica": "41 é a soma de todos os números. O SOMARPRODUTO multiplica os pares da mesma linha."
+        "texto": "=SOMARPRODUTO(B2:B5;C2:C5)"
       },
       {
-        "texto": "6000",
-        "dica": "Isso seria multiplicar todos os números entre si. O SOMARPRODUTO multiplica só os pares da mesma linha e depois soma."
+        "texto": "=SOMARPRODUTO(B2:B5;C3:C6)",
+        "dica": "Os intervalos estão desalinhados em uma linha: cada quantidade é multiplicada pela tarifa do serviço de baixo."
+      },
+      {
+        "texto": "=PRODUTO(B2:B5;C2:C5)",
+        "dica": "PRODUTO multiplica todos os números entre si, sem somar nada."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "dicas": [
-      "Ele multiplica cada par da mesma linha e só depois soma."
+      "O total certo multiplica cada quantidade pela tarifa da mesma linha e só depois soma."
     ],
     "explicacao": [
-      "2 × 10 + 3 × 20 + 1 × 5 = 20 + 60 + 5 = 85."
+      "SOMARPRODUTO multiplica os pares da mesma linha e soma: 12 × 8,50 + 5 × 2,50 + 3 × 4,00 + 2 × 15,00 = R$ 156,50."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "somarproduto-total-do-pedido",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cesgranrio",
+    "tema": "SOMARPRODUTO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SOMARPRODUTO(B2:B5;C2:C5)",
+        "esperado": 156.5
+      },
+      {
+        "formula": "=SOMA(B2:B5)*SOMA(C2:C5)",
+        "esperado": 660
+      },
+      {
+        "formula": "=SOMARPRODUTO(B2:C5)",
+        "esperado": 52
+      },
+      {
+        "formula": "=SOMARPRODUTO(B2:B5;C3:C6)",
+        "esperado": 95
+      }
+    ]
   },
   {
     "id": "a6549443-0d99-56ca-acad-241081d58f9f",
@@ -6429,44 +6549,51 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: referência mista copiada",
     "enunciado": [
-      "Em **C2** está **=SOMA($B$2:B2)**. Copiada para **C5**, ela vira:"
+      "Em uma planilha do Microsoft Excel 365, em sua configuração padrão, um assistente administrativo digitou na célula E2 a fórmula `=B2/B$7`, para calcular quanto cada despesa pesa no total orçado.",
+      "Em seguida, ele copiou a célula E2 e colou na célula F4. Assinale a alternativa que apresenta a fórmula existente em F4."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
+      "linhas": 8,
+      "colunas": 6,
       "celulas": {}
     },
     "opcoes": [
       {
-        "texto": "=SOMA($B$5:B5)",
-        "dica": "O $B$2 está travado inteiro, coluna e linha: ele não muda na cópia."
+        "texto": "=C4/C$9",
+        "dica": "A linha 7 está travada pelo $: ela não muda na cópia, mesmo descendo duas linhas."
       },
       {
-        "texto": "=SOMA($B$2:B5)"
+        "texto": "=C4/B$7",
+        "dica": "Só a linha tem $. A coluna B, sem $, anda uma coluna para a direita, como a outra referência."
       },
       {
-        "texto": "=SOMA(B5:B5)",
-        "dica": "Essa seria a cópia sem nenhum $. Com $B$2, o começo fica parado."
+        "texto": "=B4/B$7",
+        "dica": "Do E para o F a cópia andou uma coluna: as colunas sem $ também andam."
       },
       {
-        "texto": "=SOMA($B$2:B2)",
-        "dica": "Só a parte com $ fica parada. O B2 sem $ desce junto: três linhas abaixo, vira B5."
+        "texto": "=C2/C$7",
+        "dica": "A primeira referência não tem $ nenhum: ela desce duas linhas junto com a cópia."
+      },
+      {
+        "texto": "=C4/C$7"
       }
     ],
-    "correta": 1,
+    "correta": 4,
     "dicas": [
-      "Só anda o que não tem $."
+      "Conte quantas colunas e quantas linhas a cópia andou, e mova só o que não tem $ na frente."
     ],
     "explicacao": [
-      "A parte com $ fica parada e a sem $ anda: de C2 para C5 são três linhas, então B2 vira B5."
+      "De E2 para F4 são uma coluna à direita e duas linhas abaixo. B2 vira C4; em B$7, a coluna anda (C) e a linha fica travada (7): `=C4/C$7`."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "orcamento-do-departamento",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Vunesp",
+    "tema": "Referências"
   },
   {
     "id": "72d0d490-cef2-5c36-a8a8-5ead47a34f58",

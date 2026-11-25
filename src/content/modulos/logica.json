@@ -3851,44 +3851,108 @@
     "ordem": 65,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: boletos vencidos",
     "enunciado": [
-      "Por que dá para comparar datas com < e > numa fórmula?"
+      "Um gerente de relacionamento de um banco acompanha, em uma planilha do Excel 365 em português, os vencimentos de boletos de clientes. A data de referência está na célula H1 (15/03/2027) e os vencimentos, em C2:C4.",
+      "Ele digitou em D2 a fórmula `=SE(C2<=$H$1;\"Vencido\";\"A vencer\")` e a copiou para D3 e D4. Os valores exibidos em D2, D3 e D4 são, respectivamente:"
     ],
     "dicas": [
-      "Pense em como o Excel guarda uma data por baixo da formatação."
+      "Cada data é um número de dias: data menor é data mais antiga. E o sinal <= inclui a data igual."
     ],
     "explicacao": [
-      "Cada data é um número: a quantidade de dias desde 1900. Data maior é data mais tarde."
+      "10/03 e 15/03 são menores ou iguais a 15/03/2027: Vencido. 20/03 é maior: A vencer."
     ],
     "opcoes": [
       {
-        "texto": "Porque o Excel compara as datas como texto, letra por letra",
-        "dica": "Se fosse texto, \"10/12\" viria antes de \"20/11\", e a comparação daria errado."
+        "texto": "Vencido, A vencer e A vencer",
+        "dica": "O <= também vale para a data igual à referência: o boleto que vence em 15/03 entra como Vencido."
       },
       {
-        "texto": "Porque o Excel guarda cada data como um número de dias"
+        "texto": "A vencer, A vencer e Vencido",
+        "dica": "Data menor é data mais antiga: quem venceu em 10/03 já passou da referência."
       },
       {
-        "texto": "Só dá para comparar datas com a função DATADIF",
-        "dica": "DATADIF calcula a diferença entre datas. Para saber qual vem antes, < e > bastam."
+        "texto": "Vencido, Vencido e A vencer"
       },
       {
-        "texto": "Porque as aspas transformam o texto em data",
-        "dica": "É o contrário: entre aspas a data vira texto. Foi o erro da pegadinha."
+        "texto": "Vencido, Vencido e Vencido",
+        "dica": "20/03/2027 é depois de 15/03/2027: o teste dá FALSO e o SE mostra o segundo texto."
+      },
+      {
+        "texto": "#VALOR!, #VALOR! e #VALOR!",
+        "dica": "O Excel compara datas sem erro, porque cada data é guardada como um número."
       }
     ],
-    "correta": 1,
+    "correta": 2,
     "tentativasAteExplicacao": 3,
     "licao": "se-prazo-vencido",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 5,
+      "colunas": 8,
+      "larguras": {
+        "C": 100,
+        "H": 100
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "G1": {
+          "entrada": "Referência",
+          "negrito": true
+        },
+        "H1": {
+          "entrada": "15/03/2027"
+        },
+        "A2": {
+          "entrada": "Cliente 1"
+        },
+        "C2": {
+          "entrada": "10/03/2027"
+        },
+        "A3": {
+          "entrada": "Cliente 2"
+        },
+        "C3": {
+          "entrada": "15/03/2027"
+        },
+        "A4": {
+          "entrada": "Cliente 3"
+        },
+        "C4": {
+          "entrada": "20/03/2027"
+        }
+      }
+    },
+    "banca": "Cesgranrio",
+    "tema": "SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(C2<=$H$1;\"Vencido\";\"A vencer\")",
+        "esperado": "Vencido"
+      },
+      {
+        "formula": "=SE(C3<=$H$1;\"Vencido\";\"A vencer\")",
+        "esperado": "Vencido"
+      },
+      {
+        "formula": "=SE(C4<=$H$1;\"Vencido\";\"A vencer\")",
+        "esperado": "A vencer"
+      }
+    ]
   },
   {
     "id": "a8332630-6873-524b-aa9f-d61a58cb9c18",
@@ -4447,44 +4511,88 @@
     "ordem": 75,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: NÃO com E na análise de despesa",
     "enunciado": [
-      "Qual fórmula dá o mesmo resultado que **NÃO(OU(B2=\"Multa\";B2=\"Pessoal\"))**?"
+      "Em uma planilha do Microsoft Excel 365, em sua configuração padrão, a célula B2 contém o texto **Transporte** e a célula C2 contém o número 750.",
+      "Assinale a alternativa que apresenta o resultado da fórmula `=SE(NÃO(E(B2=\"Transporte\";C2<=500));\"Analisar\";\"Aprovar\")`, digitada na célula D2."
     ],
     "dicas": [
-      "\"Nem Multa, nem Pessoal\": as duas negações precisam valer juntas?"
+      "Resolva de dentro para fora: primeiro o E, depois o NÃO, por fim o SE."
     ],
     "explicacao": [
-      "NÃO(OU(a;b)) é o mesmo que E(NÃO(a);NÃO(b)): diferente de Multa **e** diferente de Pessoal."
+      "B2=\"Transporte\" é VERDADEIRO e C2<=500 é FALSO, então o E dá FALSO. O NÃO inverte para VERDADEIRO, e o SE mostra \"Analisar\"."
     ],
     "opcoes": [
       {
-        "texto": "OU(B2<>\"Multa\";B2<>\"Pessoal\")",
-        "dica": "Esse é o erro da pegadinha: com OU, toda categoria passa."
+        "texto": "Aprovar",
+        "dica": "O E dá FALSO (750 não é menor ou igual a 500), e o NÃO inverte para VERDADEIRO: o SE mostra o primeiro texto."
       },
       {
-        "texto": "NÃO(E(B2=\"Multa\";B2=\"Pessoal\"))",
-        "dica": "E(B2=\"Multa\";B2=\"Pessoal\") nunca é verdadeiro (a célula não tem dois valores), então essa fórmula dá VERDADEIRO sempre."
+        "texto": "Analisar"
       },
       {
-        "texto": "E(B2<>\"Multa\";B2<>\"Pessoal\")"
+        "texto": "VERDADEIRO",
+        "dica": "Esse é o resultado do NÃO, mas o SE devolve um dos dois textos."
       },
       {
-        "texto": "OU(NÃO(B2=\"Multa\");B2=\"Pessoal\")",
-        "dica": "Aqui a despesa Pessoal daria VERDADEIRO, o contrário do que a regra pede."
+        "texto": "FALSO",
+        "dica": "Esse é o resultado do E, antes de o NÃO inverter. E o SE devolve um texto, não um valor lógico."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "Não há erro: E e NÃO aceitam as duas comparações."
       }
     ],
-    "correta": 2,
+    "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "nao-despesa-reembolsavel",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 4,
+      "colunas": 5,
+      "larguras": {
+        "B": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Parecer",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "D-031"
+        },
+        "B2": {
+          "entrada": "Transporte"
+        },
+        "C2": {
+          "entrada": "750",
+          "formato": "moeda"
+        }
+      }
+    },
+    "banca": "Vunesp",
+    "tema": "Funções lógicas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(NÃO(E(B2=\"Transporte\";C2<=500));\"Analisar\";\"Aprovar\")",
+        "esperado": "Analisar"
+      }
+    ]
   },
   {
     "id": "876c57a0-d823-5135-8ca5-c9e12753de26",
@@ -5048,32 +5156,38 @@
     "ordem": 85,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: a célula que parece vazia",
     "enunciado": [
-      "A célula **C5** tem a fórmula **=SE(B5>0;B5;\"\")** e, na tela, aparece vazia. Quanto dá **ÉCÉL.VAZIA(C5)**?"
+      "Em uma planilha do Excel 365 em português, a célula B1 contém o número 0 e a célula A1 contém a fórmula `=SE(B1>0;B1;\"\")`, de modo que A1 aparece em branco na tela.",
+      "Analise as afirmativas a seguir. I. A fórmula `=ÉCÉL.VAZIA(A1)` retorna VERDADEIRO. II. A fórmula `=A1=\"\"` retorna VERDADEIRO. III. A fórmula `=CONT.VALORES(A1)` retorna 0.",
+      "Está correto o que se afirma em:"
     ],
     "dicas": [
-      "Para o ÉCÉL.VAZIA, o que conta é o que está dentro da célula, não o que aparece na tela."
+      "Separe o que a célula mostra do que ela contém: A1 mostra nada, mas contém uma fórmula."
     ],
     "explicacao": [
-      "FALSO: a célula tem uma fórmula, então não está vazia, mesmo mostrando um texto vazio."
+      "Só a II está correta. A fórmula em A1 devolve um texto vazio, que é igual a \"\" (II). Mas a célula não está vazia: ÉCÉL.VAZIA dá FALSO (I) e CONT.VALORES conta 1 (III)."
     ],
     "opcoes": [
       {
-        "texto": "VERDADEIRO",
-        "dica": "Parece vazia, mas tem uma fórmula dentro. Para o ÉCÉL.VAZIA, só é vazia a célula sem nada."
+        "texto": "I, apenas.",
+        "dica": "A1 tem uma fórmula dentro. Para o ÉCÉL.VAZIA, só é vazia a célula sem conteúdo nenhum."
       },
       {
-        "texto": "FALSO"
+        "texto": "II, apenas."
       },
       {
-        "texto": "0",
-        "dica": "ÉCÉL.VAZIA só responde VERDADEIRO ou FALSO, nunca um número."
+        "texto": "I e II, apenas.",
+        "dica": "A afirmativa I é falsa: A1 parece vazia, mas guarda uma fórmula."
       },
       {
-        "texto": "#VALOR!",
-        "dica": "Não há erro: ÉCÉL.VAZIA aceita qualquer célula."
+        "texto": "II e III, apenas.",
+        "dica": "CONT.VALORES conta toda célula com conteúdo, e uma fórmula que devolve texto vazio é conteúdo."
+      },
+      {
+        "texto": "I, II e III.",
+        "dica": "Teste as três na planilha: a fórmula em A1 faz diferença para duas delas."
       }
     ],
     "correta": 1,
@@ -5082,10 +5196,34 @@
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 4,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "=SE(B1>0;B1;\"\")"
+        },
+        "B1": {
+          "entrada": "0"
+        }
+      }
+    },
+    "banca": "FGV",
+    "tema": "Funções lógicas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=ÉCÉL.VAZIA(A1)",
+        "esperado": false
+      },
+      {
+        "formula": "=A1=\"\"",
+        "esperado": true
+      },
+      {
+        "formula": "=CONT.VALORES(A1)",
+        "esperado": 1
+      }
+    ]
   },
   {
     "id": "4fd18f17-abe1-566e-9386-18aeb39a70f6",
@@ -5753,44 +5891,89 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: SES sem o caso que sobra",
     "enunciado": [
-      "Quando **E(C2=\"Procedente\";C2=\"Acordo\")** dá VERDADEIRO?"
+      "Um escritório de advocacia calcula, em uma planilha do Excel 365 em português, os honorários de êxito de cada processo: o valor da causa está em B2, o resultado do processo em C2 e, em D2, se houve trânsito em julgado (Sim ou Não). Na célula E2 foi digitada a fórmula `=SE(D2=\"Sim\";SES(C2=\"Procedente\";B2*20%;C2=\"Acordo\";B2*10%);\"Aguardando\")`.",
+      "Julgue o item a seguir: se B2 contiver 80.000, C2 contiver Improcedente e D2 contiver Sim, a fórmula em E2 retornará 0."
     ],
     "dicas": [
-      "O E exige que todas as condições valham ao mesmo tempo, na mesma célula."
+      "Quando nenhuma condição do SES é verdadeira, ele não devolve zero sozinho."
     ],
     "explicacao": [
-      "Nunca: C2 tem um valor só. Para aceitar uma opção ou a outra, junte as duas com OU."
+      "Errado. Com Improcedente, nenhuma das duas condições do SES é verdadeira e ele devolve #N/D. Para mostrar 0, falta o par final `VERDADEIRO;0`."
     ],
     "opcoes": [
       {
-        "texto": "Quando C2 for Procedente ou Acordo",
-        "dica": "Isso seria o OU. O E pede as duas coisas ao mesmo tempo."
+        "texto": "Certo",
+        "dica": "Nenhuma condição do SES vale para Improcedente, e ele não tem um caso para o que sobra. O que o SES devolve então?"
       },
       {
-        "texto": "Quando C2 for Procedente",
-        "dica": "Com Procedente, a segunda condição (C2 = Acordo) é falsa, e o E inteiro fica falso."
-      },
-      {
-        "texto": "Nunca"
-      },
-      {
-        "texto": "Sempre",
-        "dica": "Para dar VERDADEIRO, C2 teria que ter dois valores ao mesmo tempo."
+        "texto": "Errado"
       }
     ],
-    "correta": 2,
+    "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "honorarios-de-exito",
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 4,
+      "colunas": 6,
+      "larguras": {
+        "B": 110,
+        "C": 110,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor da causa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Resultado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Transitou",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Honorários",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0457/2026"
+        },
+        "B2": {
+          "entrada": "80000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "Improcedente"
+        },
+        "D2": {
+          "entrada": "Sim"
+        }
+      }
+    },
+    "banca": "Cebraspe",
+    "tema": "SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SE(D2=\"Sim\";SES(C2=\"Procedente\";B2*20%;C2=\"Acordo\";B2*10%);\"Aguardando\")",
+        "esperado": "#N/D"
+      },
+      {
+        "formula": "=SE(D2=\"Sim\";SES(C2=\"Procedente\";B2*20%;C2=\"Acordo\";B2*10%;VERDADEIRO;0);\"Aguardando\")",
+        "esperado": 0
+      }
+    ]
   },
   {
     "id": "24345d76-3b0b-5cef-828c-9ba44d86236a",
@@ -6506,32 +6689,37 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: a ordem das condições no SES",
     "enunciado": [
-      "Num SES, se duas condições forem verdadeiras ao mesmo tempo, qual resultado aparece?"
+      "Em uma planilha do Excel 365 em português, um analista classifica os clientes de uma distribuidora. Para o cliente da linha 2, B2 contém o total comprado no ano (120.000), C2 contém os anos de relacionamento (6) e D2 contém os dias de atraso (0).",
+      "Na célula E2 ele digitou `=SES(B2>=50000;\"Prata\";E(B2>=100000;C2>=3);\"Ouro\";D2>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")`. O resultado exibido em E2 é:"
     ],
     "dicas": [
-      "O SES lê as condições da esquerda para a direita."
+      "O SES lê as condições da esquerda para a direita e devolve o resultado da primeira que for verdadeira."
     ],
     "explicacao": [
-      "O da primeira condição verdadeira. Por isso a regra mais forte (a exceção) vem primeiro."
+      "120.000 ≥ 50.000 já é verdadeiro na primeira condição, então o SES devolve \"Prata\" sem olhar as seguintes. Para o Ouro funcionar, a regra mais exigente tem que vir antes."
     ],
     "opcoes": [
       {
-        "texto": "O da última condição verdadeira",
-        "dica": "O SES não chega a olhar as condições seguintes depois de achar uma verdadeira."
+        "texto": "Ouro",
+        "dica": "O cliente cumpre a regra do Ouro, mas o SES para na primeira condição verdadeira, que vem antes."
       },
       {
-        "texto": "O da primeira condição verdadeira"
+        "texto": "Prata"
       },
       {
-        "texto": "Dá erro #N/D",
-        "dica": "O #N/D aparece quando nenhuma condição é verdadeira, não quando mais de uma é."
+        "texto": "Bloqueado",
+        "dica": "D2 é 0: o cliente não tem atraso nenhum."
       },
       {
-        "texto": "Os dois resultados juntos",
-        "dica": "O SES devolve um resultado só."
+        "texto": "Bronze",
+        "dica": "O VERDADEIRO final só vale quando nenhuma condição anterior é verdadeira."
+      },
+      {
+        "texto": "#N/D",
+        "dica": "Esse erro aparece quando nenhuma condição é verdadeira; aqui há o VERDADEIRO no fim."
       }
     ],
     "correta": 1,
@@ -6540,10 +6728,58 @@
     "etapa": 5,
     "papel": "conceito",
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
-    }
+      "linhas": 4,
+      "colunas": 6,
+      "larguras": {
+        "B": 110,
+        "C": 90,
+        "D": 90
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Compras no ano",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Anos de casa",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Dias de atraso",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Classe",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Cliente 1"
+        },
+        "B2": {
+          "entrada": "120000",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "6"
+        },
+        "D2": {
+          "entrada": "0"
+        }
+      }
+    },
+    "banca": "FCC",
+    "tema": "SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=SES(B2>=50000;\"Prata\";E(B2>=100000;C2>=3);\"Ouro\";D2>30;\"Bloqueado\";VERDADEIRO;\"Bronze\")",
+        "esperado": "Prata"
+      }
+    ]
   },
   {
     "id": "0fe2f0c9-b6ed-5eb6-b57f-771fe2579314",

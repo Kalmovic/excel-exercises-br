@@ -767,7 +767,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Só números inteiros de 1 a 100",
@@ -978,7 +978,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 22,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Desconto de 0% a 30%",
@@ -1188,7 +1188,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 23,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Entrega a partir de dezembro",
@@ -1578,7 +1578,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Circular Dados Inválidos",
@@ -1751,7 +1751,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 32,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Status digitados errado",
@@ -1936,7 +1936,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 33,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Mensagem de entrada",
@@ -2082,7 +2082,7 @@
     "trilha": "excel-ptbr",
     "modulo": "validacao",
     "ordem": 34,
-    "nivel": 3,
+    "nivel": 2,
     "plano": "pro",
     "versao": 1,
     "titulo": "Pegadinha: trocar só o alerta",
@@ -3556,6 +3556,4448 @@
     }
   },
   {
+    "id": "7dbb1c66-0b2d-565a-992f-8777c89bdc10",
+    "slug": "validacao-lista-outra-aba",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 6,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A lista que mora em outra aba",
+    "enunciado": [
+      "Na coluna **Área** (C2:C10), crie uma lista suspensa com as áreas que estão na aba **Listas** (A2:A6)."
+    ],
+    "dicas": [
+      "Na Fonte da lista, um intervalo de outra aba se escreve como numa fórmula: o nome da aba, um ponto de exclamação e o endereço.",
+      "Comece na linha 2: a linha 1 da aba Listas é o cabeçalho."
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → Permitir: **Lista** → Fonte: **=Listas!$A$2:$A$6**.",
+      "No Excel, com o cursor na Fonte, você também pode clicar na aba Listas e selecionar A2:A6: ele escreve o endereço. Se alguém corrigir o nome de uma área na aba Listas, a setinha já mostra o nome novo."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-outra-aba",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Em escritório de verdade, as listas (áreas, responsáveis, UFs) ficam numa aba própria, cuidada por uma pessoa só. Todas as validações leem dali.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2026-0101"
+        },
+        "B2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "2026-0102"
+        },
+        "B3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "2026-0103"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "2026-0104"
+        },
+        "B5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "2026-0105"
+        },
+        "B6": {
+          "entrada": "Transportes Rodovale"
+        },
+        "A7": {
+          "entrada": "2026-0106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A8": {
+          "entrada": "2026-0107"
+        },
+        "B8": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "A9": {
+          "entrada": "2026-0108"
+        },
+        "B9": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A10": {
+          "entrada": "2026-0109"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 180,
+        "C": 120
+      },
+      "nome": "Processos"
+    },
+    "abas": [
+      {
+        "nome": "Listas",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Área",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Trabalhista"
+            },
+            "A3": {
+              "entrada": "Cível"
+            },
+            "A4": {
+              "entrada": "Tributário"
+            },
+            "A5": {
+              "entrada": "Família"
+            },
+            "A6": {
+              "entrada": "Previdenciário"
+            }
+          },
+          "larguras": {
+            "A": 120
+          }
+        }
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "Trabalhista",
+          "família"
+        ],
+        "recusa": [
+          "Criminal",
+          "Área"
+        ],
+        "lista": [
+          "Trabalhista",
+          "Cível",
+          "Tributário",
+          "Família",
+          "Previdenciário"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=Listas!$A$2:$A$6"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "973608da-83b0-56d1-9509-40a4089366f0",
+    "slug": "validacao-lista-outra-aba-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A coluna certa da outra aba",
+    "enunciado": [
+      "Na coluna **Responsável** (C2:C7), crie uma lista suspensa com os **nomes** da equipe, que estão na aba **Equipe**."
+    ],
+    "dicas": [
+      "Abra a aba Equipe e veja em que coluna estão os nomes (a outra é a matrícula)."
+    ],
+    "explicacao": [
+      "Selecione **C2:C7** → Validação de Dados → **Lista** → Fonte: **=Equipe!$B$2:$B$6**.",
+      "Com a coluna A, a setinha mostraria matrículas (1023, 1031…), e ninguém sabe de cabeça de quem é cada número."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-outra-aba",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 10,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Tarefa",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Contestação"
+        },
+        "B2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "Recurso ordinário"
+        },
+        "B3": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A4": {
+          "entrada": "Audiência de conciliação"
+        },
+        "B4": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A5": {
+          "entrada": "Cálculos de liquidação"
+        },
+        "B5": {
+          "entrada": "Transportes Rodovale"
+        },
+        "A6": {
+          "entrada": "Parecer tributário"
+        },
+        "B6": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "A7": {
+          "entrada": "Notificação extrajudicial"
+        },
+        "B7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 160,
+        "C": 160
+      },
+      "nome": "Tarefas"
+    },
+    "abas": [
+      {
+        "nome": "Equipe",
+        "grade": {
+          "linhas": 10,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Matrícula",
+              "negrito": true
+            },
+            "B1": {
+              "entrada": "Nome",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "1023"
+            },
+            "B2": {
+              "entrada": "Dra. Helena Prado"
+            },
+            "A3": {
+              "entrada": "1031"
+            },
+            "B3": {
+              "entrada": "Dr. Marcos Teixeira"
+            },
+            "A4": {
+              "entrada": "1044"
+            },
+            "B4": {
+              "entrada": "Dra. Júlia Campos"
+            },
+            "A5": {
+              "entrada": "1052"
+            },
+            "B5": {
+              "entrada": "Rafael Moreira"
+            },
+            "A6": {
+              "entrada": "1060"
+            },
+            "B6": {
+              "entrada": "Sônia Albuquerque"
+            }
+          },
+          "larguras": {
+            "A": 90,
+            "B": 160
+          }
+        }
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C7",
+        "aceita": [
+          "Rafael Moreira"
+        ],
+        "recusa": [
+          "1023",
+          "Rafael"
+        ],
+        "lista": [
+          "Dra. Helena Prado",
+          "Dr. Marcos Teixeira",
+          "Dra. Júlia Campos",
+          "Rafael Moreira",
+          "Sônia Albuquerque"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C7",
+            "permitir": "lista",
+            "fonte": "=Equipe!$B$2:$B$6"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "ba158bb9-4c81-5d2b-90ad-0fe3dbc5945e",
+    "slug": "validacao-lista-outra-aba-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A área nova não aparece",
+    "enunciado": [
+      "O escritório abriu a área **Ambiental**, e a colega já a incluiu na aba **Listas** (A7). Mas a setinha da coluna **Área** (C2:C10) ainda não mostra a área nova.",
+      "Corrija a validação para a lista incluir **Ambiental**."
+    ],
+    "dicas": [
+      "Abra a Validação de Dados com C2:C10 selecionado e leia a Fonte: até que linha ela vai?"
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → Fonte: **=Listas!$A$2:$A$7** → OK.",
+      "A Fonte é um intervalo fixo: quem acrescenta um item embaixo precisa esticar o intervalo. No Excel, transformar a lista em **Tabela** (Ctrl+Alt+T) faz o intervalo crescer sozinho."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-outra-aba",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2026-0101"
+        },
+        "B2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "2026-0102"
+        },
+        "B3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "2026-0103"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "2026-0104"
+        },
+        "B5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "2026-0105"
+        },
+        "B6": {
+          "entrada": "Transportes Rodovale"
+        },
+        "A7": {
+          "entrada": "2026-0106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A8": {
+          "entrada": "2026-0107"
+        },
+        "B8": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "A9": {
+          "entrada": "2026-0108"
+        },
+        "B9": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A10": {
+          "entrada": "2026-0109"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 180,
+        "C": 120
+      },
+      "nome": "Processos",
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=Listas!$A$2:$A$6"
+          }
+        ]
+      }
+    },
+    "abas": [
+      {
+        "nome": "Listas",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Área",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Trabalhista"
+            },
+            "A3": {
+              "entrada": "Cível"
+            },
+            "A4": {
+              "entrada": "Tributário"
+            },
+            "A5": {
+              "entrada": "Família"
+            },
+            "A6": {
+              "entrada": "Previdenciário"
+            },
+            "A7": {
+              "entrada": "Ambiental"
+            }
+          },
+          "larguras": {
+            "A": 120
+          }
+        }
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "Ambiental",
+          "Cível"
+        ],
+        "recusa": [
+          "Criminal"
+        ],
+        "lista": [
+          "Trabalhista",
+          "Cível",
+          "Tributário",
+          "Família",
+          "Previdenciário",
+          "Ambiental"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=Listas!$A$2:$A$7"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "ffcad9a2-864e-5a01-8d6b-dbd2a4abd3c0",
+    "slug": "validacao-lista-outra-aba-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 64,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a Fonte sem o igual",
+    "enunciado": [
+      "Alguém configurou a lista da coluna **Área** (C2:C10), mas a setinha mostra um item só, esquisito: **Listas!$A$2:$A$6**.",
+      "Corrija para a lista mostrar as áreas da aba Listas."
+    ],
+    "dicas": [
+      "Abra a setinha de uma célula da coluna C: o Excel está lendo a Fonte como um item escrito.",
+      "O que diz ao Excel que a Fonte é um endereço, e não um texto?"
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → Fonte: **=Listas!$A$2:$A$6** (com o **=** na frente).",
+      "Sem o sinal de igual, a Fonte é lida como a lista \"Listas!$A$2:$A$6\", um item só. É o erro mais comum de quem copia o endereço de outro lugar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-outra-aba",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2026-0101"
+        },
+        "B2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "2026-0102"
+        },
+        "B3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "2026-0103"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "2026-0104"
+        },
+        "B5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "2026-0105"
+        },
+        "B6": {
+          "entrada": "Transportes Rodovale"
+        },
+        "A7": {
+          "entrada": "2026-0106"
+        },
+        "B7": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A8": {
+          "entrada": "2026-0107"
+        },
+        "B8": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "A9": {
+          "entrada": "2026-0108"
+        },
+        "B9": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A10": {
+          "entrada": "2026-0109"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 180,
+        "C": 120
+      },
+      "nome": "Processos",
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "Listas!$A$2:$A$6"
+          }
+        ]
+      }
+    },
+    "abas": [
+      {
+        "nome": "Listas",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Área",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Trabalhista"
+            },
+            "A3": {
+              "entrada": "Cível"
+            },
+            "A4": {
+              "entrada": "Tributário"
+            },
+            "A5": {
+              "entrada": "Família"
+            },
+            "A6": {
+              "entrada": "Previdenciário"
+            }
+          },
+          "larguras": {
+            "A": 120
+          }
+        }
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "Tributário"
+        ],
+        "recusa": [
+          "Listas!$A$2:$A$6"
+        ],
+        "lista": [
+          "Trabalhista",
+          "Cível",
+          "Tributário",
+          "Família",
+          "Previdenciário"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=Listas!$A$2:$A$6"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "a78daa92-44e3-5240-bda3-a42d9dccf7fe",
+    "slug": "validacao-lista-outra-aba-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 65,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a Fonte em outra planilha",
+    "enunciado": [
+      "Em uma pasta do Excel 365 em português, um técnico deseja que as células C2:C50 da planilha **Cadastro** exibam uma lista suspensa com os itens que estão em A2:A8 da planilha **Apoio**.",
+      "Na janela Validação de Dados, com Permitir: Lista, ele deve informar no campo Fonte:"
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "A Fonte começa com **=** e usa a mesma escrita das fórmulas: nome da planilha, **!** e o intervalo. Assim, quem atualizar a planilha Apoio atualiza a lista."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-lista-outra-aba",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Apoio!$A$2:$A$8",
+        "dica": "Sem o sinal de igual, o texto vira um item da lista."
+      },
+      {
+        "texto": "=Apoio!$A$2:$A$8"
+      },
+      {
+        "texto": "=Apoio:$A$2:$A$8",
+        "dica": "O separador entre a planilha e o endereço é o ponto de exclamação."
+      },
+      {
+        "texto": "=$A$2:$A$8",
+        "dica": "Sem o nome, o endereço é da própria planilha Cadastro."
+      },
+      {
+        "texto": "=\"Apoio!A2:A8\"",
+        "dica": "Entre aspas é um texto, não uma referência."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "FCC",
+    "tema": "Validação de dados"
+  },
+  {
+    "id": "1fad44a1-d9ee-5631-b843-4d2990231843",
+    "slug": "validacao-alerta-aviso",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Aviso: pode, mas confira",
+    "enunciado": [
+      "Reembolsos de até **R$ 500,00** são o normal. Acima disso é possível, mas precisa da aprovação do gestor.",
+      "Em **C2:C10**, aceite valores **de 0 a 500**. Fora disso, mostre um alerta de estilo **Aviso** com o título **Valor alto** (o texto fica a seu critério)."
+    ],
+    "dicas": [
+      "A regra em si é um Decimal entre 0 e 500. O que muda está na aba **Alerta de erro**.",
+      "Em Estilo: Parar proíbe; Aviso pergunta se quer continuar."
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → **Decimal**, **está entre** 0 e 500 → aba **Alerta de erro** → Estilo: **Aviso**, título **Valor alto**.",
+      "Com **Aviso**, quem digita 650 vê a mensagem e a pergunta *Deseja continuar?*: **Sim** grava, **Não** volta para corrigir. Com **Parar**, o 650 não entraria de jeito nenhum, nem com a aprovação do gestor."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-alerta-aviso",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Nem toda regra é proibição. Às vezes o valor fora do normal é possível, mas merece uma segunda olhada: é para isso que servem os estilos Aviso e Informação.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Colaborador",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marina Lopes"
+        },
+        "B2": {
+          "entrada": "Táxi para audiência"
+        },
+        "A3": {
+          "entrada": "Pedro Alves"
+        },
+        "B3": {
+          "entrada": "Hospedagem em Brasília"
+        },
+        "A4": {
+          "entrada": "Marina Lopes"
+        },
+        "B4": {
+          "entrada": "Passagem aérea"
+        },
+        "A5": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B5": {
+          "entrada": "Almoço com cliente"
+        },
+        "A6": {
+          "entrada": "Renata Dias"
+        },
+        "B6": {
+          "entrada": "Cópias autenticadas"
+        },
+        "A7": {
+          "entrada": "Pedro Alves"
+        },
+        "B7": {
+          "entrada": "Estacionamento"
+        },
+        "A8": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B8": {
+          "entrada": "Correios (Sedex)"
+        },
+        "A9": {
+          "entrada": "Renata Dias"
+        },
+        "B9": {
+          "entrada": "Uber"
+        },
+        "A10": {
+          "entrada": "Marina Lopes"
+        },
+        "B10": {
+          "entrada": "Custas de cartório"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 180,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "0",
+          "500",
+          "499,90"
+        ],
+        "recusa": [
+          "500,01",
+          "-10",
+          "abc"
+        ],
+        "alertaEstilo": "aviso",
+        "alertaTitulo": "Valor alto"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "500",
+            "estilo": "aviso",
+            "erro": {
+              "titulo": "Valor alto",
+              "texto": "Acima de R$ 500,00 precisa da aprovação do gestor."
+            }
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "1d2d6bc4-a5b7-5fa0-b558-841ae2c9e134",
+    "slug": "validacao-alerta-aviso-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Informação: só um lembrete",
+    "enunciado": [
+      "O RH aceita até **2 horas extras** por dia sem burocracia; acima disso vale, mas é bom lembrar de anexar a justificativa.",
+      "Em **C2:C10**, aceite de **0 a 2** horas (pode ter decimal, como 1,5) e, fora disso, mostre um alerta de estilo **Informação**."
+    ],
+    "dicas": [
+      "Informação é o estilo mais leve: ele avisa e deixa gravar com um OK."
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → **Decimal**, **está entre** 0 e 2 → aba **Alerta de erro** → Estilo: **Informação**.",
+      "Informação só informa: OK grava, Cancelar desiste. Use quando o valor fora do comum é aceitável e você só quer um lembrete."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-alerta-aviso",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Funcionário",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Horas extras",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "16/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "Diego Rocha"
+        },
+        "B5": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "Elisa Martins"
+        },
+        "B6": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "Gabriela Reis"
+        },
+        "B8": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "Hugo Prates"
+        },
+        "B9": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "A10": {
+          "entrada": "Isabela Cruz"
+        },
+        "B10": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "0",
+          "1,5",
+          "2"
+        ],
+        "recusa": [
+          "2,5",
+          "-1"
+        ],
+        "alertaEstilo": "informacao"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "2",
+            "estilo": "informacao"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "ff96efcf-bfcd-57cd-8db3-1dced0d3df78",
+    "slug": "validacao-alerta-aviso-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Gravar com o aviso",
+    "enunciado": [
+      "A coluna **Valor** já tem a regra de até R$ 500,00 com alerta de **Aviso**.",
+      "A passagem aérea da Marina (**C4**) custou **R$ 1.280,00** e o gestor aprovou. Digite o valor e confirme no alerta."
+    ],
+    "dicas": [
+      "Digite 1280 em C4 e tecle Enter. O alerta pergunta se você quer continuar."
+    ],
+    "explicacao": [
+      "Em **C4**, digite **1280** → Enter → no alerta *Valor alto… Deseja continuar?*, clique em **Sim**.",
+      "Com **Não**, você volta para corrigir o valor; com **Cancelar**, a célula fica como estava. Com o estilo Parar, não haveria como gravar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-alerta-aviso",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Colaborador",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Despesa",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Marina Lopes"
+        },
+        "B2": {
+          "entrada": "Táxi para audiência"
+        },
+        "A3": {
+          "entrada": "Pedro Alves"
+        },
+        "B3": {
+          "entrada": "Hospedagem em Brasília"
+        },
+        "A4": {
+          "entrada": "Marina Lopes"
+        },
+        "B4": {
+          "entrada": "Passagem aérea"
+        },
+        "A5": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B5": {
+          "entrada": "Almoço com cliente"
+        },
+        "A6": {
+          "entrada": "Renata Dias"
+        },
+        "B6": {
+          "entrada": "Cópias autenticadas"
+        },
+        "A7": {
+          "entrada": "Pedro Alves"
+        },
+        "B7": {
+          "entrada": "Estacionamento"
+        },
+        "A8": {
+          "entrada": "Lucas Ferreira"
+        },
+        "B8": {
+          "entrada": "Correios (Sedex)"
+        },
+        "A9": {
+          "entrada": "Renata Dias"
+        },
+        "B9": {
+          "entrada": "Uber"
+        },
+        "A10": {
+          "entrada": "Marina Lopes"
+        },
+        "B10": {
+          "entrada": "Custas de cartório"
+        },
+        "C2": {
+          "entrada": "85",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "740",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 120,
+        "B": 180,
+        "C": 100
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "500",
+            "estilo": "aviso",
+            "erro": {
+              "titulo": "Valor alto",
+              "texto": "Acima de R$ 500,00 precisa da aprovação do gestor."
+            }
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "valores",
+        "intervalo": "C4",
+        "esperado": [
+          [
+            1280
+          ]
+        ],
+        "mensagem": "C4 ainda não tem R$ 1.280,00. Digite o valor, tecle Enter e responda Sim no alerta."
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "C4": "1280"
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "87823f28-abbd-5d9c-96b7-fbb8c0b14aed",
+    "slug": "validacao-alerta-aviso-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 74,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: Aviso onde era para Parar",
+    "enunciado": [
+      "A coluna **CPF** (B2:B10) tem a regra de **11 dígitos**, mas com alerta de estilo **Aviso**: alguém clicou em Sim e um CPF incompleto entrou.",
+      "Faça a regra **barrar** de vez CPFs que não têm 11 dígitos e **apague** o CPF incompleto (ele será conferido com o cliente)."
+    ],
+    "dicas": [
+      "A regra está certa; o problema é o estilo do alerta.",
+      "Circular Dados Inválidos mostra qual CPF furou a regra."
+    ],
+    "explicacao": [
+      "Selecione **B2:B10** → Validação de Dados → aba **Alerta de erro** → Estilo: **Parar** → OK. Depois, **Circular Dados Inválidos** aponta B5: apague-o.",
+      "Aviso e Informação deixam o valor passar com um clique, e com pressa todo mundo clica em Sim. Para dado que não pode estar errado (CPF, CNPJ, número de processo), use **Parar**. Trocar o estilo não limpa o que já entrou: por isso o Circular."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-alerta-aviso",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula Ramos"
+        },
+        "A3": {
+          "entrada": "Bruno Henrique Castro"
+        },
+        "A4": {
+          "entrada": "Carla Mendes"
+        },
+        "A5": {
+          "entrada": "Daniel Fonseca"
+        },
+        "A6": {
+          "entrada": "Eva Lacerda"
+        },
+        "A7": {
+          "entrada": "Fábio Teles"
+        },
+        "A8": {
+          "entrada": "Gabriela Pires"
+        },
+        "A9": {
+          "entrada": "Hugo Mattos"
+        },
+        "A10": {
+          "entrada": "Íris Bastos"
+        },
+        "B1": {
+          "entrada": "CPF",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "52998224725",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "16899535009",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "34608514300",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "4815162342",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "71428793860",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "93541134780",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 120
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "comprimento",
+            "operador": "igual",
+            "valor1": "11",
+            "estilo": "aviso"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "12345678909"
+        ],
+        "recusa": [
+          "1234567890",
+          "123456789012"
+        ],
+        "alertaEstilo": "parar"
+      },
+      {
+        "tipo": "semInvalidos",
+        "intervalo": "B2:B10"
+      }
+    ],
+    "solucao": {
+      "celulas": {
+        "B5": ""
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "comprimento",
+            "operador": "igual",
+            "valor1": "11",
+            "estilo": "parar"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "43d705f2-71a1-54ab-92cb-68af7ef2990b",
+    "slug": "validacao-alerta-aviso-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o estilo que pergunta",
+    "enunciado": [
+      "Na janela Validação de Dados do Excel 365 em português, guia Alerta de erro, há um estilo que, quando é digitado um valor fora da regra, exibe a mensagem configurada e pergunta *Deseja continuar?*, gravando o valor se o usuário clicar em Sim.",
+      "Esse estilo é o:"
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "Os três estilos são **Parar** (proíbe), **Aviso** (pergunta *Deseja continuar?*: Sim, Não, Cancelar) e **Informação** (só informa: OK grava, Cancelar desiste)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-alerta-aviso",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Parar",
+        "dica": "Parar não deixa gravar: só oferece Repetir e Cancelar."
+      },
+      {
+        "texto": "Aviso"
+      },
+      {
+        "texto": "Informação",
+        "dica": "Informação mostra a mensagem com OK e Cancelar, sem a pergunta."
+      },
+      {
+        "texto": "Crítico",
+        "dica": "Não existe estilo com esse nome na validação de dados."
+      },
+      {
+        "texto": "Confirmação",
+        "dica": "Não existe estilo com esse nome na validação de dados."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "Cesgranrio",
+    "tema": "Validação de dados"
+  },
+  {
+    "id": "76cb0380-efbc-5431-bf6c-0fad49efea90",
+    "slug": "validacao-personalizada",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Personalizado: a regra que depende de outra coluna",
+    "enunciado": [
+      "O **desconto** (C2:C10) não pode passar de **10% do valor do pedido** (coluna B) e não pode ser negativo.",
+      "Use **Permitir: Personalizado** com uma fórmula escrita para a **primeira linha** (C2)."
+    ],
+    "dicas": [
+      "A fórmula fala de C2 e de B2, da mesma linha. O Excel a ajusta para as outras linhas, como se você copiasse.",
+      "Duas condições ao mesmo tempo: E(…;…)."
+    ],
+    "explicacao": [
+      "Selecione **C2:C10** → Validação de Dados → Permitir: **Personalizado** → Fórmula: `=E(C2>=0;C2<=B2*10%)`.",
+      "A fórmula vale para cada linha: em C5, o Excel confere =E(C5>=0;C5<=B5*10%). O valor entra quando ela dá **VERDADEIRO**. Nada de $ em B2: com $B$2, todas as linhas comparariam com o pedido da primeira."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-personalizada",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Quando a regra depende de outra coluna (desconto até 10% do pedido, pagamento depois da emissão), nenhuma opção pronta resolve. Personalizado aceita uma fórmula: se ela der VERDADEIRO, o valor entra.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Desconto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "B2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "B3": {
+          "entrada": "3450",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "B4": {
+          "entrada": "980",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Transportes Rodovale"
+        },
+        "B5": {
+          "entrada": "8500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "B7": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Farmácia Vida"
+        },
+        "B8": {
+          "entrada": "5100",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B9": {
+          "entrada": "1750",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Escola Aprender"
+        },
+        "B10": {
+          "entrada": "4200",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "0"
+        ],
+        "recusa": [
+          "-1"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2",
+        "aceita": [
+          "120"
+        ],
+        "recusa": [
+          "120,01"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C5",
+        "aceita": [
+          "850"
+        ],
+        "recusa": [
+          "851"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C7",
+        "aceita": [
+          "64"
+        ],
+        "recusa": [
+          "65"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "personalizado",
+            "formula": "=E(C2>=0;C2<=B2*10%)"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "2da27718-5c66-539e-a8d9-2be9e52ccb9f",
+    "slug": "validacao-personalizada-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pagamento depois da emissão",
+    "enunciado": [
+      "O **pagamento** (C2:C9) não pode ter data **anterior à emissão** da nota (coluna B). No mesmo dia pode."
+    ],
+    "dicas": [
+      "Compare a célula da linha 2 com a emissão da linha 2."
+    ],
+    "explicacao": [
+      "Selecione **C2:C9** → Validação de Dados → **Personalizado** → **=C2>=B2**.",
+      "Data é número no Excel: maior ou igual quer dizer \"no mesmo dia ou depois\". A regra anda junto: em C6, ela confere C6>=B6."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-personalizada",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Nota",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Emissão",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Pagamento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "NF 3301"
+        },
+        "B2": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "NF 3302"
+        },
+        "B3": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "NF 3303"
+        },
+        "B4": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "NF 3304"
+        },
+        "B5": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "NF 3305"
+        },
+        "B6": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "NF 3306"
+        },
+        "B7": {
+          "entrada": "17/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "NF 3307"
+        },
+        "B8": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "NF 3308"
+        },
+        "B9": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C9",
+        "aceita": [
+          "31/12/2027"
+        ],
+        "recusa": [
+          "01/01/2020"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2",
+        "aceita": [
+          "03/11/2026",
+          "04/11/2026"
+        ],
+        "recusa": [
+          "02/11/2026"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C7",
+        "aceita": [
+          "17/11/2026"
+        ],
+        "recusa": [
+          "16/11/2026"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C9",
+            "permitir": "personalizado",
+            "formula": "=C2>=B2"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "b718763f-ec15-54ca-b2cf-92a0dea1f32f",
+    "slug": "validacao-personalizada-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pedido até o estoque",
+    "enunciado": [
+      "A **quantidade pedida** (B2:B9) tem que ser **maior que zero** e **no máximo o estoque** da mesma linha (coluna C)."
+    ],
+    "dicas": [
+      "Duas condições: maior que zero E menor ou igual ao estoque."
+    ],
+    "explicacao": [
+      "Selecione **B2:B9** → Validação de Dados → **Personalizado** → **=E(B2>0;B2<=C2)**.",
+      "Pedir 7 toners com 6 em estoque é barrado na hora, antes de o pedido virar uma promessa que o almoxarifado não cumpre."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-personalizada",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Pedido",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Estoque",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Papel A4 (caixa)"
+        },
+        "C2": {
+          "entrada": "40"
+        },
+        "A3": {
+          "entrada": "Toner HP 85A"
+        },
+        "C3": {
+          "entrada": "6"
+        },
+        "A4": {
+          "entrada": "Pasta suspensa"
+        },
+        "C4": {
+          "entrada": "120"
+        },
+        "A5": {
+          "entrada": "Grampeador"
+        },
+        "C5": {
+          "entrada": "8"
+        },
+        "A6": {
+          "entrada": "Caneta azul (cx.)"
+        },
+        "C6": {
+          "entrada": "25"
+        },
+        "A7": {
+          "entrada": "Envelope pardo"
+        },
+        "C7": {
+          "entrada": "300"
+        },
+        "A8": {
+          "entrada": "Clipes (cx.)"
+        },
+        "C8": {
+          "entrada": "15"
+        },
+        "A9": {
+          "entrada": "Post-it"
+        },
+        "C9": {
+          "entrada": "30"
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 150,
+        "B": 80,
+        "C": 80
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "1"
+        ],
+        "recusa": [
+          "0",
+          "-3"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "B3",
+        "aceita": [
+          "6"
+        ],
+        "recusa": [
+          "7"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "B8",
+        "aceita": [
+          "15"
+        ],
+        "recusa": [
+          "16"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "personalizado",
+            "formula": "=E(B2>0;B2<=C2)"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "7fc01376-cdbc-542c-8865-603728e6ddd8",
+    "slug": "validacao-personalizada-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o $ que travou a regra",
+    "enunciado": [
+      "A comissão (D2:D10) vai até **5% da venda da mesma linha**. A regra já existe, mas a comissão do Bruno (**D3**), de **R$ 400,00** sobre uma venda de R$ 9.000,00, é recusada.",
+      "Corrija a regra."
+    ],
+    "dicas": [
+      "Abra a Validação de Dados em D2:D10 e leia a fórmula: com qual venda ela compara a linha 3?",
+      "Um $ na referência faz todas as linhas olharem para a mesma célula."
+    ],
+    "explicacao": [
+      "Selecione **D2:D10** → Validação de Dados → Fórmula: `=D2<=C2*5%` (sem $ em C2).",
+      "Com **$C$2**, todas as linhas comparavam com a venda da Ana (R$ 3.000), e o limite virou R$ 150 para todo mundo. Na fórmula da validação, o $ funciona igual ao das fórmulas copiadas: trave só o que é igual para todas as linhas."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-personalizada",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Venda",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Comissão",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Souza"
+        },
+        "B2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "C2": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno Lima"
+        },
+        "B3": {
+          "entrada": "Transportes Rodovale"
+        },
+        "C3": {
+          "entrada": "9000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla Dias"
+        },
+        "B4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "C4": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Diego Rocha"
+        },
+        "B5": {
+          "entrada": "Farmácia Vida"
+        },
+        "C5": {
+          "entrada": "6400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Elisa Martins"
+        },
+        "B6": {
+          "entrada": "Escola Aprender"
+        },
+        "C6": {
+          "entrada": "4800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Fábio Nunes"
+        },
+        "B7": {
+          "entrada": "Auto Peças Silva"
+        },
+        "C7": {
+          "entrada": "2200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Gabriela Reis"
+        },
+        "B8": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "C8": {
+          "entrada": "7500",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Hugo Prates"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "3600",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Isabela Cruz"
+        },
+        "B10": {
+          "entrada": "Hotel Serra Azul"
+        },
+        "C10": {
+          "entrada": "12000",
+          "formato": "moeda"
+        },
+        "D2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "D10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 110,
+        "B": 170,
+        "C": 100,
+        "D": 100
+      },
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "D2:D10",
+            "permitir": "personalizado",
+            "formula": "=D2<=$C$2*5%"
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "D2:D10",
+        "aceita": [
+          "0"
+        ],
+        "recusa": []
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "D2",
+        "aceita": [
+          "150"
+        ],
+        "recusa": [
+          "151"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "D3",
+        "aceita": [
+          "400",
+          "450"
+        ],
+        "recusa": [
+          "451"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "D10",
+        "aceita": [
+          "600"
+        ],
+        "recusa": [
+          "601"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "D2:D10",
+            "permitir": "personalizado",
+            "formula": "=D2<=C2*5%"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "ad304381-1968-5299-be15-27f64632711a",
+    "slug": "validacao-personalizada-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 85,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o $ na regra personalizada",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, o intervalo B2:B20 tem validação de dados Personalizada com a fórmula `=B2<=$C$2`. A célula C2 contém 40 e a célula C10 contém 80.",
+      "Ao digitar 50 na célula B10, o valor será:"
+    ],
+    "dicas": [
+      "Use a planilha ao lado para testar as fórmulas das alternativas."
+    ],
+    "explicacao": [
+      "A fórmula é escrita para B2 e anda para cada linha, mas **$C$2** fica travado: em B10 a regra confere 50<=C2, ou seja, 50<=40, que é FALSO. Para comparar com a linha de cada célula, a fórmula seria =B2<=C2."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-personalizada",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "aceito, pois 50 é menor do que 80.",
+        "dica": "Com $C$2, a regra não olha para C10."
+      },
+      {
+        "texto": "recusado, pois a regra compara o valor com C2, que contém 40."
+      },
+      {
+        "texto": "aceito, pois a validação personalizada só vale para B2.",
+        "dica": "Ela vale para todo o intervalo, ajustada a cada linha."
+      },
+      {
+        "texto": "recusado, pois a validação personalizada não aceita referências com $.",
+        "dica": "Aceita: o $ trava a referência, como numa fórmula copiada."
+      },
+      {
+        "texto": "aceito com um aviso, pois o estilo padrão do alerta é Aviso.",
+        "dica": "O estilo padrão é Parar."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 12,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Item",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Limite",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Caneta"
+        },
+        "C2": {
+          "entrada": "40"
+        },
+        "C10": {
+          "entrada": "80"
+        },
+        "A10": {
+          "entrada": "Pasta"
+        }
+      }
+    },
+    "banca": "Vunesp",
+    "tema": "Validação de dados",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=50<=$C$2",
+        "esperado": false
+      },
+      {
+        "formula": "=50<=C10",
+        "esperado": true
+      }
+    ]
+  },
+  {
+    "id": "7ef736b1-fd73-5d9e-9949-9b606c5d1717",
+    "slug": "validacao-sem-repetir",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Sem repetir: a nota lançada duas vezes",
+    "enunciado": [
+      "Na coluna **Nº da NF** (A2:A20), não deixe lançar um número que **já está na lista**.",
+      "Use **Personalizado** com **CONT.SE**: o número só entra se aparecer **uma vez** na coluna."
+    ],
+    "dicas": [
+      "CONT.SE(intervalo;A2) conta quantas vezes o número aparece. Depois de digitado, o número novo já está na coluna: quantas vezes ele pode aparecer?",
+      "O intervalo da contagem é sempre a coluna toda: trave-o com $."
+    ],
+    "explicacao": [
+      "Selecione **A2:A20** → Validação de Dados → **Personalizado** → **=CONT.SE($A$2:$A$20;A2)=1**.",
+      "A validação confere depois de gravar: o número que você acabou de digitar já conta 1. Se der 2, alguém já lançou aquela nota. Sem os $, a regra em A20 contaria só de A20 para baixo e deixaria passar a duplicata de cima."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-sem-repetir",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Nota fiscal lançada duas vezes, processo cadastrado em dobro, CPF repetido: CONT.SE dentro da validação barra a duplicata na hora da digitação.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Nº da NF",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1501",
+          "bloqueada": false
+        },
+        "A3": {
+          "entrada": "1502",
+          "bloqueada": false
+        },
+        "A4": {
+          "entrada": "1503",
+          "bloqueada": false
+        },
+        "A5": {
+          "entrada": "1504",
+          "bloqueada": false
+        },
+        "A6": {
+          "entrada": "1505",
+          "bloqueada": false
+        },
+        "A7": {
+          "entrada": "1506",
+          "bloqueada": false
+        },
+        "A8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A12": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A13": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A14": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A15": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A16": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A17": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A18": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A19": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "A20": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B2": {
+          "entrada": "Papelaria Central",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "TechSoft Licenças",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "Imobiliária Ponto Certo",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "Viação Litoral",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "TechSoft Licenças",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "Papelaria Central",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B14": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B15": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B16": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B17": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B18": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B19": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B20": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "312,4",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "890",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "6500",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "1240",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "450",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "185,9",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C11": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C12": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C13": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C14": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C15": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C16": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C17": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C18": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C19": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C20": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 90,
+        "B": 180,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "A2:A20",
+        "aceita": [
+          "9999"
+        ],
+        "recusa": []
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "A12",
+        "aceita": [
+          "1600"
+        ],
+        "recusa": [
+          "1502",
+          "1506"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "A20",
+        "aceita": [
+          "1601"
+        ],
+        "recusa": [
+          "1501"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "A2:A20",
+            "permitir": "personalizado",
+            "formula": "=CONT.SE($A$2:$A$20;A2)=1"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "6c945219-6815-5d9e-9aae-a011e17c008d",
+    "slug": "validacao-sem-repetir-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E-mail precisa de @",
+    "enunciado": [
+      "Na coluna **E-mail** (B2:B10), só aceite textos que tenham **@**."
+    ],
+    "dicas": [
+      "LOCALIZAR(\"@\";B2) dá a posição do @, ou um erro quando ele não existe.",
+      "ÉNÚM transforma isso em VERDADEIRO ou FALSO."
+    ],
+    "explicacao": [
+      "Selecione **B2:B10** → Validação de Dados → **Personalizado** → **=ÉNÚM(LOCALIZAR(\"@\";B2))**.",
+      "Não garante que o e-mail exista, mas barra o erro mais comum: digitar o nome ou o telefone no campo do e-mail."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-sem-repetir",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana Paula Ramos"
+        },
+        "A3": {
+          "entrada": "Bruno Henrique Castro"
+        },
+        "A4": {
+          "entrada": "Carla Mendes"
+        },
+        "A5": {
+          "entrada": "Daniel Fonseca"
+        },
+        "A6": {
+          "entrada": "Eva Lacerda"
+        },
+        "A7": {
+          "entrada": "Fábio Teles"
+        },
+        "A8": {
+          "entrada": "Gabriela Pires"
+        },
+        "A9": {
+          "entrada": "Hugo Mattos"
+        },
+        "A10": {
+          "entrada": "Íris Bastos"
+        },
+        "B1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 170,
+        "B": 220
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "ana@escritorio.com.br",
+          "contato@silva.adv.br"
+        ],
+        "recusa": [
+          "ana.escritorio.com.br",
+          "11987654321",
+          "Ana Paula"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "personalizado",
+            "formula": "=ÉNÚM(LOCALIZAR(\"@\";B2))"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "39f223bd-c1e4-59d6-b2bc-e0e37753d1e2",
+    "slug": "validacao-sem-repetir-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Código que começa com PRD-",
+    "enunciado": [
+      "Os códigos de produto (B2:B9) sempre começam com **PRD-** (por exemplo, PRD-1042). Só aceite códigos que comecem assim."
+    ],
+    "dicas": [
+      "ESQUERDA(B2;4) pega os 4 primeiros caracteres."
+    ],
+    "explicacao": [
+      "Selecione **B2:B9** → Validação de Dados → **Personalizado** → **=ESQUERDA(B2;4)=\"PRD-\"**.",
+      "Comparar textos no Excel não diferencia maiúsculas: \"prd-77\" também passa. O que a regra barra é o número solto (1042) ou o prefixo errado (PR-1042)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-sem-repetir",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Produto",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Papel A4"
+        },
+        "A3": {
+          "entrada": "Toner HP 85A"
+        },
+        "A4": {
+          "entrada": "Pasta suspensa"
+        },
+        "A5": {
+          "entrada": "Grampeador"
+        },
+        "A6": {
+          "entrada": "Caneta azul"
+        },
+        "A7": {
+          "entrada": "Envelope pardo"
+        },
+        "A8": {
+          "entrada": "Clipes"
+        },
+        "A9": {
+          "entrada": "Post-it"
+        },
+        "B1": {
+          "entrada": "Código",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 130,
+        "B": 110
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B9",
+        "aceita": [
+          "PRD-1042",
+          "PRD-7"
+        ],
+        "recusa": [
+          "1042",
+          "PR-1042",
+          "XPRD-1"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B9",
+            "permitir": "personalizado",
+            "formula": "=ESQUERDA(B2;4)=\"PRD-\""
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "3d5610df-a9a4-588f-bc08-ae1fdcb10815",
+    "slug": "validacao-sem-repetir-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: pode repetir, mas não no mesmo dia",
+    "enunciado": [
+      "Na agenda de atendimentos, o mesmo cliente pode voltar em outro dia, mas **não pode ter dois atendimentos no mesmo dia**.",
+      "Configure a coluna **Cliente** (B2:B20) para barrar só esse caso."
+    ],
+    "dicas": [
+      "Ana Souza já veio em 18/11 e 19/11: ela pode ser marcada de novo em 20/11?",
+      "A contagem precisa olhar duas colunas ao mesmo tempo: o cliente e a data."
+    ],
+    "explicacao": [
+      "Selecione **B2:B20** → Validação de Dados → **Personalizado** → **=CONT.SES($B$2:$B$20;B2;$A$2:$A$20;A2)=1**.",
+      "Com CONT.SE só do cliente, a regra barraria o retorno da Ana em outro dia, que é permitido. CONT.SES conta as linhas com o mesmo cliente **e** a mesma data: se der 2, é atendimento duplicado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-sem-repetir",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 22,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "A4": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "A5": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "A7": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "A9": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A10": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "A12": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A13": {
+          "entrada": "21/11/2026",
+          "formato": "data"
+        },
+        "A14": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "A15": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "A16": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "A17": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "A18": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A19": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "A20": {
+          "entrada": "25/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Ana Souza",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "Bruno Lima",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "Carla Dias",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "Ana Souza",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "Bruno Lima",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "Carla Dias",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "Diego Rocha",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "Elisa Martins",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B14": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B15": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B16": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B17": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B18": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B19": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B20": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 150
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B20",
+        "aceita": [
+          "Cliente Novo"
+        ],
+        "recusa": []
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "B10",
+        "aceita": [
+          "Ana Souza",
+          "Elisa Martins"
+        ],
+        "recusa": [
+          "Bruno Lima",
+          "Carla Dias"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "B12",
+        "aceita": [
+          "Bruno Lima"
+        ],
+        "recusa": [
+          "Elisa Martins"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B20",
+            "permitir": "personalizado",
+            "formula": "=CONT.SES($B$2:$B$20;B2;$A$2:$A$20;A2)=1"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "5411cf4f-1462-557f-bc37-52c08aa54af8",
+    "slug": "validacao-sem-repetir-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 95,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: protocolo sem repetição",
+    "enunciado": [
+      "Um analista quer impedir que números de protocolo se repitam no intervalo A2:A500 de uma planilha do Excel 365 em português.",
+      "Ele selecionou A2:A500 e escolheu validação de dados Personalizada. A fórmula que atende a essa necessidade é:"
+    ],
+    "dicas": [
+      "Use a planilha ao lado para testar as fórmulas das alternativas."
+    ],
+    "explicacao": [
+      "O intervalo é sempre a coluna toda (com $) e o critério é a célula de cada linha (sem $). Como a validação confere depois de gravar, o valor novo já conta 1: se a contagem der 2, é repetido. Na planilha ao lado, o protocolo 2026-0452 aparece duas vezes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-sem-repetir",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "=CONT.SE(A2:A500;A2)=1",
+        "dica": "Sem $, o intervalo desce junto: em A400 contaria só de A400 para baixo."
+      },
+      {
+        "texto": "=CONT.SE($A$2:$A$500;A2)=1"
+      },
+      {
+        "texto": "=CONT.SE($A$2:$A$500;$A$2)=1",
+        "dica": "Com $A$2, todas as células contariam o protocolo da linha 2."
+      },
+      {
+        "texto": "=CONT.SE($A$2:$A$500;A2)>1",
+        "dica": "Assim só seriam aceitos os protocolos repetidos."
+      },
+      {
+        "texto": "=CONT.SE($A$2:$A$500;A2)=0",
+        "dica": "A validação confere depois de gravar: o próprio valor já conta 1."
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 8,
+      "colunas": 4,
+      "celulas": {
+        "A1": {
+          "entrada": "Protocolo",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "2026-0451"
+        },
+        "A3": {
+          "entrada": "2026-0452"
+        },
+        "A4": {
+          "entrada": "2026-0453"
+        },
+        "A5": {
+          "entrada": "2026-0452"
+        }
+      },
+      "larguras": {
+        "A": 100
+      }
+    },
+    "banca": "FGV",
+    "tema": "CONT.SE",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.SE($A$2:$A$500;A2)=1",
+        "esperado": true
+      },
+      {
+        "formula": "=CONT.SE($A$2:$A$500;A3)",
+        "esperado": 2
+      }
+    ]
+  },
+  {
+    "id": "4780eb82-7d0b-5015-9145-a2ef73f12c42",
+    "slug": "validacao-cadastro-clientes",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso: cadastro de clientes à prova de erros",
+    "enunciado": [
+      "Deixe o cadastro à prova dos dois erros mais comuns:",
+      "1) **CPF** (B2:B13): exatamente **11 caracteres** e **sem repetir** um CPF já cadastrado.",
+      "2) **UF** (C2:C13): lista suspensa com as UFs atendidas, que estão na aba **Listas** (A2:A8)."
+    ],
+    "dicas": [
+      "Cada célula tem uma regra só. Para duas condições no CPF, junte as duas numa fórmula Personalizado com E(…;…).",
+      "Tamanho: NÚM.CARACT(B2)=11. Sem repetir: CONT.SE($B$2:$B$13;B2)=1."
+    ],
+    "explicacao": [
+      "**B2:B13** → Personalizado → **=E(NÚM.CARACT(B2)=11;CONT.SE($B$2:$B$13;B2)=1)**.",
+      "**C2:C13** → Lista → Fonte: **=Listas!$A$2:$A$8**.",
+      "Comprimento do texto cuidaria só do tamanho, e criar uma segunda regra por cima substituiria a primeira: por isso as duas condições vão juntas numa fórmula."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cadastro-clientes",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Um cadastro à prova de erros junta tudo: lista de outra aba, fórmula com duas condições e o alerta certo. Cada coluna barra o erro que ela costuma receber.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 15,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "CPF",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "UF",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A7": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A8": {
+          "entrada": "Fernanda Queiroz"
+        },
+        "A9": {
+          "entrada": "Gustavo Henrique Paz"
+        },
+        "A10": {
+          "entrada": "Helena Martins"
+        },
+        "A11": {
+          "entrada": "Igor Sampaio"
+        },
+        "A12": {
+          "entrada": "Joana Ribeiro"
+        },
+        "A13": {
+          "entrada": "Kátia Moraes"
+        },
+        "B2": {
+          "entrada": "52998224725",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "16899535009",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "34608514300",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B12": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B13": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "SP",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "MG",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "PR",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C11": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C12": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "C13": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 120,
+        "C": 60
+      },
+      "nome": "Clientes"
+    },
+    "abas": [
+      {
+        "nome": "Listas",
+        "grade": {
+          "linhas": 12,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "UF",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "SP"
+            },
+            "A3": {
+              "entrada": "RJ"
+            },
+            "A4": {
+              "entrada": "MG"
+            },
+            "A5": {
+              "entrada": "ES"
+            },
+            "A6": {
+              "entrada": "PR"
+            },
+            "A7": {
+              "entrada": "SC"
+            },
+            "A8": {
+              "entrada": "RS"
+            }
+          },
+          "larguras": {
+            "A": 60
+          }
+        }
+      }
+    ],
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B13",
+        "aceita": [
+          "71428793860"
+        ],
+        "recusa": [
+          "123",
+          "1234567890"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "B10",
+        "aceita": [
+          "93541134780"
+        ],
+        "recusa": [
+          "52998224725",
+          "16899535009",
+          "123456789012"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C13",
+        "aceita": [
+          "SP",
+          "rs"
+        ],
+        "recusa": [
+          "BA",
+          "São Paulo"
+        ],
+        "lista": [
+          "SP",
+          "RJ",
+          "MG",
+          "ES",
+          "PR",
+          "SC",
+          "RS"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B13",
+            "permitir": "personalizado",
+            "formula": "=E(NÚM.CARACT(B2)=11;CONT.SE($B$2:$B$13;B2)=1)"
+          },
+          {
+            "intervalo": "C2:C13",
+            "permitir": "lista",
+            "fonte": "=Listas!$A$2:$A$8"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "15f210dc-5597-5630-ae45-4eaa4a96b2a3",
+    "slug": "validacao-cadastro-clientes-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Maior de idade e limite com aviso",
+    "enunciado": [
+      "Hoje é 25/11/2026. Configure duas regras:",
+      "1) **Nascimento** (B2:B10): só quem nasceu **até 25/11/2008** (maior de idade), com o estilo **Parar**.",
+      "2) **Limite de crédito** (C2:C10): de **0 a 50.000**; acima disso é possível com aprovação, então use o estilo **Aviso**."
+    ],
+    "dicas": [
+      "Duas seleções, duas regras: uma Data e uma Decimal.",
+      "O estilo fica na aba Alerta de erro de cada regra."
+    ],
+    "explicacao": [
+      "**B2:B10** → Data → **é menor ou igual a** 25/11/2008 (estilo Parar, o padrão).",
+      "**C2:C10** → Decimal → **está entre** 0 e 50000 → Alerta de erro → Estilo: **Aviso**.",
+      "Menor de idade não pode virar cliente com um clique, por isso Parar. Já o limite alto é só incomum: o Aviso faz a pessoa confirmar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cadastro-clientes",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Nascimento",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Limite de crédito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A7": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A8": {
+          "entrada": "Fernanda Queiroz"
+        },
+        "A9": {
+          "entrada": "Gustavo Henrique Paz"
+        },
+        "A10": {
+          "entrada": "Helena Martins"
+        },
+        "B2": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "formato": "data",
+          "bloqueada": false
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 100,
+        "C": 120
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "25/11/2008",
+          "14/03/1985"
+        ],
+        "recusa": [
+          "26/11/2008",
+          "10/02/2012"
+        ],
+        "alertaEstilo": "parar"
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "0",
+          "50000",
+          "12500,50"
+        ],
+        "recusa": [
+          "50000,01",
+          "-1"
+        ],
+        "alertaEstilo": "aviso"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "data",
+            "operador": "menorIgual",
+            "valor1": "25/11/2008"
+          },
+          {
+            "intervalo": "C2:C10",
+            "permitir": "decimal",
+            "operador": "entre",
+            "valor1": "0",
+            "valor2": "50000",
+            "estilo": "aviso"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "bbe1175f-c723-528a-bd3e-c324982d27df",
+    "slug": "validacao-cadastro-clientes-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "E-mail com @ e sem espaço, com instrução",
+    "enunciado": [
+      "Na coluna **E-mail** (B2:B10), aceite só textos que **tenham @** e **não tenham espaço**.",
+      "Ao clicar na célula, mostre a mensagem de entrada **Digite o e-mail sem espaços, como nome@empresa.com.br**."
+    ],
+    "dicas": [
+      "Duas condições: ÉNÚM(LOCALIZAR(\"@\";B2)) e NÃO(ÉNÚM(LOCALIZAR(\" \";B2))).",
+      "A mensagem fica na aba Mensagem de entrada."
+    ],
+    "explicacao": [
+      "**B2:B10** → Personalizado → **=E(ÉNÚM(LOCALIZAR(\"@\";B2));NÃO(ÉNÚM(LOCALIZAR(\" \";B2))))** → aba **Mensagem de entrada** com o texto pedido.",
+      "Espaço no meio do e-mail é erro clássico de digitação (\"contato silva@…\") e faz a mensagem voltar. A mensagem de entrada evita o erro antes de ele acontecer."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cadastro-clientes",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A7": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A8": {
+          "entrada": "Fernanda Queiroz"
+        },
+        "A9": {
+          "entrada": "Gustavo Henrique Paz"
+        },
+        "A10": {
+          "entrada": "Helena Martins"
+        },
+        "B1": {
+          "entrada": "E-mail",
+          "negrito": true
+        },
+        "B2": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B3": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B4": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B5": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B6": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B7": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B8": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B9": {
+          "entrada": "",
+          "bloqueada": false
+        },
+        "B10": {
+          "entrada": "",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 220
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "B2:B10",
+        "aceita": [
+          "contato@silva.adv.br"
+        ],
+        "recusa": [
+          "contato silva@adv.br",
+          "contato.silva.adv.br"
+        ],
+        "mensagemEntrada": "Digite o e-mail sem espaços, como nome@empresa.com.br"
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "B2:B10",
+            "permitir": "personalizado",
+            "formula": "=E(ÉNÚM(LOCALIZAR(\"@\";B2));NÃO(ÉNÚM(LOCALIZAR(\" \";B2))))",
+            "entrada": {
+              "titulo": "E-mail",
+              "texto": "Digite o e-mail sem espaços, como nome@empresa.com.br"
+            }
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "5898ad98-f170-5010-9399-7b494ac8c2b4",
+    "slug": "validacao-cadastro-clientes-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: o limite que depende do tipo",
+    "enunciado": [
+      "O limite de crédito (C2:C10) vai de **0 a R$ 50.000** para pessoa física (**PF**) e de **0 a R$ 200.000** para pessoa jurídica (**PJ**)."
+    ],
+    "dicas": [
+      "Uma regra Decimal com um limite só serve para um dos tipos: ou barra PJ demais, ou deixa PF passar.",
+      "O teto depende da coluna B: SE(B2=\"PJ\";200000;50000)."
+    ],
+    "explicacao": [
+      "**C2:C10** → Personalizado → **=E(C2>=0;C2<=SE(B2=\"PJ\";200000;50000))**.",
+      "Com Decimal de 0 a 50.000, a construtora não teria o limite que o contrato prevê; de 0 a 200.000, uma pessoa física passaria com R$ 150.000. Quando o limite depende de outra coluna, a resposta é SE dentro do Personalizado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cadastro-clientes",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Tipo",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Limite de crédito",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Construtora Alvorada"
+        },
+        "B2": {
+          "entrada": "PJ"
+        },
+        "A3": {
+          "entrada": "Maria das Graças Souza"
+        },
+        "B3": {
+          "entrada": "PF"
+        },
+        "A4": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "B4": {
+          "entrada": "PJ"
+        },
+        "A5": {
+          "entrada": "José Ricardo Lima"
+        },
+        "B5": {
+          "entrada": "PF"
+        },
+        "A6": {
+          "entrada": "Transportes Rodovale"
+        },
+        "B6": {
+          "entrada": "PJ"
+        },
+        "A7": {
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "B7": {
+          "entrada": "PF"
+        },
+        "A8": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "B8": {
+          "entrada": "PJ"
+        },
+        "A9": {
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "B9": {
+          "entrada": "PF"
+        },
+        "A10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B10": {
+          "entrada": "PJ"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C10": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 180,
+        "B": 60,
+        "C": 120
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C10",
+        "aceita": [
+          "0"
+        ],
+        "recusa": [
+          "-1"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C3",
+        "aceita": [
+          "50000"
+        ],
+        "recusa": [
+          "50001",
+          "150000"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2",
+        "aceita": [
+          "200000",
+          "120000"
+        ],
+        "recusa": [
+          "200001"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C9",
+        "aceita": [
+          "48000"
+        ],
+        "recusa": [
+          "60000"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C10",
+            "permitir": "personalizado",
+            "formula": "=E(C2>=0;C2<=SE(B2=\"PJ\";200000;50000))"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "34148dee-9f66-54bf-99da-43c7749ad29e",
+    "slug": "validacao-cadastro-clientes-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 105,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: duas regras na mesma célula",
+    "enunciado": [
+      "Julgue o item: no Excel, é possível aplicar a uma mesma célula duas regras de validação de dados independentes, uma de Comprimento do texto e outra Personalizada, e ambas passam a ser verificadas simultaneamente a cada digitação."
+    ],
+    "dicas": [
+      "Leia cada alternativa e elimine as que contrariam o que você praticou nesta lição."
+    ],
+    "explicacao": [
+      "Errado. Cada célula guarda **uma** regra de validação; aplicar outra no mesmo intervalo substitui a anterior. Para exigir as duas condições, junte-as numa regra Personalizada com **E**, por exemplo =E(NÚM.CARACT(B2)=11;CONT.SE($B$2:$B$13;B2)=1)."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "validacao-cadastro-clientes",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "Cada célula tem uma regra só: aplicar a segunda substitui a primeira."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "banca": "Cebraspe",
+    "tema": "Validação de dados"
+  },
+  {
     "id": "14c891a1-c70b-55d4-8afe-f44338ced733",
     "slug": "teste-validacao-1",
     "trilha": "excel-ptbr",
@@ -3764,102 +8206,275 @@
     "ordem": 202,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Até 50 unidades",
+    "versao": 2,
+    "titulo": "Desconto até 15%",
     "enunciado": [
-      "A **Quantidade** (B2:B9) só aceita **inteiros de 1 a 50**."
+      "O **desconto** (C2:C9) não pode ser negativo nem passar de **15% do valor** da mesma linha (coluna B)."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "validacao-quantidade",
+    "revisar": "validacao-personalizada",
     "teste": true,
     "type": "ferramenta",
     "grade": {
       "linhas": 12,
       "colunas": 8,
-      "larguras": {
-        "A": 96,
-        "B": 96,
-        "C": 96,
-        "D": 96,
-        "E": 32,
-        "F": 96
-      },
       "celulas": {
         "A1": {
-          "entrada": "Produto",
+          "entrada": "Cliente",
           "negrito": true
         },
         "B1": {
-          "entrada": "Quantidade",
+          "entrada": "Valor",
           "negrito": true
         },
         "C1": {
           "entrada": "Desconto",
           "negrito": true
         },
-        "D1": {
-          "entrada": "Entrega",
+        "A2": {
+          "entrada": "Hotel Serra Azul"
+        },
+        "B2": {
+          "entrada": "2000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Farmácia Vida"
+        },
+        "B3": {
+          "entrada": "4600",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Escola Aprender"
+        },
+        "B4": {
+          "entrada": "800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Auto Peças Silva"
+        },
+        "B5": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Clínica Bem Viver"
+        },
+        "B6": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "B7": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Padaria Pão Nosso"
+        },
+        "B8": {
+          "entrada": "950",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Viação Litoral"
+        },
+        "B9": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "C2": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C3": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C4": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C5": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C6": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C7": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C8": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        },
+        "C9": {
+          "entrada": "",
+          "formato": "moeda",
+          "bloqueada": false
+        }
+      },
+      "larguras": {
+        "A": 160,
+        "B": 100,
+        "C": 100
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "validacao",
+        "intervalo": "C2:C9",
+        "aceita": [
+          "0"
+        ],
+        "recusa": [
+          "-1"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C2",
+        "aceita": [
+          "300"
+        ],
+        "recusa": [
+          "300,01"
+        ]
+      },
+      {
+        "tipo": "validacao",
+        "intervalo": "C7",
+        "aceita": [
+          "900"
+        ],
+        "recusa": [
+          "901"
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "validacoes": [
+          {
+            "intervalo": "C2:C9",
+            "permitir": "personalizado",
+            "formula": "=E(C2>=0;C2<=B2*15%)"
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "validacao": true
+    }
+  },
+  {
+    "id": "44a6a743-7eaa-5bc5-9a85-1d05ec105ccb",
+    "slug": "teste-validacao-3",
+    "trilha": "excel-ptbr",
+    "modulo": "validacao",
+    "ordem": 203,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 3,
+    "titulo": "Responsável da outra aba",
+    "enunciado": [
+      "Na coluna **Responsável** (C2:C10), crie uma lista suspensa com os nomes da aba **Equipe** (A2:A5)."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "validacao-lista-outra-aba",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 12,
+      "colunas": 8,
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Responsável",
           "negrito": true
         },
         "A2": {
-          "entrada": "Caderno"
-        },
-        "A3": {
-          "entrada": "Caneta"
-        },
-        "A4": {
-          "entrada": "Mochila"
-        },
-        "A5": {
-          "entrada": "Estojo"
-        },
-        "A6": {
-          "entrada": "Régua"
-        },
-        "A7": {
-          "entrada": "Agenda"
-        },
-        "A8": {
-          "entrada": "Lápis"
-        },
-        "A9": {
-          "entrada": "Pasta"
+          "entrada": "2026-0101"
         },
         "B2": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Construtora Alvorada"
+        },
+        "A3": {
+          "entrada": "2026-0102"
         },
         "B3": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Maria das Graças Souza"
+        },
+        "A4": {
+          "entrada": "2026-0103"
         },
         "B4": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Padaria Pão Nosso"
+        },
+        "A5": {
+          "entrada": "2026-0104"
         },
         "B5": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "José Ricardo Lima"
+        },
+        "A6": {
+          "entrada": "2026-0105"
         },
         "B6": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Transportes Rodovale"
+        },
+        "A7": {
+          "entrada": "2026-0106"
         },
         "B7": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Ana Beatriz Rocha"
+        },
+        "A8": {
+          "entrada": "2026-0107"
         },
         "B8": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Clínica Bem Viver"
+        },
+        "A9": {
+          "entrada": "2026-0108"
         },
         "B9": {
-          "entrada": "",
-          "bloqueada": false
+          "entrada": "Carlos Eduardo Nunes"
+        },
+        "A10": {
+          "entrada": "2026-0109"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
         },
         "C2": {
           "entrada": "",
@@ -3893,182 +8508,34 @@
           "entrada": "",
           "bloqueada": false
         },
-        "D2": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D3": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D4": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D5": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D6": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D7": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D8": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "D9": {
+        "C10": {
           "entrada": "",
           "bloqueada": false
         }
-      }
-    },
-    "verificacoes": [
-      {
-        "tipo": "validacao",
-        "intervalo": "B2:B9",
-        "aceita": [
-          "1",
-          "50"
-        ],
-        "recusa": [
-          "0",
-          "51",
-          "3,5"
-        ]
-      }
-    ],
-    "solucao": {
-      "recursos": {
-        "validacoes": [
-          {
-            "intervalo": "B2:B9",
-            "permitir": "inteiro",
-            "operador": "entre",
-            "valor1": "1",
-            "valor2": "50"
-          }
-        ]
-      }
-    },
-    "ferramentas": {
-      "validacao": true
-    }
-  },
-  {
-    "id": "44a6a743-7eaa-5bc5-9a85-1d05ec105ccb",
-    "slug": "teste-validacao-3",
-    "trilha": "excel-ptbr",
-    "modulo": "validacao",
-    "ordem": 203,
-    "nivel": 2,
-    "plano": "pro",
-    "versao": 2,
-    "titulo": "Telefone com DDD",
-    "enunciado": [
-      "O **Telefone** (B2:B9), só com números e com DDD, tem **10 ou 11 dígitos** (fixo ou celular)."
-    ],
-    "dicas": [],
-    "explicacao": [
-      "Revise a lição indicada no resultado do teste."
-    ],
-    "tentativasAteExplicacao": 99,
-    "revisar": "validacao-cpf",
-    "teste": true,
-    "type": "ferramenta",
-    "grade": {
-      "linhas": 12,
-      "colunas": 8,
-      "larguras": {
-        "A": 96,
-        "B": 112,
-        "C": 96,
-        "D": 96,
-        "E": 32,
-        "F": 96
       },
-      "celulas": {
-        "A1": {
-          "entrada": "Cliente",
-          "negrito": true
-        },
-        "B1": {
-          "entrada": "Telefone",
-          "negrito": true
-        },
-        "A2": {
-          "entrada": "Ana Paula"
-        },
-        "A3": {
-          "entrada": "Bruno"
-        },
-        "A4": {
-          "entrada": "Carla"
-        },
-        "A5": {
-          "entrada": "Daniel"
-        },
-        "A6": {
-          "entrada": "Eva"
-        },
-        "A7": {
-          "entrada": "Fábio"
-        },
-        "A8": {
-          "entrada": "Gabi"
-        },
-        "A9": {
-          "entrada": "Hugo"
-        },
-        "B2": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B3": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B4": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B5": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B6": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B7": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B8": {
-          "entrada": "",
-          "bloqueada": false
-        },
-        "B9": {
-          "entrada": "",
-          "bloqueada": false
-        }
-      }
+      "larguras": {
+        "A": 90,
+        "B": 180,
+        "C": 120
+      },
+      "nome": "Processos"
     },
     "verificacoes": [
       {
         "tipo": "validacao",
-        "intervalo": "B2:B9",
+        "intervalo": "C2:C10",
         "aceita": [
-          "1132654000",
-          "11987654321"
+          "Júlia"
         ],
         "recusa": [
-          "987654321",
-          "119876543210"
+          "Nome",
+          "Sônia"
+        ],
+        "lista": [
+          "Helena",
+          "Marcos",
+          "Júlia",
+          "Rafael"
         ]
       }
     ],
@@ -4076,18 +8543,46 @@
       "recursos": {
         "validacoes": [
           {
-            "intervalo": "B2:B9",
-            "permitir": "comprimento",
-            "operador": "entre",
-            "valor1": "10",
-            "valor2": "11"
+            "intervalo": "C2:C10",
+            "permitir": "lista",
+            "fonte": "=Equipe!$A$2:$A$5"
           }
         ]
       }
     },
     "ferramentas": {
       "validacao": true
-    }
+    },
+    "abas": [
+      {
+        "nome": "Equipe",
+        "grade": {
+          "linhas": 8,
+          "colunas": 4,
+          "celulas": {
+            "A1": {
+              "entrada": "Nome",
+              "negrito": true
+            },
+            "A2": {
+              "entrada": "Helena"
+            },
+            "A3": {
+              "entrada": "Marcos"
+            },
+            "A4": {
+              "entrada": "Júlia"
+            },
+            "A5": {
+              "entrada": "Rafael"
+            }
+          },
+          "larguras": {
+            "A": 100
+          }
+        }
+      }
+    ]
   },
   {
     "id": "568ee1ae-b355-56d6-838a-80cdcf88a446",

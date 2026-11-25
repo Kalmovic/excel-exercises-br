@@ -231,6 +231,8 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+  // Celular: o gráfico não pode ser mais largo que a área visível da grade (senão o último mês fica cortado).
+  const larguraGrafico = larguraVisivel ? Math.max(220, Math.min(LARGURA_GRAFICO, larguraVisivel - LARGURA_CABECALHO)) : LARGURA_GRAFICO;
 
   /**
    * Rola a grade por dentro até o retângulo (coordenadas do conteúdo), sem deixá-lo
@@ -667,7 +669,7 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
         const p = deEndereco(posGrafico);
         const x = esquerda(Math.min(p.coluna, planilha.colunas - 1));
         const y = topo(Math.min(p.linha, planilha.linhas - 1));
-        return [x, x + LARGURA_GRAFICO, y, y + ALTURA_GRAFICO];
+        return [x, x + larguraGrafico, y, y + ALTURA_GRAFICO];
       })()
     : null;
   const retGraficoRef = useRef(retGrafico);
@@ -714,8 +716,15 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
   const larguraEditor = Math.max(colunas[ancora.coluna], (rascunho.length + 2) * 8);
   // Referências da fórmula: todas colorem o texto; na grade, só as que caem nesta aba.
   const daqui = (aba?: string) => (aba === undefined ? !formulaExterna : !!nomeAba && aba.toUpperCase() === nomeAba.toUpperCase());
+  // Referência 3D (Jan:Mar!B2): pinta em todas as abas do intervalo, pela ordem das abas.
+  const nesta = (r: { aba?: string; ateAba?: string }) => {
+    if (r.ateAba === undefined || !nomeAba) return daqui(r.aba);
+    const ordem = (planilha.pasta?.nomes() ?? []).map((n) => n.toUpperCase());
+    const i = ordem.indexOf(r.aba!.toUpperCase()), j = ordem.indexOf(r.ateAba.toUpperCase()), k = ordem.indexOf(nomeAba.toUpperCase());
+    return i >= 0 && j >= 0 && k >= Math.min(i, j) && k <= Math.max(i, j);
+  };
   const refsTexto = editando ? referenciasDaFormula(rascunho) : [];
-  const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter((r) => daqui(r.aba));
+  const refsCoradas = (editando ? refsTexto : formulaExterna ? referenciasDaFormula(formulaExterna) : []).filter(nesta);
 
   return (
     <div
@@ -908,9 +917,9 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
                 store.setState({ graficoAtivo: i });
               }}
               className={`absolute z-[6] cursor-pointer overflow-hidden rounded-sm bg-white shadow-md ${ativo ? "ring-2 ring-success" : "ring-1 ring-zinc-300"}`}
-              style={{ left: esquerda(Math.min(p.coluna, planilha.colunas - 1)), top: topo(Math.min(p.linha, planilha.linhas - 1)), width: LARGURA_GRAFICO, height: ALTURA_GRAFICO }}
+              style={{ left: esquerda(Math.min(p.coluna, planilha.colunas - 1)), top: topo(Math.min(p.linha, planilha.linhas - 1)), width: larguraGrafico, height: ALTURA_GRAFICO }}
             >
-              <GraficoSvg dados={planilha.dadosDoGrafico(i)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={LARGURA_GRAFICO} altura={ALTURA_GRAFICO} />
+              <GraficoSvg dados={planilha.dadosDoGrafico(i)} tipo={g.tipo} titulo={g.titulo} rotulos={g.rotulos} largura={larguraGrafico} altura={ALTURA_GRAFICO} />
               {/* Botão vazio por cima: focável, Enter/Espaço abre o Design do Gráfico (o nome não disputa com o texto do SVG). */}
               <button
                 type="button"

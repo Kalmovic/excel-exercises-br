@@ -102,6 +102,9 @@ export const criterioFiltroSchema = z.object({ valores: z.array(textoDeCelula).m
 
 export const funcaoValorSchema = z.enum(["soma", "contagem", "media", "max", "min"]);
 
+/** "Mostrar Valores como": omitido = Sem Cálculo; "totalGeral" = % do Total Geral. */
+export const mostrarValorSchema = z.enum(["totalGeral"]);
+
 /**
  * Tabela dinâmica: a configuração das quatro áreas, como no painel do Excel.
  * Campos pela letra da coluna na origem. Por ora: até 1 campo em Linhas, 1 em
@@ -113,7 +116,7 @@ export const dinamicaSchema = z
     destino: endereco,
     linhas: z.array(letraColuna).max(1),
     colunas: z.array(letraColuna).max(1),
-    valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema })).max(3),
+    valores: z.array(z.object({ campo: letraColuna, funcao: funcaoValorSchema, mostrar: mostrarValorSchema.optional() })).max(3),
     /** `valores: null` = (Tudo). */
     filtros: z.array(z.object({ campo: letraColuna, valores: z.array(textoDeCelula).max(200).nullable() })).max(2),
   })
@@ -142,7 +145,11 @@ export const regraCondicionalSchema = z.discriminatedUnion("tipo", [
   z.object({ tipo: z.enum(["barras", "escala"]), intervalo }),
 ]);
 
-export const tipoGraficoSchema = z.enum(["colunas", "barras", "linhas", "pizza"]);
+/**
+ * `empilhadas`: Colunas Empilhadas (cada série é um pedaço da coluna da categoria).
+ * `combinado`: Colunas e Linha (a primeira série em colunas, as outras em linhas, no mesmo eixo).
+ */
+export const tipoGraficoSchema = z.enum(["colunas", "barras", "linhas", "pizza", "empilhadas", "combinado"]);
 
 /**
  * Gráfico flutuando sobre a grade, ancorado em `posicao`. Como no Excel: a
@@ -161,17 +168,22 @@ export const graficoSchema = z.object({
 /**
  * Validação de dados, como a janela do Excel: o que Permitir, o operador e os
  * limites (escritos como na célula: "1", "30%", "01/12/2026"), a Fonte da
- * lista ("Sim;Não" ou "=$F$2:$F$5"), a mensagem de entrada e o alerta de erro.
+ * lista ("Sim;Não", "=$F$2:$F$5" ou "=Listas!$A$2:$A$9"), a fórmula de
+ * Personalizado (escrita para a primeira célula do intervalo, como na
+ * formatação condicional), a mensagem de entrada e o alerta de erro, com o
+ * estilo (Parar, o padrão, não deixa gravar; Aviso e Informação perguntam).
  */
 export const validacaoDadosSchema = z.object({
   intervalo,
-  permitir: z.enum(["lista", "inteiro", "decimal", "data", "comprimento"]),
+  permitir: z.enum(["lista", "inteiro", "decimal", "data", "comprimento", "personalizado"]),
   operador: z.enum(["entre", "fora", "igual", "diferente", "maior", "menor", "maiorIgual", "menorIgual"]).optional(),
   valor1: z.string().max(200).optional(),
   valor2: z.string().max(200).optional(),
   fonte: z.string().max(500).optional(),
+  formula: z.string().startsWith("=").max(300).optional(),
   entrada: z.object({ titulo: z.string().max(50), texto: z.string().max(255) }).optional(),
   erro: z.object({ titulo: z.string().max(50), texto: z.string().max(255) }).optional(),
+  estilo: z.enum(["parar", "aviso", "informacao"]).optional(),
 });
 
 /** Nome de aba como o Excel aceita: até 31 caracteres, sem : \\ / ? * [ ] nem ! (que separa a aba da célula), e sem ' nas pontas. */
@@ -377,7 +389,7 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
     origem: intervalo,
     linhas: z.array(z.string()).default([]),
     colunas: z.array(z.string()).default([]),
-    valores: z.array(z.object({ campo: z.string().optional(), funcao: funcaoValorSchema })).default([]),
+    valores: z.array(z.object({ campo: z.string().optional(), funcao: funcaoValorSchema, mostrar: mostrarValorSchema.optional() })).default([]),
     filtros: z.array(z.object({ campo: z.string(), valores: z.array(z.string()).nullable() })).default([]),
     mensagem: z.string().optional(),
   }),
@@ -402,6 +414,8 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
   z.object({
     tipo: z.literal("grafico"),
     grafico: tipoGraficoSchema,
+    /** Outros tipos que também respondem à pergunta (ex.: barras no lugar de colunas para comparar). */
+    aceitaTambem: z.array(tipoGraficoSchema).optional(),
     categorias: z.array(z.string()),
     series: z.array(z.object({ nome: z.string(), valores: z.array(z.number().nullable()) })).min(1),
     titulo: z.string().optional(),
@@ -422,6 +436,8 @@ export const verificacaoSchema = z.discriminatedUnion("tipo", [
     mensagemEntrada: z.string().optional(),
     alertaTitulo: z.string().optional(),
     alertaTexto: z.string().optional(),
+    /** Estilo do alerta de erro (sem estilo na regra = Parar). */
+    alertaEstilo: z.enum(["parar", "aviso", "informacao"]).optional(),
     mensagem: z.string().optional(),
   }),
   /** Nenhuma célula preenchida do intervalo fura a validação (Circular Dados Inválidos fica vazio). */
@@ -478,6 +494,7 @@ export type ValidacaoDados = z.infer<typeof validacaoDadosSchema>;
 export type TipoGrafico = z.infer<typeof tipoGraficoSchema>;
 export type EstiloDestaque = z.infer<typeof estiloDestaqueSchema>;
 export type FuncaoValor = z.infer<typeof funcaoValorSchema>;
+export type MostrarValor = z.infer<typeof mostrarValorSchema>;
 export type Verificacao = z.infer<typeof verificacaoSchema>;
 export type Exercicio = z.infer<typeof exercicioSchema>;
 export type TipoExercicio = Exercicio["type"];

@@ -18,6 +18,15 @@ export type EstadoSimulador = {
   /** Esc fecha a lista até o próximo caractere digitado. */
   sugestoesFechadas: boolean;
   mensagem: string | null;
+  /**
+   * Validação de dados com alerta Aviso ou Informação: a digitação recusada
+   * espera a resposta (Sim/OK grava assim mesmo). Vale enquanto `mensagem` for esta.
+   */
+  alerta: { estilo: "aviso" | "informacao"; mensagem: string } | null;
+  /** Sim (Aviso) ou OK (Informação): grava o rascunho mesmo fora da regra. */
+  aceitarAlerta: () => boolean;
+  /** Não (Aviso): fecha o alerta e continua editando. */
+  recusarAlerta: () => void;
   /** "apontar": arrastando sobre a grade para inserir um intervalo na fórmula. */
   arrasto: null | "selecao" | "alca" | "apontar";
   alca: Intervalo | null; // área de destino da alça de preenchimento
@@ -77,6 +86,10 @@ export type EstadoSimulador = {
   alternarFiltro: () => void;
   /** Classificar pela coluna da célula ativa: a tabela do filtro, a seleção ou a região atual. */
   classificar: (ordem: "asc" | "desc", coluna?: number) => void;
+  /** A tabela que o Classificar usaria agora (a do filtro, a seleção ou a região atual), ou null com a mensagem. */
+  tabelaParaClassificar: () => { intervalo: Intervalo; cabecalho: boolean } | null;
+  /** Classificar com vários níveis (a janela Classificar): a primeira chave manda, as outras desempatam. */
+  classificarNiveis: (chaves: { coluna: number; ordem: "asc" | "desc" }[], cabecalho: boolean) => void;
 };
 
 const clamp = (v: number, max: number) => Math.max(0, Math.min(max - 1, v));
@@ -100,6 +113,7 @@ export function criarStore(
     indiceSugestao: 0,
     sugestoesFechadas: false,
     mensagem: null,
+    alerta: null,
     arrasto: null,
     alca: null,
     copiado: null,
@@ -221,14 +235,28 @@ export function criarStore(
       }
       const r = planilha.definir(ancora, rascunho);
       if (!r.ok) {
-        set({ mensagem: r.mensagem });
+        set({ mensagem: r.mensagem, alerta: r.alerta ? { estilo: r.alerta, mensagem: r.mensagem } : null });
         return false;
       }
-      set({ modo: "pronto", rascunho: "", mensagem: null });
+      set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null });
       return true;
     },
 
-    cancelar: () => set({ modo: "pronto", rascunho: "", mensagem: null }),
+    aceitarAlerta: () => {
+      const { modo, rascunho, ancora, alerta, mensagem } = get();
+      if (modo === "pronto" || !alerta || alerta.mensagem !== mensagem) return false;
+      const r = planilha.definir(ancora, rascunho, { aceitarAlerta: true });
+      if (!r.ok) {
+        set({ mensagem: r.mensagem, alerta: null });
+        return false;
+      }
+      set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null });
+      return true;
+    },
+
+    recusarAlerta: () => set({ mensagem: null, alerta: null }),
+
+    cancelar: () => set({ modo: "pronto", rascunho: "", mensagem: null, alerta: null }),
 
     limparMensagem: () => set({ mensagem: null }),
 
@@ -333,9 +361,7 @@ export function criarStore(
       planilha.ligarFiltro(int);
     },
 
-    classificar: (ordem, coluna) => {
-      if (get().travada) return;
-      const { ancora } = get();
+    tabelaParaClassificar: () => {
       const sel = get().selecao();
       const f = planilha.filtroAtual();
       const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
@@ -343,17 +369,32 @@ export function criarStore(
       const int = f ? f.intervalo : umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
       if (int.inicio.linha === int.fim.linha) {
         set({ mensagem: "Selecione uma célula dentro da tabela para classificar." });
-        return;
+        return null;
       }
-      const col = coluna ?? ancora.coluna;
+      return { intervalo: int, cabecalho: f ? true : planilha.pareceCabecalho(int) };
+    },
+
+    classificar: (ordem, coluna) => {
+      if (get().travada) return;
+      const tabela = get().tabelaParaClassificar();
+      if (!tabela) return;
+      const int = tabela.intervalo;
+      const col = coluna ?? get().ancora.coluna;
       if (col < int.inicio.coluna || col > int.fim.coluna) {
         set({ mensagem: "A célula ativa precisa estar numa coluna da tabela: é por ela que o Excel classifica." });
         return;
       }
+      get().classificarNiveis([{ coluna: col, ordem }], tabela.cabecalho);
+    },
+
+    classificarNiveis: (chaves, cabecalho) => {
+      if (get().travada || chaves.length === 0) return;
+      const tabela = get().tabelaParaClassificar();
+      if (!tabela) return;
       const r = planilha.classificar({
-        intervalo: intervaloParaTexto(int),
-        chaves: [{ coluna: colunaParaLetras(col), ordem }],
-        cabecalho: f ? true : planilha.pareceCabecalho(int),
+        intervalo: intervaloParaTexto(tabela.intervalo),
+        chaves: chaves.map((k) => ({ coluna: colunaParaLetras(k.coluna), ordem: k.ordem })),
+        cabecalho: planilha.filtroAtual() ? true : cabecalho,
       });
       set({ mensagem: r.ok ? null : r.mensagem });
     },

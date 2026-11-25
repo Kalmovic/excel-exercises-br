@@ -3276,44 +3276,95 @@
     "ordem": 85,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: valor e data dentro da frase",
     "enunciado": [
-      "A célula B2 tem a data 05/12/2026. O que aparece com **=\"Vence em \"&B2**?"
+      "Em uma planilha do Excel 365 em português, a célula A2 contém o número 1234,5 e a célula B2 contém a data 03/02/2027.",
+      "Um assistente deseja que a célula C2 exiba exatamente o texto **Pagar R$ 1.234,50 até 03/02/2027**. Assinale a opção que apresenta a fórmula que produz esse resultado."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 100,
+        "B": 100,
+        "C": 280
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vencimento",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "1234,5",
+          "formato": "moeda"
+        },
+        "B2": {
+          "entrada": "03/02/2027"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Vence em 05/12/2026",
-        "dica": "É o que a gente espera, mas o & usa o número que a data guarda por dentro, não o formato."
+        "texto": "=\"Pagar R$ \"&A2&\" até \"&B2",
+        "dica": "O & junta os valores guardados, sem formato: o número sai como 1234,5 e a data, como o número de série 46421."
       },
       {
-        "texto": "Vence em 46361"
+        "texto": "=\"Pagar R$ \"&TEXTO(A2;\"0,00\")&\" até \"&TEXTO(B2;\"dd/mm/aaaa\")",
+        "dica": "O formato \"0,00\" não tem separador de milhar: o valor sai como 1234,50."
       },
       {
-        "texto": "#VALOR!",
-        "dica": "Não dá erro: o Excel junta sem reclamar. Só que junta o número da data."
+        "texto": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0,00\")&\" até \"&TEXTO(B2;\"mm/dd/aaaa\")",
+        "dica": "Com \"mm/dd/aaaa\" o mês vem antes do dia: a data sai como 02/03/2027."
       },
       {
-        "texto": "Vence em 5/12/26",
-        "dica": "O & não aplica formato de data nenhum: ele usa o número guardado."
+        "texto": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0,00\")&\" até \"&TEXTO(B2;\"dd/mm/aaaa\")"
+      },
+      {
+        "texto": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0\")&\" até \"&TEXTO(B2;\"dd/mm/aa\")",
+        "dica": "Sem as casas decimais o valor é arredondado para 1.235, e \"aa\" mostra o ano com dois dígitos."
       }
     ],
-    "correta": 1,
+    "correta": 3,
     "dicas": [
-      "Por dentro, uma data é o número de dias contados desde 1900."
+      "O & usa o valor guardado na célula, não a aparência. Quem aplica o formato dentro de um texto é a função TEXTO."
     ],
     "explicacao": [
-      "05/12/2026 é guardada como 46361. O & junta esse número; para ver a data, use TEXTO(B2;\"dd/mm/aaaa\")."
+      "TEXTO com \"#.##0,00\" põe o ponto do milhar e as duas casas (1.234,50), e com \"dd/mm/aaaa\" mostra a data no formato brasileiro (03/02/2027)."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "texto-data-e-valor-na-frase",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FGV",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0,00\")&\" até \"&TEXTO(B2;\"dd/mm/aaaa\")",
+        "esperado": "Pagar R$ 1.234,50 até 03/02/2027"
+      },
+      {
+        "formula": "=\"Pagar R$ \"&A2&\" até \"&B2",
+        "esperado": "Pagar R$ 1234,5 até 46421"
+      },
+      {
+        "formula": "=\"Pagar R$ \"&TEXTO(A2;\"0,00\")&\" até \"&TEXTO(B2;\"dd/mm/aaaa\")",
+        "esperado": "Pagar R$ 1234,50 até 03/02/2027"
+      },
+      {
+        "formula": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0,00\")&\" até \"&TEXTO(B2;\"mm/dd/aaaa\")",
+        "esperado": "Pagar R$ 1.234,50 até 02/03/2027"
+      },
+      {
+        "formula": "=\"Pagar R$ \"&TEXTO(A2;\"#.##0\")&\" até \"&TEXTO(B2;\"dd/mm/aa\")",
+        "esperado": "Pagar R$ 1.235 até 03/02/27"
+      }
+    ]
   },
   {
     "id": "7b8747e8-13d3-5895-a45b-4cc1a51ffe27",
@@ -3663,44 +3714,57 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: LOCALIZAR a partir de uma posição",
     "enunciado": [
-      "Quanto dá **=LOCALIZAR(\"-\";\"RH-7-BA\";4)**?"
+      "Em uma planilha do Excel 365 em português, a célula A1 contém o código de lançamento **FIN-2045-RJ**, no qual o primeiro hífen ocupa a 4ª posição.",
+      "Julgue o item a seguir: a fórmula `=LOCALIZAR(\"-\";A1;5)` retorna 4, a posição do primeiro hífen do código."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 130
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "FIN-2045-RJ"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "3",
-        "dica": "3 é a posição do 1º hífen, mas a busca começa na posição 4, depois dele."
+        "texto": "Certo",
+        "dica": "A busca começa na 5ª posição, depois do primeiro hífen. Qual hífen ela encontra?"
       },
       {
-        "texto": "5"
-      },
-      {
-        "texto": "2",
-        "dica": "A posição conta desde o começo do texto, não desde onde a busca começou."
-      },
-      {
-        "texto": "4",
-        "dica": "Na posição 4 está o 7, não um hífen."
+        "texto": "Errado"
       }
     ],
     "correta": 1,
     "dicas": [
-      "O 3º argumento diz de onde começar a procurar, mas a resposta conta desde a primeira letra do texto."
+      "O 3º argumento diz de onde começar a procurar; a posição devolvida continua contada desde o primeiro caractere."
     ],
     "explicacao": [
-      "A busca começa na posição 4 (o 7) e acha o hífen seguinte, que está na posição 5 do texto."
+      "Errado. Começando na 5ª posição, a busca pula o primeiro hífen e encontra o segundo, que está na 9ª posição do texto: o resultado é 9."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "localizar-entre-dois-hifens",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cebraspe",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=LOCALIZAR(\"-\";A1;5)",
+        "esperado": 9
+      },
+      {
+        "formula": "=LOCALIZAR(\"-\";A1)",
+        "esperado": 4
+      }
+    ]
   },
   {
     "id": "d10d96ec-8944-50ef-8d69-84a7eabb89b0",
@@ -4027,44 +4091,73 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: quantos caracteres depois do ARRUMAR",
     "enunciado": [
-      "Quanto dá **=TEXTO(42;\"00000\")**?"
+      "Em uma planilha do Excel 365 em português, a célula A2 recebeu um nome importado de outro sistema: **Ana Paula Reis**, digitado com dois espaços antes do nome, três espaços entre Ana e Paula, dois espaços entre Paula e Reis e um espaço depois de Reis.",
+      "O resultado da fórmula `=NÚM.CARACT(ARRUMAR(A2))` é:"
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 180
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Nome importado",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "  Ana   Paula  Reis "
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "42",
-        "dica": "Cada 0 do formato é um dígito obrigatório: o que faltar vira zero à esquerda."
+        "texto": "20",
+        "dica": "Esse é o tamanho do texto original. O ARRUMAR tira os espaços sobrando antes da contagem."
       },
       {
-        "texto": "00042"
+        "texto": "12",
+        "dica": "O ARRUMAR não apaga todos os espaços: entre uma palavra e outra fica um espaço simples."
       },
       {
-        "texto": "42000",
-        "dica": "Os zeros entram à esquerda, completando os dígitos que faltam."
+        "texto": "13",
+        "dica": "Conte os espaços simples que sobram entre as palavras: três palavras têm dois espaços entre elas."
       },
       {
-        "texto": "0,0042",
-        "dica": "Sem vírgula no formato, não há casas decimais: o 42 continua inteiro."
+        "texto": "14"
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "NÚM.CARACT aceita qualquer texto, inclusive o resultado do ARRUMAR."
       }
     ],
-    "correta": 1,
+    "correta": 3,
     "dicas": [
-      "Cada 0 no formato é um dígito que tem que aparecer."
+      "O ARRUMAR tira os espaços das pontas e deixa um espaço só entre as palavras."
     ],
     "explicacao": [
-      "O formato tem 5 dígitos obrigatórios e o 42 tem 2: o TEXTO completa com 3 zeros à esquerda. O resultado é o texto \"00042\"."
+      "ARRUMAR deixa \"Ana Paula Reis\": 12 letras e 2 espaços simples, 14 caracteres. O texto original tinha 20."
     ],
     "tentativasAteExplicacao": 3,
     "licao": "caso-lista-de-clientes",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FCC",
+    "tema": "Texto",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=NÚM.CARACT(ARRUMAR(A2))",
+        "esperado": 14
+      },
+      {
+        "formula": "=NÚM.CARACT(A2)",
+        "esperado": 20
+      }
+    ]
   },
   {
     "id": "9112376f-d8ab-577e-bb93-eed2a754dc82",

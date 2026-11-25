@@ -2300,44 +2300,69 @@
     "ordem": 65,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: DATAM no fim do mês",
     "enunciado": [
-      "Qual é o resultado de `=DATAM(\"31/01/2027\";1)`?"
+      "Um financiamento contratado em um banco tem a primeira parcela vencendo em 31/08/2027, data registrada na célula A1 de uma planilha do Excel 365 em português. As parcelas seguintes vencem a cada mês.",
+      "O vencimento calculado pela fórmula `=DATAM(A1;6)`, exibido com formato de data, é:"
     ],
     "dicas": [
-      "Fevereiro de 2027 não tem dia 31. O DATAM avança para março ou fica em fevereiro?"
+      "Fevereiro não tem dia 31. O DATAM fica no último dia do mês de chegada, e vale olhar se o ano é bissexto."
     ],
     "explicacao": [
-      "Quando o dia não existe no mês de chegada, o DATAM fica no último dia daquele mês: 28/02/2027."
+      "Seis meses depois de agosto de 2027 é fevereiro de 2028. Como fevereiro não tem dia 31, o DATAM usa o último dia do mês, e 2028 é bissexto: 29/02/2028."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "31/08/2027"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "28/02/2027"
+        "texto": "28/02/2028",
+        "dica": "2028 é ano bissexto: fevereiro tem 29 dias."
       },
       {
-        "texto": "03/03/2027",
-        "dica": "Esse é o resultado de somar o mês com DATA(ANO;MÊS+1;DIA), que transborda para março."
+        "texto": "02/03/2028",
+        "dica": "O DATAM não transborda para o mês seguinte quando o dia não existe."
       },
       {
-        "texto": "02/03/2027",
-        "dica": "Esse é o resultado de somar 30 dias."
+        "texto": "27/02/2028",
+        "dica": "Esse é o resultado de somar 180 dias. O DATAM avança meses de calendário."
+      },
+      {
+        "texto": "29/02/2028"
       },
       {
         "texto": "#NÚM!",
-        "dica": "O DATAM não dá erro: ele ajusta para o último dia do mês."
+        "dica": "O DATAM não dá erro quando o dia 31 não existe: ele se ajusta."
       }
     ],
-    "correta": 0,
+    "correta": 3,
     "tentativasAteExplicacao": 3,
     "licao": "datam-vencimento-das-parcelas",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cesgranrio",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TEXTO(DATAM(A1;6);\"dd/mm/aaaa\")",
+        "esperado": "29/02/2028"
+      },
+      {
+        "formula": "=TEXTO(A1+180;\"dd/mm/aaaa\")",
+        "esperado": "27/02/2028"
+      }
+    ]
   },
   {
     "id": "e4c6c066-1fc0-50d9-a171-165c98853813",
@@ -2876,44 +2901,69 @@
     "ordem": 75,
     "nivel": 2,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: DIA.DA.SEMANA com o tipo 2",
     "enunciado": [
-      "Com `DIA.DA.SEMANA(data;2)`, que números têm o sábado e o domingo?"
+      "Em uma planilha do Microsoft Excel 365, em sua configuração padrão, a célula A1 contém a data 14/11/2026, que caiu num sábado.",
+      "Assinale a alternativa que apresenta o resultado da fórmula `=DIA.DA.SEMANA(A1;2)`."
     ],
     "dicas": [
-      "No tipo 2, a semana começa na segunda-feira, que vale 1."
+      "No tipo 2 a semana começa na segunda-feira, que vale 1."
     ],
     "explicacao": [
-      "No tipo 2, segunda é 1 e domingo é 7: sábado é 6 e domingo é 7. Por isso \"maior que 5\" é o fim de semana."
+      "No tipo 2, segunda é 1 e domingo é 7: o sábado é 6. No tipo 1, o padrão, o sábado seria 7."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "14/11/2026"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "7 e 1",
-        "dica": "Isso é o tipo 1 (o padrão), que começa no domingo."
+        "texto": "7",
+        "dica": "Esse é o sábado no tipo 1 (o padrão), que começa a semana no domingo."
       },
       {
-        "texto": "6 e 7"
+        "texto": "6"
       },
       {
-        "texto": "5 e 6",
-        "dica": "O 5 é a sexta-feira."
+        "texto": "5",
+        "dica": "No tipo 2, o 5 é a sexta-feira."
       },
       {
-        "texto": "6 e 0",
-        "dica": "Zero aparece no tipo 3, que conta de 0 (segunda) a 6 (domingo)."
+        "texto": "1",
+        "dica": "No tipo 2, o 1 é a segunda-feira."
+      },
+      {
+        "texto": "0",
+        "dica": "O zero só aparece no tipo 3, que vai de 0 (segunda) a 6 (domingo)."
       }
     ],
     "correta": 1,
     "tentativasAteExplicacao": 3,
     "licao": "dia-da-semana-fim-de-semana",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Vunesp",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DIA.DA.SEMANA(A1;2)",
+        "esperado": 6
+      },
+      {
+        "formula": "=DIA.DA.SEMANA(A1)",
+        "esperado": 7
+      }
+    ]
   },
   {
     "id": "d6cf062b-aa8a-54e6-9f03-fb29895ea0d2",
@@ -3555,44 +3605,76 @@
     "ordem": 85,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: prazo em dias úteis com feriado",
     "enunciado": [
-      "A intimação foi numa sexta-feira e o prazo é de 1 dia útil, sem feriados. O que `DIATRABALHO(sexta;1)` devolve?"
+      "Em uma planilha do Excel 365 em português, um servidor de um tribunal controla prazos processuais. A célula A1 contém a data da intimação, 18/12/2026 (sexta-feira), e o intervalo C1:C2 contém os feriados 25/12/2026 e 01/01/2027.",
+      "Assinale a opção que indica a data retornada pela fórmula `=DIATRABALHO(A1;5;C1:C2)`, formatada como data."
     ],
     "dicas": [
-      "O DIATRABALHO conta o dia do início?"
+      "O DIATRABALHO não conta o dia da data inicial e pula sábados, domingos e os feriados informados."
     ],
     "explicacao": [
-      "O DIATRABALHO não conta o dia do início e pula o fim de semana: 1 dia útil depois de uma sexta é a segunda-feira."
+      "Contando a partir do dia útil seguinte: 21, 22, 23 e 24/12 são quatro dias úteis; 25/12 é feriado e 26 e 27 são fim de semana; o 5º dia útil é 28/12/2026."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 110,
+        "C": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "18/12/2026"
+        },
+        "C1": {
+          "entrada": "25/12/2026"
+        },
+        "C2": {
+          "entrada": "01/01/2027"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "A própria sexta-feira",
-        "dica": "O dia do início não entra na contagem."
+        "texto": "23/12/2026",
+        "dica": "Isso é somar 5 dias corridos. O DIATRABALHO pula sábados e domingos."
       },
       {
-        "texto": "O sábado",
-        "dica": "Sábado não é dia útil para o DIATRABALHO."
+        "texto": "24/12/2026",
+        "dica": "Essa contagem incluiu o dia da intimação. O DIATRABALHO começa a contar no dia útil seguinte."
       },
       {
-        "texto": "A segunda-feira seguinte"
+        "texto": "25/12/2026",
+        "dica": "O 25/12 está na lista de feriados, que o DIATRABALHO também pula."
       },
       {
-        "texto": "A terça-feira seguinte",
-        "dica": "Isso seriam 2 dias úteis."
+        "texto": "28/12/2026"
+      },
+      {
+        "texto": "29/12/2026",
+        "dica": "Conte de novo a partir da segunda-feira, 21/12: são quatro dias úteis até o Natal e mais um depois dele."
       }
     ],
-    "correta": 2,
+    "correta": 3,
     "tentativasAteExplicacao": 3,
     "licao": "diatrabalho-prazo-processual",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FGV",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TEXTO(DIATRABALHO(A1;5;C1:C2);\"dd/mm/aaaa\")",
+        "esperado": "28/12/2026"
+      },
+      {
+        "formula": "=TEXTO(DIATRABALHO(A1;5);\"dd/mm/aaaa\")",
+        "esperado": "25/12/2026"
+      }
+    ]
   },
   {
     "id": "080dcdb4-1c16-5725-9f6e-bb3b3291ecc8",
@@ -4298,44 +4380,68 @@
     "ordem": 95,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: diferença de horas em número",
     "enunciado": [
-      "Por que se multiplica por 24 uma diferença de horas antes de usá-la numa conta de dinheiro?"
+      "Em uma planilha do Excel 365 em português, um servidor registra o próprio ponto: a célula B2 contém o horário de entrada, 08:15, e a célula C2, o horário de saída, 17:45, ambos com formato de hora.",
+      "Julgue o item a seguir: a fórmula `=(C2-B2)*24`, em uma célula com formato Geral, retorna 9,5, o número de horas entre a entrada e a saída."
     ],
     "dicas": [
-      "Quanto vale 12:00 para o Excel?"
+      "O Excel guarda hora como fração do dia: 12:00 vale 0,5."
     ],
     "explicacao": [
-      "O Excel guarda hora como fração do dia (12:00 = 0,5; 06:00 = 0,25). Vezes 24, a fração vira número de horas: 0,5 × 24 = 12."
+      "Certo. C2 − B2 dá 0,395833…, a fração do dia correspondente a 9 h 30 min. Multiplicada por 24, vira 9,5 horas."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 5,
+      "celulas": {
+        "A1": {
+          "entrada": "Dia",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Entrada",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Saída",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "23/11/2026"
+        },
+        "B2": {
+          "entrada": "08:15"
+        },
+        "C2": {
+          "entrada": "17:45"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "Porque o Excel guarda hora como fração do dia"
+        "texto": "Certo"
       },
       {
-        "texto": "Para arredondar os minutos",
-        "dica": "Multiplicar por 24 não arredonda nada."
-      },
-      {
-        "texto": "Porque a hora extra vale 24 vezes mais",
-        "dica": "O 24 são as horas do dia, não um adicional."
-      },
-      {
-        "texto": "Para converter em minutos",
-        "dica": "Para minutos seria vezes 1.440 (24 × 60)."
+        "texto": "Errado",
+        "dica": "Faça a conta: de 08:15 a 17:45 são 9 horas e meia. O Excel guarda isso como fração do dia, e vezes 24 vira horas."
       }
     ],
     "correta": 0,
     "tentativasAteExplicacao": 3,
     "licao": "horas-trabalhadas-banco-de-horas",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "Cebraspe",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=(C2-B2)*24",
+        "esperado": 9.5
+      }
+    ]
   },
   {
     "id": "736f8a8c-0494-595f-88a5-ee6f85bb75ca",
@@ -5169,44 +5275,73 @@
     "ordem": 105,
     "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Para fixar",
+    "versao": 2,
+    "titulo": "Concurso: o último dia de vigência",
     "enunciado": [
-      "Um contrato de 12 meses começa em 01/03/2026. Qual é o último dia dele?"
+      "Em uma planilha do Excel 365 em português, a célula A1 contém a data de início de um contrato administrativo, 15/01/2027, com vigência de 24 meses.",
+      "Para obter o último dia de vigência do contrato (a véspera de completar os 24 meses), deve-se utilizar a fórmula:"
     ],
     "dicas": [
-      "Ele completa 12 meses em 01/03/2027. O último dia de vigência é esse ou a véspera?"
+      "O DATAM leva até a data em que o contrato completa os meses; o último dia de vigência é a véspera."
     ],
     "explicacao": [
-      "`=DATAM(início;12)-1`: o contrato completa a vigência em 01/03/2027, então o último dia é a véspera, 28/02/2027."
+      "DATAM(A1;24) dá 15/01/2029, quando o contrato completa 24 meses. A véspera, 14/01/2029, é o último dia de vigência."
     ],
     "grade": {
-      "linhas": 1,
-      "colunas": 1,
-      "celulas": {}
+      "linhas": 4,
+      "colunas": 4,
+      "larguras": {
+        "A": 110
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "15/01/2027"
+        }
+      }
     },
     "opcoes": [
       {
-        "texto": "01/03/2027",
-        "dica": "Nessa data o contrato já completou os 12 meses: seria o primeiro dia de um novo período."
+        "texto": "=DATAM(A1;24)",
+        "dica": "Essa é a data em que o contrato completa 24 meses, já o primeiro dia de um novo período."
       },
       {
-        "texto": "28/02/2027"
+        "texto": "=A1+730-1",
+        "dica": "Somar 730 dias ignora o ano bissexto de 2028: dá 13/01/2029, um dia antes do certo."
       },
       {
-        "texto": "24/02/2027",
-        "dica": "Esse é o resultado de somar 360 dias (12 × 30)."
+        "texto": "=FIMMÊS(A1;24)",
+        "dica": "O FIMMÊS vai para o último dia do mês: 31/01/2029."
       },
       {
-        "texto": "28/02/2026",
-        "dica": "Essa data é antes do início do contrato."
+        "texto": "=DATA(ANO(A1)+24;MÊS(A1);DIA(A1))-1",
+        "dica": "Aqui foram somados 24 anos, não 24 meses."
+      },
+      {
+        "texto": "=DATAM(A1;24)-1"
       }
     ],
-    "correta": 1,
+    "correta": 4,
     "tentativasAteExplicacao": 3,
     "licao": "caso-agenda-de-vencimentos",
     "etapa": 5,
-    "papel": "conceito"
+    "papel": "conceito",
+    "banca": "FCC",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=TEXTO(DATAM(A1;24)-1;\"dd/mm/aaaa\")",
+        "esperado": "14/01/2029"
+      },
+      {
+        "formula": "=TEXTO(A1+730-1;\"dd/mm/aaaa\")",
+        "esperado": "13/01/2029"
+      },
+      {
+        "formula": "=TEXTO(FIMMÊS(A1;24);\"dd/mm/aaaa\")",
+        "esperado": "31/01/2029"
+      }
+    ]
   },
   {
     "id": "652075f4-7733-5ef9-ae01-434ccdd6e979",

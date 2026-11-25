@@ -247,8 +247,12 @@ export class Planilha {
     const nomes = this.calculo.abas;
     if (nomes.length < 2) return formula;
     // O nome simples não pode vir colado a "#" (é um erro: #REF!, #VALOR!) nem a outro identificador.
-    return formula.replace(/("(?:[^"]|"")*")|'((?:[^']|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!/g, (m, texto, citado, simples) => {
+    const grafia = (nome: string) => { const i = this.calculo.indiceDaAba(nome); return i < 0 ? nome : nomes[i]; };
+    return formula.replace(/("(?:[^"]|"")*")|'((?:[^':]|'')+):((?:[^':]|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*):([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!|'((?:[^']|'')+)'!|(?<![#A-Za-zÀ-ÖØ-öø-ÿ0-9_.])([A-ZÀ-ÖØ-Þ_][A-ZÀ-ÖØ-Þ0-9_.]*)!/g, (m, texto, ci1, ci2, si1, si2, citado, simples) => {
       if (texto) return texto;
+      // Referência 3D: Jan:Mar! e 'Jan 1:Mar 1'!
+      if (ci1 !== undefined) return `'${grafia(ci1.replace(/''/g, "'")).replace(/'/g, "''")}:${grafia(ci2.replace(/''/g, "'")).replace(/'/g, "''")}'!`;
+      if (si1 !== undefined) return `${grafia(si1)}:${grafia(si2)}!`;
       const nome = (citado ?? simples).replace(/''/g, "'");
       const i = this.calculo.indiceDaAba(nome);
       if (i < 0) return m;
@@ -594,8 +598,12 @@ export class Planilha {
     for (const m of mudancas) this.gravar(deEndereco(m.end), m[lado] ?? "");
   }
 
-  /** Valida (idioma pt-BR e escrita) e grava. Não grava se a validação falhar. */
-  definir(end: string | Pos, bruto: string): Validacao {
+  /**
+   * Valida (idioma pt-BR e escrita) e grava. Não grava se a validação falhar.
+   * Validação de dados com alerta Aviso ou Informação: a recusa vem com
+   * `alerta`, e a tela pergunta; `aceitarAlerta` grava mesmo assim (Sim/OK).
+   */
+  definir(end: string | Pos, bruto: string, opcoes?: { aceitarAlerta?: boolean }): Validacao {
     // Só dentro da grade do exercício (a tela, o servidor e os testes seguem a mesma regra).
     let p: Pos;
     try {
@@ -634,9 +642,9 @@ export class Planilha {
     const antes = this.gravar(p, bruto);
     // Validação de dados: grava, confere o resultado e desfaz se não passar (estilo "Parar" do Excel).
     const recusa = this.recusaDaValidacao(p);
-    if (recusa) {
+    if (recusa && !(recusa.estilo !== "parar" && opcoes?.aceitarAlerta)) {
       this.gravar(p, antes ?? "");
-      return { ok: false, mensagem: recusa };
+      return recusa.estilo === "parar" ? { ok: false, mensagem: recusa.mensagem } : { ok: false, mensagem: recusa.mensagem, alerta: recusa.estilo };
     }
     this.registrar({ tipo: "celulas", mudancas: [{ end: paraEndereco(p), antes, depois: this.fielEm(p) }] });
     this.notificar();
@@ -1321,6 +1329,18 @@ export class Planilha {
     });
   }
 
+  /**
+   * "Mover para Cima" (`+1`, mais prioridade) ou "Mover para Baixo" (`-1`) no
+   * Gerenciador. A prioridade é a posição: a última da lista vale primeiro.
+   */
+  moverRegra(i: number, sentido: 1 | -1) {
+    const j = i + sentido;
+    if (!this.condicionais[i] || !this.condicionais[j]) return;
+    this.mudarEstado(() => {
+      [this.condicionais[i], this.condicionais[j]] = [this.condicionais[j], this.condicionais[i]];
+    });
+  }
+
   /** Limpar Regras: das que tocam o intervalo, ou da planilha inteira (`null`). */
   limparRegras(intervalo: Intervalo | null) {
     const toca = (r: RegraCondicional) => {
@@ -1374,7 +1394,8 @@ export class Planilha {
         const tipo = typeof x.valor === "number" ? "NUMBER_RAW" : typeof x.valor === "string" ? "STRING" : typeof x.valor === "boolean" ? "BOOLEAN" : "ERROR";
         this.calculo.definir(p.linha, p.coluna, { valor: x.valor, tipo }, this.aba);
         if (x.negrito) this.negritosDinamicas.add(end);
-        if (x.formatoDe) {
+        if (x.formato) this.formatosDinamicas.set(end, x.formato);
+        else if (x.formatoDe) {
           const f = this.formatoDoCampo(origem, x.formatoDe);
           if (f) this.formatosDinamicas.set(end, f);
         }
@@ -1527,8 +1548,12 @@ export class Planilha {
   private itensDe(v: ValidacaoDados): string[] {
     return itensDaFonte(v.fonte, (t) => {
       try {
-        const i = this.recortar(deIntervalo(t));
-        return i ? [...posicoes(i)].map((p) => this.textoParaFiltro(p)) : null;
+        // "=Listas!A2:A9": a lista vem de outra aba da pasta.
+        const alvo = this.daAba(t);
+        if (!alvo) return null;
+        const [aba, end] = alvo;
+        const i = aba.recortar(deIntervalo(end.replace(/^'(.*)'$/, "$1")));
+        return i ? [...posicoes(i)].map((p) => aba.textoParaFiltro(p)) : null;
       } catch {
         return null;
       }
@@ -1538,16 +1563,25 @@ export class Planilha {
   /** O valor que está agora na célula passa na validação dela? */
   passaNaValidacao(end: string | Pos): boolean {
     const v = this.validacaoEm(end);
-    return !v || passaNaValidacao(v, this.valor(end), this.textoParaFiltro(this.pos(end)), v.permitir === "lista" ? this.itensDe(v) : []);
+    if (!v) return true;
+    const p = this.pos(end);
+    const formula = () => {
+      try {
+        return this.avaliarFormulaEm(v.formula ?? "", deIntervalo(v.intervalo).inicio, p);
+      } catch {
+        return null;
+      }
+    };
+    return passaNaValidacao(v, this.valor(p), this.textoParaFiltro(p), v.permitir === "lista" ? this.itensDe(v) : [], formula);
   }
 
-  /** Mensagem do alerta de erro se o valor atual da célula não passa (null se passa). */
-  private recusaDaValidacao(p: Pos): string | null {
+  /** O alerta de erro se o valor atual da célula não passa (null se passa), com o estilo da regra. */
+  private recusaDaValidacao(p: Pos): { mensagem: string; estilo: NonNullable<ValidacaoDados["estilo"]> } | null {
     if (this.passaNaValidacao(p)) return null;
-    const erro = this.validacaoEm(p)?.erro;
-    const titulo = erro?.titulo.trim() || ERRO_PADRAO.titulo;
-    const texto = erro?.texto.trim() || ERRO_PADRAO.texto;
-    return `${titulo}: ${texto}`;
+    const regra = this.validacaoEm(p);
+    const titulo = regra?.erro?.titulo.trim() || ERRO_PADRAO.titulo;
+    const texto = regra?.erro?.texto.trim() || ERRO_PADRAO.texto;
+    return { mensagem: `${titulo}: ${texto}`, estilo: regra?.estilo ?? "parar" };
   }
 
   /**
@@ -1595,8 +1629,23 @@ export class Planilha {
     } catch {
       return { ok: false, mensagem: "Intervalo inválido." };
     }
+    if (v.permitir === "personalizado") {
+      const f = (v.formula ?? "").trim();
+      if (!f.startsWith("=") || f.length < 2) return { ok: false, mensagem: "Escreva a fórmula da regra, começando com = (por exemplo, =B2<=C2)." };
+      const idioma = validarIdioma(f);
+      if (!idioma.ok) return idioma;
+      let no: No;
+      try {
+        no = analisar(f);
+      } catch {
+        return { ok: false, mensagem: diagnosticarSintaxe(f) };
+      }
+      const faltam = [...naoImplementadas(no)];
+      if (faltam.length) return { ok: false, mensagem: `A função ${faltam[0]} ainda não está disponível no simulador.` };
+      v.formula = f;
+    }
     if (v.permitir === "lista" && this.itensDe(v).length === 0) return { ok: false, mensagem: "A Fonte da lista está vazia. Escreva os itens separados por ponto e vírgula (Sim;Não) ou um intervalo (=$F$2:$F$5)." };
-    if (v.permitir !== "lista") {
+    if (v.permitir !== "lista" && v.permitir !== "personalizado") {
       const dois = (v.operador ?? "entre") === "entre" || v.operador === "fora";
       if (lerLimite(v.valor1) === null || (dois && lerLimite(v.valor2) === null))
         return { ok: false, mensagem: dois ? "Preencha o Mínimo e o Máximo com números (ou datas)." : "Preencha o valor com um número (ou data)." };

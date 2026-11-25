@@ -64,6 +64,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   f("CORRESP", "valor_procurado; matriz_procurada; [tipo_correspondência]", "Posição de um valor numa lista."),
   f("ESCOLHER", "núm_índice; valor1; [valor2]; ...", "Escolhe um valor da lista pela posição."),
   f("DESLOC", "ref; lins; cols; [altura]; [largura]", "Referência deslocada a partir de uma célula."),
+  f("INDIRETO", "texto_ref; [a1]", "A referência escrita num texto: =INDIRETO(A2&\"!B2\") lê B2 da aba cujo nome está em A2."),
   f("CORRESPX", "pesquisa_valor; pesquisa_matriz; [modo_correspondência]; [modo_pesquisa]", "Posição de um valor numa lista; exata por padrão (-1 próximo menor, 1 próximo maior, 2 curinga)."),
   // texto
   f("CONCAT", "texto1; [texto2]; ...", "Junta textos."),
@@ -101,6 +102,7 @@ export const CATALOGO: FuncaoCatalogo[] = [
   // arrays dinâmicos
   f("FILTRO", "matriz; incluir; [se_vazia]", "Linhas que atendem a uma condição."),
   f("CLASSIFICAR", "matriz; [índice_classificação]; [ordem_classificação]; [por_col]", "Ordena um intervalo."),
+  f("CLASSIFICARPOR", "matriz; por_matriz1; [ordem_classificação1]; [por_matriz2; ordem_classificação2]; ...", "Ordena um intervalo pelos valores de outra coluna (que pode nem aparecer no resultado), com quantos critérios precisar."),
   f("ÚNICO", "matriz; [por_col]; [exatamente_uma_vez]", "Lista sem repetições."),
   f("SEQUÊNCIA", "linhas; [colunas]; [início]; [etapa]", "Lista de números em sequência."),
   f("PEGAR", "matriz; linhas; [colunas]", "As primeiras linhas (ou, com número negativo, as últimas) de um intervalo."),

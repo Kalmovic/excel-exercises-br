@@ -2,7 +2,8 @@ import type { Dinamica, ExercicioDoTipo, FuncaoValor, Grafico, Verificacao } fro
 import type { DadosGrafico } from "@/engine/grafico";
 import { NOMES_FUNCAO } from "@/engine/dinamica";
 import { CORES_DESTAQUE } from "@/engine/condicional";
-import { colunaParaLetras, deIntervalo, intervaloParaTexto, posicoes, type Intervalo } from "@/engine/address";
+import { colunaParaLetras, deIntervalo, intervaloParaTexto, letrasParaColuna, paraEndereco, posicoes, type Intervalo } from "@/engine/address";
+import { NOMES_ESTILO } from "@/engine/validacao";
 import { compararParaClassificar } from "@/engine/classificar";
 import { Planilha } from "@/engine/engine";
 import { falhou, iguais, ok, TOLERANCIA_PADRAO, type Falha, type Resultado } from "../tipos";
@@ -235,21 +236,49 @@ function diferenca(v: VerificacaoDinamica, d: Dinamica, p: Planilha, i: number, 
     return `Em ${area} está ${lista(tem)}, mas não é esse o campo que a pergunta pede ${area === "Linhas" ? "nas linhas" : "nas colunas"}.`;
   }
 
-  const tem = d.valores.map((x) => ({ campo: nome[x.campo] ?? x.campo, funcao: x.funcao }));
+  // Contagem sem campo pedido ("quantos"): qualquer campo serve, menos um com células em branco (elas não entram na conta).
+  const origem = deIntervalo(d.origem);
+  const temVazio = (letra: string) => {
+    const c = letrasParaColuna(letra);
+    for (let l = origem.inicio.linha + 1; l <= origem.fim.linha; l++) {
+      const x = p.valor({ linha: l, coluna: c });
+      if (x === null || x === "") return true;
+    }
+    return false;
+  };
+  const tem = d.valores.map((x) => ({
+    campo: nome[x.campo] ?? x.campo,
+    funcao: x.funcao,
+    mostrar: x.mostrar ?? null,
+    comVazio: x.funcao === "contagem" && temVazio(x.campo),
+  }));
   if (tem.length === 0 && v.valores.length) return "Falta um campo em Valores: é ele que a tabela soma (ou conta).";
   const sobra = [...tem];
   for (const pedido of v.valores) {
-    const j = sobra.findIndex((x) => x.funcao === pedido.funcao && (!pedido.campo || x.campo === pedido.campo));
+    const mesmaConta = (x: (typeof tem)[number]) => x.funcao === pedido.funcao && (pedido.campo ? x.campo === pedido.campo : !x.comVazio);
+    const j = sobra.findIndex((x) => mesmaConta(x) && x.mostrar === (pedido.mostrar ?? null));
     if (j >= 0) {
       sobra.splice(j, 1);
       continue;
     }
+    const outroMostrar = sobra.find(mesmaConta);
+    const pedeOsDois = v.valores.some((w) => w !== pedido && w.funcao === pedido.funcao && w.campo === pedido.campo && (w.mostrar ?? null) !== (pedido.mostrar ?? null));
+    if (outroMostrar && pedeOsDois)
+      return `A pergunta pede o valor e a participação lado a lado: coloque ${outroMostrar.campo} duas vezes em Valores e deixe só um deles em % do Total Geral.`;
+    if (outroMostrar)
+      return pedido.mostrar
+        ? `“${nomeFuncao(outroMostrar.funcao)} de ${outroMostrar.campo}” está mostrando os valores em si. A pergunta pede a participação: em Valores, mude Mostrar Valores como para % do Total Geral.`
+        : `“${nomeFuncao(outroMostrar.funcao)} de ${outroMostrar.campo}” está em % do Total Geral, mas a pergunta pede o valor em si. Volte Mostrar Valores como para Sem Cálculo.`;
+    const contaVazios = !pedido.campo && pedido.funcao === "contagem" && sobra.find((x) => x.comVazio);
+    if (contaVazios)
+      return `“Contagem de ${contaVazios.campo}” conta só as células preenchidas, e há linhas com ${contaVazios.campo} em branco: elas ficaram fora da conta. Conte um campo que nunca fica vazio.`;
     const mesmoCampo = sobra.find((x) => pedido.campo && x.campo === pedido.campo);
     if (mesmoCampo)
       return `Os valores estão como “${nomeFuncao(mesmoCampo.funcao)} de ${mesmoCampo.campo}”. Releia a pergunta: a conta é outra. Troque no seletor ao lado do campo, em Valores (Soma, Contagem, Média…).`;
     return "Os campos em Valores não respondem à pergunta. Confira qual campo e qual conta (Soma, Contagem, Média…) ela pede.";
   }
-  if (sobra.length) return `Sobrou ${sobra.map((x) => `“${nomeFuncao(x.funcao)} de ${x.campo}”`).join(" e ")} em Valores: a pergunta não pede isso.`;
+  if (sobra.length)
+    return `Sobrou ${sobra.map((x) => `“${nomeFuncao(x.funcao)} de ${x.campo}”${x.mostrar ? " (em % do Total Geral)" : ""}`).join(" e ")} em Valores: a pergunta não pede isso.`;
 
   // Filtros: (Tudo) e "todos os itens marcados" são a mesma coisa.
   const filtros = (fs: { campo: string; valores: string[] | null }[], porNome: boolean) =>
@@ -303,7 +332,7 @@ function conferirDestacadas(v: Extract<Verificacao, { tipo: "destacadas" }>, p: 
   return { celula, motivo: "formato", mensagem: `Quase: há ${partes.join(" e ")}. Confira a regra (o valor, o tipo de comparação e o intervalo).` };
 }
 
-const NOME_GRAFICO = { colunas: "colunas", barras: "barras", linhas: "linhas", pizza: "pizza" } as const;
+const NOME_GRAFICO = { colunas: "colunas", barras: "barras", linhas: "linhas", pizza: "pizza", empilhadas: "colunas empilhadas", combinado: "colunas e linha" } as const;
 
 /**
  * Gráfico pelo resultado: as categorias e as séries que ele desenha. Quem
@@ -361,7 +390,14 @@ function diferencaGrafico(v: Extract<Verificacao, { tipo: "grafico" }>, g: Grafi
       return "Uma coluna de rótulos virou série no gráfico. Confira como o Excel lê a primeira coluna.";
     return "O gráfico não está mostrando os dados pedidos. Confira o intervalo de dados (com o cabeçalho e os rótulos).";
   }
-  if (g.tipo !== v.grafico)
+  const tipoAceito = g.tipo === v.grafico || (v.aceitaTambem ?? []).includes(g.tipo);
+  if (!tipoAceito && v.grafico === "empilhadas" && g.tipo === "colunas")
+    return "As colunas estão lado a lado. A pergunta quer ver o total de cada categoria dividido em partes: troque o tipo para Colunas Empilhadas.";
+  if (!tipoAceito && v.grafico === "combinado" && (g.tipo === "colunas" || g.tipo === "linhas"))
+    return "Os dados estão certos, mas o realizado e a meta ficaram com o mesmo desenho. Troque o tipo para Colunas e Linha: o realizado em colunas e a meta numa linha por cima.";
+  if (!tipoAceito && g.tipo === "pizza" && d.formato === "percentual")
+    return "Pizza só serve para partes de um mesmo total. Estas porcentagens não somam um todo (cada uma é de um grupo diferente): compare-as em colunas ou barras.";
+  if (!tipoAceito)
     return `Os dados estão certos, mas um gráfico de ${NOME_GRAFICO[g.tipo]} não é o melhor para esta pergunta. Pense no que ela quer mostrar: comparação, evolução no tempo ou partes de um todo.`;
   if (v.titulo !== undefined && norm(g.titulo) !== norm(v.titulo))
     return g.titulo.trim() ? `O título do gráfico está diferente do pedido.` : "Falta o título do gráfico (no Design do Gráfico).";
@@ -389,6 +425,8 @@ function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Pl
       const itens = p.itensDaLista(c);
       if (!itens) return falha("A pergunta pede uma lista suspensa: em Permitir, escolha Lista.");
       if (norm(itens).join("|") !== norm(v.lista).join("|")) {
+        if (itens.length === 1 && /![$A-Z]|^\$?[A-Z]{1,2}\$?\d+:/.test(itens[0]))
+          return falha(`A lista ficou com um item só: “${itens[0]}”. Para a Fonte ler um intervalo, ela precisa começar com = (por exemplo, =${itens[0].replace(/^=/, "")}).`);
         if (itens.length === 1 && /[,]/.test(itens[0]))
           return falha(`A lista ficou com um item só: “${itens[0]}”. No Excel em português, os itens são separados por ponto e vírgula.`);
         return falha(`A lista mostra ${itens.length} ${itens.length === 1 ? "item" : "itens"}, mas não são os pedidos. Confira a Fonte.`);
@@ -405,6 +443,8 @@ function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Pl
         return falha(`A regra recusa ${comoTexto(recusou)}, que deveria ser aceito. Confira o comprimento: pontos, traços e espaços também contam.`);
       if (permitir === "data")
         return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o operador (está entre, não está entre, maior do que…) e as datas-limite.`);
+      if (permitir === "personalizado")
+        return falha(`A regra recusa “${recusou}” em ${paraEndereco(c)}, que deveria ser aceito. Confira a fórmula: ela é escrita para a primeira célula do intervalo e precisa dar VERDADEIRO quando o valor está certo.`);
       return falha(`A regra recusa “${recusou}”, que deveria ser aceito. Confira o tipo (inteiro ou decimal) e se os limites incluem as pontas.`);
     }
     const aceitou = v.recusa.find((x) => p.aceitariaNaCelula(c, x));
@@ -412,6 +452,8 @@ function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Pl
       if (permitir === "comprimento") return falha(`A regra aceita ${comoTexto(aceitou)}, que deveria ser recusado. Confira o operador e o comprimento.`);
       if (permitir === "data")
         return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o operador (está entre, não está entre, maior do que…) e as datas-limite.`);
+      if (permitir === "personalizado")
+        return falha(`A regra aceita “${aceitou}” em ${paraEndereco(c)}, que deveria ser recusado. Confira a fórmula (as referências com e sem $ e o sinal de comparação).`);
       return falha(`A regra aceita “${aceitou}”, que deveria ser recusado. Confira o tipo e os limites.`);
     }
   }
@@ -430,6 +472,10 @@ function conferirValidacao(v: Extract<Verificacao, { tipo: "validacao" }>, p: Pl
   if (v.alertaTexto !== undefined) {
     const n = conta((r) => igual(r.erro?.texto, v.alertaTexto!));
     if (n < celulas.length) return falha(`O texto do alerta de erro não é o pedido (aba Alerta de erro)${n ? parte(n) : ""}.`);
+  }
+  if (v.alertaEstilo !== undefined) {
+    const n = conta((r) => (r.estilo ?? "parar") === v.alertaEstilo);
+    if (n < celulas.length) return falha(`O estilo do alerta de erro não é o pedido: em Alerta de erro, escolha ${NOMES_ESTILO[v.alertaEstilo]}${n ? parte(n) : ""}.`);
   }
   return null;
 }

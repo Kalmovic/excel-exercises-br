@@ -7,7 +7,7 @@
  * matriz com mais de `LIMITE_CELULAS` células dá #NÚM!; texto com mais de
  * `LIMITE_TEXTO` caracteres dá #VALOR!, como o Excel.
  */
-import { ULTIMA_COLUNA, ULTIMA_LINHA, type No } from "./parser";
+import { analisar, ULTIMA_COLUNA, ULTIMA_LINHA, type No } from "./parser";
 import { casaCuringa, localizarCuringa, temCuringa } from "./curinga";
 import { formatarComCodigo } from "./texto";
 
@@ -144,7 +144,14 @@ type Ctx = {
   nomes?: Map<string, R>;
   /** Nomes do LET ligados a uma referência (A1:A3), para as funções que pedem referência. */
   refs?: Map<string, No>;
+  /** Nomes das abas de `ini` até `fim`, na ordem das abas (null: alguma não existe). Para a referência 3D. */
+  abasEntre?: (ini: string, fim: string) => string[] | null;
+  /** Argumento direto de uma função que aceita referência 3D (SOMA, MÉDIA…). Fora delas, 3D dá #VALOR!. */
+  em3d?: boolean;
 };
+
+/** Funções que aceitam referência 3D (Jan:Mar!B2), como no Excel. */
+const ACEITAM_3D = new Set(["SOMA", "MÉDIA", "MÍNIMO", "MÁXIMO", "CONT.NÚM", "CONT.VALORES"]);
 
 /** Potência como o Excel: 0^0 e base negativa com expoente fracionado dão #NÚM!. */
 function potencia(a: number, b: number): V {
@@ -185,12 +192,31 @@ const finito = (r: R): R => {
 function resolver(no: No | undefined, ctx: Ctx): No | undefined {
   let n = no;
   for (let k = 0; n && n.t === "nome" && ctx.refs?.has(n.v) && k < 100; k++) n = ctx.refs.get(n.v);
+  // INDIRETO("Fev!B2") é a referência que o texto descreve (SOMASE, DESLOC… a recebem como referência).
+  if (n && n.t === "fn" && n.nome === "INDIRETO") { const r = refIndireta(n.args, ctx); if (!ehErro(r)) return r; }
   return n;
+}
+/**
+ * A referência descrita pelo texto de INDIRETO ("B2", "Fev!B2:B6", "'Jan 2026'!B2").
+ * Só o estilo A1; o texto que não é uma referência (ou é 3D) dá #REF!, como no Excel.
+ */
+function refIndireta(args: (No | undefined)[], ctx: Ctx): No | Erro {
+  const v = esc(args[0], ctx);
+  if (ehErro(v)) return v;
+  const a1 = esc(args[1], ctx, true);
+  if (ehErro(a1)) return a1;
+  if (bool(a1) === false || typeof v !== "string" || v.trim() === "") return E("#REF!");
+  try {
+    const r = analisar("=" + v.trim());
+    return r.t === "ref" || r.t === "int" ? r : E("#REF!");
+  } catch {
+    return E("#REF!");
+  }
 }
 /** O argumento chega como referência (célula, intervalo, DESLOC, ÍNDICE), e não como valor digitado? */
 function ehReferencia(no: No | undefined, ctx: Ctx): boolean {
   const n = resolver(no, ctx);
-  return !!n && (n.t === "ref" || n.t === "int" || (n.t === "fn" && (n.nome === "DESLOC" || n.nome === "ÍNDICE")));
+  return !!n && (n.t === "ref" || n.t === "int" || n.t === "ref3d" || (n.t === "fn" && (n.nome === "DESLOC" || n.nome === "ÍNDICE" || n.nome === "INDIRETO")));
 }
 /** Cantos de um intervalo, com a coluna/linha inteira (ou um intervalo enorme) cortada no tamanho da aba. */
 function faixa(no: Extract<No, { t: "int" }>, ctx: Ctx) {
@@ -207,6 +233,9 @@ function faixa(no: Extract<No, { t: "int" }>, ctx: Ctx) {
 const bloco = (ctx: Ctx, l: number, c: number, h: number, w: number, aba?: string): R =>
   grande(h, w) ? E("#NÚM!") : Array.from({ length: h }, (_, i) => Array.from({ length: w }, (_, j) => ctx.ler(l + i, c + j, aba)));
 
+/** Contas e funções dentro de SOMA(…) não recebem mais a referência 3D. */
+const sem3d = (ctx: Ctx): Ctx => (ctx.em3d ? { ...ctx, em3d: false } : ctx);
+
 export function avaliar(no: No, ctx: Ctx): R {
   return finito(avaliar0(no, ctx));
 }
@@ -222,15 +251,34 @@ function avaliar0(no: No, ctx: Ctx): R {
     case "nome": return ctx.nomes?.get(no.v) ?? E("#NOME?");
     case "ref": return ctx.ler(no.l, no.c, no.aba);
     case "int": { const { a, b } = faixa(no, ctx); return bloco(ctx, a.l, a.c, b.l - a.l + 1, b.c - a.c + 1, no.aba); }
-    case "un": return mapa(avaliar(no.x, ctx), (v) => { const n = num(v); return ehErro(n) ? n : -n; });
-    case "pct": return mapa(avaliar(no.x, ctx), (v) => { const n = num(v); return ehErro(n) ? n : n / 100; });
-    case "bin": return elemento(avaliar(no.a, ctx), avaliar(no.b, ctx), (x, y) => binop(no.op, x, y));
+    case "ref3d": {
+      // Os valores de cada aba numa coluna só: SOMA, MÉDIA… só olham os valores.
+      if (!ctx.em3d) return E("#VALOR!");
+      const nomes = ctx.abasEntre?.(no.ini, no.fim);
+      if (!nomes) return E("#REF!");
+      const linhas: M = [];
+      for (const aba of nomes) {
+        const { a, b } = faixa({ t: "int", a: no.a, b: no.b, aba }, ctx);
+        const m = bloco(ctx, a.l, a.c, b.l - a.l + 1, b.c - a.c + 1, aba);
+        if (!ehM(m)) return m;
+        for (const v of m.flat()) linhas.push([v]);
+        if (grande(linhas.length, 1)) return E("#NÚM!");
+      }
+      return linhas;
+    }
+    case "un": return mapa(avaliar(no.x, sem3d(ctx)), (v) => { const n = num(v); return ehErro(n) ? n : -n; });
+    case "pct": return mapa(avaliar(no.x, sem3d(ctx)), (v) => { const n = num(v); return ehErro(n) ? n : n / 100; });
+    case "bin": { const c = sem3d(ctx); return elemento(avaliar(no.a, c), avaliar(no.b, c), (x, y) => binop(no.op, x, y)); }
     case "fn": {
       const f = FUNCOES[no.nome];
       if (!f) return E("#NOME?");
       // Argumento omitido chega como ausente (undefined): cada função usa o seu padrão.
       const args = no.args.map((a) => (a.t === "vazio" ? undefined : a)) as No[];
-      try { return f(args, ctx); } catch (e) { return ehErro(e) ? e : E("#VALOR!"); }
+      const aceita3d = ACEITAM_3D.has(no.nome);
+      // Referência 3D só entra nas funções que a aceitam (SOMASE(Jan:Mar!B2:B5;…) dá #VALOR!, como no Excel).
+      if (!aceita3d && no.args.some((a) => a.t === "ref3d")) return E("#VALOR!");
+      const c = aceita3d ? (ctx.em3d ? ctx : { ...ctx, em3d: true }) : sem3d(ctx);
+      try { return f(args, c); } catch (e) { return ehErro(e) ? e : E("#VALOR!"); }
     }
   }
 }
@@ -647,6 +695,42 @@ export const FUNCOES: Record<string, F> = {
     const r = [...m].map((l, k) => ({ l, k })).sort((a, b) => o * comparar(a.l[i - 1], b.l[i - 1]) || a.k - b.k).map((x) => x.l);
     return porCol ? transpor(r) : r;
   },
+  /**
+   * CLASSIFICARPOR(matriz; por_matriz1; [ordem1]; [por_matriz2; ordem2]…): ordena
+   * pelas listas dadas (que não precisam aparecer no resultado). Coluna do mesmo
+   * número de linhas ordena as linhas; linha do mesmo número de colunas, as colunas.
+   */
+  CLASSIFICARPOR: (args, ctx) => {
+    const m0 = comoM(ev(args[0], ctx));
+    if (args.length < 2) return E("#VALOR!");
+    const chaves: { vs: V[]; o: number }[] = [];
+    let porCol: boolean | null = null;
+    for (let k = 1; k < args.length; k += 2) {
+      const pm = comoM(ev(args[k], ctx));
+      const o = args[k + 1] ? intArg(args[k + 1], ctx) : 1;
+      if (o !== 1 && o !== -1) return E("#VALOR!");
+      const coluna = pm[0].length === 1 && pm.length === m0.length;
+      const linha = pm.length === 1 && pm[0].length === m0[0].length;
+      const col = coluna ? false : linha ? true : null;
+      if (col === null || (porCol !== null && porCol !== col)) return E("#VALOR!");
+      porCol = col;
+      chaves.push({ vs: col ? pm[0] : pm.map((l) => l[0]), o });
+    }
+    const m = porCol ? transpor(m0) : m0;
+    const erro = chaves.flatMap((c) => c.vs).find(ehErro);
+    if (erro) return erro;
+    const r = m
+      .map((l, i) => ({ l, i }))
+      .sort((a, b) => {
+        for (const c of chaves) {
+          const x = c.o * comparar(c.vs[a.i], c.vs[b.i]);
+          if (x) return x;
+        }
+        return a.i - b.i;
+      })
+      .map((x) => x.l);
+    return porCol ? transpor(r) : r;
+  },
   /** ÚNICO(matriz; [por_col]; [exatamente_uma_vez]). */
   "ÚNICO": (args, ctx) => {
     const m0 = comoM(ev(args[0], ctx));
@@ -919,6 +1003,7 @@ export const FUNCOES: Record<string, F> = {
     if (a * b < 0) return E("#NÚM!");
     return Math.sign(a) * Math.round(Math.abs(a) / Math.abs(b) + 1e-9) * Math.abs(b);
   }),
+  INDIRETO: (args, ctx) => { const r = refIndireta(args, ctx); return ehErro(r) ? r : avaliar(r, ctx); },
   PGTO: (args, ctx) => { const i = numArg(args[0], ctx), n = numArg(args[1], ctx), vp = numArg(args[2], ctx), vf = args[3] ? numArg(args[3], ctx) : 0, t = args[4] ? numArg(args[4], ctx) : 0; if (i === 0) return -(vp + vf) / n; const f = (1 + i) ** n; return (-(vp * f + vf) * i) / ((1 + i * t) * (f - 1)); },
 };
 
@@ -945,6 +1030,14 @@ export class Calculo {
   private pilha = new Set<string>();
   /** Fórmulas ainda não calculadas desde a última mudança (null: ainda não levantadas). */
   private pendentes: Set<string> | null = null;
+  /**
+   * Cálculo antecipado (procurando quem derrama numa célula vazia): ele pode
+   * tropeçar numa fórmula que ainda está na pilha, sem haver ciclo de verdade
+   * (ex.: F2 =SOMA(C2:C15) lê uma vazia e antecipa F7 =SOMA(F2:F5)). Esse
+   * #CIRC! falso não fica no cache: a fórmula é calculada de novo quando lida.
+   */
+  private antecipando = 0;
+  private circFalso = false;
   /** Última linha e coluna preenchidas de cada aba (para cortar A:A e 1:1). */
   private extensao = new Map<number, { linhas: number; colunas: number }>();
   /** Nomes das abas, na ordem (o índice é a aba). */
@@ -1023,6 +1116,10 @@ export class Calculo {
       oculta: (x, nome) => { const t = aba(nome); return t >= 0 && this.linhaOculta(x, t); },
       ehSubtotal: (a, b, nome) => { const y = this.conteudos.get(`${aba(nome)}:${a},${b}`); return !!y && "formula" in y && usaSubtotal(y.formula); },
       limites: (nome) => { const t = aba(nome); return this.limitesDa(t < 0 ? s : t); },
+      abasEntre: (ini, fim) => {
+        const i = this.indiceDaAba(ini), j = this.indiceDaAba(fim);
+        return i < 0 || j < 0 ? null : this.abas.slice(Math.min(i, j), Math.max(i, j) + 1);
+      },
     };
   }
 
@@ -1034,7 +1131,10 @@ export class Calculo {
 
   private calcular(k: string): V {
     if (this.cache.has(k)) return this.cache.get(k)!;
-    if (this.pilha.has(k)) return E("#CIRC!");
+    if (this.pilha.has(k)) {
+      if (this.antecipando) this.circFalso = true;
+      return E("#CIRC!");
+    }
     const no = (this.conteudos.get(k) as { formula: No }).formula;
     this.pilha.add(k);
     const [s, resto] = k.split(":");
@@ -1068,7 +1168,21 @@ export class Calculo {
         this.pendentes = new Set();
         for (const [kk, y] of this.conteudos) if ("formula" in y && !this.cache.has(kk)) this.pendentes.add(kk);
       }
-      for (const kk of [...this.pendentes]) if (!this.pilha.has(kk)) this.calcular(kk);
+      for (const kk of [...this.pendentes]) {
+        if (this.pilha.has(kk)) continue;
+        const antes = this.circFalso;
+        this.circFalso = false;
+        this.antecipando++;
+        try {
+          this.calcular(kk);
+        } finally {
+          this.antecipando--;
+        }
+        if (this.circFalso)
+          for (const [ck, v] of [...this.cache])
+            if (v !== null && typeof v === "object" && !Array.isArray(v) && (v as { erro?: string }).erro === "#CIRC!") this.cache.delete(ck);
+        this.circFalso = antes || this.circFalso;
+      }
     }
     return this.derramado.get(k) ?? null;
   }

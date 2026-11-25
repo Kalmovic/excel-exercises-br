@@ -96,3 +96,35 @@ describe("funções novas", () => {
     expect(validarIdioma("=LET(x;1;x)").ok).toBe(true);
   });
 });
+
+describe("CLASSIFICARPOR", () => {
+  const grade = (): Grade => ({
+    linhas: 8,
+    colunas: 8,
+    celulas: {
+      A1: { entrada: "Ana" }, B1: { entrada: "RH" }, C1: { entrada: "3000" },
+      A2: { entrada: "Bruno" }, B2: { entrada: "TI" }, C2: { entrada: "5000" },
+      A3: { entrada: "Carla" }, B3: { entrada: "RH" }, C3: { entrada: "4000" },
+      A4: { entrada: "Diego" }, B4: { entrada: "TI" }, C4: { entrada: "2000" },
+    },
+  });
+  const lista = (f: string) => {
+    const p = new Planilha(grade());
+    expect(p.definir("E1", f)).toEqual({ ok: true });
+    return [0, 1, 2, 3].map((l) => p.valor({ linha: l, coluna: 4 }));
+  };
+  it("ordena por uma coluna que não está no resultado", () => {
+    expect(lista("=CLASSIFICARPOR(A1:A4;C1:C4;-1)")).toEqual(["Bruno", "Carla", "Ana", "Diego"]);
+    expect(lista("=CLASSIFICARPOR(A1:A4;C1:C4)")).toEqual(["Diego", "Ana", "Carla", "Bruno"]);
+  });
+  it("duas chaves: setor A a Z e, no empate, salário do maior para o menor", () => {
+    expect(lista("=CLASSIFICARPOR(A1:A4;B1:B4;1;C1:C4;-1)")).toEqual(["Carla", "Ana", "Bruno", "Diego"]);
+  });
+  it("tamanho diferente ou ordem inválida dá #VALOR!", () => {
+    const p = new Planilha(grade());
+    p.definir("E1", "=CLASSIFICARPOR(A1:A4;C1:C5;-1)");
+    expect(p.valor("E1")).toEqual({ erro: "#VALOR!" });
+    p.definir("E1", "=CLASSIFICARPOR(A1:A4;C1:C4;2)");
+    expect(p.valor("E1")).toEqual({ erro: "#VALOR!" });
+  });
+});

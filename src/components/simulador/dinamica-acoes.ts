@@ -1,4 +1,4 @@
-import type { Dinamica, FuncaoValor } from "@/content/schema";
+import type { Dinamica, FuncaoValor, MostrarValor } from "@/content/schema";
 
 /**
  * As regras do painel de campos, como funções puras (testáveis sem tela).
@@ -76,4 +76,15 @@ export const mudarFuncao = (d: Dinamica, indice: number, funcao: FuncaoValor): D
 export const filtrarItens = (d: Dinamica, campo: string, valores: string[] | null): Dinamica => ({
   ...d,
   filtros: d.filtros.map((f) => (f.campo === campo ? { ...f, valores } : f)),
+});
+
+/** "Mostrar Valores como": `null` = Sem Cálculo. */
+export const mudarMostrar = (d: Dinamica, indice: number, mostrar: MostrarValor | null): Dinamica => ({
+  ...d,
+  valores: d.valores.map((v, i) => {
+    if (i !== indice) return v;
+    const resto = { ...v };
+    delete resto.mostrar;
+    return mostrar ? { ...resto, mostrar } : resto;
+  }),
 });

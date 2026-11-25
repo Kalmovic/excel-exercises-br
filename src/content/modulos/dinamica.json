@@ -1381,7 +1381,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dinamica",
     "ordem": 2,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Tabela cruzada: região por canal",
@@ -2783,7 +2783,7 @@
     "trilha": "excel-ptbr",
     "modulo": "dinamica",
     "ordem": 3,
-    "nivel": 2,
+    "nivel": 1,
     "plano": "pro",
     "versao": 1,
     "titulo": "Participação de uma região",
@@ -7286,286 +7286,349 @@
     }
   },
   {
-    "id": "6ea5a373-f02d-54b7-a228-e618391f3139",
-    "slug": "teste-dinamica-1",
+    "id": "a69276f9-0064-522f-b1a5-c14733e93ab4",
+    "slug": "dinamica-contagem-status",
     "trilha": "excel-ptbr",
     "modulo": "dinamica",
-    "ordem": 201,
+    "ordem": 6,
     "nivel": 2,
     "plano": "pro",
     "versao": 1,
-    "titulo": "Total por canal",
+    "titulo": "Contagem: quantos processos em cada status",
     "enunciado": [
-      "Crie uma tabela dinâmica em **G1** com o **total vendido por canal**."
+      "O sócio do escritório quer saber **quantos processos** há em cada **Status**. Crie uma tabela dinâmica em **H1** que responda isso."
     ],
-    "dicas": [],
+    "dicas": [
+      "\"Quantos\" é contar linhas, não somar valores. A conta fica no seletor ao lado do campo, em Valores.",
+      "Campo de texto marcado na lista vai para Linhas. Para contar, leve-o para Valores pelo ⋯ (Mover para…) ou arrastando."
+    ],
     "explicacao": [
-      "Revise a lição indicada no resultado do teste."
+      "**Status** em **Linhas** e **Processo** em **Valores** (fica *Contagem de Processo*, porque é texto).",
+      "Em andamento 8, Encerrado 5, Suspenso 3: 16 no Total Geral. Qualquer coluna sem células em branco serve para contar; a de Processo é a mais segura."
     ],
-    "tentativasAteExplicacao": 99,
-    "revisar": "dinamica-total-por-regiao",
-    "teste": true,
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-contagem-status",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Nem todo relatório é de dinheiro: quantos processos estão parados, quantos funcionários em cada setor, quantos pedidos por status. A tabela dinâmica conta tão bem quanto soma.",
     "type": "ferramenta",
     "grade": {
-      "linhas": 22,
-      "colunas": 12,
+      "linhas": 20,
+      "colunas": 13,
       "larguras": {
-        "A": 76,
-        "B": 76,
-        "C": 64,
-        "D": 80,
-        "E": 84,
-        "F": 24,
-        "G": 118,
-        "H": 110,
-        "I": 96,
+        "A": 56,
+        "B": 132,
+        "C": 84,
+        "D": 100,
+        "E": 104,
+        "F": 92,
+        "G": 24,
+        "H": 132,
+        "I": 104,
         "J": 96,
-        "K": 96,
-        "L": 96
+        "K": 84,
+        "L": 84,
+        "M": 84
       },
       "celulas": {
         "A1": {
-          "entrada": "Canal",
+          "entrada": "Processo",
           "negrito": true
         },
         "B1": {
-          "entrada": "Vendedor",
+          "entrada": "Cliente",
           "negrito": true
         },
         "C1": {
-          "entrada": "Região",
+          "entrada": "Área",
           "negrito": true
         },
         "D1": {
-          "entrada": "Produto",
+          "entrada": "Status",
           "negrito": true
         },
         "E1": {
-          "entrada": "Valor",
+          "entrada": "Encerrado em",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Honorários",
           "negrito": true
         },
         "A2": {
-          "entrada": "Loja"
+          "entrada": "P-201"
         },
         "B2": {
-          "entrada": "Ana"
+          "entrada": "Mercado Bom Preço"
         },
         "C2": {
-          "entrada": "Sul"
+          "entrada": "Trabalhista"
         },
         "D2": {
-          "entrada": "Notebook"
+          "entrada": "Em andamento"
         },
-        "E2": {
-          "entrada": "3200",
+        "F2": {
+          "entrada": "4500",
           "formato": "moeda"
         },
         "A3": {
-          "entrada": "Site"
+          "entrada": "P-202"
         },
         "B3": {
-          "entrada": "Bruno"
+          "entrada": "Clínica Vida"
         },
         "C3": {
-          "entrada": "Norte"
+          "entrada": "Cível"
         },
         "D3": {
-          "entrada": "Mouse"
+          "entrada": "Encerrado"
         },
         "E3": {
-          "entrada": "150",
+          "entrada": "12/08/2026",
+          "formato": "data"
+        },
+        "F3": {
+          "entrada": "8200",
           "formato": "moeda"
         },
         "A4": {
-          "entrada": "Loja"
+          "entrada": "P-203"
         },
         "B4": {
-          "entrada": "Carla"
+          "entrada": "João Ferreira"
         },
         "C4": {
-          "entrada": "Sul"
+          "entrada": "Trabalhista"
         },
         "D4": {
-          "entrada": "Monitor"
+          "entrada": "Encerrado"
         },
         "E4": {
-          "entrada": "1100",
-          "formato": "moeda"
+          "entrada": "03/09/2026",
+          "formato": "data"
         },
-        "A5": {
-          "entrada": "Telefone"
-        },
-        "B5": {
-          "entrada": "Daniel"
-        },
-        "C5": {
-          "entrada": "Leste"
-        },
-        "D5": {
-          "entrada": "Notebook"
-        },
-        "E5": {
-          "entrada": "3500",
-          "formato": "moeda"
-        },
-        "A6": {
-          "entrada": "Site"
-        },
-        "B6": {
-          "entrada": "Ana"
-        },
-        "C6": {
-          "entrada": "Sul"
-        },
-        "D6": {
-          "entrada": "Mouse"
-        },
-        "E6": {
-          "entrada": "180",
-          "formato": "moeda"
-        },
-        "A7": {
-          "entrada": "Loja"
-        },
-        "B7": {
-          "entrada": "Bruno"
-        },
-        "C7": {
-          "entrada": "Norte"
-        },
-        "D7": {
-          "entrada": "Notebook"
-        },
-        "E7": {
+        "F4": {
           "entrada": "3100",
           "formato": "moeda"
         },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Transportes Rápido"
+        },
+        "C5": {
+          "entrada": "Tributário"
+        },
+        "D5": {
+          "entrada": "Em andamento"
+        },
+        "F5": {
+          "entrada": "12500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Padaria Trigo"
+        },
+        "C6": {
+          "entrada": "Trabalhista"
+        },
+        "D6": {
+          "entrada": "Suspenso"
+        },
+        "F6": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Construtora Alfa"
+        },
+        "C7": {
+          "entrada": "Cível"
+        },
+        "D7": {
+          "entrada": "Em andamento"
+        },
+        "F7": {
+          "entrada": "9600",
+          "formato": "moeda"
+        },
         "A8": {
-          "entrada": "Site"
+          "entrada": "P-207"
         },
         "B8": {
-          "entrada": "Carla"
+          "entrada": "Ana Souza"
         },
         "C8": {
-          "entrada": "Sul"
+          "entrada": "Cível"
         },
         "D8": {
-          "entrada": "Notebook"
+          "entrada": "Encerrado"
         },
         "E8": {
-          "entrada": "3300",
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "F8": {
+          "entrada": "2400",
           "formato": "moeda"
         },
         "A9": {
-          "entrada": "Loja"
+          "entrada": "P-208"
         },
         "B9": {
-          "entrada": "Daniel"
+          "entrada": "Mercado Bom Preço"
         },
         "C9": {
-          "entrada": "Leste"
+          "entrada": "Tributário"
         },
         "D9": {
-          "entrada": "Monitor"
+          "entrada": "Em andamento"
         },
-        "E9": {
-          "entrada": "950",
+        "F9": {
+          "entrada": "7300",
           "formato": "moeda"
         },
         "A10": {
-          "entrada": "Telefone"
+          "entrada": "P-209"
         },
         "B10": {
-          "entrada": "Ana"
+          "entrada": "Pedro Alves"
         },
         "C10": {
-          "entrada": "Sul"
+          "entrada": "Trabalhista"
         },
         "D10": {
-          "entrada": "Monitor"
+          "entrada": "Em andamento"
         },
-        "E10": {
-          "entrada": "1200",
+        "F10": {
+          "entrada": "3900",
           "formato": "moeda"
         },
         "A11": {
-          "entrada": "Site"
+          "entrada": "P-210"
         },
         "B11": {
-          "entrada": "Bruno"
+          "entrada": "Clínica Vida"
         },
         "C11": {
-          "entrada": "Norte"
+          "entrada": "Tributário"
         },
         "D11": {
-          "entrada": "Monitor"
+          "entrada": "Suspenso"
         },
-        "E11": {
-          "entrada": "1000",
+        "F11": {
+          "entrada": "6100",
           "formato": "moeda"
         },
         "A12": {
-          "entrada": "Loja"
+          "entrada": "P-211"
         },
         "B12": {
-          "entrada": "Carla"
+          "entrada": "Marta Lima"
         },
         "C12": {
-          "entrada": "Sul"
+          "entrada": "Cível"
         },
         "D12": {
-          "entrada": "Mouse"
+          "entrada": "Em andamento"
         },
-        "E12": {
-          "entrada": "120",
+        "F12": {
+          "entrada": "1800",
           "formato": "moeda"
         },
         "A13": {
-          "entrada": "Site"
+          "entrada": "P-212"
         },
         "B13": {
-          "entrada": "Daniel"
+          "entrada": "Construtora Alfa"
         },
         "C13": {
-          "entrada": "Leste"
+          "entrada": "Trabalhista"
         },
         "D13": {
-          "entrada": "Mouse"
+          "entrada": "Encerrado"
         },
         "E13": {
-          "entrada": "160",
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "F13": {
+          "entrada": "5200",
           "formato": "moeda"
         },
         "A14": {
-          "entrada": "Loja"
+          "entrada": "P-213"
         },
         "B14": {
-          "entrada": "Ana"
+          "entrada": "Transportes Rápido"
         },
         "C14": {
-          "entrada": "Sul"
+          "entrada": "Cível"
         },
         "D14": {
-          "entrada": "Notebook"
+          "entrada": "Em andamento"
         },
-        "E14": {
-          "entrada": "3400",
+        "F14": {
+          "entrada": "4700",
           "formato": "moeda"
         },
         "A15": {
-          "entrada": "Telefone"
+          "entrada": "P-214"
         },
         "B15": {
-          "entrada": "Bruno"
+          "entrada": "Carlos Dias"
         },
         "C15": {
-          "entrada": "Norte"
+          "entrada": "Trabalhista"
         },
         "D15": {
-          "entrada": "Notebook"
+          "entrada": "Em andamento"
         },
-        "E15": {
+        "F15": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "P-215"
+        },
+        "B16": {
+          "entrada": "Padaria Trigo"
+        },
+        "C16": {
+          "entrada": "Tributário"
+        },
+        "D16": {
+          "entrada": "Encerrado"
+        },
+        "E16": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "F16": {
           "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "P-216"
+        },
+        "B17": {
+          "entrada": "João Ferreira"
+        },
+        "C17": {
+          "entrada": "Cível"
+        },
+        "D17": {
+          "entrada": "Suspenso"
+        },
+        "F17": {
+          "entrada": "2100",
           "formato": "moeda"
         }
       }
@@ -7573,12 +7636,2140 @@
     "verificacoes": [
       {
         "tipo": "dinamica",
-        "origem": "A1:E15",
+        "origem": "A1:F17",
         "linhas": [
-          "Canal"
+          "Status"
         ],
         "colunas": [],
         "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:F17",
+            "destino": "H1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "A",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "09c07f66-93b8-5ac7-9cb1-8e38a3abca85",
+    "slug": "dinamica-contagem-status-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 62,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Só os processos trabalhistas",
+    "enunciado": [
+      "Crie uma tabela dinâmica em **H1** com **quantos processos** há em cada **Status**, mas só da área **Trabalhista**."
+    ],
+    "dicas": [
+      "Área não vira linha nem coluna aqui: ela só escolhe quais processos entram na conta."
+    ],
+    "explicacao": [
+      "**Status** em **Linhas**, **Processo** em **Valores** (Contagem) e **Área** em **Filtros**, só com **Trabalhista** marcado.",
+      "São 6 processos trabalhistas: 3 em andamento, 2 encerrados e 1 suspenso."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-contagem-status",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 13,
+      "larguras": {
+        "A": 56,
+        "B": 132,
+        "C": 84,
+        "D": 100,
+        "E": 104,
+        "F": 92,
+        "G": 24,
+        "H": 132,
+        "I": 104,
+        "J": 96,
+        "K": 84,
+        "L": 84,
+        "M": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Encerrado em",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Honorários",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Trabalhista"
+        },
+        "D2": {
+          "entrada": "Em andamento"
+        },
+        "F2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Cível"
+        },
+        "D3": {
+          "entrada": "Encerrado"
+        },
+        "E3": {
+          "entrada": "12/08/2026",
+          "formato": "data"
+        },
+        "F3": {
+          "entrada": "8200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Trabalhista"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "E4": {
+          "entrada": "03/09/2026",
+          "formato": "data"
+        },
+        "F4": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Transportes Rápido"
+        },
+        "C5": {
+          "entrada": "Tributário"
+        },
+        "D5": {
+          "entrada": "Em andamento"
+        },
+        "F5": {
+          "entrada": "12500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Padaria Trigo"
+        },
+        "C6": {
+          "entrada": "Trabalhista"
+        },
+        "D6": {
+          "entrada": "Suspenso"
+        },
+        "F6": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Construtora Alfa"
+        },
+        "C7": {
+          "entrada": "Cível"
+        },
+        "D7": {
+          "entrada": "Em andamento"
+        },
+        "F7": {
+          "entrada": "9600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Encerrado"
+        },
+        "E8": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "F8": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Tributário"
+        },
+        "D9": {
+          "entrada": "Em andamento"
+        },
+        "F9": {
+          "entrada": "7300",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Trabalhista"
+        },
+        "D10": {
+          "entrada": "Em andamento"
+        },
+        "F10": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Tributário"
+        },
+        "D11": {
+          "entrada": "Suspenso"
+        },
+        "F11": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "P-211"
+        },
+        "B12": {
+          "entrada": "Marta Lima"
+        },
+        "C12": {
+          "entrada": "Cível"
+        },
+        "D12": {
+          "entrada": "Em andamento"
+        },
+        "F12": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "P-212"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Trabalhista"
+        },
+        "D13": {
+          "entrada": "Encerrado"
+        },
+        "E13": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "F13": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "P-213"
+        },
+        "B14": {
+          "entrada": "Transportes Rápido"
+        },
+        "C14": {
+          "entrada": "Cível"
+        },
+        "D14": {
+          "entrada": "Em andamento"
+        },
+        "F14": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "P-214"
+        },
+        "B15": {
+          "entrada": "Carlos Dias"
+        },
+        "C15": {
+          "entrada": "Trabalhista"
+        },
+        "D15": {
+          "entrada": "Em andamento"
+        },
+        "F15": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "P-215"
+        },
+        "B16": {
+          "entrada": "Padaria Trigo"
+        },
+        "C16": {
+          "entrada": "Tributário"
+        },
+        "D16": {
+          "entrada": "Encerrado"
+        },
+        "E16": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "F16": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "P-216"
+        },
+        "B17": {
+          "entrada": "João Ferreira"
+        },
+        "C17": {
+          "entrada": "Cível"
+        },
+        "D17": {
+          "entrada": "Suspenso"
+        },
+        "F17": {
+          "entrada": "2100",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:F17",
+        "linhas": [
+          "Status"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Área",
+            "valores": [
+              "Trabalhista"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:F17",
+            "destino": "H1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "A",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "C",
+                "valores": [
+                  "Trabalhista"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "1ae1664b-67a1-5d41-9e59-8886f78062f1",
+    "slug": "dinamica-contagem-status-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 63,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Área por status",
+    "enunciado": [
+      "Monte em **H1** uma tabela cruzada: cada **Área** numa linha, cada **Status** numa coluna e, no cruzamento, **quantos processos** há."
+    ],
+    "dicas": [
+      "Linhas, Colunas e um campo contado em Valores. A Contagem funciona na tabela cruzada como a Soma."
+    ],
+    "explicacao": [
+      "**Área** em **Linhas**, **Status** em **Colunas** e **Processo** em **Valores** (Contagem).",
+      "Cível e Trabalhista têm 3 processos em andamento cada; Tributário, 2. O Total Geral da direita conta por área; o de baixo, por status."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-contagem-status",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 13,
+      "larguras": {
+        "A": 56,
+        "B": 132,
+        "C": 84,
+        "D": 100,
+        "E": 104,
+        "F": 92,
+        "G": 24,
+        "H": 132,
+        "I": 104,
+        "J": 96,
+        "K": 84,
+        "L": 84,
+        "M": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Encerrado em",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Honorários",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Trabalhista"
+        },
+        "D2": {
+          "entrada": "Em andamento"
+        },
+        "F2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Cível"
+        },
+        "D3": {
+          "entrada": "Encerrado"
+        },
+        "E3": {
+          "entrada": "12/08/2026",
+          "formato": "data"
+        },
+        "F3": {
+          "entrada": "8200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Trabalhista"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "E4": {
+          "entrada": "03/09/2026",
+          "formato": "data"
+        },
+        "F4": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Transportes Rápido"
+        },
+        "C5": {
+          "entrada": "Tributário"
+        },
+        "D5": {
+          "entrada": "Em andamento"
+        },
+        "F5": {
+          "entrada": "12500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Padaria Trigo"
+        },
+        "C6": {
+          "entrada": "Trabalhista"
+        },
+        "D6": {
+          "entrada": "Suspenso"
+        },
+        "F6": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Construtora Alfa"
+        },
+        "C7": {
+          "entrada": "Cível"
+        },
+        "D7": {
+          "entrada": "Em andamento"
+        },
+        "F7": {
+          "entrada": "9600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Encerrado"
+        },
+        "E8": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "F8": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Tributário"
+        },
+        "D9": {
+          "entrada": "Em andamento"
+        },
+        "F9": {
+          "entrada": "7300",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Trabalhista"
+        },
+        "D10": {
+          "entrada": "Em andamento"
+        },
+        "F10": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Tributário"
+        },
+        "D11": {
+          "entrada": "Suspenso"
+        },
+        "F11": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "P-211"
+        },
+        "B12": {
+          "entrada": "Marta Lima"
+        },
+        "C12": {
+          "entrada": "Cível"
+        },
+        "D12": {
+          "entrada": "Em andamento"
+        },
+        "F12": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "P-212"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Trabalhista"
+        },
+        "D13": {
+          "entrada": "Encerrado"
+        },
+        "E13": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "F13": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "P-213"
+        },
+        "B14": {
+          "entrada": "Transportes Rápido"
+        },
+        "C14": {
+          "entrada": "Cível"
+        },
+        "D14": {
+          "entrada": "Em andamento"
+        },
+        "F14": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "P-214"
+        },
+        "B15": {
+          "entrada": "Carlos Dias"
+        },
+        "C15": {
+          "entrada": "Trabalhista"
+        },
+        "D15": {
+          "entrada": "Em andamento"
+        },
+        "F15": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "P-215"
+        },
+        "B16": {
+          "entrada": "Padaria Trigo"
+        },
+        "C16": {
+          "entrada": "Tributário"
+        },
+        "D16": {
+          "entrada": "Encerrado"
+        },
+        "E16": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "F16": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "P-216"
+        },
+        "B17": {
+          "entrada": "João Ferreira"
+        },
+        "C17": {
+          "entrada": "Cível"
+        },
+        "D17": {
+          "entrada": "Suspenso"
+        },
+        "F17": {
+          "entrada": "2100",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:F17",
+        "linhas": [
+          "Área"
+        ],
+        "colunas": [
+          "Status"
+        ],
+        "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:F17",
+            "destino": "H1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [
+              "D"
+            ],
+            "valores": [
+              {
+                "campo": "A",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "9516fca2-7f8b-5f63-9f43-2025105e4bea",
+    "slug": "dinamica-contagem-status-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 64,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a contagem que encolheu",
+    "enunciado": [
+      "Um colega montou a tabela dinâmica em **H1** para mostrar **quantos processos** há em cada **Área**.",
+      "O escritório tem 16 processos, mas o Total Geral da tabela mostra só 5. Corrija a tabela."
+    ],
+    "dicas": [
+      "Veja qual campo está em Valores e olhe essa coluna na tabela de processos.",
+      "Contagem só conta células preenchidas. Conte um campo que nunca fica em branco."
+    ],
+    "explicacao": [
+      "Tire **Encerrado em** de **Valores** e coloque **Processo** no lugar (Contagem).",
+      "*Encerrado em* só tem data nos 5 processos encerrados: a Contagem pula as células vazias. Trabalhista tem 6, Cível 6 e Tributário 4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-contagem-status",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 13,
+      "larguras": {
+        "A": 56,
+        "B": 132,
+        "C": 84,
+        "D": 100,
+        "E": 104,
+        "F": 92,
+        "G": 24,
+        "H": 132,
+        "I": 104,
+        "J": 96,
+        "K": 84,
+        "L": 84,
+        "M": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Processo",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Área",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Status",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Encerrado em",
+          "negrito": true
+        },
+        "F1": {
+          "entrada": "Honorários",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "P-201"
+        },
+        "B2": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C2": {
+          "entrada": "Trabalhista"
+        },
+        "D2": {
+          "entrada": "Em andamento"
+        },
+        "F2": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "P-202"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Cível"
+        },
+        "D3": {
+          "entrada": "Encerrado"
+        },
+        "E3": {
+          "entrada": "12/08/2026",
+          "formato": "data"
+        },
+        "F3": {
+          "entrada": "8200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "P-203"
+        },
+        "B4": {
+          "entrada": "João Ferreira"
+        },
+        "C4": {
+          "entrada": "Trabalhista"
+        },
+        "D4": {
+          "entrada": "Encerrado"
+        },
+        "E4": {
+          "entrada": "03/09/2026",
+          "formato": "data"
+        },
+        "F4": {
+          "entrada": "3100",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "P-204"
+        },
+        "B5": {
+          "entrada": "Transportes Rápido"
+        },
+        "C5": {
+          "entrada": "Tributário"
+        },
+        "D5": {
+          "entrada": "Em andamento"
+        },
+        "F5": {
+          "entrada": "12500",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "P-205"
+        },
+        "B6": {
+          "entrada": "Padaria Trigo"
+        },
+        "C6": {
+          "entrada": "Trabalhista"
+        },
+        "D6": {
+          "entrada": "Suspenso"
+        },
+        "F6": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "P-206"
+        },
+        "B7": {
+          "entrada": "Construtora Alfa"
+        },
+        "C7": {
+          "entrada": "Cível"
+        },
+        "D7": {
+          "entrada": "Em andamento"
+        },
+        "F7": {
+          "entrada": "9600",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "P-207"
+        },
+        "B8": {
+          "entrada": "Ana Souza"
+        },
+        "C8": {
+          "entrada": "Cível"
+        },
+        "D8": {
+          "entrada": "Encerrado"
+        },
+        "E8": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "F8": {
+          "entrada": "2400",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "P-208"
+        },
+        "B9": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C9": {
+          "entrada": "Tributário"
+        },
+        "D9": {
+          "entrada": "Em andamento"
+        },
+        "F9": {
+          "entrada": "7300",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "P-209"
+        },
+        "B10": {
+          "entrada": "Pedro Alves"
+        },
+        "C10": {
+          "entrada": "Trabalhista"
+        },
+        "D10": {
+          "entrada": "Em andamento"
+        },
+        "F10": {
+          "entrada": "3900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "P-210"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Tributário"
+        },
+        "D11": {
+          "entrada": "Suspenso"
+        },
+        "F11": {
+          "entrada": "6100",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "P-211"
+        },
+        "B12": {
+          "entrada": "Marta Lima"
+        },
+        "C12": {
+          "entrada": "Cível"
+        },
+        "D12": {
+          "entrada": "Em andamento"
+        },
+        "F12": {
+          "entrada": "1800",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "P-212"
+        },
+        "B13": {
+          "entrada": "Construtora Alfa"
+        },
+        "C13": {
+          "entrada": "Trabalhista"
+        },
+        "D13": {
+          "entrada": "Encerrado"
+        },
+        "E13": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "F13": {
+          "entrada": "5200",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "P-213"
+        },
+        "B14": {
+          "entrada": "Transportes Rápido"
+        },
+        "C14": {
+          "entrada": "Cível"
+        },
+        "D14": {
+          "entrada": "Em andamento"
+        },
+        "F14": {
+          "entrada": "4700",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "P-214"
+        },
+        "B15": {
+          "entrada": "Carlos Dias"
+        },
+        "C15": {
+          "entrada": "Trabalhista"
+        },
+        "D15": {
+          "entrada": "Em andamento"
+        },
+        "F15": {
+          "entrada": "3300",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "P-215"
+        },
+        "B16": {
+          "entrada": "Padaria Trigo"
+        },
+        "C16": {
+          "entrada": "Tributário"
+        },
+        "D16": {
+          "entrada": "Encerrado"
+        },
+        "E16": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "F16": {
+          "entrada": "2900",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "P-216"
+        },
+        "B17": {
+          "entrada": "João Ferreira"
+        },
+        "C17": {
+          "entrada": "Cível"
+        },
+        "D17": {
+          "entrada": "Suspenso"
+        },
+        "F17": {
+          "entrada": "2100",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:F17",
+            "destino": "H1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:F17",
+        "linhas": [
+          "Área"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "funcao": "contagem"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:F17",
+            "destino": "H1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "A",
+                "funcao": "contagem"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "4f49b2d9-be15-57b0-b3a8-c7a4a132178a",
+    "slug": "dinamica-contagem-status-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 65,
+    "nivel": 1,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: a contagem de um campo com vazios",
+    "enunciado": [
+      "Em uma planilha do Excel 365 em português, um analista judiciário mantém em A1:C11 o cadastro de 10 processos, com as colunas Número, Vara e Data de baixa. Só 4 processos têm a Data de baixa preenchida; nos demais, a célula está vazia.",
+      "Ele cria uma tabela dinâmica com Vara em Linhas e Data de baixa em Valores, resumido por Contagem. O Total Geral exibido é:"
+    ],
+    "dicas": [
+      "A Contagem da tabela dinâmica funciona como CONT.VALORES: só conta o que está preenchido."
+    ],
+    "explicacao": [
+      "**4**. A Contagem conta as células **preenchidas** do campo; os 6 processos sem baixa ficam de fora.",
+      "Para contar processos, o certo seria resumir um campo que nunca fica vazio, como o Número. Teste na planilha: `=CONT.VALORES(C2:C11)` dá 4."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-contagem-status",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 13,
+      "colunas": 5,
+      "larguras": {
+        "A": 72,
+        "B": 64,
+        "C": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Número",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Vara",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Data de baixa",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "0101"
+        },
+        "B2": {
+          "entrada": "1ª Vara"
+        },
+        "C2": {
+          "entrada": "03/02/2026",
+          "formato": "data"
+        },
+        "A3": {
+          "entrada": "0102"
+        },
+        "B3": {
+          "entrada": "2ª Vara"
+        },
+        "A4": {
+          "entrada": "0103"
+        },
+        "B4": {
+          "entrada": "1ª Vara"
+        },
+        "A5": {
+          "entrada": "0104"
+        },
+        "B5": {
+          "entrada": "3ª Vara"
+        },
+        "C5": {
+          "entrada": "15/04/2026",
+          "formato": "data"
+        },
+        "A6": {
+          "entrada": "0105"
+        },
+        "B6": {
+          "entrada": "2ª Vara"
+        },
+        "A7": {
+          "entrada": "0106"
+        },
+        "B7": {
+          "entrada": "1ª Vara"
+        },
+        "C7": {
+          "entrada": "22/06/2026",
+          "formato": "data"
+        },
+        "A8": {
+          "entrada": "0107"
+        },
+        "B8": {
+          "entrada": "3ª Vara"
+        },
+        "A9": {
+          "entrada": "0108"
+        },
+        "B9": {
+          "entrada": "2ª Vara"
+        },
+        "A10": {
+          "entrada": "0109"
+        },
+        "B10": {
+          "entrada": "1ª Vara"
+        },
+        "C10": {
+          "entrada": "09/09/2026",
+          "formato": "data"
+        },
+        "A11": {
+          "entrada": "0110"
+        },
+        "B11": {
+          "entrada": "3ª Vara"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "4"
+      },
+      {
+        "texto": "10",
+        "dica": "Seria o total se o campo contado nunca ficasse vazio, como o Número."
+      },
+      {
+        "texto": "6",
+        "dica": "6 é a quantidade de células vazias, que a Contagem não conta."
+      },
+      {
+        "texto": "0",
+        "dica": "A Contagem conta datas normalmente: só ignora as células vazias."
+      },
+      {
+        "texto": "#DIV/0!",
+        "dica": "Esse erro aparece na Média de um grupo sem números, não na Contagem."
+      }
+    ],
+    "correta": 0,
+    "banca": "FCC",
+    "tema": "Tabela dinâmica",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(C2:C11)",
+        "esperado": 4
+      }
+    ]
+  },
+  {
+    "id": "8f59816a-890b-5d01-ba6f-678702769334",
+    "slug": "dinamica-varios-resumos",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 7,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Total e ticket médio lado a lado",
+    "enunciado": [
+      "A gerente quer, para cada **Categoria**, o **total vendido** e o **valor médio por venda** (o ticket médio), em duas colunas. Monte a tabela dinâmica em **G1**."
+    ],
+    "dicas": [
+      "As duas colunas vêm do mesmo campo, Valor, com contas diferentes.",
+      "Um campo pode entrar em Valores mais de uma vez: arraste-o de novo da lista, ou use o ⋯ dele em Valores (Mais uma vez em Valores)."
+    ],
+    "explicacao": [
+      "**Categoria** em **Linhas** e **Valor** duas vezes em **Valores**: a primeira com **Soma**, a segunda trocada para **Média**.",
+      "Elétrica vende muito em quantidade, mas o ticket médio de Ferramentas é o maior (R$ 649). Duas contas do mesmo campo contam histórias diferentes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-varios-resumos",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Total sozinho engana: uma loja pode vender muito com muitas vendas pequenas. Pôr a soma, a média e a contagem lado a lado é o que separa um relatório de um número solto.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 76,
+        "C": 92,
+        "D": 48,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 112,
+        "I": 112,
+        "J": 112,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Loja",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Centro"
+        },
+        "C2": {
+          "entrada": "Tintas"
+        },
+        "D2": {
+          "entrada": "4"
+        },
+        "E2": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Bairro"
+        },
+        "C3": {
+          "entrada": "Ferramentas"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "E3": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Centro"
+        },
+        "C4": {
+          "entrada": "Elétrica"
+        },
+        "D4": {
+          "entrada": "10"
+        },
+        "E4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Shopping"
+        },
+        "C5": {
+          "entrada": "Tintas"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "1020",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Bairro"
+        },
+        "C6": {
+          "entrada": "Tintas"
+        },
+        "D6": {
+          "entrada": "3"
+        },
+        "E6": {
+          "entrada": "465",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Centro"
+        },
+        "C7": {
+          "entrada": "Ferramentas"
+        },
+        "D7": {
+          "entrada": "1"
+        },
+        "E7": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Shopping"
+        },
+        "C8": {
+          "entrada": "Elétrica"
+        },
+        "D8": {
+          "entrada": "8"
+        },
+        "E8": {
+          "entrada": "312",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Bairro"
+        },
+        "C9": {
+          "entrada": "Elétrica"
+        },
+        "D9": {
+          "entrada": "15"
+        },
+        "E9": {
+          "entrada": "705",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Centro"
+        },
+        "C10": {
+          "entrada": "Tintas"
+        },
+        "D10": {
+          "entrada": "2"
+        },
+        "E10": {
+          "entrada": "298",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Shopping"
+        },
+        "C11": {
+          "entrada": "Ferramentas"
+        },
+        "D11": {
+          "entrada": "3"
+        },
+        "E11": {
+          "entrada": "1260",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Bairro"
+        },
+        "C12": {
+          "entrada": "Ferramentas"
+        },
+        "D12": {
+          "entrada": "1"
+        },
+        "E12": {
+          "entrada": "175",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Centro"
+        },
+        "C13": {
+          "entrada": "Elétrica"
+        },
+        "D13": {
+          "entrada": "6"
+        },
+        "E13": {
+          "entrada": "264",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Shopping"
+        },
+        "C14": {
+          "entrada": "Tintas"
+        },
+        "D14": {
+          "entrada": "5"
+        },
+        "E14": {
+          "entrada": "830",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Bairro"
+        },
+        "C15": {
+          "entrada": "Tintas"
+        },
+        "D15": {
+          "entrada": "2"
+        },
+        "E15": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Centro"
+        },
+        "C16": {
+          "entrada": "Ferramentas"
+        },
+        "D16": {
+          "entrada": "2"
+        },
+        "E16": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Shopping"
+        },
+        "C17": {
+          "entrada": "Elétrica"
+        },
+        "D17": {
+          "entrada": "12"
+        },
+        "E17": {
+          "entrada": "588",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Categoria"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          },
+          {
+            "campo": "Valor",
+            "funcao": "media"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              },
+              {
+                "campo": "E",
+                "funcao": "media"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "f1b1c689-a9e1-5d94-93f4-67d765eefd5a",
+    "slug": "dinamica-varios-resumos-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 72,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Unidades e faturamento por loja",
+    "enunciado": [
+      "Em **G1**, mostre para cada **Loja** a **soma da quantidade** vendida e a **soma do valor**, em duas colunas."
+    ],
+    "dicas": [
+      "Agora são dois campos diferentes em Valores, os dois com Soma."
+    ],
+    "explicacao": [
+      "**Loja** em **Linhas**; **Qtd** e **Valor** em **Valores** (os dois com Soma).",
+      "O Centro vende mais itens que o Bairro, mas quem fatura mais é o Shopping: lá saem as vendas maiores."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-varios-resumos",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 76,
+        "C": 92,
+        "D": 48,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 112,
+        "I": 112,
+        "J": 112,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Loja",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Centro"
+        },
+        "C2": {
+          "entrada": "Tintas"
+        },
+        "D2": {
+          "entrada": "4"
+        },
+        "E2": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Bairro"
+        },
+        "C3": {
+          "entrada": "Ferramentas"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "E3": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Centro"
+        },
+        "C4": {
+          "entrada": "Elétrica"
+        },
+        "D4": {
+          "entrada": "10"
+        },
+        "E4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Shopping"
+        },
+        "C5": {
+          "entrada": "Tintas"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "1020",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Bairro"
+        },
+        "C6": {
+          "entrada": "Tintas"
+        },
+        "D6": {
+          "entrada": "3"
+        },
+        "E6": {
+          "entrada": "465",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Centro"
+        },
+        "C7": {
+          "entrada": "Ferramentas"
+        },
+        "D7": {
+          "entrada": "1"
+        },
+        "E7": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Shopping"
+        },
+        "C8": {
+          "entrada": "Elétrica"
+        },
+        "D8": {
+          "entrada": "8"
+        },
+        "E8": {
+          "entrada": "312",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Bairro"
+        },
+        "C9": {
+          "entrada": "Elétrica"
+        },
+        "D9": {
+          "entrada": "15"
+        },
+        "E9": {
+          "entrada": "705",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Centro"
+        },
+        "C10": {
+          "entrada": "Tintas"
+        },
+        "D10": {
+          "entrada": "2"
+        },
+        "E10": {
+          "entrada": "298",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Shopping"
+        },
+        "C11": {
+          "entrada": "Ferramentas"
+        },
+        "D11": {
+          "entrada": "3"
+        },
+        "E11": {
+          "entrada": "1260",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Bairro"
+        },
+        "C12": {
+          "entrada": "Ferramentas"
+        },
+        "D12": {
+          "entrada": "1"
+        },
+        "E12": {
+          "entrada": "175",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Centro"
+        },
+        "C13": {
+          "entrada": "Elétrica"
+        },
+        "D13": {
+          "entrada": "6"
+        },
+        "E13": {
+          "entrada": "264",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Shopping"
+        },
+        "C14": {
+          "entrada": "Tintas"
+        },
+        "D14": {
+          "entrada": "5"
+        },
+        "E14": {
+          "entrada": "830",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Bairro"
+        },
+        "C15": {
+          "entrada": "Tintas"
+        },
+        "D15": {
+          "entrada": "2"
+        },
+        "E15": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Centro"
+        },
+        "C16": {
+          "entrada": "Ferramentas"
+        },
+        "D16": {
+          "entrada": "2"
+        },
+        "E16": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Shopping"
+        },
+        "C17": {
+          "entrada": "Elétrica"
+        },
+        "D17": {
+          "entrada": "12"
+        },
+        "E17": {
+          "entrada": "588",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Loja"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Qtd",
+            "funcao": "soma"
+          },
           {
             "campo": "Valor",
             "funcao": "soma"
@@ -7591,10 +9782,4612 @@
       "recursos": {
         "dinamicas": [
           {
-            "origem": "A1:E15",
+            "origem": "A1:E17",
             "destino": "G1",
             "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma"
+              },
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "275075b7-12aa-554c-8dd8-686e711c0f0f",
+    "slug": "dinamica-varios-resumos-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 73,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Média, maior e menor venda",
+    "enunciado": [
+      "Para cada **Categoria**, mostre em **G1** a **média**, a **maior** e a **menor** venda (pelo Valor), nessa ordem ou em qualquer outra."
+    ],
+    "dicas": [
+      "Três vezes o mesmo campo em Valores, cada um com uma conta."
+    ],
+    "explicacao": [
+      "**Categoria** em **Linhas** e **Valor** três vezes em **Valores**: **Média**, **Máx.** e **Mín.**",
+      "É o resumo que o comprador pede para negociar preço: a venda típica e os extremos de cada categoria."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-varios-resumos",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 76,
+        "C": 92,
+        "D": 48,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 112,
+        "I": 112,
+        "J": 112,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Loja",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Centro"
+        },
+        "C2": {
+          "entrada": "Tintas"
+        },
+        "D2": {
+          "entrada": "4"
+        },
+        "E2": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Bairro"
+        },
+        "C3": {
+          "entrada": "Ferramentas"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "E3": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Centro"
+        },
+        "C4": {
+          "entrada": "Elétrica"
+        },
+        "D4": {
+          "entrada": "10"
+        },
+        "E4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Shopping"
+        },
+        "C5": {
+          "entrada": "Tintas"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "1020",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Bairro"
+        },
+        "C6": {
+          "entrada": "Tintas"
+        },
+        "D6": {
+          "entrada": "3"
+        },
+        "E6": {
+          "entrada": "465",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Centro"
+        },
+        "C7": {
+          "entrada": "Ferramentas"
+        },
+        "D7": {
+          "entrada": "1"
+        },
+        "E7": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Shopping"
+        },
+        "C8": {
+          "entrada": "Elétrica"
+        },
+        "D8": {
+          "entrada": "8"
+        },
+        "E8": {
+          "entrada": "312",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Bairro"
+        },
+        "C9": {
+          "entrada": "Elétrica"
+        },
+        "D9": {
+          "entrada": "15"
+        },
+        "E9": {
+          "entrada": "705",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Centro"
+        },
+        "C10": {
+          "entrada": "Tintas"
+        },
+        "D10": {
+          "entrada": "2"
+        },
+        "E10": {
+          "entrada": "298",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Shopping"
+        },
+        "C11": {
+          "entrada": "Ferramentas"
+        },
+        "D11": {
+          "entrada": "3"
+        },
+        "E11": {
+          "entrada": "1260",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Bairro"
+        },
+        "C12": {
+          "entrada": "Ferramentas"
+        },
+        "D12": {
+          "entrada": "1"
+        },
+        "E12": {
+          "entrada": "175",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Centro"
+        },
+        "C13": {
+          "entrada": "Elétrica"
+        },
+        "D13": {
+          "entrada": "6"
+        },
+        "E13": {
+          "entrada": "264",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Shopping"
+        },
+        "C14": {
+          "entrada": "Tintas"
+        },
+        "D14": {
+          "entrada": "5"
+        },
+        "E14": {
+          "entrada": "830",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Bairro"
+        },
+        "C15": {
+          "entrada": "Tintas"
+        },
+        "D15": {
+          "entrada": "2"
+        },
+        "E15": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Centro"
+        },
+        "C16": {
+          "entrada": "Ferramentas"
+        },
+        "D16": {
+          "entrada": "2"
+        },
+        "E16": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Shopping"
+        },
+        "C17": {
+          "entrada": "Elétrica"
+        },
+        "D17": {
+          "entrada": "12"
+        },
+        "E17": {
+          "entrada": "588",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Categoria"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "media"
+          },
+          {
+            "campo": "Valor",
+            "funcao": "max"
+          },
+          {
+            "campo": "Valor",
+            "funcao": "min"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "media"
+              },
+              {
+                "campo": "E",
+                "funcao": "max"
+              },
+              {
+                "campo": "E",
+                "funcao": "min"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "99305f57-72b9-5669-b533-2e1d66ba1888",
+    "slug": "dinamica-varios-resumos-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 74,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: quantos itens?",
+    "enunciado": [
+      "O estoque quer saber **quantos itens** saíram de cada **Loja** nesta quinzena. Cada venda pode ter vários itens. Monte a tabela dinâmica em **G1**."
+    ],
+    "dicas": [
+      "A coluna Qtd diz quantos itens tem cada venda. Contar as linhas diz quantas vendas foram feitas."
+    ],
+    "explicacao": [
+      "**Loja** em **Linhas** e **Qtd** em **Valores** com **Soma**: Bairro 23, Centro 25, Shopping 34.",
+      "*Contagem* responderia quantas **vendas** cada loja fez (5 ou 6), não quantos **itens**. \"Quantos\" nem sempre é Contagem: depende do que cada linha representa."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-varios-resumos",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 76,
+        "C": 92,
+        "D": 48,
+        "E": 84,
+        "F": 24,
+        "G": 118,
+        "H": 112,
+        "I": 112,
+        "J": 112,
+        "K": 96,
+        "L": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Loja",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Categoria",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Qtd",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Centro"
+        },
+        "C2": {
+          "entrada": "Tintas"
+        },
+        "D2": {
+          "entrada": "4"
+        },
+        "E2": {
+          "entrada": "640",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "03/11/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Bairro"
+        },
+        "C3": {
+          "entrada": "Ferramentas"
+        },
+        "D3": {
+          "entrada": "2"
+        },
+        "E3": {
+          "entrada": "380",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Centro"
+        },
+        "C4": {
+          "entrada": "Elétrica"
+        },
+        "D4": {
+          "entrada": "10"
+        },
+        "E4": {
+          "entrada": "450",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Shopping"
+        },
+        "C5": {
+          "entrada": "Tintas"
+        },
+        "D5": {
+          "entrada": "6"
+        },
+        "E5": {
+          "entrada": "1020",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Bairro"
+        },
+        "C6": {
+          "entrada": "Tintas"
+        },
+        "D6": {
+          "entrada": "3"
+        },
+        "E6": {
+          "entrada": "465",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "05/11/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Centro"
+        },
+        "C7": {
+          "entrada": "Ferramentas"
+        },
+        "D7": {
+          "entrada": "1"
+        },
+        "E7": {
+          "entrada": "890",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Shopping"
+        },
+        "C8": {
+          "entrada": "Elétrica"
+        },
+        "D8": {
+          "entrada": "8"
+        },
+        "E8": {
+          "entrada": "312",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Bairro"
+        },
+        "C9": {
+          "entrada": "Elétrica"
+        },
+        "D9": {
+          "entrada": "15"
+        },
+        "E9": {
+          "entrada": "705",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Centro"
+        },
+        "C10": {
+          "entrada": "Tintas"
+        },
+        "D10": {
+          "entrada": "2"
+        },
+        "E10": {
+          "entrada": "298",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "07/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Shopping"
+        },
+        "C11": {
+          "entrada": "Ferramentas"
+        },
+        "D11": {
+          "entrada": "3"
+        },
+        "E11": {
+          "entrada": "1260",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Bairro"
+        },
+        "C12": {
+          "entrada": "Ferramentas"
+        },
+        "D12": {
+          "entrada": "1"
+        },
+        "E12": {
+          "entrada": "175",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "10/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Centro"
+        },
+        "C13": {
+          "entrada": "Elétrica"
+        },
+        "D13": {
+          "entrada": "6"
+        },
+        "E13": {
+          "entrada": "264",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Shopping"
+        },
+        "C14": {
+          "entrada": "Tintas"
+        },
+        "D14": {
+          "entrada": "5"
+        },
+        "E14": {
+          "entrada": "830",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Bairro"
+        },
+        "C15": {
+          "entrada": "Tintas"
+        },
+        "D15": {
+          "entrada": "2"
+        },
+        "E15": {
+          "entrada": "310",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Centro"
+        },
+        "C16": {
+          "entrada": "Ferramentas"
+        },
+        "D16": {
+          "entrada": "2"
+        },
+        "E16": {
+          "entrada": "540",
+          "formato": "moeda"
+        },
+        "A17": {
+          "entrada": "12/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Shopping"
+        },
+        "C17": {
+          "entrada": "Elétrica"
+        },
+        "D17": {
+          "entrada": "12"
+        },
+        "E17": {
+          "entrada": "588",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E17",
+        "linhas": [
+          "Loja"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Qtd",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E17",
+            "destino": "G1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "04491e79-5368-5820-840b-c36816df986c",
+    "slug": "dinamica-varios-resumos-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 75,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: o Total Geral da Média",
+    "enunciado": [
+      "Um técnico de uma distribuidora tem, em A1:B5, quatro vendas: a Loja Norte vendeu R$ 100, R$ 200 e R$ 300, e a Loja Sul vendeu R$ 1.000 numa única venda.",
+      "Ele cria uma tabela dinâmica com Loja em Linhas e Valor em Valores, resumido por Média. O valor exibido no Total Geral é:"
+    ],
+    "dicas": [
+      "O Total Geral repete a conta da coluna com todas as linhas da origem juntas."
+    ],
+    "explicacao": [
+      "**R$ 400**: a média das quatro vendas (1.600 ÷ 4). O Total Geral da Média não é a média das médias das lojas (que daria R$ 600).",
+      "Teste na planilha: `=MÉDIA(B2:B5)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-varios-resumos",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 7,
+      "colunas": 4,
+      "larguras": {
+        "A": 80,
+        "B": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Loja",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Norte"
+        },
+        "B2": {
+          "entrada": "100",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Norte"
+        },
+        "B3": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Norte"
+        },
+        "B4": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Sul"
+        },
+        "B5": {
+          "entrada": "1000",
+          "formato": "moeda"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "R$ 400,00"
+      },
+      {
+        "texto": "R$ 600,00",
+        "dica": "Essa é a média das médias (200 e 1.000). O Total Geral faz a média das vendas, e a Loja Norte tem três."
+      },
+      {
+        "texto": "R$ 1.600,00",
+        "dica": "Essa é a soma. O campo está resumido por Média."
+      },
+      {
+        "texto": "R$ 1.000,00",
+        "dica": "Esse é o maior valor (Máx.), não a média."
+      },
+      {
+        "texto": "R$ 200,00",
+        "dica": "Essa é só a média da Loja Norte."
+      }
+    ],
+    "correta": 0,
+    "banca": "Cesgranrio",
+    "tema": "Tabela dinâmica",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=MÉDIA(B2:B5)",
+        "esperado": 400
+      }
+    ]
+  },
+  {
+    "id": "c570aaf7-56fa-5b52-8c46-33c255a057f8",
+    "slug": "dinamica-percentual-total",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 8,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "% do Total Geral: a fatia de cada cliente",
+    "enunciado": [
+      "O escritório de contabilidade quer saber **quanto cada cliente representa** do faturamento do trimestre, em **porcentagem**. Monte a tabela dinâmica em **F1**, com **Cliente** nas linhas, mostrando a participação de cada um."
+    ],
+    "dicas": [
+      "Não precisa de fórmula: a tabela dinâmica sabe mostrar a soma como parte do total.",
+      "Em Valores, ao lado da conta, há o seletor *Mostrar Valores como*."
+    ],
+    "explicacao": [
+      "**Cliente** em **Linhas**, **Valor** em **Valores** (Soma) e, no seletor **Mostrar Valores como**, **% do Total Geral**.",
+      "A Construtora Alfa sozinha passa da metade (50,5%) do faturamento: perder esse cliente seria um problema. O Total Geral vira 100%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-percentual-total",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "\"Quanto esse cliente representa?\" é a pergunta de toda reunião de resultado. Com um clique, a tabela dinâmica troca reais por porcentagem do total, sem nenhuma fórmula.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 10,
+      "larguras": {
+        "A": 48,
+        "B": 132,
+        "C": 136,
+        "D": 84,
+        "E": 24,
+        "F": 140,
+        "G": 112,
+        "H": 112,
+        "I": 96,
+        "J": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Set"
+        },
+        "B2": {
+          "entrada": "Padaria Trigo"
+        },
+        "C2": {
+          "entrada": "Folha de pagamento"
+        },
+        "D2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Set"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Contabilidade"
+        },
+        "D3": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Contabilidade"
+        },
+        "D4": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Set"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "Folha de pagamento"
+        },
+        "D5": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "Construtora Alfa"
+        },
+        "C6": {
+          "entrada": "Folha de pagamento"
+        },
+        "D6": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Folha de pagamento"
+        },
+        "D7": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Out"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Contabilidade"
+        },
+        "D8": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Out"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "Contabilidade"
+        },
+        "D9": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Out"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Imposto de renda"
+        },
+        "D10": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Imposto de renda"
+        },
+        "D11": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "Padaria Trigo"
+        },
+        "C12": {
+          "entrada": "Folha de pagamento"
+        },
+        "D12": {
+          "entrada": "1300",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Nov"
+        },
+        "B13": {
+          "entrada": "Clínica Vida"
+        },
+        "C13": {
+          "entrada": "Contabilidade"
+        },
+        "D13": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Nov"
+        },
+        "B14": {
+          "entrada": "Construtora Alfa"
+        },
+        "C14": {
+          "entrada": "Contabilidade"
+        },
+        "D14": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Nov"
+        },
+        "B15": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C15": {
+          "entrada": "Folha de pagamento"
+        },
+        "D15": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Nov"
+        },
+        "B16": {
+          "entrada": "Construtora Alfa"
+        },
+        "C16": {
+          "entrada": "Folha de pagamento"
+        },
+        "D16": {
+          "entrada": "2600",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:D16",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:D16",
+            "destino": "F1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "b1290c75-9255-5bf3-ae31-16c6839d206b",
+    "slug": "dinamica-percentual-total-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Qual serviço pesa mais",
+    "enunciado": [
+      "Em **F1**, mostre a **participação de cada Serviço** no faturamento total, em porcentagem."
+    ],
+    "dicas": [
+      "Mesma ideia, outro campo nas linhas."
+    ],
+    "explicacao": [
+      "**Serviço** em **Linhas**, **Valor** em **Valores** com **% do Total Geral**.",
+      "Contabilidade é 59,2% do faturamento; Imposto de renda, só 6,5%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-percentual-total",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 10,
+      "larguras": {
+        "A": 48,
+        "B": 132,
+        "C": 136,
+        "D": 84,
+        "E": 24,
+        "F": 140,
+        "G": 112,
+        "H": 112,
+        "I": 96,
+        "J": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Set"
+        },
+        "B2": {
+          "entrada": "Padaria Trigo"
+        },
+        "C2": {
+          "entrada": "Folha de pagamento"
+        },
+        "D2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Set"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Contabilidade"
+        },
+        "D3": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Contabilidade"
+        },
+        "D4": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Set"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "Folha de pagamento"
+        },
+        "D5": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "Construtora Alfa"
+        },
+        "C6": {
+          "entrada": "Folha de pagamento"
+        },
+        "D6": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Folha de pagamento"
+        },
+        "D7": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Out"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Contabilidade"
+        },
+        "D8": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Out"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "Contabilidade"
+        },
+        "D9": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Out"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Imposto de renda"
+        },
+        "D10": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Imposto de renda"
+        },
+        "D11": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "Padaria Trigo"
+        },
+        "C12": {
+          "entrada": "Folha de pagamento"
+        },
+        "D12": {
+          "entrada": "1300",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Nov"
+        },
+        "B13": {
+          "entrada": "Clínica Vida"
+        },
+        "C13": {
+          "entrada": "Contabilidade"
+        },
+        "D13": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Nov"
+        },
+        "B14": {
+          "entrada": "Construtora Alfa"
+        },
+        "C14": {
+          "entrada": "Contabilidade"
+        },
+        "D14": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Nov"
+        },
+        "B15": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C15": {
+          "entrada": "Folha de pagamento"
+        },
+        "D15": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Nov"
+        },
+        "B16": {
+          "entrada": "Construtora Alfa"
+        },
+        "C16": {
+          "entrada": "Folha de pagamento"
+        },
+        "D16": {
+          "entrada": "2600",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:D16",
+        "linhas": [
+          "Serviço"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:D16",
+            "destino": "F1",
+            "linhas": [
+              "C"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "b90f0761-395c-5d18-94b9-558c73631026",
+    "slug": "dinamica-percentual-total-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 83,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A participação só de novembro",
+    "enunciado": [
+      "Em **F1**, mostre a **participação de cada Cliente** no faturamento, em porcentagem, considerando **só o mês Nov**."
+    ],
+    "dicas": [
+      "Filtre o mês primeiro. A porcentagem passa a ser sobre o que sobrou."
+    ],
+    "explicacao": [
+      "**Cliente** em **Linhas**, **Valor** com **% do Total Geral** e **Mês** em **Filtros**, só **Nov**.",
+      "Com o filtro, o 100% é o total de novembro (R$ 13.100), não o do trimestre: a Construtora Alfa sobe para 54,2%."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-percentual-total",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 10,
+      "larguras": {
+        "A": 48,
+        "B": 132,
+        "C": 136,
+        "D": 84,
+        "E": 24,
+        "F": 140,
+        "G": 112,
+        "H": 112,
+        "I": 96,
+        "J": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Set"
+        },
+        "B2": {
+          "entrada": "Padaria Trigo"
+        },
+        "C2": {
+          "entrada": "Folha de pagamento"
+        },
+        "D2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Set"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Contabilidade"
+        },
+        "D3": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Contabilidade"
+        },
+        "D4": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Set"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "Folha de pagamento"
+        },
+        "D5": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "Construtora Alfa"
+        },
+        "C6": {
+          "entrada": "Folha de pagamento"
+        },
+        "D6": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Folha de pagamento"
+        },
+        "D7": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Out"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Contabilidade"
+        },
+        "D8": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Out"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "Contabilidade"
+        },
+        "D9": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Out"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Imposto de renda"
+        },
+        "D10": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Imposto de renda"
+        },
+        "D11": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "Padaria Trigo"
+        },
+        "C12": {
+          "entrada": "Folha de pagamento"
+        },
+        "D12": {
+          "entrada": "1300",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Nov"
+        },
+        "B13": {
+          "entrada": "Clínica Vida"
+        },
+        "C13": {
+          "entrada": "Contabilidade"
+        },
+        "D13": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Nov"
+        },
+        "B14": {
+          "entrada": "Construtora Alfa"
+        },
+        "C14": {
+          "entrada": "Contabilidade"
+        },
+        "D14": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Nov"
+        },
+        "B15": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C15": {
+          "entrada": "Folha de pagamento"
+        },
+        "D15": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Nov"
+        },
+        "B16": {
+          "entrada": "Construtora Alfa"
+        },
+        "C16": {
+          "entrada": "Folha de pagamento"
+        },
+        "D16": {
+          "entrada": "2600",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:D16",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Nov"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:D16",
+            "destino": "F1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "A",
+                "valores": [
+                  "Nov"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "9584827a-a8fc-5caf-9453-28a98c45fd43",
+    "slug": "dinamica-percentual-total-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 84,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: reais e porcentagem juntos",
+    "enunciado": [
+      "A diretoria quer, para cada **Cliente**, o **faturamento em reais** e, **ao lado**, a **participação em %** no total. Monte a tabela dinâmica em **F1**."
+    ],
+    "dicas": [
+      "Se você mudar o único campo de Valores para %, os reais somem. São duas colunas."
+    ],
+    "explicacao": [
+      "**Cliente** em **Linhas** e **Valor** duas vezes em **Valores**: uma em *Sem Cálculo* (reais) e outra em **% do Total Geral**.",
+      "Erro comum: trocar a única coluna para %, e o relatório perde os valores. O segundo campo aparece como *Soma de Valor2*, como no Excel."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-percentual-total",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 10,
+      "larguras": {
+        "A": 48,
+        "B": 132,
+        "C": 136,
+        "D": 84,
+        "E": 24,
+        "F": 140,
+        "G": 112,
+        "H": 112,
+        "I": 96,
+        "J": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Set"
+        },
+        "B2": {
+          "entrada": "Padaria Trigo"
+        },
+        "C2": {
+          "entrada": "Folha de pagamento"
+        },
+        "D2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Set"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Contabilidade"
+        },
+        "D3": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Contabilidade"
+        },
+        "D4": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Set"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "Folha de pagamento"
+        },
+        "D5": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "Construtora Alfa"
+        },
+        "C6": {
+          "entrada": "Folha de pagamento"
+        },
+        "D6": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Folha de pagamento"
+        },
+        "D7": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Out"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Contabilidade"
+        },
+        "D8": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Out"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "Contabilidade"
+        },
+        "D9": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Out"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Imposto de renda"
+        },
+        "D10": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Imposto de renda"
+        },
+        "D11": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "Padaria Trigo"
+        },
+        "C12": {
+          "entrada": "Folha de pagamento"
+        },
+        "D12": {
+          "entrada": "1300",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Nov"
+        },
+        "B13": {
+          "entrada": "Clínica Vida"
+        },
+        "C13": {
+          "entrada": "Contabilidade"
+        },
+        "D13": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Nov"
+        },
+        "B14": {
+          "entrada": "Construtora Alfa"
+        },
+        "C14": {
+          "entrada": "Contabilidade"
+        },
+        "D14": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Nov"
+        },
+        "B15": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C15": {
+          "entrada": "Folha de pagamento"
+        },
+        "D15": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Nov"
+        },
+        "B16": {
+          "entrada": "Construtora Alfa"
+        },
+        "C16": {
+          "entrada": "Folha de pagamento"
+        },
+        "D16": {
+          "entrada": "2600",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:D16",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma"
+          },
+          {
+            "campo": "Valor",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:D16",
+            "destino": "F1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma"
+              },
+              {
+                "campo": "D",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "645c097e-a848-52d7-8088-20545dccad26",
+    "slug": "dinamica-percentual-total-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 85,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: % do Total Geral com filtro",
+    "enunciado": [
+      "Em uma prefeitura, uma planilha registra o faturamento de três fornecedores: Alfa, R$ 6.000; Beta, R$ 3.000; Gama, R$ 1.000.",
+      "Uma tabela dinâmica mostra Fornecedor em Linhas e Valor em Valores, com a opção Mostrar Valores como % do Total Geral. Em seguida, o fornecedor Gama é desmarcado no filtro. O valor exibido para Alfa passa a ser, aproximadamente:"
+    ],
+    "dicas": [
+      "Com o filtro, o 100% é o total do que continua visível."
+    ],
+    "explicacao": [
+      "**66,67%**: com Gama fora, o Total Geral é R$ 9.000 e Alfa é 6.000 ÷ 9.000.",
+      "Sem o filtro, Alfa seria 60%. Teste na planilha: `=B2/(B2+B3)`."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-percentual-total",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 6,
+      "colunas": 4,
+      "larguras": {
+        "A": 96,
+        "B": 84
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Fornecedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Alfa"
+        },
+        "B2": {
+          "entrada": "6000",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Beta"
+        },
+        "B3": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Gama"
+        },
+        "B4": {
+          "entrada": "1000",
+          "formato": "moeda"
+        }
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "60,00%",
+        "dica": "Seria assim com os três fornecedores. O filtro tira Gama também do Total Geral."
+      },
+      {
+        "texto": "66,67%"
+      },
+      {
+        "texto": "100,00%",
+        "dica": "100% aparece só no Total Geral."
+      },
+      {
+        "texto": "R$ 6.000,00",
+        "dica": "Com % do Total Geral, a tabela mostra a participação, não o valor em reais."
+      },
+      {
+        "texto": "33,33%",
+        "dica": "Essa é a participação de Beta depois do filtro."
+      }
+    ],
+    "correta": 1,
+    "banca": "Vunesp",
+    "tema": "Tabela dinâmica",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=B2/(B2+B3)",
+        "esperado": 0.6666666666666666
+      }
+    ]
+  },
+  {
+    "id": "eda09141-4deb-5ce0-9bc4-ebbc3639071e",
+    "slug": "dinamica-procv-na-dinamica",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 9,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Buscar na tabela dinâmica com PROCV",
+    "enunciado": [
+      "A tabela dinâmica em **E1** tem o total de vendas por vendedor.",
+      "Em **I2**, traga o total do vendedor escrito em **H2**. A fórmula tem que continuar certa quando alguém trocar o nome em H2."
+    ],
+    "dicas": [
+      "A tabela dinâmica é uma tabela como outra qualquer: dá para procurar nela.",
+      "Procure o nome de H2 na primeira coluna da tabela dinâmica (E) e devolva a segunda (F). Colunas inteiras (E:F) continuam valendo se a tabela crescer."
+    ],
+    "explicacao": [
+      "`=PROCV(H2;E:F;2;FALSO)` → R$ 7.800 para a Carla.",
+      "Escrever `=F4` também dá R$ 7.800 hoje, mas só enquanto a Carla estiver em H2 e na quarta linha da tabela. Com PROCV, troque o nome e o total acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-procv-na-dinamica",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "O resumo pronto vira a fonte de outras contas: comissão, meta, painel. Buscar o número com PROCV, em vez de apontar para a célula, é o que mantém o painel certo quando a tabela muda.",
+    "type": "formula",
+    "grade": {
+      "linhas": 18,
+      "colunas": 10,
+      "larguras": {
+        "A": 76,
+        "B": 64,
+        "C": 84,
+        "D": 24,
+        "E": 118,
+        "F": 112,
+        "G": 24,
+        "H": 96,
+        "I": 104,
+        "J": 72
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Bruno"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Daniel"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Eduarda"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Ana"
+        },
+        "B12": {
+          "entrada": "Norte"
+        },
+        "C12": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Carla"
+        },
+        "B13": {
+          "entrada": "Sul"
+        },
+        "C13": {
+          "entrada": "1600",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Bruno"
+        },
+        "B14": {
+          "entrada": "Leste"
+        },
+        "C14": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Daniel"
+        },
+        "B15": {
+          "entrada": "Norte"
+        },
+        "C15": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Carla"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:C15",
+            "destino": "E1",
+            "linhas": [
               "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "C",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      },
+      "alternativas": {
+        "H2": [
+          "Daniel",
+          "Ana"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 7800,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(H2;E:F;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: com um nome que não está na tabela, ele traz o total de outra pessoa sem avisar. Use FALSO.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "^=\\$?F\\$?\\d+$",
+        "dica": "Apontar direto para uma célula da tabela dinâmica só dá certo enquanto o nome em H2 e a forma da tabela não mudam. Busque pelo nome, com PROCV."
+      }
+    ]
+  },
+  {
+    "id": "5353f553-d36d-5719-a980-87ce2155a9df",
+    "slug": "dinamica-procv-na-dinamica-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 92,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Vendedor sem vendas",
+    "enunciado": [
+      "Em **I2**, traga o total do vendedor escrito em **H2**, pela tabela dinâmica.",
+      "O **Fábio** entrou este mês e ainda não vendeu nada: ele não aparece na tabela. Para quem não estiver na tabela, I2 deve mostrar **0** (e não um erro)."
+    ],
+    "dicas": [
+      "Um PROCV que não acha o nome dá #N/D. Existe uma função que troca qualquer erro por outro valor.",
+      "Coloque o PROCV dentro de SEERRO."
+    ],
+    "explicacao": [
+      "`=SEERRO(PROCV(H2;E:F;2;FALSO);0)`.",
+      "Sem o FALSO, o PROCV aproximado traria o total de outra pessoa para o Fábio, sem erro nenhum: o pior tipo de engano."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-procv-na-dinamica",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 18,
+      "colunas": 10,
+      "larguras": {
+        "A": 76,
+        "B": 64,
+        "C": 84,
+        "D": 24,
+        "E": 118,
+        "F": 112,
+        "G": 24,
+        "H": 96,
+        "I": 104,
+        "J": 72
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Bruno"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Daniel"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Eduarda"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Ana"
+        },
+        "B12": {
+          "entrada": "Norte"
+        },
+        "C12": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Carla"
+        },
+        "B13": {
+          "entrada": "Sul"
+        },
+        "C13": {
+          "entrada": "1600",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Bruno"
+        },
+        "B14": {
+          "entrada": "Leste"
+        },
+        "C14": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Daniel"
+        },
+        "B15": {
+          "entrada": "Norte"
+        },
+        "C15": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Fábio"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:C15",
+            "destino": "E1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "C",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      },
+      "alternativas": {
+        "H2": [
+          "Fábio",
+          "Carla"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 0,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(H2;E:F;2;FALSO);0)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: com um nome que não está na tabela, ele traz o total de outra pessoa sem avisar. Use FALSO.",
+        "bloqueia": true
+      }
+    ]
+  },
+  {
+    "id": "7ee01178-2189-5ad4-a589-d0d0d3b39541",
+    "slug": "dinamica-procv-na-dinamica-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 93,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Bateu a meta?",
+    "enunciado": [
+      "A meta do mês está em **I4**. Em **I2**, escreva **Bateu** se o total do vendedor de **H2** (na tabela dinâmica) for **pelo menos** a meta, e **Não bateu** se for menor."
+    ],
+    "dicas": [
+      "Primeiro busque o total; depois compare com a meta dentro de um SE.",
+      "\"Pelo menos\" inclui o valor exato da meta."
+    ],
+    "explicacao": [
+      "`=SE(PROCV(H2;E:F;2;FALSO)>=I4;\"Bateu\";\"Não bateu\")`.",
+      "A Carla vendeu R$ 7.800 e a meta é R$ 7.500: bateu. Mude a meta ou o nome e a resposta acompanha."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-procv-na-dinamica",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 18,
+      "colunas": 10,
+      "larguras": {
+        "A": 76,
+        "B": 64,
+        "C": 84,
+        "D": 24,
+        "E": 118,
+        "F": 112,
+        "G": 24,
+        "H": 96,
+        "I": 104,
+        "J": 72
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Bruno"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Daniel"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Eduarda"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Ana"
+        },
+        "B12": {
+          "entrada": "Norte"
+        },
+        "C12": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Carla"
+        },
+        "B13": {
+          "entrada": "Sul"
+        },
+        "C13": {
+          "entrada": "1600",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Bruno"
+        },
+        "B14": {
+          "entrada": "Leste"
+        },
+        "C14": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Daniel"
+        },
+        "B15": {
+          "entrada": "Norte"
+        },
+        "C15": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Situação",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Carla"
+        },
+        "H4": {
+          "entrada": "Meta",
+          "negrito": true
+        },
+        "I4": {
+          "entrada": "7500",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:C15",
+            "destino": "E1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "C",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      },
+      "alternativas": {
+        "H2": [
+          "Bruno",
+          "Daniel"
+        ]
+      },
+      "variaveis": [
+        "I4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": "Bateu",
+        "exigeFormula": true,
+        "solucaoReferencia": "=SE(PROCV(H2;E:F;2;FALSO)>=I4;\"Bateu\";\"Não bateu\")"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: com um nome que não está na tabela, ele traz o total de outra pessoa sem avisar. Use FALSO.",
+        "bloqueia": true
+      }
+    ]
+  },
+  {
+    "id": "4bc6aa8f-745f-5de0-bbbe-f445352e7d23",
+    "slug": "dinamica-procv-na-dinamica-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 94,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: a referência que mudou de lugar",
+    "enunciado": [
+      "O colega fez **I2** com `=F4` para mostrar o total de quem está em **H2**. Funcionava, até alguém filtrar a tabela dinâmica na região **Sul**: agora I2 mostra o número de outra pessoa.",
+      "Corrija **I2** para trazer o total (do Sul) do vendedor de H2, mesmo que a tabela mude de novo."
+    ],
+    "dicas": [
+      "Com o filtro, a tabela ganhou linhas em cima e cada nome desceu. Olhe onde a Carla está agora.",
+      "Não aponte para uma célula: procure o nome."
+    ],
+    "explicacao": [
+      "`=PROCV(H2;E:F;2;FALSO)` → R$ 4.400 (a Carla no Sul).",
+      "Em tabela dinâmica, a posição de cada item muda quando você filtra, troca campos ou entram dados novos. Uma referência fixa como `=F4` passa a mostrar outra coisa sem dar erro nenhum."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-procv-na-dinamica",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "formula",
+    "grade": {
+      "linhas": 18,
+      "colunas": 10,
+      "larguras": {
+        "A": 76,
+        "B": 64,
+        "C": 84,
+        "D": 24,
+        "E": 118,
+        "F": 112,
+        "G": 24,
+        "H": 96,
+        "I": 104,
+        "J": 72
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Região",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "Sul"
+        },
+        "C2": {
+          "entrada": "3200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "Norte"
+        },
+        "C3": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "Sul"
+        },
+        "C4": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "Leste"
+        },
+        "C5": {
+          "entrada": "4100",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Eduarda"
+        },
+        "B6": {
+          "entrada": "Norte"
+        },
+        "C6": {
+          "entrada": "2300",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Ana"
+        },
+        "B7": {
+          "entrada": "Leste"
+        },
+        "C7": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Bruno"
+        },
+        "B8": {
+          "entrada": "Sul"
+        },
+        "C8": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Carla"
+        },
+        "B9": {
+          "entrada": "Norte"
+        },
+        "C9": {
+          "entrada": "3400",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Daniel"
+        },
+        "B10": {
+          "entrada": "Sul"
+        },
+        "C10": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Eduarda"
+        },
+        "B11": {
+          "entrada": "Leste"
+        },
+        "C11": {
+          "entrada": "2700",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Ana"
+        },
+        "B12": {
+          "entrada": "Norte"
+        },
+        "C12": {
+          "entrada": "2100",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Carla"
+        },
+        "B13": {
+          "entrada": "Sul"
+        },
+        "C13": {
+          "entrada": "1600",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Bruno"
+        },
+        "B14": {
+          "entrada": "Leste"
+        },
+        "C14": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Daniel"
+        },
+        "B15": {
+          "entrada": "Norte"
+        },
+        "C15": {
+          "entrada": "3000",
+          "formato": "moeda"
+        },
+        "H1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "I1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Carla"
+        },
+        "I2": {
+          "entrada": "=F4",
+          "bloqueada": false,
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:C15",
+            "destino": "E1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "C",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "B",
+                "valores": [
+                  "Sul"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "alternativas": {
+        "H2": [
+          "Ana",
+          "Daniel"
+        ]
+      }
+    },
+    "alvos": [
+      {
+        "celula": "I2",
+        "esperado": 4400,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(H2;E:F;2;FALSO)",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada: com um nome que não está na tabela, ele traz o total de outra pessoa sem avisar. Use FALSO.",
+        "bloqueia": true
+      },
+      {
+        "padrao": "^=\\$?F\\$?\\d+$",
+        "dica": "Apontar direto para uma célula da tabela dinâmica só dá certo enquanto o nome em H2 e a forma da tabela não mudam. Busque pelo nome, com PROCV."
+      }
+    ]
+  },
+  {
+    "id": "b65523dc-bc4f-51e3-a92d-646eda0a4a47",
+    "slug": "dinamica-procv-na-dinamica-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 95,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: buscar na tabela dinâmica",
+    "enunciado": [
+      "Na planilha ao lado, a tabela dinâmica em D1 resume as vendas por vendedor, e a célula G2 contém o nome Carla.",
+      "Um analista quer, em outra célula, o total de vendas do vendedor escrito em G2, de modo que o resultado continue correto mesmo que a tabela dinâmica seja filtrada ou ganhe novos vendedores. A fórmula adequada é:"
+    ],
+    "dicas": [
+      "Pense no que acontece com as posições das linhas quando a tabela dinâmica muda."
+    ],
+    "explicacao": [
+      "`=PROCV(G2;D:E;2;FALSO)` procura o nome na primeira coluna da tabela dinâmica e devolve o total, esteja a Carla na linha que estiver: R$ 900.",
+      "`=E4` e `=$E$4` dão o mesmo número hoje, mas continuam olhando a mesma célula quando a tabela muda de forma."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-procv-na-dinamica",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 9,
+      "colunas": 9,
+      "larguras": {
+        "A": 76,
+        "B": 76,
+        "D": 118,
+        "E": 112,
+        "G": 72
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "B2": {
+          "entrada": "500",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Bruno"
+        },
+        "B3": {
+          "entrada": "300",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Carla"
+        },
+        "B4": {
+          "entrada": "700",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Daniel"
+        },
+        "B5": {
+          "entrada": "400",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Carla"
+        },
+        "B6": {
+          "entrada": "200",
+          "formato": "moeda"
+        },
+        "G1": {
+          "entrada": "Vendedor",
+          "negrito": true
+        },
+        "G2": {
+          "entrada": "Carla"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:B6",
+            "destino": "D1",
+            "linhas": [
+              "A"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "B",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "opcoes": [
+      {
+        "texto": "=E4",
+        "dica": "Dá certo hoje, mas se a tabela for filtrada ou ganhar vendedores, a Carla muda de linha e E4 passa a mostrar outra pessoa."
+      },
+      {
+        "texto": "=$E$4",
+        "dica": "O $ só trava a referência ao copiar a fórmula; a Carla continua podendo mudar de linha."
+      },
+      {
+        "texto": "=PROCV(G2;D:E;2;FALSO)"
+      },
+      {
+        "texto": "=CORRESP(G2;D:D;0)",
+        "dica": "CORRESP devolve a posição da Carla na coluna (4), não o total dela."
+      },
+      {
+        "texto": "=PROCV(G2;D:E;1;FALSO)",
+        "dica": "A coluna 1 é a dos nomes: a fórmula devolve o próprio texto Carla."
+      }
+    ],
+    "correta": 2,
+    "banca": "FGV",
+    "tema": "PROCV",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=PROCV(G2;D:E;2;FALSO)",
+        "esperado": 900
+      },
+      {
+        "formula": "=CORRESP(G2;D:D;0)",
+        "esperado": 4
+      }
+    ]
+  },
+  {
+    "id": "71a77392-6c8f-5642-8f00-3eddd1a8caf0",
+    "slug": "dinamica-caso-horas",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 10,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Caso completo: horas por cliente e advogado",
+    "enunciado": [
+      "O escritório fatura por hora. Para a reunião de fechamento, o sócio quer em **G1** um quadro com cada **Cliente** numa linha, cada **Advogado** numa coluna e, no cruzamento, o **total de horas**.",
+      "Só entram **outubro e novembro** (Out e Nov): setembro já foi faturado."
+    ],
+    "dicas": [
+      "São três áreas ocupadas (Linhas, Colunas, Valores) e mais uma para escolher os meses.",
+      "No filtro de Mês, desmarque (Tudo) e marque os dois meses."
+    ],
+    "explicacao": [
+      "**Cliente** em **Linhas**, **Advogado** em **Colunas**, **Horas** em **Valores** (Soma) e **Mês** em **Filtros**, com **Out** e **Nov** marcados (*Vários itens*).",
+      "A Construtora Alfa consumiu 29,5 horas no período, 8 delas da Dra. Helena. É o quadro que vira a fatura de cada cliente e a produtividade de cada advogado."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-caso-horas",
+    "etapa": 1,
+    "papel": "principal",
+    "intro": "Caso real de escritório: um relatório de horas que junta tudo do módulo. Linhas, colunas, filtro de vários itens, porcentagem e uma fórmula em cima do resultado.",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 44,
+        "C": 92,
+        "D": 128,
+        "E": 52,
+        "F": 24,
+        "G": 140,
+        "H": 104,
+        "I": 96,
+        "J": 128,
+        "K": 104,
+        "L": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Advogado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/09/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Set"
+        },
+        "C2": {
+          "entrada": "Dra. Helena"
+        },
+        "D2": {
+          "entrada": "Construtora Alfa"
+        },
+        "E2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "05/09/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Set"
+        },
+        "C3": {
+          "entrada": "Dr. Marcos"
+        },
+        "D3": {
+          "entrada": "Clínica Vida"
+        },
+        "E3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "12/09/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Set"
+        },
+        "C4": {
+          "entrada": "Dra. Paula"
+        },
+        "D4": {
+          "entrada": "Padaria Trigo"
+        },
+        "E4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "19/09/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Set"
+        },
+        "C5": {
+          "entrada": "Dra. Helena"
+        },
+        "D5": {
+          "entrada": "Transportes Rápido"
+        },
+        "E5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "03/10/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Out"
+        },
+        "C6": {
+          "entrada": "Dr. Marcos"
+        },
+        "D6": {
+          "entrada": "Construtora Alfa"
+        },
+        "E6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "08/10/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Out"
+        },
+        "C7": {
+          "entrada": "Dra. Helena"
+        },
+        "D7": {
+          "entrada": "Clínica Vida"
+        },
+        "E7": {
+          "entrada": "2,5"
+        },
+        "A8": {
+          "entrada": "14/10/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Out"
+        },
+        "C8": {
+          "entrada": "Dra. Paula"
+        },
+        "D8": {
+          "entrada": "Construtora Alfa"
+        },
+        "E8": {
+          "entrada": "7"
+        },
+        "A9": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Out"
+        },
+        "C9": {
+          "entrada": "Dr. Marcos"
+        },
+        "D9": {
+          "entrada": "Transportes Rápido"
+        },
+        "E9": {
+          "entrada": "3,5"
+        },
+        "A10": {
+          "entrada": "28/10/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Out"
+        },
+        "C10": {
+          "entrada": "Dra. Paula"
+        },
+        "D10": {
+          "entrada": "Clínica Vida"
+        },
+        "E10": {
+          "entrada": "1,5"
+        },
+        "A11": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Nov"
+        },
+        "C11": {
+          "entrada": "Dra. Helena"
+        },
+        "D11": {
+          "entrada": "Construtora Alfa"
+        },
+        "E11": {
+          "entrada": "8"
+        },
+        "A12": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Nov"
+        },
+        "C12": {
+          "entrada": "Dr. Marcos"
+        },
+        "D12": {
+          "entrada": "Padaria Trigo"
+        },
+        "E12": {
+          "entrada": "2"
+        },
+        "A13": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Nov"
+        },
+        "C13": {
+          "entrada": "Dra. Paula"
+        },
+        "D13": {
+          "entrada": "Transportes Rápido"
+        },
+        "E13": {
+          "entrada": "4,5"
+        },
+        "A14": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Nov"
+        },
+        "C14": {
+          "entrada": "Dra. Helena"
+        },
+        "D14": {
+          "entrada": "Clínica Vida"
+        },
+        "E14": {
+          "entrada": "3"
+        },
+        "A15": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Nov"
+        },
+        "C15": {
+          "entrada": "Dr. Marcos"
+        },
+        "D15": {
+          "entrada": "Construtora Alfa"
+        },
+        "E15": {
+          "entrada": "6,5"
+        },
+        "A16": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Nov"
+        },
+        "C16": {
+          "entrada": "Dra. Paula"
+        },
+        "D16": {
+          "entrada": "Padaria Trigo"
+        },
+        "E16": {
+          "entrada": "1"
+        },
+        "A17": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Nov"
+        },
+        "C17": {
+          "entrada": "Dra. Helena"
+        },
+        "D17": {
+          "entrada": "Transportes Rápido"
+        },
+        "E17": {
+          "entrada": "2"
+        },
+        "A18": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "B18": {
+          "entrada": "Nov"
+        },
+        "C18": {
+          "entrada": "Dr. Marcos"
+        },
+        "D18": {
+          "entrada": "Clínica Vida"
+        },
+        "E18": {
+          "entrada": "4"
+        },
+        "A19": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "B19": {
+          "entrada": "Nov"
+        },
+        "C19": {
+          "entrada": "Dra. Paula"
+        },
+        "D19": {
+          "entrada": "Construtora Alfa"
+        },
+        "E19": {
+          "entrada": "3"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E19",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [
+          "Advogado"
+        ],
+        "valores": [
+          {
+            "campo": "Horas",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Nov",
+              "Out"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E19",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [
+              "C"
+            ],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "B",
+                "valores": [
+                  "Out",
+                  "Nov"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "5974ff41-a188-53e5-9ea4-a4e2f3e2018a",
+    "slug": "dinamica-caso-horas-variacao-a",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 102,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Quanto de novembro foi para cada cliente",
+    "enunciado": [
+      "Em **G1**, mostre para cada **Cliente** o **total de horas** de **novembro** e, ao lado, a **participação** desse cliente nas horas do mês, em **%**."
+    ],
+    "dicas": [
+      "Horas duas vezes em Valores: uma em horas, outra em % do Total Geral. E o mês no filtro."
+    ],
+    "explicacao": [
+      "**Cliente** em **Linhas**; **Horas** duas vezes em **Valores** (Soma e Soma com **% do Total Geral**); **Mês** em **Filtros**, só **Nov**.",
+      "Em novembro, a Construtora Alfa ficou com 17,5 das 34 horas (51,5%): mais da metade do tempo da equipe."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-caso-horas",
+    "etapa": 2,
+    "papel": "variacao",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 44,
+        "C": 92,
+        "D": 128,
+        "E": 52,
+        "F": 24,
+        "G": 140,
+        "H": 104,
+        "I": 96,
+        "J": 128,
+        "K": 104,
+        "L": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Advogado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/09/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Set"
+        },
+        "C2": {
+          "entrada": "Dra. Helena"
+        },
+        "D2": {
+          "entrada": "Construtora Alfa"
+        },
+        "E2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "05/09/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Set"
+        },
+        "C3": {
+          "entrada": "Dr. Marcos"
+        },
+        "D3": {
+          "entrada": "Clínica Vida"
+        },
+        "E3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "12/09/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Set"
+        },
+        "C4": {
+          "entrada": "Dra. Paula"
+        },
+        "D4": {
+          "entrada": "Padaria Trigo"
+        },
+        "E4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "19/09/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Set"
+        },
+        "C5": {
+          "entrada": "Dra. Helena"
+        },
+        "D5": {
+          "entrada": "Transportes Rápido"
+        },
+        "E5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "03/10/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Out"
+        },
+        "C6": {
+          "entrada": "Dr. Marcos"
+        },
+        "D6": {
+          "entrada": "Construtora Alfa"
+        },
+        "E6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "08/10/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Out"
+        },
+        "C7": {
+          "entrada": "Dra. Helena"
+        },
+        "D7": {
+          "entrada": "Clínica Vida"
+        },
+        "E7": {
+          "entrada": "2,5"
+        },
+        "A8": {
+          "entrada": "14/10/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Out"
+        },
+        "C8": {
+          "entrada": "Dra. Paula"
+        },
+        "D8": {
+          "entrada": "Construtora Alfa"
+        },
+        "E8": {
+          "entrada": "7"
+        },
+        "A9": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Out"
+        },
+        "C9": {
+          "entrada": "Dr. Marcos"
+        },
+        "D9": {
+          "entrada": "Transportes Rápido"
+        },
+        "E9": {
+          "entrada": "3,5"
+        },
+        "A10": {
+          "entrada": "28/10/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Out"
+        },
+        "C10": {
+          "entrada": "Dra. Paula"
+        },
+        "D10": {
+          "entrada": "Clínica Vida"
+        },
+        "E10": {
+          "entrada": "1,5"
+        },
+        "A11": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Nov"
+        },
+        "C11": {
+          "entrada": "Dra. Helena"
+        },
+        "D11": {
+          "entrada": "Construtora Alfa"
+        },
+        "E11": {
+          "entrada": "8"
+        },
+        "A12": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Nov"
+        },
+        "C12": {
+          "entrada": "Dr. Marcos"
+        },
+        "D12": {
+          "entrada": "Padaria Trigo"
+        },
+        "E12": {
+          "entrada": "2"
+        },
+        "A13": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Nov"
+        },
+        "C13": {
+          "entrada": "Dra. Paula"
+        },
+        "D13": {
+          "entrada": "Transportes Rápido"
+        },
+        "E13": {
+          "entrada": "4,5"
+        },
+        "A14": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Nov"
+        },
+        "C14": {
+          "entrada": "Dra. Helena"
+        },
+        "D14": {
+          "entrada": "Clínica Vida"
+        },
+        "E14": {
+          "entrada": "3"
+        },
+        "A15": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Nov"
+        },
+        "C15": {
+          "entrada": "Dr. Marcos"
+        },
+        "D15": {
+          "entrada": "Construtora Alfa"
+        },
+        "E15": {
+          "entrada": "6,5"
+        },
+        "A16": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Nov"
+        },
+        "C16": {
+          "entrada": "Dra. Paula"
+        },
+        "D16": {
+          "entrada": "Padaria Trigo"
+        },
+        "E16": {
+          "entrada": "1"
+        },
+        "A17": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Nov"
+        },
+        "C17": {
+          "entrada": "Dra. Helena"
+        },
+        "D17": {
+          "entrada": "Transportes Rápido"
+        },
+        "E17": {
+          "entrada": "2"
+        },
+        "A18": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "B18": {
+          "entrada": "Nov"
+        },
+        "C18": {
+          "entrada": "Dr. Marcos"
+        },
+        "D18": {
+          "entrada": "Clínica Vida"
+        },
+        "E18": {
+          "entrada": "4"
+        },
+        "A19": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "B19": {
+          "entrada": "Nov"
+        },
+        "C19": {
+          "entrada": "Dra. Paula"
+        },
+        "D19": {
+          "entrada": "Construtora Alfa"
+        },
+        "E19": {
+          "entrada": "3"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E19",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Horas",
+            "funcao": "soma"
+          },
+          {
+            "campo": "Horas",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Nov"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E19",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              },
+              {
+                "campo": "E",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "B",
+                "valores": [
+                  "Nov"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "8e686d6a-3ea5-5cce-b63e-2535a3801fb7",
+    "slug": "dinamica-caso-horas-variacao-b",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 103,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "O valor a faturar",
+    "enunciado": [
+      "A tabela dinâmica em **G1** tem o total de horas por cliente. O valor da hora está em **K4**.",
+      "Em **K2**, calcule **quanto cobrar** do cliente escrito em **J2**: as horas dele vezes o valor da hora."
+    ],
+    "dicas": [
+      "Busque as horas do cliente na tabela dinâmica (colunas G e H) e multiplique pelo valor da hora."
+    ],
+    "explicacao": [
+      "`=PROCV(J2;G:H;2;FALSO)*K4` → 35,5 horas × R$ 450 = R$ 15.975 para a Construtora Alfa.",
+      "Com o cliente e o valor da hora em células, a mesma fórmula serve para todos os clientes."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-caso-horas",
+    "etapa": 3,
+    "papel": "variacao",
+    "type": "formula",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 44,
+        "C": 92,
+        "D": 128,
+        "E": 52,
+        "F": 24,
+        "G": 140,
+        "H": 104,
+        "I": 96,
+        "J": 128,
+        "K": 104,
+        "L": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Advogado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/09/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Set"
+        },
+        "C2": {
+          "entrada": "Dra. Helena"
+        },
+        "D2": {
+          "entrada": "Construtora Alfa"
+        },
+        "E2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "05/09/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Set"
+        },
+        "C3": {
+          "entrada": "Dr. Marcos"
+        },
+        "D3": {
+          "entrada": "Clínica Vida"
+        },
+        "E3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "12/09/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Set"
+        },
+        "C4": {
+          "entrada": "Dra. Paula"
+        },
+        "D4": {
+          "entrada": "Padaria Trigo"
+        },
+        "E4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "19/09/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Set"
+        },
+        "C5": {
+          "entrada": "Dra. Helena"
+        },
+        "D5": {
+          "entrada": "Transportes Rápido"
+        },
+        "E5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "03/10/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Out"
+        },
+        "C6": {
+          "entrada": "Dr. Marcos"
+        },
+        "D6": {
+          "entrada": "Construtora Alfa"
+        },
+        "E6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "08/10/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Out"
+        },
+        "C7": {
+          "entrada": "Dra. Helena"
+        },
+        "D7": {
+          "entrada": "Clínica Vida"
+        },
+        "E7": {
+          "entrada": "2,5"
+        },
+        "A8": {
+          "entrada": "14/10/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Out"
+        },
+        "C8": {
+          "entrada": "Dra. Paula"
+        },
+        "D8": {
+          "entrada": "Construtora Alfa"
+        },
+        "E8": {
+          "entrada": "7"
+        },
+        "A9": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Out"
+        },
+        "C9": {
+          "entrada": "Dr. Marcos"
+        },
+        "D9": {
+          "entrada": "Transportes Rápido"
+        },
+        "E9": {
+          "entrada": "3,5"
+        },
+        "A10": {
+          "entrada": "28/10/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Out"
+        },
+        "C10": {
+          "entrada": "Dra. Paula"
+        },
+        "D10": {
+          "entrada": "Clínica Vida"
+        },
+        "E10": {
+          "entrada": "1,5"
+        },
+        "A11": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Nov"
+        },
+        "C11": {
+          "entrada": "Dra. Helena"
+        },
+        "D11": {
+          "entrada": "Construtora Alfa"
+        },
+        "E11": {
+          "entrada": "8"
+        },
+        "A12": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Nov"
+        },
+        "C12": {
+          "entrada": "Dr. Marcos"
+        },
+        "D12": {
+          "entrada": "Padaria Trigo"
+        },
+        "E12": {
+          "entrada": "2"
+        },
+        "A13": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Nov"
+        },
+        "C13": {
+          "entrada": "Dra. Paula"
+        },
+        "D13": {
+          "entrada": "Transportes Rápido"
+        },
+        "E13": {
+          "entrada": "4,5"
+        },
+        "A14": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Nov"
+        },
+        "C14": {
+          "entrada": "Dra. Helena"
+        },
+        "D14": {
+          "entrada": "Clínica Vida"
+        },
+        "E14": {
+          "entrada": "3"
+        },
+        "A15": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Nov"
+        },
+        "C15": {
+          "entrada": "Dr. Marcos"
+        },
+        "D15": {
+          "entrada": "Construtora Alfa"
+        },
+        "E15": {
+          "entrada": "6,5"
+        },
+        "A16": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Nov"
+        },
+        "C16": {
+          "entrada": "Dra. Paula"
+        },
+        "D16": {
+          "entrada": "Padaria Trigo"
+        },
+        "E16": {
+          "entrada": "1"
+        },
+        "A17": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Nov"
+        },
+        "C17": {
+          "entrada": "Dra. Helena"
+        },
+        "D17": {
+          "entrada": "Transportes Rápido"
+        },
+        "E17": {
+          "entrada": "2"
+        },
+        "A18": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "B18": {
+          "entrada": "Nov"
+        },
+        "C18": {
+          "entrada": "Dr. Marcos"
+        },
+        "D18": {
+          "entrada": "Clínica Vida"
+        },
+        "E18": {
+          "entrada": "4"
+        },
+        "A19": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "B19": {
+          "entrada": "Nov"
+        },
+        "C19": {
+          "entrada": "Dra. Paula"
+        },
+        "D19": {
+          "entrada": "Construtora Alfa"
+        },
+        "E19": {
+          "entrada": "3"
+        },
+        "J1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "K1": {
+          "entrada": "A faturar",
+          "negrito": true
+        },
+        "J2": {
+          "entrada": "Construtora Alfa"
+        },
+        "J4": {
+          "entrada": "Valor da hora",
+          "negrito": true
+        },
+        "K4": {
+          "entrada": "450",
+          "formato": "moeda"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E19",
+            "destino": "G1",
+            "linhas": [
+              "D"
             ],
             "colunas": [],
             "valores": [
@@ -7604,6 +14397,795 @@
               }
             ],
             "filtros": []
+          }
+        ]
+      },
+      "alternativas": {
+        "J2": [
+          "Padaria Trigo",
+          "Clínica Vida"
+        ]
+      },
+      "variaveis": [
+        "K4"
+      ]
+    },
+    "alvos": [
+      {
+        "celula": "K2",
+        "esperado": 15975,
+        "exigeFormula": true,
+        "solucaoReferencia": "=PROCV(J2;G:H;2;FALSO)*K4",
+        "formato": "moeda"
+      }
+    ],
+    "errosComuns": [
+      {
+        "padrao": "PROCV\\((?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*;(?:[^;()]|\\([^()]*\\))*(?:;(?:VERDADEIRO|1))?\\)",
+        "dica": "Sem o último argumento (ou com VERDADEIRO), o PROCV faz busca aproximada e pode trazer as horas de outro cliente. Use FALSO.",
+        "bloqueia": true
+      }
+    ]
+  },
+  {
+    "id": "fd09944a-d16b-5a4d-b231-0a80ab28a58b",
+    "slug": "dinamica-caso-horas-pegadinha",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 104,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Pegadinha: novembro sumiu do relatório",
+    "enunciado": [
+      "Os lançamentos de **novembro** foram colados no fim da tabela de horas, mas o relatório em **G1** (horas por cliente) continua sem eles: os totais não mudaram.",
+      "Arrume para que o relatório mostre o **total de horas por cliente** com **todos** os lançamentos."
+    ],
+    "dicas": [
+      "Clique numa célula da tabela dinâmica e veja qual intervalo ela usa como origem.",
+      "A origem não cresce sozinha quando você cola linhas embaixo. Remova a tabela dinâmica e insira de novo, com a tabela inteira."
+    ],
+    "explicacao": [
+      "**Remover tabela dinâmica**, selecionar uma célula dos dados e inserir de novo (origem **A1:E19**); depois **Cliente** em **Linhas** e **Horas** em **Valores**.",
+      "A tabela antiga usava **A1:E10**: as linhas 11 a 19 ficavam de fora. No Excel, o caminho é *Alterar Fonte de Dados* (ou ter criado a base como Tabela, Ctrl+Alt+T, que cresce sozinha) e depois *Atualizar*."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-caso-horas",
+    "etapa": 4,
+    "papel": "pegadinha",
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 24,
+      "colunas": 12,
+      "larguras": {
+        "A": 84,
+        "B": 44,
+        "C": 92,
+        "D": 128,
+        "E": 52,
+        "F": 24,
+        "G": 140,
+        "H": 104,
+        "I": 96,
+        "J": 128,
+        "K": 104,
+        "L": 92
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Data",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Advogado",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "E1": {
+          "entrada": "Horas",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "02/09/2026",
+          "formato": "data"
+        },
+        "B2": {
+          "entrada": "Set"
+        },
+        "C2": {
+          "entrada": "Dra. Helena"
+        },
+        "D2": {
+          "entrada": "Construtora Alfa"
+        },
+        "E2": {
+          "entrada": "6"
+        },
+        "A3": {
+          "entrada": "05/09/2026",
+          "formato": "data"
+        },
+        "B3": {
+          "entrada": "Set"
+        },
+        "C3": {
+          "entrada": "Dr. Marcos"
+        },
+        "D3": {
+          "entrada": "Clínica Vida"
+        },
+        "E3": {
+          "entrada": "3"
+        },
+        "A4": {
+          "entrada": "12/09/2026",
+          "formato": "data"
+        },
+        "B4": {
+          "entrada": "Set"
+        },
+        "C4": {
+          "entrada": "Dra. Paula"
+        },
+        "D4": {
+          "entrada": "Padaria Trigo"
+        },
+        "E4": {
+          "entrada": "2"
+        },
+        "A5": {
+          "entrada": "19/09/2026",
+          "formato": "data"
+        },
+        "B5": {
+          "entrada": "Set"
+        },
+        "C5": {
+          "entrada": "Dra. Helena"
+        },
+        "D5": {
+          "entrada": "Transportes Rápido"
+        },
+        "E5": {
+          "entrada": "4"
+        },
+        "A6": {
+          "entrada": "03/10/2026",
+          "formato": "data"
+        },
+        "B6": {
+          "entrada": "Out"
+        },
+        "C6": {
+          "entrada": "Dr. Marcos"
+        },
+        "D6": {
+          "entrada": "Construtora Alfa"
+        },
+        "E6": {
+          "entrada": "5"
+        },
+        "A7": {
+          "entrada": "08/10/2026",
+          "formato": "data"
+        },
+        "B7": {
+          "entrada": "Out"
+        },
+        "C7": {
+          "entrada": "Dra. Helena"
+        },
+        "D7": {
+          "entrada": "Clínica Vida"
+        },
+        "E7": {
+          "entrada": "2,5"
+        },
+        "A8": {
+          "entrada": "14/10/2026",
+          "formato": "data"
+        },
+        "B8": {
+          "entrada": "Out"
+        },
+        "C8": {
+          "entrada": "Dra. Paula"
+        },
+        "D8": {
+          "entrada": "Construtora Alfa"
+        },
+        "E8": {
+          "entrada": "7"
+        },
+        "A9": {
+          "entrada": "21/10/2026",
+          "formato": "data"
+        },
+        "B9": {
+          "entrada": "Out"
+        },
+        "C9": {
+          "entrada": "Dr. Marcos"
+        },
+        "D9": {
+          "entrada": "Transportes Rápido"
+        },
+        "E9": {
+          "entrada": "3,5"
+        },
+        "A10": {
+          "entrada": "28/10/2026",
+          "formato": "data"
+        },
+        "B10": {
+          "entrada": "Out"
+        },
+        "C10": {
+          "entrada": "Dra. Paula"
+        },
+        "D10": {
+          "entrada": "Clínica Vida"
+        },
+        "E10": {
+          "entrada": "1,5"
+        },
+        "A11": {
+          "entrada": "04/11/2026",
+          "formato": "data"
+        },
+        "B11": {
+          "entrada": "Nov"
+        },
+        "C11": {
+          "entrada": "Dra. Helena"
+        },
+        "D11": {
+          "entrada": "Construtora Alfa"
+        },
+        "E11": {
+          "entrada": "8"
+        },
+        "A12": {
+          "entrada": "06/11/2026",
+          "formato": "data"
+        },
+        "B12": {
+          "entrada": "Nov"
+        },
+        "C12": {
+          "entrada": "Dr. Marcos"
+        },
+        "D12": {
+          "entrada": "Padaria Trigo"
+        },
+        "E12": {
+          "entrada": "2"
+        },
+        "A13": {
+          "entrada": "11/11/2026",
+          "formato": "data"
+        },
+        "B13": {
+          "entrada": "Nov"
+        },
+        "C13": {
+          "entrada": "Dra. Paula"
+        },
+        "D13": {
+          "entrada": "Transportes Rápido"
+        },
+        "E13": {
+          "entrada": "4,5"
+        },
+        "A14": {
+          "entrada": "13/11/2026",
+          "formato": "data"
+        },
+        "B14": {
+          "entrada": "Nov"
+        },
+        "C14": {
+          "entrada": "Dra. Helena"
+        },
+        "D14": {
+          "entrada": "Clínica Vida"
+        },
+        "E14": {
+          "entrada": "3"
+        },
+        "A15": {
+          "entrada": "18/11/2026",
+          "formato": "data"
+        },
+        "B15": {
+          "entrada": "Nov"
+        },
+        "C15": {
+          "entrada": "Dr. Marcos"
+        },
+        "D15": {
+          "entrada": "Construtora Alfa"
+        },
+        "E15": {
+          "entrada": "6,5"
+        },
+        "A16": {
+          "entrada": "19/11/2026",
+          "formato": "data"
+        },
+        "B16": {
+          "entrada": "Nov"
+        },
+        "C16": {
+          "entrada": "Dra. Paula"
+        },
+        "D16": {
+          "entrada": "Padaria Trigo"
+        },
+        "E16": {
+          "entrada": "1"
+        },
+        "A17": {
+          "entrada": "20/11/2026",
+          "formato": "data"
+        },
+        "B17": {
+          "entrada": "Nov"
+        },
+        "C17": {
+          "entrada": "Dra. Helena"
+        },
+        "D17": {
+          "entrada": "Transportes Rápido"
+        },
+        "E17": {
+          "entrada": "2"
+        },
+        "A18": {
+          "entrada": "23/11/2026",
+          "formato": "data"
+        },
+        "B18": {
+          "entrada": "Nov"
+        },
+        "C18": {
+          "entrada": "Dr. Marcos"
+        },
+        "D18": {
+          "entrada": "Clínica Vida"
+        },
+        "E18": {
+          "entrada": "4"
+        },
+        "A19": {
+          "entrada": "24/11/2026",
+          "formato": "data"
+        },
+        "B19": {
+          "entrada": "Nov"
+        },
+        "C19": {
+          "entrada": "Dra. Paula"
+        },
+        "D19": {
+          "entrada": "Construtora Alfa"
+        },
+        "E19": {
+          "entrada": "3"
+        }
+      },
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E10",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:E19",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Horas",
+            "funcao": "soma"
+          }
+        ],
+        "filtros": []
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:E19",
+            "destino": "G1",
+            "linhas": [
+              "D"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "E",
+                "funcao": "soma"
+              }
+            ],
+            "filtros": []
+          }
+        ]
+      }
+    },
+    "ferramentas": {
+      "dinamica": true
+    }
+  },
+  {
+    "id": "f3b5f7da-47e4-5d32-8258-33a8fe4a5959",
+    "slug": "dinamica-caso-horas-conceito",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 105,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "Concurso: Atualizar e a origem",
+    "enunciado": [
+      "Um servidor criou uma tabela dinâmica a partir do intervalo comum A1:E50 (não formatado como Tabela) e, depois, colou 20 novos lançamentos nas linhas 51 a 70, logo abaixo da base.",
+      "Julgue o item: para que esses lançamentos passem a compor o resumo, basta clicar em **Atualizar** na tabela dinâmica."
+    ],
+    "dicas": [
+      "Atualizar relê a origem. Qual é a origem dessa tabela dinâmica?"
+    ],
+    "explicacao": [
+      "**Errado.** Atualizar relê só o intervalo de origem, que continua A1:E50. É preciso **Alterar Fonte de Dados** para A1:E70 (ou ter criado a base como **Tabela**, que cresce sozinha) e depois atualizar."
+    ],
+    "tentativasAteExplicacao": 3,
+    "licao": "dinamica-caso-horas",
+    "etapa": 5,
+    "papel": "conceito",
+    "type": "multiple_choice",
+    "grade": {
+      "linhas": 1,
+      "colunas": 1,
+      "celulas": {}
+    },
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "A origem não cresce sozinha num intervalo comum: Atualizar relê só A1:E50."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "Tabela dinâmica"
+  },
+  {
+    "id": "6ea5a373-f02d-54b7-a228-e618391f3139",
+    "slug": "teste-dinamica-1",
+    "trilha": "excel-ptbr",
+    "modulo": "dinamica",
+    "ordem": 201,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 2,
+    "titulo": "Participação em outubro",
+    "enunciado": [
+      "Em **F1**, mostre a **participação de cada Cliente** no faturamento de **outubro** (Out), em porcentagem do total."
+    ],
+    "dicas": [],
+    "explicacao": [
+      "Revise a lição indicada no resultado do teste."
+    ],
+    "tentativasAteExplicacao": 99,
+    "revisar": "dinamica-percentual-total",
+    "teste": true,
+    "type": "ferramenta",
+    "grade": {
+      "linhas": 20,
+      "colunas": 10,
+      "larguras": {
+        "A": 48,
+        "B": 132,
+        "C": 136,
+        "D": 84,
+        "E": 24,
+        "F": 140,
+        "G": 112,
+        "H": 112,
+        "I": 96,
+        "J": 96
+      },
+      "celulas": {
+        "A1": {
+          "entrada": "Mês",
+          "negrito": true
+        },
+        "B1": {
+          "entrada": "Cliente",
+          "negrito": true
+        },
+        "C1": {
+          "entrada": "Serviço",
+          "negrito": true
+        },
+        "D1": {
+          "entrada": "Valor",
+          "negrito": true
+        },
+        "A2": {
+          "entrada": "Set"
+        },
+        "B2": {
+          "entrada": "Padaria Trigo"
+        },
+        "C2": {
+          "entrada": "Folha de pagamento"
+        },
+        "D2": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A3": {
+          "entrada": "Set"
+        },
+        "B3": {
+          "entrada": "Clínica Vida"
+        },
+        "C3": {
+          "entrada": "Contabilidade"
+        },
+        "D3": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A4": {
+          "entrada": "Set"
+        },
+        "B4": {
+          "entrada": "Construtora Alfa"
+        },
+        "C4": {
+          "entrada": "Contabilidade"
+        },
+        "D4": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A5": {
+          "entrada": "Set"
+        },
+        "B5": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C5": {
+          "entrada": "Folha de pagamento"
+        },
+        "D5": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A6": {
+          "entrada": "Set"
+        },
+        "B6": {
+          "entrada": "Construtora Alfa"
+        },
+        "C6": {
+          "entrada": "Folha de pagamento"
+        },
+        "D6": {
+          "entrada": "2600",
+          "formato": "moeda"
+        },
+        "A7": {
+          "entrada": "Out"
+        },
+        "B7": {
+          "entrada": "Padaria Trigo"
+        },
+        "C7": {
+          "entrada": "Folha de pagamento"
+        },
+        "D7": {
+          "entrada": "1200",
+          "formato": "moeda"
+        },
+        "A8": {
+          "entrada": "Out"
+        },
+        "B8": {
+          "entrada": "Clínica Vida"
+        },
+        "C8": {
+          "entrada": "Contabilidade"
+        },
+        "D8": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A9": {
+          "entrada": "Out"
+        },
+        "B9": {
+          "entrada": "Construtora Alfa"
+        },
+        "C9": {
+          "entrada": "Contabilidade"
+        },
+        "D9": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A10": {
+          "entrada": "Out"
+        },
+        "B10": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C10": {
+          "entrada": "Imposto de renda"
+        },
+        "D10": {
+          "entrada": "900",
+          "formato": "moeda"
+        },
+        "A11": {
+          "entrada": "Out"
+        },
+        "B11": {
+          "entrada": "Clínica Vida"
+        },
+        "C11": {
+          "entrada": "Imposto de renda"
+        },
+        "D11": {
+          "entrada": "1500",
+          "formato": "moeda"
+        },
+        "A12": {
+          "entrada": "Nov"
+        },
+        "B12": {
+          "entrada": "Padaria Trigo"
+        },
+        "C12": {
+          "entrada": "Folha de pagamento"
+        },
+        "D12": {
+          "entrada": "1300",
+          "formato": "moeda"
+        },
+        "A13": {
+          "entrada": "Nov"
+        },
+        "B13": {
+          "entrada": "Clínica Vida"
+        },
+        "C13": {
+          "entrada": "Contabilidade"
+        },
+        "D13": {
+          "entrada": "2800",
+          "formato": "moeda"
+        },
+        "A14": {
+          "entrada": "Nov"
+        },
+        "B14": {
+          "entrada": "Construtora Alfa"
+        },
+        "C14": {
+          "entrada": "Contabilidade"
+        },
+        "D14": {
+          "entrada": "4500",
+          "formato": "moeda"
+        },
+        "A15": {
+          "entrada": "Nov"
+        },
+        "B15": {
+          "entrada": "Mercado Bom Preço"
+        },
+        "C15": {
+          "entrada": "Folha de pagamento"
+        },
+        "D15": {
+          "entrada": "1900",
+          "formato": "moeda"
+        },
+        "A16": {
+          "entrada": "Nov"
+        },
+        "B16": {
+          "entrada": "Construtora Alfa"
+        },
+        "C16": {
+          "entrada": "Folha de pagamento"
+        },
+        "D16": {
+          "entrada": "2600",
+          "formato": "moeda"
+        }
+      }
+    },
+    "verificacoes": [
+      {
+        "tipo": "dinamica",
+        "origem": "A1:D16",
+        "linhas": [
+          "Cliente"
+        ],
+        "colunas": [],
+        "valores": [
+          {
+            "campo": "Valor",
+            "funcao": "soma",
+            "mostrar": "totalGeral"
+          }
+        ],
+        "filtros": [
+          {
+            "campo": "Mês",
+            "valores": [
+              "Out"
+            ]
+          }
+        ]
+      }
+    ],
+    "solucao": {
+      "recursos": {
+        "dinamicas": [
+          {
+            "origem": "A1:D16",
+            "destino": "F1",
+            "linhas": [
+              "B"
+            ],
+            "colunas": [],
+            "valores": [
+              {
+                "campo": "D",
+                "funcao": "soma",
+                "mostrar": "totalGeral"
+              }
+            ],
+            "filtros": [
+              {
+                "campo": "A",
+                "valores": [
+                  "Out"
+                ]
+              }
+            ]
           }
         ]
       }
@@ -8292,328 +15874,236 @@
     "trilha": "excel-ptbr",
     "modulo": "dinamica",
     "ordem": 204,
-    "nivel": 2,
+    "nivel": 3,
     "plano": "pro",
-    "versao": 1,
-    "titulo": "Participação do Norte",
+    "versao": 2,
+    "titulo": "Total do vendedor, ou zero",
     "enunciado": [
-      "A tabela dinâmica em G1 mostra o total por região. Em **H8**, calcule a **participação do Norte** no total."
+      "A tabela dinâmica em **E1** tem o total por vendedor. Em **I2**, traga o total do vendedor escrito em **H2**; se ele não estiver na tabela, mostre **0**."
     ],
     "dicas": [],
     "explicacao": [
       "Revise a lição indicada no resultado do teste."
     ],
     "tentativasAteExplicacao": 99,
-    "revisar": "dinamica-usar-resultado",
+    "revisar": "dinamica-procv-na-dinamica",
     "teste": true,
-    "type": "ferramenta",
+    "type": "formula",
     "grade": {
-      "linhas": 22,
-      "colunas": 12,
+      "linhas": 18,
+      "colunas": 10,
       "larguras": {
         "A": 76,
-        "B": 76,
-        "C": 64,
-        "D": 80,
-        "E": 84,
-        "F": 24,
-        "G": 118,
-        "H": 110,
-        "I": 96,
-        "J": 96,
-        "K": 96,
-        "L": 96
+        "B": 64,
+        "C": 84,
+        "D": 24,
+        "E": 118,
+        "F": 112,
+        "G": 24,
+        "H": 96,
+        "I": 104,
+        "J": 72
       },
       "celulas": {
         "A1": {
-          "entrada": "Canal",
-          "negrito": true
-        },
-        "B1": {
           "entrada": "Vendedor",
           "negrito": true
         },
-        "C1": {
+        "B1": {
           "entrada": "Região",
           "negrito": true
         },
-        "D1": {
-          "entrada": "Produto",
-          "negrito": true
-        },
-        "E1": {
+        "C1": {
           "entrada": "Valor",
           "negrito": true
         },
         "A2": {
-          "entrada": "Loja"
-        },
-        "B2": {
           "entrada": "Ana"
         },
-        "C2": {
+        "B2": {
           "entrada": "Sul"
         },
-        "D2": {
-          "entrada": "Notebook"
-        },
-        "E2": {
+        "C2": {
           "entrada": "3200",
           "formato": "moeda"
         },
         "A3": {
-          "entrada": "Site"
-        },
-        "B3": {
           "entrada": "Bruno"
         },
-        "C3": {
+        "B3": {
           "entrada": "Norte"
         },
-        "D3": {
-          "entrada": "Mouse"
-        },
-        "E3": {
-          "entrada": "150",
+        "C3": {
+          "entrada": "1500",
           "formato": "moeda"
         },
         "A4": {
-          "entrada": "Loja"
-        },
-        "B4": {
           "entrada": "Carla"
         },
-        "C4": {
+        "B4": {
           "entrada": "Sul"
         },
-        "D4": {
-          "entrada": "Monitor"
-        },
-        "E4": {
-          "entrada": "1100",
+        "C4": {
+          "entrada": "2800",
           "formato": "moeda"
         },
         "A5": {
-          "entrada": "Telefone"
-        },
-        "B5": {
           "entrada": "Daniel"
         },
-        "C5": {
+        "B5": {
           "entrada": "Leste"
         },
-        "D5": {
-          "entrada": "Notebook"
-        },
-        "E5": {
-          "entrada": "3500",
+        "C5": {
+          "entrada": "4100",
           "formato": "moeda"
         },
         "A6": {
-          "entrada": "Site"
+          "entrada": "Eduarda"
         },
         "B6": {
-          "entrada": "Ana"
+          "entrada": "Norte"
         },
         "C6": {
-          "entrada": "Sul"
-        },
-        "D6": {
-          "entrada": "Mouse"
-        },
-        "E6": {
-          "entrada": "180",
+          "entrada": "2300",
           "formato": "moeda"
         },
         "A7": {
-          "entrada": "Loja"
+          "entrada": "Ana"
         },
         "B7": {
-          "entrada": "Bruno"
+          "entrada": "Leste"
         },
         "C7": {
-          "entrada": "Norte"
-        },
-        "D7": {
-          "entrada": "Notebook"
-        },
-        "E7": {
-          "entrada": "3100",
+          "entrada": "1900",
           "formato": "moeda"
         },
         "A8": {
-          "entrada": "Site"
+          "entrada": "Bruno"
         },
         "B8": {
-          "entrada": "Carla"
-        },
-        "C8": {
           "entrada": "Sul"
         },
-        "D8": {
-          "entrada": "Notebook"
-        },
-        "E8": {
-          "entrada": "3300",
+        "C8": {
+          "entrada": "2600",
           "formato": "moeda"
         },
         "A9": {
-          "entrada": "Loja"
+          "entrada": "Carla"
         },
         "B9": {
-          "entrada": "Daniel"
+          "entrada": "Norte"
         },
         "C9": {
-          "entrada": "Leste"
-        },
-        "D9": {
-          "entrada": "Monitor"
-        },
-        "E9": {
-          "entrada": "950",
+          "entrada": "3400",
           "formato": "moeda"
         },
         "A10": {
-          "entrada": "Telefone"
+          "entrada": "Daniel"
         },
         "B10": {
-          "entrada": "Ana"
-        },
-        "C10": {
           "entrada": "Sul"
         },
-        "D10": {
-          "entrada": "Monitor"
-        },
-        "E10": {
+        "C10": {
           "entrada": "1200",
           "formato": "moeda"
         },
         "A11": {
-          "entrada": "Site"
+          "entrada": "Eduarda"
         },
         "B11": {
-          "entrada": "Bruno"
+          "entrada": "Leste"
         },
         "C11": {
-          "entrada": "Norte"
-        },
-        "D11": {
-          "entrada": "Monitor"
-        },
-        "E11": {
-          "entrada": "1000",
+          "entrada": "2700",
           "formato": "moeda"
         },
         "A12": {
-          "entrada": "Loja"
+          "entrada": "Ana"
         },
         "B12": {
-          "entrada": "Carla"
+          "entrada": "Norte"
         },
         "C12": {
-          "entrada": "Sul"
-        },
-        "D12": {
-          "entrada": "Mouse"
-        },
-        "E12": {
-          "entrada": "120",
+          "entrada": "2100",
           "formato": "moeda"
         },
         "A13": {
-          "entrada": "Site"
+          "entrada": "Carla"
         },
         "B13": {
-          "entrada": "Daniel"
+          "entrada": "Sul"
         },
         "C13": {
-          "entrada": "Leste"
-        },
-        "D13": {
-          "entrada": "Mouse"
-        },
-        "E13": {
-          "entrada": "160",
+          "entrada": "1600",
           "formato": "moeda"
         },
         "A14": {
-          "entrada": "Loja"
+          "entrada": "Bruno"
         },
         "B14": {
-          "entrada": "Ana"
+          "entrada": "Leste"
         },
         "C14": {
-          "entrada": "Sul"
-        },
-        "D14": {
-          "entrada": "Notebook"
-        },
-        "E14": {
-          "entrada": "3400",
+          "entrada": "900",
           "formato": "moeda"
         },
         "A15": {
-          "entrada": "Telefone"
+          "entrada": "Daniel"
         },
         "B15": {
-          "entrada": "Bruno"
-        },
-        "C15": {
           "entrada": "Norte"
         },
-        "D15": {
-          "entrada": "Notebook"
-        },
-        "E15": {
-          "entrada": "2900",
+        "C15": {
+          "entrada": "3000",
           "formato": "moeda"
         },
-        "H8": {
-          "entrada": "",
-          "formato": "percentual"
-        },
-        "G8": {
-          "entrada": "Participação do Norte",
+        "H1": {
+          "entrada": "Vendedor",
           "negrito": true
+        },
+        "I1": {
+          "entrada": "Total",
+          "negrito": true
+        },
+        "H2": {
+          "entrada": "Daniel"
         }
       },
       "recursos": {
         "dinamicas": [
           {
-            "origem": "A1:E15",
-            "destino": "G1",
+            "origem": "A1:C15",
+            "destino": "E1",
             "linhas": [
-              "C"
+              "A"
             ],
             "colunas": [],
             "valores": [
               {
-                "campo": "E",
+                "campo": "C",
                 "funcao": "soma"
               }
             ],
             "filtros": []
           }
         ]
+      },
+      "alternativas": {
+        "H2": [
+          "Daniel",
+          "Gustavo"
+        ]
       }
     },
-    "verificacoes": [
+    "alvos": [
       {
-        "tipo": "celula",
-        "celula": "H8",
-        "esperado": 0.29472382522671065,
-        "tolerancia": 1e-09
+        "celula": "I2",
+        "esperado": 8300,
+        "exigeFormula": true,
+        "solucaoReferencia": "=SEERRO(PROCV(H2;E:F;2;FALSO);0)",
+        "formato": "moeda"
       }
-    ],
-    "solucao": {
-      "celulas": {
-        "H8": "=H3/H5"
-      }
-    },
-    "ferramentas": {
-      "dinamica": true
-    }
+    ]
   },
   {
     "id": "64e242ba-81fd-5cf3-aa2c-0f9a8770e46b",
