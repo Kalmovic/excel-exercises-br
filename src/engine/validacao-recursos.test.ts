@@ -144,3 +144,17 @@ describe("motor: #CIRC! falso no cálculo antecipado", () => {
     expect(p.valor("C1")).toBe(0);
   });
 });
+
+describe("tabela dinâmica nova", () => {
+  it("a segunda tabela com os mesmos dados é sugerida ao lado da primeira, não em cima", () => {
+    const p = new Planilha({ ...g({ A1: "Região", B1: "Valor", A2: "Sul", B2: "10", A3: "Norte", B3: "20" }), colunas: 12 });
+    const origem = { inicio: { linha: 0, coluna: 0 }, fim: { linha: 2, coluna: 1 } };
+    const d1 = p.destinoSugeridoDinamica(origem);
+    expect(p.inserirDinamica(origem, d1).ok).toBe(true);
+    const d2 = p.destinoSugeridoDinamica(origem);
+    expect(d2).not.toEqual(d1);
+    expect(p.inserirDinamica(origem, d2).ok).toBe(true);
+    const r = p.inserirDinamica(origem, d1);
+    expect(r.ok || r.mensagem).toMatch(/outra tabela dinâmica/);
+  });
+});

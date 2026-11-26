@@ -1315,7 +1315,7 @@ export class Planilha {
       const faltam = [...naoImplementadas(no)];
       if (faltam.length) return { ok: false, mensagem: `A função ${faltam[0]} ainda não está disponível no simulador.` };
     }
-    if (this.condicionais.length >= 20) return { ok: false, mensagem: "No máximo 20 regras por planilha." };
+    if (this.condicionais.length >= 20) return { ok: false, mensagem: "Esta planilha já tem 20 regras de formatação condicional, o limite do simulador. Apague as que não usa em Formatação Condicional > Gerenciar Regras…" };
     this.mudarEstado(() => {
       this.condicionais.push(structuredClone(regra));
     });
@@ -1488,7 +1488,13 @@ export class Planilha {
     if (contemPos(o, destino)) return { ok: false, mensagem: "O destino não pode ficar dentro dos dados de origem." };
     if (this.textos.has(`${destino.linha},${destino.coluna}`) || this.daDinamica(destino))
       return { ok: false, mensagem: `${paraEndereco(destino)} já tem conteúdo. Escolha uma célula vazia para a tabela dinâmica.` };
-    if (this.dinamicas.length >= 3) return { ok: false, mensagem: "Este exercício aceita no máximo 3 tabelas dinâmicas." };
+    if (this.saidasDinamicas.some((s) => contemPos(s.area, destino)))
+      return { ok: false, mensagem: `${paraEndereco(destino)} já é o lugar de outra tabela dinâmica. Escolha uma célula vazia ao lado ou abaixo dela.` };
+    if (this.dinamicas.length >= 3)
+      return {
+        ok: false,
+        mensagem: "Este exercício já tem 3 tabelas dinâmicas, o limite do simulador. Para criar outra, clique numa que não usa mais e escolha Remover tabela dinâmica.",
+      };
     this.mudarEstado(() => {
       this.dinamicas.push({
         origem: intervaloParaTexto(o),
@@ -1511,6 +1517,30 @@ export class Planilha {
       this.dinamicas[i] = structuredClone(config);
     });
     return { ok: true };
+  }
+
+  /**
+   * Onde sugerir uma tabela dinâmica nova: duas colunas depois dos dados, pulando
+   * as tabelas dinâmicas e os textos que já estão lá (para a segunda tabela não
+   * cair em cima da primeira). Sem espaço à direita, abaixo de tudo.
+   */
+  destinoSugeridoDinamica(origem: Intervalo): Pos {
+    const livre = (p: Pos) =>
+      p.linha < this.linhas &&
+      p.coluna < this.colunas &&
+      !contemPos(origem, p) &&
+      !this.textos.has(`${p.linha},${p.coluna}`) &&
+      !this.daDinamica(p) &&
+      !this.saidasDinamicas.some((s) => contemPos(s.area, p));
+    const p = { linha: origem.inicio.linha, coluna: origem.fim.coluna + 2 };
+    while (p.coluna < this.colunas && !livre(p)) {
+      const bloqueio = this.saidasDinamicas.find((s) => contemPos(s.area, p));
+      p.coluna = bloqueio ? bloqueio.area.fim.coluna + 2 : p.coluna + 1;
+    }
+    if (livre(p)) return p;
+    const fundo = Math.max(origem.fim.linha, ...this.saidasDinamicas.map((s) => s.area.fim.linha));
+    const abaixo = { linha: Math.min(fundo + 3, this.linhas - 1), coluna: origem.inicio.coluna };
+    return abaixo;
   }
 
   removerDinamica(i: number) {
@@ -1650,7 +1680,7 @@ export class Planilha {
       if (lerLimite(v.valor1) === null || (dois && lerLimite(v.valor2) === null))
         return { ok: false, mensagem: dois ? "Preencha o Mínimo e o Máximo com números (ou datas)." : "Preencha o valor com um número (ou data)." };
     }
-    if (this.validacoesLista.length >= 20) return { ok: false, mensagem: "No máximo 20 regras de validação por planilha." };
+    if (this.validacoesLista.length >= 20) return { ok: false, mensagem: "Esta planilha já tem 20 regras de validação, o limite do simulador. Selecione as células de uma regra que não usa e escolha Limpar Tudo na janela de Validação de Dados." };
     this.mudarEstado(() => {
       this.validacoesLista = this.validacoesLista.filter((x) => {
         const i = deIntervalo(x.intervalo);
