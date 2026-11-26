@@ -1697,8 +1697,21 @@ export class Planilha {
   inserirGrafico(tipo: Grafico["tipo"], dados: Intervalo): Validacao & { indice?: number } {
     const d = this.recortar(dados);
     if (!d) return { ok: false, mensagem: "Selecione os dados do gráfico." };
-    if (this.graficosLista.length >= 4) return { ok: false, mensagem: "No máximo 4 gráficos por planilha." };
-    const aoLado = { linha: d.inicio.linha, coluna: d.fim.coluna + 2 };
+    // Já há um gráfico desses mesmos dados: escolher outro tipo troca o tipo dele, em vez de
+    // empilhar gráficos iguais no mesmo lugar (é o que acontece quando o aluno está testando os tipos).
+    const mesmo = this.graficosLista.findIndex((x) => x.dados === intervaloParaTexto(d));
+    if (mesmo >= 0) {
+      const r = this.configurarGrafico(mesmo, { ...this.graficosLista[mesmo], tipo });
+      return r.ok ? { ok: true, indice: mesmo } : r;
+    }
+    if (this.graficosLista.length >= 4)
+      return {
+        ok: false,
+        mensagem: "Esta planilha já tem 4 gráficos, o limite do simulador. Para criar outro, clique num gráfico que não usa mais e escolha Excluir gráfico.",
+      };
+    // Outros dados: o gráfico novo vai um pouco mais abaixo, para não cobrir os que já existem.
+    const desvio = this.graficosLista.length * 3;
+    const aoLado = { linha: Math.min(d.inicio.linha + desvio, this.linhas - 1), coluna: d.fim.coluna + 2 };
     const posicao = aoLado.coluna < this.colunas ? aoLado : { linha: Math.min(d.fim.linha + 2, this.linhas - 1), coluna: d.inicio.coluna };
     const g: Grafico = { tipo, dados: intervaloParaTexto(d), posicao: paraEndereco(posicao), titulo: "", rotulos: false, alternar: false };
     const teste = dadosDoGrafico(g, {
