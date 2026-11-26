@@ -105,6 +105,13 @@ export function FormatacaoCondicional({ classeBotao }: { classeBotao: string }) 
         onClick={() => {
           const s = store.getState();
           if (s.modo !== "pronto" && !s.confirmar()) return;
+          // Com a janela da regra ou o gerenciador abertos, o botão os fecha (não abre o menu por cima).
+          if (form || gerenciar) {
+            setForm(null);
+            setGerenciar(false);
+            setMenu(false);
+            return;
+          }
           setMenu((m) => !m);
         }}
         onKeyDown={(e) => {
@@ -438,7 +445,8 @@ function GerenciarRegras({ fechar }: { fechar: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
   useEscape(ref, fechar);
-  useFocoDentro(ref, "button", false);
+  // O ▲ da regra do topo é desabilitado: o foco precisa ir para um botão que aceite foco, senão o Esc não fecha.
+  useFocoDentro(ref, "button:not(:disabled)", false);
   useFocoPreso(ref);
   return (
     <div

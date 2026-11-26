@@ -84,6 +84,7 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
   const arrasto = useEstado((e) => e.arrasto);
   const celebrando = useEstado((e) => e.celebrando);
   const graficoAtivo = useEstado((e) => e.graficoAtivo);
+  const graficoClicado = useRef(false);
   const circularInvalidos = useEstado((e) => e.circularInvalidos);
 
   const selecao = normalizar(ancora, foco);
@@ -315,6 +316,7 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
       return;
     }
     const s = store.getState();
+    graficoClicado.current = false;
     if (s.graficoAtivo !== null) store.setState({ graficoAtivo: null });
     // Modo "apontar": clicar (ou arrastar) numa célula enquanto digita uma fórmula insere a referência.
     if ((apontandoReferencia() || apontadorAtivo()) && !(p.linha === s.ancora.linha && p.coluna === s.ancora.coluna)) {
@@ -356,6 +358,9 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
 
   const aoTeclar = (e: KeyboardEvent<HTMLInputElement>) => {
     const tecla = e.key;
+    // Delete apaga o gráfico só logo depois de clicar nele; qualquer outra tecla volta o Delete para as células.
+    const graficoNaMao = graficoClicado.current;
+    if (tecla !== "Delete" && tecla !== "Backspace") graficoClicado.current = false;
     if (tecla === "Tab" && liberarTab.current && store.getState().modo === "pronto") {
       liberarTab.current = false;
       return; // o navegador leva o foco ao próximo (ou anterior) controle da página
@@ -416,6 +421,13 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
       }
       if (tecla === "Delete" || tecla === "Backspace") {
         e.preventDefault();
+        // Gráfico recém-clicado: Delete apaga o gráfico, como no Excel, e não os dados.
+        if (graficoNaMao && s.graficoAtivo !== null) {
+          graficoClicado.current = false;
+          planilha.removerGrafico(s.graficoAtivo);
+          store.setState({ graficoAtivo: null });
+          return;
+        }
         s.apagarSelecao();
         return;
       }
@@ -914,6 +926,7 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
                 e.stopPropagation();
                 const s = store.getState();
                 if (s.modo !== "pronto" && !s.confirmar()) return;
+                graficoClicado.current = true;
                 store.setState({ graficoAtivo: i });
               }}
               className={`absolute z-[6] cursor-pointer overflow-hidden rounded-sm bg-white shadow-md ${ativo ? "ring-2 ring-success" : "ring-1 ring-zinc-300"}`}
@@ -930,6 +943,12 @@ export function Grade({ larguras, autoFoco = true }: { larguras?: Record<string,
                   const s = store.getState();
                   if (s.modo !== "pronto" && !s.confirmar()) return;
                   store.setState({ graficoAtivo: i });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key !== "Delete" && e.key !== "Backspace") return;
+                  e.preventDefault();
+                  planilha.removerGrafico(i);
+                  store.setState({ graficoAtivo: null });
                 }}
                 className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-success"
               />

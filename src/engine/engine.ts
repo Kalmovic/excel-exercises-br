@@ -32,7 +32,7 @@ import { Calculo, FUNCOES, type Conteudo } from "./motor/nucleo";
 import { analisar, type No } from "./motor/parser";
 import { referenciasDaFormula } from "./referencias";
 import { compararParaClassificar } from "./classificar";
-import { calcularDinamica } from "./dinamica";
+import { calcularDinamica, PLACEHOLDER } from "./dinamica";
 import { calcularCondicionais, type EstiloCelula } from "./condicional";
 import { dadosDoGrafico, type DadosGrafico } from "./grafico";
 import { ERRO_PADRAO, itensDaFonte, lerLimite, passaNaValidacao } from "./validacao";
@@ -1525,22 +1525,30 @@ export class Planilha {
    * cair em cima da primeira). Sem espaço à direita, abaixo de tudo.
    */
   destinoSugeridoDinamica(origem: Intervalo): Pos {
-    const livre = (p: Pos) =>
-      p.linha < this.linhas &&
-      p.coluna < this.colunas &&
-      !contemPos(origem, p) &&
-      !this.textos.has(`${p.linha},${p.coluna}`) &&
-      !this.daDinamica(p) &&
-      !this.saidasDinamicas.some((s) => contemPos(s.area, p));
-    const p = { linha: origem.inicio.linha, coluna: origem.fim.coluna + 2 };
-    while (p.coluna < this.colunas && !livre(p)) {
-      const bloqueio = this.saidasDinamicas.find((s) => contemPos(s.area, p));
-      p.coluna = bloqueio ? bloqueio.area.fim.coluna + 2 : p.coluna + 1;
-    }
-    if (livre(p)) return p;
-    const fundo = Math.max(origem.fim.linha, ...this.saidasDinamicas.map((s) => s.area.fim.linha));
-    const abaixo = { linha: Math.min(fundo + 3, this.linhas - 1), coluna: origem.inicio.coluna };
-    return abaixo;
+    const ocupada = (l: number, c: number) =>
+      contemPos(origem, { linha: l, coluna: c }) ||
+      this.textos.has(`${l},${c}`) ||
+      this.daDinamica({ linha: l, coluna: c }) ||
+      this.saidasDinamicas.some((s) => contemPos(s.area, { linha: l, coluna: c }));
+    // Cabe o quadro da tabela vazia ("escolha os campos"), com uma célula de folga em volta
+    // para as tabelas não ficarem coladas (elas crescem quando ganham campos).
+    const cabe = (p: Pos) => {
+      if (p.linha + PLACEHOLDER.altura > this.linhas || p.coluna + PLACEHOLDER.largura > this.colunas) return false;
+      for (let l = Math.max(p.linha - 1, 0); l <= Math.min(p.linha + PLACEHOLDER.altura, this.linhas - 1); l++)
+        for (let c = Math.max(p.coluna - 1, 0); c <= Math.min(p.coluna + PLACEHOLDER.largura, this.colunas - 1); c++) {
+          const dentro = l >= p.linha && l < p.linha + PLACEHOLDER.altura && c >= p.coluna && c < p.coluna + PLACEHOLDER.largura;
+          // Na folga, só as outras tabelas dinâmicas contam (encostar nos dados de origem é normal).
+          if (dentro ? ocupada(l, c) : this.saidasDinamicas.some((s) => contemPos(s.area, { linha: l, coluna: c }))) return false;
+        }
+      return true;
+    };
+    // 1º à direita dos dados, de cima para baixo; 2º abaixo dos dados, da esquerda para a direita.
+    for (let l = origem.inicio.linha; l < this.linhas; l++)
+      for (let c = origem.fim.coluna + 2; c < this.colunas; c++) if (cabe({ linha: l, coluna: c })) return { linha: l, coluna: c };
+    for (let l = origem.fim.linha + 2; l < this.linhas; l++)
+      for (let c = origem.inicio.coluna; c < this.colunas; c++) if (cabe({ linha: l, coluna: c })) return { linha: l, coluna: c };
+    // Sem espaço livre: a sugestão de sempre (o aviso explica o que fazer).
+    return { linha: origem.inicio.linha, coluna: Math.min(origem.fim.coluna + 2, this.colunas - 1) };
   }
 
   removerDinamica(i: number) {
