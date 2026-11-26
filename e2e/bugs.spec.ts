@@ -141,3 +141,22 @@ test.describe("P0-2: celular", () => {
     await expect(page.getByRole("navigation", { name: "Menu" })).toHaveCount(0);
   });
 });
+
+test("resposta fora da tela: a grade abre mostrando a célula do exercício, e o nome dela no painel leva até lá", async ({ page }) => {
+  await page.goto("/exercicios/procv-coluna-variavel-corresp");
+  await expect(page.getByTestId("verificar")).toBeVisible();
+  const grade = page.getByTestId("grade").filter({ visible: true });
+  const dentroDaGrade = async (end: string) => {
+    const g = (await grade.boundingBox())!;
+    const c = (await page.locator(`[data-celula="${end}"]`).filter({ visible: true }).boundingBox())!;
+    return c.x >= g.x - 1 && c.x + c.width <= g.x + g.width + 1;
+  };
+  const primeiro = await page.locator("[data-ir-para]").filter({ visible: true }).first().getAttribute("data-ir-para");
+  const alvo = primeiro!.split(":")[0];
+  await expect.poll(() => dentroDaGrade(alvo)).toBe(true);
+  // Volta para A1 e usa o atalho do painel.
+  await page.locator('[data-celula="A1"]').filter({ visible: true }).click();
+  await page.locator(`[data-ir-para="${primeiro}"]`).filter({ visible: true }).click();
+  await expect(page.getByTestId("caixa-nome").filter({ visible: true })).toHaveText(new RegExp(alvo));
+  await expect.poll(() => dentroDaGrade(alvo)).toBe(true);
+});
