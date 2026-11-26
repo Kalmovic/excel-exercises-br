@@ -9,7 +9,7 @@ import { celulasDestacadas } from "@/content/destaque";
 import { chaveProgresso, type LicaoDoExercicio } from "@/content/licao";
 import type { Exercicio } from "@/content/schema";
 import type { Trilha } from "@/content/trilha";
-import { deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
+import { deEndereco, deIntervalo, intervaloParaTexto, paraEndereco } from "@/engine/address";
 import { Planilha } from "@/engine/engine";
 import { corrigir, type Resultado } from "@/grader/corrigir";
 import { celebrarAcerto, celebrarTrofeu } from "@/lib/celebrar";
@@ -165,12 +165,24 @@ export default function Simulador({
 
   const { planilha, store } = nucleo;
   const raizRef = useRef<HTMLDivElement>(null);
-  // Embutido: depois da primeira rolagem da grade (efeitos dos filhos rodam antes), mostra o alvo.
+  // Depois da primeira rolagem da grade (efeitos dos filhos rodam antes), mostra as células do
+  // exercício: com colunas largas, a resposta (F2, G1...) começava fora da tela, sem aviso.
   useEffect(() => {
-    if (!embutido) return;
     const id = requestAnimationFrame(() => mostrarAlvos(raizRef.current, nucleo.alvos));
     return () => cancelAnimationFrame(id);
-  }, [embutido, nucleo.alvos]);
+  }, [nucleo.alvos]);
+  // "Células do exercício: F2, E5" no painel: clicar leva a seleção (e a grade) até lá.
+  const irPara = (ref: string) => {
+    try {
+      const [ini, fim] = ref.split(":");
+      const a = deEndereco(ini);
+      const b = fim ? deEndereco(fim) : a;
+      store.setState({ ancora: a, foco: b, mensagem: null });
+      entradaRef.current?.focus({ preventScroll: true });
+    } catch {
+      // referência que não é célula: ignora
+    }
+  };
   // Teste do módulo: questão respondida fica só para ver (grade, barras e campo de resposta).
   const travada = !!teste && respondida !== null;
   // Fórmula no enunciado ou nas alternativas: a planilha ao lado é só para consultar os dados
@@ -499,6 +511,7 @@ export default function Simulador({
           proximo={proximo}
           proximoModulo={trilha?.proximoModulo}
           onVerificar={verificar}
+          onIrPara={irPara}
           semCorrecao={!!simulado}
           avulso={avulso}
           aviso={aviso}

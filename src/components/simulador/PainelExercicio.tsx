@@ -23,6 +23,8 @@ type Props = {
   /** Conteúdo extra depois do resultado (ex.: compartilhar o desafio). */
   extra?: ReactNode;
   botaoVerificarRef?: Ref<HTMLButtonElement>;
+  /** Clicar numa das "Células do exercício" seleciona a célula (e rola a grade até ela). */
+  onIrPara?: (ref: string) => void;
   /** Simulado: sem Verificar, dicas nem solução (a correção é na entrega da prova). */
   semCorrecao?: boolean;
   /** Fora da trilha (ex.: questão de concurso): sem "próximo exercício" nem "fim do módulo". */
@@ -115,6 +117,7 @@ export function PainelExercicio({
   proximoModulo,
   extra,
   botaoVerificarRef,
+  onIrPara,
   semCorrecao = false,
   avulso = false,
   aviso = null,
@@ -148,7 +151,24 @@ export function PainelExercicio({
         {alvos && (
           <p className="text-sm text-zinc-500">
             Células do exercício:{" "}
-            <span className="rounded bg-accent-soft px-1 font-mono text-ink ring-1 ring-accent">{alvos}</span>
+            {onIrPara ? (
+              alvos.split(", ").map((ref, i) => (
+                <span key={ref}>
+                  {i > 0 && ", "}
+                  <button
+                    type="button"
+                    onClick={() => onIrPara(ref)}
+                    title={`Ir para ${ref} na planilha`}
+                    data-ir-para={ref}
+                    className="rounded bg-accent-soft px-1 font-mono text-ink ring-1 ring-accent hover:bg-accent"
+                  >
+                    {ref}
+                  </button>
+                </span>
+              ))
+            ) : (
+              <span className="rounded bg-accent-soft px-1 font-mono text-ink ring-1 ring-accent">{alvos}</span>
+            )}
           </p>
         )}
       </section>
