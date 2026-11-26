@@ -149,10 +149,8 @@ function InserirDinamica({ fechar }: { fechar: (criou?: boolean) => void }) {
     const sel = s.selecao();
     const umaCelula = sel.inicio.linha === sel.fim.linha && sel.inicio.coluna === sel.fim.coluna;
     const origem = umaCelula ? planilha.regiaoAtual(sel.inicio) : sel;
-    // Duas colunas depois dos dados; sem espaço, três linhas abaixo.
-    const aoLado = { linha: origem.inicio.linha, coluna: origem.fim.coluna + 2 };
-    const destino = aoLado.coluna < planilha.colunas ? aoLado : { linha: origem.fim.linha + 3, coluna: origem.inicio.coluna };
-    return { origem: intervaloParaTexto(origem), destino: paraEndereco(destino) };
+    // Ao lado dos dados, pulando as tabelas dinâmicas que já existem.
+    return { origem: intervaloParaTexto(origem), destino: paraEndereco(planilha.destinoSugeridoDinamica(origem)) };
   });
   const [origem, setOrigem] = useState(inicial.origem);
   const [destino, setDestino] = useState(inicial.destino);

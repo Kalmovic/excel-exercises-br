@@ -55,7 +55,7 @@ a questão ganha o selo **"Caiu muito parecido em …"** (campo `referencia` no 
 
 Regra: só entra o que for **da mesma banca** e cobrar **a mesma coisa** (mesma função e mesmo tipo de pergunta). *(Regra antiga, substituída em 25/11/2026: agora vale qualquer banca com o mesmo tema; selo "Tema já cobrado". Ver o topo.)*
 
-**Total:** 145 questões (FCC 29, Cesgranrio 29, Vunesp 29, FGV 29, Cebraspe 29), das quais 50 novas (concurso-31 a 80). Com referência no site: 35 (as 25 publicadas antes + 10 das novas). Sem: 110.
+**Total:** 147 questões (FCC 29, Cesgranrio 29, Vunesp 29, FGV 30, Cebraspe 30), das quais 52 novas (concurso-31 a 82; a 81 usa DIAS e a 82 a referência D2#). Com referência no site: 35. Sem: 112.
 
 ## A conferir (já aparecem no site)
 

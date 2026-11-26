@@ -102,3 +102,17 @@ test("página Pro: as seis ferramentas, com o módulo de cada uma, e a aba de gr
   await amostra.getByTestId("verificar").click();
   await expect(amostra.getByTestId("resultado")).toContainText("Correto!");
 });
+
+test("criar três tabelas dinâmicas seguidas: cada uma é sugerida num lugar livre", async ({ page }) => {
+  await abrir(page, "dinamica-total-por-regiao");
+  const destinos: string[] = [];
+  for (let i = 0; i < 3; i++) {
+    await celula(page, "A2").click();
+    await visivel(page, "botao-dinamica").click();
+    destinos.push(await visivel(page, "dinamica-destino").inputValue());
+    await visivel(page, "dinamica-ok").click();
+    await expect(visivel(page, "inserir-dinamica")).toHaveCount(0);
+  }
+  expect(new Set(destinos).size).toBe(3);
+  await expect(page.getByText("A tabela dinâmica não cabe aqui").filter({ visible: true })).toHaveCount(0);
+});

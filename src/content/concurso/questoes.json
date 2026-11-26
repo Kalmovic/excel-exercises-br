@@ -6001,5 +6001,160 @@
         "esperado": 115
       }
     ]
+  },
+  {
+    "id": "fc8c537b-c3c8-53b6-8a4d-66433bf80b8e",
+    "slug": "concurso-81-dias-na-ordem-errada",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 81,
+    "nivel": 2,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "DIAS com as datas na ordem errada",
+    "enunciado": [
+      "Na planilha ao lado, elaborada no Microsoft Excel 365 em português, A1 contém a data de protocolo 02/03/2026 e B1 a data de resposta 13/03/2026.",
+      "Um servidor digitou `=DIAS(A1;B1)` para saber quantos dias o órgão levou para responder. O valor exibido é:"
+    ],
+    "grade": {
+      "linhas": 6,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "02/03/2026"
+        },
+        "B1": {
+          "entrada": "13/03/2026"
+        }
+      },
+      "larguras": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Na função DIAS a data FINAL vem primeiro: `=DIAS(data_final; data_inicial)`. Com o protocolo (a data menor) no 1º argumento, a conta é 02/03 − 13/03 = −11.",
+      "O certo seria `=DIAS(B1;A1)`, que dá 11. Repare que o DATADIF é o contrário: `=DATADIF(A1;B1;\"d\")` (inicial primeiro) também dá 11, e com a ordem trocada dá #NÚM!."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "11",
+        "dica": "Seria 11 com as datas na ordem certa: na DIAS a data final vem primeiro, =DIAS(B1;A1)."
+      },
+      {
+        "texto": "−11"
+      },
+      {
+        "texto": "#NÚM!",
+        "dica": "Quem dá #NÚM! com a ordem trocada é o DATADIF. A DIAS só devolve um número negativo."
+      },
+      {
+        "texto": "12",
+        "dica": "A DIAS não conta o primeiro e o último dia juntos: é a diferença simples entre as datas."
+      },
+      {
+        "texto": "#VALOR!",
+        "dica": "As duas células têm datas válidas; não há texto na conta."
+      }
+    ],
+    "correta": 1,
+    "banca": "FGV",
+    "tema": "Datas",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=DIAS(A1;B1)",
+        "esperado": -11
+      },
+      {
+        "formula": "=DIAS(B1;A1)",
+        "esperado": 11
+      },
+      {
+        "formula": "=DATADIF(A1;B1;\"d\")",
+        "esperado": 11
+      }
+    ]
+  },
+  {
+    "id": "407cdb95-fd5b-58cf-957e-24f090e682f8",
+    "slug": "concurso-82-a-referencia-com-cerquilha",
+    "trilha": "excel-ptbr",
+    "modulo": "concurso",
+    "ordem": 82,
+    "nivel": 3,
+    "plano": "pro",
+    "versao": 1,
+    "titulo": "A referência com cerquilha (#)",
+    "enunciado": [
+      "Na planilha ao lado, A2:A7 contém os nomes Ana, Bia, Ana, Caio, Bia e Duda, e a célula C2 contém a fórmula `=ÚNICO(A2:A7)`, cujo resultado se espalha por C2:C5.",
+      "Julgue o item: a fórmula `=CONT.VALORES(C2)` retorna 4, que é a quantidade de nomes distintos listados pelo ÚNICO."
+    ],
+    "grade": {
+      "linhas": 8,
+      "colunas": 6,
+      "celulas": {
+        "A1": {
+          "entrada": "Nome"
+        },
+        "A2": {
+          "entrada": "Ana"
+        },
+        "A3": {
+          "entrada": "Bia"
+        },
+        "A4": {
+          "entrada": "Ana"
+        },
+        "A5": {
+          "entrada": "Caio"
+        },
+        "A6": {
+          "entrada": "Bia"
+        },
+        "A7": {
+          "entrada": "Duda"
+        },
+        "C1": {
+          "entrada": "Distintos"
+        },
+        "C2": {
+          "entrada": "=ÚNICO(A2:A7)"
+        }
+      }
+    },
+    "dicas": [],
+    "explicacao": [
+      "Errado. `C2` é só a primeira célula do resultado, então `=CONT.VALORES(C2)` conta 1.",
+      "Para usar o resultado inteiro que o ÚNICO espalhou, a referência leva a cerquilha: `=CONT.VALORES(C2#)` retorna 4 e acompanha sozinha se a lista crescer."
+    ],
+    "tentativasAteExplicacao": 1,
+    "type": "multiple_choice",
+    "opcoes": [
+      {
+        "texto": "Certo",
+        "dica": "Sem o #, C2 é uma célula só. O intervalo que o ÚNICO espalhou é C2# (ou C2:C5)."
+      },
+      {
+        "texto": "Errado"
+      }
+    ],
+    "correta": 1,
+    "banca": "Cebraspe",
+    "tema": "ÚNICO",
+    "comPlanilha": true,
+    "conferir": [
+      {
+        "formula": "=CONT.VALORES(C2)",
+        "esperado": 1
+      },
+      {
+        "formula": "=CONT.VALORES(C2#)",
+        "esperado": 4
+      }
+    ]
   }
 ]

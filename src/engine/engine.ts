@@ -32,7 +32,7 @@ import { Calculo, FUNCOES, type Conteudo } from "./motor/nucleo";
 import { analisar, type No } from "./motor/parser";
 import { referenciasDaFormula } from "./referencias";
 import { compararParaClassificar } from "./classificar";
-import { calcularDinamica } from "./dinamica";
+import { calcularDinamica, PLACEHOLDER } from "./dinamica";
 import { calcularCondicionais, type EstiloCelula } from "./condicional";
 import { dadosDoGrafico, type DadosGrafico } from "./grafico";
 import { ERRO_PADRAO, itensDaFonte, lerLimite, passaNaValidacao } from "./validacao";
@@ -1315,7 +1315,7 @@ export class Planilha {
       const faltam = [...naoImplementadas(no)];
       if (faltam.length) return { ok: false, mensagem: `A função ${faltam[0]} ainda não está disponível no simulador.` };
     }
-    if (this.condicionais.length >= 20) return { ok: false, mensagem: "No máximo 20 regras por planilha." };
+    if (this.condicionais.length >= 20) return { ok: false, mensagem: "Esta planilha já tem 20 regras de formatação condicional, o limite do simulador. Apague as que não usa em Formatação Condicional > Gerenciar Regras…" };
     this.mudarEstado(() => {
       this.condicionais.push(structuredClone(regra));
     });
@@ -1488,7 +1488,13 @@ export class Planilha {
     if (contemPos(o, destino)) return { ok: false, mensagem: "O destino não pode ficar dentro dos dados de origem." };
     if (this.textos.has(`${destino.linha},${destino.coluna}`) || this.daDinamica(destino))
       return { ok: false, mensagem: `${paraEndereco(destino)} já tem conteúdo. Escolha uma célula vazia para a tabela dinâmica.` };
-    if (this.dinamicas.length >= 3) return { ok: false, mensagem: "Este exercício aceita no máximo 3 tabelas dinâmicas." };
+    if (this.saidasDinamicas.some((s) => contemPos(s.area, destino)))
+      return { ok: false, mensagem: `${paraEndereco(destino)} já é o lugar de outra tabela dinâmica. Escolha uma célula vazia ao lado ou abaixo dela.` };
+    if (this.dinamicas.length >= 3)
+      return {
+        ok: false,
+        mensagem: "Este exercício já tem 3 tabelas dinâmicas, o limite do simulador. Para criar outra, clique numa que não usa mais e escolha Remover tabela dinâmica.",
+      };
     this.mudarEstado(() => {
       this.dinamicas.push({
         origem: intervaloParaTexto(o),
@@ -1511,6 +1517,38 @@ export class Planilha {
       this.dinamicas[i] = structuredClone(config);
     });
     return { ok: true };
+  }
+
+  /**
+   * Onde sugerir uma tabela dinâmica nova: duas colunas depois dos dados, pulando
+   * as tabelas dinâmicas e os textos que já estão lá (para a segunda tabela não
+   * cair em cima da primeira). Sem espaço à direita, abaixo de tudo.
+   */
+  destinoSugeridoDinamica(origem: Intervalo): Pos {
+    const ocupada = (l: number, c: number) =>
+      contemPos(origem, { linha: l, coluna: c }) ||
+      this.textos.has(`${l},${c}`) ||
+      this.daDinamica({ linha: l, coluna: c }) ||
+      this.saidasDinamicas.some((s) => contemPos(s.area, { linha: l, coluna: c }));
+    // Cabe o quadro da tabela vazia ("escolha os campos"), com uma célula de folga em volta
+    // para as tabelas não ficarem coladas (elas crescem quando ganham campos).
+    const cabe = (p: Pos) => {
+      if (p.linha + PLACEHOLDER.altura > this.linhas || p.coluna + PLACEHOLDER.largura > this.colunas) return false;
+      for (let l = Math.max(p.linha - 1, 0); l <= Math.min(p.linha + PLACEHOLDER.altura, this.linhas - 1); l++)
+        for (let c = Math.max(p.coluna - 1, 0); c <= Math.min(p.coluna + PLACEHOLDER.largura, this.colunas - 1); c++) {
+          const dentro = l >= p.linha && l < p.linha + PLACEHOLDER.altura && c >= p.coluna && c < p.coluna + PLACEHOLDER.largura;
+          // Na folga, só as outras tabelas dinâmicas contam (encostar nos dados de origem é normal).
+          if (dentro ? ocupada(l, c) : this.saidasDinamicas.some((s) => contemPos(s.area, { linha: l, coluna: c }))) return false;
+        }
+      return true;
+    };
+    // 1º à direita dos dados, de cima para baixo; 2º abaixo dos dados, da esquerda para a direita.
+    for (let l = origem.inicio.linha; l < this.linhas; l++)
+      for (let c = origem.fim.coluna + 2; c < this.colunas; c++) if (cabe({ linha: l, coluna: c })) return { linha: l, coluna: c };
+    for (let l = origem.fim.linha + 2; l < this.linhas; l++)
+      for (let c = origem.inicio.coluna; c < this.colunas; c++) if (cabe({ linha: l, coluna: c })) return { linha: l, coluna: c };
+    // Sem espaço livre: a sugestão de sempre (o aviso explica o que fazer).
+    return { linha: origem.inicio.linha, coluna: Math.min(origem.fim.coluna + 2, this.colunas - 1) };
   }
 
   removerDinamica(i: number) {
@@ -1650,7 +1688,7 @@ export class Planilha {
       if (lerLimite(v.valor1) === null || (dois && lerLimite(v.valor2) === null))
         return { ok: false, mensagem: dois ? "Preencha o Mínimo e o Máximo com números (ou datas)." : "Preencha o valor com um número (ou data)." };
     }
-    if (this.validacoesLista.length >= 20) return { ok: false, mensagem: "No máximo 20 regras de validação por planilha." };
+    if (this.validacoesLista.length >= 20) return { ok: false, mensagem: "Esta planilha já tem 20 regras de validação, o limite do simulador. Selecione as células de uma regra que não usa e escolha Limpar Tudo na janela de Validação de Dados." };
     this.mudarEstado(() => {
       this.validacoesLista = this.validacoesLista.filter((x) => {
         const i = deIntervalo(x.intervalo);
@@ -1697,8 +1735,21 @@ export class Planilha {
   inserirGrafico(tipo: Grafico["tipo"], dados: Intervalo): Validacao & { indice?: number } {
     const d = this.recortar(dados);
     if (!d) return { ok: false, mensagem: "Selecione os dados do gráfico." };
-    if (this.graficosLista.length >= 4) return { ok: false, mensagem: "No máximo 4 gráficos por planilha." };
-    const aoLado = { linha: d.inicio.linha, coluna: d.fim.coluna + 2 };
+    // Já há um gráfico desses mesmos dados: escolher outro tipo troca o tipo dele, em vez de
+    // empilhar gráficos iguais no mesmo lugar (é o que acontece quando o aluno está testando os tipos).
+    const mesmo = this.graficosLista.findIndex((x) => x.dados === intervaloParaTexto(d));
+    if (mesmo >= 0) {
+      const r = this.configurarGrafico(mesmo, { ...this.graficosLista[mesmo], tipo });
+      return r.ok ? { ok: true, indice: mesmo } : r;
+    }
+    if (this.graficosLista.length >= 4)
+      return {
+        ok: false,
+        mensagem: "Esta planilha já tem 4 gráficos, o limite do simulador. Para criar outro, clique num gráfico que não usa mais e escolha Excluir gráfico.",
+      };
+    // Outros dados: o gráfico novo vai um pouco mais abaixo, para não cobrir os que já existem.
+    const desvio = this.graficosLista.length * 3;
+    const aoLado = { linha: Math.min(d.inicio.linha + desvio, this.linhas - 1), coluna: d.fim.coluna + 2 };
     const posicao = aoLado.coluna < this.colunas ? aoLado : { linha: Math.min(d.fim.linha + 2, this.linhas - 1), coluna: d.inicio.coluna };
     const g: Grafico = { tipo, dados: intervaloParaTexto(d), posicao: paraEndereco(posicao), titulo: "", rotulos: false, alternar: false };
     const teste = dadosDoGrafico(g, {

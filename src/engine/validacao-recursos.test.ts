@@ -103,8 +103,30 @@ describe("gráficos novos", () => {
     const p = new Planilha(g({ A1: "Mês", B1: "Realizado", C1: "Meta", A2: "Jan", B2: "90", C2: "100", A3: "Fev", B3: "120", C3: "100" }));
     expect(p.inserirGrafico("combinado", { inicio: { linha: 0, coluna: 0 }, fim: { linha: 2, coluna: 2 } }).ok).toBe(true);
     expect(p.inserirGrafico("empilhadas", { inicio: { linha: 0, coluna: 0 }, fim: { linha: 2, coluna: 2 } }).ok).toBe(true);
-    expect(p.graficos().map((x) => x.tipo)).toEqual(["combinado", "empilhadas"]);
+    // Mesmos dados: o segundo tipo troca o gráfico que já existe, em vez de empilhar outro.
+    expect(p.graficos().map((x) => x.tipo)).toEqual(["empilhadas"]);
     expect(p.dadosDoGrafico(0).series.map((s) => s.nome)).toEqual(["Realizado", "Meta"]);
+  });
+
+  it("explorar os tipos com os mesmos dados nunca bate no limite de 4 gráficos", () => {
+    const p = new Planilha(g({ A1: "Mês", B1: "Vendas", A2: "Jan", B2: "10", A3: "Fev", B3: "20" }));
+    const dados = { inicio: { linha: 0, coluna: 0 }, fim: { linha: 2, coluna: 1 } };
+    for (const tipo of ["colunas", "barras", "linhas", "pizza", "empilhadas", "combinado", "colunas"] as const) {
+      const r = p.inserirGrafico(tipo, dados);
+      expect(r.ok).toBe(true);
+      expect(r.indice).toBe(0);
+    }
+    expect(p.graficos()).toHaveLength(1);
+    expect(p.graficos()[0].tipo).toBe("colunas");
+  });
+
+  it("o 5º gráfico com dados diferentes explica o limite e como liberar espaço", () => {
+    const p = new Planilha(g({ A1: "a", B1: "1", A2: "b", B2: "2", A3: "c", B3: "3", A4: "d", B4: "4", A5: "e", B5: "5" }));
+    for (let i = 0; i < 4; i++) expect(p.inserirGrafico("colunas", { inicio: { linha: i, coluna: 0 }, fim: { linha: i + 1, coluna: 1 } }).ok).toBe(true);
+    const r = p.inserirGrafico("colunas", { inicio: { linha: 0, coluna: 0 }, fim: { linha: 4, coluna: 1 } });
+    expect(r.ok || r.mensagem).toMatch(/Excluir gráfico/);
+    const pos = p.graficos().map((x) => x.posicao);
+    expect(new Set(pos).size).toBe(4);
   });
 });
 
@@ -120,5 +142,19 @@ describe("motor: #CIRC! falso no cálculo antecipado", () => {
     const p = new Planilha(g({ A1: "=B1+1", B1: "=SOMA(A1:A3)", C1: "=SOMA(D1:D4)" }));
     expect(p.valor("A1")).toEqual({ erro: "#CIRC!" });
     expect(p.valor("C1")).toBe(0);
+  });
+});
+
+describe("tabela dinâmica nova", () => {
+  it("a segunda tabela com os mesmos dados é sugerida ao lado da primeira, não em cima", () => {
+    const p = new Planilha({ ...g({ A1: "Região", B1: "Valor", A2: "Sul", B2: "10", A3: "Norte", B3: "20" }), colunas: 12 });
+    const origem = { inicio: { linha: 0, coluna: 0 }, fim: { linha: 2, coluna: 1 } };
+    const d1 = p.destinoSugeridoDinamica(origem);
+    expect(p.inserirDinamica(origem, d1).ok).toBe(true);
+    const d2 = p.destinoSugeridoDinamica(origem);
+    expect(d2).not.toEqual(d1);
+    expect(p.inserirDinamica(origem, d2).ok).toBe(true);
+    const r = p.inserirDinamica(origem, d1);
+    expect(r.ok || r.mensagem).toMatch(/outra tabela dinâmica/);
   });
 });

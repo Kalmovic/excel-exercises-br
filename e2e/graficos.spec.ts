@@ -77,3 +77,23 @@ test("ranking: classificar do maior para o menor e inserir o gráfico", async ({
   await expect(visivel(page, "grafico-0").locator("[data-barra-grafico]")).toHaveCount(6);
   await verificarCorreto(page);
 });
+
+test("explorar os tipos pelo menu não empilha gráficos, e Delete no gráfico clicado o apaga", async ({ page }) => {
+  await abrir(page, "grafico-vendas-por-mes-variacao-b");
+  await celula(page, "A3").click();
+  for (const tipo of ["colunas", "barras", "linhas", "pizza", "empilhadas", "colunas"]) {
+    await visivel(page, "botao-grafico").click();
+    await visivel(page, "menu-grafico").locator(`[data-tipo-grafico="${tipo}"]`).click();
+  }
+  await expect(visivel(page, "grafico-0")).toHaveCount(1);
+  await expect(visivel(page, "grafico-1")).toHaveCount(0);
+  // Andar pela grade e apertar Delete não apaga o gráfico...
+  await celula(page, "A3").click();
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("Delete");
+  await expect(visivel(page, "grafico-0")).toHaveCount(1);
+  // ...clicar no gráfico e apertar Delete apaga.
+  await visivel(page, "grafico-0").click();
+  await page.keyboard.press("Delete");
+  await expect(visivel(page, "grafico-0")).toHaveCount(0);
+});
