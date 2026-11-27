@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Documento, Email, type Secao } from "@/components/site/Documento";
 import { EMPRESA } from "@/lib/empresa";
-import { NOME_SITE } from "@/lib/site";
+import { B2B_NO_AR, NOME_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Política de privacidade",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 /** O que o site guarda, para quê e por qual base legal (art. 7º da LGPD). Mantenha em dia com o código. */
-const DADOS: [string, string, string][] = [
+const TODOS_OS_DADOS: [string, string, string][] = [
   ["Sem conta: progresso dos exercícios, sequência do desafio e de onde você veio (UTM)", "Guardar seu avanço e medir quais canais trazem visitantes", "Nenhuma: não sai do seu navegador"],
   ["E-mail", "Entrar na conta pelo código enviado por e-mail", "Execução do contrato"],
   ["Nome", "Mostrar na conta e imprimir no certificado", "Execução do contrato"],
@@ -25,6 +25,10 @@ const DADOS: [string, string, string][] = [
   ["Endereço IP e registros técnicos de acesso", "Segurança, limite de tentativas e investigação de erros", "Legítimo interesse e obrigação legal (Marco Civil)"],
 ];
 
+// Empresas e universidades fora do ar até depois do lançamento (B2B_NO_AR em src/lib/site.ts).
+const SO_B2B = ["Formulário de empresas", "Licença de empresa", "Membro de equipe"];
+const DADOS = TODOS_OS_DADOS.filter(([dado]) => B2B_NO_AR || !SO_B2B.some((t) => dado.startsWith(t)));
+
 const FORNECEDORES: [string, string][] = [
   ["Vercel", "hospedagem do site e estatísticas de visita agregadas (sem cookies de rastreamento)"],
   ["Supabase", "banco de dados e login por e-mail"],
@@ -33,7 +37,7 @@ const FORNECEDORES: [string, string][] = [
   ["Prefeitura e Receita (Emissor Nacional de NFS-e)", "registro oficial da nota fiscal"],
 ];
 
-const secoes: Secao[] = [
+const todasAsSecoes: Secao[] = [
   {
     id: "controlador",
     titulo: "Quem cuida dos seus dados",
@@ -188,7 +192,7 @@ const secoes: Secao[] = [
         <li>Dados de pagamento e notas fiscais: 5 anos, porque a legislação fiscal exige.</li>
         <li>Registros de acesso: até 6 meses, como pede o Marco Civil da Internet.</li>
         <li>Certificados: enquanto a conta existir, para que possam ser conferidos; você pode pedir a exclusão.</li>
-        <li>Contatos de empresas e universidades: até 2 anos depois da última conversa.</li>
+        {B2B_NO_AR && <li>Contatos de empresas e universidades: até 2 anos depois da última conversa.</li>}
       </ul>
     ),
   },
@@ -240,6 +244,8 @@ const secoes: Secao[] = [
     ),
   },
 ];
+
+const secoes = todasAsSecoes.filter((s) => B2B_NO_AR || s.id !== "empresas");
 
 export default function Pagina() {
   return (

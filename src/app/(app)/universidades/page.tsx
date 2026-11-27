@@ -1,7 +1,8 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Cartoes, Passos, Perguntas, Secao, Topo } from "@/components/publico/blocos";
 import { FormContato } from "@/components/publico/FormContato";
-import { NOME_SITE } from "@/lib/site";
+import { B2B_NO_AR, NOME_SITE } from "@/lib/site";
 
 const TITULO = "Excel para universidades: atividade complementar com resultado medido";
 const DESCRICAO =
@@ -34,6 +35,7 @@ const FAQ: [string, string][] = [
 ];
 
 export default function Universidades() {
+  if (!B2B_NO_AR) notFound();
   return (
     <div className="space-y-14">
       <Topo selo="Para universidades e faculdades" titulo="Excel na prática para os seus alunos.">

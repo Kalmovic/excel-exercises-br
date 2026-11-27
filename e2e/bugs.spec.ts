@@ -135,7 +135,7 @@ test.describe("P0-2: celular", () => {
     await page.goto("/");
     await page.getByTestId("botao-menu").click();
     const menu = page.getByRole("navigation", { name: "Menu" });
-    await expect(menu.getByRole("link")).toHaveCount(5);
+    await expect(menu.getByRole("link")).toHaveCount(4); // sem "Para empresas" enquanto o B2B está fora do ar
     await menu.getByRole("link", { name: "Trilha" }).click();
     await expect(page).toHaveURL(/\/trilha$/);
     await expect(page.getByRole("navigation", { name: "Menu" })).toHaveCount(0);

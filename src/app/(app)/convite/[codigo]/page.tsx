@@ -1,10 +1,11 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { AceitarConvite } from "@/components/conta/AceitarConvite";
 import { caminhoConvite, codigoValido, MENSAGEM_CONVITE, type SituacaoConvite } from "@/lib/empresas";
-import { NOME_SITE } from "@/lib/site";
+import { B2B_NO_AR, NOME_SITE } from "@/lib/site";
 import { contasLigadas } from "@/lib/supabase/config";
 import { supabaseServidor, usuarioAtual } from "@/lib/supabase/servidor";
 
@@ -14,6 +15,7 @@ export const metadata: Metadata = { title: "Convite para a equipe", robots: { in
 const cartao = "rounded-2xl border border-line bg-surface p-5 sm:p-6";
 
 export default function Pagina({ params }: PageProps<"/convite/[codigo]">) {
+  if (!B2B_NO_AR) notFound();
   return (
     <div className="mx-auto max-w-2xl space-y-6 py-4">
       <header className="space-y-2">

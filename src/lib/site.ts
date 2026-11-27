@@ -24,6 +24,13 @@ export const INDEXAR_SITE = process.env.INDEXAR_SITE === "1";
 export const PRECO = { mensal: 34.9, anualPorMes: 19.9, anual: 238.8, parcelasAnual: 12, garantiaDias: 7 } as const;
 
 /** Empresas (PME): por pessoa por mês, contrato anual (hipótese do doc de go-to-market). */
+/**
+ * Empresas e universidades (licenças, convite, painel do gestor): prontas, mas fora do ar até depois do
+ * primeiro lançamento. Com false, as páginas dão 404 e somem do menu, da home, do Pro, do sitemap, dos
+ * Termos e da Privacidade; o admin continua funcionando. O que falta antes de religar: docs/BACKLOG.md.
+ */
+export const B2B_NO_AR = false;
+
 export const PRECO_EMPRESAS = { porPessoaDesde: 15, minimoPessoas: 5 } as const;
 
 /** 19.9 -> "R$ 19,90" */

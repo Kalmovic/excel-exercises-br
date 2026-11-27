@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { exercicios } from "@/content";
 import { temPaginaDeExercicio } from "@/lib/acesso-conteudo";
 import { desafiosAnteriores, hojeNoServidor } from "@/content/desafios";
-import { URL_SITE } from "@/lib/site";
+import { B2B_NO_AR, URL_SITE } from "@/lib/site";
 import { FUNCOES } from "@/content/funcoes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     // Páginas por público
-    ...["/teste-de-excel", "/excel-para-concurso", "/empresas", "/universidades"].map((p) => ({
+    ...["/teste-de-excel", "/excel-para-concurso", ...(B2B_NO_AR ? ["/empresas", "/universidades"] : [])].map((p) => ({
       url: `${URL_SITE}${p}`,
       lastModified: agora,
       changeFrequency: "monthly" as const,

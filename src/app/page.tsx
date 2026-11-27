@@ -5,7 +5,7 @@ import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { MODULOS, exercicioDemo, exerciciosDoModulo } from "@/content";
 import { numerosDoConteudo } from "@/lib/numeros";
 import { contasLigadas } from "@/lib/supabase/config";
-import { NOME_DESAFIO, NOME_SITE, PRECO, economiaAnual, reais } from "@/lib/site";
+import { B2B_NO_AR, NOME_DESAFIO, NOME_SITE, PRECO, economiaAnual, reais } from "@/lib/site";
 
 const botaoEscuro = "inline-block rounded-lg bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-ink-soft";
 const botaoClaro = "inline-block rounded-lg border border-ink bg-surface px-5 py-3 text-sm font-semibold text-ink hover:bg-bg";
@@ -67,12 +67,19 @@ const PLANO_PRO = [
   "Certificado de conclusão",
 ];
 
-const PUBLICOS = [
-  { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE e referência absoluta.", link: "Preparar para o teste", href: "/teste-de-excel" },
-  { titulo: "Concurso público", texto: "As funções em português que as bancas cobram, testadas numa planilha de verdade.", link: "Excel para concurso", href: "/excel-para-concurso" },
+type Publico = { titulo: string; texto: string; link: string; href: string; escuro?: boolean };
+
+const B2B: Publico[] = [
   { titulo: "Empresas", texto: "Licenças anuais para a equipe, com painel do gestor para acompanhar cada pessoa.", link: "Pedir proposta", href: "/empresas", escuro: true },
   { titulo: "Universidades", texto: "Trilha prática de Excel como atividade complementar, com piloto grátis para uma turma.", link: "Montar um piloto", href: "/universidades", escuro: true },
 ];
+
+const PUBLICOS: Publico[] = [
+  { titulo: "Vaga de emprego", texto: "Treine as fórmulas que caem no teste prático: PROCV, SE, SOMASE e referência absoluta.", link: "Preparar para o teste", href: "/teste-de-excel" },
+  { titulo: "Concurso público", texto: "As funções em português que as bancas cobram, testadas numa planilha de verdade.", link: "Excel para concurso", href: "/excel-para-concurso" },
+  ...(B2B_NO_AR ? B2B : []),
+];
+
 
 const FAQ = [
   ["Preciso ter o Excel instalado?", "Não. A planilha roda no navegador, com fórmulas iguais às do Excel em português. Não precisa instalar nada nem ter licença."],
@@ -285,7 +292,7 @@ export default function Landing() {
       <Secao>
         <Rotulo>Para quem é</Rotulo>
         <h2 className="mb-10 max-w-xl text-4xl font-extrabold tracking-tight">Seja qual for o seu motivo para aprender.</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className={`grid gap-4 sm:grid-cols-2 ${PUBLICOS.length > 2 ? "lg:grid-cols-4" : ""}`}>
           {PUBLICOS.map((p) => (
             <div key={p.titulo} className={`rounded-xl border p-5 ${p.escuro ? "border-ink bg-ink text-white" : "border-line bg-surface"}`}>
               <p className="mb-1 font-semibold">{p.titulo}</p>

@@ -15,4 +15,4 @@ export const EMPRESA = {
 export const EMAIL_CONTATO = "contato@planilhes.com.br";
 
 /** Data da versão em vigor dos Termos e da Política (mudou o texto, muda a data). */
-export const VERSAO_DOCUMENTOS = "25/11/2026";
+export const VERSAO_DOCUMENTOS = "27/11/2026";
