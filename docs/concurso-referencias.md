@@ -273,7 +273,7 @@ Variações a escrever: código com espaço no fim (um `#N/D` "inexplicável"); 
 
 | Formato de cobrança | Banca em que apareceu | Exemplo real |
 |---|---|---|
-| Resultado de SE aninhado com números | Vunesp | TJ-SP 2024 ([QConcursos Q3062856](https://www.qconcursos.com/questoes-de-concursos/questoes/3062856)) |
+| Resultado de SE aninhado com números | Vunesp | TJ-SP 2024 (link Q3062856 não existe mais; referência retirada em 27/11/2026) |
 | SE com OU/E nos valores-limite (todos os testes falsos) | Vunesp | Prodest-ES e Desenvolvesp 2014 ([Aprender Excel, parte 5](https://www.aprenderexcel.com.br/2014/excel-para-concursos/questoes-resolvidas-e-comentadas-parte-5)) |
 | Julgue o item sobre a definição de E ou OU | Cebraspe | FUB 2022 ([QConcursos 6dcd6276-cf](https://www.qconcursos.com/questoes-de-concursos/questoes/6dcd6276-cf), link provável) |
 | Trocar E por OU mantém os resultados? | Banca não mostrada | `=SE(E(B2>=60;C2>=75);"APTO";"NÃO APTO")` ([listagem nível médio](https://www.qconcursos.com/questoes-de-concursos/questoes?discipline_ids%5B%5D=46&scholarity_ids%5B%5D=2&subject_ids%5B%5D=18405)) |
@@ -355,7 +355,7 @@ Variações a escrever: `"<>Pago"` contando linhas em branco; SOMASE copiado sem
 
 | Formato de cobrança | Banca em que apareceu | Exemplo real |
 |---|---|---|
-| Julgue: MÉDIA ignora vazias e texto | Cebraspe | ARSAL 2026 ([QConcursos ff06d5c9-9d](https://www.qconcursos.com/questoes-de-concursos/questoes/ff06d5c9-9d)) |
+| Julgue: MÉDIA ignora vazias e texto | Quadrix | CRQ 20ª Região (MS) · Assistente Administrativo 2026 ([QConcursos ff06d5c9-9d](https://www.qconcursos.com/questoes-de-concursos/questoes/ff06d5c9-9d)) |
 | CONT.NÚM contra CONT.VALORES no mesmo intervalo | FCC | ARTESP 2017 ([Magna Concursos](https://www.magnaconcursos.com/questoes/concursos/artesp-fcc-2017/agente-fiscalizacao-regulacao-transportes)) |
 | MAIOR(intervalo;k) com k diferente de 1 | Vunesp | Câmara de Serrana 2019, `MAIOR(A1:A6;3)` ([Gran 1040147](https://questoes.grancursosonline.com.br/questoes-de-concursos/informatica-405030/1040147)) |
 | `:` contra `;` (bloco contra células avulsas) | Vunesp | CBTU 2014 ([Aprender Excel, parte 5](https://www.aprenderexcel.com.br/2014/excel-para-concursos/questoes-resolvidas-e-comentadas-parte-5)) |
