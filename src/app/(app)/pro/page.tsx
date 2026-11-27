@@ -11,7 +11,7 @@ import { MODULOS, exerciciosDoModulo, questoesDaLicao, testeDoModulo } from "@/c
 import { numerosDoConteudo } from "@/lib/numeros";
 import { contasLigadas } from "@/lib/supabase/config";
 import { stripeConfigurado } from "@/lib/stripe";
-import { NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
+import { B2B_NO_AR, NOME_DESAFIO, PRECO, economiaAnual, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Pro: a trilha completa de Excel",
@@ -460,15 +460,17 @@ export default function Pro() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-5">
-          <div>
-            <p className="font-semibold">Para a sua equipe ou turma</p>
-            <p className="text-sm text-muted">Licenças em grupo e um piloto de 30 dias, com o resultado medido antes e depois.</p>
+        {B2B_NO_AR && (
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-surface p-5">
+            <div>
+              <p className="font-semibold">Para a sua equipe ou turma</p>
+              <p className="text-sm text-muted">Licenças em grupo e um piloto de 30 dias, com o resultado medido antes e depois.</p>
+            </div>
+            <Link href="/empresas" className="rounded-lg border border-ink bg-white px-5 py-2.5 font-semibold hover:bg-bg">
+              Falar com a gente
+            </Link>
           </div>
-          <Link href="/empresas" className="rounded-lg border border-ink bg-white px-5 py-2.5 font-semibold hover:bg-bg">
-            Falar com a gente
-          </Link>
-        </div>
+        )}
       </Secao>
 
       {/* Garantia */}

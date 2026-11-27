@@ -1,7 +1,8 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { botaoClaro, botaoEscuro, Cartoes, Passos, Perguntas, Secao, Topo } from "@/components/publico/blocos";
 import { FormContato } from "@/components/publico/FormContato";
-import { NOME_SITE, PRECO_EMPRESAS, reais } from "@/lib/site";
+import { B2B_NO_AR, NOME_SITE, PRECO_EMPRESAS, reais } from "@/lib/site";
 
 const TITULO = "Treinamento de Excel para equipes: nivelamento com resultado medido";
 const DESCRICAO =
@@ -40,6 +41,7 @@ const FAQ: [string, string][] = [
 ];
 
 export default function Empresas() {
+  if (!B2B_NO_AR) notFound();
   return (
     <div className="space-y-14">
       <Topo

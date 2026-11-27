@@ -1,6 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 
 /*
+ * Licenças para empresas: FORA DO AR até depois do lançamento (B2B_NO_AR em src/lib/site.ts).
+ * Os testes do convite, do painel e das páginas estão no commit 03d29b1 (docs/BACKLOG.md).
  * Licenças para empresas. O servidor dos testes roda SEM Supabase (contas
  * desligadas) e sem Stripe: o convite e o painel mostram o aviso de contas
  * desligadas, e a parte que depende do banco (vagas, membros, remover) é coberta
@@ -17,34 +19,25 @@ async function entrarComoAdmin(page: Page) {
   await expect(page).toHaveURL(/\/admin$/);
 }
 
-test("convite: explica o Pro da empresa e avisa o que o gestor vê, antes de entrar", async ({ page }) => {
-  await page.goto(`/convite/${CODIGO}`);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Você foi convidado");
-  const aviso = page.getByTestId("aviso-gestor");
-  await expect(aviso).toContainText("nome");
-  await expect(aviso).toContainText("e-mail");
-  await expect(aviso).toContainText("progresso");
-  await expect(aviso).toContainText("não vê as suas respostas");
-  await expect(aviso.getByRole("link", { name: "Política de privacidade" })).toHaveAttribute("href", "/privacidade#empresas");
-  // Sem contas neste ambiente: não promete entrar.
-  await expect(page.getByTestId("convite-desligado")).toBeVisible();
-  await expect(page.getByTestId("entrar-equipe")).toHaveCount(0);
-  // Link privado: fora dos buscadores.
-  expect(await page.locator('meta[name="robots"]').getAttribute("content")).toContain("noindex");
+test("empresas e universidades fora do ar: páginas dão 404 e somem do menu, da home e do sitemap", async ({ page, request }) => {
+  for (const url of ["/empresas", "/universidades", `/convite/${CODIGO}`, "/empresa"]) expect((await request.get(url)).status(), url).toBe(404);
+  await page.goto("/");
+  await expect(page.getByRole("link", { name: "Para empresas" })).toHaveCount(0);
+  await expect(page.locator('a[href="/empresas"], a[href="/universidades"]')).toHaveCount(0);
+  await page.goto("/pro");
+  await expect(page.locator('a[href="/empresas"]')).toHaveCount(0);
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  expect(sitemap).not.toContain("/empresas");
+  expect(sitemap).not.toContain("/universidades");
 });
 
-test("convite no celular: sem rolagem lateral", async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 740 });
-  await page.goto(`/convite/${CODIGO}`);
-  await expect(page.getByTestId("aviso-gestor")).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-});
-
-test("painel do gestor: página própria, fora dos buscadores, sem dados sem login", async ({ page }) => {
-  await page.goto("/empresa");
-  await expect(page.getByTestId("painel-empresa-desligado")).toBeVisible();
-  await expect(page.getByTestId("painel-empresa")).toHaveCount(0);
-  expect(await page.locator('meta[name="robots"]').getAttribute("content")).toContain("noindex");
+test("termos e privacidade sem a parte de empresas enquanto ela está fora do ar", async ({ page }) => {
+  await page.goto("/termos");
+  await expect(page.locator("#empresas")).toHaveCount(0);
+  await expect(page.getByRole("main")).not.toContainText("licença de empresa");
+  await page.goto("/privacidade");
+  await expect(page.locator("#empresas")).toHaveCount(0);
+  await expect(page.getByRole("main")).not.toContainText("Membro de equipe");
 });
 
 test("admin → empresas: só para o admin", async ({ request }) => {
@@ -85,25 +78,4 @@ test("admin → empresas: formulário de proposta valida no servidor", async ({ 
   await page.getByTestId("proposta-cnpj").fill("11.222.333/0001-81");
   await form.getByRole("button", { name: "Criar proposta" }).click();
   await expect(page.getByTestId("erro-proposta")).toContainText("Banco não configurado");
-});
-
-test("página para empresas: pedir proposta e como funciona", async ({ page }) => {
-  await page.goto("/empresas");
-  const passos = page.locator("#como-funciona");
-  for (const trecho of ["Proposta", "boleto, Pix ou cartão", "Link de convite", "Painel do gestor"]) await expect(passos).toContainText(trecho);
-  await expect(page.getByRole("main")).toContainText("R$ 15,00 por pessoa por mês");
-  await page.getByRole("link", { name: "Pedir proposta" }).first().click();
-  await expect(page).toHaveURL(/#contato$/);
-  await expect(page.getByTestId("form-contato").getByRole("button", { name: "Pedir proposta" })).toBeVisible();
-});
-
-test("termos e privacidade: licenças para empresas e o que o gestor vê", async ({ page }) => {
-  await page.goto("/termos#empresas");
-  const termos = page.locator("#empresas");
-  for (const trecho of ["Vagas:", "Troca de membro:", "Validade:", "Renovação:"]) await expect(termos).toContainText(trecho);
-  await page.goto("/privacidade#empresas");
-  const privacidade = page.locator("#empresas");
-  await expect(privacidade).toContainText("gestor da equipe");
-  await expect(privacidade).toContainText("legítimo interesse");
-  await expect(privacidade).toContainText("tela do convite");
 });

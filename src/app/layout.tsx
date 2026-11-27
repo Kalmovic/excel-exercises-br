@@ -6,7 +6,7 @@ import { MenuCelular } from "@/components/marca/MenuCelular";
 import { BotaoConta } from "@/components/conta/BotaoConta";
 import { LinkRastreado } from "@/components/site/LinkRastreado";
 import { AnalyticsFiltrado } from "@/components/site/AnalyticsFiltrado";
-import { INDEXAR_SITE, NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
+import { B2B_NO_AR, INDEXAR_SITE, NOME_DESAFIO, NOME_SITE, URL_SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(URL_SITE),
@@ -24,7 +24,7 @@ const NAV = [
   { href: "/desafio", rotulo: "Desafio do dia" },
   { href: "/trilha", rotulo: "Trilha" },
   { href: "/#precos", rotulo: "Preços" },
-  { href: "/empresas", rotulo: "Para empresas" },
+  ...(B2B_NO_AR ? [{ href: "/empresas", rotulo: "Para empresas" }] : []),
 ];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

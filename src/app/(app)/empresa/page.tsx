@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { connection } from "next/server";
@@ -6,7 +7,7 @@ import { PainelEquipe } from "@/components/empresa/PainelEquipe";
 import { MODULOS, exerciciosDaTrilha } from "@/content";
 import { caminhoConvite, type PainelGestor } from "@/lib/empresas";
 import { ESPECIALISTA } from "@/lib/especialista";
-import { URL_SITE } from "@/lib/site";
+import { B2B_NO_AR, URL_SITE } from "@/lib/site";
 import { contasLigadas } from "@/lib/supabase/config";
 import { supabaseServidor, usuarioAtual } from "@/lib/supabase/servidor";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = { title: "Painel da equipe", robots: { index: 
 const cartao = "rounded-2xl border border-line bg-surface p-5 text-center sm:p-6";
 
 export default function Pagina() {
+  if (!B2B_NO_AR) notFound();
   return (
     <div className="mx-auto max-w-4xl py-4">
       <Suspense fallback={<div className="h-96" aria-hidden />}>

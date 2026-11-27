@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Documento, Email, type Secao } from "@/components/site/Documento";
 import { EMPRESA } from "@/lib/empresa";
-import { NOME_SITE, PRECO, PRECO_EMPRESAS, reais } from "@/lib/site";
+import { B2B_NO_AR, NOME_SITE, PRECO, PRECO_EMPRESAS, reais } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Termos de uso",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/termos" },
 };
 
-const secoes: Secao[] = [
+const todasAsSecoes: Secao[] = [
   {
     id: "quem-somos",
     titulo: "Quem somos",
@@ -66,7 +66,7 @@ const secoes: Secao[] = [
     titulo: "Sua conta",
     conteudo: (
       <ul>
-        <li>A conta é pessoal: entre com o seu e-mail, pelo código que enviamos. Não compartilhe o acesso (inclusive a vaga de uma licença de empresa).</li>
+        <li>A conta é pessoal: entre com o seu e-mail, pelo código que enviamos. Não compartilhe o acesso{B2B_NO_AR && " (inclusive a vaga de uma licença de empresa)"}.</li>
         <li>Você responde pelo que é feito na sua conta. Se suspeitar de uso indevido, avise pelo e-mail.</li>
         <li>O nome que você informa para o certificado deve ser o seu nome real.</li>
       </ul>
@@ -239,6 +239,9 @@ const secoes: Secao[] = [
     ),
   },
 ];
+
+// Licenças para empresas fora do ar até depois do lançamento (B2B_NO_AR em src/lib/site.ts).
+const secoes = todasAsSecoes.filter((s) => B2B_NO_AR || s.id !== "empresas");
 
 export default function Pagina() {
   return (
